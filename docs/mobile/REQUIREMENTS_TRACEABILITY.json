@@ -4860,19 +4860,28 @@
         "src/host/bookyModel.ts",
         "src/host/useBookyRenderer.ts",
         "src/host/bookyWalk.ts",
-        "src/host/useBookyWalk.ts"
+        "src/host/useBookyWalk.ts",
+        "src/host/bookyPlacement.ts"
       ],
       "tests": [
         "src/host/bookyModel.test.ts",
         "src/host/bookyAnimation.test.ts",
         "src/host/bookyWalk.test.ts",
-        "tests/pwa/booky-live-character.spec.mjs"
+        "tests/pwa/booky-live-character.spec.mjs",
+        "src/host/planetMascot.test.ts",
+        "src/host/planetMascotPreference.test.ts",
+        "src/host/planetMascotPersistence.test.ts",
+        "src/host/bookySupport.test.ts",
+        "src/host/bookyTourProgress.test.ts",
+        "src/host/bookyPlacement.test.ts",
+        "tests/pwa/booky-reader-policy.spec.mjs"
       ],
       "evidence": [
-        "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json"
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json",
+        "docs/mobile/evidence/S15/booky-mobile-placement-20260923/result.json"
       ],
-      "commit": "10beb1315ea29184fced208ee26049db093e4823",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Scoped model geometry and visibility evidence for the face, hands gripping the magnifier and articulated whole shoes/legs. This is not artistic or anatomy acceptance across all devices. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged."
+      "commit": "3dd6d478164f4f23187844fe0c033267230b0951",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Scoped model geometry and visibility evidence for the face, hands gripping the magnifier and articulated whole shoes/legs. This is not artistic or anatomy acceptance across all devices. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged. Automatic companion placement avoids adding obstruction to the observed globe controls at 320 px portrait in RU and EN and at 800 x 400 landscape in EN, with collection controls checked in EN. A short landscape row retains the existing 88 px avatar and 44 px touch buttons. Deliberate drag, Home reset, immediate walking interruption and resize behavior are preserved. Existing host-only overlaps remain separately recorded. Fresh 141 focused unit cases, TypeScript and 8 actual-App browser cases pass with 16 inspected screenshots; PWA f53b86b2 and Android-dev 6d86207b are freshly rebuilt and byte-audited. 1644 source inputs remain exact. This is a bounded layout/interaction fix, not full accessibility, installed-device, art or stage acceptance."
     },
     {
       "id": "PLANETKA-003",
@@ -5031,7 +5040,9 @@
         "src/components/LiteraryWorldMap.tsx",
         "src/index.css",
         "src/host/NativePlanetPanel.tsx",
-        "src/host/planetMascotRoutes.ts"
+        "src/host/planetMascotRoutes.ts",
+        "src/host/useBookyWalk.ts",
+        "src/host/bookyPlacement.ts"
       ],
       "tests": [
         "src/host/bookySupport.test.ts",
@@ -5047,16 +5058,22 @@
         "src/platform/adapters/web/WebPlatformAdapter.test.ts",
         "tests/pwa/booky-catalog-readiness.spec.mjs",
         "tests/pwa/booky-catalog-scene.spec.mjs",
-        "tests/pwa/booky-live-character.spec.mjs"
+        "tests/pwa/booky-live-character.spec.mjs",
+        "src/host/bookyModel.test.ts",
+        "src/host/bookyAnimation.test.ts",
+        "src/host/bookyWalk.test.ts",
+        "src/host/bookyPlacement.test.ts",
+        "tests/pwa/booky-reader-policy.spec.mjs"
       ],
       "evidence": [
         "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json",
         "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json",
         "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json",
-        "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json"
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json",
+        "docs/mobile/evidence/S15/booky-mobile-placement-20260923/result.json"
       ],
-      "commit": "10beb1315ea29184fced208ee26049db093e4823",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance. The application retains its existing canonical globe across catalog loading/failure/recovery while current readiness still gates Booky actions and progress. First failure retains the original fallback. TypeScript, 3 actual-App Chrome cases and 4 inspected views bind fresh preserved PWA/Android-dev builds; 265 prior controller tests are retained without rerun. No stage, child, reviewed-content or release acceptance is claimed. Explicit access to existing Recent History, Downloads and Graphics sections plus canonical random-country navigation. Explicit utility navigation collapses tips so the destination controls are usable. The finite approach points inside the selected Graphics area without activating a control. Opening those sections does not mutate graphics/downloads or journey progress; newer user focus cancels obsolete focus intent. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged."
+      "commit": "3dd6d478164f4f23187844fe0c033267230b0951",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance. The application retains its existing canonical globe across catalog loading/failure/recovery while current readiness still gates Booky actions and progress. First failure retains the original fallback. TypeScript, 3 actual-App Chrome cases and 4 inspected views bind fresh preserved PWA/Android-dev builds; 265 prior controller tests are retained without rerun. No stage, child, reviewed-content or release acceptance is claimed. Explicit access to existing Recent History, Downloads and Graphics sections plus canonical random-country navigation. Explicit utility navigation collapses tips so the destination controls are usable. The finite approach points inside the selected Graphics area without activating a control. Opening those sections does not mutate graphics/downloads or journey progress; newer user focus cancels obsolete focus intent. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged. Automatic companion placement avoids adding obstruction to the observed globe controls at 320 px portrait in RU and EN and at 800 x 400 landscape in EN, with collection controls checked in EN. A short landscape row retains the existing 88 px avatar and 44 px touch buttons. Deliberate drag, Home reset, immediate walking interruption and resize behavior are preserved. Existing host-only overlaps remain separately recorded. Fresh 141 focused unit cases, TypeScript and 8 actual-App browser cases pass with 16 inspected screenshots; PWA f53b86b2 and Android-dev 6d86207b are freshly rebuilt and byte-audited. 1644 source inputs remain exact. This is a bounded layout/interaction fix, not full accessibility, installed-device, art or stage acceptance."
     },
     {
       "id": "PLANETKA-006",

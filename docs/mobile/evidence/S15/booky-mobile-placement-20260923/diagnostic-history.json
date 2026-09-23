@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T14:20:38.263Z",
+  "recordingComplete": true,
+  "kind": "retained-pre-freeze-mobile-placement-diagnostics",
+  "baseCheckpoint": "3e62c1375e05a7c5f19b6a85b09d797e8fa50900",
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "invocation": {
+    "command": [
+      "node",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-enhancement-20260923/playwright.config.mjs",
+      "--grep",
+      "mobile placement"
+    ],
+    "diagnosticRootPattern": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-aN",
+    "environment": {
+      "S15_BROWSER_OUTPUT": "<diagnosticRoot>/output",
+      "S15_BROWSER_REPORT": "<diagnosticRoot>/playwright.json",
+      "S15_BROWSER_PROFILE_ROOT": "<diagnosticRoot>/profiles",
+      "TEMP": "<diagnosticRoot>/temp",
+      "TMP": "<diagnosticRoot>/temp"
+    },
+    "redirection": {
+      "stdout": "<diagnosticRoot>/stdout.log",
+      "stderr": "<diagnosticRoot>/stderr.log"
+    },
+    "provenance": "Command and process exit codes confirmed retrospectively by the executing /root/booky_mobile_browser agent; exact original raw reports and output logs are separately hash-bound."
+  },
+  "attempts": [
+    {
+      "attempt": "a1",
+      "scope": "One selected mobile-placement browser scenario only; evolving candidate runtime and fixture, not the complete formal suite.",
+      "summary": "Initial regression ran the new mobile case against the prior companion runtime, before placement integration. It reproduced companion overlap with the country toggle.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a1/playwright.json",
+        "sha256": "00c55c2ccb5d3e0f07830f756cca14f7fc070e2d51d041034f83f8310370d578"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a1/output/booky-live-character-Mr-Bo-2ac9a-s-reachable-in-both-locales/booky-live-character.json",
+        "sha256": "404d16d7723fdd04ba1ab58e19f0730b3847f7d3f1d88e8d43a5db007a6001a8"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a1/output/booky-live-character-Mr-Bo-2ac9a-s-reachable-in-both-locales/attachments/booky-live-character-source-evidence-6d96e0a2653849a82d59b7426a41122f6984e4a1.json",
+        "sha256": "404d16d7723fdd04ba1ab58e19f0730b3847f7d3f1d88e8d43a5db007a6001a8"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a1/stdout.log",
+          "sha256": "b392d8ae82cdf542cba748023d98615a68505215722c4a097d54dc10bdf7c57d"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a1/stderr.log",
+          "sha256": "875efc6777ef1fd6b4b1f0c928e37e1e1310e1de833bea021069cb26f4db3917"
+        },
+        "startedAt": "2026-09-23T13:58:27.808Z",
+        "durationMs": 12435.945,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Retrospective confirmation by /root/booky_mobile_browser from the original tool session diagnosticExit=$LASTEXITCODE output; the PowerShell wrapper exit code was zero and is not substituted for Node status.",
+        "toolSessionId": 6194,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-enhancement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky mobile placement leaves globe and collection controls reachable in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 668,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "d29e2b471193de13f209760c3daed7eddd51d311e2fad1eb24e69df4a0e8e6b5"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "8ee9f16ad5d0074d32ee711aaba322adb0be75b425505066333f1593ffbf4319"
+        },
+        {
+          "path": "src/host/useBookyWalk.ts",
+          "sha256": "2857b4208d934e46f17b161473816af7166bb43a76d1794137833d363e31a555"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "bc3d61a4b95313c9aae75a9874ee0e2d6c0a9a953e245752f3f4e9eb8fa1fc90"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [],
+      "failureMessages": [
+        "Error: .atlas-country-sheet-toggle does not overlap the companion"
+      ]
+    },
+    {
+      "attempt": "a2",
+      "scope": "One selected mobile-placement browser scenario only; evolving candidate runtime and fixture, not the complete formal suite.",
+      "summary": "Placement helper and Controls integration were present. Portrait checks proceeded; the unqualified landscape hit assertion failed on a zoom control because host-only controls could overlap independently of the companion.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a2/playwright.json",
+        "sha256": "6e5527a505dc1a47b5db5ab88c56d1bc8c5a37d940a59da20ff86cdf4adac2b4"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-2ac9a-s-reachable-in-both-locales/booky-live-character.json",
+        "sha256": "90bcd86efda13b1baecccdb2dbde2eed58fa4ae9c92d047f3075cdb76840e79c"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-2ac9a-s-reachable-in-both-locales/attachments/booky-live-character-source-evidence-e6f6413e9f45c32fb7e44726cfaacf621b38a489.json",
+        "sha256": "90bcd86efda13b1baecccdb2dbde2eed58fa4ae9c92d047f3075cdb76840e79c"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a2/stdout.log",
+          "sha256": "dd5196ebd32dff8dc8c91c83f66fc499f8b671ea53a1b4396583531a325caf19"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a2/stderr.log",
+          "sha256": "06182c69f344c8f2316a9ca467b0d198566b17f9f569ad03015d4ada8e56c558"
+        },
+        "startedAt": "2026-09-23T14:05:12.310Z",
+        "durationMs": 14149.77,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Retrospective confirmation by /root/booky_mobile_browser from the original tool session diagnosticExit=$LASTEXITCODE output; the PowerShell wrapper exit code was zero and is not substituted for Node status.",
+        "toolSessionId": 81423,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-enhancement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky mobile placement leaves globe and collection controls reachable in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "d29e2b471193de13f209760c3daed7eddd51d311e2fad1eb24e69df4a0e8e6b5"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "7c1d9879ab3169d4c95a7109279e12067609a61f5fa83cce420de774191dd7a4"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "2c14916756ee56b0879f09b66630c3cc853a0e188468b83f5e4fc5f38f0dc3a3"
+        },
+        {
+          "path": "src/host/useBookyWalk.ts",
+          "sha256": "2857b4208d934e46f17b161473816af7166bb43a76d1794137833d363e31a555"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "0abc6a4362f975f8b951c4ccd560c9e639abb6b8fb0a563a79f4a69380557e9d"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-mobile-controls-ru-320.png",
+          "sha256": "96caeaf74a015a4a5129dbfb18eaf5c6227538e3b739e4d3a31aa4b227e1b8cb",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-2ac9a-s-reachable-in-both-locales/booky-mobile-controls-ru-320.png"
+        },
+        {
+          "filename": "booky-mobile-controls-en-320.png",
+          "sha256": "f439c7d463fdb04e95e87ebc78c1f2e41480d9c13b2136b6d8b687073814c96c",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-2ac9a-s-reachable-in-both-locales/booky-mobile-controls-en-320.png"
+        },
+        {
+          "filename": "booky-mobile-placement-failure.png",
+          "sha256": "f23e1b92d71cb82f023571a1f76f1c99b0dda54900bf9e3f28335bfa2c2a6ce6",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-2ac9a-s-reachable-in-both-locales/booky-mobile-placement-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: [data-globe-control=\"zoom-in\"] receives pointer hits"
+      ]
+    },
+    {
+      "attempt": "a3",
+      "scope": "One selected mobile-placement browser scenario only; evolving candidate runtime and fixture, not the complete formal suite.",
+      "summary": "The fixture compared hit targets against a genuinely hidden-companion baseline and the committed-position handoff fix was present. It still found actual companion overlap with the country toggle in 800 x 400 landscape; the 200 px vertical companion did not fit the available free height.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a3/playwright.json",
+        "sha256": "66981ed695d3045035147bd41bd503687b60b2bc85dffdb2b8486a35e93835fd"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-live-character.json",
+        "sha256": "b957bacb0ad8cf8704b26b6941c1cb0b8208a1802dbb6d65133437fd1185ef71"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-b4b0ba2297affa0832836eb74b801ab4c91099e6.json",
+        "sha256": "b957bacb0ad8cf8704b26b6941c1cb0b8208a1802dbb6d65133437fd1185ef71"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a3/stdout.log",
+          "sha256": "3489dbfb722244b0fcc5e3069f9aff8cf1f5acae1a5dfc44c74943f57ecb08d8"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a3/stderr.log",
+          "sha256": "e456771451537d81699bb3fd60f0eaaa35ec48873f7acf7e804386624b25e624"
+        },
+        "startedAt": "2026-09-23T14:08:07.924Z",
+        "durationMs": 14284.33,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Retrospective confirmation by /root/booky_mobile_browser from the original tool session diagnosticExit=$LASTEXITCODE output; the PowerShell wrapper exit code was zero and is not substituted for Node status.",
+        "toolSessionId": 55753,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-enhancement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "d29e2b471193de13f209760c3daed7eddd51d311e2fad1eb24e69df4a0e8e6b5"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "5baaf16150b04e782fd414fc8bbc3a3a9bff4d8e780d83e17e708316c6351ad3"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "2c14916756ee56b0879f09b66630c3cc853a0e188468b83f5e4fc5f38f0dc3a3"
+        },
+        {
+          "path": "src/host/useBookyWalk.ts",
+          "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "aeb8608910a30f3fa87050f8ef3aea0469e2dae1435e60b3f1c7542ee3306eb1"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-mobile-controls-ru-320.png",
+          "sha256": "3297f21229e9a940ffb1311b85fcf9b06110731eb4de119049c8b0ad9ff2ebc2",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png"
+        },
+        {
+          "filename": "booky-mobile-controls-en-320.png",
+          "sha256": "c46cc057438840978e5ce781232a06329001c0078d13dc001984c4bf25de85b9",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png"
+        },
+        {
+          "filename": "booky-mobile-placement-failure.png",
+          "sha256": "7df734efa860f6e533bd765f2026746efcfa3560d37ee958e9140549c33b117d",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-placement-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: .atlas-country-sheet-toggle does not overlap the companion"
+      ]
+    },
+    {
+      "attempt": "a4",
+      "scope": "One selected mobile-placement browser scenario only; evolving candidate runtime and fixture, not the complete formal suite.",
+      "summary": "The short landscape row and additional globe rail obstacles were present. Globe/baseline and immediate-stop checks proceeded, then the fixture found companion overlap with an archive item action in the collection.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a4/playwright.json",
+        "sha256": "14fb1c711c12e25c4e38eb12f3d92f00cfe3292fb3c63fbff85058519b5cf8f0"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a4/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-live-character.json",
+        "sha256": "1e58e07d3050da69a678e34a82642f9009f78d344b9b4410b36652c509fad039"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a4/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-55f8345d8d6596bb38999a531712227ad53a5197.json",
+        "sha256": "1e58e07d3050da69a678e34a82642f9009f78d344b9b4410b36652c509fad039"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a4/stdout.log",
+          "sha256": "2999e783e4376c5d8d18441201e43072f79e64d892eaa1fdd1f79061fcea2b2a"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a4/stderr.log",
+          "sha256": "6b5fa15cdf60828669dd629fb913351089b8dd7c816d879ea208f480d967ad38"
+        },
+        "startedAt": "2026-09-23T14:11:52.366Z",
+        "durationMs": 17573.962,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Retrospective confirmation by /root/booky_mobile_browser from the original tool session diagnosticExit=$LASTEXITCODE output; the PowerShell wrapper exit code was zero and is not substituted for Node status.",
+        "toolSessionId": 93860,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-enhancement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "b64d7d7e3b886d980c6c1b81382e8cdfe31af581b7b1c01e00371b23b836c054"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "a31b1a524ec32a5db499f9bbffdbc736a6849f8984f669383ec336629a0b2dc1"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "2c14916756ee56b0879f09b66630c3cc853a0e188468b83f5e4fc5f38f0dc3a3"
+        },
+        {
+          "path": "src/host/useBookyWalk.ts",
+          "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "f1a5fef98ed8900642e75dd937f8bd0816c79187952bbc966960155cce08269d"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-mobile-controls-ru-320.png",
+          "sha256": "d0edc466c2e81455edb157d0a159e34e8028e1f6a088c39c00042e7068069ee0",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a4/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png"
+        },
+        {
+          "filename": "booky-mobile-controls-en-320.png",
+          "sha256": "11ccbcf54c5c449911b4c7ab972325658082a1690942c80f8a84b0508c9de4d6",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a4/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png"
+        },
+        {
+          "filename": "booky-mobile-placement-failure.png",
+          "sha256": "c1f87f0ab41950149b1e1db6b7ff5f0aac6b1d5394411dd28b591f65d7b31249",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a4/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-placement-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: .native-planet-panel__content > div:nth-child(4) > section:nth-child(1) > div:nth-child(2) > div:nth-child(5) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > article:nth-child(4) > div:nth-child(2) > div:nth-child(4) > button:nth-child(2) does not overlap the companion"
+      ]
+    },
+    {
+      "attempt": "a5",
+      "scope": "One selected mobile-placement browser scenario only; evolving candidate runtime and fixture, not the complete formal suite.",
+      "summary": "Archive action obstacles were included. The fixture passed earlier target checks, then failed its live geometry/card-layout assertion after showing the companion again at 320 px.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/playwright.json",
+        "sha256": "938ed63fafcd0f02f62e72761223e68aa224e352204cc2d84675f855290e4fa9"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-live-character.json",
+        "sha256": "a538cd666f815fae1ca3df9343a76cf435c39ce9cbea8471c279c0b89e561a07"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-1cb13a26fa03ac86c350dc15bd9d51580171c9b5.json",
+        "sha256": "a538cd666f815fae1ca3df9343a76cf435c39ce9cbea8471c279c0b89e561a07"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/stdout.log",
+          "sha256": "ef34eb0c7ccbce8fbb2e911149f2bbea01fedcb253d57c35a624209d9b0f2b62"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/stderr.log",
+          "sha256": "3e47378f7699c698bb41076a0171d28c1c35b5e5dc113b48f14893799c747e39"
+        },
+        "startedAt": "2026-09-23T14:13:33.382Z",
+        "durationMs": 24651.066,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Retrospective confirmation by /root/booky_mobile_browser from the original tool session diagnosticExit=$LASTEXITCODE output; the PowerShell wrapper exit code was zero and is not substituted for Node status.",
+        "toolSessionId": 49249,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-enhancement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "b64d7d7e3b886d980c6c1b81382e8cdfe31af581b7b1c01e00371b23b836c054"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "7fe6628b9e5920b5dd3ccf3a357f5966b9103512a3777239a426d70b7008a2c0"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "2c14916756ee56b0879f09b66630c3cc853a0e188468b83f5e4fc5f38f0dc3a3"
+        },
+        {
+          "path": "src/host/useBookyWalk.ts",
+          "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "450f9115059c3d5dc081cd20f077cc1c45512fce250b644a15eb228e3dd2a106"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-mobile-controls-ru-320.png",
+          "sha256": "72b6aa473d7a7c1f24c5f6840688fe4233d92afe24d29436749265fedaf96136",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png"
+        },
+        {
+          "filename": "booky-mobile-controls-en-320.png",
+          "sha256": "67962a145ad7f3331568da0e6b3cf7b9aa021055f1599818c678568350bedd34",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png"
+        },
+        {
+          "filename": "booky-mobile-collection-en-landscape.png",
+          "sha256": "ded3adb4fd819242b16030cccb3e4fcd98c061c8d85f3e3427fd38bcaba9cff1",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png"
+        },
+        {
+          "filename": "booky-mobile-placement-failure.png",
+          "sha256": "72a3f01112a13ed0c058ad4250b3378b36c92a30d4fcb6d54a6b63db9a578a1e",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a5/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-placement-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: Actual rendered geometry, decorative canvas and controls fit without cropping or overlap"
+      ]
+    },
+    {
+      "attempt": "a6",
+      "scope": "One selected mobile-placement browser scenario only; evolving candidate runtime and fixture, not the complete formal suite.",
+      "summary": "Card/pet placement was adjusted to retain a clear pair when showing tips. The focused mobile scenario passed, including the immediate walk-stop, hit-target baseline, drag/Home, resize and hide/show assertions.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a6/playwright.json",
+        "sha256": "db359b1fe24bbbf24f91710d3f823a3acd4867ec4cae9964814b6b6fa8c8f023"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a6/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-live-character.json",
+        "sha256": "f747edd650b9ab7942a629e029324367b50df9fe4c67d233471d914c51a01287"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a6/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-fbb20e1ed460b6ef2b46ab56b8dd60cb2b8305d9.json",
+        "sha256": "f747edd650b9ab7942a629e029324367b50df9fe4c67d233471d914c51a01287"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a6/stdout.log",
+          "sha256": "bb30cb79754abf0c1906bf539eb9500e824873fd23eb4b57029bda277e70c25a"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a6/stderr.log",
+          "sha256": "b99fadcff756723172cedddf9dc78eb870ac5c0f66ce789b45be60d105ece9e0"
+        },
+        "startedAt": "2026-09-23T14:16:21.722Z",
+        "durationMs": 16637.139000000003,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "Retrospective confirmation by /root/booky_mobile_browser from the original tool session diagnosticExit=$LASTEXITCODE output; the PowerShell wrapper exit code was zero and is not substituted for Node status.",
+        "toolSessionId": 95392,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-enhancement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "b64d7d7e3b886d980c6c1b81382e8cdfe31af581b7b1c01e00371b23b836c054"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "964943c39a4cebba9ec1cae8a3510d857f41ed78eaa138879e8952f1ab3ff6ab"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "6a654b707aca4fd495ec70b48e2008e341a450b74869e32dec8b99f5d1145de3"
+        },
+        {
+          "path": "src/host/useBookyWalk.ts",
+          "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "450f9115059c3d5dc081cd20f077cc1c45512fce250b644a15eb228e3dd2a106"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-mobile-controls-ru-320.png",
+          "sha256": "94ce008cab06752328ec4a810666c6d35412dd96b6703d7b189243ea208031a2",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a6/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png"
+        },
+        {
+          "filename": "booky-mobile-controls-en-320.png",
+          "sha256": "e40b9c4ff023f74551d09c2f0b4cf17bd1a4ff9eac03dae86ce73a2d0517eed6",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a6/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png"
+        },
+        {
+          "filename": "booky-mobile-collection-en-landscape.png",
+          "sha256": "6860bdeecfcb0d3e18a0dcb9dcb9e0ba96421b42694469a611fb9e1070980df1",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-diagnostic-a6/output/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png"
+        }
+      ],
+      "failureMessages": []
+    }
+  ],
+  "aggregate": {
+    "focusedInvocations": 6,
+    "failed": 5,
+    "passed": 1
+  },
+  "postDiagnosticFixtureChange": {
+    "path": "tests/pwa/booky-live-character.spec.mjs",
+    "sha256": "e0e8d80ca4fba8b9e2e74e7f761ecb94cd7f53e6aa1e80314eb092def271c22c",
+    "change": "Two screenshot capture calls were added only after a6 completed: collapsed EN landscape globe and open EN collection tips at 320 px. These extra captures are not attributed to a6; they require the later formal run.",
+    "expectedFormalCases": 8,
+    "expectedFormalImages": 16
+  },
+  "formalSuiteAcceptance": false,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "fullAccessibilityAccepted": false,
+  "releaseReady": false
+}

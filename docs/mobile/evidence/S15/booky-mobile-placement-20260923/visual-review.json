@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T14:22:41.316Z",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-placement-20260923/source-manifests/7ff10fd6ef5ee182.json",
+    "sha256": "7ff10fd6ef5ee182cb400708955f40371407c68744702f08cc785af9172fc26c",
+    "fileCount": 1650
+  },
+  "reviewer": "Codex /root/booky_mobile_browser",
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+      "findings": [
+        "Actual native drawing buffer shows the complete green-book model, both hands and feet, with the magnifier handle enclosed by the right glove.",
+        "No visible model or lens clipping in this sampled pose."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-guide-en-320.png",
+      "findings": [
+        "English narrow guide and complete model occupy separate vertical areas; primary host row, globe controls and country Open remain visually clear.",
+        "The scrollable guide shows heading and current step; lower guide content requires scrolling. Companion walk button partly covers the informational zoom readout."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "683d2fe9b24eab7e369008064224fe0a6f010f51b29f183bc380b97ecbd6fb3a",
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-help-ru-1440.png",
+      "findings": [
+        "Russian character name and help actions are readable in the paper panel; complete live model and its controls remain beside it.",
+        "The overlay intentionally covers part of the underlying country content; this is not a claim that every underlying control remains available with tips open."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "965dbd993160807900362c583d052ea693841b873359efd328d498d88fc5b2ed",
+      "width": 1440,
+      "height": 850
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-interaction-en-landscape.png",
+      "findings": [
+        "Short landscape view keeps the complete model and move/hide/walk controls in a horizontal row, separate from the scrollable English help card.",
+        "Country Open and top host controls remain visible. The help card covers part of the underlying country strip and edition rail; existing country strip obstruction of globe controls remains a separate host limitation."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "b7eda2e52587dcfac52cf2528b6bd3415d88b0eb969fd6df4ae86b2fadf46dab",
+      "width": 844,
+      "height": 390
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-useful-actions-ru-320.png",
+      "findings": [
+        "Russian useful-actions disclosure and first utility buttons are readable inside the scrollable card; additional utilities extend below the current scroll view.",
+        "Complete model, companion controls, globe toolbar and country Open remain visible; zoom percentage text is partly overlapped by the companion walk control."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "097b6d179212e4b7cb0ef45705f739235f9ba8716a2f1ddf5222bf749943ea24",
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion/booky-margin-walk-ru-1440.png",
+      "findings": [
+        "Complete model, attached magnifier and readable Stop control are visible during an explicit margin-walk sample.",
+        "Walking floats over part of country content; the still capture does not establish timing or interruption, which belong to browser trace assertions."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "023ad210ac24592bf2a0a45cfdb36ccaad4b538a484bf78a621901106aa78e4f",
+      "width": 1440,
+      "height": 850
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-target-approach-ru-1440.png",
+      "findings": [
+        "Graphics destination, its three quality options and target ring are visible while the complete model approaches below the target.",
+        "Model and Stop control intentionally traverse underlying content; this frame is not the final tap and does not by itself prove final hand contact. Header exit and language controls remain clear."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "c147fa32cb8c7ebe2fce7fcc375e832f6b6d594eea7b65b096c0931ab2341a03",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+      "findings": [
+        "All thirteen English gesture buttons and Surprise me are readable in the open gesture disclosure; selected Act shy and response text are visible.",
+        "Complete model and magnifier remain separate from the gesture panel, with move/hide and disabled walk controls visible."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "9756bed6dd45ccb8491a8e0be17fd9c2989ca83684eba646cdcfc6e8f338f89b",
+      "width": 1440,
+      "height": 850
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png",
+      "findings": [
+        "Collapsed Russian companion remains completely visible above the globe toolbar and country Open strip; move, hide and walk controls are readable.",
+        "Edition scroll arrows, appearance button and locale row remain visible. The walk button partly covers the noninteractive zoom percentage."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "0e8b0118995d009f47f8c602871f42bd88f3fe01df3b338415d0a0de675df58b",
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png",
+      "findings": [
+        "Collapsed English companion keeps the same clear separation from globe controls and country Open; the wrapped Take a walk label fits its button.",
+        "The zoom percentage remains partly behind the companion button; this is not a claim that every informational label is unobstructed."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "2ea4e4ba9d2f7b3738feabb10f2bb60a3fcc506190bf8e3729f3877d2610a3cd",
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-landscape.png",
+      "findings": [
+        "At 800 by 400 the complete model and three controls fit in one horizontal row between the edition rail and country strip; the edition arrows and country Open remain clear.",
+        "The underlying country strip itself covers the globe toolbar. The browser's genuine hidden-companion baseline records this pre-existing host obstruction; no all-controls-accessible claim is made."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "cba9a2fe78750244245cfb4e8847500922d9d730f5adc58a909fb947ea9bc9a0",
+      "width": 800,
+      "height": 400
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png",
+      "findings": [
+        "The landscape companion row is above the visible archive card Save and About the book buttons; collection close and locale controls remain clear.",
+        "The row overlaps ordinary book title and cover content; this targeted action-clearance fix does not provide an unobstructed reading surface everywhere."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "cb31645b3fa814cd0d982d89bebf403b2bf4b16e7a7f611382beedf286deb67d",
+      "width": 800,
+      "height": 400
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-tips-en-320.png",
+      "findings": [
+        "After hide, resize and show, the complete model and local controls sit above the English help card with a visible gap; neither clips or covers the other.",
+        "Collection header and close remain clear. Open tips and the companion overlay underlying shelf/filter and book content; the regression separately checks underlying actions after collapse."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "0acf48586844667f08864a38788cfacdc69a8f0d828f436b69faa33f61290bdc",
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+      "findings": [
+        "The 320px English profile form preserves readable optional-profile guidance, age value 31 and Simple reading level in its scroll area.",
+        "Complete model and local controls remain below the card, separate from globe toolbar and country Open. Save is partially below the current scroll window and requires scrolling."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "56c30e169547dcd5a3a801e20d8e7ed06c91ac584e687b15a6aff5b480babbf3",
+      "width": 320,
+      "height": 850
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+      "findings": [
+        "Russian profile age 30, reading level, saved confirmation and Delete profile action are readable in the scrollable companion panel.",
+        "Complete model and magnifier remain separate from the panel; this screenshot illustrates the tested saved state rather than granting content or age-adaptive journey approval."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "92f1e307d28785cb82274b597bd1e2ca7846155f153934da634008ea6de58d3c",
+      "width": 1440,
+      "height": 850
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+      "findings": [
+        "English failed-deletion message and Try deleting again control are visible; blank age and unselected reading level remain distinct from confirmed saved state.",
+        "Complete character and magnifier remain beside the panel, with no model/card overlap. Failure recovery semantics are established by the browser assertions."
+      ],
+      "inspected": true,
+      "reviewer": "Codex /root/booky_mobile_browser",
+      "check": "direct",
+      "sha256": "decf3637347ce004eeb93f4f55d7fbc3da456bb42caf2c2f2a653d71b2859165",
+      "width": 1440,
+      "height": 850
+    }
+  ],
+  "limitations": [
+    "Direct visual review covers these 16 exact screenshots, not full application accessibility or every possible placement.",
+    "At 800 by 400 the host country strip already obstructs globe controls without the shown companion; the regression only establishes that Booky adds no obstruction to the sampled baseline targets.",
+    "Companion controls can cover noninteractive zoom information and ordinary book text or cover content. Open tips intentionally overlay underlying content and some controls.",
+    "Walking and target-approach captures show individual frames only; duration, interruption, canonical scene retention and preference invariants rely on the accompanying browser assertions.",
+    "No installed-device, iOS, child, editorial, legal, art-acceptance or release approval is inferred."
+  ],
+  "allImagesDirectlyInspected": true,
+  "stageAccepted": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "sourceCommit": "3dd6d478164f4f23187844fe0c033267230b0951"
+}

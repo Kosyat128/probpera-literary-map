@@ -1,0 +1,14 @@
+
+Running 8 tests using 1 worker
+
+
+
+[1/8] tests\pwa\booky-live-character.spec.mjs:400:1 › live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged
+[2/8] tests\pwa\booky-live-character.spec.mjs:547:1 › Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus
+[3/8] tests\pwa\booky-live-character.spec.mjs:629:1 › Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion
+[4/8] tests\pwa\booky-live-character.spec.mjs:738:1 › Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion
+[5/8] tests\pwa\booky-live-character.spec.mjs:823:1 › Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion
+[6/8] tests\pwa\booky-live-character.spec.mjs:916:1 › Mr. Booky mobile placement preserves globe and collection hit targets in both locales
+[7/8] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[8/8] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  8 passed (2.3m)

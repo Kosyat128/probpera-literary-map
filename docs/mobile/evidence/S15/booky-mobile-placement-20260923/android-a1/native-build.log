@@ -1,0 +1,133 @@
+vite v7.3.6 building client environment for production...
+transforming...
+
+/fonts/editorial/onest-cyrillic-ext-variable.woff2 referenced in /fonts/editorial/onest-cyrillic-ext-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/onest-cyrillic-variable.woff2 referenced in /fonts/editorial/onest-cyrillic-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/onest-latin-ext-variable.woff2 referenced in /fonts/editorial/onest-latin-ext-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/onest-latin-variable.woff2 referenced in /fonts/editorial/onest-latin-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2 referenced in /fonts/editorial/source-sans-3-cyrillic-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-sans-3-latin-400-normal.woff2 referenced in /fonts/editorial/source-sans-3-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2 referenced in /fonts/editorial/source-sans-3-cyrillic-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-sans-3-latin-600-normal.woff2 referenced in /fonts/editorial/source-sans-3-latin-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2 referenced in /fonts/editorial/source-sans-3-cyrillic-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-sans-3-latin-700-normal.woff2 referenced in /fonts/editorial/source-sans-3-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2 referenced in /fonts/editorial/source-serif-4-cyrillic-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-serif-4-latin-400-normal.woff2 referenced in /fonts/editorial/source-serif-4-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2 referenced in /fonts/editorial/source-serif-4-cyrillic-400-italic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-serif-4-latin-400-italic.woff2 referenced in /fonts/editorial/source-serif-4-latin-400-italic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2 referenced in /fonts/editorial/source-serif-4-cyrillic-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-serif-4-latin-600-normal.woff2 referenced in /fonts/editorial/source-serif-4-latin-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2 referenced in /fonts/editorial/source-serif-4-cyrillic-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/fonts/editorial/source-serif-4-latin-700-normal.woff2 referenced in /fonts/editorial/source-serif-4-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/brand/library-archive-background-v1.webp referenced in /brand/library-archive-background-v1.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/brand/library-archive-background-v1.avif referenced in /brand/library-archive-background-v1.avif didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/brand/library-archive-background-mobile-v1.webp referenced in /brand/library-archive-background-mobile-v1.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/brand/library-archive-background-mobile-v1.avif referenced in /brand/library-archive-background-mobile-v1.avif didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/brand/atlas-side-brushes.webp referenced in /brand/atlas-side-brushes.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/brand/atlas-side-brushes-mobile.webp referenced in /brand/atlas-side-brushes-mobile.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 1361 modules transformed.
+Generated an empty chunk: "supabase-vendor".
+rendering chunks...
+computing gzip size...
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/native.html                                      1.56 kB │ gzip:   0.73 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/.vite/manifest.json                             18.66 kB │ gzip:   2.36 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/editorial-paper-DwbOovh5.webp            37.27 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/brush-orange-stage-B2wkl8IX.webp         46.57 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/brush-paper-split-zfVJ2vHM.webp          62.35 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/brush-violet-stage-WEaHRUQQ.webp         67.86 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/brush-paper-east-Dhu-9hco.webp           68.43 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/brush-paper-corners-ChpKv6VW.webp        75.40 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/countries-B1fL43Dn.geojson              305.05 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/section-prizes-DXUciBB7.webp            349.28 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/knizhulyk-green-v1-DiQNRUnt.png       1,895.60 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BrandHeartIcon-Df3ZTgSK.css               1.02 kB │ gzip:   0.49 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/ArticleBookReader-C3U9oGqS.css            6.31 kB │ gzip:   1.67 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BookShelfProgressRail-CdOKAbrW.css       15.68 kB │ gzip:   3.17 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/LiteraryGlobe-Ckumdx5m.css               17.39 kB │ gzip:   3.04 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/native-DPiDRyHc.css                     645.90 kB │ gzip: 108.46 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/supabase-vendor-l0sNRNKZ.js               0.00 kB │ gzip:   0.02 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BrandPlusIcon-Blp5STgK.js                 0.22 kB │ gzip:   0.20 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BrandArrowIcon-DU_FItS5.js                0.23 kB │ gzip:   0.21 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/web-D0GK97RP.js                           0.31 kB │ gzip:   0.24 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/nobelArticles-Csd3u_l_.js                 0.48 kB │ gzip:   0.35 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/web-BAqFVq07.js                           0.49 kB │ gzip:   0.32 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/web-CO3QtMsH.js                           0.96 kB │ gzip:   0.46 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/useSubscriptions-zZJlsblG.js              1.07 kB │ gzip:   0.63 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/vite-preload-helper-BXl3LOEh.js           1.11 kB │ gzip:   0.65 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/web-Boczwjz7.js                           1.27 kB │ gzip:   0.62 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/web-BdKZBV9x.js                           1.36 kB │ gzip:   0.66 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/localization-BqJfBZjQ.js                  1.95 kB │ gzip:   0.69 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/articleSeries-B2xQHYGP.js                 2.64 kB │ gzip:   1.21 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/NobelArchiveStrip-BQrWkDbA.js             3.93 kB │ gzip:   1.89 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/countryLocalization-x7UHkK52.js           3.98 kB │ gzip:   1.60 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/SectionsDirectory-wG420hQA.js             5.08 kB │ gzip:   2.38 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/bookMentions-B5eCnIJ4.js                  6.73 kB │ gzip:   2.84 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/GlobalSearch-BweuLzqk.js                  8.04 kB │ gzip:   3.02 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/CmsHomepageContent-DwhLvxrC.js            8.31 kB │ gzip:   2.44 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/globalSearchRuntime-BMTaPQKp.js           9.20 kB │ gzip:   3.29 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/LiteraryCalendar-BVY7nhjh.js              9.62 kB │ gzip:   3.67 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BookShelfSceneCanvas-BLFzPLOh.js         10.04 kB │ gzip:   3.73 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BookShelfSceneCanvas-C_8xTeLF.js         10.04 kB │ gzip:   3.73 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/ArticleLibrarySection-B8xwf-8J.js        11.07 kB │ gzip:   4.44 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/sanitizeArticleHtml-CPyzJvZv.js          12.89 kB │ gzip:   4.28 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BrandHeartIcon-B0O9Dsto.js               13.05 kB │ gzip:   5.22 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/bookyModel-Comtdv-R.js                   15.56 kB │ gzip:   6.58 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BookShelfScene-CFjYQjgB.js               21.19 kB │ gzip:   8.03 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/WriterPanel-qmVwce1R.js                  30.10 kB │ gzip:   9.40 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/CommunityHub-RMbWD4pD.js                 35.07 kB │ gzip:  10.15 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/completeShelfRenderer-CV16S5ff.js        57.78 kB │ gzip:  19.93 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BookArchiveSection-Czk58Vvw.js           97.96 kB │ gzip:  29.82 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BookArchiveSection-DtHOg0Oj.js           97.96 kB │ gzip:  29.82 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/ArticleBookReader-CsmStQI_.js           141.89 kB │ gzip:  47.61 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/react-vendor-B2HrM0dD.js                146.06 kB │ gzip:  47.22 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/BookShelfProgressRail-CwwluBOJ.js       193.55 kB │ gzip:  59.66 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/LiteraryGlobe-DIuscxYP.js               250.65 kB │ gzip:  88.16 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/ArticleReader-Bx5P0ufR.js               252.94 kB │ gzip:  78.89 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/writer-portraits-data-ZDd9rYw-.js       500.03 kB │ gzip:  76.33 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/country-data-n-z-B6kBB-fK.js            508.63 kB │ gzip: 105.27 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/catalog-3aeWwkFO.js                     607.12 kB │ gzip:  84.01 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/catalog-C1_RdnUv.js                     769.98 kB │ gzip: 224.86 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/country-data-a-m-C_afZbhK.js            789.51 kB │ gzip: 159.38 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/three-vendor-BVGni_Wo.js              1,100.44 kB │ gzip: 331.84 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/writer-biography-reviews-BMVRO21A.js  1,227.68 kB │ gzip: 393.63 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/native-BK19WQyX.js                    1,470.12 kB │ gzip: 393.10 kB
+.tmp/native-build-71ded65f-932f-48d4-9e74-455a275a6222/assets/book-catalog-CUS-317M.js              2,053.99 kB │ gzip: 187.59 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 13.15s
+{
+  "output": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\dist-native",
+  "previous": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-e7af914f-5126-4a4b-99a3-ff55eb716cd2",
+  "buildId": "6d86207b8af90c53f7a62f1f9265cd6ce9e8cb1b3617bfd06b07bf224e234dcc",
+  "platform": "android",
+  "channel": "dev",
+  "files": 1407,
+  "releaseReady": false
+}
+
