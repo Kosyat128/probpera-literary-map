@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a2",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/source-manifests/0b5acc80ab91c0fb.json",
+    "sha256": "0b5acc80ab91c0fb1433e83e42cf7de5f5dfbfed2ec731236ce8a11a8d5a4048",
+    "fileCount": 1642
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/check.mjs",
+      "sha256": "383ec767a95396db8d2e3a07af980b04621a3043dccdb886dca1cdb25e0c30e0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/entry.json",
+      "sha256": "9574190560a69af52617179c51da95aefdc08ccffacd33bb7776e596083a694f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit.config.mjs",
+      "sha256": "3a07ece96e776174c78a910aca321121175674293c00b40af3ce31c014089230"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/playwright.config.mjs",
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 31763
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "exactDossierViewImplemented": true,
+  "journeyCharacterWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

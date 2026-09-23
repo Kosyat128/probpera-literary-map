@@ -1,0 +1,2 @@
+src/books/bookDossierCharacterView.ts(84,43): error TS7006: Parameter 'block' implicitly has an 'any' type.
+src/books/bookDossierCharacterView.ts(86,42): error TS7006: Parameter 'item' implicitly has an 'any' type.

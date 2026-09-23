@@ -1,0 +1,136 @@
+
+Running 32 tests using 1 worker
+
+
+
+[1/32] tests\pwa\book-dossier-character-archive.spec.mjs:197:1 › archive presents a requested second-block character without reading writes and dismisses it before native book Back
+  1) tests\pwa\book-dossier-character-archive.spec.mjs:197:1 › archive presents a requested second-block character without reading writes and dismisses it before native book Back 
+
+    Error: ENOENT: no such file or directory, open 'C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\<define:import.meta.env>'
+
+      126 |     'src/books/bookDossierDelivery.ts', 'src/books/bookDossierCompiler.ts', 'src/hooks/useReadingLibrary.ts']) expect(graph).toContain(source);
+      127 |   sourceInputs = await Promise.all(graph.filter(value => !value.includes('node_modules/') && !value.startsWith('character-archive:') && value !== '<stdin>')
+    > 128 |     .map(async value => ({ path: value, sha256: digest(await fs.readFile(path.resolve(ROOT, value))) })));
+          |                                                        ^
+      129 |   script = result.outputFiles.find(file => file.path.endsWith('.js')).text;
+      130 |   css = result.outputFiles.find(file => file.path.endsWith('.css')).text;
+      131 | });
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\book-dossier-character-archive.spec.mjs:128:56
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\book-dossier-character-archive.spec.mjs:127:18
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-dossier-character-view\browser-a1\book-dossier-character-arc-c3396--it-before-native-book-Back\error-context.md
+
+
+[2/32] tests\pwa\book-dossier-character-archive.spec.mjs:242:1 › late archive character observation uses the already settled exact book instead of an inactive initial receipt
+[3/32] tests\pwa\book-dossier-character-archive.spec.mjs:261:1 › archive fallback cannot satisfy a character request and later publication requires a new explicit token
+
+
+[4/32] tests\pwa\book-dossier-character-view.spec.mjs:143:1 › exact character requests open committed RU and EN native views without navigation or progress
+[5/32] tests\pwa\book-dossier-character-view.spec.mjs:169:1 › invalid targets and selection locale remount background invalidation never replay a consumed request
+  2) tests\pwa\book-dossier-character-view.spec.mjs:169:1 › invalid targets and selection locale remount background invalidation never replay a consumed request 
+
+    Error: locator.click: Error: strict mode violation: locator('.book-dossier-map-dialog').locator('.book-dossier-map__group button').filter({ hasText: 'Учебный персонаж A' }) resolved to 3 elements:
+        1) <button type="button" aria-pressed="false" aria-controls=":r3:">…</button> aka getByText('1Учебный персонаж A')
+        2) <button type="button" aria-pressed="false" aria-controls=":r3:">…</button> aka getByRole('button', { name: 'Сотрудничество Учебный персонаж A → Учебный персонаж B' })
+        3) <button type="button" aria-pressed="false" aria-controls=":r3:">…</button> aka getByRole('button', { name: 'Знакомство Учебный персонаж A' })
+
+    Call log:
+      - waiting for locator('.book-dossier-map-dialog').locator('.book-dossier-map__group button').filter({ hasText: 'Учебный персонаж A' })
+
+
+      174 |     }
+      175 |     await issue(f.page);
+    > 176 |     await dialog(f.page).locator(".book-dossier-map__group button").filter({ hasText: "Учебный персонаж A" }).click();
+          |                                                                                                               ^
+      177 |     await expectNoView(f.page); expect((await state(f.page)).selectionReceiptAtBubble).toBe("null");
+      178 |     await command(f.page, "replay"); await expectNoView(f.page);
+      179 |     await f.page.keyboard.press("Escape"); await issue(f.page);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\book-dossier-character-view.spec.mjs:176:111
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-dossier-character-view\browser-a1\book-dossier-character-vie-d14eb-r-replay-a-consumed-request\error-context.md
+
+
+
+
+[6/32] tests\pwa\book-dossier-character-view.spec.mjs:195:1 › lease expiry and unavailable data revoke the open observation without restoring outside focus or replaying
+  3) tests\pwa\book-dossier-character-view.spec.mjs:195:1 › lease expiry and unavailable data revoke the open observation without restoring outside focus or replaying 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  locator('#outside-control')
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" with timeout 5000ms
+      - waiting for locator('#outside-control')
+        14 × locator resolved to <button type="button" id="outside-control">Outside control</button>
+           - unexpected value "inactive"
+
+
+      210 |     });
+      211 |     await expectNoView(f.page); await expect(dialog(f.page)).toHaveCount(0);
+    > 212 |     await expect(f.page.locator("#outside-control")).toBeFocused();
+          |                                                      ^
+      213 |     await command(f.page, "busy", false); await command(f.page, "replay"); await expect(dialog(f.page)).toHaveCount(0);
+      214 |     await command(f.page, "busy", true); await command(f.page, "issue"); await expect(dialog(f.page)).toHaveCount(0);
+      215 |     await command(f.page, "busy", false); await command(f.page, "replay"); await expect(dialog(f.page)).toHaveCount(0);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\book-dossier-character-view.spec.mjs:212:54
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-dossier-character-view\browser-a1\book-dossier-character-vie-ec024--outside-focus-or-replaying\error-context.md
+
+
+
+
+[7/32] tests\pwa\book-dossier-navigation.spec.mjs:198:1 › early next and contents choices survive delayed physical initialization and locale remapping without replaying another book
+[8/32] tests\pwa\book-dossier-navigation.spec.mjs:241:1 › failed physical pagination keeps accessible progress immediately and across archive remount
+[9/32] tests\pwa\book-dossier-navigation.spec.mjs:266:1 › switching adult identity restores its own dossier place without a transient previous-account write
+  4) tests\pwa\book-dossier-navigation.spec.mjs:266:1 › switching adult identity restores its own dossier place without a transient previous-account write 
+
+    Error: page.evaluate: TypeError: JSON.parse(...).find is not a function
+        at eval (eval at evaluate (:311:30), <anonymous>:4:53)
+        at UtilityScript.evaluate (<anonymous>:313:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at evaluate (:311:30), <anonymous>:4:53)
+        at UtilityScript.evaluate (<anonymous>:313:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at readProgress (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\book-dossier-navigation.spec.mjs:177:58)
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\book-dossier-navigation.spec.mjs:277:42
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\book-dossier-navigation.spec.mjs:277:5
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-dossier-character-view\browser-a1\book-dossier-navigation-sw-ee4e2-ient-previous-account-write\error-context.md
+
+
+
+
+[10/32] tests\pwa\booky-journey.spec.mjs:536:1 › activity answers require fresh explicit acknowledgement and stay separate from navigation and saved progress
+[11/32] tests\pwa\booky-journey.spec.mjs:587:1 › activity answer is temporary across suspension cold restoration and revoked journey review
+[12/32] tests\pwa\booky-journey.spec.mjs:767:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension
+[13/32] tests\pwa\booky-journey.spec.mjs:861:4 › journey admission fails closed: no-profile
+[14/32] tests\pwa\booky-journey.spec.mjs:861:4 › journey admission fails closed: no-independent-journey-review
+[15/32] tests\pwa\booky-journey.spec.mjs:883:1 › confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume
+[16/32] tests\pwa\booky-journey.spec.mjs:919:1 › failed journey-progress native write stays visibly unsaved until explicit exact retry
+[17/32] tests\pwa\booky-journey.spec.mjs:953:1 › future journey progress remains unchanged until explicit confirmed removal
+[18/32] tests\pwa\booky-journey.spec.mjs:989:1 › a new reviewed journey version cannot reinterpret or overwrite a saved older prefix
+[19/32] tests\pwa\booky-journey.spec.mjs:1024:1 › explicit reviewed journey migration preserves history and restores the exact new prefix paused
+[20/32] tests\pwa\booky-journey.spec.mjs:1099:1 › missing or revoked independent migration review preserves the old version without navigation
+[21/32] tests\pwa\booky-journey.spec.mjs:1150:1 › confirmed exact-version completion unlocks a dependent journey only with independently admitted saved locale
+[22/32] tests\pwa\booky-journey.spec.mjs:1203:1 › history selection never navigates and confirmed single-record deletion truthfully retries while revoking a prerequisite
+[23/32] tests\pwa\booky-journey.spec.mjs:1277:4 › journey focus: owned invalidated confirmation restores stable status
+[24/32] tests\pwa\booky-journey.spec.mjs:1277:4 › journey focus: invalidated confirmation never steals outside keyboard focus
+[25/32] tests\pwa\booky-journey.spec.mjs:1329:1 › journey focus: keyboard cancellation and fresh document discard consent without replaying progress
+[26/32] tests\pwa\booky-journey.spec.mjs:1399:1 › full journey history keeps existing progress usable and frees exactly one chosen entry for a new route
+[27/32] tests\pwa\booky-journey.spec.mjs:1587:1 › literary passport credits only confirmed acknowledged steps and withdraws a deliberately deleted history
+[28/32] tests\pwa\booky-journey.spec.mjs:1742:1 › reviewed journey overview follows exact locale review and whole-route offline availability without writing progress
+[29/32] tests\pwa\booky-journey.spec.mjs:1901:1 › sourced fact uses exact work view and read-only bilingual citations before explicit semantic acknowledgement
+[30/32] tests\pwa\booky-journey.spec.mjs:1999:1 › sourced fact revocation and changed source bindings preserve saved acknowledgements until exact reviewed restoration
+[31/32] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[32/32] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  4 failed
+    tests\pwa\book-dossier-character-archive.spec.mjs:197:1 › archive presents a requested second-block character without reading writes and dismisses it before native book Back 
+    tests\pwa\book-dossier-character-view.spec.mjs:169:1 › invalid targets and selection locale remount background invalidation never replay a consumed request 
+    tests\pwa\book-dossier-character-view.spec.mjs:195:1 › lease expiry and unavailable data revoke the open observation without restoring outside focus or replaying 
+    tests\pwa\book-dossier-navigation.spec.mjs:266:1 › switching adult identity restores its own dossier place without a transient previous-account write 
+  2 did not run
+  26 passed (5.4m)

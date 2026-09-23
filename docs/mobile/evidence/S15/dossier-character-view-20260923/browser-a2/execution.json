@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/dossier-character-view-20260923/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-23T04:42:27.953Z",
+  "exitCode": 0,
+  "durationMs": 314039,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/browser-a2/stdout.log",
+    "bytes": 4943,
+    "sha256": "f8c187cd7eded874bae0e527c6bcaef435cf8cc2f78ce6b7fd2df09bba29e47e"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/browser-a2/stderr.log",
+    "bytes": 164,
+    "sha256": "442654659064445906c916f87dcb8d25c2bb81b06d658119b5dc70c27941d1de"
+  }
+}

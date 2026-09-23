@@ -1,0 +1,15 @@
+{
+  "checkpoint": "f69749145b5b0c8f6ccea7b3c066fa82eae0a042",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/pwa-a1/result.json",
+    "sha256": "efe72c5b4564a9da82c07e5b9ea4d45a63f085226d518956c903e6214e8763eb",
+    "buildId": "ad274bb765cdb3a42e655b90bc7f64a552c114136ed9d15e7e7688a5f4e0d380",
+    "sourceCommit": "3349b125c2e30553e6b1237b4e3b73e1975a590a"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/android-a1/result.json",
+    "sha256": "0d4b429bca1b541b2ba038477d1ceb30da3f14bace24075c2f5370c3724b5038",
+    "buildId": "e1628424239d19779b1255412d36fe6be2c0701a3a8d17f4c4b0a627b90b3140",
+    "sourceCommit": "3349b125c2e30553e6b1237b4e3b73e1975a590a"
+  }
+}

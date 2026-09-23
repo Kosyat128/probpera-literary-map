@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T04:24:01.441Z",
+  "stage": "S15",
+  "checkpoint": "f69749145b5b0c8f6ccea7b3c066fa82eae0a042",
+  "previous": "docs/mobile/evidence/S15/dossier-character-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/dossier-character-20260923/result.json",
+    "sha256": "2dd02a94935ad7cc840f0acee87c98786cac269e3d41d5a26022344126723002"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/result.json",
+    "sha256": "2699587e0a330828bc314476b93a4017795e81a2fc28d207ce0e9016cdf02198"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/dossier-character-20260923/source-manifests/a090776e5f95edf3.json",
+    "sha256": "a090776e5f95edf3fa9e60f4ac840a355c8f8107f8ee5c8f2ded024285fda5f9",
+    "fileCount": 1638
+  },
+  "changedPaths": [
+    "src/components/BookDossierReader.tsx",
+    "src/components/BookDossierMap.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/loading/DeferredHomepageArchives.tsx"
+  ],
+  "newSourcePaths": [
+    "src/books/bookDossierCharacterView.ts",
+    "src/books/bookDossierCharacterView.test.ts",
+    "tests/pwa/book-dossier-character-view.spec.mjs",
+    "tests/pwa/book-dossier-character-archive.spec.mjs"
+  ],
+  "newImplementationFiles": [
+    "src/books/bookDossierCharacterView.ts"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/components/BookDossierReader.tsx",
+      "sha256": "2350282af93199f72de05fbc2219877611a97933f60ed15e0341be689816e503"
+    },
+    {
+      "path": "src/components/BookDossierMap.tsx",
+      "sha256": "46f32f30052173bed1d89629d568f5754861f7fe04f2f2361b26b8a1ea27e29b"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "758726eefb4f57db39cb485c7b640a9332500ede412defd9533ae249f71bece4"
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sha256": "f659bebc1be61106d9dfb0df7e1125060741a4586320c78e1eafc27e16221de8"
+    },
+    {
+      "path": "src/books/bookDossierCharacterView.ts",
+      "sha256": "63fe70048692811861d9057392be0d6a428d67d746debdd4e092bec64151fe5c"
+    },
+    {
+      "path": "src/books/bookDossierCharacterView.test.ts",
+      "sha256": "a2a55d9a409a27aed74172441ed5fd75bca333bdb2e62ee835581a766461b914"
+    },
+    {
+      "path": "tests/pwa/book-dossier-character-view.spec.mjs",
+      "sha256": "b7461d07083f69cd9f493d9af58bceb4e1b4f6cd130484d1f26b67f4d189d07a"
+    },
+    {
+      "path": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "sha256": "9f8ad2c173d1d92eb25981d60867060a8df45dea6138dd07b45b209d7664eafa"
+    }
+  ],
+  "sourceInputCount": 1642,
+  "protectedInputCount": 1634,
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyDossierCharacter.test.ts",
+    "src/books/bookDossier.test.ts",
+    "src/books/bookDossierDiagram.test.ts",
+    "src/books/bookDossierPublicClient.test.ts",
+    "src/books/bookDossierCharacterView.test.ts",
+    "src/books/bookDossierLocation.test.ts",
+    "src/books/bookArchiveDetailView.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-journey.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs",
+    "tests/pwa/book-dossier-character-view.spec.mjs",
+    "tests/pwa/book-dossier-character-archive.spec.mjs",
+    "tests/pwa/book-dossier-navigation.spec.mjs"
+  ],
+  "browserCases": [
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "activity answers require fresh explicit acknowledgement and stay separate from navigation and saved progress"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "activity answer is temporary across suspension cold restoration and revoked journey review"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "journey admission fails closed: no-profile"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "journey admission fails closed: no-independent-journey-review"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "failed journey-progress native write stays visibly unsaved until explicit exact retry"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "future journey progress remains unchanged until explicit confirmed removal"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "a new reviewed journey version cannot reinterpret or overwrite a saved older prefix"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "explicit reviewed journey migration preserves history and restores the exact new prefix paused"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "missing or revoked independent migration review preserves the old version without navigation"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "confirmed exact-version completion unlocks a dependent journey only with independently admitted saved locale"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "history selection never navigates and confirmed single-record deletion truthfully retries while revoking a prerequisite"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "journey focus: owned invalidated confirmation restores stable status"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "journey focus: invalidated confirmation never steals outside keyboard focus"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "journey focus: keyboard cancellation and fresh document discard consent without replaying progress"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "full journey history keeps existing progress usable and frees exactly one chosen entry for a new route"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "literary passport credits only confirmed acknowledged steps and withdraws a deliberately deleted history"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "reviewed journey overview follows exact locale review and whole-route offline availability without writing progress"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "sourced fact uses exact work view and read-only bilingual citations before explicit semantic acknowledgement"
+    },
+    {
+      "file": "tests/pwa/booky-journey.spec.mjs",
+      "title": "sourced fact revocation and changed source bindings preserve saved acknowledgements until exact reviewed restoration"
+    },
+    {
+      "file": "tests/pwa/booky-reader-policy.spec.mjs",
+      "title": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy"
+    },
+    {
+      "file": "tests/pwa/booky-reader-policy.spec.mjs",
+      "title": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission"
+    },
+    {
+      "file": "tests/pwa/book-dossier-character-view.spec.mjs",
+      "title": "exact character requests open committed RU and EN native views without navigation or progress"
+    },
+    {
+      "file": "tests/pwa/book-dossier-character-view.spec.mjs",
+      "title": "invalid targets and selection locale remount background invalidation never replay a consumed request"
+    },
+    {
+      "file": "tests/pwa/book-dossier-character-view.spec.mjs",
+      "title": "lease expiry and unavailable data revoke the open observation without restoring outside focus or replaying"
+    },
+    {
+      "file": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "title": "archive presents a requested second-block character without reading writes and dismisses it before native book Back"
+    },
+    {
+      "file": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "title": "late archive character observation uses the already settled exact book instead of an inactive initial receipt"
+    },
+    {
+      "file": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "title": "archive fallback cannot satisfy a character request and later publication requires a new explicit token"
+    },
+    {
+      "file": "tests/pwa/book-dossier-navigation.spec.mjs",
+      "title": "early next and contents choices survive delayed physical initialization and locale remapping without replaying another book"
+    },
+    {
+      "file": "tests/pwa/book-dossier-navigation.spec.mjs",
+      "title": "failed physical pagination keeps accessible progress immediately and across archive remount"
+    },
+    {
+      "file": "tests/pwa/book-dossier-navigation.spec.mjs",
+      "title": "switching adult identity restores its own dossier place without a transient previous-account write"
+    }
+  ],
+  "expectedBrowserTests": 32,
+  "expectedImages": 27,
+  "requirements": [
+    "PLANETKA-004"
+  ],
+  "scope": "Exact ephemeral character view in the actual published dossier Reader/Map and an optional guarded BookArchive bridge; no character journey node, App journey acknowledgement or remote enablement.",
+  "stageAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "65bdae602699a0cba69ce0657471109560dc9202fd388d241214f417d7235b4b"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "a384a5aadfd54ac292c2fdac6b0839897f867a823eb1b375a134945a18ae3376"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "cb59a259cae769c1a3a30a1dc23992fe1ca7cc425b331ab73ef216bed126029a"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "95bdb6ef3354e45d65753a4958322abbca7c271240d86f3377a238f15602c3e4"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "6b32d5a1d68ae54752aa0758e896b1c694e46be92c41971a3563d88590c74323"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "55c822eca1364ab6d4e27ed4b7be0ad4015451c8a88e3f6ee96100c437570a8d"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "ae45d54267e935e8baea8e4f6afc23758d107f8079199cffb90bda2dc32ea4ae"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "f73c9248a6f91600f743fe20e521436834aea5e46376c0788cea5a55a903c33d"
+    }
+  ]
+}

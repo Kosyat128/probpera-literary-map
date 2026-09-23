@@ -1,0 +1,85 @@
+{
+  "baselineSourceManifest": {
+    "path": "docs/mobile/evidence/S15/dossier-character-20260923/source-manifests/a090776e5f95edf3.json",
+    "sha256": "a090776e5f95edf3fa9e60f4ac840a355c8f8107f8ee5c8f2ded024285fda5f9",
+    "fileCount": 1638
+  },
+  "attemptManifest": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/source-manifests/0d646127184b2824.json",
+    "sha256": "0d646127184b282434a39d1b5529c1b76b6ed403d4f02e202a050fe3a1ac620c"
+  },
+  "files": [
+    {
+      "path": "src/components/BookDossierReader.tsx",
+      "sha256": "2350282af93199f72de05fbc2219877611a97933f60ed15e0341be689816e503",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/src/components/BookDossierReader.tsx",
+        "sha256": "2350282af93199f72de05fbc2219877611a97933f60ed15e0341be689816e503"
+      }
+    },
+    {
+      "path": "src/components/BookDossierMap.tsx",
+      "sha256": "46f32f30052173bed1d89629d568f5754861f7fe04f2f2361b26b8a1ea27e29b",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/src/components/BookDossierMap.tsx",
+        "sha256": "46f32f30052173bed1d89629d568f5754861f7fe04f2f2361b26b8a1ea27e29b"
+      }
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "758726eefb4f57db39cb485c7b640a9332500ede412defd9533ae249f71bece4",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/src/components/BookArchiveSection.tsx",
+        "sha256": "758726eefb4f57db39cb485c7b640a9332500ede412defd9533ae249f71bece4"
+      }
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sha256": "f659bebc1be61106d9dfb0df7e1125060741a4586320c78e1eafc27e16221de8",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/src/loading/DeferredHomepageArchives.tsx",
+        "sha256": "f659bebc1be61106d9dfb0df7e1125060741a4586320c78e1eafc27e16221de8"
+      }
+    },
+    {
+      "path": "src/books/bookDossierCharacterView.ts",
+      "sha256": "63fe70048692811861d9057392be0d6a428d67d746debdd4e092bec64151fe5c",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/src/books/bookDossierCharacterView.ts",
+        "sha256": "63fe70048692811861d9057392be0d6a428d67d746debdd4e092bec64151fe5c"
+      }
+    },
+    {
+      "path": "src/books/bookDossierCharacterView.test.ts",
+      "sha256": "a2a55d9a409a27aed74172441ed5fd75bca333bdb2e62ee835581a766461b914",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/src/books/bookDossierCharacterView.test.ts",
+        "sha256": "a2a55d9a409a27aed74172441ed5fd75bca333bdb2e62ee835581a766461b914"
+      }
+    },
+    {
+      "path": "tests/pwa/book-dossier-character-view.spec.mjs",
+      "sha256": "b7461d07083f69cd9f493d9af58bceb4e1b4f6cd130484d1f26b67f4d189d07a",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/tests/pwa/book-dossier-character-view.spec.mjs",
+        "sha256": "b7461d07083f69cd9f493d9af58bceb4e1b4f6cd130484d1f26b67f4d189d07a"
+      }
+    },
+    {
+      "path": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "sha256": "9f8ad2c173d1d92eb25981d60867060a8df45dea6138dd07b45b209d7664eafa",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/tests/pwa/book-dossier-character-archive.spec.mjs",
+        "sha256": "9f8ad2c173d1d92eb25981d60867060a8df45dea6138dd07b45b209d7664eafa"
+      }
+    },
+    {
+      "path": "tests/pwa/book-dossier-navigation.spec.mjs",
+      "sha256": "1a8c9a6f00426652aa29f603a78182698d7d1a26c0b9d7803bd4c852d8e52e4a",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/attempt-a1-source/tests/pwa/book-dossier-navigation.spec.mjs",
+        "sha256": "1a8c9a6f00426652aa29f603a78182698d7d1a26c0b9d7803bd4c852d8e52e4a"
+      }
+    }
+  ]
+}
