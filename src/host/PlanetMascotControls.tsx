@@ -115,6 +115,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const drag = useRef<{ pointerId: number; x: number; y: number; origin: Position; source: "avatar" | "handle";
     moved: boolean; element: HTMLButtonElement } | null>(null);
   const suppressAvatarClick = useRef(false);
+  const walkStopActivation = useRef<"pointer" | "keyboard" | null>(null);
   const [pointerLook, setPointerLook] = useState<{ x: number; y: number } | null>(null);
   const [gesture, setGesture] = useState<"rest" | "dragging" | "pointing" | BookyGesture>("rest");
   const [targetCue, setTargetCue] = useState<{ touch: Position; phase: "approaching" | "tapping"; action: PlanetMascotAction } | null>(null);
@@ -588,12 +589,26 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           : open ? ru ? "Сверните подсказки, чтобы начать прогулку" : "Collapse the tips to start a walk"
           : walkNeedsSpace ? ru ? "Пока мало свободного места для прогулки" : "There is not enough clear space to walk here"
           : ru ? "Короткая прогулка по свободному месту" : "A short walk through a clear area"}
+        onPointerDown={event => {
+          if (event.isPrimary && event.button === 0) walkStopActivation.current = walk.active ? "pointer" : null;
+        }}
+        onPointerCancel={() => { walkStopActivation.current = null; }}
+        onBlur={() => {
+          if (walkStopActivation.current === "keyboard") walkStopActivation.current = null;
+        }}
         onKeyDown={event => {
           // One held Enter is one intent even after Stop becomes Start.
           if (event.key === "Enter" && event.repeat) event.preventDefault();
+          if (!event.repeat && (event.key === "Enter" || event.key === " ")) {
+            walkStopActivation.current = walk.active ? "keyboard" : null;
+          }
         }}
-        onClick={() => {
-          if (walk.active) { walk.stop(); return; }
+        onClick={event => {
+          // A finite walk can finish while a finger is still holding Stop.
+          // Preserve that initial intent when the same button becomes Start.
+          const stopping = walkStopActivation.current === (event.detail > 0 ? "pointer" : "keyboard");
+          walkStopActivation.current = null;
+          if (walk.active || stopping) { cancelPoint.current?.(); walk.stop(); return; }
           if (controller.getSnapshot().revision !== snapshot.revision) return;
           if (walk.start()) { setGesture("rest"); setPointerLook(null); setReactionKey(value => value + 1); }
         }}><span aria-hidden="true">{walk.active ? "Ⅱ" : "↝"}</span> {walk.active

@@ -897,6 +897,45 @@ test('Mr. Booky walks continuously in clear space only by request and stops for 
     expect(mutations(fixture)).toEqual(mobileBefore);retained(await actual(page),mobileCanonical);
     result.observations.mobileTouchWalk={viewport:{width:390,height:844},origin:mobileOrigin,targets:mobileTargets,touchWalk,touchStop,touchStart,touchDragged};
 
+    // A touch begun on Stop retains that intent if the finite walk finishes
+    // while the finger is still down and the same button becomes Start.
+    const heldInputOffset=await page.evaluate(()=>window.__bookyMobileInput.length),heldBefore=mutations(fixture),heldSaved=fixture.memory.get(BOOKY);
+    const heldCanonical=await actual(page),heldStop={viewport:{width:390,height:844}};
+    result.observations.mobileHeldStop=heldStop;
+    const heldState=label=>page.evaluate(label=>{
+      const element=document.querySelector('[data-planet-mascot-pet]'),r=element.getBoundingClientRect();
+      return{label,at:performance.now(),gesture:element.getAttribute('data-planet-mascot-gesture'),
+        rect:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}};
+    },label);
+    await expect(walk()).toBeEnabled();await walk().tap();await walking();
+    await page.waitForFunction(offset=>{
+      const start=window.__bookyMobileInput.slice(offset).find(event=>event.type==='click'&&event.control==='start');
+      return start&&performance.now()-start.at>=3750;
+    },heldInputOffset);
+    heldStop.stopBox=await page.locator('[data-booky-walk-stop]').boundingBox();
+    const heldCdp=await page.context().newCDPSession(page);
+    try{
+      await heldCdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{
+        x:heldStop.stopBox.x+heldStop.stopBox.width/2,y:heldStop.stopBox.y+heldStop.stopBox.height/2}]});
+      await page.waitForFunction(()=>document.querySelector('[data-planet-mascot-pet]')?.getAttribute('data-planet-mascot-gesture')!=='walking',undefined,{timeout:1500});
+      heldStop.beforeRelease=await heldState('naturally complete before release');
+      await heldCdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await twoFrames(page);
+      heldStop.afterRelease=await heldState('after release');
+      await page.waitForTimeout(450);heldStop.after450ms=await heldState('450ms after release');
+      heldStop.input=await page.evaluate(offset=>window.__bookyMobileInput.slice(offset),heldInputOffset);
+      heldStop.preferencesUnchanged=JSON.stringify(mutations(fixture))===JSON.stringify(heldBefore)&&fixture.memory.get(BOOKY)===heldSaved;
+      const heldStart=heldStop.input.find(event=>event.type==='click'&&event.control==='start');
+      expect(heldStop.input.some(event=>event.type==='pointerdown'&&event.control==='stop'&&event.gesture==='walking'&&event.pointerType==='touch'&&event.trusted)).toBe(true);
+      expect(heldStop.input.some(event=>event.at>=heldStop.beforeRelease.at&&event.type==='click'&&event.control==='start'&&event.gesture==='rest'&&event.pointerType==='touch'&&event.trusted)).toBe(true);
+      expect(heldStop.beforeRelease.at-heldStart.at,'The walk reaches its natural end while Stop is held').toBeGreaterThanOrEqual(3950);
+      expect(heldStop.beforeRelease.gesture).toBe('rest');expect(heldStop.afterRelease.gesture).toBe('rest');expect(heldStop.after450ms.gesture).toBe('rest');
+      expect(heldStop.afterRelease.rect).toEqual(heldStop.beforeRelease.rect);expect(heldStop.after450ms.rect).toEqual(heldStop.beforeRelease.rect);
+      expect(heldStop.preferencesUnchanged).toBe(true);retained(await actual(page),heldCanonical);
+    }finally{
+      heldStop.input=await page.evaluate(offset=>window.__bookyMobileInput.slice(offset),heldInputOffset);
+      await heldCdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]}).catch(()=>undefined);await heldCdp.detach();
+    }
+
     result.observations.compactWalk=[];
     for(const[language,size]of [['ru',{width:568,height:320}],['en',{width:568,height:320}],
       ['ru',{width:640,height:360}],['en',{width:640,height:360}]]){
@@ -942,7 +981,7 @@ test('Mr. Booky walks continuously in clear space only by request and stops for 
     }
     Object.assign(result,{scenario:'explicit-margin-walk',explicitFiniteWalk:true,tipsRequireExplicitCollapse:true,walkFitsViewport:true,walkStartsAtRestingRow:true,walkPathAvoidsNavigation:true,actualLegsStep:true,
       compactWalkAvailabilityMatchesClearSpace:true,compactWalkKeepsNavigationReachable:true,compactUnavailableWalkExplained:true,
-      mobileTouchWalkStartsContinuously:true,mobileTouchStopsWalk:true,mobileTouchDragStopsWalk:true,
+      mobileTouchWalkStartsContinuously:true,mobileTouchStopsWalk:true,mobileTouchDragStopsWalk:true,mobileHeldStopCannotRestart:true,
       dragStopsWalk:true,manualStopWorks:true,backgroundStopsWalk:true,noAutomaticWalkResume:true,
       reducedMotionStopsCurrentWalk:true,reducedMotionPreventsWalk:true,walkDoesNotWritePreferencesOrProgress:true,sameCanonicalGlobe:true});await fixture.verify();
   }finally{
