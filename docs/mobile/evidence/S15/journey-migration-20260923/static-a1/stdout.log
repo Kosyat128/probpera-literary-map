@@ -1,0 +1,4 @@
+src/host/bookyJourneyMigration.test.ts(112,62): error TS2322: Type '{ country: string; writer: string; } | { invented: null; country?: undefined; writer?: undefined; } | { work: string; country?: undefined; writer?: undefined; }' is not assignable to type 'Readonly<Record<string, string | null>> | undefined'.
+  Type '{ invented: null; country?: undefined; writer?: undefined; }' is not assignable to type 'Readonly<Record<string, string | null>>'.
+    Property 'country' is incompatible with index signature.
+      Type 'undefined' is not assignable to type 'string | null'.

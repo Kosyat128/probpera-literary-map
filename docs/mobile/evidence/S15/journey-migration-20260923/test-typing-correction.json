@@ -1,0 +1,30 @@
+{
+  "path": "src/host/bookyJourneyMigration.test.ts",
+  "before": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/test-typing-before.txt",
+    "sha256": "78cf12b320eb2cc4dcddd034f7f84942ef7d0af7d008c2d1cbf20854fde140d6"
+  },
+  "after": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/test-typing-after.txt",
+    "sha256": "438c540ad4e9cde712238ba62cef5415ee8f6c924ef4784f7b7422de7639bfdf"
+  },
+  "emitted": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/test-typing-emitted.js.txt",
+    "sha256": "985a6f4a81690bc631fd685eacb06495cfa8a40f7b1afd5ad0399a657aac15bb"
+  },
+  "transformOptions": {
+    "loader": "ts",
+    "target": "es2020",
+    "sourcemap": false,
+    "sourcefile": "src/host/bookyJourneyMigration.test.ts"
+  },
+  "esbuildVersion": "0.28.2",
+  "emittedJavaScriptIdentical": true,
+  "browserSourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/source-manifests/919ba8507481e681.json",
+    "sha256": "919ba8507481e681cdbf0a58449a7fc6a458dee16db953f8be64e9c7b2bc9d1f",
+    "fileCount": 1622
+  },
+  "browserRerunRequired": false,
+  "reason": "Only a TypeScript annotation in one unimported unit-test data loop changed. Emitted test JavaScript and every runtime/browser-fixture byte are identical; the successful browser a1 is retained."
+}

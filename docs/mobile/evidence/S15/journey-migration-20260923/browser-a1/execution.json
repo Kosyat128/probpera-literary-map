@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/journey-migration-20260923/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-23T00:18:00.991Z",
+  "exitCode": 0,
+  "durationMs": 114137,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/browser-a1/stdout.log",
+    "bytes": 1567,
+    "sha256": "575ce678416d1276d1cd449907a68bffc0f0b2b6e2d1a226ca5f3f4f2434d087"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "14761087a420651aec2d9f816c179f654beefe189de4b9f7b024f736856a95c0"
+  }
+}

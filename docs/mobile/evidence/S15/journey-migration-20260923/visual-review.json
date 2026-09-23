@@ -1,0 +1,143 @@
+{
+  "pass": true,
+  "sourceCommit": "99dd000162499e6a1c50867af9fe50b84df29ad1",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/source-manifests/c87822672b170ae9.json",
+    "sha256": "c87822672b170ae9df80ab356f35471f9f2b7614b780fc4aad3d308e9530fc8d",
+    "fileCount": 1622
+  },
+  "browserSourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/source-manifests/919ba8507481e681.json",
+    "sha256": "919ba8507481e681cdbf0a58449a7fc6a458dee16db953f8be64e9c7b2bc9d1f",
+    "fileCount": 1622
+  },
+  "unitTestOnlyTypeCorrection": "docs/mobile/evidence/S15/journey-migration-20260923/test-typing-correction.json",
+  "actualAppCaptures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix\\booky-journey.json",
+      "sha256": "e75c490c4b919b6e13768253050bb836a13babb3e09e0528d5e97fde4ce6addc"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-actual-revie-84536-cross-locale-and-suspension\\booky-journey.json",
+      "sha256": "a2d66e99eef077a1266e381e00bbc1638abfd5ed92f3c6c9e01a93e7e92fc9a9"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-confirmed-jo-c9068-ument-until-explicit-resume\\booky-journey.json",
+      "sha256": "489776dde6cdaf6b935f1d2ab92c7801af18743bd9e8d2c22ef852235e07d5a3"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused\\booky-journey.json",
+      "sha256": "a7e9b2e167f896730f5fb0357123e9d83cab3f7c3bbd5bca1a530dbc3c47faeb"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-failed-journ-ff64b--until-explicit-exact-retry\\booky-journey.json",
+      "sha256": "8b16cf7d308fb032ae125732abb154f53206091eb01106882827c628c9687e31"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-future-journ-cfc19--explicit-confirmed-removal\\booky-journey.json",
+      "sha256": "17d699e53d33d79becaef77b7aa1f3c2e59c9ef49029fa65dbf6b6182211351f"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-journey-admi-1436d--independent-journey-review\\booky-journey.json",
+      "sha256": "005b5943d12f1e76e20324db8ee1a805c7520419dc4c606d959005ff0c47cb1f"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-journey-admission-fails-closed-no-profile\\booky-journey.json",
+      "sha256": "f4a6fe2b006117f5a01a0c1f75821a2f96052a739e3dca5f2a19330d19e45e9d"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-missing-or-r-abb1e--version-without-navigation\\booky-journey.json",
+      "sha256": "14d974087f425e1d3231c3b2bbad12de0fac2066f23eae798c88ef2134a61bdd"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\booky-reader-policy.json",
+      "sha256": "ffbef8a59b54f9f4305d800aa6688d0670f08cff45f7a9bd1e238f884da5afe2"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\booky-reader-policy.json",
+      "sha256": "15740b497aad7ea95af107b5469958182db8d0974a77265ee51b3a9a3cb0f34e"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-actual-revie-84536-cross-locale-and-suspension\\journey-country-ru.png",
+      "sha256": "ce1aed378b14ffbea5c5212e6fec4d32906e39dcf6bd208ab443b1589b2cf434",
+      "inspected": true,
+      "reviewer": "Codex direct inspection of all eight current migration-checkpoint captures",
+      "findings": [
+        "The 320px country-step text, count, acknowledgement and reset controls remain readable; saved status and all-history deletion are separately labelled.",
+        "The capture is scoped to the active route and storage section; the section heading above the scroll position is not fully shown."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-actual-revie-84536-cross-locale-and-suspension\\journey-writer-en.png",
+      "sha256": "e0b7e7ec06a79b47a305bba3867ad0232bf3cda9e78140f6c4aabb834acc0d5f",
+      "inspected": true,
+      "reviewer": "Codex direct inspection of all eight current migration-checkpoint captures",
+      "findings": [
+        "The narrow English writer-step labels and stored-progress notice fit the panel and actions remain separated.",
+        "The currently visible writer detail remains behind the retained companion panel; synthetic journey text is fixture-only."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused\\journey-migration-confirm-en.png",
+      "sha256": "758ae2a822229d17e9e07cbfa431d05c44f306d21b0e9a16651af9255a1f166c",
+      "inspected": true,
+      "reviewer": "Codex direct inspection of all eight current migration-checkpoint captures",
+      "findings": [
+        "The transfer explanation, verified synthetic target title, confirmation and Cancel are visible and distinct from ordinary route selection and reset.",
+        "The original count 1/4 remains visible before confirmation; original-history preservation is explained and the canonical globe remains mounted."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-failed-journ-ff64b--until-explicit-exact-retry\\journey-save-failed-ru-320.png",
+      "sha256": "a402869c6ceb346b22c2ecf612190d54df99b0d53e98f269d930b2aea026f703",
+      "inspected": true,
+      "reviewer": "Codex direct inspection of all eight current migration-checkpoint captures",
+      "findings": [
+        "At 320px the failed-save explanation wraps readably and Retry remains fully visible and separate from journey acknowledgement.",
+        "Acknowledged count 1/4 and current writer step remain visible; no horizontal clipping of the storage actions."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-journey-future-journ-cfc19--explicit-confirmed-removal\\journey-future-clear-en.png",
+      "sha256": "a0bbc4d8cab21b0d987a8f1f0c4a4d60bcc6975f7a3287ee52c7429888cf3180",
+      "inspected": true,
+      "reviewer": "Codex direct inspection of all eight current migration-checkpoint captures",
+      "findings": [
+        "The unsupported-format notice, explicit deletion question, confirmation and cancel controls are readable within the desktop viewport.",
+        "The canonical globe remains behind the panel; the scroll position intentionally omits its upper heading."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\reader-profile-saved-ru.png",
+      "sha256": "34c858cef7b4810a057a74271269da929b8815620bcb298fe757b2010dacdaf2",
+      "inspected": true,
+      "reviewer": "Codex direct inspection of all eight current migration-checkpoint captures",
+      "findings": [
+        "Reader age and reading-level fields, confirmed status and profile-delete action remain legible after insertion of journey-storage controls."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\reader-profile-draft-narrow-en.png",
+      "sha256": "720a04774a1433bc9c929a84b7a71f95deb2aeb7146f54681aa184241e271dc7",
+      "inspected": true,
+      "reviewer": "Codex direct inspection of all eight current migration-checkpoint captures",
+      "findings": [
+        "At 320px the unsaved English reader draft, Save and Delete controls wrap without horizontal overflow."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-migration\\browser-a1\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\reader-profile-delete-failed-en.png",
+      "sha256": "6e5b9852401d1a187975c2cbd844f50e4cbf68c32f913868e9fb49b9c85ba687",
+      "inspected": true,
+      "reviewer": "Codex direct inspection of all eight current migration-checkpoint captures",
+      "findings": [
+        "The failed profile-deletion notice and explicit retry stay visible; journey-storage absence is a separate status above the profile."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}
