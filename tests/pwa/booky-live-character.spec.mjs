@@ -906,6 +906,47 @@ test('Mr. Booky approaches the selected section once, points, and respects cance
     const cancelled=await observation();expect(cancelled.samples.some(value=>value.phase==='tapping')).toBe(false);expect(cancelled.clicks).toBe(0);
     await expect(graphics()).toHaveAttribute('open','');expect(mutations(fixture)).toEqual(before);
 
+    const stopActivations=[];
+    for(const activation of ['pointer','Enter','Space']){
+      await parkAway();await observe();await openUtility(page,'Настройки графики','Полезные действия');
+      await expect(target()).toHaveAttribute('data-booky-target','approaching',{timeout:2000});
+      const stopButton=page.locator('[data-booky-walk-stop]');await expect(stopButton).toBeVisible();
+      const states=[],stopState=async label=>{
+        const state=await page.evaluate(()=>{
+          const pet=document.querySelector('[data-planet-mascot-pet]'),rect=pet.getBoundingClientRect();
+          return{at:performance.now(),phase:document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')??null,
+            gesture:pet.getAttribute('data-planet-mascot-gesture'),buttonText:document.querySelector('.planet-mascot-controls__walk')?.textContent,
+            position:{left:rect.left,top:rect.top,right:rect.right,bottom:rect.bottom,width:rect.width,height:rect.height}};
+        });states.push({label,...state});return state;
+      };
+      if(activation==='pointer'){
+        const box=await stopButton.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await stopState('beforeDown');
+        await page.mouse.down();await twoFrames(page);await stopState('afterDown');await page.mouse.up();
+      }else{
+        await stopButton.focus();await stopState('beforeDown');await page.keyboard.down(activation);
+        await twoFrames(page);await stopState('afterDown');await page.keyboard.up(activation);
+      }
+      await twoFrames(page);const activated=await stopState('afterActivation');
+      expect(activated.gesture,activation+' Stop must not start a replacement walk').not.toBe('walking');
+      expect(activated.phase,activation+' Stop clears the old target').toBeNull();
+      let previous=null,matches=0;
+      await expect.poll(async()=>{const key=JSON.stringify((await layout(page)).pet);
+        matches=key===previous?matches+1:0;previous=key;return matches;
+      },{timeout:500,intervals:[30,50],message:activation+' Stop finishes its asynchronous parent position handoff'}).toBeGreaterThanOrEqual(3);
+      const settled=await stopState('settled'),canonical=await actual(page);
+      // Outlast both the cancelled 1600ms approach and its 700ms tap window.
+      await page.waitForTimeout(2400);const future=await stopState('afterOriginalApproachAndTap');
+      expect(future.position).toEqual(settled.position);expect(future.phase).toBeNull();expect(future.gesture).not.toBe('walking');
+      const trace=await observation(),still=trace.samples.filter(sample=>sample.at>=settled.at);
+      expect(still.length).toBeGreaterThan(2);expect(trace.clicks).toBe(0);
+      expect(trace.samples.some(sample=>sample.phase==='tapping')).toBe(false);
+      for(const sample of still){expect(sample.phase).toBeNull();expect(sample.gesture).not.toBe('walking');
+        for(const key of ['left','top','right','bottom','width','height'])expect(sample[key]).toBe(settled.position[key]);}
+      await expect(graphics()).toHaveAttribute('open','');await expect(page.locator('[data-planet-quality-option="high"]')).toBeChecked();
+      expect(mutations(fixture)).toEqual(before);expect(fixture.memory.get(BOOKY)).toBe(saved);retained(await actual(page),canonical);
+      stopActivations.push({activation,states,trace});
+    }
+
     await parkAway();await page.emulateMedia({reducedMotion:'reduce'});await twoFrames(page);
     const reducedOrigin=(await layout(page)).pet;await observe();await openUtility(page,'Настройки графики','Полезные действия');
     await expect(target()).toHaveAttribute('data-booky-target','tapping',{timeout:2000});
@@ -917,10 +958,11 @@ test('Mr. Booky approaches the selected section once, points, and respects cance
     expect(reduced.samples.every(value=>Math.hypot(value.left-reducedOrigin.left,value.top-reducedOrigin.top)<.5)).toBe(true);
     expect(mutations(fixture)).toEqual(before);expect(fixture.memory.get(BOOKY)).toBe(saved);expect(await downloadActions(page)).toEqual([]);
     await expect(graphics()).toHaveAttribute('open','');retained(await actual(page),original,false);
-    result.observations.targetApproach={complete,cancelled,reduced,cancelledPosition,reducedOrigin,selectedGraphicsArea,tapCue,contact,trace,
+    result.observations.targetApproach={complete,cancelled,reduced,stopActivations,cancelledPosition,reducedOrigin,selectedGraphicsArea,tapCue,contact,trace,
       savedCompanionSha256:digest(Buffer.from(saved)),globe:await actual(page)};
     Object.assign(result,{scenario:'explicit-target-approach',canonicalSectionOpensBeforeWalk:true,approachMovesActualPet:true,actualLegsStep:true,
       tapFollowsWalk:true,tapInsideSelectedGraphicsArea:true,targetSectionStaysOpen:true,noSyntheticTargetClick:true,approachFitsViewport:true,newKeyboardInputCancelsApproach:true,
+      actualStopPointerCancelsApproach:true,actualStopEnterCancelsApproach:true,actualStopSpaceCancelsApproach:true,stopNeverStartsReplacementWalk:true,stoppedApproachRemainsStillBeyondOriginalDeadline:true,
       cancelledApproachDoesNotTapOrResume:true,reducedMotionPointsWithoutTravel:true,approachDoesNotWritePreferencesOrProgress:true,sameCanonicalGlobe:true});await fixture.verify();
   }finally{
     await page.evaluate(()=>window.__bookyApproachObservation?.stop()).catch(()=>undefined);await fixture.close();

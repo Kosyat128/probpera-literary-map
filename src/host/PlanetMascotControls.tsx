@@ -119,6 +119,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const [gesture, setGesture] = useState<"rest" | "dragging" | "pointing" | BookyGesture>("rest");
   const [targetCue, setTargetCue] = useState<{ touch: Position; phase: "approaching" | "tapping"; action: PlanetMascotAction } | null>(null);
   const handledPoint = useRef<number | null>(null);
+  const cancelPoint = useRef<(() => void) | null>(null);
   const [reactionKey, setReactionKey] = useState(0);
   const [pageTurn, setPageTurn] = useState(0);
   const previousPage = useRef(`${snapshot.mode}:${snapshot.route}:${snapshot.step}`);
@@ -284,12 +285,20 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     let cancelled = false, frame = 0, timer = 0, target: Element | null = null;
     const began = performance.now();
     const stop = (consume: unknown = true) => {
+      // Let the Stop button own its activation. Stopping on pointer/key down
+      // would turn it into Start before the ensuing native click arrives.
+      if (consume instanceof Event && consume.target instanceof Element
+        && consume.target.closest('[data-booky-walk-stop]')
+        && (consume.type === "pointerdown" || consume instanceof KeyboardEvent
+          && (consume.key === "Enter" || consume.key === " "))) return;
+      if (cancelPoint.current === stop) cancelPoint.current = null;
       if (consume !== false) handledPoint.current = pointRequest.id;
       if (cancelled) return;
       cancelled = true; cancelAnimationFrame(frame); window.clearTimeout(timer);
       detach(); walk.stop(); setTargetCue(null); setGesture(value => value === "pointing" ? "rest" : value);
       setPointerLook(null);
     };
+    cancelPoint.current = stop;
     const tap = (touch: Position) => {
       if (cancelled || !target?.isConnected || !visibleRect(target, viewport()) || document.hidden) { stop(); return; }
       setTargetCue({ touch, phase: "tapping", action: pointRequest.action });
@@ -340,7 +349,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     return () => stop(false);
   }, [pointRequest, shown, snapshot.available, open, snapshot.mode, screen, language, walk.start, walk.stop]);
   useEffect(() => {
-    if (targetCue?.phase === "approaching" && !walk.active) setTargetCue(null);
+    if (targetCue?.phase === "approaching" && !walk.active) cancelPoint.current?.();
   }, [walk.active, targetCue?.phase]);
   const petRect = { ...petPosition, ...petSize };
   const cardWidth = bookyCardWidth(view, petRect);
