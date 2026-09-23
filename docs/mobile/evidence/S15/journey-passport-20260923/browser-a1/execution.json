@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/journey-passport-20260923/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-23T01:48:18.960Z",
+  "exitCode": 0,
+  "durationMs": 239685,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/journey-passport-20260923/browser-a1/stdout.log",
+    "bytes": 2915,
+    "sha256": "51062260c1a18f9f53f9b8284d8f457dba0088f7fba7a15b7b368ea6101f68f0"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/journey-passport-20260923/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "5fbb43f3e3235cc2a286e81aa53291a9c4b8da0006d1d856903ef95c721da2b8"
+  }
+}

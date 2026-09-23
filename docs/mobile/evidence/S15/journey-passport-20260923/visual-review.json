@@ -1,0 +1,298 @@
+{
+  "pass": true,
+  "sourceCommit": "d5a128b1babd1eb22b473e35a1d7ec6ee0bc0d99",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-passport-20260923/source-manifests/7850ecdb6cebe5fd.json",
+    "sha256": "7850ecdb6cebe5fd54b23037b1b16b1a2eb455a7d25a8592470f8f73cc2857e6",
+    "fileCount": 1632
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix/booky-journey.json",
+      "sha256": "20b30e3ee9e4983c5a79278c395e1ff6b37455fee93e82ef28e416a52cce4656"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-activity-ans-b1175-vigation-and-saved-progress/booky-journey.json",
+      "sha256": "1ed74d8b2dc10476e018e4b8065f2e88209671dbedecdc26c5e98343386e33d4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-activity-ans-b190e--and-revoked-journey-review/booky-journey.json",
+      "sha256": "66d9100429a95b3dca21da410d19d8d7b9b0b91448e27d4e2fb77289241c0cc0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-actual-revie-84536-cross-locale-and-suspension/booky-journey.json",
+      "sha256": "67c477b841de3820ad2c455435e81fd1d6f4acfa9bd8a1d7e005c1b31848c0e5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale/booky-journey.json",
+      "sha256": "788a4c22e20339678f1d7f7c2c28507213b5fd382461caebc7b45e651d6d6803"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-confirmed-jo-c9068-ument-until-explicit-resume/booky-journey.json",
+      "sha256": "9bd5dd72635f81d2980f728f4e8589c9f6458f7d55a0a4029a161cc1e7dff975"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused/booky-journey.json",
+      "sha256": "46841b10ddcdf4cfa38cf73aaaf76d563a5bf05562d9f4d05b77771502625a8c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-failed-journ-ff64b--until-explicit-exact-retry/booky-journey.json",
+      "sha256": "b6dc9e56db2d5608619350709f04818bf8cf7215d128e15a1f728b75a5133a23"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/booky-journey.json",
+      "sha256": "74a93f3d5c072c4b95d70242505839ce984120255360da4fc6d195e525398db7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-future-journ-cfc19--explicit-confirmed-removal/booky-journey.json",
+      "sha256": "0edf072471c9b8bb94e4ed47cd0f26ffa9e098d5766c9887cebe51a27f185d2d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/booky-journey.json",
+      "sha256": "02caea2e853520b56727dacc4927f9b10ec7d6f91995a322978bed069602a989"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-journey-admi-1436d--independent-journey-review/booky-journey.json",
+      "sha256": "f3a6bee9e7077338ec73a27ee81449d0c20b68136457ff1881cb98fe660fce31"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-journey-admission-fails-closed-no-profile/booky-journey.json",
+      "sha256": "36863be03b21fded72bd4278c069cc28698d5ed776811a9e05f54f37d617e4c3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-journey-focu-000aa--without-replaying-progress/booky-journey.json",
+      "sha256": "89fca4bd47c9efdd7526afb01af3f07256a86faa4292f8fd6f28a61c12b0e56d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-journey-focu-5ad75-tion-restores-stable-status/booky-journey.json",
+      "sha256": "6d84705d4b2637af12e869e7f1a39c5779fbe70e9b720d41e7fbc54d7ecf9a6e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus/booky-journey.json",
+      "sha256": "e739c66b32f13f8dc7cf2c2d11ecd6c4f23e4467093cd961d7032ed0db4dea98"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-literary-pas-855d7-eliberately-deleted-history/booky-journey.json",
+      "sha256": "7f48a01117b5d4ef97250fee24dc76a0fa774baa27c42a2d1cd1109b1b2f635d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-missing-or-r-abb1e--version-without-navigation/booky-journey.json",
+      "sha256": "816a81ebeb1b3fd2f290af3a5b462f00c2816ba6a703892e7cf8c9a41e844353"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/booky-reader-policy.json",
+      "sha256": "e35a90ad1dfeba472eedcb9bc3ed76fd573fd1e1ae2b3071b93cbb74b60d263e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/booky-reader-policy.json",
+      "sha256": "f0295817b35976893b64d8a829f98dbce012a63a1b4eeaeb7c78a435c6345026"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-activity-ans-b1175-vigation-and-saved-progress/journey-activity-correct-en.png",
+      "sha256": "fea1797fda68e497f48b26f0b0d56dae351466aee4fc02c8f62ad89c315f4e7e",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "Canonical option labels, temporary correct-answer feedback and separate explicit acknowledgement remain readable; the default-closed passport adds no answer action.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-activity-ans-b1175-vigation-and-saved-progress/journey-activity-incorrect-ru-320.png",
+      "sha256": "f43804a033691db4dac6a1e81ba5e5d38f30be3c8ad63cf43d5e8770e424c466",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-activity-20260923/visual-review.json",
+        "sha256": "cb4498249b34df5ff90896d9c5f6f14c00b4a425dce36bd14c0de8067230b482",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-activity/browser-a2/booky-journey-activity-ans-b1175-vigation-and-saved-progress/journey-activity-incorrect-ru-320.png",
+        "imageSha256": "f43804a033691db4dac6a1e81ba5e5d38f30be3c8ad63cf43d5e8770e424c466"
+      },
+      "findings": [
+        "At 320px the RU task, both author options and neutral retry feedback wrap without clipping. The selected incorrect option retains clear keyboard focus and Acknowledge step is visibly disabled.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-country-ru.png",
+      "sha256": "1ff13b18481f9da143608885ee089a18db1e342dd2334a9a17b2e484fe31daa4",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "RU narrow country step and explicit open, acknowledge, pause and reset controls remain readable; default-closed passport and history follow within the scrollable panel.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-writer-en.png",
+      "sha256": "ced9a206d40bc7722c63b8a55d778026234626a019b920ac5121a34d2f165e0f",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "EN narrow writer step retains readable current progress and separate controls; default-closed passport causes no horizontal overflow.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale/journey-history-complete-en.png",
+      "sha256": "ede3b4d1e3b1fcb9edab3773bee67c060b10e28cf7eee595599831a1a8098f34",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "Completed-route history, explicit removal, saved status and profile controls remain readable alongside the closed passport.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused/journey-migration-confirm-en.png",
+      "sha256": "8f55094d293044f286688c11e16d27bb6776cce3d2da083ad4a709bed7569074",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "EN reviewed migration confirmation retains explanation, explicit transfer and cancel controls and original history; closed passport causes no overlap.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-failed-journ-ff64b--until-explicit-exact-retry/journey-save-failed-ru-320.png",
+      "sha256": "ced16c993751a80c3f21c86941e14bb6b723c43e82cf84a9ec93c8f72daec819",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "RU narrow failed-save message and explicit retry remain readable; no successful-save message is displayed.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/journey-capacity-full-ru-320.png",
+      "sha256": "8620feb5fa9809adff37bf7f4425ce1f98670474b9d9297395234a1f8394205a",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-activity-20260923/visual-review.json",
+        "sha256": "cb4498249b34df5ff90896d9c5f6f14c00b4a425dce36bd14c0de8067230b482",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-activity/browser-a2/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/journey-capacity-full-ru-320.png",
+        "imageSha256": "8620feb5fa9809adff37bf7f4425ce1f98670474b9d9297395234a1f8394205a"
+      },
+      "findings": [
+        "At 320px the complete 32/32 notice and explanation wrap without horizontal clipping. The deliberate Go to history control remains fully visible below the notice.",
+        "Scoped capture at its deliberate scroll position; no claim that offscreen content is simultaneously visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/journey-capacity-recovered-en.png",
+      "sha256": "7c1a4b1d6d66bba3928e37bfcc03deeb30af82c3a862eeafecc03cb39a571494",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "EN history shows preserved completed and unavailable saved records with readable separate selection/removal controls; scrollable content remains contained.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-future-journ-cfc19--explicit-confirmed-removal/journey-future-clear-en.png",
+      "sha256": "c5ddfc66a556b7bb1151aa89e7e8495a57deecbba963570c89d2c33e1c83caa0",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "EN unsupported future progress explanation remains readable with explicit destructive confirmation and cancel; passport is closed.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/journey-history-delete-ru-320.png",
+      "sha256": "76cad62ab0175c8f41b43656ba7aca94c348acc7560a510da96b3f6bcd2c4321",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "At 320px RU per-entry deletion consent and cancel remain readable, with the dependent record retained below.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-journey-focu-5ad75-tion-restores-stable-status/journey-focus-restored-ru.png",
+      "sha256": "307e61c8be6b89129f5a050456b62dbeb9852af53ef4d3e2b09c439f9e05a992",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "RU saved-state text carries the expected visible restored focus ring; history, deletion and profile controls remain readable.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus/journey-focus-outside-en.png",
+      "sha256": "8ee45eff37a2828b6258aadbcf9e3476e23bf3070e99a4bea54ba3772be86841",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "EN explicit history removal trigger has the expected focus ring after cancellation; surrounding controls and closed passport remain readable.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-literary-pas-855d7-eliberately-deleted-history/journey-passport-completed-en.png",
+      "sha256": "06ae2bd4375b2e4e5a701caa3f7c90329837d2477626b99bbf424e87cd67c6ad",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "Open EN passport shows the admitted completed journey with version and current locale; native summary focus ring, totals and explicit history control remain visible at the captured scroll position.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-journey-literary-pas-855d7-eliberately-deleted-history/journey-passport-confirmed-ru-320.png",
+      "sha256": "fe5942d95aa11c925b0ccdb8a66faaca9772cc521681d4d1f203f3f65b302a50",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "At 320px the open RU passport shows one confirmed country, writer and work, with no completed route yet; counts, title and explicit history control fit without horizontal clipping.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+      "sha256": "720a04774a1433bc9c929a84b7a71f95deb2aeb7146f54681aa184241e271dc7",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-activity-20260923/visual-review.json",
+        "sha256": "cb4498249b34df5ff90896d9c5f6f14c00b4a425dce36bd14c0de8067230b482",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-activity/browser-a2/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+        "imageSha256": "720a04774a1433bc9c929a84b7a71f95deb2aeb7146f54681aa184241e271dc7"
+      },
+      "findings": [
+        "320px actual App keeps the age-31 draft through locale switch while admitted policy is still the saved age 30",
+        "Directly inspected: readable text and controls, no horizontal clipping or overlap at the captured scroll position.",
+        "This is a deliberately scrolled detail capture; preceding controls or headings above the capture edge are not claimed to be simultaneously visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+      "sha256": "21afedbd31607d91a9a41de771076cdc3d219a9c448a6e02aee04c4b9066e49f",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "RU saved adult profile, bounds, level selection and explicit profile deletion remain readable with passport default-closed.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+      "sha256": "12942346e1795221e1058376b347de1bc0080507169383f0257d281d9cd0d315",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "EN failed profile deletion and explicit retry remain readable; empty draft fields do not show admitted profile credit.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "limitations": [
+    "Fifteen captures directly inspected and three exact PNG matches retain authenticated earlier inspection. Scoped local visual evidence, not full accessibility, installed-device, content or stage acceptance."
+  ]
+}

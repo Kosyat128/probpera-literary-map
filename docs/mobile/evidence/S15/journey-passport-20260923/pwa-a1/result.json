@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T01:54:47.176Z",
+  "sourceCommit": "d5a128b1babd1eb22b473e35a1d7ec6ee0bc0d99",
+  "buildId": "69bda350a724585e5af41c212a1178076291c082a2b132f0ac38ea9693f96970",
+  "sourceInputsSha256": "64ab8ebe4cc5c3329d6ba46ebe85275d668304b767f0a7abf5c1308e83ee643a",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/pwa-69bda350",
+    "files": 1427,
+    "bytes": 76710830,
+    "artifactSha256": "662df490ddac630a27ba8c437990bbc444bfb1abfc3dc16dc16d24294d62ca65",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-23T01:54:25.240Z",
+    "duration": 17125.691,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

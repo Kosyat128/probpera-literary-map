@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76710830,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/pwa-a1-copy-verification.json",
+    "sha256": "25d534fa0ebd35fab7bdacd1da209cba8d59956d817b6abee2dd6f0a446ed6ae"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/pwa-69bda350/artifact.json",
+    "sha256": "662df490ddac630a27ba8c437990bbc444bfb1abfc3dc16dc16d24294d62ca65"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-journey-runtime-dev-apk",
+  "sourceCommit": "d5a128b1babd1eb22b473e35a1d7ec6ee0bc0d99",
+  "buildId": "8713d0c90210f5381283feae7692e873881f334e4dcdb0dcda5193bba9d80bfc",
+  "sourceInputsSha256": "4cd0c4981fe2711500e069a8b20e505d0372376c837281e92a33cea38e3aa446",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/android-8713d0c9/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "ad914c9ba6975667afdc0d4cfb7ac999f54f54a036b68c5ede5585d90527aa13"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-passport/android-8713d0c9/runtime",
+    "sha256": "5bbf57cda1c46f07d73ebe3937ed9ee3afc30f42263561c2d8ca03b765edef5d",
+    "files": 1408,
+    "bytes": 74790504
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/journey-passport-20260923/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/journey-passport-20260923/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/journey-passport-20260923/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-activity/android-ef6fa867/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}
