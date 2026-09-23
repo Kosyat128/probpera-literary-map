@@ -1,0 +1,623 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T00:47:07.781Z",
+  "sourceCommit": "11a1d67afa4e0dd405bfd61c9b11d0e5ea54f444",
+  "stage": "S15",
+  "status": "ADULT_BOOKY_JOURNEY_HISTORY_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/entry.json",
+    "sha256": "f80d36de5504da1b3a3972199ee4028a67e3169169a7a89d45f0f56d48df4767"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/result.json",
+    "sha256": "c86862f4e7f9004fc051be9bf72b1db71e2c599b43b2bb90b97b43cd3d222b01"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/checkpoint.mjs",
+    "sha256": "c619a314e47192a8aabebe4c3ffb9653f2d49c5826d6399377ac85b710c23d03"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/source-manifests/5c0bab844d68c4de.json",
+    "sha256": "5c0bab844d68c4def442f0165050de849a18dc3e5cb42d47ae3b4b3d6c7538cd",
+    "fileCount": 1625
+  },
+  "sourceCommits": [
+    "11a1d67afa4e0dd405bfd61c9b11d0e5ea54f444"
+  ],
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a1",
+    "pwa": "a1",
+    "android": "a1"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/unit-a1/result.json",
+      "sha256": "9f8d8c04cbdf09eac510d34d8889e2df8ade7b4b2c9d67e4d7a70a83790e71db",
+      "tests": {
+        "passed": 580,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/journey-history-20260923/unit-a1/execution.json",
+        "sha256": "6e6159acafa4eb6e117a815bf9ffcaa50ca2d5fc157ac3a02c5240da7981ff88"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/journey-history-20260923/unit-a1/vitest.json",
+        "sha256": "cacfb9326a64518171d900c3e741bed19b5c85e68afe1610c954c6d199edae57"
+      },
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/check.mjs",
+          "sha256": "53e7b574f226c4da9b96b53651f0737950261147da900b7d5e4dc056ee6fc3ae"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/entry.json",
+          "sha256": "f80d36de5504da1b3a3972199ee4028a67e3169169a7a89d45f0f56d48df4767"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/unit.config.mjs",
+          "sha256": "d7c75997f27067ea641a900711df50f8f378bbca219528f13673b0751ccc97bd"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/playwright.config.mjs",
+          "sha256": "a4faeae3ab77169e6e25f739338075b5f444850b177085085396434fd121eb86"
+        }
+      ]
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/static-a1/result.json",
+      "sha256": "b172c75b2814c41345b0de1481575a1f31fee1659d9a532382009854a11cba3e",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/journey-history-20260923/static-a1/execution.json",
+        "sha256": "c6dba4727386a72824ca03bf5865d8228d70a2c56842b5e3e7556240c89a3d1e"
+      },
+      "rawReport": null,
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/check.mjs",
+          "sha256": "53e7b574f226c4da9b96b53651f0737950261147da900b7d5e4dc056ee6fc3ae"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/entry.json",
+          "sha256": "f80d36de5504da1b3a3972199ee4028a67e3169169a7a89d45f0f56d48df4767"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/unit.config.mjs",
+          "sha256": "d7c75997f27067ea641a900711df50f8f378bbca219528f13673b0751ccc97bd"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/playwright.config.mjs",
+          "sha256": "a4faeae3ab77169e6e25f739338075b5f444850b177085085396434fd121eb86"
+        }
+      ]
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/browser-a1/result.json",
+      "sha256": "dd329d91391162d346758cd4e436eab094cff78046d6f9af330142e761ec8617",
+      "tests": {
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/journey-history-20260923/browser-a1/execution.json",
+        "sha256": "050e152be429c931f3f4a251f9143aa8340ddd80dbcfb4b430d70a881220c5e2"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/journey-history-20260923/browser-a1/playwright.json",
+        "sha256": "d6385ac84d5558c8b973c42022ffe5b449eb5b0baeef6b2e9c06164e272f43b9"
+      },
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/check.mjs",
+          "sha256": "53e7b574f226c4da9b96b53651f0737950261147da900b7d5e4dc056ee6fc3ae"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/entry.json",
+          "sha256": "f80d36de5504da1b3a3972199ee4028a67e3169169a7a89d45f0f56d48df4767"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/unit.config.mjs",
+          "sha256": "d7c75997f27067ea641a900711df50f8f378bbca219528f13673b0751ccc97bd"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/journey-history-20260923/playwright.config.mjs",
+          "sha256": "a4faeae3ab77169e6e25f739338075b5f444850b177085085396434fd121eb86"
+        }
+      ]
+    }
+  },
+  "earlierAttempts": [],
+  "unitFiles": [
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyHost.test.ts",
+    "src/host/bookyJourneyCompanion.test.ts",
+    "src/host/bookyReaderPolicy.test.ts",
+    "src/host/bookyReaderPolicyStore.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/books/bookArchiveDetailView.test.ts",
+    "src/books/bookArchiveAuthorRequest.test.ts",
+    "src/host/bookyJourneyProgress.test.ts",
+    "src/host/bookyJourneyProgressStore.test.ts",
+    "src/host/bookyJourneyPersistence.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "src/host/bookyJourneyMigration.test.ts",
+    "src/host/bookyJourneyMigrationRegistry.test.ts",
+    "src/host/bookyJourneyPrerequisites.test.ts"
+  ],
+  "unitCount": 580,
+  "browserCases": 13,
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix/booky-journey.json",
+      "sha256": "ab57e036a83421a93258bf4b5b29490e00d9cdf388451d65dc4cb27b81a74f27"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-actual-revie-84536-cross-locale-and-suspension/booky-journey.json",
+      "sha256": "6f67365e4aec8b59e1532fd3467ea6b27af59d5ddf677286d8337c6ba9751b97"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale/booky-journey.json",
+      "sha256": "d5bfbd1705c9efc9983eb160f433ac6ed81dfbba792242df84e6f318a6d2bfeb"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-confirmed-jo-c9068-ument-until-explicit-resume/booky-journey.json",
+      "sha256": "d1a277106cbaffa678db87b17f538b1057c9fd73665a45c047e773b6d61f556b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused/booky-journey.json",
+      "sha256": "2b2352c7e268b12695d028a28e18e42468b27df79b5dbb59a2209f9b19c04658"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-failed-journ-ff64b--until-explicit-exact-retry/booky-journey.json",
+      "sha256": "b41008e3dc78a4176dbcf05220143882bb77960a015782bbb04271c150cd7568"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-future-journ-cfc19--explicit-confirmed-removal/booky-journey.json",
+      "sha256": "e0ab9673d201e07699d77c9ef0998fdb178213f7e988a4165b8b6522eede0de7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/booky-journey.json",
+      "sha256": "b2d0db7d5676a578a2095ff9624eed853fc1cc8e3eabdca1ec7e582ea40de749"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-journey-admi-1436d--independent-journey-review/booky-journey.json",
+      "sha256": "1ded93910eecea379503a3249c336bb59045434ad246a6c0c9794b047038a791"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-journey-admission-fails-closed-no-profile/booky-journey.json",
+      "sha256": "de67e1ca261aad6ea727c704f825f567a3b046ee6ea3d2678bbaae513cb3b8c1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-journey-missing-or-r-abb1e--version-without-navigation/booky-journey.json",
+      "sha256": "2b3d6bdd59d403114dcc498b388e16aca8ed85d269404101111d95cb1d0bb0e1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/booky-reader-policy.json",
+      "sha256": "24954480548b1908686a1ac61e181a2ead32cfa7a33cc32c62e9a84a8f7abec1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/booky-reader-policy.json",
+      "sha256": "8765e2362f17f7044c01fc0d8321b2c1ffd38b2c561c963d4091f70edd60069f"
+    }
+  ],
+  "browserAttachments": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix\\attachments\\booky-journey-source-evidence-2aba0e5223f3d1b098ce9e20bb4381231bb73db9.json",
+      "sha256": "ab57e036a83421a93258bf4b5b29490e00d9cdf388451d65dc4cb27b81a74f27"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-actual-revie-84536-cross-locale-and-suspension\\attachments\\booky-journey-source-evidence-60856846f3f33847f6ea6e69712769c42e1292d4.json",
+      "sha256": "6f67365e4aec8b59e1532fd3467ea6b27af59d5ddf677286d8337c6ba9751b97"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale\\attachments\\booky-journey-source-evidence-4e5de13546445f3f86a65cc15bc88f2872d4d438.json",
+      "sha256": "d5bfbd1705c9efc9983eb160f433ac6ed81dfbba792242df84e6f318a6d2bfeb"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-confirmed-jo-c9068-ument-until-explicit-resume\\attachments\\booky-journey-source-evidence-329c21749e8a2468712e647c36d45489ef1db084.json",
+      "sha256": "d1a277106cbaffa678db87b17f538b1057c9fd73665a45c047e773b6d61f556b"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused\\attachments\\booky-journey-source-evidence-2da8eb49d6516058e9f8112dce4804237c831fae.json",
+      "sha256": "2b2352c7e268b12695d028a28e18e42468b27df79b5dbb59a2209f9b19c04658"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-failed-journ-ff64b--until-explicit-exact-retry\\attachments\\booky-journey-source-evidence-e0f6cb06e05c293e95af96821e0a5e94740a4d9d.json",
+      "sha256": "b41008e3dc78a4176dbcf05220143882bb77960a015782bbb04271c150cd7568"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-future-journ-cfc19--explicit-confirmed-removal\\attachments\\booky-journey-source-evidence-13d36b4b34d3811c60c4a8e844569b15b1480728.json",
+      "sha256": "e0ab9673d201e07699d77c9ef0998fdb178213f7e988a4165b8b6522eede0de7"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite\\attachments\\booky-journey-source-evidence-f8c8ada9dc6e621380e68d86dff433aee20af8f1.json",
+      "sha256": "b2d0db7d5676a578a2095ff9624eed853fc1cc8e3eabdca1ec7e582ea40de749"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-journey-admi-1436d--independent-journey-review\\attachments\\booky-journey-source-evidence-fc94f00634e180575a03c85a32a847ce46645ae0.json",
+      "sha256": "1ded93910eecea379503a3249c336bb59045434ad246a6c0c9794b047038a791"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-journey-admission-fails-closed-no-profile\\attachments\\booky-journey-source-evidence-a18346f66861fa87de9edec3c6080db4296f1bef.json",
+      "sha256": "de67e1ca261aad6ea727c704f825f567a3b046ee6ea3d2678bbaae513cb3b8c1"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-journey-missing-or-r-abb1e--version-without-navigation\\attachments\\booky-journey-source-evidence-8414d5ad4f4fe296c3e15bed97c43d56d3f2d513.json",
+      "sha256": "2b3d6bdd59d403114dcc498b388e16aca8ed85d269404101111d95cb1d0bb0e1"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\attachments\\booky-reader-policy-source-evidence-50ca9fddbeed9e2c1917505f837646bca1705bec.json",
+      "sha256": "24954480548b1908686a1ac61e181a2ead32cfa7a33cc32c62e9a84a8f7abec1"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-history\\browser-a1\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\attachments\\booky-reader-policy-source-evidence-c182ee7a4f487ecfc17beed79979fa9cc744342d.json",
+      "sha256": "8765e2362f17f7044c01fc0d8321b2c1ffd38b2c561c963d4091f70edd60069f"
+    }
+  ],
+  "attachmentBytesMatchOriginal": true,
+  "validatedBehavior": {
+    "incompatible-progress-version": {
+      "incompatibleProgressUnavailable": true,
+      "exactOldBytesPreservedRuEn": true,
+      "noAutomaticNavigationOrRewrite": true,
+      "canonicalSceneRetainedWithinDocument": true
+    },
+    "explicit-journey": {
+      "actualCountryWriterWork": true,
+      "exactWorkVisible": true,
+      "acknowledgementRequiresSettledView": true,
+      "explicitCheckpointCompletion": true,
+      "localeRetainsSemanticProgress": true,
+      "collapseBackgroundRequireResume": true,
+      "noAutomaticMovementOnResume": true,
+      "canonicalSceneRetained": true,
+      "syntheticApprovalOnly": true
+    },
+    "history-prerequisite-admission": {
+      "lockedBeforeExplicitCompletion": true,
+      "unlockedAfterConfirmedCompletion": true,
+      "independentlyAdmittedLocaleEquivalence": true,
+      "completedColdRestoreNoWriteOrNavigation": true,
+      "revokedSavedLocaleReviewDeniesPrerequisite": true,
+      "revokedSavedLocaleReviewDeniesRuntimeOffers": true,
+      "preservedExactCompletionBytes": true,
+      "syntheticIndependentReviewsOnly": true,
+      "canonicalSceneRetainedWithinDocument": true
+    },
+    "cold-progress-resume": {
+      "restoredPaused": true,
+      "newDocumentRestoration": true,
+      "noAutomaticNavigationOrWrite": true,
+      "explicitResumeRequired": true,
+      "exactWriterAfterResume": true,
+      "canonicalSceneRetainedWithinDocument": true
+    },
+    "explicit-progress-migration": {
+      "independentSyntheticMigrationReview": true,
+      "noMigrationBeforeConfirmation": true,
+      "cancellationRetainsBytesAndFocus": true,
+      "originalHistoryRetained": true,
+      "exactPrefixTransferred": true,
+      "confirmedSaveReadback": true,
+      "exactWriterAfterTransfer": true,
+      "migratedColdRestorePaused": true,
+      "noAutomaticNavigationOrWriteOnRestore": true,
+      "localeRetainsMigratedPrefix": true,
+      "explicitResumeRequiredAfterReload": true,
+      "canonicalSceneRetainedWithinDocument": true
+    },
+    "progress-write-retry": {
+      "priorBytesPreservedOnWriteFailure": true,
+      "visiblyUnsavedLocalPrefix": true,
+      "explicitRetryConfirmsExactBytes": true,
+      "canonicalSceneRetained": true
+    },
+    "future-progress-clear": {
+      "unknownBytesPreservedRuEn": true,
+      "noUnknownRecordAdmission": true,
+      "confirmationBeforeDelete": true,
+      "explicitDeleteConfirmedByReadback": true,
+      "noAutomaticProgressRewrite": true,
+      "canonicalSceneRetained": true
+    },
+    "explicit-history-select-delete": {
+      "selectedRecordsPreserveAcknowledgements": true,
+      "selectionNeverNavigates": true,
+      "incompleteSelectionPaused": true,
+      "deletionRequiresConfirmation": true,
+      "cancellationRetainsBytesAndFocus": true,
+      "failedDeletionWritePreservesBytes": true,
+      "explicitRetryConfirmsExactDeletion": true,
+      "onlyChosenHistoryRecordDeleted": true,
+      "deletionRevokesDependentAdmission": true,
+      "currentSelectionRetainedUnavailable": true,
+      "canonicalSceneRetained": true
+    },
+    "no-independent-journey-review": {
+      "admissionDeniedRuEn": true,
+      "noJourneyNavigation": true,
+      "noJourneyProgress": true,
+      "canonicalSceneRetained": true,
+      "syntheticApprovalOnly": true
+    },
+    "no-profile": {
+      "admissionDeniedRuEn": true,
+      "noJourneyNavigation": true,
+      "noJourneyProgress": true,
+      "canonicalSceneRetained": true,
+      "syntheticApprovalOnly": true
+    },
+    "migration-review-denied": {
+      "missingIndependentMigrationReviewDenied": true,
+      "revokedIndependentMigrationReviewDenied": true,
+      "revocationAcrossNewDocument": true,
+      "offeredConfirmationInvalidated": true,
+      "exactOldBytesPreserved": true,
+      "noInferredAcknowledgements": true,
+      "noAutomaticNavigationOrWrite": true,
+      "canonicalSceneRetainedWithinDocument": true
+    },
+    "explicit-reader-policy": {
+      "explicitPolicyOnly": true,
+      "unsavedDraftDoesNotGrantPolicy": true,
+      "localeDraftRetained": true,
+      "lifecycleRechecksPolicy": true,
+      "explicitDeleteConfirmed": true,
+      "failedSaveDraftRetained": true,
+      "editedFailureRequiresExplicitSave": true,
+      "collectionDraftRetained": true,
+      "transientDeleteConfirmation": true,
+      "canonicalSceneRetained": true
+    },
+    "future-profile-delete-recovery": {
+      "futureRecordPreserved": true,
+      "failedDeleteDoesNotGrantPolicy": true,
+      "explicitDeleteRetryConfirmed": true,
+      "failedDeleteIntentRetained": true,
+      "canonicalSceneRetained": true
+    }
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/visual-review.json",
+    "sha256": "52ff1f31f82eff4e0963ff59ad2532983ec4166084c5e7a293ff08fa08dbe054"
+  },
+  "inspectedImageCount": 10,
+  "protectedSourceAuthority": {
+    "path": "docs/mobile/evidence/S15/journey-migration-20260923/source-manifests/c87822672b170ae9.json",
+    "sha256": "c87822672b170ae9df80ab356f35471f9f2b7614b780fc4aad3d308e9530fc8d",
+    "fileCount": 1622
+  },
+  "unchangedTrackedInputCount": 1616,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/useBookyJourney.ts",
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/BookyJourneyControls.css",
+    "tests/pwa/booky-journey.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyJourneyPrerequisites.ts",
+    "src/host/bookyJourneyPrerequisites.test.ts",
+    "src/host/BookyJourneyHistoryControls.tsx"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyJourneyPrerequisites.ts",
+    "src/host/BookyJourneyHistoryControls.tsx"
+  ],
+  "changedSourceGitBlobCount": 6,
+  "addedSourceGitBlobCount": 3,
+  "gitIdentityDifferences": [],
+  "productionContentSource": {
+    "path": "src/host/bookyJourneyContent.ts",
+    "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+  },
+  "productionMigrationContentSource": {
+    "path": "src/host/bookyJourneyMigrationContent.ts",
+    "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+  },
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionHistoricalDefinitionCount": 0,
+  "productionMigrationCount": 0,
+  "approvedProductionMigrationReceiptCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/pwa-a1/result.json",
+    "sha256": "993c9d3735929438cb89070d98b7ac943cd57bd7eb0c3620bdfe35b7507180c6"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/android-a1/result.json",
+    "sha256": "15e724c4cad86c13c3323806b7a8d0a2f231935c2897f4c41bf438bae184f891"
+  },
+  "pwaBuildId": "cff00f93521b29104c76cb21597e4ee98ea03e0ebad580011d000dca678c6648",
+  "androidBuildId": "641b9630a51c93598ab2e722c2a6781d7cf38bd98bb7b2d151ad33c054bca9e4",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/android-641b9630/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "c031485e1ef57cd7f4ea1e0b87bcdb0ac8a44cdc1c1e38303645cf3e211e3cc7"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/pwa-cff00f93/artifact.json",
+      "sha256": "fbd0866152519acaaa2f57100ebe1c67742ca46befdc2ceda76867dc5ba9c65e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-history/android-641b9630/runtime/artifact.json",
+      "sha256": "9257dcb2ea9fbb65647a515044c8fbf4260ee0dc5a323194ddaa5acc58df2109"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/pwa-a1/strict-audit.json",
+      "sha256": "bc1ce0d8b005c1ed300793639cf18c34ef66b1c073fd75237d609b4aab535295"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/android-a1/native-artifact-audit.json",
+      "sha256": "4f734cef798dee941911d169918ea143d400c413b67f7af53f12aacfa078a2d9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/android-a1/android-dev-apk-verification.json",
+      "sha256": "e0c47640d9164ffe9a9b49c9da0e20fb34cab6ee36706683e63ec44b59f1cab1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/android-a1/build-run.json",
+      "sha256": "c3b9b3861d9fe5b0004180277acf66c6c3de0e7e04c27be896dca9976a62648c"
+    }
+  ],
+  "buildHelpers": [
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/build-pwa-a1.mjs",
+      "sha256": "22c98cb45be3269565c2d6891af3e310abf52da840ca63c4db8996139fe576b0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/build-android-a1.ps1",
+      "sha256": "6f152acefc3cacab03c7a3912fc5b6da95c463b8c1e86c7defd936eea611c479"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/verify-android-a1.mjs",
+      "sha256": "ff2343f4b2cb6653dcf10001a53f6c2c174bfcd98fcb1219fd186daae2a9abdf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/preserve-android-a1.mjs",
+      "sha256": "5d38df499ba46880eb7e6ba79f286a9c1992f45555a5f034caa0c0bf99ded68b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-history-20260923/build-baseline.json",
+      "sha256": "f44c85346e84a3f9ad738536fec645e263622288daec32bb9cc0b59016b47e50"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/build-baseline.json",
+    "sha256": "f44c85346e84a3f9ad738536fec645e263622288daec32bb9cc0b59016b47e50"
+  },
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "result": {
+        "path": "docs/mobile/evidence/S15/journey-migration-20260923/pwa-a1/result.json",
+        "sha256": "04f4f0c68e8116c1371e50849fbacd5911606db091d48745911e35ed5570eb30",
+        "buildId": "b054d44fe18e345a2951f48e53ad1b3bb5d7e7596c5539653b5c70ee124f38bb",
+        "sourceCommit": "99dd000162499e6a1c50867af9fe50b84df29ad1"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-migration/pwa-b054d44f/artifact.json",
+        "sha256": "355d9f2ae80c49a10070e6abad1ff92bd80785f421455f538f59e95352152ae4"
+      },
+      "apk": null,
+      "sourceCommit": "99dd000162499e6a1c50867af9fe50b84df29ad1",
+      "buildId": "b054d44fe18e345a2951f48e53ad1b3bb5d7e7596c5539653b5c70ee124f38bb",
+      "runtimePayloadRehashed": true,
+      "journeyRuntimeIncluded": true,
+      "journeyPersistenceIncluded": true,
+      "journeyMigrationIncluded": true,
+      "journeyHistoryIncluded": false
+    },
+    {
+      "kind": "android",
+      "result": {
+        "path": "docs/mobile/evidence/S15/journey-migration-20260923/android-a1/result.json",
+        "sha256": "0c6d250746820800896457adfe5235937a30e5212780d4f7c72b345cadd4438b",
+        "buildId": "faced86f862894015a146597a04f67300b6c2650d44b93b6d54a81346d1430cc",
+        "sourceCommit": "99dd000162499e6a1c50867af9fe50b84df29ad1"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-migration/android-faced86f/runtime/artifact.json",
+        "sha256": "37bd4c7be1986dec6cf9ec2fc8a6458cb474e2d1d37ed1c2c6b181505de08942"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-migration/android-faced86f/app-dev-debug.apk",
+        "bytes": 70289891,
+        "sha256": "abc53228523846737b32be2476567017e9e1276802bd206886ae73c4e3dff97b"
+      },
+      "sourceCommit": "99dd000162499e6a1c50867af9fe50b84df29ad1",
+      "buildId": "faced86f862894015a146597a04f67300b6c2650d44b93b6d54a81346d1430cc",
+      "runtimePayloadRehashed": true,
+      "journeyRuntimeIncluded": true,
+      "journeyPersistenceIncluded": true,
+      "journeyMigrationIncluded": true,
+      "journeyHistoryIncluded": false
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/pwa-a1/copy-verification.json",
+    "sha256": "943f0e578dde2841a1f040863d14d9d1449eec724ad92cfa00edcda68f0b6740"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/pwa-a1/playwright.json",
+    "sha256": "d78cacfbcad03076cbc0c68656ede6e35bf051141957a13d9d739014e4c8330c"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "exactFreshArtifactInputsVerifiedAgainstSourceCommit": true,
+  "criteriaUpdated": [
+    "S15.PLANETKA-008"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "stageChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD167Recorded": true,
+  "nextAction": "Continue S15 with bounded local keyboard, focus, lifecycle and accessibility coverage for the whole companion controls, including reader profile, journeys, migration, history and storage recovery. Preserve current-profile prerequisite validation, explicit history selection/deletion, independent migration review, paused cold restoration, failed-write recovery, canonical catalogs and scene ownership. Do not infer acknowledgements or approvals. This next local QA slice does not establish formal screen-reader or installed-device acceptance. Production journey and migration inventories remain empty; reviewed RU/EN content, child profiles, narration, device/performance, iOS and stage/release acceptance remain pending. S03.acceptance stays first unresolved.",
+  "limitations": [
+    "Completed prerequisites are derived only from exact-version, fully acknowledged history bound to the current explicit reader policy and freshly admitted saved-locale definitions. Independently admitted locale equivalence may expose the current-language route; missing or revoked saved-locale review denies that contribution without rewriting history. Semantic acknowledgements are not books-read claims.",
+    "Eleven actual-App Chrome journey cases substitute only synthetic journey/migration content providers; two reader-profile cases retain save/delete and remount coverage. New cases prove prerequisite admission and revocation, explicit non-navigating history selection, per-record deletion confirmation and exact failed-write retry. Prior migration, persistence, profile and scene checks remain included. Bundled providers are immutable during a document; no live CMS refresh is claimed.",
+    "History selection preserves acknowledgements and leaves incomplete routes paused or unavailable. Per-record deletion preserves other records and revokes dependent admission after confirmed storage readback. Existing storage notices retain authority during write failure. The fixture retains a controlled native-preference map across document destruction, proving the App/adapter contract rather than installed-device disk durability. Unknown schemas and incompatible versions without an applicable independently reviewed mapping remain unchanged.",
+    "Production journey and migration inventories are empty and all existing 34 RU/EN dialogue records remain draft. Synthetic receipts confer no editorial approval. Inspected captures and reachable controls do not establish formal screen-reader, whole-companion accessibility, art or device-performance acceptance; bounded keyboard/focus and lifecycle QA is the next slice.",
+    "Fresh preserved PWA and Android-dev artifacts bind the exact source. Built-PWA coverage is the existing offline/download smoke; local APK bytes, manifests and signatures do not establish installed-device execution. No iOS build, child profile/access, narration, entitlement, deployment, store submission or release is performed."
+  ],
+  "actualApp": true,
+  "actualCss": true,
+  "actualGlobe": true,
+  "runtimeWiringImplemented": true,
+  "canonicalSceneRetained": true,
+  "durableExplicitSemanticCheckpoints": true,
+  "durableJourneyProgressImplemented": true,
+  "journeyCheckpointMigrationImplemented": true,
+  "explicitReviewedJourneyMigrationImplemented": true,
+  "unsupportedOrIncompatibleProgressPreserved": true,
+  "automaticRouteVersionMigrationImplemented": false,
+  "originalMigrationHistoryPreserved": true,
+  "prerequisiteHistoryIntegrationImplemented": true,
+  "deliberateHistoryControlsImplemented": true,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "childProfileCreated": false,
+  "childAccessGranted": false,
+  "narrationEnabled": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "installedNativeDevice": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "artAccepted": false,
+  "screenReaderAcceptance": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}
