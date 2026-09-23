@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/journey-focus-20260923/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 15954,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/journey-focus-20260923/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "d6bca8d6097ffcc9ec6aaf014909f67e02f475c8a1d81c1b051ef0b5e546efec"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/journey-focus-20260923/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "d779a971a9c5e67782604d7badd29b34842bb1d25ab9fb1b90f0ac12c912255d"
+  }
+}

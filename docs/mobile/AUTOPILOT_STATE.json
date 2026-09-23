@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "11a1d67afa4e0dd405bfd61c9b11d0e5ea54f444",
+  "headSha": "8e9f6e10dec44687f03986794d3047c2e9c9ae9d",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-23T00:47:07.781Z",
+  "updatedAt": "2026-09-23T00:58:45.358Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2672,11 +2672,12 @@
             "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json",
             "docs/mobile/evidence/S15/journey-persistence-20260923/result.json",
             "docs/mobile/evidence/S15/journey-migration-20260923/result.json",
-            "docs/mobile/evidence/S15/journey-history-20260923/result.json"
+            "docs/mobile/evidence/S15/journey-history-20260923/result.json",
+            "docs/mobile/evidence/S15/journey-focus-20260923/result.json"
           ],
-          "commit": "11a1d67afa4e0dd405bfd61c9b11d0e5ea54f444",
-          "lastValidatedAt": "2026-09-23T00:47:07.781Z",
-          "notes": "Journey checkpoint/resume/migration. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance. Actual App adult literary-journey progress now persists through platform preferences with exact route/version/node and reader-policy binding. Incomplete cold restoration stays paused with an exact acknowledged prefix and requires explicit resume; admitted completed records retain completion without another acknowledgement. Failed writes retain visibly unsaved intent for exact retry; unknown schemas and incompatible route versions remain unchanged, and deletion requires confirmation and fresh readback. No automatic route-version migration or books-read claim is introduced. Production content remains empty and all 34 inventoried dialogues remain draft. 532 focused tests, TypeScript, 9 actual-App Chrome cases and 7 inspected captures bind fresh PWA 58d15d8f / Android-dev b2a65c07. All 1,598 protected inputs remain exact. No stage or release acceptance. Actual App adult journey migration now requires exact historical/current definitions, explicit node equivalence, independent migration review and current reader-policy/target admission. Opening or cancelling confirmation changes no progress or scene; deliberate transfer preserves the original record, carries only the acknowledged prefix and opens the exact next node. Confirmed saves restore the migrated version paused and require explicit resume. Missing or revoked independent review denies transfer, and unknown data remains unchanged. Production journey/migration inventories stay empty and all 34 dialogues remain draft. 562 focused tests, TypeScript, 11 actual-App Chrome cases and 8 inspected captures bind fresh PWA b054d44f / Android-dev faced86f. All 1,610 protected inputs remain exact. PLANETKA-008 remains IN_PROGRESS; no stage or release acceptance. Actual App adult journey prerequisites now require exact-version current-profile completion history and fresh independent admission of its saved locale. Validated locale equivalence preserves the same semantic completion; revoking saved-locale review denies dependent routes without rewriting history. Deliberate history selection never navigates or acknowledges steps; two-click per-record deletion preserves other records, reports unconfirmed writes truthfully and supports exact explicit retry. Deleting prerequisite history revokes dependent admission after confirmed readback. Production journey/migration inventories stay empty and all 34 dialogues remain draft. 580 focused tests, TypeScript, 13 actual-App Chrome cases and 10 inspected captures bind fresh PWA cff00f93 / Android-dev 641b9630. All 1,616 protected inputs remain exact. PLANETKA-008 remains IN_PROGRESS; no stage or release acceptance."
+          "commit": "8e9f6e10dec44687f03986794d3047c2e9c9ae9d",
+          "lastValidatedAt": "2026-09-23T00:58:45.358Z",
+          "notes": "Journey checkpoint/resume/migration. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance. Actual App adult literary-journey progress now persists through platform preferences with exact route/version/node and reader-policy binding. Incomplete cold restoration stays paused with an exact acknowledged prefix and requires explicit resume; admitted completed records retain completion without another acknowledgement. Failed writes retain visibly unsaved intent for exact retry; unknown schemas and incompatible route versions remain unchanged, and deletion requires confirmation and fresh readback. No automatic route-version migration or books-read claim is introduced. Production content remains empty and all 34 inventoried dialogues remain draft. 532 focused tests, TypeScript, 9 actual-App Chrome cases and 7 inspected captures bind fresh PWA 58d15d8f / Android-dev b2a65c07. All 1,598 protected inputs remain exact. No stage or release acceptance. Actual App adult journey migration now requires exact historical/current definitions, explicit node equivalence, independent migration review and current reader-policy/target admission. Opening or cancelling confirmation changes no progress or scene; deliberate transfer preserves the original record, carries only the acknowledged prefix and opens the exact next node. Confirmed saves restore the migrated version paused and require explicit resume. Missing or revoked independent review denies transfer, and unknown data remains unchanged. Production journey/migration inventories stay empty and all 34 dialogues remain draft. 562 focused tests, TypeScript, 11 actual-App Chrome cases and 8 inspected captures bind fresh PWA b054d44f / Android-dev faced86f. All 1,610 protected inputs remain exact. PLANETKA-008 remains IN_PROGRESS; no stage or release acceptance. Actual App adult journey prerequisites now require exact-version current-profile completion history and fresh independent admission of its saved locale. Validated locale equivalence preserves the same semantic completion; revoking saved-locale review denies dependent routes without rewriting history. Deliberate history selection never navigates or acknowledges steps; two-click per-record deletion preserves other records, reports unconfirmed writes truthfully and supports exact explicit retry. Deleting prerequisite history revokes dependent admission after confirmed readback. Production journey/migration inventories stay empty and all 34 dialogues remain draft. 580 focused tests, TypeScript, 13 actual-App Chrome cases and 10 inspected captures bind fresh PWA cff00f93 / Android-dev 641b9630. All 1,616 protected inputs remain exact. PLANETKA-008 remains IN_PROGRESS; no stage or release acceptance. Actual App journey reset, migration, history deletion and progress-clear controls now restore focus after consent invalidation only when that confirmation owned focus; a user-selected outside control keeps focus. Keyboard cancellation returns to the initiating control, and fresh-document/native-background lifecycle does not replay consent or semantic progress. Fresh TypeScript and 8 selected actual-App Chrome cases with 7 separately inspected captures bind PWA 882ef57e / Android-dev 0c0504b9. The prior 580 unit tests from 22 unchanged files and original 13-case history proof are retained at source 11a1d67a; unitRerun:false and no changed-UI unit rerun is claimed. All 1,620 protected inputs remain exact. Production journey/migration inventories stay empty and all 34 dialogues remain draft. PLANETKA-008 remains IN_PROGRESS; this bounded local keyboard/focus evidence is not full accessibility, screen-reader, stage or release acceptance."
         },
         {
           "id": "S15.UX-003",
@@ -2779,7 +2780,12 @@
         "node docs/mobile/evidence/S15/journey-history-20260923/check.mjs browser a1",
         "node docs/mobile/evidence/S15/journey-history-20260923/build-pwa-a1.mjs 11a1d67afa4e0dd405bfd61c9b11d0e5ea54f444",
         "pwsh -File docs/mobile/evidence/S15/journey-history-20260923/build-android-a1.ps1 11a1d67afa4e0dd405bfd61c9b11d0e5ea54f444",
-        "node docs/mobile/evidence/S15/journey-history-20260923/preserve-android-a1.mjs 11a1d67afa4e0dd405bfd61c9b11d0e5ea54f444"
+        "node docs/mobile/evidence/S15/journey-history-20260923/preserve-android-a1.mjs 11a1d67afa4e0dd405bfd61c9b11d0e5ea54f444",
+        "node docs/mobile/evidence/S15/journey-focus-20260923/check.mjs static a1",
+        "node docs/mobile/evidence/S15/journey-focus-20260923/check.mjs browser a1",
+        "node docs/mobile/evidence/S15/journey-focus-20260923/build-pwa-a1.mjs 8e9f6e10dec44687f03986794d3047c2e9c9ae9d",
+        "pwsh -File docs/mobile/evidence/S15/journey-focus-20260923/build-android-a1.ps1 8e9f6e10dec44687f03986794d3047c2e9c9ae9d",
+        "node docs/mobile/evidence/S15/journey-focus-20260923/preserve-android-a1.mjs 8e9f6e10dec44687f03986794d3047c2e9c9ae9d"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -2935,7 +2941,16 @@
         "docs/mobile/evidence/S15/journey-history-20260923/static-a1/result.json",
         "docs/mobile/evidence/S15/journey-history-20260923/browser-a1/result.json",
         "docs/mobile/evidence/S15/journey-history-20260923/pwa-a1/result.json",
-        "docs/mobile/evidence/S15/journey-history-20260923/android-a1/result.json"
+        "docs/mobile/evidence/S15/journey-history-20260923/android-a1/result.json",
+        "docs/mobile/evidence/S15/journey-focus-20260923/entry.json",
+        "docs/mobile/evidence/S15/journey-focus-20260923/result.json",
+        "docs/mobile/evidence/S15/journey-focus-20260923/README.md",
+        "docs/mobile/evidence/S15/journey-focus-20260923/visual-review.json",
+        "docs/mobile/evidence/S15/journey-focus-20260923/source-manifests/1bf546cc45d6c09e.json",
+        "docs/mobile/evidence/S15/journey-focus-20260923/static-a1/result.json",
+        "docs/mobile/evidence/S15/journey-focus-20260923/browser-a1/result.json",
+        "docs/mobile/evidence/S15/journey-focus-20260923/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/journey-focus-20260923/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11296,7 +11311,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S15 with bounded local keyboard, focus, lifecycle and accessibility coverage for the whole companion controls, including reader profile, journeys, migration, history and storage recovery. Preserve current-profile prerequisite validation, explicit history selection/deletion, independent migration review, paused cold restoration, failed-write recovery, canonical catalogs and scene ownership. Do not infer acknowledgements or approvals. This next local QA slice does not establish formal screen-reader or installed-device acceptance. Production journey and migration inventories remain empty; reviewed RU/EN content, child profiles, narration, device/performance, iOS and stage/release acceptance remain pending. S03.acceptance stays first unresolved.",
+    "nextAction": "Integrate and validate the staged S15 saved-journey capacity work from s15-journey-capacity. The existing 32-record bound already preserves history without eviction, but new-route actions currently give a generic rejection and a full-history migration has no capacity explanation. Expose historyCapacity and per-route canStart, show a full-only RU/EN 32/32 notice explaining deliberate deletion of one chosen history entry, disable only starts needing a new record, and provide an explicit focus-safe Go to history action. Existing-record resume, Next and selection must remain usable. Prove full-capacity same-record resume, blocked new-slot start/migration and explicit one-record deletion recovery, retaining storage readback/failure authority and never automatically clearing or evicting records. Preserve current-policy prerequisites, independent migration review, confirmation focus ownership, paused cold restoration and canonical scene ownership. Production inventories stay empty; reviewed content, child profiles, narration, formal accessibility, installed-device/performance, iOS and stage/release acceptance remain pending. S03.acceptance stays first unresolved.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11392,7 +11407,10 @@
       "docs/mobile/evidence/S15/journey-migration-20260923/android-a1/result.json",
       "docs/mobile/evidence/S15/journey-history-20260923/result.json",
       "docs/mobile/evidence/S15/journey-history-20260923/pwa-a1/result.json",
-      "docs/mobile/evidence/S15/journey-history-20260923/android-a1/result.json"
+      "docs/mobile/evidence/S15/journey-history-20260923/android-a1/result.json",
+      "docs/mobile/evidence/S15/journey-focus-20260923/result.json",
+      "docs/mobile/evidence/S15/journey-focus-20260923/pwa-a1/result.json",
+      "docs/mobile/evidence/S15/journey-focus-20260923/android-a1/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11450,7 +11468,8 @@
       "S15 reviewed-journey runtime is wired into the actual App with current policy/catalog/review guards and explicit ephemeral acknowledgement. Synthetic source-browser fixtures validate navigation; production content stays empty. Persist and migrate semantic journey checkpoints next; do not claim disk persistence, content approval, child, device or release acceptance.",
       "S15 adult literary-journey semantic checkpoints persist through authoritative preferences with paused cold restore, explicit resume, exact retry and confirmed clear. Unknown schemas and incompatible route versions remain preserved. Keep these validated behaviors and continue explicit safe version migration/history; production content stays empty and no content, child, device or release acceptance is claimed.",
       "S15 adult journey migration is explicit and independently reviewed, preserves historical records, carries no inferred acknowledgement and restores saved targets paused. Keep previous persistence/retry/clear guarantees. Next derive prerequisites from validated current-profile completion history and add deliberate history controls; production content remains empty and no content, child, device or release acceptance is claimed.",
-      "S15 current-profile exact-version completion history now supplies prerequisites only after fresh independent saved-locale admission; revoked review or confirmed deletion removes that contribution. Deliberate history selection never navigates, and per-record deletion retains other records with truthful failure/retry. Preserve prior migration and storage guarantees. Next perform bounded whole-companion keyboard/focus and lifecycle/accessibility QA; production content stays empty and formal screen-reader, device and release acceptance remain open."
+      "S15 current-profile exact-version completion history now supplies prerequisites only after fresh independent saved-locale admission; revoked review or confirmed deletion removes that contribution. Deliberate history selection never navigates, and per-record deletion retains other records with truthful failure/retry. Preserve prior migration and storage guarantees. Next perform bounded whole-companion keyboard/focus and lifecycle/accessibility QA; production content stays empty and formal screen-reader, device and release acceptance remain open.",
+      "S15 journey controls now retain outside focus when a stale confirmation disappears, restore owned focus to stable status/heading, and return cancellation to its trigger. Fresh 8-case browser/7-image and TypeScript proof cover this bounded local keyboard/lifecycle slice; 580 prior unit tests from 22 exact files and original 13-case history evidence are retained without rerun. Preserve explicit consent, storage readback/failure, migration/history, paused restoration and canonical scene guarantees. Next implement truthful saved-journey capacity status and deliberate recovery without automatic eviction. Full accessibility, device, reviewed-content and release acceptance remain open."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13478,6 +13497,22 @@
       "android": {
         "path": "docs/mobile/evidence/S15/journey-history-20260923/android-a1/result.json",
         "sha256": "15e724c4cad86c13c3323806b7a8d0a2f231935c2897f4c41bf438bae184f891"
+      },
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyJourneyFocus": {
+      "path": "docs/mobile/evidence/S15/journey-focus-20260923/result.json",
+      "sha256": "29352d2c2da0d9c24e75ba9dd21c650053363aee0219c447d014715186cb90c5",
+      "sourceCommit": "8e9f6e10dec44687f03986794d3047c2e9c9ae9d",
+      "status": "ADULT_BOOKY_JOURNEY_FOCUS_SCOPED_VALIDATION",
+      "pwa": {
+        "path": "docs/mobile/evidence/S15/journey-focus-20260923/pwa-a1/result.json",
+        "sha256": "69bed95112fc4d566ff882950dd6fcf6184e85f298182cd851d04053bb731b9c"
+      },
+      "android": {
+        "path": "docs/mobile/evidence/S15/journey-focus-20260923/android-a1/result.json",
+        "sha256": "7b7ea00f0d30209cd7cb3592a56e00b4608af1913d252af1fd802f09ca35dfda"
       },
       "stageAccepted": false,
       "releaseReady": false

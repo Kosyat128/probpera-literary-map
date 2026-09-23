@@ -1,0 +1,128 @@
+{
+  "pass": true,
+  "sourceCommit": "8e9f6e10dec44687f03986794d3047c2e9c9ae9d",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-focus-20260923/source-manifests/1bf546cc45d6c09e.json",
+    "sha256": "1bf546cc45d6c09e9de89a9179e3f34e8bbdf413fb8ee788037482e60e7329d0",
+    "fileCount": 1625
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-actual-revie-84536-cross-locale-and-suspension/booky-journey.json",
+      "sha256": "2e74b27116589f4185edfd5511d9ce585f70a84c0f7c3bee69a540032fdde293"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-confirmed-jo-c9068-ument-until-explicit-resume/booky-journey.json",
+      "sha256": "de1a11df8e9f9ab53699f2443e4a330556b722a31be063e825e066abeeced995"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused/booky-journey.json",
+      "sha256": "a0cfc08c91b67754c9d78fefb316b2486041d857cedd79f9c2a1913a433126d4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-future-journ-cfc19--explicit-confirmed-removal/booky-journey.json",
+      "sha256": "b2a2304e6f963a8ff8c916f242003c3c1d824076f8f3457a21f1906ee007f285"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/booky-journey.json",
+      "sha256": "45355e588c1920c8fc1dc23d8a7ef1ceaaeb49aff58b1a7f8448200094bde77d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-journey-focu-000aa--without-replaying-progress/booky-journey.json",
+      "sha256": "7311b8832f74a2893438fb712bd515bbf0e05a81cc31760c6ebdb6b9324ec96f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-journey-focu-5ad75-tion-restores-stable-status/booky-journey.json",
+      "sha256": "99aa4ae0ba82b1cf56bd139339311d09ffba7371f099640d55bef7e4d1c1d5d8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus/booky-journey.json",
+      "sha256": "c9d3f3afc5e8e8ffcbd4a35f658d32e5539d7d9f4450eae6ad37312f84f65a5d"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-country-ru.png",
+      "sha256": "cca9a5e659058438349be281c4027cd04344ed408380b56774bf25bfe732d641",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "320px actual App country step with explicit acknowledgement; synthetic guidance only",
+        "Directly inspected: readable text and controls, no horizontal clipping or overlap at the captured scroll position.",
+        "The capture intentionally scrolls to the tested detail; earlier controls above the crop are not claimed to be simultaneously visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-writer-en.png",
+      "sha256": "ded7265810df6bd9cde2e0aa72da81fb3bcb3dc2955d5d55008b9c60f60a3f75",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "320px actual App writer step retains one semantic acknowledgement after EN switch",
+        "Directly inspected: readable text and controls, no horizontal clipping or overlap at the captured scroll position.",
+        "The capture intentionally scrolls to the tested detail; earlier controls above the crop are not claimed to be simultaneously visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused/journey-migration-confirm-en.png",
+      "sha256": "31d6c81999136f9a08602ae7756af11279e121c984e307eb9203723b8290d4bf",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "Desktop actual App EN independently reviewed v1-to-v2 migration awaits explicit confirmation; original progress is unchanged",
+        "Directly inspected: readable text and controls, no horizontal clipping or overlap at the captured scroll position.",
+        "The unavailable original entry and explicit reviewed-transfer confirmation remain readable and separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-future-journ-cfc19--explicit-confirmed-removal/journey-future-clear-en.png",
+      "sha256": "a0bbc4d8cab21b0d987a8f1f0c4a4d60bcc6975f7a3287ee52c7429888cf3180",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "Desktop actual App EN unknown journey schema kept unchanged with explicit deletion confirmation",
+        "Directly inspected: readable text and controls, no horizontal clipping or overlap at the captured scroll position."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/journey-history-delete-ru-320.png",
+      "sha256": "df4a00a8c2de8b3d42726fc899030c7dd499aa96f1b4401196ed6cf2613f25ba",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "320px actual App RU confirms deletion of only the completed prerequisite record; the incomplete dependent record remains separate",
+        "Directly inspected: readable text and controls, no horizontal clipping or overlap at the captured scroll position.",
+        "At 320px the chosen completed record and its Confirm/Cancel controls remain distinct from the retained dependent record.",
+        "The capture intentionally scrolls to the tested detail; earlier controls above the crop are not claimed to be simultaneously visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-journey-focu-5ad75-tion-restores-stable-status/journey-focus-restored-ru.png",
+      "sha256": "123f6c0f4d247ddd38e72fcc48fddb978ca08a760f2dc4cd1e78db1257955bdd",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "Actual App RU: completed native save removes stale confirmation and restores owned focus to stable storage status",
+        "Directly inspected: readable text and controls, no horizontal clipping or overlap at the captured scroll position.",
+        "The stale confirmation is absent and the surviving RU saved-progress status has a clearly visible focus outline. The clear-all control remains separate below it."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-focus/browser-a1/booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus/journey-focus-outside-en.png",
+      "sha256": "d386a0644678ad6e918e6f42797ee9a8a48861e6b1a32d1ccd719eac0207be3a",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "Actual App EN: completed native save invalidates clear confirmation and preserves the user-selected outside control",
+        "Directly inspected: readable text and controls, no horizontal clipping or overlap at the captured scroll position.",
+        "The EN single-record delete button retains a clearly visible focus outline after the unrelated confirmation disappears; no status focus is imposed."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "limitations": [
+    "Scoped keyboard and visual checks only; no formal screen-reader, full accessibility, installed-device or stage acceptance."
+  ]
+}

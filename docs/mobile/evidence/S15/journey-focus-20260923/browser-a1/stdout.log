@@ -1,0 +1,14 @@
+
+Running 8 tests using 1 worker
+
+
+
+[1/8] tests\pwa\booky-journey.spec.mjs:590:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension
+[2/8] tests\pwa\booky-journey.spec.mjs:706:1 › confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume
+[3/8] tests\pwa\booky-journey.spec.mjs:776:1 › future journey progress remains unchanged until explicit confirmed removal
+[4/8] tests\pwa\booky-journey.spec.mjs:847:1 › explicit reviewed journey migration preserves history and restores the exact new prefix paused
+[5/8] tests\pwa\booky-journey.spec.mjs:1026:1 › history selection never navigates and confirmed single-record deletion truthfully retries while revoking a prerequisite
+[6/8] tests\pwa\booky-journey.spec.mjs:1100:4 › journey focus: owned invalidated confirmation restores stable status
+[7/8] tests\pwa\booky-journey.spec.mjs:1100:4 › journey focus: invalidated confirmation never steals outside keyboard focus
+[8/8] tests\pwa\booky-journey.spec.mjs:1152:1 › journey focus: keyboard cancellation and fresh document discard consent without replaying progress
+  8 passed (1.4m)

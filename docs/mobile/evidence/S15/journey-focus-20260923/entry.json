@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "stage": "S15",
+  "checkpoint": "99d08e0eb34192ddc5a231a556dc9011d253fdf2",
+  "previous": "docs/mobile/evidence/S15/journey-history-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/result.json",
+    "sha256": "28e0138eeedb0056cc09b80af8964e2d4d83e22101b66711df47cb660ab0fcd7"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/source-manifests/5c0bab844d68c4de.json",
+    "sha256": "5c0bab844d68c4def442f0165050de849a18dc3e5cb42d47ae3b4b3d6c7538cd",
+    "fileCount": 1625
+  },
+  "changedPaths": [
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/BookyJourneyHistoryControls.tsx",
+    "src/host/BookyJourneyMigrationControls.tsx",
+    "src/host/BookyJourneyStorageControls.tsx",
+    "tests/pwa/booky-journey.spec.mjs"
+  ],
+  "newImplementationFiles": [],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyHost.test.ts",
+    "src/host/bookyJourneyCompanion.test.ts",
+    "src/host/bookyReaderPolicy.test.ts",
+    "src/host/bookyReaderPolicyStore.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/books/bookArchiveDetailView.test.ts",
+    "src/books/bookArchiveAuthorRequest.test.ts",
+    "src/host/bookyJourneyProgress.test.ts",
+    "src/host/bookyJourneyProgressStore.test.ts",
+    "src/host/bookyJourneyPersistence.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "src/host/bookyJourneyMigration.test.ts",
+    "src/host/bookyJourneyMigrationRegistry.test.ts",
+    "src/host/bookyJourneyPrerequisites.test.ts"
+  ],
+  "expectedBrowserTests": 8,
+  "stageAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "01d969c8093c0d5ad37284988db0c577fecc2cfb6d9cf6ad754031ba9b452392"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "65a93e0342596d3235bcad81672169ebe8285ea21c6793f48338d60843e75589"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "a9b46dc42ed78e995a4529cf3f45898c3f031e279dffb299390361ac82b4659b"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "1ffda4c403c6b4947ef80c368b52212f1a0b1d3fa26c7aa5567d4473e548ee7b"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "ba669857f1c64fe8d2a5e673341f72b8e1d7b4c7ef77b6dc4f62dd393e7454fe"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "2076a5471b2c5dcdb15983d0a365f773e04eb0d600e3c24cd5c38088d7900741"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "8507d75337a51853a61ef8d074dee7d7a4c748b0bd576d35ce50b04f12d07520"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "124ac71d1f06e5234f95a612f01b5cde92566b51c194161976f38bbadd7268d5"
+    }
+  ],
+  "expectedImages": 7,
+  "retainedUnitCheck": {
+    "path": "docs/mobile/evidence/S15/journey-history-20260923/unit-a1/result.json",
+    "sha256": "9f8d8c04cbdf09eac510d34d8889e2df8ade7b4b2c9d67e4d7a70a83790e71db"
+  }
+}
