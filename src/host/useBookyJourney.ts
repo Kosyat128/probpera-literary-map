@@ -11,6 +11,8 @@ import type { createPlanetMascotController, PlanetMascotSnapshot } from "./plane
 import type { PreferenceStore } from "../platform/ports";
 import { createBookyJourneyProgressStore } from "./bookyJourneyProgressStore";
 import { createBookyJourneyPersistence } from "./bookyJourneyPersistence";
+import { readBookyJourneyMigrationContent } from "./bookyJourneyMigrationContent";
+import { createBookyJourneyMigrationRegistry } from "./bookyJourneyMigrationRegistry";
 
 const EMPTY_COUNTRIES: readonly Country[] = Object.freeze([]);
 const EMPTY_BOOKS: readonly BookArchiveEntry[] = Object.freeze([]);
@@ -40,6 +42,7 @@ export function useBookyJourney(input: {
   navigate: BookyJourneyNavigation;
 }) {
   const content = useMemo(() => readBookyJourneyContent(), []);
+  const migrations = useMemo(() => createBookyJourneyMigrationRegistry(readBookyJourneyMigrationContent()), []);
   const countries = useMemo(() => content.definitions.length === 0 ? input.countries : input.countries.map(country => {
     // The public catalog often omits country coordinates. Reuse the globe's
     // canonical fallback/centroid resolver, never coordinates from route content.
@@ -70,9 +73,18 @@ export function useBookyJourney(input: {
         definitionChecksum: plan.definitionChecksum, nodeId, hostRevision: mascot.getSnapshot().revision },
       () => hostRef.current?.resolve === resolve ? source : null);
     };
+    const resolveMigration: NonNullable<BookyJourneyRuntimeHost["resolveMigration"]> = (savedRecord, plan) => {
+      const policy = input.readPolicy();
+      if (!policy || serializeBookyReaderPolicy(policy) !== profileKey
+        || hostRef.current?.resolveMigration !== resolveMigration || !resolve(plan, plan.nodes[0].id)) return null;
+      const offer = migrations.resolve(savedRecord, plan, policy, new Date().toISOString());
+      // The mapping supplies semantic equivalence, never authority to access
+      // its target. Recheck the same currently reviewed whole journey.
+      return hostRef.current?.resolveMigration === resolveMigration && resolve(plan, plan.nodes[0].id) ? offer : null;
+    };
     return Object.freeze({ revision: ++sequence.current, active, profileKey, locale: input.locale,
-      plans: catalog.plans, resolve, view: input.view });
-  }, [active, profileKey, input.locale, catalog, input.view, input.readPolicy, mascot]);
+      plans: catalog.plans, resolve, resolveMigration, view: input.view });
+  }, [active, profileKey, input.locale, catalog, migrations, input.view, input.readPolicy, mascot]);
   const controller = useMemo(() => createBookyJourneyRuntime({ readHost: () => hostRef.current,
     navigate: (offer, signal) => {
       const ownerProfile = hostRef.current?.profileKey;

@@ -3,6 +3,7 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { BookyJourneyRuntime, BookyJourneyRuntimeSnapshot } from "./bookyJourneyRuntime";
 import type { BookyJourneyPersistence, BookyJourneyPersistenceSnapshot } from "./bookyJourneyPersistence";
 import BookyJourneyStorageControls from "./BookyJourneyStorageControls";
+import BookyJourneyMigrationControls from "./BookyJourneyMigrationControls";
 import "./BookyJourneyControls.css";
 
 export type BookyJourneyControlsProps = {
@@ -199,6 +200,8 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
             onClick={() => setResetAtRevision(snapshot.revision)}>{copy.reset}</button>}
         </div>
       </div>}
+      <BookyJourneyMigrationControls controller={controller} snapshot={snapshot} persistence={persistence}
+        onAccepted={() => heading.current?.focus()} />
       <BookyJourneyStorageControls runtime={controller} persistence={persistence} snapshot={persistenceSnapshot} />
     </section>
   );

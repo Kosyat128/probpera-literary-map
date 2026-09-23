@@ -10,6 +10,7 @@ import { bookyJourneyRouteKey, createBookyJourneyRuntime, type BookyJourneyRunti
 import { createBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReaderPolicy";
 import { DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord,
   type BookyJourneyProgressPreference } from "./bookyJourneyProgress";
+import { getBookyJourneyMigrationChecksum, resolveBookyJourneyMigration, type BookyJourneyMigration } from "./bookyJourneyMigration";
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 function fixture(locale: "ru" | "en" = "en", options: { id?: string; version?: number; workId?: string; writerNodeId?: string; title?: string;
@@ -86,6 +87,26 @@ function durableSetup() {
 function savedWriter() {
   const f = durableSetup(); f.start(); f.display(0); f.runtime.next(f.runtime.getSnapshot().revision); f.display(1);
   const preference = f.runtime.getProgressIntent().preference; f.runtime.dispose(); return preference;
+}
+function migrationSetup({ complete = false, active = true } = {}) {
+  const f = durableSetup(), target = fixture("en", { version: 2, writerNodeId: "writer-v2" });
+  const old = createBookyJourneyProgressRecord(explicitPolicy, f.initial.plan,
+    complete ? f.initial.plan.nodes.map(node => node.id) : ["country"], complete ? null : "writer")!;
+  const preference = { ...DEFAULT_BOOKY_JOURNEY_PROGRESS, activeRecordId: old.recordId, records: [old] };
+  const migration: BookyJourneyMigration = { schemaVersion: 1, id: "test-version-migration", journeyId: old.journeyId,
+    locale: "en", fromVersion: 1, fromDefinitionChecksum: old.definitionChecksum, toVersion: 2,
+    toDefinitionChecksum: target.plan.definitionChecksum, nodeMap: { country: "country", writer: "writer-v2", work: "work", checkpoint: "checkpoint" },
+    safeCheckpointId: null };
+  const migrationChecksum = getBookyJourneyMigrationChecksum(migration)!;
+  const validResolver: NonNullable<BookyJourneyRuntimeHost["resolveMigration"]> = (savedRecord, currentPlan) => {
+    const result = resolveBookyJourneyMigration({ savedRecord, currentPlan, historicalDefinition: f.initial.definition,
+      currentPolicy: explicitPolicy, migration, now, approvedMigrationReceipts: [{ id: migration.id, checksum: migrationChecksum,
+        reviewer: "synthetic-migration-reviewer-not-real", reviewedAt }] });
+    return result ? { migrationId: migration.id, migrationChecksum, ...result } : null;
+  };
+  const resolveMigration = vi.fn(validResolver);
+  f.switchSource(target); f.patch({ active, resolveMigration }); f.runtime.restoreProgress(preference, 0);
+  return { ...f, target, old, preference, validResolver, resolveMigration };
 }
 
 describe("reviewed Booky journey runtime", () => {
@@ -443,5 +464,135 @@ describe("durable Booky journey semantic intent", () => {
     f.navigate.mockImplementationOnce(() => { f.patch({ profileKey: null }); return true; });
     expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
     expect(f.runtime.getProgressIntent()).toBe(accepted); f.runtime.dispose();
+  });
+});
+
+describe("explicit reviewed Booky journey migration", () => {
+  it("discovers the offer on inactive-to-active cold restore without migrating or exposing old copy", () => {
+    const f = migrationSetup({ active: false });
+    expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", node: null });
+    f.patch({ active: true }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot()).toMatchObject({ migrations: [{ key: expect.any(String), title: f.target.plan.title,
+      fromVersion: 1, toVersion: 2 }], active: { phase: "unavailable", title: null, node: null, completedCount: 1 } });
+    expect(f.runtime.getProgressIntent()).toEqual({ revision: 0, preference: f.preference });
+    f.runtime.refresh(); expect(f.navigate).not.toHaveBeenCalled();
+    expect(Object.isFrozen(f.runtime.getSnapshot().migrations)).toBe(true); f.runtime.dispose();
+  });
+
+  it("migrates explicitly to the mapped cursor and preserves the full historical record", () => {
+    const f = migrationSetup(), state = f.runtime.getSnapshot(), calls = f.resolveMigration.mock.calls.length;
+    expect(f.runtime.migrate(state.migrations[0].key, state.revision)).toBe(true);
+    expect(f.resolveMigration.mock.calls.length).toBeGreaterThanOrEqual(calls + 3);
+    expect(f.navigate).toHaveBeenCalledOnce(); expect(f.navigate.mock.calls[0][0].nodeId).toBe("writer-v2");
+    expect(f.runtime.getProgressIntent()).toMatchObject({ revision: 1, preference: { records: [f.old,
+      { journeyVersion: 2, acknowledgedNodeIds: ["country"], resumeNodeId: "writer-v2" }] } });
+    const next = f.runtime.getProgressIntent().preference;
+    expect(next.activeRecordId).toBe(next.records[1].recordId); expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "navigating", index: 1, completedCount: 1, canNext: false });
+    f.display(1); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getProgressIntent().preference.records[0]).toEqual(f.old);
+    expect(f.runtime.getProgressIntent().preference.records[1].acknowledgedNodeIds).toEqual(["country", "writer-v2"]);
+    expect(f.runtime.migrate(state.migrations[0].key, f.runtime.getSnapshot().revision)).toBe(false); f.runtime.dispose();
+  });
+
+  it.each([false, "throw"])("restores the old active session and intent when migration navigation returns %s", failure => {
+    const f = migrationSetup(), state = f.runtime.getSnapshot(), intent = f.runtime.getProgressIntent();
+    f.navigate.mockImplementationOnce(() => { if (failure === "throw") throw Error("cancelled"); return false; });
+    expect(f.runtime.migrate(state.migrations[0].key, state.revision)).toBe(false);
+    expect(f.navigate.mock.calls[0][1].aborted).toBe(true); expect(f.runtime.getProgressIntent()).toBe(intent);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", index: 1, completedCount: 1, node: null });
+    expect(f.runtime.getSnapshot().migrations).toHaveLength(1); f.runtime.dispose();
+  });
+
+  it("rejects stale gestures and withdrawn migration review before dispatch", () => {
+    const f = migrationSetup(), state = f.runtime.getSnapshot();
+    f.patch({ view: { ...f.host().view } }); f.runtime.refresh();
+    expect(f.runtime.migrate(state.migrations[0].key, state.revision)).toBe(false);
+    const current = f.runtime.getSnapshot(); f.resolveMigration.mockReturnValue(null);
+    expect(f.runtime.migrate(current.migrations[0].key, current.revision)).toBe(false);
+    expect(f.runtime.getSnapshot().migrations).toEqual([]); expect(f.navigate).not.toHaveBeenCalled();
+    expect(f.runtime.getProgressIntent()).toEqual({ revision: 0, preference: f.preference }); f.runtime.dispose();
+  });
+
+  it("rechecks review after view observers and after the navigation port, aborting revoked migration", () => {
+    const before = migrationSetup(), initial = before.runtime.getSnapshot();
+    const remove = before.runtime.subscribe(() => {
+      if (before.runtime.getSnapshot().active?.phase === "navigating") before.resolveMigration.mockReturnValue(null);
+    });
+    expect(before.runtime.migrate(initial.migrations[0].key, initial.revision)).toBe(false);
+    expect(before.navigate).not.toHaveBeenCalled(); expect(before.runtime.getProgressIntent().preference).toEqual(before.preference);
+    remove(); before.runtime.dispose();
+    const after = migrationSetup(), state = after.runtime.getSnapshot();
+    after.navigate.mockImplementationOnce(() => { after.resolveMigration.mockReturnValue(null); return true; });
+    expect(after.runtime.migrate(state.migrations[0].key, state.revision)).toBe(false);
+    expect(after.navigate.mock.calls[0][1].aborted).toBe(true);
+    expect(after.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", completedCount: 1, node: null });
+    expect(after.runtime.getProgressIntent()).toEqual({ revision: 0, preference: after.preference }); after.runtime.dispose();
+  });
+
+  it("rejects forged progress, altered historical records, wrong target topology and resolver accessors", () => {
+    const f = migrationSetup(), valid = f.validResolver(f.old, f.target.plan)!;
+    const forgedAcknowledgements = createBookyJourneyProgressRecord(explicitPolicy, f.target.plan, ["country", "writer-v2"], "work")!;
+    const alteredHistory = createBookyJourneyProgressRecord(explicitPolicy, f.initial.plan, [], "country")!;
+    const changedTopology = { ...valid.targetRecord, nodes: valid.targetRecord.nodes.map(node => node.kind === "writer"
+      ? { ...node, entity: { kind: "writer" as const, countryId: "test-country", writerId: "different-writer" } } : node) };
+    for (const change of [{ targetRecord: forgedAcknowledgements }, { preservedRecord: alteredHistory }, { targetRecord: changedTopology },
+      { targetRecord: { ...valid.targetRecord, definitionChecksum: "b".repeat(64) } }, { migrationChecksum: "invalid" }]) {
+      f.resolveMigration.mockReturnValue({ ...valid, ...change }); f.runtime.refresh();
+      expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    }
+    const getter = vi.fn(() => valid.migrationId), accessor = { ...valid };
+    Object.defineProperty(accessor, "migrationId", { enumerable: true, get: getter });
+    f.resolveMigration.mockReturnValue(accessor); f.runtime.refresh();
+    expect(getter).not.toHaveBeenCalled(); expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    expect(f.runtime.getProgressIntent()).toEqual({ revision: 0, preference: f.preference }); expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+
+  it("offers no overwrite of existing target history and no eviction when history is full", () => {
+    const f = migrationSetup(), key = f.runtime.getSnapshot().migrations[0].key;
+    const existing = createBookyJourneyProgressRecord(explicitPolicy, f.target.plan, [], "country")!;
+    const withTarget = { ...f.preference, records: [f.old, existing] };
+    expect(f.runtime.restoreProgress(withTarget, 0)).toBe(true); expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    expect(f.runtime.migrate(key, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent().preference.records).toEqual([f.old, existing]);
+    const records = [f.old, ...Array.from({ length: 31 }, (_, index) => createBookyJourneyProgressRecord(explicitPolicy,
+      { ...f.initial.plan, id: `historical-${index}` }, [], "country")!)];
+    expect(f.runtime.restoreProgress({ ...f.preference, records }, 0)).toBe(true);
+    expect(f.runtime.getSnapshot().migrations).toEqual([]); expect(f.runtime.getProgressIntent().preference.records).toEqual(records);
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+
+  it("activates a fully completed migration only after fresh review and without navigation", () => {
+    const f = migrationSetup({ complete: true }), state = f.runtime.getSnapshot();
+    expect(f.runtime.migrate(state.migrations[0].key, state.revision)).toBe(true);
+    expect(f.navigate).not.toHaveBeenCalled();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "complete", completedCount: 4, canOpen: false, canNext: false });
+    expect(f.runtime.getProgressIntent()).toMatchObject({ revision: 1, preference: { records: [f.old,
+      { acknowledgedNodeIds: ["country", "writer-v2", "work", "checkpoint"], resumeNodeId: null }] } });
+    f.runtime.refresh(); expect(f.runtime.getProgressIntent().revision).toBe(1); f.runtime.dispose();
+  });
+
+  it.each(["pause", "reset"] as const)("respects a reentrant %s before migration dispatch without committing a target", action => {
+    const f = migrationSetup(), state = f.runtime.getSnapshot();
+    const remove = f.runtime.subscribe(() => {
+      const snapshot = f.runtime.getSnapshot();
+      if (snapshot.active?.phase === "navigating") f.runtime[action](snapshot.revision);
+    });
+    expect(f.runtime.migrate(state.migrations[0].key, state.revision)).toBe(false); expect(f.navigate).not.toHaveBeenCalled();
+    expect(f.runtime.getProgressIntent().preference.records).toEqual(action === "reset" ? [] : [f.old]);
+    expect(f.runtime.getProgressIntent().revision).toBe(action === "reset" ? 1 : 0); remove(); f.runtime.dispose();
+  });
+
+  it("fails closed for nested or throwing migration sources and for revoked current-plan admission", () => {
+    const f = migrationSetup();
+    f.resolveMigration.mockImplementation((old, current) => { f.runtime.refresh(); return f.validResolver(old, current); });
+    f.runtime.refresh(); expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    expect(f.runtime.getProgressIntent()).toEqual({ revision: 0, preference: f.preference });
+    f.resolveMigration.mockImplementation(() => { throw Error("revoked"); }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    f.resolveMigration.mockImplementation(f.validResolver); f.patch({ resolve: () => null }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().migrations).toEqual([]); expect(f.runtime.getSnapshot().routes).toEqual([]);
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
   });
 });

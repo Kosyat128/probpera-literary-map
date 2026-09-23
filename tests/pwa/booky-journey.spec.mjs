@@ -29,7 +29,7 @@ const SYNTHETIC_CONTENT = `
 import { contentTextHash } from '../planet/contentExportHash';
 import { getBookyDialogueChecksum, getBookyDialogueContentChecksum } from './bookyDialogueRegistry';
 import { bookyJourneyEntityId, getBookyJourneyChecksum } from './bookyJourney';
-const id='test.actual-app-journey',version=window.__journeyContentMode==='new-version'?2:1,reviewedAt='2026-09-20T12:00:00.000Z';
+const id='test.actual-app-journey',version=window.__journeyContentMode==='new-version'||window.__journeyContentMode.startsWith('migration-')?2:1,reviewedAt='2026-09-20T12:00:00.000Z';
 const definitions=[],dialogues=[],dialogueApprovals=[],journeyApprovals=[],availability=[];
 for(const locale of ['ru','en']){
   const nodes=[
@@ -61,6 +61,33 @@ for(const locale of ['ru','en']){
 const approved={definitions,dialogues,currentVersions:[{id,version}],dialogueApprovals,journeyApprovals,availability};
 const missingReview={...approved,journeyApprovals:[]};
 export function readBookyJourneyContent(){return window.__journeyContentMode==='missing-review'?missingReview:approved;}
+`;
+
+// Independent synthetic migration receipts are distinct from route and dialogue
+// review. Only the test providers supply this history; production stays empty.
+const SYNTHETIC_MIGRATION_CONTENT = `
+import { readBookyJourneyContent } from './bookyJourneyContent';
+import { getBookyJourneyChecksum } from './bookyJourney';
+import { getBookyJourneyMigrationChecksum } from './bookyJourneyMigration';
+const historicalDefinitions=[],migrations=[],approvedMigrationReceipts=[];
+if(window.__journeyContentMode.startsWith('migration-')){
+  for(const current of readBookyJourneyContent().definitions){
+    const historical={...current,version:1};
+    historicalDefinitions.push(historical);
+    const migration={schemaVersion:1,id:'test.actual-app-migration.'+current.locale,journeyId:current.id,locale:current.locale,
+      fromVersion:1,fromDefinitionChecksum:getBookyJourneyChecksum(historical),
+      toVersion:2,toDefinitionChecksum:getBookyJourneyChecksum(current),
+      nodeMap:Object.fromEntries(historical.nodes.map(node=>[node.id,node.id])),safeCheckpointId:null};
+    migrations.push(migration);
+    approvedMigrationReceipts.push({id:migration.id,checksum:getBookyJourneyMigrationChecksum(migration),
+      reviewer:'synthetic-independent-migration-reviewer-not-real',reviewedAt:'2026-09-20T12:00:00.000Z'});
+  }
+}
+const reviewed={historicalDefinitions,migrations,approvedMigrationReceipts};
+const missingReview={historicalDefinitions,migrations,approvedMigrationReceipts:[]};
+export function readBookyJourneyMigrationContent(){
+  return window.__journeyContentMode==='migration-missing-review'?missingReview:reviewed;
+}
 `;
 
 // Actual App, source CSS and existing R3F scene. Native OS/preference bindings
@@ -122,6 +149,7 @@ test.beforeAll(async () => {
     loader: { '.css': 'css', '.png': 'file', '.webp': 'file', '.avif': 'file', '.jpg': 'file', '.jpeg': 'file', '.svg': 'file', '.woff': 'file', '.woff2': 'file' },
     plugins: [{ name: 'canonical-vite-resources', setup(builder) {
       builder.onLoad({ filter: /[\\/]bookyJourneyContent\.ts$/ }, args => ({ contents: SYNTHETIC_CONTENT, loader: 'ts', resolveDir: path.dirname(args.path) }));
+      builder.onLoad({ filter: /[\\/]bookyJourneyMigrationContent\.ts$/ }, args => ({ contents: SYNTHETIC_MIGRATION_CONTENT, loader: 'ts', resolveDir: path.dirname(args.path) }));
       builder.onLoad({ filter: /[\\/]BookShelfScene\.tsx$/ }, async args => {
         const source = await fs.readFile(args.path, 'utf8'), attempts = [];
         const contents = source.replace(/import\.meta\.glob<\s*ComponentType<BookShelfSceneCanvasProps>\s*>\("\.\/BookShelfSceneCanvas\.tsx",\s*\{\s*import: "default",\s*query: \{ stage5Load: "(primary|retry)" \},\s*\}\)/gu, (_match, attempt) => {
@@ -192,7 +220,7 @@ test.beforeAll(async () => {
   expect(digest(assetBytes)).toBe(ASSET_SHA); expect(assetBytes.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
   expect([assetBytes.readUInt32BE(16), assetBytes.readUInt32BE(20), assetBytes[25]]).toEqual([1254, 1254, 6]);
   const assetOutput = built.outputFiles.find(file => digest(file.contents) === ASSET_SHA); expect(assetOutput).toBeTruthy();
-  const required = ['src/host/bookyJourneyProgress.ts','src/host/bookyJourneyProgressStore.ts','src/host/bookyJourneyPersistence.ts','src/host/bookyJourneyContent.ts','src/host/bookyJourneyRuntime.ts','src/host/bookyJourney.ts','src/host/BookyJourneyControls.tsx','src/components/WriterPanel.tsx','src/components/BookArchiveSection.tsx','src/books/bookArchiveDetailView.ts','src/host/bookyReaderPolicy.ts','src/host/bookyReaderPolicyStore.ts','src/host/BookyReaderSettings.tsx','src/host/bookyJourneyHost.ts','src/App.tsx', 'src/host/mountHostApp.tsx', 'src/components/LiteraryGlobe.tsx', 'src/components/LiteraryWorldMap.tsx',
+  const required = ['src/host/bookyJourneyMigration.ts','src/host/bookyJourneyMigrationContent.ts','src/host/bookyJourneyMigrationRegistry.ts','src/host/bookyJourneyProgress.ts','src/host/bookyJourneyProgressStore.ts','src/host/bookyJourneyPersistence.ts','src/host/bookyJourneyContent.ts','src/host/bookyJourneyRuntime.ts','src/host/bookyJourney.ts','src/host/BookyJourneyControls.tsx','src/components/WriterPanel.tsx','src/components/BookArchiveSection.tsx','src/books/bookArchiveDetailView.ts','src/host/bookyReaderPolicy.ts','src/host/bookyReaderPolicyStore.ts','src/host/BookyReaderSettings.tsx','src/host/bookyJourneyHost.ts','src/App.tsx', 'src/host/mountHostApp.tsx', 'src/components/LiteraryGlobe.tsx', 'src/components/LiteraryWorldMap.tsx',
     'src/components/GlobeCameraRig.tsx', 'src/components/globeAtlas.ts', 'src/host/planetMascot.ts', 'src/host/planetMascotRoutes.ts',
     'src/host/PlanetMascotControls.tsx', 'src/host/PlanetMascotControls.css', 'src/host/PlanetMascotAvatar.tsx', 'src/host/PlanetMascotAvatar.css',
     'src/host/bookyModel.ts', 'src/host/bookyAnimation.ts', 'src/host/useBookyRenderer.ts', 'src/host/bookySupport.ts', 'src/host/bookyTourProgress.ts',
@@ -213,8 +241,10 @@ test.beforeAll(async () => {
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
     componentChunks, primaryComponentChunk, retryComponentChunk, sharedComponentDependencies, sourceInputs,
     cameraAuthority: 'Only existing canonical App navigation owns scene changes; no fixture camera assignments or synthetic navigation acknowledgement.',
-    representation: 'Actual App journey controls, compiler, fresh admission, runtime and canonical country/writer/book navigation. Only the content provider is replaced with explicitly synthetic RU/EN interface guidance and test review receipts; native bindings and Vite glob delivery are controlled. Source fixture evidence, not a dist artifact, installed-device or production journey acceptance.',
+    representation: 'Actual App journey controls, compiler, fresh admission, runtime and canonical country/writer/book navigation. Only journey and migration content providers are replaced with explicitly synthetic RU/EN interface guidance, exact historical definitions and independent test review receipts; native bindings and Vite glob delivery are controlled. Source fixture evidence, not a dist artifact, installed-device or production journey acceptance.',
     contentSubstitution: { path: 'src/host/bookyJourneyContent.ts', syntheticOnly: true, sourceSha256: digest(SYNTHETIC_CONTENT), realCanonicalTuple: ['russia','dostoevsky','crime-and-punishment'] },
+    migrationContentSubstitution: { path: 'src/host/bookyJourneyMigrationContent.ts', syntheticOnly: true,
+      sourceSha256: digest(SYNTHETIC_MIGRATION_CONTENT), independentReceipt: true, fromVersion: 1, toVersion: 2, nodeMap: 'explicit-identity' },
     fallbackArtwork: { path: ASSET, sha256: ASSET_SHA, bytes: assetBytes.length, width: 1254, height: 1254, pngColorType: 6,
       bundledPath: '/fixture/' + path.relative(output, assetOutput.path).replaceAll('\\', '/') },
     publicAssetSelectionSha256: digest(selectionBytes), selectedAssetCount: selectedAssets.size,
@@ -294,8 +324,11 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
         contentMode = mode;
         // A new document destroys the old React/runtime objects. Only the native
         // preference map survives; the neutral URL supplies no restored target.
-        await page.goto(SITE + '/#atlas');
+        const previousOrigin = await page.evaluate(() => performance.timeOrigin);
+        if (page.url() === SITE + '/#atlas') await page.reload();
+        else await page.goto(SITE + '/#atlas');
         await readyDocument(page);
+        expect(await page.evaluate(() => performance.timeOrigin)).not.toBe(previousOrigin);
       },
       verify() {
         expect(errors).toEqual([]); expect(externalRequests).toEqual([]); expect(missingResources).toEqual([]);
@@ -385,11 +418,11 @@ function savedRecord(fixture) {
   const preference = JSON.parse(raw);
   return preference.records?.find(record => record.recordId === preference.activeRecordId) ?? null;
 }
-async function expectSavedPrefix(fixture, prefix) {
+async function expectSavedPrefix(fixture, prefix, version = 1) {
   await expect.poll(() => savedRecord(fixture)?.acknowledgedNodeIds ?? null).toEqual(prefix);
   await expect(storageState(fixture.page)).toHaveAttribute('data-booky-journey-storage', 'ready');
   const record = savedRecord(fixture);
-  expect(record.journeyId).toBe('test.actual-app-journey'); expect(record.journeyVersion).toBe(1);
+  expect(record.journeyId).toBe('test.actual-app-journey'); expect(record.journeyVersion).toBe(version);
   expect(record.resumeNodeId).toBe(['country', 'writer', 'work', 'checkpoint'][prefix.length] ?? null);
   return fixture.memory.get(PROGRESS);
 }
@@ -442,6 +475,25 @@ async function captureStorage(fixture, testInfo, filename, actionSelector, descr
   expect(bounds.status.fullyInViewport).toBe(true); expect(bounds.action.fullyInViewport).toBe(true);
   expect(bounds.actionHit).toBe(true); expect(bounds.action.height).toBeGreaterThanOrEqual(44);
   await capture(fixture, testInfo, filename, description);
+  fixture.result.screenshots.at(-1).bounds = bounds;
+}
+async function captureMigration(fixture, testInfo) {
+  const surface = fixture.page.locator('[data-booky-journey-migration-controls]');
+  await surface.scrollIntoViewIfNeeded();
+  const bounds = await surface.evaluate(element => {
+    const measure = target => {
+      const box = target.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height,
+        fullyInViewport: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight };
+    };
+    const action = element.querySelector('[data-booky-journey-confirm-migrate]'), box = action.getBoundingClientRect();
+    return { surface: measure(element), status: measure(element.querySelector('[data-booky-journey-migration-status]')),
+      action: measure(action), actionHit: action.contains(document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2)) };
+  });
+  expect(bounds.status.fullyInViewport).toBe(true); expect(bounds.action.fullyInViewport).toBe(true);
+  expect(bounds.actionHit).toBe(true); expect(bounds.action.height).toBeGreaterThanOrEqual(44);
+  await capture(fixture, testInfo, 'journey-migration-confirm-en.png',
+    'Desktop actual App EN independently reviewed v1-to-v2 migration awaits explicit confirmation; original progress is unchanged');
   fixture.result.screenshots.at(-1).bounds = bounds;
 }
 async function reachableJourneyControls(page) {
@@ -719,6 +771,132 @@ test('a new reviewed journey version cannot reinterpret or overwrite a saved old
     expect(new URL(page.url()).searchParams.get('country')).toBeNull();
     Object.assign(result.observations, { savedVersion: 1, currentReviewedVersion: 2, incompatibleProgressUnavailable: true,
       exactOldBytesPreservedRuEn: true, noAutomaticNavigationOrRewrite: true, canonicalSceneRetainedWithinDocument: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('explicit reviewed journey migration preserves history and restores the exact new prefix paused', async ({}, testInfo) => {
+  test.setTimeout(180_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = 'explicit-progress-migration';
+  try {
+    await locale(page, 'en');
+    await startCountryStep(fixture);
+    await next(page).click(); await expectReadyNode(page, 'writer', 1);
+    const originalBytes = await expectSavedPrefix(fixture, ['country']);
+    const originalRecord = savedRecord(fixture), writes = fixture.progressWrites().length;
+    expect(originalRecord.locale).toBe('en');
+    await fixture.coldReload('migration-approved');
+    await stablePose(page); const neutral = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    await expectProgress(page, 1);
+    const offer = page.locator('[data-booky-journey-migrate]');
+    await expect(offer).toHaveCount(1); await expect(offer).toBeEnabled();
+    expect(fixture.memory.get(PROGRESS)).toBe(originalBytes); expect(fixture.progressWrites()).toHaveLength(writes);
+    expect(new URL(page.url()).searchParams.get('country')).toBeNull();
+    await offer.click();
+    const confirm = page.locator('[data-booky-journey-confirm-migrate]');
+    await expect(confirm).toBeVisible(); await expect(confirm).toBeEnabled();
+    expect(fixture.memory.get(PROGRESS)).toBe(originalBytes); expect(fixture.progressWrites()).toHaveLength(writes);
+    await stablePose(page); retained(await actual(page), neutral, true);
+    await page.locator('[data-booky-journey-cancel-migrate]').click();
+    await expect(confirm).toHaveCount(0); await expect(offer).toBeFocused();
+    expect(fixture.memory.get(PROGRESS)).toBe(originalBytes); expect(fixture.progressWrites()).toHaveLength(writes);
+    await offer.click(); await expect(confirm).toBeEnabled();
+    await captureMigration(fixture, testInfo);
+    expect(fixture.memory.get(PROGRESS)).toBe(originalBytes); expect(fixture.progressWrites()).toHaveLength(writes);
+    await confirm.click();
+    await expectReadyNode(page, 'writer', 1);
+    await expect(page.locator('.writer-detail-heading')).toContainText('Dostoevsky');
+    expect(new URL(page.url()).searchParams.get('writer')).toBe('dostoevsky');
+    const migratedBytes = await expectSavedPrefix(fixture, ['country'], 2);
+    const migrated = JSON.parse(migratedBytes), target = savedRecord(fixture);
+    expect(migrated.records).toHaveLength(2);
+    expect(migrated.records.find(record => record.recordId === originalRecord.recordId)).toEqual(originalRecord);
+    expect(target.recordId).not.toBe(originalRecord.recordId); expect(target.locale).toBe('en');
+    expect(target.policyFingerprint).toBe(originalRecord.policyFingerprint);
+    expect(target.definitionChecksum).not.toBe(originalRecord.definitionChecksum);
+    expect(target.nodes).toEqual(originalRecord.nodes);
+    await expect(page.locator('[data-booky-journey-migrate]')).toHaveCount(0);
+    retained(await actual(page), neutral);
+    result.observations.migrationRecords = { original: originalRecord, migrated: target };
+    const confirmedWrites = fixture.progressWrites().length;
+    await fixture.coldReload('migration-approved');
+    await stablePose(page); const restoredScene = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expect(node(page)).toHaveAttribute('data-booky-journey-node', 'writer');
+    await expectProgress(page, 1);
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(migratedBytes); expect(fixture.progressWrites()).toHaveLength(confirmedWrites);
+    expect(new URL(page.url()).searchParams.get('writer')).toBeNull();
+    await locale(page, 'ru');
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused'); await expectProgress(page, 1);
+    expect(fixture.memory.get(PROGRESS)).toBe(migratedBytes); expect(fixture.progressWrites()).toHaveLength(confirmedWrites);
+    await stablePose(page); retained(await actual(page), restoredScene, true);
+    await page.locator('[data-booky-journey-resume]').click();
+    await expectReadyNode(page, 'writer', 1);
+    await expect(page.locator('.writer-detail-heading')).toContainText('Достоевский');
+    await expectSavedPrefix(fixture, ['country'], 2);
+    expect(JSON.parse(fixture.memory.get(PROGRESS)).records.find(record => record.recordId === originalRecord.recordId)).toEqual(originalRecord);
+    retained(await actual(page), restoredScene);
+    Object.assign(result.observations, { fromVersion: 1, toVersion: 2, exactAcknowledgedPrefix: ['country'],
+      independentSyntheticMigrationReview: true, noMigrationBeforeConfirmation: true, cancellationRetainsBytesAndFocus: true,
+      originalHistoryRetained: true, exactPrefixTransferred: true, confirmedSaveReadback: true, exactWriterAfterTransfer: true,
+      migratedColdRestorePaused: true, noAutomaticNavigationOrWriteOnRestore: true, localeRetainsMigratedPrefix: true,
+      explicitResumeRequiredAfterReload: true, canonicalSceneRetainedWithinDocument: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('missing or revoked independent migration review preserves the old version without navigation', async ({}, testInfo) => {
+  test.setTimeout(180_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = 'migration-review-denied';
+  try {
+    await locale(page, 'en');
+    await startCountryStep(fixture);
+    await next(page).click(); await expectReadyNode(page, 'writer', 1);
+    const saved = await expectSavedPrefix(fixture, ['country']);
+    const originalRecord = savedRecord(fixture), writes = fixture.progressWrites().length;
+    await fixture.coldReload('migration-missing-review');
+    await stablePose(page); const missingScene = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    await expectProgress(page, 1);
+    await expect(page.locator('[data-booky-journey-migrate]')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-confirm-migrate]')).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+    await stablePose(page); retained(await actual(page), missingScene, true);
+    expect(new URL(page.url()).searchParams.get('country')).toBeNull();
+
+    await fixture.coldReload('migration-approved');
+    await openPanel(page); await loadBooks(page);
+    const offer = page.locator('[data-booky-journey-migrate]');
+    await expect(offer).toHaveCount(1); await offer.click();
+    await expect(page.locator('[data-booky-journey-confirm-migrate]')).toBeEnabled();
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+    // The bundled provider is immutable for a document. A fresh document sees
+    // its revoked receipt; no live content-update API is invented by the test.
+    await fixture.coldReload('migration-missing-review');
+    await stablePose(page); const revokedScene = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(page.locator('[data-booky-journey-migrate]')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-confirm-migrate]:enabled')).toHaveCount(0);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    await expectProgress(page, 1);
+    await expect(page.locator('[data-booky-journey-resume]:enabled')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(savedRecord(fixture)).toEqual(originalRecord);
+    expect(fixture.progressWrites()).toHaveLength(writes);
+    await stablePose(page); retained(await actual(page), revokedScene, true);
+    expect(new URL(page.url()).searchParams.get('writer')).toBeNull();
+    Object.assign(result.observations, { savedVersion: 1, currentReviewedVersion: 2,
+      missingIndependentMigrationReviewDenied: true, revokedIndependentMigrationReviewDenied: true,
+      revocationAcrossNewDocument: true, offeredConfirmationInvalidated: true, exactOldBytesPreserved: true, noInferredAcknowledgements: true,
+      sameDocumentContentRefreshClaimed: false,
+      noAutomaticNavigationOrWrite: true, canonicalSceneRetainedWithinDocument: true });
     fixture.verify();
   } finally { await fixture.close(); }
 });

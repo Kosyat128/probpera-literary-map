@@ -5,6 +5,8 @@ import { parseBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReade
 import { DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord, parseBookyJourneyProgress,
   type BookyJourneyProgressNode, type BookyJourneyProgressPreference, type BookyJourneyProgressRecord } from "./bookyJourneyProgress";
 
+export type BookyJourneyMigrationOffer = Readonly<{ migrationId: string; migrationChecksum: string;
+  preservedRecord: BookyJourneyProgressRecord; targetRecord: BookyJourneyProgressRecord }>;
 export type BookyJourneyRuntimeHost = Readonly<{
   /** Replace this immutable view after every policy, source or displayed-view change. */
   revision: number;
@@ -13,6 +15,7 @@ export type BookyJourneyRuntimeHost = Readonly<{
   locale: "ru" | "en";
   plans: readonly BookyJourneyPlan[];
   resolve: (plan: BookyJourneyPlan, nodeId: string) => BookyJourneyHostOffer | null;
+  resolveMigration?: (savedRecord: BookyJourneyProgressRecord, currentPlan: BookyJourneyPlan) => BookyJourneyMigrationOffer | null;
   /** New reference after a navigation command commits, including a no-op. */
   view: Readonly<{ screen: "globe" | "collection"; countryId: string | null;
     writerId: string | null; workId: string | null; settled: boolean }>;
@@ -22,6 +25,7 @@ export type BookyJourneyRuntimeSnapshot = Readonly<{
   revision: number;
   status: "profile-required" | "unavailable" | "ready";
   routes: readonly Readonly<{ key: string; title: string }>[];
+  migrations: readonly Readonly<{ key: string; title: string; fromVersion: number; toVersion: number }>[];
   active: Readonly<{ title: string | null; node: BookyJourneyPlan["nodes"][number] | null;
     index: number; total: number; completedCount: number; phase: Phase; canOpen: boolean; canNext: boolean }> | null;
 }>;
@@ -32,9 +36,10 @@ type Session = { id: string; version: number; locale: "ru" | "en"; definitionChe
   topology: string; profileKey: string | null; policyFingerprint: string | null; recordId: string | null;
   index: number; total: number; completedCount: number; phase: Phase };
 export type BookyJourneyProgressIntent = Readonly<{ revision: number; preference: BookyJourneyProgressPreference }>;
-type Observation = { host: BookyJourneyRuntimeHost | null; plans: readonly BookyJourneyPlan[] };
+type MigrationCandidate = { key: string; plan: BookyJourneyPlan; offer: BookyJourneyMigrationOffer };
+type Observation = { host: BookyJourneyRuntimeHost | null; plans: readonly BookyJourneyPlan[]; migrations?: readonly MigrationCandidate[] };
 type Navigation = { session: Session; controller: AbortController; accepted: boolean;
-  originIndex: number; originCount: number; originView: BookyJourneyRuntimeHost["view"]; view: string };
+  originIndex: number; originCount: number; originView: BookyJourneyRuntimeHost["view"]; view: string; rollback?: Session };
 const emptyRoutes = Object.freeze([]);
 const entityKey = (node: Pick<BookyJourneyProgressNode, "entity">) => {
   const entity = node.entity;
@@ -55,6 +60,7 @@ const storedSession = (record: BookyJourneyProgressRecord): Session => ({ id: re
   index: Math.min(record.acknowledgedNodeIds.length, record.nodes.length - 1), total: record.nodes.length,
   completedCount: record.acknowledgedNodeIds.length, phase: "unavailable" });
 const viewKey = (view: BookyJourneyRuntimeHost["view"]) => JSON.stringify(view);
+const semanticKey = (node: BookyJourneyProgressNode) => JSON.stringify([node.kind, node.screen, entityKey(node)]);
 function matches(node: BookyJourneyPlan["nodes"][number], view: BookyJourneyRuntimeHost["view"]) {
   if (!view.settled || node.screen !== view.screen) return false;
   const entity = node.entity;
@@ -69,7 +75,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
   readHost: () => BookyJourneyRuntimeHost | null;
   navigate: (offer: BookyJourneyHostOffer, signal: AbortSignal) => boolean;
 }) {
-  let snapshot: BookyJourneyRuntimeSnapshot = Object.freeze({ revision: 0, status: "unavailable", routes: emptyRoutes, active: null });
+  let snapshot: BookyJourneyRuntimeSnapshot = Object.freeze({ revision: 0, status: "unavailable", routes: emptyRoutes, migrations: emptyRoutes, active: null });
   let session: Session | null = null, navigation: Navigation | null = null;
   let progressIntent: BookyJourneyProgressIntent = Object.freeze({ revision: 0, preference: DEFAULT_BOOKY_JOURNEY_PROGRESS });
   let progressViewRevision = 0;
@@ -96,10 +102,47 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     ++progressViewRevision;
   }
 
+  function migrationCandidate(host: BookyJourneyRuntimeHost, plan: BookyJourneyPlan, saved: BookyJourneyProgressRecord,
+    input: BookyJourneyMigrationOffer | null): MigrationCandidate | null {
+    if (!input || !host.active || saved.locale !== host.locale || saved.locale !== plan.locale || saved.journeyId !== plan.id
+      || saved.journeyVersion >= plan.version || saved.policyFingerprint !== fingerprint(host.profileKey)) return null;
+    const prototype = Object.getPrototypeOf(input), descriptors = Object.getOwnPropertyDescriptors(input);
+    const fields = ["migrationId", "migrationChecksum", "preservedRecord", "targetRecord"];
+    if (prototype !== Object.prototype && prototype !== null || Reflect.ownKeys(descriptors).length !== fields.length
+      || fields.some(key => !descriptors[key] || !("value" in descriptors[key]) || !descriptors[key].enumerable)) return null;
+    const migrationId: unknown = descriptors.migrationId.value, migrationChecksum: unknown = descriptors.migrationChecksum.value;
+    if (typeof migrationId !== "string" || !/^[a-z][a-z0-9._:-]{0,95}$/.test(migrationId)
+      || typeof migrationChecksum !== "string" || !/^[a-f0-9]{64}$/.test(migrationChecksum)) return null;
+    const pair = parseBookyJourneyProgress({ ...DEFAULT_BOOKY_JOURNEY_PROGRESS,
+      records: [descriptors.preservedRecord.value, descriptors.targetRecord.value] });
+    if (!pair || JSON.stringify(pair.records[0]) !== JSON.stringify(saved)) return null;
+    const target = pair.records[1], policy = parseBookyReaderPolicy(host.profileKey);
+    const canonical = policy && createBookyJourneyProgressRecord(policy, plan, target.acknowledgedNodeIds, target.resumeNodeId);
+    if (!canonical || JSON.stringify(canonical) !== JSON.stringify(target)
+      || target.resumeNodeId === null && saved.resumeNodeId !== null
+      || saved.resumeNodeId === null && target.resumeNodeId !== null && target.nodes[target.acknowledgedNodeIds.length].kind !== "checkpoint"
+      || progressIntent.preference.records.some(record => record.recordId === target.recordId)
+      || !parseBookyJourneyProgress({ ...progressIntent.preference, records: [...progressIntent.preference.records, target] })) return null;
+    // A forged resolver cannot manufacture progress: transferred target nodes
+    // must be an ordered semantic subset of the old acknowledged prefix.
+    let sourceIndex = 0;
+    for (const id of target.acknowledgedNodeIds) {
+      const node = target.nodes.find(node => node.id === id)!;
+      while (sourceIndex < saved.acknowledgedNodeIds.length && semanticKey(saved.nodes[sourceIndex]) !== semanticKey(node)) ++sourceIndex;
+      if (sourceIndex >= saved.acknowledgedNodeIds.length) return null;
+      ++sourceIndex;
+    }
+    const offer = Object.freeze({ migrationId, migrationChecksum, preservedRecord: pair.records[0], targetRecord: target });
+    return { key: JSON.stringify([saved.recordId, bookyJourneyRouteKey(plan), migrationId, migrationChecksum]), plan, offer };
+  }
+
   function cancelNavigation() {
     const pending = navigation; navigation = null;
     if (!pending) return;
-    if (!pending.accepted) { pending.session.index = pending.originIndex; pending.session.completedCount = pending.originCount; }
+    if (!pending.accepted) {
+      pending.session.index = pending.originIndex; pending.session.completedCount = pending.originCount;
+      if (pending.rollback && session === pending.session) session = pending.rollback;
+    }
     pending.controller.abort();
   }
   function currentPlan(observed: Observation): BookyJourneyPlan | null {
@@ -112,16 +155,19 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     const host = observed.host, plan = currentPlan(observed);
     const status = host?.profileKey === null ? "profile-required" : observed.plans.length ? "ready" : "unavailable";
     const routes = Object.freeze(observed.plans.map(plan => Object.freeze({ key: bookyJourneyRouteKey(plan), title: plan.title })));
+    const migrations = Object.freeze(session?.phase === "unavailable" ? (observed.migrations ?? []).map(candidate => Object.freeze({
+      key: candidate.key, title: candidate.plan.title, fromVersion: candidate.offer.preservedRecord.journeyVersion,
+      toVersion: candidate.offer.targetRecord.journeyVersion })) : []);
     const node = plan && session && session.phase !== "unavailable" ? plan.nodes[session.index] ?? null : null;
     const active = session ? Object.freeze({ title: node ? plan!.title : null, node, index: session.index, total: session.total,
       completedCount: session.completedCount, phase: session.phase,
       canOpen: !!node && (session.phase === "ready" || session.phase === "failed"),
       canNext: !!node && session.phase === "ready" && !!host && matches(node, host.view) }) : null;
-    const key = JSON.stringify([progressViewRevision, status, routes, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
+    const key = JSON.stringify([progressViewRevision, status, routes, migrations, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
       active.total, active.completedCount, active.phase, active.canOpen, active.canNext, !!active.node]]);
     if (key === renderedKey && host === renderedHost && (host?.revision ?? null) === renderedRevision) return;
     renderedKey = key; renderedHost = host; renderedRevision = host?.revision ?? null;
-    const next = Object.freeze({ revision: snapshot.revision + 1, status, routes, active }); snapshot = next;
+    const next = Object.freeze({ revision: snapshot.revision + 1, status, routes, migrations, active }); snapshot = next;
     for (const listener of [...listeners]) {
       if (snapshot !== next) break;
       if (listeners.has(listener)) { try { listener(); } catch { /* Views do not own admission. */ } }
@@ -161,8 +207,20 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
           if (validOffer(offer, plan, plan.nodes[0].id)) plans.push(plan);
         }
       }
+      const migrations: MigrationCandidate[] = [];
+      const saved = progressIntent.preference.records.find(record => record.recordId === progressIntent.preference.activeRecordId
+        && record.recordId === session?.recordId);
+      if (host?.active && host.resolveMigration && saved && !currentPlan({ host, plans })) {
+        for (const plan of plans) {
+          if (plan.id !== saved.journeyId || plan.version <= saved.journeyVersion || plan.locale !== saved.locale
+            || saved.policyFingerprint !== fingerprint(host.profileKey)) continue;
+          const candidate = migrationCandidate(host, plan, saved, host.resolveMigration(saved, plan));
+          if (epoch !== token || disposed) return null;
+          if (candidate) migrations.push(candidate);
+        }
+      }
       const current = readHost();
-      return epoch === token && !disposed && current === host && current?.revision === revision ? { host, plans } : null;
+      return epoch === token && !disposed && current === host && current?.revision === revision ? { host, plans, migrations } : null;
     } catch { return null; }
     finally { reading = false; }
   }
@@ -177,6 +235,21 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       return epoch === token && !disposed && current === host && current.revision === revision
         && validOffer(offer, plan, plan.nodes[index].id) ? offer : null;
     } catch { return null; }
+    finally { reading = false; }
+  }
+  function resolveMigration(observed: Observation, expected: MigrationCandidate, token: number): boolean {
+    if (!observed.host?.resolveMigration || reading || disposed) return false;
+    reading = true;
+    try {
+      const host = observed.host, revision = host.revision, saved = expected.offer.preservedRecord;
+      const plan = observed.plans.find(plan => bookyJourneyRouteKey(plan) === bookyJourneyRouteKey(expected.plan));
+      if (epoch !== token || readHost() !== host || progressIntent.preference.activeRecordId !== saved.recordId
+        || !plan || !progressIntent.preference.records.some(record => JSON.stringify(record) === JSON.stringify(saved))) return false;
+      const candidate = migrationCandidate(host, plan, saved, host.resolveMigration!(saved, plan));
+      const current = readHost();
+      return epoch === token && !disposed && current === host && current.revision === revision && !!candidate
+        && candidate.key === expected.key && JSON.stringify(candidate.offer) === JSON.stringify(expected.offer);
+    } catch { return false; }
     finally { reading = false; }
   }
   function refresh(): Observation | null {
@@ -225,7 +298,8 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     const observed = refresh();
     return observed && revision === snapshot.revision ? observed : null;
   }
-  function move(observed: Observation, index: number, acknowledged: number, semantic = false): boolean {
+  function move(observed: Observation, index: number, acknowledged: number, semantic = false,
+    migration?: { candidate: MigrationCandidate; original: Session }): boolean {
     const target = session, plan = currentPlan(observed);
     if (!target || !plan || !observed.host) return false;
     if (progressFor(observed, plan, acknowledged) === null) return false;
@@ -234,28 +308,33 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     cancelNavigation();
     if (epoch !== token || disposed || session !== target) return false;
     const pending: Navigation = { session: target, controller: new AbortController(), accepted: false,
-      originIndex: target.index, originCount: target.completedCount, originView: observed.host.view, view: viewKey(observed.host.view) };
+      originIndex: target.index, originCount: target.completedCount, originView: observed.host.view, view: viewKey(observed.host.view),
+      rollback: migration?.original };
     navigation = pending; target.index = index; target.phase = "navigating";
     publish(observed);
     if (epoch !== token || disposed || session !== target || navigation !== pending) return false;
     // A view observer may revoke the host without calling refresh itself.
     const finalOffer = resolve(observed, plan, index, token);
-    if (!finalOffer) { if (epoch === token) failClosed(); return false; }
+    if (!finalOffer || migration && !resolveMigration(observed, migration.candidate, token)) { if (epoch === token) failClosed(); return false; }
     let accepted = false;
-    try { accepted = navigate(finalOffer, pending.controller.signal) === true; } catch { /* Explicit retry only. */ }
+    try { accepted = migration !== undefined && acknowledged === target.total || navigate(finalOffer, pending.controller.signal) === true; } catch { /* Explicit retry only. */ }
     if (disposed || session !== target || navigation !== pending || pending.controller.signal.aborted) return false;
     if (accepted) {
       // Navigation may synchronously update the host or revoke policy. A
       // successful port return alone cannot acknowledge a now-revoked step.
       const after = refresh(), current = after && currentPlan(after), confirmation = ++epoch;
       if (!after || !current || session !== target || navigation !== pending
-        || !resolve(after, current, target.index, confirmation)) {
+        || !resolve(after, current, target.index, confirmation)
+        || migration && !resolveMigration(after, migration.candidate, confirmation)) {
         if (session === target && navigation === pending) failClosed();
         return false;
       }
       const progress = progressFor(after, current, acknowledged);
-      if (progress === null) { failClosed(); return false; }
+      if (progress === null || migration && JSON.stringify(progress?.record) !== JSON.stringify(migration.candidate.offer.targetRecord)) {
+        failClosed(); return false;
+      }
       pending.accepted = true; target.completedCount = acknowledged;
+      if (migration && acknowledged === target.total) target.phase = "complete";
       if (progress) target.recordId = progress.record.recordId;
       commitProgress(progress?.preference ?? progressIntent.preference, semantic);
     } else { target.phase = "failed"; cancelNavigation(); }
@@ -267,6 +346,19 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     getProgressIntent: () => progressIntent,
     subscribe(listener: () => void) { if (!disposed) listeners.add(listener); return () => { listeners.delete(listener); }; },
     refresh() { refresh(); },
+    migrate(key: string, revision: number): boolean {
+      const observed = prepare(revision), candidate = observed?.migrations?.find(item => item.key === key), original = session;
+      if (!observed || !candidate || !original || original.phase !== "unavailable") return false;
+      const token = ++epoch;
+      cancelNavigation(); if (epoch !== token || disposed || session !== original) return false;
+      const target = storedSession(candidate.offer.targetRecord); target.phase = "paused"; session = target;
+      const accepted = move(observed, target.index, target.completedCount, true, { candidate, original });
+      if (!accepted) {
+        if (session === target) session = original;
+        if (session === original && !disposed) refresh();
+      }
+      return accepted;
+    },
     restoreProgress(input: BookyJourneyProgressPreference, expectedIntentRevision: number): boolean {
       if (disposed || reading || !Number.isSafeInteger(expectedIntentRevision) || expectedIntentRevision !== progressIntent.revision) return false;
       const preference = parseBookyJourneyProgress(input);
@@ -343,7 +435,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     reset(revision: number): boolean {
       const observed = prepare(revision);
       if (!observed || !session) return false;
-      const target = session, previous = progressIntent.preference;
+      const target = navigation?.rollback && !navigation.accepted ? navigation.rollback : session, previous = progressIntent.preference;
       const preference = parseBookyJourneyProgress({ ...previous,
         activeRecordId: previous.activeRecordId === target.recordId ? null : previous.activeRecordId,
         records: previous.records.filter(record => record.recordId !== target.recordId) });

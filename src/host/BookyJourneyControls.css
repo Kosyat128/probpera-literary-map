@@ -61,6 +61,8 @@
 .booky-journey-controls__reset { margin-top: 12px; }
 .booky-journey-controls__storage { margin-top: 16px; padding-top: 8px; border-top: 1px solid #d8c79e; }
 .booky-journey-controls__storage > button { width: 100%; margin-top: 8px; }
+.booky-journey-controls__migration { margin-top: 16px; padding-top: 8px; border-top: 1px solid #d8c79e; }
+.booky-journey-controls__migration > button { width: 100%; margin-top: 8px; }
 .booky-journey-controls__storage [data-booky-journey-storage="failed"] { color: #8d3425; }
 .booky-journey-controls__confirmation-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .booky-journey-controls__confirmation-actions > button { flex: 1 1 100px; }
