@@ -856,11 +856,11 @@ test('Mr. Booky walks continuously in clear space only by request and stops for 
     await page.evaluate(()=>{
       window.__bookyMobileInput=[];
       for(const type of ['pointerdown','pointerup','click'])document.addEventListener(type,event=>{
-        const button=event.target instanceof Element?event.target.closest('[data-booky-walk],[data-booky-walk-stop],[data-planet-mascot-move]'):null;
+        const button=event.target instanceof Element?event.target.closest('[data-booky-walk],[data-booky-walk-stop],[data-planet-mascot-move],[data-booky-reset-position]'):null;
         if(!button)return;
         const r=document.querySelector('[data-planet-mascot-pet]').getBoundingClientRect();
         window.__bookyMobileInput.push({at:performance.now(),type,pointerType:event.pointerType,trusted:event.isTrusted,
-          control:button.hasAttribute('data-booky-walk-stop')?'stop':button.hasAttribute('data-booky-walk')?'start':'move',
+          control:button.hasAttribute('data-booky-reset-position')?'reset':button.hasAttribute('data-booky-walk-stop')?'stop':button.hasAttribute('data-booky-walk')?'start':'move',
           gesture:document.querySelector('[data-planet-mascot-pet]').getAttribute('data-planet-mascot-gesture'),left:r.left,top:r.top});
       },true);
     });
@@ -936,6 +936,26 @@ test('Mr. Booky walks continuously in clear space only by request and stops for 
       await heldCdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]}).catch(()=>undefined);await heldCdp.detach();
     }
 
+    // Reset the previously touch-dragged companion on the globe as well.
+    // This runs after the held-Stop regression so its original sequence stays intact.
+    await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await companionSaved(fixture);
+    const resetSummary=panel(page).locator('[data-booky-useful-actions] > summary');
+    if(!await resetSummary.evaluate(element=>element.parentElement.open))await resetSummary.tap();
+    const globeResetBefore=mutations(fixture),globeResetSaved=fixture.memory.get(BOOKY),globeResetCanonical=await actual(page);
+    const globeResetOffset=await page.evaluate(()=>window.__bookyMobileInput.length);
+    const globeReset=result.observations.mobileGlobePositionReset={before:(await layout(page)).pet};
+    await panel(page).locator('[data-booky-reset-position]').tap();await expect(panel(page)).toHaveCount(0);await companionSaved(fixture);await settlePosition();
+    globeReset.settled=(await layout(page)).pet;await page.waitForTimeout(350);globeReset.after350ms=(await layout(page)).pet;
+    globeReset.input=await page.evaluate(offset=>window.__bookyMobileInput.slice(offset),globeResetOffset);globeReset.targets=await navigation();
+    globeReset.preferencesUnchanged=JSON.stringify(mutations(fixture))===JSON.stringify(globeResetBefore)&&fixture.memory.get(BOOKY)===globeResetSaved;
+    expect(globeReset.input.some(event=>event.type==='pointerdown'&&event.control==='reset'&&event.pointerType==='touch'&&event.trusted)).toBe(true);
+    expect(globeReset.input.some(event=>event.type==='click'&&event.control==='reset'&&event.pointerType==='touch'&&event.trusted)).toBe(true);
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility','shown');await expect(pet(page)).toHaveAttribute('data-planet-mascot-screen','globe');
+    expect(fits(globeReset.settled,{width:390,height:844})).toBe(true);expect(globeReset.after350ms).toEqual(globeReset.settled);
+    expect(globeReset.targets.every(target=>target.visible&&target.reachable)).toBe(true);
+    for(const target of globeReset.targets)expect(overlap(globeReset.settled,target.rect),target.selector+' remains clear after explicit reset').toBe(false);
+    expect(globeReset.preferencesUnchanged).toBe(true);retained(await actual(page),globeResetCanonical);
+
     result.observations.compactWalk=[];
     for(const[language,size]of [['ru',{width:568,height:320}],['en',{width:568,height:320}],
       ['ru',{width:640,height:360}],['en',{width:640,height:360}]]){
@@ -982,6 +1002,7 @@ test('Mr. Booky walks continuously in clear space only by request and stops for 
     Object.assign(result,{scenario:'explicit-margin-walk',explicitFiniteWalk:true,tipsRequireExplicitCollapse:true,walkFitsViewport:true,walkStartsAtRestingRow:true,walkPathAvoidsNavigation:true,actualLegsStep:true,
       compactWalkAvailabilityMatchesClearSpace:true,compactWalkKeepsNavigationReachable:true,compactUnavailableWalkExplained:true,
       mobileTouchWalkStartsContinuously:true,mobileTouchStopsWalk:true,mobileTouchDragStopsWalk:true,mobileHeldStopCannotRestart:true,
+      trustedTouchGlobeResetPosition:true,globeResetPositionPreservesContext:true,
       dragStopsWalk:true,manualStopWorks:true,backgroundStopsWalk:true,noAutomaticWalkResume:true,
       reducedMotionStopsCurrentWalk:true,reducedMotionPreventsWalk:true,walkDoesNotWritePreferencesOrProgress:true,sameCanonicalGlobe:true});await fixture.verify();
   }finally{
@@ -1575,8 +1596,8 @@ test('Mr. Booky treats held Enter and Space as one walking command',async({},tes
   finally{await page.keyboard.up('Enter').catch(()=>undefined);await page.keyboard.up('Space').catch(()=>undefined);await fixture.close();}
 });
 
-// Three explicit touch-only sequences share one actual App:
-// natural approach/point/return, cancelling return, and reduced-motion pointing.
+// Explicit touch-only sequences share one actual App: natural approach/point/
+// return, cancelling return, resetting position, and reduced-motion pointing.
 // Read-only finite observers; OS reduced-motion emulation; no app state writes.
 for(const [language,view] of [['ru',{width:390,height:844}],['en',{width:320,height:844}]]){
 test(`mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion ${language} ${view.width}`,async({},testInfo)=>{
@@ -1621,14 +1642,18 @@ test(`mobile touch graphics approach returns to reserved dock and respects Stop 
         const pet=document.querySelector('[data-planet-mascot-pet]'),cue=document.querySelector('[data-booky-target]'),graphics=document.querySelector('[data-planet-graphics-settings]');
         const controls=[...document.querySelectorAll('.native-planet-panel__header button,[data-planet-graphics-settings] > summary,[data-planet-graphics-settings] .planet-graphics-settings__option')].map(check);
         return{at:performance.now(),label,phase:cue?.getAttribute('data-booky-target')??null,action:cue?.getAttribute('data-booky-target-action')??null,
-          returning:pet?.getAttribute('data-booky-returning')==='true',dock:visible(document.querySelector('[data-booky-dock-active="true"]')),content:visible(document.querySelector('.native-planet-panel__content')),gesture:pet?.getAttribute('data-planet-mascot-gesture')??null,pet:pet?rect(pet.getBoundingClientRect()):null,
+          returning:pet?.getAttribute('data-booky-returning')==='true',dock:visible(document.querySelector('[data-booky-dock-active="true"]')),content:visible(document.querySelector('.native-planet-panel__content')),gesture:pet?.getAttribute('data-planet-mascot-gesture')??null,visibility:pet?.getAttribute('data-planet-mascot-visibility')??null,screen:pet?.getAttribute('data-planet-mascot-screen')??null,pet:pet?rect(pet.getBoundingClientRect()):null,
           cue:cue?rect(cue.getBoundingClientRect()):null,graphicsOpen:graphics?.open??false,graphicsArea:visible(graphics?.querySelector('fieldset')),controls};
       };
       const value=window.__mobileApproach={events:[],samples:[],startedAt:performance.now(),frame:0,stopped:false,read};
       const event=event=>{const target=event.target instanceof Element?event.target:null;
+        const reset=target?.closest('[data-booky-reset-position]'),r=reset?.getBoundingClientRect();
+        const resetTarget=r?{rect:rect(r),reachable:[.15,.5,.85].map(fraction=>{
+          const hit=document.elementFromPoint(r.left+r.width*fraction,r.top+r.height/2);return !!hit&&reset.contains(hit);
+        })}:null;
         value.events.push({at:performance.now(),type:event.type,trusted:event.isTrusted,pointerType:event.pointerType??null,
           action:target?.closest('[data-planet-mascot-action]')?.getAttribute('data-planet-mascot-action')??null,
-          control:target?.closest('[data-booky-walk-stop]')?'stop':target?.closest('[data-booky-walk]')?'start':null,state:read('input'),insideGraphics:!!target?.closest('[data-planet-graphics-settings]')});};
+          resetTarget,control:target?.closest('[data-booky-walk-stop]')?'stop':target?.closest('[data-booky-walk]')?'start':null,state:read('input'),insideGraphics:!!target?.closest('[data-planet-graphics-settings]')});};
       for(const type of ['pointerdown','pointerup','click'])document.addEventListener(type,event,true);
       const sample=()=>{if(value.stopped)return;value.samples.push(read('frame'));
         if(performance.now()-value.startedAt<10000)value.frame=requestAnimationFrame(sample);};
@@ -1718,6 +1743,39 @@ test(`mobile touch graphics approach returns to reserved dock and respects Stop 
     expect(cancelled.preferencesUnchanged).toBe(true);retained(cancelled.canonical,natural.canonical);
     // Intentionally no overlap assertion after a user explicitly stops mid-route.
 
+    // Open Useful actions without choosing graphics again. This reset is an
+    // explicit instant placement change; it does not hide the companion.
+    await graphicsAction();
+    const resetAction=panel(page).locator('[data-booky-reset-position]');
+    await expect(resetAction).toHaveText(language==='ru'?'Вернуть на место':'Return to default spot');await expect(resetAction).toBeEnabled();
+    const directReset=currentRecord=all.explicitPositionReset={preferencesBefore:snapshotPreferences()};
+    await observe();directReset.before=await state('before explicit position reset');
+    await resetAction.tap();await expect(panel(page)).toHaveCount(0);await companionSaved(fixture);
+    directReset.settled=await settle();await page.waitForTimeout(1900);directReset.after1900ms=await state('1900ms after explicit position reset');
+    directReset.trace=await finishTrace();directReset.canonical=await actual(page);
+    directReset.preferenceOperations=mutations(fixture).slice(directReset.preferencesBefore.mutations.length);
+    directReset.preferencesUnchanged=unchanged(directReset.preferencesBefore);
+    directReset.savedBefore=JSON.parse(directReset.preferencesBefore.saved??'null');directReset.savedAfter=JSON.parse(fixture.memory.get(BOOKY)??'null');
+    await photograph(`booky-mobile-position-reset-${language}-${view.width}.png`);
+    const resetDown=directReset.trace.events.find(event=>event.type==='pointerdown'&&event.resetTarget&&event.pointerType==='touch'&&event.trusted);
+    expect(resetDown,'The reset is activated by a trusted touch').toBeTruthy();
+    expect(directReset.trace.events.some(event=>event.type==='click'&&event.resetTarget&&event.pointerType==='touch'&&event.trusted)).toBe(true);
+    expect(resetDown.resetTarget.rect.width).toBeGreaterThanOrEqual(44);expect(resetDown.resetTarget.rect.height).toBeGreaterThanOrEqual(44);
+    expect(resetDown.resetTarget.reachable).toEqual([true,true,true]);
+    expect(directReset.trace.events.filter(event=>event.type==='click'&&(event.insideGraphics||event.action))).toEqual([]);
+    expect(directReset.trace.samples.every(sample=>sample.visibility==='shown'&&sample.screen==='collection')).toBe(true);
+    expect(directReset.settled.visibility).toBe('shown');expect(directReset.settled.phase).toBeNull();expect(directReset.settled.returning).toBe(false);
+    expect(contains(directReset.settled.dock,directReset.settled.pet)).toBe(true);expect(directReset.settled.graphicsOpen).toBe(true);finalHitChecks(directReset.settled);
+    expect(directReset.after1900ms.pet).toEqual(directReset.settled.pet);
+    for(const sample of directReset.trace.samples.filter(sample=>sample.at>=directReset.settled.at)){
+      expect(sample.pet).toEqual(directReset.settled.pet);expect(sample.phase).toBeNull();expect(sample.returning).toBe(false);expect(sample.gesture).not.toBe('walking');
+    }
+    // Panel visibility is local state. Resetting position cannot write a
+    // companion record or change stored visibility/progress/preferences.
+    expect(directReset.savedAfter).toEqual(directReset.savedBefore);expect(directReset.savedAfter.visible).toBe(true);
+    expect(directReset.preferencesUnchanged).toBe(true);expect(directReset.preferenceOperations).toEqual([]);
+    expect(directReset.canonical.quality).toBe(cancelled.canonical.quality);retained(directReset.canonical,cancelled.canonical);
+
     const resetBefore=mutations(fixture);await page.locator('[data-planet-mascot-hide]').tap();
     await expect.poll(()=>JSON.parse(fixture.memory.get(BOOKY)??'null')?.visible).toBe(false);
     await page.emulateMedia({reducedMotion:'reduce'});
@@ -1737,6 +1795,8 @@ test(`mobile touch graphics approach returns to reserved dock and respects Stop 
     expect(reduced.preferencesUnchanged).toBe(true);retained(reduced.canonical,cancelled.canonical);
     Object.assign(result,{trustedTouchUtilityOpens:true,mobileApproachAndReturnFinite:true,mobileReturnContinuous:true,mobileNaturalReturnStaysInReservedDock:true,
       finalGraphicsControlsReachable:true,collectionContentExcludesDock:true,trustedTouchStopCancelsReturn:true,stoppedReturnRemainsStill:true,
+      trustedTouchResetPosition:true,resetPositionControlReachable:true,resetPositionKeepsVisible:true,resetPositionReturnsToDock:true,
+      resetPositionRemainsStill:true,resetPositionPreservesPreferencesAndProgress:true,resetPositionPreservesContext:true,
       reducedMotionPointsFromDockWithoutTravel:true,noAutomaticPreferenceWrites:true,sameCanonicalGlobe:true});
     await fixture.verify();
   }finally{

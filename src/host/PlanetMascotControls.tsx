@@ -449,6 +449,18 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     dockDetached.current = Boolean(dock);
     onPositionChange(clamped(next, petSize.width, petSize.height, view));
   };
+  const resetPosition = () => {
+    const current = controller.getSnapshot();
+    if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
+      || current.panel !== "open" || current.mode !== "help" || document.hidden || drag.current) return;
+    cancelPoint.current?.(); walk.stop();
+    dockDetached.current = false;
+    setPointerLook(null); setGesture("rest");
+    onPositionChange(null);
+    // This deliberate touch action changes presentation only. Keep the helper
+    // visible and return focus through the existing panel-close owner.
+    controller.togglePanel();
+  };
   const endDrag = (event: ReactPointerEvent<HTMLButtonElement>) => {
     const intent = drag.current;
     if (intent?.pointerId !== event.pointerId) return;
@@ -776,6 +788,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
               {(["random-country", "recent", "downloads", "graphics"] as const).map(action => <button key={action}
                 type="button" data-planet-mascot-action={action} disabled={!controller.canAct(action)}
                 onClick={() => perform(action)}>{actionLabel(action)}</button>)}
+              <button type="button" data-booky-reset-position="" onClick={resetPosition}>
+                {ru ? "Вернуть на место" : "Return to default spot"}
+              </button>
             </div>
           </details>
         </>}
