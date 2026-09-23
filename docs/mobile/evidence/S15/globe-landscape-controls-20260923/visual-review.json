@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T15:00:46.159Z",
+  "pass": true,
+  "scope": "Direct visual review of the 20 actual formal browser-a1 captures for the bounded native short-landscape globe controls and Booky placement fix.",
+  "sourceCommit": "1b8e63f1c0fb8a70d80e646825c002c7c44b58d1",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/source-manifests/4056d59f1037417e.json",
+    "sha256": "4056d59f1037417ec2c724fc3098c028863671223da546f0eaf0535b1aed34c9",
+    "fileCount": 1650
+  },
+  "method": "Each of the 20 original PNG files was opened directly with view_image; metadata is taken from its formal source-evidence capture and checked against original bytes.",
+  "imageCount": 20,
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-help-ru-1440.png",
+      "filename": "booky-live-help-ru-1440.png",
+      "sha256": "4f73f8fbef41825f7c1b28b32a758599ace88e21d4f8655372fb1565e06642ea",
+      "width": 1440,
+      "height": 850,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "Russian desktop helper, close control and main action labels are legible; character and magnifier render without clipping.",
+        "Floating helper overlays part of the archive; this capture does not establish universal access to underlying content."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+      "filename": "booky-live-actual-drawing-buffer.png",
+      "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+      "width": 256,
+      "height": 256,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "Actual 256px drawing buffer shows the green book model, rounded eyes, articulated gloves and shoes; magnifier shaft visually meets the right glove."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-guide-en-320.png",
+      "filename": "booky-live-guide-en-320.png",
+      "sha256": "b2fbd75741c999b97e613c9789f40826075947b458c0ccb77a70f274c486d68c",
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English narrow guide fits horizontally; current Search focus and helper close are visible. Character and its controls remain below the card.",
+        "Guide is an internally scrollable card; lower content is outside this captured scroll position."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-interaction-en-landscape.png",
+      "filename": "booky-live-interaction-en-landscape.png",
+      "sha256": "22fb025f0903b09444c942f81724b8a26be2f09037ae80ffa19007225f269113",
+      "width": 844,
+      "height": 390,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English short landscape guide, its close and highlighted Search target are visible; character and compact row remain inside the viewport.",
+        "Open guide overlays the middle of the edition rail and part of the globe dock. The strict new dock reachability claim applies with this optional guide closed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion/booky-margin-walk-ru-1440.png",
+      "filename": "booky-margin-walk-ru-1440.png",
+      "sha256": "bd2d01592d04d462b37a17d1176b00cd10d054cfe05c282382ffa5488fe1f4ab",
+      "width": 1440,
+      "height": 850,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "Russian desktop margin-walk capture shows the live character and explicit Stop control; globe toolbar and archive close remain visible.",
+        "Character overlays some ordinary archive content; a still image does not itself prove motion."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-target-approach-ru-1440.png",
+      "filename": "booky-target-approach-ru-1440.png",
+      "sha256": "7fd0f215d8d528051235d3a3840fdd38caaaf1a8c74289f863821c3cbf06c7bb",
+      "width": 1440,
+      "height": 900,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "Russian approach capture shows the selected graphics section, focus cue and finite-motion Stop control; collection locale and close remain clear.",
+        "Character overlaps explanatory content at the lower right; behavioral arrival and cancellation are established by the accompanying test."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png",
+      "filename": "booky-mobile-controls-ru-320.png",
+      "sha256": "f9871a7ff49698912dacfe5f2644a248f3d0569b44eced32a609db7f0b27a2f6",
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "Russian 320px controls, appearance button, edition arrows, globe dock and collapsed country archive are visible; compact character controls fit above the dock.",
+        "The walk control covers part of the zoom-status text; this is outside the tested navigation hit targets."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png",
+      "filename": "booky-mobile-controls-en-320.png",
+      "sha256": "08c09a2b0ff88db5afb2ba2fe4c0792f99378c67e326abb229aee3b41f30cf9b",
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English 320px version preserves compact character controls, locale access, globe dock and archive header within the viewport.",
+        "The walk control covers part of the zoom-status text; no complete unobstructed-content claim is made."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-landscape.png",
+      "filename": "booky-mobile-controls-en-landscape.png",
+      "sha256": "f0201e1d41d3f552f2e2265a605d7d42083b0b15484bcdc5a23c9c912c9accdd",
+      "width": 800,
+      "height": 400,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English 800px landscape has clear top navigation, edition rail, globe dock and country header; compact Booky row fits between them."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png",
+      "filename": "booky-mobile-collection-en-landscape.png",
+      "sha256": "cb31645b3fa814cd0d982d89bebf403b2bf4b16e7a7f611382beedf286deb67d",
+      "width": 800,
+      "height": 400,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English landscape collection header, locale switch, close and visible book detail buttons remain clear.",
+        "Floating Booky overlaps one book card title; ordinary content under the movable character is not fully unobstructed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-tips-en-320.png",
+      "filename": "booky-mobile-collection-tips-en-320.png",
+      "sha256": "53dac9bc4a70b3ee8196a29103e59e8d495fc797d15ce8bdc3a642835fa1277b",
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English 320px collection helper fits horizontally; its close and collection header controls are visible.",
+        "Character and open helper overlay part of the shelf content and control area. This retained overlay state is excluded from universal navigation or full accessibility acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-useful-actions-ru-320.png",
+      "filename": "booky-useful-actions-ru-320.png",
+      "sha256": "9d2cb229bca95b98804d3ade1d3c20fb6e765d1e32b3f8dd1f08e94e65834996",
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "Russian narrow useful-actions card shows readable action labels in its current scroll position; character remains below the card and globe dock stays visible.",
+        "Card content extends beyond the captured scroll position; the image alone does not certify every helper action."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+      "filename": "booky-explicit-gestures-en-1440.png",
+      "sha256": "240d4a7cd142ef1f54435ddf231ab1c7514c73167127faca9e3d15161c622509",
+      "width": 1440,
+      "height": 850,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English desktop gesture grid is legible; selected shy reaction and Surprise me focus are visible. Character, glove and magnifier remain coherent."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png",
+      "filename": "globe-landscape-controls-ru-800.png",
+      "sha256": "1c968a821b806b582b34582daa1da28b61d47f80e25e82818adb5edb0bcf9b60",
+      "width": 800,
+      "height": 400,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "Russian 800x400 collapsed archive is compact; all five visible globe dock controls sit above its boundary. Booky row leaves dock, country action and top navigation visually clear."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png",
+      "filename": "globe-landscape-controls-en-800.png",
+      "sha256": "891fbb197835b62ff375764cdf606af0611348453ccc8df5c6b85cc379b508f1",
+      "width": 800,
+      "height": 400,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English 800x400 preserves the same separation of globe dock, compact archive header and Booky row. Open archive action and Source control are clear."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png",
+      "filename": "globe-landscape-controls-en-667.png",
+      "sha256": "a97ccc43d1c549c9ab3e20903a5e10bdb468514601585647bcf1ef59c6cb2f38",
+      "width": 667,
+      "height": 375,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English 667x375 dock fits fully across the width above the country header; zoom, pause, reset and source controls are visually clear. Compact Booky row stays above the dock."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png",
+      "filename": "globe-landscape-archive-open-en-667.png",
+      "sha256": "09dc846fbf5a96b2584734e22cd82a203dbc667279822a0e1ce965bab5e3208f",
+      "width": 667,
+      "height": 375,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English expanded 667x375 archive leaves the country header, Expand action and inner close button clear.",
+        "Booky row moves left of the inner close button; some archive heading/content is overlaid by the optional character."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+      "filename": "reader-profile-saved-ru.png",
+      "sha256": "92f1e307d28785cb82274b597bd1e2ca7846155f153934da634008ea6de58d3c",
+      "width": 1440,
+      "height": 850,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "Russian saved reader profile displays readable age, level, local-save confirmation and delete action; character stays beside the card."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+      "filename": "reader-profile-draft-narrow-en.png",
+      "sha256": "56c30e169547dcd5a3a801e20d8e7ed06c91ac584e687b15a6aff5b480babbf3",
+      "width": 320,
+      "height": 850,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English narrow reader-profile draft displays readable age and reading-level fields without horizontal clipping.",
+        "Save control is partially below the captured internal scroll position; this is not evidence that all form controls are simultaneously visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+      "filename": "reader-profile-delete-failed-en.png",
+      "sha256": "decf3637347ce004eeb93f4f55d7fbc3da456bb42caf2c2f2a653d71b2859165",
+      "width": 1440,
+      "height": 850,
+      "inspected": true,
+      "reviewer": "/root/landscape_final_visual",
+      "findings": [
+        "English failed-deletion state shows a clear error message and Try deleting again action; profile fields and character render normally."
+      ]
+    }
+  ],
+  "scopedFindings": [
+    "New collapsed short-landscape captures separate globe dock, country header and Booky controls at 800x400 and 667x375 in the exercised locales.",
+    "Expanded 667x375 capture confirms that both country header and the inner archive close button remain visually clear.",
+    "No visual blocker was found for this bounded source change."
+  ],
+  "limitations": [
+    "This is browser screenshot review, not installed-device, nonzero operating-system safe-area, full accessibility, stage, release or model-art acceptance.",
+    "Open helper cards and the movable character can overlay some content and, in retained guide/collection states, underlying control areas. The new strict landscape reachability claim concerns the closed-guide states exercised by the new case.",
+    "Static captures do not prove animation, focus, hit testing, persistence or canonical scene identity; those claims rely on the accompanying tests.",
+    "The existing 3D model is unchanged; these captures are not newly generated model portraits."
+  ],
+  "releaseReady": false
+}

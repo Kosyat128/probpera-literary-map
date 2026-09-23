@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/globe-landscape-controls-20260923/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 24456,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "4bca6daab7114e04cfc5031cba1f24a03f3f5f905bb3e26d2a42f69497a7299d"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "62815ae5d4e5536af313ec91f56b2f2718e9f79b91430f9968627f02467aa001"
+  }
+}

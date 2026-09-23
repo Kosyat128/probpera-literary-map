@@ -1,0 +1,11 @@
+{
+  "pass": false,
+  "exitCode": 1,
+  "error": "ReferenceError: productionInventorySources is not defined",
+  "failedAt": "checkpoint.mjs:98",
+  "sourceCommit": "1b8e63f1c0fb8a70d80e646825c002c7c44b58d1",
+  "checkpointResultWritten": false,
+  "checkpointFilesWritten": false,
+  "recording": "Retrospective record from original tool execution; no original stdout/stderr file was created.",
+  "helperSha256": "4317d16e71d1c7e1a61c298ae0ef174312e49eb4339782c679393426b2f311f4"
+}

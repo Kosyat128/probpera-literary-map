@@ -1,0 +1,846 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T14:59:29.610Z",
+  "recordingComplete": true,
+  "kind": "retained-pre-freeze-native-globe-landscape-diagnostics",
+  "baseCheckpoint": "63b2f9215000848339f5365364a40f3ee0e5d564",
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "invocation": {
+    "command": [
+      "node",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-mobile-placement-20260923/playwright.config.mjs",
+      "--grep",
+      "short landscape globe controls"
+    ],
+    "diagnosticRootPattern": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-aN",
+    "environment": {
+      "S15_BROWSER_OUTPUT": "<diagnosticRoot>/output",
+      "S15_BROWSER_REPORT": "<diagnosticRoot>/playwright.json",
+      "S15_BROWSER_PROFILE_ROOT": "<diagnosticRoot>/profiles",
+      "TEMP": "<diagnosticRoot>/temp",
+      "TMP": "<diagnosticRoot>/temp"
+    },
+    "redirection": {
+      "stdout": "<diagnosticRoot>/stdout.log",
+      "stderr": "<diagnosticRoot>/stderr.log"
+    },
+    "provenance": "Invocation and actual process exit codes confirmed retrospectively by the executing browser agent; original reports and stdout/stderr are independently hash-bound."
+  },
+  "attempts": [
+    {
+      "attempt": "a1",
+      "scope": "One targeted landscape globe-controls scenario against an evolving candidate; not the complete nine-case formal suite.",
+      "summary": "The new strict landscape scenario ran against the prior product layout. With the companion hidden, a RU 800 x 400 zoom control was obstructed by the country strip.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a1/playwright.json",
+        "sha256": "1d9737ad5ee474e922463e8c05e290302ccfdf37d7252ec63ea542131a1ddb88"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a1/output/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "10d535c3e65a5ed81d36d9efba360d84f2ebacb4b13c4991bf350358a228a2ea"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a1/output/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-cfab194cd32223e24670cbab40de78eecc4aa27b.json",
+        "sha256": "10d535c3e65a5ed81d36d9efba360d84f2ebacb4b13c4991bf350358a228a2ea"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a1/stdout.log",
+          "sha256": "7a7395d12380d063bf8704b6ed83b28835b9f1dd08d1b28f1e287ddbf8102163"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a1/stderr.log",
+          "sha256": "dd86da51da291fc579571a5a7db6d2b81d7a5db8ab77a09692a5a8d7f948567c"
+        },
+        "startedAt": "2026-09-23T14:30:20.368Z",
+        "durationMs": 8450.291,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Retrospective confirmation by executing /root/booky_mobile_browser from the original diagnosticExit=$LASTEXITCODE tool output. The PowerShell wrapper exit code is not substituted for the Node status.",
+        "toolSessionId": null,
+        "completedInInitialToolCall": true,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-placement-20260923\\playwright.config.mjs",
+        "testTitle": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "964943c39a4cebba9ec1cae8a3510d857f41ed78eaa138879e8952f1ab3ff6ab"
+        },
+        {
+          "path": "src/host/PlanetStandControls.css",
+          "sha256": "2da119e90674c18ad283af540d6b8a39957fd67066090770a6172f69c248c55a"
+        },
+        {
+          "path": "src/host/host.css",
+          "sha256": "3f81496e8c89f1f0e4facfa3267c2bbd3c05425c0baa3bb5459981cad0c18877"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "ad566128dfa08e54ac01dded363b0b029ad550ae180e9ceeb76613c19520f597"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "globe-landscape-controls-failure.png",
+          "sha256": "f6ae8e62639ffd32e303a1acfcad5a21d8b1bf959caf2c8a17f13ec3d49bd1b7",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a1/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: ru 800 hidden: [data-globe-control=\"zoom-in\"] receives pointer hits"
+      ],
+      "reportedBehaviorFlags": {}
+    },
+    {
+      "attempt": "a2",
+      "scope": "One targeted landscape globe-controls scenario against an evolving candidate; not the complete nine-case formal suite.",
+      "summary": "The compact collapsed-country height and matching stand/globe offsets were present. Initial RU/EN landscape hit checks and genuine zoom/reset/source actions proceeded; after cycling the country sheet, the fixture found a toolbar target outside the visible bounds. The fixture still settled this transition using only two frames.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/playwright.json",
+        "sha256": "8b89a47585e3fedf19d83847f9d11670141c9c47643806fe8c27023b811ca6be"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/output/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "9392ddad4dd56386421473dc884ab884b8439fcb56f0605a2123e6ac3489148a"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/output/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-2ace6149263d8a8ff2d51ac0ffe9a351af7b4cbe.json",
+        "sha256": "9392ddad4dd56386421473dc884ab884b8439fcb56f0605a2123e6ac3489148a"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/stdout.log",
+          "sha256": "eac65f6927bb29aecaec4f6917812b6cfa77d60a18d6701809c126068e114f10"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/stderr.log",
+          "sha256": "65008dfbfc9fe8098e960586e9dc958f032703ebf57a5d87551ee03a3ac55b0c"
+        },
+        "startedAt": "2026-09-23T14:32:04.110Z",
+        "durationMs": 15810.563,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Retrospective confirmation by executing /root/booky_mobile_browser from the original diagnosticExit=$LASTEXITCODE tool output. The PowerShell wrapper exit code is not substituted for the Node status.",
+        "toolSessionId": 46375,
+        "completedInInitialToolCall": false,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-placement-20260923\\playwright.config.mjs",
+        "testTitle": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "964943c39a4cebba9ec1cae8a3510d857f41ed78eaa138879e8952f1ab3ff6ab"
+        },
+        {
+          "path": "src/host/PlanetStandControls.css",
+          "sha256": "21b7adcd19e1344d78a20f59b20e84840749b91878a6c20babe61a2e21447224"
+        },
+        {
+          "path": "src/host/host.css",
+          "sha256": "258c41264547ab7b5ee5bf2c857acb67db0f35d27b8bb630b162da77e6d19860"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "ad566128dfa08e54ac01dded363b0b029ad550ae180e9ceeb76613c19520f597"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "globe-landscape-controls-ru-800.png",
+          "sha256": "804d4ab40b814fa5c5e085a3ff716308dff1285e3181736a18fd3046e106debf",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-800.png",
+          "sha256": "772e13332f6ca8f70b6397bc92f94dc51d5ba10822335e83ee7e5d92ede562a0",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-667.png",
+          "sha256": "8b96e171ddeac887667b39cf73f82d7f96ca4224572e406828bb5ab0ef7854e5",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png"
+        },
+        {
+          "filename": "globe-landscape-archive-open-en-667.png",
+          "sha256": "00099982bc846585951c74ce775ac36b55244efede17c4da8ff02bda37be75da",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png"
+        },
+        {
+          "filename": "globe-landscape-controls-failure.png",
+          "sha256": "320bbc08ba5a64ef3beaeb82829eb0ac7b89d4bb55b4243019dbbf6fc39ff888",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a2/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: after country collapse: [data-globe-control=\"zoom-in\"] stays visible with a 44px target"
+      ],
+      "reportedBehaviorFlags": {}
+    },
+    {
+      "attempt": "a3",
+      "scope": "One targeted landscape globe-controls scenario against an evolving candidate; not the complete nine-case formal suite.",
+      "summary": "The fixture added bounded layout settling. With unchanged product CSS, the post-country-cycle failure persisted: the zoom control was horizontally displaced, while the country header reached its correct compact height. This established that the failure could not simply be dismissed as a two-frame test wait.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/playwright.json",
+        "sha256": "34a85bfb25156db7efe24b139073501290b09bc5892396aee12983aed2e14995"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/output/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "97d4cf305bb94cd4ff61972e63c4b805347c53cf32db52ea095599e048369fbd"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/output/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-94dedabad07b5a13cbf4c3df0e4045a6cc392723.json",
+        "sha256": "97d4cf305bb94cd4ff61972e63c4b805347c53cf32db52ea095599e048369fbd"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/stdout.log",
+          "sha256": "7a008284d454369dca88f06bb8d635d362d3c12cde5a5727f29e940246562410"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/stderr.log",
+          "sha256": "b30c40f9938fb717db1c13993fed450a48d648b007100283dabedc0f59d59415"
+        },
+        "startedAt": "2026-09-23T14:33:21.534Z",
+        "durationMs": 17238.996,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Retrospective confirmation by executing /root/booky_mobile_browser from the original diagnosticExit=$LASTEXITCODE tool output. The PowerShell wrapper exit code is not substituted for the Node status.",
+        "toolSessionId": 71446,
+        "completedInInitialToolCall": false,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-placement-20260923\\playwright.config.mjs",
+        "testTitle": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "964943c39a4cebba9ec1cae8a3510d857f41ed78eaa138879e8952f1ab3ff6ab"
+        },
+        {
+          "path": "src/host/PlanetStandControls.css",
+          "sha256": "21b7adcd19e1344d78a20f59b20e84840749b91878a6c20babe61a2e21447224"
+        },
+        {
+          "path": "src/host/host.css",
+          "sha256": "258c41264547ab7b5ee5bf2c857acb67db0f35d27b8bb630b162da77e6d19860"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "f4feea6251ecf3534bc4471cbb1f149d2755e0e70fbe1d8d36b004b22ea4f91d"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "globe-landscape-controls-ru-800.png",
+          "sha256": "4da6b52d70992ff945ba2a2e22e025922ecd344c675357913ad2ac562f2aac8e",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-800.png",
+          "sha256": "7eb77200f5d5c3f75164a49b9c82c305682c71d8f944b7892f88fd5f2bc59429",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-667.png",
+          "sha256": "29a93dfb3745f3d3d89395d602890a4eb535a082a55a3b14764de8a30fa4822f",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png"
+        },
+        {
+          "filename": "globe-landscape-archive-open-en-667.png",
+          "sha256": "a7f4dcd5a55966dc71d161c2958c2f4e411332b7f0e6e43970a65bab5bef4367",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png"
+        },
+        {
+          "filename": "globe-landscape-controls-failure.png",
+          "sha256": "1f19e69a4e688ecaa662dc00621b654fd2b93ac402cf7a1c912247eea97bdf31",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a3/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: after country collapse: [data-globe-control=\"zoom-in\"] stays visible with a 44px target"
+      ],
+      "reportedBehaviorFlags": {}
+    },
+    {
+      "attempt": "a4",
+      "scope": "One targeted landscape globe-controls scenario against an evolving candidate; not the complete nine-case formal suite.",
+      "summary": "Readonly host and ancestor layout observations were added; product CSS remained identical to a3. This focused attempt passed, but changed observation timing and a passing rerun did not identify or repair the horizontal-drift cause. The expanded-country screenshot also motivated a separate check of companion/header obstruction.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/playwright.json",
+        "sha256": "b1f43217d98be705372fa12de9f5a465f60f189386c6a93133ecf6f4f92e583e"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/output/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "9c28633bc7d4bfd61bbc653bd7e1f9ea2dba0e8be12857a06ddc3fb5c89b14af"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/output/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-e14ea291e251cd1208e3b869aab061f57227ca13.json",
+        "sha256": "9c28633bc7d4bfd61bbc653bd7e1f9ea2dba0e8be12857a06ddc3fb5c89b14af"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/stdout.log",
+          "sha256": "efa44248ecfd2f0f38459351e90ee17b98936e5ed9f0ed7305d6b9ba5b502ee1"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/stderr.log",
+          "sha256": "25a6ef477f313f49b7b6151ca0bc665d43f0538372aba73a7eb8a478572a1307"
+        },
+        "startedAt": "2026-09-23T14:35:54.494Z",
+        "durationMs": 22108.214,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "Retrospective confirmation by executing /root/booky_mobile_browser from the original diagnosticExit=$LASTEXITCODE tool output. The PowerShell wrapper exit code is not substituted for the Node status.",
+        "toolSessionId": 97470,
+        "completedInInitialToolCall": false,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-placement-20260923\\playwright.config.mjs",
+        "testTitle": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "964943c39a4cebba9ec1cae8a3510d857f41ed78eaa138879e8952f1ab3ff6ab"
+        },
+        {
+          "path": "src/host/PlanetStandControls.css",
+          "sha256": "21b7adcd19e1344d78a20f59b20e84840749b91878a6c20babe61a2e21447224"
+        },
+        {
+          "path": "src/host/host.css",
+          "sha256": "258c41264547ab7b5ee5bf2c857acb67db0f35d27b8bb630b162da77e6d19860"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "65f9f8b6b5ac30315dfa2005ce745feeac9e399a05d13aab606a0ec34a80f2d4"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "globe-landscape-controls-ru-800.png",
+          "sha256": "2b3b3e7adb7fb003111cb64a6f2d7235a33468bd783d41670b1c476274b5dc3d",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-800.png",
+          "sha256": "79cf28bdbca2ff65ee604dce9f4112bd29843339aac53a355d5a1911e2b61906",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-667.png",
+          "sha256": "8873bd7df5ad6e89dcd9b9663326aa44d464746c5f5a8d9a2fb8871335a6a0e2",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png"
+        },
+        {
+          "filename": "globe-landscape-archive-open-en-667.png",
+          "sha256": "4605cd08f183b8164c1688ddc65fbe49f593b6c89862ffd7204838eef6e77d5e",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a4/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png"
+        }
+      ],
+      "failureMessages": [],
+      "reportedBehaviorFlags": {
+        "hiddenCompanionToolbarReachable": true,
+        "shownCompanionToolbarReachable": true
+      }
+    },
+    {
+      "attempt": "a5",
+      "scope": "One targeted landscape globe-controls scenario against an evolving candidate; not the complete nine-case formal suite.",
+      "summary": "The native short-landscape world-map stage used overflow:clip, and the fixture explicitly attempted a maximum DOM scroll on that stage. The stage retained zero scroll and its rectangle/canonical camera pose; all existing control assertions passed. This run preceded the added country-parent ResizeObserver observation.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/playwright.json",
+        "sha256": "0afee8ad0e18bb18bde5a168a13eaadba128f102be4966fa1130b385b16b5b8d"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/output/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "6e6cef84820a46502f8fcfa1acb5302ac6afcd7ece48c0a63acdc529ad335cd1"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/output/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-fb1ad8515cd70aba81003086cc5c10dc70ae0bcc.json",
+        "sha256": "6e6cef84820a46502f8fcfa1acb5302ac6afcd7ece48c0a63acdc529ad335cd1"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/stdout.log",
+          "sha256": "3ce67dc988afb14f2d2a6260704ebb13ee9e0f38cb6907fade15b4df69764445"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/stderr.log",
+          "sha256": "6d01a05b4c50f317996cc9e88d948bb46667ee6a6dbb32de681bba1d6e3885b0"
+        },
+        "startedAt": "2026-09-23T14:38:16.562Z",
+        "durationMs": 22724.863999999998,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "Retrospective confirmation by executing /root/booky_mobile_browser from the original diagnosticExit=$LASTEXITCODE tool output. The PowerShell wrapper exit code is not substituted for the Node status.",
+        "toolSessionId": 57936,
+        "completedInInitialToolCall": false,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-placement-20260923\\playwright.config.mjs",
+        "testTitle": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "964943c39a4cebba9ec1cae8a3510d857f41ed78eaa138879e8952f1ab3ff6ab"
+        },
+        {
+          "path": "src/host/PlanetStandControls.css",
+          "sha256": "21b7adcd19e1344d78a20f59b20e84840749b91878a6c20babe61a2e21447224"
+        },
+        {
+          "path": "src/host/host.css",
+          "sha256": "e66d8712040e587d9a918b8bbc94d887fca32444d31c9a50a143159f3940fb6a"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "20e51bce9908e51f1fddb7ff3a10d6131e0d879cad97d56d069d7626c40b062b"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "globe-landscape-controls-ru-800.png",
+          "sha256": "4af5e8f1718505c4d55ed0e529e676a06eb924ed14780fd9f1986a85b9390d29",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-800.png",
+          "sha256": "f61a24642dd473fc1a1a296990495c44a607d88a7184a50f89ff5a3d4cc81a38",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-667.png",
+          "sha256": "a2eb27eb92cab21422afe1d515deb78590027d2bd3dda6ace2d34d88aa0ba335",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png"
+        },
+        {
+          "filename": "globe-landscape-archive-open-en-667.png",
+          "sha256": "98c5e48ef84a5dfbc3ac77d97fe7eb6ec1120196de0524b3a7d281be59a928af",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a5/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png"
+        }
+      ],
+      "failureMessages": [],
+      "reportedBehaviorFlags": {
+        "hiddenCompanionToolbarReachable": true,
+        "shownCompanionToolbarReachable": true,
+        "globeFrameCannotScroll": true
+      }
+    },
+    {
+      "attempt": "a6",
+      "scope": "One targeted landscape globe-controls scenario against an evolving candidate; not the complete nine-case formal suite.",
+      "summary": "Controls also observed the resizing country presentation parent, and the fixture explicitly checked all three pointer samples on the expanded country header before capture. The focused scenario passed with this extra assertion and the declared stage-scroll probe.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/playwright.json",
+        "sha256": "924bc97ad5f61ae3d27e9379146c434e16daf9aa5ce824c1f527eca545f65728"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/output/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "9091e718640f9bb16ba0127853e118867b8c2c9ac0a0659995aaeb2dd55525b3"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/output/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-97def7ab8c2284cde23c88ddd7ad555fc154c362.json",
+        "sha256": "9091e718640f9bb16ba0127853e118867b8c2c9ac0a0659995aaeb2dd55525b3"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/stdout.log",
+          "sha256": "8ac22f7dbc833f28f4c345a2f6168894c0a3ba6ebc127393a01898784ca62f28"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/stderr.log",
+          "sha256": "c61da84aebecf2beddb3bc969f901bc97fb77f1645931b42e47601756ad94086"
+        },
+        "startedAt": "2026-09-23T14:39:48.698Z",
+        "durationMs": 21890.833,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "Retrospective confirmation by executing /root/booky_mobile_browser from the original diagnosticExit=$LASTEXITCODE tool output. The PowerShell wrapper exit code is not substituted for the Node status.",
+        "toolSessionId": 48850,
+        "completedInInitialToolCall": false,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-placement-20260923\\playwright.config.mjs",
+        "testTitle": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "2239cf653b7857b6dfda99c2a8b5367dc03d69a75bad2ef7ba171158adb84558"
+        },
+        {
+          "path": "src/host/PlanetStandControls.css",
+          "sha256": "21b7adcd19e1344d78a20f59b20e84840749b91878a6c20babe61a2e21447224"
+        },
+        {
+          "path": "src/host/host.css",
+          "sha256": "e66d8712040e587d9a918b8bbc94d887fca32444d31c9a50a143159f3940fb6a"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "5a9e3e565930e6bd771b1440c196a64967ea18b3a869ac4b1b2dce98f743c576"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "globe-landscape-controls-ru-800.png",
+          "sha256": "0d8b621537d22ccabccf607b05bdc82780159c5fd18c9fb7e24846a674aeb5b0",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-800.png",
+          "sha256": "a89d85a94443e83034848936351774c445bad1e10573c518c34de1e6e2a74b05",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-667.png",
+          "sha256": "d9e06e6e7de7f14b319aa8d02ce047f65ff179b960d4e1db7f34953f5ddd8174",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png"
+        },
+        {
+          "filename": "globe-landscape-archive-open-en-667.png",
+          "sha256": "fb7a3572439728333cda671f5a6f9f213f90de20567166cedb265d140722f123",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a6/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png"
+        }
+      ],
+      "failureMessages": [],
+      "reportedBehaviorFlags": {
+        "hiddenCompanionToolbarReachable": true,
+        "shownCompanionToolbarReachable": true,
+        "expandedCountryHeaderReachable": true,
+        "globeFrameCannotScroll": true
+      }
+    },
+    {
+      "attempt": "a7",
+      "scope": "One targeted landscape globe-controls scenario against an evolving candidate; not the complete nine-case formal suite.",
+      "summary": "The individual inner archive close button is a companion-placement obstacle. Strict expanded-header and inner-close pointer samples plus trial clicks pass; the root directly inspected the actual expanded screenshot and confirmed both controls are clear.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/playwright.json",
+        "sha256": "0f7167ccfa4f0b9ce01ac68c99d815c1063459f271fad99c73be6d16f804b843"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/output/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "d976351ddef2d907b5e93aeb88e5e3b196e32e66f9fb15ec3104314e8e9afeed"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/output/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-1618a7d7990f18525e1f4e6a23458e92c62511d5.json",
+        "sha256": "d976351ddef2d907b5e93aeb88e5e3b196e32e66f9fb15ec3104314e8e9afeed"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/stdout.log",
+          "sha256": "a4257228959109cceb136bd551035f79703294fd9c3b3135f63e9753d5639e97"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/stderr.log",
+          "sha256": "cf456fc66b181a9bbcd8ad4c93e8e6e6bb5df8ff3744cad03603666a0d5ebf0f"
+        },
+        "startedAt": "2026-09-23T14:46:28.574Z",
+        "durationMs": 21453.651,
+        "workerCount": 1,
+        "retriesConfigured": 0,
+        "testProcessExitCode": null,
+        "exitCodeProvenance": "The original Node exit status was not independently recovered for a7. Its raw Playwright report and stdout record a completed passing test; the subsequent full formal run separately records Node exit 0.",
+        "toolSessionId": null,
+        "completedInInitialToolCall": null,
+        "separateOriginalExecutionJson": null
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-placement-20260923\\playwright.config.mjs",
+        "testTitle": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+        "testFile": "booky-live-character.spec.mjs",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "83bce840c301201f6c0afb2b3d2ff85906ac9ef321879af5151121182c822317"
+        },
+        {
+          "path": "src/host/PlanetStandControls.css",
+          "sha256": "21b7adcd19e1344d78a20f59b20e84840749b91878a6c20babe61a2e21447224"
+        },
+        {
+          "path": "src/host/host.css",
+          "sha256": "e66d8712040e587d9a918b8bbc94d887fca32444d31c9a50a143159f3940fb6a"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "207e443378c5449e80d416252f35662830f3beaa6f69c7c4c3ed6e3dd7ce831b"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "globe-landscape-controls-ru-800.png",
+          "sha256": "cd18102723c7ab721a4b4a38e2014d57ae54585b7b2daa0ef70d6507ef631108",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-800.png",
+          "sha256": "6ec6a23b4421930142165d26d455ebc725434f25aa628be61d07270c78e24698",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png"
+        },
+        {
+          "filename": "globe-landscape-controls-en-667.png",
+          "sha256": "e75e3dd7b32b05fe36a3577d17bd3b14e4d1e48ad990d337e7d819cda495e2e5",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png"
+        },
+        {
+          "filename": "globe-landscape-archive-open-en-667.png",
+          "sha256": "d1386118b85e622874f99d3e97e4243810ee55ec64f61f03e8605ac4e70750bf",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/browser-diagnostic-a7/output/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png"
+        }
+      ],
+      "failureMessages": [],
+      "reportedBehaviorFlags": {
+        "hiddenCompanionToolbarReachable": true,
+        "shownCompanionToolbarReachable": true,
+        "expandedCountryHeaderReachable": true,
+        "globeFrameCannotScroll": true,
+        "countryPanelCloseReachable": true
+      }
+    }
+  ],
+  "aggregate": {
+    "focusedInvocations": 7,
+    "failed": 3,
+    "passed": 4
+  },
+  "sameProductCssAcrossA3AndA4Verified": true,
+  "passingA4DidNotResolveDriftCause": true,
+  "directStageScrollProbe": {
+    "introducedIn": "a5",
+    "method": "A declared direct DOM scrollTo request to the actual world-map stage using maximum scroll extents; no assigned camera or layout styles.",
+    "checks": "Stage scroll remains zero, stage rectangle and canonical pose are retained, requested controls still receive pointer hits."
+  },
+  "finalFocusedCandidate": {
+    "attempt": "a7",
+    "sourceInputs": [
+      {
+        "path": "src/host/PlanetMascotControls.tsx",
+        "sha256": "83bce840c301201f6c0afb2b3d2ff85906ac9ef321879af5151121182c822317"
+      },
+      {
+        "path": "src/host/PlanetStandControls.css",
+        "sha256": "21b7adcd19e1344d78a20f59b20e84840749b91878a6c20babe61a2e21447224"
+      },
+      {
+        "path": "src/host/host.css",
+        "sha256": "e66d8712040e587d9a918b8bbc94d887fca32444d31c9a50a143159f3940fb6a"
+      },
+      {
+        "path": "tests/pwa/booky-live-character.spec.mjs",
+        "sha256": "207e443378c5449e80d416252f35662830f3beaa6f69c7c4c3ed6e3dd7ce831b"
+      }
+    ],
+    "expectedFormalCases": 9,
+    "expectedFormalImages": 20,
+    "formalRunStillRequired": false
+  },
+  "limitations": [
+    "All seven diagnostic runs selected the new seventh live-character test only; they do not substitute for the separate nine-case formal run.",
+    "A passing a4 after extra readonly observations did not establish that the earlier horizontal drift was fixed. The explicit scroll capability probe followed the subsequent overflow:clip product change.",
+    "Diagnostic a6 retained an inner archive close obstruction. The a7 product change and strict hit tests resolve that observed control obstruction. Floating companion UI may still cover ordinary content; this is not full accessibility acceptance.",
+    "Browser evidence uses controlled native ports and zero-inset desktop Chrome; it is not installed-device or nonzero OS-safe-area validation."
+  ],
+  "formalSuiteAcceptance": false,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "fullAccessibilityAccepted": false,
+  "releaseReady": false,
+  "priorLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/diagnostic-history-a1-a6.json",
+    "sha256": "d0d86199194fb6fbde9f445116edc88f4dcc02490b9df5cc01f23f6082d4614f"
+  },
+  "formalSuiteResult": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/browser-a1/result.json",
+    "sha256": "e1cd69c3d77b1daea32659e9588a32ee383c79d15fef8545d370f5278773f504"
+  }
+}

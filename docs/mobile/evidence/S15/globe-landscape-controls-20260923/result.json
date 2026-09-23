@@ -1,0 +1,649 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T15:02:26.338Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "GLOBE_LANDSCAPE_CONTROLS_SCOPED_VALIDATION",
+  "sourceCommit": "1b8e63f1c0fb8a70d80e646825c002c7c44b58d1",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/entry.json",
+    "sha256": "6bdc34528d2878861c340fc00dedb9dc2e944d02eaabdc924bb4727f556863d0"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/checkpoint.mjs",
+    "sha256": "90228499399f4ce0a8818be4e4e7e5c5496d08c2e63c5ca5921a715bd9fc3fb2"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-placement-20260923/result.json",
+    "sha256": "435877e373c59fc12d2f63ace2a33561c2e07d3a57147a3a6c1b0faaab5c6d0f"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/source-manifests/4056d59f1037417e.json",
+    "sha256": "4056d59f1037417ec2c724fc3098c028863671223da546f0eaf0535b1aed34c9",
+    "fileCount": 1650
+  },
+  "sourceCommits": [
+    "1b8e63f1c0fb8a70d80e646825c002c7c44b58d1"
+  ],
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a1"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/unit-a1/result.json",
+      "sha256": "608175b1f52b21964e329253e9545fcb27b35d3c113aebdbace5e44397687e59",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/unit-a1/execution.json",
+        "sha256": "a11402478bea9ced23dc93a62194ee0216044924524cc46736c8e46482cac0a1"
+      },
+      "tests": {
+        "passed": 141,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/unit-a1/vitest.json",
+        "sha256": "c144ce0ecbbc9a1afa1db8300220e919abecc0dbb5c74231f7cc21d42ff9196e"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/static-a1/result.json",
+      "sha256": "36ea3ef4722498cd4afe197aab870d2644d7978a6e8dbddaf8a4fd3e6fd27443",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/static-a1/execution.json",
+        "sha256": "08030ff1de21c918776e585e22b0f720c58d5813d0140a83a019956f17ff9f77"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/browser-a1/result.json",
+      "sha256": "e1cd69c3d77b1daea32659e9588a32ee383c79d15fef8545d370f5278773f504",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/browser-a1/execution.json",
+        "sha256": "adebbada83d4d83edb311cfb7219b8ca4c1d9e7295b8ba9ccc651a6f86ecee1c"
+      },
+      "tests": {
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/browser-a1/playwright.json",
+        "sha256": "19486107dcfe524b44c742e904e4678edc4ea261bf0b5b70e509a8a539b98ff6"
+      }
+    }
+  },
+  "earlierAttempts": [],
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/diagnostic-history.json",
+    "sha256": "4ebf538344de322f6dd373bf1fafeed8cb25a144837e325a7a69d9b470b597fe"
+  },
+  "unitCount": 141,
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserCases": 9,
+  "actualAppCaseCount": 9,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-character.json",
+      "sha256": "4c7680997883cfda7ed437a9453021251647ebc0fb1890ee31a804ad7177e60a",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\attachments\\booky-live-character-source-evidence-89c66cdfbaeec23e12c63e02da2cd48c4388c21c.json",
+        "sha256": "4c7680997883cfda7ed437a9453021251647ebc0fb1890ee31a804ad7177e60a"
+      },
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\\booky-live-character.json",
+      "sha256": "50a04a49dc4f7869c5b9d26e2722c26468d208143f7c4a382b8c75d522787bb4",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\\attachments\\booky-live-character-source-evidence-d8d021134a89077940cb1a5a5fc04b5728dff265.json",
+        "sha256": "50a04a49dc4f7869c5b9d26e2722c26468d208143f7c4a382b8c75d522787bb4"
+      },
+      "test": "Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\booky-live-character.json",
+      "sha256": "51815c2549ad356e36fdc157ae7bc0d884112cbea4f190e158ea5c58199e6f60",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\attachments\\booky-live-character-source-evidence-b59036646c6db3e14909a1f742665b5b73d76140.json",
+        "sha256": "51815c2549ad356e36fdc157ae7bc0d884112cbea4f190e158ea5c58199e6f60"
+      },
+      "test": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion\\booky-live-character.json",
+      "sha256": "40dc0b77c3dee94db22dbd80ad15399cb136786e208e8f4309cf2123e832e586",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion\\attachments\\booky-live-character-source-evidence-47f770c4b6122784b6ca53a580b88ed243931be7.json",
+        "sha256": "40dc0b77c3dee94db22dbd80ad15399cb136786e208e8f4309cf2123e832e586"
+      },
+      "test": "Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion\\booky-live-character.json",
+      "sha256": "961f7958ad679959e12ce177b6587cbdd0fd01471264abe07d8ff2775c47f666",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion\\attachments\\booky-live-character-source-evidence-20d863e2240f0cc3fcf5a69ea1103d1d573130e7.json",
+        "sha256": "961f7958ad679959e12ce177b6587cbdd0fd01471264abe07d8ff2775c47f666"
+      },
+      "test": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales\\booky-live-character.json",
+      "sha256": "ee28a793ef570ff93300d0c0751a00a5b999be10acb792cb2ec0a0f7203fee8b",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales\\attachments\\booky-live-character-source-evidence-fd3f6033b419e135836ee0ae41989517c532dd57.json",
+        "sha256": "ee28a793ef570ff93300d0c0751a00a5b999be10acb792cb2ec0a0f7203fee8b"
+      },
+      "test": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-short-14e75-try-archive-in-both-locales\\booky-live-character.json",
+      "sha256": "22de0f188d8902066e90eca529a82a934d03dbc9e8e37c9abf12356e28b33d71",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-live-character-short-14e75-try-archive-in-both-locales\\attachments\\booky-live-character-source-evidence-039a27e7d7ef91346193505d1b3e30c466ad8d45.json",
+        "sha256": "22de0f188d8902066e90eca529a82a934d03dbc9e8e37c9abf12356e28b33d71"
+      },
+      "test": "short landscape globe controls stay reachable beside the collapsed country archive in both locales"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\booky-reader-policy.json",
+      "sha256": "616765094eea21e703033c85e284d684fa5238f1c0dd4cb1270f4cc1f3f5b86c",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\attachments\\booky-reader-policy-source-evidence-074af4e82bd30e18a676ddec505023bc26af9f1f.json",
+        "sha256": "616765094eea21e703033c85e284d684fa5238f1c0dd4cb1270f4cc1f3f5b86c"
+      },
+      "test": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\booky-reader-policy.json",
+      "sha256": "a49fc1bc39895be14ba944ef08780f46fc365dced230e0355a8a04f3072442a3",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-globe-landscape-controls\\browser-a1\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\attachments\\booky-reader-policy-source-evidence-de6e524a8c65347c62240446392770f33a995cd7.json",
+        "sha256": "a49fc1bc39895be14ba944ef08780f46fc365dced230e0355a8a04f3072442a3"
+      },
+      "test": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+      "scenario": null,
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "liveThreeModelRendered": true,
+        "normalModeHasNoBitmap": true,
+        "actualRigResponds": true,
+        "actualGuidedTargetPose": true,
+        "bodyDragDoesNotTogglePanel": true,
+        "escapeCancelsBodyDrag": true,
+        "touchTapAndKeyboardWork": true,
+        "semanticPageTurn": true,
+        "wholeModelFits": true,
+        "localeRetainsRoute": true,
+        "reducedMotionStopsAnimation": true,
+        "noHiddenFrames": true,
+        "independentResourcesDisposed": true,
+        "realContextLossFallbackWorks": true,
+        "realContextRestoreRetainsModel": true,
+        "repeatedContextLossUsesFallback": true,
+        "sameCanonicalGlobe": true,
+        "noAppearanceWrites": true
+      }
+    },
+    {
+      "test": "Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus",
+      "scenario": "explicit-local-utilities",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "fourCanonicalActions": true,
+        "utilitiesBilingual": true,
+        "initialPanelHeadingDoesNotBlockRequestedFocus": true,
+        "utilitiesCollapseTips": true,
+        "underlyingSectionControlsUsable": true,
+        "newerKeyboardFocusRetained": true,
+        "staleFocusDoesNotReopenSection": true,
+        "openDoesNotChangeGraphicsOrDownloads": true,
+        "noUtilityProgressWrites": true,
+        "randomUsesCanonicalGlobe": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+      "scenario": "explicit-bounded-gestures",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "thirteenExplicitGestures": true,
+        "repeatedReactionRestarts": true,
+        "surpriseChoosesDifferentGesture": true,
+        "actualRigChanges": true,
+        "sixNewMotionsObserved": true,
+        "newGesturesHaveDistinctStaticPoses": true,
+        "winkMovesOnlyOneEye": true,
+        "swayDoesNotStep": true,
+        "originalSevenAtMost1100ms": true,
+        "configuredReactionsAtMost2400ms": true,
+        "reactionsStopWithinSchedulingAllowance": true,
+        "reducedMotionHasNoReactionLoop": true,
+        "gesturesDoNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion",
+      "scenario": "explicit-margin-walk",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "explicitFiniteWalk": true,
+        "tipsRequireExplicitCollapse": true,
+        "walkFitsViewport": true,
+        "walkStaysNearViewportEdge": true,
+        "actualLegsStep": true,
+        "dragStopsWalk": true,
+        "manualStopWorks": true,
+        "backgroundStopsWalk": true,
+        "noAutomaticWalkResume": true,
+        "reducedMotionStopsCurrentWalk": true,
+        "reducedMotionPreventsWalk": true,
+        "walkDoesNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion",
+      "scenario": "explicit-target-approach",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "canonicalSectionOpensBeforeWalk": true,
+        "approachMovesActualPet": true,
+        "actualLegsStep": true,
+        "tapFollowsWalk": true,
+        "tapInsideSelectedGraphicsArea": true,
+        "targetSectionStaysOpen": true,
+        "noSyntheticTargetClick": true,
+        "approachFitsViewport": true,
+        "newKeyboardInputCancelsApproach": true,
+        "cancelledApproachDoesNotTapOrResume": true,
+        "reducedMotionPointsWithoutTravel": true,
+        "approachDoesNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+      "scenario": "mobile-companion-placement",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "companionAddsNoGlobeObstruction": true,
+        "openTipsDoNotBlockOutsideControls": true,
+        "collectionVisibleControlsReachable": true,
+        "manualDragAndHomeRetained": true,
+        "immediateWalkStopSettlesClear": true,
+        "resizeClampsWithoutPreferenceWrites": true,
+        "hideAndShowRetained": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+      "scenario": "globe-landscape-controls",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "hiddenCompanionToolbarReachable": true,
+        "shownCompanionToolbarReachable": true,
+        "allFourControlsReceiveHits": true,
+        "genuineZoomAndResetWork": true,
+        "sourceDialogCloses": true,
+        "countryExpandCollapseRetained": true,
+        "expandedCountryHeaderReachable": true,
+        "countryPanelCloseReachable": true,
+        "portraitAndDesktopRetained": true,
+        "globeFrameCannotScroll": true,
+        "directStageScrollProbe": true,
+        "noAutomaticPreferenceWrites": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy",
+      "scenario": "explicit-reader-policy",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "explicitPolicyOnly": true,
+        "unsavedDraftDoesNotGrantPolicy": true,
+        "localeDraftRetained": true,
+        "lifecycleRechecksPolicy": true,
+        "explicitDeleteConfirmed": true,
+        "failedSaveDraftRetained": true,
+        "editedFailureRequiresExplicitSave": true,
+        "collectionDraftRetained": true,
+        "transientDeleteConfirmation": true,
+        "canonicalSceneRetained": true,
+        "noNewDialogueOrJourneyEnabled": true
+      }
+    },
+    {
+      "test": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission",
+      "scenario": "future-profile-delete-recovery",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "futureRecordPreserved": true,
+        "failedDeleteDoesNotGrantPolicy": true,
+        "explicitDeleteRetryConfirmed": true,
+        "failedDeleteIntentRetained": true,
+        "canonicalSceneRetained": true,
+        "noNewDialogueOrJourneyEnabled": true
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/visual-review.json",
+    "sha256": "34c1cd8ec8d2e6cb2dc22b15c44b6486c586951afd7dbd7aadc612f7300b4c6f"
+  },
+  "inspectedImageCount": 20,
+  "unchangedTrackedInputCount": 1646,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetStandControls.css",
+    "src/host/host.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "63b2f9215000848339f5365364a40f3ee0e5d564",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/pwa-a1/result.json",
+    "sha256": "2ad847f3a06e0968eb6fd815b8b57275d64e40e15d6b5ecf6caa5b4d367e4952"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/android-a1/result.json",
+    "sha256": "aa0a68813d1066338c93dd2622788508930b23819084399ef5220d44ecca066a"
+  },
+  "pwaBuildId": "de28553fa6ac0f0953356a22de4c70f94b62932f81586a8bdc2f0a4bd61e5c65",
+  "androidBuildId": "9976104f845900d39764a6b83578746d0cc09608eccff57988c5b1df085c62ba",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/android-9976104f/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "a7ed21f0ebfb717b4ea10cfda6519e47b7474dee7c983cc90459b98ede5017bf"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/pwa-de28553f/artifact.json",
+      "sha256": "eb55c932a9af5c12067c4e87375c5ba148e3f5cf12b8ae9e19dd9e772305bc21"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/android-9976104f/runtime/artifact.json",
+      "sha256": "bd9a1cb8ca2a82e2289d8a8817bfe831cd3ea3e0ce7f77f67522ee381c24ba2f"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/pwa-a1/strict-audit.json",
+      "sha256": "c79f8ed508960ad9f2b49a69f84361c77b517f40bc0296e2a53f3ace6970ce55"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/android-a1/native-artifact-audit.json",
+      "sha256": "af71be81a29235a5dcbe6da551512ecb154bab570f875b2d03ec61c003d4fe79"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/android-a1/android-dev-apk-verification.json",
+      "sha256": "a9ae9dab79d5560cddfb8a015d15f49b4bf6747d90f778d543a14688a01163c8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/android-a1/build-run.json",
+      "sha256": "910cf5ea81241b0fac481a6aeb321d324f1afb69476797eb9589b867f429b259"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/build-baseline.json",
+    "sha256": "6dbd618c7ef352f4b6569f322d4dda7eb9979b8b474d21cc76834f7e7e9713a0"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/pwa-a1/copy-verification.json",
+    "sha256": "eb07707d01db5d456f55ae452fad91939d6e0c42dba0499769d3c75956d98432"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/pwa-a1/playwright.json",
+    "sha256": "771e5cbf345ea495d8f529142a8a3516a4c53b3965ef11cadd6b4c7d9fee72b0"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "3dd6d478164f4f23187844fe0c033267230b0951",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-placement-20260923/result.json",
+      "sha256": "435877e373c59fc12d2f63ace2a33561c2e07d3a57147a3a6c1b0faaab5c6d0f"
+    },
+    "unitCount": 141,
+    "browserCases": 8,
+    "allPriorSelectedCasesRerun": true,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/photo-review.json",
+      "sha256": "3ff136d24df8259fb1449370801f9c95b0415f4bcc0ba716a15205718f050acc",
+      "renderReport": {
+        "sha256": "c16148f1c46180b6989061f65fa256f48eb4ca8f6baae54d93912a54a77cde22",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\render-result.json"
+      },
+      "imageCount": 3,
+      "additionalToBrowserImages": true,
+      "sourceBindingsVerified": true
+    }
+  },
+  "criteriaUpdated": [
+    "PLANETKA-002",
+    "PLANETKA-005"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD179Recorded": true,
+  "nextAction": "Continue the user-prioritized Книжулик / Mr. Booky work from this native globe landscape-controls checkpoint. Preserve direct globe controls, the compact country strip, the companion placement, finite gestures and deliberate interruptible walking, reduced-motion stillness and saved progress. Review concrete remaining interaction or layout defects before adding behavior. Device, full accessibility, child, reviewed production content, art/rights and stage/release acceptance remain open; S03.acceptance is still first unresolved.",
+  "limitations": [
+    "The narrow native landscape CSS scope is validated at the fixture viewport sizes and states only; this is not full accessibility or universal screen-size acceptance.",
+    "The fixture uses the canonical globe stand. Noncanonical stand spacing received CSS review only; nonzero OS safe-area insets were not device-tested.",
+    "Fresh browser evidence is restricted to the configured companion and reader-policy fixtures. The preceding eight-case mobile-placement report remains attributed to source 3dd6d478164f4f23187844fe0c033267230b0951.",
+    "Native OS/preference ports are controlled browser test ports. No installed device or iOS compilation was used.",
+    "Companion geometry and animation are unchanged; retained actual-model photographs are original-source renders, not new photographs of this host layout fix.",
+    "Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved.",
+    "All requirement and stage statuses remain unchanged; no release or production action is performed."
+  ],
+  "globeLandscapeControlsImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

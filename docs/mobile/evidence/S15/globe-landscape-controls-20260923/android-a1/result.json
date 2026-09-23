@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-globe-landscape-controls-dev-apk",
+  "sourceCommit": "1b8e63f1c0fb8a70d80e646825c002c7c44b58d1",
+  "buildId": "9976104f845900d39764a6b83578746d0cc09608eccff57988c5b1df085c62ba",
+  "sourceInputsSha256": "12f1b42d434a5c91508d219c6e4c9c0815e4d58df0cf357c3a770ffcb7b661aa",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/android-9976104f/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "a7ed21f0ebfb717b4ea10cfda6519e47b7474dee7c983cc90459b98ede5017bf"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/android-9976104f/runtime",
+    "sha256": "bd9a1cb8ca2a82e2289d8a8817bfe831cd3ea3e0ce7f77f67522ee381c24ba2f",
+    "files": 1408,
+    "bytes": 74843230
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/android-6d86207b/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

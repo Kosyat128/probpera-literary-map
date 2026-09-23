@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T14:59:00.525Z",
+  "sourceCommit": "1b8e63f1c0fb8a70d80e646825c002c7c44b58d1",
+  "buildId": "de28553fa6ac0f0953356a22de4c70f94b62932f81586a8bdc2f0a4bd61e5c65",
+  "sourceInputsSha256": "29e6a6396549b61a1da8fd0a97bea711b462fcd7d776b6791ec9716bd9ce65ae",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-globe-landscape-controls/pwa-de28553f",
+    "files": 1427,
+    "bytes": 76763270,
+    "artifactSha256": "eb55c932a9af5c12067c4e87375c5ba148e3f5cf12b8ae9e19dd9e772305bc21",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-23T14:58:31.777Z",
+    "duration": 23457.474000000002,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}
