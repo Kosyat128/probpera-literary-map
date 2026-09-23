@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T15:48:21.488Z",
+  "sourceCommit": "9ab74c3a3b5b022796c5ffdd0decaae782ebe659",
+  "buildId": "431d3692a1d4ab0138a8968353d383013d3fe88d56966cc9df0a90f6602d6c21",
+  "sourceInputsSha256": "ce26456200ea237f9631ade82a29fcfd6d7414e842b383e181a7e7f4258d413b",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/pwa-431d3692",
+    "files": 1427,
+    "bytes": 76764198,
+    "artifactSha256": "b0bf9e7e8ac64232b675a06581ee5a73093dc305f5050c2bb434e6a1dc6280dd",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-23T15:47:55.194Z",
+    "duration": 20471.998000000003,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

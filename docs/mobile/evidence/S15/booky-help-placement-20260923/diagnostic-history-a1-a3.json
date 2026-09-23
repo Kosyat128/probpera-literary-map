@@ -1,0 +1,370 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T15:26:53.273Z",
+  "recordingComplete": true,
+  "kind": "retained-pre-freeze-booky-open-help-placement-diagnostics",
+  "baseCheckpoint": "c2351b4a312c2454e0c317aad166415965218bcf",
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "attempts": [
+    {
+      "attempt": "a1",
+      "scope": "One focused open-help placement scenario; not the formal ten-case suite.",
+      "summary": "At 800 x 400 the new placement and genuine help scrolling passed in RU and EN. At RU 667 x 375, the fixed 340px card remained too wide beside the character and overlapped its canvas; the existing strict geometry check failed. The adaptive-width source fix followed this preserved attempt.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a1/playwright.json",
+        "sha256": "c71eedfc6a0bfc2f54aeb0cfd808884e57536a03ab4d14ba3acf9eb05c6e8438"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a1/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "c3c9faa66acc94d13c74a47fd18728c5df7ed609a2a710162587ba11e091304a"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a1/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-0130e119346602af423c740f2f7f78c819501fde.json",
+        "sha256": "c3c9faa66acc94d13c74a47fd18728c5df7ed609a2a710162587ba11e091304a"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a1/stdout.log",
+          "sha256": "dbea4b439fcd116c0f20325a78a1c4230dd7482590a6a3196add8c861e0c26cf"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a1/stderr.log",
+          "sha256": "17fd6fa3a4e05679c7ceadb615de492c14b19897691b47efc675b4749b842778"
+        },
+        "separateOriginalExecutionJson": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a1/execution.json",
+          "sha256": "e1c5144a20766e25563058c11115551d86490039a8a97859a9a644021f7be5bd"
+        },
+        "startedAt": "2026-09-23T15:20:06.3715825Z",
+        "durationMs": 19402,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Original diagnostic runner captured $LASTEXITCODE immediately after Node and explicitly returned that exact exit code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\globe-landscape-controls-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "80d59216fa7e38181e77a2ea995d5950fe1ca146d6adbd766a6503c4453421f3"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "1418190587dcddf7a4156a746920a19c327b987b2f679270db335a2bcf092f3b"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "cb2d66ec9adf5ad421eac30566004b3b63ffe577bf743e70186b44e075043728"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "649de9373f28f0dac1d6592ca7ab4ed2aa61c9790a34527f0280bfec775a1c54"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-help-globe-ru-800.png",
+          "sha256": "d7f74e13ed23f7d7c55c8cdf7297203317e417bbe35cf539ce179c98775967b4",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a1/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-800.png"
+        },
+        {
+          "filename": "booky-help-placement-failure.png",
+          "sha256": "ef3fb725457fb00f498eed11f43338e42dec1d74f39268b17f60e67ccac36048",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a1/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-placement-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: Actual rendered geometry, decorative canvas and controls fit without cropping or overlap"
+      ],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": false
+      }
+    },
+    {
+      "attempt": "a2",
+      "scope": "One focused open-help placement scenario; not the formal ten-case suite.",
+      "summary": "Adaptive 311px width fixed the 667 x 375 overlap. All four landscape variants and open/scrolled desktop controls passed; help regrew from 160px to 692px. After desktop close, a transformed rail cue measured 43.999992px and failed the exact 44px numeric comparison despite all hit points reaching it. Only a 0.001px DOMRect precision tolerance was added to the new fixture before a3.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/playwright.json",
+        "sha256": "12da62cb78231d32973979051f1f200a4f56d01e35dc00ec34bddb8974728375"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "8f0eac52067e2d14ef2bd26a5faaee49bfc231b2707408dfd6fee4c3df4bc10b"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-354e8a7850667ac5ffd124e8d1704b96801b1f95.json",
+        "sha256": "8f0eac52067e2d14ef2bd26a5faaee49bfc231b2707408dfd6fee4c3df4bc10b"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/stdout.log",
+          "sha256": "cfcac7dd3232e1deb314695a68a85cfb23405198888d972bc84b6c33f112f80b"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/stderr.log",
+          "sha256": "fe28bf17df10065967f440e8329b86345e52db1da38b34da8cd3e0e111d17bb4"
+        },
+        "separateOriginalExecutionJson": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/execution.json",
+          "sha256": "651410d0035d4a4da20dd5011e162cd0b07ac9477ee682740bc48727e7708949"
+        },
+        "startedAt": "2026-09-23T15:23:12.0021785Z",
+        "durationMs": 21318,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Original diagnostic runner captured $LASTEXITCODE immediately after Node and explicitly returned that exact exit code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\globe-landscape-controls-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "80d59216fa7e38181e77a2ea995d5950fe1ca146d6adbd766a6503c4453421f3"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "5270ca58f18e8957966b3827e28c9317276e46c409f6409120bc3f0db12874af"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "14bf1a397e033ab44564eaeea3719f90c0a19ac4b72d94674b4a9e479f55c86b"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "898bb52fca8e54105671c25ce261b9521dc4d39deb65fcbe8deb723f4e68ca26"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-help-globe-ru-800.png",
+          "sha256": "6db2ab1ae548c126fad11209a65707def4267549287f3d6e0e0b14e074c72588",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-800.png"
+        },
+        {
+          "filename": "booky-help-globe-en-667.png",
+          "sha256": "6ac27e1eaf8ab1ca45924bfb416cd6f76cad69f06b745858d1f222b2510f254c",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-667.png"
+        },
+        {
+          "filename": "booky-help-placement-failure.png",
+          "sha256": "4ae9e489c758a889bb89abd34b3026c46934c2b4a5a0c26543b41edd520a4304",
+          "width": 1440,
+          "height": 850,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-placement-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: desktop feasible clear placement closed: .globe-edition-scroll-cue.is-previous[data-visible=\"true\"] button fits with a 44px target"
+      ],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": false
+      }
+    },
+    {
+      "attempt": "a3",
+      "scope": "One focused open-help placement scenario; not the formal ten-case suite.",
+      "summary": "The final focused case passed in both locales at 800 x 400 and 667 x 375, at 1440 x 850 desktop, and in both 320px collection variants. Real wheel scrolling, accessible close while scrolled, post-close navigation, desktop regrowth and preserved globe/preferences all passed.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/playwright.json",
+        "sha256": "5943f1206dfc3d93437ea76944ad6d13e10792e67c50742b14a4e40f6c06b1c8"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "b018f8e0d35a8638731dfdf6a2bb1705805c836b7198befcd1a31c2de12a1d4a"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-a53c7988177135a51380629ede06e00e14ea9d02.json",
+        "sha256": "b018f8e0d35a8638731dfdf6a2bb1705805c836b7198befcd1a31c2de12a1d4a"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/stdout.log",
+          "sha256": "5711f2517d1f83990a9df3cf3921408cd510a0560b07af64900de033d2f50bb2"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/stderr.log",
+          "sha256": "b3be10897ecd53fb881df5d7f8004349c0820b66bb1649860f731e3c9c73e1ce"
+        },
+        "separateOriginalExecutionJson": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/execution.json",
+          "sha256": "6d66885b53d2d102da7f467af45e5cf94ba6678031233db50f76ec414359ee56"
+        },
+        "startedAt": "2026-09-23T15:24:33.7045838Z",
+        "durationMs": 29400,
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "Original diagnostic runner captured $LASTEXITCODE immediately after Node and explicitly returned that exact exit code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\globe-landscape-controls-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "80d59216fa7e38181e77a2ea995d5950fe1ca146d6adbd766a6503c4453421f3"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "5270ca58f18e8957966b3827e28c9317276e46c409f6409120bc3f0db12874af"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "14bf1a397e033ab44564eaeea3719f90c0a19ac4b72d94674b4a9e479f55c86b"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "1f5da8bd577e6d4493631e0d2a69bf57112d73dea7ab820676fa69922fc394b2"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-help-globe-ru-800.png",
+          "sha256": "c3de8152db06e0dde7f68f15f5da058718acb4fd758d88f2bb777602930a88c9",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-800.png"
+        },
+        {
+          "filename": "booky-help-globe-en-667.png",
+          "sha256": "d1769abe9936e6a0cc203a6bb346ea9a1a3c71359c1cdecba92485fe7ec779fc",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-667.png"
+        },
+        {
+          "filename": "booky-help-collection-ru-320.png",
+          "sha256": "ca3530c6c698a60ee3a918aecc3817e00009d7360d4a38ce6e2d6eea33667353",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-ru-320.png"
+        },
+        {
+          "filename": "booky-help-collection-en-320.png",
+          "sha256": "42cb8d85d2874000e9d393927964de13aed91109512a78da08fdc43ed17355a3",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-diagnostic-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png"
+        }
+      ],
+      "failureMessages": [],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "openHelpLocaleControlsReachable": true,
+        "desktopOpenHelpNavigationReachable": true,
+        "closedHelpNavigationReachable": true,
+        "collectionHeaderReachable": true,
+        "helpScrollsByPointerWheel": true,
+        "helpClosesWhileScrolled": true,
+        "helpRegrowsOnLargerViewport": true,
+        "petAndHelpFitWithoutOverlap": true,
+        "noAutomaticPreferenceWrites": true,
+        "noHelpCameraChanges": true,
+        "sameCanonicalGlobe": true
+      }
+    }
+  ],
+  "finalFixtureSha256": "1f5da8bd577e6d4493631e0d2a69bf57112d73dea7ab820676fa69922fc394b2",
+  "limitations": [
+    "The short landscape open card deliberately overlays some underlying dock controls because all strips and a readable card cannot fit without overlap. All designated navigation controls are checked strictly after genuine collapse.",
+    "Collection checks cover the persistent header while help is open, not all underlying content.",
+    "This is desktop Chrome source-fixture evidence, not installed-device, iOS, full accessibility or stage acceptance."
+  ]
+}

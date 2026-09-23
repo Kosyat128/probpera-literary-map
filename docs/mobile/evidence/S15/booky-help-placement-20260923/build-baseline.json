@@ -1,0 +1,15 @@
+{
+  "checkpoint": "c2351b4a312c2454e0c317aad166415965218bcf",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/pwa-a1/result.json",
+    "sha256": "2ad847f3a06e0968eb6fd815b8b57275d64e40e15d6b5ecf6caa5b4d367e4952",
+    "buildId": "de28553fa6ac0f0953356a22de4c70f94b62932f81586a8bdc2f0a4bd61e5c65",
+    "sourceCommit": "1b8e63f1c0fb8a70d80e646825c002c7c44b58d1"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/android-a1/result.json",
+    "sha256": "aa0a68813d1066338c93dd2622788508930b23819084399ef5220d44ecca066a",
+    "buildId": "9976104f845900d39764a6b83578746d0cc09608eccff57988c5b1df085c62ba",
+    "sourceCommit": "1b8e63f1c0fb8a70d80e646825c002c7c44b58d1"
+  }
+}

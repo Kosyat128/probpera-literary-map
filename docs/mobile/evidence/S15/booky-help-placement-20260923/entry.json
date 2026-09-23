@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T15:26:13.083Z",
+  "stage": "S15",
+  "checkpoint": "c2351b4a312c2454e0c317aad166415965218bcf",
+  "previous": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/result.json",
+    "sha256": "b8dc81c9ec165d9d988c81422d116dc3f1ca91664391fcd324d455dfe2253cce"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/result.json",
+    "sha256": "b8dc81c9ec165d9d988c81422d116dc3f1ca91664391fcd324d455dfe2253cce"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/globe-landscape-controls-20260923/source-manifests/4056d59f1037417e.json",
+    "sha256": "4056d59f1037417ec2c724fc3098c028863671223da546f0eaf0535b1aed34c9",
+    "fileCount": 1650
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/scope.json",
+    "sha256": "3974330fee9619f059efac4bafc073bfbcda14ee6d257c289165da4671f07db3"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "575b20a38fc748ffc8ecfc3ad7bd28c7704fff95977942ef1f60d6a5eb4b4c59"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "5e643678681db8d038e6f2c35bd87b980b4e4100c38b8199a62c5a1b98dc5666"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "7c96d94e6fba8d298f1984f8b2234a6dee410dbe716c0541acaa52dea6fb6af8"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "7220d4cddb07bac2e31e2d2033dbbadf79086ed614bc35a296542e83c4475dfa"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "efb18cf16fe1de9c42d08b5ae91bb9bdd44920e6a2dd5fe01dfc35dc0a37c801"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "26e378a493433ae7c6a7b376c32089af5eddd1282c7bf7dc01ce9340593e1b0a"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "c707c8c86078b817a8c9e406af0d768a93cf6a8a253797dd2919186397ca97ca"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "63e3daf468a936633d00eb3cece57cfde6b240850b80892c3b39dbd854ca7f0b"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookyPlacement.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "80d59216fa7e38181e77a2ea995d5950fe1ca146d6adbd766a6503c4453421f3"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "5270ca58f18e8957966b3827e28c9317276e46c409f6409120bc3f0db12874af"
+    },
+    {
+      "path": "src/host/bookyPlacement.test.ts",
+      "sha256": "0085c64abf1f813bdf59f8d38de658e81b3209c47e11705a09fb04841b8291b3"
+    },
+    {
+      "path": "src/host/bookyPlacement.ts",
+      "sha256": "14bf1a397e033ab44564eaeea3719f90c0a19ac4b72d94674b4a9e479f55c86b"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "1f5da8bd577e6d4493631e0d2a69bf57112d73dea7ab820676fa69922fc394b2"
+    }
+  ],
+  "sourceInputCount": 1650,
+  "protectedInputCount": 1645,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyPlacement.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "c2351b4a312c2454e0c317aad166415965218bcf",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedBrowserTests": 10,
+  "expectedImages": 24,
+  "scope": "Open Книжулик / Mr. Booky help searches finite free gaps between navigation controls and retains a readable scroll area when no unobstructed space fits. Natural content height allows recovery after viewport changes; its sticky heading keeps the close button accessible while scrolling. Actual RU/EN pointer-wheel and dismissal checks preserve the canonical scene and saved preferences.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76764198,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/pwa-a1-copy-verification.json",
+    "sha256": "5c3798301016588dbe60cc04a2de10059ebfed192592f9ef09498dc07ec09896"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/pwa-431d3692/artifact.json",
+    "sha256": "b0bf9e7e8ac64232b675a06581ee5a73093dc305f5050c2bb434e6a1dc6280dd"
+  }
+}

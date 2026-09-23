@@ -1,0 +1,16 @@
+[
+  {
+    "sourceCommit": "3dd6d478164f4f23187844fe0c033267230b0951",
+    "manifestSha256": "a98ab9ab28009af5011b9e9de854b2743142c9c10bbb750aafd4d063cd51c962",
+    "verifiedFiles": 1427,
+    "preservedPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/pwa-f53b86b2",
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-previous-a82858d9-6258-4cfd-b8a2-3a1e541c4ce0"
+  },
+  {
+    "sourceCommit": "3dd6d478164f4f23187844fe0c033267230b0951",
+    "manifestSha256": "a36c8e4ff4b84320311771c100a09461f52bd3b2e11a8ed39b118ca12c1c8f59",
+    "verifiedFiles": 1408,
+    "preservedPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-placement/android-6d86207b/runtime",
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-ca9815c0-50e5-405c-afeb-ac6793da2ff2"
+  }
+]

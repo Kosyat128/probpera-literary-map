@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "description": "Open Книжулик / Mr. Booky help searches finite free gaps between navigation controls and retains a readable scroll area when no unobstructed space fits. Natural content height allows recovery after viewport changes; its sticky heading keeps the close button accessible while scrolling. Actual RU/EN pointer-wheel and dismissal checks preserve the canonical scene and saved preferences.",
+  "changedPaths": [
+    "src/host/bookyPlacement.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedBrowserTests": 10,
+  "expectedImages": 24,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-open-help-placement",
+      "flags": [
+        "openHelpLocaleControlsReachable",
+        "desktopOpenHelpNavigationReachable",
+        "closedHelpNavigationReachable",
+        "collectionHeaderReachable",
+        "helpScrollsByPointerWheel",
+        "helpClosesWhileScrolled",
+        "helpRegrowsOnLargerViewport",
+        "petAndHelpFitWithoutOverlap",
+        "noAutomaticPreferenceWrites",
+        "noHelpCameraChanges",
+        "sameCanonicalGlobe"
+      ]
+    }
+  ]
+}

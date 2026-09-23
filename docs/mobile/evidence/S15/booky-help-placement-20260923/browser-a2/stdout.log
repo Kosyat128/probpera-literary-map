@@ -1,0 +1,54 @@
+
+Running 10 tests using 1 worker
+
+
+
+[1/10] tests\pwa\booky-live-character.spec.mjs:400:1 › live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged
+[2/10] tests\pwa\booky-live-character.spec.mjs:547:1 › Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus
+[3/10] tests\pwa\booky-live-character.spec.mjs:629:1 › Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion
+[4/10] tests\pwa\booky-live-character.spec.mjs:738:1 › Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion
+  1) tests\pwa\booky-live-character.spec.mjs:738:1 › Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+        "bottom": 838,
+        "height": 272,
+    -   "left": 934.609375,
+    -   "right": 1110.609375,
+    +   "left": 934.203125,
+    +   "right": 1110.203125,
+        "top": 566,
+        "width": 176,
+      }
+
+      794 |     await begin();await moved(manuallyStopped);
+      795 |     await page.emulateMedia({reducedMotion:'reduce'});await stopped();await expect(walk()).toBeDisabled();
+    > 796 |     const motionStoppedPosition=(await layout(page)).pet;await twoFrames(page);expect((await layout(page)).pet).toEqual(motionStoppedPosition);
+          |                                                                                                                 ^
+      797 |     await page.evaluate(()=>window.__bookyLiveFixture.stopObservingWalk());expect(mutations(fixture)).toEqual(before);
+      798 |     await page.emulateMedia({reducedMotion:'no-preference'});await expect(walk()).toBeEnabled();await stopped();
+      799 |     await twoFrames(page);expect((await layout(page)).pet).toEqual(motionStoppedPosition);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:796:113
+
+    attachment #1: booky-live-character-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-help-placement\browser-a2\booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion\attachments\booky-live-character-source-evidence-96fe25200e7bea9ebac99118cab71a803320854b.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-help-placement\browser-a2\booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion\error-context.md
+
+
+
+
+[5/10] tests\pwa\booky-live-character.spec.mjs:823:1 › Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion
+[6/10] tests\pwa\booky-live-character.spec.mjs:916:1 › Mr. Booky mobile placement preserves globe and collection hit targets in both locales
+[7/10] tests\pwa\booky-live-character.spec.mjs:1052:1 › short landscape globe controls stay reachable beside the collapsed country archive in both locales
+[8/10] tests\pwa\booky-live-character.spec.mjs:1195:1 › Mr. Booky open help preserves primary navigation and scrolls independently in both locales
+[9/10] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[10/10] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  1 failed
+    tests\pwa\booky-live-character.spec.mjs:738:1 › Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion 
+  9 passed (3.0m)
