@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/dossier-character-20260923/source-manifests/a090776e5f95edf3.json",
+    "sha256": "a090776e5f95edf3fa9e60f4ac840a355c8f8107f8ee5c8f2ded024285fda5f9",
+    "fileCount": 1638
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/dossier-character-20260923/check.mjs",
+      "sha256": "8a1a3f01b77eb947c4191aa7aaad83db082c29fd24d4a56e427607a96ea42182"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/dossier-character-20260923/entry.json",
+      "sha256": "f335f82c6d6e0d246d5233d780c42d5bca4c973651da4387c72992e0118d8bbc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/dossier-character-20260923/unit.config.mjs",
+      "sha256": "19b97b36c68058ab9d9e4621571db7f7b1f0e1823320a5542491575a1348f86d"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 42,
+    "failed": 0,
+    "skipped": 0
+  },
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 3167
+  },
+  "runtimeUnchanged": true,
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

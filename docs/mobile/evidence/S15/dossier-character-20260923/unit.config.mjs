@@ -1,0 +1,2 @@
+import { defineConfig } from 'vitest/config';
+export default defineConfig({ cacheDir: "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character/vitest-cache", test: { environment: 'node', maxWorkers: 1, include: ["src/host/bookyDossierCharacter.test.ts","src/books/bookDossier.test.ts","src/books/bookDossierDiagram.test.ts","src/books/bookDossierPublicClient.test.ts"] } });

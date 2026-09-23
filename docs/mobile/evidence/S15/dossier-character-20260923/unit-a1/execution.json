@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/dossier-character-20260923/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\dossier-character-20260923\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-23T04:00:19.375Z",
+  "exitCode": 0,
+  "durationMs": 3167,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/dossier-character-20260923/unit-a1/stdout.log",
+    "bytes": 181,
+    "sha256": "86b56a64c7bda98deccb610e32eefc2b3f8b5346214b574da84c59347a0ce9f6"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/dossier-character-20260923/unit-a1/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

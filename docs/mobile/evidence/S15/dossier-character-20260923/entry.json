@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T03:59:07.063Z",
+  "checkpoint": "da3f478927d5e8bb7290f6b5bfe64d37a06ba075",
+  "stage": "S15",
+  "previous": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/result.json",
+    "sha256": "2699587e0a330828bc314476b93a4017795e81a2fc28d207ce0e9016cdf02198"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/source-manifests/5ab2f74580ce44d2.json",
+    "sha256": "5ab2f74580ce44d2fb845a5fe8dd652ff530f2ae35e04a5160b06e5f72436a77",
+    "fileCount": 1636
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "bf392cd8ce1fb4877458a52006a3f45ece559433b2b943869ab7217e4080c686"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "ac098ff964159998a1cbad33afe6452acc9624e31af17f9a34567343f84d2588"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "f7e9f1e8a265da6b9847617ac5c3b68b8016ebb4dcb664cb17b235e9b6d2a77d"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "616cfa0baf204a782901cbd859ae83dbc0d8b2eb9b6d8765daaff6d611e09a5f"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "9698cf314bad3b45a6c5570966c6d84e93d5bc06ca1ce7ba8f900b096a55ffed"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "6b8054a444fc9cf0513342e62a0094ab05617ced5de0f8db689549e63c03e50a"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "c75ab9bcb650923347cfbf6cf212a9dd70641e967ecf749cc9598bb6b8131c30"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "692b2e2ed819b978dd5d248d9612d969293e234b15ec45c5509675c0975e17e2"
+    }
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyDossierCharacter.ts",
+    "src/host/bookyDossierCharacter.test.ts"
+  ],
+  "newSourceInputs": [
+    {
+      "path": "src/host/bookyDossierCharacter.ts",
+      "sha256": "7e800d68bc242b1845658cb861f418286886606d0907e0337969a8532668ab55"
+    },
+    {
+      "path": "src/host/bookyDossierCharacter.test.ts",
+      "sha256": "c8f07fb7aebb5191b6e279c48b4514ac4c65475ed7e6744136dbe45c962715bf"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyDossierCharacter.test.ts",
+    "src/books/bookDossier.test.ts",
+    "src/books/bookDossierDiagram.test.ts",
+    "src/books/bookDossierPublicClient.test.ts"
+  ],
+  "requirements": [
+    "PLANETKA-004"
+  ],
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/pwa-a1/result.json",
+    "sha256": "efe72c5b4564a9da82c07e5b9ea4d45a63f085226d518956c903e6214e8763eb"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/android-a1/result.json",
+    "sha256": "0d4b429bca1b541b2ba038477d1ceb30da3f14bace24075c2f5370c3724b5038"
+  },
+  "priorBrowser": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/browser-a2/result.json",
+    "sha256": "6b367bd34104d6ca58d26d291f3cbd8b2ff882d3383dab7555f172744cef6b74",
+    "tests": {
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "execution": {
+      "path": "docs/mobile/evidence/S15/journey-fact-20260923/browser-a2/execution.json",
+      "sha256": "6fedb2e1d0021f0a72cb56170ad16248e0615988bee296583d7714ee78c64fbb"
+    },
+    "rawReport": {
+      "path": "docs/mobile/evidence/S15/journey-fact-20260923/browser-a2/playwright.json",
+      "sha256": "9ab3a52cff8a12d6da54e2e001edd1e6a976d8ff63746ba5ad8ebae15d61ed9f"
+    },
+    "checkInputs": [
+      {
+        "path": "docs/mobile/evidence/S15/journey-fact-20260923/check.mjs",
+        "sha256": "314ecc82c4e557aa7f11b85b7fd0e94e50453bc3431ce3cd4229e7c650514653"
+      },
+      {
+        "path": "docs/mobile/evidence/S15/journey-fact-20260923/entry.json",
+        "sha256": "d464287606dc574143a2ecb0343059f09840163e64226fda5273a0ed2cdf4891"
+      },
+      {
+        "path": "docs/mobile/evidence/S15/journey-fact-20260923/unit.config.mjs",
+        "sha256": "aac37bbe358482a2dcb13edda4d0ffa57f8be4a2e861b94ec408baba0ad0006a"
+      },
+      {
+        "path": "docs/mobile/evidence/S15/journey-fact-20260923/playwright.config.mjs",
+        "sha256": "0ace09e32c4aa0af5eb6c3764d8c010b451244007e4fc2bb326fb386e3753b88"
+      }
+    ]
+  },
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/visual-review.json",
+    "sha256": "221682195faba0d93fb2248fc31b0111fa84463f4ef9e8f014ce65bde3ce47a7"
+  },
+  "scope": "Unimported adult published-dossier character admission: exact canonical work, version/locale/section/block/item, source bindings, current public lease and host revision. Existing App runtime and prior artifacts retained unchanged.",
+  "unitCoverageNote": "No standalone bookDossierDelivery.test.ts exists; bookDossier.test.ts exercises actual document/compiler/delivery/publication. PublicClient tests retain controlled-edition remote denial.",
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
