@@ -8,6 +8,9 @@ import type { BookyJourneyHostOffer } from "./bookyJourneyHost";
 import { createBookyJourneyRuntime, type BookyJourneyRuntimeHost } from "./bookyJourneyRuntime";
 import { serializeBookyReaderPolicy, type BookyReaderPolicy } from "./bookyReaderPolicy";
 import type { createPlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
+import type { PreferenceStore } from "../platform/ports";
+import { createBookyJourneyProgressStore } from "./bookyJourneyProgressStore";
+import { createBookyJourneyPersistence } from "./bookyJourneyPersistence";
 
 const EMPTY_COUNTRIES: readonly Country[] = Object.freeze([]);
 const EMPTY_BOOKS: readonly BookArchiveEntry[] = Object.freeze([]);
@@ -16,13 +19,15 @@ const NO_PREREQUISITES = Object.freeze([]);
 export type BookyJourneyNavigation = (offer: BookyJourneyHostOffer, signal: AbortSignal,
   isCurrent: () => boolean) => boolean;
 
-/** App-owned session: leaf panels can unmount without discarding semantic steps.
- * No automatic persistence, navigation on restore, or editorial approval. */
+/** App-owned session: explicit semantic checkpoints persist through the current
+ * platform port. Restoring data never navigates or grants editorial approval. */
 export function useBookyJourney(input: {
   mascot: ReturnType<typeof createPlanetMascotController>;
   mascotSnapshot: PlanetMascotSnapshot;
   enabled: boolean;
   active: boolean;
+  storageActive: boolean;
+  preferences: PreferenceStore;
   policy: BookyReaderPolicy | null;
   readPolicy: () => BookyReaderPolicy | null;
   locale: "ru" | "en";
@@ -51,11 +56,13 @@ export function useBookyJourney(input: {
   const navigateRef = useRef(input.navigate);
   const sequence = useRef(0);
   const { mascot } = input;
+  const storage = useMemo(() => createBookyJourneyProgressStore({ preferences: input.preferences }), [input.preferences]);
+  const persistenceRef = useRef<ReturnType<typeof createBookyJourneyPersistence> | null>(null);
   const active = input.enabled && input.active && input.mascotSnapshot.available
     && input.mascotSnapshot.visibility === "shown" && input.mascotSnapshot.panel === "open";
   const host = useMemo<BookyJourneyRuntimeHost>(() => {
     const resolve = (plan: BookyJourneyPlan, nodeId: string) => {
-      if (!active || !profileKey || serializeBookyReaderPolicy(input.readPolicy()) !== profileKey
+      if (!active || !persistenceRef.current?.getSnapshot().canAct || !profileKey || serializeBookyReaderPolicy(input.readPolicy()) !== profileKey
         || serializeBookyReaderPolicy(mascot.getReaderPolicy()) !== profileKey) return null;
       const source = catalog.sourceFor(plan);
       if (!source) return null;
@@ -79,14 +86,22 @@ export function useBookyJourney(input: {
       return isCurrent() && navigateRef.current(offer, signal, isCurrent);
     } }), []);
   const snapshot = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot);
+  const persistence = useMemo(() => createBookyJourneyPersistence(controller, storage), [controller, storage]);
+  const persistenceSnapshot = useSyncExternalStore(persistence.subscribe, persistence.getSnapshot, persistence.getSnapshot);
   useLayoutEffect(() => {
-    hostRef.current = host; navigateRef.current = input.navigate; controller.refresh();
-  }, [controller, host, input.navigate, input.mascotSnapshot.revision]);
+    persistenceRef.current = persistence;
+    hostRef.current = persistenceSnapshot.canAct ? host : { ...host, active: false };
+    navigateRef.current = input.navigate; controller.refresh();
+  }, [controller, host, input.navigate, input.mascotSnapshot.revision, persistence, persistenceSnapshot.canAct]);
+  useLayoutEffect(() => {
+    if (input.enabled && input.storageActive) persistence.start(); else persistence.stop();
+    return () => persistence.stop();
+  }, [persistence, input.enabled, input.storageActive]);
   useLayoutEffect(() => () => {
     // Reversible deactivation works with StrictMode's setup/cleanup replay.
     hostRef.current = null;
     controller.refresh();
   }, [controller]);
-  return { controller, snapshot,
+  return { controller, snapshot, persistence, persistenceSnapshot,
     needsBooks: !!input.policy && !input.booksReady && content.definitions.some(route => route.nodes.some(node => node.kind === "work")) };
 }

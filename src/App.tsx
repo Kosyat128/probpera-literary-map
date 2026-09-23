@@ -2378,6 +2378,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     atlasSheetContentCollapsed, journeyWriterView, archiveDataStatus, globeViewSample.revision > 0, atlasSearchOpen,
     journeyGlobeRevision, journeyNavigationRevision, journeyCameraView, globeFocusRequest?.id]);
   const journey = useBookyJourney({ mascot, mascotSnapshot, enabled: isPlanetApplication,
+    preferences: platformServices.preferences, storageActive: platformVisibility === "active",
     active: planetLaunchComplete && platformVisibility === "active" && !globalSearchOpen && !communityOpen,
     policy: readerPolicySnapshot.policy, readPolicy: readJourneyPolicy, locale: language, connectivity: platformConnectivity,
     countryReady: archiveDataStatus === "ready", booksReady: mascotBookStatus === "ready",
@@ -3317,7 +3318,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           {language === "ru" ? mascotBookStatus === "loading" ? "Загружаем книги для маршрутов…" : "Загрузить книги для маршрутов"
             : mascotBookStatus === "loading" ? "Loading books for journeys…" : "Load books for journeys"}
         </button>}
-        <BookyJourneyControls snapshot={journey.snapshot} controller={journey.controller} />
+        <BookyJourneyControls snapshot={journey.snapshot} controller={journey.controller}
+          persistence={journey.persistence} persistenceSnapshot={journey.persistenceSnapshot} />
         <BookyReaderSettings snapshot={readerPolicySnapshot} editor={readerSettingsEditor}
         onSave={value => readerPolicyStore.save(value, new Date().toISOString())}
         onClear={readerPolicyStore.clear} onRetry={readerPolicyStore.retry} />

@@ -1,3 +1,4 @@
+import { BOOKY_JOURNEY_PROGRESS_KEY as JOURNEY_PROGRESS, BOOKY_JOURNEY_PROGRESS_MAX_LENGTH } from "../../../host/bookyJourneyProgress";
 import { afterEach, describe, expect, it, onTestFinished, vi } from "vitest";
 import { installSafeWebStorage } from "../../../utils/safeWebStorage";
 import { GLOBE_EDITION_IDS } from "../../../components/globeEditions";
@@ -15,6 +16,7 @@ const BACKGROUND = "probpera-planet-background-v1";
 const COMPOSITION = "probpera-planet-composition-v1";
 const BOOKY = "probpera-booky-adult-v1";
 const READER_POLICY = "probpera-booky-reader-policy-v1";
+const journeyProgressRecord = () => ({ schemaVersion: 1, audience: "adult", revision: 1, activeRecordId: null, records: [] });
 const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
   editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
 } });
@@ -289,6 +291,123 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it("restores and clears explicit journey progress through fresh web adapters without session or network IO", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage, raw = JSON.stringify(journeyProgressRecord(), null, 2);
+    const fetch = vi.fn(); vi.stubGlobal("fetch", fetch);
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    const fresh = createWebPlatformAdapter({ window: env.browser }).preferences;
+    expect(storage.getItem).not.toHaveBeenCalled();
+    expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(true);
+    expect(await fresh.get(JOURNEY_PROGRESS)).toBe(raw);
+    const boundary = raw + " ".repeat(BOOKY_JOURNEY_PROGRESS_MAX_LENGTH - new TextEncoder().encode(raw).length);
+    expect(await store.set(JOURNEY_PROGRESS, boundary)).toBe(true); expect(await fresh.get(JOURNEY_PROGRESS)).toBe(boundary);
+    const next = JSON.stringify({ ...journeyProgressRecord(), revision: 2 });
+    storage.setItem(JOURNEY_PROGRESS, next);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(next);
+    expect(await fresh.remove(JOURNEY_PROGRESS)).toBe(true);
+    expect(await store.get(JOURNEY_PROGRESS)).toBeNull(); expect(storage.length).toBe(0);
+    expect(env.browser.sessionStorage.getItem).not.toHaveBeenCalled(); expect(env.browser.sessionStorage.setItem).not.toHaveBeenCalled();
+    expect(env.browser.open).not.toHaveBeenCalled(); expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("preserves raw journey-progress errors for classification and rejects noncanonical keys or writes", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, raw = JSON.stringify(journeyProgressRecord());
+    for (const key of [JOURNEY_PROGRESS + ":en", JOURNEY_PROGRESS + "\u0000", "probpera-booky-journey-progress-v2", "probpera-booky-journey-progress-child-v1"]) {
+      expect(await store.get(key)).toBeNull(); expect(await store.set(key, raw)).toBe(false); expect(await store.remove(key)).toBe(false);
+    }
+    expect(storage.getItem).not.toHaveBeenCalled(); expect(storage.setItem).not.toHaveBeenCalled(); expect(storage.removeItem).not.toHaveBeenCalled();
+    for (const invalid of ["", "{}", "null", "bad JSON", " ".repeat(BOOKY_JOURNEY_PROGRESS_MAX_LENGTH + 1), JSON.stringify({ schemaVersion: 2, future: "future policy" }),
+      JSON.stringify({ ...journeyProgressRecord(), audience: "child" }), JSON.stringify({ ...journeyProgressRecord(), activeRecordId: "missing-record" }),
+      JSON.stringify({ ...journeyProgressRecord(), approved: true })]) {
+      const writes = vi.mocked(storage.setItem).mock.calls.length;
+      expect(await store.set(JOURNEY_PROGRESS, invalid)).toBe(false); expect(storage.setItem).toHaveBeenCalledTimes(writes);
+      storage.setItem(JOURNEY_PROGRESS, invalid);
+      expect(await store.get(JOURNEY_PROGRESS)).toBe(invalid); expect(storage.getItem(JOURNEY_PROGRESS)).toBe(invalid);
+    }
+    const writes = vi.mocked(storage.setItem).mock.calls.length;
+    expect(await store.set(JOURNEY_PROGRESS, journeyProgressRecord() as never)).toBe(false); expect(storage.setItem).toHaveBeenCalledTimes(writes);
+    expect(storage.removeItem).not.toHaveBeenCalled();
+  });
+
+  it("rejects unavailable or malformed browser journey-progress reads without returning a previous policy", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, raw = JSON.stringify(journeyProgressRecord());
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(true); expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw new Error("private browser read"); });
+    await expect(store.get(JOURNEY_PROGRESS)).rejects.toThrow("booky-journey-progress-unavailable");
+    for (const value of [undefined, false, journeyProgressRecord()]) {
+      vi.mocked(storage.getItem).mockReturnValueOnce(value as never);
+      await expect(store.get(JOURNEY_PROGRESS)).rejects.toThrow("booky-journey-progress-unavailable");
+    }
+    storage.removeItem(JOURNEY_PROGRESS); expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    storage.setItem(JOURNEY_PROGRESS, raw); expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    const absent = createWebPlatformAdapter({ window: null }).preferences;
+    await expect(absent.get(JOURNEY_PROGRESS)).rejects.toThrow("booky-journey-progress-unavailable");
+    expect(await absent.set(JOURNEY_PROGRESS, raw)).toBe(false); expect(await absent.remove(JOURNEY_PROGRESS)).toBe(false);
+  });
+
+  it("never confirms failed browser journey-progress writes or mismatched readback", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, raw = JSON.stringify(journeyProgressRecord());
+    vi.mocked(storage.setItem).mockImplementationOnce(() => { throw new Error("private browser quota"); });
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    vi.mocked(storage.setItem).mockImplementationOnce(() => undefined);
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(true);
+    vi.mocked(storage.setItem).mockImplementationOnce(() => { throw new Error("private quota failure"); });
+    expect(await store.set(JOURNEY_PROGRESS, JSON.stringify({ ...journeyProgressRecord(), revision: 2 }))).toBe(false);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    vi.mocked(storage.getItem).mockReturnValueOnce("{}");
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(false);
+    const next = JSON.stringify({ ...journeyProgressRecord(), revision: 2 });
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw new Error("private readback failure"); });
+    expect(await store.set(JOURNEY_PROGRESS, next)).toBe(false);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(next);
+  });
+
+  it("confirms browser journey-progress clear only after actual storage removal and fresh readback", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, raw = JSON.stringify(journeyProgressRecord());
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(true);
+    vi.mocked(storage.removeItem).mockImplementationOnce(() => { throw new Error("private clear failure"); });
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    vi.mocked(storage.removeItem).mockImplementationOnce(() => undefined);
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw new Error("private clear readback failure"); });
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(true); expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+  });
+
+  it("never authorizes journey progress from safe-storage cached writes or local clear tombstones", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage, raw = JSON.stringify(journeyProgressRecord());
+    const read = vi.mocked(storage.getItem).getMockImplementation()!;
+    const write = vi.mocked(storage.setItem).getMockImplementation()!;
+    const remove = vi.mocked(storage.removeItem).getMockImplementation()!;
+    storage.setItem(JOURNEY_PROGRESS, raw);
+    installSafeWebStorage(env.browser, null);
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    const cached = JSON.stringify({ ...journeyProgressRecord(), revision: 2 });
+    vi.mocked(storage.setItem).mockImplementation(() => { throw new Error("write denied"); });
+    vi.mocked(storage.getItem).mockImplementation(() => { throw new Error("read denied"); });
+    env.browser.localStorage.setItem(JOURNEY_PROGRESS, cached);
+    expect(env.browser.localStorage.getItem(JOURNEY_PROGRESS)).toBe(cached);
+    expect(await store.set(JOURNEY_PROGRESS, cached)).toBe(false);
+    await expect(store.get(JOURNEY_PROGRESS)).rejects.toThrow("booky-journey-progress-unavailable");
+    vi.mocked(storage.getItem).mockImplementation(read);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    vi.mocked(storage.removeItem).mockImplementation(() => { throw new Error("remove denied"); });
+    env.browser.localStorage.removeItem(JOURNEY_PROGRESS);
+    expect(env.browser.localStorage.getItem(JOURNEY_PROGRESS)).toBeNull();
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(false);
+    expect(await createWebPlatformAdapter({ window: env.browser }).preferences.get(JOURNEY_PROGRESS)).toBe(raw);
+    vi.mocked(storage.setItem).mockImplementation(write); vi.mocked(storage.removeItem).mockImplementation(remove);
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(true); expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    expect(await store.set(JOURNEY_PROGRESS, cached)).toBe(true);
+    expect(await createWebPlatformAdapter({ window: env.browser }).preferences.get(JOURNEY_PROGRESS)).toBe(cached);
+  });
+
   it("restores and clears explicit reader policy through fresh web adapters without session or network IO", async () => {
     const env = browserEnvironment(), storage = env.browser.localStorage, raw = JSON.stringify(readerPolicyRecord(), null, 2);
     const fetch = vi.fn(); vi.stubGlobal("fetch", fetch);

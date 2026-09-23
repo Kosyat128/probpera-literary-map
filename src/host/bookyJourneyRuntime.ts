@@ -1,5 +1,9 @@
 import type { BookyJourneyPlan } from "./bookyJourney";
 import type { BookyJourneyHostOffer } from "./bookyJourneyHost";
+import { contentTextHash } from "../planet/contentExportHash";
+import { parseBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReaderPolicy";
+import { DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord, parseBookyJourneyProgress,
+  type BookyJourneyProgressNode, type BookyJourneyProgressPreference, type BookyJourneyProgressRecord } from "./bookyJourneyProgress";
 
 export type BookyJourneyRuntimeHost = Readonly<{
   /** Replace this immutable view after every policy, source or displayed-view change. */
@@ -25,18 +29,31 @@ export function bookyJourneyRouteKey(plan: Pick<BookyJourneyPlan, "id" | "versio
   return JSON.stringify([plan.id, plan.version, plan.locale, plan.definitionChecksum]);
 }
 type Session = { id: string; version: number; locale: "ru" | "en"; definitionChecksum: string;
-  topology: string; profileKey: string; index: number; total: number; completedCount: number; phase: Phase };
+  topology: string; profileKey: string | null; policyFingerprint: string | null; recordId: string | null;
+  index: number; total: number; completedCount: number; phase: Phase };
+export type BookyJourneyProgressIntent = Readonly<{ revision: number; preference: BookyJourneyProgressPreference }>;
 type Observation = { host: BookyJourneyRuntimeHost | null; plans: readonly BookyJourneyPlan[] };
 type Navigation = { session: Session; controller: AbortController; accepted: boolean;
   originIndex: number; originCount: number; originView: BookyJourneyRuntimeHost["view"]; view: string };
 const emptyRoutes = Object.freeze([]);
-const entityKey = (node: BookyJourneyPlan["nodes"][number]) => {
+const entityKey = (node: Pick<BookyJourneyProgressNode, "entity">) => {
   const entity = node.entity;
   return entity === null ? null : entity.kind === "country" ? [entity.kind, entity.countryId]
     : entity.kind === "writer" ? [entity.kind, entity.countryId, entity.writerId]
       : [entity.kind, entity.countryId, entity.writerId, entity.workId];
 };
-const topology = (plan: BookyJourneyPlan) => JSON.stringify(plan.nodes.map(node => [node.id, node.kind, entityKey(node), node.screen]));
+const topology = (plan: { nodes: readonly BookyJourneyProgressNode[] }) => JSON.stringify(plan.nodes.map(node => [node.id, node.kind, entityKey(node), node.screen]));
+const fingerprint = (profileKey: string | null) => {
+  const serialized = serializeBookyReaderPolicy(profileKey);
+  return serialized ? contentTextHash(serialized) : null;
+};
+const sameProfile = (target: Session, host: BookyJourneyRuntimeHost) => target.policyFingerprint !== null
+  ? fingerprint(host.profileKey) === target.policyFingerprint : host.profileKey === target.profileKey;
+const storedSession = (record: BookyJourneyProgressRecord): Session => ({ id: record.journeyId, version: record.journeyVersion,
+  locale: record.locale, definitionChecksum: record.definitionChecksum, topology: topology(record), profileKey: null,
+  policyFingerprint: record.policyFingerprint, recordId: record.recordId,
+  index: Math.min(record.acknowledgedNodeIds.length, record.nodes.length - 1), total: record.nodes.length,
+  completedCount: record.acknowledgedNodeIds.length, phase: "unavailable" });
 const viewKey = (view: BookyJourneyRuntimeHost["view"]) => JSON.stringify(view);
 function matches(node: BookyJourneyPlan["nodes"][number], view: BookyJourneyRuntimeHost["view"]) {
   if (!view.settled || node.screen !== view.screen) return false;
@@ -54,9 +71,30 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
 }) {
   let snapshot: BookyJourneyRuntimeSnapshot = Object.freeze({ revision: 0, status: "unavailable", routes: emptyRoutes, active: null });
   let session: Session | null = null, navigation: Navigation | null = null;
+  let progressIntent: BookyJourneyProgressIntent = Object.freeze({ revision: 0, preference: DEFAULT_BOOKY_JOURNEY_PROGRESS });
+  let progressViewRevision = 0;
   let disposed = false, reading = false, epoch = 0;
   let renderedHost: BookyJourneyRuntimeHost | null = null, renderedRevision: number | null = null, renderedKey = "";
   const listeners = new Set<() => void>();
+
+  function progressFor(observed: Observation, plan: BookyJourneyPlan, acknowledged: number) {
+    const policy = parseBookyReaderPolicy(observed.host?.profileKey);
+    // Existing opaque host identities retain their ephemeral runtime contract.
+    if (!policy) return undefined;
+    const record = createBookyJourneyProgressRecord(policy, plan, plan.nodes.slice(0, acknowledged).map(node => node.id),
+      plan.nodes[acknowledged]?.id ?? null);
+    if (!record) return null;
+    const previous = progressIntent.preference, records = [...previous.records];
+    const index = records.findIndex(item => item.recordId === record.recordId);
+    if (index < 0) records.push(record); else records[index] = record;
+    const preference = parseBookyJourneyProgress({ ...previous, activeRecordId: record.recordId, records });
+    return preference ? { preference, record } : null;
+  }
+  function commitProgress(preference: BookyJourneyProgressPreference, force = false) {
+    if (!force && JSON.stringify(preference) === JSON.stringify(progressIntent.preference)) return;
+    progressIntent = Object.freeze({ revision: progressIntent.revision + 1, preference });
+    ++progressViewRevision;
+  }
 
   function cancelNavigation() {
     const pending = navigation; navigation = null;
@@ -66,7 +104,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
   }
   function currentPlan(observed: Observation): BookyJourneyPlan | null {
     const host = observed.host, target = session;
-    if (!target || !host?.active || host.profileKey !== target.profileKey) return null;
+    if (!target || !host?.active || !sameProfile(target, host)) return null;
     return observed.plans.find(plan => bookyJourneyRouteKey(plan) === bookyJourneyRouteKey(target)
       && topology(plan) === target.topology) ?? null;
   }
@@ -79,7 +117,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       completedCount: session.completedCount, phase: session.phase,
       canOpen: !!node && (session.phase === "ready" || session.phase === "failed"),
       canNext: !!node && session.phase === "ready" && !!host && matches(node, host.view) }) : null;
-    const key = JSON.stringify([status, routes, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
+    const key = JSON.stringify([progressViewRevision, status, routes, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
       active.total, active.completedCount, active.phase, active.canOpen, active.canNext, !!active.node]]);
     if (key === renderedKey && host === renderedHost && (host?.revision ?? null) === renderedRevision) return;
     renderedKey = key; renderedHost = host; renderedRevision = host?.revision ?? null;
@@ -149,7 +187,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     if (session) {
       const host = observed.host;
       let plan = currentPlan(observed);
-      if (!plan && host?.active && host.profileKey === session.profileKey && host.locale !== session.locale) {
+      if (!plan && host?.active && sameProfile(session, host) && host.locale !== session.locale) {
         const alternatives = observed.plans.filter(candidate => candidate.id === session!.id && candidate.version === session!.version
           && candidate.locale === host.locale && topology(candidate) === session!.topology);
         if (alternatives.length === 1) {
@@ -160,10 +198,12 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       }
       if (epoch !== token || disposed) return null;
       if (!plan) {
-        session.phase = host && host.profileKey === session.profileKey && !host.active
-          ? session.completedCount === session.total ? "complete" : "paused" : "unavailable";
+        session.phase = host && sameProfile(session, host) && !host.active
+          ? session.phase === "complete" ? "complete" : "paused" : "unavailable";
         cancelNavigation();
-      } else if (session.phase === "unavailable") session.phase = session.completedCount === session.total ? "complete" : "paused";
+      } else if (session.phase === "unavailable" || session.phase === "paused" && session.completedCount === session.total) {
+        session.phase = session.completedCount === session.total ? "complete" : "paused";
+      }
       else if (session.phase === "ready" && !matches(plan.nodes[session.index], host!.view)) {
         session.phase = "paused"; cancelNavigation();
       } else if (session.phase === "navigating" && navigation?.accepted) {
@@ -185,9 +225,10 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     const observed = refresh();
     return observed && revision === snapshot.revision ? observed : null;
   }
-  function move(observed: Observation, index: number, acknowledged: number): boolean {
+  function move(observed: Observation, index: number, acknowledged: number, semantic = false): boolean {
     const target = session, plan = currentPlan(observed);
     if (!target || !plan || !observed.host) return false;
+    if (progressFor(observed, plan, acknowledged) === null) return false;
     const token = ++epoch, offer = resolve(observed, plan, index, token);
     if (!offer) { if (epoch === token) failClosed(); return false; }
     cancelNavigation();
@@ -212,23 +253,60 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
         if (session === target && navigation === pending) failClosed();
         return false;
       }
+      const progress = progressFor(after, current, acknowledged);
+      if (progress === null) { failClosed(); return false; }
       pending.accepted = true; target.completedCount = acknowledged;
+      if (progress) target.recordId = progress.record.recordId;
+      commitProgress(progress?.preference ?? progressIntent.preference, semantic);
     } else { target.phase = "failed"; cancelNavigation(); }
     refresh();
     return accepted && session === target;
   }
   return Object.freeze({
     getSnapshot: () => snapshot,
+    getProgressIntent: () => progressIntent,
     subscribe(listener: () => void) { if (!disposed) listeners.add(listener); return () => { listeners.delete(listener); }; },
     refresh() { refresh(); },
+    restoreProgress(input: BookyJourneyProgressPreference, expectedIntentRevision: number): boolean {
+      if (disposed || reading || !Number.isSafeInteger(expectedIntentRevision) || expectedIntentRevision !== progressIntent.revision) return false;
+      const preference = parseBookyJourneyProgress(input);
+      if (!preference) return false;
+      const token = ++epoch;
+      cancelNavigation();
+      if (disposed || epoch !== token || expectedIntentRevision !== progressIntent.revision) return false;
+      progressIntent = Object.freeze({ revision: progressIntent.revision, preference });
+      ++progressViewRevision;
+      const record = preference.records.find(item => item.recordId === preference.activeRecordId);
+      session = record ? storedSession(record) : null;
+      refresh();
+      return !disposed && expectedIntentRevision === progressIntent.revision;
+    },
     start(routeKey: string, revision: number): boolean {
       const observed = prepare(revision), plan = observed?.plans.find(item => bookyJourneyRouteKey(item) === routeKey);
       if (!observed?.host?.profileKey || !plan) return false;
+      const progress = progressFor(observed, plan, 0);
+      if (progress === null) return false;
+      const retained = progress && progressIntent.preference.records.find(record => record.recordId === progress.record.recordId);
       const token = ++epoch;
       cancelNavigation(); if (epoch !== token || disposed) return false;
-      session = { id: plan.id, version: plan.version, locale: plan.locale, definitionChecksum: plan.definitionChecksum,
-        topology: topology(plan), profileKey: observed.host.profileKey, index: 0, total: plan.nodes.length, completedCount: 0, phase: "paused" };
-      return move(observed, 0, 0);
+      session = retained ? storedSession(retained) : { id: plan.id, version: plan.version, locale: plan.locale, definitionChecksum: plan.definitionChecksum,
+        topology: topology(plan), profileKey: observed.host.profileKey, policyFingerprint: fingerprint(observed.host.profileKey),
+        recordId: progress?.record.recordId ?? null, index: 0, total: plan.nodes.length, completedCount: 0, phase: "paused" };
+      if (retained) {
+        // Same-version edits cannot silently replace an acknowledged history.
+        if (session.topology !== topology(plan) || session.locale === plan.locale && session.definitionChecksum !== plan.definitionChecksum) {
+          publish(observed); return false;
+        }
+        session.locale = plan.locale; session.definitionChecksum = plan.definitionChecksum; session.phase = "paused";
+      }
+      if (session.completedCount === session.total) {
+        const target = session, completed = progressFor(observed, plan, target.total);
+        if (completed === null || !resolve(observed, plan, target.index, token)) return false;
+        target.phase = "complete";
+        commitProgress(completed?.preference ?? progressIntent.preference, true);
+        publish(observed); return session === target && target.phase === "complete";
+      }
+      return move(observed, session.index, session.completedCount, true);
     },
     open(revision: number): boolean {
       const observed = prepare(revision);
@@ -240,11 +318,14 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       if (!observed?.host || !session || !plan || session.phase !== "ready" || !matches(plan.nodes[session.index], observed.host.view)) return false;
       const target = session, token = ++epoch;
       if (!resolve(observed, plan, target.index, token)) { if (epoch === token) failClosed(); return false; }
-      if (target.index + 1 < target.total) return move(observed, target.index + 1, target.index + 1);
+      if (target.index + 1 < target.total) return move(observed, target.index + 1, target.index + 1, true);
+      const progress = progressFor(observed, plan, target.total);
+      if (progress === null) return false;
       cancelNavigation();
       if (epoch !== token || disposed || session !== target) return false;
       if (!resolve(observed, plan, target.index, token)) { if (epoch === token) failClosed(); return false; }
       target.completedCount = target.total; target.phase = "complete";
+      commitProgress(progress?.preference ?? progressIntent.preference, true);
       publish(observed); return session === target && target.phase === "complete";
     },
     pause(revision: number): boolean {
@@ -262,8 +343,14 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     reset(revision: number): boolean {
       const observed = prepare(revision);
       if (!observed || !session) return false;
+      const target = session, previous = progressIntent.preference;
+      const preference = parseBookyJourneyProgress({ ...previous,
+        activeRecordId: previous.activeRecordId === target.recordId ? null : previous.activeRecordId,
+        records: previous.records.filter(record => record.recordId !== target.recordId) });
+      if (!preference) return false;
       const token = ++epoch; session = null; cancelNavigation();
       if (epoch !== token || disposed) return false;
+      commitProgress(preference, true);
       publish(observed); return true;
     },
     dispose() {

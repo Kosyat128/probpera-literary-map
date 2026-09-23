@@ -1,3 +1,4 @@
+import { BOOKY_JOURNEY_PROGRESS_KEY as JOURNEY_PROGRESS, BOOKY_JOURNEY_PROGRESS_MAX_LENGTH } from "./bookyJourneyProgress";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createHostPlatformServices, type HostAppBridge, type HostAppState, type HostListenerHandle,
   type HostNetworkBridge, type HostNetworkState, type HostPlatformServicesOptions, type HostPreferenceBridge } from "./HostPlatformServices";
@@ -14,6 +15,7 @@ const BACKGROUND = "probpera-planet-background-v1";
 const COMPOSITION = "probpera-planet-composition-v1";
 const BOOKY = "probpera-booky-adult-v1";
 const READER_POLICY = "probpera-booky-reader-policy-v1";
+const journeyProgressRecord = () => ({ schemaVersion: 1, audience: "adult", revision: 1, activeRecordId: null, records: [] });
 const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
@@ -507,6 +509,117 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it("restores and clears explicit journey progress through fresh native adapters without network IO", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(journeyProgressRecord(), null, 2);
+    const fresh = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences }).preferences;
+    expect(f.preferences.get).not.toHaveBeenCalled();
+    expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(true);
+    expect(await fresh.get(JOURNEY_PROGRESS)).toBe(raw);
+    const boundary = raw + " ".repeat(BOOKY_JOURNEY_PROGRESS_MAX_LENGTH - new TextEncoder().encode(raw).length);
+    expect(await store.set(JOURNEY_PROGRESS, boundary)).toBe(true); expect(await fresh.get(JOURNEY_PROGRESS)).toBe(boundary);
+    const next = JSON.stringify({ ...journeyProgressRecord(), revision: 2 });
+    f.memory.set(JOURNEY_PROGRESS, next);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(next);
+    expect(await fresh.remove(JOURNEY_PROGRESS)).toBe(true);
+    expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    expect(f.memory.size).toBe(0);
+    expect(f.network.getStatus).not.toHaveBeenCalled(); expect(f.network.addListener).not.toHaveBeenCalled();
+    expect(f.openBrowser).not.toHaveBeenCalled(); expect(f.openMail).not.toHaveBeenCalled();
+  });
+
+  it("preserves raw journey-progress errors for classification while restricting writes and the exact key", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(journeyProgressRecord());
+    for (const key of [JOURNEY_PROGRESS + ":en", JOURNEY_PROGRESS + "\u0000", "probpera-booky-journey-progress-v2", "probpera-booky-journey-progress-child-v1"]) {
+      expect(await store.get(key)).toBeNull(); expect(await store.set(key, raw)).toBe(false); expect(await store.remove(key)).toBe(false);
+    }
+    expect(f.preferences.get).not.toHaveBeenCalled(); expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.remove).not.toHaveBeenCalled();
+    for (const invalid of ["", "{}", "null", "bad JSON", " ".repeat(BOOKY_JOURNEY_PROGRESS_MAX_LENGTH + 1), JSON.stringify({ schemaVersion: 2, future: "private future policy" }),
+      JSON.stringify({ ...journeyProgressRecord(), audience: "child" }), JSON.stringify({ ...journeyProgressRecord(), activeRecordId: "missing-record" }),
+      JSON.stringify({ ...journeyProgressRecord(), approved: true })]) {
+      expect(await store.set(JOURNEY_PROGRESS, invalid)).toBe(false);
+      f.memory.set(JOURNEY_PROGRESS, invalid);
+      expect(await store.get(JOURNEY_PROGRESS)).toBe(invalid);
+      expect(f.memory.get(JOURNEY_PROGRESS)).toBe(invalid);
+    }
+    expect(await store.set(JOURNEY_PROGRESS, journeyProgressRecord() as never)).toBe(false);
+    expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.remove).not.toHaveBeenCalled();
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private future policy");
+  });
+
+  it("rejects failed or malformed journey-progress reads after success without leaking a previous value", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(journeyProgressRecord());
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(true);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    f.preferences.get.mockRejectedValueOnce(new Error("private reader payload"));
+    await expect(store.get(JOURNEY_PROGRESS)).rejects.toThrow("booky-journey-progress-unavailable");
+    for (const response of [undefined, {}, { value: undefined }, { value: false }, { value: journeyProgressRecord() }]) {
+      f.preferences.get.mockResolvedValueOnce(response as never);
+      await expect(store.get(JOURNEY_PROGRESS)).rejects.toThrow("booky-journey-progress-unavailable");
+    }
+    const absent = fixture({ preferences: undefined }).services.preferences;
+    await expect(absent.get(JOURNEY_PROGRESS)).rejects.toThrow("booky-journey-progress-unavailable");
+    expect(await absent.set(JOURNEY_PROGRESS, raw)).toBe(false); expect(await absent.remove(JOURNEY_PROGRESS)).toBe(false);
+    f.memory.delete(JOURNEY_PROGRESS);
+    expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    f.memory.set(JOURNEY_PROGRESS, raw);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    expect(f.onFailure.mock.calls.every(([value]) => Object.keys(value).sort().join() === "operation,reason")).toBe(true);
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private reader payload");
+  });
+
+  it("never confirms rejected, false or unverified native journey-progress writes", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(journeyProgressRecord());
+    f.preferences.set.mockRejectedValueOnce(new Error("private quota failure"));
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    f.preferences.set.mockResolvedValueOnce(undefined);
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(true);
+    f.preferences.set.mockRejectedValueOnce(new Error("private quota failure"));
+    expect(await store.set(JOURNEY_PROGRESS, JSON.stringify({ ...journeyProgressRecord(), revision: 2 }))).toBe(false);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    f.preferences.set.mockResolvedValueOnce(false as never);
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(false);
+    f.preferences.get.mockResolvedValueOnce({ value: "{}" });
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(false);
+    f.preferences.get.mockRejectedValueOnce(new Error("private readback failure"));
+    const next = JSON.stringify({ ...journeyProgressRecord(), revision: 2 });
+    expect(await store.set(JOURNEY_PROGRESS, next)).toBe(false);
+    expect(await store.get(JOURNEY_PROGRESS)).toBe(next);
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "preference-set", reason: "readback-mismatch" });
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private");
+  });
+
+  it("keeps failed journey-progress removal unavailable and confirms only fresh native absence", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(journeyProgressRecord());
+    expect(await store.set(JOURNEY_PROGRESS, raw)).toBe(true);
+    f.preferences.remove.mockRejectedValueOnce(new Error("private removal failure"));
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    f.preferences.remove.mockResolvedValueOnce(undefined);
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(false); expect(await store.get(JOURNEY_PROGRESS)).toBe(raw);
+    f.preferences.get.mockRejectedValueOnce(new Error("private clear readback failure"));
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(false);
+    expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    f.preferences.remove.mockResolvedValueOnce(false as never);
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(false);
+    expect(await store.remove(JOURNEY_PROGRESS)).toBe(true);
+    expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "preference-remove", reason: "readback-mismatch" });
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private");
+  });
+
+  it("serializes journey-progress changes and clear so a late read cannot resurrect removed policy", async () => {
+    const f = fixture(), store = f.services.preferences, gate = deferred<void>();
+    const raw = JSON.stringify(journeyProgressRecord());
+    f.preferences.set.mockImplementationOnce(async ({ key, value }) => { await gate.promise; f.memory.set(key, value); });
+    const pending = [store.set(JOURNEY_PROGRESS, raw), store.remove(JOURNEY_PROGRESS), store.get(JOURNEY_PROGRESS)];
+    await flush(); expect(f.preferences.set).toHaveBeenCalledTimes(1); expect(f.preferences.remove).not.toHaveBeenCalled();
+    expect(await store.set(DISPLAY, "book")).toBe(true);
+    gate.resolve(); expect(await Promise.all(pending)).toEqual([true, true, null]);
+    expect(f.memory.has(JOURNEY_PROGRESS)).toBe(false);
+    expect(await store.get(JOURNEY_PROGRESS)).toBeNull();
+  });
+
   it("restores and clears explicit reader policy through fresh native adapters without network IO", async () => {
     const f = fixture(), store = f.services.preferences, raw = JSON.stringify(readerPolicyRecord(), null, 2);
     const fresh = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences }).preferences;

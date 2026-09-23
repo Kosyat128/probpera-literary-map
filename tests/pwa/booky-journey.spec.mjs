@@ -10,6 +10,7 @@ const SITE = 'https://booky-journey.test';
 const KEY = 'probpera-planet-composition-v1';
 const BOOKY = 'probpera-booky-adult-v1';
 const READER='probpera-booky-reader-policy-v1';
+const PROGRESS='probpera-booky-journey-progress-v1';
 const V1_SEED = {schemaVersion:2,audience:'adult',visible:true,resume:null,progress:[]};
 const ASSET = 'src/assets/mascots/knizhulyk-green-v1.png';
 const ASSET_SHA = '44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed';
@@ -28,7 +29,7 @@ const SYNTHETIC_CONTENT = `
 import { contentTextHash } from '../planet/contentExportHash';
 import { getBookyDialogueChecksum, getBookyDialogueContentChecksum } from './bookyDialogueRegistry';
 import { bookyJourneyEntityId, getBookyJourneyChecksum } from './bookyJourney';
-const id='test.actual-app-journey',reviewedAt='2026-09-20T12:00:00.000Z';
+const id='test.actual-app-journey',version=window.__journeyContentMode==='new-version'?2:1,reviewedAt='2026-09-20T12:00:00.000Z';
 const definitions=[],dialogues=[],dialogueApprovals=[],journeyApprovals=[],availability=[];
 for(const locale of ['ru','en']){
   const nodes=[
@@ -50,14 +51,14 @@ for(const locale of ['ru','en']){
     dialogueApprovals.push({id:payload.id,locale,version:1,contentChecksum:review.contentChecksum,reviewer:review.reviewer,reviewedAt});
     return {...node,dialogue:{id:payload.id,version:1,contentChecksum:review.contentChecksum}};
   });
-  const definition={schemaVersion:1,id,version:1,locale,audience:'adult',ageRange:{min:18,max:120},readingLevel:'plain',
+  const definition={schemaVersion:1,id,version,locale,audience:'adult',ageRange:{min:18,max:120},readingLevel:'plain',
     title:locale==='ru'?'Тестовый маршрут интерфейса':'Synthetic interface journey',prerequisites:[],nodes};
   definitions.push(definition);
-  journeyApprovals.push({id,version:1,locale,definitionChecksum:getBookyJourneyChecksum(definition),reviewer:'synthetic-journey-reviewer-not-real',reviewedAt});
-  availability.push({journeyId:id,version:1,locale,nodes:nodes.map(node=>({nodeId:node.id,locale,
+  journeyApprovals.push({id,version,locale,definitionChecksum:getBookyJourneyChecksum(definition),reviewer:'synthetic-journey-reviewer-not-real',reviewedAt});
+  availability.push({journeyId:id,version,locale,nodes:nodes.map(node=>({nodeId:node.id,locale,
     dialogueContentChecksum:node.dialogue.contentChecksum,available:true,offlineAvailable:true}))});
 }
-const approved={definitions,dialogues,currentVersions:[{id,version:1}],dialogueApprovals,journeyApprovals,availability};
+const approved={definitions,dialogues,currentVersions:[{id,version}],dialogueApprovals,journeyApprovals,availability};
 const missingReview={...approved,journeyApprovals:[]};
 export function readBookyJourneyContent(){return window.__journeyContentMode==='missing-review'?missingReview:approved;}
 `;
@@ -191,7 +192,7 @@ test.beforeAll(async () => {
   expect(digest(assetBytes)).toBe(ASSET_SHA); expect(assetBytes.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
   expect([assetBytes.readUInt32BE(16), assetBytes.readUInt32BE(20), assetBytes[25]]).toEqual([1254, 1254, 6]);
   const assetOutput = built.outputFiles.find(file => digest(file.contents) === ASSET_SHA); expect(assetOutput).toBeTruthy();
-  const required = ['src/host/bookyJourneyContent.ts','src/host/bookyJourneyRuntime.ts','src/host/bookyJourney.ts','src/host/BookyJourneyControls.tsx','src/components/WriterPanel.tsx','src/components/BookArchiveSection.tsx','src/books/bookArchiveDetailView.ts','src/host/bookyReaderPolicy.ts','src/host/bookyReaderPolicyStore.ts','src/host/BookyReaderSettings.tsx','src/host/bookyJourneyHost.ts','src/App.tsx', 'src/host/mountHostApp.tsx', 'src/components/LiteraryGlobe.tsx', 'src/components/LiteraryWorldMap.tsx',
+  const required = ['src/host/bookyJourneyProgress.ts','src/host/bookyJourneyProgressStore.ts','src/host/bookyJourneyPersistence.ts','src/host/bookyJourneyContent.ts','src/host/bookyJourneyRuntime.ts','src/host/bookyJourney.ts','src/host/BookyJourneyControls.tsx','src/components/WriterPanel.tsx','src/components/BookArchiveSection.tsx','src/books/bookArchiveDetailView.ts','src/host/bookyReaderPolicy.ts','src/host/bookyReaderPolicyStore.ts','src/host/BookyReaderSettings.tsx','src/host/bookyJourneyHost.ts','src/App.tsx', 'src/host/mountHostApp.tsx', 'src/components/LiteraryGlobe.tsx', 'src/components/LiteraryWorldMap.tsx',
     'src/components/GlobeCameraRig.tsx', 'src/components/globeAtlas.ts', 'src/host/planetMascot.ts', 'src/host/planetMascotRoutes.ts',
     'src/host/PlanetMascotControls.tsx', 'src/host/PlanetMascotControls.css', 'src/host/PlanetMascotAvatar.tsx', 'src/host/PlanetMascotAvatar.css',
     'src/host/bookyModel.ts', 'src/host/bookyAnimation.ts', 'src/host/useBookyRenderer.ts', 'src/host/bookySupport.ts', 'src/host/bookyTourProgress.ts',
@@ -206,7 +207,7 @@ test.beforeAll(async () => {
     return ['/' + entry.output, entry];
   }));
   sourceEvidence = { kind: 'canonical-app-adult-booky-journey-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
-    controlledPorts: ['native OS lifecycle and preference map', 'HTTP delivery of real split chunks', 'explicitly synthetic content provider'],
+    controlledPorts: ['native OS lifecycle and preference map; key-specific journey-progress write rejection', 'HTTP delivery of real split chunks', 'explicitly synthetic content provider'],
     controllerObservation: 'No controller is replaced or called by the fixture. Semantic progress and readiness are observed through the real rendered controls.',
     bookChunks, primaryBookChunk, retryBookChunk, sharedBookDependencies,
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
@@ -230,8 +231,9 @@ const status = page => page.locator('[data-booky-journey-status]');
 const next = page => page.locator('[data-booky-journey-next]');
 const node = page => page.locator('[data-booky-journey-node]');
 const sample = page => page.evaluate(() => window.__bookyJourneyFixture.sample());
+const storageState = page => page.locator('[data-booky-journey-storage]');
 
-async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED_READER } = {}) {
+async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED_READER, progressSeed = null } = {}) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(ROOT, '.tmp/s15-booky-live'));
   await fs.mkdir(profileRoot, { recursive: true });
   const profile = await fs.mkdtemp(path.join(profileRoot, 'journey-'));
@@ -242,15 +244,23 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
     [KEY, JSON.stringify({ schemaVersion: 1, commitId: 'booky-journey-fixture:1', selection: BASE })],
     [BOOKY, JSON.stringify(V1_SEED)]]);
   if (readerSeed !== null) memory.set(READER, readerSeed);
+  if (progressSeed !== null) memory.set(PROGRESS, progressSeed);
+  let failedProgressWritesRemaining = 0;
   const operations = [], errors = [], externalRequests = [], missingResources = [], requestedChunks = [];
-  const result = { ...sourceEvidence, contentMode, initialReaderPreference: readerSeed,
+  const result = { ...sourceEvidence, contentMode, initialReaderPreference: readerSeed, initialProgressPreference: progressSeed,
     pass: false, observations: {}, screenshots: [] };
-  await page.addInitScript(mode => { window.__journeyContentMode = mode; }, contentMode);
   page.on('pageerror', error => errors.push(error.message));
   await page.exposeBinding('__osPreference', async (_source, operation, key, value) => {
-    operations.push({ operation, key, ...(value === undefined ? {} : { value }) });
+    const entry = { operation, key, ...(value === undefined ? {} : { value }) };
+    operations.push(entry);
     if (operation === 'get') return memory.get(key) ?? null;
-    if (operation === 'set') { memory.set(key, value); return; }
+    if (operation === 'set') {
+      if (key === PROGRESS && failedProgressWritesRemaining > 0) {
+        --failedProgressWritesRemaining; entry.failed = true;
+        throw Error('Controlled native journey-progress write failure');
+      }
+      memory.set(key, value); return;
+    }
     if (operation === 'remove') { memory.delete(key); return; }
     throw Error('Unknown native preference operation');
   });
@@ -258,7 +268,7 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
     const url = new URL(route.request().url());
     if (url.origin !== SITE) { externalRequests.push(url.href); await route.abort(); return; }
     if (route.request().resourceType() === 'document' && url.pathname === '/') {
-      await route.fulfill({ contentType: 'text/html; charset=utf-8', body: '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="/fixture/booky-journey.css"></head><body><div id="root"></div><script type="module" src="/fixture/booky-journey.js"></script></body></html>' }); return;
+      await route.fulfill({ contentType: 'text/html; charset=utf-8', body: '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="/fixture/booky-journey.css"></head><body><div id="root"></div><script>window.__journeyContentMode=' + JSON.stringify(contentMode) + ';</script><script type="module" src="/fixture/booky-journey.js"></script></body></html>' }); return;
     }
     const pathname = decodeURIComponent(url.pathname);
     if ([...bookChunks, ...countryChunks, ...componentChunks].includes(pathname)) requestedChunks.push(pathname);
@@ -276,19 +286,22 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
   });
   try {
     await page.goto(SITE + '/#atlas');
-    await expect(page.locator('.native-planet-app[data-planet-ready="true"]')).toBeVisible({ timeout: 60_000 });
-    await expect(page.locator('.native-planet-launch')).toBeHidden();
-    await expect(page.locator('#atlas .literary-globe')).toHaveAttribute('data-globe-webgl-context', 'ready');
-    await expect(page.locator('#atlas .literary-globe')).toHaveAttribute('data-globe-camera-phase', 'idle');
-    await expect(page.locator('#atlas canvas')).toHaveCount(1);
-    expect(await page.evaluate(() => window.__bookyJourneyFixtureError ?? null)).toBeNull();
-    await page.evaluate(() => window.__bookyJourneyFixture.remember());
+    await readyDocument(page);
     return { page, memory, result, requestedChunks,
+      progressWrites: () => operations.filter(entry => entry.key === PROGRESS && entry.operation !== 'get'),
+      failNextProgressWrite() { ++failedProgressWritesRemaining; },
+      async coldReload(mode = contentMode) {
+        contentMode = mode;
+        // A new document destroys the old React/runtime objects. Only the native
+        // preference map survives; the neutral URL supplies no restored target.
+        await page.goto(SITE + '/#atlas');
+        await readyDocument(page);
+      },
       verify() {
         expect(errors).toEqual([]); expect(externalRequests).toEqual([]); expect(missingResources).toEqual([]);
         expect(operations.filter(entry => entry.operation !== 'get' && CUSTOMIZATION_KEYS.has(entry.key))).toEqual([]);
         expect(operations.filter(entry => entry.operation !== 'get'
-          && ![BOOKY, READER, 'probpera-interface-language', 'probpera-planet-recent-adult-v1'].includes(entry.key))).toEqual([]);
+          && ![BOOKY, READER, PROGRESS, 'probpera-interface-language', 'probpera-planet-recent-adult-v1'].includes(entry.key))).toEqual([]);
         expect(memory.get(READER) ?? null).toBe(readerSeed); result.pass = true;
       },
       async close() {
@@ -314,13 +327,24 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
             workObservations: window.__journeyWorkObservations ?? [] };
         }).catch(error => ({ diagnosticError: error.message }));
         Object.assign(result, { operations, errors, externalRequests, missingResources, requestedChunks,
-          finalReaderPreference: memory.get(READER) ?? null, finalBookyPreference: JSON.parse(memory.get(BOOKY) ?? 'null') });
+          finalReaderPreference: memory.get(READER) ?? null, finalBookyPreference: JSON.parse(memory.get(BOOKY) ?? 'null'),
+          finalProgressPreferenceRaw: memory.get(PROGRESS) ?? null });
         const filename = testInfo.outputPath('booky-journey.json');
         await fs.writeFile(filename, JSON.stringify(result, null, 2) + '\n');
         await testInfo.attach('booky-journey-source-evidence', { path: filename, contentType: 'application/json' });
         await context.close();
       } };
   } catch (error) { await context.close(); throw error; }
+}
+
+async function readyDocument(page) {
+  await expect(page.locator('.native-planet-app[data-planet-ready="true"]')).toBeVisible({ timeout: 60_000 });
+  await expect(page.locator('.native-planet-launch')).toBeHidden();
+  await expect(page.locator('#atlas .literary-globe')).toHaveAttribute('data-globe-webgl-context', 'ready');
+  await expect(page.locator('#atlas .literary-globe')).toHaveAttribute('data-globe-camera-phase', 'idle');
+  await expect(page.locator('#atlas canvas')).toHaveCount(1);
+  expect(await page.evaluate(() => window.__bookyJourneyFixtureError ?? null)).toBeNull();
+  await page.evaluate(() => window.__bookyJourneyFixture.remember());
 }
 
 async function actual(page) {
@@ -355,6 +379,28 @@ async function loadBooks(page) {
 async function expectProgress(page, count) {
   await expect(page.locator('[data-booky-journey-progress]')).toHaveText(new RegExp('(?:Подтверждено шагов:|Steps acknowledged:) ' + count + ' (?:из|of) 4', 'u'));
 }
+function savedRecord(fixture) {
+  const raw = fixture.memory.get(PROGRESS);
+  if (!raw) return null;
+  const preference = JSON.parse(raw);
+  return preference.records?.find(record => record.recordId === preference.activeRecordId) ?? null;
+}
+async function expectSavedPrefix(fixture, prefix) {
+  await expect.poll(() => savedRecord(fixture)?.acknowledgedNodeIds ?? null).toEqual(prefix);
+  await expect(storageState(fixture.page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+  const record = savedRecord(fixture);
+  expect(record.journeyId).toBe('test.actual-app-journey'); expect(record.journeyVersion).toBe(1);
+  expect(record.resumeNodeId).toBe(['country', 'writer', 'work', 'checkpoint'][prefix.length] ?? null);
+  return fixture.memory.get(PROGRESS);
+}
+async function startCountryStep(fixture) {
+  await openPanel(fixture.page); await loadBooks(fixture.page);
+  await expect(storageState(fixture.page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+  const route = fixture.page.locator('[data-booky-journey-route]');
+  await expect(route).toHaveCount(1); await route.click();
+  await expectReadyNode(fixture.page, 'country', 0);
+  return expectSavedPrefix(fixture, []);
+}
 async function resumeIfPaused(page) {
   await openPanel(page);
   const resume = page.locator('[data-booky-journey-resume]');
@@ -379,6 +425,24 @@ async function capture(fixture, testInfo, filename, framing) {
   await fixture.page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
   const bytes = await fixture.page.screenshot({ path: testInfo.outputPath(filename), animations: 'disabled' });
   fixture.result.screenshots.push({ filename, sha256: digest(bytes), ...fixture.page.viewportSize(), framing });
+}
+async function captureStorage(fixture, testInfo, filename, actionSelector, description) {
+  const surface = fixture.page.locator('.booky-journey-controls__storage');
+  await surface.scrollIntoViewIfNeeded();
+  const bounds = await surface.evaluate((element, selector) => {
+    const measure = target => {
+      const box = target.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height,
+        fullyInViewport: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight };
+    };
+    const action = element.querySelector(selector), box = action.getBoundingClientRect();
+    return { surface: measure(element), status: measure(element.querySelector('[data-booky-journey-storage]')),
+      action: measure(action), actionHit: action.contains(document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2)) };
+  }, actionSelector);
+  expect(bounds.status.fullyInViewport).toBe(true); expect(bounds.action.fullyInViewport).toBe(true);
+  expect(bounds.actionHit).toBe(true); expect(bounds.action.height).toBeGreaterThanOrEqual(44);
+  await capture(fixture, testInfo, filename, description);
+  fixture.result.screenshots.at(-1).bounds = bounds;
 }
 async function reachableJourneyControls(page) {
   const controls = page.locator('[data-booky-journey-controls] button:visible');
@@ -514,6 +578,147 @@ for (const scenario of [
     retained(await actual(page), original, true);
     Object.assign(result.observations, { admissionDeniedRuEn: true, noJourneyNavigation: true,
       noJourneyProgress: true, canonicalSceneRetained: true, syntheticApprovalOnly: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume', async ({}, testInfo) => {
+  test.setTimeout(150_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = 'cold-progress-resume';
+  try {
+    await startCountryStep(fixture);
+    await next(page).click(); await expectReadyNode(page, 'writer', 1);
+    const saved = await expectSavedPrefix(fixture, ['country']);
+    const writesBeforeReload = fixture.progressWrites().length;
+    await fixture.coldReload();
+    await stablePose(page); const neutral = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expectProgress(page, 1);
+    await expect(node(page)).toHaveAttribute('data-booky-journey-node', 'writer');
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-open]:enabled')).toHaveCount(0);
+    await stablePose(page); retained(await actual(page), neutral, true);
+    expect(new URL(page.url()).searchParams.get('country')).toBeNull();
+    expect(new URL(page.url()).searchParams.get('writer')).toBeNull();
+    expect(new URL(page.url()).searchParams.get('book')).toBeNull();
+    expect(fixture.memory.get(PROGRESS)).toBe(saved);
+    expect(fixture.progressWrites()).toHaveLength(writesBeforeReload);
+    await page.locator('[data-booky-journey-resume]').click();
+    await expectReadyNode(page, 'writer', 1);
+    await expect(page.locator('.writer-detail-heading')).toContainText('Достоевский');
+    expect(new URL(page.url()).searchParams.get('writer')).toBe('dostoevsky');
+    await expectSavedPrefix(fixture, ['country']);
+    retained(await actual(page), neutral);
+    Object.assign(result.observations, { confirmedPrefix: ['country'], restoredPaused: true,
+      newDocumentRestoration: true, noAutomaticNavigationOrWrite: true, explicitResumeRequired: true,
+      exactWriterAfterResume: true, canonicalSceneRetainedWithinDocument: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('failed journey-progress native write stays visibly unsaved until explicit exact retry', async ({}, testInfo) => {
+  test.setTimeout(150_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = 'progress-write-retry';
+  try {
+    await page.setViewportSize({ width: 320, height: 900 });
+    const saved = await startCountryStep(fixture);
+    const original = await actual(page);
+    fixture.failNextProgressWrite();
+    await next(page).click();
+    await expectProgress(page, 1);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'failed');
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage-error', 'write');
+    await expect(page.locator('[data-booky-journey-save-retry]')).toBeVisible();
+    expect(fixture.memory.get(PROGRESS)).toBe(saved);
+    expect(savedRecord(fixture).acknowledgedNodeIds).toEqual([]);
+    const failed = fixture.progressWrites().filter(entry => entry.failed);
+    expect(failed).toHaveLength(1);
+    expect(JSON.parse(failed[0].value).records[0].acknowledgedNodeIds).toEqual(['country']);
+    result.observations.failedWrite = { persisted: JSON.parse(saved), pending: JSON.parse(failed[0].value) };
+    await captureStorage(fixture, testInfo, 'journey-save-failed-ru-320.png', '[data-booky-journey-save-retry]',
+      '320px actual App RU unconfirmed journey save with explicit retry');
+    await page.locator('[data-booky-journey-save-retry]').click();
+    await expectSavedPrefix(fixture, ['country']);
+    expect(fixture.memory.get(PROGRESS)).toBe(failed[0].value);
+    await expect(page.locator('[data-booky-journey-save-retry]')).toHaveCount(0);
+    await expectReadyNode(page, 'writer', 1);
+    retained(await actual(page), original);
+    Object.assign(result.observations, { priorBytesPreservedOnWriteFailure: true, visiblyUnsavedLocalPrefix: true,
+      explicitRetryConfirmsExactBytes: true, canonicalSceneRetained: true, failurePort: 'native-preferences-set' });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('future journey progress remains unchanged until explicit confirmed removal', async ({}, testInfo) => {
+  test.setTimeout(120_000);
+  const future = JSON.stringify({ schemaVersion: 99, audience: 'adult', futurePayload: 'synthetic unknown progress' }, null, 2);
+  const fixture = await open(testInfo, { progressSeed: future }), { page, result } = fixture;
+  result.scenario = 'future-progress-clear';
+  try {
+    const original = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'failed');
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage-error', 'unsupported');
+    await expect(page.locator('[data-booky-journey-route]:enabled')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    await expect(node(page)).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(future); expect(fixture.progressWrites()).toEqual([]);
+    await locale(page, 'en');
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage-error', 'unsupported');
+    expect(fixture.memory.get(PROGRESS)).toBe(future); expect(fixture.progressWrites()).toEqual([]);
+    await page.locator('[data-booky-journey-clear-progress]').click();
+    await expect(page.locator('[data-booky-journey-confirm-clear-progress]')).toBeVisible();
+    expect(fixture.memory.get(PROGRESS)).toBe(future); expect(fixture.progressWrites()).toEqual([]);
+    await captureStorage(fixture, testInfo, 'journey-future-clear-en.png', '[data-booky-journey-confirm-clear-progress]',
+      'Desktop actual App EN unknown journey schema kept unchanged with explicit deletion confirmation');
+    await page.locator('[data-booky-journey-confirm-clear-progress]').click();
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+    await expect.poll(() => fixture.memory.has(PROGRESS)).toBe(false);
+    expect(fixture.progressWrites().map(entry => entry.operation)).toEqual(['remove']);
+    await expect(page.locator('[data-booky-journey-progress]')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-route]:enabled')).toHaveCount(1);
+    retained(await actual(page), original, true);
+    Object.assign(result.observations, { unknownBytesPreservedRuEn: true, noUnknownRecordAdmission: true,
+      confirmationBeforeDelete: true, explicitDeleteConfirmedByReadback: true, noAutomaticProgressRewrite: true,
+      canonicalSceneRetained: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('a new reviewed journey version cannot reinterpret or overwrite a saved older prefix', async ({}, testInfo) => {
+  test.setTimeout(150_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = 'incompatible-progress-version';
+  try {
+    await startCountryStep(fixture);
+    await next(page).click(); await expectReadyNode(page, 'writer', 1);
+    const saved = await expectSavedPrefix(fixture, ['country']);
+    const writes = fixture.progressWrites().length;
+    await fixture.coldReload('new-version');
+    await stablePose(page); const neutral = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    await expectProgress(page, 1);
+    await expect(node(page)).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-resume]:enabled')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-open]:enabled')).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved);
+    expect(savedRecord(fixture).journeyVersion).toBe(1);
+    expect(fixture.progressWrites()).toHaveLength(writes);
+    await locale(page, 'en');
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    await expectProgress(page, 1);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved);
+    expect(fixture.progressWrites()).toHaveLength(writes);
+    await stablePose(page); retained(await actual(page), neutral, true);
+    expect(new URL(page.url()).searchParams.get('country')).toBeNull();
+    Object.assign(result.observations, { savedVersion: 1, currentReviewedVersion: 2, incompatibleProgressUnavailable: true,
+      exactOldBytesPreservedRuEn: true, noAutomaticNavigationOrRewrite: true, canonicalSceneRetainedWithinDocument: true });
     fixture.verify();
   } finally { await fixture.close(); }
 });

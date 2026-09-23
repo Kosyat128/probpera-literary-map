@@ -1,11 +1,15 @@
 import { useId, useLayoutEffect, useRef, useState } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { BookyJourneyRuntime, BookyJourneyRuntimeSnapshot } from "./bookyJourneyRuntime";
+import type { BookyJourneyPersistence, BookyJourneyPersistenceSnapshot } from "./bookyJourneyPersistence";
+import BookyJourneyStorageControls from "./BookyJourneyStorageControls";
 import "./BookyJourneyControls.css";
 
 export type BookyJourneyControlsProps = {
   snapshot: BookyJourneyRuntimeSnapshot;
   controller: BookyJourneyRuntime;
+  persistence: BookyJourneyPersistence;
+  persistenceSnapshot: BookyJourneyPersistenceSnapshot;
 };
 
 /** Interface copy only; journey text comes from the current admitted snapshot. */
@@ -76,7 +80,7 @@ export const bookyJourneyControlsCopy = {
   },
 } as const;
 
-export default function BookyJourneyControls({ snapshot, controller }: BookyJourneyControlsProps) {
+export default function BookyJourneyControls({ snapshot, controller, persistence, persistenceSnapshot }: BookyJourneyControlsProps) {
   const { language } = useInterfaceLanguage();
   const copy = bookyJourneyControlsCopy.locales[language];
   const id = useId();
@@ -104,7 +108,7 @@ export default function BookyJourneyControls({ snapshot, controller }: BookyJour
   }, [resetAtRevision, snapshot.revision, active]);
 
   function act(action: () => boolean, focusHeading = false) {
-    const accepted = action();
+    const accepted = persistence.getSnapshot().canAct && action();
     setRejectedAtRevision(accepted ? null : snapshot.revision);
     if (accepted) setResetAtRevision(null);
     // Only an explicit gesture moves focus. This heading remains mounted when
@@ -141,9 +145,11 @@ export default function BookyJourneyControls({ snapshot, controller }: BookyJour
         aria-live="polite" aria-atomic="true" data-booky-journey-status={active?.phase ?? snapshot.status}>
         {statusText}
       </p>
-      {!active && snapshot.status === "ready" && snapshot.routes.length > 0 && (
+      {(!active || active.phase === "complete" || active.phase === "paused" || active.phase === "unavailable")
+        && snapshot.status === "ready" && snapshot.routes.length > 0 && (
         <div className="booky-journey-controls__routes">
           {snapshot.routes.map(route => <button key={route.key} type="button" data-booky-journey-route={route.key}
+            disabled={!persistenceSnapshot.canAct}
             onClick={() => act(() => controller.start(route.key, snapshot.revision), true)}>{route.title}</button>)}
         </div>
       )}
@@ -162,17 +168,18 @@ export default function BookyJourneyControls({ snapshot, controller }: BookyJour
         </div>}
         <div className="booky-journey-controls__actions">
           {inProgress && node && <>
-            <button type="button" data-booky-journey-open="" disabled={!active.canOpen}
+            <button type="button" data-booky-journey-open="" disabled={!persistenceSnapshot.canAct || !active.canOpen}
               onClick={() => act(() => controller.open(snapshot.revision), true)}>{openLabel}</button>
             <button type="button" className="booky-journey-controls__primary" data-booky-journey-next=""
-              disabled={!active.canNext} onClick={() => act(() => controller.next(snapshot.revision), true)}>
+              disabled={!persistenceSnapshot.canAct || !active.canNext} onClick={() => act(() => controller.next(snapshot.revision), true)}>
               {active.index + 1 >= active.total ? copy.finish : copy.next}
             </button>
           </>}
           {active.phase === "paused" && <button type="button" data-booky-journey-resume=""
-            disabled={snapshot.status !== "ready" || !node}
+            disabled={!persistenceSnapshot.canAct || snapshot.status !== "ready" || !node}
             onClick={() => act(() => controller.resume(snapshot.revision), true)}>{copy.resume}</button>}
           {inProgress && active.phase !== "unavailable" && <button type="button" data-booky-journey-pause=""
+            disabled={!persistenceSnapshot.canAct}
             onClick={() => act(() => controller.pause(snapshot.revision))}>{copy.pause}</button>}
         </div>
         <div className="booky-journey-controls__reset">
@@ -180,7 +187,7 @@ export default function BookyJourneyControls({ snapshot, controller }: BookyJour
             <p id={`${id}-reset-question`}>{copy.resetQuestion}</p>
             <div className="booky-journey-controls__confirmation-actions">
               <button ref={resetConfirm} type="button" data-booky-journey-confirm-reset=""
-                disabled={resetAtRevision !== snapshot.revision}
+                disabled={!persistenceSnapshot.canAct || resetAtRevision !== snapshot.revision}
                 onClick={() => act(() => controller.reset(snapshot.revision), true)}>{copy.confirmReset}</button>
               <button type="button" data-booky-journey-cancel-reset="" onClick={() => {
                 restoreResetFocus.current = true;
@@ -188,9 +195,11 @@ export default function BookyJourneyControls({ snapshot, controller }: BookyJour
               }}>{copy.cancelReset}</button>
             </div>
           </div> : <button ref={resetStart} type="button" data-booky-journey-reset=""
+            disabled={!persistenceSnapshot.canAct}
             onClick={() => setResetAtRevision(snapshot.revision)}>{copy.reset}</button>}
         </div>
       </div>}
+      <BookyJourneyStorageControls runtime={controller} persistence={persistence} snapshot={persistenceSnapshot} />
     </section>
   );
 }
