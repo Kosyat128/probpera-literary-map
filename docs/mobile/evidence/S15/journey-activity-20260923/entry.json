@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "stage": "S15",
+  "checkpoint": "644030f8368e865393893d913cf2c5b42c32960f",
+  "previous": "docs/mobile/evidence/S15/journey-capacity-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/journey-capacity-20260923/result.json",
+    "sha256": "8027b44edbe99353b2a7d1e57bb3d71da6ca9640541bf20b7a0133683782acda"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-capacity-20260923/source-manifests/a85bc0c8a954db04.json",
+    "sha256": "a85bc0c8a954db043152fc330125adeea1a9dedf7b33fde4a3b1781ade0e0003",
+    "fileCount": 1625
+  },
+  "changedPaths": [
+    "src/host/bookyJourney.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyCatalog.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyJourneyProgress.ts",
+    "src/host/bookyJourneyProgress.test.ts",
+    "src/host/bookyJourneyPrerequisites.ts",
+    "src/host/bookyJourneyPrerequisites.test.ts",
+    "src/host/bookyJourneyMigration.ts",
+    "src/host/bookyJourneyMigration.test.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyDialogueRegistry.ts",
+    "src/host/useBookyJourney.ts",
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/BookyJourneyControls.css",
+    "src/App.tsx",
+    "tests/pwa/booky-journey.spec.mjs",
+    "src/host/bookyJourneyMigrationRegistry.test.ts"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyJourneyActivity.ts",
+    "src/host/BookyJourneyActivityControls.tsx"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyJourneyActivity.ts",
+    "src/host/BookyJourneyActivityControls.tsx",
+    "src/host/bookyJourneyActivity.test.ts"
+  ],
+  "unitFiles": [
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyHost.test.ts",
+    "src/host/bookyJourneyCompanion.test.ts",
+    "src/host/bookyReaderPolicy.test.ts",
+    "src/host/bookyReaderPolicyStore.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/books/bookArchiveDetailView.test.ts",
+    "src/books/bookArchiveAuthorRequest.test.ts",
+    "src/host/bookyJourneyProgress.test.ts",
+    "src/host/bookyJourneyProgressStore.test.ts",
+    "src/host/bookyJourneyPersistence.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "src/host/bookyJourneyMigration.test.ts",
+    "src/host/bookyJourneyMigrationRegistry.test.ts",
+    "src/host/bookyJourneyPrerequisites.test.ts",
+    "src/host/bookyJourneyActivity.test.ts"
+  ],
+  "expectedBrowserTests": 19,
+  "stageAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "20c431406bdf7a1e5db415267cf234928465967afa5f4c92c76f6c1dda1f5f73"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "f2378176ce2cdfd6e899c2aa4d9bf57929185bccbe46ae4d5481b6f7fc81b6ff"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "44eeccfcb2b362581c460db7d52cdd163cc23fe4c80fd7f2d98135e03158f944"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "e11a2bd3079effff3faeee14079cbb9fa2243b13da1aa843e37b1506526a6007"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "e0777e5e0f7b2f5f9779882926f9a86301020c08acc4e00ca5c9e9dcf801e1d3"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "99431f504f9b3b197f45e334a5b5949a5437ff0a64a3de22d15089ea427b3b62"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "bdf52fa3ea2d66a8540fc885f82f8c4051b4781be9bfd767ed554afab215e0a9"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "9ba90f381ce0f9eadd9ca1dbbd8f9c09845d8757f4594dc3589c06a6d0ca7293"
+    }
+  ],
+  "expectedImages": 16
+}
