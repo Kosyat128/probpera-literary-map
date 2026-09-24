@@ -3,6 +3,7 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
 import PlanetMascotAvatar from "./PlanetMascotAvatar";
 import { BOOKY_GESTURES, type BookyGesture } from "./bookyAnimation";
+import { pickBookySurprise, type BookySurpriseState } from "./bookySurprise";
 import { useBookyWalk } from "./useBookyWalk";
 import { BOOKY_APPROACH_MS, planBookyApproach, planBookyDockReturn } from "./bookyWalk";
 import { bookyCardHeightLimit, bookyCardViewport, bookyCardWidth, placeBooky, placeBookyCard } from "./bookyPlacement";
@@ -126,6 +127,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const handledPoint = useRef<number | null>(null);
   const cancelPoint = useRef<(() => void) | null>(null);
   const [reactionKey, setReactionKey] = useState(0);
+  const surpriseSequence = useRef<BookySurpriseState>({ remaining: [], last: null });
   const [pageTurn, setPageTurn] = useState(0);
   const previousPage = useRef(`${snapshot.mode}:${snapshot.route}:${snapshot.step}`);
   const prior = useRef({ panel: snapshot.panel, visibility: snapshot.visibility });
@@ -456,8 +458,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     // Play is local presentation only. A stale or backgrounded control cannot
     // replay a gesture or change saved tours, reading history or permissions.
     if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
-      || current.panel !== "open" || document.hidden || drag.current) return;
+      || current.panel !== "open" || document.hidden || drag.current) return false;
     setPointerLook(null); setGesture(next); setReactionKey(value => value + 1);
+    return true;
   };
   const navigateTips = (action: () => boolean) => {
     focusAfterNavigation.current = Boolean(card.current?.contains(document.activeElement));
@@ -833,8 +836,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
               <span>{gestureCopy[value].label}</span>
             </button>)}
             <button type="button" data-booky-surprise="" onClick={() => {
-              const choices = BOOKY_GESTURES.filter(value => value !== gesture);
-              playGesture(choices[Math.floor(Math.random() * choices.length)]);
+              const next = pickBookySurprise(surpriseSequence.current, gesture);
+              if (playGesture(next.gesture)) surpriseSequence.current = next.state;
             }}><span aria-hidden="true">✦</span> {ru ? "Удиви меня" : "Surprise me"}</button>
           </div>
           <p className="planet-mascot-controls__response" role="status" aria-live="polite" aria-atomic="true"
