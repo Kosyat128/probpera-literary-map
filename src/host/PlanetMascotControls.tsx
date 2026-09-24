@@ -104,6 +104,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
   const id = useId(), root = useRef<HTMLDivElement>(null), card = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null), heading = useRef<HTMLHeadingElement>(null);
+  const gestureGallery = useRef<HTMLDetailsElement>(null), gestureSummary = useRef<HTMLElement>(null);
   const tourHeading = useRef<HTMLHeadingElement>(null), focusAfterNavigation = useRef(false);
   const resetStart = useRef<HTMLButtonElement>(null), resetConfirm = useRef<HTMLButtonElement>(null);
   const [resetAtRevision, setResetAtRevision] = useState<number | null>(null);
@@ -475,6 +476,18 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     return true;
   };
   const canStopGesture = BOOKY_GESTURES.some(value => value === gesture);
+  const openGestures = () => {
+    const current = controller.getSnapshot(), panel = card.current;
+    const gallery = gestureGallery.current, summary = gestureSummary.current;
+    if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
+      || current.panel !== "open" || document.hidden || drag.current || !panel || !gallery || !summary) return;
+    gallery.open = true;
+    summary.focus({ preventScroll: true });
+    // Move only this reading page, keeping its sticky Stop/Close controls clear
+    // of the gallery heading. Opening the gallery never starts a gesture.
+    const headerHeight = heading.current?.parentElement?.getBoundingClientRect().height ?? 0;
+    panel.scrollTop += summary.getBoundingClientRect().top - panel.getBoundingClientRect().top - headerHeight - 8;
+  };
   const stopGesture = () => {
     const current = controller.getSnapshot();
     if (!canStopGesture || current.revision !== snapshot.revision || !current.available
@@ -762,6 +775,10 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           </div>
         </header>
         {contextual && <p className="planet-mascot-controls__context">{ru ? "Выбрано: " : "Selected: "}{contextual}</p>}
+        <button type="button" className="planet-mascot-controls__quiet" data-booky-open-gestures=""
+          aria-controls={`${id}-gestures`} onClick={openGestures}>
+          {ru ? "Поиграть с Книжуликом" : "Play with Mr. Booky"}
+        </button>
         {snapshot.support && <div className="planet-mascot-controls__support" data-booky-support={snapshot.support.id}>
           <div role="status" aria-live="polite" aria-atomic="true">
             <h3>{snapshot.support.title[language]}</h3>
@@ -854,8 +871,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             </div>
           </details>
         </>}
-        <details className="planet-mascot-controls__extras planet-mascot-controls__gestures" data-booky-gestures="">
-          <summary>{ru ? "Жесты Книжулика" : "Mr. Booky’s gestures"}</summary>
+        <details ref={gestureGallery} id={`${id}-gestures`} className="planet-mascot-controls__extras planet-mascot-controls__gestures" data-booky-gestures="">
+          <summary ref={gestureSummary}>{ru ? "Жесты Книжулика" : "Mr. Booky’s gestures"}</summary>
           <p>{ru ? "Нажми на жест — я отвечу. Можно повторить сколько хочется. Кнопка «Стоп» рядом с моим именем остановит жест."
             : "Choose a gesture and I'll respond. Try it again whenever you like. Use Stop beside my name to end a gesture."}</p>
           <div data-booky-motion-notice="" role="status" aria-live="polite" aria-atomic="true">
@@ -865,15 +882,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             </p>}
           </div>
           <div className="planet-mascot-controls__actions">
+            <button type="button" data-booky-surprise="" onClick={() => {
+              const next = pickBookySurprise(surpriseSequence.current, gesture);
+              if (playGesture(next.gesture)) surpriseSequence.current = next.state;
+            }}><span aria-hidden="true">✦</span> {ru ? "Удиви меня" : "Surprise me"}</button>
             {BOOKY_GESTURES.map(value => <button key={value} type="button" data-booky-gesture={value}
               aria-pressed={gesture === value} onClick={() => playGesture(value)}>
               <span className="planet-mascot-controls__gesture-symbol" aria-hidden="true">{gestureCopy[value].symbol}</span>
               <span>{gestureCopy[value].label}</span>
             </button>)}
-            <button type="button" data-booky-surprise="" onClick={() => {
-              const next = pickBookySurprise(surpriseSequence.current, gesture);
-              if (playGesture(next.gesture)) surpriseSequence.current = next.state;
-            }}><span aria-hidden="true">✦</span> {ru ? "Удиви меня" : "Surprise me"}</button>
           </div>
           <p className="planet-mascot-controls__response" role="status" aria-live="polite" aria-atomic="true"
             data-booky-gesture-response="">{gesture !== "rest" && gesture !== "dragging" && gesture !== "pointing" ? gestureCopy[gesture].response
