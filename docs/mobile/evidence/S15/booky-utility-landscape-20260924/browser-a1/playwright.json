@@ -1,0 +1,909 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-utility-landscape-20260924/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-utility-landscape-20260924\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-live-character.spec.mjs",
+          "booky-reader-policy.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-utility-landscape-20260924\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-live-character.spec.mjs",
+      "file": "booky-live-character.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16681,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:00:15.614Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\attachments\\booky-live-character-source-evidence-7eede21cfd58415312cc28565aaf8b243d4feb50.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-b891019da3e4e0657dc9",
+          "file": "booky-live-character.spec.mjs",
+          "line": 411,
+          "column": 1
+        },
+        {
+          "title": "Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:00:33.448Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\\attachments\\booky-live-character-source-evidence-539ab90c8667b1cf989a8f2f2831083cdb4003ca.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-a835cca18ba94006df24",
+          "file": "booky-live-character.spec.mjs",
+          "line": 558,
+          "column": 1
+        },
+        {
+          "title": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 34508,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:01:00.224Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\attachments\\booky-live-character-source-evidence-8e8d4933d0c38722dbeb74eacb73e97159876873.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-26642a1d36add0d397f2",
+          "file": "booky-live-character.spec.mjs",
+          "line": 726,
+          "column": 1
+        },
+        {
+          "title": "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 35821,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:01:34.741Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion\\attachments\\booky-live-character-source-evidence-0cbe77012e9e730431f3c06c6ed5244763430046.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-11c76ef2a4e87050e07f",
+          "file": "booky-live-character.spec.mjs",
+          "line": 835,
+          "column": 1
+        },
+        {
+          "title": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26250,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:02:10.571Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion\\attachments\\booky-live-character-source-evidence-371fbe61c687877f9bce64a3e61dbef686a1aa1f.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-030c4ad78d462ffa9564",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1112,
+          "column": 1
+        },
+        {
+          "title": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13194,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:02:36.828Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales\\attachments\\booky-live-character-source-evidence-28bd56616c2d6e7683e5bddb1bfa19d976f92681.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-9e8110af03ab90067eff",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1247,
+          "column": 1
+        },
+        {
+          "title": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18338,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:02:50.031Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-short-14e75-try-archive-in-both-locales\\attachments\\booky-live-character-source-evidence-09c4f5ee5025ebaf6118cfca36b6424a7a5bb541.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-91f2e599b8c20b68292e",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1388,
+          "column": 1
+        },
+        {
+          "title": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32954,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:03:08.377Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales\\attachments\\booky-live-character-source-evidence-8615bf5353f64b2de0d50e8524a4828c02e0bb2e.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-f58a86be4e0981337725",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1531,
+          "column": 1
+        },
+        {
+          "title": "Mr. Booky treats held Enter and Space as one walking command",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17104,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:03:41.340Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command\\attachments\\booky-live-character-source-evidence-1a8c8fa2a9177d6cab5ea5ad23769da9902c2c90.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-1cf4b138a22b6f6c3f01",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1657,
+          "column": 1
+        },
+        {
+          "title": "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion ru 390",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 38438,
+                  "error": {
+                    "message": "TimeoutError: page.waitForFunction: Timeout 1500ms exceeded.",
+                    "stack": "TimeoutError: page.waitForFunction: Timeout 1500ms exceeded.\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1955:16",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                      "column": 16,
+                      "line": 1955
+                    },
+                    "snippet": "  1953 |     action=await graphicsAction();const reduced=currentRecord=all.reducedMotion={preferencesBefore:snapshotPreferences()};await observe();reduced.origin=await state('before reduced-motion action');\n  1954 |     await action.tap();await expect(panel(page)).not.toBeVisible();\n> 1955 |     await page.waitForFunction(()=>document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')==='tapping',undefined,{timeout:1500});\n       |                ^\n  1956 |     reduced.atPoint=await state('static pointing');await page.waitForTimeout(1000);reduced.final=await settle();reduced.trace=await finishTrace();\n  1957 |     reduced.preferencesUnchanged=unchanged(reduced.preferencesBefore);reduced.canonical=await actual(page);\n  1958 |     trustedAction(reduced.trace);expect(reduced.trace.samples.some(s=>s.phase==='tapping'&&s.gesture==='pointing')).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                        "column": 16,
+                        "line": 1955
+                      },
+                      "message": "TimeoutError: page.waitForFunction: Timeout 1500ms exceeded.\n\n  1953 |     action=await graphicsAction();const reduced=currentRecord=all.reducedMotion={preferencesBefore:snapshotPreferences()};await observe();reduced.origin=await state('before reduced-motion action');\n  1954 |     await action.tap();await expect(panel(page)).not.toBeVisible();\n> 1955 |     await page.waitForFunction(()=>document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')==='tapping',undefined,{timeout:1500});\n       |                ^\n  1956 |     reduced.atPoint=await state('static pointing');await page.waitForTimeout(1000);reduced.final=await settle();reduced.trace=await finishTrace();\n  1957 |     reduced.preferencesUnchanged=unchanged(reduced.preferencesBefore);reduced.canonical=await actual(page);\n  1958 |     trustedAction(reduced.trace);expect(reduced.trace.samples.some(s=>s.phase==='tapping'&&s.gesture==='pointing')).toBe(true);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1955:16"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:03:58.452Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390\\attachments\\booky-live-character-source-evidence-ba8b53bff52f817e137e75093c14ee6bd119b174.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                    "column": 16,
+                    "line": 1955
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-ba1ede9816a7921aa7a8",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1706,
+          "column": 1
+        },
+        {
+          "title": "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion en 320",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 39565,
+                  "error": {
+                    "message": "TimeoutError: page.waitForFunction: Timeout 1500ms exceeded.",
+                    "stack": "TimeoutError: page.waitForFunction: Timeout 1500ms exceeded.\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1955:16",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                      "column": 16,
+                      "line": 1955
+                    },
+                    "snippet": "  1953 |     action=await graphicsAction();const reduced=currentRecord=all.reducedMotion={preferencesBefore:snapshotPreferences()};await observe();reduced.origin=await state('before reduced-motion action');\n  1954 |     await action.tap();await expect(panel(page)).not.toBeVisible();\n> 1955 |     await page.waitForFunction(()=>document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')==='tapping',undefined,{timeout:1500});\n       |                ^\n  1956 |     reduced.atPoint=await state('static pointing');await page.waitForTimeout(1000);reduced.final=await settle();reduced.trace=await finishTrace();\n  1957 |     reduced.preferencesUnchanged=unchanged(reduced.preferencesBefore);reduced.canonical=await actual(page);\n  1958 |     trustedAction(reduced.trace);expect(reduced.trace.samples.some(s=>s.phase==='tapping'&&s.gesture==='pointing')).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                        "column": 16,
+                        "line": 1955
+                      },
+                      "message": "TimeoutError: page.waitForFunction: Timeout 1500ms exceeded.\n\n  1953 |     action=await graphicsAction();const reduced=currentRecord=all.reducedMotion={preferencesBefore:snapshotPreferences()};await observe();reduced.origin=await state('before reduced-motion action');\n  1954 |     await action.tap();await expect(panel(page)).not.toBeVisible();\n> 1955 |     await page.waitForFunction(()=>document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')==='tapping',undefined,{timeout:1500});\n       |                ^\n  1956 |     reduced.atPoint=await state('static pointing');await page.waitForTimeout(1000);reduced.final=await settle();reduced.trace=await finishTrace();\n  1957 |     reduced.preferencesUnchanged=unchanged(reduced.preferencesBefore);reduced.canonical=await actual(page);\n  1958 |     trustedAction(reduced.trace);expect(reduced.trace.samples.some(s=>s.phase==='tapping'&&s.gesture==='pointing')).toBe(true);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1955:16"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:04:37.437Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320\\attachments\\booky-live-character-source-evidence-5b28540cb3b87d06b0eda00d4628b7886b332d5c.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                    "column": 16,
+                    "line": 1955
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-f18e089fd4e2b2301114",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1706,
+          "column": 1
+        },
+        {
+          "title": "utility surface natural touch ru recent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16617,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:05:18.309Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-utility-surface-natural-touch-ru-recent\\attachments\\booky-live-character-source-evidence-d8c628af2b3c7006fa8aaf95fe6b2615f39f0d2b.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-bb0b0d5599c524601164",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1981,
+          "column": 3
+        },
+        {
+          "title": "utility surface natural touch ru downloads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:05:35.767Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-utili-a771c--natural-touch-ru-downloads\\attachments\\booky-live-character-source-evidence-98fe1c9f636adaef63c0a38518a66c83dd4a4979.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-e3b98a9fc4fc9385156b",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1981,
+          "column": 3
+        },
+        {
+          "title": "utility surface natural touch en recent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17330,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:05:53.378Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-utility-surface-natural-touch-en-recent\\attachments\\booky-live-character-source-evidence-afff889898dbdbc95b60c45434a6e8512eb3db32.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-12e332172a6ad4df6d32",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1981,
+          "column": 3
+        },
+        {
+          "title": "utility surface natural touch en downloads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16795,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:06:10.718Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-utili-cf4f3--natural-touch-en-downloads\\attachments\\booky-live-character-source-evidence-f4cd13f5ff501e515bd7afd739fa07119beedf6f.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-dea3ab676bf79fcc9789",
+          "file": "booky-live-character.spec.mjs",
+          "line": 1981,
+          "column": 3
+        },
+        {
+          "title": "utility landscape natural touch ru recent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17596,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:06:27.524Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-utili-0fc75-ape-natural-touch-ru-recent\\attachments\\booky-live-character-source-evidence-5e24fb74388dc988cb6b7692235661458e8d2b23.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-b91fe0cc4eeb51ab7e51",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2134,
+          "column": 3
+        },
+        {
+          "title": "utility landscape natural touch en downloads",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17699,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:06:45.129Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-live-character-utili-4ea6f--natural-touch-en-downloads\\attachments\\booky-live-character-source-evidence-d617014a581da2868850b8a7b542a79cb5b19e2b.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-6a50b39024da0473ca56",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2134,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "booky-reader-policy.spec.mjs",
+      "file": "booky-reader-policy.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9984,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:07:02.872Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-reader-policy-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\attachments\\booky-reader-policy-source-evidence-370361a0396fa23cf48286c2521ad110992525b0.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a050cd865521390aaf89-9cd17d74ff4caaeffa4c",
+          "file": "booky-reader-policy.spec.mjs",
+          "line": 481,
+          "column": 1
+        },
+        {
+          "title": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8263,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T05:07:13.631Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-reader-policy-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a1\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\attachments\\booky-reader-policy-source-evidence-8af78b2be9cd720bc234475c804a5850292e1a1a.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a050cd865521390aaf89-1d9b00633042494ec02c",
+          "file": "booky-reader-policy.spec.mjs",
+          "line": 542,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T05:00:14.287Z",
+    "duration": 427653.157,
+    "expected": 17,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

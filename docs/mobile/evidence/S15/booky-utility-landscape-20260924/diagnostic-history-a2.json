@@ -1,0 +1,572 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T05:19:17.849Z",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/result.json",
+    "sha256": "f64798c07d15c2dfd922ceadd437d93a498e47551403fe1b011ceb7d7b58df7e"
+  },
+  "retainedPriorHistory": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/diagnostic-history.json",
+    "sha256": "b324f5639249c5fb982bdb3b831efad2ef823c1d4aee10fc18c85ca7e3d7a11b"
+  },
+  "retainedAttemptNames": [
+    "a1",
+    "a2",
+    "a3",
+    "a4"
+  ],
+  "attempts": [
+    {
+      "attempt": "formal-browser-a1",
+      "classification": "formal-product-regression",
+      "browserStarted": true,
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/playwright.json",
+        "sha256": "5c8e177323908e7f0e4b8126153a7be08184cd0096dd3ff262f69b1d36eaa359",
+        "bytes": 40480
+      },
+      "tests": {
+        "passed": 17,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/execution.json",
+        "sha256": "b79d258d560a6890327af7dff2ad32b5988ee575ccf9272dc4ded0af9868b233",
+        "bytes": 728
+      },
+      "executionEvidence": {
+        "exitCode": 1,
+        "stdout": {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/stdout.log",
+          "bytes": 7431,
+          "sha256": "e479a9a6a766f43e000ec39a249b12173b691939b2a7b55f5045fe2c8a4180c9"
+        },
+        "stderr": {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/stderr.log",
+          "bytes": 491,
+          "sha256": "4acb77a6ebe8d6a67071c8b16e81ab41be252a14dc9e2923cafbb93d9543d2f4"
+        }
+      },
+      "proof": null,
+      "sourceEvidence": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+        "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+        "fileCount": 1650
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/archive.json",
+          "sha256": "d7b8593a43e63e3747a0930001390e8972ea103774cec83e6658b03be3201d1c"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/execution.json",
+          "sha256": "b79d258d560a6890327af7dff2ad32b5988ee575ccf9272dc4ded0af9868b233",
+          "bytes": 728
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/playwright.json",
+          "sha256": "5c8e177323908e7f0e4b8126153a7be08184cd0096dd3ff262f69b1d36eaa359",
+          "bytes": 40480
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/result.json",
+          "sha256": "ba0e60505577f277dfe4b532a64c99f852c1974c0bd393238bcf7743f9ffae7b",
+          "bytes": 2858
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/stderr.log",
+          "sha256": "4acb77a6ebe8d6a67071c8b16e81ab41be252a14dc9e2923cafbb93d9543d2f4",
+          "bytes": 491
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/stdout.log",
+          "sha256": "e479a9a6a766f43e000ec39a249b12173b691939b2a7b55f5045fe2c8a4180c9",
+          "bytes": 7431
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/configure.mjs",
+          "sha256": "c4a94cf7e002dcdc773acf1a5acdbe6092122692e9a1bce28d84265b503085ca"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/check.mjs",
+          "sha256": "dde308080a71536c00ebd71fbb91ad9ca585062c53ca31ed1d391c3ef916f99e"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/unit.config.mjs",
+          "sha256": "1e18e1b43f0fff1c5e65ccf57c296e7df5d5cb463d15146185f8181cc14cc625"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/playwright.config.mjs",
+          "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/scope.json",
+          "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/entry.json",
+          "sha256": "45c7d043ef339bd21860be12ee5d123d786649e208a1dc041d79822438d911ff"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+        "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+        "fileCount": 1650
+      },
+      "failedCases": [
+        {
+          "title": "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion ru 390",
+          "errors": [
+            "TimeoutError: page.waitForFunction: Timeout 1500ms exceeded.\n\n  1953 |     action=await graphicsAction();const reduced=currentRecord=all.reducedMotion={preferencesBefore:snapshotPreferences()};await observe();reduced.origin=await state('before reduced-motion action');\n  1954 |     await action.tap();await expect(panel(page)).not.toBeVisible();\n> 1955 |     await page.waitForFunction(()=>document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')==='tapping',undefined,{timeout:1500});\n       |                ^\n  1956 |     reduced.atPoint=await state('static pointing');await page.waitForTimeout(1000);reduced.final=await settle();reduced.trace=await finishTrace();\n  1957 |     reduced.preferencesUnchanged=unchanged(reduced.preferencesBefore);reduced.canonical=await actual(page);\n  1958 |     trustedAction(reduced.trace);expect(reduced.trace.samples.some(s=>s.phase==='tapping'&&s.gesture==='pointing')).toBe(true);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1955:16"
+          ]
+        },
+        {
+          "title": "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion en 320",
+          "errors": [
+            "TimeoutError: page.waitForFunction: Timeout 1500ms exceeded.\n\n  1953 |     action=await graphicsAction();const reduced=currentRecord=all.reducedMotion={preferencesBefore:snapshotPreferences()};await observe();reduced.origin=await state('before reduced-motion action');\n  1954 |     await action.tap();await expect(panel(page)).not.toBeVisible();\n> 1955 |     await page.waitForFunction(()=>document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')==='tapping',undefined,{timeout:1500});\n       |                ^\n  1956 |     reduced.atPoint=await state('static pointing');await page.waitForTimeout(1000);reduced.final=await settle();reduced.trace=await finishTrace();\n  1957 |     reduced.preferencesUnchanged=unchanged(reduced.preferencesBefore);reduced.canonical=await actual(page);\n  1958 |     trustedAction(reduced.trace);expect(reduced.trace.samples.some(s=>s.phase==='tapping'&&s.gesture==='pointing')).toBe(true);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1955:16"
+          ]
+        }
+      ],
+      "note": "The original complete formal run retains17PASS/2FAIL and exit1. Existing RU390/EN320 graphics cases timed out waiting for the reduced-motion static tapping cue. All original reports, logs, captures and source/check-input identities remain authenticated by the pre-amendment archive; current entry/scope bytes do not replace their original identities."
+    },
+    {
+      "attempt": "a5",
+      "classification": "focused-regression-pass",
+      "browserStarted": true,
+      "testCasesExecuted": 5,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/playwright.json",
+        "sha256": "61b560dc9a71ac4e3cc047bdd25500350cf23885de533e973ebff8f85fded64b"
+      },
+      "tests": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/execution.json",
+        "sha256": "bf4a2af9aeef06299b60ed3d9b05c333105632a0bd490ac080066692f1676152"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "outerNodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/stdout.log",
+          "sha256": "9ed9d20c0444c17194610dd91a22e93142bd3ea8f74164eb6026b22062e4b58f"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/stderr.log",
+          "sha256": "118a297d76f4438a73284d5ebb973892ec7d82bd993e7c5ecb2e7bdde1d7782d"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/proof.json",
+        "sha256": "30905611ed29132677540b210468057bc37c1721da8747db169e75b79dc9296b"
+      },
+      "proofExitField": "trueExit",
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/execution-start.json",
+        "sha256": "49b62677a8cc4429f37fda132e1517b14fd5d1e486441536a4d9a66bb2045764"
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/runner-execution.json",
+          "sha256": "287477682a9139ec05cd1a07e02dc29e07754d48a6432108c317e7ee135b8ff3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/runner-stdout.log",
+          "sha256": "51d8c011ae8a3e499836f6bb2cb038e230e2a3909c5fb73efabd6439aa9e3824"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/authorized-source.json",
+          "sha256": "254a5c5c5339fa56e3eb0f7f059359f1e5d107d980414559928e49ef2d7efda1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/authorized-runtime-and-fixture.patch",
+          "sha256": "018d9c26d1126403beb4b7f7d417024134b3693c6ad49895ecb64e42a218b890"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/canonical-fixture-input.mjs",
+          "sha256": "15ee45594ad4c4f6ca5f36c718cb8121feb1c68ac25374fe8a78b08d818430d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/playwright.config.mjs",
+          "sha256": "e9df83845493b428fd7ce3f238407648315593e9df5745fb472e1ab9874ed808"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/run.mjs",
+          "sha256": "568dc5d33efb5d857e0320597c56be134e20c6bce9b5a067cb2fa639db48ff93"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/prepare.mjs",
+          "sha256": "678aa2e94182dba2f1f4c3b3ee43279d9cca2eadb360a48b5cd370e3f9e9363a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/bind-source.mjs",
+          "sha256": "c3d710a988f5e682f8a15a8ff08b49311bfdc7c6c74210a49c10822d77597a9c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/bind-source.preparation-error.mjs.txt",
+          "sha256": "df8a07b86c2e6fcad11b61e1bb46232e8b7bbfc08a2aa200a5d6da50e800483c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/refine-preparation.mjs",
+          "sha256": "10399d0a4ea50d625c5bdaa88f3d6657d6558a540b92bb8a5bdd00c38eb9942d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/make-proof.mjs",
+          "sha256": "ab9524e116ab5a8e15dda5b19095d2488eba939de2cff568550c1524e25d4b97"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/preflight-result.json",
+          "sha256": "b5f9ce996c2dd7a53346123937108a40a99301728a33efd1439da4192af7f2c5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/preflight-start.json",
+          "sha256": "9f1f6e92fc718c37ed49b740c8f02686d98ad36ac99f5f3ad8e188304c283450"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/preflight-stdout.log",
+          "sha256": "d937affd1a080ba170c62423ddbcf576428fdefa86bc673941dea2de534e157b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-live-character.json",
+          "sha256": "97f621ebd453881799b0118467be4968d13f71c80ee131ae19b76a337ba0be54"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/attachments/booky-live-character-source-evidence-0eed6ab86a21a5d246473d14a71d8d11c8563ba7.json",
+          "sha256": "97f621ebd453881799b0118467be4968d13f71c80ee131ae19b76a337ba0be54"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-useful-actions-ru-320.png",
+          "sha256": "0bfc9bc3e7c60a70021480d1460d6901df920d5667129355f2b6633d99cc3d25"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-live-character.json",
+          "sha256": "9256af004f89f6ca722826a512a81cc596f704f4c2ac09a677b06d74ac1b8c0e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/attachments/booky-live-character-source-evidence-523ee97950f7a9d103f0429e4e3e914d500ebe36.json",
+          "sha256": "9256af004f89f6ca722826a512a81cc596f704f4c2ac09a677b06d74ac1b8c0e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-approach-ru-390.png",
+          "sha256": "1d5a2abb267ebb9d73c8feba070ba69200c3f440dae77540c1b000edb4f28a95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-settled-ru-390.png",
+          "sha256": "5d207252dd1b8b1cd827cb219801c15b6815ceb147333de3ac053e2d3a1b0a44"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-position-reset-ru-390.png",
+          "sha256": "d2d18e31187a843ad53580faa2b47250149837703811a7e6b0d5c1aa43b3273f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-rotation-landscape-ru-844.png",
+          "sha256": "967be00304e5010f8a4e8f7f9b1daa31c87db5dbfb30e3f0b03d675c1d4315f4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-rotation-reset-ru-390.png",
+          "sha256": "7cab84c9790ac475c8a2a7c1d5ca3bf4e953238195850423a7a18e5fa13dd24d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-live-character.json",
+          "sha256": "58560047b0cbab829e74edc8982ad15513b5a13578bd3bedf263ca8cb4bc2f6f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/attachments/booky-live-character-source-evidence-1dc4e275f1f2deaf7dd39911162ba42437175404.json",
+          "sha256": "58560047b0cbab829e74edc8982ad15513b5a13578bd3bedf263ca8cb4bc2f6f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-approach-en-320.png",
+          "sha256": "590fea25a092d953918f42d0f3f11b80f2678636595c9d0808e0e87f08941a83"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-settled-en-320.png",
+          "sha256": "11a6e0068d69e94af8afb183462e98737313b576f481da6c1edd68a0fef4e618"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-position-reset-en-320.png",
+          "sha256": "5cb2cb9bec5b5d712d9f88cb6f8201d3587c5c91e412ec66fccf3df8e9be7033"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-rotation-landscape-en-640.png",
+          "sha256": "c3651c0068393cf5cfe1684cc80b06cc5a6d4beb4d988b04de1cdd1bcc2c4e25"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-rotation-reset-en-320.png",
+          "sha256": "62fd4de0ba482a8c7cc59eec8232c3f9b2595916b0059de3bd40d6371867dcf5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-utili-0fc75-ape-natural-touch-ru-recent/booky-live-character.json",
+          "sha256": "bccebfe314e6dee4070cb9eb0aa2855b664f082faff400fa5f8e784f73460efe"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-utili-0fc75-ape-natural-touch-ru-recent/attachments/booky-live-character-source-evidence-455f6cae0f20aca3c1208ff4da979a9df4317daf.json",
+          "sha256": "bccebfe314e6dee4070cb9eb0aa2855b664f082faff400fa5f8e784f73460efe"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-utili-0fc75-ape-natural-touch-ru-recent/booky-utility-landscape-recent-ru-568-natural-return.png",
+          "sha256": "36b56a63300f5356d655f2e4de548bc7eefe7183ef099a229595d34c654f1f0d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-utili-0fc75-ape-natural-touch-ru-recent/booky-utility-landscape-recent-ru-568.png",
+          "sha256": "5279436fc126ffdf068f5f3ebddcf6280c23f47cd1ccc1b0be481eb77b1313bd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-utili-4ea6f--natural-touch-en-downloads/booky-live-character.json",
+          "sha256": "b3b78e29cb08270ae26b18936e4edda565ddedd2b3a807d7bdb3874e713e7092"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-utili-4ea6f--natural-touch-en-downloads/attachments/booky-live-character-source-evidence-946706f52a85cef6e7e688dc36882355d5768af5.json",
+          "sha256": "b3b78e29cb08270ae26b18936e4edda565ddedd2b3a807d7bdb3874e713e7092"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-utili-4ea6f--natural-touch-en-downloads/booky-utility-landscape-downloads-en-640-natural-return.png",
+          "sha256": "20d40534b3e715203639cd49b49be7cc8f29ab8422354da492fbd049d7b2ee49"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/artifacts/booky-live-character-utili-4ea6f--natural-touch-en-downloads/booky-utility-landscape-downloads-en-640.png",
+          "sha256": "6edb46b5d5659b09c4d97e2a7c8d9c000aa9585927bab8f2713f2d2b9e4a1e73"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "selectionPreflight": {
+        "receipt": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/preflight-result.json",
+          "sha256": "b5f9ce996c2dd7a53346123937108a40a99301728a33efd1439da4192af7f2c5"
+        },
+        "nodeExit": 0,
+        "selectedCaseCount": 5
+      },
+      "fixtureSha256": "15ee45594ad4c4f6ca5f36c718cb8121feb1c68ac25374fe8a78b08d818430d5",
+      "caseOutcomes": [
+        {
+          "scenario": "explicit-local-utilities",
+          "kind": "canonical utilities with interphase cancellation",
+          "pass": true,
+          "reducedMotion": null,
+          "flags": {
+            "newerInterphaseTouchRetained": true,
+            "interphaseTouchKeepsScrollAndSections": true,
+            "interphaseTouchDoesNotResumeWalk": true,
+            "interphaseTouchLandscape": true
+          },
+          "independentChecks": null
+        },
+        {
+          "scenario": "mobile-touch-graphics-dock-return-ru",
+          "kind": "mobile graphics ru",
+          "pass": true,
+          "reducedMotion": {
+            "tappingSampleCount": 101,
+            "tappingObservedSpanMs": 693.6999999997206,
+            "approachSamples": 0,
+            "returnSamples": 0,
+            "walkingSamples": 0
+          },
+          "flags": null,
+          "independentChecks": null
+        },
+        {
+          "scenario": "mobile-touch-graphics-dock-return-en",
+          "kind": "mobile graphics en",
+          "pass": true,
+          "reducedMotion": {
+            "tappingSampleCount": 100,
+            "tappingObservedSpanMs": 685.6000000000931,
+            "approachSamples": 0,
+            "returnSamples": 0,
+            "walkingSamples": 0
+          },
+          "flags": null,
+          "independentChecks": null
+        },
+        {
+          "scenario": "utility-landscape-ru-recent",
+          "kind": "utility-landscape-ru-recent",
+          "pass": true,
+          "reducedMotion": null,
+          "flags": null,
+          "independentChecks": [
+            {
+              "name": "natural point reached",
+              "pass": true
+            },
+            {
+              "name": "natural return reached",
+              "pass": true
+            },
+            {
+              "name": "natural point completed and position settled",
+              "pass": true
+            },
+            {
+              "name": "required utility controls exposed by optional trusted touch scroll",
+              "pass": true
+            },
+            {
+              "name": "trusted optional scroll events",
+              "pass": true
+            },
+            {
+              "name": "explicit trusted touch action",
+              "pass": true
+            },
+            {
+              "name": "graphics closed and whole companion in measured dock",
+              "pass": true
+            },
+            {
+              "name": "finite approach point return and continuous handoff",
+              "pass": true
+            },
+            {
+              "name": "visible body prose clear after natural return",
+              "pass": true
+            },
+            {
+              "name": "whole pet stays in viewport",
+              "pass": true
+            },
+            {
+              "name": "1900ms exact stillness and no automatic resume",
+              "pass": true
+            },
+            {
+              "name": "required section controls are actually visible",
+              "pass": true
+            },
+            {
+              "name": "visible section and header hit points",
+              "pass": true
+            },
+            {
+              "name": "preferences and progress bytes unchanged",
+              "pass": true
+            },
+            {
+              "name": "no automatic download action",
+              "pass": true
+            },
+            {
+              "name": "canonical scene camera resources unchanged",
+              "pass": true
+            },
+            {
+              "name": "actual App fixture integrity",
+              "pass": true
+            }
+          ]
+        },
+        {
+          "scenario": "utility-landscape-en-downloads",
+          "kind": "utility-landscape-en-downloads",
+          "pass": true,
+          "reducedMotion": null,
+          "flags": null,
+          "independentChecks": [
+            {
+              "name": "natural point reached",
+              "pass": true
+            },
+            {
+              "name": "natural return reached",
+              "pass": true
+            },
+            {
+              "name": "natural point completed and position settled",
+              "pass": true
+            },
+            {
+              "name": "required utility controls exposed by optional trusted touch scroll",
+              "pass": true
+            },
+            {
+              "name": "trusted optional scroll events",
+              "pass": true
+            },
+            {
+              "name": "explicit trusted touch action",
+              "pass": true
+            },
+            {
+              "name": "graphics closed and whole companion in measured dock",
+              "pass": true
+            },
+            {
+              "name": "finite approach point return and continuous handoff",
+              "pass": true
+            },
+            {
+              "name": "visible body prose clear after natural return",
+              "pass": true
+            },
+            {
+              "name": "whole pet stays in viewport",
+              "pass": true
+            },
+            {
+              "name": "1900ms exact stillness and no automatic resume",
+              "pass": true
+            },
+            {
+              "name": "required section controls are actually visible",
+              "pass": true
+            },
+            {
+              "name": "visible section and header hit points",
+              "pass": true
+            },
+            {
+              "name": "preferences and progress bytes unchanged",
+              "pass": true
+            },
+            {
+              "name": "no automatic download action",
+              "pass": true
+            },
+            {
+              "name": "canonical scene camera resources unchanged",
+              "pass": true
+            },
+            {
+              "name": "actual App fixture integrity",
+              "pass": true
+            }
+          ]
+        }
+      ],
+      "preparationNote": "Before any a5 browser invocation, a generated binder syntax error from replacement-string dollar expansion was corrected; broken preparation file retained as bind-source.preparation-error.mjs.txt. Source binding and exactly-five list preflight then passed; browser executed once.",
+      "note": "One exactly-five-case browser execution followed successful list preflight. The authorized Controls change waits a third RAF before target readiness. Both reduced-motion static cues appear without walking, while the existing interphase cancellation and both landscape cases pass. Canonical fixture and tolerances are unchanged; this focused result does not replace formal19case validation or establish device/performance acceptance."
+    }
+  ],
+  "sourceAmendment": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/amendment.json",
+    "sha256": "4d8a0f7c98d9b703eb2b5f444c352a93b929f48bbf4283751bb4b109ae287031"
+  },
+  "sourceInventoryMode": "Original four-attempt ledger remains unchanged and authenticated. New records bind the original formal failure and focused a5 to their saved source/check-input receipts; no historical source hashes are recalculated from the amended working tree.",
+  "limitations": [
+    "The original formal browser-a1 remains17PASS/2FAIL with exit1. Earlier unit/static a1 remain their original-source results.",
+    "The a5 binder preparation syntax error was corrected before browser invocation; the broken preparation file remains preserved. No extra browser run or fabricated preparation process exit is inferred.",
+    "a5 covers five canonical cases only. Final acceptance of the configured19case scope requires separate formal a2 evidence.",
+    "No installed-device, frame-performance, stage or release acceptance is claimed."
+  ],
+  "releaseReady": false
+}

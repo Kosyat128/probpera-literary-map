@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76772216,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/pwa-a1-copy-verification.json",
+    "sha256": "9d79b91242fd64f515257920c23c12ba9466e65c3102ad7edbfaf108eb2d67d4"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/pwa-77ad3e97/artifact.json",
+    "sha256": "3b46e5b67c8ec52f4fce3cfa79d58d31f0c8c4840ce3cfbd212c22bfffedcb46"
+  }
+}

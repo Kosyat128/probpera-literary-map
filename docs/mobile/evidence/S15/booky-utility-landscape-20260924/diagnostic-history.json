@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T04:58:17.0423193+00:00",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/result.json",
+    "sha256": "f64798c07d15c2dfd922ceadd437d93a498e47551403fe1b011ceb7d7b58df7e"
+  },
+  "retainedPriorHistory": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/staging/diagnostic-history-draft-a1-a3.json",
+    "sha256": "95a6ca370d34b3d3e9a24de9d875765b7eefa4fe4ed98fab2276d6c470bc9737"
+  },
+  "attempts": [
+    {
+      "attempt": "a1",
+      "classification": "actual-product-failure",
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/playwright.json",
+        "sha256": "a6b98ed468ccb8a99e6027b09dcc6bfb1c8b52f2ac9ec18ee214277245c62be9"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/execution.json",
+        "sha256": "3743d9a98c63ec2b983f64e1f0960eb82b484bdb31e2e315143eaa8bd3daa4bf"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "outerNodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/stdout.log",
+          "sha256": "5df0ed92eb233ab19b61ecfb357fe1209124dd0d8020db55b4e8b2cbf24ffcd9"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/stderr.log",
+          "sha256": "62222ce45706f075f122faf052c3fc4ba846d82182ab8240b59bd4e4ba0df089"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/proof.json",
+        "sha256": "86b37d56260b2ebb4dc4e2ab6091b72d57d853044c12eab93a378c3f513a661f"
+      },
+      "proofExitField": "trueExit",
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/execution-start.json",
+        "sha256": "c3f51685766f514c1ab474075cabcc964dcb9fbd603f11df720b7fa9ca3528d7"
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/runner-execution.json",
+          "sha256": "3cac7a834d985c9a87461dcc704713b0cdb9e27b8734eb1e5ea227da0c889315"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/runner-stdout.log",
+          "sha256": "9c4a177d39d3613d5e54e50838ae11708f0eae3ab1bf4b27afe0d788f5ef9355"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/authorized-source.json",
+          "sha256": "6bb2dfb6f76b5e643bfac6603a59393212e259e276dd59603ca437ff866e2d6a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/prepared.json",
+          "sha256": "7b9b630db1630daeacfeda23aabdb63bcad8e9f8d1cac709e8e5e36ade91511c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/prepared-final.json",
+          "sha256": "f18d65fd93fd3273a33f792c0bd3a54030ac03b5dd5050ec5dfe01892fb37374"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/utility.spec.mjs",
+          "sha256": "8b8379bf06452ebf04caa6e3da37d2e52969f1a9bf95d7dc1e10c24a66202e93"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/playwright.config.mjs",
+          "sha256": "01166ee59dc31edf9c75123bcec22a2efff3a07650b4a2151595d46610b33c67"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/run.mjs",
+          "sha256": "ae16a650cf6ea40b628da41e8dca598f3a6571ddd26efc9ca40794e71d5e5ec0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/prepare.mjs",
+          "sha256": "f9018a33b82bf64394eca27680a6ce89e72b80cc38a40612ce9682a7acf5882f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/bind-source.mjs",
+          "sha256": "809f0ce45fbc0f6865965cd6508b1a0d04616442e442781384e08f05517440ff"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/make-proof.mjs",
+          "sha256": "89258f3451f2f82588a235cd529baffcf4b9472ced00008159aed71bc24ce390"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/artifacts/utility-utility-landscape-natural-touch-ru-recent/booky-live-character.json",
+          "sha256": "589ab65566798bce2cee6826da17c94526ae4a1843c703e2c49995b5177cef0f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/artifacts/utility-utility-landscape-natural-touch-ru-recent/attachments/booky-live-character-source-evidence-7f930beb7324b292aa281fdea98c3f4d0394b10f.json",
+          "sha256": "589ab65566798bce2cee6826da17c94526ae4a1843c703e2c49995b5177cef0f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/artifacts/utility-utility-landscape-natural-touch-ru-recent/booky-utility-landscape-recent-ru-568-natural-return.png",
+          "sha256": "0c887cb197b2cf8b4348e83d1bb63c9adc1d6f4bf49b9e6df3045fed33801b4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/artifacts/utility-utility-landscape-natural-touch-ru-recent/booky-utility-landscape-recent-ru-568.png",
+          "sha256": "99ef49aef77272415c17eb2471ba5b456061cdb50daa0e3dea3022af528670da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/artifacts/utility-utility-landscape-natural-touch-en-downloads/booky-live-character.json",
+          "sha256": "322f95623e8023a62889f4f7e7898a4059b638f8ca57f208f28072b13150597f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/artifacts/utility-utility-landscape-natural-touch-en-downloads/attachments/booky-live-character-source-evidence-bf4f25b22f7e80ea242c7fc6e24db1e397c34468.json",
+          "sha256": "322f95623e8023a62889f4f7e7898a4059b638f8ca57f208f28072b13150597f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/artifacts/utility-utility-landscape-natural-touch-en-downloads/booky-utility-landscape-downloads-en-640-natural-return.png",
+          "sha256": "20d40534b3e715203639cd49b49be7cc8f29ab8422354da492fbd049d7b2ee49"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a1/artifacts/utility-utility-landscape-natural-touch-en-downloads/booky-utility-landscape-downloads-en-640.png",
+          "sha256": "6edb46b5d5659b09c4d97e2a7c8d9c000aa9585927bab8f2713f2d2b9e4a1e73"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "sourceIdentity": {
+        "repositoryHead": "f56d9729e392aa9b4a947c0d15d16dcd9e03b2e3",
+        "runtimeSourceCommit": "e0bb13518baf011daef3bdcbe956611460a4babc",
+        "originalHashesRetainedInReceipts": true
+      },
+      "caseOutcomes": [
+        {
+          "scenario": "utility-landscape-ru-recent",
+          "pass": false,
+          "checkCount": 17,
+          "failedChecks": [
+            "natural point reached",
+            "natural return reached",
+            "finite approach point return and continuous handoff"
+          ],
+          "sourceDrawCount": 0,
+          "phaseCounts": {
+            "approaching": 0,
+            "tapping": 0,
+            "returning": 0
+          },
+          "qualification": "The finite-motion group failed at zero draw-owner count; downstream speed and handoff assertions in that group did not execute. The successful settled-position group establishes static settlement only, not natural point completion."
+        },
+        {
+          "scenario": "utility-landscape-en-downloads",
+          "pass": true,
+          "checkCount": 17,
+          "failedChecks": [],
+          "sourceDrawCount": 461,
+          "phaseCounts": {
+            "approaching": 230,
+            "tapping": 100,
+            "returning": 231
+          },
+          "qualification": "All 17 groups and finite-phase/source-clock speed/handoff assertions completed."
+        }
+      ],
+      "note": "RU Recent 568x320 opened below the final content clip (top225.375 versus content bottom200), with zero source draws and no approach/point/return phases. Three groups failed; later passing static/scroll checks do not establish natural completion, and downstream speed/handoff assertions were not reached. EN Downloads 640x360 passed all17groups. The proposed dock/reveal ordering cause is a source-reading inference, not separate timing instrumentation."
+    },
+    {
+      "attempt": "a2",
+      "classification": "focused-pass",
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/playwright.json",
+        "sha256": "725f0af9ff9246d56aeffef32706a1871dc246840b9b8c740b94be7edb8621d0"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/execution.json",
+        "sha256": "363a63ef6d7fda9d70e07ea5fc6e451c1c19d362a6f13e7c03583f1afeaf2722"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "outerNodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/stdout.log",
+          "sha256": "06e8e8a2913c275f79e3c6496efd9f755894da26c53c7061244b4fdd8a36e845"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/stderr.log",
+          "sha256": "24ddbee9bac4778461a33df62584c71c978626bcbd0d9da8fc09eb6218187f2d"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/proof.json",
+        "sha256": "70ea5ffc878d28951fb2e66d4742235ad5acb94c752fb569ae92366ea2e7e9cb"
+      },
+      "proofExitField": "trueExit",
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/execution-start.json",
+        "sha256": "25962b9b00af6bf2c8aaf89c36ccf427aeb704c06ea911484610a31d92d2500f"
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/runner-execution.json",
+          "sha256": "6db0fc033d043b9066ade173b3c6712cb7d203127038bf702d23099532e5cb22"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/runner-stdout.log",
+          "sha256": "cd61e75c355a9153624e5b57cbb0cf0a51287a46506a50455a47cd510d16ea8a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/authorized-source.json",
+          "sha256": "aa3a183e9699adca158e459f623af2a1cfb7d45a3c753945873ce497f39cc74e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/authorized-runtime.patch",
+          "sha256": "45b0ef4279de283e5059d40abff5e8c445e0ef31bf6f37681f10e22e9b6ef889"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/prepared.json",
+          "sha256": "951b4ec5ca34a4e8fdf459a05750f8318e060244c32f8ec80906f80bdae119d6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/utility.spec.mjs",
+          "sha256": "58d8e1e531c1e89e804f6b609dfdb62de2e4bf74a3149a47a1881af674a84fa3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/playwright.config.mjs",
+          "sha256": "2283352ec8fde7eb957c39cf99f2187b6d8e05eb5758ec65f78a726f61dbb243"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/run.mjs",
+          "sha256": "ae16a650cf6ea40b628da41e8dca598f3a6571ddd26efc9ca40794e71d5e5ec0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/prepare.mjs",
+          "sha256": "4cb5f323ba8f4646e856dcf0d3bd1788d273df161c5340d93531d6288d92d4f1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/bind-source.mjs",
+          "sha256": "809f0ce45fbc0f6865965cd6508b1a0d04616442e442781384e08f05517440ff"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/make-proof.mjs",
+          "sha256": "a037a2cde684bcb19b13feb1c8a11fac71f188a1f8d25ce5b7d8b1dc4979081e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/canonical-fixture-before.mjs",
+          "sha256": "8b96842925c45db0bf71e7e625acbe77fe5732fbe896ad06ddd5325ea0fbd1be"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/canonical-fixture-integrated.mjs",
+          "sha256": "e8ac2aac58062d90ba9c5b70b302463eda6195c69e6a8fb97813bdab3afb70b0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/integrate-fixture.mjs",
+          "sha256": "144395b4619e64364bca277b80e9ebd3b49999b0da837141280e8ccc90425590"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/integration.json",
+          "sha256": "e103d65dedc15edd94df9eb149bba3c4733fa3ac001dd9ab51067bbe890efc5b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/artifacts/utility-utility-landscape-natural-touch-ru-recent/booky-live-character.json",
+          "sha256": "3970aa138ce33af9123672e4fd2e0f361b679187f895579d757de285c5654b26"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/artifacts/utility-utility-landscape-natural-touch-ru-recent/attachments/booky-live-character-source-evidence-1ecea21f6789f17cc2fd2ce26b2569083199dcdc.json",
+          "sha256": "3970aa138ce33af9123672e4fd2e0f361b679187f895579d757de285c5654b26"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/artifacts/utility-utility-landscape-natural-touch-ru-recent/booky-utility-landscape-recent-ru-568-natural-return.png",
+          "sha256": "36b56a63300f5356d655f2e4de548bc7eefe7183ef099a229595d34c654f1f0d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/artifacts/utility-utility-landscape-natural-touch-ru-recent/booky-utility-landscape-recent-ru-568.png",
+          "sha256": "5279436fc126ffdf068f5f3ebddcf6280c23f47cd1ccc1b0be481eb77b1313bd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/artifacts/utility-utility-landscape-natural-touch-en-downloads/booky-live-character.json",
+          "sha256": "1f76a556a4d040b420f8f9282857830f8a2d5f8100778f6708a3577c78b6a6ea"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/artifacts/utility-utility-landscape-natural-touch-en-downloads/attachments/booky-live-character-source-evidence-421d17913cf62db0c603c179877c100cb37ef80d.json",
+          "sha256": "1f76a556a4d040b420f8f9282857830f8a2d5f8100778f6708a3577c78b6a6ea"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/artifacts/utility-utility-landscape-natural-touch-en-downloads/booky-utility-landscape-downloads-en-640-natural-return.png",
+          "sha256": "20d40534b3e715203639cd49b49be7cc8f29ab8422354da492fbd049d7b2ee49"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/artifacts/utility-utility-landscape-natural-touch-en-downloads/booky-utility-landscape-downloads-en-640.png",
+          "sha256": "6edb46b5d5659b09c4d97e2a7c8d9c000aa9585927bab8f2713f2d2b9e4a1e73"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "sourceIdentity": {
+        "repositoryHead": "f56d9729e392aa9b4a947c0d15d16dcd9e03b2e3",
+        "runtimeSourceCommit": "e0bb13518baf011daef3bdcbe956611460a4babc",
+        "originalHashesRetainedInReceipts": true
+      },
+      "caseOutcomes": [
+        {
+          "scenario": "utility-landscape-ru-recent",
+          "pass": true,
+          "passedChecks": 17,
+          "failedChecks": [],
+          "sourceDrawCount": 463,
+          "automaticScrollTopAfterNaturalReturn": 89,
+          "trustedSwipeCount": 1
+        },
+        {
+          "scenario": "utility-landscape-en-downloads",
+          "pass": true,
+          "passedChecks": 17,
+          "failedChecks": [],
+          "sourceDrawCount": 460,
+          "automaticScrollTopAfterNaturalReturn": 0,
+          "trustedSwipeCount": 1
+        }
+      ],
+      "integration": {
+        "receipt": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a2/integration.json",
+          "sha256": "e103d65dedc15edd94df9eb149bba3c4733fa3ac001dd9ab51067bbe890efc5b"
+        },
+        "intermediateFixtureSha256": "e8ac2aac58062d90ba9c5b70b302463eda6195c69e6a8fb97813bdab3afb70b0",
+        "finalCancellationFragmentIncluded": false
+      },
+      "note": "Both short-landscape cases pass all17groups on the authorized NativePanel reveal-order fix. RU Recent automatically scrolls to89 before manual scroll and produces463source draws across approach/point/return; EN Downloads produces460. Original source snapshots precede the separate canonical cancellation fragment. The two-phase panel observer records scheduler count[3,2]; source-draw observation remains read-only. This is local browser evidence, not installed-device or frame-performance acceptance."
+    },
+    {
+      "attempt": "a3",
+      "classification": "selector-infrastructure-failure",
+      "browserStarted": false,
+      "browserTestBodyExecuted": false,
+      "testCasesExecuted": 0,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/playwright.json",
+        "sha256": "0a566c82aacf70fb8058d7dc3f866bd8e710b62edbb00b78bcfdb960f39092c5"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/execution.json",
+        "sha256": "ebb16bb19058435559bfcf1eab481c66c61860c8165f46fe49a5e44962e4eb93"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "outerNodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/stdout.log",
+          "sha256": "bef44b71926303f638fcf3917875642de7e01f8828d85d994561945390fde863"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/proof.json",
+        "sha256": "b70b483c5b0538df89997e4001129f49bef482324faf21b874c231205ec1d4e4"
+      },
+      "proofExitField": "trueExit",
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/execution-start.json",
+        "sha256": "9f90cfcf921d3c2af20cd826aaad5a54e74ac0fa961686f4e5817a0bd2246524"
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/runner-execution.json",
+          "sha256": "be86208b9fd748d528d0941e87498cfea5b991d6c777641ee761a0915f53a253"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/runner-stdout.log",
+          "sha256": "924982b2bc67f4fd7dc3fb668862772b679177656d4661ddbfcc5d86cc9801e2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/authorized-source.json",
+          "sha256": "b6a1225af2efa0078678c648da35c5f580a15689e38238d645b998890339b20c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/authorized-runtime-and-fixture.patch",
+          "sha256": "6e17a461a8cea3dcfce0238f1c47a779bd55cbb7022d4304859b204c0d5bc547"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/canonical-fixture-input.mjs",
+          "sha256": "15ee45594ad4c4f6ca5f36c718cb8121feb1c68ac25374fe8a78b08d818430d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/bind-source.mjs",
+          "sha256": "0aa66a3942a27d6376924afbe2921ede96338fdc01c63e0ea4ddd1ea671fb129"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/playwright.config.mjs",
+          "sha256": "e9df83845493b428fd7ce3f238407648315593e9df5745fb472e1ab9874ed808"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a3/run.mjs",
+          "sha256": "62f8dd67b5511561105b2950f109ec7555cef042edc1b9ebf78a5427c0296372"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "note": "Actual exit1 with a valid No tests found report and zero browser test bodies. The leading grep anchor did not match Playwright composite filename/title selection. No product case ran, and this is not a product failure. Raw child/outer logs and the original selector/fixture snapshot remain preserved."
+    },
+    {
+      "attempt": "a4",
+      "classification": "focused-cancellation-pass",
+      "browserStarted": true,
+      "testCasesExecuted": 1,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/playwright.json",
+        "sha256": "b01e783622b68e280fdf2f1941b2b6e25f70f95a5462781d8963c3de611146b4"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/execution.json",
+        "sha256": "c97114d2f8f2f5c3d0fca12cbfa084e36026842b178a1ee2f5a7d2b8da0667ba"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "outerNodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/stdout.log",
+          "sha256": "81676177bf725c36897d4b582b72e67707fcabf3fca7b2d17c53a518e1bec57e"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/stderr.log",
+          "sha256": "731e53f1d79f85e4372f6158181bbdf6e0d7bc5bcc5c2654ed78a1ca7bf4adba"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/proof.json",
+        "sha256": "354e21974ffd7354922a7361184d01eb3059109adde4c5fb8ee734e645a731af"
+      },
+      "proofExitField": "trueExit",
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/execution-start.json",
+        "sha256": "4380d6283b90f91a2d282e35f859999f0e1dd20822bd0f3525bf8d4e7e8fbd3d"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/artifacts/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/attachments/booky-live-character-source-evidence-9cac5b14e170c5974171cce6461d0be490c4ce91.json",
+        "sha256": "06e86e643952c4a485f8844420b9353aee7ef709eb9a38e148c0537abc245bd5"
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/runner-execution.json",
+          "sha256": "15730f4978731a686c0a95d187daedef2339725d30e3b2405a2b9faaec3478c9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/runner-stdout.log",
+          "sha256": "f3a7ce802d415a255b3df5d1e50d6af29011b00ee242e2226385d68115f2d37d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/authorized-source.json",
+          "sha256": "82709dd29258c6f28433ca8bfc9dd32bd8c5ab9027a7b8581b9ea9cf74de235d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/authorized-runtime-and-fixture.patch",
+          "sha256": "6e17a461a8cea3dcfce0238f1c47a779bd55cbb7022d4304859b204c0d5bc547"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/canonical-fixture-input.mjs",
+          "sha256": "15ee45594ad4c4f6ca5f36c718cb8121feb1c68ac25374fe8a78b08d818430d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/playwright.config.mjs",
+          "sha256": "e9df83845493b428fd7ce3f238407648315593e9df5745fb472e1ab9874ed808"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/run.mjs",
+          "sha256": "eda6ebc2df9407512011fb03485bc41f068038f0013e983b64f1db92f6658308"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/prepare.mjs",
+          "sha256": "fc007bdd6fc878355d1dfbda058fb688f877beb432f9341955f9cc2516b65362"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/bind-source.mjs",
+          "sha256": "0c134826068870d7cdb13b9c1724e3591d3479d0f66903f93649dba093579deb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/make-proof.mjs",
+          "sha256": "6a92319e0bf3a246a4457a5c3101cd27f65928679518a499cabde750970a67ea"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/preflight-result.json",
+          "sha256": "19ba031488b37737967cc4081a57b3904408cfc1ed9e0cf0882cddfc8d6be432"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/preflight-start.json",
+          "sha256": "f62523466bcb7ec73b8490c976ee7529790da61412f875629d49881ee7febc8a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/preflight-stdout.log",
+          "sha256": "fd9054c8492eb2327c01324d64f524246171e0e29d346aa6f2cb9c4fddf18d1e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/artifacts/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-live-character.json",
+          "sha256": "06e86e643952c4a485f8844420b9353aee7ef709eb9a38e148c0537abc245bd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/artifacts/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/attachments/booky-live-character-source-evidence-9cac5b14e170c5974171cce6461d0be490c4ce91.json",
+          "sha256": "06e86e643952c4a485f8844420b9353aee7ef709eb9a38e148c0537abc245bd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/artifacts/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-useful-actions-ru-320.png",
+          "sha256": "0a027eeebaab20efe1d8c8728e972b9a71153be6372ac23c17d1e39e12340c0b"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "fixtureSha256": "15ee45594ad4c4f6ca5f36c718cb8121feb1c68ac25374fe8a78b08d818430d5",
+      "selectionPreflight": {
+        "receipt": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a4/preflight-result.json",
+          "sha256": "19ba031488b37737967cc4081a57b3904408cfc1ed9e0cf0882cddfc8d6be432"
+        },
+        "nodeExit": 0,
+        "selectedCaseCount": 1
+      },
+      "caseOutcomes": [
+        {
+          "scenario": "explicit-local-utilities",
+          "pass": true,
+          "flags": {
+            "newerInterphaseTouchRetained": true,
+            "interphaseTouchKeepsScrollAndSections": true,
+            "interphaseTouchDoesNotResumeWalk": true,
+            "interphaseTouchLandscape": true
+          },
+          "trustedTouchEvents": [
+            {
+              "type": "pointerdown",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "pointerup",
+              "trusted": true,
+              "pointerType": "touch"
+            },
+            {
+              "type": "click",
+              "trusted": true,
+              "pointerType": "touch"
+            }
+          ],
+          "motionSampleCount": 278,
+          "motionSampleSpanMs": 1922.3000000000466
+        }
+      ],
+      "note": "The corrected selector first listed exactly one case with exit0, then one real canonical case passed with child/outer exit0 and all four interphase flags true. Trusted touch preserved scroll563, closed Downloads and focus after held reveal release and1900ms;278 samples span1922.3ms with no motion resume. This bounded cancellation case uses the existing controlled panel scheduler observation port; it does not establish uncontrolled scheduling or device performance. No unit/static/full19case rerun is claimed by this attempt."
+    }
+  ],
+  "sourceInventoryMode": "Original source snapshots remain inside authenticated external execution/proof/capture receipts. Later canonical integration does not replace or rehash the original attempt inputs.",
+  "limitations": [
+    "a1 remains1PASS/1FAIL with actual exit1 and zero RU approach/point/return phases; static settlement does not replace natural completion.",
+    "a2 passes both natural landscape cases on the runtime fix, before the separately authenticated canonical cancellation fragment.",
+    "a3 remains a selector infrastructure failure with actual exit1, a No tests found report and no browser test bodies; a4 is a separate preflight and one-case execution.",
+    "The a4 controlled reveal hold proves cancellation when newer trusted touch precedes the pending callback; it is not uncontrolled animation scheduling or installed-device frame-performance evidence.",
+    "D187 interruption and diagnostics remain attributed to the original prior result. No stage, device or release acceptance is claimed."
+  ],
+  "releaseReady": false
+}

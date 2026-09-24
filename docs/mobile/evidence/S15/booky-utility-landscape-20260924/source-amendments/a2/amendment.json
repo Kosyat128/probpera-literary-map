@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T05:16:12.249Z",
+  "kind": "D188 source refreeze a2",
+  "reason": "Formal browser-a1 retained actual17PASS/2FAIL because the deferred panel reveal scroll cancelled the reduced-motion static cue. The authorized Controls change waits one additional RAF before point readiness; unchanged final fixture and NativePanel remain bound.",
+  "archive": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/archive.json",
+    "sha256": "d7b8593a43e63e3747a0930001390e8972ea103774cec83e6658b03be3201d1c"
+  },
+  "externalArchive": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/archive.json",
+    "sha256": "d7b8593a43e63e3747a0930001390e8972ea103774cec83e6658b03be3201d1c"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/expected-source-manifest.json",
+    "sha256": "3dd8c4de3c40c9f253a4ffd2377da901e7b632e9a73252b291738ed491770dc0",
+    "fileCount": 1650
+  },
+  "freezeEvidence": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/execution.json",
+    "sha256": "bf4a2af9aeef06299b60ed3d9b05c333105632a0bd490ac080066692f1676152"
+  },
+  "freezeReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape-review/a5/playwright.json",
+    "sha256": "61b560dc9a71ac4e3cc047bdd25500350cf23885de533e973ebff8f85fded64b"
+  },
+  "changedPaths": [
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "6a2b6a99f630eb963dd17c7b30c0d9c49d0560ee91d4808c9f864e4932a3ddd3"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "15ee45594ad4c4f6ca5f36c718cb8121feb1c68ac25374fe8a78b08d818430d5"
+    }
+  ],
+  "updatedScope": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/scope.json",
+    "sha256": "8e8680478511e120410998fbe38b74366564744f7662bfbc5fa82d231978bd20"
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "64e5f90ddb6867b55ac42d9d176a6cfdf794785f15f04bc999971cf6e5531133"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/checkpoint.mjs",
+        "sha256": "093a42c46c6f39b33e313b2936603b2caf46969cfc3578f8f4315fcd6d11f023"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/scope.json",
+        "sha256": "8e8680478511e120410998fbe38b74366564744f7662bfbc5fa82d231978bd20"
+      }
+    }
+  ],
+  "originalDiagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/diagnostic-history.json",
+    "sha256": "b324f5639249c5fb982bdb3b831efad2ef823c1d4aee10fc18c85ca7e3d7a11b",
+    "bytes": 38061
+  },
+  "releaseReady": false
+}

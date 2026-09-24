@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T05:16:12.255Z",
+  "pass": true,
+  "amendment": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/amendment.json",
+    "sha256": "4d8a0f7c98d9b703eb2b5f444c352a93b929f48bbf4283751bb4b109ae287031"
+  },
+  "updatedEntry": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/entry.json",
+    "sha256": "e57c6e15440da6ec62fadfdcf403aa94d139dce405abfde288068ed85a25338d"
+  },
+  "currentHelperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "64e5f90ddb6867b55ac42d9d176a6cfdf794785f15f04bc999971cf6e5531133"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/checkpoint.mjs",
+        "sha256": "093a42c46c6f39b33e313b2936603b2caf46969cfc3578f8f4315fcd6d11f023"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/scope.json",
+        "sha256": "8e8680478511e120410998fbe38b74366564744f7662bfbc5fa82d231978bd20"
+      }
+    }
+  ],
+  "preparedCandidate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/candidate/prepared-files.json",
+    "sha256": "cd54678094f947682a4c1a4a0fefa94b3c16b2d22065b69f573c70fd413fae70"
+  },
+  "originalPreparedFilesRetained": true,
+  "originalHelperCopyRetained": true,
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-utility-landscape-dev-apk",
+  "sourceCommit": "e4ca0a486a7bed4bde7fd4d86146f5c1c867ee30",
+  "buildId": "1a8660932e97dfd02c1dc2c8078e10752a78695e98778a9968bb9ee3ba459b1a",
+  "sourceInputsSha256": "79082e73c56149ba4bd1aa4abeccf68c68e59230f6fc85aedc352f91fe68f0f5",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/android-1a866093/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "9046455be281ff1c748f8efc28493ce9ef25be7990638147313f2809ac0eb852"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/android-1a866093/runtime",
+    "sha256": "8ea21a48fb86fe34794cda76a1129c1fe25214f38e120a4ff3aff861b22359a2",
+    "files": 1408,
+    "bytes": 74852193
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/android-0e7bb610/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

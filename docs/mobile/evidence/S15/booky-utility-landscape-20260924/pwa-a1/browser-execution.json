@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-utility-landscape-20260924/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 28710,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "3e29b309b8e0d40e555c2285cdd605cb723881eeb5afc2a70e8aea7fd923bc3a"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "2f4a7a7c7da84285072b0242e094866d1056b8f5e5f561c5c3e74b07db067f47"
+  }
+}

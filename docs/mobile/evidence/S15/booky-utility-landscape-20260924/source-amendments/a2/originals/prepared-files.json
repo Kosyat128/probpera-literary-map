@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T04:56:24.2893815+00:00",
+  "preparedOnly": true,
+  "sourceFrozen": true,
+  "executed": false,
+  "baseCheckpoint": "f56d9729e392aa9b4a947c0d15d16dcd9e03b2e3",
+  "baseSource": "e0bb13518baf011daef3bdcbe956611460a4babc",
+  "priorResultSha256": "f64798c07d15c2dfd922ceadd437d93a498e47551403fe1b011ceb7d7b58df7e",
+  "priorManifest": "d8ed411b99d5f70991d6f06490550354592fad41e548fb844a23140a894985ad",
+  "expectedProtectedInputs": 1648,
+  "pendingFields": [],
+  "files": [
+    {
+      "name": "configure.mjs",
+      "sha256": "c4a94cf7e002dcdc773acf1a5acdbe6092122692e9a1bce28d84265b503085ca"
+    },
+    {
+      "name": "check.mjs",
+      "sha256": "dde308080a71536c00ebd71fbb91ad9ca585062c53ca31ed1d391c3ef916f99e"
+    },
+    {
+      "name": "unit.config.mjs",
+      "sha256": "1e18e1b43f0fff1c5e65ccf57c296e7df5d5cb463d15146185f8181cc14cc625"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "sha256": "f7138ad229641c6a3c64be07fc122c01524a5cd04810ed51ccfc68fec052518e"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "sha256": "f3cec05226abaf9fef1404d9e2090b1a0ffec211552af8c6f7a7ad2885fabb91"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "sha256": "edf4e70a9403d9736b79ad0da6a39868dcaccfbae1f381523967efaef1c5d361"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "sha256": "35c21d5188d4d1957a99281a3f31424a90a2e57b2e2dcb396a15730be83a7cf4"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "sha256": "64e5f90ddb6867b55ac42d9d176a6cfdf794785f15f04bc999971cf6e5531133"
+    },
+    {
+      "name": "record-visual.mjs",
+      "sha256": "f67dfe40cebfb0c3f11df97db052a32f06d68c4346b6aebbc809f68fb4a4bda6"
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "sha256": "dc9170f5ff8051bf18186845b4b9e9acffd7ca6a794da208a9279b1025bbb252"
+    },
+    {
+      "name": "scope.json",
+      "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949"
+    }
+  ],
+  "releaseReady": false,
+  "frozenChangedInputs": [
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "15ee45594ad4c4f6ca5f36c718cb8121feb1c68ac25374fe8a78b08d818430d5"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+    }
+  ]
+}

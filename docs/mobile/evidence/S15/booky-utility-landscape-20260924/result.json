@@ -1,0 +1,1527 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T05:26:52.341Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_UTILITY_LANDSCAPE_SCOPED_VALIDATION",
+  "sourceCommit": "e4ca0a486a7bed4bde7fd4d86146f5c1c867ee30",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/entry.json",
+    "sha256": "e57c6e15440da6ec62fadfdcf403aa94d139dce405abfde288068ed85a25338d"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/checkpoint.mjs",
+    "sha256": "093a42c46c6f39b33e313b2936603b2caf46969cfc3578f8f4315fcd6d11f023"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/result.json",
+    "sha256": "f64798c07d15c2dfd922ceadd437d93a498e47551403fe1b011ceb7d7b58df7e"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/3dd8c4de3c40c9f2.json",
+    "sha256": "3dd8c4de3c40c9f253a4ffd2377da901e7b632e9a73252b291738ed491770dc0",
+    "fileCount": 1650
+  },
+  "sourceCommits": [
+    "e4ca0a486a7bed4bde7fd4d86146f5c1c867ee30"
+  ],
+  "attempts": {
+    "unit": "a2",
+    "static": "a2",
+    "browser": "a2"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a2/result.json",
+      "sha256": "6f53cf0b78ca6d30909e863c69597b17e9636350f6e46e3bc423bd86ed58f77a",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a2/execution.json",
+        "sha256": "20717511325db29fda281086ffdf0801f7643a50b5b9a6f47ae8721ba254d0ee"
+      },
+      "tests": {
+        "passed": 154,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a2/vitest.json",
+        "sha256": "4f43a25c70d638165d9ed3be03dcc883f673c576e761c874cc0f2ac7cc0d9a0f"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a2/result.json",
+      "sha256": "14d6583cc202de1df0a05a4b70b68aa755b3cff809e3c9f4686ed9cdec434392",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a2/execution.json",
+        "sha256": "b04a5282bfa14d158e151005bc5a9d948c93b9acccdb6440c7b3b9931f0bee24"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a2/result.json",
+      "sha256": "411185938e27ad335ff36b02f3ad7996f2fe860c291a87992dc63840cd7ead11",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a2/execution.json",
+        "sha256": "ceb8eece759ca22ce4a7236f20726188860456be1012434eefd4031a664b046c"
+      },
+      "tests": {
+        "passed": 19,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a2/playwright.json",
+        "sha256": "e3563a652da8505c6fd007762e601697523fa7fde05eb305629037d3ef5b2f3d"
+      }
+    }
+  },
+  "earlierAttempts": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/result.json",
+        "sha256": "ba0e60505577f277dfe4b532a64c99f852c1974c0bd393238bcf7743f9ffae7b"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/execution.json",
+        "sha256": "b79d258d560a6890327af7dff2ad32b5988ee575ccf9272dc4ded0af9868b233"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/playwright.json",
+        "sha256": "5c8e177323908e7f0e4b8126153a7be08184cd0096dd3ff262f69b1d36eaa359"
+      },
+      "pass": false,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+        "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+        "fileCount": 1650
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a1/result.json",
+        "sha256": "4e2977d60be64fca30f0a91d86bb227009e40265f3457bccf16d76ca28fc7e22"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a1/execution.json",
+        "sha256": "84ca2cb4cfafaca88cf9f0028355d5e1542f4eedcb41be65951aa22ea13403e5"
+      },
+      "rawReport": null,
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+        "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+        "fileCount": 1650
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/result.json",
+        "sha256": "cc0340f8367c9d11717513fac25b146b52656f99372fe9c150f6b82520a02c01"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/execution.json",
+        "sha256": "4794eca340c040d530a9c3244cceffcdb82dc95c7a7e376193d9265c4b5c8f42"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/vitest.json",
+        "sha256": "aae240221c0449643a7adaf0f4ee33cdad0f624e3048004f7ad1fedd3a81ad0a"
+      },
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+        "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+        "fileCount": 1650
+      },
+      "retainedOnly": true
+    }
+  ],
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/diagnostic-history-a2.json",
+    "sha256": "6b3b8ef24262f9cd4ca3cbddaf659055c757a95e46946f7549960c6df8957f06"
+  },
+  "unitCount": 154,
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserCases": 19,
+  "actualAppCaseCount": 19,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-character.json",
+      "sha256": "096a40efd63893105fa9d2270f86fdf441b7e50e34a53efc43d0fd2dfb90da6a",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\attachments\\booky-live-character-source-evidence-fad821a8795f618e4d6f4c495cc35718d29bbbaa.json",
+        "sha256": "096a40efd63893105fa9d2270f86fdf441b7e50e34a53efc43d0fd2dfb90da6a"
+      },
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\\booky-live-character.json",
+      "sha256": "b6df47491bf869b57f6d6941f689f841cf9735991bdfbf646974e76a5f5ad98c",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\\attachments\\booky-live-character-source-evidence-1645e5c179964e15a47c99c4d2f963411a395982.json",
+        "sha256": "b6df47491bf869b57f6d6941f689f841cf9735991bdfbf646974e76a5f5ad98c"
+      },
+      "test": "Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\booky-live-character.json",
+      "sha256": "e54df27d4ef7c5c4c958ac0c5531d52b5678ef9e62efa906de7482302fc9cf13",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\attachments\\booky-live-character-source-evidence-4b72966b6851ffef4ba24afa7093026d850026bc.json",
+        "sha256": "e54df27d4ef7c5c4c958ac0c5531d52b5678ef9e62efa906de7482302fc9cf13"
+      },
+      "test": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion\\booky-live-character.json",
+      "sha256": "d7d528b1de2521b66fe99cf78d2a69403b1adabb444cd40fb39743c3861edeea",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion\\attachments\\booky-live-character-source-evidence-a669a919e3e8139993c74fc77eb494b79aa2ee72.json",
+        "sha256": "d7d528b1de2521b66fe99cf78d2a69403b1adabb444cd40fb39743c3861edeea"
+      },
+      "test": "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion\\booky-live-character.json",
+      "sha256": "6659985f8298f01ab5a32dc6357d27685ed3c972c5ca0b9146080df7dbb67dd2",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion\\attachments\\booky-live-character-source-evidence-06d08015b1354917810840d97a81c654bd57c8f6.json",
+        "sha256": "6659985f8298f01ab5a32dc6357d27685ed3c972c5ca0b9146080df7dbb67dd2"
+      },
+      "test": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales\\booky-live-character.json",
+      "sha256": "dcfcf6771965aa670571517fccc4991eb3c4e911641a80798d287e8f52fb3218",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales\\attachments\\booky-live-character-source-evidence-c86ca7a72996011ead54b133e38934952bc6c9d0.json",
+        "sha256": "dcfcf6771965aa670571517fccc4991eb3c4e911641a80798d287e8f52fb3218"
+      },
+      "test": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-short-14e75-try-archive-in-both-locales\\booky-live-character.json",
+      "sha256": "32cb891073a0685cb73baa651bdd35b0e78fc312984424e78497b1e7116124f9",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-short-14e75-try-archive-in-both-locales\\attachments\\booky-live-character-source-evidence-c2fc5681df353bfb973b75bb7731ee42b4a0051e.json",
+        "sha256": "32cb891073a0685cb73baa651bdd35b0e78fc312984424e78497b1e7116124f9"
+      },
+      "test": "short landscape globe controls stay reachable beside the collapsed country archive in both locales"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales\\booky-live-character.json",
+      "sha256": "5aed7021942d27e95626bcadf516df1c12f41ddba5fb02fb98f8d3cf8e0440c8",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales\\attachments\\booky-live-character-source-evidence-3e0b4b6823f985517c73b149f1f07e1d6385e214.json",
+        "sha256": "5aed7021942d27e95626bcadf516df1c12f41ddba5fb02fb98f8d3cf8e0440c8"
+      },
+      "test": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command\\booky-live-character.json",
+      "sha256": "493fb26fa2006df89df93d1870fdf1c55b525058af8be35febb668272fb135e7",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command\\attachments\\booky-live-character-source-evidence-df2c7e47fcbaf2910e3a844d375cf36576b13caa.json",
+        "sha256": "493fb26fa2006df89df93d1870fdf1c55b525058af8be35febb668272fb135e7"
+      },
+      "test": "Mr. Booky treats held Enter and Space as one walking command"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390\\booky-live-character.json",
+      "sha256": "94f98bf4ee3fbb92fa55a138c62014c94d951f53876c4bb43d3ccd9599f25bdc",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390\\attachments\\booky-live-character-source-evidence-c0e251b059724834d53950c63be55aa6dc6cfc6d.json",
+        "sha256": "94f98bf4ee3fbb92fa55a138c62014c94d951f53876c4bb43d3ccd9599f25bdc"
+      },
+      "test": "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion ru 390"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320\\booky-live-character.json",
+      "sha256": "03d0bdc17c3d7da69c2bd9c91bbd031e363ae04f327c75b3228edf24e33f2a18",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320\\attachments\\booky-live-character-source-evidence-a5fd7cf849bc55e6f72c73875b929adc3275c12b.json",
+        "sha256": "03d0bdc17c3d7da69c2bd9c91bbd031e363ae04f327c75b3228edf24e33f2a18"
+      },
+      "test": "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion en 320"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utility-surface-natural-touch-ru-recent\\booky-live-character.json",
+      "sha256": "aeb8b5beb37cefd6541470400142e138725f2340c57d347366cd19dfc017084e",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utility-surface-natural-touch-ru-recent\\attachments\\booky-live-character-source-evidence-fd55387e7f068d5d84cacaf37c5e10d7ad686bc4.json",
+        "sha256": "aeb8b5beb37cefd6541470400142e138725f2340c57d347366cd19dfc017084e"
+      },
+      "test": "utility surface natural touch ru recent"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utili-a771c--natural-touch-ru-downloads\\booky-live-character.json",
+      "sha256": "b095e86b8c805e55a62066642f9d959ccfa3b1946b461931ba29c8572d776500",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utili-a771c--natural-touch-ru-downloads\\attachments\\booky-live-character-source-evidence-49b520e6cd98a08f016a25bdcc945a8c6941ee1a.json",
+        "sha256": "b095e86b8c805e55a62066642f9d959ccfa3b1946b461931ba29c8572d776500"
+      },
+      "test": "utility surface natural touch ru downloads"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utility-surface-natural-touch-en-recent\\booky-live-character.json",
+      "sha256": "f2b482dfbb5a81fbec68badc781ca4760f2846faea4c3408e29c10bcee432dbe",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utility-surface-natural-touch-en-recent\\attachments\\booky-live-character-source-evidence-dd6df56647eeba41f03d8ec9b062aa1b15781938.json",
+        "sha256": "f2b482dfbb5a81fbec68badc781ca4760f2846faea4c3408e29c10bcee432dbe"
+      },
+      "test": "utility surface natural touch en recent"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utili-cf4f3--natural-touch-en-downloads\\booky-live-character.json",
+      "sha256": "176dd2e272f0668af8e18f24584a39f0a7c1a7bc330c5e850111d12ddcc226a4",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utili-cf4f3--natural-touch-en-downloads\\attachments\\booky-live-character-source-evidence-39f5ba33c4cd959bf7a49a66a9c1b8986c61ea09.json",
+        "sha256": "176dd2e272f0668af8e18f24584a39f0a7c1a7bc330c5e850111d12ddcc226a4"
+      },
+      "test": "utility surface natural touch en downloads"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utili-0fc75-ape-natural-touch-ru-recent\\booky-live-character.json",
+      "sha256": "9bbc24eb782befb827319ba88c551cd4d1caf8ebfc02b1bc34e9a3294eaadbdb",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utili-0fc75-ape-natural-touch-ru-recent\\attachments\\booky-live-character-source-evidence-3bec14db987b4c865aa6877c282640e601725e53.json",
+        "sha256": "9bbc24eb782befb827319ba88c551cd4d1caf8ebfc02b1bc34e9a3294eaadbdb"
+      },
+      "test": "utility landscape natural touch ru recent"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utili-4ea6f--natural-touch-en-downloads\\booky-live-character.json",
+      "sha256": "749b1fd20cd8c0a6963aaba11c04a9554f2eff6b25cb20bb5a334269f4fc0fdd",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-live-character-utili-4ea6f--natural-touch-en-downloads\\attachments\\booky-live-character-source-evidence-a058254bee13b2faac684ca85e0406a53c3c9a97.json",
+        "sha256": "749b1fd20cd8c0a6963aaba11c04a9554f2eff6b25cb20bb5a334269f4fc0fdd"
+      },
+      "test": "utility landscape natural touch en downloads"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\booky-reader-policy.json",
+      "sha256": "5265098ced0a7b84b1bd6ba8942ee5da2c80f88dcf7c22b9f589f5de886505b7",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\attachments\\booky-reader-policy-source-evidence-84ea9b1980cc62284c653c455fa7a63feb8890d1.json",
+        "sha256": "5265098ced0a7b84b1bd6ba8942ee5da2c80f88dcf7c22b9f589f5de886505b7"
+      },
+      "test": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\booky-reader-policy.json",
+      "sha256": "14d86aeb7f0bd6f6ff6a59aedbc87e8c2e9f4e596d36bf043758df95a1014941",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-landscape\\browser-a2\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\attachments\\booky-reader-policy-source-evidence-fc78b1e392fb28cd4f7d2e3d1045d1b7049f7d7f.json",
+        "sha256": "14d86aeb7f0bd6f6ff6a59aedbc87e8c2e9f4e596d36bf043758df95a1014941"
+      },
+      "test": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+      "scenario": null,
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "liveThreeModelRendered": true,
+        "normalModeHasNoBitmap": true,
+        "actualRigResponds": true,
+        "actualGuidedTargetPose": true,
+        "bodyDragDoesNotTogglePanel": true,
+        "escapeCancelsBodyDrag": true,
+        "touchTapAndKeyboardWork": true,
+        "semanticPageTurn": true,
+        "wholeModelFits": true,
+        "localeRetainsRoute": true,
+        "reducedMotionStopsAnimation": true,
+        "noHiddenFrames": true,
+        "independentResourcesDisposed": true,
+        "realContextLossFallbackWorks": true,
+        "realContextRestoreRetainsModel": true,
+        "repeatedContextLossUsesFallback": true,
+        "sameCanonicalGlobe": true,
+        "noAppearanceWrites": true
+      }
+    },
+    {
+      "test": "Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus",
+      "scenario": "explicit-local-utilities",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "newerInterphaseTouchRetained": true,
+        "interphaseTouchKeepsScrollAndSections": true,
+        "interphaseTouchDoesNotResumeWalk": true,
+        "interphaseTouchLandscape": true,
+        "fourCanonicalActions": true,
+        "utilitiesBilingual": true,
+        "initialPanelHeadingDoesNotBlockRequestedFocus": true,
+        "utilitiesCollapseTips": true,
+        "underlyingSectionControlsUsable": true,
+        "newerKeyboardFocusRetained": true,
+        "staleFocusDoesNotReopenSection": true,
+        "openDoesNotChangeGraphicsOrDownloads": true,
+        "noUtilityProgressWrites": true,
+        "randomUsesCanonicalGlobe": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+      "scenario": "explicit-bounded-gestures",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "thirteenExplicitGestures": true,
+        "repeatedReactionRestarts": true,
+        "surpriseChoosesDifferentGesture": true,
+        "actualRigChanges": true,
+        "sixNewMotionsObserved": true,
+        "newGesturesHaveDistinctStaticPoses": true,
+        "winkMovesOnlyOneEye": true,
+        "swayDoesNotStep": true,
+        "originalSevenAtMost1100ms": true,
+        "configuredReactionsAtMost2400ms": true,
+        "reactionsStopWithinSchedulingAllowance": true,
+        "reducedMotionHasNoReactionLoop": true,
+        "gesturesDoNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion",
+      "scenario": "explicit-margin-walk",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "explicitFiniteWalk": true,
+        "tipsRequireExplicitCollapse": true,
+        "walkFitsViewport": true,
+        "walkStartsAtRestingRow": true,
+        "walkPathAvoidsNavigation": true,
+        "actualLegsStep": true,
+        "compactWalkAvailabilityMatchesClearSpace": true,
+        "compactWalkKeepsNavigationReachable": true,
+        "compactUnavailableWalkExplained": true,
+        "mobileTouchWalkStartsContinuously": true,
+        "mobileTouchStopsWalk": true,
+        "mobileTouchDragStopsWalk": true,
+        "mobileHeldStopCannotRestart": true,
+        "trustedTouchGlobeResetPosition": true,
+        "globeResetPositionPreservesContext": true,
+        "dragStopsWalk": true,
+        "manualStopWorks": true,
+        "backgroundStopsWalk": true,
+        "noAutomaticWalkResume": true,
+        "reducedMotionStopsCurrentWalk": true,
+        "reducedMotionPreventsWalk": true,
+        "walkDoesNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion",
+      "scenario": "explicit-target-approach",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "canonicalSectionOpensBeforeWalk": true,
+        "approachMovesActualPet": true,
+        "actualLegsStep": true,
+        "tapFollowsWalk": true,
+        "tapInsideSelectedGraphicsArea": true,
+        "targetSectionStaysOpen": true,
+        "noSyntheticTargetClick": true,
+        "approachFitsViewport": true,
+        "newKeyboardInputCancelsApproach": true,
+        "actualStopPointerCancelsApproach": true,
+        "actualStopEnterCancelsApproach": true,
+        "actualStopSpaceCancelsApproach": true,
+        "stopNeverStartsReplacementWalk": true,
+        "stoppedApproachRemainsStillBeyondOriginalDeadline": true,
+        "cancelledApproachDoesNotTapOrResume": true,
+        "reducedMotionPointsWithoutTravel": true,
+        "approachDoesNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+      "scenario": "mobile-companion-placement",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "companionAddsNoGlobeObstruction": true,
+        "openTipsDoNotBlockOutsideControls": true,
+        "collectionVisibleControlsReachable": true,
+        "manualDragAndHomeRetained": true,
+        "immediateWalkStopSettlesClear": true,
+        "resizeClampsWithoutPreferenceWrites": true,
+        "hideAndShowRetained": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+      "scenario": "globe-landscape-controls",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "hiddenCompanionToolbarReachable": true,
+        "shownCompanionToolbarReachable": true,
+        "allFourControlsReceiveHits": true,
+        "genuineZoomAndResetWork": true,
+        "sourceDialogCloses": true,
+        "countryExpandCollapseRetained": true,
+        "expandedCountryHeaderReachable": true,
+        "countryPanelCloseReachable": true,
+        "portraitAndDesktopRetained": true,
+        "globeFrameCannotScroll": true,
+        "directStageScrollProbe": true,
+        "noAutomaticPreferenceWrites": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+      "scenario": "booky-open-help-placement",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "openHelpLocaleControlsReachable": true,
+        "desktopOpenHelpNavigationReachable": true,
+        "closedHelpNavigationReachable": true,
+        "closedHelpGlobalHeaderReachable": true,
+        "collectionHeaderReachable": true,
+        "helpScrollsByPointerWheel": true,
+        "helpClosesWhileScrolled": true,
+        "helpRegrowsOnLargerViewport": true,
+        "compactLandscapeHelpReadable": true,
+        "petAndHelpFitWithoutOverlap": true,
+        "noAutomaticPreferenceWrites": true,
+        "noHelpCameraChanges": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky treats held Enter and Space as one walking command",
+      "scenario": "held-walk-keyboard",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "heldEnterStartsOnlyOnce": true,
+        "heldEnterCannotRestartAfterStop": true,
+        "heldSpaceUsesOneReleaseAction": true,
+        "noHeldKeyAutomaticResume": true,
+        "noAutomaticPreferenceWrites": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion ru 390",
+      "scenario": "mobile-touch-graphics-dock-return-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "trustedTouchGraphicsThenRotation": true,
+        "orientationCancelsReturn": true,
+        "noAutomaticReturnResume": true,
+        "rotatedCompanionFitsViewport": true,
+        "orientationRetainsDockContainment": true,
+        "orientationContentExcludesDock": true,
+        "rotatedVisibleGraphicsControlsReachable": true,
+        "touchScrollExposesGraphicsTargets": true,
+        "portraitReflowBeforeResetFitsDock": true,
+        "explicitResetAfterRotationReturnsToDock": true,
+        "trustedTouchUtilityOpens": true,
+        "mobileApproachAndReturnFinite": true,
+        "mobileReturnContinuous": true,
+        "mobileNaturalReturnStaysInReservedDock": true,
+        "finalGraphicsControlsReachable": true,
+        "collectionContentExcludesDock": true,
+        "trustedTouchStopCancelsReturn": true,
+        "stoppedReturnRemainsStill": true,
+        "trustedTouchResetPosition": true,
+        "resetPositionControlReachable": true,
+        "resetPositionKeepsVisible": true,
+        "resetPositionReturnsToDock": true,
+        "resetPositionRemainsStill": true,
+        "resetPositionPreservesPreferencesAndProgress": true,
+        "resetPositionPreservesContext": true,
+        "reducedMotionPointsFromDockWithoutTravel": true,
+        "noAutomaticPreferenceWrites": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion en 320",
+      "scenario": "mobile-touch-graphics-dock-return-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "trustedTouchGraphicsThenRotation": true,
+        "orientationCancelsReturn": true,
+        "noAutomaticReturnResume": true,
+        "rotatedCompanionFitsViewport": true,
+        "orientationRetainsDockContainment": true,
+        "orientationContentExcludesDock": true,
+        "rotatedVisibleGraphicsControlsReachable": true,
+        "touchScrollExposesGraphicsTargets": true,
+        "portraitReflowBeforeResetFitsDock": true,
+        "explicitResetAfterRotationReturnsToDock": true,
+        "trustedTouchUtilityOpens": true,
+        "mobileApproachAndReturnFinite": true,
+        "mobileReturnContinuous": true,
+        "mobileNaturalReturnStaysInReservedDock": true,
+        "finalGraphicsControlsReachable": true,
+        "collectionContentExcludesDock": true,
+        "trustedTouchStopCancelsReturn": true,
+        "stoppedReturnRemainsStill": true,
+        "trustedTouchResetPosition": true,
+        "resetPositionControlReachable": true,
+        "resetPositionKeepsVisible": true,
+        "resetPositionReturnsToDock": true,
+        "resetPositionRemainsStill": true,
+        "resetPositionPreservesPreferencesAndProgress": true,
+        "resetPositionPreservesContext": true,
+        "reducedMotionPointsFromDockWithoutTravel": true,
+        "noAutomaticPreferenceWrites": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "utility surface natural touch ru recent",
+      "scenario": "utility-surface-ru-recent",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true
+      },
+      "observationChecks": {
+        "observation": "utilitySurface",
+        "checks": [
+          {
+            "name": "natural point reached",
+            "pass": true
+          },
+          {
+            "name": "natural return reached",
+            "pass": true
+          },
+          {
+            "name": "natural point completed and position settled",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted touch action",
+            "pass": true
+          },
+          {
+            "name": "graphics closed and whole companion in measured dock",
+            "pass": true
+          },
+          {
+            "name": "finite approach point return and continuous handoff",
+            "pass": true
+          },
+          {
+            "name": "visible body prose clear after natural return",
+            "pass": true
+          },
+          {
+            "name": "whole pet stays in viewport",
+            "pass": true
+          },
+          {
+            "name": "1900ms exact stillness and no automatic resume",
+            "pass": true
+          },
+          {
+            "name": "required section controls are actually visible",
+            "pass": true
+          },
+          {
+            "name": "visible section and header hit points",
+            "pass": true
+          },
+          {
+            "name": "preferences and progress bytes unchanged",
+            "pass": true
+          },
+          {
+            "name": "no automatic download action",
+            "pass": true
+          },
+          {
+            "name": "canonical scene camera resources unchanged",
+            "pass": true
+          },
+          {
+            "name": "actual App fixture integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "utility surface natural touch ru downloads",
+      "scenario": "utility-surface-ru-downloads",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true
+      },
+      "observationChecks": {
+        "observation": "utilitySurface",
+        "checks": [
+          {
+            "name": "natural point reached",
+            "pass": true
+          },
+          {
+            "name": "natural return reached",
+            "pass": true
+          },
+          {
+            "name": "natural point completed and position settled",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted touch action",
+            "pass": true
+          },
+          {
+            "name": "graphics closed and whole companion in measured dock",
+            "pass": true
+          },
+          {
+            "name": "finite approach point return and continuous handoff",
+            "pass": true
+          },
+          {
+            "name": "visible body prose clear after natural return",
+            "pass": true
+          },
+          {
+            "name": "whole pet stays in viewport",
+            "pass": true
+          },
+          {
+            "name": "1900ms exact stillness and no automatic resume",
+            "pass": true
+          },
+          {
+            "name": "required section controls are actually visible",
+            "pass": true
+          },
+          {
+            "name": "visible section and header hit points",
+            "pass": true
+          },
+          {
+            "name": "preferences and progress bytes unchanged",
+            "pass": true
+          },
+          {
+            "name": "no automatic download action",
+            "pass": true
+          },
+          {
+            "name": "canonical scene camera resources unchanged",
+            "pass": true
+          },
+          {
+            "name": "actual App fixture integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "utility surface natural touch en recent",
+      "scenario": "utility-surface-en-recent",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true
+      },
+      "observationChecks": {
+        "observation": "utilitySurface",
+        "checks": [
+          {
+            "name": "natural point reached",
+            "pass": true
+          },
+          {
+            "name": "natural return reached",
+            "pass": true
+          },
+          {
+            "name": "natural point completed and position settled",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted touch action",
+            "pass": true
+          },
+          {
+            "name": "graphics closed and whole companion in measured dock",
+            "pass": true
+          },
+          {
+            "name": "finite approach point return and continuous handoff",
+            "pass": true
+          },
+          {
+            "name": "visible body prose clear after natural return",
+            "pass": true
+          },
+          {
+            "name": "whole pet stays in viewport",
+            "pass": true
+          },
+          {
+            "name": "1900ms exact stillness and no automatic resume",
+            "pass": true
+          },
+          {
+            "name": "required section controls are actually visible",
+            "pass": true
+          },
+          {
+            "name": "visible section and header hit points",
+            "pass": true
+          },
+          {
+            "name": "preferences and progress bytes unchanged",
+            "pass": true
+          },
+          {
+            "name": "no automatic download action",
+            "pass": true
+          },
+          {
+            "name": "canonical scene camera resources unchanged",
+            "pass": true
+          },
+          {
+            "name": "actual App fixture integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "utility surface natural touch en downloads",
+      "scenario": "utility-surface-en-downloads",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true
+      },
+      "observationChecks": {
+        "observation": "utilitySurface",
+        "checks": [
+          {
+            "name": "natural point reached",
+            "pass": true
+          },
+          {
+            "name": "natural return reached",
+            "pass": true
+          },
+          {
+            "name": "natural point completed and position settled",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted touch action",
+            "pass": true
+          },
+          {
+            "name": "graphics closed and whole companion in measured dock",
+            "pass": true
+          },
+          {
+            "name": "finite approach point return and continuous handoff",
+            "pass": true
+          },
+          {
+            "name": "visible body prose clear after natural return",
+            "pass": true
+          },
+          {
+            "name": "whole pet stays in viewport",
+            "pass": true
+          },
+          {
+            "name": "1900ms exact stillness and no automatic resume",
+            "pass": true
+          },
+          {
+            "name": "required section controls are actually visible",
+            "pass": true
+          },
+          {
+            "name": "visible section and header hit points",
+            "pass": true
+          },
+          {
+            "name": "preferences and progress bytes unchanged",
+            "pass": true
+          },
+          {
+            "name": "no automatic download action",
+            "pass": true
+          },
+          {
+            "name": "canonical scene camera resources unchanged",
+            "pass": true
+          },
+          {
+            "name": "actual App fixture integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "utility landscape natural touch ru recent",
+      "scenario": "utility-landscape-ru-recent",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true
+      },
+      "observationChecks": {
+        "observation": "utilitySurface",
+        "checks": [
+          {
+            "name": "natural point reached",
+            "pass": true
+          },
+          {
+            "name": "natural return reached",
+            "pass": true
+          },
+          {
+            "name": "natural point completed and position settled",
+            "pass": true
+          },
+          {
+            "name": "required utility controls exposed by optional trusted touch scroll",
+            "pass": true
+          },
+          {
+            "name": "trusted optional scroll events",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted touch action",
+            "pass": true
+          },
+          {
+            "name": "graphics closed and whole companion in measured dock",
+            "pass": true
+          },
+          {
+            "name": "finite approach point return and continuous handoff",
+            "pass": true
+          },
+          {
+            "name": "visible body prose clear after natural return",
+            "pass": true
+          },
+          {
+            "name": "whole pet stays in viewport",
+            "pass": true
+          },
+          {
+            "name": "1900ms exact stillness and no automatic resume",
+            "pass": true
+          },
+          {
+            "name": "required section controls are actually visible",
+            "pass": true
+          },
+          {
+            "name": "visible section and header hit points",
+            "pass": true
+          },
+          {
+            "name": "preferences and progress bytes unchanged",
+            "pass": true
+          },
+          {
+            "name": "no automatic download action",
+            "pass": true
+          },
+          {
+            "name": "canonical scene camera resources unchanged",
+            "pass": true
+          },
+          {
+            "name": "actual App fixture integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "utility landscape natural touch en downloads",
+      "scenario": "utility-landscape-en-downloads",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true
+      },
+      "observationChecks": {
+        "observation": "utilitySurface",
+        "checks": [
+          {
+            "name": "natural point reached",
+            "pass": true
+          },
+          {
+            "name": "natural return reached",
+            "pass": true
+          },
+          {
+            "name": "natural point completed and position settled",
+            "pass": true
+          },
+          {
+            "name": "required utility controls exposed by optional trusted touch scroll",
+            "pass": true
+          },
+          {
+            "name": "trusted optional scroll events",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted touch action",
+            "pass": true
+          },
+          {
+            "name": "graphics closed and whole companion in measured dock",
+            "pass": true
+          },
+          {
+            "name": "finite approach point return and continuous handoff",
+            "pass": true
+          },
+          {
+            "name": "visible body prose clear after natural return",
+            "pass": true
+          },
+          {
+            "name": "whole pet stays in viewport",
+            "pass": true
+          },
+          {
+            "name": "1900ms exact stillness and no automatic resume",
+            "pass": true
+          },
+          {
+            "name": "required section controls are actually visible",
+            "pass": true
+          },
+          {
+            "name": "visible section and header hit points",
+            "pass": true
+          },
+          {
+            "name": "preferences and progress bytes unchanged",
+            "pass": true
+          },
+          {
+            "name": "no automatic download action",
+            "pass": true
+          },
+          {
+            "name": "canonical scene camera resources unchanged",
+            "pass": true
+          },
+          {
+            "name": "actual App fixture integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy",
+      "scenario": "explicit-reader-policy",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "explicitPolicyOnly": true,
+        "unsavedDraftDoesNotGrantPolicy": true,
+        "localeDraftRetained": true,
+        "lifecycleRechecksPolicy": true,
+        "explicitDeleteConfirmed": true,
+        "failedSaveDraftRetained": true,
+        "editedFailureRequiresExplicitSave": true,
+        "collectionDraftRetained": true,
+        "transientDeleteConfirmation": true,
+        "canonicalSceneRetained": true,
+        "noNewDialogueOrJourneyEnabled": true
+      }
+    },
+    {
+      "test": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission",
+      "scenario": "future-profile-delete-recovery",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "futureRecordPreserved": true,
+        "failedDeleteDoesNotGrantPolicy": true,
+        "explicitDeleteRetryConfirmed": true,
+        "failedDeleteIntentRetained": true,
+        "canonicalSceneRetained": true,
+        "noNewDialogueOrJourneyEnabled": true
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/visual-review.json",
+    "sha256": "1f57875a219b0098b2899b5ebf9c7d121e7722c4e73c0fc578c2342c317f116e"
+  },
+  "inspectedImageCount": 8,
+  "totalCapturedImageCount": 55,
+  "visualReviewScope": "Direct review of the selected final RU/EN compact-landscape utility captures. Other regression captures are authenticated without a new complete visual review.",
+  "visualReviewLimitations": [
+    "This visual review covers 8 of 55 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Utilities were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1647,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "f56d9729e392aa9b4a947c0d15d16dcd9e03b2e3",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/pwa-a1/result.json",
+    "sha256": "f989fc6d5f2caffe53fb222c1633c66b71326c90b045ef19f81ec3a8f5430925"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/android-a1/result.json",
+    "sha256": "638ac08bcfcc90895449d3b7ab029279831f95d284bac30250ea251a39cf889f"
+  },
+  "pwaBuildId": "77ad3e976f9757a622c8650102408ed117093198332c10cfa8dd38f38c110023",
+  "androidBuildId": "1a8660932e97dfd02c1dc2c8078e10752a78695e98778a9968bb9ee3ba459b1a",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/android-1a866093/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "9046455be281ff1c748f8efc28493ce9ef25be7990638147313f2809ac0eb852"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/pwa-77ad3e97/artifact.json",
+      "sha256": "3b46e5b67c8ec52f4fce3cfa79d58d31f0c8c4840ce3cfbd212c22bfffedcb46"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/android-1a866093/runtime/artifact.json",
+      "sha256": "8ea21a48fb86fe34794cda76a1129c1fe25214f38e120a4ff3aff861b22359a2"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/pwa-a1/strict-audit.json",
+      "sha256": "ad6a034a1b32630a4d80a46db9a8ea592cb43248c6d68088ae4f37ee74b0d4ed"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/android-a1/native-artifact-audit.json",
+      "sha256": "02e983f4192582f1c86667c07b62340c1da6a250abd20c098b67aef4a2020742"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/android-a1/android-dev-apk-verification.json",
+      "sha256": "f55897e037c79f882bf8a6e00dc7747b4c6dd7b323db1088474c7c9e3926ad0d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/android-a1/build-run.json",
+      "sha256": "ec67ab81b8cf8303fe7b076d5c77ada3458aa48465bec2ea1220d0e9ed57b24c"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/build-baseline.json",
+    "sha256": "845864c7d4918efdec79b9806a8f0e080a3c3693a5e80e1ae6748d1c3b692420"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/pwa-a1/copy-verification.json",
+    "sha256": "c4a4e39d1979ac1897abd6c088bc829003666cecb9fe96decec0785aa032c68b"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/pwa-a1/playwright.json",
+    "sha256": "e4232b67468b34e205cc3f71cfa635c7dff422f402d929501638b4b9b77fa5be"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "e0bb13518baf011daef3bdcbe956611460a4babc",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/result.json",
+      "sha256": "f64798c07d15c2dfd922ceadd437d93a498e47551403fe1b011ceb7d7b58df7e"
+    },
+    "unitCount": 154,
+    "browserCases": 17,
+    "allPriorSelectedCasesRerun": true,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/photo-review.json",
+      "sha256": "3ff136d24df8259fb1449370801f9c95b0415f4bcc0ba716a15205718f050acc",
+      "renderReport": {
+        "sha256": "c16148f1c46180b6989061f65fa256f48eb4ca8f6baae54d93912a54a77cde22",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\render-result.json"
+      },
+      "imageCount": 3,
+      "additionalToBrowserImages": true,
+      "sourceBindingsVerified": true
+    }
+  },
+  "criteriaUpdated": [
+    "PLANETKA-002",
+    "PLANETKA-005"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD188Recorded": true,
+  "nextAction": "Continue the user-prioritized mobile companion refinement from this checkpoint without repeated authorization. Preserve touch activation, continuous walking through clear space, explicit cancellation, readable help, reduced-motion stillness, saved progress and canonical scene ownership. Full journey integration remains deferred. S03.acceptance remains first unresolved; device, full accessibility and stage/release acceptance remain open.",
+  "limitations": [
+    "Position reset is an explicit localized Useful actions control. It closes help and restores the default local position; it does not hide/show the companion or reset saved guide progress.",
+    "The reserved dock applies to open Recent, Downloads or Graphics utilities at widths up to 640 px or compact landscape up to 1024 px wide and 540 px high. A true viewport change cancels pending travel and permits static reflow. Ordinary Stop and dragging preserve the chosen position until another explicit action or viewport change; no universal avoidance of arbitrary page content is claimed.",
+    "Manual walking uses a conservative whole-companion corridor. A cramped layout can disable walking with a localized explanation instead of moving through controls. Mobile browser touch checks do not constitute installed-device acceptance.",
+    "The open-help placement searches finite gaps and retains readable scrolling; crowded small screens can still require overlap with underlying navigation. Strict navigation reachability is claimed only for the tested desktop/open-help and small-screen/closed-help states.",
+    "Fresh browser evidence covers the configured companion and reader-policy fixtures only; earlier broader suites remain attributed to their original sources.",
+    "Native OS/preference ports are controlled browser test ports. Observer-time motion checks and any read-only draw-provenance correlations remain browser diagnostics; no installed-device frame-performance, nonzero OS-safe-area or iOS acceptance is claimed.",
+    "Selected utility reveal waits for the reserved dock layout in the configured short landscapes. The prior shared dock and initial expanded-width clamp remain covered by retained regressions. The media range, model geometry and finite gesture poses are unchanged; retained real model photographs remain original-source renders.",
+    "Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved.",
+    "All requirement and stage statuses remain unchanged; no release or production action is performed.",
+    "This visual review covers 8 of 55 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Utilities were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "bookyUtilityLandscapeImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false,
+  "sourceAmendment": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/amendment.json",
+    "sha256": "4d8a0f7c98d9b703eb2b5f444c352a93b929f48bbf4283751bb4b109ae287031"
+  }
+}

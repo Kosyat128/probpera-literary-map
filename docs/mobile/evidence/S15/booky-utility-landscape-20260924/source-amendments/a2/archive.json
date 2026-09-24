@@ -1,0 +1,1113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T05:11:48.948Z",
+  "pass": true,
+  "kind": "D188 original-a1 evidence archive before source/helper amendment",
+  "originals": [
+    {
+      "name": "configure.mjs",
+      "original": {
+        "name": "configure.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/configure.mjs",
+        "sha256": "c4a94cf7e002dcdc773acf1a5acdbe6092122692e9a1bce28d84265b503085ca",
+        "bytes": 6869
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/configure.mjs",
+        "sha256": "c4a94cf7e002dcdc773acf1a5acdbe6092122692e9a1bce28d84265b503085ca",
+        "bytes": 6869
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/configure.mjs",
+        "sha256": "c4a94cf7e002dcdc773acf1a5acdbe6092122692e9a1bce28d84265b503085ca",
+        "bytes": 6869
+      }
+    },
+    {
+      "name": "check.mjs",
+      "original": {
+        "name": "check.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/check.mjs",
+        "sha256": "dde308080a71536c00ebd71fbb91ad9ca585062c53ca31ed1d391c3ef916f99e",
+        "bytes": 7842
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/check.mjs",
+        "sha256": "dde308080a71536c00ebd71fbb91ad9ca585062c53ca31ed1d391c3ef916f99e",
+        "bytes": 7842
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/check.mjs",
+        "sha256": "dde308080a71536c00ebd71fbb91ad9ca585062c53ca31ed1d391c3ef916f99e",
+        "bytes": 7842
+      }
+    },
+    {
+      "name": "unit.config.mjs",
+      "original": {
+        "name": "unit.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit.config.mjs",
+        "sha256": "1e18e1b43f0fff1c5e65ccf57c296e7df5d5cb463d15146185f8181cc14cc625",
+        "bytes": 353
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/unit.config.mjs",
+        "sha256": "1e18e1b43f0fff1c5e65ccf57c296e7df5d5cb463d15146185f8181cc14cc625",
+        "bytes": 353
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/unit.config.mjs",
+        "sha256": "1e18e1b43f0fff1c5e65ccf57c296e7df5d5cb463d15146185f8181cc14cc625",
+        "bytes": 353
+      }
+    },
+    {
+      "name": "playwright.config.mjs",
+      "original": {
+        "name": "playwright.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/playwright.config.mjs",
+        "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08",
+        "bytes": 515
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/playwright.config.mjs",
+        "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08",
+        "bytes": 515
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/playwright.config.mjs",
+        "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08",
+        "bytes": 515
+      }
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "original": {
+        "name": "build-pwa-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/build-pwa-a1.mjs",
+        "sha256": "f7138ad229641c6a3c64be07fc122c01524a5cd04810ed51ccfc68fec052518e",
+        "bytes": 8510
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/build-pwa-a1.mjs",
+        "sha256": "f7138ad229641c6a3c64be07fc122c01524a5cd04810ed51ccfc68fec052518e",
+        "bytes": 8510
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/build-pwa-a1.mjs",
+        "sha256": "f7138ad229641c6a3c64be07fc122c01524a5cd04810ed51ccfc68fec052518e",
+        "bytes": 8510
+      }
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "original": {
+        "name": "pwa-a1.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      }
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "original": {
+        "name": "build-android-a1.ps1",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/build-android-a1.ps1",
+        "sha256": "f3cec05226abaf9fef1404d9e2090b1a0ffec211552af8c6f7a7ad2885fabb91",
+        "bytes": 7225
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/build-android-a1.ps1",
+        "sha256": "f3cec05226abaf9fef1404d9e2090b1a0ffec211552af8c6f7a7ad2885fabb91",
+        "bytes": 7225
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/build-android-a1.ps1",
+        "sha256": "f3cec05226abaf9fef1404d9e2090b1a0ffec211552af8c6f7a7ad2885fabb91",
+        "bytes": 7225
+      }
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "original": {
+        "name": "verify-android-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/verify-android-a1.mjs",
+        "sha256": "edf4e70a9403d9736b79ad0da6a39868dcaccfbae1f381523967efaef1c5d361",
+        "bytes": 14965
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/verify-android-a1.mjs",
+        "sha256": "edf4e70a9403d9736b79ad0da6a39868dcaccfbae1f381523967efaef1c5d361",
+        "bytes": 14965
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/verify-android-a1.mjs",
+        "sha256": "edf4e70a9403d9736b79ad0da6a39868dcaccfbae1f381523967efaef1c5d361",
+        "bytes": 14965
+      }
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "original": {
+        "name": "preserve-android-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/preserve-android-a1.mjs",
+        "sha256": "35c21d5188d4d1957a99281a3f31424a90a2e57b2e2dcb396a15730be83a7cf4",
+        "bytes": 6547
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/preserve-android-a1.mjs",
+        "sha256": "35c21d5188d4d1957a99281a3f31424a90a2e57b2e2dcb396a15730be83a7cf4",
+        "bytes": 6547
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/preserve-android-a1.mjs",
+        "sha256": "35c21d5188d4d1957a99281a3f31424a90a2e57b2e2dcb396a15730be83a7cf4",
+        "bytes": 6547
+      }
+    },
+    {
+      "name": "checkpoint.mjs",
+      "original": {
+        "name": "checkpoint.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/checkpoint.mjs",
+        "sha256": "64e5f90ddb6867b55ac42d9d176a6cfdf794785f15f04bc999971cf6e5531133",
+        "bytes": 27468
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "64e5f90ddb6867b55ac42d9d176a6cfdf794785f15f04bc999971cf6e5531133",
+        "bytes": 27468
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/checkpoint.mjs",
+        "sha256": "64e5f90ddb6867b55ac42d9d176a6cfdf794785f15f04bc999971cf6e5531133",
+        "bytes": 27468
+      }
+    },
+    {
+      "name": "record-visual.mjs",
+      "original": {
+        "name": "record-visual.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/record-visual.mjs",
+        "sha256": "f67dfe40cebfb0c3f11df97db052a32f06d68c4346b6aebbc809f68fb4a4bda6",
+        "bytes": 4719
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/record-visual.mjs",
+        "sha256": "f67dfe40cebfb0c3f11df97db052a32f06d68c4346b6aebbc809f68fb4a4bda6",
+        "bytes": 4719
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/record-visual.mjs",
+        "sha256": "f67dfe40cebfb0c3f11df97db052a32f06d68c4346b6aebbc809f68fb4a4bda6",
+        "bytes": 4719
+      }
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "original": {
+        "name": "finalize-notes.mjs",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/finalize-notes.mjs",
+        "sha256": "dc9170f5ff8051bf18186845b4b9e9acffd7ca6a794da208a9279b1025bbb252",
+        "bytes": 2668
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/finalize-notes.mjs",
+        "sha256": "dc9170f5ff8051bf18186845b4b9e9acffd7ca6a794da208a9279b1025bbb252",
+        "bytes": 2668
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/finalize-notes.mjs",
+        "sha256": "dc9170f5ff8051bf18186845b4b9e9acffd7ca6a794da208a9279b1025bbb252",
+        "bytes": 2668
+      }
+    },
+    {
+      "name": "scope.json",
+      "original": {
+        "name": "scope.json",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/scope.json",
+        "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949",
+        "bytes": 12504
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949",
+        "bytes": 12504
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/scope.json",
+        "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949",
+        "bytes": 12504
+      }
+    },
+    {
+      "name": "entry.json",
+      "original": {
+        "name": "entry.json",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/entry.json",
+        "sha256": "45c7d043ef339bd21860be12ee5d123d786649e208a1dc041d79822438d911ff",
+        "bytes": 5112
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/entry.json",
+        "sha256": "45c7d043ef339bd21860be12ee5d123d786649e208a1dc041d79822438d911ff",
+        "bytes": 5112
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/entry.json",
+        "sha256": "45c7d043ef339bd21860be12ee5d123d786649e208a1dc041d79822438d911ff",
+        "bytes": 5112
+      }
+    },
+    {
+      "name": "build-baseline.json",
+      "original": {
+        "name": "build-baseline.json",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/build-baseline.json",
+        "sha256": "845864c7d4918efdec79b9806a8f0e080a3c3693a5e80e1ae6748d1c3b692420",
+        "bytes": 743
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/build-baseline.json",
+        "sha256": "845864c7d4918efdec79b9806a8f0e080a3c3693a5e80e1ae6748d1c3b692420",
+        "bytes": 743
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/build-baseline.json",
+        "sha256": "845864c7d4918efdec79b9806a8f0e080a3c3693a5e80e1ae6748d1c3b692420",
+        "bytes": 743
+      }
+    },
+    {
+      "name": "prepared-files.json",
+      "original": {
+        "name": "prepared-files.json",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/prepared-files.json",
+        "sha256": "943a38b08489d394b117a2f2e91711ef54365b4a46d76e6ab934c7a22398ff21",
+        "bytes": 2650
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/prepared-files.json",
+        "sha256": "943a38b08489d394b117a2f2e91711ef54365b4a46d76e6ab934c7a22398ff21",
+        "bytes": 2650
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/prepared-files.json",
+        "sha256": "943a38b08489d394b117a2f2e91711ef54365b4a46d76e6ab934c7a22398ff21",
+        "bytes": 2650
+      }
+    },
+    {
+      "name": "helper-copy.json",
+      "original": {
+        "name": "helper-copy.json",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/helper-copy.json",
+        "sha256": "22ecf83f20ff70a6304e8bb6ba7a4c5d035da5b9877623a8fe154a5a3f839eb0",
+        "bytes": 8102
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/helper-copy.json",
+        "sha256": "22ecf83f20ff70a6304e8bb6ba7a4c5d035da5b9877623a8fe154a5a3f839eb0",
+        "bytes": 8102
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/helper-copy.json",
+        "sha256": "22ecf83f20ff70a6304e8bb6ba7a4c5d035da5b9877623a8fe154a5a3f839eb0",
+        "bytes": 8102
+      }
+    },
+    {
+      "name": "READY.md",
+      "original": {
+        "name": "READY.md",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/READY.md",
+        "sha256": "65d69c6295456cad5eaa72e70af5e2e44ac78ed78d3276d24104dbcf1182c18d",
+        "bytes": 4113
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/READY.md",
+        "sha256": "65d69c6295456cad5eaa72e70af5e2e44ac78ed78d3276d24104dbcf1182c18d",
+        "bytes": 4113
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/READY.md",
+        "sha256": "65d69c6295456cad5eaa72e70af5e2e44ac78ed78d3276d24104dbcf1182c18d",
+        "bytes": 4113
+      }
+    },
+    {
+      "name": "copy-helpers.ps1",
+      "original": {
+        "name": "copy-helpers.ps1",
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/copy-helpers.ps1",
+        "sha256": "1fdf48b2d921e55fff4c6c1035252c72d6d4968809d042582df8243de0c50770",
+        "bytes": 2855
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-amendments/a2/originals/copy-helpers.ps1",
+        "sha256": "1fdf48b2d921e55fff4c6c1035252c72d6d4968809d042582df8243de0c50770",
+        "bytes": 2855
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/refreeze-a2/originals/copy-helpers.ps1",
+        "sha256": "1fdf48b2d921e55fff4c6c1035252c72d6d4968809d042582df8243de0c50770",
+        "bytes": 2855
+      }
+    }
+  ],
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+    "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+    "fileCount": 1650
+  },
+  "runs": [
+    {
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 154,
+        "failed": 0,
+        "skipped": 0
+      },
+      "exitCode": 0,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/result.json",
+        "sha256": "cc0340f8367c9d11717513fac25b146b52656f99372fe9c150f6b82520a02c01",
+        "bytes": 2666
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/execution.json",
+        "sha256": "4794eca340c040d530a9c3244cceffcdb82dc95c7a7e376193d9265c4b5c8f42",
+        "bytes": 925
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/vitest.json",
+        "sha256": "aae240221c0449643a7adaf0f4ee33cdad0f624e3048004f7ad1fedd3a81ad0a",
+        "bytes": 59581
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/execution.json",
+          "sha256": "4794eca340c040d530a9c3244cceffcdb82dc95c7a7e376193d9265c4b5c8f42",
+          "bytes": 925
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/result.json",
+          "sha256": "cc0340f8367c9d11717513fac25b146b52656f99372fe9c150f6b82520a02c01",
+          "bytes": 2666
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/stdout.log",
+          "sha256": "469bfe4815aa68830bccba0b8ecbd2e38001e7aefe594ae5adcf7e79f7414db0",
+          "bytes": 187
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit-a1/vitest.json",
+          "sha256": "aae240221c0449643a7adaf0f4ee33cdad0f624e3048004f7ad1fedd3a81ad0a",
+          "bytes": 59581
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/check.mjs",
+          "sha256": "dde308080a71536c00ebd71fbb91ad9ca585062c53ca31ed1d391c3ef916f99e"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/entry.json",
+          "sha256": "45c7d043ef339bd21860be12ee5d123d786649e208a1dc041d79822438d911ff"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit.config.mjs",
+          "sha256": "1e18e1b43f0fff1c5e65ccf57c296e7df5d5cb463d15146185f8181cc14cc625"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/playwright.config.mjs",
+          "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/configure.mjs",
+          "sha256": "c4a94cf7e002dcdc773acf1a5acdbe6092122692e9a1bce28d84265b503085ca"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/scope.json",
+          "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+        "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+        "fileCount": 1650
+      }
+    },
+    {
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "exitCode": 0,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a1/result.json",
+        "sha256": "4e2977d60be64fca30f0a91d86bb227009e40265f3457bccf16d76ca28fc7e22",
+        "bytes": 2614
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a1/execution.json",
+        "sha256": "84ca2cb4cfafaca88cf9f0028355d5e1542f4eedcb41be65951aa22ea13403e5",
+        "bytes": 623
+      },
+      "report": null,
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a1/execution.json",
+          "sha256": "84ca2cb4cfafaca88cf9f0028355d5e1542f4eedcb41be65951aa22ea13403e5",
+          "bytes": 623
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a1/result.json",
+          "sha256": "4e2977d60be64fca30f0a91d86bb227009e40265f3457bccf16d76ca28fc7e22",
+          "bytes": 2614
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/static-a1/stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/check.mjs",
+          "sha256": "dde308080a71536c00ebd71fbb91ad9ca585062c53ca31ed1d391c3ef916f99e"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/entry.json",
+          "sha256": "45c7d043ef339bd21860be12ee5d123d786649e208a1dc041d79822438d911ff"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit.config.mjs",
+          "sha256": "1e18e1b43f0fff1c5e65ccf57c296e7df5d5cb463d15146185f8181cc14cc625"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/playwright.config.mjs",
+          "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/configure.mjs",
+          "sha256": "c4a94cf7e002dcdc773acf1a5acdbe6092122692e9a1bce28d84265b503085ca"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/scope.json",
+          "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+        "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+        "fileCount": 1650
+      }
+    },
+    {
+      "mode": "browser",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 17,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/result.json",
+        "sha256": "ba0e60505577f277dfe4b532a64c99f852c1974c0bd393238bcf7743f9ffae7b",
+        "bytes": 2858
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/execution.json",
+        "sha256": "b79d258d560a6890327af7dff2ad32b5988ee575ccf9272dc4ded0af9868b233",
+        "bytes": 728
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/playwright.json",
+        "sha256": "5c8e177323908e7f0e4b8126153a7be08184cd0096dd3ff262f69b1d36eaa359",
+        "bytes": 40480
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/execution.json",
+          "sha256": "b79d258d560a6890327af7dff2ad32b5988ee575ccf9272dc4ded0af9868b233",
+          "bytes": 728
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/playwright.json",
+          "sha256": "5c8e177323908e7f0e4b8126153a7be08184cd0096dd3ff262f69b1d36eaa359",
+          "bytes": 40480
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/result.json",
+          "sha256": "ba0e60505577f277dfe4b532a64c99f852c1974c0bd393238bcf7743f9ffae7b",
+          "bytes": 2858
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/stderr.log",
+          "sha256": "4acb77a6ebe8d6a67071c8b16e81ab41be252a14dc9e2923cafbb93d9543d2f4",
+          "bytes": 491
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/browser-a1/stdout.log",
+          "sha256": "e479a9a6a766f43e000ec39a249b12173b691939b2a7b55f5045fe2c8a4180c9",
+          "bytes": 7431
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/check.mjs",
+          "sha256": "dde308080a71536c00ebd71fbb91ad9ca585062c53ca31ed1d391c3ef916f99e"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/entry.json",
+          "sha256": "45c7d043ef339bd21860be12ee5d123d786649e208a1dc041d79822438d911ff"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/unit.config.mjs",
+          "sha256": "1e18e1b43f0fff1c5e65ccf57c296e7df5d5cb463d15146185f8181cc14cc625"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/playwright.config.mjs",
+          "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/configure.mjs",
+          "sha256": "c4a94cf7e002dcdc773acf1a5acdbe6092122692e9a1bce28d84265b503085ca"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/scope.json",
+          "sha256": "b4a9d5b76241a5788274fc8d938eb9597b4efba9aec82550d6075d73c8031949"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/4ae762bec95e935e.json",
+        "sha256": "4ae762bec95e935e428a55711a9abfcae32919bd10dc414e8b7b1ff44c872c35",
+        "fileCount": 1650
+      }
+    }
+  ],
+  "externalArtifacts": {
+    "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1",
+    "files": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/.last-run.json",
+        "sha256": "bfeae74a60d3526ab3ec01ebfc16509615f6b7e9f755314bd96cd9f0f5f3a5e1",
+        "bytes": 145
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-7eede21cfd58415312cc28565aaf8b243d4feb50.json",
+        "sha256": "664241ce7c22c416680ab9ecbd46d352acf6ca56d242d16abe1d9f088dee7afd",
+        "bytes": 280911
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+        "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+        "bytes": 55439
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-character.json",
+        "sha256": "664241ce7c22c416680ab9ecbd46d352acf6ca56d242d16abe1d9f088dee7afd",
+        "bytes": 280911
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-guide-en-320.png",
+        "sha256": "9a57533162758fde6bb83970bfefa7fe144336df1b82e61fccbfb948d26865fe",
+        "bytes": 282578
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-help-ru-1440.png",
+        "sha256": "3ea8c6ddc33b8a0fbbb129e48e3267d27531fe57c92e05e78d0537c3416b1cb5",
+        "bytes": 1171283
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-interaction-en-landscape.png",
+        "sha256": "f2cd14d3459c3dea973886f40e70b0549d155be4d3bd1d2a13a80b9b589752c0",
+        "bytes": 196149
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/attachments/booky-live-character-source-evidence-ba8b53bff52f817e137e75093c14ee6bd119b174.json",
+        "sha256": "ff4c2fd00b493bdb8d64ba7f626ad980d6e036b99fd52059432349325c879186",
+        "bytes": 31051188
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-live-character.json",
+        "sha256": "ff4c2fd00b493bdb8d64ba7f626ad980d6e036b99fd52059432349325c879186",
+        "bytes": 31051188
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-approach-ru-390.png",
+        "sha256": "bf649819ab97f36d20e9a96336979b75a96ce61095ead588a133d8742249d8bb",
+        "bytes": 79088
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-settled-ru-390.png",
+        "sha256": "5d207252dd1b8b1cd827cb219801c15b6815ceb147333de3ac053e2d3a1b0a44",
+        "bytes": 78975
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-position-reset-ru-390.png",
+        "sha256": "d2d18e31187a843ad53580faa2b47250149837703811a7e6b0d5c1aa43b3273f",
+        "bytes": 78995
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-rotation-landscape-ru-844.png",
+        "sha256": "967be00304e5010f8a4e8f7f9b1daa31c87db5dbfb30e3f0b03d675c1d4315f4",
+        "bytes": 42926
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-rotation-reset-ru-390.png",
+        "sha256": "7cab84c9790ac475c8a2a7c1d5ca3bf4e953238195850423a7a18e5fa13dd24d",
+        "bytes": 76406
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/error-context.md",
+        "sha256": "96205afb0b61d2c91b5e84523fc9a0df5e8e1417408f69739acaabfb6b9923cf",
+        "bytes": 23931
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/attachments/booky-live-character-source-evidence-5b28540cb3b87d06b0eda00d4628b7886b332d5c.json",
+        "sha256": "76be066c4161572289ee7b266d7f039a0840ed9a9a86117112700eb1cb9efea3",
+        "bytes": 30761438
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-live-character.json",
+        "sha256": "76be066c4161572289ee7b266d7f039a0840ed9a9a86117112700eb1cb9efea3",
+        "bytes": 30761438
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-approach-en-320.png",
+        "sha256": "d238b29734067bd36dc0e94dad38f81cbe048c74606357b047f46bf4250cb61c",
+        "bytes": 67705
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-settled-en-320.png",
+        "sha256": "11a6e0068d69e94af8afb183462e98737313b576f481da6c1edd68a0fef4e618",
+        "bytes": 67671
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-position-reset-en-320.png",
+        "sha256": "5cb2cb9bec5b5d712d9f88cb6f8201d3587c5c91e412ec66fccf3df8e9be7033",
+        "bytes": 67686
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-rotation-landscape-en-640.png",
+        "sha256": "c3651c0068393cf5cfe1684cc80b06cc5a6d4beb4d988b04de1cdd1bcc2c4e25",
+        "bytes": 37381
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-rotation-reset-en-320.png",
+        "sha256": "62fd4de0ba482a8c7cc59eec8232c3f9b2595916b0059de3bd40d6371867dcf5",
+        "bytes": 68501
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/error-context.md",
+        "sha256": "068754feff4bf7126d5039b302a1337a9ae58d85c6e79084b3fc7e9040914ff1",
+        "bytes": 23931
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/attachments/booky-live-character-source-evidence-371fbe61c687877f9bce64a3e61dbef686a1aa1f.json",
+        "sha256": "f179bcd3f65ac642cad6da338db2b2c4e40469ba1301bf301d63cd3b5025e5e8",
+        "bytes": 1488487
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-live-character.json",
+        "sha256": "f179bcd3f65ac642cad6da338db2b2c4e40469ba1301bf301d63cd3b5025e5e8",
+        "bytes": 1488487
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-target-approach-ru-1440.png",
+        "sha256": "7f860550f32d2723d3f65707c9e8b6bfac547faf3de2e664d4c9235e8775a8be",
+        "bytes": 872532
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command/attachments/booky-live-character-source-evidence-1a8c8fa2a9177d6cab5ea5ad23769da9902c2c90.json",
+        "sha256": "df0defa8996ff0d6c6a6321dad31578fa28664660f25d1abf5b258511f34c449",
+        "bytes": 112258
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command/booky-live-character.json",
+        "sha256": "df0defa8996ff0d6c6a6321dad31578fa28664660f25d1abf5b258511f34c449",
+        "bytes": 112258
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-28bd56616c2d6e7683e5bddb1bfa19d976f92681.json",
+        "sha256": "61a11ec0b0a749a4579e56fd03e79b8ff4105ca193c583d32391f2a78bac99f4",
+        "bytes": 309707
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-live-character.json",
+        "sha256": "61a11ec0b0a749a4579e56fd03e79b8ff4105ca193c583d32391f2a78bac99f4",
+        "bytes": 309707
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png",
+        "sha256": "4503bf2aef96125bf5655959e6a17b8bb7753774e29c36836c200d446d74bf28",
+        "bytes": 100718
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-tips-en-320.png",
+        "sha256": "cd5192b3c51451e348525963a8e7ceeff4423801fcad70128bd86e6b09eae356",
+        "bytes": 133540
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png",
+        "sha256": "5d540ffb6599b8497499b5506ec8ea702787d38f42d1c06af6229d9366107157",
+        "bytes": 330131
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-landscape.png",
+        "sha256": "8f992cba23c6ef51128db201613f008381631133603bba3ff92179abb0b0bba8",
+        "bytes": 198049
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png",
+        "sha256": "61f851750a8d94d0110c8a13bb9d9038364cdb6aff545f374293b56cf3ae0149",
+        "bytes": 329828
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/attachments/booky-live-character-source-evidence-0cbe77012e9e730431f3c06c6ed5244763430046.json",
+        "sha256": "a012b44dd263d3885b65ce968c0a8537f3e0b8ac25d881027a0bdf1b2d4690fa",
+        "bytes": 503291
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-en-568.png",
+        "sha256": "316b8693e0948f8f97dc0a6f8ae1ab36c38ee306d8f0b0030f52df92a9e0c9ab",
+        "bytes": 107694
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-en-640.png",
+        "sha256": "237255ceca369bc1e4dbc57ab4429604fb013516189602f0ba1414e5961ec3d6",
+        "bytes": 139726
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-ru-568.png",
+        "sha256": "30a0aab8dc606321590c0b77de9617ae4b86c08a384db8ee13ee35e4fc46cd7a",
+        "bytes": 117586
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-ru-640.png",
+        "sha256": "af7b8de67e9509a042af561e0333c35e38a4710c8eb4807b54fcc0d9a6280784",
+        "bytes": 141224
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-live-character.json",
+        "sha256": "a012b44dd263d3885b65ce968c0a8537f3e0b8ac25d881027a0bdf1b2d4690fa",
+        "bytes": 503291
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-margin-walk-ru-1440.png",
+        "sha256": "1dc3a7f6630f8e975e75f58650737479db95eb61eebbe724158976119062bdbc",
+        "bytes": 1098091
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-touch-walk-ru-390.png",
+        "sha256": "cf968f9e4d29f4688fbe6eab5d7d4bb0c3189a1062eb74b8f4b78448079bcfa5",
+        "bytes": 393561
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/attachments/booky-live-character-source-evidence-539ab90c8667b1cf989a8f2f2831083cdb4003ca.json",
+        "sha256": "e1f7e06035822260cd19ccd205102c9d141c8e47468fb96115aa40bd2488e6bb",
+        "bytes": 204983
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-live-character.json",
+        "sha256": "e1f7e06035822260cd19ccd205102c9d141c8e47468fb96115aa40bd2488e6bb",
+        "bytes": 204983
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-useful-actions-ru-320.png",
+        "sha256": "becea72197dc86339d8eebd509dad164326e28a567cce30cd2555a1f2f7da91a",
+        "bytes": 282775
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/attachments/booky-live-character-source-evidence-8e8d4933d0c38722dbeb74eacb73e97159876873.json",
+        "sha256": "fa568374e30e6cf21efbba40843c19a4ac39847a36a59bf540ccdcfc451bd0e7",
+        "bytes": 7206622
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+        "sha256": "e3ec7dc22e1d3b2fe991dae1c11a07adf8794f26ea4b3c8bc2f438a8f0c05cc2",
+        "bytes": 1142010
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-live-character.json",
+        "sha256": "fa568374e30e6cf21efbba40843c19a4ac39847a36a59bf540ccdcfc451bd0e7",
+        "bytes": 7206622
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-8615bf5353f64b2de0d50e8524a4828c02e0bb2e.json",
+        "sha256": "dd345aa17ae23b13bdf41aefde558c7164369ccb1b95077a3c01f2bbced38471",
+        "bytes": 368162
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png",
+        "sha256": "5ec29a2ac04568d54b56a361e49102d275c4964be32b829d3cab54895f13d98d",
+        "bytes": 104122
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-ru-320.png",
+        "sha256": "2ce1944ef1d27e287dcf4d3027b6f8d2079b9c54b8e729c4d8e9e504b3594e39",
+        "bytes": 102392
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568-scrolled.png",
+        "sha256": "1f30bf73b7c4357a254b6f7697d0592b065c7b448650ee3f7c2ba9487bb21052",
+        "bytes": 110488
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568.png",
+        "sha256": "d343b6e18506dfbdfb1036d7fa3e1685b1471034919cb46ed9db002bfee23610",
+        "bytes": 119014
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-640-scrolled.png",
+        "sha256": "a7409c07c59c13a6fe75bb30f5c10d3f55c70657b8cffd8a42874c4935d23bf3",
+        "bytes": 119152
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-640.png",
+        "sha256": "bf86fbe9b05860908855b79e15a73850b43d2c94bd6923a511a9701770e41624",
+        "bytes": 128185
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-667.png",
+        "sha256": "fc5a1817732812efb36beb4e8467403e5cad21dc267778a69900c0dd0ca03681",
+        "bytes": 152157
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568-scrolled.png",
+        "sha256": "6e5d30872dd568e9d6bf94e048741423b34bc982e55d31685b4f8607c1be8800",
+        "bytes": 107480
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png",
+        "sha256": "035351c6f35c9d5a985691cc4b8ea9ae812513b6c0915c5ecbfd2bdcc9e2ec16",
+        "bytes": 116391
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-640-scrolled.png",
+        "sha256": "94f251780f3d21b1d9e7acb8c3db27a913e0a03fee0b0bc1e7812438711249e9",
+        "bytes": 119330
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-640.png",
+        "sha256": "ce56c76f1c6a4777d41485dfbd16ca8c78b400d5925ec5ca7b9a3f8988272687",
+        "bytes": 131315
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-800.png",
+        "sha256": "72d0b0e455a739aa4e7f7c5042305b6e6606ba70a9b41550bcefda03690c2568",
+        "bytes": 187595
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "dd345aa17ae23b13bdf41aefde558c7164369ccb1b95077a3c01f2bbced38471",
+        "bytes": 368162
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-09c4f5ee5025ebaf6118cfca36b6424a7a5bb541.json",
+        "sha256": "11b3599d2c5494cf3dabc5b745efa2015b7b2bcad2910c186d38e1f28036940e",
+        "bytes": 639556
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "11b3599d2c5494cf3dabc5b745efa2015b7b2bcad2910c186d38e1f28036940e",
+        "bytes": 639556
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png",
+        "sha256": "5b6d27d32e856bc94cf76386dce3f16a5dfcc88d0a8f7bc8616a7b52651454d7",
+        "bytes": 109186
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png",
+        "sha256": "2d1af148cd529d5388a5c2ad81c1f0f08603fd7e1c60c486aeb37e3bba864a6d",
+        "bytes": 154457
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png",
+        "sha256": "ebe18cadcb52b8551f1b2c3d670d660446484725606d15afdbf6c6c7c3da86f1",
+        "bytes": 198006
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png",
+        "sha256": "4f936ba34047cf9b9b4d870f61a9043c1206631e3886f21404b056df692b1598",
+        "bytes": 199549
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-0fc75-ape-natural-touch-ru-recent/attachments/booky-live-character-source-evidence-5e24fb74388dc988cb6b7692235661458e8d2b23.json",
+        "sha256": "36dde3476d6c88fb12a3980e52054d8ba82735b4721b9e10cc5b2a44205eb49b",
+        "bytes": 1525620
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-0fc75-ape-natural-touch-ru-recent/booky-live-character.json",
+        "sha256": "36dde3476d6c88fb12a3980e52054d8ba82735b4721b9e10cc5b2a44205eb49b",
+        "bytes": 1525620
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-0fc75-ape-natural-touch-ru-recent/booky-utility-landscape-recent-ru-568-natural-return.png",
+        "sha256": "36b56a63300f5356d655f2e4de548bc7eefe7183ef099a229595d34c654f1f0d",
+        "bytes": 27216
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-0fc75-ape-natural-touch-ru-recent/booky-utility-landscape-recent-ru-568.png",
+        "sha256": "5279436fc126ffdf068f5f3ebddcf6280c23f47cd1ccc1b0be481eb77b1313bd",
+        "bytes": 30774
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-4ea6f--natural-touch-en-downloads/attachments/booky-live-character-source-evidence-d617014a581da2868850b8a7b542a79cb5b19e2b.json",
+        "sha256": "3256d3a8eee5a4ca4f7007ad28542b89cf3e1b9aafeca6f3661abd3288c3147c",
+        "bytes": 1529110
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-4ea6f--natural-touch-en-downloads/booky-live-character.json",
+        "sha256": "3256d3a8eee5a4ca4f7007ad28542b89cf3e1b9aafeca6f3661abd3288c3147c",
+        "bytes": 1529110
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-4ea6f--natural-touch-en-downloads/booky-utility-landscape-downloads-en-640-natural-return.png",
+        "sha256": "20d40534b3e715203639cd49b49be7cc8f29ab8422354da492fbd049d7b2ee49",
+        "bytes": 32221
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-4ea6f--natural-touch-en-downloads/booky-utility-landscape-downloads-en-640.png",
+        "sha256": "6edb46b5d5659b09c4d97e2a7c8d9c000aa9585927bab8f2713f2d2b9e4a1e73",
+        "bytes": 39836
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-a771c--natural-touch-ru-downloads/attachments/booky-live-character-source-evidence-98fe1c9f636adaef63c0a38518a66c83dd4a4979.json",
+        "sha256": "9f8f0b06043cb90d6dfd89f8be91b56af97b122059fd78df935af4c7cbbfd11f",
+        "bytes": 1298188
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-a771c--natural-touch-ru-downloads/booky-live-character.json",
+        "sha256": "9f8f0b06043cb90d6dfd89f8be91b56af97b122059fd78df935af4c7cbbfd11f",
+        "bytes": 1298188
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-a771c--natural-touch-ru-downloads/booky-utility-downloads-ru-390.png",
+        "sha256": "9b57ca3158f057b4a269403591bd71efdd69eac50f1758ef1002ff30597f83d6",
+        "bytes": 60231
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-cf4f3--natural-touch-en-downloads/attachments/booky-live-character-source-evidence-f4cd13f5ff501e515bd7afd739fa07119beedf6f.json",
+        "sha256": "6103c7150c1b7af385220bf68ee367176ca3eb0b7b91a4e71c8a13c95106dd71",
+        "bytes": 1316280
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-cf4f3--natural-touch-en-downloads/booky-live-character.json",
+        "sha256": "6103c7150c1b7af385220bf68ee367176ca3eb0b7b91a4e71c8a13c95106dd71",
+        "bytes": 1316280
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utili-cf4f3--natural-touch-en-downloads/booky-utility-downloads-en-320.png",
+        "sha256": "41488a7575510a8afb68248ad1c106a96d685ea24895a536438754cb903d5d0e",
+        "bytes": 58618
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utility-surface-natural-touch-en-recent/attachments/booky-live-character-source-evidence-afff889898dbdbc95b60c45434a6e8512eb3db32.json",
+        "sha256": "71728008388b0b7cf62b6fb71574089b20643d5499a7666792625375b8245118",
+        "bytes": 1270576
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utility-surface-natural-touch-en-recent/booky-live-character.json",
+        "sha256": "71728008388b0b7cf62b6fb71574089b20643d5499a7666792625375b8245118",
+        "bytes": 1270576
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utility-surface-natural-touch-en-recent/booky-utility-recent-en-320.png",
+        "sha256": "2a77f1b8025fc853df03fa3c0dc6cd85444a70ce089d9241d2dd52e72353cc66",
+        "bytes": 55187
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utility-surface-natural-touch-ru-recent/attachments/booky-live-character-source-evidence-d8c628af2b3c7006fa8aaf95fe6b2615f39f0d2b.json",
+        "sha256": "32b2f431213830b5d668dc49cb952254fecdf3b989251ed14243daa05b1f76d9",
+        "bytes": 1367299
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utility-surface-natural-touch-ru-recent/booky-live-character.json",
+        "sha256": "32b2f431213830b5d668dc49cb952254fecdf3b989251ed14243daa05b1f76d9",
+        "bytes": 1367299
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-live-character-utility-surface-natural-touch-ru-recent/booky-utility-recent-ru-390.png",
+        "sha256": "0009b4544b9bba2f91505746e4536beccc9b6a315065e1e4d1f7f08da00a5e66",
+        "bytes": 57746
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/attachments/booky-reader-policy-source-evidence-370361a0396fa23cf48286c2521ad110992525b0.json",
+        "sha256": "cba001c53406c2c904b7e387d1182e05afa520f90139edd40a43c9277bf7e6c3",
+        "bytes": 132703
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/booky-reader-policy.json",
+        "sha256": "cba001c53406c2c904b7e387d1182e05afa520f90139edd40a43c9277bf7e6c3",
+        "bytes": 132703
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+        "sha256": "7fe23323d3ff0a098e31baf029a70eec11cb4d7aa1cb3629fd8f2c641c5a5c2a",
+        "bytes": 277077
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+        "sha256": "831e7dce3ae7f468c8078df646ba6d635e7ad3ece1fc9c1e36f5c0a25c666706",
+        "bytes": 1185943
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/attachments/booky-reader-policy-source-evidence-8af78b2be9cd720bc234475c804a5850292e1a1a.json",
+        "sha256": "1c52e9f7392e8154564bc027b0f3b375add3b387390364f4a12d38e57c0c41d8",
+        "bytes": 123244
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/booky-reader-policy.json",
+        "sha256": "1c52e9f7392e8154564bc027b0f3b375add3b387390364f4a12d38e57c0c41d8",
+        "bytes": 123244
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-landscape/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+        "sha256": "2b2566b029ba8525023adfc9615ca9cac57fa497f47fd7ac8146f947d5ead898",
+        "bytes": 1175236
+      }
+    ],
+    "fileCount": 96,
+    "bytes": 175944405,
+    "copied": false
+  },
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/diagnostic-history.json",
+    "sha256": "b324f5639249c5fb982bdb3b831efad2ef823c1d4aee10fc18c85ca7e3d7a11b",
+    "bytes": 38061
+  },
+  "sourceInputsRehashed": false,
+  "currentHelpersChanged": false,
+  "largeReportsDuplicated": false,
+  "releaseReady": false
+}
