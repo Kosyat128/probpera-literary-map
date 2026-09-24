@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:30:43.237Z",
+  "preparedOnly": true,
+  "sourceFrozen": true,
+  "executed": false,
+  "baseCheckpoint": "3a82b288d039183725baf9fe0034e076fe235d43",
+  "baseSource": "53a7c61cf131b6604e384074acc256366c3217fa",
+  "priorResultSha256": "f468fa30cd68639aa1c63c7f5c6eee5a1c8a010dda13ff0f5f8deb93a0c11ee6",
+  "priorManifest": "9ebd4a0bfbec8136bb9c21748e7142a22e7a0d2832b32ab072f9c37836ef7f21",
+  "expectedSourceInputCount": 1652,
+  "expectedProtectedInputs": 1648,
+  "pendingFields": [],
+  "files": [
+    {
+      "name": "configure.mjs",
+      "sha256": "ce91890503e4259040a70b75af67489cebdd7fb453e206e381cba1a823ccb573"
+    },
+    {
+      "name": "check.mjs",
+      "sha256": "8bde204e69f8db2e70226800d3b3c420fa8b20896833caf76d3002b8b7c0dff1"
+    },
+    {
+      "name": "unit.config.mjs",
+      "sha256": "122a78ffbc9cd5e65ff73ff1019deb76efa05c6f70880644e9a44de9aa0f5ea8"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "sha256": "a1f83963b4d5dbfa22603e7faa4c14fd11c38db248f4b5e542e410164ff7a798"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "sha256": "f24e8971e22b7ab6aba527ff04f6ea6c97bfd4ddace557fa530621d5213b3ae1"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "sha256": "5af08b2e28d4f72434d75996dd7097f958f68895c6382ed1f1e42b74710eaabf"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "sha256": "21fb25e89e172866d5593d41cab155cb770864a96e5a94e65c6773599c150a0f"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "sha256": "f2844e44295165c108d755760e37eb8136605d9ecd2d0d69130b02c11fe46832"
+    },
+    {
+      "name": "record-visual.mjs",
+      "sha256": "329f6f8b9657739bb0450dd6bf154799adcbfc0403797d7900cf4c528ed912ca"
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "sha256": "221ab3307f2ad46ae4057a79b274d01df557d6f736d27776b346dc59835a7209"
+    },
+    {
+      "name": "scope.json",
+      "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66"
+    }
+  ],
+  "releaseReady": false
+}

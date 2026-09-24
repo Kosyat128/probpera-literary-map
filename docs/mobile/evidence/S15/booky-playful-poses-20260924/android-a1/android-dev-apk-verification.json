@@ -1,0 +1,212 @@
+{
+  "pass": true,
+  "scope": "Read-only inspection of the actual locally built Android devDebug APK",
+  "checkedAt": "2026-09-24T08:49:39.970Z",
+  "apk": {
+    "path": "apps/mobile/android/app/build/outputs/apk/dev/debug/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "3d400adaa79b39a948a2fbf1fe0e19b0afeb65ea074e01de50a63fdd7856a68c"
+  },
+  "sourceArtifact": {
+    "path": "dist-native",
+    "buildId": "891cd0cbc9a70bb93da604f2f5ac1d2d93302cbfe94d704ade9ed0c963348e18",
+    "sourceCommit": "645ad444d402141ef1162060778ad2874eb6c12b",
+    "sha256": "02297adbf1798608a684d82a956a54841033c8fc05b6ee73a7dc51141e9e5a55"
+  },
+  "zip": {
+    "entries": 1855,
+    "expandedBytes": 84838670,
+    "pathsAndCrcChecked": true,
+    "ledger": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\android-a1-raw\\android-dev-apk-zip-entries.json",
+      "sha256": "fca52a91ce3f2a111cf87709e18770c978b2fe0043b0624bf4564d5887c48b33",
+      "entries": 1855
+    }
+  },
+  "bundledAssets": {
+    "expected": 1408,
+    "matched": 1407,
+    "omittedValidationMetadata": [
+      ".vite/manifest.json"
+    ],
+    "permittedEmptyCordovaExtras": [
+      {
+        "path": "cordova.js",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "cordova_plugins.js",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "configSha256": "04fe811bebdb9e7e2dadc83ec571400d8923658fe4cc9f7091ed80d24a0823ab",
+    "pluginRegistrySha256": "cc704617b05f0ba8a4100bf89b7c3b3becba97b4b831cb47c1fce27889ac53e4",
+    "capacitorCoreBridge": {
+      "apkPath": "assets/native-bridge.js",
+      "source": "node_modules/@capacitor/android/capacitor/src/main/assets/native-bridge.js",
+      "verifiedPackageIntake": ".tmp/native-bootstrap/capacitor-packages/android-8.5.1/extracted/package/capacitor/src/main/assets/native-bridge.js",
+      "bytes": 53467,
+      "sha256": "8ecc290bdd4f54605a6851e73023d4ba5ba0e56aa1d3eba75962242482b8fb4e"
+    }
+  },
+  "dex": {
+    "files": [
+      {
+        "path": "classes.dex",
+        "bytes": 8577192,
+        "sha256": "f06449775ef4fcb472b26b847e9d9fa72322e1f391d0a51741cd4122355d4925",
+        "classDefinitions": 5209
+      },
+      {
+        "path": "classes2.dex",
+        "bytes": 12048,
+        "sha256": "f07633c1497caca805977fec2a7e88e00fadc6d62f6d2808d0833424474993de",
+        "classDefinitions": 12
+      },
+      {
+        "path": "classes3.dex",
+        "bytes": 3488,
+        "sha256": "c834952a10d9a070f98e39b0d81c40f0b134a1c06ce9e078215d680b829fdeb9",
+        "classDefinitions": 1
+      },
+      {
+        "path": "classes4.dex",
+        "bytes": 21820,
+        "sha256": "43cbde83ff08d52a010b6f1211d018b24e0fd126ce18bb75cd814d5972cf17fd",
+        "classDefinitions": 21
+      },
+      {
+        "path": "classes5.dex",
+        "bytes": 8152,
+        "sha256": "3addf28a64a6a95d718b677722b0796eece4ab3bba0b8f0aa337d752a1334582",
+        "classDefinitions": 7
+      },
+      {
+        "path": "classes6.dex",
+        "bytes": 153000,
+        "sha256": "a469a40dd36b2edc600c7c2326363f1cf5eae342988e61cef328bcacfdc9bae7",
+        "classDefinitions": 82
+      },
+      {
+        "path": "classes7.dex",
+        "bytes": 9188,
+        "sha256": "4b61aa552dfce38dd61e645983aba599cd326042252be58f337f64d36c43323a",
+        "classDefinitions": 4
+      },
+      {
+        "path": "classes8.dex",
+        "bytes": 56948,
+        "sha256": "ef1cb0ddc4b7d2a7f250e5bec896458278e63dd1927de55b5c9d0c0abd01b08e",
+        "classDefinitions": 31
+      },
+      {
+        "path": "classes9.dex",
+        "bytes": 135360,
+        "sha256": "6ef92dc74065ebf4f241a0d2a3ed491f1fe119ced8cd8cd722a05b1c794bc1d9",
+        "classDefinitions": 167
+      },
+      {
+        "path": "classes10.dex",
+        "bytes": 18556,
+        "sha256": "978314eda24d0a7d996ce89266405cb7a8af3e4a2188ab89d44124d4ed96e18e",
+        "classDefinitions": 11
+      }
+    ],
+    "classDefinitions": 5545,
+    "requiredPluginClasses": [
+      {
+        "pkg": "@capacitor/app",
+        "classpath": "com.capacitorjs.plugins.app.AppPlugin",
+        "descriptor": "Lcom/capacitorjs/plugins/app/AppPlugin;",
+        "dex": "classes7.dex"
+      },
+      {
+        "pkg": "@capacitor/app-launcher",
+        "classpath": "com.capacitorjs.plugins.applauncher.AppLauncherPlugin",
+        "descriptor": "Lcom/capacitorjs/plugins/applauncher/AppLauncherPlugin;",
+        "dex": "classes3.dex"
+      },
+      {
+        "pkg": "@capacitor/browser",
+        "classpath": "com.capacitorjs.plugins.browser.BrowserPlugin",
+        "descriptor": "Lcom/capacitorjs/plugins/browser/BrowserPlugin;",
+        "dex": "classes2.dex"
+      },
+      {
+        "pkg": "@capacitor/network",
+        "classpath": "com.capacitorjs.plugins.network.NetworkPlugin",
+        "descriptor": "Lcom/capacitorjs/plugins/network/NetworkPlugin;",
+        "dex": "classes5.dex"
+      },
+      {
+        "pkg": "@capacitor/preferences",
+        "classpath": "com.capacitorjs.plugins.preferences.PreferencesPlugin",
+        "descriptor": "Lcom/capacitorjs/plugins/preferences/PreferencesPlugin;",
+        "dex": "classes8.dex"
+      }
+    ],
+    "localContentStore": {
+      "descriptor": "Lru/probpera/literaryplanet/PlanetContentStorePlugin;",
+      "dex": "classes10.dex",
+      "registration": "MainActivity registers before BridgeActivity.onCreate",
+      "installedExecutionVerified": false
+    }
+  },
+  "compiledChecks": {
+    "package": true,
+    "minSdk24": true,
+    "targetSdk36": true,
+    "englishLabel": true,
+    "russianLabel": true,
+    "debuggable": true,
+    "backupDisabled": true,
+    "cleartextDisabled": true,
+    "exactSelectableLocales": true,
+    "signatureVerified": true,
+    "debugCertificate": true,
+    "alignmentVerified": true
+  },
+  "signing": {
+    "certificateSha256": "6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9",
+    "kind": "Android Debug",
+    "productionSigning": false
+  },
+  "tools": {
+    "buildTools": "36.0.0",
+    "java": "workspace JDK21.0.12.1+1",
+    "zipAlignment": "zipalign -c -P 16 -v 4; no native shared libraries does not constitute a native ABI compatibility test",
+    "nativeSharedLibraryCount": 0
+  },
+  "rawReports": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/android-a1-raw/android-dev-apk-aapt2-badging.txt",
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/android-a1-raw/android-dev-apk-manifest.txt",
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/android-a1-raw/android-dev-apk-locales.txt",
+      "sha256": "e417b96725691c86cc6103223f08367d7454894043884c0e8d1142e519de5200"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/android-a1-raw/android-dev-apk-signature.txt",
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/android-a1-raw/android-dev-apk-zipalign.txt",
+      "sha256": "368085b9af5bf0c3301148ab47b5d2288412a4eef4f59c5808fa8c1c3a988d96"
+    }
+  ],
+  "findings": [],
+  "releaseReady": false,
+  "limitations": [
+    "No adb, installation, emulator or physical-device runtime was used.",
+    "This devDebug APK and local debug certificate are not a production/store package or an owner release approval.",
+    "Byte equality binds the archived audited Android bundle to APK assets. Source-to-binary reproducibility, native runtime/language-state behavior and later stage acceptance remain separate gates.",
+    "Library resource translations reported by aapt2 are not claims of additional supported app locales; compiled selectable locales are exactly en and ru."
+  ]
+}

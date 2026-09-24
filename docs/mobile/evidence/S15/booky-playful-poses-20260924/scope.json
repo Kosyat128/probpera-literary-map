@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "description": "Two finite explicit gestures, bow and balance, extend the repertoire from thirteen to fifteen. The existing local Surprise cycle includes all fifteen. Selected actual-App cases verify the live model, all gestures, RU/EN trusted-touch repetition and bow-to-balance interruption, finite stillness, reduced motion, scrolling and rotation without preference or canonical-scene changes. Model geometry is unchanged; three new standalone rest/bow/balance photos bind the current animation source. Earlier five model photos remain historical evidence only.",
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyAnimation.ts",
+    "src/host/bookyAnimation.test.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedBrowserTests": 4,
+  "expectedImages": 9,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "mobile-touch-gestures-ru",
+      "flags": [
+        "mobileFifteenGesturesReachableByTouch",
+        "mobileGestureScrollingDoesNotPlay",
+        "mobileGesturesFiniteAndRepeatable",
+        "mobileSurpriseCycleCoversFifteen",
+        "mobileSurpriseCycleBoundaryDifferent",
+        "mobileGestureReducedMotionStatic",
+        "mobileGestureHelpReadableAfterRotation",
+        "mobileGesturePreferencesAndSceneRetained",
+        "mobileGestureTrustedTouch",
+        "mobileNewGesturesRepeatByTouch",
+        "mobileBowToBalanceInterrupts",
+        "mobileNewGesturesReducedMotionStatic"
+      ]
+    },
+    {
+      "scenario": "mobile-touch-gestures-en",
+      "flags": [
+        "mobileFifteenGesturesReachableByTouch",
+        "mobileGestureScrollingDoesNotPlay",
+        "mobileGesturesFiniteAndRepeatable",
+        "mobileSurpriseCycleCoversFifteen",
+        "mobileSurpriseCycleBoundaryDifferent",
+        "mobileGestureReducedMotionStatic",
+        "mobileGestureHelpReadableAfterRotation",
+        "mobileGesturePreferencesAndSceneRetained",
+        "mobileGestureTrustedTouch",
+        "mobileNewGesturesRepeatByTouch",
+        "mobileBowToBalanceInterrupts",
+        "mobileNewGesturesReducedMotionStatic"
+      ]
+    },
+    {
+      "scenario": "explicit-bounded-gestures",
+      "flags": [
+        "fifteenExplicitGestures",
+        "repeatedReactionRestarts",
+        "surpriseChoosesDifferentGesture",
+        "actualRigChanges",
+        "eightNewMotionsObserved",
+        "bowAndBalanceMotionsObserved",
+        "newGesturesHaveDistinctStaticPoses",
+        "winkMovesOnlyOneEye",
+        "swayDoesNotStep",
+        "originalSevenAtMost1100ms",
+        "configuredReactionsAtMost2400ms",
+        "reactionsStopWithinSchedulingAllowance",
+        "reducedMotionHasNoReactionLoop",
+        "gesturesDoNotWritePreferencesOrProgress",
+        "sameCanonicalGlobe"
+      ]
+    }
+  ],
+  "expectedUnitTests": 169,
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "requireDiagnosticHistory": true,
+  "requiredVisualFilenames": [
+    "booky-touch-gestures-ru-390.png",
+    "booky-touch-gestures-ru-844.png",
+    "booky-touch-gestures-en-320.png",
+    "booky-touch-gestures-en-640.png"
+  ],
+  "requiredObservationChecks": [],
+  "browserTestTitles": [
+    "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+    "Mr. Booky fifteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+    "Booky mobile touch gesture gallery ru",
+    "Booky mobile touch gesture gallery en"
+  ],
+  "retainedCaseCaptureSubtotal": 5,
+  "requireNewPhotoReview": true,
+  "expectedNewModelPhotos": 3,
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "6a18a7735f5738cc8bbb17ee3924898dc566133a43119a6f5583b712d2441916"
+    },
+    {
+      "path": "src/host/bookyAnimation.test.ts",
+      "sha256": "60deef16d8a36e7e76925cba114ff6269441f84cd152facb755f49ff92cec3cc"
+    },
+    {
+      "path": "src/host/bookyAnimation.ts",
+      "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "ef49d1e962f59642f842afe679ac1ad35d6a7692620f4bd6250f664b4a8f4ebd"
+    }
+  ],
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0
+}

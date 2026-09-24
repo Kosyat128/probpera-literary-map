@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:32:48.5700589+00:00",
+  "reason": "Read original animation unit execution trueExit without rewriting receipts; replace inherited scale-badge summary prose.",
+  "before": {
+    "path": "docs\\mobile\\evidence\\S15\\booky-playful-poses-20260924\\helper-amendments\\diagnostic-exit-schema/checkpoint-before.mjs",
+    "sha256": "f2844e44295165c108d755760e37eb8136605d9ecd2d0d69130b02c11fe46832"
+  },
+  "after": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/checkpoint.mjs",
+    "sha256": "e1bf7a406fe9d8275439c83b86359997c3f538aea5e880ccc26303fb87469ad6"
+  },
+  "checkInputsChanged": false,
+  "sourceChanged": false,
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

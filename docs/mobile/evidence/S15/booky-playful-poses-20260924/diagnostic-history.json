@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:34:37.967Z",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-scale-clearance-20260924/result.json",
+    "sha256": "f468fa30cd68639aa1c63c7f5c6eee5a1c8a010dda13ff0f5f8deb93a0c11ee6"
+  },
+  "attempts": [
+    {
+      "attempt": "animation-a1",
+      "reportFormat": "vitest",
+      "classification": "focused-animation-and-assertion-failures",
+      "pass": false,
+      "browserStarted": false,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/report.json",
+        "sha256": "5b8facf3fbaa0d3b97c95abc2af5aa17c866e0516bd701887a39023760ea8c58"
+      },
+      "tests": {
+        "passed": 43,
+        "failed": 3,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/execution.json",
+        "sha256": "233ff610901dbda7cc354bae76ff0ecebbac459a4201867931edf6cd50a1f8c8"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/stdout.log",
+          "sha256": "06756894d1551963323ac0560df3e5b198e4aff184a3e1c7a21e25ef190bc4b0"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/start.json",
+        "sha256": "66254e8ba583bde2d9544052de7d803ee47b62cbcd5889e194698d5b39947229"
+      },
+      "sourceUnchanged": true,
+      "qualification": "Original 43 PASS / 3 FAIL. One bow signed-zero assertion mismatch and two nonidentity-quaternion preservation failures were retained. The subsequent bounded fix avoids no-op quaternion rewrites for bow/balance and normalizes the zero comparison; this original report is not relabeled.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/bookyAnimation.ts",
+          "sha256": "1792580f24fab1d41d3aaa91eedbcc145edcf7ac4f37f12e863d1eb045225a8f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/bookyAnimation.test.ts",
+          "sha256": "6d45d2610b732c38b53dec79a86785bed0bc04a3aa4207a0f84a829102c8d753"
+        }
+      ]
+    },
+    {
+      "attempt": "animation-a2",
+      "reportFormat": "vitest",
+      "classification": "focused-animation-regression-pass",
+      "pass": true,
+      "browserStarted": false,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/report.json",
+        "sha256": "696d6bf0ba0e11f2d78ef502a9f803dc2bd1974744cec5c7b26560b82945ee30"
+      },
+      "tests": {
+        "passed": 46,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/execution.json",
+        "sha256": "716c80d04d5e06ee53166b0357a718b543cc221918c29f4f7940a40e11fe56cd"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/stdout.log",
+          "sha256": "54ca997cb4156a6e4b220c14abfcfc0c32d2a7b0b5e7ad506710eaddb4a3011a"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/start.json",
+        "sha256": "beaf144a0cdda98dd3dd45e2deca5c4c107f79e24392b30ba0afba0706e6d1e8"
+      },
+      "sourceUnchanged": true,
+      "qualification": "Original 46 PASS / 0 FAIL after the bounded animation and signed-zero assertion corrections. No browser or installed-device check was run by this unit diagnostic.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/bookyAnimation.test.ts",
+          "sha256": "60deef16d8a36e7e76925cba114ff6269441f84cd152facb755f49ff92cec3cc"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only the two actual external animation unit attempts are recorded here. No preformal browser diagnostic is invented.",
+    "Captured source hashes and source copies retain their original attempt identity; previous D192 browser attempts remain attributed only to that prior result."
+  ],
+  "releaseReady": false
+}

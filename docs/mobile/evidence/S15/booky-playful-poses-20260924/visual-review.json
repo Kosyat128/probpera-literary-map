@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:49:27.109Z",
+  "pass": true,
+  "sourceCommit": "645ad444d402141ef1162060778ad2874eb6c12b",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/d0e543680179b451.json",
+    "sha256": "d0e543680179b4518471d27c9a267b369bd2c61b8a3e27adf42d58eec83d5fa1",
+    "fileCount": 1652
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 9,
+  "scope": "Direct review of the selected final mobile gesture clearance captures. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 4 of 9 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Badge clearance and placement were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/final-visual-receipt.json",
+    "sha256": "887a9a296ef394358173c430c4886040280a66088d60cd204b7e8ecc7bbcb492"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-touch-gestures-ru-390.png",
+      "sha256": "56ab590b849ecf3fb201b3adbbf721e8cf4afc7ea3a00ae50c45a8e9f1c5f166",
+      "width": 390,
+      "height": 844,
+      "bytes": 341895,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Russian Книжулик title and close button are fully visible. The balance response and Literary journeys heading are readable.",
+        "The full character, magnifier and move/hide buttons fit below the card. The scale badge is clear of the disabled walk action.",
+        "The gesture buttons are above the current scroll position and the journey explanation continues below its scroll viewport. This capture does not establish visibility of every gesture label. The card covers part of the background Appearance control."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-live-character.json",
+        "sha256": "18ebf53dff625b3d8c1112cf137ef314d71994e11496097342604880f4c62efe",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/attachments/booky-live-character-source-evidence-6f5f3888feaa6aded34ee493b4c1706c64e71921.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-touch-gestures-ru-844.png",
+      "sha256": "bb157058bfa841bd05c590d288cc1d8d724e74989c1d48bbcb8c61bec08aefb3",
+      "width": 844,
+      "height": 390,
+      "bytes": 165129,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Russian title, close button and complete balance response are readable. The whole character and both tool buttons fit beside the card; the scale badge remains clear.",
+        "The gesture row is partly clipped beneath the sticky header; the next section heading is partly below the scroll viewport.",
+        "The card covers some background edition and globe-toolbar content, while the right-side tool buttons cover part of the compass rail. This is not a universal background-navigation clearance claim."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-live-character.json",
+        "sha256": "18ebf53dff625b3d8c1112cf137ef314d71994e11496097342604880f4c62efe",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/attachments/booky-live-character-source-evidence-6f5f3888feaa6aded34ee493b4c1706c64e71921.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-touch-gestures-en-320.png",
+      "sha256": "88d11fc9efdb99e9d6b92e5a9e4e4678870cf70a01cae27ad76a9d62ecc43f0d",
+      "width": 320,
+      "height": 844,
+      "bytes": 270411,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The English Mr. Booky title and close button fit the narrow viewport. The balance response wraps legibly over two lines.",
+        "The complete character, magnifier, move/hide buttons and disabled walk action fit below the card, with the scale badge clear to the right.",
+        "Only the bottom of the gesture row is visible beneath the sticky header at this scroll position; full gesture labels are not established by this capture."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-live-character.json",
+        "sha256": "8c883f4a132238a760a2f2dd19b717209cba98fe0b810d5929dfd283b20917d4",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-en/attachments/booky-live-character-source-evidence-92038f2715cdc546ba474e338393528ddcd8c48e.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-touch-gestures-en-640.png",
+      "sha256": "4ce7c4f9fbc014ffeb99df8a56384cbd1e9a31b8d53120bbdb26b2c41282f135",
+      "width": 640,
+      "height": 360,
+      "bytes": 132088,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The English title, close button, response and Literary journeys heading are readable. The complete character and two vertically stacked tools fit to the right of the card, clear of the scale badge.",
+        "The gesture buttons are above the current scroll position, and the journey explanation continues below the scroll viewport. The card and companion cover portions of the background edition and globe-toolbar areas."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-live-character.json",
+        "sha256": "8c883f4a132238a760a2f2dd19b717209cba98fe0b810d5929dfd283b20917d4",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a2/booky-live-character-Booky-mobile-touch-gesture-gallery-en/attachments/booky-live-character-source-evidence-92038f2715cdc546ba474e338393528ddcd8c48e.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    }
+  ],
+  "releaseReady": false
+}

@@ -1,0 +1,739 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:39:15.750Z",
+  "pass": true,
+  "kind": "D193 original-a1 evidence archive before source/helper amendment",
+  "originals": [
+    {
+      "name": "configure.mjs",
+      "original": {
+        "name": "configure.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/configure.mjs",
+        "sha256": "ce91890503e4259040a70b75af67489cebdd7fb453e206e381cba1a823ccb573",
+        "bytes": 7323
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/configure.mjs",
+        "sha256": "ce91890503e4259040a70b75af67489cebdd7fb453e206e381cba1a823ccb573",
+        "bytes": 7323
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/configure.mjs",
+        "sha256": "ce91890503e4259040a70b75af67489cebdd7fb453e206e381cba1a823ccb573",
+        "bytes": 7323
+      }
+    },
+    {
+      "name": "check.mjs",
+      "original": {
+        "name": "check.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/check.mjs",
+        "sha256": "8bde204e69f8db2e70226800d3b3c420fa8b20896833caf76d3002b8b7c0dff1",
+        "bytes": 7839
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/check.mjs",
+        "sha256": "8bde204e69f8db2e70226800d3b3c420fa8b20896833caf76d3002b8b7c0dff1",
+        "bytes": 7839
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/check.mjs",
+        "sha256": "8bde204e69f8db2e70226800d3b3c420fa8b20896833caf76d3002b8b7c0dff1",
+        "bytes": 7839
+      }
+    },
+    {
+      "name": "unit.config.mjs",
+      "original": {
+        "name": "unit.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit.config.mjs",
+        "sha256": "122a78ffbc9cd5e65ff73ff1019deb76efa05c6f70880644e9a44de9aa0f5ea8",
+        "bytes": 358
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/unit.config.mjs",
+        "sha256": "122a78ffbc9cd5e65ff73ff1019deb76efa05c6f70880644e9a44de9aa0f5ea8",
+        "bytes": 358
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/unit.config.mjs",
+        "sha256": "122a78ffbc9cd5e65ff73ff1019deb76efa05c6f70880644e9a44de9aa0f5ea8",
+        "bytes": 358
+      }
+    },
+    {
+      "name": "playwright.config.mjs",
+      "original": {
+        "name": "playwright.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d",
+        "bytes": 716
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d",
+        "bytes": 716
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d",
+        "bytes": 716
+      }
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "original": {
+        "name": "build-pwa-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/build-pwa-a1.mjs",
+        "sha256": "a1f83963b4d5dbfa22603e7faa4c14fd11c38db248f4b5e542e410164ff7a798",
+        "bytes": 8499
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/build-pwa-a1.mjs",
+        "sha256": "a1f83963b4d5dbfa22603e7faa4c14fd11c38db248f4b5e542e410164ff7a798",
+        "bytes": 8499
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/build-pwa-a1.mjs",
+        "sha256": "a1f83963b4d5dbfa22603e7faa4c14fd11c38db248f4b5e542e410164ff7a798",
+        "bytes": 8499
+      }
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "original": {
+        "name": "pwa-a1.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      }
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "original": {
+        "name": "build-android-a1.ps1",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/build-android-a1.ps1",
+        "sha256": "f24e8971e22b7ab6aba527ff04f6ea6c97bfd4ddace557fa530621d5213b3ae1",
+        "bytes": 7223
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/build-android-a1.ps1",
+        "sha256": "f24e8971e22b7ab6aba527ff04f6ea6c97bfd4ddace557fa530621d5213b3ae1",
+        "bytes": 7223
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/build-android-a1.ps1",
+        "sha256": "f24e8971e22b7ab6aba527ff04f6ea6c97bfd4ddace557fa530621d5213b3ae1",
+        "bytes": 7223
+      }
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "original": {
+        "name": "verify-android-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/verify-android-a1.mjs",
+        "sha256": "5af08b2e28d4f72434d75996dd7097f958f68895c6382ed1f1e42b74710eaabf",
+        "bytes": 14966
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/verify-android-a1.mjs",
+        "sha256": "5af08b2e28d4f72434d75996dd7097f958f68895c6382ed1f1e42b74710eaabf",
+        "bytes": 14966
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/verify-android-a1.mjs",
+        "sha256": "5af08b2e28d4f72434d75996dd7097f958f68895c6382ed1f1e42b74710eaabf",
+        "bytes": 14966
+      }
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "original": {
+        "name": "preserve-android-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/preserve-android-a1.mjs",
+        "sha256": "21fb25e89e172866d5593d41cab155cb770864a96e5a94e65c6773599c150a0f",
+        "bytes": 6544
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/preserve-android-a1.mjs",
+        "sha256": "21fb25e89e172866d5593d41cab155cb770864a96e5a94e65c6773599c150a0f",
+        "bytes": 6544
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/preserve-android-a1.mjs",
+        "sha256": "21fb25e89e172866d5593d41cab155cb770864a96e5a94e65c6773599c150a0f",
+        "bytes": 6544
+      }
+    },
+    {
+      "name": "checkpoint.mjs",
+      "original": {
+        "name": "checkpoint.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/checkpoint.mjs",
+        "sha256": "e1bf7a406fe9d8275439c83b86359997c3f538aea5e880ccc26303fb87469ad6",
+        "bytes": 31386
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "e1bf7a406fe9d8275439c83b86359997c3f538aea5e880ccc26303fb87469ad6",
+        "bytes": 31386
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/checkpoint.mjs",
+        "sha256": "e1bf7a406fe9d8275439c83b86359997c3f538aea5e880ccc26303fb87469ad6",
+        "bytes": 31386
+      }
+    },
+    {
+      "name": "record-visual.mjs",
+      "original": {
+        "name": "record-visual.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/record-visual.mjs",
+        "sha256": "329f6f8b9657739bb0450dd6bf154799adcbfc0403797d7900cf4c528ed912ca",
+        "bytes": 4747
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/record-visual.mjs",
+        "sha256": "329f6f8b9657739bb0450dd6bf154799adcbfc0403797d7900cf4c528ed912ca",
+        "bytes": 4747
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/record-visual.mjs",
+        "sha256": "329f6f8b9657739bb0450dd6bf154799adcbfc0403797d7900cf4c528ed912ca",
+        "bytes": 4747
+      }
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "original": {
+        "name": "finalize-notes.mjs",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/finalize-notes.mjs",
+        "sha256": "221ab3307f2ad46ae4057a79b274d01df557d6f736d27776b346dc59835a7209",
+        "bytes": 1570
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/finalize-notes.mjs",
+        "sha256": "221ab3307f2ad46ae4057a79b274d01df557d6f736d27776b346dc59835a7209",
+        "bytes": 1570
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/finalize-notes.mjs",
+        "sha256": "221ab3307f2ad46ae4057a79b274d01df557d6f736d27776b346dc59835a7209",
+        "bytes": 1570
+      }
+    },
+    {
+      "name": "scope.json",
+      "original": {
+        "name": "scope.json",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/scope.json",
+        "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66",
+        "bytes": 4873
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66",
+        "bytes": 4873
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/scope.json",
+        "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66",
+        "bytes": 4873
+      }
+    },
+    {
+      "name": "entry.json",
+      "original": {
+        "name": "entry.json",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/entry.json",
+        "sha256": "d0f33ec8d187ae7a4d1eb9c4242e7adad2a95c0eb2d3cc1767d792822b2d561a",
+        "bytes": 6007
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/entry.json",
+        "sha256": "d0f33ec8d187ae7a4d1eb9c4242e7adad2a95c0eb2d3cc1767d792822b2d561a",
+        "bytes": 6007
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/entry.json",
+        "sha256": "d0f33ec8d187ae7a4d1eb9c4242e7adad2a95c0eb2d3cc1767d792822b2d561a",
+        "bytes": 6007
+      }
+    },
+    {
+      "name": "build-baseline.json",
+      "original": {
+        "name": "build-baseline.json",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/build-baseline.json",
+        "sha256": "98857f97b6adc9cd8b0dc83bba1c57303d9ef1015987f07fde971ac301b28724",
+        "bytes": 749
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/build-baseline.json",
+        "sha256": "98857f97b6adc9cd8b0dc83bba1c57303d9ef1015987f07fde971ac301b28724",
+        "bytes": 749
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/build-baseline.json",
+        "sha256": "98857f97b6adc9cd8b0dc83bba1c57303d9ef1015987f07fde971ac301b28724",
+        "bytes": 749
+      }
+    },
+    {
+      "name": "prepared-files.json",
+      "original": {
+        "name": "prepared-files.json",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/prepared-files.json",
+        "sha256": "6bf6e3293ad7ffcc504866ce40422d20df100627d575e842838680fd674c410c",
+        "bytes": 2340
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/prepared-files.json",
+        "sha256": "6bf6e3293ad7ffcc504866ce40422d20df100627d575e842838680fd674c410c",
+        "bytes": 2340
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/prepared-files.json",
+        "sha256": "6bf6e3293ad7ffcc504866ce40422d20df100627d575e842838680fd674c410c",
+        "bytes": 2340
+      }
+    },
+    {
+      "name": "helper-copy.json",
+      "original": {
+        "name": "helper-copy.json",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/helper-copy.json",
+        "sha256": "3b8784f51a2b0cd1ca443d408859b03bc2a20da87644c85cb9dec7bb478b8ba6",
+        "bytes": 8088
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/helper-copy.json",
+        "sha256": "3b8784f51a2b0cd1ca443d408859b03bc2a20da87644c85cb9dec7bb478b8ba6",
+        "bytes": 8088
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/helper-copy.json",
+        "sha256": "3b8784f51a2b0cd1ca443d408859b03bc2a20da87644c85cb9dec7bb478b8ba6",
+        "bytes": 8088
+      }
+    },
+    {
+      "name": "READY.md",
+      "original": {
+        "name": "READY.md",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/READY.md",
+        "sha256": "04be3c4daa80104291c7d285de5b99b5a289f86ce538aedad5615693615b9554",
+        "bytes": 714
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/READY.md",
+        "sha256": "04be3c4daa80104291c7d285de5b99b5a289f86ce538aedad5615693615b9554",
+        "bytes": 714
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/READY.md",
+        "sha256": "04be3c4daa80104291c7d285de5b99b5a289f86ce538aedad5615693615b9554",
+        "bytes": 714
+      }
+    },
+    {
+      "name": "copy-helpers.ps1",
+      "original": {
+        "name": "copy-helpers.ps1",
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/copy-helpers.ps1",
+        "sha256": "e60b4f1d44809c9741d049e303c89ebde04cbf610b02f4d67d41a09b3c7c0863",
+        "bytes": 2566
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/copy-helpers.ps1",
+        "sha256": "e60b4f1d44809c9741d049e303c89ebde04cbf610b02f4d67d41a09b3c7c0863",
+        "bytes": 2566
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/originals/copy-helpers.ps1",
+        "sha256": "e60b4f1d44809c9741d049e303c89ebde04cbf610b02f4d67d41a09b3c7c0863",
+        "bytes": 2566
+      }
+    }
+  ],
+  "helperAmendments": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/helper-amendments/diagnostic-exit-schema/receipt.json",
+      "sha256": "bb0b1f4bec130d557ca2037bac441e11284c11cf0b49d1a4647bd4f264578b76",
+      "bytes": 777
+    },
+    {
+      "path": "docs\\mobile\\evidence\\S15\\booky-playful-poses-20260924\\helper-amendments\\diagnostic-exit-schema/checkpoint-before.mjs",
+      "sha256": "f2844e44295165c108d755760e37eb8136605d9ecd2d0d69130b02c11fe46832"
+    }
+  ],
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+    "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+    "fileCount": 1652
+  },
+  "runs": [
+    {
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 169,
+        "failed": 0,
+        "skipped": 0
+      },
+      "exitCode": 0,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/result.json",
+        "sha256": "5e02473bac62b8893f68f995748326fe437031e616bf7e6025c079fbc083aca2",
+        "bytes": 2634
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/execution.json",
+        "sha256": "93b58d20a26d4047a34cfd9452a851e7581b2316ed830edc4c7f3a6359c1ea11",
+        "bytes": 909
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/vitest.json",
+        "sha256": "ad3e55cf3f501aec6c988e7bb89032d39d08386c981fe24a43067de1a16df794",
+        "bytes": 65120
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/execution.json",
+          "sha256": "93b58d20a26d4047a34cfd9452a851e7581b2316ed830edc4c7f3a6359c1ea11",
+          "bytes": 909
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/result.json",
+          "sha256": "5e02473bac62b8893f68f995748326fe437031e616bf7e6025c079fbc083aca2",
+          "bytes": 2634
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/stdout.log",
+          "sha256": "6f4814be205646974d25b5f99dec6601327805d7e11b69d0c8248748c8e36c82",
+          "bytes": 183
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/vitest.json",
+          "sha256": "ad3e55cf3f501aec6c988e7bb89032d39d08386c981fe24a43067de1a16df794",
+          "bytes": 65120
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/check.mjs",
+          "sha256": "8bde204e69f8db2e70226800d3b3c420fa8b20896833caf76d3002b8b7c0dff1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/entry.json",
+          "sha256": "d0f33ec8d187ae7a4d1eb9c4242e7adad2a95c0eb2d3cc1767d792822b2d561a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit.config.mjs",
+          "sha256": "122a78ffbc9cd5e65ff73ff1019deb76efa05c6f70880644e9a44de9aa0f5ea8"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/configure.mjs",
+          "sha256": "ce91890503e4259040a70b75af67489cebdd7fb453e206e381cba1a823ccb573"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/scope.json",
+          "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+        "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+        "fileCount": 1652
+      }
+    },
+    {
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "exitCode": 0,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a1/result.json",
+        "sha256": "e1caa09b1b830d2a1cab91bb2f7d28575a319cdac590ea90ea99b363ec53ec47",
+        "bytes": 2582
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a1/execution.json",
+        "sha256": "28ec556f169213ca6c54cf67ece1282fc9a194ef0cc272d48314fa937c943a00",
+        "bytes": 615
+      },
+      "report": null,
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a1/execution.json",
+          "sha256": "28ec556f169213ca6c54cf67ece1282fc9a194ef0cc272d48314fa937c943a00",
+          "bytes": 615
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a1/result.json",
+          "sha256": "e1caa09b1b830d2a1cab91bb2f7d28575a319cdac590ea90ea99b363ec53ec47",
+          "bytes": 2582
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a1/stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/check.mjs",
+          "sha256": "8bde204e69f8db2e70226800d3b3c420fa8b20896833caf76d3002b8b7c0dff1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/entry.json",
+          "sha256": "d0f33ec8d187ae7a4d1eb9c4242e7adad2a95c0eb2d3cc1767d792822b2d561a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit.config.mjs",
+          "sha256": "122a78ffbc9cd5e65ff73ff1019deb76efa05c6f70880644e9a44de9aa0f5ea8"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/configure.mjs",
+          "sha256": "ce91890503e4259040a70b75af67489cebdd7fb453e206e381cba1a823ccb573"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/scope.json",
+          "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+        "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+        "fileCount": 1652
+      }
+    },
+    {
+      "mode": "browser",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/result.json",
+        "sha256": "feafc2b700b98597da5ee5ad4f0d9fafe9e51ce68f28b2277377a1737bcc89d0",
+        "bytes": 2823
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/execution.json",
+        "sha256": "5543534053df53e6197fd1a5e66d81d3988e7bb220b79c9950a98c563ac97509",
+        "bytes": 716
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/playwright.json",
+        "sha256": "047d1bbe4898bed55b21e51662d2fadd66c9b235b0344435311e9fa373531058",
+        "bytes": 16193
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/execution.json",
+          "sha256": "5543534053df53e6197fd1a5e66d81d3988e7bb220b79c9950a98c563ac97509",
+          "bytes": 716
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/playwright.json",
+          "sha256": "047d1bbe4898bed55b21e51662d2fadd66c9b235b0344435311e9fa373531058",
+          "bytes": 16193
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/result.json",
+          "sha256": "feafc2b700b98597da5ee5ad4f0d9fafe9e51ce68f28b2277377a1737bcc89d0",
+          "bytes": 2823
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/stderr.log",
+          "sha256": "ffd7f0077204141d88986df515182e8f7dc606ef5b4bcdf46603b2684eb11ccc",
+          "bytes": 328
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/stdout.log",
+          "sha256": "4a4d3f9b080c82cdea4f0d8b3ccd0d3bfc6a887da1a562a0c15c014df1efb4ea",
+          "bytes": 4276
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/check.mjs",
+          "sha256": "8bde204e69f8db2e70226800d3b3c420fa8b20896833caf76d3002b8b7c0dff1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/entry.json",
+          "sha256": "d0f33ec8d187ae7a4d1eb9c4242e7adad2a95c0eb2d3cc1767d792822b2d561a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit.config.mjs",
+          "sha256": "122a78ffbc9cd5e65ff73ff1019deb76efa05c6f70880644e9a44de9aa0f5ea8"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/configure.mjs",
+          "sha256": "ce91890503e4259040a70b75af67489cebdd7fb453e206e381cba1a823ccb573"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/scope.json",
+          "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+        "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+        "fileCount": 1652
+      }
+    }
+  ],
+  "externalArtifacts": {
+    "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1",
+    "files": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/.last-run.json",
+        "sha256": "33f1cedb11c25d7274943904a246be61d2d20b2630a1421b6744680e450f99fd",
+        "bytes": 96
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/attachments/booky-live-character-source-evidence-f9b6d5f5edb39196182f598fcceb970e21cb6cfb.json",
+        "sha256": "eabe6de0cab855ef82c9e13af13812b41fa8531de14b643af26ef4c6abb88f93",
+        "bytes": 36430554
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-live-character.json",
+        "sha256": "eabe6de0cab855ef82c9e13af13812b41fa8531de14b643af26ef4c6abb88f93",
+        "bytes": 36430554
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-touch-gestures-en-320.png",
+        "sha256": "a1004183c7c6178b525d8383eff8125f6e048cbddcc5627f4ac3f8d5375167bf",
+        "bytes": 270545
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-touch-gestures-en-640.png",
+        "sha256": "4cde7de400424f06bbc4485c929b7441a7064883352ceed5401645695ae29ea0",
+        "bytes": 127812
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/attachments/booky-live-character-source-evidence-309f9892beee058c70e19e73956696dff3605f5d.json",
+        "sha256": "b2ba21502cd78d90601c2af8b08aa6d00f6e663c0eeb42bad1e79f4fc7422d89",
+        "bytes": 35882889
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-live-character.json",
+        "sha256": "b2ba21502cd78d90601c2af8b08aa6d00f6e663c0eeb42bad1e79f4fc7422d89",
+        "bytes": 35882889
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-touch-gestures-ru-390.png",
+        "sha256": "d46cdd8bfdaf9e08a2d351a45ebd2954cf2aeb582f9e1ec893d68f48fa1ab420",
+        "bytes": 330098
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-touch-gestures-ru-844.png",
+        "sha256": "bef6702c49b1f0812b29239f3bce261dded7edc5b6da37892dcd75f0a0765ef7",
+        "bytes": 160034
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/error-context.md",
+        "sha256": "1ca5dcb41face051db996ed36d062cf9fc3d6439e3cc5acec932baa97da7ef70",
+        "bytes": 28949
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-8caaec44cbc5948e708f42f13fc669571ed45d5c.json",
+        "sha256": "0cf18be5182e5fa34a2a33f697db08559344dccce9dd2ba24a8f32b9e209ca00",
+        "bytes": 281334
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+        "sha256": "107962ff0feb7b179cfc813023073f09fd75ffcbbc846709b7eb98f32e0b7acd",
+        "bytes": 55115
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-character.json",
+        "sha256": "0cf18be5182e5fa34a2a33f697db08559344dccce9dd2ba24a8f32b9e209ca00",
+        "bytes": 281334
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-guide-en-320.png",
+        "sha256": "936f799bace1dc2e492125961d70f08c62f758ce6e71bc1762225ffff9651986",
+        "bytes": 282056
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-help-ru-1440.png",
+        "sha256": "739a958fd441e4206d5b0f3b5995deff98fb326c6639d04f812a7032740401a9",
+        "bytes": 1170760
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-interaction-en-landscape.png",
+        "sha256": "c3406a484a0e527cd81da57b5b072c7a41aed2b3e9eba84379b728c9b0695a6b",
+        "bytes": 199156
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Mr-Bo-2516b-n-still-with-reduced-motion/attachments/booky-live-character-source-evidence-0b760ca5444549b71499d547c08055d366f09607.json",
+        "sha256": "abb572d3df87d2913236db217437b0a8f98cbddae8fad8607a1d432b3425312f",
+        "bytes": 8359282
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Mr-Bo-2516b-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+        "sha256": "6b35dcd9783887dd3411e778f5ef8e54f478939813e85df9f4611946626e077b",
+        "bytes": 1137714
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Mr-Bo-2516b-n-still-with-reduced-motion/booky-live-character.json",
+        "sha256": "abb572d3df87d2913236db217437b0a8f98cbddae8fad8607a1d432b3425312f",
+        "bytes": 8359282
+      }
+    ],
+    "fileCount": 19,
+    "bytes": 165670453,
+    "copied": false
+  },
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/diagnostic-history.json",
+    "sha256": "319c8bb345e7c30428cc8384c62af9e231524f082ea2097d2b8f5de1455a92b2",
+    "bytes": 5828
+  },
+  "sourceInputsRehashed": false,
+  "currentHelpersChanged": false,
+  "largeReportsDuplicated": false,
+  "releaseReady": false
+}

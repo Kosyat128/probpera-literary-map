@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-playful-poses-20260924/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-24T08:31:08.765Z",
+  "exitCode": 1,
+  "durationMs": 338742,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/stdout.log",
+    "bytes": 4276,
+    "sha256": "4a4d3f9b080c82cdea4f0d8b3ccd0d3bfc6a887da1a562a0c15c014df1efb4ea"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/stderr.log",
+    "bytes": 328,
+    "sha256": "ffd7f0077204141d88986df515182e8f7dc606ef5b4bcdf46603b2684eb11ccc"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:41:48.823Z",
+  "pass": true,
+  "amendment": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/amendment.json",
+    "sha256": "9b17b1f588e75367fc710b1455e587ab78d58d89bd8b3e56363754787d3e6c24"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/entry.json",
+    "sha256": "48756d775be5196234311097d27ad25636f484a39a9bca9244547d03e30727ed"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/expected-source-manifest.json",
+    "sha256": "d0e543680179b4518471d27c9a267b369bd2c61b8a3e27adf42d58eec83d5fa1",
+    "fileCount": 1652
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/scope.json",
+        "sha256": "c7a60b5b0be89ab6b3287f676add9520edf0b678c85fe34991b66eb79466cc0b"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "e1bf7a406fe9d8275439c83b86359997c3f538aea5e880ccc26303fb87469ad6"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/checkpoint.mjs",
+        "sha256": "9bb942dd34dfa39cface0bf21c5adecc87642bd8f42d4589c72e8ec8c50917de"
+      }
+    }
+  ],
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

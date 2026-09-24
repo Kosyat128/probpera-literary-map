@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:49:45.499Z",
+  "sourceCommit": "645ad444d402141ef1162060778ad2874eb6c12b",
+  "buildId": "8053cafab3f0d1d9cf7755809fb8895fe19395470d341154106fd41a8612b5d7",
+  "sourceInputsSha256": "f900add3e826a950efa488b872be350edec37f6d3b496164a7da22e97cd9882e",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/pwa-8053cafa",
+    "files": 1427,
+    "bytes": 76779837,
+    "artifactSha256": "8285186736c700926a596318c5ba9f7a8b62ded7783915c310847189e0a2235d",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-24T08:49:05.608Z",
+    "duration": 34844.755,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

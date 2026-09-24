@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:41:48.817Z",
+  "kind": "D193 fixture-only refreeze a2",
+  "reason": "Formal a1 retained3 PASS/1 FAIL. RU paired touch alignment was below native scroll slop and clicked bow; corrected driver minimum48 px keeps all assertions and explicitly checks pointercancel. No runtime change or preformal diagnostic rerun.",
+  "runtimeChanged": false,
+  "archive": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/archive.json",
+    "sha256": "d8155b8488385e6a737b76134bd19f779fc0c44e9464e92a1ae063e29ac26525"
+  },
+  "externalArchive": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/archive.json",
+    "sha256": "d8155b8488385e6a737b76134bd19f779fc0c44e9464e92a1ae063e29ac26525"
+  },
+  "fixtureChange": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/fixture-change.json",
+    "sha256": "f4f1a8aadd01a835d3f6c99ad486d292f96fc21d8e84a8925c13a2ade1cb83af"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/expected-source-manifest.json",
+    "sha256": "d0e543680179b4518471d27c9a267b369bd2c61b8a3e27adf42d58eec83d5fa1",
+    "fileCount": 1652
+  },
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "6a18a7735f5738cc8bbb17ee3924898dc566133a43119a6f5583b712d2441916"
+    },
+    {
+      "path": "src/host/bookyAnimation.test.ts",
+      "sha256": "60deef16d8a36e7e76925cba114ff6269441f84cd152facb755f49ff92cec3cc"
+    },
+    {
+      "path": "src/host/bookyAnimation.ts",
+      "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "ef49d1e962f59642f842afe679ac1ad35d6a7692620f4bd6250f664b4a8f4ebd"
+    }
+  ],
+  "updatedScope": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/scope.json",
+    "sha256": "c7a60b5b0be89ab6b3287f676add9520edf0b678c85fe34991b66eb79466cc0b"
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/scope.json",
+        "sha256": "c7a60b5b0be89ab6b3287f676add9520edf0b678c85fe34991b66eb79466cc0b"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "e1bf7a406fe9d8275439c83b86359997c3f538aea5e880ccc26303fb87469ad6"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/checkpoint.mjs",
+        "sha256": "9bb942dd34dfa39cface0bf21c5adecc87642bd8f42d4589c72e8ec8c50917de"
+      }
+    }
+  ],
+  "releaseReady": false
+}

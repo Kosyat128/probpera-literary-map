@@ -1,0 +1,3 @@
+D193: four modified source files / no new source;169 focused units across10 files, TypeScript,4 selected browser cases /9 captures /4 direct mobile views, plus3 new current-animation rest/bow/balance photos. Preserve original external animation unit attempts a1 failure and a2 pass; no preformal browser run is claimed. Current-source photos bind model+animation+renderer+lockfile; no inherited before/after prototype requirements.
+
+Root runs copy-helpers.ps1 then configure.mjs 3a82b288d039183725baf9fe0034e076fe235d43, check.mjs unit a1 / static a1 / browser a1. Same guarded PWA/Android pipeline; final checkpoint requires new-model-photo-review.json and visual-review.json. No device/stage/release acceptance.

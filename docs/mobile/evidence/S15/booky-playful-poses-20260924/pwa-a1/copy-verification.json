@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76779837,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/pwa-a1-copy-verification.json",
+    "sha256": "c224f5af840599a32ec071fdb4673b071364e1deff0790d3070d224fa9dc79a8"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/pwa-8053cafa/artifact.json",
+    "sha256": "8285186736c700926a596318c5ba9f7a8b62ded7783915c310847189e0a2235d"
+  }
+}

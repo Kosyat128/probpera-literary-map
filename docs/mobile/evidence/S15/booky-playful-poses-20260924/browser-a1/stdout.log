@@ -1,0 +1,42 @@
+
+Running 4 tests using 1 worker
+
+
+
+[1/4] tests\pwa\booky-live-character.spec.mjs:411:1 › live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged
+[2/4] tests\pwa\booky-live-character.spec.mjs:726:1 › Mr. Booky fifteen gestures and nonrepeating surprises finish and remain still with reduced motion
+[3/4] tests\pwa\booky-live-character.spec.mjs:2393:152 › Booky mobile touch gesture gallery ru
+  1) tests\pwa\booky-live-character.spec.mjs:2393:152 › Booky mobile touch gesture gallery ru ──────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "trusted touch balance interrupts active bow",
+    + ]
+
+      2479 |     await checked('prefs and canonical scene retained',async()=>{o.preferencesAfter=saved();expect(o.preferencesAfter).toEqual(o.preferencesBefore);retained(await actual(page),o.canonicalBefore,false);});
+      2480 |     await checked('close remains reachable by touch',async()=>{const button=page.locator('[data-planet-mascot-collapse]'),r=await button.boundingBox();await phase('close help');await touch('touchStart',[{x:r.x+r.width/2,y:r.y+r.height/2,id:51}]);await touch('touchEnd',[]);await expect(panel(page)).toHaveCount(0);await live(page);});
+    > 2481 |     await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{mobileFifteenGesturesReachableByTouch:true,mobileGestureScrollingDoesNotPlay:true,mobileGesturesFiniteAndRepeatable:true,mobileSurpriseCycleCoversFifteen:true,mobileSurpriseCycleBoundaryDifferent:true,mobileGestureReducedMotionStatic:true,mobileGestureHelpReadableAfterRotation:true,mobileGesturePreferencesAndSceneRetained:true,mobileGestureTrustedTouch:true,mobileNewGesturesRepeatByTouch:true,mobileBowToBalanceInterrupts:true,mobileNewGesturesReducedMotionStatic:true});expect(o.findings).toEqual([]);
+           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+      2482 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__touchGestures?.events??[]).catch(()=>[]);await fixture.close();}
+      2483 | });
+      2484 |
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:2481:661
+
+    attachment #1: booky-live-character-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-playful-poses-evidence\browser-a1\booky-live-character-Booky-mobile-touch-gesture-gallery-ru\attachments\booky-live-character-source-evidence-309f9892beee058c70e19e73956696dff3605f5d.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-playful-poses-evidence\browser-a1\booky-live-character-Booky-mobile-touch-gesture-gallery-ru\error-context.md
+
+
+
+
+[4/4] tests\pwa\booky-live-character.spec.mjs:2393:152 › Booky mobile touch gesture gallery en
+  1 failed
+    tests\pwa\booky-live-character.spec.mjs:2393:152 › Booky mobile touch gesture gallery ru ───────
+  3 passed (5.6m)

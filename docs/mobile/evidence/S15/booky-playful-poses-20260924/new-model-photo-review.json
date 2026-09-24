@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:48:31.094Z",
+  "pass": true,
+  "sourceCommit": "645ad444d402141ef1162060778ad2874eb6c12b",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/d0e543680179b451.json",
+    "sha256": "d0e543680179b4518471d27c9a267b369bd2c61b8a3e27adf42d58eec83d5fa1",
+    "fileCount": 1652
+  },
+  "modelSource": {
+    "path": "src/host/bookyModel.ts",
+    "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+  },
+  "renderedModelSource": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/bookyModel.ts",
+    "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89",
+    "bytes": 46846
+  },
+  "originalReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/final-photo-review.json",
+    "sha256": "3a09ad745c9208113b314968fc534a47404f920ca18ab1da172aea90ee65a476"
+  },
+  "render": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/result.json",
+    "sha256": "f234ecf967b6268133d84758ff8b8e5224a51848956918ce1769377796c7feeb",
+    "bytes": 7534
+  },
+  "images": [
+    {
+      "name": "knizhulik-3d-rest.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/knizhulik-3d-rest.png",
+      "sha256": "6acb74890bd31adef0f5e515efca86202e58cc35581c21e1a4a533f7a09fff63",
+      "bytes": 794845,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The complete character, free glove, both shoes and held magnifier fit the neutral frame with visible margins. The established face, model materials and hand shapes remain intact."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-bow.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/knizhulik-3d-bow.png",
+      "sha256": "2168c45874d926000817fddcd745743d66297f259806a00db57fbf539031d453",
+      "bytes": 804271,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "At progress 0.5, the book body shows a gentle forward bow with a downward gaze. The complete character and magnifier remain inside the same neutral-fit frame.",
+        "Both shoes remain visible and the magnifier continues to sit within its right-hand grip. This static pose does not establish the timing or complete motion arc."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-balance.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/knizhulik-3d-balance.png",
+      "sha256": "6ae7ee8edc93c4f6b0285945b947e8370089ff51e07eabf953ea05cb1c58bd24",
+      "bytes": 794781,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "At progress 0.5, the raised right shoe and lifted free left hand are visibly distinct from the neutral pose while the book body stays upright.",
+        "The complete character, both shoes and held magnifier fit the same frame. The shoe lift is readable in this full-character image, so an extra foot-detail render was unnecessary."
+      ]
+    }
+  ],
+  "additionalEvidence": [
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/bookyModel.ts",
+      "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/result.json",
+      "sha256": "f234ecf967b6268133d84758ff8b8e5224a51848956918ce1769377796c7feeb"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/bookyAnimation.ts",
+      "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/useBookyRenderer.ts",
+      "sha256": "5db90ed752b1fa14e40edf8c4cf1bea1f24097534e3bbb76f024c152ad7784fb"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/render-a1-execution.json",
+      "sha256": "a6cb61c3184d8e039327f59d0b49c42e284f89c6b5d5cc8b64b1577e0ea200d0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/render-a1.log",
+      "sha256": "e5324266223afeaf8e1861f1985a2713c5746589cee1bfa93d5aea21bdf3f426"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/render-poses.mjs",
+      "sha256": "d794c6d59ee897cfb635db92cb3d9e78047febc0733322d0b573e0a23c3b1853"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/portraits-v2/render-source.ts",
+      "sha256": "d0f7ce29e1e529138f3826e4e6386ab4247d4b8924103fab9d1ce3945390447b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/portraits-v2/portrait.html",
+      "sha256": "10215876d420945c69dc610d413fffe053d267635de5b3a19c77885423988f93"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/render-source.ts",
+      "sha256": "acf5a3be7b55e80ec6c39cb6690764d26a7e908b588a6b97c3831ce37395ddc4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/render-bundle.js",
+      "sha256": "ccda254adbab8836c4c567991f70f36c75a3f3515d11d4dbd0e002719bc9b8d7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/bundle-inputs.json",
+      "sha256": "38afb9afa32f5b9e912f647d516d24666ae62f48dc7e72e0f2fc0b5dc602be45"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/knizhulik-3d-rest.png",
+      "sha256": "6acb74890bd31adef0f5e515efca86202e58cc35581c21e1a4a533f7a09fff63"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/knizhulik-3d-bow.png",
+      "sha256": "2168c45874d926000817fddcd745743d66297f259806a00db57fbf539031d453"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses/a1/knizhulik-3d-balance.png",
+      "sha256": "6ae7ee8edc93c4f6b0285945b947e8370089ff51e07eabf953ea05cb1c58bd24"
+    }
+  ],
+  "scope": "Three direct-reviewed standalone rest/bow/balance images from current canonical model and animation, using one neutral camera; original-source D190 photos remain historical only.",
+  "limitations": [
+    "Three static posed standalone renders using the current canonical model and animation; they are not application screenshots or installed-device evidence.",
+    "The images inspect rest plus the midpoints of bow and balance. Finite duration, restoration, reduced motion and touch behavior depend on the separate formal tests.",
+    "All three poses use the same neutral-model camera and lighting. No image generation, retouching or per-pose framing was used.",
+    "The model source is unchanged; the new pose evidence must also remain bound to the recorded animation dependency SHA."
+  ],
+  "artAccepted": false,
+  "releaseReady": false
+}

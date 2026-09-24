@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-playful-poses-20260924:begin -->
+Latest source 645ad444: Книжулик / Mr. Booky has fifteen finite gestures, adding a bow and one-leg balance. The local Surprise cycle includes all fifteen. Selected actual-App cases cover all gestures, RU/EN trusted-touch repeats, active bow-to-balance interruption and distinct static reduced-motion poses. Three direct-reviewed rest/bow/balance photos bind the current animation and unchanged model; older photos remain historical evidence only.
+
+Evidence: docs/mobile/evidence/S15/booky-playful-poses-20260924/result.json. D193. 169 unit cases and 4 selected browser cases; 9 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-playful-poses-20260924:end -->
+
 <!-- s15-booky-scale-clearance-20260924:begin -->
 Latest source 53a7c61c: Книжулик / Mr. Booky accounts for the Zoom / Масштаб feedback badge in navigation bounds. Selected cases cover placement, walking, short-landscape controls, open help and RU/EN badge clearance. Unchanged model geometry retains its five reviewed D190 photos and original limitations; prior gesture and wider interaction evidence remains attributed to its original source.
 

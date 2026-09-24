@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:43:14.061Z",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-scale-clearance-20260924/result.json",
+    "sha256": "f468fa30cd68639aa1c63c7f5c6eee5a1c8a010dda13ff0f5f8deb93a0c11ee6"
+  },
+  "attempts": [
+    {
+      "attempt": "animation-a1",
+      "reportFormat": "vitest",
+      "classification": "focused-animation-and-assertion-failures",
+      "pass": false,
+      "browserStarted": false,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/report.json",
+        "sha256": "5b8facf3fbaa0d3b97c95abc2af5aa17c866e0516bd701887a39023760ea8c58"
+      },
+      "tests": {
+        "passed": 43,
+        "failed": 3,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/execution.json",
+        "sha256": "233ff610901dbda7cc354bae76ff0ecebbac459a4201867931edf6cd50a1f8c8"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/stdout.log",
+          "sha256": "06756894d1551963323ac0560df3e5b198e4aff184a3e1c7a21e25ef190bc4b0"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/start.json",
+        "sha256": "66254e8ba583bde2d9544052de7d803ee47b62cbcd5889e194698d5b39947229"
+      },
+      "sourceUnchanged": true,
+      "qualification": "Original 43 PASS / 3 FAIL. One bow signed-zero assertion mismatch and two nonidentity-quaternion preservation failures were retained. The subsequent bounded fix avoids no-op quaternion rewrites for bow/balance and normalizes the zero comparison; this original report is not relabeled.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/bookyAnimation.ts",
+          "sha256": "1792580f24fab1d41d3aaa91eedbcc145edcf7ac4f37f12e863d1eb045225a8f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a1/bookyAnimation.test.ts",
+          "sha256": "6d45d2610b732c38b53dec79a86785bed0bc04a3aa4207a0f84a829102c8d753"
+        }
+      ]
+    },
+    {
+      "attempt": "animation-a2",
+      "reportFormat": "vitest",
+      "classification": "focused-animation-regression-pass",
+      "pass": true,
+      "browserStarted": false,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/report.json",
+        "sha256": "696d6bf0ba0e11f2d78ef502a9f803dc2bd1974744cec5c7b26560b82945ee30"
+      },
+      "tests": {
+        "passed": 46,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/execution.json",
+        "sha256": "716c80d04d5e06ee53166b0357a718b543cc221918c29f4f7940a40e11fe56cd"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/stdout.log",
+          "sha256": "54ca997cb4156a6e4b220c14abfcfc0c32d2a7b0b5e7ad506710eaddb4a3011a"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/start.json",
+        "sha256": "beaf144a0cdda98dd3dd45e2deca5c4c107f79e24392b30ba0afba0706e6d1e8"
+      },
+      "sourceUnchanged": true,
+      "qualification": "Original 46 PASS / 0 FAIL after the bounded animation and signed-zero assertion corrections. No browser or installed-device check was run by this unit diagnostic.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-motion/animation-a2/bookyAnimation.test.ts",
+          "sha256": "60deef16d8a36e7e76925cba114ff6269441f84cd152facb755f49ff92cec3cc"
+        }
+      ]
+    },
+    {
+      "attempt": "formal-browser-a1",
+      "reportFormat": "playwright",
+      "classification": "paired-touch-alignment-driver-failure",
+      "pass": false,
+      "browserStarted": true,
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/playwright.json",
+        "sha256": "047d1bbe4898bed55b21e51662d2fadd66c9b235b0344435311e9fa373531058",
+        "bytes": 16193
+      },
+      "tests": {
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/execution.json",
+        "sha256": "5543534053df53e6197fd1a5e66d81d3988e7bb220b79c9950a98c563ac97509",
+        "bytes": 716
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/stdout.log",
+          "bytes": 4276,
+          "sha256": "4a4d3f9b080c82cdea4f0d8b3ccd0d3bfc6a887da1a562a0c15c014df1efb4ea"
+        },
+        "stderr": {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/stderr.log",
+          "bytes": 328,
+          "sha256": "ffd7f0077204141d88986df515182e8f7dc606ef5b4bcdf46603b2684eb11ccc"
+        }
+      },
+      "sourceEvidence": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+        "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+        "fileCount": 1652
+      },
+      "proof": null,
+      "sourceUnchanged": true,
+      "qualification": "Actual 3 PASS / 1 FAIL, true exit 1. Only RU failed while preparing the active bow-to-balance interruption: paired alignment requested about14.72 px, produced pointermove then pointerup/click(bow), no pointercancel or scroll, and retained scrollTop1024. EN passed. This is a fixture-driver failure, not a product defect. The corrected48 px native touch drag retains no-activation, actual scroll and hit assertions and adds explicit pointercancel. No preformal diagnostic was run.",
+      "additionalEvidence": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/archive.json",
+          "sha256": "d8155b8488385e6a737b76134bd19f779fc0c44e9464e92a1ae063e29ac26525"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/execution.json",
+          "sha256": "5543534053df53e6197fd1a5e66d81d3988e7bb220b79c9950a98c563ac97509",
+          "bytes": 716
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/playwright.json",
+          "sha256": "047d1bbe4898bed55b21e51662d2fadd66c9b235b0344435311e9fa373531058",
+          "bytes": 16193
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/result.json",
+          "sha256": "feafc2b700b98597da5ee5ad4f0d9fafe9e51ce68f28b2277377a1737bcc89d0",
+          "bytes": 2823
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/stderr.log",
+          "sha256": "ffd7f0077204141d88986df515182e8f7dc606ef5b4bcdf46603b2684eb11ccc",
+          "bytes": 328
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/stdout.log",
+          "sha256": "4a4d3f9b080c82cdea4f0d8b3ccd0d3bfc6a887da1a562a0c15c014df1efb4ea",
+          "bytes": 4276
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/.last-run.json",
+          "sha256": "33f1cedb11c25d7274943904a246be61d2d20b2630a1421b6744680e450f99fd",
+          "bytes": 96
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/attachments/booky-live-character-source-evidence-f9b6d5f5edb39196182f598fcceb970e21cb6cfb.json",
+          "sha256": "eabe6de0cab855ef82c9e13af13812b41fa8531de14b643af26ef4c6abb88f93",
+          "bytes": 36430554
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-live-character.json",
+          "sha256": "eabe6de0cab855ef82c9e13af13812b41fa8531de14b643af26ef4c6abb88f93",
+          "bytes": 36430554
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-touch-gestures-en-320.png",
+          "sha256": "a1004183c7c6178b525d8383eff8125f6e048cbddcc5627f4ac3f8d5375167bf",
+          "bytes": 270545
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-touch-gestures-en-640.png",
+          "sha256": "4cde7de400424f06bbc4485c929b7441a7064883352ceed5401645695ae29ea0",
+          "bytes": 127812
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/attachments/booky-live-character-source-evidence-309f9892beee058c70e19e73956696dff3605f5d.json",
+          "sha256": "b2ba21502cd78d90601c2af8b08aa6d00f6e663c0eeb42bad1e79f4fc7422d89",
+          "bytes": 35882889
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-live-character.json",
+          "sha256": "b2ba21502cd78d90601c2af8b08aa6d00f6e663c0eeb42bad1e79f4fc7422d89",
+          "bytes": 35882889
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-touch-gestures-ru-390.png",
+          "sha256": "d46cdd8bfdaf9e08a2d351a45ebd2954cf2aeb582f9e1ec893d68f48fa1ab420",
+          "bytes": 330098
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-touch-gestures-ru-844.png",
+          "sha256": "bef6702c49b1f0812b29239f3bce261dded7edc5b6da37892dcd75f0a0765ef7",
+          "bytes": 160034
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/error-context.md",
+          "sha256": "1ca5dcb41face051db996ed36d062cf9fc3d6439e3cc5acec932baa97da7ef70",
+          "bytes": 28949
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-8caaec44cbc5948e708f42f13fc669571ed45d5c.json",
+          "sha256": "0cf18be5182e5fa34a2a33f697db08559344dccce9dd2ba24a8f32b9e209ca00",
+          "bytes": 281334
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+          "sha256": "107962ff0feb7b179cfc813023073f09fd75ffcbbc846709b7eb98f32e0b7acd",
+          "bytes": 55115
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-character.json",
+          "sha256": "0cf18be5182e5fa34a2a33f697db08559344dccce9dd2ba24a8f32b9e209ca00",
+          "bytes": 281334
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-guide-en-320.png",
+          "sha256": "936f799bace1dc2e492125961d70f08c62f758ce6e71bc1762225ffff9651986",
+          "bytes": 282056
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-help-ru-1440.png",
+          "sha256": "739a958fd441e4206d5b0f3b5995deff98fb326c6639d04f812a7032740401a9",
+          "bytes": 1170760
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-interaction-en-landscape.png",
+          "sha256": "c3406a484a0e527cd81da57b5b072c7a41aed2b3e9eba84379b728c9b0695a6b",
+          "bytes": 199156
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Mr-Bo-2516b-n-still-with-reduced-motion/attachments/booky-live-character-source-evidence-0b760ca5444549b71499d547c08055d366f09607.json",
+          "sha256": "abb572d3df87d2913236db217437b0a8f98cbddae8fad8607a1d432b3425312f",
+          "bytes": 8359282
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Mr-Bo-2516b-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+          "sha256": "6b35dcd9783887dd3411e778f5ef8e54f478939813e85df9f4611946626e077b",
+          "bytes": 1137714
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/browser-a1/booky-live-character-Mr-Bo-2516b-n-still-with-reduced-motion/booky-live-character.json",
+          "sha256": "abb572d3df87d2913236db217437b0a8f98cbddae8fad8607a1d432b3425312f",
+          "bytes": 8359282
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/refreeze-a2/fixture-change.json",
+          "sha256": "f4f1a8aadd01a835d3f6c99ad486d292f96fc21d8e84a8925c13a2ade1cb83af"
+        },
+        {
+          "sha256": "bc152c271056e0c0d1db595b89795be44ff5e908b8dc50974f7d288378a4f77c",
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\refreeze-a2\\original-fixture.mjs"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only the two actual external animation unit attempts are recorded here. No preformal browser diagnostic is invented.",
+    "Captured source hashes and source copies retain their original attempt identity; previous D192 browser attempts remain attributed only to that prior result.",
+    "Formal browser-a1 is preserved as a failed attempt; all nine captures and original helper/check-input/source manifest refs remain authenticated. Runtime inputs did not change for the fixture-only a2 refreeze."
+  ],
+  "releaseReady": false,
+  "retainedPriorHistory": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/diagnostic-history.json",
+    "sha256": "319c8bb345e7c30428cc8384c62af9e231524f082ea2097d2b8f5de1455a92b2"
+  }
+}

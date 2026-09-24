@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "pass": false,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+    "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+    "fileCount": 1652
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/check.mjs",
+      "sha256": "8bde204e69f8db2e70226800d3b3c420fa8b20896833caf76d3002b8b7c0dff1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/entry.json",
+      "sha256": "d0f33ec8d187ae7a4d1eb9c4242e7adad2a95c0eb2d3cc1767d792822b2d561a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit.config.mjs",
+      "sha256": "122a78ffbc9cd5e65ff73ff1019deb76efa05c6f70880644e9a44de9aa0f5ea8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/configure.mjs",
+      "sha256": "ce91890503e4259040a70b75af67489cebdd7fb453e206e381cba1a823ccb573"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/scope.json",
+      "sha256": "38d4d8e6528736b698ca25227a68f5f6bc11c24fb3ba523dab09cd093e51ef66"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 3,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   failed: 1,\n-   failed: 0,\n    flaky: 0,\n+   passed: 3,\n-   passed: 4,\n    skipped: 0\n  }\n",
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 338742
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyPlayfulPosesImplemented": true,
+  "journeyCharacterWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

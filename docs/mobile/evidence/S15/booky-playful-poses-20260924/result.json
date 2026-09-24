@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:50:38.598Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_PLAYFUL_POSES_SCOPED_VALIDATION",
+  "sourceCommit": "645ad444d402141ef1162060778ad2874eb6c12b",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/entry.json",
+    "sha256": "48756d775be5196234311097d27ad25636f484a39a9bca9244547d03e30727ed"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/checkpoint.mjs",
+    "sha256": "9bb942dd34dfa39cface0bf21c5adecc87642bd8f42d4589c72e8ec8c50917de"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/result.json",
+    "sha256": "f468fa30cd68639aa1c63c7f5c6eee5a1c8a010dda13ff0f5f8deb93a0c11ee6"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/d0e543680179b451.json",
+    "sha256": "d0e543680179b4518471d27c9a267b369bd2c61b8a3e27adf42d58eec83d5fa1",
+    "fileCount": 1652
+  },
+  "sourceCommits": [
+    "645ad444d402141ef1162060778ad2874eb6c12b"
+  ],
+  "attempts": {
+    "unit": "a2",
+    "static": "a2",
+    "browser": "a2"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a2/result.json",
+      "sha256": "b790942cbac5196a1d5cdca1c122526dda32ee1a8007f9fd07be6f6aa33f6e39",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a2/execution.json",
+        "sha256": "917b3caa05eadd4ae62e2685b78df1fb1fdd44fd21feabdf9ff95639e66656c9"
+      },
+      "tests": {
+        "passed": 169,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a2/vitest.json",
+        "sha256": "c26175a30aec3ac0aa488f60feed2d17ab3104de028d80500bc5d87956f86044"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a2/result.json",
+      "sha256": "8a8261a725c8a22a2c96c74b5cacff71cb3a0b4fa373f1bec358081e79bfd68f",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a2/execution.json",
+        "sha256": "bc03517c10f8855b2d3ebc159c1b04cac9bd02bec6c286c863fff1769441630b"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a2/result.json",
+      "sha256": "4041429df68c61092b4936b6cb4ef0293e82dfec6dc6f6b618b4459150c45e54",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a2/execution.json",
+        "sha256": "7f0a24b114d9a280afcf66a4e9e699973e9a963c6a193362d62d1ec651cd4c5b"
+      },
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a2/playwright.json",
+        "sha256": "e2af8c28cd6e6822644461b03b7dd500a664da688162b17d309ce8a74adffb54"
+      }
+    }
+  },
+  "earlierAttempts": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/result.json",
+        "sha256": "feafc2b700b98597da5ee5ad4f0d9fafe9e51ce68f28b2277377a1737bcc89d0"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/execution.json",
+        "sha256": "5543534053df53e6197fd1a5e66d81d3988e7bb220b79c9950a98c563ac97509"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/browser-a1/playwright.json",
+        "sha256": "047d1bbe4898bed55b21e51662d2fadd66c9b235b0344435311e9fa373531058"
+      },
+      "pass": false,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+        "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a1/result.json",
+        "sha256": "e1caa09b1b830d2a1cab91bb2f7d28575a319cdac590ea90ea99b363ec53ec47"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/static-a1/execution.json",
+        "sha256": "28ec556f169213ca6c54cf67ece1282fc9a194ef0cc272d48314fa937c943a00"
+      },
+      "rawReport": null,
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+        "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/result.json",
+        "sha256": "5e02473bac62b8893f68f995748326fe437031e616bf7e6025c079fbc083aca2"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/execution.json",
+        "sha256": "93b58d20a26d4047a34cfd9452a851e7581b2316ed830edc4c7f3a6359c1ea11"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/unit-a1/vitest.json",
+        "sha256": "ad3e55cf3f501aec6c988e7bb89032d39d08386c981fe24a43067de1a16df794"
+      },
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/f19dbdf2eb21e6b4.json",
+        "sha256": "f19dbdf2eb21e6b468e080d64c5d3dad7192072b7ef8edf26c44daf2251b7179",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    }
+  ],
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/diagnostic-history-a2.json",
+    "sha256": "e57c5f179f61d31468bac4ab186141db0699df5b09e66c9835b05deef7d8fa48"
+  },
+  "unitCount": 169,
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserCases": 4,
+  "actualAppCaseCount": 4,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-character.json",
+      "sha256": "0a311aaba5257118591e1c58bfe9075980722996725ee008187444e579096985",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\attachments\\booky-live-character-source-evidence-b243de27258706261c7eb0856e116b8bcb2921f3.json",
+        "sha256": "0a311aaba5257118591e1c58bfe9075980722996725ee008187444e579096985"
+      },
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\browser-a2\\booky-live-character-Mr-Bo-2516b-n-still-with-reduced-motion\\booky-live-character.json",
+      "sha256": "1f0ac7cf496bb389fae17e42fdef7e1e1528152edd69bc7013a084ce723cc820",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\browser-a2\\booky-live-character-Mr-Bo-2516b-n-still-with-reduced-motion\\attachments\\booky-live-character-source-evidence-27b516803afc958ff0caa5cb68d04bfab9970bca.json",
+        "sha256": "1f0ac7cf496bb389fae17e42fdef7e1e1528152edd69bc7013a084ce723cc820"
+      },
+      "test": "Mr. Booky fifteen gestures and nonrepeating surprises finish and remain still with reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\browser-a2\\booky-live-character-Booky-mobile-touch-gesture-gallery-ru\\booky-live-character.json",
+      "sha256": "18ebf53dff625b3d8c1112cf137ef314d71994e11496097342604880f4c62efe",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\browser-a2\\booky-live-character-Booky-mobile-touch-gesture-gallery-ru\\attachments\\booky-live-character-source-evidence-6f5f3888feaa6aded34ee493b4c1706c64e71921.json",
+        "sha256": "18ebf53dff625b3d8c1112cf137ef314d71994e11496097342604880f4c62efe"
+      },
+      "test": "Booky mobile touch gesture gallery ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\browser-a2\\booky-live-character-Booky-mobile-touch-gesture-gallery-en\\booky-live-character.json",
+      "sha256": "8c883f4a132238a760a2f2dd19b717209cba98fe0b810d5929dfd283b20917d4",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-playful-poses-evidence\\browser-a2\\booky-live-character-Booky-mobile-touch-gesture-gallery-en\\attachments\\booky-live-character-source-evidence-92038f2715cdc546ba474e338393528ddcd8c48e.json",
+        "sha256": "8c883f4a132238a760a2f2dd19b717209cba98fe0b810d5929dfd283b20917d4"
+      },
+      "test": "Booky mobile touch gesture gallery en"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+      "scenario": null,
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "liveThreeModelRendered": true,
+        "normalModeHasNoBitmap": true,
+        "actualRigResponds": true,
+        "actualGuidedTargetPose": true,
+        "bodyDragDoesNotTogglePanel": true,
+        "escapeCancelsBodyDrag": true,
+        "touchTapAndKeyboardWork": true,
+        "semanticPageTurn": true,
+        "wholeModelFits": true,
+        "localeRetainsRoute": true,
+        "reducedMotionStopsAnimation": true,
+        "noHiddenFrames": true,
+        "independentResourcesDisposed": true,
+        "realContextLossFallbackWorks": true,
+        "realContextRestoreRetainsModel": true,
+        "repeatedContextLossUsesFallback": true,
+        "sameCanonicalGlobe": true,
+        "noAppearanceWrites": true
+      }
+    },
+    {
+      "test": "Mr. Booky fifteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+      "scenario": "explicit-bounded-gestures",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "fifteenExplicitGestures": true,
+        "repeatedReactionRestarts": true,
+        "surpriseChoosesDifferentGesture": true,
+        "actualRigChanges": true,
+        "eightNewMotionsObserved": true,
+        "bowAndBalanceMotionsObserved": true,
+        "newGesturesHaveDistinctStaticPoses": true,
+        "winkMovesOnlyOneEye": true,
+        "swayDoesNotStep": true,
+        "originalSevenAtMost1100ms": true,
+        "configuredReactionsAtMost2400ms": true,
+        "reactionsStopWithinSchedulingAllowance": true,
+        "reducedMotionHasNoReactionLoop": true,
+        "gesturesDoNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Booky mobile touch gesture gallery ru",
+      "scenario": "mobile-touch-gestures-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "mobileFifteenGesturesReachableByTouch": true,
+        "mobileGestureScrollingDoesNotPlay": true,
+        "mobileGesturesFiniteAndRepeatable": true,
+        "mobileSurpriseCycleCoversFifteen": true,
+        "mobileSurpriseCycleBoundaryDifferent": true,
+        "mobileGestureReducedMotionStatic": true,
+        "mobileGestureHelpReadableAfterRotation": true,
+        "mobileGesturePreferencesAndSceneRetained": true,
+        "mobileGestureTrustedTouch": true,
+        "mobileNewGesturesRepeatByTouch": true,
+        "mobileBowToBalanceInterrupts": true,
+        "mobileNewGesturesReducedMotionStatic": true
+      }
+    },
+    {
+      "test": "Booky mobile touch gesture gallery en",
+      "scenario": "mobile-touch-gestures-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "mobileFifteenGesturesReachableByTouch": true,
+        "mobileGestureScrollingDoesNotPlay": true,
+        "mobileGesturesFiniteAndRepeatable": true,
+        "mobileSurpriseCycleCoversFifteen": true,
+        "mobileSurpriseCycleBoundaryDifferent": true,
+        "mobileGestureReducedMotionStatic": true,
+        "mobileGestureHelpReadableAfterRotation": true,
+        "mobileGesturePreferencesAndSceneRetained": true,
+        "mobileGestureTrustedTouch": true,
+        "mobileNewGesturesRepeatByTouch": true,
+        "mobileBowToBalanceInterrupts": true,
+        "mobileNewGesturesReducedMotionStatic": true
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/visual-review.json",
+    "sha256": "33da95f6c5199c459193b7d65963dd5d8286bd8dbf9a54f3afcace387221226f"
+  },
+  "newPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "newModelPhotoCount": 3,
+  "retainedModelPhotoReview": null,
+  "inspectedImageCount": 4,
+  "totalCapturedImageCount": 9,
+  "visualReviewScope": "Direct review of the selected final mobile gesture clearance captures. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "visualReviewLimitations": [
+    "This visual review covers 4 of 9 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Badge clearance and placement were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1648,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyAnimation.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "3a82b288d039183725baf9fe0034e076fe235d43",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/pwa-a1/result.json",
+    "sha256": "2dbdbe6e3d4c81c14eb7e5c75d87cdfb9a123c11b01ea6aff2f4ef7ad65461c2"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/android-a1/result.json",
+    "sha256": "d3d2f60807374671ca9d69586d562b8fc12cbf2f2038f557a4aa2785f9913ae4"
+  },
+  "pwaBuildId": "8053cafab3f0d1d9cf7755809fb8895fe19395470d341154106fd41a8612b5d7",
+  "androidBuildId": "891cd0cbc9a70bb93da604f2f5ac1d2d93302cbfe94d704ade9ed0c963348e18",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/android-891cd0cb/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "3d400adaa79b39a948a2fbf1fe0e19b0afeb65ea074e01de50a63fdd7856a68c"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/pwa-8053cafa/artifact.json",
+      "sha256": "8285186736c700926a596318c5ba9f7a8b62ded7783915c310847189e0a2235d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/android-891cd0cb/runtime/artifact.json",
+      "sha256": "02297adbf1798608a684d82a956a54841033c8fc05b6ee73a7dc51141e9e5a55"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/pwa-a1/strict-audit.json",
+      "sha256": "bc981d30c4a5863d8699049ba43cbbb067fccbca946a620eb024a4aa580bf75d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/android-a1/native-artifact-audit.json",
+      "sha256": "f1bd17ad050429ed6003d3e2cc57a1a0f6811e12df8e89a06a2fbe3a7f4aee80"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/android-a1/android-dev-apk-verification.json",
+      "sha256": "24d66a1b584c80ae8a52be1fd4d1d5c5df9d407268d701725ab0c29e93d38bff"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/android-a1/build-run.json",
+      "sha256": "2d00f2ddac471a0649a8c8078377fa9be86c0ba9e33b0e6f33a56415d5c87e3b"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/build-baseline.json",
+    "sha256": "98857f97b6adc9cd8b0dc83bba1c57303d9ef1015987f07fde971ac301b28724"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/pwa-a1/copy-verification.json",
+    "sha256": "db2a7e569a18baeb5cb2a07885cf357f5484ed36766b5ae781840fe5d80c3af6"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/pwa-a1/playwright.json",
+    "sha256": "46790b9f6908ea191b7727ef6427d2967fefbace7219c4e318733750c83759d8"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "53a7c61cf131b6604e384074acc256366c3217fa",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/result.json",
+      "sha256": "f468fa30cd68639aa1c63c7f5c6eee5a1c8a010dda13ff0f5f8deb93a0c11ee6"
+    },
+    "unitCount": 161,
+    "browserCases": 6,
+    "allPriorSelectedCasesRerun": false,
+    "priorSelectedBrowserCaseCount": 6,
+    "currentSelectedBrowserCaseCount": 4,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/new-model-photo-review.json",
+      "sha256": "f7b44e57d1d6f9d193e9e684aa408282b16760ffdbb0feffccfc0163a2b25fea"
+    }
+  },
+  "criteriaUpdated": [
+    "PLANETKA-002",
+    "PLANETKA-005"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD193Recorded": true,
+  "nextAction": "Continue the user-prioritized mobile companion refinement from this checkpoint without repeated authorization. Preserve touch activation, continuous walking through clear space, explicit cancellation, readable help, reduced-motion stillness, saved progress and canonical scene ownership. Full journey integration remains deferred. S03.acceptance remains first unresolved; device, full accessibility and stage/release acceptance remain open.",
+  "limitations": [
+    "Fresh browser evidence covers four selected live-model, desktop gesture and RU/EN mobile gesture cases; prior placement, walking, utility and larger suites remain attributed to their original sources.",
+    "Model geometry is unchanged, but animation has changed. The three new rest/bow/balance images bind current animation inputs; earlier model-photo evidence is historical and does not establish current gesture behavior.",
+    "Static standalone pose renders do not demonstrate application timing, reachability or device performance. Those claims are limited to the separately recorded selected actual-App browser checks.",
+    "No installed-device, full accessibility, performance, art, stage or release acceptance is claimed.",
+    "Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved. All requirement and stage statuses remain unchanged.",
+    "This visual review covers 4 of 9 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Badge clearance and placement were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed.",
+    "Three static posed standalone renders using the current canonical model and animation; they are not application screenshots or installed-device evidence.",
+    "The images inspect rest plus the midpoints of bow and balance. Finite duration, restoration, reduced motion and touch behavior depend on the separate formal tests.",
+    "All three poses use the same neutral-model camera and lighting. No image generation, retouching or per-pose framing was used.",
+    "The model source is unchanged; the new pose evidence must also remain bound to the recorded animation dependency SHA."
+  ],
+  "bookyPlayfulPosesImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false,
+  "sourceAmendment": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-amendments/a2/amendment.json",
+    "sha256": "9b17b1f588e75367fc710b1455e587ab78d58d89bd8b3e56363754787d3e6c24"
+  }
+}
