@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "description": "In the configured RU 390 px and EN 320 px utility cases, Книжулик / Mr. Booky shares the reserved companion row across open Recent, Downloads and Graphics sections. Selected-utility readiness accounts for the dock before finite approach and natural return. Initial dock width expansion is clamped to the viewport before ResizeObserver measurement catches up. Existing orientation, cancellation, touch reset, saved progress and canonical scene behavior remain covered by the retained regressions.",
+  "changedPaths": [
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedBrowserTests": 17,
+  "expectedImages": 51,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-open-help-placement",
+      "flags": [
+        "openHelpLocaleControlsReachable",
+        "desktopOpenHelpNavigationReachable",
+        "closedHelpNavigationReachable",
+        "collectionHeaderReachable",
+        "helpScrollsByPointerWheel",
+        "helpClosesWhileScrolled",
+        "helpRegrowsOnLargerViewport",
+        "petAndHelpFitWithoutOverlap",
+        "noAutomaticPreferenceWrites",
+        "noHelpCameraChanges",
+        "sameCanonicalGlobe",
+        "compactLandscapeHelpReadable",
+        "closedHelpGlobalHeaderReachable"
+      ]
+    },
+    {
+      "scenario": "explicit-target-approach",
+      "flags": [
+        "actualStopPointerCancelsApproach",
+        "actualStopEnterCancelsApproach",
+        "actualStopSpaceCancelsApproach",
+        "stopNeverStartsReplacementWalk",
+        "stoppedApproachRemainsStillBeyondOriginalDeadline"
+      ]
+    },
+    {
+      "scenario": "explicit-margin-walk",
+      "flags": [
+        "walkStartsAtRestingRow",
+        "walkPathAvoidsNavigation",
+        "compactWalkAvailabilityMatchesClearSpace",
+        "compactWalkKeepsNavigationReachable",
+        "compactUnavailableWalkExplained",
+        "mobileTouchWalkStartsContinuously",
+        "mobileTouchStopsWalk",
+        "mobileTouchDragStopsWalk",
+        "mobileHeldStopCannotRestart",
+        "trustedTouchGlobeResetPosition",
+        "globeResetPositionPreservesContext"
+      ]
+    },
+    {
+      "scenario": "held-walk-keyboard",
+      "flags": [
+        "heldEnterStartsOnlyOnce",
+        "heldEnterCannotRestartAfterStop",
+        "heldSpaceUsesOneReleaseAction",
+        "noHeldKeyAutomaticResume",
+        "noAutomaticPreferenceWrites",
+        "sameCanonicalGlobe"
+      ]
+    },
+    {
+      "scenario": "mobile-touch-graphics-dock-return-ru",
+      "flags": [
+        "trustedTouchUtilityOpens",
+        "mobileApproachAndReturnFinite",
+        "mobileReturnContinuous",
+        "mobileNaturalReturnStaysInReservedDock",
+        "finalGraphicsControlsReachable",
+        "collectionContentExcludesDock",
+        "trustedTouchStopCancelsReturn",
+        "stoppedReturnRemainsStill",
+        "reducedMotionPointsFromDockWithoutTravel",
+        "noAutomaticPreferenceWrites",
+        "sameCanonicalGlobe",
+        "trustedTouchResetPosition",
+        "resetPositionControlReachable",
+        "resetPositionKeepsVisible",
+        "resetPositionReturnsToDock",
+        "resetPositionRemainsStill",
+        "resetPositionPreservesPreferencesAndProgress",
+        "resetPositionPreservesContext",
+        "trustedTouchGraphicsThenRotation",
+        "orientationCancelsReturn",
+        "noAutomaticReturnResume",
+        "rotatedCompanionFitsViewport",
+        "orientationRetainsDockContainment",
+        "orientationContentExcludesDock",
+        "rotatedVisibleGraphicsControlsReachable",
+        "touchScrollExposesGraphicsTargets",
+        "portraitReflowBeforeResetFitsDock",
+        "explicitResetAfterRotationReturnsToDock"
+      ]
+    },
+    {
+      "scenario": "mobile-touch-graphics-dock-return-en",
+      "flags": [
+        "trustedTouchUtilityOpens",
+        "mobileApproachAndReturnFinite",
+        "mobileReturnContinuous",
+        "mobileNaturalReturnStaysInReservedDock",
+        "finalGraphicsControlsReachable",
+        "collectionContentExcludesDock",
+        "trustedTouchStopCancelsReturn",
+        "stoppedReturnRemainsStill",
+        "reducedMotionPointsFromDockWithoutTravel",
+        "noAutomaticPreferenceWrites",
+        "sameCanonicalGlobe",
+        "trustedTouchResetPosition",
+        "resetPositionControlReachable",
+        "resetPositionKeepsVisible",
+        "resetPositionReturnsToDock",
+        "resetPositionRemainsStill",
+        "resetPositionPreservesPreferencesAndProgress",
+        "resetPositionPreservesContext",
+        "trustedTouchGraphicsThenRotation",
+        "orientationCancelsReturn",
+        "noAutomaticReturnResume",
+        "rotatedCompanionFitsViewport",
+        "orientationRetainsDockContainment",
+        "orientationContentExcludesDock",
+        "rotatedVisibleGraphicsControlsReachable",
+        "touchScrollExposesGraphicsTargets",
+        "portraitReflowBeforeResetFitsDock",
+        "explicitResetAfterRotationReturnsToDock"
+      ]
+    }
+  ],
+  "expectedUnitTests": 154,
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "requireDiagnosticHistory": true,
+  "requiredVisualFilenames": [
+    "booky-utility-recent-ru-390.png",
+    "booky-utility-downloads-ru-390.png",
+    "booky-utility-recent-en-320.png",
+    "booky-utility-downloads-en-320.png"
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "utility-surface-ru-recent",
+      "observation": "utilitySurface",
+      "checks": [
+        "natural point reached",
+        "natural return reached",
+        "natural point completed and position settled",
+        "explicit trusted touch action",
+        "graphics closed and whole companion in measured dock",
+        "finite approach point return and continuous handoff",
+        "visible body prose clear after natural return",
+        "whole pet stays in viewport",
+        "1900ms exact stillness and no automatic resume",
+        "required section controls are actually visible",
+        "visible section and header hit points",
+        "preferences and progress bytes unchanged",
+        "no automatic download action",
+        "canonical scene camera resources unchanged",
+        "actual App fixture integrity"
+      ]
+    },
+    {
+      "scenario": "utility-surface-ru-downloads",
+      "observation": "utilitySurface",
+      "checks": [
+        "natural point reached",
+        "natural return reached",
+        "natural point completed and position settled",
+        "explicit trusted touch action",
+        "graphics closed and whole companion in measured dock",
+        "finite approach point return and continuous handoff",
+        "visible body prose clear after natural return",
+        "whole pet stays in viewport",
+        "1900ms exact stillness and no automatic resume",
+        "required section controls are actually visible",
+        "visible section and header hit points",
+        "preferences and progress bytes unchanged",
+        "no automatic download action",
+        "canonical scene camera resources unchanged",
+        "actual App fixture integrity"
+      ]
+    },
+    {
+      "scenario": "utility-surface-en-recent",
+      "observation": "utilitySurface",
+      "checks": [
+        "natural point reached",
+        "natural return reached",
+        "natural point completed and position settled",
+        "explicit trusted touch action",
+        "graphics closed and whole companion in measured dock",
+        "finite approach point return and continuous handoff",
+        "visible body prose clear after natural return",
+        "whole pet stays in viewport",
+        "1900ms exact stillness and no automatic resume",
+        "required section controls are actually visible",
+        "visible section and header hit points",
+        "preferences and progress bytes unchanged",
+        "no automatic download action",
+        "canonical scene camera resources unchanged",
+        "actual App fixture integrity"
+      ]
+    },
+    {
+      "scenario": "utility-surface-en-downloads",
+      "observation": "utilitySurface",
+      "checks": [
+        "natural point reached",
+        "natural return reached",
+        "natural point completed and position settled",
+        "explicit trusted touch action",
+        "graphics closed and whole companion in measured dock",
+        "finite approach point return and continuous handoff",
+        "visible body prose clear after natural return",
+        "whole pet stays in viewport",
+        "1900ms exact stillness and no automatic resume",
+        "required section controls are actually visible",
+        "visible section and header hit points",
+        "preferences and progress bytes unchanged",
+        "no automatic download action",
+        "canonical scene camera resources unchanged",
+        "actual App fixture integrity"
+      ]
+    }
+  ],
+  "frozenFixture": {
+    "path": "tests/pwa/booky-live-character.spec.mjs",
+    "sha256": "8b96842925c45db0bf71e7e625acbe77fe5732fbe896ad06ddd5325ea0fbd1be"
+  }
+}

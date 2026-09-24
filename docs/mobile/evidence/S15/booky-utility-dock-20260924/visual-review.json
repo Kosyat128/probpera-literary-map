@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T04:36:37.603Z",
+  "pass": true,
+  "sourceCommit": "e0bb13518baf011daef3bdcbe956611460a4babc",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/source-manifests/d8ed411b99d5f709.json",
+    "sha256": "d8ed411b99d5f70991d6f06490550354592fad41e548fb844a23140a894985ad",
+    "fileCount": 1650
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 51,
+  "scope": "Direct review of the selected final RU/EN utility dock captures. Other regression captures are authenticated without a new complete visual review.",
+  "limitations": [
+    "This visual review covers 4 of 51 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Utilities were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/final-visual-receipt.json",
+    "sha256": "9e0993c4fdfb5d91dc00901d73d6145caca03bd78cf544103783ea9be7febc92"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a2/booky-live-character-utility-surface-natural-touch-ru-recent/booky-utility-recent-ru-390.png",
+      "sha256": "0009b4544b9bba2f91505746e4536beccc9b6a315065e1e4d1f7f08da00a5e66",
+      "width": 390,
+      "height": 844,
+      "bytes": 57746,
+      "locale": "ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Russian recent writer row, wrapped author name and Clear history button remain unobscured above the dock.",
+        "The complete green book model and its lower dock controls fit within the viewport without clipping or overlapping the visible utility content.",
+        "Localized dock action text and section headings are legible; no visual defect was found within this final static capture."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a2/booky-live-character-utility-surface-natural-touch-ru-recent/booky-live-character.json",
+        "sha256": "51da532bc3c1eb3c4aa6e4bf23c9a95982e50364f0f482b4f4883b70f5ddc3eb",
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a2/booky-live-character-utili-a771c--natural-touch-ru-downloads/booky-utility-downloads-ru-390.png",
+      "sha256": "9b57ca3158f057b4a269403591bd71efdd69eac50f1758ef1002ff30597f83d6",
+      "width": 390,
+      "height": 844,
+      "bytes": 60231,
+      "locale": "ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Russian Wi-Fi checkbox, storage status, Check space button and download status prose remain unobscured above the dock.",
+        "The complete green book model and its lower dock controls fit within the viewport without clipping or overlapping the visible utility content.",
+        "Localized dock action text and section headings are legible; no visual defect was found within this final static capture."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a2/booky-live-character-utili-a771c--natural-touch-ru-downloads/booky-live-character.json",
+        "sha256": "5a3efd6e91ca0fe66fc516c34ed3fe406df9d8a5aabd761ae3866677f085616b",
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a2/booky-live-character-utility-surface-natural-touch-en-recent/booky-utility-recent-en-320.png",
+      "sha256": "2a77f1b8025fc853df03fa3c0dc6cd85444a70ce089d9241d2dd52e72353cc66",
+      "width": 320,
+      "height": 844,
+      "bytes": 55187,
+      "locale": "en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The English recent writer row, Fyodor Dostoevsky name and Clear history button remain unobscured at the narrow width.",
+        "The complete green book model and its lower dock controls fit within the viewport without clipping or overlapping the visible utility content.",
+        "Localized dock action text and section headings are legible; no visual defect was found within this final static capture."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a2/booky-live-character-utility-surface-natural-touch-en-recent/booky-live-character.json",
+        "sha256": "d3d5a0ea45d6bac23ce6ab2909a507208d852cbe2ea8171c704ef2842ead99a8",
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a2/booky-live-character-utili-cf4f3--natural-touch-en-downloads/booky-utility-downloads-en-320.png",
+      "sha256": "41488a7575510a8afb68248ad1c106a96d685ea24895a536438754cb903d5d0e",
+      "width": 320,
+      "height": 844,
+      "bytes": 58618,
+      "locale": "en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The English Wi-Fi checkbox, wrapped storage status, Check space button and download status prose remain unobscured at the narrow width.",
+        "The complete green book model and its lower dock controls fit within the viewport without clipping or overlapping the visible utility content.",
+        "Localized dock action text and section headings are legible; no visual defect was found within this final static capture."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a2/booky-live-character-utili-cf4f3--natural-touch-en-downloads/booky-live-character.json",
+        "sha256": "b4a28a046a816534594862d50f84e3dabe6e056a20a3366ce513d6f2135f173f",
+        "sourceInputsMatchedManifest": 669
+      }
+    }
+  ],
+  "releaseReady": false
+}

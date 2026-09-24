@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T02:02:51.4859089+00:00",
+  "preparedOnly": true,
+  "sourceFrozen": true,
+  "executed": false,
+  "baseCheckpoint": "16a88a921eb1978ae7f066c2b21bb706ee355116",
+  "baseSource": "b791829322c77c9c6d03f446d49295a27063707c",
+  "priorResultSha256": "6b7984be8d4a4d45d4d20b024f8a8fbbcfcd217cda66d0b1b1043991235d7b80",
+  "priorManifest": "bb7698a90bda538ef094c6b595772d936de8bc280bfffee228382415a7813b46",
+  "pendingFields": [],
+  "files": [
+    {
+      "sha256": "f65c817d28fc4f6565a9ee1765b7c76d83f24e8b093bf9e5c073db4108f0353c",
+      "name": "configure.mjs"
+    },
+    {
+      "sha256": "8bf38481cc6e2100c4e24bdac76b664010ef24e99e8a119b7767dac921a2bff0",
+      "name": "check.mjs"
+    },
+    {
+      "sha256": "5a4c7f45122084b4326648ba55ace940b0fd9fe1daf9a5630727ffae5b0b1ce2",
+      "name": "unit.config.mjs"
+    },
+    {
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08",
+      "name": "playwright.config.mjs"
+    },
+    {
+      "sha256": "c12715eee0f8169834caeab9f95d6ed263af33abc51ea8231b1578ceb6d79aba",
+      "name": "build-pwa-a1.mjs"
+    },
+    {
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+      "name": "pwa-a1.config.mjs"
+    },
+    {
+      "sha256": "3f08ecced1213d840b22a59b96ec37be330b471c93eab70426c5a32126de5c18",
+      "name": "build-android-a1.ps1"
+    },
+    {
+      "sha256": "06314ea9ce16926396c6c9730888dd73e4bbd2df0dc53ef3c1f5032155082b6a",
+      "name": "verify-android-a1.mjs"
+    },
+    {
+      "sha256": "ae12cd537fea6e094ff8a7b13496920fc629f623538d3a409ae8068ee8fa98b7",
+      "name": "preserve-android-a1.mjs"
+    },
+    {
+      "sha256": "e6a98aff6524864435b8e201b7a3a15ffa9c01f603886e954dcf045e7e7f188a",
+      "name": "checkpoint.mjs"
+    },
+    {
+      "sha256": "f8e6d9f17cb8a7c4e05be7ff977f2ab69c2d3055b4da217b09ee4c56fcc4784f",
+      "name": "record-visual.mjs"
+    },
+    {
+      "sha256": "0302d5964fb55e9fa6f334c6eb6d77a3aac91527709c8f7cda64c0c41b4a41c9",
+      "name": "finalize-notes.mjs"
+    },
+    {
+      "sha256": "8a33762eabe19d30137325e586e07a79388a3d15c1e3d6b559eed0dc516a1345",
+      "name": "scope.json"
+    }
+  ],
+  "releaseReady": false,
+  "frozenFixture": {
+    "path": "tests/pwa/booky-live-character.spec.mjs",
+    "sha256": "8b96842925c45db0bf71e7e625acbe77fe5732fbe896ad06ddd5325ea0fbd1be"
+  }
+}

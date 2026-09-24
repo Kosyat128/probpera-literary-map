@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T02:03:42.372Z",
+  "stage": "S15",
+  "checkpoint": "16a88a921eb1978ae7f066c2b21bb706ee355116",
+  "previous": "docs/mobile/evidence/S15/booky-orientation-20260924/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/result.json",
+    "sha256": "6b7984be8d4a4d45d4d20b024f8a8fbbcfcd217cda66d0b1b1043991235d7b80"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/result.json",
+    "sha256": "6b7984be8d4a4d45d4d20b024f8a8fbbcfcd217cda66d0b1b1043991235d7b80"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/source-manifests/bb7698a90bda538e.json",
+    "sha256": "bb7698a90bda538ef094c6b595772d936de8bc280bfffee228382415a7813b46",
+    "fileCount": 1650
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/scope.json",
+    "sha256": "8a33762eabe19d30137325e586e07a79388a3d15c1e3d6b559eed0dc516a1345"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "4bcca9f89181e621021e09ee86db673eaae60044d8f1c1aa125b85c55f4c7908"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "a206e0ec9b681ca0853c034fc3e7bbba89b131f7780443891948e1e5365b6d67"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "c5a901b43a76c6dd714fe04f88a1819f8418991448808b8902a9258ea8022ff2"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "aaf8a52a1ae641f47480c9db959f774e38921248f0f6123af9835da2b74deece"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "d9e80c2ac73b32a983b3b5672521e0b0fa6871821f49aa0678a770ae971560d7"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "65c6290533595dfaefcb3bf6db1bbf1bac6d63b164e4727a41287e5a67c91a20"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "ebfb91a3d5dd127b8f5832fe3902ecc177e50218a312bb447634899089d26389"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "a1b00bb0756edcd74124b75f4d2e1adc0b8426a05a938a6b9576c60b6d1c2a6f"
+    }
+  ],
+  "changedPaths": [
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "6fcf6ed0ef193310322b0cb7f22706e5ec74cbc100ea44e7b58db717529948a7"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "3efe5eb95abcf3dc341487729a8559954581dfe5d822a4eca3b450a4710e84d2"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "36788dfed9fa7588a2bd71dc15672c290a001763dc030b77c380265cd3c5a01c"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "8b96842925c45db0bf71e7e625acbe77fe5732fbe896ad06ddd5325ea0fbd1be"
+    }
+  ],
+  "sourceInputCount": 1650,
+  "protectedInputCount": 1646,
+  "runtimeRequired": [
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "16a88a921eb1978ae7f066c2b21bb706ee355116",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedUnitTests": 154,
+  "expectedBrowserTests": 17,
+  "expectedImages": 51,
+  "scope": "In the configured RU 390 px and EN 320 px utility cases, Книжулик / Mr. Booky shares the reserved companion row across open Recent, Downloads and Graphics sections. Selected-utility readiness accounts for the dock before finite approach and natural return. Initial dock width expansion is clamped to the viewport before ResizeObserver measurement catches up. Existing orientation, cancellation, touch reset, saved progress and canonical scene behavior remain covered by the retained regressions.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,847 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T02:06:23.0982374+00:00",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-orientation-20260924/result.json",
+    "sha256": "6b7984be8d4a4d45d4d20b024f8a8fbbcfcd217cda66d0b1b1043991235d7b80"
+  },
+  "retainedPriorHistory": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/staging/diagnostic-history-draft-a1-a3.json",
+    "sha256": "436711e380e7a996aa48e394778eeabb3ec0a380338ba847292b5fac060ce46c"
+  },
+  "attempts": [
+    {
+      "attempt": "a1",
+      "classification": "preflight-infrastructure-failure",
+      "browserStarted": false,
+      "testCasesExecuted": 0,
+      "report": null,
+      "tests": null,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a1/preflight-failure.json",
+        "sha256": "c44b70d1adcb494718bea7a1bb3a92876294b2c96d394862f79bb990cc9e425b"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a1/preflight-failure.json",
+        "sha256": "c44b70d1adcb494718bea7a1bb3a92876294b2c96d394862f79bb990cc9e425b"
+      },
+      "failedRunner": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a1/run.failed-preflight.mjs.txt",
+        "sha256": "813780349f4919dac428a9715fbd33398469755f0df58c74d2e2e65a112619f5"
+      },
+      "executionEvidence": {
+        "observedNodeExit": 1,
+        "stdout": null,
+        "stderr": null
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a1/checkpoint-binding.json",
+        "sha256": "efba237bfa793e89ea7d8f0bee7a79bb4a18bee0785b49d6c7b2ddb1d76c6c5d"
+      },
+      "attachment": null,
+      "sourceUnchangedSincePreparation": true,
+      "missingRawLogsReason": "The runner failed during the read-only Git checkpoint comparison, before execution-start.json, child spawn, or local stdout/stderr stream creation.",
+      "truncatedExcerpt": true,
+      "stderrExcerpt": "warning: Limiting comparison with pathspecs is only supported if both paths are directories.\nusage: git diff --no-index [<options>] <path> <path> [<pathspec>...]",
+      "rawOutputLocation": "Tool invocation transcript chunk f12397; tool output was truncated, no local stdout/stderr log existed before preflight completion.",
+      "note": "No browser or test case ran. The stored tool excerpt is truncated; no full local stdout/stderr logs or report JSON existed. This is not a product failure."
+    },
+    {
+      "attempt": "a2",
+      "classification": "actual-product-failure",
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/playwright.json",
+        "sha256": "f21c17f41a3cdc7c1b8db0275d6c1f63b17e3647f3633c088b20879b45e26fc2"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/execution.json",
+        "sha256": "823dee3d40deed032fc2a382da4fd3edcd8dcb595f06a528de8c1666740cd591"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "outerNodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/stdout.log",
+          "sha256": "4ad3a01e76775764f3299dd10299d8e003fc04eb1857d32bb43ca6c6879694e7"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/stderr.log",
+          "sha256": "16fb5614c8a4e4cd646bf3f09324be0e328f6ba85484ae82592ce91884bfd774"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/proof.json",
+        "sha256": "44d3b4f4f2a0309dfccb3c962173204e1639e8335c06a1458a8b8e72cf5ad764"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/execution-start.json",
+        "sha256": "9055d36b9a16bcc2813651b87267eaa95a85f69343f9db8fb342dcad8e8fedf3"
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/utility.spec.mjs",
+          "sha256": "e9f0dcbfd08cf0df216f15d36edcbb3c3e940e8767662c0b1b27a72a4d1a6457"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/playwright.config.mjs",
+          "sha256": "a29c5d1c7e20f47ee108e1204f64b3d385b364d7e5b25022256fca9c37521fda"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/run.mjs",
+          "sha256": "c6b291bca68bc2973a3cf9a913d083c02bfaea9df1077c7ccb7107e7fe48dcc8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/prepared.json",
+          "sha256": "2e40a07099001f3d991e4b1cf6dc0726426d0f50d92a18afeaf1439511d5e0c0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/runner-execution.json",
+          "sha256": "7f93aee88ea1ab4a70a9d801de7c7d40e7f96ed97c7bd9c9126b4926b5640dc5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/runner-stdout.log",
+          "sha256": "cc9f19715dba308a55eb0d03b47b55b1e1cf62494d1f3a3f577e468ad3543580"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/artifacts/utility-utility-surface-natural-touch-ru-recent/booky-live-character.json",
+          "sha256": "a9d167ab6ca525193b99a3566ecfe73254b8e2c730e37c7d1b6c75d1c3c35eec"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/artifacts/utility-utility-surface-natural-touch-ru-downloads/booky-live-character.json",
+          "sha256": "bcbd134865c89b0c555664afc178dfb9219b4ec1dfd4a7c96c3db8aa9fd9f1f0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/artifacts/utility-utility-surface-natural-touch-en-recent/booky-live-character.json",
+          "sha256": "cf52cf7160f0206d319dc227127def2e23767856f9aaba110b0b61ff25809c87"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a2/artifacts/utility-utility-surface-natural-touch-en-downloads/booky-live-character.json",
+          "sha256": "1cfa348aa5c6a7a1cd5cdeb8fcc4bf566ed648a525b29b6d65cbd481910940be"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "sourceIdentity": {
+        "repositoryHead": "16a88a921eb1978ae7f066c2b21bb706ee355116",
+        "runtimeSourceCommit": "b791829322c77c9c6d03f446d49295a27063707c",
+        "originalHashesRetainedInReceipts": true
+      },
+      "caseOutcomes": [
+        {
+          "language": "ru",
+          "utility": "recent",
+          "pass": false,
+          "failedChecks": [
+            "visible section and header hit points"
+          ]
+        },
+        {
+          "language": "ru",
+          "utility": "downloads",
+          "pass": true,
+          "failedChecks": []
+        },
+        {
+          "language": "en",
+          "utility": "recent",
+          "pass": false,
+          "failedChecks": [
+            "visible section and header hit points"
+          ]
+        },
+        {
+          "language": "en",
+          "utility": "downloads",
+          "pass": true,
+          "failedChecks": []
+        }
+      ],
+      "note": "Recent failed in RU and EN because the companion captured a visible row hit point. Downloads passed control-hit assertions, but the original direct review recorded informational prose covered by the companion; control-hit PASS does not establish clear prose."
+    },
+    {
+      "attempt": "a3",
+      "classification": "strict-observation-failure",
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/playwright.json",
+        "sha256": "afb92f235d84f484dc4409c27c727200144907a9ff84614cca41867885e557be"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 4,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/execution.json",
+        "sha256": "f234cb5e1f6f8abdf2dbcf24783f6a63e8493aff8da9100b64753913bb6ce3cf"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "outerNodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/stdout.log",
+          "sha256": "2dc3dd2d90c9144a3f5653ac87a8fc1819241e4aa001076c75f303290048f041"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/stderr.log",
+          "sha256": "f9bcfa1a5c7032d1e2f94f3c5d976217a337840686ca65611d8d15d826af734f"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/proof.json",
+        "sha256": "d1af8b078417ce5b41a5c6b9d43c3721bf12bb07b54c79b538af5188f36c9cb7"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/execution-start.json",
+        "sha256": "d556c2599869b38f74fbedcb0fe74d530f440bbd1998b2b3136aaf275f01ce90"
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/utility.spec.mjs",
+          "sha256": "ec62a1f6410f24de79ded96d5f64c96eacaebf55774645fb34fb5ab9169d1f38"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/playwright.config.mjs",
+          "sha256": "e7b4181e32635d96b934111afce4ac7b0d8aecc8e6f9661b9620284e5a07ccb6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/run.mjs",
+          "sha256": "bbe69c1ad3820ed5090cf785916c65805cd121858795a1140ff216324180f42b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/prepared.json",
+          "sha256": "2eda87be626c88d489e5754451a16a75008ddedf1279b0ee989fd504865a63af"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/runner-execution.json",
+          "sha256": "f3c3894c07e485ac8bf8b7df0df9e127ea8c5c8d443ebde2c2a9fd80f2ab3a32"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/runner-stdout.log",
+          "sha256": "6999d25e0f2793ea75781285d2b14ffb5efabd6c3fed2764dbfbb0edececf4a4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/authorized-source.json",
+          "sha256": "d44f11c4d94527512139f17020728bf62a5889ffd9fb5478da63e70cfe15c496"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/authorized-runtime.patch",
+          "sha256": "4bbdbb03dc5a25bb551e3713ce8623a34d7c6a2186557aa6de0e0f927f37fb70"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/trace-analysis.json",
+          "sha256": "cc39fc9795c206d669e958e39801deb31ab4d118a4e44fe598edd2f765e485b6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/offending-samples.json",
+          "sha256": "7ae5e72882ffc456f8540a2df0843f9f709ae12660fb8d8c23afafcc0e766ccc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/artifacts/utility-utility-surface-natural-touch-ru-recent/booky-live-character.json",
+          "sha256": "b6eaafe3e1d8c6966e8728b90ed7298481f60edb91a0992ecd099d985247f4b3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/artifacts/utility-utility-surface-natural-touch-ru-downloads/booky-live-character.json",
+          "sha256": "1813da94d69813d91f442e8dacdee58f21a0b035d7a8dfa89db037c586537466"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/artifacts/utility-utility-surface-natural-touch-en-recent/booky-live-character.json",
+          "sha256": "9d67c862127543520b69c8ec20324a2d864b635f9c28247bd73252f4e85c81f9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a3/artifacts/utility-utility-surface-natural-touch-en-downloads/booky-live-character.json",
+          "sha256": "033fc79f30d9e19a3e686990e1b2da455d01e8dfcb83bb64b4de91ad709110c9"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "sourceIdentity": {
+        "repositoryHead": "16a88a921eb1978ae7f066c2b21bb706ee355116",
+        "runtimeSourceCommit": "b791829322c77c9c6d03f446d49295a27063707c",
+        "originalHashesRetainedInReceipts": true
+      },
+      "caseOutcomes": [
+        {
+          "language": "ru",
+          "utility": "recent",
+          "pass": false,
+          "failedChecks": [
+            "finite approach point return and continuous handoff",
+            "whole pet stays in viewport"
+          ]
+        },
+        {
+          "language": "ru",
+          "utility": "downloads",
+          "pass": false,
+          "failedChecks": [
+            "finite approach point return and continuous handoff",
+            "whole pet stays in viewport"
+          ]
+        },
+        {
+          "language": "en",
+          "utility": "recent",
+          "pass": false,
+          "failedChecks": [
+            "whole pet stays in viewport"
+          ]
+        },
+        {
+          "language": "en",
+          "utility": "downloads",
+          "pass": false,
+          "failedChecks": [
+            "finite approach point return and continuous handoff",
+            "whole pet stays in viewport"
+          ]
+        }
+      ],
+      "note": "All four cases remain failed. Original traces record a pre-approach viewport overflow in all four cases and observer-time speed failures in three. Final settled dock/control/prose checks were clear, but they do not waive the earlier strict failures or prove runtime draw timing."
+    },
+    {
+      "attempt": "a4",
+      "classification": "strict-observation-failure",
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/playwright.json",
+        "sha256": "2209e356ce1402d51d6c979317d0ed8e647bd31531935ec74c091f1f83104d00"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/execution.json",
+        "sha256": "33cecdf93c934193f40b22cf83bb78751a9e8dc8e313832cc6ab789de07f9d6e"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "outerNodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/stdout.log",
+          "sha256": "6c8b1ab4fc0a8ad1e24020f9d1b968cfcf1c2da9e12475fdb9204b8843d3413d"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/stderr.log",
+          "sha256": "a1b02d51bda1310466611b311823d44f73c09c2d3c3939b637ea98549d1c223b"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/proof.json",
+        "sha256": "ed558e12c9f9b30a95b746a8e770b1ea215b21fd8267580e5c689bb54128aa52"
+      },
+      "proofExitField": "nodeExit",
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/execution-start.json",
+        "sha256": "317c7444c9ebdd0227682677b93aca75dae0251b10e0c268f307fef43ff77d15"
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/utility.spec.mjs",
+          "sha256": "7823a3d0b4211206a61a45cb6b5d789ca3df6eb1e016af8867668698fff4b93c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/playwright.config.mjs",
+          "sha256": "c39fa0d2af51ba369f5bed570e4d2d514385bb9bcaa19e2c2a14960a062adc63"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/run.mjs",
+          "sha256": "7da1a2268352dcd66261c3d90ee8fbb3cd7c4ff2a1ba9824b732de580fb433fd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/prepare.mjs",
+          "sha256": "adabf3d33aadd04aa6cf2488d88d4777df68b1f5db6b869430fa255fb4e7109a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/prepared.json",
+          "sha256": "b03ab6cf8e83aedbe222f1fc02f8c1204235fe1c629db5ff72cb4a6db29f899d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/authorized-source.json",
+          "sha256": "714b392eceaca16f3bf523778c09693f3aa0c39634a3b7d164f2346a711f787f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/authorized-runtime.patch",
+          "sha256": "6b113f0b7b21ab96cd5bbfab69b9d26f80f657a57b1a5ed1d700b0a883d3ac09"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/runner-execution.json",
+          "sha256": "e525958fb2c62398d1502dd6fe21583b9a7811c7cfce87bdccd435be156b3d1f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/runner-stdout.log",
+          "sha256": "0d5ae245e583a123de9f43391bdb445bb14a1e904513659416989bb428772041"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/clock-analysis.json",
+          "sha256": "9e96ca8905db16005ee488d0730022d3df4d36fbad85f8d66a05f68c725b1e86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/analyze-clocks.mjs",
+          "sha256": "ea4aa70fe52695bcf010337f7501b28553e1dac272377b348d99036ef59a7c2a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/collect-proof.mjs",
+          "sha256": "997797442c67c97069e84db4dfbef693814281fa6cb233b02d9861ba19a63ff4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-ru-recent/booky-live-character.json",
+          "sha256": "3d7c7e4b83ac9aecb01cc2b7b9c2e7c7d266023d5006bd0103d80b818be6972d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-ru-recent/attachments/booky-live-character-source-evidence-c0d4e39673e124630a0ba0a9c85364eef8b6e9cc.json",
+          "sha256": "3d7c7e4b83ac9aecb01cc2b7b9c2e7c7d266023d5006bd0103d80b818be6972d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-ru-recent/booky-utility-recent-ru-390.png",
+          "sha256": "0009b4544b9bba2f91505746e4536beccc9b6a315065e1e4d1f7f08da00a5e66"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-ru-downloads/booky-live-character.json",
+          "sha256": "99ec39a77d040870455521faa3e1412dc05691d3514c890e9f729ee09678d82d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-ru-downloads/attachments/booky-live-character-source-evidence-e2a2c0721b56e1a899075699a21bccff166bb46a.json",
+          "sha256": "99ec39a77d040870455521faa3e1412dc05691d3514c890e9f729ee09678d82d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-ru-downloads/booky-utility-downloads-ru-390.png",
+          "sha256": "9b57ca3158f057b4a269403591bd71efdd69eac50f1758ef1002ff30597f83d6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-en-recent/booky-live-character.json",
+          "sha256": "a1e1ad8dc925f7ab91d1e332e7d2a8ed1c48a721632f760ca08fa85dcfbbba6d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-en-recent/attachments/booky-live-character-source-evidence-e953aa031c0bfe1b6530fc55ae8731ccfe826d9b.json",
+          "sha256": "a1e1ad8dc925f7ab91d1e332e7d2a8ed1c48a721632f760ca08fa85dcfbbba6d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-en-recent/booky-utility-recent-en-320.png",
+          "sha256": "2a77f1b8025fc853df03fa3c0dc6cd85444a70ce089d9241d2dd52e72353cc66"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-en-downloads/booky-live-character.json",
+          "sha256": "1f795975e798c6c1376187062548b5be41453be317f9359a0ad34cb3f6a323ac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-en-downloads/attachments/booky-live-character-source-evidence-a41060c74c87e5753a9612ad0ba4b0f1f4f998d4.json",
+          "sha256": "1f795975e798c6c1376187062548b5be41453be317f9359a0ad34cb3f6a323ac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a4/artifacts/utility-utility-surface-natural-touch-en-downloads/booky-utility-downloads-en-320.png",
+          "sha256": "41488a7575510a8afb68248ad1c106a96d685ea24895a536438754cb903d5d0e"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "sourceIdentity": {
+        "repositoryHead": "16a88a921eb1978ae7f066c2b21bb706ee355116",
+        "runtimeSourceCommit": "b791829322c77c9c6d03f446d49295a27063707c",
+        "originalHashesRetainedInReceipts": true
+      },
+      "caseOutcomes": [
+        {
+          "scenario": "utility-surface-ru-recent",
+          "language": "ru",
+          "utility": "recent",
+          "pass": true,
+          "checkCount": 15,
+          "passedChecks": 15,
+          "failedChecks": []
+        },
+        {
+          "scenario": "utility-surface-ru-downloads",
+          "language": "ru",
+          "utility": "downloads",
+          "pass": false,
+          "checkCount": 15,
+          "passedChecks": 14,
+          "failedChecks": [
+            "finite approach point return and continuous handoff"
+          ]
+        },
+        {
+          "scenario": "utility-surface-en-recent",
+          "language": "en",
+          "utility": "recent",
+          "pass": false,
+          "checkCount": 15,
+          "passedChecks": 14,
+          "failedChecks": [
+            "finite approach point return and continuous handoff"
+          ]
+        },
+        {
+          "scenario": "utility-surface-en-downloads",
+          "language": "en",
+          "utility": "downloads",
+          "pass": true,
+          "checkCount": 15,
+          "passedChecks": 15,
+          "failedChecks": []
+        }
+      ],
+      "note": "Actual exit 1 and 2 PASS / 2 FAIL remain unchanged. Every-frame viewport checks passed all four cases after the CSS bound fix. RU Downloads and EN Recent still failed observer-RAF speed assertions. Later phase/handoff subassertions in those failed groups did not execute; clock-analysis derives them separately. Adjacent DOM frames do not prove hook draw/React commit timing, so these failures are not retroactively classified as product defects or false positives."
+    },
+    {
+      "attempt": "a5",
+      "classification": "focused-pass-with-source-draw-provenance",
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/playwright.json",
+        "sha256": "f9cf7c78058c7efc0c029fd0f71db3eac084672616520987fff5d84cfde6a1f8"
+      },
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/execution.json",
+        "sha256": "abb39b4f2eadd97d1daa81d7ba17c515749b824d28d2f44755e637f4368812f3"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "outerNodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/stdout.log",
+          "sha256": "b6e795b4adca2bdb3df4f30fec1ff71cd5fa8e509b6b77b882c9d3f28fde6b64"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/stderr.log",
+          "sha256": "dd183746b184c31d8adcc1cffae2a13c1bf9b3750d1e1e94ff2c16c560c0fddb"
+        }
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/proof.json",
+        "sha256": "ebc02d2e28fcfac9b41b10f594dec554a8489538589a9ae2ac5642ce2c111d4f"
+      },
+      "proofExitField": "trueExit",
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/execution-start.json",
+        "sha256": "1f25f0f89e0850d31e04827828ae292527a99b87881a750c27a29863477a1f88"
+      },
+      "attachment": null,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/utility.spec.mjs",
+          "sha256": "57ec2324d52b43de2f3f36a661c2548bd847ba71c651047a15d075152557e610"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/playwright.config.mjs",
+          "sha256": "9b216c492274908e4701b57c775a069980fd4bbb76cd28f8d8f96fb31053ab90"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/run.mjs",
+          "sha256": "8a6a38bc01bd98dbdbcada48fadf78499eb1a7e7aac76e1702431f11fbd59a5d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/prepare.mjs",
+          "sha256": "4d57dff4d4394755fadee2b7bda7ffbcc7b5ee98bc9e037809ecd9bb28ce3ae9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/prepared.json",
+          "sha256": "a5df1379743042b88733160cf5315d41026600f135fc31f10f8103939a552a1d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/authorized-source.json",
+          "sha256": "21437b024d7144e689b096505c511a869837901d2fc6414b308b1e6721df66a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/authorized-runtime.patch",
+          "sha256": "6b113f0b7b21ab96cd5bbfab69b9d26f80f657a57b1a5ed1d700b0a883d3ac09"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/runner-execution.json",
+          "sha256": "3853fbf0673ec5c5503b43839c1428cec612b045024b34b9bf963c967e935271"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/runner-stdout.log",
+          "sha256": "dae57427fde312d5fb7917d302f514c2a6dfb5bafa3f20541de21bbc4c08b5e8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/integration.json",
+          "sha256": "cf5d4c444d85c991e9af31e9c88507390899a5a8759a011b272948798e95b549"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/integration-verification.json",
+          "sha256": "1cf5a4b4935608de9bc7d6c56b705faa3500578126acd64ccc2071653325f97d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/canonical-fixture-before.mjs",
+          "sha256": "a2d02f792d90bc1e5f964f3fc379fbae79598f5019452e5c22a0614112d4fd11"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/canonical-fixture-integrated.mjs",
+          "sha256": "8b96842925c45db0bf71e7e625acbe77fe5732fbe896ad06ddd5325ea0fbd1be"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/integrate-fixture.mjs",
+          "sha256": "9574a66a5b138fe9276dbd75eea3b8a4c16883080c32df3ae5cd78cb4300908d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/make-proof.mjs",
+          "sha256": "47aa67110bb4d892ea975cdddc5d6efa7c6b9fd91e9c7be56599962e3681dd32"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-ru-recent/booky-live-character.json",
+          "sha256": "5c49669f2bc28cba8fdd76451d36e83d2d850c0947e00b06a9afa22c2fcb35ef"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-ru-recent/attachments/booky-live-character-source-evidence-c6155758af198793293e8f72acbe84e036dce8bb.json",
+          "sha256": "5c49669f2bc28cba8fdd76451d36e83d2d850c0947e00b06a9afa22c2fcb35ef"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-ru-recent/booky-utility-recent-ru-390.png",
+          "sha256": "0009b4544b9bba2f91505746e4536beccc9b6a315065e1e4d1f7f08da00a5e66"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-ru-downloads/booky-live-character.json",
+          "sha256": "9d7e2f412780984ec4aa93a9eaf9a7112dd50cdac0ff82af5342c421f92fe622"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-ru-downloads/attachments/booky-live-character-source-evidence-46ebbe82e8a4e8b82dd9d2d03354a8ce82a7c1c2.json",
+          "sha256": "9d7e2f412780984ec4aa93a9eaf9a7112dd50cdac0ff82af5342c421f92fe622"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-ru-downloads/booky-utility-downloads-ru-390.png",
+          "sha256": "9b57ca3158f057b4a269403591bd71efdd69eac50f1758ef1002ff30597f83d6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-en-recent/booky-live-character.json",
+          "sha256": "5ef33a1e7793677140854cdf71afb7828c6afb0a52f2ae78e36b539403728381"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-en-recent/attachments/booky-live-character-source-evidence-5687d409aadd528ca391b4ea66cc3a6a800d2392.json",
+          "sha256": "5ef33a1e7793677140854cdf71afb7828c6afb0a52f2ae78e36b539403728381"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-en-recent/booky-utility-recent-en-320.png",
+          "sha256": "2a77f1b8025fc853df03fa3c0dc6cd85444a70ce089d9241d2dd52e72353cc66"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-en-downloads/booky-live-character.json",
+          "sha256": "a1378909b3a318b608a13ec74ae5c9bef3a37552004c974ec450121e08c7cc34"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-en-downloads/attachments/booky-live-character-source-evidence-ee7f41444bb7d983be4e5bd47b1c1f86da18b6df.json",
+          "sha256": "a1378909b3a318b608a13ec74ae5c9bef3a37552004c974ec450121e08c7cc34"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/artifacts/utility-utility-surface-natural-touch-en-downloads/booky-utility-downloads-en-320.png",
+          "sha256": "41488a7575510a8afb68248ad1c106a96d685ea24895a536438754cb903d5d0e"
+        }
+      ],
+      "sourceUnchanged": true,
+      "sourceInputCount": 8,
+      "sourceIdentity": {
+        "repositoryHead": "16a88a921eb1978ae7f066c2b21bb706ee355116",
+        "runtimeSourceCommit": "b791829322c77c9c6d03f446d49295a27063707c",
+        "originalHashesRetainedInReceipts": true
+      },
+      "caseOutcomes": [
+        {
+          "scenario": "utility-surface-ru-recent",
+          "language": "ru",
+          "utility": "recent",
+          "pass": true,
+          "checkCount": 15,
+          "passedChecks": 15,
+          "failedChecks": []
+        },
+        {
+          "scenario": "utility-surface-ru-downloads",
+          "language": "ru",
+          "utility": "downloads",
+          "pass": true,
+          "checkCount": 15,
+          "passedChecks": 15,
+          "failedChecks": []
+        },
+        {
+          "scenario": "utility-surface-en-recent",
+          "language": "en",
+          "utility": "recent",
+          "pass": true,
+          "checkCount": 15,
+          "passedChecks": 15,
+          "failedChecks": []
+        },
+        {
+          "scenario": "utility-surface-en-downloads",
+          "language": "en",
+          "utility": "downloads",
+          "pass": true,
+          "checkCount": 15,
+          "passedChecks": 15,
+          "failedChecks": []
+        }
+      ],
+      "note": "Actual exit 0 and 4 PASS, with all 15 independent checks passed per case. The lightweight frame sampler correlates moving DOM coordinates with actual hook draw outputs/source RAF times; full control and prose checks remain at milestones. Strict source-clock speed checks pass. Raw observer-clock excess remains in one early approach interval of each EN case and is retained as diagnostic data. This is a methodology correction, not runtime animation scheduling/state substitution or installed-device performance acceptance.",
+      "observationCorrection": "a3 used performance.now read intervals; a4 used observer RAF intervals. Neither interval necessarily spans the source draws represented by adjacent React DOM commits. a5 records actual sampleBookyWalk outputs and their source RAF times, matches every moving DOM sample including initial path.from/began by current owner/path within 1/32px, and applies the unchanged strict speed bound to source draw intervals. Raw observer intervals remain diagnostic only.",
+      "motionProvenance": [
+        {
+          "scenario": "utility-surface-ru-recent",
+          "motions": {
+            "approaching": {
+              "owner": 3,
+              "sourceDurationMs": 1600,
+              "matchedDOMSamples": 217,
+              "sourceClockSpeedBound": "screenDiagonal * 1.5 / 1600 * sourceDrawIntervalMs + 3",
+              "roundingTolerance": 0.03125,
+              "maxSamplerReadCostMs": 0.6000000014901161,
+              "maxDOMStepPx": 6.110353981665055,
+              "observerClockViolationsDiagnosticOnly": 0,
+              "maxObserverRafMinusSourceIntervalMs": 62.600000000000364
+            },
+            "returning": {
+              "owner": 5,
+              "sourceDurationMs": 1600,
+              "matchedDOMSamples": 231,
+              "sourceClockSpeedBound": "screenDiagonal * 1.5 / 1600 * sourceDrawIntervalMs + 3",
+              "roundingTolerance": 0.03125,
+              "maxSamplerReadCostMs": 0.5,
+              "maxDOMStepPx": 2.96875,
+              "observerClockViolationsDiagnosticOnly": 0,
+              "maxObserverRafMinusSourceIntervalMs": 1.6000000000003638
+            }
+          }
+        },
+        {
+          "scenario": "utility-surface-ru-downloads",
+          "motions": {
+            "approaching": {
+              "owner": 3,
+              "sourceDurationMs": 1600,
+              "matchedDOMSamples": 217,
+              "sourceClockSpeedBound": "screenDiagonal * 1.5 / 1600 * sourceDrawIntervalMs + 3",
+              "roundingTolerance": 0.03125,
+              "maxSamplerReadCostMs": 0.30000000447034836,
+              "maxDOMStepPx": 5.407356281319458,
+              "observerClockViolationsDiagnosticOnly": 0,
+              "maxObserverRafMinusSourceIntervalMs": 48.49999999999909
+            },
+            "returning": {
+              "owner": 5,
+              "sourceDurationMs": 1600,
+              "matchedDOMSamples": 232,
+              "sourceClockSpeedBound": "screenDiagonal * 1.5 / 1600 * sourceDrawIntervalMs + 3",
+              "roundingTolerance": 0.03125,
+              "maxSamplerReadCostMs": 0.5,
+              "maxDOMStepPx": 2.9375,
+              "observerClockViolationsDiagnosticOnly": 0,
+              "maxObserverRafMinusSourceIntervalMs": 7.100000000000364
+            }
+          }
+        },
+        {
+          "scenario": "utility-surface-en-recent",
+          "motions": {
+            "approaching": {
+              "owner": 3,
+              "sourceDurationMs": 1600,
+              "matchedDOMSamples": 197,
+              "sourceClockSpeedBound": "screenDiagonal * 1.5 / 1600 * sourceDrawIntervalMs + 3",
+              "roundingTolerance": 0.03125,
+              "maxSamplerReadCostMs": 0.4000000059604645,
+              "maxDOMStepPx": 14.220947632366137,
+              "observerClockViolationsDiagnosticOnly": 1,
+              "maxObserverRafMinusSourceIntervalMs": 137.79999999850952
+            },
+            "returning": {
+              "owner": 5,
+              "sourceDurationMs": 1600,
+              "matchedDOMSamples": 231,
+              "sourceClockSpeedBound": "screenDiagonal * 1.5 / 1600 * sourceDrawIntervalMs + 3",
+              "roundingTolerance": 0.03125,
+              "maxSamplerReadCostMs": 0.3999999985098839,
+              "maxDOMStepPx": 2.96875,
+              "observerClockViolationsDiagnosticOnly": 0,
+              "maxObserverRafMinusSourceIntervalMs": 7
+            }
+          }
+        },
+        {
+          "scenario": "utility-surface-en-downloads",
+          "motions": {
+            "approaching": {
+              "owner": 3,
+              "sourceDurationMs": 1600,
+              "matchedDOMSamples": 197,
+              "sourceClockSpeedBound": "screenDiagonal * 1.5 / 1600 * sourceDrawIntervalMs + 3",
+              "roundingTolerance": 0.03125,
+              "maxSamplerReadCostMs": 0.30000000447034836,
+              "maxDOMStepPx": 10.064246742801966,
+              "observerClockViolationsDiagnosticOnly": 1,
+              "maxObserverRafMinusSourceIntervalMs": 144.30000000148902
+            },
+            "returning": {
+              "owner": 5,
+              "sourceDurationMs": 1600,
+              "matchedDOMSamples": 231,
+              "sourceClockSpeedBound": "screenDiagonal * 1.5 / 1600 * sourceDrawIntervalMs + 3",
+              "roundingTolerance": 0.03125,
+              "maxSamplerReadCostMs": 0.5,
+              "maxDOMStepPx": 2.796875,
+              "observerClockViolationsDiagnosticOnly": 0,
+              "maxObserverRafMinusSourceIntervalMs": 2.6000000029798684
+            }
+          }
+        }
+      ],
+      "integration": {
+        "receipt": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-surface-review/a5/integration-verification.json",
+          "sha256": "1cf5a4b4935608de9bc7d6c56b705faa3500578126acd64ccc2071653325f97d"
+        },
+        "canonicalFixtureSha256": "8b96842925c45db0bf71e7e625acbe77fe5732fbe896ad06ddd5325ea0fbd1be",
+        "originalThirteenCaseBytesUnchanged": true,
+        "fourCasesByteIdenticalExceptExplicitSeedArgument": true,
+        "metadataOnlyChanges": false,
+        "actualAppRuntimeModifiedByIntegration": false
+      }
+    }
+  ],
+  "sourceInventoryMode": "Original source snapshots remain in authenticated external execution/proof/capture receipts. Original hashes are never recalculated from the later integrated working tree.",
+  "limitations": [
+    "a1 had no raw log streams or browser/report; its tool excerpt remains explicitly truncated.",
+    "a2-a4 keep their original nonzero exits and failing checks. Individual passing groups and clear settled images do not replace failed trajectory observations.",
+    "a5 adds read-only source-draw provenance and a lightweight per-frame sampler. It does not replace runtime timing or state; full milestone hit/prose assertions remain. Raw observer-clock excess is retained and not reclassified as device performance evidence.",
+    "The diagnostic source snapshots precede canonical fixture integration. That integration is authenticated separately; formal tests must validate the final frozen fixture.",
+    "This ledger records local browser diagnostics only. It does not claim installed-device frame performance, stage acceptance, or release readiness."
+  ],
+  "releaseReady": false
+}

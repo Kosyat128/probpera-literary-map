@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/booky-utility-dock-20260924/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-utility-dock-20260924\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-24T02:03:53.970Z",
+  "exitCode": 0,
+  "durationMs": 9348,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/unit-a1/stdout.log",
+    "bytes": 182,
+    "sha256": "d0ad764c81bf2078c2b12c1bf48f22e6c15b522a7927d1a55d48c8e9c7b8ff67"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/unit-a1/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

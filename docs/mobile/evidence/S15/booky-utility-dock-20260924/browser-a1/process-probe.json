@@ -1,0 +1,11 @@
+{
+  "recordedAt": "2026-09-24T04:26:17.3097958+00:00",
+  "processes": [],
+  "processCount": 0,
+  "knownSessionId": 36163,
+  "sessionRecovery": "write_stdin returned Unknown process id 36163",
+  "exitCode": null,
+  "exitCodeKnown": false,
+  "reportPresent": false,
+  "resultPresent": false
+}

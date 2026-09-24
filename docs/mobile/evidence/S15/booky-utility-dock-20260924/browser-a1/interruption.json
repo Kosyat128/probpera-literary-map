@@ -1,0 +1,1041 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T04:28:58.699Z",
+  "mode": "browser",
+  "attempt": "a1",
+  "status": "interrupted",
+  "pass": null,
+  "exitCode": null,
+  "exitCodeKnown": false,
+  "execution": null,
+  "report": null,
+  "tests": null,
+  "stdout": null,
+  "stderr": null,
+  "processProbe": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/browser-a1/process-probe.json",
+    "sha256": "2b377f64aa5c0fb408df8a74786c1fec7130efd238e281c31b634dccb2264013"
+  },
+  "baselineResult": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/unit-a1/result.json",
+    "sha256": "9b34907bdc664530aa180c0f936acf8002f5a5f682d5f93d348196ae070957f1"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/source-manifests/d8ed411b99d5f709.json",
+    "sha256": "d8ed411b99d5f70991d6f06490550354592fad41e548fb844a23140a894985ad",
+    "fileCount": 1650
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/check.mjs",
+      "sha256": "8bf38481cc6e2100c4e24bdac76b664010ef24e99e8a119b7767dac921a2bff0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/entry.json",
+      "sha256": "746e242eb3bbecdb56a7f14b773ba2dceb74f375fc5b790d196494ad503b5988"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/unit.config.mjs",
+      "sha256": "5a4c7f45122084b4326648ba55ace940b0fd9fe1daf9a5630727ffae5b0b1ce2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/playwright.config.mjs",
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/configure.mjs",
+      "sha256": "f65c817d28fc4f6565a9ee1765b7c76d83f24e8b093bf9e5c073db4108f0353c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/scope.json",
+      "sha256": "8a33762eabe19d30137325e586e07a79388a3d15c1e3d6b559eed0dc516a1345"
+    }
+  ],
+  "supplementalInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    },
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    },
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceVerification": {
+    "sourceMatchesManifest": true,
+    "sourceInputCount": 1650,
+    "checkInputsMatch": true,
+    "checkInputCount": 6,
+    "originalBrowserStartSnapshotAvailable": false,
+    "sourceUnchangedAcrossEntireAttemptProven": false
+  },
+  "externalArtifactsRoot": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1",
+  "artifacts": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/attachments/booky-live-character-source-evidence-03f88a8b299f887418c036fe1af88cdd9e33904e.json",
+      "sha256": "d3359b36685ec94ae6481dc2ce253509aedb101b61266f92ac2850b283ad8909",
+      "bytes": 1485810,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "explicit-target-approach",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-live-character.json",
+      "sha256": "d3359b36685ec94ae6481dc2ce253509aedb101b61266f92ac2850b283ad8909",
+      "bytes": 1485810,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "explicit-target-approach",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-target-approach-ru-1440.png",
+      "sha256": "2a080a235d7f62b9bcfb681df0f8b4ee310937b664a66c6467b29b3023ef9c36",
+      "bytes": 872514,
+      "classification": "png",
+      "width": 1440,
+      "height": 900,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command/attachments/booky-live-character-source-evidence-bb5e76f0245ffb2f90f4ee05b1296b4164923060.json",
+      "sha256": "7c1915be72a9fe544f80872ec07add8e4bbf3c4e2cb96b667a6965a879bac40e",
+      "bytes": 112260,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "held-walk-keyboard",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 0
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command/booky-live-character.json",
+      "sha256": "7c1915be72a9fe544f80872ec07add8e4bbf3c4e2cb96b667a6965a879bac40e",
+      "bytes": 112260,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "held-walk-keyboard",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 0
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-aead617b136c1cb98485a0212d60659c76c1bb02.json",
+      "sha256": "a27b911f3589e01cd5ee711fe0b5dbc24063667946e4e7f3e9809c2ff45e5a03",
+      "bytes": 309755,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "mobile-companion-placement",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 5
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-live-character.json",
+      "sha256": "a27b911f3589e01cd5ee711fe0b5dbc24063667946e4e7f3e9809c2ff45e5a03",
+      "bytes": 309755,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "mobile-companion-placement",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 5
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png",
+      "sha256": "4503bf2aef96125bf5655959e6a17b8bb7753774e29c36836c200d446d74bf28",
+      "bytes": 100718,
+      "classification": "png",
+      "width": 800,
+      "height": 400,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-tips-en-320.png",
+      "sha256": "cd5192b3c51451e348525963a8e7ceeff4423801fcad70128bd86e6b09eae356",
+      "bytes": 133540,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png",
+      "sha256": "0738ec220302b8808ff0854d4308ad44a70472d33ef9ce824334d4ed06956d08",
+      "bytes": 330102,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-landscape.png",
+      "sha256": "eea9f01a4353cfd1b9ce98f0c9fa5227105c3453d2b315f853581c233a2a0bb3",
+      "bytes": 197720,
+      "classification": "png",
+      "width": 800,
+      "height": 400,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png",
+      "sha256": "559ff07a44a1ec23f7b2a6bb36256a53fca8965ab36f2ee90203261864f3eb46",
+      "bytes": 329928,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/attachments/booky-live-character-source-evidence-fb4f8b328699904ae8735945fde7c542088c6f64.json",
+      "sha256": "b4ed5ed6392cf42937ea825b83a2dcbf5c31766a9763f8f839e9c739846c9e7b",
+      "bytes": 502396,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "explicit-margin-walk",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 6
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-en-568.png",
+      "sha256": "8b91ebcdd45cef89cea64e82966c73eece624784ca35f23e3cb4b978b95f702d",
+      "bytes": 107681,
+      "classification": "png",
+      "width": 568,
+      "height": 320,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-en-640.png",
+      "sha256": "0c0207a1a2ad88238dc321e3d4c11caef6258aa3499a55633ac91e5d377a5966",
+      "bytes": 139910,
+      "classification": "png",
+      "width": 640,
+      "height": 360,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-ru-568.png",
+      "sha256": "c78aeb751801ce285679faed3979f0c639fb497c9d0b56786112740dda93bbc3",
+      "bytes": 117596,
+      "classification": "png",
+      "width": 568,
+      "height": 320,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-ru-640.png",
+      "sha256": "16f8aad016519bd48053a57793a3e0aa78b822a3cb72eb6770cdf6e86cfd87bf",
+      "bytes": 141263,
+      "classification": "png",
+      "width": 640,
+      "height": 360,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-live-character.json",
+      "sha256": "b4ed5ed6392cf42937ea825b83a2dcbf5c31766a9763f8f839e9c739846c9e7b",
+      "bytes": 502396,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "explicit-margin-walk",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 6
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-margin-walk-ru-1440.png",
+      "sha256": "386c8cd6932829bcffccd77dbdb10c14c98ea4cb179a921ed246a2ef778ef0b4",
+      "bytes": 1098078,
+      "classification": "png",
+      "width": 1440,
+      "height": 850,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-touch-walk-ru-390.png",
+      "sha256": "1eb84845734eecd2925dedd487367cf2f17ee718383002e2e1e6df58305f7ac7",
+      "bytes": 395563,
+      "classification": "png",
+      "width": 390,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/attachments/booky-live-character-source-evidence-c6d1b72dc57bbda369baa9660e8f1fb04a549d0f.json",
+      "sha256": "e076c0b1dbca5abf30315ca3da0a81cfb01ac8a57d5ee74eca0e633f24d9a8be",
+      "bytes": 114222,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "explicit-local-utilities",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-live-character.json",
+      "sha256": "e076c0b1dbca5abf30315ca3da0a81cfb01ac8a57d5ee74eca0e633f24d9a8be",
+      "bytes": 114222,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "explicit-local-utilities",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-useful-actions-ru-320.png",
+      "sha256": "ea2a480d8eed98c68fb0e5e33313b62024b3b880e3fe220e0d35ffe3b0b09574",
+      "bytes": 282746,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/attachments/booky-live-character-source-evidence-d66c1671d27af746c9383aa3610bc12274d7fb43.json",
+      "sha256": "408aa1fe4ef21398555826fac794fc65789591263d275db877e58fce86bbd1f4",
+      "bytes": 7183956,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "explicit-bounded-gestures",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+      "sha256": "abf93a8d448e079bf435c31907f447bccdcf141319df8dc5f792b744ae7b3c68",
+      "bytes": 1141759,
+      "classification": "png",
+      "width": 1440,
+      "height": 850,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-live-character.json",
+      "sha256": "408aa1fe4ef21398555826fac794fc65789591263d275db877e58fce86bbd1f4",
+      "bytes": 7183956,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "explicit-bounded-gestures",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-65fde009ac1c7d0538e70cd515c2f5bd3543992b.json",
+      "sha256": "52ce0f10010cc1dd84b638f902d49b704b19c55a58f5ab8b8eeca407e722290f",
+      "bytes": 368209,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "booky-open-help-placement",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 12
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png",
+      "sha256": "5ec29a2ac04568d54b56a361e49102d275c4964be32b829d3cab54895f13d98d",
+      "bytes": 104122,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-ru-320.png",
+      "sha256": "1e1516ad9b3af9abebb63590c54146401937c84fe5969acda0a91e9067476e9f",
+      "bytes": 102394,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568-scrolled.png",
+      "sha256": "fcca93ea8463db6fbcaed096f80d25b92f12e184958b5a4462875ef082e43c6b",
+      "bytes": 110515,
+      "classification": "png",
+      "width": 568,
+      "height": 320,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568.png",
+      "sha256": "b8d87a00c7593dcf1a277bc6dca446370c7a6b1780dd2b589493f32e31ad3b97",
+      "bytes": 118980,
+      "classification": "png",
+      "width": 568,
+      "height": 320,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-640-scrolled.png",
+      "sha256": "8273932ad93611718b5248438ec2f24a1d0bdf4cbe61b473b3dd10803d4eff34",
+      "bytes": 118901,
+      "classification": "png",
+      "width": 640,
+      "height": 360,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-640.png",
+      "sha256": "111b5acc863fad9c6b26e2dcda63f4da01675f40e86c06f042398bf65c689e8f",
+      "bytes": 128168,
+      "classification": "png",
+      "width": 640,
+      "height": 360,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-667.png",
+      "sha256": "8dca2ee4e811ba82d29d03287c537595a592b15583d2cc40febe6ec15f8dcc46",
+      "bytes": 152115,
+      "classification": "png",
+      "width": 667,
+      "height": 375,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568-scrolled.png",
+      "sha256": "a78ce86cd5ba296295bb0cc2cc5edd76c9e957dc2dfd711fa9d14457b8307ab1",
+      "bytes": 107467,
+      "classification": "png",
+      "width": 568,
+      "height": 320,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png",
+      "sha256": "ab3ef369bc23e810ab688c92776f51bfdbc99c7ca186cef3b7e18d4eced90c2d",
+      "bytes": 116385,
+      "classification": "png",
+      "width": 568,
+      "height": 320,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-640-scrolled.png",
+      "sha256": "6c98e318cc052a7f97bbe760d8ec25758fa885a37eddcc9a35539f4541ee782f",
+      "bytes": 119350,
+      "classification": "png",
+      "width": 640,
+      "height": 360,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-640.png",
+      "sha256": "1d0ae2ab41e58d32d2339da0f9ea3eb34c33465437d24e546a4a271cbb966e03",
+      "bytes": 131535,
+      "classification": "png",
+      "width": 640,
+      "height": 360,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-800.png",
+      "sha256": "cbe4c4df81a48ae7ca8145c463ea1417edcf07a9d7a8fdaecf1208102e206eb4",
+      "bytes": 187504,
+      "classification": "png",
+      "width": 800,
+      "height": 400,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+      "sha256": "52ce0f10010cc1dd84b638f902d49b704b19c55a58f5ab8b8eeca407e722290f",
+      "bytes": 368209,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "booky-open-help-placement",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 12
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-61aa9b3dea7477b950007f8dbd3f4977a07efe60.json",
+      "sha256": "976146f9cf0e8d74dcf08afae91712d20b5a7b1c3d2e83c41042092561fabbfe",
+      "bytes": 280926,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": null,
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 4
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+      "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+      "bytes": 55439,
+      "classification": "png",
+      "width": 256,
+      "height": 256,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-character.json",
+      "sha256": "976146f9cf0e8d74dcf08afae91712d20b5a7b1c3d2e83c41042092561fabbfe",
+      "bytes": 280926,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": null,
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 4
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-guide-en-320.png",
+      "sha256": "71d510eac01faa0abfb543dd7ecf77c7971523de84c7a275da86702af542c834",
+      "bytes": 282621,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-help-ru-1440.png",
+      "sha256": "5b9092887e8d4d35dd2ce63d72e4d386a9332a470f5df45c835b1002d19b31bf",
+      "bytes": 1171300,
+      "classification": "png",
+      "width": 1440,
+      "height": 850,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-interaction-en-landscape.png",
+      "sha256": "45991887d61ee37da31ea7ac670a55035be0f460d645531b9cafdc1286a0ffe3",
+      "bytes": 196710,
+      "classification": "png",
+      "width": 844,
+      "height": 390,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/attachments/booky-live-character-source-evidence-c0d1025c926ce896ba0f209b231cebf1d6a4a516.json",
+      "sha256": "84ac9d65fbdd7388f5f1df27860378e64981f3913b337ec3ac8c75b475734440",
+      "bytes": 30297722,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "mobile-touch-graphics-dock-return-ru",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 5
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-live-character.json",
+      "sha256": "84ac9d65fbdd7388f5f1df27860378e64981f3913b337ec3ac8c75b475734440",
+      "bytes": 30297722,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "mobile-touch-graphics-dock-return-ru",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 5
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-approach-ru-390.png",
+      "sha256": "8672d41459456b7616462f4195d40700881eab3377692f6d6660862c796caaa4",
+      "bytes": 79089,
+      "classification": "png",
+      "width": 390,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-settled-ru-390.png",
+      "sha256": "5d207252dd1b8b1cd827cb219801c15b6815ceb147333de3ac053e2d3a1b0a44",
+      "bytes": 78975,
+      "classification": "png",
+      "width": 390,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-position-reset-ru-390.png",
+      "sha256": "d2d18e31187a843ad53580faa2b47250149837703811a7e6b0d5c1aa43b3273f",
+      "bytes": 78995,
+      "classification": "png",
+      "width": 390,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-rotation-landscape-ru-844.png",
+      "sha256": "967be00304e5010f8a4e8f7f9b1daa31c87db5dbfb30e3f0b03d675c1d4315f4",
+      "bytes": 42926,
+      "classification": "png",
+      "width": 844,
+      "height": 390,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-rotation-reset-ru-390.png",
+      "sha256": "7cab84c9790ac475c8a2a7c1d5ca3bf4e953238195850423a7a18e5fa13dd24d",
+      "bytes": 76406,
+      "classification": "png",
+      "width": 390,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/attachments/booky-live-character-source-evidence-779086f6318c4dc6c9b0ef178a82ff152a2845b4.json",
+      "sha256": "0707f8f52b948c272cd7153c07a03e47740732b0c7388906a4e7e7e20c29f501",
+      "bytes": 30099311,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "mobile-touch-graphics-dock-return-en",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 5
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-live-character.json",
+      "sha256": "0707f8f52b948c272cd7153c07a03e47740732b0c7388906a4e7e7e20c29f501",
+      "bytes": 30099311,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "mobile-touch-graphics-dock-return-en",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 5
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-approach-en-320.png",
+      "sha256": "7c3710695b51ea850cc035b3fb8d2c59d98dc6efcda7c8808e9578616f293eb9",
+      "bytes": 67643,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-settled-en-320.png",
+      "sha256": "11a6e0068d69e94af8afb183462e98737313b576f481da6c1edd68a0fef4e618",
+      "bytes": 67671,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-position-reset-en-320.png",
+      "sha256": "5cb2cb9bec5b5d712d9f88cb6f8201d3587c5c91e412ec66fccf3df8e9be7033",
+      "bytes": 67686,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-rotation-landscape-en-640.png",
+      "sha256": "c3651c0068393cf5cfe1684cc80b06cc5a6d4beb4d988b04de1cdd1bcc2c4e25",
+      "bytes": 37381,
+      "classification": "png",
+      "width": 640,
+      "height": 360,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-rotation-reset-en-320.png",
+      "sha256": "62fd4de0ba482a8c7cc59eec8232c3f9b2595916b0059de3bd40d6371867dcf5",
+      "bytes": 68501,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-754c407b35d3da0f1e3ce2511430910bf7ae7033.json",
+      "sha256": "4eff02d7ad25a50c4149ef2b704561a4edab5754867db504d6f83495e527ca52",
+      "bytes": 639580,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "globe-landscape-controls",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 4
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+      "sha256": "4eff02d7ad25a50c4149ef2b704561a4edab5754867db504d6f83495e527ca52",
+      "bytes": 639580,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "globe-landscape-controls",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 4
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png",
+      "sha256": "0d9482c3021fad2c193a2a7eb5836592f8e7552cfaae0aad088ea511eb251a75",
+      "bytes": 109509,
+      "classification": "png",
+      "width": 667,
+      "height": 375,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png",
+      "sha256": "317cc1983a032c94aa7ba340ee821ea51b0495083ad7a60681cdffd2d794e817",
+      "bytes": 154338,
+      "classification": "png",
+      "width": 667,
+      "height": 375,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png",
+      "sha256": "44cc6e30a65ce8259e1880af68161f2c6af0fa57423f8141a8ec3fac98fbd590",
+      "bytes": 198003,
+      "classification": "png",
+      "width": 800,
+      "height": 400,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png",
+      "sha256": "1e54ba44f699079777e7a08af4dc502b105089d9cb3a2e47785d3241a556afc1",
+      "bytes": 199730,
+      "classification": "png",
+      "width": 800,
+      "height": 400,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utili-a771c--natural-touch-ru-downloads/attachments/booky-live-character-source-evidence-c11f152715b62f292ed26ac75c1f4cc032e6bd95.json",
+      "sha256": "8d0e6abe30474066bfa5ae0db0a481da0142425cece78b9a8b3a9c3d011b3933",
+      "bytes": 1388948,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "utility-surface-ru-downloads",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utili-a771c--natural-touch-ru-downloads/booky-live-character.json",
+      "sha256": "8d0e6abe30474066bfa5ae0db0a481da0142425cece78b9a8b3a9c3d011b3933",
+      "bytes": 1388948,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "utility-surface-ru-downloads",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utili-a771c--natural-touch-ru-downloads/booky-utility-downloads-ru-390.png",
+      "sha256": "9b57ca3158f057b4a269403591bd71efdd69eac50f1758ef1002ff30597f83d6",
+      "bytes": 60231,
+      "classification": "png",
+      "width": 390,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utility-surface-natural-touch-en-recent/booky-live-character.json",
+      "sha256": "936757844c29826d04eabbb36424e346c7e10c6c72b83d3b65823b26baad9c2f",
+      "bytes": 524288,
+      "classification": "invalid-json",
+      "jsonComplete": false,
+      "parseError": "Expected double-quoted property name in JSON at position 524288 (line 18081 column 1)",
+      "truncationAssessment": "Preserved original bytes failed JSON parsing; no repair or completion is inferred."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utility-surface-natural-touch-en-recent/booky-utility-recent-en-320.png",
+      "sha256": "2a77f1b8025fc853df03fa3c0dc6cd85444a70ce089d9241d2dd52e72353cc66",
+      "bytes": 55187,
+      "classification": "png",
+      "width": 320,
+      "height": 844,
+      "pngEndChunkPresent": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utility-surface-natural-touch-en-recent/error-context.md",
+      "sha256": "292ede87eda4c04d0cf9a2c83cae51efe5c28a457cf6e0e4a4440d8c044d207a",
+      "bytes": 383,
+      "classification": "other-preserved-file"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utility-surface-natural-touch-ru-recent/attachments/booky-live-character-source-evidence-4488bf0d29e856a258167d5fee30c449d161bce1.json",
+      "sha256": "8a6c2bd267373a263edc398bed723aef3af80e94b0934c2d52ef210b6c8e8157",
+      "bytes": 1380519,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "utility-surface-ru-recent",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utility-surface-natural-touch-ru-recent/booky-live-character.json",
+      "sha256": "8a6c2bd267373a263edc398bed723aef3af80e94b0934c2d52ef210b6c8e8157",
+      "bytes": 1380519,
+      "classification": "complete-json",
+      "jsonComplete": true,
+      "capture": {
+        "scenario": "utility-surface-ru-recent",
+        "passClaim": true,
+        "sourceInputCount": 669,
+        "sourceBoundToManifest": true,
+        "screenshotCount": 1
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utility-surface-natural-touch-ru-recent/booky-utility-recent-ru-390.png",
+      "sha256": "0009b4544b9bba2f91505746e4536beccc9b6a315065e1e4d1f7f08da00a5e66",
+      "bytes": 57746,
+      "classification": "png",
+      "width": 390,
+      "height": 844,
+      "pngEndChunkPresent": true
+    }
+  ],
+  "summary": {
+    "files": 75,
+    "bytes": 158944540,
+    "completeJson": 26,
+    "truncatedJson": 0,
+    "invalidJson": 1,
+    "png": 47,
+    "completeCaptureRecords": 13,
+    "completeCapturePassClaims": 13
+  },
+  "partialCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-live-character.json",
+      "sha256": "d3359b36685ec94ae6481dc2ce253509aedb101b61266f92ac2850b283ad8909",
+      "scenario": "explicit-target-approach",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 1
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command/booky-live-character.json",
+      "sha256": "7c1915be72a9fe544f80872ec07add8e4bbf3c4e2cb96b667a6965a879bac40e",
+      "scenario": "held-walk-keyboard",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 0
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-live-character.json",
+      "sha256": "a27b911f3589e01cd5ee711fe0b5dbc24063667946e4e7f3e9809c2ff45e5a03",
+      "scenario": "mobile-companion-placement",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 5
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-live-character.json",
+      "sha256": "b4ed5ed6392cf42937ea825b83a2dcbf5c31766a9763f8f839e9c739846c9e7b",
+      "scenario": "explicit-margin-walk",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 6
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-live-character.json",
+      "sha256": "e076c0b1dbca5abf30315ca3da0a81cfb01ac8a57d5ee74eca0e633f24d9a8be",
+      "scenario": "explicit-local-utilities",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 1
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-live-character.json",
+      "sha256": "408aa1fe4ef21398555826fac794fc65789591263d275db877e58fce86bbd1f4",
+      "scenario": "explicit-bounded-gestures",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 1
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+      "sha256": "52ce0f10010cc1dd84b638f902d49b704b19c55a58f5ab8b8eeca407e722290f",
+      "scenario": "booky-open-help-placement",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 12
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-character.json",
+      "sha256": "976146f9cf0e8d74dcf08afae91712d20b5a7b1c3d2e83c41042092561fabbfe",
+      "scenario": null,
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 4
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-live-character.json",
+      "sha256": "84ac9d65fbdd7388f5f1df27860378e64981f3913b337ec3ac8c75b475734440",
+      "scenario": "mobile-touch-graphics-dock-return-ru",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 5
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-live-character.json",
+      "sha256": "0707f8f52b948c272cd7153c07a03e47740732b0c7388906a4e7e7e20c29f501",
+      "scenario": "mobile-touch-graphics-dock-return-en",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 5
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+      "sha256": "4eff02d7ad25a50c4149ef2b704561a4edab5754867db504d6f83495e527ca52",
+      "scenario": "globe-landscape-controls",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 4
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utili-a771c--natural-touch-ru-downloads/booky-live-character.json",
+      "sha256": "8d0e6abe30474066bfa5ae0db0a481da0142425cece78b9a8b3a9c3d011b3933",
+      "scenario": "utility-surface-ru-downloads",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 1
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utility-surface-natural-touch-ru-recent/booky-live-character.json",
+      "sha256": "8a6c2bd267373a263edc398bed723aef3af80e94b0934c2d52ef210b6c8e8157",
+      "scenario": "utility-surface-ru-recent",
+      "passClaim": true,
+      "sourceInputCount": 669,
+      "sourceBoundToManifest": true,
+      "screenshotCount": 1
+    }
+  ],
+  "missingFiles": [
+    "result.json",
+    "execution.json",
+    "playwright.json",
+    "stdout.log",
+    "stderr.log"
+  ],
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/staging/record-interruption-a1.mjs",
+    "sha256": "92a760ef18e5e9541b5d42b7a3afcebb332a5df541acb7e297fa94efe01c65f3"
+  },
+  "originalCheckpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/helper-amendments/interrupted-browser-a1/checkpoint.original.mjs",
+    "sha256": "e6a98aff6524864435b8e201b7a3a15ffa9c01f603886e954dcf045e7e7f188a"
+  },
+  "originalHelperCopy": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/helper-copy.json",
+    "sha256": "f5f636d1de35ea3da886fe81ae10d18fc55f2c6970048387d2addf93c754f4b3"
+  },
+  "limitations": [
+    "The original tool session became unavailable and no process remained in the saved probe. The actual Node exit and whole-run outcome are unknown.",
+    "The runner buffers stdout/stderr in memory and writes logs/execution/result only after child completion. No durable a1 raw logs, execution record or final Playwright report exist; they are not reconstructed.",
+    "Current source/check inputs match the saved unit-a1 manifest and complete partial captures bind to those inputs. No original browser-start receipt exists, so uninterrupted source identity across the entire incomplete attempt is not separately proven.",
+    "A complete partial capture can report pass=true without establishing a passed Playwright test or whole run. Truncated JSON is retained byte-for-byte and is excluded from completion claims.",
+    "The rerun uses a distinct browser-a2 attempt. No partial result is promoted to final acceptance."
+  ],
+  "releaseReady": false
+}

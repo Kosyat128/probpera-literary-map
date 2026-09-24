@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T01:36:46.4650118+00:00",
+  "pass": true,
+  "dryRun": false,
+  "removed": true,
+  "onlyD185GeneratedDuplicates": true,
+  "priorCheckpoint": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/result.json",
+    "sha256": "6b7984be8d4a4d45d4d20b024f8a8fbbcfcd217cda66d0b1b1043991235d7b80"
+  },
+  "priorEvidence": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/result.json",
+    "sha256": "92a89210b655c142b0f570657a13245485113105c3fa7e748a2649f972571c37"
+  },
+  "targets": [
+    {
+      "artifactSha256": "80a800a1b8e748049bfc74d2468d881cff36f493f381af6927253524520a81fe",
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-previous-f3a86cca-fcab-4f0d-8a3d-516a4a2e8624",
+      "bytes": 76771519,
+      "buildResult": {
+        "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/pwa-a1/result.json",
+        "sha256": "3c757f164610b190bdb64a7762e4f39518969fe775f9aa1326a81aaf6a02508e"
+      },
+      "sourceCommit": "a965e043eee6c778f37215f236db5a52272a91ed",
+      "kind": "pwa",
+      "preserved": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-reset\\pwa-12aedc4d",
+      "files": 1427,
+      "buildId": "12aedc4dd02d3fb14f10e0c279abb714c0042e4bdb08666740a08caa8dc48d6d"
+    },
+    {
+      "artifactSha256": "b54d1cdd5a9463f398bf6a67665b0eef69f53d91383364f3dc6f0646af25eaa2",
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-080d4231-dfaf-4fe8-bc60-9298e2a02237",
+      "bytes": 74851486,
+      "buildResult": {
+        "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/android-a1/result.json",
+        "sha256": "da3484bc653ffcbfb459fbef8cae8e80a0e5a29fe3dd15b3919ef98186125288"
+      },
+      "sourceCommit": "a965e043eee6c778f37215f236db5a52272a91ed",
+      "kind": "android",
+      "preserved": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-reset\\android-f3a4c611\\runtime",
+      "files": 1408,
+      "buildId": "f3a4c61137002a385519cf3a6a2f1e9d30e21a7adacc308a82c086941aed5890"
+    }
+  ],
+  "bytes": 151623005.0,
+  "releaseReady": false,
+  "preflight": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-utility-dock\\staging\\generated-build-cleanup-preflight.json",
+    "sha256": "60baac6e81189682a3442378e979c8aa1d5722bc574bd83a4f5decd01b1aaa39"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T04:31:13.5789433+00:00",
+  "reason": "The original browser-a1 tool session became unavailable before durable logs, execution, result, or final report were written. Retain the interrupted attempt with null exit/outcome and authenticate its saved process probe, original input binding and complete partial-artifact inventory; select the independent browser-a2 for final validation.",
+  "originalHelper": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/helper-amendments/interrupted-browser-a1/checkpoint.original.mjs",
+    "sha256": "e6a98aff6524864435b8e201b7a3a15ffa9c01f603886e954dcf045e7e7f188a"
+  },
+  "amendedHelper": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/checkpoint.mjs",
+    "sha256": "ac5e077e900ee6641957103e500894f7a9a892c9c4df4a1483288b89ca6261fa"
+  },
+  "originalHelperCopy": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/helper-copy.json",
+    "sha256": "f5f636d1de35ea3da886fe81ae10d18fc55f2c6970048387d2addf93c754f4b3"
+  },
+  "interruption": {
+    "path": "docs/mobile/evidence/S15/booky-utility-dock-20260924/browser-a1/interruption.json",
+    "sha256": "155a67eadbe42e573dfdeeed2a336d1ca648cff3b610486609d6611b15a9ecb8"
+  },
+  "changedBehavior": "Only earlierAttempts handling for the explicitly recorded browser-a1 interruption; normal completed-attempt handling is preserved.",
+  "runtimeOrFixtureChanged": false,
+  "frozenCheckScopeEntryChanged": false,
+  "originalHelperCopyRewritten": false,
+  "testsRun": false,
+  "buildsRun": false,
+  "syntaxValidation": {
+    "command": "node --check docs/mobile/evidence/S15/booky-utility-dock-20260924/checkpoint.mjs",
+    "exitCode": 0
+  },
+  "partialJsonAssessment": {
+    "artifact": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-utility-dock/browser-a1/booky-live-character-utility-surface-natural-touch-en-recent/booky-live-character.json",
+      "sha256": "936757844c29826d04eabbb36424e346c7e10c6c72b83d3b65823b26baad9c2f"
+    },
+    "bytes": 524288,
+    "classificationInImmutableInventory": "invalid-json",
+    "complete": false,
+    "parseError": "Expected double-quoted property name in JSON at position 524288 (line 18081 column 1)",
+    "assessment": "Incomplete/truncated JSON: the parser fails exactly at the 524288-byte EOF while expecting the next property name. Original bytes and conservative invalid-json inventory classification remain unchanged; no missing contents or writer exit are inferred."
+  },
+  "releaseReady": false
+}

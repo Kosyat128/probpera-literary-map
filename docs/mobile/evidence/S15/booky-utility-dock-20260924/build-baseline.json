@@ -1,0 +1,15 @@
+{
+  "checkpoint": "16a88a921eb1978ae7f066c2b21bb706ee355116",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/pwa-a1/result.json",
+    "sha256": "d7032f8bbe0427a05db03254409c4a2bd6634ac174c613f730042d87e67c72ed",
+    "buildId": "b422ac5652ed167e93b1e83551aa354ad17a6486decd6b43c6e6857dcce6a70c",
+    "sourceCommit": "b791829322c77c9c6d03f446d49295a27063707c"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/android-a1/result.json",
+    "sha256": "36e4f02d3686b1f430ebac44b501989caa9a04daedd60ec01cd54ba494a9f11b",
+    "buildId": "1d85e1c4be9334199c5d0a7db10ff4de0b528354e9d55df6f72e9e3db70c93a5",
+    "sourceCommit": "b791829322c77c9c6d03f446d49295a27063707c"
+  }
+}
