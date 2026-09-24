@@ -174,6 +174,51 @@
   }
 }
 
+/* Keep the visible companion beside the edition rail on short phones.
+   Reserve the companion's width plus a 12px gap; the rail still scrolls with
+   its 44px targets. Hiding the companion or rotating restores the layout. */
+@media (max-width: 640px) and (max-height: 540px) and (orientation: landscape) {
+  .native-planet-app { --booky-landscape-reserve: 252px; }
+  .native-planet-app:has(> .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="open"]) {
+    --booky-landscape-reserve: 156px;
+  }
+
+  .native-planet-app:has(> .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-screen="globe"])
+    .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe :is(.globe-style-switch, .globe-edition-scroll-cue.is-next) {
+    right: calc(max(var(--atlas-globe-mobile-gutter), env(safe-area-inset-right)) + var(--booky-landscape-reserve));
+  }
+
+  /* The scale label is positioned inside the unchanged lower toolbar. */
+  .native-planet-app:has(> .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-screen="globe"])
+    .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls .globe-scale-feedback {
+    right: var(--booky-landscape-reserve);
+  }
+
+  /* Reuse the utility dock's two rows without reducing the avatar or targets. */
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="closed"] {
+    --booky-dock-max-left: max(12px, calc(100vw - 252px));
+    width: 240px;
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: 46px 46px;
+    gap: 4px;
+  }
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="closed"] > .planet-mascot-controls__avatar-button {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="closed"] > .planet-mascot-controls__tools {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .native-planet-app > .planet-mascot-controls[data-planet-mascot-screen="globe"][data-planet-mascot-panel-state="closed"] > .planet-mascot-controls__walk {
+    grid-column: 2;
+    grid-row: 2;
+    height: 44px;
+    min-height: 44px;
+    padding: 4px 8px;
+  }
+}
+
 @media (min-width: 1100px) {
   .native-planet-panel {
     left: auto;
