@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T09:59:54.065Z",
+  "kind": "D195 original a1 runtime preservation from prebound source copy",
+  "sourcePath": "src/host/PlanetMascotControls.tsx",
+  "sha256": "fcf4bb2d5c394ad2fc8e0bae87c7379d2678b952330f6846378425e013db7162",
+  "originalSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/7f771d01ddd6017f.json",
+    "sha256": "7f771d01ddd6017ff5cffed8f262e2494ffad55911eb3753f46a852a324e485b",
+    "fileCount": 1652
+  },
+  "originalArchive": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a2/archive.json",
+    "sha256": "213529a5cbd68eba0927e6dbef360811727b824bdbd39e5a43a1c6a62309910a"
+  },
+  "originalPreparedCopy": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-review/a1/runtime-inputs/src/host/PlanetMascotControls.tsx",
+    "sha256": "fcf4bb2d5c394ad2fc8e0bae87c7379d2678b952330f6846378425e013db7162"
+  },
+  "repoArchive": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a2/originals/PlanetMascotControls.tsx",
+    "sha256": "fcf4bb2d5c394ad2fc8e0bae87c7379d2678b952330f6846378425e013db7162"
+  },
+  "externalArchive": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a2/original-PlanetMascotControls.tsx",
+    "sha256": "fcf4bb2d5c394ad2fc8e0bae87c7379d2678b952330f6846378425e013db7162"
+  },
+  "scope": "Original a1 runtime bytes are authenticated against the immutable a1 source manifest. Original archive and formal reports remain unchanged; this supplementary preservation record does not assert a runtime test.",
+  "releaseReady": false
+}

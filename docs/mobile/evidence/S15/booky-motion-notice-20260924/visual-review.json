@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:34:17.393Z",
+  "pass": true,
+  "sourceCommit": "f6b609dab43b725fa31b02257e296af2eca42907",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/0cf1b1bbcb5c3017.json",
+    "sha256": "0cf1b1bbcb5c301707268df4bd3fbb1f00903071d1e5fa23a1f2bda5a1345354",
+    "fileCount": 1652
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 8,
+  "scope": "Direct review of the selected final RU/EN mobile reduced-motion notice captures, covering localized text, the surrounding gesture gallery, header controls and character framing. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 4 of 8 final captures. It does not claim all retained images were inspected again.",
+    "Static images show the selected notice and gallery layouts; they cannot establish media-query lifecycle timing, absence of automatic replay, trusted-touch activation or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/final-visual-receipt.json",
+    "sha256": "0420c01e13191982fbf4cb9372ef66c0e831af0f330fca0e01ff657e4b845307"
+  },
+  "images": [
+    {
+      "filename": "booky-motion-notice-ru-390.png",
+      "sha256": "408a28d3974d3a064853d287fc430cdbd8bd24d6a241c12131adda92691b55d2",
+      "width": 390,
+      "height": 844,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/booky-motion-notice-ru-390.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/booky-live-character.json",
+        "sha256": "8444ae082b6638e6e5d0fb550c2966741f94595960ebedf006f0607bbc61489e"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/attachments/booky-live-character-source-evidence-105ba0c2ab8d8aae054b5fe3c690387e915d1c6a.json",
+        "sha256": "8444ae082b6638e6e5d0fb550c2966741f94595960ebedf006f0607bbc61489e"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The complete Russian notice is readable in three lines inside the pale green panel; no word or line of the notice is clipped. Книжулик, Стоп and the close icon are fully visible in the sticky header.",
+        "The whole character and its adjacent controls remain framed below the card. Earlier explanatory text is partly hidden under the sticky header at this scroll position; the image does not show the complete gesture list at once."
+      ],
+      "bytes": 335552
+    },
+    {
+      "filename": "booky-motion-notice-ru-568.png",
+      "sha256": "bbb5660a19b7bd1549bc4b3d1841426d382d5dfe923d62fe1d3cac2e38fa4970",
+      "width": 568,
+      "height": 320,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/booky-motion-notice-ru-568.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/booky-live-character.json",
+        "sha256": "8444ae082b6638e6e5d0fb550c2966741f94595960ebedf006f0607bbc61489e"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/attachments/booky-live-character-source-evidence-105ba0c2ab8d8aae054b5fe3c690387e915d1c6a.json",
+        "sha256": "8444ae082b6638e6e5d0fb550c2966741f94595960ebedf006f0607bbc61489e"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The shortened Russian notice fits completely in four readable lines at568x320, with visible space between its text and the lower edge of its green panel. The single-line name, Стоп and close control remain visible.",
+        "The complete character and its controls fit the screen beside the help card. The character row visibly overlaps the timeline rail in this crowded landscape layout; the help also covers part of the left background. Only the upper edges of the following gesture buttons are visible at the bottom of the scrolling card."
+      ],
+      "bytes": 111226
+    },
+    {
+      "filename": "booky-motion-notice-en-320.png",
+      "sha256": "83bb681fe8a4bc39f4d69a88e0544962f0e4c1d5d1e96e181aca75237cd8d2a6",
+      "width": 320,
+      "height": 844,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/booky-motion-notice-en-320.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/booky-live-character.json",
+        "sha256": "cb8730d9e10dcffc1b4e9547d90bffac661cff4fd06354396e214017046c2bb2"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/attachments/booky-live-character-source-evidence-b21a4b31c3b193a046c7a0954f61dcdd03164ec6.json",
+        "sha256": "cb8730d9e10dcffc1b4e9547d90bffac661cff4fd06354396e214017046c2bb2"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The entire English notice is readable in three lines in the green panel. Mr. Booky, Stop and the close icon are fully visible in the narrow portrait header.",
+        "The complete character and its controls are framed below the card, with the zoom badge separate. Preceding body text and the following gesture row are only partially visible at the scroll boundaries; this does not clip the notice itself."
+      ],
+      "bytes": 272462
+    },
+    {
+      "filename": "booky-motion-notice-en-640.png",
+      "sha256": "24985a95d1eed55685ba4d5eeefc230d0a8b5143715231323e4037df470607b7",
+      "width": 640,
+      "height": 360,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/booky-motion-notice-en-640.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/booky-live-character.json",
+        "sha256": "cb8730d9e10dcffc1b4e9547d90bffac661cff4fd06354396e214017046c2bb2"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a4/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/attachments/booky-live-character-source-evidence-b21a4b31c3b193a046c7a0954f61dcdd03164ec6.json",
+        "sha256": "cb8730d9e10dcffc1b4e9547d90bffac661cff4fd06354396e214017046c2bb2"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The full English notice fits in two readable lines. Mr. Booky, Stop and the close control are clearly visible, and the Wave and Nod buttons below the notice are fully readable.",
+        "The whole character and its controls are framed beside the card. Its lower row reaches into the existing globe toolbar region, and the open help covers part of the background timeline/left controls. This crowded-landscape view does not establish fully unobscured navigation."
+      ],
+      "bytes": 125020
+    }
+  ],
+  "releaseReady": false
+}

@@ -1,0 +1,271 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-motion-notice-20260924/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-motion-notice-20260924\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-live-character.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-motion-notice-20260924\\browser-a3\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-live-character.spec.mjs",
+      "file": "booky-live-character.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Booky mobile touch gesture Stop preserves context ru",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42223,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T10:18:41.277Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a3\\booky-live-character-Booky-c314f-e-Stop-preserves-context-ru\\attachments\\booky-live-character-source-evidence-eb0116b3627f9948ec466fc9570a9b6979d47a03.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-644f06377a6b5533e04c",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2517,
+          "column": 150
+        },
+        {
+          "title": "Booky mobile touch gesture Stop preserves context en",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 44112,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T10:19:24.518Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a3\\booky-live-character-Booky-32509-e-Stop-preserves-context-en\\attachments\\booky-live-character-source-evidence-5a3d8c96a2ec88656b64d6befb0a711a770c1599.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-576afeb5cd40ba3d48c8",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2517,
+          "column": 150
+        },
+        {
+          "title": "Booky mobile reduced motion notice and media lifecycle ru",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 75000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 25856,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"short landscape reduced notice stays readable by touch\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"short landscape reduced notice stays readable by touch\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2727:487",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                      "column": 487,
+                      "line": 2727
+                    },
+                    "snippet": "  2725 |     });\n  2726 |     await checked('trusted touch and source integrity',async()=>{o.events=await page.evaluate(()=>window.__motionNotice.events);expect(o.events.filter(e=>e.type==='click').every(e=>e.trusted&&e.pointerType==='touch')).toBe(true);expect(o.events.filter(e=>e.type==='click'&&e.gesture==='balance')).toHaveLength(2);expect(o.events.filter(e=>e.type==='click'&&e.gesture==='dance')).toHaveLength(2);expect(o.swipes.length).toBeGreaterThan(0);await fixture.verify();});\n> 2727 |     result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{reducedMotionNoticeTracksMedia:true,reducedMotionNoticeReadableByTouch:true,allFifteenGesturesEnabledWithReducedMotion:true,reducedSelectedPoseRepeatAndStop:true,activeGestureSettlesOnReducedMotion:true,restoringMotionDoesNotReplay:true,freshTouchAnimatesAfterMotionRestore:true,motionTogglesPreserveContextAndPreferences:true,trustedTouchMotionNotice:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^\n  2728 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__motionNotice?.events??[]).catch(()=>[]);await fixture.close();}\n  2729 | });\n  2730 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                        "column": 487,
+                        "line": 2727
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"short landscape reduced notice stays readable by touch\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2725 |     });\n  2726 |     await checked('trusted touch and source integrity',async()=>{o.events=await page.evaluate(()=>window.__motionNotice.events);expect(o.events.filter(e=>e.type==='click').every(e=>e.trusted&&e.pointerType==='touch')).toBe(true);expect(o.events.filter(e=>e.type==='click'&&e.gesture==='balance')).toHaveLength(2);expect(o.events.filter(e=>e.type==='click'&&e.gesture==='dance')).toHaveLength(2);expect(o.swipes.length).toBeGreaterThan(0);await fixture.verify();});\n> 2727 |     result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{reducedMotionNoticeTracksMedia:true,reducedMotionNoticeReadableByTouch:true,allFifteenGesturesEnabledWithReducedMotion:true,reducedSelectedPoseRepeatAndStop:true,activeGestureSettlesOnReducedMotion:true,restoringMotionDoesNotReplay:true,freshTouchAnimatesAfterMotionRestore:true,motionTogglesPreserveContextAndPreferences:true,trustedTouchMotionNotice:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^\n  2728 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__motionNotice?.events??[]).catch(()=>[]);await fixture.close();}\n  2729 | });\n  2730 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2727:487"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T10:20:08.638Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a3\\booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru\\attachments\\booky-live-character-source-evidence-1c5deb4e0a0431e2c7bc68001322e3f872b3f0b3.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a3\\booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                    "column": 487,
+                    "line": 2727
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-ea81d0d211d02653e032",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2619,
+          "column": 150
+        },
+        {
+          "title": "Booky mobile reduced motion notice and media lifecycle en",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 75000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 29562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-24T10:20:35.004Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-live-character-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a3\\booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en\\attachments\\booky-live-character-source-evidence-51d223b6b42b6f562fc4e8cc1f7d8afc08b24aa4.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a2624526caaec9365ac4-6f62244a646600f60dc4",
+          "file": "booky-live-character.spec.mjs",
+          "line": 2619,
+          "column": 150
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-24T10:18:40.077Z",
+    "duration": 145270.659,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

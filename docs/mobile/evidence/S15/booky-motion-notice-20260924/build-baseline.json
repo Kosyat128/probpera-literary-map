@@ -1,0 +1,15 @@
+{
+  "checkpoint": "0c0e4f4d84f1312f8a696e13fd9e6d4cbb3b01cf",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/pwa-a1/result.json",
+    "sha256": "59828c4a6a2a8e968c23f189d64e9070715ba05595aabe277b631bc65ce4f55e",
+    "buildId": "015f7d0aaa2f9ae99d396c1e89dda36aeb8489105eae192e0fc39b4df227cd39",
+    "sourceCommit": "3a0cb6910e098dbf2eff5aec5ee63acda56e9966"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/android-a1/result.json",
+    "sha256": "a1b4770e785e1edf9e449b3b6fd399beb304bc8433cefd330cf2584c9d3a4a84",
+    "buildId": "1a6ed600e0365517faa42000721c0fa3dbab3c5b042e7398675bc8615a616d23",
+    "sourceCommit": "3a0cb6910e098dbf2eff5aec5ee63acda56e9966"
+  }
+}

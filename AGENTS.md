@@ -37,6 +37,14 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-motion-notice-20260924:begin -->
+Latest source f6b609da: Книжулик / Mr. Booky explains in RU/EN that reduced motion shows still gesture poses. Selected actual-App checks cover notice visibility, media-query changes, no automatic replay and retained explicit Stop behavior. All fifteen gestures remain available without a new preference. The unchanged model, animation and renderer retain three D193 rest/bow/balance photos through exact dependency hashes and their original standalone scope. PLANETKA-006 and A11Y-004 receive scoped evidence only; their statuses and all acceptance gates remain unchanged.
+
+Portrait cases require strict zero overlap with measured visible navigation. In exactly RU 568x320 and EN 640x360, an independent infeasibility certificate records that the unchanged 144x96 companion row cannot fit between the existing full-width panels; only the retained RU timeline-rail overlap up to 7200 px² or EN toolbar overlap up to 2880 px² is permitted, with every other overlap zero. This is a documented crowded-landscape limitation, not full landscape navigation acceptance.
+
+Evidence: docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json. D195. 169 unit cases and 4 selected browser cases; 8 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-motion-notice-20260924:end -->
+
 <!-- s15-booky-gesture-stop-20260924:begin -->
 Latest source 3a0cb691: Книжулик / Mr. Booky has an explicit Стоп / Stop button in the help header. Selected actual-App checks cover trusted-touch cancellation, manual restart, Surprise-cycle preservation, reduced-motion neutral pose, tour context and unchanged preferences and scene. The unchanged model, animation and renderer retain three D193 rest/bow/balance photos through exact dependency hashes and their original standalone scope.
 

@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:17:56.088Z",
+  "kind": "D195 fixture-only refreeze a3",
+  "reason": "A2 unit169 and TypeScript passed; browser retained Stop RU/EN passed and new notice RU/EN failed only at the universal zero-overlap landscape assertion. Existing placement specifies a minimum-obstruction fallback. Measured short-landscape gaps of 48 px in RU and 88 px in EN cannot contain the existing 96 px row height. A3 changes only the fixture contract: portrait clearance stays strict; exactly RU568x320 and EN640x360 require an independent infeasibility certificate and allow only retained rail/toolbar overlap capped at7200/2880 square pixels, all other overlaps zero. Runtime510840ff, CSS, model and animation stay unchanged from a2. Full landscape navigation acceptance remains open. All a1/a2 outcomes keep their original sources; no external diagnostic was executed.",
+  "runtimeChanged": false,
+  "runtimeUnchangedSinceA2": true,
+  "previousSourceAmendment": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a2/amendment.json",
+    "sha256": "b7f604bc4429252aecd39af469bbf8834a2b190d5cc522503748e677bf00d425"
+  },
+  "archive": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/archive.json",
+    "sha256": "bcad5c9914d093bcaa756e32de40fe07b2e50244aa95d49bb3dc9af40cea1ab5"
+  },
+  "externalArchive": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a3/archive.json",
+    "sha256": "bcad5c9914d093bcaa756e32de40fe07b2e50244aa95d49bb3dc9af40cea1ab5"
+  },
+  "fixtureChange": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a3/fixture-change.json",
+    "sha256": "154fbe8843cc5f82723d19ef08355a56c817962bfc20264f5fce8d953ba20590"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/expected-source-manifest.json",
+    "sha256": "69ff9e030dc3920c7f00df23e0eb3698f1ae78d1e559085d36a22c46229ff409",
+    "fileCount": 1652
+  },
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "510840ffdaa31cffcb22c22895a8f87896730d710c630193879b2b830f28bedc"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "d49d3801a20e31ce8b79e9b206daa5e1d64de4601680ae9f009796918a7d2fd5"
+    }
+  ],
+  "updatedScope": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+    "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/originals/scope.json",
+        "sha256": "72bd495142b7a98d4744f44a181e933af38e34db773b9810140f02ca449b5792"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+        "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/originals/checkpoint.mjs",
+        "sha256": "63b62841c4d568ce59e73ac642e5a329663329133de0bbd316935ffcc5dc4a24"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/checkpoint.mjs",
+        "sha256": "d4881d3d0915e0000c0779269615585ae349cbf1cad60afe0d7bc43c07c03492"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/originals/finalize-notes.mjs",
+        "sha256": "7edd09698d0b9b498b1617103d6f54d983262d644cc08e994c16f471d24df536"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/finalize-notes.mjs",
+        "sha256": "22ea4b2b1cacf1b3dc28fe5f17bb5f8f81a1bc70e762cecded4b886d36485b14"
+      }
+    }
+  ],
+  "releaseReady": false
+}

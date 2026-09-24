@@ -1,0 +1,42 @@
+
+Running 4 tests using 1 worker
+
+
+
+[1/4] tests\pwa\booky-live-character.spec.mjs:2517:150 › Booky mobile touch gesture Stop preserves context ru
+[2/4] tests\pwa\booky-live-character.spec.mjs:2517:150 › Booky mobile touch gesture Stop preserves context en
+[3/4] tests\pwa\booky-live-character.spec.mjs:2619:150 › Booky mobile reduced motion notice and media lifecycle ru
+  1) tests\pwa\booky-live-character.spec.mjs:2619:150 › Booky mobile reduced motion notice and media lifecycle ru 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "short landscape reduced notice stays readable by touch",
+    + ]
+
+      2725 |     });
+      2726 |     await checked('trusted touch and source integrity',async()=>{o.events=await page.evaluate(()=>window.__motionNotice.events);expect(o.events.filter(e=>e.type==='click').every(e=>e.trusted&&e.pointerType==='touch')).toBe(true);expect(o.events.filter(e=>e.type==='click'&&e.gesture==='balance')).toHaveLength(2);expect(o.events.filter(e=>e.type==='click'&&e.gesture==='dance')).toHaveLength(2);expect(o.swipes.length).toBeGreaterThan(0);await fixture.verify();});
+    > 2727 |     result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{reducedMotionNoticeTracksMedia:true,reducedMotionNoticeReadableByTouch:true,allFifteenGesturesEnabledWithReducedMotion:true,reducedSelectedPoseRepeatAndStop:true,activeGestureSettlesOnReducedMotion:true,restoringMotionDoesNotReplay:true,freshTouchAnimatesAfterMotionRestore:true,motionTogglesPreserveContextAndPreferences:true,trustedTouchMotionNotice:true});expect(o.findings).toEqual([]);
+           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+      2728 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__motionNotice?.events??[]).catch(()=>[]);await fixture.close();}
+      2729 | });
+      2730 |
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:2727:487
+
+    attachment #1: booky-live-character-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-motion-notice-evidence\browser-a3\booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru\attachments\booky-live-character-source-evidence-1c5deb4e0a0431e2c7bc68001322e3f872b3f0b3.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-motion-notice-evidence\browser-a3\booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru\error-context.md
+
+
+
+
+[4/4] tests\pwa\booky-live-character.spec.mjs:2619:150 › Booky mobile reduced motion notice and media lifecycle en
+  1 failed
+    tests\pwa\booky-live-character.spec.mjs:2619:150 › Booky mobile reduced motion notice and media lifecycle ru 
+  3 passed (2.4m)

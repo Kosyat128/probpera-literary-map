@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/booky-motion-notice-20260924/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-motion-notice-20260924\\unit-a3\\vitest.json"
+  ],
+  "startedAt": "2026-09-24T10:18:38.047Z",
+  "exitCode": 0,
+  "durationMs": 11930,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/stdout.log",
+    "bytes": 183,
+    "sha256": "d15470b0b0fd1d318d198db1616e83c1fe660099004b7902876a25887f764513"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

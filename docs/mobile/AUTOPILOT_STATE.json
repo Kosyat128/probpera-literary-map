@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "3a0cb6910e098dbf2eff5aec5ee63acda56e9966",
+  "headSha": "f6b609dab43b725fa31b02257e296af2eca42907",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-24T09:31:07.094Z",
+  "updatedAt": "2026-09-24T10:34:19.630Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2519,10 +2519,12 @@
         {
           "id": "S15.A11Y-004",
           "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Reduced motion and sensory quiet mode. Shared interaction/native accessibility precedes integrated and localized device evidence."
+          "evidence": [
+            "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json"
+          ],
+          "commit": "f6b609dab43b725fa31b02257e296af2eca42907",
+          "lastValidatedAt": "2026-09-24T10:34:19.630Z",
+          "notes": "Reduced motion and sensory quiet mode. Shared interaction/native accessibility precedes integrated and localized device evidence. A localized RU/EN note in the gesture gallery explains still poses when reduced motion is requested. It uses the existing reduced-motion state, preserves all fifteen gestures and explicit Stop, and introduces no preference. The adjacent Russian happy label changes from Порадоваться to Радоваться to address its observed orphan-letter wrap; no claim is made that all gallery wrapping is resolved. Selected actual-App cases cover notice visibility, media-query lifecycle and no automatic replay, plus retained RU/EN Stop cases. Model, animation, renderer and CSS remain unchanged; three D193 standalone photos retain their original scope through exact dependency hashes. A bounded listener remeasures companion placement after watched navigation/protected controls or their ancestors finish or cancel an animation or transition, preserving symmetric cleanup and avoiding polling. Portrait cases require strict zero overlap with measured visible navigation. In exactly RU 568x320 and EN 640x360, an independent infeasibility certificate records that the unchanged 144x96 companion row cannot fit between the existing full-width panels; only the retained RU timeline-rail overlap up to 7200 px² or EN toolbar overlap up to 2880 px² is permitted, with every other overlap zero. This is a documented crowded-landscape limitation, not full landscape navigation acceptance. The Russian still-pose notice is shortened faithfully to fit the available compact reading area. Its touch-scroll driver uses a finer bounded step while retaining full text visibility, hit-point and actual-scroll assertions. Fresh 169 focused unit cases, TypeScript and 4 selected actual-App browser cases pass with 8 authenticated captures; 4 selected screenshots are visually reviewed. Three D193 standalone rest, bow and balance photos retain their original review and scope; exact model, animation and renderer dependencies match this source. PWA 97021037 and Android-dev fd439a25 are freshly rebuilt and byte-audited. 1650 source inputs remain exact. This validates the localized reduced-motion notice, selected media-query lifecycle behavior and retained explicit Stop cases; full accessibility, installed-device, art and stage acceptance remain open."
         },
         {
           "id": "S15.A11Y-007",
@@ -2694,11 +2696,12 @@
           "id": "S15.PLANETKA-006",
           "status": "OPEN",
           "evidence": [
-            "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json"
+            "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json",
+            "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json"
           ],
-          "commit": "10beb1315ea29184fced208ee26049db093e4823",
-          "lastValidatedAt": "2026-09-23T13:43:32.148Z",
-          "notes": "Reduced motion/captions/narration rights. Implement the original guide and shared policy before complete English dialogue/audio validation. Thirteen finite explicit gestures and bounded optional walking respect reduced motion, visibility and cancellation. A deliberate section approach points once without activating the target control. Silent static reduced-motion poses and local keyboard evidence do not establish narration rights, captions, screen-reader or full accessibility acceptance. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged."
+          "commit": "f6b609dab43b725fa31b02257e296af2eca42907",
+          "lastValidatedAt": "2026-09-24T10:34:19.630Z",
+          "notes": "Reduced motion/captions/narration rights. Implement the original guide and shared policy before complete English dialogue/audio validation. Thirteen finite explicit gestures and bounded optional walking respect reduced motion, visibility and cancellation. A deliberate section approach points once without activating the target control. Silent static reduced-motion poses and local keyboard evidence do not establish narration rights, captions, screen-reader or full accessibility acceptance. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged. A localized RU/EN note in the gesture gallery explains still poses when reduced motion is requested. It uses the existing reduced-motion state, preserves all fifteen gestures and explicit Stop, and introduces no preference. The adjacent Russian happy label changes from Порадоваться to Радоваться to address its observed orphan-letter wrap; no claim is made that all gallery wrapping is resolved. Selected actual-App cases cover notice visibility, media-query lifecycle and no automatic replay, plus retained RU/EN Stop cases. Model, animation, renderer and CSS remain unchanged; three D193 standalone photos retain their original scope through exact dependency hashes. A bounded listener remeasures companion placement after watched navigation/protected controls or their ancestors finish or cancel an animation or transition, preserving symmetric cleanup and avoiding polling. Portrait cases require strict zero overlap with measured visible navigation. In exactly RU 568x320 and EN 640x360, an independent infeasibility certificate records that the unchanged 144x96 companion row cannot fit between the existing full-width panels; only the retained RU timeline-rail overlap up to 7200 px² or EN toolbar overlap up to 2880 px² is permitted, with every other overlap zero. This is a documented crowded-landscape limitation, not full landscape navigation acceptance. The Russian still-pose notice is shortened faithfully to fit the available compact reading area. Its touch-scroll driver uses a finer bounded step while retaining full text visibility, hit-point and actual-scroll assertions. Fresh 169 focused unit cases, TypeScript and 4 selected actual-App browser cases pass with 8 authenticated captures; 4 selected screenshots are visually reviewed. Three D193 standalone rest, bow and balance photos retain their original review and scope; exact model, animation and renderer dependencies match this source. PWA 97021037 and Android-dev fd439a25 are freshly rebuilt and byte-audited. 1650 source inputs remain exact. This validates the localized reduced-motion notice, selected media-query lifecycle behavior and retained explicit Stop cases; full accessibility, installed-device, art and stage acceptance remain open."
         },
         {
           "id": "S15.PLANETKA-007",
@@ -2926,7 +2929,10 @@
         "node docs/mobile/evidence/S15/booky-playful-poses-20260924/check.mjs browser a2",
         "node docs/mobile/evidence/S15/booky-gesture-stop-20260924/check.mjs unit a1",
         "node docs/mobile/evidence/S15/booky-gesture-stop-20260924/check.mjs static a1",
-        "node docs/mobile/evidence/S15/booky-gesture-stop-20260924/check.mjs browser a1"
+        "node docs/mobile/evidence/S15/booky-gesture-stop-20260924/check.mjs browser a1",
+        "node docs/mobile/evidence/S15/booky-motion-notice-20260924/check.mjs unit a4",
+        "node docs/mobile/evidence/S15/booky-motion-notice-20260924/check.mjs static a4",
+        "node docs/mobile/evidence/S15/booky-motion-notice-20260924/check.mjs browser a4"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -3346,7 +3352,17 @@
         "docs/mobile/evidence/S15/booky-gesture-stop-20260924/static-a1/result.json",
         "docs/mobile/evidence/S15/booky-gesture-stop-20260924/browser-a1/result.json",
         "docs/mobile/evidence/S15/booky-gesture-stop-20260924/pwa-a1/result.json",
-        "docs/mobile/evidence/S15/booky-gesture-stop-20260924/android-a1/result.json"
+        "docs/mobile/evidence/S15/booky-gesture-stop-20260924/android-a1/result.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/README.md",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/entry.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/0cf1b1bbcb5c3017.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/visual-review.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a4/result.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a4/result.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a4/result.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/booky-motion-notice-20260924/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11707,7 +11723,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Next add a concise RU/EN notice in the mobile gesture gallery explaining that reduced motion uses still poses. Retain all fifteen gestures and the explicit Stop control without introducing a new preference. Verify media-query toggling and no automatic gesture replay with a targeted actual-touch browser check. Preserve walking through clear space, readable help, saved progress and canonical scene ownership. Full journey integration remains deferred. S03.acceptance remains first unresolved; device, full accessibility and stage/release acceptance remain open.",
+    "nextAction": "Next assess the scoped native-globe open-help short-landscape layout in src/host/host.css: consider a right-side 144x96 companion reservation by narrowing the edition rail or moving the zoom badge, preserving 44px controls and the existing placement/renderer. This is a pending candidate, not implemented or validated in D195. Preserve reduced-motion stillness, explicit Stop, saved progress and canonical scene ownership. Full journeys remain deferred; S03.acceptance and full device/accessibility/stage/release acceptance remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11842,7 +11858,8 @@
       "docs/mobile/evidence/S15/booky-touch-gestures-20260924/result.json",
       "docs/mobile/evidence/S15/booky-scale-clearance-20260924/result.json",
       "docs/mobile/evidence/S15/booky-playful-poses-20260924/result.json",
-      "docs/mobile/evidence/S15/booky-gesture-stop-20260924/result.json"
+      "docs/mobile/evidence/S15/booky-gesture-stop-20260924/result.json",
+      "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11924,7 +11941,8 @@
       "Preserve the local thirteen-gesture Surprise cycle, manual-choice skipping, trusted touch activation, finite motion, saved preferences and canonical scene ownership.",
       "Include the visible scale-feedback badge in navigation bounds; preserve reachable globe controls, finite walking, readable help, saved preferences and canonical scene ownership.",
       "Preserve all fifteen finite gestures, explicit touch repeats and interruption, distinct reduced-motion poses, saved preferences and canonical scene ownership.",
-      "Preserve all fifteen finite gestures, explicit touch Stop and manual restart, no autonomous resumption, distinct reduced-motion poses, saved preferences and canonical scene ownership."
+      "Preserve all fifteen finite gestures, explicit touch Stop and manual restart, no autonomous resumption, distinct reduced-motion poses, saved preferences and canonical scene ownership.",
+      "Preserve the RU/EN reduced-motion notice, all fifteen gestures, explicit Stop and manual restart, no automatic replay after media changes, saved preferences and canonical scene ownership."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -14368,6 +14386,22 @@
       "android": {
         "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/android-a1/result.json",
         "sha256": "a1b4770e785e1edf9e449b3b6fd399beb304bc8433cefd330cf2584c9d3a4a84"
+      },
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyMotionNotice": {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json",
+      "sha256": "67c035c7226d951d9035e2afd099f0f1fcbe7fccb155301b874ca298594f2edc",
+      "sourceCommit": "f6b609dab43b725fa31b02257e296af2eca42907",
+      "status": "BOOKY_MOTION_NOTICE_SCOPED_VALIDATION",
+      "pwa": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1/result.json",
+        "sha256": "9c52969d5880c909c6ae8e383949ee289c7ddeb0d99092f193deddeae2d09990"
+      },
+      "android": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/android-a1/result.json",
+        "sha256": "3050f71f8d31cd906041f20f638bfec662ae132723cd4f3f9a8caf8757407b8d"
       },
       "stageAccepted": false,
       "releaseReady": false

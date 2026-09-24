@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:23:08.670Z",
+  "kind": "D195 original frozen a3 evidence archive",
+  "checkpoint": "0c0e4f4d84f1312f8a696e13fd9e6d4cbb3b01cf",
+  "originals": [
+    {
+      "name": "configure.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/configure.mjs",
+        "sha256": "e495ddb15126e431177592a0397e1956709a1d7dee6e0ce43d4d898ff34badb1"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/configure.mjs",
+        "sha256": "e495ddb15126e431177592a0397e1956709a1d7dee6e0ce43d4d898ff34badb1"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/configure.mjs",
+        "sha256": "e495ddb15126e431177592a0397e1956709a1d7dee6e0ce43d4d898ff34badb1"
+      }
+    },
+    {
+      "name": "check.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/check.mjs",
+        "sha256": "e5b6219f8d70a1fa13dea443baa6cfb81abae497cf8fdb42e9057752a2844406"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/check.mjs",
+        "sha256": "e5b6219f8d70a1fa13dea443baa6cfb81abae497cf8fdb42e9057752a2844406"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/check.mjs",
+        "sha256": "e5b6219f8d70a1fa13dea443baa6cfb81abae497cf8fdb42e9057752a2844406"
+      }
+    },
+    {
+      "name": "unit.config.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit.config.mjs",
+        "sha256": "1f595d98347fc093c5c00afc6eb56fde3043871b628094ff34bdcef08dd78216"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/unit.config.mjs",
+        "sha256": "1f595d98347fc093c5c00afc6eb56fde3043871b628094ff34bdcef08dd78216"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/unit.config.mjs",
+        "sha256": "1f595d98347fc093c5c00afc6eb56fde3043871b628094ff34bdcef08dd78216"
+      }
+    },
+    {
+      "name": "playwright.config.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+      }
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/build-pwa-a1.mjs",
+        "sha256": "1e695895ed37f29f3cbdcb85efacefdb29ac99d5d9fabd720eabfc7f10afdd6b"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/build-pwa-a1.mjs",
+        "sha256": "1e695895ed37f29f3cbdcb85efacefdb29ac99d5d9fabd720eabfc7f10afdd6b"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/build-pwa-a1.mjs",
+        "sha256": "1e695895ed37f29f3cbdcb85efacefdb29ac99d5d9fabd720eabfc7f10afdd6b"
+      }
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+      }
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/build-android-a1.ps1",
+        "sha256": "1ff2651d278fe118a5e86cfed470662b03bf8675d80f542f4ddb5752eadb23b4"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/build-android-a1.ps1",
+        "sha256": "1ff2651d278fe118a5e86cfed470662b03bf8675d80f542f4ddb5752eadb23b4"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/build-android-a1.ps1",
+        "sha256": "1ff2651d278fe118a5e86cfed470662b03bf8675d80f542f4ddb5752eadb23b4"
+      }
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/verify-android-a1.mjs",
+        "sha256": "7a9c49fe27f446cc19527b0cdd8f3603a47b7d566a6583ef8b517b3406f94aa8"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/verify-android-a1.mjs",
+        "sha256": "7a9c49fe27f446cc19527b0cdd8f3603a47b7d566a6583ef8b517b3406f94aa8"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/verify-android-a1.mjs",
+        "sha256": "7a9c49fe27f446cc19527b0cdd8f3603a47b7d566a6583ef8b517b3406f94aa8"
+      }
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/preserve-android-a1.mjs",
+        "sha256": "bd4073bb9a82034a71d4344a056300926c0f00a1aeed7b780eff48ab04bca783"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/preserve-android-a1.mjs",
+        "sha256": "bd4073bb9a82034a71d4344a056300926c0f00a1aeed7b780eff48ab04bca783"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/preserve-android-a1.mjs",
+        "sha256": "bd4073bb9a82034a71d4344a056300926c0f00a1aeed7b780eff48ab04bca783"
+      }
+    },
+    {
+      "name": "checkpoint.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/checkpoint.mjs",
+        "sha256": "d4881d3d0915e0000c0779269615585ae349cbf1cad60afe0d7bc43c07c03492"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/checkpoint.mjs",
+        "sha256": "d4881d3d0915e0000c0779269615585ae349cbf1cad60afe0d7bc43c07c03492"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/checkpoint.mjs",
+        "sha256": "d4881d3d0915e0000c0779269615585ae349cbf1cad60afe0d7bc43c07c03492"
+      }
+    },
+    {
+      "name": "record-visual.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/record-visual.mjs",
+        "sha256": "1b85a27124963d0cefc1477dd4b5d6d912aea93c55d2e06d9f555f3f90da1377"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/record-visual.mjs",
+        "sha256": "1b85a27124963d0cefc1477dd4b5d6d912aea93c55d2e06d9f555f3f90da1377"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/record-visual.mjs",
+        "sha256": "1b85a27124963d0cefc1477dd4b5d6d912aea93c55d2e06d9f555f3f90da1377"
+      }
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/finalize-notes.mjs",
+        "sha256": "22ea4b2b1cacf1b3dc28fe5f17bb5f8f81a1bc70e762cecded4b886d36485b14"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/finalize-notes.mjs",
+        "sha256": "22ea4b2b1cacf1b3dc28fe5f17bb5f8f81a1bc70e762cecded4b886d36485b14"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/finalize-notes.mjs",
+        "sha256": "22ea4b2b1cacf1b3dc28fe5f17bb5f8f81a1bc70e762cecded4b886d36485b14"
+      }
+    },
+    {
+      "name": "scope.json",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+        "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/scope.json",
+        "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/scope.json",
+        "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+      }
+    },
+    {
+      "name": "entry.json",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/entry.json",
+        "sha256": "cfa229f2344b92e8311d88f5f970c83177e631496bd95262183af26799546ee1"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/entry.json",
+        "sha256": "cfa229f2344b92e8311d88f5f970c83177e631496bd95262183af26799546ee1"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/entry.json",
+        "sha256": "cfa229f2344b92e8311d88f5f970c83177e631496bd95262183af26799546ee1"
+      }
+    },
+    {
+      "name": "build-baseline.json",
+      "original": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/build-baseline.json",
+        "sha256": "14e7984235c2bfca67aea3d111f45cc2b15311e9a1332937f2c1507a478a4caf"
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/build-baseline.json",
+        "sha256": "14e7984235c2bfca67aea3d111f45cc2b15311e9a1332937f2c1507a478a4caf"
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/originals/build-baseline.json",
+        "sha256": "14e7984235c2bfca67aea3d111f45cc2b15311e9a1332937f2c1507a478a4caf"
+      }
+    }
+  ],
+  "originalFixture": {
+    "sourcePath": "tests/pwa/booky-live-character.spec.mjs",
+    "sha256": "d49d3801a20e31ce8b79e9b206daa5e1d64de4601680ae9f009796918a7d2fd5",
+    "repoArchive": {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/booky-live-character.spec.mjs",
+      "sha256": "d49d3801a20e31ce8b79e9b206daa5e1d64de4601680ae9f009796918a7d2fd5"
+    },
+    "externalArchive": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/original-fixture.mjs",
+      "sha256": "d49d3801a20e31ce8b79e9b206daa5e1d64de4601680ae9f009796918a7d2fd5"
+    }
+  },
+  "originalRuntime": {
+    "sourcePath": "src/host/PlanetMascotControls.tsx",
+    "sha256": "510840ffdaa31cffcb22c22895a8f87896730d710c630193879b2b830f28bedc",
+    "repoArchive": {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/PlanetMascotControls.tsx",
+      "sha256": "510840ffdaa31cffcb22c22895a8f87896730d710c630193879b2b830f28bedc"
+    },
+    "externalArchive": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/original-PlanetMascotControls.tsx",
+      "sha256": "510840ffdaa31cffcb22c22895a8f87896730d710c630193879b2b830f28bedc"
+    }
+  },
+  "priorAmendment": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/amendment.json",
+    "sha256": "3752d292ebab2cb0099df4723f27ce9a90273dff5117a195321b37e5fa20a336"
+  },
+  "runs": [
+    {
+      "mode": "unit",
+      "attempt": "a3",
+      "pass": true,
+      "tests": {
+        "passed": 169,
+        "failed": 0,
+        "skipped": 0
+      },
+      "exitCode": 0,
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/execution.json",
+          "sha256": "735f97de6e74b2fd8bc7f9047274e88593eb374e140b9ae3d7888eaa9bf64350"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/result.json",
+          "sha256": "dd1f20ae6ebb13c72645ac7db637cae641855c666194900b8aebee9c0547cefb"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/stdout.log",
+          "sha256": "d15470b0b0fd1d318d198db1616e83c1fe660099004b7902876a25887f764513"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/vitest.json",
+          "sha256": "e26dacba48fbbc710870643e5a0318051dd4e392140d1e5897d7c9dd261bb64c"
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/check.mjs",
+          "sha256": "e5b6219f8d70a1fa13dea443baa6cfb81abae497cf8fdb42e9057752a2844406"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/entry.json",
+          "sha256": "cfa229f2344b92e8311d88f5f970c83177e631496bd95262183af26799546ee1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit.config.mjs",
+          "sha256": "1f595d98347fc093c5c00afc6eb56fde3043871b628094ff34bdcef08dd78216"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/configure.mjs",
+          "sha256": "e495ddb15126e431177592a0397e1956709a1d7dee6e0ce43d4d898ff34badb1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+          "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+        }
+      ]
+    },
+    {
+      "mode": "static",
+      "attempt": "a3",
+      "pass": true,
+      "tests": null,
+      "exitCode": 0,
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a3/execution.json",
+          "sha256": "798e10f8b66591f6e0bacbf99feb8e0c30596b32238e1656ba8b8e979e9df22a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a3/result.json",
+          "sha256": "b3e69c57dfdba54ad3c974b2a8169a70ba843c653b70766ced8871260b837239"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a3/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a3/stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/check.mjs",
+          "sha256": "e5b6219f8d70a1fa13dea443baa6cfb81abae497cf8fdb42e9057752a2844406"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/entry.json",
+          "sha256": "cfa229f2344b92e8311d88f5f970c83177e631496bd95262183af26799546ee1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit.config.mjs",
+          "sha256": "1f595d98347fc093c5c00afc6eb56fde3043871b628094ff34bdcef08dd78216"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/configure.mjs",
+          "sha256": "e495ddb15126e431177592a0397e1956709a1d7dee6e0ce43d4d898ff34badb1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+          "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+        }
+      ]
+    },
+    {
+      "mode": "browser",
+      "attempt": "a3",
+      "pass": false,
+      "tests": {
+        "passed": 3,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1,
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a3/execution.json",
+          "sha256": "481c6b75c61939fa5ec84e9a7415f2825983628f42cf2125d1a79b7e6d408de0"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a3/playwright.json",
+          "sha256": "d4912884aa676c6277ddb65f6e2df1adc977a5146db01d9a9f1356d29c29e624"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a3/result.json",
+          "sha256": "2e829cc8493228479992778a2e4879070aa532e563a20ca10359d7217175ec30"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a3/stderr.log",
+          "sha256": "43447c4bd17a03cab242036b0199716b1c76d3a27b629cd40655f5ed3bcf890a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a3/stdout.log",
+          "sha256": "1342913dde2c409fed1d9418a96b86f183518f123cf696b53e4b4decab7e2bb5"
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/check.mjs",
+          "sha256": "e5b6219f8d70a1fa13dea443baa6cfb81abae497cf8fdb42e9057752a2844406"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/entry.json",
+          "sha256": "cfa229f2344b92e8311d88f5f970c83177e631496bd95262183af26799546ee1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit.config.mjs",
+          "sha256": "1f595d98347fc093c5c00afc6eb56fde3043871b628094ff34bdcef08dd78216"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/configure.mjs",
+          "sha256": "e495ddb15126e431177592a0397e1956709a1d7dee6e0ce43d4d898ff34badb1"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+          "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+        }
+      ]
+    }
+  ],
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/69ff9e030dc3920c.json",
+    "sha256": "69ff9e030dc3920c7f00df23e0eb3698f1ae78d1e559085d36a22c46229ff409",
+    "fileCount": 1652
+  },
+  "externalArtifacts": {
+    "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3",
+    "files": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/.last-run.json",
+        "sha256": "a0df3f6d4f250d4790102579c4454350c7622aa5496feafcc3e43bae1bc457a6"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-5a3d8c96a2ec88656b64d6befb0a711a770c1599.json",
+        "sha256": "22428a587873debe4b95cc01fd1eacd361da5f4b642b1ec09691679c19f6fd74"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-gesture-stop-en-320.png",
+        "sha256": "6b22b29784ec46cfcb194e2191c339155af16d04145e842a275e30d9a310038a"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-gesture-stop-en-640.png",
+        "sha256": "ef6db1d0cfd3cb52f4e516ae3487715cc92b1988f60d3933fe2b3cbefd7702d5"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+        "sha256": "22428a587873debe4b95cc01fd1eacd361da5f4b642b1ec09691679c19f6fd74"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/attachments/booky-live-character-source-evidence-1c5deb4e0a0431e2c7bc68001322e3f872b3f0b3.json",
+        "sha256": "08f726ff85e5c92a875e6731c7a99034f66416af0775b4a2fa3df9307e603a7c"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/booky-live-character.json",
+        "sha256": "08f726ff85e5c92a875e6731c7a99034f66416af0775b4a2fa3df9307e603a7c"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/booky-motion-notice-ru-390.png",
+        "sha256": "48f3b95f5637da19ef2668a93a0297092ab392ce36d5f8dc60f01e8ea1763643"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru/error-context.md",
+        "sha256": "aabbfc554b7b1506ec1852aaed1169e2a204ad77db1e437b4684567bcfdf2448"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/attachments/booky-live-character-source-evidence-51d223b6b42b6f562fc4e8cc1f7d8afc08b24aa4.json",
+        "sha256": "e0ed600bf5f07807276b4fb550958e5228daf5620c54288db2178dc5033cd01c"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/booky-live-character.json",
+        "sha256": "e0ed600bf5f07807276b4fb550958e5228daf5620c54288db2178dc5033cd01c"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/booky-motion-notice-en-320.png",
+        "sha256": "aab36c7db629d8dac94abf9351abb7ad107c1b800d59a464ec9dc152af37bc5c"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en/booky-motion-notice-en-640.png",
+        "sha256": "24985a95d1eed55685ba4d5eeefc230d0a8b5143715231323e4037df470607b7"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-eb0116b3627f9948ec466fc9570a9b6979d47a03.json",
+        "sha256": "8e5613f1dc1f90f5789279411aa8612e1e8814e40fc2b5098d32203d026091e8"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-gesture-stop-ru-390.png",
+        "sha256": "7bcbb973d321acd2a92d608f3c884d9ca980cfc18cf6e16d521da1cd9e280098"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-gesture-stop-ru-568.png",
+        "sha256": "5f94d10cff12b8b038a31e05a234adaefca3c79f0316347e2a89ea536691a468"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/browser-a3/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+        "sha256": "8e5613f1dc1f90f5789279411aa8612e1e8814e40fc2b5098d32203d026091e8"
+      }
+    ]
+  },
+  "diagnosticsExecuted": false,
+  "scope": "Immutable a3 helper, runtime and fixture copies with prior a1/a2 amendment chain retained. Exact references preserve a3 unit169/static PASS and browser 3 PASS / 1 FAIL; no source correction, rerun or retrospective acceptance.",
+  "releaseReady": false
+}

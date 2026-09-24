@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:28:14.374Z",
+  "pass": true,
+  "amendment": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/amendment.json",
+    "sha256": "ed3f44d897fe69119190dd1ef268e186b06def451871b1c454c5c88413ebac0d"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/entry.json",
+    "sha256": "7477158d8d5cfddf4edee6a64b89fe20508d58778df0ff0343697958cbc9d627"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/expected-source-manifest.json",
+    "sha256": "0cf1b1bbcb5c301707268df4bd3fbb1f00903071d1e5fa23a1f2bda5a1345354",
+    "fileCount": 1652
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/scope.json",
+        "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+        "sha256": "7979faf36a251591398dfbaec9ce35dbaf80a7da9b2ea31308cb11f3b8c3b0b0"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/checkpoint.mjs",
+        "sha256": "d4881d3d0915e0000c0779269615585ae349cbf1cad60afe0d7bc43c07c03492"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/checkpoint.mjs",
+        "sha256": "b3ea8016d1b988d6abf4dc735c2abb75c727277445d2a174dc93dcaaebed18a7"
+      }
+    }
+  ],
+  "testsRun": false,
+  "buildsRun": false,
+  "diagnosticExecuted": false,
+  "releaseReady": false
+}

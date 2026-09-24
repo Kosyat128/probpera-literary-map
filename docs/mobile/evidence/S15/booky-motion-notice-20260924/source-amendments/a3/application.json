@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:17:56.092Z",
+  "pass": true,
+  "amendment": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/amendment.json",
+    "sha256": "3752d292ebab2cb0099df4723f27ce9a90273dff5117a195321b37e5fa20a336"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/entry.json",
+    "sha256": "cfa229f2344b92e8311d88f5f970c83177e631496bd95262183af26799546ee1"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/expected-source-manifest.json",
+    "sha256": "69ff9e030dc3920c7f00df23e0eb3698f1ae78d1e559085d36a22c46229ff409",
+    "fileCount": 1652
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/originals/scope.json",
+        "sha256": "72bd495142b7a98d4744f44a181e933af38e34db773b9810140f02ca449b5792"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+        "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/originals/checkpoint.mjs",
+        "sha256": "63b62841c4d568ce59e73ac642e5a329663329133de0bbd316935ffcc5dc4a24"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/checkpoint.mjs",
+        "sha256": "d4881d3d0915e0000c0779269615585ae349cbf1cad60afe0d7bc43c07c03492"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/originals/finalize-notes.mjs",
+        "sha256": "7edd09698d0b9b498b1617103d6f54d983262d644cc08e994c16f471d24df536"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/finalize-notes.mjs",
+        "sha256": "22ea4b2b1cacf1b3dc28fe5f17bb5f8f81a1bc70e762cecded4b886d36485b14"
+      }
+    }
+  ],
+  "testsRun": false,
+  "buildsRun": false,
+  "diagnosticExecuted": false,
+  "releaseReady": false
+}

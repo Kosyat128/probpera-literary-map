@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T09:48:00.646Z",
+  "stage": "S15",
+  "checkpoint": "0c0e4f4d84f1312f8a696e13fd9e6d4cbb3b01cf",
+  "previous": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/result.json",
+    "sha256": "f3e666f29a215802ae8a9c1bdde676eac98e6a1138a8426549c8ba0f81f799d0"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/result.json",
+    "sha256": "f3e666f29a215802ae8a9c1bdde676eac98e6a1138a8426549c8ba0f81f799d0"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/source-manifests/c984b40085910b87.json",
+    "sha256": "c984b40085910b872fa3058607ab75dd1283712913030a133aab52cfd79b5a31",
+    "fileCount": 1652
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+    "sha256": "ca61896a8c189523ed0b83634bdb4ac6573800aa846fea04e8faffc0c563e445"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "472addf4ac16dd6f546d221176b3c1a62fe0b1a7ffa889eb46f4164818a0b92a"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "8486504fc377eb72f0362131f92e752e2d3f695b152413ca49258990f7af4541"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "cda907d1048c96650102d22ee3a64edaf97bc9fd78b25c9099853d6d510a5f80"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "095a5a580570e9f385507886a388f00c6fc3195cdd77329b2a59aad480d206fe"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "957ec5d7cc856f80072a1fea0c70483b5b62d4f3f0a9049cb8bdf33c205130b3"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "9e020cf28482e30efd7dd2c2d7d34c0c5d31f852ef5ff9ea75e646faba22b8e9"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "365e8ce0834be9d2fb6a7dc690e1cc53a2a209cad92c1cadf5367750d5dfadbe"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "435f9e534b44585098a7d396f80382795d7146a8047595f3273ce97c6ed4fd1e"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "fcf4bb2d5c394ad2fc8e0bae87c7379d2678b952330f6846378425e013db7162"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "f74331aa784c1563e36e5aee800c3da9980269f9b83e3740355f323c35dfc44f"
+    }
+  ],
+  "sourceInputCount": 1652,
+  "protectedInputCount": 1650,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.tsx"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "0c0e4f4d84f1312f8a696e13fd9e6d4cbb3b01cf",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky mobile touch gesture Stop preserves context ru",
+    "Booky mobile touch gesture Stop preserves context en",
+    "Booky mobile reduced motion notice and media lifecycle ru",
+    "Booky mobile reduced motion notice and media lifecycle en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 169,
+  "expectedBrowserTests": 4,
+  "expectedImages": 8,
+  "scope": "A localized RU/EN note in the gesture gallery explains still poses when reduced motion is requested. It uses the existing reduced-motion state, preserves all fifteen gestures and explicit Stop, and introduces no preference. The adjacent Russian happy label changes from Порадоваться to Радоваться to address its observed orphan-letter wrap; no claim is made that all gallery wrapping is resolved. Selected actual-App cases cover notice visibility, media-query lifecycle and no automatic replay, plus retained RU/EN Stop cases. Model, animation, renderer and CSS remain unchanged; three D193 standalone photos retain their original scope through exact dependency hashes.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:28:14.370Z",
+  "kind": "D195 runtime and fixture refreeze a4",
+  "reason": "A3 unit169 and TypeScript passed; browser had3 PASS/1 FAIL. RU568x320 notice paragraph measured143.984375px against139px available, so its actual full-text readability assertion failed. A4 shortens only the Russian notice to «Меньше движения: все жесты доступны как неподвижные позы.»; English copy and all readability criteria remain unchanged. The new-notice touch driver uses a32px minimum step rather than48px to avoid jumping across the shorter paragraph visibility interval, retaining real-scroll>1, full text visibility and hit checks. Earlier27 cases are byte-identical. The bounded navigation remeasurement and qualified crowded-landscape contract remain as in a3. All a1–a3 outcomes remain attributed to their original inputs; no external diagnostic was executed.",
+  "runtimeChanged": true,
+  "previousSourceAmendment": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a3/amendment.json",
+    "sha256": "3752d292ebab2cb0099df4723f27ce9a90273dff5117a195321b37e5fa20a336"
+  },
+  "archive": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/archive.json",
+    "sha256": "3aa402d4016f7b1c526e1a7ea4b5122e12c365649d46b59d442df2384420fb00"
+  },
+  "externalArchive": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/archive.json",
+    "sha256": "3aa402d4016f7b1c526e1a7ea4b5122e12c365649d46b59d442df2384420fb00"
+  },
+  "fixtureChange": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/fixture-change.json",
+    "sha256": "88b9394aa715d868c08af0c011c49854727d94b98f4603d0ef09478cf04f1186"
+  },
+  "runtimeChange": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a4/runtime-change.json",
+    "sha256": "bf871b2a2162bb408f9123f1e1365c55e611dfe35fcd85f9e2ba89828706ed64"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/expected-source-manifest.json",
+    "sha256": "0cf1b1bbcb5c301707268df4bd3fbb1f00903071d1e5fa23a1f2bda5a1345354",
+    "fileCount": 1652
+  },
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "bbd7a5e39d7b23429aacef6ad876a322d0c53d264608cabe9a294280cb7b4146"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "ed614bf7c5fb4c95beee7ddb3a44f051ddd41318655c2198a114e1a173da85ec"
+    }
+  ],
+  "updatedScope": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+    "sha256": "7979faf36a251591398dfbaec9ce35dbaf80a7da9b2ea31308cb11f3b8c3b0b0"
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/scope.json",
+        "sha256": "c76793d8fad183f7785a104782e18e5079a62ed9e9c71c114fc442e3fbb9fcbf"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+        "sha256": "7979faf36a251591398dfbaec9ce35dbaf80a7da9b2ea31308cb11f3b8c3b0b0"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/originals/checkpoint.mjs",
+        "sha256": "d4881d3d0915e0000c0779269615585ae349cbf1cad60afe0d7bc43c07c03492"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/checkpoint.mjs",
+        "sha256": "b3ea8016d1b988d6abf4dc735c2abb75c727277445d2a174dc93dcaaebed18a7"
+      }
+    }
+  ],
+  "releaseReady": false
+}

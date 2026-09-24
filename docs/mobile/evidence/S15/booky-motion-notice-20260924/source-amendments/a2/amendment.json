@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:02:06.738Z",
+  "kind": "D195 runtime and fixture refreeze a2",
+  "reason": "Formal a1 unit169 and TypeScript passed; browser retained Stop RU/EN passed and new notice RU/EN failed, true 2 PASS / 2 FAIL. The fixture required unchanged derived character coordinates across a media-query layout change and sampled a landscape baseline during the existing navigation entrance. A1 did not capture final navigation obstacle geometry, so the exact obstacle cause is not claimed as measured. Source inspection separately found that navigation animation/transition completion did not trigger companion placement remeasurement. The runtime now remeasures only for watched navigation/protected targets or their ancestors on completion/cancellation, with symmetric cleanup and no polling. The corrected fixture records settled navigation/card/character layout, retains strict semantic/saved-position/context and no-animation checks, and requires pixel equality when navigation bounds match. Both Controls and fixture changed for a2; no external diagnostic was executed.",
+  "runtimeChanged": true,
+  "archive": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a2/archive.json",
+    "sha256": "213529a5cbd68eba0927e6dbef360811727b824bdbd39e5a43a1c6a62309910a"
+  },
+  "externalArchive": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a2/archive.json",
+    "sha256": "213529a5cbd68eba0927e6dbef360811727b824bdbd39e5a43a1c6a62309910a"
+  },
+  "fixtureChange": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a2/fixture-change.json",
+    "sha256": "5698850f0b0113690e9bf715341a8b5d5abd6f32a08942c95f4338686932a428"
+  },
+  "runtimeOriginal": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a2/runtime-original.json",
+    "sha256": "f4473fba3e746eca67eda6048cf6e79c31809713692048b807776b705891879a"
+  },
+  "runtimeChange": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/refreeze-a2/runtime-change.json",
+    "sha256": "9024a3f4c2ae9d8131a0a79465c0812d8bd512710b27afc6b4d4e15317ad8933"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a2/expected-source-manifest.json",
+    "sha256": "b926f085bbc055fa6ee622a8f4cc033cc9fe9bf0eed48bbfbe7a47e8fc5ef23d",
+    "fileCount": 1652
+  },
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "510840ffdaa31cffcb22c22895a8f87896730d710c630193879b2b830f28bedc"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "2141e203f53a3953e43395ae5e7171f5313c02b04216906f23a23f248db8f3ac"
+    }
+  ],
+  "updatedScope": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+    "sha256": "72bd495142b7a98d4744f44a181e933af38e34db773b9810140f02ca449b5792"
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "ca61896a8c189523ed0b83634bdb4ac6573800aa846fea04e8faffc0c563e445"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/scope.json",
+        "sha256": "72bd495142b7a98d4744f44a181e933af38e34db773b9810140f02ca449b5792"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "1f4879f6b00a9adc7f80733881f026b8e8d15c5ff579d7d988aa5bbbddd398ab"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/checkpoint.mjs",
+        "sha256": "63b62841c4d568ce59e73ac642e5a329663329133de0bbd316935ffcc5dc4a24"
+      }
+    }
+  ],
+  "releaseReady": false
+}

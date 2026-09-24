@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 38594,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "efb84c7e6ff4c450319d8543bb7654d712d03cb2dbcb217b76785af423921caa"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "e02c4673594b21d314a65974c7ab98d9b0395a3f13a59186eaf16939cb01f79e"
+  }
+}

@@ -1,0 +1,10 @@
+
+Running 4 tests using 1 worker
+
+
+
+[1/4] tests\pwa\booky-live-character.spec.mjs:2517:150 › Booky mobile touch gesture Stop preserves context ru
+[2/4] tests\pwa\booky-live-character.spec.mjs:2517:150 › Booky mobile touch gesture Stop preserves context en
+[3/4] tests\pwa\booky-live-character.spec.mjs:2619:150 › Booky mobile reduced motion notice and media lifecycle ru
+[4/4] tests\pwa\booky-live-character.spec.mjs:2619:150 › Booky mobile reduced motion notice and media lifecycle en
+  4 passed (2.6m)

@@ -1,0 +1,688 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:34:19.630Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_MOTION_NOTICE_SCOPED_VALIDATION",
+  "sourceCommit": "f6b609dab43b725fa31b02257e296af2eca42907",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/entry.json",
+    "sha256": "7477158d8d5cfddf4edee6a64b89fe20508d58778df0ff0343697958cbc9d627"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/checkpoint.mjs",
+    "sha256": "b3ea8016d1b988d6abf4dc735c2abb75c727277445d2a174dc93dcaaebed18a7"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/result.json",
+    "sha256": "f3e666f29a215802ae8a9c1bdde676eac98e6a1138a8426549c8ba0f81f799d0"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/0cf1b1bbcb5c3017.json",
+    "sha256": "0cf1b1bbcb5c301707268df4bd3fbb1f00903071d1e5fa23a1f2bda5a1345354",
+    "fileCount": 1652
+  },
+  "sourceCommits": [
+    "f6b609dab43b725fa31b02257e296af2eca42907"
+  ],
+  "attempts": {
+    "unit": "a4",
+    "static": "a4",
+    "browser": "a4"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a4/result.json",
+      "sha256": "40341e4d9615de24b871ae96a0cf1b1beb3a088a404d27dde81ca6a49b99053b",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a4/execution.json",
+        "sha256": "046c3d797f19328b5dd2c3a227e97aeb4a3c32c11b087f0b1ab39d939ea0cd23"
+      },
+      "tests": {
+        "passed": 169,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a4/vitest.json",
+        "sha256": "dde8745edfd040afb7433c26fe65eaf72c875e6bb09ad1f6c854cdd58102e131"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a4/result.json",
+      "sha256": "bf0c82454f42e1b245f5ee5adc2b58e5ffc06d28204b06257d76026f47969447",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a4/execution.json",
+        "sha256": "5715ae2470850266e3aadad69367491f8691d5a4c9360efe6f5c0e64bfdfb428"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a4/result.json",
+      "sha256": "d25ac41ea13797edcaefa9942f25ec7dcf870073cab16501960f0ab8eba2c93c",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a4/execution.json",
+        "sha256": "f0cb94983391d87dff1ec8d2f0c393112ce50bfe6c771fb58e6d2ca34e0a5073"
+      },
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a4/playwright.json",
+        "sha256": "244ea9fa75a95a45c02f00da89d46eb42ce0a52d941dbcdb831cf849c61d42ca"
+      }
+    }
+  },
+  "earlierAttempts": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a1/result.json",
+        "sha256": "c4b6ce96ad18ea7c9d43645ffe408b8bebf6b91957423dcefac0e00d4c412417"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a1/execution.json",
+        "sha256": "5f37e47d10573c898a521d3ebd05ada5a3e707d4b0c3a76e281c39298e1fef7d"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a1/playwright.json",
+        "sha256": "73c5865b090cda5d99f0fc9501d1b821cbe1bf65f52fb8d70b4bd81eecddaeee"
+      },
+      "pass": false,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/7f771d01ddd6017f.json",
+        "sha256": "7f771d01ddd6017ff5cffed8f262e2494ffad55911eb3753f46a852a324e485b",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a2/result.json",
+        "sha256": "66b2644fe03d6ebba7a79a6c373433dc96206730214e82946c19441f7b4fb798"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a2/execution.json",
+        "sha256": "fce665ae6fb630a73aa8b00d0da0c332b6aeb55d79938fe31321e1d6df14e9b8"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a2/playwright.json",
+        "sha256": "994e432dee290cddb9ea762963558cf97abcf33d6b253df85f7c8d2011f6dba5"
+      },
+      "pass": false,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/b926f085bbc055fa.json",
+        "sha256": "b926f085bbc055fa6ee622a8f4cc033cc9fe9bf0eed48bbfbe7a47e8fc5ef23d",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a3/result.json",
+        "sha256": "2e829cc8493228479992778a2e4879070aa532e563a20ca10359d7217175ec30"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a3/execution.json",
+        "sha256": "481c6b75c61939fa5ec84e9a7415f2825983628f42cf2125d1a79b7e6d408de0"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/browser-a3/playwright.json",
+        "sha256": "d4912884aa676c6277ddb65f6e2df1adc977a5146db01d9a9f1356d29c29e624"
+      },
+      "pass": false,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/69ff9e030dc3920c.json",
+        "sha256": "69ff9e030dc3920c7f00df23e0eb3698f1ae78d1e559085d36a22c46229ff409",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a1/result.json",
+        "sha256": "a97a371398a206ae1ee75dd3b433320d5eece0ddc9e7c6c71ddb430caddf5583"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a1/execution.json",
+        "sha256": "c1d6b28dc320d821d641edf4bdcb078eafe4526b62e5fb95b045fe8a98c5bb4d"
+      },
+      "rawReport": null,
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/7f771d01ddd6017f.json",
+        "sha256": "7f771d01ddd6017ff5cffed8f262e2494ffad55911eb3753f46a852a324e485b",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a2/result.json",
+        "sha256": "e25d77e9d0273dae9acab16e704dfd6ff037a86965fa77211308e1eb9d372d83"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a2/execution.json",
+        "sha256": "7eeed476fb4936914000553bebacb6d3c7979493bdeb8809c7c8f55091bb7a37"
+      },
+      "rawReport": null,
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/b926f085bbc055fa.json",
+        "sha256": "b926f085bbc055fa6ee622a8f4cc033cc9fe9bf0eed48bbfbe7a47e8fc5ef23d",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a3/result.json",
+        "sha256": "b3e69c57dfdba54ad3c974b2a8169a70ba843c653b70766ced8871260b837239"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/static-a3/execution.json",
+        "sha256": "798e10f8b66591f6e0bacbf99feb8e0c30596b32238e1656ba8b8e979e9df22a"
+      },
+      "rawReport": null,
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/69ff9e030dc3920c.json",
+        "sha256": "69ff9e030dc3920c7f00df23e0eb3698f1ae78d1e559085d36a22c46229ff409",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a1/result.json",
+        "sha256": "c72692d7a40a10bb3f1a95eae1f1649c6d88984dc2a766af4b8d5725cfa67b3a"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a1/execution.json",
+        "sha256": "98cb39bfe25cef76201116f01ae808ffee99b85931e6fba3f927616f072f9381"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a1/vitest.json",
+        "sha256": "4179055d4018653863329b0f32618bb3b7787f7ce32ee4617ebd7e5f632a24ef"
+      },
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/7f771d01ddd6017f.json",
+        "sha256": "7f771d01ddd6017ff5cffed8f262e2494ffad55911eb3753f46a852a324e485b",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a2/result.json",
+        "sha256": "e19383d854bb506f3272fc1f73b40f6fc18e067dc30cecd38bef314ee83837e0"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a2/execution.json",
+        "sha256": "8dd681592b650fc6a1d2a5506a57dbd4040e25d774dad8bdf134e905f2a81c4c"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a2/vitest.json",
+        "sha256": "b8fce78525f7d25a42d6bb76612652d26577686aba03948bccbff228064e1a8d"
+      },
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/b926f085bbc055fa.json",
+        "sha256": "b926f085bbc055fa6ee622a8f4cc033cc9fe9bf0eed48bbfbe7a47e8fc5ef23d",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/result.json",
+        "sha256": "dd1f20ae6ebb13c72645ac7db637cae641855c666194900b8aebee9c0547cefb"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/execution.json",
+        "sha256": "735f97de6e74b2fd8bc7f9047274e88593eb374e140b9ae3d7888eaa9bf64350"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/unit-a3/vitest.json",
+        "sha256": "e26dacba48fbbc710870643e5a0318051dd4e392140d1e5897d7c9dd261bb64c"
+      },
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/69ff9e030dc3920c.json",
+        "sha256": "69ff9e030dc3920c7f00df23e0eb3698f1ae78d1e559085d36a22c46229ff409",
+        "fileCount": 1652
+      },
+      "retainedOnly": true
+    }
+  ],
+  "diagnosticHistory": null,
+  "unitCount": 169,
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserCases": 4,
+  "actualAppCaseCount": 4,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a4\\booky-live-character-Booky-c314f-e-Stop-preserves-context-ru\\booky-live-character.json",
+      "sha256": "1401b8b543651a377b2b690e6086ec02cf5c9b97e1b9ed310603008df98b871c",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a4\\booky-live-character-Booky-c314f-e-Stop-preserves-context-ru\\attachments\\booky-live-character-source-evidence-5a890d89a7d2056ac8baf60467ff29934f809910.json",
+        "sha256": "1401b8b543651a377b2b690e6086ec02cf5c9b97e1b9ed310603008df98b871c"
+      },
+      "test": "Booky mobile touch gesture Stop preserves context ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a4\\booky-live-character-Booky-32509-e-Stop-preserves-context-en\\booky-live-character.json",
+      "sha256": "623897408535c52766095e304273e77d319da4efeb28db94d7e28b41ba4af1f4",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a4\\booky-live-character-Booky-32509-e-Stop-preserves-context-en\\attachments\\booky-live-character-source-evidence-84b437916de2e1279335f95eb98612dcc3eb9a3e.json",
+        "sha256": "623897408535c52766095e304273e77d319da4efeb28db94d7e28b41ba4af1f4"
+      },
+      "test": "Booky mobile touch gesture Stop preserves context en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a4\\booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru\\booky-live-character.json",
+      "sha256": "8444ae082b6638e6e5d0fb550c2966741f94595960ebedf006f0607bbc61489e",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a4\\booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru\\attachments\\booky-live-character-source-evidence-105ba0c2ab8d8aae054b5fe3c690387e915d1c6a.json",
+        "sha256": "8444ae082b6638e6e5d0fb550c2966741f94595960ebedf006f0607bbc61489e"
+      },
+      "test": "Booky mobile reduced motion notice and media lifecycle ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a4\\booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en\\booky-live-character.json",
+      "sha256": "cb8730d9e10dcffc1b4e9547d90bffac661cff4fd06354396e214017046c2bb2",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-motion-notice-evidence\\browser-a4\\booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en\\attachments\\booky-live-character-source-evidence-b21a4b31c3b193a046c7a0954f61dcdd03164ec6.json",
+        "sha256": "cb8730d9e10dcffc1b4e9547d90bffac661cff4fd06354396e214017046c2bb2"
+      },
+      "test": "Booky mobile reduced motion notice and media lifecycle en"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "Booky mobile touch gesture Stop preserves context ru",
+      "scenario": "mobile-touch-gesture-stop-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "headerGestureStopReachable": true,
+        "gestureStopHeaderTitleFits": true,
+        "touchStopsActiveGesture": true,
+        "stoppedGestureStaysStillPastDeadline": true,
+        "stopClearsExplicitSelection": true,
+        "stoppedGestureCanRestartByTouch": true,
+        "stopPreservesSurpriseCycle": true,
+        "reducedGestureStopReturnsNeutral": true,
+        "tourGestureStopRetainsContext": true,
+        "stopPreservesPreferencesPositionAndScene": true,
+        "trustedTouchGestureStop": true
+      }
+    },
+    {
+      "test": "Booky mobile touch gesture Stop preserves context en",
+      "scenario": "mobile-touch-gesture-stop-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "headerGestureStopReachable": true,
+        "gestureStopHeaderTitleFits": true,
+        "touchStopsActiveGesture": true,
+        "stoppedGestureStaysStillPastDeadline": true,
+        "stopClearsExplicitSelection": true,
+        "stoppedGestureCanRestartByTouch": true,
+        "stopPreservesSurpriseCycle": true,
+        "reducedGestureStopReturnsNeutral": true,
+        "tourGestureStopRetainsContext": true,
+        "stopPreservesPreferencesPositionAndScene": true,
+        "trustedTouchGestureStop": true
+      }
+    },
+    {
+      "test": "Booky mobile reduced motion notice and media lifecycle ru",
+      "scenario": "mobile-reduced-motion-notice-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "reducedMotionNoticeTracksMedia": true,
+        "reducedMotionNoticeReadableByTouch": true,
+        "allFifteenGesturesEnabledWithReducedMotion": true,
+        "reducedSelectedPoseRepeatAndStop": true,
+        "activeGestureSettlesOnReducedMotion": true,
+        "restoringMotionDoesNotReplay": true,
+        "freshTouchAnimatesAfterMotionRestore": true,
+        "motionTogglesPreserveContextAndPreferences": true,
+        "trustedTouchMotionNotice": true
+      },
+      "observationChecks": {
+        "observation": "motionNotice",
+        "checks": [
+          {
+            "name": "reduced notice is readable and all fifteen gestures stay enabled",
+            "pass": true
+          },
+          {
+            "name": "explicit static pose repeats and Stop restores neutral",
+            "pass": true
+          },
+          {
+            "name": "active Dance settles on reduce and normal motion does not replay",
+            "pass": true
+          },
+          {
+            "name": "short landscape reduced notice stays readable by touch",
+            "pass": true
+          },
+          {
+            "name": "trusted touch and source integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky mobile reduced motion notice and media lifecycle en",
+      "scenario": "mobile-reduced-motion-notice-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "reducedMotionNoticeTracksMedia": true,
+        "reducedMotionNoticeReadableByTouch": true,
+        "allFifteenGesturesEnabledWithReducedMotion": true,
+        "reducedSelectedPoseRepeatAndStop": true,
+        "activeGestureSettlesOnReducedMotion": true,
+        "restoringMotionDoesNotReplay": true,
+        "freshTouchAnimatesAfterMotionRestore": true,
+        "motionTogglesPreserveContextAndPreferences": true,
+        "trustedTouchMotionNotice": true
+      },
+      "observationChecks": {
+        "observation": "motionNotice",
+        "checks": [
+          {
+            "name": "reduced notice is readable and all fifteen gestures stay enabled",
+            "pass": true
+          },
+          {
+            "name": "explicit static pose repeats and Stop restores neutral",
+            "pass": true
+          },
+          {
+            "name": "active Dance settles on reduce and normal motion does not replay",
+            "pass": true
+          },
+          {
+            "name": "short landscape reduced notice stays readable by touch",
+            "pass": true
+          },
+          {
+            "name": "trusted touch and source integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/visual-review.json",
+    "sha256": "6df21a8dbc00bed7cfd30d4e808f73498fdfc02bbd2f727730a9ba2d8b463d71"
+  },
+  "newPhotoReview": null,
+  "newModelPhotoCount": 0,
+  "retainedModelPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "inspectedImageCount": 4,
+  "totalCapturedImageCount": 8,
+  "visualReviewScope": "Direct review of the selected final RU/EN mobile reduced-motion notice captures, covering localized text, the surrounding gesture gallery, header controls and character framing. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "visualReviewLimitations": [
+    "This visual review covers 4 of 8 final captures. It does not claim all retained images were inspected again.",
+    "Static images show the selected notice and gallery layouts; they cannot establish media-query lifecycle timing, absence of automatic replay, trusted-touch activation or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1650,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "0c0e4f4d84f1312f8a696e13fd9e6d4cbb3b01cf",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1/result.json",
+    "sha256": "9c52969d5880c909c6ae8e383949ee289c7ddeb0d99092f193deddeae2d09990"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/android-a1/result.json",
+    "sha256": "3050f71f8d31cd906041f20f638bfec662ae132723cd4f3f9a8caf8757407b8d"
+  },
+  "pwaBuildId": "970210373604e6eb2f800f98f2a73632329976702f09afb514f615575e5ac398",
+  "androidBuildId": "fd439a254b9ffbf5ccee10857ac7ef44b5650018d4d90fb57a9439460bf78db1",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/android-fd439a25/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "65080ac2116b600c859034c2f456f01980f038b1115dd92bd3f7e0c8ad7e690d"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/pwa-97021037/artifact.json",
+      "sha256": "9cd13cab34127c4f8d924efee44a4f0c3a573e5bf97fa8d89a74dba1bede9455"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-motion-notice-evidence/android-fd439a25/runtime/artifact.json",
+      "sha256": "fb4c114c6e69c7cde6e4747edccd14b3234d21732fe331f0a67d80ccf298eb11"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1/strict-audit.json",
+      "sha256": "5c0441249d220281c18fa25f2bff2802d347647768dfd048a644bd761eed3487"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/android-a1/native-artifact-audit.json",
+      "sha256": "f2b40fe33f62b3bb05fbf2bb673a46c4cd7f531f45940884a45ae0ca5dde8693"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/android-a1/android-dev-apk-verification.json",
+      "sha256": "4253ff35e0e272c79cf992dda08bdec82c5c0999b5b62108094daa9a174bde75"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/android-a1/build-run.json",
+      "sha256": "bd2d1893125a3f4560af1697b0278798abcfd00267b731e0c14262a6a773b733"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/build-baseline.json",
+    "sha256": "14e7984235c2bfca67aea3d111f45cc2b15311e9a1332937f2c1507a478a4caf"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1/copy-verification.json",
+    "sha256": "1a2b41925a323e3acc4559b04d1adff007fcabada8f5569dc945fac84a9dbb88"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/pwa-a1/playwright.json",
+    "sha256": "923f95e92efcd6399e024ca2c399563f5b0967fd7b56c46faa9c5e5ed5623634"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "3a0cb6910e098dbf2eff5aec5ee63acda56e9966",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/result.json",
+      "sha256": "f3e666f29a215802ae8a9c1bdde676eac98e6a1138a8426549c8ba0f81f799d0"
+    },
+    "unitCount": 169,
+    "browserCases": 4,
+    "allPriorSelectedCasesRerun": false,
+    "priorSelectedBrowserCaseCount": 4,
+    "currentSelectedBrowserCaseCount": 4,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+      "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+    }
+  },
+  "criteriaUpdated": [
+    "PLANETKA-006",
+    "A11Y-004"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD195Recorded": true,
+  "nextAction": "Next assess the scoped native-globe open-help short-landscape layout in src/host/host.css: consider a right-side 144x96 companion reservation by narrowing the edition rail or moving the zoom badge, preserving 44px controls and the existing placement/renderer. This is a pending candidate, not implemented or validated in D195. Preserve reduced-motion stillness, explicit Stop, saved progress and canonical scene ownership. Full journeys remain deferred; S03.acceptance and full device/accessibility/stage/release acceptance remain open.",
+  "limitations": [
+    "Portrait cases require strict zero overlap with measured visible navigation. In exactly RU 568x320 and EN 640x360, an independent infeasibility certificate records that the unchanged 144x96 companion row cannot fit between the existing full-width panels; only the retained RU timeline-rail overlap up to 7200 px² or EN toolbar overlap up to 2880 px² is permitted, with every other overlap zero. This is a documented crowded-landscape limitation, not full landscape navigation acceptance.",
+    "Fresh browser evidence covers four selected RU/EN reduced-motion notice and retained Stop cases; live-model, open-help, gesture-gallery, walking, utility and larger suites remain attributed to their original sources.",
+    "Model geometry, animation and renderer inputs are unchanged. The three D193 rest/bow/balance photos are retained only through exact dependency hashes and keep their original standalone-render scope.",
+    "Static standalone pose renders do not demonstrate application timing, reachability or device performance. Those claims are limited to the separately recorded selected actual-App browser checks.",
+    "This is scoped reduced-motion evidence for PLANETKA-006 and A11Y-004. Captions, narration rights, sensory-quiet mode, screen-reader behavior, installed-device, full accessibility, performance, art, stage and release acceptance remain open.",
+    "Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved. All requirement and stage statuses remain unchanged.",
+    "This visual review covers 4 of 8 final captures. It does not claim all retained images were inspected again.",
+    "Static images show the selected notice and gallery layouts; they cannot establish media-query lifecycle timing, absence of automatic replay, trusted-touch activation or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed.",
+    "Three static posed standalone renders using the current canonical model and animation; they are not application screenshots or installed-device evidence.",
+    "The images inspect rest plus the midpoints of bow and balance. Finite duration, restoration, reduced motion and touch behavior depend on the separate formal tests.",
+    "All three poses use the same neutral-model camera and lighting. No image generation, retouching or per-pose framing was used.",
+    "The model source is unchanged; the new pose evidence must also remain bound to the recorded animation dependency SHA."
+  ],
+  "bookyMotionNoticeImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false,
+  "sourceAmendment": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-amendments/a4/amendment.json",
+    "sha256": "ed3f44d897fe69119190dd1ef268e186b06def451871b1c454c5c88413ebac0d"
+  }
+}
