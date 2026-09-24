@@ -80,7 +80,7 @@ function visibleRect(element: Element, view: Rect): Rect | null {
   return right - left >= 2 && bottom - top >= 2 ? { left, top, width: right - left, height: bottom - top } : null;
 }
 const protectedControls = ".native-planet-panel__header, .native-planet-app .atlas-immersive-chrome .interface-language-control";
-const navigationControls = ".native-planet-app .globe-controls, .native-planet-app .atlas-country-sheet-toggle, "
+const navigationControls = ".native-planet-app .globe-controls, .native-planet-app .globe-scale-feedback, .native-planet-app .atlas-country-sheet-toggle, "
   + ".native-planet-app .globe-style-switch, .native-planet-app .globe-edition-scroll-cue, "
   + ".native-planet-app .globe-style-switch-toggle, .native-planet-app .globe-edition-compact-select, "
   + ".native-planet-app .book-shelf-frame__navigation, .native-planet-app .book-detail-actions, "
