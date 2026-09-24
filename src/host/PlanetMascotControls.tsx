@@ -112,6 +112,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const [navigation, setNavigation] = useState<Rect[]>([]);
   const [dockBounds, setDockBounds] = useState<Rect | null>(null);
   const dockDetached = useRef(false);
+  const measuredViewport = useRef<Rect | null>(null);
   const [cardHeight, setCardHeight] = useState(360);
   const [highlight, setHighlight] = useState<Rect | null>(null);
   const drag = useRef<{ pointerId: number; x: number; y: number; origin: Position; source: "avatar" | "handle";
@@ -176,6 +177,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   useLayoutEffect(() => {
     const watched = new Set<Element>();
     const measure = () => {
+      const actualViewport = viewport(), previousViewport = measuredViewport.current;
+      measuredViewport.current = actualViewport;
+      if (previousViewport && !sameRect(previousViewport, actualViewport)) {
+        // Rotation invalidates the old surface. Cancel its demonstration and
+        // let the new layout place the companion in its reserved row, without
+        // replaying a route or overwriting the user's stored preferences.
+        cancelPoint.current?.();
+        dockDetached.current = false;
+      }
       const next = companionViewport();
       setView(previous => sameRect(previous, next) ? previous : next);
       // The sheet header can move while retaining its own size. Observe the
@@ -353,7 +363,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       // Wait for those measured bounds before consuming this one-shot request;
       // otherwise the first walking frame immediately invalidates its route.
       const panel = root.current?.closest(".native-planet-panel");
-      const expectsDock = window.matchMedia("(max-width: 640px)").matches
+      const expectsDock = window.matchMedia("(max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape)").matches
         && panel?.querySelector<HTMLDetailsElement>("[data-planet-graphics-settings]")?.open;
       if (expectsDock) {
         const actualPet = root.current?.getBoundingClientRect();

@@ -45,7 +45,7 @@ export default function NativePlanetPanel({ open, onClose, onBack, globeRef, ret
   useLayoutEffect(() => {
     const panel = panelRef.current, dock = dockRef.current;
     if (!panel || !dock) return;
-    const mobile = window.matchMedia("(max-width: 640px)");
+    const mobile = window.matchMedia("(max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape)");
     let observedPet: HTMLElement | null = null;
     const measure = () => {
       const pet = dock.querySelector<HTMLElement>("[data-planet-mascot-pet]");

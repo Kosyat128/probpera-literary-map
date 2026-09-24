@@ -97,7 +97,7 @@
 }
 .native-planet-panel__content { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; }
 .native-planet-panel__companion { display: contents; }
-@media (max-width: 640px) {
+@media (max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape) {
   .native-planet-panel__companion[data-booky-dock-active="true"] {
     display: block;
     box-sizing: border-box;

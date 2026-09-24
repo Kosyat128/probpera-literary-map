@@ -1253,12 +1253,18 @@ test('Mr. Booky mobile placement preserves globe and collection hit targets in b
     await reachable(headerTargets);
     await page.setViewportSize({width:800,height:400});await settle();
     await page.locator('.native-planet-panel__content').evaluate(element=>{element.scrollTop=element.scrollHeight});await twoFrames(page);await settle();
-    const collectionTargets=await collection.locator('.native-planet-panel__content button,.native-planet-panel__content summary').evaluateAll(elements=>elements
+    const collectionTargets=await collection.locator('.native-planet-panel__content button,.native-planet-panel__content summary').evaluateAll(elements=>{
+      // Scrolled-out controls can still lie inside the viewport, underneath
+      // the fixed header or dock. Test the actual visible scroll surface.
+      const clip=document.querySelector('.native-planet-panel__content').getBoundingClientRect();
+      return elements
       .filter(element=>{const r=element.getBoundingClientRect();return !element.closest('[data-planet-mascot-pet]')&&!element.disabled
-        &&element.getAttribute('aria-disabled')!=='true'&&r.width>2&&r.height>2&&r.top>=0&&r.bottom<=innerHeight})
+        &&element.getAttribute('aria-disabled')!=='true'&&r.width>2&&r.height>2
+        &&r.top>=Math.max(0,clip.top)&&r.bottom<=Math.min(innerHeight,clip.bottom)
+        &&r.left>=Math.max(0,clip.left)&&r.right<=Math.min(innerWidth,clip.right)})
       .map(element=>{const path=[];let node=element;while(node&&!node.classList.contains('native-planet-panel__content')){
         path.unshift(node.tagName.toLowerCase()+':nth-child('+([...node.parentElement.children].indexOf(node)+1)+')');node=node.parentElement;}
-        return'.native-planet-panel__content > '+path.join(' > ');}));
+        return'.native-planet-panel__content > '+path.join(' > ');});});
     expect(collectionTargets.length).toBeGreaterThan(0);
     const collectionBefore=mutations(fixture);result.observations.collection=await reachable([...headerTargets,...collectionTargets]);
     await twoFrames(page);expect(mutations(fixture)).toEqual(collectionBefore);
@@ -1641,7 +1647,7 @@ test(`mobile touch graphics approach returns to reserved dock and respects Stop 
       const read=label=>{
         const pet=document.querySelector('[data-planet-mascot-pet]'),cue=document.querySelector('[data-booky-target]'),graphics=document.querySelector('[data-planet-graphics-settings]');
         const controls=[...document.querySelectorAll('.native-planet-panel__header button,[data-planet-graphics-settings] > summary,[data-planet-graphics-settings] .planet-graphics-settings__option')].map(check);
-        return{at:performance.now(),label,phase:cue?.getAttribute('data-booky-target')??null,action:cue?.getAttribute('data-booky-target-action')??null,
+        return{at:performance.now(),label,viewport:{width:innerWidth,height:innerHeight},contentScrollTop:document.querySelector('.native-planet-panel__content')?.scrollTop??null,phase:cue?.getAttribute('data-booky-target')??null,action:cue?.getAttribute('data-booky-target-action')??null,
           returning:pet?.getAttribute('data-booky-returning')==='true',dock:visible(document.querySelector('[data-booky-dock-active="true"]')),content:visible(document.querySelector('.native-planet-panel__content')),gesture:pet?.getAttribute('data-planet-mascot-gesture')??null,visibility:pet?.getAttribute('data-planet-mascot-visibility')??null,screen:pet?.getAttribute('data-planet-mascot-screen')??null,pet:pet?rect(pet.getBoundingClientRect()):null,
           cue:cue?rect(cue.getBoundingClientRect()):null,graphicsOpen:graphics?.open??false,graphicsArea:visible(graphics?.querySelector('fieldset')),controls};
       };
@@ -1775,6 +1781,71 @@ test(`mobile touch graphics approach returns to reserved dock and respects Stop 
     expect(directReset.savedAfter).toEqual(directReset.savedBefore);expect(directReset.savedAfter.visible).toBe(true);
     expect(directReset.preferencesUnchanged).toBe(true);expect(directReset.preferenceOperations).toEqual([]);
     expect(directReset.canonical.quality).toBe(cancelled.canonical.quality);retained(directReset.canonical,cancelled.canonical);
+
+    // Rotating the phone cancels old travel and reflows the reserved surface.
+    action=await graphicsAction();
+    const orientation=currentRecord=all.orientation={portrait:view,
+      landscape:language==='ru'?{width:844,height:390}:{width:640,height:360},
+      preferencesBefore:snapshotPreferences(),canonicalBefore:await actual(page),touchScroll:{gestures:[]}};
+    const blocked=s=>s.controls.filter(c=>c.visible&&(!c.reachable||c.inputHit?.reachable===false));
+    await observe();await action.tap();await expect(panel(page)).toHaveCount(0);
+    await page.waitForFunction(()=>document.querySelector('[data-planet-mascot-pet]')?.getAttribute('data-booky-returning')==='true',undefined,{timeout:5000});
+    await page.waitForTimeout(250);orientation.beforeRotation=await state('returning before rotation');
+    await page.setViewportSize(orientation.landscape);await twoFrames(page);orientation.afterRotation=await state('two frames after rotation');
+    await expect.poll(async()=>{const s=await state('rotation cancellation');return !s.returning&&s.phase===null&&s.gesture!=='walking';},{timeout:500,intervals:[16,32]}).toBe(true);
+    orientation.settled=await settle();await page.waitForTimeout(1900);orientation.after1900ms=await state('1900ms after rotation');
+    orientation.blocked=blocked(orientation.after1900ms);orientation.canonicalLandscape=await actual(page);
+    // Short landscape may expose only the explanatory text. Reveal the real
+    // radio targets with trusted touch, retaining scroll coordinates/results.
+    for(let i=0;i<3;i++){
+      const before=await state('before optional touch scroll');
+      if(before.controls.some(c=>c.visible&&c.inputHit&&c.rect.height>=44))break;
+      const content=before.content;
+      if(!content||content.height<60)throw Error('No visible collection content area for genuine touch scroll');
+      const x=content.left+content.width*.82,startY=content.bottom-24,endY=content.top+24;
+      const gesture={before,x,startY,endY};orientation.touchScroll.gestures.push(gesture);
+      const cdp=await page.context().newCDPSession(page);
+      try{
+        await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y:startY}]});
+        for(let step=1;step<=8;step++){const p=step/8,eased=p*p*(3-2*p);await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y:startY+(endY-startY)*eased}]});await page.waitForTimeout(25);}
+        await page.waitForTimeout(100);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+      }finally{await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]}).catch(()=>undefined);await cdp.detach();}
+      let previous=null,matches=0;await expect.poll(async()=>{const s=await state('scroll settling');matches=s.contentScrollTop===previous?matches+1:0;previous=s.contentScrollTop;return matches;},{timeout:2000,intervals:[50,75]}).toBeGreaterThanOrEqual(3);
+      gesture.after=await state('after trusted touch scroll');
+    }
+    orientation.tested=await state('visible graphics after optional touch scroll');orientation.trace=await finishTrace();
+    await photograph(`booky-rotation-landscape-${language}-${orientation.landscape.width}.png`);
+    trustedAction(orientation.trace);expect(orientation.beforeRotation.returning).toBe(true);expect(orientation.beforeRotation.gesture).toBe('walking');
+    expect(orientation.trace.samples.some(s=>s.phase==='approaching')).toBe(true);expect(orientation.trace.samples.some(s=>s.phase==='tapping')).toBe(true);
+    expect(orientation.after1900ms.pet).toEqual(orientation.settled.pet);
+    for(const s of orientation.trace.samples.filter(s=>s.at>=orientation.settled.at)){
+      expect(s.pet).toEqual(orientation.settled.pet);expect(s.returning).toBe(false);expect(s.phase).toBeNull();expect(s.gesture).not.toBe('walking');
+    }
+    expect(fits(orientation.settled.pet,orientation.landscape)).toBe(true);expect(contains(orientation.settled.dock,orientation.settled.pet)).toBe(true);
+    expect(orientation.settled.content.bottom).toBeLessThanOrEqual(orientation.settled.dock.top+.1);expect(orientation.blocked).toEqual([]);
+    finalHitChecks(orientation.tested);expect(orientation.tested.controls.some(c=>c.visible&&c.inputHit&&c.rect.height>=44)).toBe(true);
+    await page.setViewportSize(view);await twoFrames(page);orientation.portraitBeforeReset=await settle();
+    expect(contains(orientation.portraitBeforeReset.dock,orientation.portraitBeforeReset.pet)).toBe(true);
+    expect(orientation.portraitBeforeReset.content.bottom).toBeLessThanOrEqual(orientation.portraitBeforeReset.dock.top+.1);
+    await graphicsAction();const rotationReset=currentRecord=orientation.explicitReset={preferencesBefore:snapshotPreferences()};
+    await observe();await panel(page).locator('[data-booky-reset-position]').tap();await expect(panel(page)).toHaveCount(0);await companionSaved(fixture);
+    rotationReset.settled=await settle();await page.waitForTimeout(1900);rotationReset.after1900ms=await state('1900ms after rotation reset');
+    rotationReset.trace=await finishTrace();rotationReset.canonical=await actual(page);rotationReset.preferencesUnchanged=unchanged(rotationReset.preferencesBefore);
+    orientation.preferencesUnchanged=unchanged(orientation.preferencesBefore);
+    await photograph(`booky-rotation-reset-${language}-${view.width}.png`);
+    for(const type of ['pointerdown','click'])expect(rotationReset.trace.events.some(e=>e.type===type&&e.resetTarget&&e.pointerType==='touch'&&e.trusted)).toBe(true);
+    expect(rotationReset.trace.events.filter(e=>e.type==='click'&&e.insideGraphics)).toEqual([]);
+    expect(contains(rotationReset.settled.dock,rotationReset.settled.pet)).toBe(true);expect(rotationReset.settled.content.bottom).toBeLessThanOrEqual(rotationReset.settled.dock.top+.1);
+    expect(rotationReset.after1900ms.pet).toEqual(rotationReset.settled.pet);expect(rotationReset.settled.visibility).toBe('shown');finalHitChecks(rotationReset.after1900ms);
+    for(const s of rotationReset.trace.samples.filter(s=>s.at>=rotationReset.settled.at)){
+      expect(s.pet).toEqual(rotationReset.settled.pet);expect(s.returning).toBe(false);expect(s.phase).toBeNull();expect(s.gesture).not.toBe('walking');
+    }
+    expect(orientation.preferencesUnchanged).toBe(true);expect(rotationReset.preferencesUnchanged).toBe(true);
+    retained(orientation.canonicalLandscape,orientation.canonicalBefore,false);retained(rotationReset.canonical,orientation.canonicalBefore,false);
+    Object.assign(result,{trustedTouchGraphicsThenRotation:true,orientationCancelsReturn:true,noAutomaticReturnResume:true,
+      rotatedCompanionFitsViewport:true,orientationRetainsDockContainment:true,orientationContentExcludesDock:true,
+      rotatedVisibleGraphicsControlsReachable:true,touchScrollExposesGraphicsTargets:true,portraitReflowBeforeResetFitsDock:true,
+      explicitResetAfterRotationReturnsToDock:true});
 
     const resetBefore=mutations(fixture);await page.locator('[data-planet-mascot-hide]').tap();
     await expect.poll(()=>JSON.parse(fixture.memory.get(BOOKY)??'null')?.visible).toBe(false);
