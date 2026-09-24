@@ -225,11 +225,23 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     // removes inert. That changes availability without resizing the toolbar.
     if (host) visibility?.observe(host, { subtree: true, childList: true, attributes: true,
       attributeFilter: ["inert", "hidden", "open", "aria-hidden", "data-atlas-sheet-state", "data-globe-edition-rail", "data-visible", "data-booky-dock-active"] });
+    // CSS transforms and opacity can move/reveal navigation without resizing
+    // it. Refresh its final bounds after motion, including a media change.
+    const motionSettled = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      for (const element of watched) {
+        if (target === element || target.contains(element)) { measure(); return; }
+      }
+    };
+    const motionEvents = ["animationend", "animationcancel", "transitionend", "transitioncancel"] as const;
+    for (const type of motionEvents) host?.addEventListener(type, motionSettled, true);
     window.addEventListener("resize", measure); window.addEventListener("scroll", measure, true);
     window.visualViewport?.addEventListener("resize", measure);
     window.visualViewport?.addEventListener("scroll", measure);
     measure();
     return () => { observer?.disconnect(); visibility?.disconnect(); window.removeEventListener("resize", measure); window.removeEventListener("scroll", measure, true);
+      for (const type of motionEvents) host?.removeEventListener(type, motionSettled, true);
       window.visualViewport?.removeEventListener("resize", measure); window.visualViewport?.removeEventListener("scroll", measure); };
   }, [screen, language, snapshot.available, shown, open]);
 
@@ -543,7 +555,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     greeting: { label: ru ? "Помахать" : "Wave", response: ru ? "Рад тебя видеть! Куда отправимся?" : "Lovely to see you! Where shall we go?", symbol: "✦" },
     nod: { label: ru ? "Кивнуть" : "Nod", response: ru ? "Я рядом. Продолжим в твоём темпе." : "I'm here. Let's go at your pace.", symbol: "✓" },
     curious: { label: ru ? "Посмотреть в лупу" : "Take a closer look", response: ru ? "Интересно, что мы найдём дальше?" : "I wonder what we'll discover next?", symbol: "⌕" },
-    happy: { label: ru ? "Порадоваться" : "Celebrate", response: ru ? "Немного радости в наше путешествие!" : "A little joy for our journey!", symbol: "☆" },
+    happy: { label: ru ? "Радоваться" : "Celebrate", response: ru ? "Немного радости в наше путешествие!" : "A little joy for our journey!", symbol: "☆" },
     reassuring: { label: ru ? "Подбодрить" : "Encourage", response: ru ? "Можно не спешить. Давай по одному шагу." : "There's no rush. One step at a time.", symbol: "♡" },
     wink: { label: ru ? "Подмигнуть" : "Wink", response: ru ? "У хорошей истории всегда есть продолжение." : "Every good story has more to discover.", symbol: "✧" },
     sway: { label: ru ? "Покачаться" : "Sway", response: ru ? "Маленькая пауза — и снова к открытиям." : "A little pause, then back to discovering.", symbol: "∿" },
@@ -846,6 +858,12 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           <summary>{ru ? "Жесты Книжулика" : "Mr. Booky’s gestures"}</summary>
           <p>{ru ? "Нажми на жест — я отвечу. Можно повторить сколько хочется. Кнопка «Стоп» рядом с моим именем остановит жест."
             : "Choose a gesture and I'll respond. Try it again whenever you like. Use Stop beside my name to end a gesture."}</p>
+          <div data-booky-motion-notice="" role="status" aria-live="polite" aria-atomic="true">
+            {walk.reducedMotion && <p className="planet-mascot-controls__response">
+              {ru ? "Меньше движения: все жесты доступны как неподвижные позы."
+                : "Reduced motion is on. All gestures are available as still poses."}
+            </p>}
+          </div>
           <div className="planet-mascot-controls__actions">
             {BOOKY_GESTURES.map(value => <button key={value} type="button" data-booky-gesture={value}
               aria-pressed={gesture === value} onClick={() => playGesture(value)}>
