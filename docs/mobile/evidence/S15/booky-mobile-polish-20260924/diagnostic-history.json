@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T05:59:32.080Z",
+  "recordingComplete": true,
+  "scope": "Original bounded touch-drag lifecycle diagnostics only; model prototype evidence is retained separately by the final model-photo binder.",
+  "priorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-utility-landscape-20260924/result.json",
+    "sha256": "7ebfe0db249083871dcb27ddafdd6d5ca86076869d2bb0678a0af2d51138fdd1"
+  },
+  "attempts": [
+    {
+      "attempt": "a1",
+      "classification": "product-failure-with-incomplete-secondary-probe",
+      "pass": false,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/playwright.json",
+        "sha256": "a9950794f7adda21e6cdaf540677393728aa63b4bde9a262def0e6b14f46ef88"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/execution.json",
+        "sha256": "594ac1bcfeaa072d34243f5a7e220b5491bc06f813ad01c120d0b2d22f7d5874"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/stdout.log",
+          "sha256": "56a9b92f553479c1fac07902fff83ef23f2b0a87a75cf7c7e3752d04128126cd"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/stderr.log",
+          "sha256": "0cfa2b2d5a3e31dbefa09b188a0f71b8aacc6fa01f3aed08d5fb15cdc9312c72"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/execution-start.json",
+        "sha256": "97c1393fb77c7185a97be0b9b1ffa4017e2a4c37f12af7799d172abb2a0bcd7c"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/proof.json",
+        "sha256": "f64618a576ee3f6a853b403d6dca2fec683132ccfe67febb6eff768f27399a94"
+      },
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "capturedSourceCount": 8,
+      "qualification": "Viewport bug reproduced on original runtime. Secondary remaining-touch removal did not release that pointer; secondary probe incomplete.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/authorized-source.json",
+          "sha256": "7c30f48ac0df6e0b4e8678ee2344e472a8cba2084a162460f798f74668f1b555"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/drag.spec.mjs",
+          "sha256": "63be67c8e2747a786e6b5061e91b7b64838efb7ffdf38340189855239b89f033"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/playwright.config.mjs",
+          "sha256": "1bb1d952596c1f44ac6599e712f3aa8e07325a63ca5d574e1ff549203799cf4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/preflight-result.json",
+          "sha256": "0a307da724d5a56f443f31a3c30f6048f79a9e80837ff92998772c8fb6a13d71"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/preflight-start.json",
+          "sha256": "befd86108fd296b314158e70946fa69e3dc6283fd9a45db4fca2ff155c449f4a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/preflight-stdout.log",
+          "sha256": "937e803f1fb0729dfc4fd66590afd8bdbfc83b21f2a7aed9f909200b612be7ff"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/prepare.mjs",
+          "sha256": "f163b3695b0a20ba2f3e18a69bf950c2c244d242212961b2538c713c5be184a2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/run.mjs",
+          "sha256": "3afd3bb72f9c2c781f593b2b6f9432122485bcd3eda618a0b70abea4df881340"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/runner-execution.json",
+          "sha256": "3426199c8dcdd92003fd9271c6f7e20b15963cfe342d0e74a6f1b2934b8a90e4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/runner-stdout.log",
+          "sha256": "bc8d84fca2bab8a79a08550e22a4cb44f3b0d74668e95a27d6a71f7b69518098"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/artifacts/drag-trusted-touch-drag-lifecycle-secondary/booky-live-character.json",
+          "sha256": "f851981a8ee3ebeb66c4bba1f68beeb675346c156f46b6631c54041c63dcca6b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/artifacts/drag-trusted-touch-drag-lifecycle-secondary/booky-drag-secondary-observed.png",
+          "sha256": "4ef388d7bb7489daebb3c7834baea634208ed00e3ca7cfa41c18fbbf532eb17a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/artifacts/drag-trusted-touch-drag-lifecycle-viewport/booky-live-character.json",
+          "sha256": "143c02050867e1e4ac33ed32aef03d105dc8894e20d44639fa848dc81fe00b6e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/artifacts/drag-trusted-touch-drag-lifecycle-viewport/booky-drag-viewport-observed.png",
+          "sha256": "e626851497440bc209389eaee2544e77be3be5537c86279f09f0d769a463f055"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/artifacts/drag-trusted-touch-drag-lifecycle-viewport/attachments/booky-live-character-source-evidence-08031fcd50fe0449de1bc479f11642baec4289c1.json",
+          "sha256": "143c02050867e1e4ac33ed32aef03d105dc8894e20d44639fa848dc81fe00b6e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/artifacts/drag-trusted-touch-drag-lifecycle-viewport/error-context.md",
+          "sha256": "e56edb317592f489d9dd4ad3a2674e14f3a717905ded252a357b580814844a18"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/artifacts/drag-trusted-touch-drag-lifecycle-secondary/attachments/booky-live-character-source-evidence-fa73d7915cd80e48954ad9be808f58e5617073c1.json",
+          "sha256": "f851981a8ee3ebeb66c4bba1f68beeb675346c156f46b6631c54041c63dcca6b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a1/artifacts/drag-trusted-touch-drag-lifecycle-secondary/error-context.md",
+          "sha256": "c66712c9e1ec6ebb1187c29f7ca5ffc470e2137b6d524f8b42e69762e4bb6bcd"
+        }
+      ]
+    },
+    {
+      "attempt": "a2",
+      "classification": "partial-runtime-check-with-invalid-secondary-and-pending-tap-probes",
+      "pass": false,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/playwright.json",
+        "sha256": "e3fd0f36b4869fc248b7d7f128d33fc5211f45b8d3b8c72e12fc084726bdadaa"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/execution.json",
+        "sha256": "d06ea8332668bdc261d592cdeab178609b782a05111073b035eb567f0769641d"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/stdout.log",
+          "sha256": "225f6afec605384e08b0cb8eb7f9bc7b5dcde0146e9284beae444c1370a2d38c"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/stderr.log",
+          "sha256": "abff521f0fbc9c7a146a6585b24dc86cf719375724b549eb09f6dfac3f2de30f"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/execution-start.json",
+        "sha256": "f0d376c9a378a5de9dd2e9c591da3ae0f3393efb5f426d3c83e33ac6abd27e7e"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/proof.json",
+        "sha256": "289cc8c210d475b78e9b3f9139ec4394f01c5dd71d182de634fe4b8baea48867"
+      },
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "capturedSourceCount": 8,
+      "qualification": "Post-rotation fix active avatar/handle drags and recovery passed. Secondary query used button instead of captured descendant; release not executed. Named pending-tap group actually moved due omitted helper argument and does not establish pending-tap coverage.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/authorized-source.json",
+          "sha256": "5201970e1318edffc622ebed1c2d1bf21041e96a2b80427e04cf05da1a2d252f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/drag.spec.mjs",
+          "sha256": "eb27bbcabc716266c2750fe4498357923f2e23d8f91d23cd1fa3525249080a95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/playwright.config.mjs",
+          "sha256": "1bb1d952596c1f44ac6599e712f3aa8e07325a63ca5d574e1ff549203799cf4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/preflight-result.json",
+          "sha256": "8e520c7569dd45b1300cd6d7477a9b895777e125baa23ffac8662e63a676ac4c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/preflight-start.json",
+          "sha256": "b94d88413b4ebbee5dba98c1404472c79e8cc525ccc54cd7daf71ae0574ce861"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/preflight-stdout.log",
+          "sha256": "4ec6cc950e898c3227c016857adab63c42faf31acfdbea67c3f34ddce40d7da6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/prepare.mjs",
+          "sha256": "c9a63fc241d167e1a3869e8a2fd41945412a6616bbbb16acd14533c004d3c41b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/run.mjs",
+          "sha256": "3afd3bb72f9c2c781f593b2b6f9432122485bcd3eda618a0b70abea4df881340"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/runner-execution.json",
+          "sha256": "76e7e9125047a43940d6294518f86a9d3a04998ef182b3da1907fe0cae93bf41"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/runner-stdout.log",
+          "sha256": "5538058e5c295c692b8e28c354dd6ed4fde22e59e1dfb7fec142084ad4e32a06"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/booky-live-character.json",
+          "sha256": "5ef17a1973a6ce543adb26165ef78b1c4b8206e5bf36a9cfb4a8c43bfc18683c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/booky-drag-lifecycle-en-640.png",
+          "sha256": "b0f54ba4ee1793c6c78593ecedeb479b70a069528d1283424e5dbe51e40b480b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/booky-live-character.json",
+          "sha256": "4b607ba228dfd92d82ddafb9f954468831f606ed23c29a15c67c0f0c1a94ac91"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/booky-drag-lifecycle-ru-844.png",
+          "sha256": "874d65d1c1ea6fea9b2d598818471db41ecf60b331cfa5db8e68beaae5779596"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/attachments/booky-live-character-source-evidence-cc0c98d960beb1e79a7e6881ddda7bb5170ff64c.json",
+          "sha256": "4b607ba228dfd92d82ddafb9f954468831f606ed23c29a15c67c0f0c1a94ac91"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/error-context.md",
+          "sha256": "6f3fccbbaf05559da7ecedddf7dca8caa8882cd23ad07b0c3b20362206070c9c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/attachments/booky-live-character-source-evidence-a28dcd52eb7863953f3d6006c9fd5aaa95c65417.json",
+          "sha256": "5ef17a1973a6ce543adb26165ef78b1c4b8206e5bf36a9cfb4a8c43bfc18683c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a2/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/error-context.md",
+          "sha256": "9b379240591270db197573b399caf27cc8516d9ecaf2b41f50cd7bdafad7d6ca"
+        }
+      ]
+    },
+    {
+      "attempt": "a3",
+      "classification": "infrastructure-beforeAll-no-browser",
+      "pass": false,
+      "browserStarted": false,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/playwright.json",
+        "sha256": "f76613c683529436df56abd354474052d1b3551d9c70f7dad843b10fb11ef746"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 1,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/execution.json",
+        "sha256": "8f023cdf4b8529f0d234f7e1f1535af8db81f193dcaa2d1135e1d28e38ea0011"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/stdout.log",
+          "sha256": "febd6ad747347ad12af6d4b7af9e702cb3fed4bf776d24d2e5d3e3f8df66b9ac"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/stderr.log",
+          "sha256": "058899949b44a6f8674b76da884b2ac9a8318975ab41f9d99701214504083e27"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/execution-start.json",
+        "sha256": "06574c1a4130e78dff7bf0b29a03e0b4d5c2669c88b949c40c27d49f69476713"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/proof.json",
+        "sha256": "0b1a87f735c18d7ab6a966b5e2092b1e7a970d3aec341da04d77abebcddffbb5"
+      },
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "capturedSourceCount": 8,
+      "qualification": "Exact2 preflight passed; esbuild beforeAll failed Access denied before browser execution. One failed, one did not run; no touch product observations.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/authorized-source.json",
+          "sha256": "523eb0fc96310ee436743ef1de3adf2ab798e0fe8a0b7e0f95829b99b9ab0159"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/drag.spec.mjs",
+          "sha256": "3b5c4b834cdec5974fdc08888b34990128bca4d0dc3f206381c6f3e88a1e4806"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/playwright.config.mjs",
+          "sha256": "1bb1d952596c1f44ac6599e712f3aa8e07325a63ca5d574e1ff549203799cf4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/preflight-result.json",
+          "sha256": "cdb0be248ba508a26e5880fd2a33e792d654efdfba436237bf728a5d097352ed"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/preflight-start.json",
+          "sha256": "4aff743c16de2ab572187854cbd6a6dc3797e874d3e06706c3afa783764251f6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/preflight-stdout.log",
+          "sha256": "4ec6cc950e898c3227c016857adab63c42faf31acfdbea67c3f34ddce40d7da6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/prepare.mjs",
+          "sha256": "65f2c7384d68d353bf7795c55e669d10fd537538b31ab481c76050b54a8c5122"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/run.mjs",
+          "sha256": "3afd3bb72f9c2c781f593b2b6f9432122485bcd3eda618a0b70abea4df881340"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/runner-execution.json",
+          "sha256": "799689ebfb04d309c5ea5566dc881be76b6b99adf7959c12fc66c6435c445c19"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/runner-stdout.log",
+          "sha256": "24b8e82925936f5aeba94d0506e01e83f22fefba274276b7c76c9babfd1cbbcf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a3/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/error-context.md",
+          "sha256": "97be6872f248485c86a459e3438ff3d83d4e9967a9257864d4167d6555d1fb07"
+        }
+      ]
+    },
+    {
+      "attempt": "a4",
+      "classification": "product-failure-secondary-capture-ownership",
+      "pass": false,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/playwright.json",
+        "sha256": "c6177207ab6f7462a98b7c63be94c28097a28a3d5ed13aa7f780a2bcbb1f7a28"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/execution.json",
+        "sha256": "44030219c74f96215e89193b502636fc5382a898ce36dad4d94a8d5eb7f51aea"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/stdout.log",
+          "sha256": "ce4fa329f3ee026c44000acfd0b089551640d8a53050754eaadb4d3cd9255f7a"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/stderr.log",
+          "sha256": "455ad35b0ec2b6418aec7d90da7af9b87815462ab0d43caa2f7f8941b38f20dc"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/execution-start.json",
+        "sha256": "a572ff2bef843c76edda4ffc6d2a8730278d8df8306309a4f7a217c7f36a0ca8"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/proof.json",
+        "sha256": "888ff975081707aa3dd78098b30da7376d1e73b3639f5ffcaca8823e130a2982"
+      },
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "capturedSourceCount": 8,
+      "qualification": "Corrected harness proves secondary SPAN lostpointercapture is trusted and bubbles to handle; primary drag prematurely became rest and stopped moving. Controlled release trigger, not a natural secondary lift. Corrected zero-move pending-tap and all rotation checks passed.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/authorized-source.json",
+          "sha256": "069288aa788302eb8908bcb2e36c6fec97a8611b799b0df7b87f7b0f911bc8a6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/drag.spec.mjs",
+          "sha256": "15fd5e1435bc1b30310e783a6e92022d02f58b2bd2e5c3b3f7581a7ae284dc43"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/playwright.config.mjs",
+          "sha256": "1bb1d952596c1f44ac6599e712f3aa8e07325a63ca5d574e1ff549203799cf4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/preflight-result.json",
+          "sha256": "007b951809c87cbc8637e849d5b1a5026fa531fc5d065c64be6703feb93c7228"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/preflight-start.json",
+          "sha256": "b70fccebddf9bb0b96745bcc1ead317876f07d59fd714a353127c1f9af5561ab"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/preflight-stdout.log",
+          "sha256": "4ec6cc950e898c3227c016857adab63c42faf31acfdbea67c3f34ddce40d7da6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/prepare.mjs",
+          "sha256": "7e0923829f7aeb25d661881376041e86a00f01d14bd875b421cd18a4eb861c01"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/run.mjs",
+          "sha256": "3afd3bb72f9c2c781f593b2b6f9432122485bcd3eda618a0b70abea4df881340"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/runner-execution.json",
+          "sha256": "b9276588c6677f6f57937f480151f37707eceab9ccbb074204e044a59a6c80de"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/runner-stdout.log",
+          "sha256": "bcad532e5b47e5b173a0dcafe1fd0b6bfb8e30a29421a2538ae05e927a3254bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/booky-live-character.json",
+          "sha256": "9e44988e900c7e21298692d66f4f41d347f93c553e8e1f7d61e405a5a7227a76"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/booky-drag-lifecycle-en-640.png",
+          "sha256": "b779b7ed34c8c7955742f740163c1d1f23e1967747284f99d7220344caa5c8ee"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/booky-live-character.json",
+          "sha256": "d6c33a0515faa201e7077366d77af443f94b898641b6d74bd0d2120857833010"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/booky-drag-lifecycle-ru-844.png",
+          "sha256": "33b464069b545a0226073177a9d579497ac029ab987b2bea0286947ccafbc9d7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/attachments/booky-live-character-source-evidence-2b7f344129e14b4fe84bd6b919a20ff231dd3812.json",
+          "sha256": "d6c33a0515faa201e7077366d77af443f94b898641b6d74bd0d2120857833010"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/error-context.md",
+          "sha256": "726301985a5c20e9e35fe317e3a6e57172b5aaffe0342e377c9726f55605b66a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/attachments/booky-live-character-source-evidence-a60250ac19e4f92272f58d3ed393eb8b8de16237.json",
+          "sha256": "9e44988e900c7e21298692d66f4f41d347f93c553e8e1f7d61e405a5a7227a76"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a4/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/error-context.md",
+          "sha256": "c05eef27dabc56ae8abc6cfadbf6f7be2ae3abbb9a274189888d22f908344ae3"
+        }
+      ]
+    },
+    {
+      "attempt": "a5",
+      "classification": "focused-regression-pass",
+      "pass": true,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/playwright.json",
+        "sha256": "70f45b3aab040dafda30abb3e7ca96a54417c92cd1d92294910347c22d0c01c7"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/execution.json",
+        "sha256": "4acd30d8089ec64fe402e547987226895c1cb3bdcdc3eb09c816fab298cf7c05"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/stdout.log",
+          "sha256": "6363f0acad9387b0ae232668f42ab844253c7c4321efb8fdb58def022e052d72"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/stderr.log",
+          "sha256": "db61b58fc5827a8e4e37475c083d7f9e4ab39429b4ba4230f068e3dfda80202b"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/execution-start.json",
+        "sha256": "f7b8dd821bf69f543fb597656fa4742e1e8ddab8abd233ae82e868866f15cc14"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/proof.json",
+        "sha256": "d07e8f6c2e4eaf0e000aa35b8a4cf73afb44306664aed001df8c3dc3dae8713f"
+      },
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "capturedSourceCount": 8,
+      "qualification": "Same corrected2 cases pass with pointerId guard. No broad suite, device or performance acceptance.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/authorized-source.json",
+          "sha256": "97732b94c4f7ce4d5d120075dbbdfa42465721d15b873ba9083baa8ea2ac3af8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/drag.spec.mjs",
+          "sha256": "d8080ba4bcb77050fa243eee809678d5f1c00f2013d5727a3315d56d094dc677"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/integration.json",
+          "sha256": "f38487f73b569e2de842c5980bbf4c480596102aa259b40512ce5a9bb5b40bea"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/playwright.config.mjs",
+          "sha256": "1bb1d952596c1f44ac6599e712f3aa8e07325a63ca5d574e1ff549203799cf4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/preflight-result.json",
+          "sha256": "02e53c46ad3f11e807bed406c9b46152efd9ec81fac846cd7252a64f055a553d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/preflight-start.json",
+          "sha256": "276f8581b59057c6b9cf7f0fee4e5b33868d14dbbdee256bc17d814cd84828d8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/preflight-stdout.log",
+          "sha256": "4ec6cc950e898c3227c016857adab63c42faf31acfdbea67c3f34ddce40d7da6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/prepare.mjs",
+          "sha256": "b4f60ea5783e82390aaca7c2c107fec2deda3fd54c067d541cab93a97eaac343"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/run.mjs",
+          "sha256": "3afd3bb72f9c2c781f593b2b6f9432122485bcd3eda618a0b70abea4df881340"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/runner-execution.json",
+          "sha256": "35061782bb28807542a776efdb3c28da482e6433020e7b9e3ffd7d546ff64224"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/runner-stdout.log",
+          "sha256": "1ce183f2a7981ca641786251fd340d0c897c0eca52052e94723e0a02ef38c2b5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/source-dirty-diff.patch",
+          "sha256": "6b382903f4d4f743735a8d3bb674ed576df60a304acbb8274a1dffd44886419a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/visual-review.json",
+          "sha256": "4588686d81cf05c2b724f318e129d8dbeaebd30ebb703e4ac2df90324ddcfd1e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/booky-live-character.json",
+          "sha256": "febe7971688135cc68f972932bd9e0c4d779d68957f2f9fcfd4ba24b2993dd01"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/booky-drag-lifecycle-en-640.png",
+          "sha256": "c109ff2355914f1b46b1f0a713b6e0fbb25a422c659bbda38f98ba8578d177c0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/booky-live-character.json",
+          "sha256": "ba7c215684791d1472cfeedc37223717ca8370c058681a7a20c77a156eea1f5b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/booky-drag-lifecycle-ru-844.png",
+          "sha256": "ad831380347219d2255412da55322bfb730708223b976d339e82e38d0c5df85b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-ru/attachments/booky-live-character-source-evidence-c72dfaab7c24925c7b1059a5841292cdeb7a9c9a.json",
+          "sha256": "ba7c215684791d1472cfeedc37223717ca8370c058681a7a20c77a156eea1f5b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-drag-lifecycle-review/a5/artifacts/drag-Booky-touch-drag-capture-and-viewport-lifecycle-en/attachments/booky-live-character-source-evidence-adca98b1d22b0604c3809b561eb8d907229f1119.json",
+          "sha256": "febe7971688135cc68f972932bd9e0c4d779d68957f2f9fcfd4ba24b2993dd01"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "a1 secondary probe was incomplete. a2 did not establish its named pending-tap coverage and did not release the captured secondary descendant. These attempts remain failures.",
+    "a3 failed in beforeAll before browser execution; report has one failed and one skipped case, with no product observations.",
+    "a4/a5 secondary coverage uses controlled releasePointerCapture on the captured descendant SPAN followed by trusted UA lostpointercapture. It does not claim a natural second-finger lift.",
+    "a5 canonical integration adds only explicit scenario metadata to the tested new cases; original fixture cases are retained as recorded in integration.json.",
+    "Original source hashes are authenticated from immutable execution receipts, never recomputed against later canonical files. No complete suite, installed-device or performance acceptance is implied."
+  ],
+  "releaseReady": false
+}

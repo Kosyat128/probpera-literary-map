@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:07:39.163Z",
+  "pass": true,
+  "sourceCommit": "ff81de930a6fd947c0f100fc29dcc65be7632f5e",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/source-manifests/0b53ee93c43a0465.json",
+    "sha256": "0b53ee93c43a0465b8a3afea4c07fa635c5b5e02dabfdd27eca134da8dcb33c2",
+    "fileCount": 1650
+  },
+  "modelSource": {
+    "path": "src/host/bookyModel.ts",
+    "sha256": "df9bf3c99fbe1bdf421f64698b8b2cf831a02ed44bf6a567842dfa7e0e979d89"
+  },
+  "renderedModelSource": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/staging/bookyModel.ts",
+    "sha256": "df9bf3c99fbe1bdf421f64698b8b2cf831a02ed44bf6a567842dfa7e0e979d89",
+    "bytes": 37813
+  },
+  "originalReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/final-prototype-v2.json",
+    "sha256": "444c0f315747b6bbb27477e9f54e36c39977fefe60c49f8594082044aa3a1f85"
+  },
+  "render": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/final-render-manifest-v2.json",
+    "sha256": "cdcb499f6023873397d702129c440fb224c5e17e5242834c63eca18d0cde852b",
+    "bytes": 8837
+  },
+  "additionalEvidence": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/staging/bookyModel.ts",
+      "sha256": "df9bf3c99fbe1bdf421f64698b8b2cf831a02ed44bf6a567842dfa7e0e979d89"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/staging/candidate.diff",
+      "sha256": "97a26cce81775e0020d9b27d8b41b71c75a7dd02eb960ac74797d5cfb88f8d45"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/final-render-manifest-v2.json",
+      "sha256": "cdcb499f6023873397d702129c440fb224c5e17e5242834c63eca18d0cde852b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/model-vitest.json",
+      "sha256": "d2ad84d9636d2c5b64c891c1cdec3ca8d89e103fb4e70a440b137e7b023a0a44"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/model-execution.json",
+      "sha256": "4770059d5082e43be6a37e37d4c972d0dc6154e7d293cc15ed6ccab3bbace339"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/model.log",
+      "sha256": "1da62d26afecaad4e2948c2d68adf9c481db8fead5f7761e891d04116f62a823"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/before/result.json",
+      "sha256": "d603de6a184fa594fc713622ca31e79791e7acbb935d3a720406ac47bd7b0d65"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/render-execution-observation.json",
+      "sha256": "bfd514711d196950df2dc51ad9416cee391f3d2b0971c23989fb33b379c0bc88"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/after/render-source.ts",
+      "sha256": "41b6ecd6e3e495c882044c057bc8f8b804e623048352928750d9eec073083ad6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/after/render-bundle.js",
+      "sha256": "592babd9751ac0d3ded8ef2240fa723130c9d0f23d64eedfbebbbbf9012da91f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/render-highfive-padding.mjs",
+      "sha256": "e8ab0ec7ff0c43540154d1242a9ad35e7cedfe17b05f7778e038414cb3bc675c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/highfive-padding-a1-execution.json",
+      "sha256": "25a16774802e46277f42376183a4f9681b7b9f471c3a2e139f548ab1e1917da4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/highfive-padding-a1.log",
+      "sha256": "abe668f6f1200b7251c6fcb8cd4291650aac6076278642c1f0d277eb7e7712ca"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/final-prototype.json",
+      "sha256": "7400a313b9d559857f6a06499101962a867127a622465d5b7173b6b2b0b421ef"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/after/result.json",
+      "sha256": "844330c2adc0c938dbfc78cdacba13b0d484ac5487c501f80d561600f1e8748b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/highfive-padding-a1/result.json",
+      "sha256": "7c103d4d569635a801d1a151b5bc3c3ccd58136d67cf41ca8e59556dfb465582"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/bookyAnimation.ts",
+      "sha256": "79e80555d5c3c99a5c7e83c7068481e202ac4682a4dab591b7244b0e6a09ee13"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/useBookyRenderer.ts",
+      "sha256": "5db90ed752b1fa14e40edf8c4cf1bea1f24097534e3bbb76f024c152ad7784fb"
+    }
+  ],
+  "images": [
+    {
+      "name": "knizhulik-3d-left-hand.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/after/knizhulik-3d-left-hand.png",
+      "sha256": "8a95d8d64054a698c1b2bc9f549f3fbf4130dea402cb446c87c689517e10d6f4",
+      "bytes": 272212,
+      "width": 1200,
+      "height": 1200,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "Three fingers form a relaxed upward fan with gentle forward flex instead of the previous reversed hook bends.",
+        "The thumb opens away from the fingers. The established palm, cuff and three-fingers-plus-thumb cartoon design remain.",
+        "At close-up the separate finger/palm intersection boundaries remain visible; this image does not establish a fully sewn left glove."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-full.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/after/knizhulik-3d-full.png",
+      "sha256": "92e380285aa4ad73224d17247c4a1f1823a2fadaa05a786a44f9236129adb410",
+      "bytes": 793100,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The relaxed free hand reads naturally at full-character scale while the established body, face and magnifier grip are retained."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-wave.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/after/knizhulik-3d-wave.png",
+      "sha256": "1e4143263da4f8a846d6e3e0a3ed212ba21c2e1fc389330799cc7ad241ea6dc0",
+      "bytes": 825363,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The greeting pose retains the relaxed spread without backward-hooked fingertips or a new obvious detachment."
+      ]
+    },
+    {
+      "variant": "after",
+      "name": "knizhulik-3d-highfive.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/highfive-padding-a1/after/knizhulik-3d-highfive.png",
+      "sha256": "19259082734ae6701fb597bf7321ea92f111b043d2e42d204d92be33cc18e01c",
+      "bytes": 770763,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The high-five pose shows the relaxed free palm and outward thumb.",
+        "The complete character and magnifier rim now have visible room inside the frame after a 1.06 multiplier on the orthographic camera extents.",
+        "Before and after use the same adjusted camera; model geometry, orientation and lighting were unchanged by this framing correction."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-right-grip.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/after/knizhulik-3d-right-grip.png",
+      "sha256": "c9e6ad1a39d926b67880610646ea9cc5f9749701ee4c263831eecb9d5dc63fea",
+      "bytes": 244212,
+      "width": 1200,
+      "height": 1200,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The corrected continuous right palm/thumb junction and magnifier grip remain unchanged; this PNG is byte-identical to its current-base before capture."
+      ]
+    }
+  ],
+  "inspectedCount": 5,
+  "reviewBasis": "The original direct-review receipt is preserved; the rendered model and final canonical Git blob have identical bytes.",
+  "scope": "Four original accepted photos plus the separately rendered padded high-five after photo; raw render reports remain preserved.",
+  "limitations": [
+    "Standalone actual 3D renders of the final combined hand candidate; not app screenshots, installed-device verification or stage acceptance.",
+    "Only the right palm/thumb is a sewn continuous surface. Left fingers have improved curves and buried starting caps but retain visible surface-intersection boundaries at close-up.",
+    "This agent changed only external staging files. Parent subsequently integrated the byte-identical reviewed model; final app checks remain separate.",
+    "Standalone actual-model portraits are separate from the selected browser screenshot count. This binder authenticates the original direct inspection; it does not claim a new visual review or installed-device acceptance."
+  ],
+  "artAccepted": false,
+  "releaseReady": false
+}

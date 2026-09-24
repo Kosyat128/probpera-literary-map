@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-mobile-polish-20260924:begin -->
+Latest source ff81de93: Книжулик / Mr. Booky cancels the active touch interaction on a real viewport change while preserving the selected companion behavior. The seven selected cases cover touch lifecycle, walking, graphics/rotation, live-model interaction and 13 gestures. The free left fingers are relaxed, and the right thumb is sewn continuously into its palm. Five directly reviewed actual-model photos are bound to identical current-source bytes; older photographs remain original-source evidence. Left-finger surface-intersection boundaries remain visible in close-up. Prior D188 full 19-case browser evidence remains attributed to its original source.
+
+Evidence: docs/mobile/evidence/S15/booky-mobile-polish-20260924/result.json. D189. 155 unit cases and 7 selected browser cases; 23 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-mobile-polish-20260924:end -->
+
 <!-- s15-booky-utility-landscape-20260924:begin -->
 Latest source e4ca0a48: Книжулик / Mr. Booky reveals the selected utility after its reserved dock establishes the scrollable content area. This preserves a visible target for finite approach and natural return in the configured short landscapes. The shared dock, explicit touch reset, cancellation and guide progress remain intact.
 Validation: 154 focused unit tests, TypeScript and 19 actual-App browser cases pass. Configured RU 568 x 320 Recent and EN 640 x 360 Downloads cases cover target reveal, finite approach/return, dock placement and visible utility reachability alongside the retained companion regressions. Manifest 3dd8c4de3c40c9f2 binds 1650 inputs with 1647 unchanged. All 55 captures are authenticated; 8 selected images received visual review. Fresh PWA 77ad3e97 and Android-dev 1a866093 are preserved and byte-audited.

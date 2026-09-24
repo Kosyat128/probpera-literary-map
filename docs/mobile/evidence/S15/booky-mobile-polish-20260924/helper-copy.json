@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:01:18.0048613+00:00",
+  "pass": true,
+  "copied": [
+    {
+      "name": "configure.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\configure.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\configure.mjs",
+      "sha256": "445fe6189ab353d8bdefad7975c8a4c4614705c17a54d430bf7c4489190e7774"
+    },
+    {
+      "name": "check.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\check.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\check.mjs",
+      "sha256": "4c6646effe15e07fd85b09a38bbb3d44ae43e67603c0bb100c5b7a278e3a0dbd"
+    },
+    {
+      "name": "unit.config.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\unit.config.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\unit.config.mjs",
+      "sha256": "06621ff180e01cb97d929bc29233cdde9cb9936c32dd7e58cfdf2bd3018c1467"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\playwright.config.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\build-pwa-a1.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\build-pwa-a1.mjs",
+      "sha256": "a4ef25ff295e2207be30066c533ef63b57af161583c62dd7f8b2a8aad1cca013"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\pwa-a1.config.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\build-android-a1.ps1",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\build-android-a1.ps1",
+      "sha256": "256da695f1a9ec6e1ea20aee45448ecd96bff60ea1a95d2e5d04479ce6c50498"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\verify-android-a1.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\verify-android-a1.mjs",
+      "sha256": "8971869e0d4eac31b689a9bfeffbefbd04b7cfad01a4bd34cea276d922ed214d"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\preserve-android-a1.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\preserve-android-a1.mjs",
+      "sha256": "5b4f2103869f0650400dcf3139c162513033c39b78733609bd23dac6f8e4b690"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\checkpoint.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\checkpoint.mjs",
+      "sha256": "89b1cc5ffabf8277e3cb7a22400021ad8e4d1ffe996b05930db7da49d63fd0dc"
+    },
+    {
+      "name": "record-visual.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\record-visual.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\record-visual.mjs",
+      "sha256": "3a0af3ed72bdc130ebfc9308e279a5416f1574661048aacc77e2f8970545aa71"
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\finalize-notes.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\finalize-notes.mjs",
+      "sha256": "70ebfe7d700760b5304c9a80a162d31444d335faef15e5069583c54b768e9d6c"
+    },
+    {
+      "name": "scope.json",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\scope.json",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\scope.json",
+      "sha256": "150c1a2bd9f80c4a38c7c889571c61eb6ad0c1f8bc3386bcee3016e5ef466f92"
+    },
+    {
+      "name": "prepared-files.json",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\prepared-files.json",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\prepared-files.json",
+      "sha256": "ecb23ede22cbe98071b34574834452a9c276da056a2ee391f735ad22b3e5ce14"
+    },
+    {
+      "name": "copy-helpers.ps1",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\copy-helpers.ps1",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\copy-helpers.ps1",
+      "sha256": "08c7669e511951424c95c3c916d77212339a16a1e52d1c154b27b75d73a3a9a3"
+    },
+    {
+      "name": "READY.md",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\READY.md",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\READY.md",
+      "sha256": "5706762c969f04282c16d674899aff61d6d6b1790985ab1cc6a1e96092bcfd65"
+    },
+    {
+      "name": "diagnostic-history.json",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-polish\\staging\\diagnostic-history.json",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-polish-20260924\\diagnostic-history.json",
+      "sha256": "a120020c170042689fcb1c0aa9a29f997a4766dd06d0f5df5e1e91797bf2c87c"
+    }
+  ],
+  "configured": false,
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

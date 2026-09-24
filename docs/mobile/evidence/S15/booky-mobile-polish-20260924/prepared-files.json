@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:01:17.7762728Z",
+  "preparedOnly": true,
+  "sourceFrozen": true,
+  "executed": false,
+  "baseCheckpoint": "ace112358b1d03545409206b888627c720c5db32",
+  "baseSource": "e4ca0a486a7bed4bde7fd4d86146f5c1c867ee30",
+  "priorResultSha256": "7ebfe0db249083871dcb27ddafdd6d5ca86076869d2bb0678a0af2d51138fdd1",
+  "priorManifest": "3dd8c4de3c40c9f253a4ffd2377da901e7b632e9a73252b291738ed491770dc0",
+  "expectedProtectedInputs": 1646,
+  "pendingFields": [
+    "Final standalone model-photo binder after source commit and manifest creation"
+  ],
+  "files": [
+    {
+      "name": "configure.mjs",
+      "sha256": "445fe6189ab353d8bdefad7975c8a4c4614705c17a54d430bf7c4489190e7774"
+    },
+    {
+      "name": "check.mjs",
+      "sha256": "4c6646effe15e07fd85b09a38bbb3d44ae43e67603c0bb100c5b7a278e3a0dbd"
+    },
+    {
+      "name": "unit.config.mjs",
+      "sha256": "06621ff180e01cb97d929bc29233cdde9cb9936c32dd7e58cfdf2bd3018c1467"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "sha256": "a4ef25ff295e2207be30066c533ef63b57af161583c62dd7f8b2a8aad1cca013"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "sha256": "256da695f1a9ec6e1ea20aee45448ecd96bff60ea1a95d2e5d04479ce6c50498"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "sha256": "8971869e0d4eac31b689a9bfeffbefbd04b7cfad01a4bd34cea276d922ed214d"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "sha256": "5b4f2103869f0650400dcf3139c162513033c39b78733609bd23dac6f8e4b690"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "sha256": "89b1cc5ffabf8277e3cb7a22400021ad8e4d1ffe996b05930db7da49d63fd0dc"
+    },
+    {
+      "name": "record-visual.mjs",
+      "sha256": "3a0af3ed72bdc130ebfc9308e279a5416f1574661048aacc77e2f8970545aa71"
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "sha256": "70ebfe7d700760b5304c9a80a162d31444d335faef15e5069583c54b768e9d6c"
+    },
+    {
+      "name": "scope.json",
+      "sha256": "150c1a2bd9f80c4a38c7c889571c61eb6ad0c1f8bc3386bcee3016e5ef466f92"
+    }
+  ],
+  "releaseReady": false,
+  "separateFiles": [
+    {
+      "name": "record-model-photos.mjs",
+      "sha256": "f4e06e65e0b44f81ac7d0a8d72cd5b8509513194b497dc419d6374dc8789062e",
+      "copiedByHelper": false
+    },
+    {
+      "name": "record-touch-diagnostics.mjs",
+      "sha256": "60759ec0e0e919aa53413f3a7c4acab2f3aee96d75b1ab1b0e17d57dcc996031",
+      "copiedByHelper": false
+    },
+    {
+      "name": "diagnostic-history.json",
+      "sha256": "a120020c170042689fcb1c0aa9a29f997a4766dd06d0f5df5e1e91797bf2c87c",
+      "copiedByHelper": true
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "3769cfeb73852713b85341209c48e0a435b02c5782fafa2724599fa1e3f01d8f"
+    },
+    {
+      "path": "src/host/bookyModel.ts",
+      "sha256": "df9bf3c99fbe1bdf421f64698b8b2cf831a02ed44bf6a567842dfa7e0e979d89"
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "sha256": "f89a81e9611a704b177c96f7e846d644e2a2578982e472f5b0d9403c47686c92"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "24fc9fcb13ac29f4eafdab52935830fbc463af70aac659bec04ef08f5b77f1d9"
+    }
+  ]
+}

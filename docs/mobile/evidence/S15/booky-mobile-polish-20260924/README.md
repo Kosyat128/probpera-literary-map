@@ -1,0 +1,23 @@
+# S15 mobile companion touch and hand refinement
+
+Source: ff81de930a6fd947c0f100fc29dcc65be7632f5e.
+
+Mobile companion polish preserves primary touch ownership, retires active drag and pending avatar tap on real viewport changes, and refines the two hand shapes within the existing model budget. Exactly seven selected actual-App cases cover live-model interaction, thirteen gestures, walking/touch cancellation, RU/EN graphics/rotation and RU/EN touch-drag lifecycle. The prior D188 full 19-case suite remains attributed to its original source. Fresh 155 focused unit cases, TypeScript and 7 selected actual-App browser cases pass with 23 authenticated captures; 6 selected screenshots are visually reviewed. 5 standalone actual-model photos retain direct-review receipts bound to identical final-source bytes. PWA c8375949 and Android-dev 7b2b95a7 are freshly rebuilt and byte-audited. 1646 source inputs remain exact. This validates the configured touch/viewport-change cancellation and selected model/walking/graphics regressions; full accessibility, installed-device, art and stage acceptance remain open.
+
+- Position reset is an explicit localized Useful actions control. It closes help and restores the default local position; it does not hide/show the companion or reset saved guide progress.
+- The reserved dock applies to open Recent, Downloads or Graphics utilities at widths up to 640 px or compact landscape up to 1024 px wide and 540 px high. A true viewport change cancels pending travel and permits static reflow. Ordinary Stop and dragging preserve the chosen position until another explicit action or viewport change; no universal avoidance of arbitrary page content is claimed.
+- Manual walking uses a conservative whole-companion corridor. A cramped layout can disable walking with a localized explanation instead of moving through controls. Mobile browser touch checks do not constitute installed-device acceptance.
+- The open-help placement searches finite gaps and retains readable scrolling; crowded small screens can still require overlap with underlying navigation. Strict navigation reachability is claimed only for the tested desktop/open-help and small-screen/closed-help states.
+- Fresh browser evidence covers only the explicitly selected companion cases. The prior full 19-case companion/reader-policy suite remains attributed to D188 source only and is not rerun here.
+- Native OS/preference ports are controlled browser test ports. Observer-time motion checks and any read-only draw-provenance correlations remain browser diagnostics; no installed-device frame-performance, nonzero OS-safe-area or iOS acceptance is claimed.
+- Selected utility reveal waits for the reserved dock layout in the configured short landscapes. The prior shared dock and initial expanded-width clamp remain covered by retained regressions. Current model behavior is bounded by the selected live-model and gesture cases. New standalone model photographs require exact final-source byte equivalence and preserve their original direct-review receipts. Older model photographs remain original-source evidence.
+- Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved.
+- All requirement and stage statuses remain unchanged; no release or production action is performed.
+- The secondary capture-loss regression uses controlled releasePointerCapture on the captured descendant SPAN followed by trusted UA lostpointercapture. It does not establish behavior during a natural second-finger lift.
+- This visual review covers 6 of 23 final captures. It does not claim all retained images were inspected again.
+- Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.
+- Utilities were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed.
+- Standalone actual 3D renders of the final combined hand candidate; not app screenshots, installed-device verification or stage acceptance.
+- Only the right palm/thumb is a sewn continuous surface. Left fingers have improved curves and buried starting caps but retain visible surface-intersection boundaries at close-up.
+- This agent changed only external staging files. Parent subsequently integrated the byte-identical reviewed model; final app checks remain separate.
+- Standalone actual-model portraits are separate from the selected browser screenshot count. This binder authenticates the original direct inspection; it does not claim a new visual review or installed-device acceptance.

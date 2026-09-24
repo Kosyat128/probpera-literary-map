@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:01:28.768Z",
+  "stage": "S15",
+  "checkpoint": "ace112358b1d03545409206b888627c720c5db32",
+  "previous": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/result.json",
+    "sha256": "7ebfe0db249083871dcb27ddafdd6d5ca86076869d2bb0678a0af2d51138fdd1"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/result.json",
+    "sha256": "7ebfe0db249083871dcb27ddafdd6d5ca86076869d2bb0678a0af2d51138fdd1"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-utility-landscape-20260924/source-manifests/3dd8c4de3c40c9f2.json",
+    "sha256": "3dd8c4de3c40c9f253a4ffd2377da901e7b632e9a73252b291738ed491770dc0",
+    "fileCount": 1650
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/scope.json",
+    "sha256": "150c1a2bd9f80c4a38c7c889571c61eb6ad0c1f8bc3386bcee3016e5ef466f92"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "17899c7cad2ef85542a3912d4048309d57053440506f606b985cf3b7c0b121d5"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "ad35c7ff7df7f54284091a19f7cda081dc353f0d74a4c4fb9543b7269b664aaa"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "1800e201322ff22736131a0c77b84b5228b9a9227f7cdf3f35660e1415cdcc4a"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "440e69305db17092d37e06b267cabb707a489a2bd5e45a60a541ed2f005281c1"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "36fb9b0ee906b4af4f29801a7ba431f0bede2178778b5ad7f6a15de76931656b"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "a0f995a3221e24057f44c0a87cb782af2a94da95c8653a60c6f5125d932d0e57"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "9e95daa9ac5381f893a6d2fdc704bddc3d9105995eb4bbd1c3989e986b27197c"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "043e418fd89958a834a8597bd6d55122556f71d41ee63f68cf0f00b389c48890"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyModel.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "3769cfeb73852713b85341209c48e0a435b02c5782fafa2724599fa1e3f01d8f"
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "sha256": "f89a81e9611a704b177c96f7e846d644e2a2578982e472f5b0d9403c47686c92"
+    },
+    {
+      "path": "src/host/bookyModel.ts",
+      "sha256": "df9bf3c99fbe1bdf421f64698b8b2cf831a02ed44bf6a567842dfa7e0e979d89"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "24fc9fcb13ac29f4eafdab52935830fbc463af70aac659bec04ef08f5b77f1d9"
+    }
+  ],
+  "sourceInputCount": 1650,
+  "protectedInputCount": 1646,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyModel.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "ace112358b1d03545409206b888627c720c5db32",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+    "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+    "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion",
+    "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion ru 390",
+    "mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion en 320",
+    "Booky touch drag capture and viewport lifecycle ru",
+    "Booky touch drag capture and viewport lifecycle en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 155,
+  "expectedBrowserTests": 7,
+  "expectedImages": 23,
+  "scope": "Mobile companion polish preserves primary touch ownership, retires active drag and pending avatar tap on real viewport changes, and refines the two hand shapes within the existing model budget. Exactly seven selected actual-App cases cover live-model interaction, thirteen gestures, walking/touch cancellation, RU/EN graphics/rotation and RU/EN touch-drag lifecycle. The prior D188 full 19-case suite remains attributed to its original source.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

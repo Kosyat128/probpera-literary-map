@@ -1,0 +1,13 @@
+
+Running 7 tests using 1 worker
+
+
+
+[1/7] tests\pwa\booky-live-character.spec.mjs:411:1 › live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged
+[2/7] tests\pwa\booky-live-character.spec.mjs:726:1 › Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion
+[3/7] tests\pwa\booky-live-character.spec.mjs:835:1 › Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion
+[4/7] tests\pwa\booky-live-character.spec.mjs:1706:1 › mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion ru 390
+[5/7] tests\pwa\booky-live-character.spec.mjs:1706:1 › mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion en 320
+[6/7] tests\pwa\booky-live-character.spec.mjs:2317:150 › Booky touch drag capture and viewport lifecycle ru
+[7/7] tests\pwa\booky-live-character.spec.mjs:2317:150 › Booky touch drag capture and viewport lifecycle en
+  7 passed (3.3m)

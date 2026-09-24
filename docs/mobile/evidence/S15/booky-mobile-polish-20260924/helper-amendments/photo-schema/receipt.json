@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:07:22.9501157Z",
+  "pass": true,
+  "reason": "Final model-photo renderer records source.sha256, sharedSourceUnchanged and proof.dependencies; adapt only photograph verification to the actual preserved schema.",
+  "authorizedBy": "Root task after all formal a1 checks passed",
+  "oldSha256": "89b1cc5ffabf8277e3cb7a22400021ad8e4d1ffe996b05930db7da49d63fd0dc",
+  "newSha256": "fbb788d69465596205b95cc48abf68e09203c8c8d3cc558b60a49e034e6edfe6",
+  "preservedOriginal": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-mobile-polish-20260924/helper-amendments/photo-schema/checkpoint-original.mjs",
+    "sha256": "89b1cc5ffabf8277e3cb7a22400021ad8e4d1ffe996b05930db7da49d63fd0dc"
+  },
+  "candidate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/staging/checkpoint-model-schema.mjs",
+    "sha256": "fbb788d69465596205b95cc48abf68e09203c8c8d3cc558b60a49e034e6edfe6"
+  },
+  "updated": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-mobile-polish-20260924/checkpoint.mjs",
+    "sha256": "fbb788d69465596205b95cc48abf68e09203c8c8d3cc558b60a49e034e6edfe6"
+  },
+  "originalHelperCopy": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-mobile-polish-20260924/helper-copy.json",
+    "sha256": "666ad6096b59f4457b4691e639c4491fd86a443661abe83ce69c91d7d11e1ada"
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/check.mjs",
+      "sha256": "4c6646effe15e07fd85b09a38bbb3d44ae43e67603c0bb100c5b7a278e3a0dbd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/entry.json",
+      "sha256": "d78c6ce7e0784459c9697eca88460482b7453f2e860dbbde2b3aaac5cb779468"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/unit.config.mjs",
+      "sha256": "06621ff180e01cb97d929bc29233cdde9cb9936c32dd7e58cfdf2bd3018c1467"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/configure.mjs",
+      "sha256": "445fe6189ab353d8bdefad7975c8a4c4614705c17a54d430bf7c4489190e7774"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/scope.json",
+      "sha256": "150c1a2bd9f80c4a38c7c889571c61eb6ad0c1f8bc3386bcee3016e5ef466f92"
+    }
+  ],
+  "checkInputsUnchanged": true,
+  "sourceFilesChanged": false,
+  "testsOrBuildsRun": false,
+  "releaseReady": false
+}

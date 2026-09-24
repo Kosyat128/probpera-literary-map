@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:11:00.324Z",
+  "pass": true,
+  "sourceCommit": "ff81de930a6fd947c0f100fc29dcc65be7632f5e",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/source-manifests/0b53ee93c43a0465.json",
+    "sha256": "0b53ee93c43a0465b8a3afea4c07fa635c5b5e02dabfdd27eca134da8dcb33c2",
+    "fileCount": 1650
+  },
+  "inspectedCount": 6,
+  "totalCapturedCount": 23,
+  "scope": "Direct review of the selected final touch-lifecycle, graphics, model and gesture captures. Other regression captures are authenticated without a new complete visual review.",
+  "limitations": [
+    "This visual review covers 6 of 23 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Utilities were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/final-visual-receipt.json",
+    "sha256": "077e92560c488be93b7713efe0f8efcd371de6a572d11db5bfc0cf3403895a18"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Booky-57c71-e-and-viewport-lifecycle-ru/booky-drag-lifecycle-ru-844.png",
+      "sha256": "21b8713db911f761939260cee0acbf9555f2048b39ba9a523b01393f43e1b75d",
+      "width": 844,
+      "height": 390,
+      "bytes": 175450,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Russian landscape globe header, edition strip, zoom, pause, reset, source and country controls remain readable.",
+        "The full character and move, hide and enabled Прогуляться controls fit inside the viewport in the open globe area without visibly obscuring navigation."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Booky-57c71-e-and-viewport-lifecycle-ru/booky-live-character.json",
+        "sha256": "52ba7ebf923b6d52257d5b3edde94d46d56be1379743e6dd560feb529b203394",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Booky-57c71-e-and-viewport-lifecycle-ru/attachments/booky-live-character-source-evidence-8dbab7c55438c5bbe828edfc1eb05c2ef03275e5.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Booky-2051a-e-and-viewport-lifecycle-en/booky-drag-lifecycle-en-640.png",
+      "sha256": "5c2af4cd8a6cc0fa92cb06d49d83cb82605f3b94472f6e13a3cfacbbe1490b8e",
+      "width": 640,
+      "height": 360,
+      "bytes": 143601,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The compact English landscape header, edition strip, Appearance, globe controls and country strip remain readable.",
+        "The full character and its controls fit inside the viewport. The disabled No room walking control is visible and legible."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Booky-2051a-e-and-viewport-lifecycle-en/booky-live-character.json",
+        "sha256": "4f10959090fe1969017fe006682d47ad3a21c709977140e70a6c91c1db4edb18",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Booky-2051a-e-and-viewport-lifecycle-en/attachments/booky-live-character-source-evidence-6b53293b4f36b5762c8dbae8dc8103247e6763d3.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-settled-ru-390.png",
+      "sha256": "524bcd86404604125b1ebe10028aabe0f49976ea677edda4c3d5e9167d9488dc",
+      "width": 390,
+      "height": 844,
+      "bytes": 78914,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "All three Russian graphics option headings, radios and descriptions are visible above the reserved dock in this capture.",
+        "The full character and move, hide and Прогуляться controls remain inside the dock; the visible graphics content is not obscured by the character. The fixed header and language controls fit."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-live-character.json",
+        "sha256": "b4df2e038a84664c04827e97f0d3344fdfc874b0e45749aba98a869194fbca14",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/attachments/booky-live-character-source-evidence-c3efd7d6b2e25dbd5bf0cbd5aa28996983f07de8.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-settled-en-320.png",
+      "sha256": "92f7594e726c18aa0aad397c202eac7ee860d94bf1ce79279544f19a4b30fa5e",
+      "width": 320,
+      "height": 844,
+      "bytes": 67587,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The English High and Balanced options are readable; the Economy radio and heading are visible above the dock.",
+        "The lower Economy explanation continues beyond the current scrollable content boundary. This capture does not establish full visibility of that explanation.",
+        "The character and its controls fit in the dock without obscuring the visible graphics options; the fixed header and language controls fit."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-live-character.json",
+        "sha256": "3be28aa7179eead45341b9b2414bf9d277e841c0fcb714c7450b7442110ac6fe",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/attachments/booky-live-character-source-evidence-dc51267a852cdb87a44e00e48155b5a8f5694fef.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+      "sha256": "ac79d90d9113270bbc4ff549adcfb25547653a83ab03330df9092d99ff2eaaf9",
+      "width": 256,
+      "height": 256,
+      "bytes": 55176,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The actual transparent drawing buffer contains the complete green book character, both hands and both feet.",
+        "The magnifier is visibly held in the right hand and the free left fingers open upward. This small buffer view does not establish close-up surface quality; the separately reviewed source-bound model photos cover that detail."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-character.json",
+        "sha256": "e10ad82b6fa4bcf5034f739cf25ccc6114b5c7d178588c8175ca7e1773cfa4e9",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-3b5b1a2ad933f4152418d0696d55a85734ed0489.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+      "sha256": "7b3391fec80c1047f97bba40bce794a6bfde393c019470589b2951c28152aadd",
+      "width": 1440,
+      "height": 850,
+      "bytes": 1138454,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The English Mr. Booky card shows readable gesture controls, including Sway highlighted and the Surprise me focus ring. The full character and held magnifier are visible beside the card.",
+        "The card is intentionally scrollable: some upper controls are outside the current scrolled region and the lower Literary passport is partly below the card viewport. This capture does not establish simultaneous visibility of the entire card."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-live-character.json",
+        "sha256": "66b9d8d8b75d61964d4cae5508dbc0a7fb7ea1e6c9145d6e8868c5f2ebe26665",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/attachments/booky-live-character-source-evidence-aaf1cd7e4df09d6480c2eb3b6c828df9ec6f7d13.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 669
+      }
+    }
+  ],
+  "releaseReady": false
+}

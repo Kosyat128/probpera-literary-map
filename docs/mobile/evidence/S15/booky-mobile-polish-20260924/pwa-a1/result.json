@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:08:11.063Z",
+  "sourceCommit": "ff81de930a6fd947c0f100fc29dcc65be7632f5e",
+  "buildId": "c8375949a310e83bd69bf87240ce80f21ce7aa6569d4d8a2df4a6083617dc4af",
+  "sourceInputsSha256": "7a39c28e171328d3d3a0cb956ad9a3bb971d59b7225a8634bcf14ef72aa1b4b8",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/pwa-c8375949",
+    "files": 1427,
+    "bytes": 76774407,
+    "artifactSha256": "ee825f56d2fb1ebb0a4688c4c42d8396763b5a5f384e97b3ac179a9e15ed7b3a",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-24T06:07:43.755Z",
+    "duration": 21913.306,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

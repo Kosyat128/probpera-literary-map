@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:09:54.8941865Z",
+  "pass": true,
+  "reason": "Accurate final notes for relaxed left fingers, sewn right thumb, five source-bound model photos, copied photo limitations and controlled secondary capture-loss qualification.",
+  "authorizedBy": "Root bounded final prose task",
+  "changes": [
+    {
+      "name": "checkpoint.mjs",
+      "preservedOriginal": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-mobile-polish-20260924/helper-amendments/final-notes/checkpoint.mjs",
+        "sha256": "fbb788d69465596205b95cc48abf68e09203c8c8d3cc558b60a49e034e6edfe6"
+      },
+      "candidate": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/staging/checkpoint-final-notes.mjs",
+        "sha256": "b09028e092c16f249dde4585787aca50a5689e0ca3296df20c802bdd897d3c92"
+      },
+      "updated": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-mobile-polish-20260924/checkpoint.mjs",
+        "sha256": "b09028e092c16f249dde4585787aca50a5689e0ca3296df20c802bdd897d3c92"
+      }
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "preservedOriginal": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-mobile-polish-20260924/helper-amendments/final-notes/finalize-notes.mjs",
+        "sha256": "70ebfe7d700760b5304c9a80a162d31444d335faef15e5069583c54b768e9d6c"
+      },
+      "candidate": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-polish/staging/finalize-notes-final.mjs",
+        "sha256": "2c69e92db34ed5f7a857f522d20355954d5c44d2bdc2d3357129268389d1dba8"
+      },
+      "updated": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-mobile-polish-20260924/finalize-notes.mjs",
+        "sha256": "2c69e92db34ed5f7a857f522d20355954d5c44d2bdc2d3357129268389d1dba8"
+      }
+    }
+  ],
+  "previousPhotoSchemaAmendment": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-mobile-polish-20260924/helper-amendments/photo-schema/receipt.json",
+    "sha256": "bb7aaec9478ed428221d48ceb8ae6aa19d88c7211002d4d818a1ec513d7da155"
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/check.mjs",
+      "sha256": "4c6646effe15e07fd85b09a38bbb3d44ae43e67603c0bb100c5b7a278e3a0dbd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/entry.json",
+      "sha256": "d78c6ce7e0784459c9697eca88460482b7453f2e860dbbde2b3aaac5cb779468"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/unit.config.mjs",
+      "sha256": "06621ff180e01cb97d929bc29233cdde9cb9936c32dd7e58cfdf2bd3018c1467"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/configure.mjs",
+      "sha256": "445fe6189ab353d8bdefad7975c8a4c4614705c17a54d430bf7c4489190e7774"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/scope.json",
+      "sha256": "150c1a2bd9f80c4a38c7c889571c61eb6ad0c1f8bc3386bcee3016e5ef466f92"
+    }
+  ],
+  "checkInputsUnchanged": true,
+  "sourceFilesChanged": false,
+  "testsOrBuildsRun": false,
+  "releaseReady": false
+}
