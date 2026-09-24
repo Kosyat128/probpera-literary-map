@@ -1,0 +1,669 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T09:23:48.015Z",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-playful-poses-20260924/result.json",
+    "sha256": "8f2889ae0079a6485edd3286071ad34241f48f0ed318e28e840d690672e3297f"
+  },
+  "attempts": [
+    {
+      "attempt": "external-stop-a1",
+      "reportFormat": "playwright",
+      "classification": "external-focused-stop-diagnostic-failure",
+      "formalAcceptance": false,
+      "pass": false,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/playwright.json",
+        "sha256": "79daab6f7c5d3652693572e5d7846e5417cd86fedb95f107d20146ed80fc59dd"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/execution.json",
+        "sha256": "d44043dd37d7ad74107c6ac00f722a1a389e17aaae9011450c902875e36a1972"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/stdout.log",
+          "sha256": "4f5558b0858e0df2cc81d1c6d0f23d301147229290e28c2dbf8c10fe612b1bbf"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/stderr.log",
+          "sha256": "219a90765dc265e6ae5815edca39bfdca60cb9818ba8f3506e6c8cbba596536d"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/authorized-source.json",
+        "sha256": "2c38d2ce6d12d73cbe6dccb0b12de4a182ac5386c46dc47032f71fe6b67c3ffc"
+      },
+      "sourceUnchanged": true,
+      "captures": [
+        {
+          "test": "Booky mobile touch gesture Stop preserves context ru",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+            "sha256": "5ff31531bf66690d1da83fd4ab517faed565bbc2ccdcd5a37c2c3fa3fbb407f1"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-26ac2a4f443f5a333f941a00a1b750c8fe604f94.json",
+            "sha256": "5ff31531bf66690d1da83fd4ab517faed565bbc2ccdcd5a37c2c3fa3fbb407f1"
+          },
+          "pass": false,
+          "scenario": "mobile-touch-gesture-stop-ru",
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                "column": 448,
+                "line": 2614
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 8\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"active Dance stops before deadline and remains still\",\u001b[39m\n\u001b[31m+   \"a new gesture plays after Stop\",\u001b[39m\n\u001b[31m+   \"immediate Stop preserves all fifteen Surprise choices and boundary\",\u001b[39m\n\u001b[31m+   \"tour Stop preserves route step and pointing context\",\u001b[39m\n\u001b[31m+   \"landscape reduced Balance stops to static neutral\",\u001b[39m\n\u001b[31m+   \"trusted Stop and scroll provenance\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2612 |     await checked('trusted Stop and scroll provenance',async()=>{o.events=await page.evaluate(()=>window.__gestureStop.events);expect(o.events.filter(event=>event.type==='click'&&event.stop).length).toBeGreaterThanOrEqual(20);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted)).toBe(true);expect(o.swipes.length).toBeGreaterThan(0);});\n  2613 |     await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;\n> 2614 |     if(result.pass)Object.assign(result,{headerGestureStopReachable:true,gestureStopHeaderTitleFits:true,touchStopsActiveGesture:true,stoppedGestureStaysStillPastDeadline:true,stopClearsExplicitSelection:true,stoppedGestureCanRestartByTouch:true,stopPreservesSurpriseCycle:true,reducedGestureStopReturnsNeutral:true,tourGestureStopRetainsContext:true,stopPreservesPreferencesPositionAndScene:true,trustedTouchGestureStop:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^\n  2615 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__gestureStop?.events??[]).catch(()=>[]);await fixture.close();}\n  2616 | });\n  2617 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2614:448"
+            }
+          ]
+        },
+        {
+          "test": "Booky mobile touch gesture Stop preserves context en",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+            "sha256": "0b86feabdaad7d22ba88295ec355844243ada3569c6b39b48a51424f7b36a8cf"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-04697603af70323a62124353e1bbdd280c30023f.json",
+            "sha256": "0b86feabdaad7d22ba88295ec355844243ada3569c6b39b48a51424f7b36a8cf"
+          },
+          "pass": false,
+          "scenario": "mobile-touch-gesture-stop-en",
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                "column": 448,
+                "line": 2614
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 8\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"active Dance stops before deadline and remains still\",\u001b[39m\n\u001b[31m+   \"a new gesture plays after Stop\",\u001b[39m\n\u001b[31m+   \"immediate Stop preserves all fifteen Surprise choices and boundary\",\u001b[39m\n\u001b[31m+   \"tour Stop preserves route step and pointing context\",\u001b[39m\n\u001b[31m+   \"landscape reduced Balance stops to static neutral\",\u001b[39m\n\u001b[31m+   \"trusted Stop and scroll provenance\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2612 |     await checked('trusted Stop and scroll provenance',async()=>{o.events=await page.evaluate(()=>window.__gestureStop.events);expect(o.events.filter(event=>event.type==='click'&&event.stop).length).toBeGreaterThanOrEqual(20);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted)).toBe(true);expect(o.swipes.length).toBeGreaterThan(0);});\n  2613 |     await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;\n> 2614 |     if(result.pass)Object.assign(result,{headerGestureStopReachable:true,gestureStopHeaderTitleFits:true,touchStopsActiveGesture:true,stoppedGestureStaysStillPastDeadline:true,stopClearsExplicitSelection:true,stoppedGestureCanRestartByTouch:true,stopPreservesSurpriseCycle:true,reducedGestureStopReturnsNeutral:true,tourGestureStopRetainsContext:true,stopPreservesPreferencesPositionAndScene:true,trustedTouchGestureStop:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^\n  2615 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__gestureStop?.events??[]).catch(()=>[]);await fixture.close();}\n  2616 | });\n  2617 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2614:448"
+            }
+          ]
+        }
+      ],
+      "correctionsSincePrior": null,
+      "qualification": "Original 0 PASS / 2 FAIL, true exit 1. Both trusted Dance activations succeeded, but Stop was not reached after them. The original analysis infers the first sticky-header clipping guard from adjacent geometry; a separate RU landscape title-clipping failure is directly recorded. Original a1 has no failing header snapshot/error stack. Subsequent top inset and additional observations do not rewrite this evidence.",
+      "additionalEvidence": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a1\\playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a1\\run.mjs",
+          "sha256": "79c097db6524417c0b58265b44b760b2e0e8d33cd5900c54dff53fe4d92e3e6e"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a1\\bind.mjs",
+          "sha256": "2ab8ccba5beff17c73d83b7ca3ea88b499f38bee99648eab1fd6e738b64e0243"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a1\\canonical-fixture.mjs",
+          "sha256": "f2376373c1b49114fb10276b0db83615cee6a5b5af4834f904d3bd2cba12e5ac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/App.tsx",
+          "sha256": "98c62e65a3233f812ce1a76003885890de481abdce55ec51d0e4f9f3cc9ea5e1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "306efb8d9c77489262d6f018dd424c02a68de4804a8026cd453831a70562bef4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "24994d6aae198eb39dd9adeef8dc9720708298b2750e42db4ef58963615cfc5b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/host.css",
+          "sha256": "d8d5c3ea5eed15e7a28ad34d7065bec00d5f5caa5aa5a4f4771ce8df155a5b46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "f2376373c1b49114fb10276b0db83615cee6a5b5af4834f904d3bd2cba12e5ac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "0a3da8edfa6819cf76517b3a0025f4d47ebf55beaa3c39f16637b57c5dadedac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "b72db00c105e290ef02a4a42b2563028b90297246fdfa1d04ee421125c2742da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/authorized-source.json",
+          "sha256": "2c38d2ce6d12d73cbe6dccb0b12de4a182ac5386c46dc47032f71fe6b67c3ffc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/execution-start.json",
+          "sha256": "ddc29293ba21343a58c261a8f9855de768d5c557531a2d65677cde545a303776"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/preflight-start.json",
+          "sha256": "b8cc2ac8de645d09eb049e132f2badfa8fbc49449155d2085c6803a8b91fe576"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/preflight-result.json",
+          "sha256": "f974cd9cec53ac65c96c92fd3df815e91931dbfcb1e4d3a7e98fcc2993237ca8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/preflight-stdout.log",
+          "sha256": "7236310dd002ad6b7d28ec32865c488833fe5feec2c8e52ca8783e6221697f0a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/dirty.diff",
+          "sha256": "1979449ef0a89214b300d1e6f2290d7d027b88606d373802f5de491b564c620d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-26ac2a4f443f5a333f941a00a1b750c8fe604f94.json",
+          "sha256": "5ff31531bf66690d1da83fd4ab517faed565bbc2ccdcd5a37c2c3fa3fbb407f1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+          "sha256": "5ff31531bf66690d1da83fd4ab517faed565bbc2ccdcd5a37c2c3fa3fbb407f1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-04697603af70323a62124353e1bbdd280c30023f.json",
+          "sha256": "0b86feabdaad7d22ba88295ec355844243ada3569c6b39b48a51424f7b36a8cf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+          "sha256": "0b86feabdaad7d22ba88295ec355844243ada3569c6b39b48a51424f7b36a8cf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a1-analysis.json",
+          "sha256": "b2062ddd73c037bf18c7caa93d832ebb5322fffa75cadf20e487791ebeb22f88"
+        }
+      ]
+    },
+    {
+      "attempt": "external-stop-a2",
+      "reportFormat": "playwright",
+      "classification": "external-focused-stop-diagnostic-failure",
+      "formalAcceptance": false,
+      "pass": false,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/playwright.json",
+        "sha256": "72a903a268af0072b6dfa57f57f370cd22e482a27a307a3496ddcb7da6334288"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/execution.json",
+        "sha256": "f5fa0e37de853bed1754ae7836c14a10560daac4385a822d6696633731782719"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/stdout.log",
+          "sha256": "727cb0e4ef91bd436378983e233a09a53f9820a188726b1b8c10ad94b329ae2c"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/stderr.log",
+          "sha256": "7a1ba3763023ed51b452c9b65228d29b262d9d80897b353152f3f645121522a0"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/authorized-source.json",
+        "sha256": "ef0f76dc94c2c644ea8868026f862c67c5ef026e9d57ce910e78b4671cb2ab74"
+      },
+      "sourceUnchanged": true,
+      "captures": [
+        {
+          "test": "Booky mobile touch gesture Stop preserves context ru",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+            "sha256": "9045a71c4bb8e5f542246ae7a8033fa303660a04362692d29c7f25b74aef8624"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-e558c6bcc5870d132f9566143aabfcba8eb124cc.json",
+            "sha256": "9045a71c4bb8e5f542246ae7a8033fa303660a04362692d29c7f25b74aef8624"
+          },
+          "pass": false,
+          "scenario": "mobile-touch-gesture-stop-ru",
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                "column": 448,
+                "line": 2614
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"landscape reduced Balance stops to static neutral\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2612 |     await checked('trusted Stop and scroll provenance',async()=>{o.events=await page.evaluate(()=>window.__gestureStop.events);expect(o.events.filter(event=>event.type==='click'&&event.stop).length).toBeGreaterThanOrEqual(20);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted)).toBe(true);expect(o.swipes.length).toBeGreaterThan(0);});\n  2613 |     await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;\n> 2614 |     if(result.pass)Object.assign(result,{headerGestureStopReachable:true,gestureStopHeaderTitleFits:true,touchStopsActiveGesture:true,stoppedGestureStaysStillPastDeadline:true,stopClearsExplicitSelection:true,stoppedGestureCanRestartByTouch:true,stopPreservesSurpriseCycle:true,reducedGestureStopReturnsNeutral:true,tourGestureStopRetainsContext:true,stopPreservesPreferencesPositionAndScene:true,trustedTouchGestureStop:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                ^\n  2615 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__gestureStop?.events??[]).catch(()=>[]);await fixture.close();}\n  2616 | });\n  2617 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2614:448"
+            }
+          ]
+        },
+        {
+          "test": "Booky mobile touch gesture Stop preserves context en",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+            "sha256": "508adc4079c646cbc4a3fcd66686d80f023fbd8a847180b65dabe3a7d236d2d1"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-af063f86f361a4587214d0aeec63b737db0d9f89.json",
+            "sha256": "508adc4079c646cbc4a3fcd66686d80f023fbd8a847180b65dabe3a7d236d2d1"
+          },
+          "pass": true,
+          "scenario": "mobile-touch-gesture-stop-en",
+          "errors": []
+        }
+      ],
+      "correctionsSincePrior": "Sticky header receives a 6 px top inset; the fixture records header geometry before assertions and error stacks without relaxing assertions.",
+      "qualification": "Original 1 PASS / 1 FAIL / 0 skipped / 0 flaky; true exit 1. This is a source-bound external two-case diagnostic, separate from the formal four-case acceptance run.",
+      "additionalEvidence": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a2\\playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a2\\run.mjs",
+          "sha256": "79c097db6524417c0b58265b44b760b2e0e8d33cd5900c54dff53fe4d92e3e6e"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a2\\bind.mjs",
+          "sha256": "cf0aac21a4e4ebc340c3f16332b63da1f6c2a21220b80f42c7c330dffccca0fb"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a2\\canonical-fixture.mjs",
+          "sha256": "60ea334af58db3412269a0a5f6187ba908d1907f0f3d9a16c61f782270d6b62c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/App.tsx",
+          "sha256": "98c62e65a3233f812ce1a76003885890de481abdce55ec51d0e4f9f3cc9ea5e1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "306efb8d9c77489262d6f018dd424c02a68de4804a8026cd453831a70562bef4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "2229b4078b509f23d22688b7604bd80015d6d56364a92a72ffe6623134962b77"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/host.css",
+          "sha256": "d8d5c3ea5eed15e7a28ad34d7065bec00d5f5caa5aa5a4f4771ce8df155a5b46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "60ea334af58db3412269a0a5f6187ba908d1907f0f3d9a16c61f782270d6b62c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "0a3da8edfa6819cf76517b3a0025f4d47ebf55beaa3c39f16637b57c5dadedac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "b72db00c105e290ef02a4a42b2563028b90297246fdfa1d04ee421125c2742da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/authorized-source.json",
+          "sha256": "ef0f76dc94c2c644ea8868026f862c67c5ef026e9d57ce910e78b4671cb2ab74"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/execution-start.json",
+          "sha256": "93081dd9d863ef81f3197eb1829e697fdf9d18b2219d7f9b100a0e73ca6a9bbf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/preflight-start.json",
+          "sha256": "7b9646ca1751a00a977b88d95af20ff91dc59bfa21f9daefcb7f68f38d080e43"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/preflight-result.json",
+          "sha256": "95a79fa2b1b164c2af105df1af43a2f4c4f54c4f702bcf121e3bc0500205651c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/preflight-stdout.log",
+          "sha256": "7236310dd002ad6b7d28ec32865c488833fe5feec2c8e52ca8783e6221697f0a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/dirty.diff",
+          "sha256": "5d59ce16bafbcef47a7d1333febd41062d6a231785c91b8d926628901580993a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-e558c6bcc5870d132f9566143aabfcba8eb124cc.json",
+          "sha256": "9045a71c4bb8e5f542246ae7a8033fa303660a04362692d29c7f25b74aef8624"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+          "sha256": "9045a71c4bb8e5f542246ae7a8033fa303660a04362692d29c7f25b74aef8624"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-gesture-stop-ru-390.png",
+          "sha256": "070f80ab3e1fc51aa2a1c0e3eabc357a706d57727364cc2d552713015d47900c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-af063f86f361a4587214d0aeec63b737db0d9f89.json",
+          "sha256": "508adc4079c646cbc4a3fcd66686d80f023fbd8a847180b65dabe3a7d236d2d1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+          "sha256": "508adc4079c646cbc4a3fcd66686d80f023fbd8a847180b65dabe3a7d236d2d1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-gesture-stop-en-320.png",
+          "sha256": "486d1b0bbfcd85777965a55911a22abc292608268100fdf3f0864331068ca3f9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-gesture-stop-en-640.png",
+          "sha256": "f804cf4e3c1536332699d4d414a6ac609fc208d7fc7591e45c63bdfa93fd6b58"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a2-analysis.json",
+          "sha256": "b73b6b86ebfed1e374a7617c1ebf5f6afd51029a166c6d3259384282837d7056"
+        }
+      ]
+    },
+    {
+      "attempt": "external-stop-a3",
+      "reportFormat": "playwright",
+      "classification": "external-focused-stop-diagnostic-pass",
+      "formalAcceptance": false,
+      "pass": true,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/playwright.json",
+        "sha256": "153e5f7ef73766165e3e17b8fa6b52245abee8ee058c32414db760857385e0d9"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/execution.json",
+        "sha256": "c27805d54b9d843940c66f9e067afc522b9cc7b9b3487b92c54048e3355edf98"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/stdout.log",
+          "sha256": "c21fb8b711b243e09481a208b94b13758bc1b17dda62ae4aa3ba0cfbd3499f5c"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/stderr.log",
+          "sha256": "ee7c1a24f4451392b4713f90d0f0624605dbeb40926f8bb4c51f01479774c3f2"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/authorized-source.json",
+        "sha256": "6d289637df386bcb086914ddb2b268b70a7b02215282d232786ac19985e0e95c"
+      },
+      "sourceUnchanged": true,
+      "captures": [
+        {
+          "test": "Booky mobile touch gesture Stop preserves context ru",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+            "sha256": "ba93bf5ca24ded800033c5beb310490b976aaf58f19376efa30237e03a6fe6fc"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-b3e62660828a4094a2e988f7297c19e95e3ca603.json",
+            "sha256": "ba93bf5ca24ded800033c5beb310490b976aaf58f19376efa30237e03a6fe6fc"
+          },
+          "pass": true,
+          "scenario": "mobile-touch-gesture-stop-ru",
+          "errors": []
+        },
+        {
+          "test": "Booky mobile touch gesture Stop preserves context en",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+            "sha256": "92fd9553b599c360e5103da598b9e590de9ed0e02fe6ee617530a5b650413acb"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-44af5fa3731b011b5be548822a4b2cb1e62b600e.json",
+            "sha256": "92fd9553b599c360e5103da598b9e590de9ed0e02fe6ee617530a5b650413acb"
+          },
+          "pass": true,
+          "scenario": "mobile-touch-gesture-stop-en",
+          "errors": []
+        }
+      ],
+      "correctionsSincePrior": "The bounded touch-scroll driver permits 32 monotonic swipes and checks the target once more after the final swipe. A compact layout rule at max-width 640 px and max-height 540 px sets the header title to 18 px; the fixture requires a single line and font size at least 18 px. These are subsequent improvements, not changes to earlier results.",
+      "qualification": "Original 2 PASS / 0 FAIL / 0 skipped / 0 flaky; true exit 0. This is a source-bound external two-case diagnostic, separate from the formal four-case acceptance run.",
+      "additionalEvidence": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a3\\playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a3\\run.mjs",
+          "sha256": "79c097db6524417c0b58265b44b760b2e0e8d33cd5900c54dff53fe4d92e3e6e"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a3\\bind.mjs",
+          "sha256": "cf0aac21a4e4ebc340c3f16332b63da1f6c2a21220b80f42c7c330dffccca0fb"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-stop-review\\a3\\canonical-fixture.mjs",
+          "sha256": "27b58a2072eff633ac252cabd7c77a01f87f1ce622505cd0db6fc26de5e3f3bc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/App.tsx",
+          "sha256": "98c62e65a3233f812ce1a76003885890de481abdce55ec51d0e4f9f3cc9ea5e1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "306efb8d9c77489262d6f018dd424c02a68de4804a8026cd453831a70562bef4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "1841c35b35c95b8953b662cbb8909735d658e1f9c7eaeaf5c64708f8b045b0f7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/host.css",
+          "sha256": "d8d5c3ea5eed15e7a28ad34d7065bec00d5f5caa5aa5a4f4771ce8df155a5b46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "27b58a2072eff633ac252cabd7c77a01f87f1ce622505cd0db6fc26de5e3f3bc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "0a3da8edfa6819cf76517b3a0025f4d47ebf55beaa3c39f16637b57c5dadedac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "b72db00c105e290ef02a4a42b2563028b90297246fdfa1d04ee421125c2742da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/authorized-source.json",
+          "sha256": "6d289637df386bcb086914ddb2b268b70a7b02215282d232786ac19985e0e95c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/execution-start.json",
+          "sha256": "f54a481b5f858777586016d100147cf713e87942d73122b2ca3d8c4d87c6538a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/preflight-start.json",
+          "sha256": "cb290c447914b453bfab08409ef0fc90ed5150bc4e20da6a6a50201cdf58a7bb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/preflight-result.json",
+          "sha256": "e42b5f57bd6b6c8a862981ac7bc7f11311921fc850f961b3ce86446e82b002ec"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/preflight-stdout.log",
+          "sha256": "7236310dd002ad6b7d28ec32865c488833fe5feec2c8e52ca8783e6221697f0a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/dirty.diff",
+          "sha256": "c6179aa56594617573f0a94046f97409c12f756c98059c4612d92af06e135a90"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-b3e62660828a4094a2e988f7297c19e95e3ca603.json",
+          "sha256": "ba93bf5ca24ded800033c5beb310490b976aaf58f19376efa30237e03a6fe6fc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+          "sha256": "ba93bf5ca24ded800033c5beb310490b976aaf58f19376efa30237e03a6fe6fc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-gesture-stop-ru-390.png",
+          "sha256": "ba1726e2dac4003e4afc8f6720e515d2a3a59a75c086391a22157f7b0e507d8e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-gesture-stop-ru-568.png",
+          "sha256": "5f94d10cff12b8b038a31e05a234adaefca3c79f0316347e2a89ea536691a468"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-44af5fa3731b011b5be548822a4b2cb1e62b600e.json",
+          "sha256": "92fd9553b599c360e5103da598b9e590de9ed0e02fe6ee617530a5b650413acb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+          "sha256": "92fd9553b599c360e5103da598b9e590de9ed0e02fe6ee617530a5b650413acb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-gesture-stop-en-320.png",
+          "sha256": "7ce3dd7c4a15a0c5f060cf5da3f51d7dafa846c06b916d1929d5e0530a08819a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-review/a3/artifacts/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-gesture-stop-en-640.png",
+          "sha256": "e34ba8e99ee3c2733caab1ca1a5d4c40088033f093142ff024a09f314a08b88d"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only completed external two-case Stop diagnostics are recorded here; they are not the formal four-case acceptance run.",
+    "Each attempt keeps its original runtime/fixture copies, source hashes, raw logs, report, attachments and PNG hashes. Failed attempts remain failed.",
+    "The a1 first header-control failure is an inference from adjacent geometry, while its RU landscape title clipping is an explicit recorded assertion. Additional a2 observations cannot retroactively qualify a1.",
+    "PNG authentication does not claim direct visual review of these diagnostic images."
+  ],
+  "releaseReady": false
+}

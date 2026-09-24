@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-gesture-stop-dev-apk",
+  "sourceCommit": "3a0cb6910e098dbf2eff5aec5ee63acda56e9966",
+  "buildId": "1a6ed600e0365517faa42000721c0fa3dbab3c5b042e7398675bc8615a616d23",
+  "sourceInputsSha256": "2ddfb57f5e1ef3cb34e011901c5a521eec272c1be0facc4eac05a6422c01a076",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/android-1a6ed600/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "68339f197eca30a0e2927fea5d9c2b0f4ac09a5d9bacc5e0c97f933a740d811c"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/android-1a6ed600/runtime",
+    "sha256": "a877d3d539f22b0234b023b651f570d511e5e95e42e16bbe92b416c3858ad9e0",
+    "files": 1408,
+    "bytes": 74860761
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-playful-poses-evidence/android-891cd0cb/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

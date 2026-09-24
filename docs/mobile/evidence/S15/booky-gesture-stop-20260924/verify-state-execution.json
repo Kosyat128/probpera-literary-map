@@ -1,0 +1,11 @@
+{
+  "command": [
+    "node",
+    "scripts/mobile/verify-state.mjs"
+  ],
+  "startedAt": "2026-09-24T09:31:30.5809424Z",
+  "finishedAt": "2026-09-24T09:31:59.7886555Z",
+  "exitCode": 0,
+  "gitConfigCount": 1,
+  "sourceCommit": "3a0cb6910e098dbf2eff5aec5ee63acda56e9966"
+}

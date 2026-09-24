@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "description": "An explicit localized Stop button in the help header cancels the active gesture, clears its selection and returns the character to rest while preserving tour context, Surprise history, preferences and canonical scene. Selected actual-App cases cover trusted touch, manual restart, no automatic resumption, reduced motion, live model and RU/EN open-help placement. Existing D193 standalone photos retain their original scope through unchanged model, animation and renderer dependency hashes.",
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedBrowserTests": 4,
+  "expectedImages": 20,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "mobile-touch-gesture-stop-ru",
+      "flags": [
+        "headerGestureStopReachable",
+        "gestureStopHeaderTitleFits",
+        "touchStopsActiveGesture",
+        "stoppedGestureStaysStillPastDeadline",
+        "stopClearsExplicitSelection",
+        "stoppedGestureCanRestartByTouch",
+        "stopPreservesSurpriseCycle",
+        "reducedGestureStopReturnsNeutral",
+        "tourGestureStopRetainsContext",
+        "stopPreservesPreferencesPositionAndScene",
+        "trustedTouchGestureStop"
+      ]
+    },
+    {
+      "scenario": "mobile-touch-gesture-stop-en",
+      "flags": [
+        "headerGestureStopReachable",
+        "gestureStopHeaderTitleFits",
+        "touchStopsActiveGesture",
+        "stoppedGestureStaysStillPastDeadline",
+        "stopClearsExplicitSelection",
+        "stoppedGestureCanRestartByTouch",
+        "stopPreservesSurpriseCycle",
+        "reducedGestureStopReturnsNeutral",
+        "tourGestureStopRetainsContext",
+        "stopPreservesPreferencesPositionAndScene",
+        "trustedTouchGestureStop"
+      ]
+    },
+    {
+      "scenario": "booky-open-help-placement",
+      "flags": [
+        "openHelpLocaleControlsReachable",
+        "desktopOpenHelpNavigationReachable",
+        "closedHelpNavigationReachable",
+        "collectionHeaderReachable",
+        "helpScrollsByPointerWheel",
+        "helpClosesWhileScrolled",
+        "helpRegrowsOnLargerViewport",
+        "petAndHelpFitWithoutOverlap",
+        "noAutomaticPreferenceWrites",
+        "noHelpCameraChanges",
+        "sameCanonicalGlobe",
+        "compactLandscapeHelpReadable",
+        "closedHelpGlobalHeaderReachable"
+      ]
+    }
+  ],
+  "expectedUnitTests": 169,
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "requireDiagnosticHistory": true,
+  "requiredVisualFilenames": [
+    "booky-gesture-stop-ru-390.png",
+    "booky-gesture-stop-ru-568.png",
+    "booky-gesture-stop-en-320.png",
+    "booky-gesture-stop-en-640.png",
+    "booky-help-globe-ru-568.png",
+    "booky-help-globe-en-568.png"
+  ],
+  "requiredObservationChecks": [],
+  "browserTestTitles": [
+    "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+    "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+    "Booky mobile touch gesture Stop preserves context ru",
+    "Booky mobile touch gesture Stop preserves context en"
+  ],
+  "retainedCaseCaptureSubtotal": 16,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "306efb8d9c77489262d6f018dd424c02a68de4804a8026cd453831a70562bef4"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "1841c35b35c95b8953b662cbb8909735d658e1f9c7eaeaf5c64708f8b045b0f7"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "27b58a2072eff633ac252cabd7c77a01f87f1ce622505cd0db6fc26de5e3f3bc"
+    }
+  ],
+  "retainPriorModelPhotos": true,
+  "expectedRetainedModelPhotos": 3
+}

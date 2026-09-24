@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-gesture-stop-20260924/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 33453,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "cb692c193d05e86e53e7b18657348e9c3e3b889df40ca01a44bf68bf4be6f690"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/pwa-a1/browser-stderr.log",
+    "bytes": 163,
+    "sha256": "5537687d49fc473f11292142b2d55c3ba5e7528f3315d1e077b9a731d4e897a2"
+  }
+}

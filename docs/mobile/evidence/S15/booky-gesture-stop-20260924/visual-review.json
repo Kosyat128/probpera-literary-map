@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T09:30:57.687Z",
+  "pass": true,
+  "sourceCommit": "3a0cb6910e098dbf2eff5aec5ee63acda56e9966",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/source-manifests/c984b40085910b87.json",
+    "sha256": "c984b40085910b872fa3058607ab75dd1283712913030a133aab52cfd79b5a31",
+    "fileCount": 1652
+  },
+  "inspectedCount": 6,
+  "totalCapturedCount": 20,
+  "scope": "Direct review of the selected final RU/EN mobile gesture Stop and compact open-help captures, covering header title, Stop and close controls, character framing and visible text. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 6 of 20 final captures. It does not claim all retained images were inspected again.",
+    "Static images show the selected header and help layouts; they cannot establish Stop timing, trusted-touch activation or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/final-visual-receipt.json",
+    "sha256": "42379e725169c905cc222cc0c533560ceb39191c2b2baec9ebd25b15cc346c4c"
+  },
+  "images": [
+    {
+      "filename": "booky-gesture-stop-ru-390.png",
+      "sha256": "ead7aa4667b1bf7f89709459dfbaa7122e4d4d364b1e803653f056308a28967e",
+      "width": 390,
+      "height": 844,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-gesture-stop-ru-390.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+        "sha256": "5d229be808a1c36a4c6578a670405f215d14b49d9b6c416397615b8dd5cda25a"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-8b45b5c07d5a8c432b0bfc989c386987d81b3f99.json",
+        "sha256": "5d229be808a1c36a4c6578a670405f215d14b49d9b6c416397615b8dd5cda25a"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The full Russian name, Стоп label and close control are visible in the sticky header without mutual overlap. The complete character and both adjacent character controls remain inside the viewport.",
+        "Visible lower gesture labels are readable; Порадоваться wraps onto a final-letter second line. The open help covers part of the background scene controls, so this image does not establish unobscured access to every background control."
+      ],
+      "bytes": 328847
+    },
+    {
+      "filename": "booky-gesture-stop-ru-568.png",
+      "sha256": "5f94d10cff12b8b038a31e05a234adaefca3c79f0316347e2a89ea536691a468",
+      "width": 568,
+      "height": 320,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-gesture-stop-ru-568.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/booky-live-character.json",
+        "sha256": "5d229be808a1c36a4c6578a670405f215d14b49d9b6c416397615b8dd5cda25a"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-c314f-e-Stop-preserves-context-ru/attachments/booky-live-character-source-evidence-8b45b5c07d5a8c432b0bfc989c386987d81b3f99.json",
+        "sha256": "5d229be808a1c36a4c6578a670405f215d14b49d9b6c416397615b8dd5cda25a"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "In the compact landscape view, Книжулик fits on one line and the Стоп and close controls remain fully framed. The full character and both adjacent controls are visible beside the help card.",
+        "The scrolled upper gesture row is partly hidden beneath the sticky header; the На одной ножке and Удиви меня buttons below are visible. The help and character overlay part of the background timeline and country panel."
+      ],
+      "bytes": 111453
+    },
+    {
+      "filename": "booky-gesture-stop-en-320.png",
+      "sha256": "227c26e80699d129128490e61096a47cacfe9b2a447ce2063a5965c6f246593f",
+      "width": 320,
+      "height": 844,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-gesture-stop-en-320.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+        "sha256": "49a79701373d0822f0e8812bd5a975d8bde96b04de46826dfce367ab12412872"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-66ba2d3bd5dd00c16ecb51d5cb9305e685a7971c.json",
+        "sha256": "49a79701373d0822f0e8812bd5a975d8bde96b04de46826dfce367ab12412872"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "Mr. Booky, Stop and the close icon remain fully visible in the narrow portrait header. The full character, its two controls and the separate zoom badge fit the viewport.",
+        "The upper gesture row is partly hidden beneath the sticky header; Encourage, Wink, Sway and Dance are readable below it. The disabled walk label wraps within its own button. This static view does not establish Stop timing or activation."
+      ],
+      "bytes": 270398
+    },
+    {
+      "filename": "booky-gesture-stop-en-640.png",
+      "sha256": "e34ba8e99ee3c2733caab1ca1a5d4c40088033f093142ff024a09f314a08b88d",
+      "width": 640,
+      "height": 360,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-gesture-stop-en-640.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-32509-e-Stop-preserves-context-en/booky-live-character.json",
+        "sha256": "49a79701373d0822f0e8812bd5a975d8bde96b04de46826dfce367ab12412872"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Booky-32509-e-Stop-preserves-context-en/attachments/booky-live-character-source-evidence-66ba2d3bd5dd00c16ecb51d5cb9305e685a7971c.json",
+        "sha256": "49a79701373d0822f0e8812bd5a975d8bde96b04de46826dfce367ab12412872"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "Mr. Booky fits one line in landscape and the Stop and close controls are fully visible. The complete character and its adjacent controls are framed beside the help card.",
+        "High five!, Take a bow, Balance and Surprise me are readable. A preceding row is partly hidden beneath the sticky header, and the help overlays part of the background timeline and left scene controls."
+      ],
+      "bytes": 123614
+    },
+    {
+      "filename": "booky-help-globe-ru-568.png",
+      "sha256": "1f59469fcc035d198d7c08851caec9efa65d2df72b9252c55714684a26b8ca22",
+      "width": 568,
+      "height": 320,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "06fe8d969e0ed4ceb9316d728de1be6e81ed0d66fdaaf2ef4672ccf552c67393"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-01e53c7d2633ec00357b809fe6d69a6e5c948e67.json",
+        "sha256": "06fe8d969e0ed4ceb9316d728de1be6e81ed0d66fdaaf2ef4672ccf552c67393"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The compact open-help header shows Книжулик, Стоп and the close control clearly with visible spacing. The selected-writer text is readable and the full character and adjacent controls remain visible.",
+        "Help body text continues below the card viewport and its last visible line is cut at the lower edge. The help overlays the left background timeline and part of the country panel; this is not an all-controls-clear view."
+      ],
+      "bytes": 121353
+    },
+    {
+      "filename": "booky-help-globe-en-568.png",
+      "sha256": "69c6f56e46461a7af097d66ef204057596046a2586d86ca6a1867dcede9f6762",
+      "width": 568,
+      "height": 320,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568.png",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "06fe8d969e0ed4ceb9316d728de1be6e81ed0d66fdaaf2ef4672ccf552c67393"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-01e53c7d2633ec00357b809fe6d69a6e5c948e67.json",
+        "sha256": "06fe8d969e0ed4ceb9316d728de1be6e81ed0d66fdaaf2ef4672ccf552c67393"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The compact open-help header shows Mr. Booky, Stop and the close control without clipping. The selected-writer line and visible help text are readable; the full character and its adjacent controls are framed.",
+        "The final visible help line reaches the lower clipping boundary, with more content in the scroll area. The open help covers part of the background timeline and country panel; the image does not prove universal absence of overlap."
+      ],
+      "bytes": 124318
+    }
+  ],
+  "releaseReady": false
+}

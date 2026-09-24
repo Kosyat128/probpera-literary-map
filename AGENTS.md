@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-gesture-stop-20260924:begin -->
+Latest source 3a0cb691: Книжулик / Mr. Booky has an explicit Стоп / Stop button in the help header. Selected actual-App checks cover trusted-touch cancellation, manual restart, Surprise-cycle preservation, reduced-motion neutral pose, tour context and unchanged preferences and scene. The unchanged model, animation and renderer retain three D193 rest/bow/balance photos through exact dependency hashes and their original standalone scope.
+
+Evidence: docs/mobile/evidence/S15/booky-gesture-stop-20260924/result.json. D194. 169 unit cases and 4 selected browser cases; 20 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-gesture-stop-20260924:end -->
+
 <!-- s15-booky-playful-poses-20260924:begin -->
 Latest source 645ad444: Книжулик / Mr. Booky has fifteen finite gestures, adding a bow and one-leg balance. The local Surprise cycle includes all fifteen. Selected actual-App cases cover all gestures, RU/EN trusted-touch repeats, active bow-to-balance interruption and distinct static reduced-motion poses. Three direct-reviewed rest/bow/balance photos bind the current animation and unchanged model; older photos remain historical evidence only.
 

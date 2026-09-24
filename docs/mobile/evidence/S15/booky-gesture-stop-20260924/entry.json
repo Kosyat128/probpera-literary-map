@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T09:24:33.336Z",
+  "stage": "S15",
+  "checkpoint": "595b5d377e0b8d988c2abbfaa46e59188084e461",
+  "previous": "docs/mobile/evidence/S15/booky-playful-poses-20260924/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/result.json",
+    "sha256": "8f2889ae0079a6485edd3286071ad34241f48f0ed318e28e840d690672e3297f"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/result.json",
+    "sha256": "8f2889ae0079a6485edd3286071ad34241f48f0ed318e28e840d690672e3297f"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/source-manifests/d0e543680179b451.json",
+    "sha256": "d0e543680179b4518471d27c9a267b369bd2c61b8a3e27adf42d58eec83d5fa1",
+    "fileCount": 1652
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-stop-20260924/scope.json",
+    "sha256": "7d1f485dcd8f4c6ffd047671d06debf3caf246bc9762769ca5b80f24da20e094"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ee98062527d86da04b8bba539072cb7a8f8f453f7f84e4aa1f2338266f20a0a2"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "53e756f63d166c0dc49350ce33192624093bc5f7bc724d4bf1b4338b6156a980"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "10fd93553534615d9686e2b31afdaa5464fbdfb1d162e3a887e90b06f4de4c8c"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "be073a2f1084da3a4abde0d9ad75e095214d5f9bd7255190376d8c1e63f3fd09"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "1337008ed6d5e7644c759967d49ee9dcda8973351cdb4ab6d15fee1952f4a922"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "ba99fb5c7f988834ff51a62441994490a00faf6b81dec9489329f77074f601fb"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "37d7b72e6b81fb5e9e73aad21fb456c4f61ac144dfa7df2fcd9344572cb4e957"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "c5a92d62daa4204827fd43553f9b08281f6b50f7a1db8d191f17a97e01ba5c13"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "1841c35b35c95b8953b662cbb8909735d658e1f9c7eaeaf5c64708f8b045b0f7"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "306efb8d9c77489262d6f018dd424c02a68de4804a8026cd453831a70562bef4"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "27b58a2072eff633ac252cabd7c77a01f87f1ce622505cd0db6fc26de5e3f3bc"
+    }
+  ],
+  "sourceInputCount": 1652,
+  "protectedInputCount": 1649,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "595b5d377e0b8d988c2abbfaa46e59188084e461",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+    "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+    "Booky mobile touch gesture Stop preserves context ru",
+    "Booky mobile touch gesture Stop preserves context en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 169,
+  "expectedBrowserTests": 4,
+  "expectedImages": 20,
+  "scope": "An explicit localized Stop button in the help header cancels the active gesture, clears its selection and returns the character to rest while preserving tour context, Surprise history, preferences and canonical scene. Selected actual-App cases cover trusted touch, manual restart, no automatic resumption, reduced motion, live model and RU/EN open-help placement. Existing D193 standalone photos retain their original scope through unchanged model, animation and renderer dependency hashes.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

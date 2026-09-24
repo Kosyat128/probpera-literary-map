@@ -1,0 +1,15 @@
+{
+  "checkpoint": "595b5d377e0b8d988c2abbfaa46e59188084e461",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/pwa-a1/result.json",
+    "sha256": "2dbdbe6e3d4c81c14eb7e5c75d87cdfb9a123c11b01ea6aff2f4ef7ad65461c2",
+    "buildId": "8053cafab3f0d1d9cf7755809fb8895fe19395470d341154106fd41a8612b5d7",
+    "sourceCommit": "645ad444d402141ef1162060778ad2874eb6c12b"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/android-a1/result.json",
+    "sha256": "d3d2f60807374671ca9d69586d562b8fc12cbf2f2038f557a4aa2785f9913ae4",
+    "buildId": "891cd0cbc9a70bb93da604f2f5ac1d2d93302cbfe94d704ade9ed0c963348e18",
+    "sourceCommit": "645ad444d402141ef1162060778ad2874eb6c12b"
+  }
+}

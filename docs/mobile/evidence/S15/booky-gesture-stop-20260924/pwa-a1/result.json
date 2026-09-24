@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T09:29:54.424Z",
+  "sourceCommit": "3a0cb6910e098dbf2eff5aec5ee63acda56e9966",
+  "buildId": "015f7d0aaa2f9ae99d396c1e89dda36aeb8489105eae192e0fc39b4df227cd39",
+  "sourceInputsSha256": "abc915090132305fe0f250f90edfe3c5a2bc12dce63184aa25d47887906241ad",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-stop-evidence/pwa-015f7d0a",
+    "files": 1427,
+    "bytes": 76780742,
+    "artifactSha256": "08c04db31f78fb7304781b05a856deef53539d3fd0e3f6d9b58045e83accafd5",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-24T09:29:16.976Z",
+    "duration": 32657.162,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

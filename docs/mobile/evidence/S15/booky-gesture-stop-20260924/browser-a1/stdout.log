@@ -1,0 +1,10 @@
+
+Running 4 tests using 1 worker
+
+
+
+[1/4] tests\pwa\booky-live-character.spec.mjs:411:1 › live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged
+[2/4] tests\pwa\booky-live-character.spec.mjs:1537:1 › Mr. Booky open help preserves primary navigation and scrolls independently in both locales
+[3/4] tests\pwa\booky-live-character.spec.mjs:2517:150 › Booky mobile touch gesture Stop preserves context ru
+[4/4] tests\pwa\booky-live-character.spec.mjs:2517:150 › Booky mobile touch gesture Stop preserves context en
+  4 passed (2.5m)
