@@ -419,18 +419,154 @@ export function createBookyModel(): OwnedBookyModel {
     mesh(leftArm, "booky-left-sleeve", sweep([[0, 0, 0], [-.11, -.058, .042], [-.235, -.047, .134], [-.285, -.025, .16]],
       [.069, .063, .071, .072], 24, 12), leather);
     const leftHand = node(leftArm, "booky-left-hand", [-.29, -.025, .16]);
-    const leftPalm: THREE.BufferGeometry[] = [ellipsoid([-.075, .013, .033], [.118, .117, .066])];
-    const roundedDigit = (parts: THREE.BufferGeometry[], points: readonly Point[], radii: readonly number[], steps: number) => {
-      parts.push(sweep(points, radii, steps, 12, true));
-    };
-    // A relaxed upward fan with slight forward flex. Bury each closed root
-    // inside the palm and let the thumb open away from the other digits.
-    roundedDigit(leftPalm, [[-.075, .045, .010], [-.095, .135, .044], [-.115, .228, .052]], [.043, .038, .026], 16);
-    roundedDigit(leftPalm, [[-.105, .045, .010], [-.155, .125, .042], [-.197, .192, .052]], [.044, .038, .027], 16);
-    roundedDigit(leftPalm, [[-.130, .012, .010], [-.198, .077, .039], [-.250, .126, .049]], [.041, .035, .025], 16);
-    roundedDigit(leftPalm, [[-.025, .015, .010], [.018, .066, .061], [.050, .111, .080]],
-      [.042, .034, .025], 18);
-    fused(leftHand, "booky-left-open-glove", leftPalm, white);
+    // One closed glove surface. Shared root rings join the four open digit
+    // lofts to the front/back palm patches; no overlapping finger caps remain.
+    const leftGlove = (() => {
+      const radial = 16, positions: number[] = [], uvs: number[] = [], indices: number[] = [];
+      const add = (point: THREE.Vector3, u = 0, v = 0) => {
+        const index = positions.length / 3; positions.push(point.x, point.y, point.z); uvs.push(u, v); return index;
+      };
+      const roots: number[][] = [];
+      const digit = (points: readonly Point[], radii: readonly number[], steps: number) => {
+        const curve = new THREE.CatmullRomCurve3(points.map(point => new THREE.Vector3(...point)), false, "centripetal");
+        const firstRow = Math.ceil(steps * .75), rings: number[][] = [];
+        const addRing = (center: THREE.Vector3, tangent: THREE.Vector3, radius: number, v: number) => {
+          const right = new THREE.Vector3(tangent.y, -tangent.x, 0).normalize();
+          const front = new THREE.Vector3().crossVectors(right, tangent).normalize();
+          const ring: number[] = [];
+          for (let col = 0; col < radial; col++) {
+            const angle = col / radial * TAU;
+            ring.push(add(center.clone().addScaledVector(right, Math.cos(angle) * radius)
+              .addScaledVector(front, Math.sin(angle) * radius), col / radial, v));
+          }
+          const previous = rings[rings.length - 1];
+          if (previous) for (let col = 0; col < radial; col++) {
+            const next = (col + 1) % radial;
+            indices.push(previous[col], ring[col], previous[next], previous[next], ring[col], ring[next]);
+          }
+          rings.push(ring);
+        };
+        for (let row = firstRow; row <= steps; row++) {
+          const u = row / steps, r = u * (radii.length - 1), low = Math.min(radii.length - 2, Math.floor(r));
+          addRing(curve.getPointAt(u), curve.getTangentAt(u), THREE.MathUtils.lerp(radii[low], radii[low + 1], r - low), u);
+        }
+        const tip = curve.getPointAt(1), tangent = curve.getTangentAt(1), radius = radii[radii.length - 1];
+        for (let row = 1; row <= 4; row++) {
+          const angle = row / 5 * Math.PI / 2;
+          addRing(tip.clone().addScaledVector(tangent, radius * Math.sin(angle)), tangent, radius * Math.cos(angle), 1 + row / 5);
+        }
+        const pole = add(tip.addScaledVector(tangent, radius), .5, 1), last = rings[rings.length - 1];
+        for (let col = 0; col < radial; col++) indices.push(pole, last[(col + 1) % radial], last[col]);
+        roots.push(rings[0]);
+      };
+      // Clockwise digit order in the palm plane: thumb, then the relaxed fan.
+      digit([[-.025, .015, .010], [.018, .066, .061], [.050, .111, .080]], [.042, .034, .025], 18);
+      digit([[-.075, .045, .010], [-.095, .135, .044], [-.115, .228, .052]], [.043, .038, .026], 16);
+      digit([[-.105, .045, .010], [-.155, .125, .042], [-.197, .192, .052]], [.044, .038, .027], 16);
+      digit([[-.130, .012, .010], [-.198, .077, .039], [-.250, .126, .049]], [.041, .035, .025], 16);
+      // A rounded shared rim joins the two palm patches with real thickness,
+      // rather than letting their triangles meet along a sharp planar edge.
+      const palmRim: number[][] = [], rimRows = 8, edgeSteps = 28;
+      for (let row = 0; row <= rimRows; row++) {
+        const phi = Math.PI / 6 + row / rimRows * Math.PI * 2 / 3, ring: number[] = [];
+        for (let col = 0; col <= edgeSteps; col++) {
+          const angle = Math.PI - .10 + (Math.PI + .15) * col / edgeSteps;
+          const outward = new THREE.Vector3(Math.cos(angle) / .118, Math.sin(angle) / .117, 0).normalize();
+          const point = new THREE.Vector3(-.075 + .118 * Math.cos(angle), .013 + .117 * Math.sin(angle), .033 + .025 * Math.cos(phi));
+          point.addScaledVector(outward, -.025 * (1 - Math.sin(phi))); ring.push(add(point));
+        }
+        palmRim.push(ring);
+      }
+      for (let row = 0; row < rimRows; row++) {
+        for (let col = 0; col < edgeSteps; col++) {
+          const a = palmRim[row][col], b = palmRim[row + 1][col], c = palmRim[row][col + 1], d = palmRim[row + 1][col + 1];
+          indices.push(a, b, c, c, b, d);
+        }
+        indices.push(roots[3][radial / 2], palmRim[row + 1][0], palmRim[row][0]);
+        indices.push(roots[0][0], palmRim[row][edgeSteps], palmRim[row + 1][edgeSteps]);
+      }
+      const patch = (front: boolean) => {
+        const boundary: number[] = [];
+        for (const root of roots) for (let col = 0; col <= radial / 2; col++) {
+          boundary.push(root[front ? col : (radial - col) % radial]);
+        }
+        boundary.push(...palmRim[front ? 0 : rimRows]);
+        const points = boundary.map(index => new THREE.Vector2(positions[index * 3], positions[index * 3 + 1]));
+        const ids = [...boundary], boundaryCount = ids.length;
+        const cross = (a: number, b: number, c: number) =>
+          (points[b].x - points[a].x) * (points[c].y - points[a].y) - (points[b].y - points[a].y) * (points[c].x - points[a].x);
+        const oriented = (a: number, b: number, c: number) => cross(a, b, c) > 0 ? [a, b, c] : [a, c, b];
+        const triangles = THREE.ShapeUtils.triangulateShape(points, []).map(([a, b, c]) => oriented(a, b, c));
+        // Interior vertices follow the concave glove outline instead of rays
+        // from one pole. The constrained boundary is the exact shared root rim.
+        for (let y = -.083; y < .190; y += .014) for (let x = -.247; x < .038; x += .014) {
+          const p = new THREE.Vector2(x, y), next = points.length;
+          if (points.some(point => point.distanceToSquared(p) < .004 ** 2)) continue;
+          points.push(p);
+          const at = triangles.findIndex(([a, b, c]) => cross(a, b, next) > 1e-7 && cross(b, c, next) > 1e-7 && cross(c, a, next) > 1e-7);
+          if (at < 0) { points.pop(); continue; }
+          const [a, b, c] = triangles[at]; triangles.splice(at, 1, [a, b, next], [b, c, next], [c, a, next]);
+          ids.push(add(new THREE.Vector3(x, y, .033), x, y));
+        }
+        // Local edge flips keep the authored interior grid well shaped while
+        // leaving every boundary edge and its ownership untouched.
+        for (let pass = 0; pass < 20; pass++) {
+          const edges = new Map<string, { a: number; b: number; triangles: number[] }>();
+          triangles.forEach((triangle, at) => triangle.forEach((a, edge) => {
+            const b = triangle[(edge + 1) % 3], key = a < b ? `${a}/${b}` : `${b}/${a}`;
+            const entry = edges.get(key) ?? { a, b, triangles: [] }; entry.triangles.push(at); edges.set(key, entry);
+          }));
+          let flipped = false;
+          for (const { a, b, triangles: adjacent } of edges.values()) {
+            if (adjacent.length !== 2) continue;
+            const [first, second] = adjacent, one = triangles[first], two = triangles[second];
+            if (!one.includes(a) || !one.includes(b) || !two.includes(a) || !two.includes(b)) continue;
+            const c = one.find(value => value !== a && value !== b)!, d = two.find(value => value !== a && value !== b)!;
+            if (cross(c, d, a) * cross(c, d, b) >= -1e-12) continue;
+            const angle = (at: number) => {
+              const u = points[a].clone().sub(points[at]), v = points[b].clone().sub(points[at]);
+              return Math.acos(THREE.MathUtils.clamp(u.dot(v) / Math.sqrt(u.lengthSq() * v.lengthSq()), -1, 1));
+            };
+            if (angle(c) + angle(d) <= Math.PI + 1e-5) continue;
+            triangles[first] = oriented(c, d, a); triangles[second] = oriented(d, c, b); flipped = true;
+          }
+          if (!flipped) break;
+        }
+        const weights = points.map(() => new Map<number, number>()), areas = points.map(() => 0);
+        const weight = (a: number, b: number, value: number) => weights[a].set(b, (weights[a].get(b) ?? 0) + value);
+        for (const triangle of triangles) {
+          const [a, b, c] = triangle, area = Math.abs(cross(a, b, c)) / 2;
+          for (const index of triangle) areas[index] += area / 3;
+          for (let corner = 0; corner < 3; corner++) {
+            const at = triangle[corner], one = triangle[(corner + 1) % 3], two = triangle[(corner + 2) % 3];
+            const u = points[one].clone().sub(points[at]), v = points[two].clone().sub(points[at]);
+            const cotangent = u.dot(v) / (4 * area);
+            weight(one, two, cotangent); weight(two, one, cotangent);
+          }
+        }
+        const sums = weights.map(neighbors => [...neighbors.values()].reduce((sum, value) => sum + value, 0));
+        // Area-weighted curvature inflates both patches smoothly even beside
+        // the narrow webs. Fixed shared rims remain the only patch boundaries.
+        const sign = front ? 1 : -1;
+        for (let iteration = 0; iteration < 320; iteration++) {
+          let change = 0;
+          for (let i = boundaryCount; i < ids.length; i++) {
+            let sum = 0;
+            for (const [other, value] of weights[i]) sum += positions[ids[other] * 3 + 2] * value;
+            const at = ids[i] * 3 + 2, z = (sum + sign * 9.2 * areas[i]) / sums[i];
+            change = Math.max(change, Math.abs(z - positions[at])); positions[at] = z;
+          }
+          if (change < 1e-7) break;
+        }
+        for (const [a, b, c] of triangles) indices.push(...(front ? [ids[a], ids[b], ids[c]] : [ids[a], ids[c], ids[b]]));
+      };
+      patch(true); patch(false);
+      const geometry = own(new THREE.BufferGeometry());
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+      geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2)); geometry.setIndex(indices); geometry.computeVertexNormals();
+      return geometry;
+    })();
+    mesh(leftHand, "booky-left-open-glove", leftGlove, white);
     const leftCuff = torus(.074, .018, [0, 0, 0]);
     leftCuff.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(-1, .15, .30).normalize()));
     leftCuff.translate(.013, -.004, -.008); mesh(leftHand, "booky-left-cuff", leftCuff, white);

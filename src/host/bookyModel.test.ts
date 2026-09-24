@@ -269,10 +269,13 @@ describe("original articulated Mr. Booky model", () => {
   });
 });
 
-it("keeps the sewn palm and thumb in one closed oriented surface beside the three curled fingers", () => {
+it.each([
+  { name: "booky-right-grip-glove", components: 4 },
+  { name: "booky-left-open-glove", components: 1 },
+])("keeps $name closed and oriented with $components continuous surfaces", ({ name, components }) => {
   const model = createBookyModel();
   try {
-    const glove = model.group.getObjectByName("booky-right-grip-glove") as THREE.Mesh;
+    const glove = model.group.getObjectByName(name) as THREE.Mesh;
     const position = glove.geometry.getAttribute("position"), index = glove.geometry.getIndex()!;
     expect(index).not.toBeNull();
     const point = new THREE.Vector3(), keys: string[] = [], parent = new Map<string, string>();
@@ -287,7 +290,13 @@ it("keeps the sewn palm and thumb in one closed oriented surface beside the thre
       const root = find(next); parent.set(key, root); return root;
     };
     const edges = new Map<string, { count: number; direction: number }>();
+    const a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3();
+    let signedVolume = 0;
     for (let i = 0; i < index.count; i += 3) {
+      a.fromBufferAttribute(position, index.getX(i));
+      b.fromBufferAttribute(position, index.getX(i + 1));
+      c.fromBufferAttribute(position, index.getX(i + 2));
+      signedVolume += a.dot(b.cross(c)) / 6;
       const triangle = [keys[index.getX(i)], keys[index.getX(i + 1)], keys[index.getX(i + 2)]];
       expect(new Set(triangle).size).toBe(3);
       for (let edge = 0; edge < 3; edge++) {
@@ -299,6 +308,7 @@ it("keeps the sewn palm and thumb in one closed oriented surface beside the thre
       }
     }
     expect([...edges.values()].filter(edge => edge.count !== 2 || edge.direction !== 0)).toEqual([]);
-    expect(new Set([...parent.keys()].map(find)).size).toBe(4);
+    expect(new Set([...parent.keys()].map(find)).size).toBe(components);
+    expect(signedVolume).toBeGreaterThan(0);
   } finally { model.dispose(); }
 });
