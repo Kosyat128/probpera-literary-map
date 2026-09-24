@@ -404,8 +404,12 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         setGesture("rest"); setPointerLook(null); setReactionKey(value => value + 1);
       }
     };
-    // Wait for the destination panel's focus/scroll before planning its route.
-    frame = requestAnimationFrame(() => { frame = requestAnimationFrame(find); });
+    // The panel opens the section, then reveals it after the dock layout.
+    // Wait for that reveal's queued scroll event before attaching the travel
+    // interruption listener, including when reduced motion points in place.
+    frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => { frame = requestAnimationFrame(find); });
+    });
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const detach = () => {
       document.removeEventListener("pointerdown", stop, true); document.removeEventListener("keydown", stop, true);

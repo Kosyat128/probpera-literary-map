@@ -56,6 +56,9 @@ test.beforeAll(async () => {
         if(!sectionHeld)entry.native=requestAnimationFrame(time=>{sectionFrames.delete(id);callback(time)});return id},
       cancel(id){const entry=sectionFrames.get(id);if(entry?.native!==null)cancelAnimationFrame(entry?.native);sectionFrames.delete(id)},
       hold(){sectionHeld=true},
+      stepHeld(){if(!sectionHeld)throw Error('Panel phase gate is not held');let count=0;
+        for(const[id,entry]of [...sectionFrames])if(entry.native===null){count++;
+          entry.native=requestAnimationFrame(time=>{sectionFrames.delete(id);entry.callback(time)})}return count},
       release(){sectionHeld=false;for(const[id,entry]of sectionFrames)if(entry.native===null)
         entry.native=requestAnimationFrame(time=>{sectionFrames.delete(id);entry.callback(time)})},
       pending(){return [...sectionFrames.values()].filter(entry=>entry.native===null).length},
@@ -197,7 +200,7 @@ test.beforeAll(async () => {
         let contents=await fs.readFile(args.path,'utf8');
         const requested=(contents.match(/\brequestAnimationFrame\(/gu)??[]).length;
         const cancelled=(contents.match(/\bcancelAnimationFrame\(/gu)??[]).length;
-        expect([requested,cancelled]).toEqual([2,2]);
+        expect([requested,cancelled]).toEqual([3,2]);
         contents=contents.replace(/\brequestAnimationFrame\(/gu,'window.__bookySectionFrames.request(')
           .replace(/\bcancelAnimationFrame\(/gu,'window.__bookySectionFrames.cancel(');
         return{contents,loader:'tsx',resolveDir:path.dirname(args.path)};
@@ -243,7 +246,7 @@ test.beforeAll(async () => {
     fixtureObservers: ['Actual useBookyWalk sampleBookyWalk output and its source RAF time, owner, began, path and duration; read-only guarded copies only, no timing/scheduling/geometry substitution', 'Real Booky WebGLRenderer render/dispose calls, frame times, rig poses and actual scene/camera references',
       'Actual createBookyModel owner and disposer; fixture never assigns geometry or material values',
       'Delegating observer of actual native ContentDownloads methods; no replacement outcomes'],
-    controlledScheduling: 'Only the two NativePlanetPanel RAF callbacks may be held/released explicitly for stale-focus regression; no globe or character clock changes',
+    controlledScheduling: 'Only the three NativePlanetPanel RAF callbacks may be held/released explicitly for stale-focus regression; no globe or character clock changes',
     cameraAuthority: 'Companion show/hide/tour steps do not own the camera. Only existing canonical App navigation owns scene changes; no fixture camera assignments.',
     representation: 'Live independent Three.js character with owned geometry; original PNG only renderer-failure fallback, canonical globe unchanged',
     fallbackArtwork: { path: ASSET, sha256: ASSET_SHA, bytes: assetBytes.length, width: 1254, height: 1254, pngColorType: 6,
@@ -624,6 +627,92 @@ test('Mr. Booky opens canonical local utilities without writes and preserves new
     expect(fixture.memory.get(BOOKY)).toBe(saved);expect(fixture.writes()).toEqual([]);expect(await downloadActions(page)).toEqual([]);
     const afterRandom=mutations(fixture).slice(englishBefore.length);
     expect(afterRandom.every(value=>value.key==='probpera-planet-recent-adult-v1')).toBe(true);
+    // Keep the first accepted open phase, but interrupt its deferred reveal
+    // with a newer trusted touch on a compact landscape phone surface.
+    await page.setViewportSize({width:568,height:320});await live(page);await stablePose(page);
+    await openUtility(page,'Graphics settings','Useful actions');
+    await expect(graphics).toHaveAttribute('open','');await expect(graphicsSummary).toBeFocused();
+    await graphicsSummary.tap();await expect(graphics).not.toHaveAttribute('open','');await twoFrames(page);
+    const interphaseOriginal=await actual(page),interphaseMutations=mutations(fixture);
+    const interphaseMemory=[...fixture.memory.entries()].sort(([a],[b])=>a.localeCompare(b));
+    const interphaseState=()=>page.evaluate(()=>{
+      const content=document.querySelector('.native-planet-panel__content');
+      const pet=document.querySelector('[data-planet-mascot-pet]');
+      if(!content||!pet)throw Error('Missing actual utility surface');
+      const r=pet.getBoundingClientRect();
+      return{scroll:{top:content.scrollTop,left:content.scrollLeft,windowX:scrollX,windowY:scrollY},
+        sections:{graphics:document.querySelector('[data-planet-graphics-settings]').open,
+          downloads:document.querySelector('[data-planet-downloads]').open,recent:document.querySelector('[data-recent-history]').open},
+        focusedDownloads:document.activeElement===document.querySelector('[data-planet-downloads]>summary'),
+        phase:document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')??null,
+        returning:pet.hasAttribute('data-booky-returning'),gesture:pet.getAttribute('data-planet-mascot-gesture'),
+        pet:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}};
+    });
+    await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();
+    const touchUtilities=panel(page).locator('summary').filter({hasText:/^Useful actions$/u});
+    if(!await touchUtilities.evaluate(element=>element.parentElement.open))await touchUtilities.tap();
+    const touchGraphicsAction=panel(page).getByRole('button',{name:'Graphics settings',exact:true});
+    await touchGraphicsAction.scrollIntoViewIfNeeded();await expect(touchGraphicsAction).toBeEnabled();
+    await page.evaluate(()=>window.__bookySectionFrames.hold());
+    await touchGraphicsAction.tap();await expect(panel(page)).not.toBeVisible();
+    await expect.poll(()=>page.evaluate(()=>window.__bookySectionFrames.pending())).toBe(1);
+    expect(await page.evaluate(()=>window.__bookySectionFrames.stepHeld())).toBe(1);
+    await expect(graphics).toHaveAttribute('open','');
+    await expect.poll(()=>page.evaluate(()=>window.__bookySectionFrames.pending())).toBe(1);
+    const interphaseOpened=await interphaseState();
+    await downloadSummary.scrollIntoViewIfNeeded();
+    const interphaseHit=await downloadSummary.evaluate(element=>{
+      const r=element.getBoundingClientRect(),c=element.closest('.native-planet-panel__content').getBoundingClientRect();
+      return{fullyInsideContent:r.top>=c.top&&r.bottom<=c.bottom&&r.left>=c.left&&r.right<=c.right,
+        reachable:[.15,.5,.85].map(fraction=>{const hit=document.elementFromPoint(r.left+r.width*fraction,r.top+r.height/2);return!!hit&&element.contains(hit);})};
+    });
+    expect(interphaseHit.fullyInsideContent).toBe(true);expect(interphaseHit.reachable).toEqual([true,true,true]);
+    const interphaseDownloadsWereOpen=await downloads.evaluate(element=>element.open);
+    await page.evaluate(()=>{
+      const events=[];
+      const observe=event=>{if(event.target instanceof Element&&event.target.closest('[data-planet-downloads]>summary'))
+        events.push({type:event.type,trusted:event.isTrusted,pointerType:event.pointerType??null});};
+      for(const type of ['pointerdown','pointerup','click'])document.addEventListener(type,observe,true);
+      window.__bookyInterphaseTouch={events,stop(){for(const type of ['pointerdown','pointerup','click'])document.removeEventListener(type,observe,true);return events;}};
+    });
+    let interphaseTouchEvents;
+    try{await downloadSummary.tap();}finally{interphaseTouchEvents=await page.evaluate(()=>window.__bookyInterphaseTouch.stop());}
+    for(const type of ['pointerdown','pointerup'])expect(interphaseTouchEvents.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch')).toBe(true);
+    expect(interphaseTouchEvents.some(event=>event.type==='click'&&event.trusted)).toBe(true);
+    await expect(downloadSummary).toBeFocused();
+    expect(await downloads.evaluate(element=>element.open)).toBe(!interphaseDownloadsWereOpen);
+    await twoFrames(page);
+    await expect.poll(async()=>{const state=await interphaseState();return state.phase===null&&!state.returning&&state.gesture!=='walking';}).toBe(true);
+    const interphaseAfterTouch=await interphaseState();
+    await page.evaluate(()=>window.__bookyLiveFixture.observeWalk());
+    await page.evaluate(()=>window.__bookySectionFrames.release());await twoFrames(page);
+    await expect(downloadSummary).toBeFocused();
+    const interphaseAfterRelease=await interphaseState();
+    expect(interphaseAfterRelease.scroll).toEqual(interphaseAfterTouch.scroll);
+    expect(interphaseAfterRelease.sections).toEqual(interphaseAfterTouch.sections);
+    await page.waitForTimeout(1900);
+    const interphaseAfter1900ms=await interphaseState();
+    const interphaseMotion=await page.evaluate(()=>window.__bookyLiveFixture.stopObservingWalk());
+    await expect(downloadSummary).toBeFocused();
+    expect(interphaseAfter1900ms.scroll).toEqual(interphaseAfterTouch.scroll);
+    expect(interphaseAfter1900ms.sections).toEqual(interphaseAfterTouch.sections);
+    for(const state of [interphaseAfterRelease,interphaseAfter1900ms]){
+      expect(state.phase).toBeNull();expect(state.returning).toBe(false);expect(state.gesture).not.toBe('walking');
+      for(const key of ['left','top','right','bottom','width','height'])expect(Math.abs(state.pet[key]-interphaseAfterTouch.pet[key])).toBeLessThanOrEqual(.0625);
+    }
+    expect(interphaseMotion.samples.length).toBeGreaterThan(2);
+    for(const frame of interphaseMotion.samples)for(const key of ['left','top','right','bottom','width','height'])
+      expect(Math.abs(frame[key]-interphaseAfterTouch.pet[key])).toBeLessThanOrEqual(.0625);
+    expect(await page.evaluate(()=>window.__bookySectionFrames.pending())).toBe(0);
+    expect(mutations(fixture)).toEqual(interphaseMutations);
+    expect([...fixture.memory.entries()].sort(([a],[b])=>a.localeCompare(b))).toEqual(interphaseMemory);
+    expect(await downloadActions(page)).toEqual([]);retained(await actual(page),interphaseOriginal);
+    result.observations.interphaseTouch={viewport:{width:568,height:320},opened:interphaseOpened,hit:interphaseHit,
+      events:interphaseTouchEvents,afterTouch:interphaseAfterTouch,afterRelease:interphaseAfterRelease,after1900ms:interphaseAfter1900ms,
+      motion:interphaseMotion,preferenceMemorySha256:digest(Buffer.from(JSON.stringify(interphaseMemory))),mutationsBefore:interphaseMutations};
+    Object.assign(result,{newerInterphaseTouchRetained:true,interphaseTouchKeepsScrollAndSections:true,
+      interphaseTouchDoesNotResumeWalk:true,interphaseTouchLandscape:true});
+
     result.observations.utilities={before,englishBefore,afterRandom,downloadActions:await downloadActions(page),
       savedCompanionSha256:digest(Buffer.from(saved)),countryBefore,countryAfter:new URL(page.url()).searchParams.get('country'),globe:await actual(page)};
     Object.assign(result,{scenario:'explicit-local-utilities',fourCanonicalActions:true,utilitiesBilingual:true,
@@ -2035,6 +2124,191 @@ for(const [language,view] of [['ru',{width:390,height:844}],['en',{width:320,hei
       result.pass=false;o.failure=error.message;
       if(!o.trace)o.trace=await page.evaluate(()=>window.__utilitySurface?.stop()??null).catch(()=>null);
       if(!result.screenshots.length)await capture(page,result,testInfo,'booky-utility-'+action+'-'+language+'-'+view.width+'.png').catch(()=>undefined);
+      throw error;
+    }finally{await fixture.close();}
+  });
+}
+
+
+for(const [language,view,action] of [['ru',{width:568,height:320},'recent'],['en',{width:640,height:360},'downloads']]){
+  test('utility landscape natural touch '+language+' '+action,async({},testInfo)=>{
+    test.setTimeout(120000);
+    const fixture=await open(testInfo,{recentHistory:{v:1,entries:[{kind:'writer',countryId:'russia',writerId:'dostoevsky',openedAt:1789660800000}]}}),{page,result}=fixture;
+    const o=result.observations.utilitySurface={language,view,action,checks:[],findings:[]};
+    result.scenario='utility-landscape-'+language+'-'+action;
+    const targetSelector=action==='recent'?'[data-recent-history]':'[data-planet-downloads]';
+    const checked=async(name,fn)=>{try{await fn();o.checks.push({name,pass:true});}catch(error){o.checks.push({name,pass:false,error:error.message});o.findings.push({name,error:error.message});}};
+    const preferences=()=>({entries:[...fixture.memory.entries()].sort(([a],[b])=>a.localeCompare(b)),mutations:mutations(fixture)});
+    const state=label=>page.evaluate(label=>window.__utilitySurface.read(label),label);
+    try{
+      await page.setViewportSize(view);await ready(page);
+      if(language==='en'){
+        await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:/^EN$/u}).tap();
+        await expect(page.locator('html')).toHaveAttribute('lang','en');
+        await expect.poll(()=>fixture.memory.get('probpera-interface-language')).toBe('en');await ready(page);
+      }
+      await actual(page);await stablePose(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());
+      o.canonicalBefore=await actual(page);
+      await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await companionSaved(fixture);
+      const useful=panel(page).locator('[data-booky-useful-actions] > summary');
+      if(!await useful.evaluate(element=>element.parentElement.open))await useful.tap();
+      const selected=panel(page).locator('[data-planet-mascot-action="'+action+'"]');
+      await expect(selected).toBeEnabled();await selected.scrollIntoViewIfNeeded();await live(page);
+      expect(await page.locator('[data-planet-graphics-settings]').evaluateAll(nodes=>nodes.some(node=>node.open))).toBe(false);
+      // The original fixture supplies real native preference bindings and canonical catalog loading.
+      // No target, position, open flag, source geometry, motion clock or preference is assigned here.
+      await page.evaluate(({action,targetSelector})=>{
+        const rect=r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height});
+        const visible=element=>{
+          if(!element)return null;const r=element.getBoundingClientRect(),style=getComputedStyle(element);
+          if(element.closest('[hidden],[inert],[aria-hidden="true"]')||style.display==='none'||style.visibility!=='visible'||Number(style.opacity)===0||r.width<2||r.height<2)return null;
+          let left=Math.max(0,r.left),top=Math.max(0,r.top),right=Math.min(innerWidth,r.right),bottom=Math.min(innerHeight,r.bottom),clip=style.position!=='fixed';
+          for(let p=element.parentElement;p;p=p.parentElement){const s=getComputedStyle(p),b=p.getBoundingClientRect();
+            if(s.display==='none'||Number(s.opacity)===0)return null;
+            if(clip&&p!==document.body&&p!==document.documentElement&&/auto|scroll|hidden|clip/u.test(s.overflowX)){left=Math.max(left,b.left);right=Math.min(right,b.right);}
+            if(clip&&p!==document.body&&p!==document.documentElement&&/auto|scroll|hidden|clip/u.test(s.overflowY)){top=Math.max(top,b.top);bottom=Math.min(bottom,b.bottom);}
+            if(s.position==='fixed')clip=false;
+          }
+          return right-left>=2&&bottom-top>=2?{left,top,right,bottom,width:right-left,height:bottom-top}:null;
+        };
+        const check=(element,index)=>{
+          const raw=rect(element.getBoundingClientRect()),r=visible(element);
+          const key=element.getAttribute('aria-label')||element.getAttribute('data-recent-entry')||element.textContent.trim().replace(/\s+/gu,' ').slice(0,100)||element.tagName;
+          if(!r)return{index,key,tag:element.tagName,recentEntry:element.getAttribute('data-recent-entry'),inputType:element.getAttribute('type'),visibility:'none',raw};
+          const full=Object.keys(r).every(key=>Math.abs(r[key]-raw[key])<.5);
+          const points=[.15,.5,.85].map(fraction=>{const x=r.left+r.width*fraction,y=r.top+r.height/2,hit=document.elementFromPoint(x,y);
+            return{x,y,fraction,reachable:!!hit&&element.contains(hit),petBlocked:!!hit?.closest('[data-planet-mascot-pet]'),hit:hit?.tagName??null,hitClass:typeof hit?.className==='string'?hit.className:null};});
+          return{index,key,tag:element.tagName,recentEntry:element.getAttribute('data-recent-entry'),inputType:element.getAttribute('type'),visibility:full?'full':'partial',raw,rect:r,disabled:element.matches(':disabled')||element.getAttribute('aria-disabled')==='true',points,reachable:points.every(point=>point.reachable)};
+        };
+        const read=(label,rafAt=null)=>{const readStart=performance.now();const p=document.querySelector('[data-planet-mascot-pet]'),cue=document.querySelector('[data-booky-target]'),target=document.querySelector(targetSelector);
+          const prose=[...(target?.querySelectorAll('p,h3,.recent-history__label,.recent-history__kind')??[])].map((element,index)=>({index,text:element.textContent.trim().replace(/\s+/gu,' ').slice(0,160),raw:rect(element.getBoundingClientRect()),visible:visible(element)}));
+          const controls=[...document.querySelectorAll('.native-planet-panel__header button,'+targetSelector+' summary,'+targetSelector+' button,'+targetSelector+' a[href],'+targetSelector+' input,'+targetSelector+' select,'+targetSelector+' label')].map(check);
+          return{at:performance.now(),readStart,readEnd:performance.now(),rafAt,label,viewport:{width:innerWidth,height:innerHeight},pet:p?rect(p.getBoundingClientRect()):null,
+            phase:cue?.getAttribute('data-booky-target')??null,action:cue?.getAttribute('data-booky-target-action')??null,returning:p?.getAttribute('data-booky-returning')==='true',gesture:p?.getAttribute('data-planet-mascot-gesture')??null,
+            targetOpen:target?.open??false,target:target?{raw:rect(target.getBoundingClientRect()),visible:visible(target)}:null,
+            graphicsOpen:document.querySelector('[data-planet-graphics-settings]')?.open??false,dockActive:document.querySelector('[data-booky-dock-active="true"]')!==null,
+            dock:visible(document.querySelector('[data-booky-dock-active="true"]')),content:visible(document.querySelector('.native-planet-panel__content')),prose,
+            contentScrollTop:document.querySelector('.native-planet-panel__content')?.scrollTop??null,controls};};
+        const readFrame=rafAt=>{
+          const readStart=performance.now(),p=document.querySelector('[data-planet-mascot-pet]'),cue=document.querySelector('[data-booky-target]');
+          const value={rafAt,readStart,viewport:{width:innerWidth,height:innerHeight},pet:p?rect(p.getBoundingClientRect()):null,
+            phase:cue?.getAttribute('data-booky-target')??null,action:cue?.getAttribute('data-booky-target-action')??null,
+            returning:p?.getAttribute('data-booky-returning')==='true',gesture:p?.getAttribute('data-planet-mascot-gesture')??null};
+          value.readEnd=performance.now();value.at=value.readEnd;return value;
+        };
+        window.__utilityWalkDraw=[];
+        const value=window.__utilitySurface={samples:[],events:[],frame:0,stopped:false,startedAt:performance.now(),read};
+        const event=e=>{const target=e.target instanceof Element?e.target:null;
+          value.events.push({at:performance.now(),type:e.type,trusted:e.isTrusted,pointerType:e.pointerType??null,key:e.key??null,
+            action:target?.closest('[data-planet-mascot-action]')?.getAttribute('data-planet-mascot-action')??null,insideTarget:!!target?.closest(targetSelector),insideContent:!!target?.closest('.native-planet-panel__content')});};
+        for(const type of ['pointerdown','pointerup','click','keydown','touchstart','touchmove','touchend'])document.addEventListener(type,event,true);
+        const frame=rafAt=>{if(value.stopped)return;value.samples.push(readFrame(rafAt));if(performance.now()-value.startedAt<18000)value.frame=requestAnimationFrame(frame);};
+        value.stop=()=>{value.stopped=true;cancelAnimationFrame(value.frame);for(const type of ['pointerdown','pointerup','click','keydown','touchstart','touchmove','touchend'])document.removeEventListener(type,event,true);return{startedAt:value.startedAt,samples:value.samples,events:value.events,draws:window.__utilityWalkDraw??[]};};
+        value.frame=requestAnimationFrame(frame);
+      },{action,targetSelector});
+      o.before=await state('before explicit touch');o.preferencesBefore=preferences();o.downloadCallsBefore=await downloadActions(page);
+      await selected.tap();await expect(panel(page)).not.toBeVisible();await expect(page.locator(targetSelector)).toHaveAttribute('open','');
+      await checked('natural point reached',()=>expect.poll(()=>page.evaluate(()=>window.__utilitySurface.samples.some(s=>s.phase==='tapping')),{timeout:6000,intervals:[30,50]}).toBe(true));
+      await checked('natural return reached',()=>expect.poll(()=>page.evaluate(()=>window.__utilitySurface.samples.some(s=>s.returning)),{timeout:2500,intervals:[30,50]}).toBe(true));
+      let previous=null,matches=0;
+      await checked('natural point completed and position settled',()=>expect.poll(async()=>{const s=await state('settling'),key=JSON.stringify(s.pet);matches=s.phase===null&&!s.returning&&s.gesture!=='walking'&&key===previous?matches+1:0;previous=key;return matches;},{timeout:2500,intervals:[30,50]}).toBeGreaterThanOrEqual(3));
+      o.settled=await state('settled before optional user scroll');
+      await capture(page,result,testInfo,'booky-utility-landscape-'+action+'-'+language+'-'+view.width+'-natural-return.png');
+      o.touchScroll={gestures:[],requiredVisibleInitially:false};
+      const requiredControls=s=>s.controls.filter(c=>action==='recent'?c.recentEntry:(c.tag==='INPUT'&&c.inputType==='checkbox')||c.tag==='LABEL');
+      const exposed=s=>{const controls=requiredControls(s);return controls.length>=(action==='recent'?1:2)&&controls.every(c=>c.visibility==='full'&&c.reachable);};
+      o.touchScroll.requiredVisibleInitially=exposed(o.settled);
+      await checked('required utility controls exposed by optional trusted touch scroll',async()=>{
+        for(let attempt=0;attempt<6;attempt++){
+          const before=await state('before optional touch scroll');if(exposed(before))break;
+          const content=before.content,targets=requiredControls(before);
+          expect(content?.height,'Visible panel clip can receive user scroll').toBeGreaterThan(48);
+          expect(targets.length).toBeGreaterThanOrEqual(action==='recent'?1:2);
+          const targetTop=Math.min(...targets.map(c=>c.raw.top)),targetBottom=Math.max(...targets.map(c=>c.raw.bottom));
+          const direction=(targetTop+targetBottom)/2>(content.top+content.bottom)/2?1:-1;
+          const x=content.left+content.width*.92,startY=direction>0?content.bottom-12:content.top+12,endY=direction>0?content.top+12:content.bottom-12;
+          const hit=await page.evaluate(({x,y})=>{const h=document.elementFromPoint(x,y);return{insideContent:!!h?.closest('.native-planet-panel__content'),pet:!!h?.closest('[data-planet-mascot-pet]')};},{x,y:startY});
+          expect(hit).toEqual({insideContent:true,pet:false});
+          const gesture={before,x,startY,endY,direction};o.touchScroll.gestures.push(gesture);
+          const cdp=await page.context().newCDPSession(page);
+          try{
+            await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y:startY}]});
+            for(let step=1;step<=8;step++){const p=step/8,eased=p*p*(3-2*p);await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x,y:startY+(endY-startY)*eased}]});await page.waitForTimeout(25);}
+            await page.waitForTimeout(100);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+          }finally{await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]}).catch(()=>undefined);await cdp.detach();}
+          let previousScroll=null,scrollMatches=0;
+          await expect.poll(async()=>{const s=await state('touch scroll settling');scrollMatches=s.contentScrollTop===previousScroll?scrollMatches+1:0;previousScroll=s.contentScrollTop;return scrollMatches;},{timeout:2000,intervals:[50,75]}).toBeGreaterThanOrEqual(3);
+          gesture.after=await state('after trusted touch scroll');
+          expect(Math.abs(gesture.after.contentScrollTop-before.contentScrollTop),'Trusted swipe changes the actual panel scroll offset').toBeGreaterThan(1);
+        }
+        expect(exposed(await state('required controls after optional scroll'))).toBe(true);
+      });
+      o.afterScroll=await state('after optional trusted touch scroll');await page.waitForTimeout(1900);o.after1900ms=await state('1900ms after optional scroll');
+      o.trace=await page.evaluate(()=>window.__utilitySurface.stop());
+      o.preferencesAfter=preferences();o.downloadCallsAfter=await downloadActions(page);o.canonicalAfter=await actual(page);
+      await capture(page,result,testInfo,'booky-utility-landscape-'+action+'-'+language+'-'+view.width+'.png');
+      await checked('trusted optional scroll events',()=>{if(o.touchScroll.gestures.length){for(const type of ['touchstart','touchmove'])expect(o.trace.events.some(e=>e.type===type&&e.trusted&&e.insideContent&&e.at>=o.settled.at)).toBe(true);}});
+      await checked('explicit trusted touch action',()=>{for(const type of ['pointerdown','click'])expect(o.trace.events.some(e=>e.type===type&&e.action===action&&e.trusted&&e.pointerType==='touch')).toBe(true);expect(o.trace.events.filter(e=>e.type==='click'&&e.insideTarget)).toEqual([]);});
+      await checked('graphics closed and whole companion in measured dock',()=>{
+        const s=o.after1900ms;expect(o.before.graphicsOpen).toBe(false);expect(s.graphicsOpen).toBe(false);expect(s.dockActive).toBe(true);
+        expect(s.pet.width).toBe(240);expect(s.pet.height).toBe(96);expect(s.dock.height).toBe(120);
+        expect(s.pet.left>=s.dock.left-.1&&s.pet.top>=s.dock.top-.1&&s.pet.right<=s.dock.right+.1&&s.pet.bottom<=s.dock.bottom+.1).toBe(true);
+        expect(s.content.bottom).toBeLessThanOrEqual(s.dock.top+.1);
+      });
+      await checked('finite approach point return and continuous handoff',()=>{
+        const phases={};for(const name of ['approaching','tapping','returning'])phases[name]=o.trace.samples.filter(s=>name==='returning'?s.returning:s.phase===name);
+        o.phaseMetrics=Object.fromEntries(Object.entries(phases).map(([name,samples])=>[name,{frames:samples.length,first:samples[0]??null,last:samples.at(-1)??null}]));
+        const drawOwners=[...new Set(o.trace.draws.map(d=>d.owner))];expect(drawOwners).toHaveLength(2);o.motionProvenance={};
+        for(const name of ['approaching','returning']){
+          const samples=phases[name];expect(samples.length).toBeGreaterThan(2);
+          expect(Math.hypot(samples.at(-1).pet.left-samples[0].pet.left,samples.at(-1).pet.top-samples[0].pet.top)).toBeGreaterThan(8);
+          const owner=drawOwners[name==='approaching'?0:1],authored=o.trace.draws.filter(d=>d.owner===owner),first=authored[0];
+          expect(first.duration).toBe(1600);expect(authored.every(d=>d.duration===first.duration&&d.began===first.began&&JSON.stringify(d.path)===JSON.stringify(first.path))).toBe(true);
+          const candidates=[{...first,time:first.began,progress:0,point:first.path.from,recordedAt:first.began,initial:true},...authored];
+          let priorTime=first.began;const matched=[];
+          for(const [index,s] of samples.entries()){
+            const choices=candidates.filter(d=>d.time>=priorTime&&d.recordedAt<=s.readEnd+.001&&Math.abs(d.point.left-s.pet.left)<=1/32&&Math.abs(d.point.top-s.pet.top)<=1/32)
+              .sort((a,b)=>Math.hypot(a.point.left-s.pet.left,a.point.top-s.pet.top)-Math.hypot(b.point.left-s.pet.left,b.point.top-s.pet.top)||a.time-b.time);
+            expect(choices.length,'Every moving DOM sample matches current owner/path draw, including initial path.from').toBeGreaterThan(0);
+            const d=choices[0];priorTime=d.time;matched.push({index,owner,sourceTime:d.time,sourceProgress:d.progress,sourcePoint:d.point,initial:d.initial===true,observerRafAt:s.rafAt,readStart:s.readStart,readEnd:s.readEnd,pet:s.pet});
+          }
+          const observerIntervals=[];
+          for(let i=1;i<matched.length;i++){
+            const a=matched[i-1],b=matched[i],px=Math.hypot(b.pet.left-a.pet.left,b.pet.top-a.pet.top),sourceDt=b.sourceTime-a.sourceTime;
+            expect(sourceDt).toBeGreaterThanOrEqual(0);expect(px).toBeLessThanOrEqual(Math.hypot(view.width,view.height)*1.5/1600*sourceDt+3);
+            const rafDt=b.observerRafAt-a.observerRafAt,readDt=b.readEnd-a.readEnd,bound=Math.hypot(view.width,view.height)*1.5/1600*rafDt+3;
+            observerIntervals.push({index:i,px,sourceDt,rafDt,readDt,observerBound:bound,observerBoundExceeded:px>bound});
+          }
+          o.motionProvenance[name]={owner,path:first.path,began:first.began,duration:first.duration,roundingTolerance:1/32,matched,observerIntervals,
+            maxReadCostMs:Math.max(...samples.map(s=>s.readEnd-s.readStart)),observerIntervalViolations:observerIntervals.filter(s=>s.observerBoundExceeded)};
+        }
+        expect(phases.tapping.length).toBeGreaterThan(0);
+        expect(phases.approaching.at(-1).at).toBeLessThan(phases.tapping[0].at);expect(phases.tapping.at(-1).at).toBeLessThan(phases.returning[0].at);
+        expect(phases.returning.at(-1).at-phases.approaching[0].at).toBeLessThan(5500);
+        for(const s of phases.returning){expect(s.phase).toBeNull();expect(s.gesture).toBe('walking');}
+        const a=phases.tapping.at(-1),b=phases.returning[0],c=phases.returning.at(-1);
+        expect(Math.hypot(b.pet.left-a.pet.left,b.pet.top-a.pet.top)).toBeLessThan(5);
+        expect(Math.hypot(o.settled.pet.left-c.pet.left,o.settled.pet.top-c.pet.top)).toBeLessThan(5);
+      });
+      await checked('visible body prose clear after natural return',()=>{
+        const s=o.after1900ms,visible=s.prose.filter(item=>item.visible);expect(visible.length).toBeGreaterThan(0);
+        const overlaps=r=>Math.min(r.right,s.pet.right)>Math.max(r.left,s.pet.left)+.1&&Math.min(r.bottom,s.pet.bottom)>Math.max(r.top,s.pet.top)+.1;
+        o.obstructedProse=visible.filter(item=>overlaps(item.visible));expect(o.obstructedProse).toEqual([]);
+      });
+      await checked('whole pet stays in viewport',()=>{expect(fits(o.after1900ms.pet,o.after1900ms.viewport)).toBe(true);expect(o.trace.samples.filter(s=>s.pet).every(s=>fits(s.pet,s.viewport))).toBe(true);});
+      await checked('1900ms exact stillness and no automatic resume',()=>{expect(o.after1900ms.at-o.afterScroll.at).toBeGreaterThanOrEqual(1900);expect(o.after1900ms.pet).toEqual(o.settled.pet);for(const s of o.trace.samples.filter(s=>s.at>=o.settled.at)){expect(s.pet).toEqual(o.settled.pet);expect(s.phase).toBeNull();expect(s.returning).toBe(false);expect(s.gesture).not.toBe('walking');}});
+      await checked('required section controls are actually visible',()=>{const visible=o.after1900ms.controls.filter(c=>c.visibility!=='none');if(action==='recent')expect(visible.some(c=>c.recentEntry)).toBe(true);else{expect(visible.some(c=>c.tag==='INPUT'&&c.inputType==='checkbox')).toBe(true);expect(visible.some(c=>c.tag==='LABEL')).toBe(true);}});
+      await checked('visible section and header hit points',()=>{const visible=o.after1900ms.controls.filter(c=>c.visibility!=='none');expect(visible.length).toBeGreaterThan(0);expect(visible.filter(c=>!c.reachable)).toEqual([]);});
+      await checked('preferences and progress bytes unchanged',()=>expect(o.preferencesAfter).toEqual(o.preferencesBefore));
+      await checked('no automatic download action',()=>expect(o.downloadCallsAfter).toEqual(o.downloadCallsBefore));
+      await checked('canonical scene camera resources unchanged',()=>retained(o.canonicalAfter,o.canonicalBefore));
+      await checked('actual App fixture integrity',()=>fixture.verify());
+      result.pass=o.findings.length===0;result.observationsComplete=true;
+      expect(o.findings,'All independent observations are preserved before this summary assertion').toEqual([]);
+    }catch(error){
+      result.pass=false;o.failure=error.message;
+      if(!o.trace)o.trace=await page.evaluate(()=>window.__utilitySurface?.stop()??null).catch(()=>null);
+      if(!result.screenshots.length)await capture(page,result,testInfo,'booky-utility-landscape-'+action+'-'+language+'-'+view.width+'.png').catch(()=>undefined);
       throw error;
     }finally{await fixture.close();}
   });

@@ -121,25 +121,37 @@ export default function NativePlanetPanel({ open, onClose, onBack, globeRef, ret
       document.removeEventListener("pointerdown", interrupt, true);
       document.removeEventListener("keydown", interrupt, true);
     };
-    const frame = requestAnimationFrame(() => {
-      detach();
-      handledSectionRequest.current = request.id;
+    const currentSection = () => {
       const panel = panelRef.current, focused = document.activeElement;
       if (interrupted || !request.isCurrent() || !panel?.isConnected
-        || panel.closest('[hidden], [inert]') || document.visibilityState === "hidden") return;
+        || panel.closest('[hidden], [inert]') || document.visibilityState === "hidden") return null;
       // Remounting or collapsing the companion focuses its own heading or
       // toggle. Only these exact owned controls may yield to a current request;
       // newer pointer/key input still cancels that request above.
       const companionHeading = panel.querySelector<HTMLElement>('[data-planet-mascot-panel] h2');
       const companionToggle = panel.querySelector<HTMLElement>('[data-planet-mascot-toggle]');
       if (focused && focused !== document.body && focused !== request.origin && focused !== closeRef.current
-        && focused !== companionHeading && focused !== companionToggle) return;
+        && focused !== companionHeading && focused !== companionToggle) return null;
       const details = panel.querySelector<HTMLDetailsElement>(sectionSelectors[request.section]);
       const summary = details?.querySelector<HTMLElement>(":scope > summary");
-      if (!details || !summary?.getClientRects().length || summary.closest('[hidden], [inert]')) return;
-      details.open = true;
-      summary.focus({ preventScroll: true });
-      summary.scrollIntoView({ block: "nearest" });
+      return details && summary?.getClientRects().length && !summary.closest('[hidden], [inert]')
+        ? { details, summary } : null;
+    };
+    let frame = requestAnimationFrame(() => {
+      const section = currentSection();
+      if (!section) { detach(); handledSectionRequest.current = request.id; return; }
+      section.details.open = true;
+      // Opening a utility reserves the companion row and shortens the scroll
+      // area. Reveal its heading after that layout, retaining cancellation and
+      // focus ownership while waiting so a newer touch always takes priority.
+      frame = requestAnimationFrame(() => {
+        detach();
+        handledSectionRequest.current = request.id;
+        const current = currentSection();
+        if (!current) return;
+        current.summary.focus({ preventScroll: true });
+        current.summary.scrollIntoView({ block: "nearest" });
+      });
     });
     return () => { cancelAnimationFrame(frame); detach(); };
   }, [open, sectionRequest]);
