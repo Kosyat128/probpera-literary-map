@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:41:13.248Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_LEFT_GLOVE_SCOPED_VALIDATION",
+  "sourceCommit": "0e51caa89675686e9b7d89a2b0ccd24b389c9722",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/entry.json",
+    "sha256": "02b1898c7999533ccc826b09b48ed6058018ce92999eadaeac20f8c2d1457a4e"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/checkpoint.mjs",
+    "sha256": "04f35768864c84e38943ccc5f13fa4e0d5e2373f3033f74c5d1be4a15ac1b1a1"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/result.json",
+    "sha256": "4f50f6fd68dfb0f0f036542c49d928c5f7cbc00daed2107daabb63378a5396b0"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/source-manifests/7005111c81f6deb7.json",
+    "sha256": "7005111c81f6deb74c0ee6c3b9eee888ecc0588006f834c84125e514d6695f24",
+    "fileCount": 1650
+  },
+  "sourceCommits": [
+    "0e51caa89675686e9b7d89a2b0ccd24b389c9722"
+  ],
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a1"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/unit-a1/result.json",
+      "sha256": "ad2e236a615d9f10746bf9ef15df6e0aae1d6542a220f28be59bdd1fa96b8251",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/unit-a1/execution.json",
+        "sha256": "d92403f6d184e07ec8d63dc8243dbe14f23ef3db535a2eb4f41857126a527fc4"
+      },
+      "tests": {
+        "passed": 156,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/unit-a1/vitest.json",
+        "sha256": "db005d2d529f601596ebe3d51fce6762214066a4c726c0dfc436ec104b2f13e1"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/static-a1/result.json",
+      "sha256": "705f00536d1be2ed79851cfa26c93623d6b559ba87f7c77e649ba1b737271b14",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/static-a1/execution.json",
+        "sha256": "244b0d82c14384a53151e732f077ebd0ddbd089b951b64f0f5bac2bb3b4ce088"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/browser-a1/result.json",
+      "sha256": "023d9247170a97821a39644ea6e2af5e5847f5159a75aafd229cf993286906e2",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/browser-a1/execution.json",
+        "sha256": "005d26a0ef418598fdc5a4eda8921c7b335f8036915494f0c02edf2c6a5d8c6b"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/browser-a1/playwright.json",
+        "sha256": "58278fb4671bf6af78bb658c5a2a43074b6de188540a1df5c119cfe2766fa139"
+      }
+    }
+  },
+  "earlierAttempts": [],
+  "diagnosticHistory": null,
+  "unitCount": 156,
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserCases": 2,
+  "actualAppCaseCount": 2,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-left-glove-evidence\\browser-a1\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-character.json",
+      "sha256": "7f258f22265450c67439a2fa032e84f2b25efdc4c683512f8864ddde0ac3b4f8",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-left-glove-evidence\\browser-a1\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\attachments\\booky-live-character-source-evidence-bbfadfe068a34e73866c4a79dff3ffbdccd0c4f8.json",
+        "sha256": "7f258f22265450c67439a2fa032e84f2b25efdc4c683512f8864ddde0ac3b4f8"
+      },
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-left-glove-evidence\\browser-a1\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\booky-live-character.json",
+      "sha256": "0feadff45d41e53229396c543abc92846c41b18e8f91d968d6214d1b61bdf874",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-left-glove-evidence\\browser-a1\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\attachments\\booky-live-character-source-evidence-f65275838ac036e47ff73edad5b8fcbfbae8f821.json",
+        "sha256": "0feadff45d41e53229396c543abc92846c41b18e8f91d968d6214d1b61bdf874"
+      },
+      "test": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+      "scenario": null,
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "liveThreeModelRendered": true,
+        "normalModeHasNoBitmap": true,
+        "actualRigResponds": true,
+        "actualGuidedTargetPose": true,
+        "bodyDragDoesNotTogglePanel": true,
+        "escapeCancelsBodyDrag": true,
+        "touchTapAndKeyboardWork": true,
+        "semanticPageTurn": true,
+        "wholeModelFits": true,
+        "localeRetainsRoute": true,
+        "reducedMotionStopsAnimation": true,
+        "noHiddenFrames": true,
+        "independentResourcesDisposed": true,
+        "realContextLossFallbackWorks": true,
+        "realContextRestoreRetainsModel": true,
+        "repeatedContextLossUsesFallback": true,
+        "sameCanonicalGlobe": true,
+        "noAppearanceWrites": true
+      }
+    },
+    {
+      "test": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+      "scenario": "explicit-bounded-gestures",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "thirteenExplicitGestures": true,
+        "repeatedReactionRestarts": true,
+        "surpriseChoosesDifferentGesture": true,
+        "actualRigChanges": true,
+        "sixNewMotionsObserved": true,
+        "newGesturesHaveDistinctStaticPoses": true,
+        "winkMovesOnlyOneEye": true,
+        "swayDoesNotStep": true,
+        "originalSevenAtMost1100ms": true,
+        "configuredReactionsAtMost2400ms": true,
+        "reactionsStopWithinSchedulingAllowance": true,
+        "reducedMotionHasNoReactionLoop": true,
+        "gesturesDoNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/visual-review.json",
+    "sha256": "55b501d1c6820d04ef3948d5e5ec164f3f6a498589e1be9dee8438b474ea41c5"
+  },
+  "newPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/new-model-photo-review.json",
+    "sha256": "f7b44e57d1d6f9d193e9e684aa408282b16760ffdbb0feffccfc0163a2b25fea"
+  },
+  "newModelPhotoCount": 5,
+  "inspectedImageCount": 2,
+  "totalCapturedImageCount": 5,
+  "visualReviewScope": "Direct review of the final actual drawing buffer and gesture capture. All five selected-case captures are authenticated; only these two are directly reviewed.",
+  "visualReviewLimitations": [
+    "This visual review covers 2 of 5 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "The model and gestures were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1648,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyModel.ts"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "9b6e48bce2a7f0cebbcda873c8321f3af09c199c",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/pwa-a1/result.json",
+    "sha256": "2f37d651b0ea37b8735826da88cd8c72cb1c3f4d93e99d6c1619c98e6fa87a83"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/android-a1/result.json",
+    "sha256": "ff08e13c69180fb3deb5d27d1fbad36e86d23361f707d29f1409b229abe25059"
+  },
+  "pwaBuildId": "2a7992e3ea986ea2c1694b0da4ed81f2d0df31cd7a198989d5650f7091936511",
+  "androidBuildId": "37b892a98ebd2598e2d6432f126e9d8c665c25bc1638016aa51dcbd0f966cd8c",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/android-37b892a9/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "64f12d4642124dc6ca42b3e8a3afe6146eb7b4e397b7b7d538a38145f5e88b38"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/pwa-2a7992e3/artifact.json",
+      "sha256": "de7222532d788942779609417534d52928b1b438d582e325650cb17faa5686c8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/android-37b892a9/runtime/artifact.json",
+      "sha256": "4376e4a465efd058bdc43a6c2893f3d9d7f78619438c01ce7231664db1fbf493"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/pwa-a1/strict-audit.json",
+      "sha256": "28488133fe30cd1e5bba5add1d651270df2393519b8a14165cca297c30349c85"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/android-a1/native-artifact-audit.json",
+      "sha256": "7032712efe5afe7b8f85168c875564787342bb763e981b4c6e1ac17b61e05977"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/android-a1/android-dev-apk-verification.json",
+      "sha256": "7d160992dcc7cbdb0b2719f0a14ce2760561408b9eb16acb084f195c9e1f8e22"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/android-a1/build-run.json",
+      "sha256": "c66e77a69780ac05a04b64129096c7ec7873c02f32d407bb159cf80c69ebcff9"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/build-baseline.json",
+    "sha256": "2c92cf09cbbda86b7ff86dc41bbdcf6618c5ec5351bb056816becac6284b2950"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/pwa-a1/copy-verification.json",
+    "sha256": "dda467aa0483cba55d4ae0c23e724cc4e3ac532c743f29df1bb7a11e4b2e4508"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/pwa-a1/playwright.json",
+    "sha256": "db7391068be7e791a47e4658c364993012ff81debf4d80556afc20ea1493ff07"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "ff81de930a6fd947c0f100fc29dcc65be7632f5e",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/result.json",
+      "sha256": "4f50f6fd68dfb0f0f036542c49d928c5f7cbc00daed2107daabb63378a5396b0"
+    },
+    "unitCount": 155,
+    "browserCases": 7,
+    "allPriorSelectedCasesRerun": false,
+    "priorSelectedBrowserCaseCount": 7,
+    "currentSelectedBrowserCaseCount": 2,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-mobile-polish-20260924/new-model-photo-review.json",
+      "sha256": "54a868f9e0791ac22a879b29b616787cab241792c3b679e6875857be08c7207c"
+    }
+  },
+  "criteriaUpdated": [
+    "PLANETKA-002",
+    "PLANETKA-005"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD190Recorded": true,
+  "nextAction": "Continue the user-prioritized mobile companion refinement from this checkpoint without repeated authorization. Preserve touch activation, continuous walking through clear space, explicit cancellation, readable help, reduced-motion stillness, saved progress and canonical scene ownership. Full journey integration remains deferred. S03.acceptance remains first unresolved; device, full accessibility and stage/release acceptance remain open.",
+  "limitations": [
+    "Fresh browser evidence covers the two selected live-model and gesture cases only. The prior seven-case touch, walking and graphics/rotation checks remain attributed to D189 source, and earlier larger suites remain attributed to their original sources.",
+    "All interaction implementation and canonical scene ownership remain unchanged. This model-only check does not renew installed-device, full accessibility, timing, touch-capture, or performance acceptance.",
+    "Prior model photos retain their original-source limitations, including the D189 left-finger intersection boundaries; they are not evidence of the current revised surface. Current geometry claims depend on the separately authenticated final-source photo review and topology test.",
+    "Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved.",
+    "All requirement and stage statuses remain unchanged; no release or production action is performed.",
+    "This visual review covers 2 of 5 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "The model and gestures were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed.",
+    "Actual standalone 3D rendering; this is not installed-device, application or stage acceptance.",
+    "A mild local crease remains at the outer left-finger transition. The left glove is one sewn surface; the existing cuff remains separate.",
+    "Right-hand geometry is unchanged: its palm/thumb are continuous and its three curled fingers retain their established separate surfaces.",
+    "All edits made by this agent remained in external staging; canonical integration and formal application checks belong to the parent task.",
+    "Standalone actual-model portraits are separate from the selected browser screenshot count. This binder authenticates the original direct inspection; it does not claim a new visual review or installed-device acceptance."
+  ],
+  "bookyLeftGloveImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

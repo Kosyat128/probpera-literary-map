@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-left-glove-20260924:begin -->
+Latest source 0e51caa8: Книжулик / Mr. Booky has a continuous free left glove, preserving the reviewed right palm/thumb and existing interaction source. Two selected cases cover the live model and 13 gestures. Five directly reviewed actual-model photos are bound to identical current-source bytes. Previous D189 photos and wider interaction checks remain attributed to their original source and limitations.
+
+Evidence: docs/mobile/evidence/S15/booky-left-glove-20260924/result.json. D190. 156 unit cases and 2 selected browser cases; 5 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-left-glove-20260924:end -->
+
 <!-- s15-booky-mobile-polish-20260924:begin -->
 Latest source ff81de93: Книжулик / Mr. Booky cancels the active touch interaction on a real viewport change while preserving the selected companion behavior. The seven selected cases cover touch lifecycle, walking, graphics/rotation, live-model interaction and 13 gestures. The free left fingers are relaxed, and the right thumb is sewn continuously into its palm. Five directly reviewed actual-model photos are bound to identical current-source bytes; older photographs remain original-source evidence. Left-finger surface-intersection boundaries remain visible in close-up. Prior D188 full 19-case browser evidence remains attributed to its original source.
 

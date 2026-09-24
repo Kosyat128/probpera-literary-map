@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:36:20.7076065Z",
+  "preparedOnly": true,
+  "sourceFrozen": true,
+  "executed": false,
+  "baseCheckpoint": "9b6e48bce2a7f0cebbcda873c8321f3af09c199c",
+  "baseSource": "ff81de930a6fd947c0f100fc29dcc65be7632f5e",
+  "priorResultSha256": "4f50f6fd68dfb0f0f036542c49d928c5f7cbc00daed2107daabb63378a5396b0",
+  "priorManifest": "0b53ee93c43a0465b8a3afea4c07fa635c5b5e02dabfdd27eca134da8dcb33c2",
+  "expectedProtectedInputs": 1648,
+  "pendingFields": [
+    "Root confirmation that accepted model is integrated before copy/configure",
+    "Final five-photo proof/binder after formal manifest and source commit"
+  ],
+  "files": [
+    {
+      "name": "configure.mjs",
+      "sha256": "9e90512e0e806231f588d3b86680bda43613116c1381aefb4a72b9e3cd7169dc"
+    },
+    {
+      "name": "check.mjs",
+      "sha256": "601038109df9907615af0d5a086b79c6829fde05d6204869ae2046b680c09f20"
+    },
+    {
+      "name": "unit.config.mjs",
+      "sha256": "af901ca18fc5a6b4af95b8cc015b924d120a9bbb38e2adb4c288ebb1736eb7a6"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "sha256": "9b4324ef4ad75a974c4215178728ca8bcb5e12a49a54b69484b633cc36d2330b"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "sha256": "8c303c23dc378e3130af75749e2e86ce3e43267f7f6cae6472f1955dfeb7eed5"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "sha256": "4da256b02cf80da22d1cd96417866ec07c53b5b883b7b42ac6d4cc9a5d91fbd3"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "sha256": "e6981341e12d8a665de90dbed0c0685d25f5efa455d69755519821d999b0061a"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "sha256": "04f35768864c84e38943ccc5f13fa4e0d5e2373f3033f74c5d1be4a15ac1b1a1"
+    },
+    {
+      "name": "record-visual.mjs",
+      "sha256": "027fc58898313069a91090ebb82de9a6753777313d6da9d99fbc64a6c8576b80"
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "sha256": "cb335f51e39e35f64792dbf3801e0343d6b3b674d4530e1b6dbe0feb897ed2e1"
+    },
+    {
+      "name": "scope.json",
+      "sha256": "7da3fa7de16ec7189e9018c2f6c902b0ceabef044bc8ffeb8bdaa0fc4ce55403"
+    }
+  ],
+  "releaseReady": false,
+  "separateFiles": [
+    {
+      "name": "record-model-photos.mjs",
+      "sha256": "1c2231e8e651e865c3b6b90c4e746899df6990c9f886a4205b8ab50ab2d002ef",
+      "copiedByHelper": false
+    }
+  ],
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/bookyModel.ts",
+      "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "sha256": "f4c4e23c2e4df3d6a154474816cec8bed41b460e2c9e13d98e82cd5aca736d0c"
+    }
+  ],
+  "verifiedSourceLocations": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a6/bookyModel.ts",
+      "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89",
+      "role": "accepted external model candidate"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/bookyModel.test.ts",
+      "sha256": "f4c4e23c2e4df3d6a154474816cec8bed41b460e2c9e13d98e82cd5aca736d0c",
+      "role": "canonical topology test"
+    }
+  ]
+}

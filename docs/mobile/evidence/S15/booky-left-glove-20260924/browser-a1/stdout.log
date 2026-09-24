@@ -1,0 +1,8 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-live-character.spec.mjs:411:1 › live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged
+[2/2] tests\pwa\booky-live-character.spec.mjs:726:1 › Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion
+  2 passed (57.5s)

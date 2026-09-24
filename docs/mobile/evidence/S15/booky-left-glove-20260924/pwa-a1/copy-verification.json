@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76778043,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/pwa-a1-copy-verification.json",
+    "sha256": "7f9f852e203cfd4a1692e36e28a435e340042ce8f752aa4b9c45d129e0eb6c8c"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/pwa-2a7992e3/artifact.json",
+    "sha256": "de7222532d788942779609417534d52928b1b438d582e325650cb17faa5686c8"
+  }
+}

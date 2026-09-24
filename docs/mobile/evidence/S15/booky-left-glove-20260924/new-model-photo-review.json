@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:40:08.793Z",
+  "pass": true,
+  "sourceCommit": "0e51caa89675686e9b7d89a2b0ccd24b389c9722",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/source-manifests/7005111c81f6deb7.json",
+    "sha256": "7005111c81f6deb74c0ee6c3b9eee888ecc0588006f834c84125e514d6695f24",
+    "fileCount": 1650
+  },
+  "modelSource": {
+    "path": "src/host/bookyModel.ts",
+    "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+  },
+  "renderedModelSource": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a6/bookyModel.ts",
+    "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89",
+    "bytes": 46846
+  },
+  "originalReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-prototype.json",
+    "sha256": "16a9df2bcc93bc5c4b3a0a0dfe6e978d4c288477c8dd79ec5bdf21c4874dd055"
+  },
+  "render": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-render-manifest.json",
+    "sha256": "1f014d6909451befd2126588128056410b97a8a22a49ec193e97d405532d2403",
+    "bytes": 6855
+  },
+  "additionalEvidence": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a6/bookyModel.ts",
+      "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a6/candidate.diff",
+      "sha256": "d4ac966f18d756b3257eee983efefe3639248c928efebdea21422ed0dac2f32f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-render-manifest.json",
+      "sha256": "1f014d6909451befd2126588128056410b97a8a22a49ec193e97d405532d2403"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/model-a6-vitest.json",
+      "sha256": "dcdf31564579671ad5ad1ac76ecfb85182940238efc2739c5c4d73b6d3652be0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/model-a6-execution.json",
+      "sha256": "424a0c9ec2a5fd80ad966f9bb1953d9b571d2097f8ded7ac6a11524494b61e4d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/model-a6.log",
+      "sha256": "150f7192a8bff6deeda8ea71c5924adef7677b38bd108071dc834657a00f24a0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/before/result.json",
+      "sha256": "bb8af7cc35320ef6bed7306d3a561d97182b620e279f540bae0e04acabeb11e7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a6/result.json",
+      "sha256": "bf52d5b5fe39712ff36e1bd53ea780aa81d7da97282cce624f5e2ccc7e013577"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-four-a6/result.json",
+      "sha256": "3fad82f9b342a6844808ea5cbcf9014ba0dfba7dd96ca04e18f14708bcd8d2df"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/bookyAnimation.ts",
+      "sha256": "79e80555d5c3c99a5c7e83c7068481e202ac4682a4dab591b7244b0e6a09ee13"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/src/host/useBookyRenderer.ts",
+      "sha256": "5db90ed752b1fa14e40edf8c4cf1bea1f24097534e3bbb76f024c152ad7784fb"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/after/result.json",
+      "sha256": "51fce0f9c16ca91311b6660dde6eee4c3937fc3016673d7ed2e2639c37ecd6b4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/after/knizhulik-3d-left-hand.png",
+      "sha256": "f9428674901acc21cb1bec02c440cd80f7467fd2cc625c02b0dc8c9083f4aef1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging/bookyModel.ts",
+      "sha256": "6c25702163849d2f6974dc6c17edd08845cf42b466087cd58957b5d088131426"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/after-a2/result.json",
+      "sha256": "bd9ac017faa8f82851d3b8dc75b1d342c52f5939ae2ef5d9c682a3e4356363e7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/after-a2/knizhulik-3d-left-hand.png",
+      "sha256": "90d9db5dd5d0a8b1751eda7c5273ae0d6b6178f27cc54a1f034e692479d0fe4b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a2/bookyModel.ts",
+      "sha256": "819eabbb2b0899a659ba194069b79946e9e4eec1678aec674a39d2035a2d1ba4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a3/result.json",
+      "sha256": "c1846d75edf298404314d9e4fb7c9a19ca60b895de7a7e4adecb6c83d33e6add"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a3/knizhulik-3d-left-hand.png",
+      "sha256": "dc0731722d11d3d52179797fecb21b1b4f35a6ca5e87b3c20dec58d7eb66fb22"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a3/bookyModel.ts",
+      "sha256": "889b04a14e82a59f4f036be8dd76742a06d96155da9f7b2a0bf0674303c57032"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a4/result.json",
+      "sha256": "c81b00e03def75a9d020ac98869424ca1f54c87de345284db97265f257b190e4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a4/knizhulik-3d-left-hand.png",
+      "sha256": "e0e6a407790fa29e084555e671d844b1d663a76c8e297a339954cb2ce6a04740"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a4/bookyModel.ts",
+      "sha256": "d8042696f2142434e8e69408466120efc08f8156dfe2b0902ec27fb86aa63eda"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a5/result.json",
+      "sha256": "d81a0f4a2e1719cd0484c7af4297df81ee2b9add43ec59c3ee1ad8c182a21794"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a5/knizhulik-3d-left-hand.png",
+      "sha256": "07e27bd669d4c7d561ad3d9010b04f04d3a666751b47e9427fc4bd8e29645f4d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a5/bookyModel.ts",
+      "sha256": "eda9ac0807b94560d66c59fbbe58530fbd0615e5652c2b992b5b7da0c5b51c51"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/render-before-execution.json",
+      "sha256": "408b536a50b5807f7ec90d65c9406f74433df819eb99b8878bbf958d9b9a86bd"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/render-before.log",
+      "sha256": "d822809b12f49b04f0bf8409c5a89f8bd730c965273a0d8e68ab3b9a36569faf"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/render-preview-a6-execution.json",
+      "sha256": "d8670fbdeabfe41270b8562147742301b58cc047cf2303d56456f2c5712c1697"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/render-preview-a6.log",
+      "sha256": "868777f841e711177b64f8c927eeef5e38d5ad75c724fbffa9718f32b983bfd7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/render-final-four-a6-execution.json",
+      "sha256": "d22e4c542ac02b7650c748a491835aa118b937a22542b5b2dfb2c0b2c528589c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/render-final-four-a6.log",
+      "sha256": "0ac34f71618baf116a4d68fd36d3f0d59d8b569633e4967438eff07a72eb6ddb"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a6/render-source.ts",
+      "sha256": "44101ba3307fbfc361530e7a480bd01336b2b09b9c6b157e0ce6cee7f1cb9897"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-four-a6/render-source.ts",
+      "sha256": "44101ba3307fbfc361530e7a480bd01336b2b09b9c6b157e0ce6cee7f1cb9897"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a6/render-bundle.js",
+      "sha256": "3c68bfef71397cfc11ec5a7f56466ebc1cdbefbe6dee21e5181e0c562f207bcf"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-four-a6/render-bundle.js",
+      "sha256": "3c68bfef71397cfc11ec5a7f56466ebc1cdbefbe6dee21e5181e0c562f207bcf"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a6/knizhulik-3d-left-hand-back.png",
+      "sha256": "66b0439e4d71cc52506183bcd0fbea2b54b2df191ff6b8693329ec9021a8a60e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging/bookyModel.base.ts",
+      "sha256": "df9bf3c99fbe1bdf421f64698b8b2cf831a02ed44bf6a567842dfa7e0e979d89"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-free-hand-polish/final-prototype-v2.json",
+      "sha256": "444c0f315747b6bbb27477e9f54e36c39977fefe60c49f8594082044aa3a1f85"
+    }
+  ],
+  "prototypeHistory": [
+    {
+      "attempt": "a1",
+      "disposition": "rejected",
+      "reason": "Rejected after direct close-up: strong radial folds converged on the palm center.",
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/after/result.json",
+          "sha256": "51fce0f9c16ca91311b6660dde6eee4c3937fc3016673d7ed2e2639c37ecd6b4",
+          "bytes": 6782
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/after/knizhulik-3d-left-hand.png",
+          "sha256": "f9428674901acc21cb1bec02c440cd80f7467fd2cc625c02b0dc8c9083f4aef1",
+          "bytes": 291416
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging/bookyModel.ts",
+          "sha256": "6c25702163849d2f6974dc6c17edd08845cf42b466087cd58957b5d088131426",
+          "bytes": 42417
+        }
+      ]
+    },
+    {
+      "attempt": "a2",
+      "disposition": "rejected",
+      "reason": "Rejected after direct close-up: removing the center slope did not remove folds from the radial topology.",
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/after-a2/result.json",
+          "sha256": "bd9ac017faa8f82851d3b8dc75b1d342c52f5939ae2ef5d9c682a3e4356363e7",
+          "bytes": 6800
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/after-a2/knizhulik-3d-left-hand.png",
+          "sha256": "90d9db5dd5d0a8b1751eda7c5273ae0d6b6178f27cc54a1f034e692479d0fe4b",
+          "bytes": 284405
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a2/bookyModel.ts",
+          "sha256": "819eabbb2b0899a659ba194069b79946e9e4eec1678aec674a39d2035a2d1ba4",
+          "bytes": 42246
+        }
+      ]
+    },
+    {
+      "attempt": "a3",
+      "disposition": "rejected",
+      "reason": "Superseded after direct close-up: concave triangulation removed central folds but the lower palm edge remained visibly faceted.",
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a3/result.json",
+          "sha256": "c1846d75edf298404314d9e4fb7c9a19ca60b895de7a7e4adecb6c83d33e6add",
+          "bytes": 2253
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a3/knizhulik-3d-left-hand.png",
+          "sha256": "dc0731722d11d3d52179797fecb21b1b4f35a6ca5e87b3c20dec58d7eb66fb22",
+          "bytes": 265395
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a3/bookyModel.ts",
+          "sha256": "889b04a14e82a59f4f036be8dd76742a06d96155da9f7b2a0bf0674303c57032",
+          "bytes": 45141
+        }
+      ]
+    },
+    {
+      "attempt": "a4",
+      "disposition": "rejected",
+      "reason": "Superseded after front/rear close-ups: denser sampling did not remove small notches at the sharp palm edge.",
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a4/result.json",
+          "sha256": "c81b00e03def75a9d020ac98869424ca1f54c87de345284db97265f257b190e4",
+          "bytes": 3378
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a4/knizhulik-3d-left-hand.png",
+          "sha256": "e0e6a407790fa29e084555e671d844b1d663a76c8e297a339954cb2ce6a04740",
+          "bytes": 269551
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a4/bookyModel.ts",
+          "sha256": "d8042696f2142434e8e69408466120efc08f8156dfe2b0902ec27fb86aa63eda",
+          "bytes": 45141
+        }
+      ]
+    },
+    {
+      "attempt": "a5",
+      "disposition": "rejected",
+      "reason": "Superseded after front/rear close-ups: area-weighted depth improved the patch but the sharp shared edge still caused visible notches.",
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a5/result.json",
+          "sha256": "d81a0f4a2e1719cd0484c7af4297df81ee2b9add43ec59c3ee1ad8c182a21794",
+          "bytes": 3378
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a5/knizhulik-3d-left-hand.png",
+          "sha256": "07e27bd669d4c7d561ad3d9010b04f04d3a666751b47e9427fc4bd8e29645f4d",
+          "bytes": 260360
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/staging-a5/bookyModel.ts",
+          "sha256": "eda9ac0807b94560d66c59fbbe58530fbd0615e5652c2b992b5b7da0c5b51c51",
+          "bytes": 45756
+        }
+      ]
+    }
+  ],
+  "additionalModelEvidence": [
+    {
+      "name": "knizhulik-3d-left-hand-back.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a6/knizhulik-3d-left-hand-back.png",
+      "sha256": "66b0439e4d71cc52506183bcd0fbea2b54b2df191ff6b8693329ec9021a8a60e",
+      "bytes": 190043,
+      "width": 1200,
+      "height": 1200,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The rear palm and four digit roots form a continuous glove surface without visible open holes or detached roots.",
+        "The lower rim is rounded. The established cuff remains a separate object; this rear close-up is additional diagnostic evidence outside the selected five-photo index."
+      ],
+      "render": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a6/result.json",
+        "sha256": "bf52d5b5fe39712ff36e1bd53ea780aa81d7da97282cce624f5e2ccc7e013577",
+        "bytes": 3378
+      },
+      "camera": {
+        "left": -0.285,
+        "right": 0.285,
+        "top": 0.285,
+        "bottom": -0.285,
+        "near": 0.1,
+        "far": 20,
+        "position": [
+          -2.8026873677819966,
+          1.6579820491075516,
+          -5.764688517600298
+        ],
+        "quaternion": [
+          0.020730448186009356,
+          0.979220099201847,
+          0.13759116644091893,
+          -0.14753615405913012
+        ],
+        "up": [
+          0,
+          1,
+          0
+        ]
+      }
+    }
+  ],
+  "images": [
+    {
+      "name": "knizhulik-3d-left-hand.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/preview-a6/knizhulik-3d-left-hand.png",
+      "sha256": "51d90132ff4edb1b9dc8aec534b2630c99514a42fe7f45dccd68442a6e5cfb06",
+      "bytes": 262298,
+      "width": 1200,
+      "height": 1200,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The free glove is visibly continuous across the palm and all four digit roots; the previous separate-root intersections and central radial folds are absent.",
+        "The lower palm rim is rounded without the previous small notches. A mild crease remains near the outer finger transition; the relaxed three-finger-and-thumb silhouette is retained."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-full.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-four-a6/knizhulik-3d-full.png",
+      "sha256": "6d13e1bb7717bf9bdfdf5ee9d9cc418b3470a1e3c28289ac8e83657757bc99e8",
+      "bytes": 791990,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The complete character, relaxed free glove, both shoes and held magnifier fit the established full-character frame. The face, book, materials and grip remain visually consistent with the baseline."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-wave.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-four-a6/knizhulik-3d-wave.png",
+      "sha256": "5e8108fc7ff3e479275d9d9d83b87498299c10f253a72625d9f0fd539ea66176",
+      "bytes": 824746,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The greeting pose shows a continuous relaxed free glove, readable separated fingertips and no detached digit bases. The full character and magnifier remain in frame."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-highfive.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-four-a6/knizhulik-3d-highfive.png",
+      "sha256": "d56ab974103f08b14251ca1c61bc526e775913fed2b084493d4b7e2e2c11e1d4",
+      "bytes": 769300,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The high-five pose shows a continuous open palm and outward thumb without backward-hooked fingers.",
+        "The complete character and magnifier rim retain the accepted padded high-five framing; the camera exactly matches the baseline."
+      ]
+    },
+    {
+      "name": "knizhulik-3d-right-grip.png",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove/final-four-a6/knizhulik-3d-right-grip.png",
+      "sha256": "c9e6ad1a39d926b67880610646ea9cc5f9749701ee4c263831eecb9d5dc63fea",
+      "bytes": 244212,
+      "width": 1200,
+      "height": 1200,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The prior sewn right palm/thumb and magnifier grip remain unchanged. This image is byte-identical to its baseline capture. The three curled right fingers retain their existing separate surfaces."
+      ]
+    }
+  ],
+  "inspectedCount": 5,
+  "reviewBasis": "The original direct-review receipt is preserved; the rendered model and final canonical Git blob have identical bytes.",
+  "scope": "Derived index of the five final actual 3D captures: accepted front close-up from preview-a6 plus four final portraits. The separate rear close-up remains additional diagnostic evidence. No image generation or retouching.",
+  "limitations": [
+    "Actual standalone 3D rendering; this is not installed-device, application or stage acceptance.",
+    "A mild local crease remains at the outer left-finger transition. The left glove is one sewn surface; the existing cuff remains separate.",
+    "Right-hand geometry is unchanged: its palm/thumb are continuous and its three curled fingers retain their established separate surfaces.",
+    "All edits made by this agent remained in external staging; canonical integration and formal application checks belong to the parent task.",
+    "Standalone actual-model portraits are separate from the selected browser screenshot count. This binder authenticates the original direct inspection; it does not claim a new visual review or installed-device acceptance."
+  ],
+  "artAccepted": false,
+  "releaseReady": false
+}

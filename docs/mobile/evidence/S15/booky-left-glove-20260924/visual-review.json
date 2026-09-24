@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T06:40:01.008Z",
+  "pass": true,
+  "sourceCommit": "0e51caa89675686e9b7d89a2b0ccd24b389c9722",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/source-manifests/7005111c81f6deb7.json",
+    "sha256": "7005111c81f6deb74c0ee6c3b9eee888ecc0588006f834c84125e514d6695f24",
+    "fileCount": 1650
+  },
+  "inspectedCount": 2,
+  "totalCapturedCount": 5,
+  "scope": "Direct review of the final actual drawing buffer and gesture capture. All five selected-case captures are authenticated; only these two are directly reviewed.",
+  "limitations": [
+    "This visual review covers 2 of 5 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "The model and gestures were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/final-visual-receipt.json",
+    "sha256": "071dd010e40ac5581bd1731239fa1b6afaa825ba6ac51c933118f809bfdffb22"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+      "sha256": "107962ff0feb7b179cfc813023073f09fd75ffcbbc846709b7eb98f32e0b7acd",
+      "width": 256,
+      "height": 256,
+      "bytes": 55115,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The actual transparent 256 by 256 drawing buffer shows the complete green book character, both shoes, free left glove and held magnifier.",
+        "The free hand reads as an open relaxed glove at application scale. Detailed surface assessment comes from the separate source-bound close-up photos, not this small drawing buffer."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-character.json",
+        "sha256": "7f258f22265450c67439a2fa032e84f2b25efdc4c683512f8864ddde0ac3b4f8",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-bbfadfe068a34e73866c4a79dff3ffbdccd0c4f8.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 669
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+      "sha256": "c37d55d0b126203e9efe3a7186d03d795d185f9687a044502d786d3f7e085e63",
+      "width": 1440,
+      "height": 850,
+      "bytes": 1141562,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The English Mr. Booky card shows readable gesture controls, with Hop highlighted and a visible focus ring on Surprise me. The status line reads A little leap toward adventure.",
+        "The full character and held magnifier are visible beside the card and fit the viewport. The underlying globe and its zoom, pause, reset and source controls remain visible.",
+        "The card is intentionally scrollable: some upper controls are outside the current scroll position. This image does not establish simultaneous visibility of the entire menu or prove animation timing."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-live-character.json",
+        "sha256": "0feadff45d41e53229396c543abc92846c41b18e8f91d968d6214d1b61bdf874",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-left-glove-evidence/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/attachments/booky-live-character-source-evidence-f65275838ac036e47ff73edad5b8fcbfbae8f821.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 669
+      }
+    }
+  ],
+  "releaseReady": false
+}

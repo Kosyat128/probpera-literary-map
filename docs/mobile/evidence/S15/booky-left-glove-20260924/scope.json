@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "description": "The free left glove is refined as a continuous surface while the reviewed right palm/thumb and all interaction source remain unchanged. Two existing actual-App cases cover the live model and thirteen gestures; wider interaction evidence remains attributed to its original D189 source.",
+  "changedPaths": [
+    "src/host/bookyModel.ts",
+    "src/host/bookyModel.test.ts"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedBrowserTests": 2,
+  "expectedImages": 5,
+  "requiredCaptureFlags": [],
+  "expectedUnitTests": 156,
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "requireDiagnosticHistory": false,
+  "requiredVisualFilenames": [
+    "booky-live-actual-drawing-buffer.png",
+    "booky-explicit-gestures-en-1440.png"
+  ],
+  "requiredObservationChecks": [],
+  "browserTestTitles": [
+    "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+    "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion"
+  ],
+  "retainedCaseCaptureSubtotal": 5,
+  "modelIntegrationPending": false,
+  "requireNewPhotoReview": true,
+  "expectedNewModelPhotos": 5,
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/bookyModel.ts",
+      "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "sha256": "f4c4e23c2e4df3d6a154474816cec8bed41b460e2c9e13d98e82cd5aca736d0c"
+    }
+  ]
+}

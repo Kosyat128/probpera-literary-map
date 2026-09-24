@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "firstAttempt": {
+    "exitCode": 1,
+    "pass": false,
+    "gitConfigCount": 2,
+    "gitOverrides": {
+      "safe.directory": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+      "core.autocrlf": "false"
+    },
+    "scope": "Historical S00-S02 evidence verification",
+    "error": "Evidence/input changed since verification; Missing successful command and hashed log",
+    "rawLog": null,
+    "limitation": "Original tool output was truncated; no complete raw log was retained."
+  },
+  "secondAttempt": {
+    "exitCode": 0,
+    "pass": true,
+    "gitConfigCount": 1,
+    "gitOverrides": {
+      "safe.directory": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work"
+    },
+    "stdout": "docs/mobile/evidence/S15/booky-left-glove-20260924/state-verification-a2.stdout.json",
+    "stderr": "docs/mobile/evidence/S15/booky-left-glove-20260924/state-verification-a2.stderr.log"
+  },
+  "sourceChanged": false,
+  "verificationLogicChanged": false
+}

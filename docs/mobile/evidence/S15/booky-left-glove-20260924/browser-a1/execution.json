@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-left-glove-20260924/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-24T06:36:59.280Z",
+  "exitCode": 0,
+  "durationMs": 58766,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/browser-a1/stdout.log",
+    "bytes": 359,
+    "sha256": "7454bbcab227684348523ab707fe1f1d9276f0a564b2ad907ea833667ec86aa5"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "f179a66fa4985c3d395aa175c06f65e30e54762ceea02004a581e7c2ad3b5efb"
+  }
+}
