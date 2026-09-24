@@ -54,9 +54,11 @@ export default function NativePlanetPanel({ open, onClose, onBack, globeRef, ret
         observedPet = pet;
         if (pet) resize?.observe(pet);
       }
-      const graphics = panel.querySelector<HTMLDetailsElement>(sectionSelectors.graphics);
-      const active = open && mobile.matches && Boolean(pet && graphics?.open
-        && !graphics.closest('[hidden], [inert], [aria-hidden="true"]'));
+      const hasOpenSection = Object.values(sectionSelectors).some(selector => {
+        const section = panel.querySelector<HTMLDetailsElement>(selector);
+        return Boolean(section?.open && !section.closest('[hidden], [inert], [aria-hidden="true"]'));
+      });
+      const active = open && mobile.matches && Boolean(pet) && hasOpenSection;
       const fallback = pet?.getAttribute("data-planet-mascot-visibility") === "hidden" ? 68 : 120;
       const measured = pet?.getBoundingClientRect().height ?? 0;
       setDockLayout(previous => {

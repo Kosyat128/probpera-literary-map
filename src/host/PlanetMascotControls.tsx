@@ -359,12 +359,12 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     const find = () => {
       if (cancelled) return;
       const current = pointEnvironment.current;
-      // Opening phone settings changes both the panel and the companion size.
+      // Opening phone utilities changes both the panel and the companion size.
       // Wait for those measured bounds before consuming this one-shot request;
       // otherwise the first walking frame immediately invalidates its route.
       const panel = root.current?.closest(".native-planet-panel");
       const expectsDock = window.matchMedia("(max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape)").matches
-        && panel?.querySelector<HTMLDetailsElement>("[data-planet-graphics-settings]")?.open;
+        && panel?.querySelector(selector);
       if (expectsDock) {
         const actualPet = root.current?.getBoundingClientRect();
         const actualDock = panel?.querySelector('[data-booky-dock-active="true"]')?.getBoundingClientRect();
@@ -589,7 +589,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={walk.active ? "walking" : gesture}
       data-booky-returning={targetCue?.phase === "returning" ? "true" : undefined}
       data-planet-mascot-closed-notice={!open && persistence.state !== "idle" ? "true" : undefined}
-      style={petPosition} onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
+      style={{ ...petPosition, left: `min(${petPosition.left}px, var(--booky-dock-max-left, ${petPosition.left}px))` }}
+      onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
       onPointerMove={event => event.stopPropagation()} onWheel={event => event.stopPropagation()}
       onClick={event => event.stopPropagation()} onKeyDown={event => {
         // Native collection owns its Tab loop; an already collapsed companion

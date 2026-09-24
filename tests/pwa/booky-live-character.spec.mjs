@@ -155,7 +155,14 @@ test.beforeAll(async () => {
       __LITERARY_PLANET_EDITION__: '"native"', __LITERARY_PLANET_LOCAL_QA__: 'false',
       __LITERARY_PLANET_LICENSE_AUTHORITY__: 'null', __YANDEX_METRIKA_COUNTER_ID__: '""' },
     loader: { '.css': 'css', '.png': 'file', '.webp': 'file', '.avif': 'file', '.jpg': 'file', '.jpeg': 'file', '.svg': 'file', '.woff': 'file', '.woff2': 'file' },
-    plugins: [{ name:'observe-real-booky-ownership',setup(builder){
+    plugins: [{ name:'observe-actual-booky-walk-draw',setup(builder){
+      builder.onLoad({filter:/[\\/]useBookyWalk\.ts$/},async args=>{
+        const source=await fs.readFile(args.path,'utf8'),needle='point.current = sampleBookyWalk(path, progress);';
+        if(source.split(needle).length!==2)throw Error('Actual Booky draw observation point changed');
+        const contents=source.replace(needle,needle+'\n      window.__utilityWalkDraw?.push({ owner, time, began, progress, point: { ...point.current }, path: { from: { ...path.from }, to: { ...path.to }, direction: path.direction }, duration, recordedAt: performance.now() });');
+        return{contents,loader:'ts',resolveDir:path.dirname(args.path)};
+      });
+    } }, { name:'observe-real-booky-ownership',setup(builder){
       builder.onResolve({filter:/^three$/},args=>args.importer.replaceAll('\\','/').endsWith('/src/host/useBookyRenderer.ts')
         ?{path:'booky-three-observer',namespace:'booky-three-observer'}:undefined);
       builder.onLoad({filter:/.*/,namespace:'booky-three-observer'},()=>({loader:'js',resolveDir:ROOT,contents:`
@@ -233,7 +240,7 @@ test.beforeAll(async () => {
   }));
   sourceEvidence = { kind: 'canonical-app-independent-live-booky-character-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
     controlledPorts: ['native OS plugins and preferences backed by a Node map'], sourceInputs,
-    fixtureObservers: ['Real Booky WebGLRenderer render/dispose calls, frame times, rig poses and actual scene/camera references',
+    fixtureObservers: ['Actual useBookyWalk sampleBookyWalk output and its source RAF time, owner, began, path and duration; read-only guarded copies only, no timing/scheduling/geometry substitution', 'Real Booky WebGLRenderer render/dispose calls, frame times, rig poses and actual scene/camera references',
       'Actual createBookyModel owner and disposer; fixture never assigns geometry or material values',
       'Delegating observer of actual native ContentDownloads methods; no replacement outcomes'],
     controlledScheduling: 'Only the two NativePlanetPanel RAF callbacks may be held/released explicitly for stale-focus regression; no globe or character clock changes',
@@ -246,7 +253,7 @@ test.beforeAll(async () => {
     installedNative: false, deviceTested: false, childReviewed: false, childProfileCreated: false, childAccessGranted: false, reviewedDialogueAccepted: false, narrationEnabled: false, artAccepted: false, devicePerformanceAccepted: false, releaseReady: false };
 });
 
-async function open(testInfo) {
+async function open(testInfo, { recentHistory } = {}) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(ROOT, '.tmp/s15-booky-live'));
   await fs.mkdir(profileRoot, { recursive: true }); const profile = await fs.mkdtemp(path.join(profileRoot, 'pk-'));
   const context = await chromium.launchPersistentContext(profile, { channel: 'chrome', headless: true,
@@ -254,6 +261,7 @@ async function open(testInfo) {
   const page = await context.newPage(); page.setDefaultTimeout(12_000);
   const initialRecord = JSON.stringify({ schemaVersion: 1, commitId: 'booky-live-character-fixture:1', selection: BASE });
   const memory = new Map([['probpera-interface-language', 'ru'], ['probpera-planet-welcome-v1', 'completed'], [KEY, initialRecord]]);
+  if (recentHistory !== undefined) memory.set('probpera-planet-recent-adult-v1', JSON.stringify(recentHistory));
   const operations = [], errors = [], externalRequests = [], missingResources = [];
   const result = { ...sourceEvidence, pass: false, observations: {}, screenshots: [] };
   page.on('pageerror', error => errors.push(error.message));
@@ -1877,4 +1885,157 @@ test(`mobile touch graphics approach returns to reserved dock and respects Stop 
     await fixture.close();
   }
 });
+}
+
+
+for(const [language,view] of [['ru',{width:390,height:844}],['en',{width:320,height:844}]])for(const action of ['recent','downloads']){
+  test('utility surface natural touch '+language+' '+action,async({},testInfo)=>{
+    test.setTimeout(120000);
+    const fixture=await open(testInfo,{recentHistory:{v:1,entries:[{kind:'writer',countryId:'russia',writerId:'dostoevsky',openedAt:1789660800000}]}}),{page,result}=fixture;
+    const o=result.observations.utilitySurface={language,view,action,checks:[],findings:[]};
+    result.scenario='utility-surface-'+language+'-'+action;
+    const targetSelector=action==='recent'?'[data-recent-history]':'[data-planet-downloads]';
+    const checked=async(name,fn)=>{try{await fn();o.checks.push({name,pass:true});}catch(error){o.checks.push({name,pass:false,error:error.message});o.findings.push({name,error:error.message});}};
+    const preferences=()=>({entries:[...fixture.memory.entries()].sort(([a],[b])=>a.localeCompare(b)),mutations:mutations(fixture)});
+    const state=label=>page.evaluate(label=>window.__utilitySurface.read(label),label);
+    try{
+      await page.setViewportSize(view);await ready(page);
+      if(language==='en'){
+        await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:/^EN$/u}).tap();
+        await expect(page.locator('html')).toHaveAttribute('lang','en');
+        await expect.poll(()=>fixture.memory.get('probpera-interface-language')).toBe('en');await ready(page);
+      }
+      await actual(page);await stablePose(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());
+      o.canonicalBefore=await actual(page);
+      await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await companionSaved(fixture);
+      const useful=panel(page).locator('[data-booky-useful-actions] > summary');
+      if(!await useful.evaluate(element=>element.parentElement.open))await useful.tap();
+      const selected=panel(page).locator('[data-planet-mascot-action="'+action+'"]');
+      await expect(selected).toBeEnabled();await selected.scrollIntoViewIfNeeded();await live(page);
+      expect(await page.locator('[data-planet-graphics-settings]').evaluateAll(nodes=>nodes.some(node=>node.open))).toBe(false);
+      // The original fixture supplies real native preference bindings and canonical catalog loading.
+      // No target, position, open flag, source geometry, motion clock or preference is assigned here.
+      await page.evaluate(({action,targetSelector})=>{
+        const rect=r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height});
+        const visible=element=>{
+          if(!element)return null;const r=element.getBoundingClientRect(),style=getComputedStyle(element);
+          if(element.closest('[hidden],[inert],[aria-hidden="true"]')||style.display==='none'||style.visibility!=='visible'||Number(style.opacity)===0||r.width<2||r.height<2)return null;
+          let left=Math.max(0,r.left),top=Math.max(0,r.top),right=Math.min(innerWidth,r.right),bottom=Math.min(innerHeight,r.bottom),clip=style.position!=='fixed';
+          for(let p=element.parentElement;p;p=p.parentElement){const s=getComputedStyle(p),b=p.getBoundingClientRect();
+            if(s.display==='none'||Number(s.opacity)===0)return null;
+            if(clip&&p!==document.body&&p!==document.documentElement&&/auto|scroll|hidden|clip/u.test(s.overflowX)){left=Math.max(left,b.left);right=Math.min(right,b.right);}
+            if(clip&&p!==document.body&&p!==document.documentElement&&/auto|scroll|hidden|clip/u.test(s.overflowY)){top=Math.max(top,b.top);bottom=Math.min(bottom,b.bottom);}
+            if(s.position==='fixed')clip=false;
+          }
+          return right-left>=2&&bottom-top>=2?{left,top,right,bottom,width:right-left,height:bottom-top}:null;
+        };
+        const check=(element,index)=>{
+          const raw=rect(element.getBoundingClientRect()),r=visible(element);
+          const key=element.getAttribute('aria-label')||element.getAttribute('data-recent-entry')||element.textContent.trim().replace(/\s+/gu,' ').slice(0,100)||element.tagName;
+          if(!r)return{index,key,tag:element.tagName,visibility:'none',raw};
+          const full=Object.keys(r).every(key=>Math.abs(r[key]-raw[key])<.5);
+          const points=[.15,.5,.85].map(fraction=>{const x=r.left+r.width*fraction,y=r.top+r.height/2,hit=document.elementFromPoint(x,y);
+            return{x,y,fraction,reachable:!!hit&&element.contains(hit),petBlocked:!!hit?.closest('[data-planet-mascot-pet]'),hit:hit?.tagName??null,hitClass:typeof hit?.className==='string'?hit.className:null};});
+          return{index,key,tag:element.tagName,recentEntry:element.getAttribute('data-recent-entry'),inputType:element.getAttribute('type'),visibility:full?'full':'partial',raw,rect:r,disabled:element.matches(':disabled')||element.getAttribute('aria-disabled')==='true',points,reachable:points.every(point=>point.reachable)};
+        };
+        const read=(label,rafAt=null)=>{const readStart=performance.now();const p=document.querySelector('[data-planet-mascot-pet]'),cue=document.querySelector('[data-booky-target]'),target=document.querySelector(targetSelector);
+          const prose=[...(target?.querySelectorAll('p,h3,.recent-history__label,.recent-history__kind')??[])].map((element,index)=>({index,text:element.textContent.trim().replace(/\s+/gu,' ').slice(0,160),raw:rect(element.getBoundingClientRect()),visible:visible(element)}));
+          const controls=[...document.querySelectorAll('.native-planet-panel__header button,'+targetSelector+' summary,'+targetSelector+' button,'+targetSelector+' a[href],'+targetSelector+' input,'+targetSelector+' select,'+targetSelector+' label')].map(check);
+          return{at:performance.now(),readStart,readEnd:performance.now(),rafAt,label,viewport:{width:innerWidth,height:innerHeight},pet:p?rect(p.getBoundingClientRect()):null,
+            phase:cue?.getAttribute('data-booky-target')??null,action:cue?.getAttribute('data-booky-target-action')??null,returning:p?.getAttribute('data-booky-returning')==='true',gesture:p?.getAttribute('data-planet-mascot-gesture')??null,
+            targetOpen:target?.open??false,target:target?{raw:rect(target.getBoundingClientRect()),visible:visible(target)}:null,
+            graphicsOpen:document.querySelector('[data-planet-graphics-settings]')?.open??false,dockActive:document.querySelector('[data-booky-dock-active="true"]')!==null,
+            dock:visible(document.querySelector('[data-booky-dock-active="true"]')),content:visible(document.querySelector('.native-planet-panel__content')),prose,
+            contentScrollTop:document.querySelector('.native-planet-panel__content')?.scrollTop??null,controls};};
+        const readFrame=rafAt=>{
+          const readStart=performance.now(),p=document.querySelector('[data-planet-mascot-pet]'),cue=document.querySelector('[data-booky-target]');
+          const value={rafAt,readStart,viewport:{width:innerWidth,height:innerHeight},pet:p?rect(p.getBoundingClientRect()):null,
+            phase:cue?.getAttribute('data-booky-target')??null,action:cue?.getAttribute('data-booky-target-action')??null,
+            returning:p?.getAttribute('data-booky-returning')==='true',gesture:p?.getAttribute('data-planet-mascot-gesture')??null};
+          value.readEnd=performance.now();value.at=value.readEnd;return value;
+        };
+        window.__utilityWalkDraw=[];
+        const value=window.__utilitySurface={samples:[],events:[],frame:0,stopped:false,startedAt:performance.now(),read};
+        const event=e=>{const target=e.target instanceof Element?e.target:null;
+          value.events.push({at:performance.now(),type:e.type,trusted:e.isTrusted,pointerType:e.pointerType??null,key:e.key??null,
+            action:target?.closest('[data-planet-mascot-action]')?.getAttribute('data-planet-mascot-action')??null,insideTarget:!!target?.closest(targetSelector)});};
+        for(const type of ['pointerdown','pointerup','click','keydown'])document.addEventListener(type,event,true);
+        const frame=rafAt=>{if(value.stopped)return;value.samples.push(readFrame(rafAt));if(performance.now()-value.startedAt<12000)value.frame=requestAnimationFrame(frame);};
+        value.stop=()=>{value.stopped=true;cancelAnimationFrame(value.frame);for(const type of ['pointerdown','pointerup','click','keydown'])document.removeEventListener(type,event,true);return{startedAt:value.startedAt,samples:value.samples,events:value.events,draws:window.__utilityWalkDraw??[]};};
+        value.frame=requestAnimationFrame(frame);
+      },{action,targetSelector});
+      o.before=await state('before explicit touch');o.preferencesBefore=preferences();o.downloadCallsBefore=await downloadActions(page);
+      await selected.tap();await expect(panel(page)).not.toBeVisible();await expect(page.locator(targetSelector)).toHaveAttribute('open','');
+      await checked('natural point reached',()=>expect.poll(()=>page.evaluate(()=>window.__utilitySurface.samples.some(s=>s.phase==='tapping')),{timeout:6000,intervals:[30,50]}).toBe(true));
+      await checked('natural return reached',()=>expect.poll(()=>page.evaluate(()=>window.__utilitySurface.samples.some(s=>s.returning)),{timeout:2500,intervals:[30,50]}).toBe(true));
+      let previous=null,matches=0;
+      await checked('natural point completed and position settled',()=>expect.poll(async()=>{const s=await state('settling'),key=JSON.stringify(s.pet);matches=s.phase===null&&!s.returning&&s.gesture!=='walking'&&key===previous?matches+1:0;previous=key;return matches;},{timeout:2500,intervals:[30,50]}).toBeGreaterThanOrEqual(3));
+      o.settled=await state('settled');await page.waitForTimeout(1900);o.after1900ms=await state('after 1900ms');
+      o.trace=await page.evaluate(()=>window.__utilitySurface.stop());
+      o.preferencesAfter=preferences();o.downloadCallsAfter=await downloadActions(page);o.canonicalAfter=await actual(page);
+      await capture(page,result,testInfo,'booky-utility-'+action+'-'+language+'-'+view.width+'.png');
+      await checked('explicit trusted touch action',()=>{for(const type of ['pointerdown','click'])expect(o.trace.events.some(e=>e.type===type&&e.action===action&&e.trusted&&e.pointerType==='touch')).toBe(true);expect(o.trace.events.filter(e=>e.type==='click'&&e.insideTarget)).toEqual([]);});
+      await checked('graphics closed and whole companion in measured dock',()=>{
+        const s=o.after1900ms;expect(o.before.graphicsOpen).toBe(false);expect(s.graphicsOpen).toBe(false);expect(s.dockActive).toBe(true);
+        expect(s.pet.width).toBe(240);expect(s.pet.height).toBe(96);expect(s.dock.height).toBe(120);
+        expect(s.pet.left>=s.dock.left-.1&&s.pet.top>=s.dock.top-.1&&s.pet.right<=s.dock.right+.1&&s.pet.bottom<=s.dock.bottom+.1).toBe(true);
+        expect(s.content.bottom).toBeLessThanOrEqual(s.dock.top+.1);
+      });
+      await checked('finite approach point return and continuous handoff',()=>{
+        const phases={};for(const name of ['approaching','tapping','returning'])phases[name]=o.trace.samples.filter(s=>name==='returning'?s.returning:s.phase===name);
+        o.phaseMetrics=Object.fromEntries(Object.entries(phases).map(([name,samples])=>[name,{frames:samples.length,first:samples[0]??null,last:samples.at(-1)??null}]));
+        const drawOwners=[...new Set(o.trace.draws.map(d=>d.owner))];expect(drawOwners).toHaveLength(2);o.motionProvenance={};
+        for(const name of ['approaching','returning']){
+          const samples=phases[name];expect(samples.length).toBeGreaterThan(2);
+          expect(Math.hypot(samples.at(-1).pet.left-samples[0].pet.left,samples.at(-1).pet.top-samples[0].pet.top)).toBeGreaterThan(8);
+          const owner=drawOwners[name==='approaching'?0:1],authored=o.trace.draws.filter(d=>d.owner===owner),first=authored[0];
+          expect(first.duration).toBe(1600);expect(authored.every(d=>d.duration===first.duration&&d.began===first.began&&JSON.stringify(d.path)===JSON.stringify(first.path))).toBe(true);
+          const candidates=[{...first,time:first.began,progress:0,point:first.path.from,recordedAt:first.began,initial:true},...authored];
+          let priorTime=first.began;const matched=[];
+          for(const [index,s] of samples.entries()){
+            const choices=candidates.filter(d=>d.time>=priorTime&&d.recordedAt<=s.readEnd+.001&&Math.abs(d.point.left-s.pet.left)<=1/32&&Math.abs(d.point.top-s.pet.top)<=1/32)
+              .sort((a,b)=>Math.hypot(a.point.left-s.pet.left,a.point.top-s.pet.top)-Math.hypot(b.point.left-s.pet.left,b.point.top-s.pet.top)||a.time-b.time);
+            expect(choices.length,'Every moving DOM sample matches current owner/path draw, including initial path.from').toBeGreaterThan(0);
+            const d=choices[0];priorTime=d.time;matched.push({index,owner,sourceTime:d.time,sourceProgress:d.progress,sourcePoint:d.point,initial:d.initial===true,observerRafAt:s.rafAt,readStart:s.readStart,readEnd:s.readEnd,pet:s.pet});
+          }
+          const observerIntervals=[];
+          for(let i=1;i<matched.length;i++){
+            const a=matched[i-1],b=matched[i],px=Math.hypot(b.pet.left-a.pet.left,b.pet.top-a.pet.top),sourceDt=b.sourceTime-a.sourceTime;
+            expect(sourceDt).toBeGreaterThanOrEqual(0);expect(px).toBeLessThanOrEqual(Math.hypot(view.width,view.height)*1.5/1600*sourceDt+3);
+            const rafDt=b.observerRafAt-a.observerRafAt,readDt=b.readEnd-a.readEnd,bound=Math.hypot(view.width,view.height)*1.5/1600*rafDt+3;
+            observerIntervals.push({index:i,px,sourceDt,rafDt,readDt,observerBound:bound,observerBoundExceeded:px>bound});
+          }
+          o.motionProvenance[name]={owner,path:first.path,began:first.began,duration:first.duration,roundingTolerance:1/32,matched,observerIntervals,
+            maxReadCostMs:Math.max(...samples.map(s=>s.readEnd-s.readStart)),observerIntervalViolations:observerIntervals.filter(s=>s.observerBoundExceeded)};
+        }
+        expect(phases.tapping.length).toBeGreaterThan(0);
+        expect(phases.approaching.at(-1).at).toBeLessThan(phases.tapping[0].at);expect(phases.tapping.at(-1).at).toBeLessThan(phases.returning[0].at);
+        expect(phases.returning.at(-1).at-phases.approaching[0].at).toBeLessThan(5500);
+        for(const s of phases.returning){expect(s.phase).toBeNull();expect(s.gesture).toBe('walking');}
+        const a=phases.tapping.at(-1),b=phases.returning[0],c=phases.returning.at(-1);
+        expect(Math.hypot(b.pet.left-a.pet.left,b.pet.top-a.pet.top)).toBeLessThan(5);
+        expect(Math.hypot(o.settled.pet.left-c.pet.left,o.settled.pet.top-c.pet.top)).toBeLessThan(5);
+      });
+      await checked('visible body prose clear after natural return',()=>{
+        const s=o.after1900ms,visible=s.prose.filter(item=>item.visible);expect(visible.length).toBeGreaterThan(0);
+        const overlaps=r=>Math.min(r.right,s.pet.right)>Math.max(r.left,s.pet.left)+.1&&Math.min(r.bottom,s.pet.bottom)>Math.max(r.top,s.pet.top)+.1;
+        o.obstructedProse=visible.filter(item=>overlaps(item.visible));expect(o.obstructedProse).toEqual([]);
+      });
+      await checked('whole pet stays in viewport',()=>{expect(fits(o.after1900ms.pet,o.after1900ms.viewport)).toBe(true);expect(o.trace.samples.filter(s=>s.pet).every(s=>fits(s.pet,s.viewport))).toBe(true);});
+      await checked('1900ms exact stillness and no automatic resume',()=>{expect(o.after1900ms.at-o.settled.at).toBeGreaterThanOrEqual(1900);expect(o.after1900ms.pet).toEqual(o.settled.pet);for(const s of o.trace.samples.filter(s=>s.at>=o.settled.at)){expect(s.pet).toEqual(o.settled.pet);expect(s.phase).toBeNull();expect(s.returning).toBe(false);expect(s.gesture).not.toBe('walking');}});
+      await checked('required section controls are actually visible',()=>{const visible=o.after1900ms.controls.filter(c=>c.visibility!=='none');if(action==='recent')expect(visible.some(c=>c.recentEntry)).toBe(true);else{expect(visible.some(c=>c.tag==='INPUT'&&c.inputType==='checkbox')).toBe(true);expect(visible.some(c=>c.tag==='LABEL')).toBe(true);}});
+      await checked('visible section and header hit points',()=>{const visible=o.after1900ms.controls.filter(c=>c.visibility!=='none');expect(visible.length).toBeGreaterThan(3);expect(visible.filter(c=>!c.reachable)).toEqual([]);});
+      await checked('preferences and progress bytes unchanged',()=>expect(o.preferencesAfter).toEqual(o.preferencesBefore));
+      await checked('no automatic download action',()=>expect(o.downloadCallsAfter).toEqual(o.downloadCallsBefore));
+      await checked('canonical scene camera resources unchanged',()=>retained(o.canonicalAfter,o.canonicalBefore));
+      await checked('actual App fixture integrity',()=>fixture.verify());
+      result.pass=o.findings.length===0;result.observationsComplete=true;
+      expect(o.findings,'All independent observations are preserved before this summary assertion').toEqual([]);
+    }catch(error){
+      result.pass=false;o.failure=error.message;
+      if(!o.trace)o.trace=await page.evaluate(()=>window.__utilitySurface?.stop()??null).catch(()=>null);
+      if(!result.screenshots.length)await capture(page,result,testInfo,'booky-utility-'+action+'-'+language+'-'+view.width+'.png').catch(()=>undefined);
+      throw error;
+    }finally{await fixture.close();}
+  });
 }
