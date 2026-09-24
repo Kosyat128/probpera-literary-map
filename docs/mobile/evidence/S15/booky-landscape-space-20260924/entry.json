@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:55:18.678Z",
+  "stage": "S15",
+  "checkpoint": "b3b11d2d1042ea659c4104106ab77d4888e6f2d0",
+  "previous": "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json",
+    "sha256": "67c035c7226d951d9035e2afd099f0f1fcbe7fccb155301b874ca298594f2edc"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json",
+    "sha256": "67c035c7226d951d9035e2afd099f0f1fcbe7fccb155301b874ca298594f2edc"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/source-manifests/0cf1b1bbcb5c3017.json",
+    "sha256": "0cf1b1bbcb5c301707268df4bd3fbb1f00903071d1e5fa23a1f2bda5a1345354",
+    "fileCount": 1652
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/scope.json",
+    "sha256": "a4b690c201e22b7f4f412c0350974412039d6561bbd7590f6bc46b6c45d0f028"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "8fd89fd829a8fae6aeb91a7a137550bd08a3f081721a3cc39e0568f4c1493ee6"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "178fa561c3e93fe7c97fec70635bacceb2e9b58c867709c30e7c7318ebb37afd"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "38e898c33594affb9a209e7888ba43e8f8724eba9eb8170077d75a1cfec66654"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "034af636bf728bcef9ce42229b656b307338ae70ba5875571e753adc9bc7b0e2"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "c74e4f62502fabe2581b1f954eaaa0ffe5bac3ed973a6cb49b6aae31a1ae6586"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "95af2f2de8d2514b482125b046a09dae6d2a45106116aae0834d0de608e74811"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "5a0650d65e45e7ea240221378429a3786ec90d69ca25f0334bcc7b710cb3eea1"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "f0da76d8939495fd4e8fc7782e5bfd15153d55017f04353ff6690a4e3f84c37e"
+    }
+  ],
+  "changedPaths": [
+    "src/host/host.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/host.css",
+      "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "e428eba3a9fe77f2babe5c63f443a552e8c09ac6fa8643d0f634ec6a52b3c29c"
+    }
+  ],
+  "sourceInputCount": 1652,
+  "protectedInputCount": 1650,
+  "runtimeRequired": [
+    "src/host/host.css"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "b3b11d2d1042ea659c4104106ab77d4888e6f2d0",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky mobile reduced motion notice and media lifecycle ru",
+    "Booky mobile reduced motion notice and media lifecycle en",
+    "Booky short landscape companion navigation space ru",
+    "Booky short landscape companion navigation space en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 169,
+  "expectedBrowserTests": 4,
+  "expectedImages": 10,
+  "scope": "Selected RU/EN short-landscape native-globe layouts reserve room while the companion is shown: the closed 240 × 96 px two-row dock reserves 252 px, and the open-help 144 × 96 px dock reserves 156 px. The 88 px avatar and 44 px controls retain their size; the help card remains an ordinary overlay. Bounded host CSS preserves established placement and rendering. Actual-App checks cover pet/navigation clearance with help open and closed, trusted-touch header controls and last-edition reachability after closing help, then full rail restoration after hiding the companion or returning to portrait, plus retained reduced-motion notice cases. Scene, saved progress and nonvisibility preferences remain exact; visibility changes are limited to explicit Show/Hide touches. Model, animation and renderer inputs remain unchanged; three D193 standalone photos retain their original scope through exact dependency hashes.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

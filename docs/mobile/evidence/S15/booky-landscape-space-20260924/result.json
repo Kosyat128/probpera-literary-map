@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T11:03:50.473Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_LANDSCAPE_SPACE_SCOPED_VALIDATION",
+  "sourceCommit": "d4003bbc4fe5cd6dd1d3ef86e5c568e292aa4556",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/entry.json",
+    "sha256": "b042fc15ea5afb461fe79b54e08826d22ac0c06b588b5ba0e7c1c60ec5eb9fab"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/checkpoint.mjs",
+    "sha256": "1c5a32af2aa29ca0b9c8a9c8c48310b2e9cdeb414e8f2fa842af88ada4786259"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json",
+    "sha256": "67c035c7226d951d9035e2afd099f0f1fcbe7fccb155301b874ca298594f2edc"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/source-manifests/0c75a67799857233.json",
+    "sha256": "0c75a6779985723377954ac90632efca46190ae918f54b0710bc6bb4c665517f",
+    "fileCount": 1652
+  },
+  "sourceCommits": [
+    "d4003bbc4fe5cd6dd1d3ef86e5c568e292aa4556"
+  ],
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a1"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/unit-a1/result.json",
+      "sha256": "cd9847dac848d2c853eb5cee30ddb97d57ae34c366b14ce992152c34e72606b3",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/unit-a1/execution.json",
+        "sha256": "3e5f3721769bc6f49574b9a297b5db573bf179a615aa5f7a397e9581ceae27f5"
+      },
+      "tests": {
+        "passed": 169,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/unit-a1/vitest.json",
+        "sha256": "f75a7fec371345c98afb44b45f1ff1618ef047202b54d25325a8afec995d29fe"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/static-a1/result.json",
+      "sha256": "2e05ef38b74bb1a247b9ebaa52f9568c9c3fb9c1e5196489e4192ad985e0adba",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/static-a1/execution.json",
+        "sha256": "85c490514f3de99e9fe269536901da8c1032c7f21cfc31e892760b9f6cfb2137"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/browser-a1/result.json",
+      "sha256": "0ae0843dbd32530747a960131421bb213fa2d798a87c6cd4966404bb6936de6f",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/browser-a1/execution.json",
+        "sha256": "aa86f2f753e68b7b780c0b23fe41fec22e64e7830c522adb44355c07b54616b5"
+      },
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/browser-a1/playwright.json",
+        "sha256": "c7e52c32a76fc8dd072aa6e4d1e807bc2a407086c0f78897bcfc63960e3695a7"
+      }
+    }
+  },
+  "earlierAttempts": [],
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/diagnostic-history.json",
+    "sha256": "107cb25aa0aadbe5da933c4ca45049e8f5fb8997e4ba6f1386f6da6996f8acc0"
+  },
+  "unitCount": 169,
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserCases": 4,
+  "actualAppCaseCount": 4,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-evidence\\browser-a1\\booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru\\booky-live-character.json",
+      "sha256": "d826dc32d286781a31490c82fa0e0eaf705b6f2fd2601528547a5d79d15d368d",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-evidence\\browser-a1\\booky-live-character-Booky-3d4b4-tice-and-media-lifecycle-ru\\attachments\\booky-live-character-source-evidence-1939dfda3029089d3edd132a77af2eb90af075a7.json",
+        "sha256": "d826dc32d286781a31490c82fa0e0eaf705b6f2fd2601528547a5d79d15d368d"
+      },
+      "test": "Booky mobile reduced motion notice and media lifecycle ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-evidence\\browser-a1\\booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en\\booky-live-character.json",
+      "sha256": "25205e503407c24821c1af32916acfe0d831d55082f8d55c4ff05e06d60dd0eb",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-evidence\\browser-a1\\booky-live-character-Booky-4a9c7-tice-and-media-lifecycle-en\\attachments\\booky-live-character-source-evidence-5d993f72adb4825b9e1bf4cfc7a95fdd0e1401bf.json",
+        "sha256": "25205e503407c24821c1af32916acfe0d831d55082f8d55c4ff05e06d60dd0eb"
+      },
+      "test": "Booky mobile reduced motion notice and media lifecycle en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-evidence\\browser-a1\\booky-live-character-Booky-6a410-mpanion-navigation-space-ru\\booky-live-character.json",
+      "sha256": "5d9446d9742bb8ba3a467549ef47a350969b80b38d88f9df701a6b5fcfcb2517",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-evidence\\browser-a1\\booky-live-character-Booky-6a410-mpanion-navigation-space-ru\\attachments\\booky-live-character-source-evidence-aa1b5295897576280c1754cacaddf1d87659deda.json",
+        "sha256": "5d9446d9742bb8ba3a467549ef47a350969b80b38d88f9df701a6b5fcfcb2517"
+      },
+      "test": "Booky short landscape companion navigation space ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-evidence\\browser-a1\\booky-live-character-Booky-6d207-mpanion-navigation-space-en\\booky-live-character.json",
+      "sha256": "3a44f88af3689d64cd62b3ab0857365ec9b171416e48d5b0f35bc515c00e0070",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-evidence\\browser-a1\\booky-live-character-Booky-6d207-mpanion-navigation-space-en\\attachments\\booky-live-character-source-evidence-2e6f79ff3744fa22a409924d5e6ed650991b8fb1.json",
+        "sha256": "3a44f88af3689d64cd62b3ab0857365ec9b171416e48d5b0f35bc515c00e0070"
+      },
+      "test": "Booky short landscape companion navigation space en"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "Booky mobile reduced motion notice and media lifecycle ru",
+      "scenario": "mobile-reduced-motion-notice-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "reducedMotionNoticeTracksMedia": true,
+        "reducedMotionNoticeReadableByTouch": true,
+        "allFifteenGesturesEnabledWithReducedMotion": true,
+        "reducedSelectedPoseRepeatAndStop": true,
+        "activeGestureSettlesOnReducedMotion": true,
+        "restoringMotionDoesNotReplay": true,
+        "freshTouchAnimatesAfterMotionRestore": true,
+        "motionTogglesPreserveContextAndPreferences": true,
+        "trustedTouchMotionNotice": true
+      },
+      "observationChecks": {
+        "observation": "motionNotice",
+        "checks": [
+          {
+            "name": "reduced notice is readable and all fifteen gestures stay enabled",
+            "pass": true
+          },
+          {
+            "name": "explicit static pose repeats and Stop restores neutral",
+            "pass": true
+          },
+          {
+            "name": "active Dance settles on reduce and normal motion does not replay",
+            "pass": true
+          },
+          {
+            "name": "short landscape reduced notice stays readable by touch",
+            "pass": true
+          },
+          {
+            "name": "trusted touch and source integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky mobile reduced motion notice and media lifecycle en",
+      "scenario": "mobile-reduced-motion-notice-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "reducedMotionNoticeTracksMedia": true,
+        "reducedMotionNoticeReadableByTouch": true,
+        "allFifteenGesturesEnabledWithReducedMotion": true,
+        "reducedSelectedPoseRepeatAndStop": true,
+        "activeGestureSettlesOnReducedMotion": true,
+        "restoringMotionDoesNotReplay": true,
+        "freshTouchAnimatesAfterMotionRestore": true,
+        "motionTogglesPreserveContextAndPreferences": true,
+        "trustedTouchMotionNotice": true
+      },
+      "observationChecks": {
+        "observation": "motionNotice",
+        "checks": [
+          {
+            "name": "reduced notice is readable and all fifteen gestures stay enabled",
+            "pass": true
+          },
+          {
+            "name": "explicit static pose repeats and Stop restores neutral",
+            "pass": true
+          },
+          {
+            "name": "active Dance settles on reduce and normal motion does not replay",
+            "pass": true
+          },
+          {
+            "name": "short landscape reduced notice stays readable by touch",
+            "pass": true
+          },
+          {
+            "name": "trusted touch and source integrity",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky short landscape companion navigation space ru",
+      "scenario": "short-landscape-navigation-space-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "landscapeCompanionClearsAllNavigation": true,
+        "landscapeHeaderControlsReachableByTouch": true,
+        "landscapeLastEditionReachableByTouch": true,
+        "landscapeRailRestoresAfterHide": true,
+        "portraitRailRestoresAfterRotation": true,
+        "landscapeSpacePreservesSceneAndPreferences": true
+      },
+      "observationChecks": {
+        "observation": "landscapeSpace",
+        "checks": [
+          {
+            "name": "open landscape reserves full companion space and reachable header",
+            "pass": true
+          },
+          {
+            "name": "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+            "pass": true
+          },
+          {
+            "name": "explicit hide and portrait rotation restore original rail geometry",
+            "pass": true
+          },
+          {
+            "name": "source scene and preferences remain exact",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky short landscape companion navigation space en",
+      "scenario": "short-landscape-navigation-space-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "landscapeCompanionClearsAllNavigation": true,
+        "landscapeHeaderControlsReachableByTouch": true,
+        "landscapeLastEditionReachableByTouch": true,
+        "landscapeRailRestoresAfterHide": true,
+        "portraitRailRestoresAfterRotation": true,
+        "landscapeSpacePreservesSceneAndPreferences": true
+      },
+      "observationChecks": {
+        "observation": "landscapeSpace",
+        "checks": [
+          {
+            "name": "open landscape reserves full companion space and reachable header",
+            "pass": true
+          },
+          {
+            "name": "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+            "pass": true
+          },
+          {
+            "name": "explicit hide and portrait rotation restore original rail geometry",
+            "pass": true
+          },
+          {
+            "name": "source scene and preferences remain exact",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/visual-review.json",
+    "sha256": "2022bfbbd16e7468d4f4f8ba4ef8e93ffab8811af049c90cf41aa289e5295210"
+  },
+  "newPhotoReview": null,
+  "newModelPhotoCount": 0,
+  "retainedModelPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "inspectedImageCount": 6,
+  "totalCapturedImageCount": 10,
+  "visualReviewScope": "Direct review of the selected final RU/EN short-landscape open-help, closed-companion and restored-portrait captures, covering character framing, navigation space, header controls and visible text. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "visualReviewLimitations": [
+    "This visual review covers 6 of 10 final captures. It does not claim all retained images were inspected again.",
+    "Static images show selected navigation/help layouts; they cannot establish trusted-touch navigation, restoration timing or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1650,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/host.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "b3b11d2d1042ea659c4104106ab77d4888e6f2d0",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/pwa-a1/result.json",
+    "sha256": "6cba4fd74dfae07c0869aa851d44587ba6bfcb944178f9c249e00f4c13e3652e"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/android-a1/result.json",
+    "sha256": "3c908ed6416cc7b6dd2d490bb2e0a1ad4f0dcdc7c4f1e5f1f94f83ce8ab4bbfd"
+  },
+  "pwaBuildId": "446224a72c12ba20fc5879b58f8aaa27bc7c1bd6bd3b6a4a45a723ff866d10a1",
+  "androidBuildId": "ecf0908147eaf5ab299afac812de98c5ae7d2dfee6a92f0052986a69b024a972",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/android-ecf09081/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "7f2ffcac283a6247ba80d77acf7f7c6346b0393d5c7aa81f1d55493a36cf53b3"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/pwa-446224a7/artifact.json",
+      "sha256": "4ffb4845ca3fe088e76e8493ae87f68cf9f93ccef781bfe23780544953d37533"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/android-ecf09081/runtime/artifact.json",
+      "sha256": "d4754be7b3e2379acd172c68b1723504f748a338ca3bd364d2cfe8cad59132dc"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/pwa-a1/strict-audit.json",
+      "sha256": "877066ab8bcc35d1be81a33e788ae43721868ea454ee174e2305c6cea1bf9b22"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/android-a1/native-artifact-audit.json",
+      "sha256": "c7831da434f87cc19bc6dbd94c3ff2805ad0788e269d13395c6c852ca0d2f967"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/android-a1/android-dev-apk-verification.json",
+      "sha256": "0425e678e3c13d4d3c6001b02346ae10e3b4e496458ee2a7b6f0b8d00dd62502"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/android-a1/build-run.json",
+      "sha256": "161c96502d5ba38cb0df4c3b5f8ab2127f3965155c4c106b0ae6221cebf328b8"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/build-baseline.json",
+    "sha256": "ed11c0a1fff8b7e90c843b7f728d42762876c3e53c6ef62e643721e75c9fa348"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/pwa-a1/copy-verification.json",
+    "sha256": "0d9eb6d4dde90ae67997054133693cfc284cf951730566228ff2bdb35ae6b802"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/pwa-a1/playwright.json",
+    "sha256": "87d699645e8a2531581f4be24e95285970e5ca8b206f814dd0823e8a344d0f6d"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "f6b609dab43b725fa31b02257e296af2eca42907",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json",
+      "sha256": "67c035c7226d951d9035e2afd099f0f1fcbe7fccb155301b874ca298594f2edc"
+    },
+    "unitCount": 169,
+    "browserCases": 4,
+    "allPriorSelectedCasesRerun": false,
+    "priorSelectedBrowserCaseCount": 4,
+    "currentSelectedBrowserCaseCount": 4,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+      "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+    }
+  },
+  "criteriaUpdated": [
+    "PLANETKA-002",
+    "A11Y-004"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD196Recorded": true,
+  "nextAction": "Continue the user-prioritized mobile companion refinement from this verified checkpoint. Preserve the tested short-landscape navigation space while the companion is shown, hidden-companion rail restoration and portrait restoration, reduced-motion notice, all fifteen gestures, explicit Stop and manual restart, saved progress and canonical scene ownership. Full journey integration remains deferred. S03.acceptance remains first unresolved; device, full accessibility and stage/release acceptance remain open.",
+  "limitations": [
+    "Fresh browser evidence covers four selected RU/EN short-landscape navigation-space and retained reduced-motion notice cases; broader walking, utilities, gesture-gallery, live-model and layout suites remain attributed to their original sources.",
+    "Model geometry, animation and renderer inputs are unchanged. The three D193 rest/bow/balance photos are retained only through exact dependency hashes and keep their original standalone-render scope.",
+    "Static standalone pose renders do not demonstrate application timing, reachability or device performance. Those claims are limited to the separately recorded selected actual-App browser checks.",
+    "Navigation-space claims are limited to the configured phone sizes and tested help states. The open help card remains an ordinary overlay; background-navigation reachability through it is not promised. Last-edition trusted-touch reachability is checked after help closes. No universal layout, installed-device, full accessibility, performance, art, stage or release acceptance is claimed.",
+    "Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved. All requirement and stage statuses remain unchanged.",
+    "This visual review covers 6 of 10 final captures. It does not claim all retained images were inspected again.",
+    "Static images show selected navigation/help layouts; they cannot establish trusted-touch navigation, restoration timing or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed.",
+    "Three static posed standalone renders using the current canonical model and animation; they are not application screenshots or installed-device evidence.",
+    "The images inspect rest plus the midpoints of bow and balance. Finite duration, restoration, reduced motion and touch behavior depend on the separate formal tests.",
+    "All three poses use the same neutral-model camera and lighting. No image generation, retouching or per-pose framing was used.",
+    "The model source is unchanged; the new pose evidence must also remain bound to the recorded animation dependency SHA."
+  ],
+  "bookyLandscapeSpaceImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

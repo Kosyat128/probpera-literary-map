@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T10:54:11.766Z",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-motion-notice-20260924/result.json",
+    "sha256": "67c035c7226d951d9035e2afd099f0f1fcbe7fccb155301b874ca298594f2edc"
+  },
+  "attempts": [
+    {
+      "attempt": "external-landscape-space-a1",
+      "reportFormat": "playwright",
+      "classification": "external-focused-landscape-space-diagnostic-failure",
+      "formalAcceptance": false,
+      "pass": false,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/playwright.json",
+        "sha256": "8482fb77b52d565e763335b5d0bd7bdb9e264330c345bab30df41b5387314ede"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/execution.json",
+        "sha256": "4dc976f5c1328745bd922ac74407838d9580fe2ed7f5703efd5d5c3ff5e5495d"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/stdout.log",
+          "sha256": "5e42256b52b6bc258ea0877c3172af93e3a5a96e42fd105e8051f8e0b1d0b580"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/stderr.log",
+          "sha256": "cb94aeb2fe46d4c13da2960aaa0a664eba8628b1156ddb4a69c60f2962c2ba9a"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/authorized-source.json",
+        "sha256": "bc8f7e4676c0c7cd0c16fb3552504ba91f053f887b6804604bc73e6097b32aaf"
+      },
+      "sourceUnchanged": true,
+      "captures": [
+        {
+          "test": "Booky short landscape companion navigation space ru",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-live-character.json",
+            "sha256": "6556d810061cf5bc863aad09f5dca54391ae35ca5ea4d92d366c2d655455a596"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/attachments/booky-live-character-source-evidence-47fc3484d953f68588798994dab4807fd2305f5e.json",
+            "sha256": "6556d810061cf5bc863aad09f5dca54391ae35ca5ea4d92d366c2d655455a596"
+          },
+          "pass": false,
+          "scenario": "short-landscape-navigation-space-ru",
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs",
+                "column": 384,
+                "line": 2781
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"close restores rail and last edition is reachable by trusted touch scrolling\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2779 |     });\n  2780 |     await checked('source scene and preferences remain exact',async()=>{o.events=await page.evaluate(()=>window.__landscapeSpace.events);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted&&event.pointerType==='touch')).toBe(true);expect(o.events.filter(event=>event.type==='click'&&event.edition)).toEqual([]);expect(saved()).toEqual(preferences);await fixture.verify();});\n> 2781 |     result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{landscapeCompanionClearsAllNavigation:true,landscapeHeaderControlsReachableByTouch:true,landscapeLastEditionReachableByTouch:true,landscapeRailRestoresAfterClose:true,portraitRailRestoresAfterRotation:true,landscapeSpacePreservesSceneAndPreferences:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                ^\n  2782 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__landscapeSpace?.events??[]).catch(()=>[]);await fixture.close();}\n  2783 | });\n  2784 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2781:384"
+            }
+          ]
+        },
+        {
+          "test": "Booky short landscape companion navigation space en",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-live-character.json",
+            "sha256": "ca845031b08183b818c19dc95679852df33c45f0242a7244688c79255ac65542"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/attachments/booky-live-character-source-evidence-302cbca6a23c9be5aa29abed6e4a43db632e5d7f.json",
+            "sha256": "ca845031b08183b818c19dc95679852df33c45f0242a7244688c79255ac65542"
+          },
+          "pass": true,
+          "scenario": "short-landscape-navigation-space-en",
+          "errors": []
+        }
+      ],
+      "qualification": "Original 1 PASS / 1 FAIL / 0 skipped / 0 flaky; true exit 1. Source-bound external two-case diagnostic, separate from formal four-case acceptance.",
+      "additionalEvidence": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-review\\a1\\playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-review\\a1\\run.mjs",
+          "sha256": "9290a0f70638438b06fb6b49b70fb82c3b40f97068129ea8043f655d7158f9a4"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-review\\a1\\bind.mjs",
+          "sha256": "3496f39afe54200455f6f7829d388ae5ec3a26ff1fd518fe638c5638bd8b8eb7"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-review\\a1\\canonical-fixture.mjs",
+          "sha256": "71870d16e33931860b9e330061fa7475653b501a315bfe5fcc67c0123a4a7108"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/App.tsx",
+          "sha256": "98c62e65a3233f812ce1a76003885890de481abdce55ec51d0e4f9f3cc9ea5e1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "bbd7a5e39d7b23429aacef6ad876a322d0c53d264608cabe9a294280cb7b4146"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "1841c35b35c95b8953b662cbb8909735d658e1f9c7eaeaf5c64708f8b045b0f7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/host.css",
+          "sha256": "3b17be5dedee3be27e08b43a8aa29081517d5948e6c39ff9eabb677b755f4ddc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "71870d16e33931860b9e330061fa7475653b501a315bfe5fcc67c0123a4a7108"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "0a3da8edfa6819cf76517b3a0025f4d47ebf55beaa3c39f16637b57c5dadedac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "b72db00c105e290ef02a4a42b2563028b90297246fdfa1d04ee421125c2742da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/authorized-source.json",
+          "sha256": "bc8f7e4676c0c7cd0c16fb3552504ba91f053f887b6804604bc73e6097b32aaf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/execution-start.json",
+          "sha256": "97c92e0177f0ddd8486349f6ddecd3b0608ec744b846daae686ad8c4fdd9a32a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/preflight-start.json",
+          "sha256": "c020f551eb957ac5df39eba891fd3871a32c45d4768cc65f0317a03fa2d32169"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/preflight-result.json",
+          "sha256": "83767929e6d448175e4c35deed49fb96e4bb40cde626a041b55a8911d3268bdf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/preflight-stdout.log",
+          "sha256": "abc2e76380321f7dd3755e50393f4c0001666d50051118e25668c29ee6b23a15"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/dirty.diff",
+          "sha256": "922896af33941939a603667a41ffb0edc7e9731a3880596f5e1d4576410fad81"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/attachments/booky-live-character-source-evidence-47fc3484d953f68588798994dab4807fd2305f5e.json",
+          "sha256": "6556d810061cf5bc863aad09f5dca54391ae35ca5ea4d92d366c2d655455a596"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-live-character.json",
+          "sha256": "6556d810061cf5bc863aad09f5dca54391ae35ca5ea4d92d366c2d655455a596"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-landscape-space-ru-568-open.png",
+          "sha256": "d4310b1c2befa786e0b3237d17053e4d12d62540cd039ac85be29cffe6d59916"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-landscape-space-ru-390-restored.png",
+          "sha256": "c01a1b247a7cff8c0b42de92f4bb720de3440fcd9529f1076ee3121c965c8b02"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/attachments/booky-live-character-source-evidence-302cbca6a23c9be5aa29abed6e4a43db632e5d7f.json",
+          "sha256": "ca845031b08183b818c19dc95679852df33c45f0242a7244688c79255ac65542"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-live-character.json",
+          "sha256": "ca845031b08183b818c19dc95679852df33c45f0242a7244688c79255ac65542"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-landscape-space-en-640-open.png",
+          "sha256": "e68b4649d6499efeb40c0c6ecae01800b0c39e7721b04e491f41984e497d46e0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a1/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-landscape-space-en-320-restored.png",
+          "sha256": "2f9c64709c5bf506f9fc1efb25cbb89a4dffdb79c2bb1a4fbc9cdbb91b8b08bd"
+        }
+      ]
+    },
+    {
+      "attempt": "external-landscape-space-a2",
+      "reportFormat": "playwright",
+      "classification": "external-focused-landscape-space-diagnostic-pass",
+      "formalAcceptance": false,
+      "pass": true,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/playwright.json",
+        "sha256": "36a8eb5156f94d199280ba638b8e376e47cbe513c67b4d4e4ce244380dc4caea"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/execution.json",
+        "sha256": "c0cc0cafaad54dc6a720e6af9dc49f94105eabb6e196e8c71caf319e82020e5e"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/stdout.log",
+          "sha256": "2065cdca93213538e4ecd5180b712e569a59c4335760ac7c2ec24ce4bbf938bf"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/stderr.log",
+          "sha256": "c77464a30d13e366eebe0ccb987770fbe4577f7a82095e467bcbce291ca3eb46"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/authorized-source.json",
+        "sha256": "176f435d4dafc645c17fadb9aaa9cde4780244caf658fe3a5025f66a85a6e52a"
+      },
+      "sourceUnchanged": true,
+      "captures": [
+        {
+          "test": "Booky short landscape companion navigation space ru",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-live-character.json",
+            "sha256": "8c9c964c97947063878b5956cf9adc916dca6760aaaa86271cd9ab4e9f3605d1"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/attachments/booky-live-character-source-evidence-7a5d2616c620d3a7d736578808611d092ff7830f.json",
+            "sha256": "8c9c964c97947063878b5956cf9adc916dca6760aaaa86271cd9ab4e9f3605d1"
+          },
+          "pass": true,
+          "scenario": "short-landscape-navigation-space-ru",
+          "errors": []
+        },
+        {
+          "test": "Booky short landscape companion navigation space en",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-live-character.json",
+            "sha256": "c0b8ed21c403406273c431534163a49239c77164aaab7acb1649d0c8d60e7f46"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/attachments/booky-live-character-source-evidence-0e8bb7a5291235ea7c649ef8188bad706ce574c7.json",
+            "sha256": "c0b8ed21c403406273c431534163a49239c77164aaab7acb1649d0c8d60e7f46"
+          },
+          "pass": true,
+          "scenario": "short-landscape-navigation-space-en",
+          "errors": []
+        }
+      ],
+      "qualification": "Original 2 PASS / 0 FAIL / 0 skipped / 0 flaky; true exit 0. Source-bound external two-case diagnostic, separate from formal four-case acceptance.",
+      "additionalEvidence": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-review\\a2\\playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-review\\a2\\run.mjs",
+          "sha256": "9290a0f70638438b06fb6b49b70fb82c3b40f97068129ea8043f655d7158f9a4"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-review\\a2\\bind.mjs",
+          "sha256": "3496f39afe54200455f6f7829d388ae5ec3a26ff1fd518fe638c5638bd8b8eb7"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-landscape-space-review\\a2\\canonical-fixture.mjs",
+          "sha256": "527e553a15266efb8bceb701581a2fc596841e12189ba718edb0cd57e8add312"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/App.tsx",
+          "sha256": "98c62e65a3233f812ce1a76003885890de481abdce55ec51d0e4f9f3cc9ea5e1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "bbd7a5e39d7b23429aacef6ad876a322d0c53d264608cabe9a294280cb7b4146"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "1841c35b35c95b8953b662cbb8909735d658e1f9c7eaeaf5c64708f8b045b0f7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "527e553a15266efb8bceb701581a2fc596841e12189ba718edb0cd57e8add312"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "0a3da8edfa6819cf76517b3a0025f4d47ebf55beaa3c39f16637b57c5dadedac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "b72db00c105e290ef02a4a42b2563028b90297246fdfa1d04ee421125c2742da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/authorized-source.json",
+          "sha256": "176f435d4dafc645c17fadb9aaa9cde4780244caf658fe3a5025f66a85a6e52a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/execution-start.json",
+          "sha256": "7094368736fe1989c174a4e337d9fea8d191c7b0b77530380634ecee92764136"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/preflight-start.json",
+          "sha256": "2e335303dc994a1d106a24b53a04dd027f1fb9597c809f6ca9cb46e4376d828f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/preflight-result.json",
+          "sha256": "7f9b5d81730232352637a20f13a4b5215894ecd739475cea6a1943ad35b5584b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/preflight-stdout.log",
+          "sha256": "abc2e76380321f7dd3755e50393f4c0001666d50051118e25668c29ee6b23a15"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/dirty.diff",
+          "sha256": "a9400fdc60f23b53868dce8f42d6cfe1e9cb5883f9694a8cb880684d0fe0351d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/attachments/booky-live-character-source-evidence-7a5d2616c620d3a7d736578808611d092ff7830f.json",
+          "sha256": "8c9c964c97947063878b5956cf9adc916dca6760aaaa86271cd9ab4e9f3605d1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-live-character.json",
+          "sha256": "8c9c964c97947063878b5956cf9adc916dca6760aaaa86271cd9ab4e9f3605d1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-landscape-space-ru-568-open.png",
+          "sha256": "d4310b1c2befa786e0b3237d17053e4d12d62540cd039ac85be29cffe6d59916"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-landscape-space-ru-390-restored.png",
+          "sha256": "76a8be1c4e2aaf4d0fd4959e073aeddbc7288015da67b6c37315b4e5a4c9f499"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/attachments/booky-live-character-source-evidence-0e8bb7a5291235ea7c649ef8188bad706ce574c7.json",
+          "sha256": "c0b8ed21c403406273c431534163a49239c77164aaab7acb1649d0c8d60e7f46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-live-character.json",
+          "sha256": "c0b8ed21c403406273c431534163a49239c77164aaab7acb1649d0c8d60e7f46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-landscape-space-en-640-open.png",
+          "sha256": "e68b4649d6499efeb40c0c6ecae01800b0c39e7721b04e491f41984e497d46e0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-review/a2/artifacts/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-landscape-space-en-320-restored.png",
+          "sha256": "4ec1ece6dba651fc9e45ee2a0196dcb23142c534c743a1437e9bcad722b94adc"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only completed external two-case short-landscape diagnostics are recorded here; they are not the formal four-case acceptance run.",
+    "Each attempt preserves original runtime/fixture copies, source hashes, raw logs, report, attachments and PNG hashes. Failed attempts remain failed.",
+    "PNG authentication does not claim direct visual review of diagnostic images.",
+    "The final formal fixture adds two closed-dock captures after a2; no diagnostic PASS is reassigned to that later fixture."
+  ],
+  "releaseReady": false,
+  "finalFormalFixtureQualification": {
+    "diagnosticFixtureSha256": "527e553a15266efb8bceb701581a2fc596841e12189ba718edb0cd57e8add312",
+    "finalFixture": {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "e428eba3a9fe77f2babe5c63f443a552e8c09ac6fa8643d0f634ec6a52b3c29c"
+    },
+    "change": "One shared closed-landscape screenshot capture added after the completed a2 diagnostic; it produces RU and EN closed-dock PNGs. Diagnostic PASS remains attributed to its original fixture. The final four-case formal run must validate the later capture-only source."
+  }
+}

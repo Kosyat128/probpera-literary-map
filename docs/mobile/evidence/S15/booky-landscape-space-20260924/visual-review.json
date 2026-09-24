@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T11:03:48.268Z",
+  "pass": true,
+  "sourceCommit": "d4003bbc4fe5cd6dd1d3ef86e5c568e292aa4556",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/source-manifests/0c75a67799857233.json",
+    "sha256": "0c75a6779985723377954ac90632efca46190ae918f54b0710bc6bb4c665517f",
+    "fileCount": 1652
+  },
+  "inspectedCount": 6,
+  "totalCapturedCount": 10,
+  "scope": "Direct review of the selected final RU/EN short-landscape open-help, closed-companion and restored-portrait captures, covering character framing, navigation space, header controls and visible text. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 6 of 10 final captures. It does not claim all retained images were inspected again.",
+    "Static images show selected navigation/help layouts; they cannot establish trusted-touch navigation, restoration timing or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/final-visual-receipt.json",
+    "sha256": "ec6533c37d309c12672ee0013e6ceb95ce926bb5de532c995153b878de42bdd0"
+  },
+  "images": [
+    {
+      "filename": "booky-landscape-space-ru-568-open.png",
+      "sha256": "d4310b1c2befa786e0b3237d17053e4d12d62540cd039ac85be29cffe6d59916",
+      "width": 568,
+      "height": 320,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-landscape-space-ru-568-open.png",
+      "scenario": "short-landscape-navigation-space-ru",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-live-character.json",
+        "sha256": "5d9446d9742bb8ba3a467549ef47a350969b80b38d88f9df701a6b5fcfcb2517"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/attachments/booky-live-character-source-evidence-aa1b5295897576280c1754cacaddf1d87659deda.json",
+        "sha256": "5d9446d9742bb8ba3a467549ef47a350969b80b38d88f9df701a6b5fcfcb2517"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "Книжулик, Stop and Close remain readable and visible in the help header. The complete avatar and both square dock controls fit beside the card, with visible separation from the shortened edition rail and lower toolbar.",
+        "The help card still overlays background navigation. Its paragraph continues below the visible scroll area and is clipped at the card bottom; this image does not establish full paragraph readability."
+      ],
+      "bytes": 119947
+    },
+    {
+      "filename": "booky-landscape-space-ru-568-closed.png",
+      "sha256": "34a1e255092410a2ea8d3fa7aea15b4593ac8b800b289a89f5ea10b44ce105d7",
+      "width": 568,
+      "height": 320,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-landscape-space-ru-568-closed.png",
+      "scenario": "short-landscape-navigation-space-ru",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-live-character.json",
+        "sha256": "5d9446d9742bb8ba3a467549ef47a350969b80b38d88f9df701a6b5fcfcb2517"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/attachments/booky-live-character-source-evidence-aa1b5295897576280c1754cacaddf1d87659deda.json",
+        "sha256": "5d9446d9742bb8ba3a467549ef47a350969b80b38d88f9df701a6b5fcfcb2517"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "The closed dock shows the complete character beside two square controls above a fully readable «Мало места» walk button. The two-row dock does not visually cover the edition rail, appearance/scale controls or lower navigation toolbar in this frame.",
+        "The rail remains horizontally clipped at its own edges and arrow controls. This static frame alone does not demonstrate access to its final edition."
+      ],
+      "bytes": 120122
+    },
+    {
+      "filename": "booky-landscape-space-ru-390-restored.png",
+      "sha256": "f2a5de215be3a439b4cf9f77ccbe4c55774e878cd8d4584707eaebe6e7c066c0",
+      "width": 390,
+      "height": 844,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-landscape-space-ru-390-restored.png",
+      "scenario": "short-landscape-navigation-space-ru",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/booky-live-character.json",
+        "sha256": "5d9446d9742bb8ba3a467549ef47a350969b80b38d88f9df701a6b5fcfcb2517"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6a410-mpanion-navigation-space-ru/attachments/booky-live-character-source-evidence-aa1b5295897576280c1754cacaddf1d87659deda.json",
+        "sha256": "5d9446d9742bb8ba3a467549ef47a350969b80b38d88f9df701a6b5fcfcb2517"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "The portrait view shows the wider edition rail, readable Книжулик header and selected-writer text, and a complete character below the help card. Move, Hide and «Прогуляться» controls are individually visible above the scale badge and lower toolbar.",
+        "The open help card covers part of the background Appearance control, consistent with its overlay behavior; no general absence of background overlap is claimed."
+      ],
+      "bytes": 350321
+    },
+    {
+      "filename": "booky-landscape-space-en-640-open.png",
+      "sha256": "e68b4649d6499efeb40c0c6ecae01800b0c39e7721b04e491f41984e497d46e0",
+      "width": 640,
+      "height": 360,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-landscape-space-en-640-open.png",
+      "scenario": "short-landscape-navigation-space-en",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-live-character.json",
+        "sha256": "3a44f88af3689d64cd62b3ab0857365ec9b171416e48d5b0f35bc515c00e0070"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/attachments/booky-live-character-source-evidence-2e6f79ff3744fa22a409924d5e6ed650991b8fb1.json",
+        "sha256": "3a44f88af3689d64cd62b3ab0857365ec9b171416e48d5b0f35bc515c00e0070"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "Mr. Booky, Stop and Close are readable. The complete avatar, magnifier and both square dock controls fit to the right of the help card, clear of the edition rail, zoom label and lower toolbar in this frame.",
+        "The card overlays background navigation and its paragraph reaches the clipped bottom of the scroll area. Visibility of this frame does not establish access through the open overlay."
+      ],
+      "bytes": 135293
+    },
+    {
+      "filename": "booky-landscape-space-en-640-closed.png",
+      "sha256": "cde97a12ca976dfe41a491cb2a53fde1ad3ba3e850580b415971361736006b6e",
+      "width": 640,
+      "height": 360,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-landscape-space-en-640-closed.png",
+      "scenario": "short-landscape-navigation-space-en",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-live-character.json",
+        "sha256": "3a44f88af3689d64cd62b3ab0857365ec9b171416e48d5b0f35bc515c00e0070"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/attachments/booky-live-character-source-evidence-2e6f79ff3744fa22a409924d5e6ed650991b8fb1.json",
+        "sha256": "3a44f88af3689d64cd62b3ab0857365ec9b171416e48d5b0f35bc515c00e0070"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "The closed two-row dock shows the complete avatar and magnifier beside Move/Hide, with the entire «No room» label readable below. The dock has visible separation from the shortened edition rail, zoom badge and lower toolbar.",
+        "The rail clips offscreen editions at its own boundaries; successful trusted-touch scrolling is established by browser assertions, not this screenshot."
+      ],
+      "bytes": 154749
+    },
+    {
+      "filename": "booky-landscape-space-en-320-restored.png",
+      "sha256": "6b212322cf87012eded3a3c952a9ca8da601023829177f57fd9def0a1e327f0a",
+      "width": 320,
+      "height": 844,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-landscape-space-en-320-restored.png",
+      "scenario": "short-landscape-navigation-space-en",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/booky-live-character.json",
+        "sha256": "3a44f88af3689d64cd62b3ab0857365ec9b171416e48d5b0f35bc515c00e0070"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-landscape-space-evidence/browser-a1/booky-live-character-Booky-6d207-mpanion-navigation-space-en/attachments/booky-live-character-source-evidence-2e6f79ff3744fa22a409924d5e6ed650991b8fb1.json",
+        "sha256": "3a44f88af3689d64cd62b3ab0857365ec9b171416e48d5b0f35bc515c00e0070"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "The portrait view shows the restored wider edition rail, readable Mr. Booky header and selected-writer line. The full avatar sits below the card; Move, Hide and the two-line «Take a walk» label remain visible above the zoom badge and lower toolbar.",
+        "The help paragraph meets the lower scroll clipping edge. No blanket claim of perfect card typography or complete paragraph visibility is made."
+      ],
+      "bytes": 290093
+    }
+  ],
+  "releaseReady": false
+}

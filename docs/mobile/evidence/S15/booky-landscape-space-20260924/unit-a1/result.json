@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/source-manifests/0c75a67799857233.json",
+    "sha256": "0c75a6779985723377954ac90632efca46190ae918f54b0710bc6bb4c665517f",
+    "fileCount": 1652
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/check.mjs",
+      "sha256": "51828cd013983d7d13ff30fa8e8733f1da273d0bf14df80e9c8787f4435fe73f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/entry.json",
+      "sha256": "b042fc15ea5afb461fe79b54e08826d22ac0c06b588b5ba0e7c1c60ec5eb9fab"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/unit.config.mjs",
+      "sha256": "df86f8f0a787d84883e75c6e8d9c5f98207c41809786ab5b8b5cdf6e9f393a20"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/configure.mjs",
+      "sha256": "b13bbd928e8c9376a3c8b92803ef857c9b84314b71978e11108413bba53b6670"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/scope.json",
+      "sha256": "a4b690c201e22b7f4f412c0350974412039d6561bbd7590f6bc46b6c45d0f028"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 169,
+    "failed": 0,
+    "skipped": 0
+  },
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 12059
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyLandscapeSpaceImplemented": true,
+  "journeyCharacterWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

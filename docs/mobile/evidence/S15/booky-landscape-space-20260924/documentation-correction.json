@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T11:05:30.323Z",
+  "sourceCommit": "d4003bbc4fe5cd6dd1d3ef86e5c568e292aa4556",
+  "scope": "Editorial clarification after independent review. Last-edition touch reachability is checked after closing help; hiding the companion restores the full rail. Executed checkpoint/finalize helper bytes and all runtime, test and build result evidence remain unchanged.",
+  "from": "edition reachability after hiding the companion",
+  "to": "edition reachability after closing help",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "beforeSha256": "3d353128463917da317c5d7ffa47b32dff33b62aac4209afc7603c11ce17dacf",
+      "afterSha256": "ca6f875141a9baeff05057622e34381af42114b5764e61e32b5a912cb8a0fb56",
+      "replacements": 1
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "beforeSha256": "4d91fb6cd47a1c99eca561adae569b40ed12f9f40e69b5611f86283a4387318c",
+      "afterSha256": "b46c7efd388ddaf75610ea94838c616abac6a13fc9be8a32bc304e3118625bfd",
+      "replacements": 2
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "beforeSha256": "9d9539a53011f9fb508aa88abfe90e6f338f60686c388d015b8a088051a5af33",
+      "afterSha256": "08c5d3d1f214f48f5e0da7a52a6b2000f8eefb0280e1a8fbc71c688cbfe5cd35",
+      "replacements": 1
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "beforeSha256": "cfa77cbb971b4704b07d409e6d95a793303ff07c457f959571c276e5aa208907",
+      "afterSha256": "a5b54f74e05aef36e9d07228746b55e7d9b2306a4270117c41144e14990acf3b",
+      "replacements": 1
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "beforeSha256": "8e7ab3afec135fb6ef5a49116087562ec8591c2c513d48cb8b5cebdeaa340e06",
+      "afterSha256": "4d95323e5b16f72140008febb99e9d9826ce21faa784231db488e7a1b341fe80",
+      "replacements": 1
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "beforeSha256": "ed5d7acedbdffeb0995a4762d50a8c845436b887537c140b761cf599a3dea288",
+      "afterSha256": "26dc8577203b8c406034fd721805a39a48cbdc6a9774c4efceca5dcc4eb8f1f0",
+      "replacements": 2
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "beforeSha256": "284c6080f5fee780fd8e0439367193c38a552076fca6fe01db8d3800e4339089",
+      "afterSha256": "bf8cc0b8ac107076efce762f35797f02cdcb26bc7245959182e5cc335952f5ea",
+      "replacements": 1
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/README.md",
+      "beforeSha256": "32b5ea23b19c786a05d100749ccd3d1654b7cb8bed87ef75c409efac350bbeab",
+      "afterSha256": "b156e8471a575c090d05c475376015f35570de7e174c9310edc0ae1c05e868e4",
+      "replacements": 1
+    }
+  ]
+}
