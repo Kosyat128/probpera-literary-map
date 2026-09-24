@@ -184,6 +184,16 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         // let the new layout place the companion in its reserved row, without
         // replaying a route or overwriting the user's stored preferences.
         cancelPoint.current?.();
+        const intent = drag.current;
+        if (intent) {
+          // A browser can retain touch capture across rotation. Retire that
+          // intent before releasing capture, so its old coordinates and the
+          // eventual avatar click cannot act on the newly laid out surface.
+          drag.current = null;
+          suppressAvatarClick.current = intent.source === "avatar";
+          setPointerLook(null); setGesture("rest");
+          if (intent.element.hasPointerCapture(intent.pointerId)) intent.element.releasePointerCapture(intent.pointerId);
+        }
         dockDetached.current = false;
       }
       const next = companionViewport();
@@ -656,7 +666,10 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           }} onPointerMove={event => {
             const intent = drag.current; if (!intent || intent.pointerId !== event.pointerId) return;
             event.preventDefault(); move({ left: intent.origin.left + event.clientX - intent.x, top: intent.origin.top + event.clientY - intent.y });
-          }} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={() => { drag.current = null; setGesture("rest"); }}
+          }} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={event => {
+            if (drag.current?.pointerId !== event.pointerId) return;
+            drag.current = null; setGesture("rest");
+          }}
           onKeyDown={event => {
             if (event.key === "Home") { event.preventDefault(); dockDetached.current = false; onPositionChange(null); return; }
             const direction = arrowDirections[event.key];

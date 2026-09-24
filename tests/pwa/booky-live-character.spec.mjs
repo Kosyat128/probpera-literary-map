@@ -2313,3 +2313,73 @@ for(const [language,view,action] of [['ru',{width:568,height:320},'recent'],['en
     }finally{await fixture.close();}
   });
 }
+
+for(const [language,portrait,landscape]of[['ru',{width:390,height:844},{width:844,height:390}],['en',{width:320,height:844},{width:640,height:360}]])test('Booky touch drag capture and viewport lifecycle '+language,async({},testInfo)=>{
+  const fixture=await open(testInfo),{page,result}=fixture,o=result.observations.dragLifecycle={language,portrait,landscape,checks:[],findings:[],rotations:[]};result.scenario='touch-drag-lifecycle-'+language;let cdp;
+  const checked=async(name,fn)=>{try{await fn();o.checks.push({name,pass:true});}catch(error){o.checks.push({name,pass:false,error:error.message});o.findings.push(name);}};
+  const state=label=>page.evaluate(label=>window.__dragLifecycle.read(label),label),phase=label=>page.evaluate(label=>window.__dragLifecycle.phase=label,label);
+  const touch=(type,touchPoints)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints});
+  const saved=()=>({memory:[...fixture.memory],writes:fixture.operations.filter(v=>v.operation!=='get')});
+  try{
+    await page.setViewportSize(portrait);await ready(page);
+    if(language==='en'){await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:/^EN$/u}).tap();await expect(page.locator('html')).toHaveAttribute('lang','en');await ready(page);}
+    await actual(page);await stablePose(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());
+    await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await live(page);await expect.poll(()=>JSON.parse(fixture.memory.get(BOOKY)??'null')?.visible).toBe(true);
+    await page.locator('[data-planet-mascot-collapse]').tap();await expect(panel(page)).toHaveCount(0);await twoFrames(page);await live(page);
+    o.preferencesBefore=saved();o.canonicalBefore=await actual(page);
+    await page.evaluate(()=>{
+      const rect=e=>{if(!e)return null;const r=e.getBoundingClientRect();return{left:r.left,top:r.top,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
+      const v=window.__dragLifecycle={events:[],samples:[],captureOwners:new Map(),phase:'setup',frame:0,stopped:false};
+      v.read=label=>{const p=document.querySelector('[data-planet-mascot-pet]');return{label,at:performance.now(),phase:v.phase,viewport:{width:innerWidth,height:innerHeight},pet:rect(p),gesture:p?.getAttribute('data-planet-mascot-gesture'),open:p?.getAttribute('data-planet-mascot-panel-state')};};
+      const event=e=>{const t=e.target instanceof Element?e.target:null;if(e.type==='gotpointercapture'&&t)v.captureOwners.set(e.pointerId,t);v.events.push({ownerTag:t?.tagName,ownerCaptured:t?.hasPointerCapture?.(e.pointerId),at:performance.now(),phase:v.phase,type:e.type,id:e.pointerId,primary:e.isPrimary,trusted:e.isTrusted,pointerType:e.pointerType,x:e.clientX,y:e.clientY,target:t?.closest('[data-planet-mascot-move]')?'handle':t?.closest('[data-planet-mascot-toggle]')?'avatar':'other'});};
+      const types=['pointerdown','pointermove','pointerup','pointercancel','gotpointercapture','lostpointercapture','click'];for(const type of types)document.addEventListener(type,event,true);
+      const frame=()=>{if(v.stopped)return;v.samples.push(v.read('frame'));v.frame=requestAnimationFrame(frame);};v.frame=requestAnimationFrame(frame);
+      v.stop=()=>{v.stopped=true;cancelAnimationFrame(v.frame);for(const type of types)document.removeEventListener(type,event,true);return{events:v.events,samples:v.samples};};
+    });
+    cdp=await page.context().newCDPSession(page);
+    const start=async(source,label,move=true)=>{
+      await phase(label);const before=await state('before pointerdown'),r=await page.locator(source==='avatar'?'[data-planet-mascot-toggle]':'[data-planet-mascot-move]').boundingBox();
+      let p={x:r.x+r.width/2,y:r.y+r.height/2,id:11};await touch('touchStart',[p]);
+      if(move){p={...p,x:p.x+(before.pet.left<before.viewport.width/2?20:-20),y:p.y+(before.pet.top<before.viewport.height/2?12:-12)};await touch('touchMove',[p]);}
+      await twoFrames(page);return{source,moved:move,before,active:await state('after primary start'),pointer:p};
+    };
+    await checked('secondary controlled capture loss retains primary owner',async()=>{
+      const r=o.secondaryCapture={trigger:'controlled releasePointerCapture for secondary touch, followed by trusted CDP touchMove; not a natural second-finger lift',...await start('avatar','secondary-primary')};
+      try{
+        const h=await page.locator('[data-planet-mascot-move]').boundingBox();let second={x:h.x+h.width/2,y:h.y+h.height/2,id:22};
+        await phase('secondary-down');await touch('touchStart',[r.pointer,second]);second={...second,x:second.x+1};await touch('touchMove',[r.pointer,second]);await twoFrames(page);
+        r.beforeRelease=await state('secondary captured');r.secondaryId=await page.evaluate(()=>window.__dragLifecycle.events.findLast(e=>e.phase==='secondary-down'&&e.type==='pointerdown'&&!e.primary)?.id);
+        r.captureOwner=await page.evaluate(id=>{const owner=window.__dragLifecycle.captureOwners.get(id),handle=document.querySelector('[data-planet-mascot-move]');return{tag:owner?.tagName,insideHandle:!!owner&&handle.contains(owner),captured:!!owner?.hasPointerCapture(id)};},r.secondaryId);expect(r.captureOwner.insideHandle).toBe(true);expect(r.captureOwner.captured).toBe(true);
+        await phase('secondary-controlled-release');await page.evaluate(id=>window.__dragLifecycle.captureOwners.get(id).releasePointerCapture(id),r.secondaryId);
+        second={...second,x:second.x+1};await touch('touchMove',[r.pointer,second]);await twoFrames(page);r.afterRelease=await state('secondary lost capture');
+        await phase('secondary-primary-continues');r.pointer={...r.pointer,x:r.pointer.x-12,y:r.pointer.y-8};await touch('touchMove',[r.pointer,second]);await twoFrames(page);r.afterContinued=await state('primary still held after secondary lost capture');
+        r.nativeLost=await page.evaluate(id=>window.__dragLifecycle.events.filter(e=>e.phase==='secondary-controlled-release'&&e.type==='lostpointercapture'&&e.id===id),r.secondaryId);
+        expect(r.nativeLost.some(e=>e.trusted&&e.target==='handle'&&!e.primary)).toBe(true);expect(r.afterRelease.gesture).toBe('dragging');expect(Math.hypot(r.afterContinued.pet.left-r.afterRelease.pet.left,r.afterContinued.pet.top-r.afterRelease.pet.top)).toBeGreaterThan(5);
+      }finally{await phase('secondary-cleanup');await touch('touchCancel',[]);await twoFrames(page);}
+    });
+    for(const [source,moved,next]of[['handle',true,landscape],['avatar',true,portrait],['avatar',false,landscape]])await checked(source+(moved?' drag':' pending tap')+' retires on rotation',async()=>{
+      const r={...await start(source,source+(moved?'-drag':'-tap'),moved),next};o.rotations.push(r);
+      try{
+        if(moved)expect(r.active.gesture).toBe('dragging');else{r.preResizeEvents=await page.evaluate(label=>window.__dragLifecycle.events.filter(e=>e.phase===label),source+'-tap');expect(r.moved).toBe(false);expect(r.preResizeEvents.filter(e=>e.type==='pointerdown'&&e.primary&&e.trusted)).toHaveLength(1);expect(r.preResizeEvents.filter(e=>e.type==='pointermove')).toHaveLength(0);expect(r.active.pet).toEqual(r.before.pet);}
+        await phase(source+'-resize');await page.setViewportSize(next);await twoFrames(page);r.afterResize=await state('after viewport change');
+        const a=await page.locator('[data-planet-mascot-toggle]').boundingBox();r.pointer={...r.pointer,x:a.x+a.width/2,y:a.y+a.height/2};
+        await phase(source+'-continued-pointer');await touch('touchMove',[r.pointer]);await twoFrames(page);r.afterContinued=await state('original pointer continued');
+        await touch('touchEnd',[]);await twoFrames(page);r.afterRelease=await state('original pointer released');
+        expect(r.afterResize.gesture).not.toBe('dragging');expect(r.afterContinued.pet).toEqual(r.afterResize.pet);expect(r.afterRelease.open).toBe('closed');expect(r.afterRelease.gesture).not.toBe('dragging');
+        expect(r.afterRelease.pet.left>=-.1&&r.afterRelease.pet.top>=-.1&&r.afterRelease.pet.right<=next.width+.1&&r.afterRelease.pet.bottom<=next.height+.1).toBe(true);
+      }finally{await touch('touchCancel',[]).catch(()=>undefined);await twoFrames(page);}
+      const fresh=r.fresh=await start('handle',source+'-fresh-drag');await touch('touchEnd',[]);await twoFrames(page);fresh.released=await state('fresh drag released');
+      expect(fresh.active.gesture).toBe('dragging');expect(Math.hypot(fresh.active.pet.left-fresh.before.pet.left,fresh.active.pet.top-fresh.before.pet.top)).toBeGreaterThan(5);expect(fresh.released.open).toBe('closed');
+    });
+    o.settled=await state('finished all explicit touches');await page.waitForTimeout(1900);o.after1900ms=await state('after 1900ms');o.trace=await page.evaluate(()=>window.__dragLifecycle.stop());
+    await capture(page,result,testInfo,'booky-drag-lifecycle-'+language+'-'+landscape.width+'.png');o.preferencesAfter=saved();o.canonicalAfter=await actual(page);
+    await checked('trusted touch provenance and stillness',()=>{expect(o.trace.events.some(e=>e.type==='pointerdown'&&e.trusted&&e.pointerType==='touch'&&e.target==='avatar')).toBe(true);expect(o.trace.events.some(e=>e.type==='pointerdown'&&e.trusted&&e.pointerType==='touch'&&e.target==='handle')).toBe(true);expect(o.after1900ms.at-o.settled.at).toBeGreaterThanOrEqual(1900);expect(o.after1900ms.pet).toEqual(o.settled.pet);expect(o.after1900ms.open).toBe('closed');expect(o.after1900ms.gesture).not.toBe('dragging');});
+    await checked('preferences and canonical scene unchanged',()=>{expect(o.preferencesAfter).toEqual(o.preferencesBefore);retained(o.canonicalAfter,o.canonicalBefore,false);});
+    await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;
+    if(result.pass)Object.assign(result,{touchDragRetiredOnViewportChange:true,pendingAvatarTapRetiredOnViewportChange:true,secondaryCaptureLossRetainsPrimaryDrag:true,freshTouchDragAfterViewportChange:true,dragLifecyclePreservesPreferencesAndScene:true,noAutomaticDragResume:true});
+    expect(o.findings).toEqual([]);
+  }finally{
+    if(cdp){await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]}).catch(()=>undefined);await cdp.detach();}
+    if(!o.trace)o.trace=await page.evaluate(()=>window.__dragLifecycle?.stop()??null).catch(()=>null);await fixture.close();
+  }
+});

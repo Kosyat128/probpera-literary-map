@@ -268,3 +268,37 @@ describe("original articulated Mr. Booky model", () => {
     second.dispose(); for (const spy of otherSpies) expect(spy).toHaveBeenCalledTimes(1);
   });
 });
+
+it("keeps the sewn palm and thumb in one closed oriented surface beside the three curled fingers", () => {
+  const model = createBookyModel();
+  try {
+    const glove = model.group.getObjectByName("booky-right-grip-glove") as THREE.Mesh;
+    const position = glove.geometry.getAttribute("position"), index = glove.geometry.getIndex()!;
+    expect(index).not.toBeNull();
+    const point = new THREE.Vector3(), keys: string[] = [], parent = new Map<string, string>();
+    for (let i = 0; i < position.count; i++) {
+      point.fromBufferAttribute(position, i);
+      const key = point.toArray().map(value => Math.round(value * 1e6)).join(",");
+      keys.push(key); parent.set(key, key);
+    }
+    const find = (key: string): string => {
+      const next = parent.get(key)!;
+      if (key === next) return key;
+      const root = find(next); parent.set(key, root); return root;
+    };
+    const edges = new Map<string, { count: number; direction: number }>();
+    for (let i = 0; i < index.count; i += 3) {
+      const triangle = [keys[index.getX(i)], keys[index.getX(i + 1)], keys[index.getX(i + 2)]];
+      expect(new Set(triangle).size).toBe(3);
+      for (let edge = 0; edge < 3; edge++) {
+        const from = triangle[edge], to = triangle[(edge + 1) % 3], forward = from < to;
+        const key = forward ? `${from}/${to}` : `${to}/${from}`;
+        const value = edges.get(key) ?? { count: 0, direction: 0 };
+        value.count++; value.direction += forward ? 1 : -1; edges.set(key, value);
+        parent.set(find(from), find(to));
+      }
+    }
+    expect([...edges.values()].filter(edge => edge.count !== 2 || edge.direction !== 0)).toEqual([]);
+    expect(new Set([...parent.keys()].map(find)).size).toBe(4);
+  } finally { model.dispose(); }
+});

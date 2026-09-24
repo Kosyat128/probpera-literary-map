@@ -421,15 +421,15 @@ export function createBookyModel(): OwnedBookyModel {
     const leftHand = node(leftArm, "booky-left-hand", [-.29, -.025, .16]);
     const leftPalm: THREE.BufferGeometry[] = [ellipsoid([-.075, .013, .033], [.118, .117, .066])];
     const roundedDigit = (parts: THREE.BufferGeometry[], points: readonly Point[], radii: readonly number[], steps: number) => {
-      parts.push(sweep(points, radii, steps, 10, true));
+      parts.push(sweep(points, radii, steps, 12, true));
     };
-    // Three soft, separated fingers fan out from the palm; the thumb opens on
-    // the opposite side instead of reading as another horizontal finger.
-    roundedDigit(leftPalm, [[-.075, .077, .030], [-.122, .188, .045], [-.170, .230, .025]], [.043, .040, .026], 16);
-    roundedDigit(leftPalm, [[-.112, .059, .025], [-.213, .122, .039], [-.248, .162, .018]], [.044, .043, .028], 16);
-    roundedDigit(leftPalm, [[-.124, .006, .023], [-.226, .022, .035], [-.258, .059, .012]], [.041, .039, .025], 16);
-    roundedDigit(leftPalm, [[-.022, .020, .050], [.019, .086, .103], [.014, .146, .088], [-.032, .166, .064]],
-      [.049, .045, .034, .025], 18);
+    // A relaxed upward fan with slight forward flex. Bury each closed root
+    // inside the palm and let the thumb open away from the other digits.
+    roundedDigit(leftPalm, [[-.075, .045, .010], [-.095, .135, .044], [-.115, .228, .052]], [.043, .038, .026], 16);
+    roundedDigit(leftPalm, [[-.105, .045, .010], [-.155, .125, .042], [-.197, .192, .052]], [.044, .038, .027], 16);
+    roundedDigit(leftPalm, [[-.130, .012, .010], [-.198, .077, .039], [-.250, .126, .049]], [.041, .035, .025], 16);
+    roundedDigit(leftPalm, [[-.025, .015, .010], [.018, .066, .061], [.050, .111, .080]],
+      [.042, .034, .025], 18);
     fused(leftHand, "booky-left-open-glove", leftPalm, white);
     const leftCuff = torus(.074, .018, [0, 0, 0]);
     leftCuff.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(-1, .15, .30).normalize()));
@@ -439,7 +439,82 @@ export function createBookyModel(): OwnedBookyModel {
     mesh(rightArm, "booky-right-sleeve", sweep([[0, 0, 0], [.085, -.085, .049], [.219, -.025, .133], [.325, .055, .184]],
       [.069, .063, .069, .073], 24, 12), leather);
     const rightHand = node(rightArm, "booky-right-hand", [.34, .06, .19]);
-    const rightPalm: THREE.BufferGeometry[] = [ellipsoid([.035, .024, .038], [.102, .139, .071])];
+    // A single palm/thumb surface: the palm opening and the thumb bridge use
+    // the same ring indices, so vertex normals remain continuous at the root.
+    const sewnRightPalm = (() => {
+      const radial = 16, palmRows = 18, bridgeRows = 5, thumbJoinRow = 6;
+      const thumb = sweep([[-.022, .050, .052], [-.040, .139, .123], [.019, .156, .131], [.075, .120, .141]],
+        [.050, .047, .038, .025], 20, radial, true);
+      const thumbPositions = thumb.getAttribute("position"), thumbStride = radial + 1, thumbLastRow = 24;
+      const thumbPoint = (row: number, col: number) => new THREE.Vector3().fromBufferAttribute(thumbPositions, row * thumbStride + col);
+      const center = new THREE.Vector3(.035, .024, .038), axes = new THREE.Vector3(.102, .139, .071);
+      const joinCenter = new THREE.Vector3();
+      for (let col = 0; col < radial; col++) joinCenter.add(thumbPoint(thumbJoinRow, col));
+      joinCenter.multiplyScalar(1 / radial);
+      const north = joinCenter.clone().sub(center).divide(axes).normalize();
+      const aroundU = thumbPoint(thumbJoinRow, 0).sub(joinCenter).divide(axes);
+      aroundU.addScaledVector(north, -aroundU.dot(north)).normalize();
+      const aroundV = new THREE.Vector3().crossVectors(north, aroundU).normalize();
+      const opening = .55, positions: number[] = [], uvs: number[] = [], indices: number[] = [];
+      const add = (point: THREE.Vector3, u: number, v: number) => {
+        const index = positions.length / 3; positions.push(point.x, point.y, point.z); uvs.push(u, v); return index;
+      };
+      const around = (col: number) => aroundU.clone().multiplyScalar(Math.cos(col / radial * TAU))
+        .addScaledVector(aroundV, Math.sin(col / radial * TAU));
+      const rootRing: THREE.Vector3[] = [];
+      for (let row = 0; row < palmRows; row++) {
+        const theta = opening + (Math.PI - opening) * row / palmRows;
+        for (let col = 0; col < radial; col++) {
+          const point = north.clone().multiplyScalar(Math.cos(theta)).addScaledVector(around(col), Math.sin(theta))
+            .multiply(axes).add(center);
+          add(point, col / radial, row / palmRows); if (row === 0) rootRing.push(point);
+        }
+      }
+      for (let row = 0; row < palmRows - 1; row++) for (let col = 0; col < radial; col++) {
+        const next = (col + 1) % radial, a = row * radial + col, b = row * radial + next;
+        const c = (row + 1) * radial + col, d = (row + 1) * radial + next;
+        indices.push(a, c, b, b, c, d);
+      }
+      const palmPole = add(north.clone().negate().multiply(axes).add(center), .5, 1);
+      for (let col = 0; col < radial; col++) indices.push((palmRows - 1) * radial + col, palmPole,
+        (palmRows - 1) * radial + (col + 1) % radial);
+      let previous = Array.from({ length: radial }, (_, col) => col);
+      const connect = (ring: number[]) => {
+        for (let col = 0; col < radial; col++) {
+          const next = (col + 1) % radial;
+          indices.push(previous[col], previous[next], ring[col], previous[next], ring[next], ring[col]);
+        }
+        previous = ring;
+      };
+      for (let row = 1; row <= bridgeRows; row++) {
+        const t = row / bridgeRows, t2 = t * t, t3 = t2 * t, ring: number[] = [];
+        for (let col = 0; col < radial; col++) {
+          const end = thumbPoint(thumbJoinRow, col);
+          const startTangent = north.clone().multiplyScalar(Math.sin(opening))
+            .addScaledVector(around(col), -Math.cos(opening)).multiply(axes).multiplyScalar(.45);
+          const endTangent = thumbPoint(thumbJoinRow + 1, col).sub(end).multiplyScalar(bridgeRows);
+          const point = rootRing[col].clone().multiplyScalar(2 * t3 - 3 * t2 + 1)
+            .addScaledVector(startTangent, t3 - 2 * t2 + t).addScaledVector(end, -2 * t3 + 3 * t2)
+            .addScaledVector(endTangent, t3 - t2);
+          ring.push(add(point, col / radial, t));
+        }
+        connect(ring);
+      }
+      // Keep the original outer curl, terminal hemisphere and tip position.
+      for (let row = thumbJoinRow + 1; row <= thumbLastRow; row++) {
+        const ring: number[] = [];
+        for (let col = 0; col < radial; col++) ring.push(add(thumbPoint(row, col), col / radial, row / thumbLastRow));
+        connect(ring);
+      }
+      const tip = add(new THREE.Vector3().fromBufferAttribute(thumbPositions, thumbPositions.count - 1), .5, 1);
+      for (let col = 0; col < radial; col++) indices.push(tip, previous[col], previous[(col + 1) % radial]);
+      thumb.dispose(); geometries.delete(thumb);
+      const geometry = own(new THREE.BufferGeometry());
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+      geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2)); geometry.setIndex(indices); geometry.computeVertexNormals();
+      return geometry;
+    })();
+    const rightPalm: THREE.BufferGeometry[] = [sewnRightPalm];
     for (let digit = 0; digit < 3; digit++) {
       const y = -.072 + digit * .083;
       // Each finger crosses in front of the shaft, curls around its outer side
@@ -447,9 +522,11 @@ export function createBookyModel(): OwnedBookyModel {
       rightPalm.push(sweep([[.005, y, .042], [.075, y + .006, .126], [.124, y + .006, .110],
         [.139, y + .004, .069], [.104, y + .002, .033]], [.040, .042, .037, .031, .023], 20, 10));
     }
-    roundedDigit(rightPalm, [[-.022, .050, .052], [-.040, .139, .123], [.019, .156, .131], [.075, .120, .141]],
-      [.050, .047, .038, .025], 20);
-    fused(rightHand, "booky-right-grip-glove", rightPalm, white);
+    const rightGlove = mergeGeometries(rightPalm, false);
+    if (!rightGlove) throw new Error("booky-right-glove-merge-failed");
+    own(rightGlove);
+    for (const part of rightPalm) { part.dispose(); geometries.delete(part); }
+    mesh(rightHand, "booky-right-grip-glove", rightGlove, white);
     const rightCuff = torus(.074, .018, [0, 0, 0]);
     rightCuff.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(.8, .4, .3).normalize()));
     rightCuff.translate(-.014, -.007, -.008); mesh(rightHand, "booky-right-cuff", rightCuff, white);
