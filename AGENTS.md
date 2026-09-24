@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-touch-gestures-20260924:begin -->
+Latest source 5c2ca4dd: Книжулик / Mr. Booky uses a local thirteen-gesture Surprise cycle with no immediate cycle-boundary repeat and skips a manually selected pending gesture. Four selected actual-App cases cover the live model, gestures and RU/EN mobile touch behavior. Model geometry and the five directly reviewed D190 model photos remain unchanged and retain their original limitations. Saved preferences are preserved.
+
+Evidence: docs/mobile/evidence/S15/booky-touch-gestures-20260924/result.json. D191. 161 unit cases and 4 selected browser cases; 9 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-touch-gestures-20260924:end -->
+
 <!-- s15-booky-left-glove-20260924:begin -->
 Latest source 0e51caa8: Книжулик / Mr. Booky has a continuous free left glove, preserving the reviewed right palm/thumb and existing interaction source. Two selected cases cover the live model and 13 gestures. Five directly reviewed actual-model photos are bound to identical current-source bytes. Previous D189 photos and wider interaction checks remain attributed to their original source and limitations.
 

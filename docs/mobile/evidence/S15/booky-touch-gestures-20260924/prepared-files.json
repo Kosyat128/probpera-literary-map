@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T07:25:04.2966362Z",
+  "preparedOnly": true,
+  "sourceFrozen": true,
+  "executed": false,
+  "baseCheckpoint": "301eaee3c1a1eac8ac40b08e4720f6bd182a24db",
+  "baseSource": "0e51caa89675686e9b7d89a2b0ccd24b389c9722",
+  "priorResultSha256": "6d282a2276dc090d84ed1633a155511f8dcc14e280e9820a6680245967b04f4e",
+  "priorManifest": "7005111c81f6deb74c0ee6c3b9eee888ecc0588006f834c84125e514d6695f24",
+  "expectedProtectedInputs": 1648,
+  "pendingFields": [],
+  "files": [
+    {
+      "name": "configure.mjs",
+      "sha256": "82884dd79ee6014f88f67efdf26cbdc18e8984fbdd7ef925cc50d13984a5de57"
+    },
+    {
+      "name": "check.mjs",
+      "sha256": "94989bcb11f8a51847afa383ff0c6285d9e4d2d32a46835e9ec352534c4edae5"
+    },
+    {
+      "name": "unit.config.mjs",
+      "sha256": "1129826b42086b8f31b96de0dadb63fb219e9c327ec348c7e1eae10e80937e7f"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "sha256": "96bd80cbdf070fd55cdca8db809f042f368e4d5f9b7260c7dc7695a4bdaa6854"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "sha256": "d10658c94501da0eaef10a32f419a71d1d8844522ab939fce579287f109e01e1"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "sha256": "b8383cb83a1d1cc6c6e971b16833e351d81e48007c8703c4e55c746577b62d40"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "sha256": "e567f141064745b3825e45c791f397c1f82a1fd91fcee49dccdfe03e1c41ffeb"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "sha256": "680635e5f23f83415b2153cf2fce3f91648e4bc3a735b48b6667e89652494f30"
+    },
+    {
+      "name": "record-visual.mjs",
+      "sha256": "5c66d4a4235e9c3264d18085f3f420474ced833432c1e019e72d57399d02561e"
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "sha256": "80f8dc0cb650b52173518428a9f238631c2edc16f110879873884ce746c8e5ca"
+    },
+    {
+      "name": "scope.json",
+      "sha256": "e2f7c0a56dd0b81d18bfc560407a5320550bc275f36d58b1fb41c3cdbdbd448e"
+    }
+  ],
+  "releaseReady": false,
+  "expectedSourceInputCount": 1652,
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "e5c705510a0f1c49b1c3ef521b5fa7c4e9617f69c7ee8ade789d2844de4184c0"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "68b259ff77d8e73f1a9cebb176025e1c04496d22a33c604f26f0c1d0a72839a0"
+    },
+    {
+      "path": "src/host/bookySurprise.ts",
+      "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+    },
+    {
+      "path": "src/host/bookySurprise.test.ts",
+      "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+    }
+  ],
+  "diagnosticHistory": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/staging/diagnostic-history.json",
+    "sha256": "e9c9790d2022e9c121837428f9cad9e40d2a5af5be5e9fc09fcf9fd8221b9f4c"
+  }
+}

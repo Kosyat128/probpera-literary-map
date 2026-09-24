@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T07:25:04.5712227+00:00",
+  "pass": true,
+  "copied": [
+    {
+      "name": "configure.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\configure.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\configure.mjs",
+      "sha256": "82884dd79ee6014f88f67efdf26cbdc18e8984fbdd7ef925cc50d13984a5de57"
+    },
+    {
+      "name": "check.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\check.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\check.mjs",
+      "sha256": "94989bcb11f8a51847afa383ff0c6285d9e4d2d32a46835e9ec352534c4edae5"
+    },
+    {
+      "name": "unit.config.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\unit.config.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\unit.config.mjs",
+      "sha256": "1129826b42086b8f31b96de0dadb63fb219e9c327ec348c7e1eae10e80937e7f"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\playwright.config.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\build-pwa-a1.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\build-pwa-a1.mjs",
+      "sha256": "96bd80cbdf070fd55cdca8db809f042f368e4d5f9b7260c7dc7695a4bdaa6854"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\pwa-a1.config.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\build-android-a1.ps1",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\build-android-a1.ps1",
+      "sha256": "d10658c94501da0eaef10a32f419a71d1d8844522ab939fce579287f109e01e1"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\verify-android-a1.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\verify-android-a1.mjs",
+      "sha256": "b8383cb83a1d1cc6c6e971b16833e351d81e48007c8703c4e55c746577b62d40"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\preserve-android-a1.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\preserve-android-a1.mjs",
+      "sha256": "e567f141064745b3825e45c791f397c1f82a1fd91fcee49dccdfe03e1c41ffeb"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\checkpoint.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\checkpoint.mjs",
+      "sha256": "680635e5f23f83415b2153cf2fce3f91648e4bc3a735b48b6667e89652494f30"
+    },
+    {
+      "name": "record-visual.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\record-visual.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\record-visual.mjs",
+      "sha256": "5c66d4a4235e9c3264d18085f3f420474ced833432c1e019e72d57399d02561e"
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\finalize-notes.mjs",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\finalize-notes.mjs",
+      "sha256": "80f8dc0cb650b52173518428a9f238631c2edc16f110879873884ce746c8e5ca"
+    },
+    {
+      "name": "scope.json",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\scope.json",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\scope.json",
+      "sha256": "e2f7c0a56dd0b81d18bfc560407a5320550bc275f36d58b1fb41c3cdbdbd448e"
+    },
+    {
+      "name": "prepared-files.json",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\prepared-files.json",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\prepared-files.json",
+      "sha256": "301a8333c67d9adb45a95f341970ddc6f69799a2507dcc26b216153530c75488"
+    },
+    {
+      "name": "copy-helpers.ps1",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\copy-helpers.ps1",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\copy-helpers.ps1",
+      "sha256": "940c8caf8679e5e47c7c3f3604a282b2219b1aacd7aca8ed7ca92a85b0369b65"
+    },
+    {
+      "name": "READY.md",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\READY.md",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\READY.md",
+      "sha256": "a4875e55bc2f6b7be8f1dc308e00c3af2b294a3fca063bb5694ced8b8d21a40a"
+    },
+    {
+      "name": "diagnostic-history.json",
+      "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-touch-gestures-evidence\\staging\\diagnostic-history.json",
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-gestures-20260924\\diagnostic-history.json",
+      "sha256": "e9c9790d2022e9c121837428f9cad9e40d2a5af5be5e9fc09fcf9fd8221b9f4c"
+    }
+  ],
+  "configured": false,
+  "testsRun": false,
+  "buildsRun": false,
+  "releaseReady": false
+}

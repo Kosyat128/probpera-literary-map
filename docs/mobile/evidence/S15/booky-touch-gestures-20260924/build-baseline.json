@@ -1,0 +1,15 @@
+{
+  "checkpoint": "301eaee3c1a1eac8ac40b08e4720f6bd182a24db",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/pwa-a1/result.json",
+    "sha256": "2f37d651b0ea37b8735826da88cd8c72cb1c3f4d93e99d6c1619c98e6fa87a83",
+    "buildId": "2a7992e3ea986ea2c1694b0da4ed81f2d0df31cd7a198989d5650f7091936511",
+    "sourceCommit": "0e51caa89675686e9b7d89a2b0ccd24b389c9722"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/android-a1/result.json",
+    "sha256": "ff08e13c69180fb3deb5d27d1fbad36e86d23361f707d29f1409b229abe25059",
+    "buildId": "37b892a98ebd2598e2d6432f126e9d8c665c25bc1638016aa51dcbd0f966cd8c",
+    "sourceCommit": "0e51caa89675686e9b7d89a2b0ccd24b389c9722"
+  }
+}

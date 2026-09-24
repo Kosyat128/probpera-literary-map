@@ -1,0 +1,10 @@
+
+Running 4 tests using 1 worker
+
+
+
+[1/4] tests\pwa\booky-live-character.spec.mjs:411:1 › live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged
+[2/4] tests\pwa\booky-live-character.spec.mjs:726:1 › Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion
+[3/4] tests\pwa\booky-live-character.spec.mjs:2387:152 › Booky mobile touch gesture gallery ru
+[4/4] tests\pwa\booky-live-character.spec.mjs:2387:152 › Booky mobile touch gesture gallery en
+  4 passed (4.8m)

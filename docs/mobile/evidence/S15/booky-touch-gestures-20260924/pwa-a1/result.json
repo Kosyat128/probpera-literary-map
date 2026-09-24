@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T07:32:23.226Z",
+  "sourceCommit": "5c2ca4dd1876403bac07bbd1e16d8a8b7488e930",
+  "buildId": "711427df62ab65b9e0543a72156722e181a0ebb8dc2e4429414d146771b6bab2",
+  "sourceInputsSha256": "8ccf7cfbae4fdb209946144d7453f8ee15750f428aa06c870fcfbd6a1f3e3ed0",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/pwa-711427df",
+    "files": 1427,
+    "bytes": 76778526,
+    "artifactSha256": "8789b9cef1ff30102de2ec0d145e8963381ece632a0747314ceddcb0a2a4e0c5",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-24T07:31:51.897Z",
+    "duration": 24390.789,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

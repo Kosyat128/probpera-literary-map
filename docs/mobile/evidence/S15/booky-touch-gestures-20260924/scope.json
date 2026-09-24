@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "description": "The local Surprise shuffle cycle visits all thirteen gestures without repeats in a cycle or immediately across its boundary, including after rest or closing help; a manually selected gesture is excluded from the pending choices. Saved preferences remain unchanged. Four selected actual-App cases cover retained live-model/gesture behavior and two mobile touch gesture cases. Model geometry remains identical to D190.",
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/host/bookySurprise.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedBrowserTests": 4,
+  "expectedImages": 9,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "mobile-touch-gestures-ru",
+      "flags": [
+        "mobileThirteenGesturesReachableByTouch",
+        "mobileGestureScrollingDoesNotPlay",
+        "mobileGesturesFiniteAndRepeatable",
+        "mobileSurpriseCycleCoversThirteen",
+        "mobileSurpriseCycleBoundaryDifferent",
+        "mobileGestureReducedMotionStatic",
+        "mobileGestureHelpReadableAfterRotation",
+        "mobileGesturePreferencesAndSceneRetained",
+        "mobileGestureTrustedTouch"
+      ]
+    },
+    {
+      "scenario": "mobile-touch-gestures-en",
+      "flags": [
+        "mobileThirteenGesturesReachableByTouch",
+        "mobileGestureScrollingDoesNotPlay",
+        "mobileGesturesFiniteAndRepeatable",
+        "mobileSurpriseCycleCoversThirteen",
+        "mobileSurpriseCycleBoundaryDifferent",
+        "mobileGestureReducedMotionStatic",
+        "mobileGestureHelpReadableAfterRotation",
+        "mobileGesturePreferencesAndSceneRetained",
+        "mobileGestureTrustedTouch"
+      ]
+    }
+  ],
+  "expectedUnitTests": 161,
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "requireDiagnosticHistory": true,
+  "requiredVisualFilenames": [
+    "booky-touch-gestures-ru-390.png",
+    "booky-touch-gestures-ru-844.png",
+    "booky-touch-gestures-en-320.png",
+    "booky-touch-gestures-en-640.png"
+  ],
+  "requiredObservationChecks": [],
+  "browserTestTitles": [
+    "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+    "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+    "Booky mobile touch gesture gallery ru",
+    "Booky mobile touch gesture gallery en"
+  ],
+  "retainedCaseCaptureSubtotal": 5,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "e5c705510a0f1c49b1c3ef521b5fa7c4e9617f69c7ee8ade789d2844de4184c0"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "68b259ff77d8e73f1a9cebb176025e1c04496d22a33c604f26f0c1d0a72839a0"
+    },
+    {
+      "path": "src/host/bookySurprise.ts",
+      "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+    },
+    {
+      "path": "src/host/bookySurprise.test.ts",
+      "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+    }
+  ],
+  "retainPriorModelPhotos": true,
+  "expectedRetainedModelPhotos": 5
+}

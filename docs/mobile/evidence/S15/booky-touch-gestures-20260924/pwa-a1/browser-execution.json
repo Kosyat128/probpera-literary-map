@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-touch-gestures-20260924/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 25179,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-touch-gestures-20260924/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "71056a5d3b561a7e431b793f7c41b6ba8b4e90cecd92aa44f930bf1d03feca6d"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-touch-gestures-20260924/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "7d59417d62bf69b57f190b7a280bca1c6095453615338bb17a2c53710e7da4c0"
+  }
+}

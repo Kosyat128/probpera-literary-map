@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T07:33:26.421Z",
+  "pass": true,
+  "sourceCommit": "5c2ca4dd1876403bac07bbd1e16d8a8b7488e930",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-touch-gestures-20260924/source-manifests/eb2743625bbc04b4.json",
+    "sha256": "eb2743625bbc04b42359702ed9f83fb5a76e397013a5b7abd9e1ad2a7efc1b46",
+    "fileCount": 1652
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 9,
+  "scope": "Direct review of the selected final mobile gesture captures. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 4 of 9 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "The model and gestures were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/final-visual-receipt.json",
+    "sha256": "a0aece9e4a09050a9e44abf73e85363bdf7d1242fd600aa2a622b529536a87c3"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-touch-gestures-ru-390.png",
+      "sha256": "cdda6cd65abda4a20d047bb663f4a83bed8d11d2ff151947973ab849ff262c82",
+      "width": 390,
+      "height": 844,
+      "bytes": 335993,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Russian Книжулик title and close button fit fully within the viewport. Дай пять! and Удиви меня are fully visible and readable at this scroll position.",
+        "The Russian response is readable; the complete character, magnifier and move/hide buttons remain in frame below the card.",
+        "The Масштаб 167% globe label visibly overlaps the bottom area of the disabled Прогуляться control. This image does not establish a completely overlap-free globe control layout."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-live-character.json",
+        "sha256": "abc72d3ba3cb4a6d4bef00067ef4ad194938a19c0d05a6aa892a57924dcdfb9f",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/attachments/booky-live-character-source-evidence-3ffe7b682303a6fedf1f4ca720d6ac48a4e2fb22.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-touch-gestures-ru-844.png",
+      "sha256": "5d165c6f9638ca9af66bdc240e565df2776c80baa2eaccd74d3b1edc442e549d",
+      "width": 844,
+      "height": 390,
+      "bytes": 157917,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The landscape Russian title and close button remain fully visible; the response text is readable and the whole character and its move/hide controls fit beside the card.",
+        "Only the lower edges of the upper gesture row are visible at the current scroll position beneath the sticky header. The next section heading is partly clipped at the bottom of the scroll viewport.",
+        "The open card overlaps part of the underlying globe navigation area. This static capture establishes visibility of the card close control and response, not simultaneous visibility of every background control."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/booky-live-character.json",
+        "sha256": "abc72d3ba3cb4a6d4bef00067ef4ad194938a19c0d05a6aa892a57924dcdfb9f",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-ru/attachments/booky-live-character-source-evidence-3ffe7b682303a6fedf1f4ca720d6ac48a4e2fb22.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-touch-gestures-en-320.png",
+      "sha256": "5f0780b37a47e544ed66cfc1b826ac1165bd797535a8b505ea9248631eafb96e",
+      "width": 320,
+      "height": 844,
+      "bytes": 270523,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The narrow English Mr. Booky title and close button fit the viewport. The wrapped response remains readable. The complete character, magnifier and move/hide buttons fit below the card.",
+        "The upper gesture row is partly clipped beneath the sticky header at the current scroll position; full label visibility for that row is not established by this capture.",
+        "The Zoom 167% label visibly overlaps the bottom area of the disabled Take a walk control. This image does not establish a completely overlap-free globe control layout."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-live-character.json",
+        "sha256": "f73223992c22ab8747c42ea85b492869c2cfb58be551e2448ec218362ec99eef",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/attachments/booky-live-character-source-evidence-b04ea875ef732965ab1a863ce5a2443b7c13d7e3.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-touch-gestures-en-640.png",
+      "sha256": "9046397fec71d2c48a125023341c1abfb973e0a0a1941066ec48a84482e83927",
+      "width": 640,
+      "height": 360,
+      "bytes": 117739,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The English landscape title, close button, response and Literary journeys heading are readable. The whole character and move/hide controls fit to the right of the card.",
+        "The upper gesture row is partly clipped beneath the sticky header at the current scroll position. The open card overlaps part of the background Appearance and globe control areas; those background controls are not all simultaneously visible."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/booky-live-character.json",
+        "sha256": "f73223992c22ab8747c42ea85b492869c2cfb58be551e2448ec218362ec99eef",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-gestures-evidence/browser-a1/booky-live-character-Booky-mobile-touch-gesture-gallery-en/attachments/booky-live-character-source-evidence-b04ea875ef732965ab1a863ce5a2443b7c13d7e3.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    }
+  ],
+  "releaseReady": false
+}

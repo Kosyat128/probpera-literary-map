@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T07:25:05.573Z",
+  "stage": "S15",
+  "checkpoint": "301eaee3c1a1eac8ac40b08e4720f6bd182a24db",
+  "previous": "docs/mobile/evidence/S15/booky-left-glove-20260924/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/result.json",
+    "sha256": "6d282a2276dc090d84ed1633a155511f8dcc14e280e9820a6680245967b04f4e"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/result.json",
+    "sha256": "6d282a2276dc090d84ed1633a155511f8dcc14e280e9820a6680245967b04f4e"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-left-glove-20260924/source-manifests/7005111c81f6deb7.json",
+    "sha256": "7005111c81f6deb74c0ee6c3b9eee888ecc0588006f834c84125e514d6695f24",
+    "fileCount": 1650
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-touch-gestures-20260924/scope.json",
+    "sha256": "e2f7c0a56dd0b81d18bfc560407a5320550bc275f36d58b1fb41c3cdbdbd448e"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "aafea9b9ccf70aaa63c1b88d001be4c2fa2789465cd0cfd10c09cfc142d2d927"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "77c7a441a91774abd09e4fe5f366ba33c68ba91e7372af30dd20f9e3ec357bfd"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "5389c9aec706f4a98e20d7afffd55f19d5550998da8ec5437b7b0df75a33e886"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "7bda0211de6b6ce01c2e4f6b57c35ceb33c432e13bfd8708ef215367c8c6cfcb"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "405fc7f868d42cb155989e41dbc2a27ddba49948d3a196bcf47b1dd92d365d5a"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "a88755aeb349b5c144a340916c9259f0531d74f553b708308f8e04b67d9d7990"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "3aa998ab97e3eeb2f9919606c6c5c782da6f1a1363c62601851309a9d7ade3aa"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "5a4f78804b649c597a9170524df577219dbe15707432be600d62487bf92e031f"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/host/bookySurprise.test.ts",
+    "src/host/bookySurprise.ts"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookySurprise.ts"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "e5c705510a0f1c49b1c3ef521b5fa7c4e9617f69c7ee8ade789d2844de4184c0"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "68b259ff77d8e73f1a9cebb176025e1c04496d22a33c604f26f0c1d0a72839a0"
+    },
+    {
+      "path": "src/host/bookySurprise.test.ts",
+      "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+    },
+    {
+      "path": "src/host/bookySurprise.ts",
+      "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+    }
+  ],
+  "sourceInputCount": 1652,
+  "protectedInputCount": 1648,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookySurprise.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "301eaee3c1a1eac8ac40b08e4720f6bd182a24db",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+    "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+    "Booky mobile touch gesture gallery ru",
+    "Booky mobile touch gesture gallery en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 161,
+  "expectedBrowserTests": 4,
+  "expectedImages": 9,
+  "scope": "The local Surprise shuffle cycle visits all thirteen gestures without repeats in a cycle or immediately across its boundary, including after rest or closing help; a manually selected gesture is excluded from the pending choices. Saved preferences remain unchanged. Four selected actual-App cases cover retained live-model/gesture behavior and two mobile touch gesture cases. Model geometry remains identical to D190.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
