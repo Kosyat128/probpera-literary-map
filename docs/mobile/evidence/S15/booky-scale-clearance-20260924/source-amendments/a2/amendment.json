@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:05:36.317Z",
+  "kind": "D192 source refreeze a2",
+  "reason": "Formal browser-a1 retained actual 5 PASS / 1 FAIL: the existing RU568 open-help card measured 126 px high, below its unchanged 180 px assertion. The authorized CSS change stacks the two 44 px floating companion tools in a 144 px row only for open help in short landscape up to 640 px; the reserved collection dock row remains intact. Controls and the canonical fixture remain byte-identical. The visual subset adds the RU/EN568 help captures.",
+  "archive": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/archive.json",
+    "sha256": "22821317819f1609a4d70a7e7a66af2c27a771d750c24d3d44de6591cf248a40"
+  },
+  "externalArchive": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/archive.json",
+    "sha256": "22821317819f1609a4d70a7e7a66af2c27a771d750c24d3d44de6591cf248a40"
+  },
+  "expectedSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/expected-source-manifest.json",
+    "sha256": "9ebd4a0bfbec8136bb9c21748e7142a22e7a0d2832b32ab072f9c37836ef7f21",
+    "fileCount": 1652
+  },
+  "freezeEvidence": {
+    "sha256": "7313ae3fad62e90ee7b982b3d495e2ad86b5875f0e1e64d23eeec55a9c00402b",
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a4/execution.json"
+  },
+  "freezeReport": {
+    "sha256": "5e4025114cf2e57a21de7c18e6ab85551d18e198a4810479eb49f756037516e3",
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a4/playwright.json"
+  },
+  "freezeProof": {
+    "sha256": "b8eee138d0a6c8046e47163cc8f17bc3b68d0665e31c028d1843355acb29c936",
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a4/proof.json"
+  },
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "f1a2ef74a7233e6e2093295f71e6ed117d3d8812636f39ec8199606ffbc2a609"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "e6f7bf3d52a84f6adcf98226951af94debdfab20374fa5dcf6afd73c09b2d4cf"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "4fd5d8cf9a5cc536285bbfd7075addb1d3416126b6e073c3380e11613695d25b"
+    }
+  ],
+  "updatedScope": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/scope.json",
+    "sha256": "767036c41c1cd532258a22401c99a64763a5ccf00cd089696438b778ddf3c199"
+  },
+  "helperChanges": [
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "22b73cbdad072892dc3d11e0e6efcdc80154892452bdd50e85582c583c9bb0c4"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/checkpoint.mjs",
+        "sha256": "76d90f0973ffd345dfe20274102694a69884df50b4f36fcb3e94d19c90a58823"
+      }
+    },
+    {
+      "before": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "467c6cb53d6e5eba37e3c06ece5f6cebc25fca86ea40f407294b64803f3c542b"
+      },
+      "after": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/scope.json",
+        "sha256": "767036c41c1cd532258a22401c99a64763a5ccf00cd089696438b778ddf3c199"
+      }
+    }
+  ],
+  "originalDiagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/diagnostic-history.json",
+    "sha256": "752796bfb142c7cbc6b5ed37a0dd4fd4b7d73e9c31bf15ba85c55996125846fc",
+    "bytes": 31209
+  },
+  "releaseReady": false
+}

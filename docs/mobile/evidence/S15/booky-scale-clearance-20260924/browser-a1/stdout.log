@@ -1,0 +1,41 @@
+
+Running 6 tests using 1 worker
+
+
+
+[1/6] tests\pwa\booky-live-character.spec.mjs:835:1 › Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion
+[2/6] tests\pwa\booky-live-character.spec.mjs:1247:1 › Mr. Booky mobile placement preserves globe and collection hit targets in both locales
+[3/6] tests\pwa\booky-live-character.spec.mjs:1388:1 › short landscape globe controls stay reachable beside the collapsed country archive in both locales
+[4/6] tests\pwa\booky-live-character.spec.mjs:1531:1 › Mr. Booky open help preserves primary navigation and scrolls independently in both locales
+  1) tests\pwa\booky-live-character.spec.mjs:1531:1 › Mr. Booky open help preserves primary navigation and scrolls independently in both locales 
+
+    Error: Compact landscape help retains a readable scrolling area
+
+    expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 180
+    Received:    126
+
+      1615 |       if(size.width<=640){
+      1616 |         await capture(page,result,testInfo,`booky-help-globe-${language}-${size.width}.png`);
+    > 1617 |         expect(helpHeight,'Compact landscape help retains a readable scrolling area').toBeGreaterThanOrEqual(180);
+           |                                                                                       ^
+      1618 |       }
+      1619 |       if(language==='ru'&&size.width===800)await capture(page,result,testInfo,'booky-help-globe-ru-800.png');
+      1620 |       if(language==='en'&&size.width===667)await capture(page,result,testInfo,'booky-help-globe-en-667.png');
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:1617:87
+
+    attachment #1: booky-live-character-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-scale-clearance-evidence\browser-a1\booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales\attachments\booky-live-character-source-evidence-8443bf825b22e7bf20d68cc2f785635ecb4c0489.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-scale-clearance-evidence\browser-a1\booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales\error-context.md
+
+
+
+
+[5/6] tests\pwa\booky-live-character.spec.mjs:2456:150 › Booky scale label clearance ru
+[6/6] tests\pwa\booky-live-character.spec.mjs:2456:150 › Booky scale label clearance en
+  1 failed
+    tests\pwa\booky-live-character.spec.mjs:1531:1 › Mr. Booky open help preserves primary navigation and scrolls independently in both locales 
+  5 passed (1.9m)

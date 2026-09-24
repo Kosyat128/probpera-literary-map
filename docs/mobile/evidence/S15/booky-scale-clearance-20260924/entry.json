@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:05:36.319Z",
+  "stage": "S15",
+  "checkpoint": "5c8a07d1315a012646e0d4a1f6e5c60414df1f67",
+  "previous": "docs/mobile/evidence/S15/booky-touch-gestures-20260924/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-touch-gestures-20260924/result.json",
+    "sha256": "ed4fa289b6660b300aba624a67a11d80bfe648567cbf17304d52232d5a33f73d"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-touch-gestures-20260924/result.json",
+    "sha256": "ed4fa289b6660b300aba624a67a11d80bfe648567cbf17304d52232d5a33f73d"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-touch-gestures-20260924/source-manifests/eb2743625bbc04b4.json",
+    "sha256": "eb2743625bbc04b42359702ed9f83fb5a76e397013a5b7abd9e1ad2a7efc1b46",
+    "fileCount": 1652
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/scope.json",
+    "sha256": "767036c41c1cd532258a22401c99a64763a5ccf00cd089696438b778ddf3c199"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "c7edcdaae0e6d2f6711e987b58d18acfd14eac504e5bec7d26b11e154e5418ba"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "76fd8e4d8712e73625f6ffadd084e164692829f5f7830fc7595b2d8a9a51104d"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "ad7bdecf581bae97090ebce04c0a93778a03c2a7ddcea2969189a751af0fb37c"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "4e433c1d841f3d2bf28a7eca2a1425a51b3030f02ebccd2ff3b1c19a1c414d16"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "1e863ef3c9d0f09efe19f0e8dc005321db1f4b538643462fb7598e576d25f24e"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "9b967eccba28356ca19f1353656849987925af9e776cc07186393a5cd7ace4b2"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "87c163e4802f361d6ea6ddf685f6cc23d0dbf32ed832ddabaa24633ae35e47f0"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "5f2ee95beeff55527e65056711bae51ad98a59985e94b7372392ef47cb0391a5"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "f1a2ef74a7233e6e2093295f71e6ed117d3d8812636f39ec8199606ffbc2a609"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "e6f7bf3d52a84f6adcf98226951af94debdfab20374fa5dcf6afd73c09b2d4cf"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "4fd5d8cf9a5cc536285bbfd7075addb1d3416126b6e073c3380e11613695d25b"
+    }
+  ],
+  "sourceInputCount": 1652,
+  "protectedInputCount": 1649,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "5c8a07d1315a012646e0d4a1f6e5c60414df1f67",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion",
+    "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+    "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+    "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+    "Booky scale label clearance ru",
+    "Booky scale label clearance en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 161,
+  "expectedBrowserTests": 6,
+  "expectedImages": 35,
+  "scope": "Companion placement accounts for the rendered Zoom / Масштаб feedback badge outside the globe-control toolbar. The existing compact floating companion row while help is open extends to short landscape widths up to 1024 px; the reserved collection dock keeps its existing override. Selected regressions cover walking, mobile placement, short-landscape controls, open help and configured RU/EN companion/card clearance from the badge. Model geometry, movement algorithms and the Surprise picker remain unchanged. At short landscape widths up to 640 px, the floating open-help row stacks its two 44 px tools vertically in a 144 px row to preserve card readability; the reserved collection dock retains its row layout.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "sourceAmendment": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/amendment.json",
+    "sha256": "00b93c9c0ddaa2e699db466fe01e3e82ea214c7ed54f0d89bb247a5b675fa0ff"
+  }
+}

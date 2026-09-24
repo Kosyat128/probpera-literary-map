@@ -1,0 +1,828 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T07:59:42.443Z",
+  "pass": true,
+  "kind": "D192 original-a1 evidence archive before source/helper amendment",
+  "originals": [
+    {
+      "name": "configure.mjs",
+      "original": {
+        "name": "configure.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/configure.mjs",
+        "sha256": "1bb8435af1b11d74ad7c8f63b74f2e802f993983bfb41b12b6f8dd7a60c24dd2",
+        "bytes": 7323
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/configure.mjs",
+        "sha256": "1bb8435af1b11d74ad7c8f63b74f2e802f993983bfb41b12b6f8dd7a60c24dd2",
+        "bytes": 7323
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/configure.mjs",
+        "sha256": "1bb8435af1b11d74ad7c8f63b74f2e802f993983bfb41b12b6f8dd7a60c24dd2",
+        "bytes": 7323
+      }
+    },
+    {
+      "name": "check.mjs",
+      "original": {
+        "name": "check.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/check.mjs",
+        "sha256": "7b598cc3adfd3237d082c364757654390ee44e8ea3d8ae3e1d0e60d79f1dfc4a",
+        "bytes": 7845
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/check.mjs",
+        "sha256": "7b598cc3adfd3237d082c364757654390ee44e8ea3d8ae3e1d0e60d79f1dfc4a",
+        "bytes": 7845
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/check.mjs",
+        "sha256": "7b598cc3adfd3237d082c364757654390ee44e8ea3d8ae3e1d0e60d79f1dfc4a",
+        "bytes": 7845
+      }
+    },
+    {
+      "name": "unit.config.mjs",
+      "original": {
+        "name": "unit.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit.config.mjs",
+        "sha256": "4e40fc2a35f6a16a84ffedcb445211d3b2fac907968719945531166487bc858c",
+        "bytes": 360
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/unit.config.mjs",
+        "sha256": "4e40fc2a35f6a16a84ffedcb445211d3b2fac907968719945531166487bc858c",
+        "bytes": 360
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/unit.config.mjs",
+        "sha256": "4e40fc2a35f6a16a84ffedcb445211d3b2fac907968719945531166487bc858c",
+        "bytes": 360
+      }
+    },
+    {
+      "name": "playwright.config.mjs",
+      "original": {
+        "name": "playwright.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d",
+        "bytes": 716
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d",
+        "bytes": 716
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/playwright.config.mjs",
+        "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d",
+        "bytes": 716
+      }
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "original": {
+        "name": "build-pwa-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/build-pwa-a1.mjs",
+        "sha256": "47b2e0986110feeb32c88b155ea9e3f25d21ec1b85947ff778fb40b96d80c03a",
+        "bytes": 8509
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/build-pwa-a1.mjs",
+        "sha256": "47b2e0986110feeb32c88b155ea9e3f25d21ec1b85947ff778fb40b96d80c03a",
+        "bytes": 8509
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/build-pwa-a1.mjs",
+        "sha256": "47b2e0986110feeb32c88b155ea9e3f25d21ec1b85947ff778fb40b96d80c03a",
+        "bytes": 8509
+      }
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "original": {
+        "name": "pwa-a1.config.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/pwa-a1.config.mjs",
+        "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+        "bytes": 586
+      }
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "original": {
+        "name": "build-android-a1.ps1",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/build-android-a1.ps1",
+        "sha256": "15d8fa5e8d32d07f68be96548b3cff9f53dd7ed184b0b8f06efc0cfd1d7db339",
+        "bytes": 7233
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/build-android-a1.ps1",
+        "sha256": "15d8fa5e8d32d07f68be96548b3cff9f53dd7ed184b0b8f06efc0cfd1d7db339",
+        "bytes": 7233
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/build-android-a1.ps1",
+        "sha256": "15d8fa5e8d32d07f68be96548b3cff9f53dd7ed184b0b8f06efc0cfd1d7db339",
+        "bytes": 7233
+      }
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "original": {
+        "name": "verify-android-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/verify-android-a1.mjs",
+        "sha256": "16939f5b42a12009628c6813f51b0cabcbc3cef89756b56af9d4594f8b952371",
+        "bytes": 14970
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/verify-android-a1.mjs",
+        "sha256": "16939f5b42a12009628c6813f51b0cabcbc3cef89756b56af9d4594f8b952371",
+        "bytes": 14970
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/verify-android-a1.mjs",
+        "sha256": "16939f5b42a12009628c6813f51b0cabcbc3cef89756b56af9d4594f8b952371",
+        "bytes": 14970
+      }
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "original": {
+        "name": "preserve-android-a1.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/preserve-android-a1.mjs",
+        "sha256": "d9eb21db2892c649c05e1c745a6d234e7bc7c8e245f79d3f31925f671ac879f0",
+        "bytes": 6550
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/preserve-android-a1.mjs",
+        "sha256": "d9eb21db2892c649c05e1c745a6d234e7bc7c8e245f79d3f31925f671ac879f0",
+        "bytes": 6550
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/preserve-android-a1.mjs",
+        "sha256": "d9eb21db2892c649c05e1c745a6d234e7bc7c8e245f79d3f31925f671ac879f0",
+        "bytes": 6550
+      }
+    },
+    {
+      "name": "checkpoint.mjs",
+      "original": {
+        "name": "checkpoint.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/checkpoint.mjs",
+        "sha256": "22b73cbdad072892dc3d11e0e6efcdc80154892452bdd50e85582c583c9bb0c4",
+        "bytes": 31166
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/checkpoint.mjs",
+        "sha256": "22b73cbdad072892dc3d11e0e6efcdc80154892452bdd50e85582c583c9bb0c4",
+        "bytes": 31166
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/checkpoint.mjs",
+        "sha256": "22b73cbdad072892dc3d11e0e6efcdc80154892452bdd50e85582c583c9bb0c4",
+        "bytes": 31166
+      }
+    },
+    {
+      "name": "record-visual.mjs",
+      "original": {
+        "name": "record-visual.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/record-visual.mjs",
+        "sha256": "fc28f6b9e3d07a5f2da3710e14861469b1c33f602993ab50c45e2478c1a9247e",
+        "bytes": 4746
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/record-visual.mjs",
+        "sha256": "fc28f6b9e3d07a5f2da3710e14861469b1c33f602993ab50c45e2478c1a9247e",
+        "bytes": 4746
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/record-visual.mjs",
+        "sha256": "fc28f6b9e3d07a5f2da3710e14861469b1c33f602993ab50c45e2478c1a9247e",
+        "bytes": 4746
+      }
+    },
+    {
+      "name": "finalize-notes.mjs",
+      "original": {
+        "name": "finalize-notes.mjs",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/finalize-notes.mjs",
+        "sha256": "fab04fc3b3c2e5fce3ef69403d46af25a9a64f916d57faea5d4dd0e531b2233e",
+        "bytes": 1531
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/finalize-notes.mjs",
+        "sha256": "fab04fc3b3c2e5fce3ef69403d46af25a9a64f916d57faea5d4dd0e531b2233e",
+        "bytes": 1531
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/finalize-notes.mjs",
+        "sha256": "fab04fc3b3c2e5fce3ef69403d46af25a9a64f916d57faea5d4dd0e531b2233e",
+        "bytes": 1531
+      }
+    },
+    {
+      "name": "scope.json",
+      "original": {
+        "name": "scope.json",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/scope.json",
+        "sha256": "467c6cb53d6e5eba37e3c06ece5f6cebc25fca86ea40f407294b64803f3c542b",
+        "bytes": 4845
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/scope.json",
+        "sha256": "467c6cb53d6e5eba37e3c06ece5f6cebc25fca86ea40f407294b64803f3c542b",
+        "bytes": 4845
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/scope.json",
+        "sha256": "467c6cb53d6e5eba37e3c06ece5f6cebc25fca86ea40f407294b64803f3c542b",
+        "bytes": 4845
+      }
+    },
+    {
+      "name": "entry.json",
+      "original": {
+        "name": "entry.json",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/entry.json",
+        "sha256": "8e230873eb85d8169089f5845680250ac5a07b729706aa6cc96e88dc6e394996",
+        "bytes": 6001
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/entry.json",
+        "sha256": "8e230873eb85d8169089f5845680250ac5a07b729706aa6cc96e88dc6e394996",
+        "bytes": 6001
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/entry.json",
+        "sha256": "8e230873eb85d8169089f5845680250ac5a07b729706aa6cc96e88dc6e394996",
+        "bytes": 6001
+      }
+    },
+    {
+      "name": "build-baseline.json",
+      "original": {
+        "name": "build-baseline.json",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/build-baseline.json",
+        "sha256": "34922ce49718255333a59485886ce3d9910abc77501099fd45ce18a8247b4340",
+        "bytes": 747
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/build-baseline.json",
+        "sha256": "34922ce49718255333a59485886ce3d9910abc77501099fd45ce18a8247b4340",
+        "bytes": 747
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/build-baseline.json",
+        "sha256": "34922ce49718255333a59485886ce3d9910abc77501099fd45ce18a8247b4340",
+        "bytes": 747
+      }
+    },
+    {
+      "name": "prepared-files.json",
+      "original": {
+        "name": "prepared-files.json",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/prepared-files.json",
+        "sha256": "89c247c23f69681702c389684c7c0ee0ee154a393c54232e87c1864a5e0ff83e",
+        "bytes": 2349
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/prepared-files.json",
+        "sha256": "89c247c23f69681702c389684c7c0ee0ee154a393c54232e87c1864a5e0ff83e",
+        "bytes": 2349
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/prepared-files.json",
+        "sha256": "89c247c23f69681702c389684c7c0ee0ee154a393c54232e87c1864a5e0ff83e",
+        "bytes": 2349
+      }
+    },
+    {
+      "name": "helper-copy.json",
+      "original": {
+        "name": "helper-copy.json",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/helper-copy.json",
+        "sha256": "6cc27b1de3462f0bd472157cd9ffea230c733a22449792c2bd59c00a008f0d02",
+        "bytes": 8152
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/helper-copy.json",
+        "sha256": "6cc27b1de3462f0bd472157cd9ffea230c733a22449792c2bd59c00a008f0d02",
+        "bytes": 8152
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/helper-copy.json",
+        "sha256": "6cc27b1de3462f0bd472157cd9ffea230c733a22449792c2bd59c00a008f0d02",
+        "bytes": 8152
+      }
+    },
+    {
+      "name": "READY.md",
+      "original": {
+        "name": "READY.md",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/READY.md",
+        "sha256": "160489bc5d1bcba9e205420da4a1036f5c8940e12e5388f28524da5f3609546a",
+        "bytes": 2437
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/READY.md",
+        "sha256": "160489bc5d1bcba9e205420da4a1036f5c8940e12e5388f28524da5f3609546a",
+        "bytes": 2437
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/READY.md",
+        "sha256": "160489bc5d1bcba9e205420da4a1036f5c8940e12e5388f28524da5f3609546a",
+        "bytes": 2437
+      }
+    },
+    {
+      "name": "copy-helpers.ps1",
+      "original": {
+        "name": "copy-helpers.ps1",
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/copy-helpers.ps1",
+        "sha256": "9a137c0a39cd150802e51995b637a58eb39cb1201fc91a8a15c04e2667ca8854",
+        "bytes": 2568
+      },
+      "repoArchive": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-amendments/a2/originals/copy-helpers.ps1",
+        "sha256": "9a137c0a39cd150802e51995b637a58eb39cb1201fc91a8a15c04e2667ca8854",
+        "bytes": 2568
+      },
+      "externalArchive": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/refreeze-a2/originals/copy-helpers.ps1",
+        "sha256": "9a137c0a39cd150802e51995b637a58eb39cb1201fc91a8a15c04e2667ca8854",
+        "bytes": 2568
+      }
+    }
+  ],
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-manifests/76e6ebbe3e1df3f3.json",
+    "sha256": "76e6ebbe3e1df3f3facda7764d53ec48b0f6d3ad0c3aadeda2d9f8883a32bb38",
+    "fileCount": 1652
+  },
+  "runs": [
+    {
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 161,
+        "failed": 0,
+        "skipped": 0
+      },
+      "exitCode": 0,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a1/result.json",
+        "sha256": "5c6bedaac66b26dc4b47eb6168136eb2b1b9f652284b025a82a841f2b3444587",
+        "bytes": 2650
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a1/execution.json",
+        "sha256": "86d2873dea85e23792c286b59e0d22ee40e2c875cc5d402653632ad787a34d61",
+        "bytes": 917
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a1/vitest.json",
+        "sha256": "f5d9ec6a15fa266e9bfd361cfcf68a85b22a3b720913ec8265a7bbe865d4a583",
+        "bytes": 62150
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a1/execution.json",
+          "sha256": "86d2873dea85e23792c286b59e0d22ee40e2c875cc5d402653632ad787a34d61",
+          "bytes": 917
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a1/result.json",
+          "sha256": "5c6bedaac66b26dc4b47eb6168136eb2b1b9f652284b025a82a841f2b3444587",
+          "bytes": 2650
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a1/stdout.log",
+          "sha256": "0881968d768d0ff4d89875382689ee5cce49683fa1fbd85ffa0932544730fa94",
+          "bytes": 185
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a1/vitest.json",
+          "sha256": "f5d9ec6a15fa266e9bfd361cfcf68a85b22a3b720913ec8265a7bbe865d4a583",
+          "bytes": 62150
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/check.mjs",
+          "sha256": "7b598cc3adfd3237d082c364757654390ee44e8ea3d8ae3e1d0e60d79f1dfc4a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/entry.json",
+          "sha256": "8e230873eb85d8169089f5845680250ac5a07b729706aa6cc96e88dc6e394996"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit.config.mjs",
+          "sha256": "4e40fc2a35f6a16a84ffedcb445211d3b2fac907968719945531166487bc858c"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/configure.mjs",
+          "sha256": "1bb8435af1b11d74ad7c8f63b74f2e802f993983bfb41b12b6f8dd7a60c24dd2"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/scope.json",
+          "sha256": "467c6cb53d6e5eba37e3c06ece5f6cebc25fca86ea40f407294b64803f3c542b"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-manifests/76e6ebbe3e1df3f3.json",
+        "sha256": "76e6ebbe3e1df3f3facda7764d53ec48b0f6d3ad0c3aadeda2d9f8883a32bb38",
+        "fileCount": 1652
+      }
+    },
+    {
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "exitCode": 0,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/static-a1/result.json",
+        "sha256": "7b485b5f000c87091b3079e78962487acebafd08edfae54c322c0d172dc7a4ec",
+        "bytes": 2598
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/static-a1/execution.json",
+        "sha256": "1c5998a5285d8c0c5191878e629a86579095d495ba039e2786846c58595b114d",
+        "bytes": 619
+      },
+      "report": null,
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/static-a1/execution.json",
+          "sha256": "1c5998a5285d8c0c5191878e629a86579095d495ba039e2786846c58595b114d",
+          "bytes": 619
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/static-a1/result.json",
+          "sha256": "7b485b5f000c87091b3079e78962487acebafd08edfae54c322c0d172dc7a4ec",
+          "bytes": 2598
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/static-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/static-a1/stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/check.mjs",
+          "sha256": "7b598cc3adfd3237d082c364757654390ee44e8ea3d8ae3e1d0e60d79f1dfc4a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/entry.json",
+          "sha256": "8e230873eb85d8169089f5845680250ac5a07b729706aa6cc96e88dc6e394996"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit.config.mjs",
+          "sha256": "4e40fc2a35f6a16a84ffedcb445211d3b2fac907968719945531166487bc858c"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/configure.mjs",
+          "sha256": "1bb8435af1b11d74ad7c8f63b74f2e802f993983bfb41b12b6f8dd7a60c24dd2"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/scope.json",
+          "sha256": "467c6cb53d6e5eba37e3c06ece5f6cebc25fca86ea40f407294b64803f3c542b"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-manifests/76e6ebbe3e1df3f3.json",
+        "sha256": "76e6ebbe3e1df3f3facda7764d53ec48b0f6d3ad0c3aadeda2d9f8883a32bb38",
+        "fileCount": 1652
+      }
+    },
+    {
+      "mode": "browser",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 5,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "exitCode": 1,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/result.json",
+        "sha256": "3050c0a8ef0b7552d335d329e16b5ba73c54b96dab95b00a0fe86ef98f26e747",
+        "bytes": 2839
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/execution.json",
+        "sha256": "81df357aca54ea55757e938b64b253cd366e9c47e3615fdffeafb46fe9a2b1cd",
+        "bytes": 722
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/playwright.json",
+        "sha256": "1a01273543dd05920c0029a4e124a0390634751c750930f92d93ce321c910fb0",
+        "bytes": 16023
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/execution.json",
+          "sha256": "81df357aca54ea55757e938b64b253cd366e9c47e3615fdffeafb46fe9a2b1cd",
+          "bytes": 722
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/playwright.json",
+          "sha256": "1a01273543dd05920c0029a4e124a0390634751c750930f92d93ce321c910fb0",
+          "bytes": 16023
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/result.json",
+          "sha256": "3050c0a8ef0b7552d335d329e16b5ba73c54b96dab95b00a0fe86ef98f26e747",
+          "bytes": 2839
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/stderr.log",
+          "sha256": "cac743dab4806a2b07f8b658ae3e8a385ed1fc6d4071e67890ede6e1a20e20be",
+          "bytes": 327
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/stdout.log",
+          "sha256": "52f455c9b0e3120e2afd79ff6f932efe65e687110031d2bee9b442fbad7f56ec",
+          "bytes": 3069
+        }
+      ],
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/check.mjs",
+          "sha256": "7b598cc3adfd3237d082c364757654390ee44e8ea3d8ae3e1d0e60d79f1dfc4a"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/entry.json",
+          "sha256": "8e230873eb85d8169089f5845680250ac5a07b729706aa6cc96e88dc6e394996"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit.config.mjs",
+          "sha256": "4e40fc2a35f6a16a84ffedcb445211d3b2fac907968719945531166487bc858c"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/playwright.config.mjs",
+          "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/configure.mjs",
+          "sha256": "1bb8435af1b11d74ad7c8f63b74f2e802f993983bfb41b12b6f8dd7a60c24dd2"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/scope.json",
+          "sha256": "467c6cb53d6e5eba37e3c06ece5f6cebc25fca86ea40f407294b64803f3c542b"
+        }
+      ],
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-manifests/76e6ebbe3e1df3f3.json",
+        "sha256": "76e6ebbe3e1df3f3facda7764d53ec48b0f6d3ad0c3aadeda2d9f8883a32bb38",
+        "fileCount": 1652
+      }
+    }
+  ],
+  "externalArtifacts": {
+    "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1",
+    "files": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/.last-run.json",
+        "sha256": "a671e5c57359ac85b9cbd554cfdd25663f7547a20c2f503a0797be5dbb36ac58",
+        "bytes": 96
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-en/attachments/booky-live-character-source-evidence-e6c4d79cb53dc086283da27f7daa37bba08b7af1.json",
+        "sha256": "1e0734a4d0413219925e9a6c671fa3dddcb4458c2e6c6357e6701a102849aae4",
+        "bytes": 154194
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-en/booky-live-character.json",
+        "sha256": "1e0734a4d0413219925e9a6c671fa3dddcb4458c2e6c6357e6701a102849aae4",
+        "bytes": 154194
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-en/booky-scale-en-320-closed.png",
+        "sha256": "6660e001752fed7171b3979e4842d60984f97d0d4a1ca65b7636fbd61ded0dc6",
+        "bytes": 329473
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-en/booky-scale-en-320-open.png",
+        "sha256": "a1b256a9322b7de2a5cdb64311ca10401a593fb8cba1ba9e02c48dc61876a182",
+        "bytes": 280743
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-en/booky-scale-en-640-closed.png",
+        "sha256": "d95e1ea6fa006c7e64924e86f5b8d5078dddebfff9eeec12a5d8c6aee58b8e4a",
+        "bytes": 134937
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-en/booky-scale-en-640-open.png",
+        "sha256": "77d6eeb4fe9b3299e11cb43e85b04556bb3093c9c9ee33d1d55fd81a3ee9eb85",
+        "bytes": 142033
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-ru/attachments/booky-live-character-source-evidence-7f6a0db37c45ade8e1e783c1b1ec5e92489d0d06.json",
+        "sha256": "b01abbbe06c0e9e5396bb1d1c230d65e23c810ec1b41a7df70a526c50b81ce4f",
+        "bytes": 149434
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-ru/booky-live-character.json",
+        "sha256": "b01abbbe06c0e9e5396bb1d1c230d65e23c810ec1b41a7df70a526c50b81ce4f",
+        "bytes": 149434
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-ru/booky-scale-ru-390-closed.png",
+        "sha256": "5f632d462197e5607fb01b122a355fa63d9930c7dd30fe3997dc2ef1c3e2bc43",
+        "bytes": 404400
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-ru/booky-scale-ru-390-open.png",
+        "sha256": "abf9956c5dce08de43b6039dc5b6580752aca3499fa5fbfb4a6f31dc196946d8",
+        "bytes": 337904
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-ru/booky-scale-ru-844-closed.png",
+        "sha256": "28964fc711c05faa266fca579f3f2b5699e39b1ebe85c044f4cd62b71bef69f1",
+        "bytes": 175810
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Booky-scale-label-clearance-ru/booky-scale-ru-844-open.png",
+        "sha256": "db12278c2c01d74b6edd3e07ea54679550cf0cd5f60eb9fb5bac4de4b18a615d",
+        "bytes": 210917
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-6d6ad59380eb1ff2590163fbca12a191b4f7fec0.json",
+        "sha256": "2f2ad716951073a7c14ca52cbac4d2cc5b0357b8ac67258c179a3f87c9aae439",
+        "bytes": 310182
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-live-character.json",
+        "sha256": "2f2ad716951073a7c14ca52cbac4d2cc5b0357b8ac67258c179a3f87c9aae439",
+        "bytes": 310182
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png",
+        "sha256": "adb4c8e1268b1c9105f1f4a4f8d5b3da99803e4d79bba4f3424cff1e0513da44",
+        "bytes": 100676
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-tips-en-320.png",
+        "sha256": "9a1fe2366ae3e8736235774d1267ec23f06aa0256f678073d024a34a6474bfc2",
+        "bytes": 133475
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png",
+        "sha256": "a0aa6a641be723a3893ad588e53780c1dd53f1ed325522a6779dec42b7481f90",
+        "bytes": 328886
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-landscape.png",
+        "sha256": "de93ce0957984e1cf157f4d5c13a8448828de59483ef7d19e3c7e2bc1272dec2",
+        "bytes": 182838
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png",
+        "sha256": "a8a41240a58c3ac0aaa8110c0fffd78bf10324bd2d5ac42cdd89b86b5a2c44a7",
+        "bytes": 328225
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/attachments/booky-live-character-source-evidence-fca3ac57939dd5304e579f793c5473f008a8fc75.json",
+        "sha256": "29d65bcdd8ed2242ec8597727e91c359b972b7a1190be9a6417807bcd84127cc",
+        "bytes": 508389
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-en-568.png",
+        "sha256": "43aaa273240021803565d72c83d5ad79f497379f3786d7070ba4eeedc2b30899",
+        "bytes": 106916
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-en-640.png",
+        "sha256": "4739f1b386ebb7b7293820ac1059760986a5bcdf2d1db238cb544464bd9bd2bb",
+        "bytes": 135081
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-ru-568.png",
+        "sha256": "b5b11bacab6d3638b252a50e02ce057f7884aee04a42309c7fa3d3b00290d469",
+        "bytes": 117781
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-clear-walk-ru-640.png",
+        "sha256": "fe5785f9f0f76b213dd285981f7d37ae3e69ecf89340879f133c4f9d0317e540",
+        "bytes": 135681
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-live-character.json",
+        "sha256": "29d65bcdd8ed2242ec8597727e91c359b972b7a1190be9a6417807bcd84127cc",
+        "bytes": 508389
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-margin-walk-ru-1440.png",
+        "sha256": "688c5987638e7cb3fd602f99b6e3422b72261a90d549f286555fd00d33637398",
+        "bytes": 1098135
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-touch-walk-ru-390.png",
+        "sha256": "36b2405fad3037a3b8f25774e62dc0daf2b07297b6b9307ca1646af2b469cd9e",
+        "bytes": 389358
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-8443bf825b22e7bf20d68cc2f785635ecb4c0489.json",
+        "sha256": "d68b3d7e2d7a43ea8b5474d0479f530651b4ea4b0c1801ef77bf92d910f4d2d3",
+        "bytes": 122129
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png",
+        "sha256": "dd9613aa1d514b4f6b043f3cb7f5930a25309df9a6b890ac314ab90181883094",
+        "bytes": 126500
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-placement-failure.png",
+        "sha256": "ed99b148c0cfbf3395dd7551772c1ea24a7e5ce8105ff205a9faa900c86ec9b1",
+        "bytes": 126472
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "d68b3d7e2d7a43ea8b5474d0479f530651b4ea4b0c1801ef77bf92d910f4d2d3",
+        "bytes": 122129
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/error-context.md",
+        "sha256": "7a27ef8e05bcb8bbb78e3dd04e4e2121239c69b3beb97c7506e563c2f242fd84",
+        "bytes": 20070
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-3be6141156c78e472a7483f07cc136c0a35457b1.json",
+        "sha256": "69d1eadcd8988c348d4e59d49f75969b764c6f6ffc3d4b44943f2fb5b7e18417",
+        "bytes": 639793
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/booky-live-character.json",
+        "sha256": "69d1eadcd8988c348d4e59d49f75969b764c6f6ffc3d4b44943f2fb5b7e18417",
+        "bytes": 639793
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png",
+        "sha256": "3d146d42e85970afeef66b967b62610fb2d8ca053658ec2cc00662d966ead88d",
+        "bytes": 109370
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png",
+        "sha256": "ad8f42f395a8897268013e4057c551c534804d15d875668ac89f4b060b4cfcd3",
+        "bytes": 149845
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png",
+        "sha256": "6363469f8c55fb6974c6ef7adca03eff5c4819bcc15cd3c6ee4d459ae336a772",
+        "bytes": 183190
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png",
+        "sha256": "6a0ed683f3b2d652fef4f0fd4f4ff542dae17dcdd28ee9c6c4a9103fed4bbcb7",
+        "bytes": 195001
+      }
+    ],
+    "fileCount": 39,
+    "bytes": 9752055,
+    "copied": false
+  },
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/diagnostic-history.json",
+    "sha256": "752796bfb142c7cbc6b5ed37a0dd4fd4b7d73e9c31bf15ba85c55996125846fc",
+    "bytes": 31209
+  },
+  "sourceInputsRehashed": false,
+  "currentHelpersChanged": false,
+  "largeReportsDuplicated": false,
+  "releaseReady": false
+}

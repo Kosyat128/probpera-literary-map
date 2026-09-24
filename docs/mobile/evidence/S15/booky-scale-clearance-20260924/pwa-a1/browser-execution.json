@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-scale-clearance-20260924/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 22587,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "c54191fd6acd812d45863c5b2eac176141868c61345555ef65cbf00110ffb6c9"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "a4069bb89afa960d71e23caaa3ecf48002717ca47c931848743fc68ac55d4f0b"
+  }
+}

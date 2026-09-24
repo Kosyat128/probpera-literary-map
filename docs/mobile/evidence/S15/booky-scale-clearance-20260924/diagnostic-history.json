@@ -1,0 +1,467 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T07:53:15.696Z",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-touch-gestures-20260924/result.json",
+    "sha256": "ed4fa289b6660b300aba624a67a11d80bfe648567cbf17304d52232d5a33f73d"
+  },
+  "attempts": [
+    {
+      "attempt": "a1",
+      "reportFormat": "playwright",
+      "classification": "confirmed-baseline-product-overlap",
+      "rejectedAsFinalCandidate": false,
+      "pass": false,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/playwright.json",
+        "sha256": "d03a632eda328f6cb792c897b79b1a93e19d6b991f65667fb0536281a68bd2ff"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/execution.json",
+        "sha256": "19821f35405cb46721a818b585b33c931d32bb6b3a78cf9e82a8afaa8591df26"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/stdout.log",
+          "sha256": "48195af13336f5458cd3b7f223b0b351f071f93b6bd4eaf0905bbfffec1ef8b2"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/stderr.log",
+          "sha256": "ac16c2ec88bbb4cfafdc380f087c49249fe359f40abcae691343c584ba358501"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/execution-start.json",
+        "sha256": "492f9061f2784e41288297590f4850419d7c52723ba586cc5613e1b5208211cc"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/proof.json",
+        "sha256": "956e428f3ab3df42f1102f87420a4cbdafef249d02b6377d3fd9b7a7028eeb03"
+      },
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "capturedSourceCount": 16,
+      "qualification": "Actual baseline product overlap reproduced in all6 states perlocale. All observations completed; real touchzoom, geometry fit, preferences and canonical resources passed. Crowded landscape card-toolbar overlap recorded descriptively, not generalized to a new defect.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/authorized-source.json",
+          "sha256": "d9d2adb0fc5fc0491bc3ed994c7ca9c99bebd991527935f9ea6581af248467eb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/playwright.config.mjs",
+          "sha256": "9b120b7ee6b718bdcac6f473578d16d502aa7cfa6ca656585f88503eca37f7fd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/preflight-result.json",
+          "sha256": "60382e9905608dc172adf71e985884460b6f2c8000660d6b0db8e6fdd1ffd9ae"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/preflight-start.json",
+          "sha256": "57f36885b9271b1a51162ee4481abe5bafaa882b7d135daa322de00ac8cbe9da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/preflight-stdout.log",
+          "sha256": "8069fbf0c40caa8d751b18d956c9b39e0cf4e01128420eb68936e01bc9886e1b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/prepare.mjs",
+          "sha256": "82fc26e32555354652e1489bf2ae5fc9cbc8ead73253032dc4ff8e3c18fea061"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/run.mjs",
+          "sha256": "09393884d3413baacd83227d322cf7bbc860996a23fc090c52d0e532d572e9f9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/runner-execution.json",
+          "sha256": "8ea4f6da0c2633e4006f8e7554fcd64bb6633a284aa9f2371945f9b507bcc7ae"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/runner-stdout.log",
+          "sha256": "e2c3be21e0977ee08cff1fe50c496c4853a69cd6d8f4aeee1323eea17ec93ada"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/scale.spec.mjs",
+          "sha256": "c85e97d2a7faaa84cc80283dafc4def0a4fc8b08c37eb406529d774116626fbf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-en/booky-live-character.json",
+          "sha256": "bd079304123b2647b750da06d6ea90793d20bc87bd508d92456ea21d42d8fd02"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-320-closed.png",
+          "sha256": "09d4c59a21076d69b74ea57a81515362ac37c00653c7cef960e33ba3438fc712"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-320-open.png",
+          "sha256": "95c21ce6e3a8a9b22e0445ef03afe3ce8039f5414ac3ab435b00d608366bcd24"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-640-open.png",
+          "sha256": "4eb0ee5103be885aff6522ff34b35b24128342e09f6ad598029bf5a2053386f0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-640-closed.png",
+          "sha256": "78e7b0b77cd252dada3aa7cd2cb815366e4f8ee6d2aaf8778ed32edeca11ce2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-ru/booky-live-character.json",
+          "sha256": "0ce998fd193cc1c2a5bed7f61bdff0cf51eb17ead0602408afde138f7f18ba7f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-390-closed.png",
+          "sha256": "823060253ba863d7034cad3928cbd274b5d4baa42150e6c0d9b34961375aa30e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-390-open.png",
+          "sha256": "788ee020b12b119eac3b8a0970f354f70dde68aa1fa760dbefafcf41e4fa330f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-844-open.png",
+          "sha256": "021d66085248d78447fcb5b343ad92d367176cc1d51874c7bbe1cd9b0cc764a3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-844-closed.png",
+          "sha256": "80c3b85fd624ca5b4675f8208c9954c906c56190ab2ce2e16ec11e29de102a73"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-ru/attachments/booky-live-character-source-evidence-c87332aaa4bd0286ec6da66393977f2785efa7db.json",
+          "sha256": "0ce998fd193cc1c2a5bed7f61bdff0cf51eb17ead0602408afde138f7f18ba7f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-ru/error-context.md",
+          "sha256": "8e885778b330488d6ce5ee787870bb3c9c950e3e798da65ae61fb1002f1694b2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-en/attachments/booky-live-character-source-evidence-d39c12f262479eedad9772ef48ede3e9249dea71.json",
+          "sha256": "bd079304123b2647b750da06d6ea90793d20bc87bd508d92456ea21d42d8fd02"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a1/artifacts/scale-Booky-scale-label-clearance-en/error-context.md",
+          "sha256": "3a749542e0f47cdc58a86630e9ab5193c0c7d0a8bef55200927705c2b64139c4"
+        }
+      ]
+    },
+    {
+      "attempt": "a2",
+      "reportFormat": "playwright",
+      "classification": "raw-pass-rejected-open-help-regression",
+      "rejectedAsFinalCandidate": true,
+      "pass": true,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/playwright.json",
+        "sha256": "5935d12d8d42845879bcfb4a3f0770fe89e9f5f5590b4116077a7b79516b6f96"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/execution.json",
+        "sha256": "859f8dbbaa5fd0a894b57c14406b9d360a0a6516d095fa9fa17e9ff7ff5f04db"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/stdout.log",
+          "sha256": "03cb7866d7c305c41670039e47bd743552fd8be2cceb150b268784652ee193a9"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/stderr.log",
+          "sha256": "368d415194a7214ded53749601e9974f2f1ae26b80408688b8ba1d7c768abb1e"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/execution-start.json",
+        "sha256": "648a62b5fd671e8d1a0b7430e8f94754230d871105f9a8776a41ad7c86cd9d7e"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/proof.json",
+        "sha256": "1cacd0aaaa7ebc781020f4a61487aa42393968a3ba276f1cf75b1b01e4ca3836"
+      },
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "capturedSourceCount": 16,
+      "qualification": "PASS for bounded whole-pet scale clearance in all6states/locale and portrait help clearance. RU844x390 open help newly overlaps scale output by2415px2 while whole pet is clear; baseline card-label overlap was0. Crowded landscape help overlap was descriptive, so this PASS does not establish universally visible scale output. Runtime/fixture integration remains pending root review of this tradeoff.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/authorized-source.json",
+          "sha256": "77f9e10036439d2a9770239648656df27ecf0c9c2ce3dc797f93eaa65e513ea1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/playwright.config.mjs",
+          "sha256": "9b120b7ee6b718bdcac6f473578d16d502aa7cfa6ca656585f88503eca37f7fd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/preflight-result.json",
+          "sha256": "09f85ddffe85a9dd79bacbe0a58b7a4fb067f95869432ad997f727782031500a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/preflight-start.json",
+          "sha256": "997888a02c3045010bc7b57023fa9ff034222a81dc547e5d30fdec91d5684498"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/preflight-stdout.log",
+          "sha256": "8069fbf0c40caa8d751b18d956c9b39e0cf4e01128420eb68936e01bc9886e1b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/prepare.mjs",
+          "sha256": "1abacf25bd4e0bf91944eeda792b31f0da8d93002a42a4ec5adbc5c3409a45a0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/run.mjs",
+          "sha256": "f3c1c03f408217c3e3cebed7c4ff0ba8491a96959fb0d3cb89baf15edc37c578"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/runner-execution.json",
+          "sha256": "d132a7845904098cd4dc05d97b8b52b260cf5ffd1839db9fde8c7cfc866c0214"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/runner-stdout.log",
+          "sha256": "4370b8d9f96d019218301afacff3a244bc8d1137bf0a0daca5c4d2d81e9e5769"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/scale.spec.mjs",
+          "sha256": "42b2a3e6ac3b29f6d36ec9d4716cf4feba23c7e91793db4eaddad055a9cb8e2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/source-dirty-diff.patch",
+          "sha256": "2c501261a4f6e6aaae23ab43195a7d6c00d0f08b4bff5e5824a2b90d0cef9c47"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-en/booky-live-character.json",
+          "sha256": "80eda359c336582d0286c74154afa374fab85df3ccda4f9b88b459bb70ad475a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-320-closed.png",
+          "sha256": "e99694965cb41a04e63c57ccd2e688706fc4f822cbbf484515fe251f0a37ac17"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-320-open.png",
+          "sha256": "4d48e02a51a9e4c583c18148e7e56dba750d5e4ddc2f5646ae064db7e6abacdf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-640-open.png",
+          "sha256": "ed0b4b4f4c525cf3bfac341ead4640b4cedb43013e717536c65a1487361945db"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-640-closed.png",
+          "sha256": "2867893c4d305cf207008dec6451443bd34f5304fccfec3de20ed8c995d69d78"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-ru/booky-live-character.json",
+          "sha256": "c9b76b1a32b72519c4db4ce094c0bf9258aa11f285ebd6ba3de84e668ad7ac6e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-390-closed.png",
+          "sha256": "056e4f8b48d2f27a8d8a88b321cd916dbefdb4ce2adf63483e75dfda3818efd6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-390-open.png",
+          "sha256": "191ad13fa8f86d26835e96034b7941ef8978871c75b0028b1d01e28ea33c9995"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-844-open.png",
+          "sha256": "2358f858c9f93feec12a7ba77481449b5105d6951cd67182d49112827c8570a6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-844-closed.png",
+          "sha256": "2a78f1eea185ad08c87efee134c9bf7ec631627bfa7d978090fd54c7dcb25760"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-ru/attachments/booky-live-character-source-evidence-faaca6fea9e437291698f17704133939326325de.json",
+          "sha256": "c9b76b1a32b72519c4db4ce094c0bf9258aa11f285ebd6ba3de84e668ad7ac6e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a2/artifacts/scale-Booky-scale-label-clearance-en/attachments/booky-live-character-source-evidence-4bb575587a35e8640ba30ae4ed9a9ba59a143c01.json",
+          "sha256": "80eda359c336582d0286c74154afa374fab85df3ccda4f9b88b459bb70ad475a"
+        }
+      ]
+    },
+    {
+      "attempt": "a3",
+      "reportFormat": "playwright",
+      "classification": "post-change-stronger-clearance-regression",
+      "rejectedAsFinalCandidate": false,
+      "pass": true,
+      "browserStarted": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/playwright.json",
+        "sha256": "83f5505e5930c6cd141d429f9426038e0e35a6a23d412c904f29061f94ac86b3"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/execution.json",
+        "sha256": "4d66ca1b1212aea19d70cb7a2bfb627c7428e6ae6c1b0603d297003e4a060c34"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/stdout.log",
+          "sha256": "13711b5664ae249cfd0ee9eb144a738bc60c248a4774192d3eacda91fef19d30"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/stderr.log",
+          "sha256": "1afae3928ef268ad4b7f1465c444bd17b9fc52129e6b2150744e9de44a6a7ee6"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/execution-start.json",
+        "sha256": "9e9dfcc6aea4efb79edaaf37a2a80960ebf3b948283bcc2e9967b668c72d5407"
+      },
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/proof.json",
+        "sha256": "c0bb2c50f89ce1b8804f5cdfb2c9307e5d20dbdab1c17c0126af05d32bb86937"
+      },
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "capturedSourceCount": 16,
+      "qualification": "Whole companion and open help are both clear of scale output in all recorded states; all help cards are >=200px high. Background toolbar overlap in cramped landscape remains descriptive existing scope, not full navigation/accessibility or device acceptance. a1 failure and a2 scoped PASS/rejected card overlap remain preserved.",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/authorized-source.json",
+          "sha256": "3073584271739aaffc59e0248d110973937331e6318d4379e057b7b0bb797ca0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/integration.json",
+          "sha256": "264cb0f0c540224d3732c4d9ccbfac7de848ce2617e0ab9e6e4159428ffe84fc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/playwright.config.mjs",
+          "sha256": "9b120b7ee6b718bdcac6f473578d16d502aa7cfa6ca656585f88503eca37f7fd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/preflight-result.json",
+          "sha256": "212ecdd89ca4c47c8cae04abf4ffe10063049658099d4c31481e82eef047fbd1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/preflight-start.json",
+          "sha256": "1cea17a45cc48a305f0a57abeee6a83b7b2214ede6a3d72e962effba64d06c07"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/preflight-stdout.log",
+          "sha256": "8069fbf0c40caa8d751b18d956c9b39e0cf4e01128420eb68936e01bc9886e1b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/prepare.mjs",
+          "sha256": "997a9f95befc5b61a05f6ea3d0848317f11be83e103206f5f595242f0880250c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/run.mjs",
+          "sha256": "f3c1c03f408217c3e3cebed7c4ff0ba8491a96959fb0d3cb89baf15edc37c578"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/runner-execution.json",
+          "sha256": "a14bfe5ff4a08e2aa66e17c79ea1e2340cf3d77757e8718f5957c8963620d50e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/runner-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/runner-stdout.log",
+          "sha256": "b62158079658ec7f58d4387a1a69922e17f08b4a166ca7b978ad77634c4e4097"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/scale.spec.mjs",
+          "sha256": "68e1e5e2433391dd092fc7564615a05e16bfa63b3288454f5450fe1d48f5595c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/source-dirty-diff.patch",
+          "sha256": "d25c51434155b5f6a17f6a83d021172d8f231a6085d82fb01d24c87c6ce9d9c8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-en/booky-live-character.json",
+          "sha256": "b67252705004d00779a1e659137fe51e37b1fb528003d9c0875ca8b085934df0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-320-closed.png",
+          "sha256": "ae0308d866a4946e773127996500667a906809338f66d81dea07847b200208bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-320-open.png",
+          "sha256": "483bcae1049e974a53f4bca700e444991fd43856915f059321c6c22b6f924590"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-640-open.png",
+          "sha256": "bccbad5a9585869a28de45f454f47879dd450b8168c0600561ebc7b5f30ee780"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-en/booky-scale-en-640-closed.png",
+          "sha256": "ff29cd6106fcea6f3610c95ea04f1836c041349e24d97077750514ed371c73f6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-ru/booky-live-character.json",
+          "sha256": "c0a8fa8a3fd27402419cf3106102bc8e105acee0f7e53b4cea515c55dd814d53"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-390-closed.png",
+          "sha256": "151d5e5403b124c064cdbc8f15bf2947460683caac43429f9078a9f43777747e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-390-open.png",
+          "sha256": "4f1812772862879cddcde8ff2bd013755e814961bfc8848648c4acd301197cca"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-844-open.png",
+          "sha256": "ca49b1fa87bef0e80528e5740280a5cfb4cc949b90017d7fefc3ffe83de130d7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-ru/booky-scale-ru-844-closed.png",
+          "sha256": "87e2accd16adc38b79dda5cc238f1aebe186dc93da3afe9ffd7555d524a3f629"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-ru/attachments/booky-live-character-source-evidence-9375ed6e4cd5f3df1b4d30188885755f4fb30f1b.json",
+          "sha256": "c0a8fa8a3fd27402419cf3106102bc8e105acee0f7e53b4cea515c55dd814d53"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance/a3/artifacts/scale-Booky-scale-label-clearance-en/attachments/booky-live-character-source-evidence-0eb01e0f4944d04133a66b4036f3a45ca724ab51.json",
+          "sha256": "b67252705004d00779a1e659137fe51e37b1fb528003d9c0875ca8b085934df0"
+        }
+      ]
+    }
+  ],
+  "pending": [],
+  "limitations": [
+    "Baseline a1 is a completed product failure: both locale cases failed actual companion/scale-label overlap, while toolbar-parent overlap remained zero and other recorded invariants passed. Its true exit 1 and all eight captures are retained.",
+    "a2 retains its true exit 0 and two raw passing cases but was rejected as the final candidate: RU844 open help newly covered 2415 square pixels of the badge, versus zero at baseline. Its landscape card/badge check was descriptive. a3 uses the stronger both-orientation open-help clearance contract. Existing background-toolbar overlap is a separate observation.",
+    "Source hashes remain authenticated from the original immutable execution receipts and are not recomputed against later canonical source. These browser diagnostics are not installed-device, full accessibility or performance acceptance."
+  ],
+  "releaseReady": false
+}

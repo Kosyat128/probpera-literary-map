@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-scale-clearance-20260924:begin -->
+Latest source 53a7c61c: Книжулик / Mr. Booky accounts for the Zoom / Масштаб feedback badge in navigation bounds. Selected cases cover placement, walking, short-landscape controls, open help and RU/EN badge clearance. Unchanged model geometry retains its five reviewed D190 photos and original limitations; prior gesture and wider interaction evidence remains attributed to its original source.
+
+Evidence: docs/mobile/evidence/S15/booky-scale-clearance-20260924/result.json. D192. 161 unit cases and 6 selected browser cases; 35 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-scale-clearance-20260924:end -->
+
 <!-- s15-booky-touch-gestures-20260924:begin -->
 Latest source 5c2ca4dd: Книжулик / Mr. Booky uses a local thirteen-gesture Surprise cycle with no immediate cycle-boundary repeat and skips a manually selected pending gesture. Four selected actual-App cases cover the live model, gestures and RU/EN mobile touch behavior. Model geometry and the five directly reviewed D190 model photos remain unchanged and retain their original limitations. Saved preferences are preserved.
 

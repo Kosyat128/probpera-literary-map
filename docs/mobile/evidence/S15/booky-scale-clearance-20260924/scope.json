@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "description": "Companion placement accounts for the rendered Zoom / Масштаб feedback badge outside the globe-control toolbar. The existing compact floating companion row while help is open extends to short landscape widths up to 1024 px; the reserved collection dock keeps its existing override. Selected regressions cover walking, mobile placement, short-landscape controls, open help and configured RU/EN companion/card clearance from the badge. Model geometry, movement algorithms and the Surprise picker remain unchanged. At short landscape widths up to 640 px, the floating open-help row stacks its two 44 px tools vertically in a 144 px row to preserve card readability; the reserved collection dock retains its row layout.",
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedBrowserTests": 6,
+  "expectedImages": 35,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-open-help-placement",
+      "flags": [
+        "openHelpLocaleControlsReachable",
+        "desktopOpenHelpNavigationReachable",
+        "closedHelpNavigationReachable",
+        "collectionHeaderReachable",
+        "helpScrollsByPointerWheel",
+        "helpClosesWhileScrolled",
+        "helpRegrowsOnLargerViewport",
+        "petAndHelpFitWithoutOverlap",
+        "noAutomaticPreferenceWrites",
+        "noHelpCameraChanges",
+        "sameCanonicalGlobe",
+        "compactLandscapeHelpReadable",
+        "closedHelpGlobalHeaderReachable"
+      ]
+    },
+    {
+      "scenario": "explicit-margin-walk",
+      "flags": [
+        "walkStartsAtRestingRow",
+        "walkPathAvoidsNavigation",
+        "compactWalkAvailabilityMatchesClearSpace",
+        "compactWalkKeepsNavigationReachable",
+        "compactUnavailableWalkExplained",
+        "mobileTouchWalkStartsContinuously",
+        "mobileTouchStopsWalk",
+        "mobileTouchDragStopsWalk",
+        "mobileHeldStopCannotRestart",
+        "trustedTouchGlobeResetPosition",
+        "globeResetPositionPreservesContext"
+      ]
+    },
+    {
+      "scenario": "scale-label-clearance-ru",
+      "flags": [
+        "scaleLabelClearsWholeCompanion",
+        "scaleLabelClearsOpenHelp",
+        "scaleLabelTracksRealTouchZoom",
+        "scaleLabelClearAfterRotation",
+        "scaleLabelKeepsPreferencesAndScene",
+        "scaleLabelTrustedTouch"
+      ]
+    },
+    {
+      "scenario": "scale-label-clearance-en",
+      "flags": [
+        "scaleLabelClearsWholeCompanion",
+        "scaleLabelClearsOpenHelp",
+        "scaleLabelTracksRealTouchZoom",
+        "scaleLabelClearAfterRotation",
+        "scaleLabelKeepsPreferencesAndScene",
+        "scaleLabelTrustedTouch"
+      ]
+    }
+  ],
+  "expectedUnitTests": 161,
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "requireDiagnosticHistory": true,
+  "requiredVisualFilenames": [
+    "booky-scale-ru-390-closed.png",
+    "booky-scale-ru-390-open.png",
+    "booky-scale-ru-844-closed.png",
+    "booky-scale-ru-844-open.png",
+    "booky-scale-en-320-closed.png",
+    "booky-scale-en-320-open.png",
+    "booky-scale-en-640-closed.png",
+    "booky-scale-en-640-open.png",
+    "booky-help-globe-ru-568.png",
+    "booky-help-globe-en-568.png"
+  ],
+  "requiredObservationChecks": [],
+  "browserTestTitles": [
+    "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion",
+    "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+    "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+    "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+    "Booky scale label clearance ru",
+    "Booky scale label clearance en"
+  ],
+  "retainedCaseCaptureSubtotal": 27,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "f1a2ef74a7233e6e2093295f71e6ed117d3d8812636f39ec8199606ffbc2a609"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "e6f7bf3d52a84f6adcf98226951af94debdfab20374fa5dcf6afd73c09b2d4cf"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "4fd5d8cf9a5cc536285bbfd7075addb1d3416126b6e073c3380e11613695d25b"
+    }
+  ],
+  "retainPriorModelPhotos": true,
+  "expectedRetainedModelPhotos": 5
+}

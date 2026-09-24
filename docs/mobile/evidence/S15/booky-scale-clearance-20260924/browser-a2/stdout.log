@@ -1,0 +1,12 @@
+
+Running 6 tests using 1 worker
+
+
+
+[1/6] tests\pwa\booky-live-character.spec.mjs:835:1 › Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion
+[2/6] tests\pwa\booky-live-character.spec.mjs:1247:1 › Mr. Booky mobile placement preserves globe and collection hit targets in both locales
+[3/6] tests\pwa\booky-live-character.spec.mjs:1388:1 › short landscape globe controls stay reachable beside the collapsed country archive in both locales
+[4/6] tests\pwa\booky-live-character.spec.mjs:1531:1 › Mr. Booky open help preserves primary navigation and scrolls independently in both locales
+[5/6] tests\pwa\booky-live-character.spec.mjs:2456:150 › Booky scale label clearance ru
+[6/6] tests\pwa\booky-live-character.spec.mjs:2456:150 › Booky scale label clearance en
+  6 passed (2.1m)

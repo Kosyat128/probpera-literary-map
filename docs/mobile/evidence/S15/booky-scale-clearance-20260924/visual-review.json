@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T08:12:13.194Z",
+  "pass": true,
+  "sourceCommit": "53a7c61cf131b6604e384074acc256366c3217fa",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/source-manifests/9ebd4a0bfbec8136.json",
+    "sha256": "9ebd4a0bfbec8136bb9c21748e7142a22e7a0d2832b32ab072f9c37836ef7f21",
+    "fileCount": 1652
+  },
+  "inspectedCount": 10,
+  "totalCapturedCount": 35,
+  "scope": "Direct review of the selected final scale-badge clearance captures. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 10 of 35 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Badge clearance and placement were exercised in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/final-visual-receipt.json",
+    "sha256": "baf7e383589b2f383e38d20b96c44c7ca604cd57da4176d8bbe6ab449fb54009"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/booky-scale-ru-390-closed.png",
+      "sha256": "8a870574b8327850748ebfab1748c73bf9939cef38f1d506fd18a8b175bb651f",
+      "width": 390,
+      "height": 844,
+      "bytes": 404389,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Масштаб 167% badge is fully readable with a visible gap below the enabled Прогуляться button. The complete character, magnifier, move/hide buttons and walk control fit the portrait viewport.",
+        "The main globe toolbar and country archive remain visible in this closed-help capture."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/booky-live-character.json",
+        "sha256": "b6dc8ac22d116a7c04f50c8bfb68f8d5a5a2c0b0eb9e29010f7820cf9163ea77",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/attachments/booky-live-character-source-evidence-2966a19ce82507ecdea237fc26c73b570e4439d6.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/booky-scale-ru-390-open.png",
+      "sha256": "8f0cdac82f0f1a2728a7a676394a9ed54113b1c89a90e97a44b6c132a8f544d7",
+      "width": 390,
+      "height": 844,
+      "bytes": 338246,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The badge stays clear of the complete companion group and the open card. The full avatar, both tool buttons and disabled walk control fit below the card.",
+        "The Russian title, selected writer, complete instruction and close button are readable; the next action is only partly visible at the bottom of the scroll viewport. The card covers part of the background Appearance control."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/booky-live-character.json",
+        "sha256": "b6dc8ac22d116a7c04f50c8bfb68f8d5a5a2c0b0eb9e29010f7820cf9163ea77",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/attachments/booky-live-character-source-evidence-2966a19ce82507ecdea237fc26c73b570e4439d6.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/booky-scale-ru-844-closed.png",
+      "sha256": "8aa122ca34e9280768e8791b3cccc482440346684db20ec0b287285382b9b367",
+      "width": 844,
+      "height": 390,
+      "bytes": 175800,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Russian badge is clear of the complete horizontal companion row. The full character, move/hide buttons and enabled walk action are visible above the globe toolbar.",
+        "The fixed header, edition rail and country archive remain readable in this closed-help capture."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/booky-live-character.json",
+        "sha256": "b6dc8ac22d116a7c04f50c8bfb68f8d5a5a2c0b0eb9e29010f7820cf9163ea77",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/attachments/booky-live-character-source-evidence-2966a19ce82507ecdea237fc26c73b570e4439d6.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/booky-scale-ru-844-open.png",
+      "sha256": "265486f4c3443e1b8be811dd62fe587161821fdf8402b9a82d9c7a285b126d53",
+      "width": 844,
+      "height": 390,
+      "bytes": 210849,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The badge has a clear gap from both the help card and the complete companion row. The avatar panel, move/hide buttons and close button are fully in frame.",
+        "The Russian selected-writer line and instruction are readable. The open card covers some left-side edition and toolbar content; the right-side companion tools cover part of the compass rail. This is not a universal background-navigation clearance claim."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/booky-live-character.json",
+        "sha256": "b6dc8ac22d116a7c04f50c8bfb68f8d5a5a2c0b0eb9e29010f7820cf9163ea77",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-ru/attachments/booky-live-character-source-evidence-2966a19ce82507ecdea237fc26c73b570e4439d6.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/booky-scale-en-320-closed.png",
+      "sha256": "db1e9ef102950446b838c3f457fa86ae7eb1368b031b70b34dddf92bd6e19a8a",
+      "width": 320,
+      "height": 844,
+      "bytes": 329471,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Zoom 167% badge sits to the right of the walk action without crossing it. The complete character, magnifier, move/hide buttons and wrapped Take a walk label fit the narrow viewport.",
+        "The globe toolbar and country archive remain visible in this closed-help capture."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/booky-live-character.json",
+        "sha256": "ef6863c7eae6fdf9f4d3ee5f58d5e289af799932776b08f8c6666a910d4c3f90",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/attachments/booky-live-character-source-evidence-5ec0ee02caabd1fb95e5d9c059e7bce544b931de.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/booky-scale-en-320-open.png",
+      "sha256": "65b36b837b35c2f884cfad9e8236b1ec44e8b1cf00f45cba6a42432312967e07",
+      "width": 320,
+      "height": 844,
+      "bytes": 280850,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The badge remains clear of the avatar, tool buttons, disabled walk action and help card. The whole avatar panel and both tools fit below the card.",
+        "The English title, selected writer, complete wrapped instruction and close button are readable. This capture shows the current scroll position, not the entire help menu."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/booky-live-character.json",
+        "sha256": "ef6863c7eae6fdf9f4d3ee5f58d5e289af799932776b08f8c6666a910d4c3f90",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/attachments/booky-live-character-source-evidence-5ec0ee02caabd1fb95e5d9c059e7bce544b931de.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/booky-scale-en-640-closed.png",
+      "sha256": "b0b59afbb303a339952675b927ead972db5d7a8083b578649ff8a62d028339b8",
+      "width": 640,
+      "height": 360,
+      "bytes": 135005,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The badge has a visible horizontal gap from the disabled No room action and the rest of the complete companion row. The full character and both tool buttons fit the viewport.",
+        "The globe toolbar, edition strip and country archive remain visible. The character feet are close to the toolbar edge; this image does not establish a numeric clearance margin there."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/booky-live-character.json",
+        "sha256": "ef6863c7eae6fdf9f4d3ee5f58d5e289af799932776b08f8c6666a910d4c3f90",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/attachments/booky-live-character-source-evidence-5ec0ee02caabd1fb95e5d9c059e7bce544b931de.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/booky-scale-en-640-open.png",
+      "sha256": "5ead09f9921a600f70771a75923184239f74c1e4eb42e04c67edf9f2fc913786",
+      "width": 640,
+      "height": 360,
+      "bytes": 130761,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The Zoom badge is separate from the open card and the full compact companion group. The avatar panel and the two vertically stacked move/hide buttons are complete and not clipped.",
+        "The English title, selected writer, instruction and close button are readable. The card and companion group overlap portions of the background edition and globe toolbar areas."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/booky-live-character.json",
+        "sha256": "ef6863c7eae6fdf9f4d3ee5f58d5e289af799932776b08f8c6666a910d4c3f90",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Booky-scale-label-clearance-en/attachments/booky-live-character-source-evidence-5ec0ee02caabd1fb95e5d9c059e7bce544b931de.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png",
+      "sha256": "67457d22a9d521e8bc66421528d1f26afa6c8247a6814356054a172e7d1d76e2",
+      "width": 568,
+      "height": 320,
+      "bytes": 122248,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The full avatar and two vertically stacked tool buttons fit beside the narrow help card. The Масштаб badge remains clear of that group and the card.",
+        "The Russian title and close control are complete; the selected writer wraps legibly over two lines. The instruction begins with two readable lines, while its remainder continues below the current scroll viewport.",
+        "The open card covers part of the background edition and left country-summary areas; the companion and tools cover part of the edition rail. Reset, Source and Open archive remain visible."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "7320c5b2d009907bae09ba621aadc51e874c4b72a29276cc4c333db1a29e5ddd",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-6d1615bb3c691f78406a5de121e2a5520bab5867.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568.png",
+      "sha256": "553d89a09a601a89115be28481be52440732964cf1ca6d2543e9adf540791450",
+      "width": 568,
+      "height": 320,
+      "bytes": 126206,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_utility_visual",
+      "findings": [
+        "The complete avatar and vertically stacked move/hide buttons fit beside the help card. The Zoom badge is clear of the whole companion group and card.",
+        "The English title, selected writer, complete wrapped instruction and close button are readable at this width.",
+        "The open card covers part of the background edition and left country-summary areas; the companion and tools cover part of the edition rail. Reset, Source and Open archive remain visible."
+      ],
+      "captureEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "7320c5b2d009907bae09ba621aadc51e874c4b72a29276cc4c333db1a29e5ddd",
+        "attachmentPath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-scale-clearance-evidence/browser-a2/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-6d1615bb3c691f78406a5de121e2a5520bab5867.json",
+        "attachmentMatchesCapture": true,
+        "sourceInputsMatchedManifest": 670
+      }
+    }
+  ],
+  "releaseReady": false
+}

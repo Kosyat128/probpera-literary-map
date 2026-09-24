@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-scale-clearance-20260924/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-24T07:53:25.789Z",
+  "exitCode": 1,
+  "durationMs": 114063,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/stdout.log",
+    "bytes": 3069,
+    "sha256": "52f455c9b0e3120e2afd79ff6f932efe65e687110031d2bee9b442fbad7f56ec"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/browser-a1/stderr.log",
+    "bytes": 327,
+    "sha256": "cac743dab4806a2b07f8b658ae3e8a385ed1fc6d4071e67890ede6e1a20e20be"
+  }
+}

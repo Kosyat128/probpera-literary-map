@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-scale-clearance-20260924\\unit-a2\\vitest.json"
+  ],
+  "startedAt": "2026-09-24T08:05:59.254Z",
+  "exitCode": 0,
+  "durationMs": 12264,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a2/stdout.log",
+    "bytes": 185,
+    "sha256": "916da5500b566e7357c3e9b103756683cc74a43fcaf048169b5a28ca4ab4ae40"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-scale-clearance-20260924/unit-a2/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
