@@ -723,7 +723,7 @@ test('Mr. Booky opens canonical local utilities without writes and preserves new
   }finally{await fixture.close();}
 });
 
-test('Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion',async({},testInfo)=>{
+test('Mr. Booky fifteen gestures and nonrepeating surprises finish and remain still with reduced motion',async({},testInfo)=>{
   test.setTimeout(150_000);const fixture=await open(testInfo),{page,result}=fixture;
   try{
     await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await stablePose(page);
@@ -735,9 +735,9 @@ test('Mr. Booky thirteen gestures and nonrepeating surprises finish and remain s
     expect(await gestures.evaluate(element=>element.parentElement.open)).toBe(false);await gestures.click();
     await page.mouse.move(2,2);await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
     const gestureCases=[['Wave','greeting'],['Nod','nod'],['Take a closer look','curious'],['Celebrate','happy'],['Encourage','reassuring'],['Wink','wink'],['Sway','sway'],
-      ['Dance','dance'],['Hop','hop'],['Twirl','twirl'],['Stretch','stretch'],['Act shy','shy'],['High five!','highfive']];
+      ['Dance','dance'],['Hop','hop'],['Twirl','twirl'],['Stretch','stretch'],['Act shy','shy'],['High five!','highfive'],['Take a bow','bow'],['Balance','balance']];
     const originalGestures=new Set(gestureCases.slice(0,7).map(([,interaction])=>interaction));
-    await expect(panel(page).locator('[data-booky-gesture]')).toHaveCount(13);
+    await expect(panel(page).locator('[data-booky-gesture]')).toHaveCount(15);
     const before=mutations(fixture),saved=fixture.memory.get(BOOKY),traces=[];
     for(const [name,expectedInteraction]of [...gestureCases,['Sway','sway'],['Surprise me',null],['Surprise me',null]]){
       const button=expectedInteraction===null?panel(page).locator('[data-booky-surprise]'):panel(page).getByRole('button',{name,exact:true});
@@ -791,6 +791,12 @@ test('Mr. Booky thirteen gestures and nonrepeating surprises finish and remain s
         expect(range(values('leftArm').map(value=>value[5]))).toBeGreaterThan(.15);
         expect(new Set(values('rightArm').map(value=>JSON.stringify(value))).size).toBe(1);
       }
+      if(interaction==='bow')expect(range(values('body').map(value=>value[3]))).toBeGreaterThan(.02);
+      if(interaction==='balance'){
+        expect(range(values('rightLeg').map(value=>value[1]))).toBeGreaterThan(.02);
+        for(const key of ['body','leftLeg','leftFoot'])expect(new Set(values(key).map(value=>JSON.stringify(value))).size).toBe(1);
+      }
+      if(interaction==='bow'||interaction==='balance')expect(new Set(values('rightArm').map(value=>JSON.stringify(value))).size).toBe(1);
       const first=trace.timeline[0].at,last=trace.timeline[trace.timeline.length-1].at;
       const configuredDuration=await page.evaluate(value=>window.__bookyLiveFixture.reactionDuration(value),interaction);
       expect(configuredDuration).toBeGreaterThan(0);
@@ -821,11 +827,11 @@ test('Mr. Booky thirteen gestures and nonrepeating surprises finish and remain s
         pose:Object.fromEntries(['body','leftArm','rightArm','eyes'].map(key=>[key,settled.rig[key]]))});
     }
     const newStaticPoses=reduced.filter(value=>gestureCases.slice(7).some(([name])=>name===value.name));
-    expect(newStaticPoses).toHaveLength(6);expect(new Set(newStaticPoses.map(value=>JSON.stringify(value.pose))).size).toBe(6);
+    expect(newStaticPoses).toHaveLength(8);expect(new Set(newStaticPoses.map(value=>JSON.stringify(value.pose))).size).toBe(8);
     expect(mutations(fixture)).toEqual(before);expect(fixture.memory.get(BOOKY)).toBe(saved);expect(await downloadActions(page)).toEqual([]);
     retained(await actual(page),original);result.observations.explicitGestures={traces,reduced};
-    Object.assign(result,{scenario:'explicit-bounded-gestures',thirteenExplicitGestures:true,repeatedReactionRestarts:true,surpriseChoosesDifferentGesture:true,
-      actualRigChanges:true,sixNewMotionsObserved:true,newGesturesHaveDistinctStaticPoses:true,winkMovesOnlyOneEye:true,swayDoesNotStep:true,originalSevenAtMost1100ms:true,configuredReactionsAtMost2400ms:true,
+    Object.assign(result,{scenario:'explicit-bounded-gestures',fifteenExplicitGestures:true,repeatedReactionRestarts:true,surpriseChoosesDifferentGesture:true,
+      actualRigChanges:true,eightNewMotionsObserved:true,bowAndBalanceMotionsObserved:true,newGesturesHaveDistinctStaticPoses:true,winkMovesOnlyOneEye:true,swayDoesNotStep:true,originalSevenAtMost1100ms:true,configuredReactionsAtMost2400ms:true,
       reactionsStopWithinSchedulingAllowance:true,reducedMotionHasNoReactionLoop:true,
       gesturesDoNotWritePreferencesOrProgress:true,sameCanonicalGlobe:true});await fixture.verify();
   }finally{await fixture.close();}
@@ -2388,7 +2394,7 @@ for(const [language,portrait,landscape] of [['ru',{width:390,height:844},{width:
   test.setTimeout(180000);const fixture=await open(testInfo),{page,result}=fixture,o=result.observations.touchGestures={language,portrait,landscape,checks:[],findings:[],orientations:[]};result.scenario='mobile-touch-gestures-'+language;let cdp;
   const checked=async(name,fn)=>{try{await fn();o.checks.push({name,pass:true});}catch(error){o.checks.push({name,pass:false,error:error.message});o.findings.push(name);}};
   const saved=()=>({memory:[...fixture.memory],writes:fixture.operations.filter(v=>v.operation!=='get')});
-  const gestures=['greeting','nod','curious','happy','reassuring','wink','sway','dance','hop','twirl','stretch','shy','highfive'];
+  const gestures=['greeting','nod','curious','happy','reassuring','wink','sway','dance','hop','twirl','stretch','shy','highfive','bow','balance'];
   const phase=value=>page.evaluate(value=>window.__touchGestures.phase=value,value);
   const read=selector=>page.evaluate(selector=>window.__touchGestures.read(selector),selector);
   const touch=(type,touchPoints)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints});
@@ -2410,46 +2416,69 @@ for(const [language,portrait,landscape] of [['ru',{width:390,height:844},{width:
       for(const type of ['pointerdown','pointermove','pointerup','pointercancel','click','touchstart','touchmove'])document.addEventListener(type,observe,{capture:true,passive:true});
     });
     cdp=await page.context().newCDPSession(page);
-    async function expose(selector){
+    async function expose(selector,companion=null){
       for(let attempt=0;attempt<16;attempt++){
-        const before=await read(selector);if(before.inside&&before.hits.every(p=>p.hit))return before;
+        const before=await read(selector),adjacent=companion?await read(companion):null;
+        if(before.inside&&before.hits.every(p=>p.hit)&&(!adjacent||(adjacent.inside&&adjacent.hits.every(p=>p.hit))))return before;
         if(!before.target||!before.clip||before.target.height===0)throw Error('Target has no displayed geometry '+selector);
-        const down=before.target.bottom>before.clip.bottom,space=before.clip.bottom-before.clip.top;
+        if(adjacent&&!adjacent.target)throw Error('Adjacent target has no displayed geometry '+companion);
+        const extent=adjacent?{top:Math.min(before.target.top,adjacent.target.top),bottom:Math.max(before.target.bottom,adjacent.target.bottom)}:before.target;
+        const down=extent.bottom>before.clip.bottom,space=before.clip.bottom-before.clip.top;
+        if(adjacent&&extent.bottom-extent.top>space)throw Error('Adjacent gesture buttons do not fit the touch clip');
         if(space<48)throw Error('Panel usable height below touch gesture '+space);
-        const x=(before.clip.left+before.clip.right)/2,startY=down?before.clip.bottom-12:before.clip.top+12,endY=down?before.clip.top+12:before.clip.bottom-12;
+        const distance=adjacent?Math.min(space-24,Math.max(48,down?extent.bottom-before.clip.bottom+6:before.clip.top-extent.top+6)):space-24;
+        const x=(before.clip.left+before.clip.right)/2,startY=down?before.clip.bottom-12:before.clip.top+12,endY=startY+(down?-distance:distance);
         const stamp=await page.evaluate(()=>({eventCount:window.__touchGestures.events.length,frames:window.__bookyLiveFixture.booky().renderedFrames}));
-        await phase('scroll '+selector);await touch('touchStart',[{x,y:startY,id:31}]);for(let step=1;step<=8;step++){await touch('touchMove',[{x,y:startY+(endY-startY)*step/8,id:31}]);await page.waitForTimeout(24);}await touch('touchEnd',[]);
+        await phase('scroll '+selector);await touch('touchStart',[{x,y:startY,id:31}]);for(let step=1;step<=8;step++){await touch('touchMove',[{x,y:startY+(endY-startY)*step/8,id:31}]);await page.waitForTimeout(24);}if(adjacent)await page.waitForTimeout(180);await touch('touchEnd',[]);
         let previous=-1,matches=0;await expect.poll(async()=>{const at=(await read()).scrollTop;matches=Math.abs(at-previous)<.1?matches+1:0;previous=at;return matches;},{timeout:2500,intervals:[50]}).toBeGreaterThanOrEqual(3);
-        const after=await read(selector),events=await page.evaluate(from=>window.__touchGestures.events.slice(from),stamp.eventCount),entry={selector,before,after,events};o.swipes??=[];o.swipes.push(entry);
-        expect(Math.abs(after.scrollTop-before.scrollTop),'Trusted swipe changes actual panel offset').toBeGreaterThan(1);expect(events.filter(e=>e.type==='click'&&(e.gesture||e.surprise))).toEqual([]);expect(after.gesture).toBe(before.gesture);expect(after.animating).toBe('false');
+        const after=await read(selector),events=await page.evaluate(from=>window.__touchGestures.events.slice(from),stamp.eventCount),entry={selector,adjacent,before,after,events,drag:{x,startY,endY,distance}};o.swipes??=[];o.swipes.push(entry);
+        if(adjacent)expect(events.some(event=>event.type==='pointercancel'&&event.trusted&&event.pointerType==='touch'),'Paired alignment crosses native touch scroll threshold').toBe(true);expect(Math.abs(after.scrollTop-before.scrollTop),'Trusted swipe changes actual panel offset').toBeGreaterThan(1);expect(events.filter(e=>e.type==='click'&&(e.gesture||e.surprise))).toEqual([]);expect(after.gesture).toBe(before.gesture);expect(after.animating).toBe('false');
       }
       throw Error('Could not reveal target through bounded trusted swipes '+selector);
     }
     async function tap(selector,label){const state=await expose(selector);expect(state.hits.every(p=>p.hit)).toBe(true);await phase(label);const x=(state.target.left+state.target.right)/2,y=(state.target.top+state.target.bottom)/2;await touch('touchStart',[{x,y,id:41}]);await touch('touchEnd',[]);await twoFrames(page);return state;}
     async function activate(selector,expected,label,reduced=false){
-      await expose(selector);const prior=await read();await page.evaluate(()=>window.__bookyLiveFixture.markGesture());const target=await tap(selector,label);const interaction=await pet(page).getAttribute('data-planet-mascot-gesture');
+      await expose(selector);const prior=await read(),eventStart=await page.evaluate(()=>window.__touchGestures.events.length);await page.evaluate(()=>window.__bookyLiveFixture.markGesture());const target=await tap(selector,label);const interaction=await pet(page).getAttribute('data-planet-mascot-gesture');
       if(expected)expect(interaction).toBe(expected);else{expect(gestures).toContain(interaction);expect(interaction).not.toBe(prior.gesture);}
-      const entry={label,expected,interaction,previous:prior.gesture,target,reduced};
-      if(reduced){await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await twoFrames(page);const first=await character(page);await twoFrames(page);const next=await character(page);expect(next.renderedFrames).toBe(first.renderedFrames);expect(next.rig).toEqual(first.rig);entry.frames=first.renderedFrames;}
+      const events=await page.evaluate(from=>window.__touchGestures.events.slice(from),eventStart);
+      for(const type of ['pointerdown','pointerup','click'])expect(events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch'&&(expected?event.gesture===expected:event.surprise))).toBe(true);
+      const entry={label,expected,interaction,previous:prior.gesture,previousAnimating:prior.animating,target,reduced,events};
+      if(reduced){await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await twoFrames(page);const first=await character(page);await twoFrames(page);const next=await character(page);expect(next.renderedFrames).toBe(first.renderedFrames);expect(next.rig).toEqual(first.rig);entry.frames=first.renderedFrames;entry.pose=first.rig;}
       else{await expect.poll(()=>page.evaluate(()=>{const t=window.__bookyLiveFixture.gestureTrace();return t.frames-t.start.frames}),{timeout:1800}).toBeGreaterThan(2);await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false',{timeout:4000});entry.trace=await page.evaluate(()=>window.__bookyLiveFixture.gestureTrace());expect(new Set(entry.trace.timeline.map(x=>JSON.stringify(x.pose))).size).toBeGreaterThan(1);const timeline=entry.trace.timeline,first=timeline[0].at,last=timeline.at(-1).at,duration=await page.evaluate(value=>window.__bookyLiveFixture.reactionDuration(value),interaction),gap=Math.max(0,...timeline.slice(1).map((v,i)=>v.at-timeline[i].at));entry.duration=duration;entry.maxObservedFrameGap=gap;expect(last-first).toBeLessThanOrEqual(duration+Math.max(100,gap));expect(last-entry.trace.start.at).toBeLessThan(5000);const frames=(await character(page)).renderedFrames;await twoFrames(page);expect((await character(page)).renderedFrames).toBe(frames);}
       expect(saved()).toEqual(o.preferencesBefore);return entry;
     }
-    const summary='[data-booky-gestures] > summary';await tap(summary,'open gesture gallery');await expect(page.locator('[data-booky-gestures]')).toHaveAttribute('open','');await expect(page.locator('[data-booky-gesture]')).toHaveCount(13);
+    const summary='[data-booky-gestures] > summary';await tap(summary,'open gesture gallery');await expect(page.locator('[data-booky-gestures]')).toHaveAttribute('open','');await expect(page.locator('[data-booky-gesture]')).toHaveCount(15);
     for(const [orientation,viewport]of[['portrait',portrait],['landscape',landscape]]){
       const mode={orientation,viewport,actions:[],checks:[]};o.orientations.push(mode);
       if(orientation==='landscape'){await page.setViewportSize(viewport);await twoFrames(page);await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');}
       await checked(orientation+' help placement',async()=>{await live(page);const s=await read();mode.layout=s;expect(fits(s.card,s.viewport)).toBe(true);expect(s.bodyOverflow).toBe(false);const close=await page.locator('[data-planet-mascot-collapse]').evaluate(el=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return{width:r.width,height:r.height,hit:hit===el||el.contains(hit)}});expect(close.hit).toBe(true);expect(close.width).toBeGreaterThanOrEqual(44);expect(close.height).toBeGreaterThanOrEqual(44);});
       await checked(orientation+' gallery readable prose',async()=>{const r=await expose('[data-booky-gestures] > p:first-of-type');mode.prose=r;expect(r.fontSize).toBeGreaterThanOrEqual(14);expect(r.inside).toBe(true);});
-      for(const gesture of [...gestures,'highfive',...Array(orientation==='portrait'?14:2).fill(null)])await checked(orientation+' '+(gesture??'surprise')+' '+mode.actions.length,async()=>{const selector=gesture?'[data-booky-gesture="'+gesture+'"]':'[data-booky-surprise]';mode.actions.push(await activate(selector,gesture,orientation+' '+(gesture??'surprise')));});
-      if(orientation==='portrait')await checked('fresh surprise cycle covers all13 and boundary differs',()=>{const draws=mode.actions.filter(action=>action.expected===null).map(action=>action.interaction);expect(draws).toHaveLength(14);expect([...new Set(draws.slice(0,13))].sort()).toEqual([...gestures].sort());expect(draws[13]).not.toBe(draws[12]);mode.surpriseCycle={first13:draws.slice(0,13),next:draws[13]};});
+      for(const gesture of [...gestures,'highfive',...(orientation==='portrait'?['bow','bow','balance','balance']:[]),...Array(orientation==='portrait'?16:2).fill(null)])await checked(orientation+' '+(gesture??'surprise')+' '+mode.actions.length,async()=>{const selector=gesture?'[data-booky-gesture="'+gesture+'"]':'[data-booky-surprise]';mode.actions.push(await activate(selector,gesture,orientation+' '+(gesture??'surprise')));});
+      if(orientation==='portrait'){
+        await checked('fresh surprise cycle covers all15 and boundary differs',()=>{const draws=mode.actions.filter(action=>action.expected===null).map(action=>action.interaction);expect(draws).toHaveLength(16);expect([...new Set(draws.slice(0,15))].sort()).toEqual([...gestures].sort());expect(draws[15]).not.toBe(draws[14]);mode.surpriseCycle={first15:draws.slice(0,15),next:draws[15]};});
+        await checked('new gestures repeat through trusted touch',()=>{for(const gesture of ['bow','balance'])expect(mode.actions.some(action=>action.expected===gesture&&action.previous===gesture&&action.trace.timeline.length>2)).toBe(true);});
+        await checked('trusted touch balance interrupts active bow',async()=>{
+          const bow='[data-booky-gesture="bow"]',balance='[data-booky-gesture="balance"]';
+          await expose(balance,bow);await page.evaluate(()=>window.__bookyLiveFixture.markGesture());await tap(bow,'interrupt bow');
+          expect(await pet(page).getAttribute('data-planet-mascot-gesture')).toBe('bow');expect(await page.locator('[data-booky-canvas]').getAttribute('data-booky-animating')).toBe('true');
+          const bowTrace=await page.evaluate(()=>window.__bookyLiveFixture.gestureTrace()),bowDuration=await page.evaluate(()=>window.__bookyLiveFixture.reactionDuration('bow'));
+          const replacement=await activate(balance,'balance','interrupt with balance');expect(replacement.previous).toBe('bow');expect(replacement.previousAnimating).toBe('true');
+          expect(replacement.trace.start.at-bowTrace.start.at).toBeLessThan(bowDuration);
+          expect(replacement.trace.timeline.at(-1).at).toBeGreaterThan(bowTrace.start.at+bowDuration);
+          const settled=await character(page);await page.waitForTimeout(100);const still=await character(page);expect(still.renderedFrames).toBe(settled.renderedFrames);expect(still.rig).toEqual(settled.rig);expect(await pet(page).getAttribute('data-planet-mascot-gesture')).toBe('balance');
+          mode.interruption={bowTrace,bowDuration,replacement,settledFrames:settled.renderedFrames,stillFrames:still.renderedFrames};
+        });
+      }
       await checked(orientation+' response readable',async()=>{mode.response=await expose('[data-booky-gesture-response]');expect(mode.response.inside).toBe(true);expect(mode.response.fontSize).toBeGreaterThanOrEqual(14);});
       await capture(page,result,testInfo,'booky-touch-gestures-'+language+'-'+viewport.width+'.png');
     }
-    await checked('reduced motion touch',async()=>{await page.emulateMedia({reducedMotion:'reduce'});await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-reduced-motion','true');o.reduced=[];o.reduced.push(await activate('[data-booky-gesture="highfive"]','highfive','reduced highfive',true));o.reduced.push(await activate('[data-booky-surprise]',null,'reduced surprise',true));});
+    await checked('reduced motion touch',async()=>{await page.emulateMedia({reducedMotion:'reduce'});await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-reduced-motion','true');o.reduced=[];for(const gesture of ['highfive','bow','balance'])o.reduced.push(await activate('[data-booky-gesture="'+gesture+'"]',gesture,'reduced '+gesture,true));
+      expect(o.reduced.find(action=>action.interaction==='bow').pose).not.toEqual(o.reduced.find(action=>action.interaction==='balance').pose);
+      o.reduced.push(await activate('[data-booky-surprise]',null,'reduced surprise',true));});
     await checked('trusted activation and scroll provenance',async()=>{o.events=await page.evaluate(()=>window.__touchGestures.events);expect(o.events.filter(e=>e.type==='click'&&(e.gesture||e.surprise)).every(e=>e.trusted)).toBe(true);expect(o.swipes.length).toBeGreaterThan(0);expect(o.events.some(e=>e.type==='pointercancel'&&e.trusted&&e.insidePanel)).toBe(true);});
     await checked('prefs and canonical scene retained',async()=>{o.preferencesAfter=saved();expect(o.preferencesAfter).toEqual(o.preferencesBefore);retained(await actual(page),o.canonicalBefore,false);});
     await checked('close remains reachable by touch',async()=>{const button=page.locator('[data-planet-mascot-collapse]'),r=await button.boundingBox();await phase('close help');await touch('touchStart',[{x:r.x+r.width/2,y:r.y+r.height/2,id:51}]);await touch('touchEnd',[]);await expect(panel(page)).toHaveCount(0);await live(page);});
-    await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{mobileThirteenGesturesReachableByTouch:true,mobileGestureScrollingDoesNotPlay:true,mobileGesturesFiniteAndRepeatable:true,mobileSurpriseCycleCoversThirteen:true,mobileSurpriseCycleBoundaryDifferent:true,mobileGestureReducedMotionStatic:true,mobileGestureHelpReadableAfterRotation:true,mobileGesturePreferencesAndSceneRetained:true,mobileGestureTrustedTouch:true});expect(o.findings).toEqual([]);
+    await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{mobileFifteenGesturesReachableByTouch:true,mobileGestureScrollingDoesNotPlay:true,mobileGesturesFiniteAndRepeatable:true,mobileSurpriseCycleCoversFifteen:true,mobileSurpriseCycleBoundaryDifferent:true,mobileGestureReducedMotionStatic:true,mobileGestureHelpReadableAfterRotation:true,mobileGesturePreferencesAndSceneRetained:true,mobileGestureTrustedTouch:true,mobileNewGesturesRepeatByTouch:true,mobileBowToBalanceInterrupts:true,mobileNewGesturesReducedMotionStatic:true});expect(o.findings).toEqual([]);
   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__touchGestures?.events??[]).catch(()=>[]);await fixture.close();}
 });
 

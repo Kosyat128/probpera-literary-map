@@ -5,7 +5,7 @@ import { BOOKY_GESTURES, BOOKY_WALK_MS, bookyReactionDuration, boundedBookyLook,
 import { createBookyModel } from "./bookyModel";
 
 const neutral: BookyInput = { mood: "idle", interaction: "rest", lookAt: { x: 0, y: 0 }, reactionKey: 0, active: true };
-const newGestures = ["dance", "hop", "twirl", "stretch", "shy", "highfive"] as const;
+const newGestures = ["dance", "hop", "twirl", "stretch", "shy", "highfive", "bow", "balance"] as const;
 function fixture() {
   const body = new Object3D(), leftArm = new Object3D(), rightArm = new Object3D();
   const eyes = [new Object3D(), new Object3D()] as const;
@@ -24,13 +24,13 @@ function fixture() {
 
 // These checks verify deterministic rig motion, not art approval or GPU/camera framing.
 describe("Booky's finite explicit gestures", () => {
-  it("keeps all thirteen reduced-motion gestures distinct from each other and from rest", () => {
+  it("keeps all fifteen reduced-motion gestures distinct from each other and from rest", () => {
     const { pose, snapshot } = fixture(), signatures: string[] = [];
     for (const interaction of ["rest", ...BOOKY_GESTURES] as const) {
       pose({ ...neutral, interaction }, neutral.lookAt, null, true);
       signatures.push(JSON.stringify(snapshot()));
     }
-    expect(new Set(signatures).size).toBe(14);
+    expect(new Set(signatures).size).toBe(16);
   });
 
   it("waves the open hand, nods the book, raises the lens and celebrates without conflating gestures", () => {
@@ -153,7 +153,7 @@ describe("Booky's finite explicit gestures", () => {
 
   it("bounds walking to four seconds, excludes it from reaction buttons and removes all steps under reduced motion", () => {
     const { pose, snapshot } = fixture(), walking: BookyInput = { ...neutral, interaction: "walking" };
-    expect(BOOKY_GESTURES).toHaveLength(13); expect(BOOKY_GESTURES).not.toContain("walking");
+    expect(BOOKY_GESTURES).toHaveLength(15); expect(BOOKY_GESTURES).not.toContain("walking");
     expect(BOOKY_WALK_MS).toBeLessThanOrEqual(4000); expect(bookyReactionDuration(walking)).toBe(BOOKY_WALK_MS);
     expect(hasBookyReactionChanged(neutral, walking)).toBe(true);
     expect(hasBookyReactionChanged(walking, { ...walking, mood: "celebrate" })).toBe(false);
@@ -194,13 +194,13 @@ describe("Booky's finite explicit gestures", () => {
     expect(rig.pupils[0].position.x).toBeGreaterThan(0); expect(rig.rightArm.rotation.z).toBeLessThan(.16);
   });
 
-  it("preserves the seven established timings while bounding all six additional reactions", () => {
+  it("preserves the thirteen established timings while adding a finite bow and balance", () => {
     expect(BOOKY_GESTURES.slice(0, 7)).toEqual(["greeting", "nod", "curious", "happy", "reassuring", "wink", "sway"]);
     expect(BOOKY_GESTURES.slice(0, 7).map(interaction => bookyReactionDuration({ interaction })))
       .toEqual([900, 640, 1000, 800, 900, 760, 1100]);
     expect(BOOKY_GESTURES.slice(7)).toEqual(newGestures);
     expect(newGestures.map(interaction => bookyReactionDuration({ interaction })))
-      .toEqual([2200, 1000, 1400, 1400, 1100, 1100]);
+      .toEqual([2200, 1000, 1400, 1400, 1100, 1100, 1300, 1600]);
   });
 
   it("dances in place with alternate feet and a body rhythm distinct from walking and a hop", () => {
@@ -267,6 +267,58 @@ describe("Booky's finite explicit gestures", () => {
     }
     pose(input, neutral.lookAt, .5, false); expect(rig.leftArm.rotation.z).toBeLessThan(-.9);
     expect(rig.mouth.scale.x).toBeGreaterThan(1);
+  });
+
+  it("bows once forward and returns without a repeated nod, side turn or body translation", () => {
+    const { rig, pose } = fixture(), input: BookyInput = { ...neutral, interaction: "bow" };
+    const pitches: number[] = [];
+    for (let sample = 0; sample <= 20; sample += 1) {
+      pose(input, neutral.lookAt, sample / 20, false);
+      pitches.push(rig.body.rotation.x);
+      expect(rig.body.position.toArray()).toEqual([0, 0, 0]);
+      expect(Math.abs(rig.body.rotation.y)).toBe(0); expect(Math.abs(rig.body.rotation.z)).toBe(0);
+    }
+    expect(pitches[0]).toBe(0); expect(pitches[20]).toBe(0);
+    expect(pitches[10]).toBeCloseTo(.10, 12);
+    for (let index = 1; index <= 10; index += 1) expect(pitches[index]).toBeGreaterThan(pitches[index - 1]);
+    for (let index = 11; index <= 20; index += 1) expect(pitches[index]).toBeLessThan(pitches[index - 1]);
+    pose(input, neutral.lookAt, null, true);
+    expect(rig.body.rotation.x).toBeCloseTo(pitches[10], 12);
+    expect(rig.pupils.every(pupil => pupil.position.y < 0)).toBe(true);
+  });
+
+  it("balances on the same support shoe while raising one leg, without body drift or alternating steps", () => {
+    const model = createBookyModel();
+    try {
+      const rig = model.rig, pose = createBookyPose(rig), input: BookyInput = { ...neutral, interaction: "balance" };
+      for (const x of [-1, 0, 1]) for (const y of [-1, 0, 1]) {
+        const look = { x, y };
+        pose(neutral, look, null, false); model.group.updateMatrixWorld(true);
+        const body = rig.body.matrixWorld.elements.slice(), support = rig.leftFoot.matrixWorld.elements.slice();
+        const raisedShoe = rig.rightFoot.getWorldPosition(new Vector3()).y;
+        for (const reduced of [false, true]) for (const phase of [0, .2, .5, .8, 1, null]) {
+          pose(input, look, phase, reduced); model.group.updateMatrixWorld(true);
+          expect(rig.body.matrixWorld.elements).toEqual(body);
+          expect(rig.leftFoot.matrixWorld.elements).toEqual(support);
+          if (reduced || phase === .5) expect(rig.rightFoot.getWorldPosition(new Vector3()).y - raisedShoe).toBeGreaterThan(.04);
+        }
+      }
+    } finally { model.dispose(); }
+  });
+
+  it.each(["bow", "balance"] as const)("%s preserves the authored right arm across gaze, reduced motion and interruption", interaction => {
+    const { rig } = fixture();
+    rig.rightArm.position.set(.55, -.21, .02); rig.rightArm.rotation.set(.03, -.04, .02); rig.rightArm.scale.set(.95, 1.05, 1);
+    const pose = createBookyPose(rig), input: BookyInput = { ...neutral, interaction, reactionKey: 1 };
+    const right = () => [...rig.rightArm.position.toArray(), ...rig.rightArm.quaternion.toArray(), ...rig.rightArm.scale.toArray()];
+    const authored = right();
+    for (const reduced of [false, true]) for (const x of [-1, 0, 1]) for (const phase of [0, .1, .3, .5, .7, .9, 1, null]) {
+      pose({ ...neutral, interaction: "curious" }, { x, y: 1 }, .5, false);
+      pose(input, { x, y: 1 }, phase, reduced); expect(right()).toEqual(authored);
+    }
+    expect(hasBookyReactionChanged(neutral, input)).toBe(true);
+    expect(hasBookyReactionChanged(input, { ...input, reactionKey: 2 })).toBe(true);
+    expect(hasBookyReactionChanged(input, { ...input, active: false, lookAt: { x: 1, y: 1 } })).toBe(false);
   });
 
   it("bounds added expressions and immediately restores authored rest when interrupted", () => {

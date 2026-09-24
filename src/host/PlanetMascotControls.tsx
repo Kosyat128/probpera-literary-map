@@ -544,6 +544,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     stretch: { label: ru ? "Потянуться" : "Stretch", response: ru ? "Разомнёмся между историями." : "A stretch between stories.", symbol: "↟" },
     shy: { label: ru ? "Посмущаться" : "Act shy", response: ru ? "Ой, кажется, я немного смущаюсь." : "Oh, I'm feeling a little shy.", symbol: "❀" },
     highfive: { label: ru ? "Дай пять!" : "High five!", response: ru ? "Пять! Хорошо путешествовать вместе." : "High five! Adventures are better together.", symbol: "✋" },
+    bow: { label: ru ? "Поклониться" : "Take a bow", response: ru ? "Этот маленький поклон — для тебя!" : "This little bow is for you!", symbol: "❧" },
+    balance: { label: ru ? "На одной ножке" : "Balance", response: ru ? "Держу равновесие… и лупу тоже!" : "Keeping my balance… and my magnifier!", symbol: "⚖" },
   };
   const tipKind = screen === "collection" ? "collection" : writerLabel ? "writer" : countryLabel ? "country" : "globe";
   const helpTip = {

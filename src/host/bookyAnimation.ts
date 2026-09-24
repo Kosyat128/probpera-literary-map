@@ -2,7 +2,7 @@ import type { Object3D } from "three";
 
 export type BookyMood = "idle" | "guiding" | "celebrate";
 export const BOOKY_GESTURES = ["greeting", "nod", "curious", "happy", "reassuring", "wink", "sway",
-  "dance", "hop", "twirl", "stretch", "shy", "highfive"] as const;
+  "dance", "hop", "twirl", "stretch", "shy", "highfive", "bow", "balance"] as const;
 export type BookyGesture = typeof BOOKY_GESTURES[number];
 export type BookyInteraction = "rest" | "dragging" | "pointing" | "walking" | BookyGesture;
 export type BookyLook = Readonly<{ x: number; y: number }>;
@@ -33,7 +33,7 @@ export const BOOKY_LOOK_MS = 160;
 export const BOOKY_WALK_MS = 4000;
 const GESTURE_DURATION: Readonly<Record<BookyGesture, number>> = {
   greeting: 900, nod: 640, curious: 1000, happy: 800, reassuring: 900, wink: 760, sway: 1100,
-  dance: 2200, hop: 1000, twirl: 1400, stretch: 1400, shy: 1100, highfive: 1100,
+  dance: 2200, hop: 1000, twirl: 1400, stretch: 1400, shy: 1100, highfive: 1100, bow: 1300, balance: 1600,
 };
 
 export function bookyReactionDuration(input: Pick<BookyInput, "interaction">): number {
@@ -141,8 +141,10 @@ export function createBookyPose(rig: BookyRig) {
     rig.leftArm.rotation.z -= (guiding && look.x <= 0 ? .16 : 0)
       + (greeting ? .28 + wave * .16 : reassuring ? .10 + envelope * .035
         : celebrating ? .16 + envelope * .075 : curious ? .035 : 0);
-    rig.rightArm.rotation.z += curious ? .11 + envelope * .025 + inspect * .012
-      : celebrating ? .065 + envelope * .025 : guiding && look.x > 0 ? .13 : 0;
+    if (input.interaction !== "bow" && input.interaction !== "balance") {
+      rig.rightArm.rotation.z += curious ? .11 + envelope * .025 + inspect * .012
+        : celebrating ? .065 + envelope * .025 : guiding && look.x > 0 ? .13 : 0;
+    }
     rig.mouth.scale.x *= reassuring || celebrating ? 1.045 : wink ? 1.035 : curious ? .94 : 1;
     rig.mouth.scale.y *= celebrating ? 1.13 : wink ? 1.04 : reassuring ? .84 : curious ? .82 : dragging ? .9 : 1;
     rig.frontCover.rotation.y -= envelope * (greeting ? .065 : curious ? .045 : .035);
@@ -221,6 +223,35 @@ export function createBookyPose(rig: BookyRig) {
         for (const brow of rig.brows) brow.position.y += expression * .018;
         rig.mouth.scale.x *= 1 + expression * .055;
         rig.mouth.scale.y *= 1 + expression * .06;
+      }
+      if (input.interaction === "bow") {
+        // One modest book-centred bow, without the repeated nod or shy turn.
+        // The body's authored pivot also carries the feet; this is not a hinge
+        // at the waist or a claim that the soles remain planted while bowing.
+        rig.body.rotation.x += expression * .10;
+        rig.leftArm.rotation.z -= expression * .10;
+        for (let index = 0; index < 2; index += 1) {
+          rig.pupils[index].position.y -= expression * .012;
+          rig.eyes[index].scale.y *= 1 - expression * .06;
+        }
+        rig.mouth.scale.y *= 1 - expression * .06;
+      }
+      if (input.interaction === "balance") {
+        // Keep the ordinary tracking body and support leg unchanged. Only the
+        // opposite hip/ankle and free hand move, so there is no centre-pivot
+        // roll that would lift the supporting shoe or an alternating walk.
+        rig.leftArm.rotation.z -= expression * .34;
+        if (rig.rightLeg) {
+          rig.rightLeg.position.y += expression * .055;
+          rig.rightLeg.rotation.x -= expression * .20;
+          rig.rightLeg.rotation.z += expression * .11;
+        }
+        if (rig.rightFoot) {
+          rig.rightFoot.rotation.x += expression * .10;
+          rig.rightFoot.rotation.z -= expression * .06;
+        }
+        for (const brow of rig.brows) brow.position.y += expression * .014;
+        rig.mouth.scale.x *= 1 + expression * .04;
       }
     }
     rig.body.updateMatrixWorld(true);
