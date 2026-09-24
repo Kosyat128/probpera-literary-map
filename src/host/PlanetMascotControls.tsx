@@ -462,6 +462,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     setPointerLook(null); setGesture(next); setReactionKey(value => value + 1);
     return true;
   };
+  const canStopGesture = BOOKY_GESTURES.some(value => value === gesture);
+  const stopGesture = () => {
+    const current = controller.getSnapshot();
+    if (!canStopGesture || current.revision !== snapshot.revision || !current.available
+      || current.visibility !== "shown" || current.panel !== "open" || document.hidden || drag.current) return;
+    // Ordinary rest cancels the reaction without starting another animation.
+    // The selected tour still owns its contextual pointing pose.
+    setGesture("rest"); setPointerLook(null);
+  };
   const navigateTips = (action: () => boolean) => {
     focusAfterNavigation.current = Boolean(card.current?.contains(document.activeElement));
     if (!action()) focusAfterNavigation.current = false;
@@ -731,8 +740,14 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           style={pageTurn ? { animationName: pageTurn % 2 ? "booky-leaf-reveal-a" : "booky-leaf-reveal-b" } : undefined}>
         <header className="planet-mascot-controls__heading">
           <h2 id={`${id}-title`} ref={heading} tabIndex={-1}>{name}</h2>
-          <button type="button" data-planet-mascot-collapse="" onClick={() => controller.togglePanel()}
-            aria-label={ru ? "Свернуть подсказки" : "Collapse tips"}>×</button>
+          <div className="planet-mascot-controls__heading-actions">
+            <button type="button" data-booky-stop-gesture="" disabled={!canStopGesture} onClick={stopGesture}
+              aria-label={ru ? "Остановить жест" : "Stop gesture"} title={ru ? "Остановить жест" : "Stop gesture"}>
+              {ru ? "Стоп" : "Stop"}
+            </button>
+            <button type="button" data-planet-mascot-collapse="" onClick={() => controller.togglePanel()}
+              aria-label={ru ? "Свернуть подсказки" : "Collapse tips"}>×</button>
+          </div>
         </header>
         {contextual && <p className="planet-mascot-controls__context">{ru ? "Выбрано: " : "Selected: "}{contextual}</p>}
         {snapshot.support && <div className="planet-mascot-controls__support" data-booky-support={snapshot.support.id}>
@@ -829,8 +844,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         </>}
         <details className="planet-mascot-controls__extras planet-mascot-controls__gestures" data-booky-gestures="">
           <summary>{ru ? "Жесты Книжулика" : "Mr. Booky’s gestures"}</summary>
-          <p>{ru ? "Нажми на жест — я отвечу. Можно повторить сколько хочется."
-            : "Choose a gesture and I'll respond. Try it again whenever you like."}</p>
+          <p>{ru ? "Нажми на жест — я отвечу. Можно повторить сколько хочется. Кнопка «Стоп» рядом с моим именем остановит жест."
+            : "Choose a gesture and I'll respond. Try it again whenever you like. Use Stop beside my name to end a gesture."}</p>
           <div className="planet-mascot-controls__actions">
             {BOOKY_GESTURES.map(value => <button key={value} type="button" data-booky-gesture={value}
               aria-pressed={gesture === value} onClick={() => playGesture(value)}>

@@ -2513,3 +2513,105 @@ for(const [language,portrait,landscape]of[['ru',{width:390,height:844},{width:84
     await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{scaleLabelClearsWholeCompanion:true,scaleLabelClearsOpenHelp:true,scaleLabelTracksRealTouchZoom:true,scaleLabelClearAfterRotation:true,scaleLabelKeepsPreferencesAndScene:true,scaleLabelTrustedTouch:true});expect(o.findings).toEqual([]);
   }finally{if(cdp){await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]}).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__scaleTouch?.events??[]).catch(()=>[]);await fixture.close();}
 });
+
+for(const [language,portrait,landscape]of[['ru',{width:390,height:844},{width:568,height:320}],['en',{width:320,height:844},{width:640,height:360}]])test('Booky mobile touch gesture Stop preserves context '+language,async({},testInfo)=>{
+  test.setTimeout(90000);const fixture=await open(testInfo),{page,result}=fixture;
+  const o=result.observations.gestureStop={language,portrait,landscape,checks:[],findings:[],stops:[],swipes:[],headers:[]};result.scenario='mobile-touch-gesture-stop-'+language;let cdp;
+  const checked=async(name,fn)=>{try{await fn();o.checks.push({name,pass:true});}catch(error){o.checks.push({name,pass:false,error:error.message,stack:error.stack??null});o.findings.push(name);}};
+  const saved=()=>({memory:[...fixture.memory],writes:mutations(fixture)}),stopSelector='[data-booky-stop-gesture]',closeSelector='[data-planet-mascot-collapse]';
+  const overlap=(a,b)=>Boolean(a&&b&&a.left<b.right&&b.left<a.right&&a.top<b.bottom&&b.top<a.bottom);
+  const gestures=['greeting','nod','curious','happy','reassuring','wink','sway','dance','hop','twirl','stretch','shy','highfive','bow','balance'];
+  const read=(selector=null,header=false)=>page.evaluate(({selector,header})=>window.__gestureStop.read(selector,header),{selector,header});
+  const touch=(type,touchPoints)=>cdp.send('Input.dispatchTouchEvent',{type,touchPoints});
+  const trace=()=>page.evaluate(()=>{const t=window.__bookyLiveFixture.gestureTrace();return{start:t.start,frames:t.frames,frameCount:t.timeline.length,firstAt:t.timeline[0]?.at,lastAt:t.timeline.at(-1)?.at};});
+  try{
+    await page.setViewportSize(portrait);await ready(page);
+    if(language==='en'){await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:/^EN$/u}).tap();await expect(page.locator('html')).toHaveAttribute('lang','en');await ready(page);}
+    await actual(page);await stablePose(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());
+    await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await companionSaved(fixture);await live(page);
+    await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
+    await page.evaluate(()=>{
+      const box=e=>{if(!e)return null;const r=e.getBoundingClientRect();return{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};
+      const state=window.__gestureStop={phase:'setup',events:[]};
+      state.read=(selector,header=false)=>{const card=document.querySelector('[data-planet-mascot-panel]'),heading=card?.querySelector('header'),target=selector?document.querySelector(selector):null,p=document.querySelector('[data-planet-mascot-pet]'),highlight=document.querySelector('[data-planet-mascot-highlight]');
+        const r=box(card),h=box(heading),rect=box(target),clip=r?{left:Math.max(0,r.left+2),right:Math.min(innerWidth,r.right-2),top:Math.max(0,r.top+2,header?0:h?.bottom??0),bottom:Math.min(innerHeight,r.bottom-2)}:null;
+        const points=rect?[{x:rect.left+rect.width/2,y:rect.top+rect.height/2},{x:rect.left+4,y:rect.top+4},{x:rect.right-4,y:rect.bottom-4}]:[];
+        return{at:performance.now(),viewport:{width:innerWidth,height:innerHeight},card:r,heading:h,clip,target:rect,inside:!!rect&&!!clip&&rect.width>0&&rect.height>0&&rect.left>=clip.left-.5&&rect.right<=clip.right+.5&&rect.top>=clip.top-.5&&rect.bottom<=clip.bottom+.5,hits:points.map(point=>{const hit=document.elementFromPoint(point.x,point.y);return{...point,hit:!!hit&&(hit===target||target.contains(hit)),tag:hit?.tagName};}),scrollTop:card?.scrollTop,gesture:p?.getAttribute('data-planet-mascot-gesture'),animating:document.querySelector('[data-booky-canvas]')?.getAttribute('data-booky-animating'),context:{pet:box(p),mode:p?.getAttribute('data-planet-mascot-mode'),route:p?.getAttribute('data-planet-mascot-current-route'),step:p?.getAttribute('data-planet-mascot-step'),screen:p?.getAttribute('data-planet-mascot-screen'),panel:p?.getAttribute('data-planet-mascot-panel-state'),highlight:highlight?.getAttribute('data-planet-mascot-highlight')??null,highlightRect:box(highlight)},disabled:target?.disabled??false};};
+      for(const type of ['pointerdown','pointermove','pointerup','pointercancel','click','touchmove'])document.addEventListener(type,e=>{const t=e.target instanceof Element?e.target:null,control=t?.closest('[data-booky-stop-gesture],[data-planet-mascot-collapse],[data-booky-gesture],[data-booky-surprise],[data-planet-mascot-route],[data-planet-mascot-finish]');state.events.push({at:performance.now(),phase:state.phase,type,trusted:e.isTrusted,pointerType:e.pointerType,stop:!!control?.hasAttribute('data-booky-stop-gesture'),close:!!control?.hasAttribute('data-planet-mascot-collapse'),gesture:control?.getAttribute('data-booky-gesture')??null,surprise:!!control?.hasAttribute('data-booky-surprise'),insidePanel:!!t?.closest('[data-planet-mascot-panel]')});},{capture:true,passive:true});
+    });
+    cdp=await page.context().newCDPSession(page);
+    async function expose(selector){
+      for(let attempt=0;attempt<32;attempt++){
+        const before=await read(selector);if(before.inside&&before.hits.every(point=>point.hit))return before;
+        expect(before.target,'Displayed touch target '+selector).not.toBeNull();expect(before.clip).not.toBeNull();
+        const space=before.clip.bottom-before.clip.top;expect(space).toBeGreaterThan(56);expect(before.target.height).toBeLessThanOrEqual(space);
+        const upward=before.target.bottom>before.clip.bottom,overflow=upward?before.target.bottom-before.clip.bottom:before.clip.top-before.target.top;
+        const distance=Math.min(space-24,Math.max(48,overflow+18)),x=(before.clip.left+before.clip.right)/2,startY=upward?before.clip.bottom-12:before.clip.top+12,endY=startY+(upward?-distance:distance);
+        const start=await page.evaluate(selector=>{window.__gestureStop.phase='scroll '+selector;return window.__gestureStop.events.length;},selector);
+        await touch('touchStart',[{x,y:startY,id:71}]);for(let step=1;step<=8;step++){await touch('touchMove',[{x,y:startY+(endY-startY)*step/8,id:71}]);await page.waitForTimeout(20);}await page.waitForTimeout(120);await touch('touchEnd',[]);
+        let previous=-1,matches=0;await expect.poll(async()=>{const at=(await read()).scrollTop;matches=Math.abs(at-previous)<.1?matches+1:0;previous=at;return matches;},{timeout:2000,intervals:[40]}).toBeGreaterThanOrEqual(2);
+        const after=await read(selector),events=await page.evaluate(from=>window.__gestureStop.events.slice(from),start);o.swipes.push({selector,before,after,drag:{x,startY,endY,distance},events});
+        expect(events.some(event=>event.type==='pointercancel'&&event.trusted&&event.pointerType==='touch')).toBe(true);expect(events.filter(event=>event.type==='click')).toEqual([]);
+        expect(Math.abs(after.scrollTop-before.scrollTop)).toBeGreaterThan(1);expect(after.gesture).toBe(before.gesture);expect(after.animating).toBe('false');
+      }
+      const final=await read(selector);if(final.inside&&final.hits.every(point=>point.hit))return final;
+      throw Error('Trusted touch could not expose '+selector);
+    }
+    async function tap(selector,label,header=false){
+      const target=header?await read(selector,true):await expose(selector);expect(target.inside).toBe(true);expect(target.hits.every(point=>point.hit)).toBe(true);expect(target.disabled).toBe(false);if(header){expect(target.target.width).toBeGreaterThanOrEqual(44);expect(target.target.height).toBeGreaterThanOrEqual(44);}
+      const start=await page.evaluate(label=>{window.__gestureStop.phase=label;return window.__gestureStop.events.length;},label),x=(target.target.left+target.target.right)/2,y=(target.target.top+target.target.bottom)/2;
+      await touch('touchStart',[{x,y,id:81}]);await touch('touchEnd',[]);await twoFrames(page);
+      const events=await page.evaluate(from=>window.__gestureStop.events.slice(from),start);for(const type of ['pointerdown','pointerup','click'])expect(events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch')).toBe(true);
+      return{target,events};
+    }
+    async function header(label){
+      const stop=page.locator(stopSelector),close=page.locator(closeSelector);
+      const geometry=await page.evaluate(()=>{const card=document.querySelector('[data-planet-mascot-panel]'),heading=card.querySelector('header'),title=heading.querySelector('h2'),r=title.getBoundingClientRect(),range=document.createRange();range.selectNodeContents(title);const textRects=[...range.getClientRects()].map(rect=>({left:rect.left,top:rect.top,right:rect.right,bottom:rect.bottom,width:rect.width,height:rect.height}));return{text:title.textContent,title:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},textRects,clientWidth:title.clientWidth,scrollWidth:title.scrollWidth,fontSize:parseFloat(getComputedStyle(title).fontSize),singleLine:new Set(textRects.map(rect=>Math.round(rect.top))).size===1};});
+      const a=await read(stopSelector,true),b=await read(closeSelector,true),observation={label,stop:a,close:b,...geometry};o.headers.push(observation);await expect(stop).toHaveAccessibleName(language==='ru'?'Остановить жест':'Stop gesture');await expect(stop).toHaveAttribute('title',language==='ru'?'Остановить жест':'Stop gesture');await expect(stop).toContainText(language==='ru'?'Стоп':'Stop');await expect(close).toHaveAccessibleName(language==='ru'?'Свернуть подсказки':'Collapse tips');expect(geometry.text).toBe(language==='ru'?'Книжулик':'Mr. Booky');expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.clientWidth+1);expect(geometry.singleLine,label+' title remains on one line').toBe(true);expect(geometry.fontSize,label+' readable title font size').toBeGreaterThanOrEqual(18);
+      for(const [control,value] of [['Stop',a],['Close',b]]){expect(value.inside,label+' '+control+' fully inside help card').toBe(true);expect(value.hits.every(point=>point.hit),label+' '+control+' three hit points').toBe(true);expect(value.target.width).toBeGreaterThanOrEqual(44);expect(value.target.height).toBeGreaterThanOrEqual(44);}
+      expect(overlap(a.target,b.target)).toBe(false);for(const control of [a.target,b.target])expect(overlap(geometry.title,control)).toBe(false);
+      for(const rect of geometry.textRects){expect(fits(rect,a.viewport)).toBe(true);expect(rect.left).toBeGreaterThanOrEqual(a.card.left);expect(rect.right).toBeLessThanOrEqual(a.card.right);expect(rect.top).toBeGreaterThanOrEqual(a.card.top);expect(rect.bottom).toBeLessThanOrEqual(a.card.bottom);}
+      return observation;
+    }
+    async function startGesture(gesture,reduced=false){
+      const selector=gesture?'[data-booky-gesture="'+gesture+'"]':'[data-booky-surprise]';await expose(selector);await page.evaluate(()=>window.__bookyLiveFixture.markGesture());const activation=await tap(selector,'play '+(gesture??'surprise'));
+      const state=await read();if(gesture)expect(state.gesture).toBe(gesture);else expect(gestures).toContain(state.gesture);
+      await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating',reduced?'false':'true');await expect(page.locator(stopSelector)).toBeEnabled();
+      const observed=await trace();expect(observed.frames).toBeGreaterThan(observed.start.frames);return{gesture:state.gesture,duration:await page.evaluate(value=>window.__bookyLiveFixture.reactionDuration(value),state.gesture),trace:observed,activation};
+    }
+    async function stopGesture(label,started=null,pastDeadline=false){
+      const before=await read(),preferences=saved(),scene=await sample(page);if(!label.startsWith('stop surprise'))await header(label+' before Stop');const activation=await tap(stopSelector,label,true);
+      await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await expect(page.locator('[data-booky-gesture][aria-pressed="true"]')).toHaveCount(0);await expect(page.locator(stopSelector)).toBeDisabled();await expect(panel(page)).toBeVisible();
+      await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await twoFrames(page);const settled=await character(page);
+      const clicked=activation.events.find(event=>event.type==='click'&&event.stop);expect(clicked).toBeTruthy();
+      if(started){expect(clicked.at-started.trace.start.at).toBeLessThan(started.duration);expect(clicked.at).toBeGreaterThan(started.trace.start.at);}
+      if(pastDeadline){const now=await page.evaluate(()=>performance.now());await page.waitForTimeout(Math.max(0,started.trace.start.at+started.duration+180-now));}else await twoFrames(page);
+      const still=await character(page),after=await read();expect(still.renderedFrames).toBe(settled.renderedFrames);expect(still.rig).toEqual(settled.rig);expect(after.context).toEqual(before.context);expect(saved()).toEqual(preferences);retained(await sample(page),scene);
+      const observation={label,started,activation,before,after,preferencesUnchanged:true,sceneRetained:true,settledFrames:settled.renderedFrames,stillFrames:still.renderedFrames,rig:still.rig,observedAt:await page.evaluate(()=>performance.now())};o.stops.push(observation);return observation;
+    }
+    await header('portrait initial');if(await page.locator(stopSelector).isEnabled())await stopGesture('clear initial greeting');
+    const gallery='[data-booky-gestures] > summary';await tap(gallery,'open gestures');await expect(page.locator('[data-booky-gestures]')).toHaveAttribute('open','');await expect(page.locator('[data-booky-gesture]')).toHaveCount(15);
+    await checked('active Dance stops before deadline and remains still',async()=>{const started=await startGesture('dance');expect(started.duration).toBe(2200);const stopped=await stopGesture('stop active dance',started,true);expect(stopped.observedAt-started.trace.start.at).toBeGreaterThan(started.duration);expect(stopped.before.scrollTop).toBeGreaterThan(0);o.dance=stopped;await capture(page,result,testInfo,'booky-gesture-stop-'+language+'-'+portrait.width+'.png');});
+    await checked('a new gesture plays after Stop',async()=>{const started=await startGesture('bow');o.restarted=await stopGesture('stop new bow',started);});
+    await checked('immediate Stop preserves all fifteen Surprise choices and boundary',async()=>{
+      o.surprises=[];for(let index=0;index<16;index++){const started=await startGesture(null),stopped=await stopGesture('stop surprise '+index,started);o.surprises.push({gesture:started.gesture,stoppedAt:stopped.activation.events.find(event=>event.type==='click'&&event.stop).at,startedAt:started.trace.start.at});}
+      expect([...new Set(o.surprises.slice(0,15).map(value=>value.gesture))].sort()).toEqual([...gestures].sort());expect(o.surprises[15].gesture).not.toBe(o.surprises[14].gesture);
+    });
+    await checked('tour Stop preserves route step and pointing context',async()=>{
+      await tap('[data-planet-mascot-route="overview"]','start overview');await expect(pet(page)).toHaveAttribute('data-planet-mascot-current-route','overview');await expect(pet(page)).toHaveAttribute('data-planet-mascot-step','0');await expect(page.locator('[data-planet-mascot-highlight="search"]')).toBeVisible();
+      await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');if(!await page.locator('[data-booky-gestures]').evaluate(element=>element.open))await tap(gallery,'open tour gestures');await expose('[data-booky-gesture="bow"]');await twoFrames(page);
+      const guided=await character(page),tourContext=(await read()).context,tourPreferences=saved();const started=await startGesture('bow'),stopped=await stopGesture('stop tour bow',started);
+      expect(stopped.after.context).toEqual(tourContext);expect(stopped.rig).toEqual(guided.rig);expect(saved()).toEqual(tourPreferences);o.tour={context:tourContext,preferencesBefore:tourPreferences,stop:stopped};
+      await tap('[data-planet-mascot-finish]','leave overview');await expect(pet(page)).toHaveAttribute('data-planet-mascot-mode','help');await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
+    });
+    await checked('landscape reduced Balance stops to static neutral',async()=>{
+      await page.setViewportSize(landscape);await page.emulateMedia({reducedMotion:'reduce'});await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-reduced-motion','true');await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');await twoFrames(page);
+      await expect(pet(page)).toHaveAttribute('data-planet-mascot-mode','help');if(await page.locator(stopSelector).isEnabled())await stopGesture('clear before reduced baseline');
+      if(!await page.locator('[data-booky-gestures]').evaluate(element=>element.open))await tap(gallery,'open landscape gestures');await expose('[data-booky-gesture="balance"]');await twoFrames(page);const neutral=await character(page);
+      const started=await startGesture('balance',true),balanced=await character(page);expect(balanced.rig).not.toEqual(neutral.rig);const stopped=await stopGesture('stop reduced balance');expect(stopped.rig).toEqual(neutral.rig);o.reduced={started,balancedRig:balanced.rig,neutralRig:neutral.rig,stop:stopped};await header('landscape static stopped');await capture(page,result,testInfo,'booky-gesture-stop-'+language+'-'+landscape.width+'.png');
+    });
+    await checked('trusted Stop and scroll provenance',async()=>{o.events=await page.evaluate(()=>window.__gestureStop.events);expect(o.events.filter(event=>event.type==='click'&&event.stop).length).toBeGreaterThanOrEqual(20);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted)).toBe(true);expect(o.swipes.length).toBeGreaterThan(0);});
+    await checked('actual App integrity',()=>fixture.verify());result.pass=o.findings.length===0;result.observationsComplete=true;
+    if(result.pass)Object.assign(result,{headerGestureStopReachable:true,gestureStopHeaderTitleFits:true,touchStopsActiveGesture:true,stoppedGestureStaysStillPastDeadline:true,stopClearsExplicitSelection:true,stoppedGestureCanRestartByTouch:true,stopPreservesSurpriseCycle:true,reducedGestureStopReturnsNeutral:true,tourGestureStopRetainsContext:true,stopPreservesPreferencesPositionAndScene:true,trustedTouchGestureStop:true});expect(o.findings).toEqual([]);
+  }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.events=await page.evaluate(()=>window.__gestureStop?.events??[]).catch(()=>[]);await fixture.close();}
+});
