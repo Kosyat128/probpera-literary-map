@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T04:06:33.8657754+03:00",
+  "preparedOnly": true,
+  "sourceFrozen": true,
+  "executed": false,
+  "baseCheckpoint": "5feb4e41b7d6b0c528cf90c0df48c7b33db82463",
+  "baseSource": "a965e043eee6c778f37215f236db5a52272a91ed",
+  "priorManifest": "38b1b6058b5d9d5683a860164820c46ee06a87516842ab4491a00223934b705d",
+  "pendingFields": [],
+  "files": [
+    {
+      "sha256": "566cc5580bd53466ac2b053ed96420b047c6250ad4e329cc367c868df86ee45c",
+      "name": "configure.mjs"
+    },
+    {
+      "sha256": "d2fdf519db0588bcbdd46c4934c8be8062fb0c966ade90115029fe23f51eeea5",
+      "name": "check.mjs"
+    },
+    {
+      "sha256": "68857e5f111c607c1b5f39d2219ba71143161dae2e8186efad234f3d951cf991",
+      "name": "unit.config.mjs"
+    },
+    {
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08",
+      "name": "playwright.config.mjs"
+    },
+    {
+      "sha256": "0dcb877a77b36d792dc6661d65c34625a8d488ecd1e72d236702ba16f874a742",
+      "name": "build-pwa-a1.mjs"
+    },
+    {
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+      "name": "pwa-a1.config.mjs"
+    },
+    {
+      "sha256": "665f6eb34d7112e0c0ecd1b86178bfd9735bbe7b319dfe668789ec3651e40a6e",
+      "name": "build-android-a1.ps1"
+    },
+    {
+      "sha256": "a50cda1bb5506dabfa6df755b3f6c7b3625a7a331df60e7bbc6f4b1e6567a0f8",
+      "name": "verify-android-a1.mjs"
+    },
+    {
+      "sha256": "ea72d34fcc000135a004118f48bfa2f21618ed668b638e76b04370d5ad2da9bd",
+      "name": "preserve-android-a1.mjs"
+    },
+    {
+      "sha256": "2734c9857e6104d32cf64db46f350637bda5392ad0e0ea004e6c827c23b18709",
+      "name": "checkpoint.mjs"
+    },
+    {
+      "sha256": "e00b5074726841bc960c8abba10a1943bd5f97674636a565bd53ffe6707d3c56",
+      "name": "scope.json"
+    },
+    {
+      "sha256": "3f8f94f75317088adbe30b4c33abf4cba08019db880009222165a23bb0f3954e",
+      "name": "record-visual.mjs"
+    },
+    {
+      "sha256": "6eaac8bae6cd4b8e5a2ca49914f251b7884c814679ddb4c036079b8197bf19b9",
+      "name": "finalize-notes.mjs"
+    }
+  ],
+  "releaseReady": false,
+  "fixtureSha256": "3c7339dc9d192e7687ce1a8215ca8aa6aaed1b1c954ee77c57de84d7d4628913"
+}

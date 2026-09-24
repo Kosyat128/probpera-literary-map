@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "pass": false,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/source-manifests/4cb5005396b1b74c.json",
+    "sha256": "4cb5005396b1b74cb28c113296feb97966b6352dbb7874ad1bf3170949cfab02",
+    "fileCount": 1650
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-orientation-20260924/check.mjs",
+      "sha256": "d2fdf519db0588bcbdd46c4934c8be8062fb0c966ade90115029fe23f51eeea5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-orientation-20260924/entry.json",
+      "sha256": "22c93cfdf43f5b5faaa90e86492d8dd66d97e2410426a345c4ba6d021f394aa6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-orientation-20260924/unit.config.mjs",
+      "sha256": "68857e5f111c607c1b5f39d2219ba71143161dae2e8186efad234f3d951cf991"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-orientation-20260924/playwright.config.mjs",
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-orientation-20260924/configure.mjs",
+      "sha256": "566cc5580bd53466ac2b053ed96420b047c6250ad4e329cc367c868df86ee45c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-orientation-20260924/scope.json",
+      "sha256": "e00b5074726841bc960c8abba10a1943bd5f97674636a565bd53ffe6707d3c56"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 12,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   failed: 1,\n-   failed: 0,\n    flaky: 0,\n+   passed: 12,\n-   passed: 13,\n    skipped: 0\n  }\n",
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 302403
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyOrientationImplemented": true,
+  "journeyCharacterWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

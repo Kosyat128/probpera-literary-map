@@ -1,0 +1,15 @@
+{
+  "checkpoint": "5feb4e41b7d6b0c528cf90c0df48c7b33db82463",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/pwa-a1/result.json",
+    "sha256": "3c757f164610b190bdb64a7762e4f39518969fe775f9aa1326a81aaf6a02508e",
+    "buildId": "12aedc4dd02d3fb14f10e0c279abb714c0042e4bdb08666740a08caa8dc48d6d",
+    "sourceCommit": "a965e043eee6c778f37215f236db5a52272a91ed"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/android-a1/result.json",
+    "sha256": "da3484bc653ffcbfb459fbef8cae8e80a0e5a29fe3dd15b3919ef98186125288",
+    "buildId": "f3a4c61137002a385519cf3a6a2f1e9d30e21a7adacc308a82c086941aed5890",
+    "sourceCommit": "a965e043eee6c778f37215f236db5a52272a91ed"
+  }
+}

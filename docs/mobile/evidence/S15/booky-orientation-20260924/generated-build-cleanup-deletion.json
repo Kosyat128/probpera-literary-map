@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T01:04:46.1352851+00:00",
+  "pass": true,
+  "dryRun": false,
+  "removed": true,
+  "onlyD184GeneratedDuplicates": true,
+  "priorCheckpoint": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/result.json",
+    "sha256": "92a89210b655c142b0f570657a13245485113105c3fa7e748a2649f972571c37"
+  },
+  "priorEvidence": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/result.json",
+    "sha256": "8803b064330a80f29dd86d93d6e9dc9944c373603be3c43855f21304cfa73215"
+  },
+  "targets": [
+    {
+      "files": 1427,
+      "artifactSha256": "4630f6165a05ee7937b3f7521085954c56b1e34ac4ed0fac3be8ca8b04b83057",
+      "preserved": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-dock\\pwa-8c294c8b",
+      "bytes": 76771130,
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-previous-042737e9-b9a9-4b72-8a0f-9aaee30be819",
+      "buildResult": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/pwa-a1/result.json",
+        "sha256": "8abd0662aa3ea99e53a88d74097f38f5e798c6841773294a826df1be44c99460"
+      },
+      "sourceCommit": "b5ee5ac5fc0c314bdd2060b2c2234fcb63c3d28c",
+      "kind": "pwa",
+      "buildId": "8c294c8b6c316b8f67c9a2ed6a59e95eb237efb1b97166ba94bd461b7b1ece52"
+    },
+    {
+      "files": 1408,
+      "artifactSha256": "255dfcdfc34716c3c89c2536d12c82f7ad0ab52a2b5d45ce31aa8ca6dd89ce5f",
+      "preserved": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-dock\\android-1d8cfa64\\runtime",
+      "bytes": 74851097,
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-21f1f430-94fb-4827-aaaa-b3fd4ec887c8",
+      "buildResult": {
+        "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/android-a1/result.json",
+        "sha256": "e8d37e1ee6eb6b0db9b10219fd802d015d9584bef7ecc81beea3dd7a79720e4d"
+      },
+      "sourceCommit": "b5ee5ac5fc0c314bdd2060b2c2234fcb63c3d28c",
+      "kind": "android",
+      "buildId": "1d8cfa64f963615d16e8641d33583fcb11d6a5387285009da23485ffa68ecfa3"
+    }
+  ],
+  "bytes": 151622227.0,
+  "releaseReady": false,
+  "preflight": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-orientation\\staging\\generated-build-cleanup-preflight.json",
+    "sha256": "66a83acf3e22f59d0c1b1ec7b6da2976fa97785cecee918ff53691bf4255c8f3"
+  }
+}

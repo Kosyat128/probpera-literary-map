@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T01:26:33.392Z",
+  "pass": true,
+  "sourceCommit": "b791829322c77c9c6d03f446d49295a27063707c",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/source-manifests/bb7698a90bda538e.json",
+    "sha256": "bb7698a90bda538ef094c6b595772d936de8bc280bfffee228382415a7813b46",
+    "fileCount": 1650
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 47,
+  "scope": "Direct review of the four final RU/EN compact-landscape and portrait-reset captures added for orientation reflow. Other regression captures are authenticated without a new complete visual review.",
+  "limitations": [
+    "This visual review covers four of 47 final captures. It does not claim all retained images were inspected again.",
+    "Static images cannot establish interruption timing or touch activation; those claims depend on the corresponding formal browser assertions.",
+    "Viewport rotation was simulated in the actual browser application. No installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation/final-visual-receipt.json",
+    "sha256": "4984e206abcaafd2b632db1b5487fce3915ab3d951a11026c843d9e6e2094c8d"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation/browser-a2/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-rotation-landscape-ru-844.png",
+      "sha256": "967be00304e5010f8a4e8f7f9b1daa31c87db5dbfb30e3f0b03d675c1d4315f4",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_mobile_browser",
+      "findings": [
+        "RU844x390: the complete companion, move/hide controls and walk button are inside the separate bottom dock. The visible High option and upper part of Balanced stay above the dock without character overlap.",
+        "Collection header, RU/EN switch and close button are visible. Lower settings continue outside the scroll viewport; this image does not claim those clipped labels are visible."
+      ],
+      "bytes": 42926,
+      "width": 844,
+      "height": 390
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation/browser-a2/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-rotation-reset-ru-390.png",
+      "sha256": "7cab84c9790ac475c8a2a7c1d5ca3bf4e953238195850423a7a18e5fa13dd24d",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_mobile_browser",
+      "findings": [
+        "RU390x844 after portrait reset: the entire companion and its controls fit below the scroll content. All three graphics option cards remain visually clear of the companion.",
+        "The collection header is readable; the beginning of Downloads is clipped at the scroll boundary above the reserved dock, rather than overlaid by the character."
+      ],
+      "bytes": 76406,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation/browser-a2/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-rotation-landscape-en-640.png",
+      "sha256": "c3651c0068393cf5cfe1684cc80b06cc5a6d4beb4d988b04de1cdd1bcc2c4e25",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_mobile_browser",
+      "findings": [
+        "EN640x360: the complete companion and three controls remain in the bottom dock below the visible High graphics option. No companion overlay on its text or radio is visible.",
+        "Collection header, language switch and close button remain visible. The short scroll viewport shows only part of the full settings content."
+      ],
+      "bytes": 37381,
+      "width": 640,
+      "height": 360
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation/browser-a2/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-rotation-reset-en-320.png",
+      "sha256": "62fd4de0ba482a8c7cc59eec8232c3f9b2595916b0059de3bd40d6371867dcf5",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/booky_mobile_browser",
+      "findings": [
+        "EN320x844 after portrait reset: the companion and controls fit within the narrow bottom dock, with no visible clipping of the avatar or buttons. High, Balanced and Economy option cards are readable above it.",
+        "The lower reduced-motion explanation is clipped by the scroll viewport. No claim is made that offscreen content is visible; no companion overlap with visible settings was found."
+      ],
+      "bytes": 68501,
+      "width": 320,
+      "height": 844
+    }
+  ],
+  "releaseReady": false
+}

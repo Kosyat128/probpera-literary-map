@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T01:12:48.211Z",
+  "recordingComplete": true,
+  "attempts": [
+    {
+      "attempt": "orientation-a1",
+      "classification": "product-reproduction",
+      "summary": "Portrait-to-landscape cancellation disables the old narrow dock and overlaps visible High/Balanced label hit points. Reset observations were captured before the failing landscape assertion; later assertions were not executed.",
+      "scope": "External focused diagnostic; final fixture is separately validated.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/playwright.json",
+        "sha256": "f965e5e16edd0e4d097507c57a92b955840c1656dc88aeada47383bf17f6131f"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/execution.json",
+        "sha256": "05bd315e7f3f2754b7795ec30b189927e0166420e9b5d8d42ef5071c0f44d7c0"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/stdout.log",
+          "sha256": "fcf468cddb49268bd3f30b74e0d607724e17978a62bcbdae344ce947124701bd"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/stderr.log",
+          "sha256": "e0f5b468dba956c4500329d8f818d04e41bc237de4760da3020e4382cf4708e2"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/artifacts/orientation-mobile-trusted-525eb-xplicit-reset-recovers-dock/booky-live-character.json",
+        "sha256": "44ba8db1addd8a01cd665fb9987c82d660dd25c9929d55dc90525e0da302c628"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/artifacts/orientation-mobile-trusted-525eb-xplicit-reset-recovers-dock/booky-live-character.json",
+            "sha256": "44ba8db1addd8a01cd665fb9987c82d660dd25c9929d55dc90525e0da302c628"
+          },
+          "scenario": "mobile-return-orientation-and-reset",
+          "pass": false
+        }
+      ],
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/proof.json",
+        "sha256": "d0ba2dcc86f8006c8f4fbee4b3a3324232cedc753e45142aa4c51ff3955dd875"
+      },
+      "driver": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/orientation.spec.mjs",
+        "sha256": "47c3773493a9d9fcc1349aa6be8a39338f122511773698a3dbb06b18750fb62c"
+      },
+      "runner": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/run.mjs",
+        "sha256": "3b2184db5b3333dac1bcf392f0bb22485bb5b82536d314367926a3b2f4965e4b"
+      },
+      "configuration": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a1/playwright.config.mjs",
+        "sha256": "efbb7b872f87f3b6d234f76785a86b9554a48ccccd684f1703ef6cf70c31ec5f"
+      }
+    },
+    {
+      "attempt": "orientation-a2",
+      "classification": "focused-success",
+      "summary": "Both RU and EN touch sequences retain dock containment and visible control hits after rotation, remain still, reflow back to portrait and allow explicit reset.",
+      "scope": "External focused diagnostic; final fixture is separately validated.",
+      "pass": true,
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/playwright.json",
+        "sha256": "8bcfd7c6077709a09dd96599063ff5ae437c42c3dc7a4c44549cf246181e8b2e"
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/execution.json",
+        "sha256": "a0cd2f708d02d435c2c82f684b17b7dfeffd07e35f9098fa5ff364481781d49f"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/stdout.log",
+          "sha256": "bb2fd9d69aebcc4731f6916bea6175e4b0debe6d5bad42cac3fb4bb6ccd0859a"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/stderr.log",
+          "sha256": "b428021cefc07a3a9c38a16f2bd0d6524eff6c30670b4a0a7e32c2ee6e1f26f0"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/artifacts/orientation-mobile-trusted-a597c-icit-reset-recovers-dock-en/booky-live-character.json",
+        "sha256": "bfd96586b99a15f27dea339b6a39c5066280a6093186264a970ae8910cc00bd5"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/artifacts/orientation-mobile-trusted-a597c-icit-reset-recovers-dock-en/booky-live-character.json",
+            "sha256": "bfd96586b99a15f27dea339b6a39c5066280a6093186264a970ae8910cc00bd5"
+          },
+          "scenario": "mobile-return-orientation-and-reset-en",
+          "pass": true
+        },
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/artifacts/orientation-mobile-trusted-fc86a-icit-reset-recovers-dock-ru/booky-live-character.json",
+            "sha256": "06b56f11ee047085868f0d37c3643cbbf36f80a038915885fa228045fa766439"
+          },
+          "scenario": "mobile-return-orientation-and-reset-ru",
+          "pass": true
+        }
+      ],
+      "proof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/proof.json",
+        "sha256": "51f4e7e18818d81fd08e532c2fc63e8a212bf4bf4b91bb1fd1b2a1cf575497f4"
+      },
+      "driver": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/orientation.spec.mjs",
+        "sha256": "cdcfa12c7732368b590383d79f9e6c2d5bafecb52dd0b6d941dd6f3aaab880dd"
+      },
+      "runner": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/run.mjs",
+        "sha256": "6ec5788db77d01665fe5e072fff8d7996d85cdaa58f07d06ae4aa379ac030f40"
+      },
+      "configuration": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-orientation-review/a2/playwright.config.mjs",
+        "sha256": "11d2575707143d2543923b39c192e5edf2083fbd1e4be9fc70bd65c492022e35"
+      }
+    }
+  ],
+  "limitations": [
+    "Diagnostic drivers are preserved with their original runtime hashes and exits. Final source fixture and all formal checks are attributed separately."
+  ]
+}

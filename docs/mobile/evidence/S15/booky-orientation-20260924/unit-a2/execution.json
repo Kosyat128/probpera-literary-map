@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/booky-orientation-20260924/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-orientation-20260924\\unit-a2\\vitest.json"
+  ],
+  "startedAt": "2026-09-24T01:19:02.178Z",
+  "exitCode": 0,
+  "durationMs": 9574,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/unit-a2/stdout.log",
+    "bytes": 181,
+    "sha256": "06b2ad5c968f528a6ecfcb5a46f98eac58cfb4dd6454037d38bb439aa017519e"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/unit-a2/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

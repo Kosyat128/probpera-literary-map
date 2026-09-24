@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T01:18:51.019Z",
+  "classification": "test-observer-visibility-fix",
+  "reason": "The legacy collection test selected fully scrolled-out buttons under the fixed header. At 800 x 400 their y=9.8..53.8 bounds were inside the viewport but outside the scrolling content. Recorded hit targets were HEADER, not the companion. Restrict selection to the actual content clip while retaining strict hit and overlap assertions for visible controls.",
+  "archivedEntry": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/a1-inputs/entry.json",
+    "sha256": "22c93cfdf43f5b5faaa90e86492d8dd66d97e2410426a345c4ba6d021f394aa6"
+  },
+  "fixtureBefore": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/a1-inputs/booky-live-character.spec.mjs",
+    "sha256": "3c7339dc9d192e7687ce1a8215ca8aa6aaed1b1c954ee77c57de84d7d4628913"
+  },
+  "fixtureAfter": {
+    "path": "tests/pwa/booky-live-character.spec.mjs",
+    "sha256": "a2d02f792d90bc1e5f964f3fc379fbae79598f5019452e5c22a0614112d4fd11"
+  },
+  "browserFailure": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/browser-a1/result.json",
+    "sha256": "55efeb9b6a587e52cfe6913bdad77b301c6d09e0345b9710da4c0ac0a7ae0252"
+  },
+  "browserReport": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/browser-a1/playwright.json",
+    "sha256": "c95646efd58a57cd84157f912871e91b23d3b767260e11401fc1e23cdd8d68e0"
+  },
+  "visualHelperBefore": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/a1-inputs/record-visual.mjs",
+    "sha256": "3f8f94f75317088adbe30b4c33abf4cba08019db880009222165a23bb0f3954e"
+  },
+  "visualHelperAfter": {
+    "path": "docs/mobile/evidence/S15/booky-orientation-20260924/record-visual.mjs",
+    "sha256": "9a8367ef5f467269f43b23d3be9805c08b944d94d942bbc79e124c81ffe15d1b"
+  },
+  "helperChange": "Allow an explicit immutable browser attempt argument for final image selection.",
+  "runtimeUnchanged": true,
+  "earlierRunsRetained": true,
+  "finalChecksRequired": [
+    "unit-a2",
+    "static-a2",
+    "browser-a2"
+  ]
+}
