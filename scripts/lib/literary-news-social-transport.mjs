@@ -40,14 +40,22 @@ export function createNewsSocialTransport({ mode = "shadow", telegramToken, vkTo
   const call = async (platform, method, data, photo = null) => {
     const token = platform === "telegram" ? telegramToken : vkToken;
     if (!token) return { status: 401, data: null };
-    const target = platform === "telegram" ? `https://api.telegram.org/bot${token}/${method}` : `https://api.vk.com/method/${method}`;
+    const allowedMethods = platform === "telegram"
+      ? ["getMe", "getChat", "getChatMember", "sendMessage", "editMessageText", "sendPhoto", "editMessageMedia"]
+      : platform === "vk" ? ["groups.getById", "users.get", "account.getAppPermissions", "photos.getWallUploadServer", "photos.saveWallPhoto", "wall.post", "wall.edit"] : [];
+    if (!allowedMethods.includes(method) || typeof token !== "string" || !/^[A-Za-z0-9_.:-]{1,1024}$/.test(token))
+      throw Error("provider_endpoint_invalid");
+    const target = new URL(platform === "telegram" ? `https://api.telegram.org/bot${encodeURIComponent(token).replaceAll("%3A", ":")}/${method}` : `https://api.vk.com/method/${method}`);
+    if (target.protocol !== "https:" || target.username || target.password || target.port || target.search || target.hash
+      || target.hostname !== "api.telegram.org" && target.hostname !== "api.vk.com")
+      throw Error("provider_endpoint_invalid");
     let body = platform === "telegram" ? JSON.stringify(data) : new URLSearchParams({ ...data, access_token: token, v: "5.199" }).toString();
     if (photo) {
       body = new FormData();
       for (const [key,value] of Object.entries(data)) body.append(key,typeof value === "object" ? JSON.stringify(value) : String(value));
       body.append("news_photo",new Blob([photo],{type:"image/jpeg"}),"news.jpg");
     }
-    const response = await fetchImpl(target, { method: "POST", redirect: "error", signal: AbortSignal.timeout(30000),
+    const response = await fetchImpl(target.href, { method: "POST", redirect: "error", signal: AbortSignal.timeout(30000),
       headers: photo ? {} : { "Content-Type": platform === "telegram" ? "application/json" : "application/x-www-form-urlencoded" }, body });
     return { status: response.status, retryAfter: response.headers.get("retry-after"), data: await boundedJson(response) };
   };
@@ -147,7 +155,7 @@ export function createNewsSocialTransport({ mode = "shadow", telegramToken, vkTo
       try {
         response = destination.platform === "telegram"
           ? await call("telegram", prepared.media ? remoteId ? "editMessageMedia" : "sendPhoto" : remoteId ? "editMessageText" : "sendMessage", {
-            ...(prepared.media && remoteId ? {media:{type:"photo",media:delivery.fileId || payload.photo,caption:payload.caption,caption_entities:payload.caption_entities}}
+            ...(prepared.media && remoteId ? {media:{type:"photo",media:delivery.fileId || payload.photo,caption:payload.caption,caption_entities:payload.caption_entities,show_caption_above_media:false}}
               : {...payload,...(prepared.media && delivery.fileId?{photo:delivery.fileId}:{})}),
             chat_id: destination.id, ...(remoteId ? { message_id: Number(remoteId) } : {}),
           },prepared.media && !delivery.fileId?delivery.bytes:null)
@@ -155,7 +163,10 @@ export function createNewsSocialTransport({ mode = "shadow", telegramToken, vkTo
             ...payload, ...(prepared.media?{attachments:delivery.attachment}:{}), owner_id: destination.id, ...(remoteId ? { post_id: Number(remoteId) } : {}),
             ...(remoteId ? {} : { guid: (await newsDigest(["news", prepared.newsId, destination.platform, destination.id])).slice(0, 32) }),
           });
-      } catch { return { kind: "ambiguous", code: "provider_outcome_unknown" }; }
+      } catch (error) {
+        if (error.message === "provider_endpoint_invalid") return { kind: "blocked", scope: "auth", code: "provider_endpoint_invalid" };
+        return { kind: "ambiguous", code: "provider_outcome_unknown" };
+      }
       const { status, data } = response;
       if (status === 429 || data?.error_code === 429 || [6, 9].includes(data?.error?.error_code))
         return { kind: "retry", scope: "retry", code: "provider_rate_limited",

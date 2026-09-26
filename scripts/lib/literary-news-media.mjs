@@ -5,7 +5,7 @@ import registry from "../../data/news/social-media-assets.json" with { type: "js
 import { fetchPinnedNewsSource } from "./literary-news-safe-fetch.mjs";
 
 export const NEWS_MEDIA_LIMITS = Object.freeze({ sourceBytes: 8 * 1024 * 1024, outputBytes: 2 * 1024 * 1024,
-  pixels: 20_000_000, maxSide: 1600, minSide: 240, registryAssets: 32 });
+  pixels: 20_000_000, maxSide: 1600, minSide: 240, registryAssets: 5000 });
 export const NEWS_MEDIA_PROFILE = "literary-news-photo-v1";
 const cacheRoot = new URL("../../.tmp/news-social-media/", import.meta.url);
 export const mediaByteHash = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -114,33 +114,44 @@ function mediaAttribution(asset) {
 /** Preparation is separate from delivery. A reviewed derivative hash is mandatory;
  * changed source bytes or renderer output never silently produce a new attachment.
  */
-export async function prepareRegisteredNewsMedia(destinations, { registry: assets = registry, now = new Date(), fetchImpl } = {}) {
+export async function cacheNormalizedNewsMedia(normalized) {
+  if (!normalized?.descriptor || mediaByteHash(normalized.bytes) !== normalized.descriptor.sha256
+    || normalized.bytes.length !== normalized.descriptor.byteLength || normalized.bytes.length > NEWS_MEDIA_LIMITS.outputBytes)
+    fail("media_cache_bytes_changed");
+  await mkdir(cacheRoot, { recursive: true });
+  const target = new URL(`${normalized.descriptor.sha256}.jpg`, cacheRoot);
+  const temporary = new URL(`${normalized.descriptor.sha256}.${process.pid}.tmp`, cacheRoot);
+  await writeFile(temporary, normalized.bytes); await rename(temporary, target);
+}
+export async function prepareRegisteredNewsMedia(destinations, { registry: assets = registry, now = new Date(), fetchImpl,
+  newsIds = null, maxDownloads = 8 } = {}) {
   if (!Array.isArray(assets.assets) || assets.assets.length > NEWS_MEDIA_LIMITS.registryAssets) fail("media_registry_invalid");
-  const outcomes = [];
+  if (!Number.isSafeInteger(maxDownloads) || maxDownloads < 0 || maxDownloads > 8) fail("media_download_budget_invalid");
+  const outcomes = []; let downloads = 0;
   for (const asset of assets.assets) {
+    if (newsIds && !asset.newsIds?.some(id => newsIds.includes(id))) continue;
     if (!destinations.some((destination) => { try { checkedNewsMediaAsset(asset, destination, asset.newsIds?.[0], now); return true; } catch { return false; } })) continue;
     try {
       try { await readNewsMediaBytes(asset.derivative); outcomes.push({ assetId: asset.id, status: "cached" }); continue; } catch { /* Rebuild the exact reviewed derivative. */ }
+      if (downloads >= maxDownloads) { outcomes.push({ assetId: asset.id, status: "pending", reason: "media_download_budget" }); continue; }
+      downloads++;
       const normalized = await downloadNewsMediaAsset(asset, { registry: assets, fetchImpl });
       if (!equalDescriptor(normalized.descriptor, asset.derivative)) fail("media_derivative_requires_review");
-      await mkdir(cacheRoot, { recursive: true });
-      const target = new URL(`${normalized.descriptor.sha256}.jpg`, cacheRoot);
-      const temporary = new URL(`${normalized.descriptor.sha256}.${process.pid}.tmp`, cacheRoot);
-      await writeFile(temporary, normalized.bytes); await rename(temporary, target);
+      await cacheNormalizedNewsMedia(normalized);
       outcomes.push({ assetId: asset.id, status: "prepared" });
     } catch (error) { outcomes.push({ assetId: asset.id, status: "fallback", reason: /^media_/.test(error.message) ? error.message : "media_preparation_unavailable" }); }
   }
   return outcomes;
 }
 
-export async function selectNewsMedia(newsId, destination, { registry: assets = registry, now = new Date(), readBytes = readNewsMediaBytes } = {}) {
+export async function selectNewsMedia(newsId, destination, { registry: assets = registry, now = new Date(), readBytes = readNewsMediaBytes, deferBytes = false } = {}) {
   if (!destination) return { media: null, reason: "no_destination_licensed_asset" };
   if (!Array.isArray(assets.assets) || assets.assets.length>NEWS_MEDIA_LIMITS.registryAssets) fail("media_registry_invalid");
   const candidates = assets.assets.filter((asset) => Array.isArray(asset.newsIds) && asset.newsIds.includes(newsId));
   let reason = "no_destination_licensed_asset";
   for (const asset of candidates) try {
     checkedNewsMediaAsset(asset, destination, newsId, now);
-    await readBytes(asset.derivative);
+    if (!deferBytes) await readBytes(asset.derivative);
     return { media: { assetId: asset.id, ...asset.derivative, credit: mediaAttribution(asset), sourceUrl: asset.sourceUrl,
       sourceSha256: asset.sourceSha256, license: asset.license, licenseEvidenceUrl: asset.licenseEvidenceUrl,
       licenseEvidenceSha256: asset.licenseEvidenceSha256, checkedAt: asset.checkedAt, validUntil: asset.validUntil,
@@ -151,6 +162,7 @@ export async function selectNewsMedia(newsId, destination, { registry: assets = 
 
 export async function validatePreparedNewsMedia(prepared, destination, { registry: assets = registry, now = new Date(), readBytes = readNewsMediaBytes } = {}) {
   const media = prepared.media;
+  if (!Array.isArray(assets?.assets) || assets.assets.length > NEWS_MEDIA_LIMITS.registryAssets) fail("media_registry_invalid");
   const asset = assets.assets.find((row) => row.id === media?.assetId);
   checkedNewsMediaAsset(asset, destination, prepared.newsId, now);
   if (!equalDescriptor(asset.derivative, media) || mediaAttribution(asset) !== media.credit

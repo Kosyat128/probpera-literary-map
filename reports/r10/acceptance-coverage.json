@@ -3,7 +3,7 @@
   "source": "R10_FINAL acceptance.json",
   "scenarioCount": 228,
   "releaseAccepted": false,
-  "note": "Evidence index, not 228 automatic PASS claims. Local evidence availability does not establish every clause or human/live acceptance.",
+  "note": "Evidence index, not228 automatic PASS claims. Current pre-release facts are updated; earlier reports retain original dates/hashes. Focused checks do not establish full remote CI, every clause, native visual acceptance or live release. VK explicitly deferred by owner.",
   "scenarios": [
     {
       "id": "E01",
@@ -439,11 +439,14 @@
       "id": "S07",
       "group": "S",
       "title": "Реальные возможности Telegram",
-      "status": "no_live_native_acceptance",
+      "status": "telegram_readonly_rights_verified_native_canary_pending",
       "evidence": [
         "reports/r10/social/sql-check.json",
         "reports/r10/social/operator-sql-check.json",
-        "reports/r10/social/admin-controls.md"
+        "reports/r10/social/admin-controls.md",
+        "reports/r10/social/connections/verified-readonly.json",
+        "reports/r10/social/history/telegram-review.json",
+        "reports/r10/publication/r10-08-telegram-history-review.json"
       ]
     },
     {
@@ -505,22 +508,28 @@
       "id": "S13",
       "group": "S",
       "title": "Shadow и canary",
-      "status": "canary_not_configured",
+      "status": "telegram_shadow_and_single_canary_pending",
       "evidence": [
         "reports/r10/social/sql-check.json",
         "reports/r10/social/operator-sql-check.json",
-        "reports/r10/social/admin-controls.md"
+        "reports/r10/social/admin-controls.md",
+        "reports/r10/social/connections/verified-readonly.json",
+        "reports/r10/social/history/telegram-review.json",
+        "reports/r10/publication/r10-08-telegram-history-review.json"
       ]
     },
     {
       "id": "S14",
       "group": "S",
       "title": "Правильное назначение",
-      "status": "destinations_not_configured",
+      "status": "numeric_destinations_configured_telegram_verified_vk_deferred",
       "evidence": [
         "reports/r10/social/sql-check.json",
         "reports/r10/social/operator-sql-check.json",
-        "reports/r10/social/admin-controls.md"
+        "reports/r10/social/admin-controls.md",
+        "reports/r10/social/connections/verified-readonly.json",
+        "reports/r10/social/history/telegram-review.json",
+        "reports/r10/publication/r10-08-telegram-history-review.json"
       ]
     },
     {
@@ -574,7 +583,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -584,7 +595,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -594,7 +607,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -604,8 +619,11 @@
       "status": "verified_remainder_recorded_1000_goal_not_met",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
-      ]
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
+      ],
+      "currentFinding": "77 added visible events=68new/refined+9confirmed precision;2314total/2312visible2026;923 event remainder or932 new/refined value remainder.4 supplementalheld not applied; historical operation baseline unknown."
     },
     {
       "id": "C05",
@@ -614,7 +632,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -624,7 +644,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -634,7 +656,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -644,7 +668,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -779,7 +805,7 @@
       "id": "R03",
       "group": "R",
       "title": "Требуемый CI",
-      "status": "required_CI_not_complete",
+      "status": "exact_final_commit_required_remote_CI_pending",
       "evidence": [
         "reports/r10/verification.json",
         "reports/r10/README.md"
@@ -799,7 +825,7 @@
       "id": "R05",
       "group": "R",
       "title": "Разрешение production",
-      "status": "release_gates_preserved_no_production_write",
+      "status": "user_authorized_main_release_operational_gates_pending",
       "evidence": [
         "reports/r10/verification.json",
         "reports/r10/README.md"
@@ -809,7 +835,7 @@
       "id": "R06",
       "group": "R",
       "title": "Проверка живого блока и доставки",
-      "status": "production_not_performed",
+      "status": "new_live_release_and_telegram_canary_pending",
       "evidence": [
         "reports/r10/verification.json",
         "reports/r10/README.md"
@@ -957,7 +983,7 @@
       "id": "Q08",
       "group": "Q",
       "title": "VK: собственный нативный формат",
-      "status": "no_live_native_acceptance",
+      "status": "vk_activation_deferred_by_user_local_native_tests_retained",
       "evidence": [
         "reports/r10/social/previews.json",
         "reports/r10/social/q-text-review.md",
@@ -1041,14 +1067,17 @@
       "id": "Q14",
       "group": "Q",
       "title": "Права на конкретное распространение",
-      "status": "no_social_media_rights",
+      "status": "three_manual_assets_destination_rights_verified_auto_license_gate_tested",
       "evidence": [
         "reports/r10/social/previews.json",
         "reports/r10/social/q-text-review.md",
         "reports/r10/publication/article-thumbnails.json",
         "reports/r10/social/MEDIA_Q.md",
         "reports/r10/social/quality/verification.json",
-        "reports/r10/social/media-rights/proposed-assets.json"
+        "reports/r10/social/media-rights/proposed-assets.json",
+        "reports/r10/social/media-rights/destination-approval.json",
+        "reports/r10/social/discovery/real-source-proof.json",
+        "reports/r10/social/media-discovery-tests.json"
       ]
     },
     {
@@ -1090,7 +1119,10 @@
         "reports/r10/publication/article-thumbnails.json",
         "reports/r10/social/MEDIA_Q.md",
         "reports/r10/social/quality/verification.json",
-        "reports/r10/social/media-rights/proposed-assets.json"
+        "reports/r10/social/media-rights/proposed-assets.json",
+        "reports/r10/social/media-rights/destination-approval.json",
+        "reports/r10/social/discovery/real-source-proof.json",
+        "reports/r10/social/media-discovery-tests.json"
       ]
     },
     {
@@ -1104,7 +1136,10 @@
         "reports/r10/publication/article-thumbnails.json",
         "reports/r10/social/MEDIA_Q.md",
         "reports/r10/social/quality/verification.json",
-        "reports/r10/social/media-rights/proposed-assets.json"
+        "reports/r10/social/media-rights/proposed-assets.json",
+        "reports/r10/social/media-rights/destination-approval.json",
+        "reports/r10/social/discovery/real-source-proof.json",
+        "reports/r10/social/media-discovery-tests.json"
       ]
     },
     {
@@ -1202,7 +1237,10 @@
         "reports/r10/publication/article-thumbnails.json",
         "reports/r10/social/MEDIA_Q.md",
         "reports/r10/social/quality/verification.json",
-        "reports/r10/social/media-rights/proposed-assets.json"
+        "reports/r10/social/media-rights/proposed-assets.json",
+        "reports/r10/social/media-rights/destination-approval.json",
+        "reports/r10/social/discovery/real-source-proof.json",
+        "reports/r10/social/media-discovery-tests.json"
       ]
     },
     {
@@ -1353,21 +1391,26 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
       "id": "Q33",
       "group": "Q",
       "title": "Права по назначениям",
-      "status": "no_social_media_rights",
+      "status": "six_manual_destination_permissions_verified_no_live_sends",
       "evidence": [
         "reports/r10/social/previews.json",
         "reports/r10/social/q-text-review.md",
         "reports/r10/publication/article-thumbnails.json",
         "reports/r10/social/MEDIA_Q.md",
         "reports/r10/social/quality/verification.json",
-        "reports/r10/social/media-rights/proposed-assets.json"
+        "reports/r10/social/media-rights/proposed-assets.json",
+        "reports/r10/social/media-rights/destination-approval.json",
+        "reports/r10/social/discovery/real-source-proof.json",
+        "reports/r10/social/media-discovery-tests.json"
       ]
     },
     {
@@ -1661,7 +1704,10 @@
         "reports/r10/publication/article-thumbnails.json",
         "reports/r10/social/MEDIA_Q.md",
         "reports/r10/social/quality/verification.json",
-        "reports/r10/social/media-rights/proposed-assets.json"
+        "reports/r10/social/media-rights/proposed-assets.json",
+        "reports/r10/social/media-rights/destination-approval.json",
+        "reports/r10/social/discovery/real-source-proof.json",
+        "reports/r10/social/media-discovery-tests.json"
       ]
     },
     {
@@ -1671,7 +1717,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -1681,7 +1729,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -1841,7 +1891,7 @@
       "id": "R13",
       "group": "R",
       "title": "Сквозной выпуск правильного модуля",
-      "status": "isolated_news_path_verified_no_production_release",
+      "status": "isolated_news_path_local_evidence_new_release_pending",
       "evidence": [
         "reports/r10/verification.json",
         "reports/r10/README.md"
@@ -1916,11 +1966,12 @@
       "id": "P19",
       "group": "P",
       "title": "Значительное настоящее наполнение",
-      "status": "prepared_not_public",
+      "status": "206_prepared_203_current_new_release_pending",
       "evidence": [
         "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
         "data/news/batches",
-        "reports/r10/news/nobel/README.md"
+        "reports/r10/news/nobel/README.md",
+        "reports/r10/publication/r10-08-prepared.json"
       ]
     },
     {
@@ -2147,11 +2198,14 @@
       "id": "S26",
       "group": "S",
       "title": "Карточка между двумя опросами не теряется",
-      "status": "observed_admissions_only_history_gap",
+      "status": "239_records_screened_against_accessible_history_deleted_private_gap_retained",
       "evidence": [
         "reports/r10/social/sql-check.json",
         "reports/r10/social/operator-sql-check.json",
-        "reports/r10/social/admin-controls.md"
+        "reports/r10/social/admin-controls.md",
+        "reports/r10/social/connections/verified-readonly.json",
+        "reports/r10/social/history/telegram-review.json",
+        "reports/r10/publication/r10-08-telegram-history-review.json"
       ]
     },
     {
@@ -2197,7 +2251,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -2292,7 +2348,10 @@
       "evidence": [
         "reports/r10/social/sql-check.json",
         "reports/r10/social/operator-sql-check.json",
-        "reports/r10/social/admin-controls.md"
+        "reports/r10/social/admin-controls.md",
+        "reports/r10/social/media-rights/destination-approval.json",
+        "reports/r10/social/discovery/real-source-proof.json",
+        "reports/r10/social/media-discovery-tests.json"
       ]
     },
     {
@@ -2316,7 +2375,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -2468,14 +2529,17 @@
       "id": "Q41",
       "group": "Q",
       "title": "Качество медиа не заменено постоянным fallback",
-      "status": "six_profiles_and_three_real_candidates_inspected_no_live_posts",
+      "status": "three_approved_manual_assets_and_bounded_auto_discovery_verified_native_acceptance_pending",
       "evidence": [
         "reports/r10/social/previews.json",
         "reports/r10/social/q-text-review.md",
         "reports/r10/publication/article-thumbnails.json",
         "reports/r10/social/MEDIA_Q.md",
         "reports/r10/social/quality/verification.json",
-        "reports/r10/social/media-rights/proposed-assets.json"
+        "reports/r10/social/media-rights/proposed-assets.json",
+        "reports/r10/social/media-rights/destination-approval.json",
+        "reports/r10/social/discovery/real-source-proof.json",
+        "reports/r10/social/media-discovery-tests.json"
       ]
     },
     {
@@ -2485,7 +2549,9 @@
       "status": "local_evidence_available_not_release_acceptance",
       "evidence": [
         "reports/r10/calendar/audit.json",
-        "reports/r10/calendar/browser-check.json"
+        "reports/r10/calendar/browser-check.json",
+        "reports/r10/calendar/supplemental-audit.json",
+        "reports/r10/calendar/supplemental-completion.md"
       ]
     },
     {
@@ -2507,5 +2573,85 @@
         "reports/r10/README.md"
       ]
     }
-  ]
+  ],
+  "checkedAt": "2026-09-26T23:00:24.738Z",
+  "currentCounts": {
+    "stored": 239,
+    "newPrepared": 206,
+    "current": 222,
+    "newCurrent": 203,
+    "editorialDate": "2026-09-27",
+    "timeZone": "Europe/Moscow",
+    "checkedAt": "2026-09-26T23:00:24.738Z"
+  },
+  "currentCalendar": {
+    "addedVisibleEvents": 77,
+    "newOrRefinedDateValues": 68,
+    "confirmedExistingPrecision": 9,
+    "observedCorrectedBaseline": 2237,
+    "total": 2314,
+    "visibleByYear": {
+      "2026": 2312,
+      "2028": 2314
+    },
+    "remainingVisibleEventTarget": 923,
+    "remainingNewOrRefinedValueTarget": 932,
+    "historicalOperationBaseline": null,
+    "supplementalFields": 17,
+    "supplementalHeld": 4,
+    "original60BytesPreserved": true
+  },
+  "currentSocial": {
+    "configuredDestinations": 2,
+    "enabledDestinations": 0,
+    "telegram": {
+      "handle": "probbaperra",
+      "destinationId": "-1002791579809",
+      "rights": "verified_readonly",
+      "mode": "off",
+      "historyReviewedRecords": 239,
+      "observedPublicPosts": 363,
+      "pages": 19,
+      "observedPostIdRange": [
+        1,
+        410
+      ],
+      "decision": "no_identified_duplicate_in_accessible_snapshot",
+      "historyApprovalInProduction": "pending_fresh_head_and_runtime_reconciliation",
+      "canary": "pending"
+    },
+    "vk": {
+      "handle": "probperaru",
+      "destinationId": "-231377018",
+      "mode": "off",
+      "status": "deferred_by_user",
+      "blocksTelegramOrSite": false
+    },
+    "manualApprovedAssets": 3,
+    "manualDestinationPermissions": 6,
+    "automaticImages": "implemented_focused_verified_release_pending",
+    "deletedPrivateAndPriorPostVersionsVerified": false,
+    "delivered": 0,
+    "pacing": {
+      "newPostsPerWindow": 1,
+      "windowMinutes": 30,
+      "catchUpBursts": false,
+      "knownRemoteCorrectionsUnchanged": true,
+      "requestedByUser": true,
+      "implementation": "in_progress_pending_independent_review"
+    }
+  },
+  "release": {
+    "authorizedMainIntegration": true,
+    "exactCommitRemoteCI": "pending",
+    "mainMerge": "pending",
+    "deployment": "pending",
+    "runtimeSchema": "pending",
+    "telegramShadow": "pending",
+    "telegramCanary": "pending",
+    "telegramNativeVisualAcceptance": "pending",
+    "vk": "deferred_by_user",
+    "delivered": 0
+  },
+  "exactNextStep": "Freeze the final code, pass required remote CI for its exact commit, perform the authorized main integration and release, then verify live release/counts. Back up runtime/config, apply and verify the existing schema, run Telegram shadow, recheck the fresh public channel head and reconcile the bounded observed history, then execute one agreed Telegram canary and inspect its remote receipt/native rendering. Keep VK off as explicitly deferred. Preserve held calendar cases and all accepted UI/content; do not reset historical baselines or repeat prior research."
 }

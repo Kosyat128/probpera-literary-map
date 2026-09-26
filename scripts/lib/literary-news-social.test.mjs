@@ -42,6 +42,45 @@ async function setup(records = [item]) {
 const accepted = { kind: "accepted", remoteId: "17", remoteUrl: "https://t.me/c/123/17" };
 
 describe("durable agenda delivery state machine (isolated, no live writes)", () => {
+  it("holds an absent admitted news item with pending media and restores the identical record when it returns",async()=>{
+    const store=memoryStore(),target=destinations[0],key=newsPostKey(item.id,target);
+    const pendingOptions={mediaOptions:{registry:{assets:[],downloadHosts:[]},resolutions:{[item.id]:{status:"pending",reason:"budget"}},deferBytes:true}};
+    await reconcileNewsSnapshot(store,await completeFeed(),[target],now,pendingOptions);
+    await store.seed("destination:telegram:-100123",{mode:"on",paused:false,historyReconciled:true});
+    const original=(await store.read(key)).state,admission=await store.read(`admission:news:${encodeURIComponent(item.id)}`);
+    const later=new Date("2026-11-28T12:00:00Z"),feedAtLater=records=>buildPublishedNewsFeed({records,withdrawals:[],
+      current:later,release:"a".repeat(40),state:pendingNewsSourceState(),timeZone:"Europe/Moscow"});
+    expect((await feedAtLater([item])).items).toHaveLength(1); // Age alone never removes reviewed news.
+    const absent=await reconcileNewsSnapshot(store,await feedAtLater([]),[target],later,pendingOptions);
+    expect(absent.expectedThisSnapshot).toBe(0);expect(absent.heldArchivedMediaJobs).toBe(1);
+    const held=(await store.read(key)).state;
+    expect(held).toEqual({...original,status:"blocked",lastError:"archived_media_requires_source_resolution"});
+    expect(await store.read(`admission:news:${encodeURIComponent(item.id)}`)).toEqual(admission);
+    expect(await store.list("post:")).toHaveLength(1);
+    const send=vi.fn();expect(await dispatchNewsJob({store,key,transport:{send},now:()=>later}))
+      .toEqual({status:"blocked",reason:"archived_media_requires_source_resolution"});expect(send).not.toHaveBeenCalled();
+    const restored=await reconcileNewsSnapshot(store,await feedAtLater([item]),[target],later,pendingOptions);
+    expect(restored.newAdmissions).toBe(0);expect(restored.expectedThisSnapshot).toBe(1);
+    const pending=(await store.read(key)).state;expect(pending.status).toBe("pending");expect(pending.lastError).toBeNull();
+    expect(pending.desiredRevision).toBe(original.desiredRevision);expect(pending.originalAdmission).toBe(original.originalAdmission);
+    expect(pending.prepared.mediaPending).toBe(true);expect(pending.prepared.temporal.verifiedAt).toBe(item.verifiedAt);
+    expect(await dispatchNewsJob({store,key,transport:{send},now:()=>later})).toEqual({status:"pending",reason:"media_discovery_pending"});
+    expect(send).not.toHaveBeenCalled();
+  });
+  it("media search cannot hide an expired announcement or keep a withdrawal pending",async()=>{
+    const announcement={...item,kind:"announcement",eventDate:"2026-09-27"},f=await setup([announcement]);
+    const pendingOptions={mediaOptions:{registry:{assets:[],downloadHosts:[]},resolutions:{[item.id]:{status:"pending",reason:"budget"}},deferBytes:true}};
+    await reconcileNewsSnapshot(f.store,await completeFeed([announcement]),destinations,now,pendingOptions);
+    expect((await f.store.read(f.key)).state.prepared.mediaPending).toBe(true);
+    const later=new Date("2026-09-28T12:00:00Z");
+    const empty=await buildPublishedNewsFeed({records:[],withdrawals:[],current:later,release:"a".repeat(40),state:pendingNewsSourceState(),timeZone:"Europe/Moscow"});
+    await reconcileNewsSnapshot(f.store,empty,destinations,later,pendingOptions);
+    const send=vi.fn();expect((await dispatchNewsJob({store:f.store,key:f.key,transport:{send},now:()=>later})).status).toBe("blocked");
+    expect((await f.store.read(f.key)).state.lastError).toBe("expired_announcement_requires_source_resolution");expect(send).not.toHaveBeenCalled();
+    const g=await setup();await reconcileNewsSnapshot(g.store,await completeFeed(),destinations,now,pendingOptions);
+    await reconcileNewsSnapshot(g.store,await completeFeed([],[{id:item.id,withdrawnAt:now.toISOString(),reason:"Source correction"}]),destinations,now,pendingOptions);
+    const withdrawn=(await g.store.read(g.key)).state;expect(withdrawn.status).toBe("explicitly_closed");expect(withdrawn.prepared.mediaPending).toBe(false);
+  });
   it("replays eight complete admissions as eight expectations per destination without duplicate identities", async () => {
     const rows = Array.from({ length: 8 }, (_, n) => ({ ...item, id: `event-${n}`, eventKey: `event-${n}` }));
     const store = memoryStore(), feed = await completeFeed(rows);
@@ -140,7 +179,8 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     await dispatchNewsJob({ store, key, transport: { send: async () => ({ kind: "blocked", code: "request_rejected" }) }, now: () => now });
     expect((await store.read(key)).state.dispatchStartedAt).toBeNull();
     await reconcileNewsSnapshot(store, await completeFeed([{ ...item, summary: { ...item.summary, ru: "Исправленный текст." } }]), destinations, now);
-    expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => now })).status).toBe("sent_current");
+    expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => now })).reason).toBe("destination_pacing");
+    expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => new Date(now.getTime()+1800000) })).status).toBe("sent_current");
   });
   it("rate limits the whole destination while the other platform can proceed", async () => {
     const { store, key } = await setup(); const send = vi.fn(async () => ({ kind: "retry", scope: "retry", code: "rate_limit", retryAfterSeconds: 90 }));
@@ -197,9 +237,10 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     expect(send).toHaveBeenCalledTimes(1);expect(send.mock.calls[0][0].destination.platform).toBe("vk");
     expect(outcomes.some(row=>row.key===vkKey&&row.status==="sent_current")).toBe(true);
   });
-  it("the bounded runner never performs more than 25 transport attempts", async () => {
+  it("the bounded runner never performs more than 25 existing-post edit attempts", async () => {
     const rows=Array.from({length:30},(_,index)=>({...item,id:`budget-${index}`,eventKey:`budget-${index}`}));
     const {store}=await setup(rows),send=vi.fn(async()=>accepted);
+    for(const row of await store.list("post:")) await store.seed(row.state.key,{...row.state,status:"correction_pending",remoteId:"17"});
     await dispatchNewsBatch({store,jobs:(await store.list("post:")).map(row=>row.state),
       transport:{preflight:async()=>({ok:true}),send},now:()=>now});
     expect(send).toHaveBeenCalledTimes(25);
@@ -215,6 +256,19 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
 });
 
 describe("native prepared text and validated transport receipts", () => {
+  it("rejects token path/authority injection before any request and keeps exact native hosts",async()=>{
+    const prepared=await prepareNewsPost(item,(await completeFeed()).snapshot,"telegram");
+    for(const token of ["evil/../../sendMessage","evil?redirect=https://evil.example","evil#fragment","evil@evil.example/", "bad\\token"]){
+      const fetchImpl=vi.fn(),transport=createNewsSocialTransport({mode:"live",telegramToken:token,fetchImpl});
+      expect((await transport.send({destination:destinations[0],prepared,remoteId:null})).code).toBe("provider_endpoint_invalid");
+      expect(fetchImpl).not.toHaveBeenCalled();
+    }
+    const fetchImpl=vi.fn(async(url)=>{const target=new URL(url);expect(target.origin).toBe("https://api.telegram.org");
+      expect(target.pathname).toBe("/bot123:fixture_token/sendMessage");
+      return Response.json({ok:true,result:{message_id:17,chat:{id:-100123}}});});
+    expect((await createNewsSocialTransport({mode:"live",telegramToken:"123:fixture_token",fetchImpl})
+      .send({destination:destinations[0],prepared,remoteId:null})).kind).toBe("accepted");
+  });
   it("canonical payload checks ignore JSON object ordering but reject changed values", async () => {
     const prepared=await prepareNewsPost(item,(await completeFeed()).snapshot,"telegram");
     const reordered={link_preview_options:prepared.payload.link_preview_options,

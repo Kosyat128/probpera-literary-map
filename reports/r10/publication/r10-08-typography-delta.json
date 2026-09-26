@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-26T23:00:48.417Z",
+  "previousBatchRecordSha256": "446e342bb110df6d0b0c9cfc63d900d2cb4e25550ac8de5ae9af9c7b9ba229bc",
+  "recordSha256": "13bb5deb49cef4e8a46b55c27d1f34c726ba9600839ca7b9881ea7ee88cf680b",
+  "unchangedBaselineRecords": 235,
+  "changedFields": [
+    {
+      "id": "asymptote-lianbin-ni-translation-interview-2026",
+      "field": "summary.ru"
+    },
+    {
+      "id": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+      "field": "summary.ru"
+    }
+  ],
+  "change": "Two new RU summary em dashes replaced with ASCII hyphens; facts and all previous235 records unchanged.",
+  "changes": [
+    {
+      "id": "asymptote-lianbin-ni-translation-interview-2026",
+      "field": "summary.ru",
+      "before": "24 сентября журнал опубликовал беседу Каспарса Клявиньша с Ни Лянбинем, который пишет под именем Lien Bin и живёт в Латвии. Поэт обсуждает перевод как взаимодействие культур, значение малых языков и связь поэзии с памятью. Среди переводимых им авторов \u2014 Дерек Уолкотт, Махмуд Дарвиш и Александр Чак.",
+      "after": "24 сентября журнал опубликовал беседу Каспарса Клявиньша с Ни Лянбинем, который пишет под именем Lien Bin и живёт в Латвии. Поэт обсуждает перевод как взаимодействие культур, значение малых языков и связь поэзии с памятью. Среди переводимых им авторов - Дерек Уолкотт, Махмуд Дарвиш и Александр Чак."
+    },
+    {
+      "id": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+      "field": "summary.ru",
+      "before": "Центр научного и энциклопедического книгоиздания Национальной библиотеки Литвы выпустил первый литовский перевод книги Элизабет Бьюкенен Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui. Издание представлено в сообщении библиотеки от 16 сентября. Книгу об истории Гренландии перевела с английского Элена Бельските; редактор \u2014 Дайна Дайлидонене.",
+      "after": "Центр научного и энциклопедического книгоиздания Национальной библиотеки Литвы выпустил первый литовский перевод книги Элизабет Бьюкенен Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui. Издание представлено в сообщении библиотеки от 16 сентября. Книгу об истории Гренландии перевела с английского Элена Бельските; редактор - Дайна Дайлидонене."
+    }
+  ]
+}

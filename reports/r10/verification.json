@@ -1,25 +1,12 @@
 {
-  "checkedAt": "2026-09-26T20:40:31.587Z",
-  "scope": "local implementation, source HTTP and browser verification; no production acceptance",
-  "sourceCommit": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
-  "workingTreeFingerprint": "0df152411f1fa5ddec6ba4398e942f3b0681b790ddd56db492e12f724c68e6cc",
+  "schemaVersion": 2,
+  "checkedAt": "2026-09-26T23:11:23.813Z",
+  "scope": "Current local data and bounded focused checks before final commit/release; older tests and their input hashes retained only under historicalVerification.",
+  "observedHeadBeforeFinalCommit": "e2548578022cc99d81aca221216fa7ea239249ed",
   "inputs": {
-    ".github/workflows/publish-literary-news.yml": "c918aeb43f7deb7bc0abe259efcacd3b08a2a8235d95150839fa62557bdfa6b1",
-    ".github/workflows/refresh-literary-news.yml": "e0b47299aa421973e0f1bf4fca82f85bf36c1a80fd3f8da135489eaf8fb70f0e",
-    "apps/admin/app/(dashboard)/homepage/actions.ts": "b8bdd0bcac3e3c1cf48af51e8820cd64f9ca0294a3b719bf3ea8d1d979099ee0",
-    "apps/admin/app/(dashboard)/homepage/page.tsx": "54c6ac81ba42fcb76d4d82908c82e6a868a3d225094b47434569f0a6e6849d25",
-    "apps/admin/app/(dashboard)/literary-news/actions.ts": "e63419c69fa536c0e308e6b4862da3f83f7c6d96e586830e572b4610d8dc7d70",
-    "apps/admin/app/(dashboard)/literary-news/page.tsx": "8b12aa772583638875f8ff885cf388dc79c305ded201a110d359618b28814e64",
-    "apps/admin/components/HeaderShowcaseEditor.tsx": "d2f504aedb956617cda416df4cf8566fce210c6bed60c07a6c1fb0cdbfe894bf",
-    "apps/admin/components/LiteraryNewsDeliveryOverview.tsx": "bb861005bf678a775ce7c45626a6d1f1e8a8f3ee6ed03d82524856f88693fa11",
-    "apps/admin/components/LiteraryNewsRuntimeControls.tsx": "43fdf7c1aac8edd7e5fda6420804ba6179623524710f3a75fc065313ffbf16c3",
-    "apps/admin/lib/literary-news-operator-input.test.ts": "f44aa5f7c149e922e7d12ae08200d1cd62eb05a3cedccd6e6b5d0c725a454b0b",
-    "apps/admin/lib/literary-news-operator-input.ts": "3ebbc8dba793176f0619c75593adb4391c5e578c98cf7db69c8cf6c7e5061127",
-    "apps/admin/lib/literary-news-queue.test.ts": "991490ff9e26850bcc7972f110bee8734ef71e9790718868e04756962fb44640",
-    "apps/admin/lib/literary-news-queue.ts": "0120531113e5c66408b981a72f847bbdb8ce446f403bc84906295845d5ef846a",
-    "apps/admin/lib/literary-news-runtime-overview.test.ts": "91f77484c2c5078aa80fef9c8cfd2da142d4478ba9cd7b8f1a4e5e75d56853e4",
-    "apps/admin/lib/literary-news-runtime-overview.ts": "10dce23bd4a0da85fc7386a66eac5b69a745cd8fcd303cb13e1ecd3a09b77c9a",
-    "data/news/article-thumbnails.json": "9cac52f77ef308d62cc525bf5e194fc8c6394d72f9a861143af242a8f92d3fee",
+    "data/news/reviewed.json": "7a5e9af93eac327913ab465c799877b99348d4d6be3dc406b198b4cc4efc5df9",
+    "data/news/social-destinations.json": "f44bb68a4708c26109afd40747373e2f51bd236e5d8f92646c5aa261ca821835",
+    "data/news/social-media-assets.json": "ca60343f1add552b403ed70f05510152614429d5426088484cf12929c0b475bb",
     "data/news/batches/r10-01.json": "80085c5652b1d2b6117da915f882f72ce20f53a5656ad17eacd4e6dc7a6ebe8f",
     "data/news/batches/r10-02.json": "e31d71d94f4a6daa074cd4141b809979e38d592c85c445b4d8c5b46bedb2dd70",
     "data/news/batches/r10-03.json": "85e0318bcb75cb8e7ed3de380866ba6455e7fb04a6fe7a181e86d8de8ddecc12",
@@ -27,288 +14,491 @@
     "data/news/batches/r10-05.json": "e10e2a02c2f6785bba8fa5a19774d97fb16d3b13010b4f1c49afaa5046a70e2b",
     "data/news/batches/r10-06.json": "ee683698fcc64e929ec037d5e19e0735de32e3572b85d8d4e3889f7353c7dba4",
     "data/news/batches/r10-07.json": "93f0d79a889146dace0eb31631b991d8427acfe277180d4532fa3e62276ffb02",
-    "data/news/contract.json": "57f71b047ce3d79edbb69db97e8dcb86997b4dfb154c9e0b16090f2464cba27a",
-    "data/news/r10-additional-source-candidates.json": "74911f9a978c09f8f3497115c1853b39dc1ebf121f4e1fd4b1ce3a4e34625805",
-    "data/news/r10-source-candidates.json": "1895b3b127862374b3fc77ef2e4f8537bdb6cd66b1e0238e0fcab19eb23cc22b",
-    "data/news/reviewed.json": "01502fd38099af59aaca0b43ba27b42e15b19bcad92adf7653594c0b0b3cde40",
-    "data/news/social-destinations.json": "dcd4ba59e739f324b532589d526e1617eb3c62031410823319dd1af7be32ef78",
-    "data/news/social-media-assets.json": "b5759ce10f8b3451251591f54af29782c11f7382294f1a7d3f7deb5ef9e61cc5",
-    "data/news/withdrawals.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
-    "package.json": "3a9c90308c7ae354730b1dcbb678e0445ce6e76f4d014ddd07b1326dc6550fd2",
-    "public/literary-news-snapshot.json": "e7c53bb2cdac2bc8c7d3bbd43950bc502ccd52de6abdcb1482eedb86ed669a40",
-    "scripts/apply-literary-news-batch.mjs": "2169d0b05eef9bbdda06884b50e364ca1b4115360f332ef8581fc303a4764c53",
-    "scripts/check-literary-news-operator-sql.mjs": "708e90ab7b50585edeedf2e91e0bfa9a9d343c4d32eb85fc1da5542479d33c56",
-    "scripts/check-literary-news-pagination.mjs": "208b1fafe28885ddbf5da0c65a0d39deec5fd58f8007c0053346703a1e1ddd54",
-    "scripts/check-literary-news-runtime-sql.mjs": "5e79e22512585b935099fac0f5060ec46074b4f512d56af32cf54daf0ca756aa",
-    "scripts/check-r10-news-browser.mjs": "c6f1ef8ace896a1abb02a48e0c6f8999672ee15ce6c5da2d6dc4f28bc218497b",
-    "scripts/enrich-calendar-dates-r10.mjs": "697ca6162bb1bc24eb02fc8d2e2630a8368cbf84962f576e34f4608c37611926",
-    "scripts/export-literary-news-fallback.mjs": "c250a14f9b8d724a7c2a9496205e5d7689b3b5b2ec718c122e36c956b97f6916",
-    "scripts/finalize-literary-news-sources.mjs": "16afdf0de1c94de307a128b50e0511b698bc094e31cae3ae82153363a155ba7b",
-    "scripts/governance/calendar-reviewed-precision.r10.json": "2c6a129cc9c10a245983373d5fce4a9e7cba7364462f20e71a3e6f432fd7ee2b",
-    "scripts/governance/r10-forward-delta-20260926.json": "28f3e068ab84932f917dcea4e0a86974a9546f9b6a70c7b8bc86819ef219d748",
-    "scripts/lib/literary-news-feed.mjs": "9c44f8f1902caeddad69b431d906bbd881752c509b93cc24e6b7d46984cdc13d",
-    "scripts/lib/literary-news-feed.node-test.mjs": "07a2e54307074b3d529af27937ba683fc73f103373202aa64085ee009b0cad24",
-    "scripts/lib/literary-news-ingestion.mjs": "a2c726dfc89c765a6a7c58d5945659857ff3e4879d74446d8bd6dee1b914db60",
-    "scripts/lib/literary-news-kv-sync.mjs": "ca5989ebe282ba8ec695a0a4c46ac8b7539b3f5c9e16dd528454b02cbb45f8ce",
-    "scripts/lib/literary-news-media-upload.mjs": "15f9432e25c0c8ef037b56e1d7b7a94fa272b6cb006449bb906cb49ce98504a8",
-    "scripts/lib/literary-news-media.mjs": "11cc34428c7e145c984ffbfe14db487aa227acd243dd7eb1101b1bd722a58f76",
-    "scripts/lib/literary-news-media.test.mjs": "da0d79ab99b687fa8025db04c3cfd3faa2f5c6e580e7ccc44e01775917ec0400",
-    "scripts/lib/literary-news-nobel-profile.mjs": "cf7ad609e40de7721a530bd636ead7a2607d96862056d353754e95ceab1ed9eb",
-    "scripts/lib/literary-news-nobel-profile.test.mjs": "3713ee150cce3aadbad84497ff25ae85332da6f3b36137624cf52288d72284de",
-    "scripts/lib/literary-news-pagination.test.mjs": "e9084e1bf6c37125559ceec4b024d8e60419b0320867e31d19ba8b6421e9d953",
-    "scripts/lib/literary-news-production.test.mjs": "6dc27078382d82fef44ec11142493cb626d48360b2b04f2447046eab3ae85d8a",
-    "scripts/lib/literary-news-publication.mjs": "e0f46611e23912d6f03cfa980b23748effacfb566770d1cdaf4cab6f484b2a45",
-    "scripts/lib/literary-news-publication.test.mjs": "92d4dd73036c825a2feca40756ef51e01846a7813ff0c70430ea3d44e0cfea9d",
-    "scripts/lib/literary-news-r10-durability.test.mjs": "5f98650140c9b94edd227cd8ff671a64c6774bf00c066b0c2a3c5332bdb1c41c",
-    "scripts/lib/literary-news-restore-scope.test.mjs": "221fad7c3a3fe8aef28622a886efc8f76395ed0154e29ca8249f48708ff16b6d",
-    "scripts/lib/literary-news-reviewed.mjs": "cdfa640710d97f77ec37f68f55b981f05f60914ded1a3d5a335a555493b3578f",
-    "scripts/lib/literary-news-safe-fetch.mjs": "4225695801da89b656f3e9a9414c636bd65c7ef9dd61a5763d651ea72299bae7",
-    "scripts/lib/literary-news-safe-fetch.test.mjs": "ba04ce78be2cf2b75687d1b07ccca03881ba12ebded3ec5fae373e16064bf474",
-    "scripts/lib/literary-news-social-transport.mjs": "a6ecee947250f226c501329177b55f04df0339b23de7a0c599f7ad9a268dc1ba",
-    "scripts/lib/literary-news-social.mjs": "8eb07adab515bd4418ae297e996e916ca5de856741feb39dac1f904673794d50",
-    "scripts/lib/literary-news-social.test.mjs": "5196cb0139b6dc43cd42ce67ed7e121f6467ff1c964ca31d67da90f68291e9bd",
-    "scripts/lib/literary-news-source-profiles.mjs": "3eebc4b6545ab34f4fec978edbd9bd1103f3d60f6c396a4e9a769cd4680d2739",
-    "scripts/lib/literary-news-source-profiles.test.mjs": "97bc855a33b62554a498081710c663e18ec2b3213393089dbd69cacc4528edfe",
-    "scripts/lib/literary-news-sources.mjs": "356fb25be088cbcd5a2012a829fe761f0d96f573371be1b81a54a8ed513ef259",
-    "scripts/lib/literary-news-state.mjs": "4842faf7d510c6a5bbd88aa36add4b54d383782cc7073e90e9993fc1cfaf0693",
-    "scripts/lib/literary-news-thumbnails.mjs": "9dee8bad88e677fe6b77af570c8904e91c2d0085945f203bd5f1a96b26d2ddfc",
-    "scripts/lib/literary-news-thumbnails.test.mjs": "448dac89f17a21d8aea0d6d793cbc30e91e351b1be28f4014ada963100a4ccc8",
-    "scripts/lib/reviewed-cms-source-punctuation.test.mjs": "8683822b51f6edfda64b7070e92deab307edb244b4bfa326218b39c57bcad14c",
-    "scripts/lib/reviewed-dependency-security.test.mjs": "7d08bf49c95ac74ee65c5e021714cf059f27f496666173855f478f4d42235fe0",
-    "scripts/lib/reviewed-draft-storage.test.mjs": "3e138dfd5cb644bdc821ddea66852dc42bdac04ee5414beca5c3f08edfc3ffcb",
-    "scripts/lib/reviewed-header-library.test.mjs": "9b06f0798d8fb0d2581c3ffa8be33483977d03068760045a8abf631f9adf1f57",
-    "scripts/lib/reviewed-header-showcase.test.mjs": "bccd677ea51a3633b8ecea10258faada163fcdc1e4a66bb218f92b85496d6f0a",
-    "scripts/lib/reviewed-native-archive-read.test.mjs": "e3571d567d31dcc0a55b6ec57bc3703bdad67c9c0821a27b14bada201b9d4cbb",
-    "scripts/lib/reviewed-native-archive-transport.test.mjs": "e8fd217a17c430fff08e4adfbce4295ca35e500976b2a33b802fe907ac82bfe9",
-    "scripts/lib/reviewed-premium-title-evidence.test.mjs": "ea902b9d092b38330261019c714affd28ff7408a50a1a278a3ae5f9dd092004f",
-    "scripts/lib/reviewed-r10-delta.d.mts": "3fcedd98116f14294170d76e6addd4a7bf70760b6b0a0de46768b3b40dae0fa6",
-    "scripts/lib/reviewed-r10-delta.mjs": "638fa25fb62c8c5d79c07d88d3ff711dc8ce50529531f0b441379b6bd77e77de",
-    "scripts/lib/reviewed-r10-delta.test.mjs": "352099b86aa2a8711fa7f7bbed510d5e2934c5501df754d93efcd1d359c8cb0d",
-    "scripts/lib/reviewed-r49n-package.test.mjs": "ed189d31cfe31694f2e174883667de72b71ac44dd1c3a324e03b6fda5b87f133",
-    "scripts/lib/reviewed-reference-release.test.mjs": "7647cec118083dc002a5609a141c85ffdc5ba65f88941641a86299b5de8df451",
-    "scripts/lib/stage5-content-data-lock.test.mjs": "bb4f119a8e6d8d1aece5e30b8e5a5809019ae500caf681b94b8bdc0d3904460a",
-    "scripts/prepare-literary-news-source-candidates.mjs": "a4cace83504272a76f99a3592195c3b2f3970128d7c71bd8f4ee4b3a962f4732",
-    "scripts/probe-literary-news-source-candidates.mjs": "e671b6d136eb8a1aeabc0dd1d935d7f666eba5cb64c73be5ab2d77083791cb6a",
-    "scripts/publish-literary-news.mjs": "bd6c5cfcb459fa859524d39b694d75dcdcb73ed000c1b2f6e1d2d09d7290f6e0",
-    "scripts/r10-showcase-before.mjs": "7cc28f4e9735f4e5240ec24367f3f966c8bfaeb3598e18b0edfb484778efb208",
-    "scripts/r10-showcase-css-policy.mjs": "3ffa3e5812902225debeb8fd50ccb818554db981d6307943dc2005dbe10dae8a",
-    "scripts/r10-showcase-error-check.mjs": "9a8dc348f25813d8fae70eb799c06b6cc0acfc0740cdff4341b9942f70b05692",
-    "scripts/r10-showcase-image-contain-check.mjs": "3e578c6369243f83ace6d0ed213ace66266d11e4cbacc98f9ef8a363caa2af13",
-    "scripts/r10-showcase-media-pins.mjs": "0a104f5270d10238096028d32a95459642442c46e1345518131bd4f7b45e9a78",
-    "scripts/r10-showcase-runtime.mjs": "920d83d7d9ecdd32a7f50fc1afa592d465e3dfaf769f189c847dce31b334bdc7",
-    "scripts/refresh-literary-news.mjs": "d49121910d8348be6c6cd65932bd3cc4cb86b806b60d658f6df9bb2663faece7",
-    "scripts/research-literary-news-sources.mjs": "5df26c80e8ec5c579502b53dca18eccd66c7abf95a60c09964a2af52c396aac4",
-    "scripts/sync-literary-news.mjs": "39d99860f7099442a45934d3a4235ce60f63a8cce70d3c067b17b9f93dcd7c66",
-    "scripts/verify-literary-news-live.mjs": "34bf592d545aa4800751b88e9bd96c313efd7a419c85ff102de205a38334006c",
-    "scripts/verify-literary-news-live.test.mjs": "3262aa3b60ee988dbcc4c1cbe6dc09b9ad23153fd012b01007a85f33a172ace5",
-    "scripts/verify-literary-news-source-runtime.mjs": "38da19070a6fb25b0ee5b430f54f93de3e76c56b601ede811c6be6c7ca8e2c55",
-    "scripts/workers/literary-news-worker.mjs": "3dc5956f0af0b71d22d66676fee2a52925da1baa8b0d94b729a077487cb7c1de",
-    "src/components/HeaderArticlesMenu.tsx": "bcdc72a78cc76c09d82a499e84f8f94b0d993a2e24e1edf03256e6ea76648857",
-    "src/components/LiteraryCalendar.test.ts": "d9597436c22eb6d18403408c93b3b34d6668b96465abf86c91df2848a2456e80",
-    "src/components/LiteraryCalendar.tsx": "602b75c07aea22ebf59c45c3a97f5cc26a5b93fac938a7b06eaafa91ae9e839f",
-    "src/components/LiteraryNewsPanel.tsx": "2b5c7aa09df2e731889da4d3754b77016e9555a4e8f87cca6218699fd05ef3fc",
-    "src/components/NewsArticleThumbnail.tsx": "747406cd813dfc24b617b01e4f85c02b65c421db98ee7625c7f89b65a2b6677f",
-    "src/components/stage5Governance.test.ts": "103fa58d706e42d20db47eb22586033ba32ec7fd6b99b7dd0dd5729a773fde0e",
+    "data/news/batches/r10-08.json": "8c2376f55b89bfc9073b1b0c222a8677b29efcbf91953698cff8056038405cb3",
     "src/data/countries/generated/writerDatePatches.r10.json": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080",
-    "src/data/countries/index.ts": "adb63c38e8cdb560e9db0d453b9d7b753ee930fd9702ee2bf05815587e31c6e7",
-    "src/data/countries/types.ts": "3cd59605923f2a55e96ab41d6b7e6ded93684508e2993471e0e8004677284a8e",
-    "src/data/countries/writerDatePatches.test.ts": "3302a2caabde003a04c40990509bfea14b534f69768617ebba957f5b7ccb3216",
-    "src/data/countries/writerDatePatches.ts": "9b83050583771229857f4f6af165852e4099fd71908c34566153369a3b637024",
-    "src/news/feed.ts": "30a9efe57cfc4009f4ead8062fd1fb4f1da7f84147504c9ac394eb79b1a8d700",
-    "src/news/transport.ts": "339b1f1ca0d23d63e76df34f07ac58eab3fc740e3e3a1f1406734d55366403d3",
-    "src/news/types.ts": "171c5c5e9adeb4caee0390d9ec85876b6469b580e67b3c76ab0ea4dfeeac07dc",
-    "src/news/updates.ts": "a4c2d5a4d6fbb3337dbbfb12da8ca6ae93e9f33dc3d1a9464729a96f2dedac41",
-    "src/news/withdrawals.test.ts": "750bd2d034343579460d379730b308816b1c0942ddde1d02550d3479bb0e108e",
-    "src/news/withdrawals.ts": "bbfb43637ed8741df5962d72baa82951dfcb20717fe8d75af97af5caa28f3772",
-    "src/styles/header-showcase-r10.css": "06ebde10600119ba12e625a063d8ec20d78d7c40b88a0078ff078d26562adbb8",
-    "src/styles/news-article-thumbnail.css": "a90773a9a1c3e8fa6973da67dfd62d7170a9c766458e78c9c3f2197d151dca14",
-    "src/utils/articleRoutes.ts": "cbb58876aaceee89c5c8d636ad85a97309e75a6b5848ce265eeeb6f38ac946d9",
-    "src/utils/headerArticleLoader.ts": "f10ea3eb242054be0963857fb229224ec83baa5a7d848ff17ab7bb7c3c660a91",
-    "src/utils/headerArticleSelection.test.ts": "c3c400be1d0624bae57ab1ec69eba6a450df88371db7f55aa6fd3fab893ed4f1",
-    "src/utils/headerArticleSelection.ts": "6256afd2fb19757dc78b5f533ebd4e2dfb71aed6d7db2204ac906549e4b42411",
-    "supabase/migrations/20260926_literary_news_runtime_cas.sql": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402",
-    "tests/e2e/header-hero-polish.spec.mjs": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda"
+    "src/data/countries/generated/writerDatePatches.r10-supplemental.json": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217",
+    "scripts/lib/literary-news-media-subjects.mjs": "9a5efbef1543d8ce473aabf64467b88061c1911c1fd70b71f21988cdaf9b4877",
+    "scripts/lib/literary-news-media-discovery.mjs": "f68a396f1fcee730b44d25b3234958dcfed953c60281bdb4f0589ae85a6cbba7",
+    "scripts/lib/literary-news-media.mjs": "41c5e1a18b1970e7aaec490afe171f50803771c8a8da8dd6554a95ea75d7355a",
+    "scripts/lib/literary-news-social.mjs": "ade6e3b642f839b7ab70aa09f2d0ea2e3e8c6269e95e6f9daf54edca706f9ecd",
+    "scripts/lib/literary-news-social-transport.mjs": "e4d9dc8d7448b71b02d1e46ef8c3c5832b906e35b439dac803c4c8e74d7df63b",
+    "scripts/publish-literary-news.mjs": "6f6130e0a5144807462af8c6dff16eb0ce74bea69b93ce7c29906cab9c162252",
+    "reports/r10/calendar/supplemental-audit.json": "6fc92275c4ee158e5bdf33c691ba24abf523e3d7290bbacc1140426420216324",
+    "reports/r10/social/connections/verified-readonly.json": "f69dbbfc25c41c3252acd17d8f468f6945f892471c17638db9e5aee9e2f6f431",
+    "reports/r10/social/history/telegram-review.json": "e925e7f744bebd9c6c8055b19d4467a24b7767e156276b0a6b0644a612070303",
+    "reports/r10/publication/r10-08-telegram-history-review.json": "5a80828db556a77ffb63caaa7b8fc6990583abecff7bd48da60ab2d304e5756e",
+    "reports/r10/social/media-rights/destination-approval.json": "ff75ec042a4a1be0221b9ca3f74c46f3fff438a90555c87fdfcdf61cc89144ba",
+    "reports/r10/social/discovery/real-source-proof.json": "babc6269085de59b4a56d14ebe5d72c76af9311303ddc77371a586a888906d22",
+    "reports/r10/publication/r10-08-prepared.json": "d9f891b125220761740770668234902bbc5ad0e82588c58dcb96a7c1a2fa13f1",
+    "reports/r10/publication/r10-08-typography-delta.json": "b1005a46b5785d287e945b9ff24b9ad4de3ae9887563aa2721f1ef3198092143",
+    "scripts/lib/literary-news-pacing.mjs": "14e16259c6ccc9b1d841fb4033bf13b20a7aa24081ee3be04062b31a1c2d20b5",
+    "data/news/social-release-approvals.json": "3c3c5dd04aa526b62aea12d2e4914c7c2573cdb0e18841981a184c90007fa49f",
+    "reports/r10/social/history/telegram-combined-review.json": "725f21b8501acceafa2c23e54c09a7cabed89423749922deb75af475190abdb8"
   },
-  "fullSuite": {
-    "passed": 3755,
-    "failed": 0,
-    "pending": 11,
-    "suiteFailures": 0,
-    "report": "reports/r10/tests-ci-final.json",
-    "command": "vitest run --configLoader runner --maxWorkers=4; exact checkout safe.directory scoped to this process",
-    "skipped": [
-      {
-        "file": "database/article-publication-permissions.integration.test.mjs",
-        "test": "article publication PostgreSQL permissions reproduces both old permission failures and preserves atomic, role-bound publication after the fix"
-      },
-      {
-        "file": "database/article-rls-integration.test.mjs",
-        "test": "article RLS integration contract executes staff INSERT ... RETURNING and keeps drafts private"
-      },
-      {
-        "file": "database/atomic-article-bundle.integration.test.mjs",
-        "test": "atomic article bundle PostgreSQL contract commits Russian and English together and rolls every side effect back on failure"
-      },
-      {
-        "file": "database/book-evidence-v2-registry-rotation.integration.test.mjs",
-        "test": "forward Evidence V2 registry SQL boundary executes the exact forward migration twice and tests stale snapshots, prior-public coverage, rollback, enforcement and idempotency in PostgreSQL"
-      },
-      {
-        "file": "database/book-evidence-v2-registry-transport.integration.test.mjs",
-        "test": "registry JavaScript/PostgreSQL evidence transport binds actual JSONB bytes and JavaScript-generated reference and coverage payloads"
-      },
-      {
-        "file": "database/literary-archive-editorial-references.integration.test.mjs",
-        "test": "atomic editorial reference initialization executes replay36/37/38, exact proof gates, preservation, rollback and full-scale needed references"
-      },
-      {
-        "file": "database/literary-archive-native-commit.integration.test.mjs",
-        "test": "native archive commit transaction transport executes real psql parameters, role isolation, retry, rollback and restored session settings"
-      },
-      {
-        "file": "database/literary-archive-native-postflight.integration.test.mjs",
-        "test": "native archive read-only PostgreSQL boundary executes the real published assertion, enforces read-only service context and rejects content or child drift"
-      },
-      {
-        "file": "database/literary-translation-draft-storage.integration.test.mjs",
-        "test": "short literary translation draft storage stores all exact prepared translations and rejects invalid text, false reviews, promotion and unknown schemas"
-      },
-      {
-        "file": "database/literary-work-evidence-v2-postgres.integration.test.mjs",
-        "test": "literary-work Evidence V2 PostgreSQL grammar compiles the exact function with check_function_bodies and rolls it back"
-      },
-      {
-        "file": "database/wells-editorial-evidence-repair.integration.test.mjs",
-        "test": "reviewed Wells editorial repair executes the reviewed packet through the real attester with rollback, preservation, idempotence and origin guards"
-      }
-    ]
+  "counts": {
+    "stored": 239,
+    "newPrepared": 206,
+    "current": 222,
+    "newCurrent": 203,
+    "editorialDate": "2026-09-27",
+    "timeZone": "Europe/Moscow",
+    "checkedAt": "2026-09-26T23:00:24.738Z"
   },
-  "finalAffectedConsumers": {
-    "passed": 49,
-    "failed": 0,
-    "pending": 0,
-    "report": "reports/r10/tests-final-consumers.json"
-  },
-  "builds": {
-    "public": "passed; reports/r10/public-build-final.log",
-    "admin": "passed; reports/r10/admin-build-final.log",
-    "worker": "dry-run passed; reports/r10/worker-bundle.log"
-  },
-  "lint": "passed; reports/r10/lint-final.log",
-  "audits": {
-    "content": 0,
-    "routes": 0,
-    "performance": 0,
-    "calendar": 0
-  },
-  "requiredQualityAudits": {
-    "checkedAt": "2026-09-26T19:10:42.369Z",
-    "exitCodes": {
-      "countries:audit": 0,
-      "media:audit": 0,
-      "books:audit": 0,
-      "covers:audit": 0,
-      "assets:globe:qa": 0
+  "calendar": {
+    "addedVisibleEvents": 77,
+    "newOrRefinedDateValues": 68,
+    "confirmedExistingPrecision": 9,
+    "observedCorrectedBaseline": 2237,
+    "total": 2314,
+    "visibleByYear": {
+      "2026": 2312,
+      "2028": 2314
     },
-    "generatedReportSummary": "reports/r10/regression-audits/summary.json",
-    "gitOwnership": "Process-scoped safe.directory for this checked repository; no global configuration changed",
-    "originalTrackedReportsRestored": true
+    "remainingVisibleEventTarget": 923,
+    "remainingNewOrRefinedValueTarget": 932,
+    "historicalOperationBaseline": null,
+    "supplementalFields": 17,
+    "supplementalHeld": 4,
+    "original60BytesPreserved": true
   },
-  "productionDependencyAudit": {
-    "info": 0,
-    "low": 0,
-    "moderate": 0,
-    "high": 0,
-    "critical": 0,
-    "total": 0
+  "social": {
+    "configuredDestinations": 2,
+    "enabledDestinations": 0,
+    "telegram": {
+      "handle": "probbaperra",
+      "destinationId": "-1002791579809",
+      "rights": "verified_readonly",
+      "mode": "off",
+      "historyReviewedRecords": 239,
+      "observedPublicPosts": 363,
+      "pages": 19,
+      "observedPostIdRange": [
+        1,
+        410
+      ],
+      "decision": "no_identified_duplicate_in_accessible_snapshot",
+      "historyApprovalInProduction": "pending_fresh_head_and_runtime_reconciliation",
+      "canary": "pending"
+    },
+    "vk": {
+      "handle": "probperaru",
+      "destinationId": "-231377018",
+      "mode": "off",
+      "status": "deferred_by_user",
+      "blocksTelegramOrSite": false
+    },
+    "manualApprovedAssets": 3,
+    "manualDestinationPermissions": 6,
+    "automaticImages": "implemented_focused_verified_release_pending",
+    "deletedPrivateAndPriorPostVersionsVerified": false,
+    "delivered": 0,
+    "pacing": {
+      "newPostsPerWindow": 1,
+      "windowMinutes": 30,
+      "catchUpBursts": false,
+      "knownRemoteCorrectionsUnchanged": true,
+      "requestedByUser": true,
+      "implementation": "implemented_independently_reviewed",
+      "evidence": "reports/r10/social/pacing-independent-review.json"
+    }
   },
-  "sql": {
-    "runtimeChecks": 19,
-    "operatorChecks": 8,
-    "engine": "isolated PGlite PostgreSQL WASM",
-    "remote": false,
-    "realConcurrentProcesses": false
+  "release": {
+    "authorizedMainIntegration": true,
+    "exactCommitRemoteCI": "pending",
+    "mainMerge": "pending",
+    "deployment": "pending",
+    "runtimeSchema": "pending",
+    "telegramShadow": "pending",
+    "telegramCanary": "pending",
+    "telegramNativeVisualAcceptance": "pending",
+    "vk": "deferred_by_user",
+    "delivered": 0
   },
-  "browser": {
-    "publication": "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
-    "showcase": "reports/r10/showcase/receipt.json",
-    "calendar": "reports/r10/calendar/browser-check.json",
-    "onsiteImages": "reports/r10/publication/article-thumbnails.json",
-    "socialQuality": "reports/r10/social/quality/verification.json",
-    "socialMedia": "reports/r10/social/MEDIA_Q.md",
-    "headerCIContract": "reports/r10/ci-contract-validation.json"
+  "focusedChecks": {
+    "mediaSocial": {
+      "checkedAt": "2026-09-26T23:01:50.991Z",
+      "passed": 79,
+      "failed": 0,
+      "files": 5,
+      "report": "reports/r10/social/media-discovery-tests.json",
+      "reportSha256": "321d8d71a707733476c50ca4c11e6bb2be910fb04ac3ae48fc4e59d1b8f39507",
+      "scope": "Local mocked-provider and real-byte tests; no live post or DB write"
+    },
+    "independentDiscoveryAndCliRecheck": {
+      "checkedAt": "2026-09-26T22:57:25Z",
+      "passed": 13,
+      "failed": 0,
+      "files": 2,
+      "command": "node node_modules/vitest/vitest.mjs run scripts/lib/literary-news-media-discovery.test.mjs scripts/publish-literary-news.test.mjs --configLoader runner --cache=false",
+      "scope": "Independent replay of queue fairness/ambiguity fixes and CLI guards; no network"
+    },
+    "calendarSupplemental": {
+      "passed": 25,
+      "failed": 0,
+      "files": 3,
+      "report": "reports/r10/calendar/supplemental-completion.md",
+      "originalCheck": "PASS original60unchanged",
+      "supplementalCheck": "PASS CAS,chronology,replay,rollback,CMSwins,noNonDateChanges,productionSelector"
+    }
   },
-  "sourceRuntime": {
-    "total": 108,
-    "available": 101,
-    "families": 100,
-    "countries": 53,
-    "held": 2318,
-    "report": "reports/r10/sources/pinned-runtime/runtime-verification.json"
-  },
+  "configuredDestinations": 2,
   "deployed": false,
-  "configuredDestinations": 0,
   "delivered": 0,
-  "requiredRemoteCI": "pending_final_commit_verify",
+  "requiredRemoteCI": "pending_exact_final_commit_verify",
   "humanReview": false,
-  "originalFullSuite": {
-    "passed": 3754,
-    "failed": 0,
-    "pending": 11,
-    "suiteFailures": 0,
-    "report": "reports/r10/tests-complete.json",
-    "skipped": [
-      {
-        "file": "database/article-publication-permissions.integration.test.mjs",
-        "test": "article publication PostgreSQL permissions reproduces both old permission failures and preserves atomic, role-bound publication after the fix"
+  "exactNextStep": "Freeze the final code, pass required remote CI for its exact commit, perform the authorized main integration and release, then verify live release/counts. Back up runtime/config, apply and verify the existing schema, run Telegram shadow, recheck the fresh public channel head and reconcile the bounded observed history, then execute one agreed Telegram canary and inspect its remote receipt/native rendering. Keep VK off as explicitly deferred. Preserve held calendar cases and all accepted UI/content; do not reset historical baselines or repeat prior research.",
+  "historicalVerification": {
+    "classification": "Historical local evidence captured before supplemental17/new4/automatic-media changes; no current PASS or release inference.",
+    "originalCheckedAt": "2026-09-26T20:40:31.587Z",
+    "fullSuiteStartedAt": "2026-09-26T20:37:48.891Z",
+    "snapshot": {
+      "checkedAt": "2026-09-26T20:40:31.587Z",
+      "scope": "local implementation, source HTTP and browser verification; no production acceptance",
+      "sourceCommit": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+      "workingTreeFingerprint": "0df152411f1fa5ddec6ba4398e942f3b0681b790ddd56db492e12f724c68e6cc",
+      "inputs": {
+        ".github/workflows/publish-literary-news.yml": "c918aeb43f7deb7bc0abe259efcacd3b08a2a8235d95150839fa62557bdfa6b1",
+        ".github/workflows/refresh-literary-news.yml": "e0b47299aa421973e0f1bf4fca82f85bf36c1a80fd3f8da135489eaf8fb70f0e",
+        "apps/admin/app/(dashboard)/homepage/actions.ts": "b8bdd0bcac3e3c1cf48af51e8820cd64f9ca0294a3b719bf3ea8d1d979099ee0",
+        "apps/admin/app/(dashboard)/homepage/page.tsx": "54c6ac81ba42fcb76d4d82908c82e6a868a3d225094b47434569f0a6e6849d25",
+        "apps/admin/app/(dashboard)/literary-news/actions.ts": "e63419c69fa536c0e308e6b4862da3f83f7c6d96e586830e572b4610d8dc7d70",
+        "apps/admin/app/(dashboard)/literary-news/page.tsx": "8b12aa772583638875f8ff885cf388dc79c305ded201a110d359618b28814e64",
+        "apps/admin/components/HeaderShowcaseEditor.tsx": "d2f504aedb956617cda416df4cf8566fce210c6bed60c07a6c1fb0cdbfe894bf",
+        "apps/admin/components/LiteraryNewsDeliveryOverview.tsx": "bb861005bf678a775ce7c45626a6d1f1e8a8f3ee6ed03d82524856f88693fa11",
+        "apps/admin/components/LiteraryNewsRuntimeControls.tsx": "43fdf7c1aac8edd7e5fda6420804ba6179623524710f3a75fc065313ffbf16c3",
+        "apps/admin/lib/literary-news-operator-input.test.ts": "f44aa5f7c149e922e7d12ae08200d1cd62eb05a3cedccd6e6b5d0c725a454b0b",
+        "apps/admin/lib/literary-news-operator-input.ts": "3ebbc8dba793176f0619c75593adb4391c5e578c98cf7db69c8cf6c7e5061127",
+        "apps/admin/lib/literary-news-queue.test.ts": "991490ff9e26850bcc7972f110bee8734ef71e9790718868e04756962fb44640",
+        "apps/admin/lib/literary-news-queue.ts": "0120531113e5c66408b981a72f847bbdb8ce446f403bc84906295845d5ef846a",
+        "apps/admin/lib/literary-news-runtime-overview.test.ts": "91f77484c2c5078aa80fef9c8cfd2da142d4478ba9cd7b8f1a4e5e75d56853e4",
+        "apps/admin/lib/literary-news-runtime-overview.ts": "10dce23bd4a0da85fc7386a66eac5b69a745cd8fcd303cb13e1ecd3a09b77c9a",
+        "data/news/article-thumbnails.json": "9cac52f77ef308d62cc525bf5e194fc8c6394d72f9a861143af242a8f92d3fee",
+        "data/news/batches/r10-01.json": "80085c5652b1d2b6117da915f882f72ce20f53a5656ad17eacd4e6dc7a6ebe8f",
+        "data/news/batches/r10-02.json": "e31d71d94f4a6daa074cd4141b809979e38d592c85c445b4d8c5b46bedb2dd70",
+        "data/news/batches/r10-03.json": "85e0318bcb75cb8e7ed3de380866ba6455e7fb04a6fe7a181e86d8de8ddecc12",
+        "data/news/batches/r10-04.json": "428378f1b7ff2ab96d8b08dbe7e3a221d6deeca2f07c04dedca9b43dcee72a62",
+        "data/news/batches/r10-05.json": "e10e2a02c2f6785bba8fa5a19774d97fb16d3b13010b4f1c49afaa5046a70e2b",
+        "data/news/batches/r10-06.json": "ee683698fcc64e929ec037d5e19e0735de32e3572b85d8d4e3889f7353c7dba4",
+        "data/news/batches/r10-07.json": "93f0d79a889146dace0eb31631b991d8427acfe277180d4532fa3e62276ffb02",
+        "data/news/contract.json": "57f71b047ce3d79edbb69db97e8dcb86997b4dfb154c9e0b16090f2464cba27a",
+        "data/news/r10-additional-source-candidates.json": "74911f9a978c09f8f3497115c1853b39dc1ebf121f4e1fd4b1ce3a4e34625805",
+        "data/news/r10-source-candidates.json": "1895b3b127862374b3fc77ef2e4f8537bdb6cd66b1e0238e0fcab19eb23cc22b",
+        "data/news/reviewed.json": "01502fd38099af59aaca0b43ba27b42e15b19bcad92adf7653594c0b0b3cde40",
+        "data/news/social-destinations.json": "dcd4ba59e739f324b532589d526e1617eb3c62031410823319dd1af7be32ef78",
+        "data/news/social-media-assets.json": "b5759ce10f8b3451251591f54af29782c11f7382294f1a7d3f7deb5ef9e61cc5",
+        "data/news/withdrawals.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "package.json": "3a9c90308c7ae354730b1dcbb678e0445ce6e76f4d014ddd07b1326dc6550fd2",
+        "public/literary-news-snapshot.json": "e7c53bb2cdac2bc8c7d3bbd43950bc502ccd52de6abdcb1482eedb86ed669a40",
+        "scripts/apply-literary-news-batch.mjs": "2169d0b05eef9bbdda06884b50e364ca1b4115360f332ef8581fc303a4764c53",
+        "scripts/check-literary-news-operator-sql.mjs": "708e90ab7b50585edeedf2e91e0bfa9a9d343c4d32eb85fc1da5542479d33c56",
+        "scripts/check-literary-news-pagination.mjs": "208b1fafe28885ddbf5da0c65a0d39deec5fd58f8007c0053346703a1e1ddd54",
+        "scripts/check-literary-news-runtime-sql.mjs": "5e79e22512585b935099fac0f5060ec46074b4f512d56af32cf54daf0ca756aa",
+        "scripts/check-r10-news-browser.mjs": "c6f1ef8ace896a1abb02a48e0c6f8999672ee15ce6c5da2d6dc4f28bc218497b",
+        "scripts/enrich-calendar-dates-r10.mjs": "697ca6162bb1bc24eb02fc8d2e2630a8368cbf84962f576e34f4608c37611926",
+        "scripts/export-literary-news-fallback.mjs": "c250a14f9b8d724a7c2a9496205e5d7689b3b5b2ec718c122e36c956b97f6916",
+        "scripts/finalize-literary-news-sources.mjs": "16afdf0de1c94de307a128b50e0511b698bc094e31cae3ae82153363a155ba7b",
+        "scripts/governance/calendar-reviewed-precision.r10.json": "2c6a129cc9c10a245983373d5fce4a9e7cba7364462f20e71a3e6f432fd7ee2b",
+        "scripts/governance/r10-forward-delta-20260926.json": "28f3e068ab84932f917dcea4e0a86974a9546f9b6a70c7b8bc86819ef219d748",
+        "scripts/lib/literary-news-feed.mjs": "9c44f8f1902caeddad69b431d906bbd881752c509b93cc24e6b7d46984cdc13d",
+        "scripts/lib/literary-news-feed.node-test.mjs": "07a2e54307074b3d529af27937ba683fc73f103373202aa64085ee009b0cad24",
+        "scripts/lib/literary-news-ingestion.mjs": "a2c726dfc89c765a6a7c58d5945659857ff3e4879d74446d8bd6dee1b914db60",
+        "scripts/lib/literary-news-kv-sync.mjs": "ca5989ebe282ba8ec695a0a4c46ac8b7539b3f5c9e16dd528454b02cbb45f8ce",
+        "scripts/lib/literary-news-media-upload.mjs": "15f9432e25c0c8ef037b56e1d7b7a94fa272b6cb006449bb906cb49ce98504a8",
+        "scripts/lib/literary-news-media.mjs": "11cc34428c7e145c984ffbfe14db487aa227acd243dd7eb1101b1bd722a58f76",
+        "scripts/lib/literary-news-media.test.mjs": "da0d79ab99b687fa8025db04c3cfd3faa2f5c6e580e7ccc44e01775917ec0400",
+        "scripts/lib/literary-news-nobel-profile.mjs": "cf7ad609e40de7721a530bd636ead7a2607d96862056d353754e95ceab1ed9eb",
+        "scripts/lib/literary-news-nobel-profile.test.mjs": "3713ee150cce3aadbad84497ff25ae85332da6f3b36137624cf52288d72284de",
+        "scripts/lib/literary-news-pagination.test.mjs": "e9084e1bf6c37125559ceec4b024d8e60419b0320867e31d19ba8b6421e9d953",
+        "scripts/lib/literary-news-production.test.mjs": "6dc27078382d82fef44ec11142493cb626d48360b2b04f2447046eab3ae85d8a",
+        "scripts/lib/literary-news-publication.mjs": "e0f46611e23912d6f03cfa980b23748effacfb566770d1cdaf4cab6f484b2a45",
+        "scripts/lib/literary-news-publication.test.mjs": "92d4dd73036c825a2feca40756ef51e01846a7813ff0c70430ea3d44e0cfea9d",
+        "scripts/lib/literary-news-r10-durability.test.mjs": "5f98650140c9b94edd227cd8ff671a64c6774bf00c066b0c2a3c5332bdb1c41c",
+        "scripts/lib/literary-news-restore-scope.test.mjs": "221fad7c3a3fe8aef28622a886efc8f76395ed0154e29ca8249f48708ff16b6d",
+        "scripts/lib/literary-news-reviewed.mjs": "cdfa640710d97f77ec37f68f55b981f05f60914ded1a3d5a335a555493b3578f",
+        "scripts/lib/literary-news-safe-fetch.mjs": "4225695801da89b656f3e9a9414c636bd65c7ef9dd61a5763d651ea72299bae7",
+        "scripts/lib/literary-news-safe-fetch.test.mjs": "ba04ce78be2cf2b75687d1b07ccca03881ba12ebded3ec5fae373e16064bf474",
+        "scripts/lib/literary-news-social-transport.mjs": "a6ecee947250f226c501329177b55f04df0339b23de7a0c599f7ad9a268dc1ba",
+        "scripts/lib/literary-news-social.mjs": "8eb07adab515bd4418ae297e996e916ca5de856741feb39dac1f904673794d50",
+        "scripts/lib/literary-news-social.test.mjs": "5196cb0139b6dc43cd42ce67ed7e121f6467ff1c964ca31d67da90f68291e9bd",
+        "scripts/lib/literary-news-source-profiles.mjs": "3eebc4b6545ab34f4fec978edbd9bd1103f3d60f6c396a4e9a769cd4680d2739",
+        "scripts/lib/literary-news-source-profiles.test.mjs": "97bc855a33b62554a498081710c663e18ec2b3213393089dbd69cacc4528edfe",
+        "scripts/lib/literary-news-sources.mjs": "356fb25be088cbcd5a2012a829fe761f0d96f573371be1b81a54a8ed513ef259",
+        "scripts/lib/literary-news-state.mjs": "4842faf7d510c6a5bbd88aa36add4b54d383782cc7073e90e9993fc1cfaf0693",
+        "scripts/lib/literary-news-thumbnails.mjs": "9dee8bad88e677fe6b77af570c8904e91c2d0085945f203bd5f1a96b26d2ddfc",
+        "scripts/lib/literary-news-thumbnails.test.mjs": "448dac89f17a21d8aea0d6d793cbc30e91e351b1be28f4014ada963100a4ccc8",
+        "scripts/lib/reviewed-cms-source-punctuation.test.mjs": "8683822b51f6edfda64b7070e92deab307edb244b4bfa326218b39c57bcad14c",
+        "scripts/lib/reviewed-dependency-security.test.mjs": "7d08bf49c95ac74ee65c5e021714cf059f27f496666173855f478f4d42235fe0",
+        "scripts/lib/reviewed-draft-storage.test.mjs": "3e138dfd5cb644bdc821ddea66852dc42bdac04ee5414beca5c3f08edfc3ffcb",
+        "scripts/lib/reviewed-header-library.test.mjs": "9b06f0798d8fb0d2581c3ffa8be33483977d03068760045a8abf631f9adf1f57",
+        "scripts/lib/reviewed-header-showcase.test.mjs": "bccd677ea51a3633b8ecea10258faada163fcdc1e4a66bb218f92b85496d6f0a",
+        "scripts/lib/reviewed-native-archive-read.test.mjs": "e3571d567d31dcc0a55b6ec57bc3703bdad67c9c0821a27b14bada201b9d4cbb",
+        "scripts/lib/reviewed-native-archive-transport.test.mjs": "e8fd217a17c430fff08e4adfbce4295ca35e500976b2a33b802fe907ac82bfe9",
+        "scripts/lib/reviewed-premium-title-evidence.test.mjs": "ea902b9d092b38330261019c714affd28ff7408a50a1a278a3ae5f9dd092004f",
+        "scripts/lib/reviewed-r10-delta.d.mts": "3fcedd98116f14294170d76e6addd4a7bf70760b6b0a0de46768b3b40dae0fa6",
+        "scripts/lib/reviewed-r10-delta.mjs": "638fa25fb62c8c5d79c07d88d3ff711dc8ce50529531f0b441379b6bd77e77de",
+        "scripts/lib/reviewed-r10-delta.test.mjs": "352099b86aa2a8711fa7f7bbed510d5e2934c5501df754d93efcd1d359c8cb0d",
+        "scripts/lib/reviewed-r49n-package.test.mjs": "ed189d31cfe31694f2e174883667de72b71ac44dd1c3a324e03b6fda5b87f133",
+        "scripts/lib/reviewed-reference-release.test.mjs": "7647cec118083dc002a5609a141c85ffdc5ba65f88941641a86299b5de8df451",
+        "scripts/lib/stage5-content-data-lock.test.mjs": "bb4f119a8e6d8d1aece5e30b8e5a5809019ae500caf681b94b8bdc0d3904460a",
+        "scripts/prepare-literary-news-source-candidates.mjs": "a4cace83504272a76f99a3592195c3b2f3970128d7c71bd8f4ee4b3a962f4732",
+        "scripts/probe-literary-news-source-candidates.mjs": "e671b6d136eb8a1aeabc0dd1d935d7f666eba5cb64c73be5ab2d77083791cb6a",
+        "scripts/publish-literary-news.mjs": "bd6c5cfcb459fa859524d39b694d75dcdcb73ed000c1b2f6e1d2d09d7290f6e0",
+        "scripts/r10-showcase-before.mjs": "7cc28f4e9735f4e5240ec24367f3f966c8bfaeb3598e18b0edfb484778efb208",
+        "scripts/r10-showcase-css-policy.mjs": "3ffa3e5812902225debeb8fd50ccb818554db981d6307943dc2005dbe10dae8a",
+        "scripts/r10-showcase-error-check.mjs": "9a8dc348f25813d8fae70eb799c06b6cc0acfc0740cdff4341b9942f70b05692",
+        "scripts/r10-showcase-image-contain-check.mjs": "3e578c6369243f83ace6d0ed213ace66266d11e4cbacc98f9ef8a363caa2af13",
+        "scripts/r10-showcase-media-pins.mjs": "0a104f5270d10238096028d32a95459642442c46e1345518131bd4f7b45e9a78",
+        "scripts/r10-showcase-runtime.mjs": "920d83d7d9ecdd32a7f50fc1afa592d465e3dfaf769f189c847dce31b334bdc7",
+        "scripts/refresh-literary-news.mjs": "d49121910d8348be6c6cd65932bd3cc4cb86b806b60d658f6df9bb2663faece7",
+        "scripts/research-literary-news-sources.mjs": "5df26c80e8ec5c579502b53dca18eccd66c7abf95a60c09964a2af52c396aac4",
+        "scripts/sync-literary-news.mjs": "39d99860f7099442a45934d3a4235ce60f63a8cce70d3c067b17b9f93dcd7c66",
+        "scripts/verify-literary-news-live.mjs": "34bf592d545aa4800751b88e9bd96c313efd7a419c85ff102de205a38334006c",
+        "scripts/verify-literary-news-live.test.mjs": "3262aa3b60ee988dbcc4c1cbe6dc09b9ad23153fd012b01007a85f33a172ace5",
+        "scripts/verify-literary-news-source-runtime.mjs": "38da19070a6fb25b0ee5b430f54f93de3e76c56b601ede811c6be6c7ca8e2c55",
+        "scripts/workers/literary-news-worker.mjs": "3dc5956f0af0b71d22d66676fee2a52925da1baa8b0d94b729a077487cb7c1de",
+        "src/components/HeaderArticlesMenu.tsx": "bcdc72a78cc76c09d82a499e84f8f94b0d993a2e24e1edf03256e6ea76648857",
+        "src/components/LiteraryCalendar.test.ts": "d9597436c22eb6d18403408c93b3b34d6668b96465abf86c91df2848a2456e80",
+        "src/components/LiteraryCalendar.tsx": "602b75c07aea22ebf59c45c3a97f5cc26a5b93fac938a7b06eaafa91ae9e839f",
+        "src/components/LiteraryNewsPanel.tsx": "2b5c7aa09df2e731889da4d3754b77016e9555a4e8f87cca6218699fd05ef3fc",
+        "src/components/NewsArticleThumbnail.tsx": "747406cd813dfc24b617b01e4f85c02b65c421db98ee7625c7f89b65a2b6677f",
+        "src/components/stage5Governance.test.ts": "103fa58d706e42d20db47eb22586033ba32ec7fd6b99b7dd0dd5729a773fde0e",
+        "src/data/countries/generated/writerDatePatches.r10.json": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080",
+        "src/data/countries/index.ts": "adb63c38e8cdb560e9db0d453b9d7b753ee930fd9702ee2bf05815587e31c6e7",
+        "src/data/countries/types.ts": "3cd59605923f2a55e96ab41d6b7e6ded93684508e2993471e0e8004677284a8e",
+        "src/data/countries/writerDatePatches.test.ts": "3302a2caabde003a04c40990509bfea14b534f69768617ebba957f5b7ccb3216",
+        "src/data/countries/writerDatePatches.ts": "9b83050583771229857f4f6af165852e4099fd71908c34566153369a3b637024",
+        "src/news/feed.ts": "30a9efe57cfc4009f4ead8062fd1fb4f1da7f84147504c9ac394eb79b1a8d700",
+        "src/news/transport.ts": "339b1f1ca0d23d63e76df34f07ac58eab3fc740e3e3a1f1406734d55366403d3",
+        "src/news/types.ts": "171c5c5e9adeb4caee0390d9ec85876b6469b580e67b3c76ab0ea4dfeeac07dc",
+        "src/news/updates.ts": "a4c2d5a4d6fbb3337dbbfb12da8ca6ae93e9f33dc3d1a9464729a96f2dedac41",
+        "src/news/withdrawals.test.ts": "750bd2d034343579460d379730b308816b1c0942ddde1d02550d3479bb0e108e",
+        "src/news/withdrawals.ts": "bbfb43637ed8741df5962d72baa82951dfcb20717fe8d75af97af5caa28f3772",
+        "src/styles/header-showcase-r10.css": "06ebde10600119ba12e625a063d8ec20d78d7c40b88a0078ff078d26562adbb8",
+        "src/styles/news-article-thumbnail.css": "a90773a9a1c3e8fa6973da67dfd62d7170a9c766458e78c9c3f2197d151dca14",
+        "src/utils/articleRoutes.ts": "cbb58876aaceee89c5c8d636ad85a97309e75a6b5848ce265eeeb6f38ac946d9",
+        "src/utils/headerArticleLoader.ts": "f10ea3eb242054be0963857fb229224ec83baa5a7d848ff17ab7bb7c3c660a91",
+        "src/utils/headerArticleSelection.test.ts": "c3c400be1d0624bae57ab1ec69eba6a450df88371db7f55aa6fd3fab893ed4f1",
+        "src/utils/headerArticleSelection.ts": "6256afd2fb19757dc78b5f533ebd4e2dfb71aed6d7db2204ac906549e4b42411",
+        "supabase/migrations/20260926_literary_news_runtime_cas.sql": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402",
+        "tests/e2e/header-hero-polish.spec.mjs": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda"
       },
-      {
-        "file": "database/article-rls-integration.test.mjs",
-        "test": "article RLS integration contract executes staff INSERT ... RETURNING and keeps drafts private"
+      "fullSuite": {
+        "passed": 3755,
+        "failed": 0,
+        "pending": 11,
+        "suiteFailures": 0,
+        "report": "reports/r10/tests-ci-final.json",
+        "command": "vitest run --configLoader runner --maxWorkers=4; exact checkout safe.directory scoped to this process",
+        "skipped": [
+          {
+            "file": "database/article-publication-permissions.integration.test.mjs",
+            "test": "article publication PostgreSQL permissions reproduces both old permission failures and preserves atomic, role-bound publication after the fix"
+          },
+          {
+            "file": "database/article-rls-integration.test.mjs",
+            "test": "article RLS integration contract executes staff INSERT ... RETURNING and keeps drafts private"
+          },
+          {
+            "file": "database/atomic-article-bundle.integration.test.mjs",
+            "test": "atomic article bundle PostgreSQL contract commits Russian and English together and rolls every side effect back on failure"
+          },
+          {
+            "file": "database/book-evidence-v2-registry-rotation.integration.test.mjs",
+            "test": "forward Evidence V2 registry SQL boundary executes the exact forward migration twice and tests stale snapshots, prior-public coverage, rollback, enforcement and idempotency in PostgreSQL"
+          },
+          {
+            "file": "database/book-evidence-v2-registry-transport.integration.test.mjs",
+            "test": "registry JavaScript/PostgreSQL evidence transport binds actual JSONB bytes and JavaScript-generated reference and coverage payloads"
+          },
+          {
+            "file": "database/literary-archive-editorial-references.integration.test.mjs",
+            "test": "atomic editorial reference initialization executes replay36/37/38, exact proof gates, preservation, rollback and full-scale needed references"
+          },
+          {
+            "file": "database/literary-archive-native-commit.integration.test.mjs",
+            "test": "native archive commit transaction transport executes real psql parameters, role isolation, retry, rollback and restored session settings"
+          },
+          {
+            "file": "database/literary-archive-native-postflight.integration.test.mjs",
+            "test": "native archive read-only PostgreSQL boundary executes the real published assertion, enforces read-only service context and rejects content or child drift"
+          },
+          {
+            "file": "database/literary-translation-draft-storage.integration.test.mjs",
+            "test": "short literary translation draft storage stores all exact prepared translations and rejects invalid text, false reviews, promotion and unknown schemas"
+          },
+          {
+            "file": "database/literary-work-evidence-v2-postgres.integration.test.mjs",
+            "test": "literary-work Evidence V2 PostgreSQL grammar compiles the exact function with check_function_bodies and rolls it back"
+          },
+          {
+            "file": "database/wells-editorial-evidence-repair.integration.test.mjs",
+            "test": "reviewed Wells editorial repair executes the reviewed packet through the real attester with rollback, preservation, idempotence and origin guards"
+          }
+        ]
       },
-      {
-        "file": "database/atomic-article-bundle.integration.test.mjs",
-        "test": "atomic article bundle PostgreSQL contract commits Russian and English together and rolls every side effect back on failure"
+      "finalAffectedConsumers": {
+        "passed": 49,
+        "failed": 0,
+        "pending": 0,
+        "report": "reports/r10/tests-final-consumers.json"
       },
-      {
-        "file": "database/book-evidence-v2-registry-rotation.integration.test.mjs",
-        "test": "forward Evidence V2 registry SQL boundary executes the exact forward migration twice and tests stale snapshots, prior-public coverage, rollback, enforcement and idempotency in PostgreSQL"
+      "builds": {
+        "public": "passed; reports/r10/public-build-final.log",
+        "admin": "passed; reports/r10/admin-build-final.log",
+        "worker": "dry-run passed; reports/r10/worker-bundle.log"
       },
-      {
-        "file": "database/book-evidence-v2-registry-transport.integration.test.mjs",
-        "test": "registry JavaScript/PostgreSQL evidence transport binds actual JSONB bytes and JavaScript-generated reference and coverage payloads"
+      "lint": "passed; reports/r10/lint-final.log",
+      "audits": {
+        "content": 0,
+        "routes": 0,
+        "performance": 0,
+        "calendar": 0
       },
-      {
-        "file": "database/literary-archive-editorial-references.integration.test.mjs",
-        "test": "atomic editorial reference initialization executes replay36/37/38, exact proof gates, preservation, rollback and full-scale needed references"
+      "requiredQualityAudits": {
+        "checkedAt": "2026-09-26T19:10:42.369Z",
+        "exitCodes": {
+          "countries:audit": 0,
+          "media:audit": 0,
+          "books:audit": 0,
+          "covers:audit": 0,
+          "assets:globe:qa": 0
+        },
+        "generatedReportSummary": "reports/r10/regression-audits/summary.json",
+        "gitOwnership": "Process-scoped safe.directory for this checked repository; no global configuration changed",
+        "originalTrackedReportsRestored": true
       },
-      {
-        "file": "database/literary-archive-native-commit.integration.test.mjs",
-        "test": "native archive commit transaction transport executes real psql parameters, role isolation, retry, rollback and restored session settings"
+      "productionDependencyAudit": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
       },
-      {
-        "file": "database/literary-archive-native-postflight.integration.test.mjs",
-        "test": "native archive read-only PostgreSQL boundary executes the real published assertion, enforces read-only service context and rejects content or child drift"
+      "sql": {
+        "runtimeChecks": 19,
+        "operatorChecks": 8,
+        "engine": "isolated PGlite PostgreSQL WASM",
+        "remote": false,
+        "realConcurrentProcesses": false
       },
-      {
-        "file": "database/literary-translation-draft-storage.integration.test.mjs",
-        "test": "short literary translation draft storage stores all exact prepared translations and rejects invalid text, false reviews, promotion and unknown schemas"
+      "browser": {
+        "publication": "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "showcase": "reports/r10/showcase/receipt.json",
+        "calendar": "reports/r10/calendar/browser-check.json",
+        "onsiteImages": "reports/r10/publication/article-thumbnails.json",
+        "socialQuality": "reports/r10/social/quality/verification.json",
+        "socialMedia": "reports/r10/social/MEDIA_Q.md",
+        "headerCIContract": "reports/r10/ci-contract-validation.json"
       },
-      {
-        "file": "database/literary-work-evidence-v2-postgres.integration.test.mjs",
-        "test": "literary-work Evidence V2 PostgreSQL grammar compiles the exact function with check_function_bodies and rolls it back"
+      "sourceRuntime": {
+        "total": 108,
+        "available": 101,
+        "families": 100,
+        "countries": 53,
+        "held": 2318,
+        "report": "reports/r10/sources/pinned-runtime/runtime-verification.json"
       },
-      {
-        "file": "database/wells-editorial-evidence-repair.integration.test.mjs",
-        "test": "reviewed Wells editorial repair executes the reviewed packet through the real attester with rollback, preservation, idempotence and origin guards"
+      "deployed": false,
+      "configuredDestinations": 0,
+      "delivered": 0,
+      "requiredRemoteCI": "pending_final_commit_verify",
+      "humanReview": false,
+      "originalFullSuite": {
+        "passed": 3754,
+        "failed": 0,
+        "pending": 11,
+        "suiteFailures": 0,
+        "report": "reports/r10/tests-complete.json",
+        "skipped": [
+          {
+            "file": "database/article-publication-permissions.integration.test.mjs",
+            "test": "article publication PostgreSQL permissions reproduces both old permission failures and preserves atomic, role-bound publication after the fix"
+          },
+          {
+            "file": "database/article-rls-integration.test.mjs",
+            "test": "article RLS integration contract executes staff INSERT ... RETURNING and keeps drafts private"
+          },
+          {
+            "file": "database/atomic-article-bundle.integration.test.mjs",
+            "test": "atomic article bundle PostgreSQL contract commits Russian and English together and rolls every side effect back on failure"
+          },
+          {
+            "file": "database/book-evidence-v2-registry-rotation.integration.test.mjs",
+            "test": "forward Evidence V2 registry SQL boundary executes the exact forward migration twice and tests stale snapshots, prior-public coverage, rollback, enforcement and idempotency in PostgreSQL"
+          },
+          {
+            "file": "database/book-evidence-v2-registry-transport.integration.test.mjs",
+            "test": "registry JavaScript/PostgreSQL evidence transport binds actual JSONB bytes and JavaScript-generated reference and coverage payloads"
+          },
+          {
+            "file": "database/literary-archive-editorial-references.integration.test.mjs",
+            "test": "atomic editorial reference initialization executes replay36/37/38, exact proof gates, preservation, rollback and full-scale needed references"
+          },
+          {
+            "file": "database/literary-archive-native-commit.integration.test.mjs",
+            "test": "native archive commit transaction transport executes real psql parameters, role isolation, retry, rollback and restored session settings"
+          },
+          {
+            "file": "database/literary-archive-native-postflight.integration.test.mjs",
+            "test": "native archive read-only PostgreSQL boundary executes the real published assertion, enforces read-only service context and rejects content or child drift"
+          },
+          {
+            "file": "database/literary-translation-draft-storage.integration.test.mjs",
+            "test": "short literary translation draft storage stores all exact prepared translations and rejects invalid text, false reviews, promotion and unknown schemas"
+          },
+          {
+            "file": "database/literary-work-evidence-v2-postgres.integration.test.mjs",
+            "test": "literary-work Evidence V2 PostgreSQL grammar compiles the exact function with check_function_bodies and rolls it back"
+          },
+          {
+            "file": "database/wells-editorial-evidence-repair.integration.test.mjs",
+            "test": "reviewed Wells editorial repair executes the reviewed packet through the real attester with rollback, preservation, idempotence and origin guards"
+          }
+        ]
+      },
+      "governanceFollowup": {
+        "report": "reports/r10/governance/ci-followup-validation.json",
+        "historicalPinsChanged": false,
+        "productionUIChanged": false,
+        "paths": 18,
+        "fragments": 34
       }
-    ]
+    }
   },
-  "governanceFollowup": {
-    "report": "reports/r10/governance/ci-followup-validation.json",
-    "historicalPinsChanged": false,
-    "productionUIChanged": false,
-    "paths": 18,
-    "fragments": 34
+  "inputHashesCapturedAt": "2026-09-26T23:02:35.423Z",
+  "premergeValidation": {
+    "checkedAt": "2026-09-26T23:11:23.813Z",
+    "fullSuite": {
+      "passed": 3833,
+      "failed": 0,
+      "skipped": 11,
+      "files": 609,
+      "report": "reports/r10/tests-release-final.json",
+      "scope": "Complete local suite before the final explicit archived-media hold correction; that final correction has its separate focused receipt."
+    },
+    "pacing": {
+      "passed": 90,
+      "failed": 0,
+      "report": "reports/r10/social/pacing-after-tests.json",
+      "independentReview": "reports/r10/social/pacing-independent-review.json",
+      "beforeRiskReproduction": "reports/r10/social/pacing-before-tests.json"
+    },
+    "lint": {
+      "exitCode": 0,
+      "command": "npm run lint"
+    },
+    "build": {
+      "exitCode": 0,
+      "command": "npm run build:from-snapshot"
+    },
+    "sql": {
+      "passed": 21,
+      "failed": 0,
+      "report": "reports/r10/social/sql-check.json",
+      "production": false
+    },
+    "production": false,
+    "remoteExactCommitVerify": "pending"
   }
 }

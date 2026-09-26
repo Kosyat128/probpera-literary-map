@@ -1,0 +1,39 @@
+{
+  "scope": "Implementation follow-up after the 2026-09-27 media freeze; existing unsent pending image discovery for news absent from a complete projection.",
+  "before": {
+    "productionRepro": "work/r10-archived-media-repro.json outside the repository",
+    "agedSameRecordFeedCount": 1,
+    "removedRecordFeedCount": 0,
+    "durableJobStatus": "pending",
+    "dispatchReason": "media_discovery_pending",
+    "tests": "archived-media-before-tests.json",
+    "failed": 1,
+    "note": "Age alone does not remove reviewed news. The real gap is an admitted record absent from a complete projection without a withdrawal; the earlier announcement-expiry fix did not cover it."
+  },
+  "resolution": {
+    "policy": "explicit held accounting, not archived automatic search or inferred delivery approval",
+    "status": "blocked",
+    "reason": "archived_media_requires_source_resolution",
+    "guards": "Absent from current items and withdrawals; existing pending job; no remote ID, dispatch marker or withdrawal; pending media; not an announcement with its separate expiry path.",
+    "preserved": ["durable admission", "job identity", "desired revision", "original admission time", "complete prepared payload", "pending image evidence"],
+    "concurrency": "Transition re-reads state and commits with CAS; it cannot overwrite a concurrent claim or receipt.",
+    "reappearance": "The identical current verified record clears only this specific block and returns to pending, even when verifiedAt, semantic revision and mediaPending are unchanged.",
+    "terminalState": "Dispatcher returns existing terminal/block state before the pending-image guard."
+  },
+  "validation": {
+    "report": "archived-media-after-tests.json",
+    "files": 3,
+    "passed": 46,
+    "failed": 0,
+    "coverage": "Social state machine, portrait discovery, root-owned pacing integration, and the new absent/retained-expectation/identical-return regression.",
+    "diffCheck": "passed",
+    "networkRequests": 0,
+    "providerWrites": 0,
+    "databaseWrites": 0
+  },
+  "fileSha256": {
+    "scripts/lib/literary-news-social.mjs": "ade6e3b642f839b7ab70aa09f2d0ea2e3e8c6269e95e6f9daf54edca706f9ecd",
+    "scripts/lib/literary-news-social.test.mjs": "67cef1edf3f0a6bd4e9d02fe5a3d31423c88f36cc0ef26e2fb5f9fd3eb19f3df"
+  },
+  "limits": "This focused follow-up succeeds after the prior full-suite snapshot; it is not a new full-suite or production result. CLI, pacing implementation, visual styling and external runtime were not changed."
+}

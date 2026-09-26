@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-09-26T23:02:44.783Z",
+  "reviewer": "independent source_diversity agent",
+  "scope": "Bounded read-only review of integrated portrait discovery, cache, due-byte preparation and provider dispatch. Pacing integration is a subsequent separate root-owned change.",
+  "fileSha256": {
+    "scripts/lib/literary-news-media-discovery.mjs": "f68a396f1fcee730b44d25b3234958dcfed953c60281bdb4f0589ae85a6cbba7",
+    "scripts/lib/literary-news-media-subjects.mjs": "9a5efbef1543d8ce473aabf64467b88061c1911c1fd70b71f21988cdaf9b4877",
+    "scripts/lib/literary-news-media.mjs": "41c5e1a18b1970e7aaec490afe171f50803771c8a8da8dd6554a95ea75d7355a",
+    "scripts/lib/literary-news-social.mjs": "21f54dc908d023a3f1aac323316bbc12f1dca6f3a4cc59ab19ad49ff8a89117d",
+    "scripts/lib/literary-news-social-transport.mjs": "e4d9dc8d7448b71b02d1e46ef8c3c5832b906e35b439dac803c4c8e74d7df63b",
+    "scripts/publish-literary-news.mjs": "d3630747e49b00a087a80915d246de31517e01ded0c4f2f0b8f9feab6b7f0920"
+  },
+  "result": "No unresolved actionable P1/P2 found in this bounded review.",
+  "implementationFollowUp": {
+    "author": "article_showcase implementation agent; not an additional independent review",
+    "report": "archived-media-resolution.json",
+    "clarification": "The review above covered announcement expiry and withdrawal. A subsequent production-function repro confirmed a separate non-announcement admitted item, omitted from the complete projection with mediaPending, remained pending indefinitely. Age alone does not remove reviewed news.",
+    "resolution": "Now explicitly blocked with archived_media_requires_source_resolution while retaining its durable expectation. Identical verified reappearance restores pending. This is explicit held accounting, not archived automatic media search.",
+    "focusedTests": "3 files / 46 passed / 0 failed; archived-media-after-tests.json. Original independent-review hashes and historical test results above remain unchanged."
+  },
+  "resolvedFindings": [
+    {
+      "priority": "P2",
+      "problem": "mediaPending bypassed expiry evaluation for an announcement no longer present in the current feed; withdrawal inherited mediaPending.",
+      "resolution": "dispatch allows expired announcements to reach the existing source-resolution block; withdrawal preparation explicitly clears pending media.",
+      "regression": "literary-news-social.test.mjs: empty next-day feed blocks expired announcement; source withdrawal closes without a photo search."
+    },
+    {
+      "priority": "P2",
+      "problem": "A destination provider cooldown was omitted before selecting the first eight due image downloads.",
+      "resolution": "selectDueNewsMediaJobs excludes control.nextDueAt before download selection.",
+      "regression": "publish-literary-news.test.mjs: a destination cooldown excludes its photos before the eight-download selection."
+    }
+  ],
+  "verified": [
+    "Exact reviewed human full-name/alias matching, plus bounded fresh unique exact English name with fresh Q5 and literary P106; ambiguous identities and eponyms held.",
+    "Per capture at most eight inspections, 24 pinned-host public requests, 512KiB metadata, 8MiB source raster and 20MP full decode; send uses cached decisions and at most eight due original-byte reconstructions.",
+    "Only PD, CC0 or CC BY 4.0 accepted automatically; destination-specific permission and 30-day evidence expiry revalidated before upload/send. SA/NC/ND held.",
+    "Original Commons SHA1 and local source SHA256 plus derivative SHA256 are pinned. A fresh runner reconstructs only exact bytes; missing or changed bytes do not silently replace a prepared photo with text.",
+    "Never-inspected then oldest-inspected discovery ordering; byte-preparation failures back off with CAS without overwriting a concurrent remote receipt.",
+    "Unknown pending image search cannot send text; proven held image results may use an explicit text fallback.",
+    "Existing upload receipt cache, fresh rights check, atomic destination/pause guard, unknown-outcome no-resend and no archive profile-only restyling remain in place."
+  ],
+  "tests": {
+    "first": {
+      "passed": 85,
+      "failed": 0,
+      "files": 5,
+      "report": ".tmp/r10-pacing-discovery-review-tests.json"
+    },
+    "cli": {
+      "passed": 3,
+      "failed": 0,
+      "files": 1,
+      "report": ".tmp/r10-discovery-cli-review-tests.json"
+    }
+  },
+  "limits": [
+    "No external provider or database writes performed by this reviewer.",
+    "Agent real-source proof was read, not represented as a second live fetch or independent image inspection.",
+    "This is focused implementation review, not full CI or production acceptance.",
+    "Root-owned pacing integration is reviewed separately and is not certified by these file hashes."
+  ]
+}

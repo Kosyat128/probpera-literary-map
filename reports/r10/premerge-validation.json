@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-09-26T23:11:23.813Z",
+  "fullSuite": {
+    "passed": 3833,
+    "failed": 0,
+    "skipped": 11,
+    "files": 609,
+    "report": "reports/r10/tests-release-final.json",
+    "scope": "Complete local suite before the final explicit archived-media hold correction; that final correction has its separate focused receipt."
+  },
+  "pacing": {
+    "passed": 90,
+    "failed": 0,
+    "report": "reports/r10/social/pacing-after-tests.json",
+    "independentReview": "reports/r10/social/pacing-independent-review.json",
+    "beforeRiskReproduction": "reports/r10/social/pacing-before-tests.json"
+  },
+  "lint": {
+    "exitCode": 0,
+    "command": "npm run lint"
+  },
+  "build": {
+    "exitCode": 0,
+    "command": "npm run build:from-snapshot"
+  },
+  "sql": {
+    "passed": 21,
+    "failed": 0,
+    "report": "reports/r10/social/sql-check.json",
+    "production": false
+  },
+  "production": false,
+  "remoteExactCommitVerify": "pending"
+}

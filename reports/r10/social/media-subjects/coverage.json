@@ -1,0 +1,4835 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-26T22:46:53.010Z",
+  "scope": "Offline deterministic identity candidates only; no image fetch, rights approval or publication",
+  "humanReview": false,
+  "networkCalls": 0,
+  "externalWrites": 0,
+  "reviewedNewsSha256": "01502fd38099af59aaca0b43ba27b42e15b19bcad92adf7653594c0b0b3cde40",
+  "moduleSha256": "9a5efbef1543d8ce473aabf64467b88061c1911c1fd70b71f21988cdaf9b4877",
+  "index": {
+    "reviewedHumanQids": 1405,
+    "indexedNamePhrases": 2535,
+    "explicitAliasesPresent": 0,
+    "ambiguousPhrases": 0,
+    "policy": "case-insensitive NFKC exact full label/explicit alias; no surname-only, mononym, inflection or transliteration inference"
+  },
+  "counts": {
+    "records": 235,
+    "withSubjects": 13,
+    "singleSubject": 13,
+    "multipleSubjects": 0,
+    "headline": 11,
+    "summaryFallback": 2,
+    "heldByReason": {
+      "no-exact-reviewed-writer-name": 216,
+      "unanchored-summary-mentions": 5,
+      "title-names-are-eponyms": 1
+    }
+  },
+  "matches": [
+    {
+      "newsId": "tolstoy-birthday-2026",
+      "subjects": [
+        {
+          "qid": "Q7243",
+          "name": "Leo Tolstoy",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Leo Tolstoy",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "russia:tolstoy"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q7243&oldid=2536542491",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "british-library-agatha-christie-exhibition-2026",
+      "subjects": [
+        {
+          "qid": "Q35064",
+          "name": "Agatha Christie",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Agatha Christie",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "england:agatha_christie"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q35064&oldid=2535139149",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "marlon-james-disappearers-us-catalog-2026",
+      "subjects": [
+        {
+          "qid": "Q16211564",
+          "name": "Marlon James",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Marlon James",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "jamaica:marlon_james"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q16211564&oldid=2533928479",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "ubud-writers-readers-festival-2026",
+      "subjects": [
+        {
+          "qid": "Q228589",
+          "name": "Kiran Desai",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Kiran Desai",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "india:kiran_desai"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q228589&oldid=2517446844",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "gioconda-belli-fil-prize-2026",
+      "subjects": [
+        {
+          "qid": "Q290491",
+          "name": "Gioconda Belli",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Gioconda Belli",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "nicaragua:gioconda_belli"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q290491&oldid=2526537872",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "padura-liber-award-decision-2026",
+      "subjects": [
+        {
+          "qid": "Q454005",
+          "name": "Леонардо Падура",
+          "matchedField": "title.ru",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Леонардо Падура",
+            "nameLocale": "ru",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "cuba:leonardo_padura"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q454005&oldid=2537174145",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "hiromi-kawakami-far-from-everywhere-2027",
+      "subjects": [
+        {
+          "qid": "Q286701",
+          "name": "Hiromi Kawakami",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Hiromi Kawakami",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "japan:hiromi_kawakami"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q286701&oldid=2529347791",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "avrutina-ozlu-tanpinar-books-meeting-2026",
+      "subjects": [
+        {
+          "qid": "Q401875",
+          "name": "Ahmet Hamdi Tanpınar",
+          "matchedField": "summary.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Ahmet Hamdi Tanpınar",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "turkey:ahmet_hamdi_tanpinar"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q401875&oldid=2515865271",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "wells-brynhild-first-russian-2026",
+      "subjects": [
+        {
+          "qid": "Q42511",
+          "name": "H. G. Wells",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "H. G. Wells",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "england:h_g_wells"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q42511&oldid=2533474685",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "stevenson-cevennes-illustrated-french-edition-2026",
+      "subjects": [
+        {
+          "qid": "Q1512",
+          "name": "Robert Louis Stevenson",
+          "matchedField": "summary.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Robert Louis Stevenson",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "england:robert_louis_stevenson"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1512&oldid=2536735698",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "ken-bugul-julie-huntington-asymptote-interview-2026",
+      "subjects": [
+        {
+          "qid": "Q185636",
+          "name": "Ken Bugul",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Ken Bugul",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "senegal:ken_bugul"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q185636&oldid=2533042773",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "phillip-lopate-washington-irving-sketch-book-2026",
+      "subjects": [
+        {
+          "qid": "Q181667",
+          "name": "Washington Irving",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Washington Irving",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "usa:washington_irving"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q181667&oldid=2533318544",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    },
+    {
+      "newsId": "rivera-garza-kwon-literary-influences-2026",
+      "subjects": [
+        {
+          "qid": "Q1140408",
+          "name": "Cristina Rivera Garza",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Cristina Rivera Garza",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "mexico:cristina_rivera_garza"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1140408&oldid=2521465802",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        }
+      ],
+      "reason": "exact-name",
+      "matchedIdentityCount": 1
+    }
+  ],
+  "held": [
+    {
+      "newsId": "booker-shortlist-2026-announcement",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "love-hypothesis-2026-release-announcement",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "kiki-third-english-edition-announcement",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "booker-longlist-2026",
+      "reason": "unanchored-summary-mentions"
+    },
+    {
+      "newsId": "german-book-prize-longlist-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "german-book-prize-shortlist-2026-announcement",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "frankfurt-book-fair-2026-announcement",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "gothenburg-book-fair-2026-announcement",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "bnf-richelieu-heritage-days-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "yasnaya-polyana-tolstoy-library-20260912",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "goslitmuz-people-of-december-publication-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "mandelstam-days-2026-announcement",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "giller-longlist-2026-schedule",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "national-book-awards-longlists-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nbf-presents-fall-2026-announced",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "brooklyn-book-festival-2026-main-day",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "mandel-exit-party-us-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "john-green-hollywood-ending-us-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "guernsey-medieval-fragments-research-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "whisper-man-netflix-release-20260828",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "international-booker-funding-20260702",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "shanghai-childrens-book-fair-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ake-arts-book-festival-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nairobi-international-book-fair-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "guadalajara-international-book-fair-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "hay-queretaro-emiliano-monge-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "brisbane-writers-festival-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "new-zealand-childrens-book-awards-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "john-green-signed-tip-in-record-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "kokila-jason-reynolds-lamplighters-son-acquisition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "tara-westover-brothers-and-sisters-us-2027",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "viking-beth-brower-emma-lion-rights-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "george-w-bush-call-of-freedom-us-2027",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "frankfurt-book-to-screen-day-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "aficionado-award-words-without-borders-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "frankfurt-audio-business-centre-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "frankfurt-comic-business-centre-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "frankfurt-rights-meeting-40-reception-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "tiktok-book-awards-mexico-ceremony-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "fil-editorial-merit-ekare-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "wingston-gonzalez-plia-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pen-index-victoria-amelina-fellowship-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nlo-venediktova-literary-haptics-podcast-20260912",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nlo-tsyganov-stalin-era-philology-20260901",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nlo-zenkin-scholars-french-literature-20260818",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nlo-anya-fyodorova-conversation-20260813",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "charles-spencer-swan-song-us-announcement-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "our-strange-duet-audiobook-cast-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ikapi-awards-ceremony-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lit-connect-jakarta-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "indonesia-rights-fellowship-recipients-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ilcl-limited-colour-picture-books-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ndl-rare-books-fulltext-75000-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "taipei-book-exhibition-czech-guest-2027",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "taiwan-picture-book-creation-support-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "degol-hailu-pillaging-the-dead-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "maren-baudet-lackner-aquatics-translation-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "funmike-ogaosun-shipikisha-cover-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "san-martin-digital-repository-agreement-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "chile-library-140-words-contest-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nuestra-tierra-radio-animation-season2-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "jorge-basadre-library-awards-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "callao-colibri-childrens-book-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "tacna-national-legal-deposit-centre-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "sharjah-filbo-guest-honour-announced-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "bogota-children-book-festival-bookshop-call-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "montevideo-international-book-fair-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "emmanuel-carrere-montevideo-kolkhoz-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "canadian-publisher-certification-expanded-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "omnibird-panz-design-awards-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "asymptote-hossaini-war-ends-translation-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "bakwa-12-lost-manuscript-issue-2026",
+      "reason": "unanchored-summary-mentions"
+    },
+    {
+      "newsId": "serapis-millay-anthology-presented-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "turkey-childrens-editing-workshop-deadline-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "scarlett-robinson-kean-mahy-illustration-prize-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "finland-publishers-first-half-sales-report-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "chisinau-cosbuc-bacovia-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "dubravka-rebic-vladan-desnica-decision-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "isbn-agencies-madrid-meeting-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "vernadsky-world-literature-ukrainian-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "vernadsky-dnipro-digitised-periodicals-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "jose-ruben-zamora-hermann-kesten-decision-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "kamen-writers-in-exile-portraits-opening-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pen-belarus-writers-frankfurt-panel-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "danish-pen-banned-books-opening-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "norwegian-pen-ossietzky-nominations-deadline-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nonna-gruffalo-italian-edition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "katarina-wennstam-crimetime-honorary-award-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "jamaica-kincaid-sjojungfrun-presentation-2026",
+      "reason": "unanchored-summary-mentions"
+    },
+    {
+      "newsId": "nicolas-lunabba-gothenburg-bildning-award-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "shida-bazyar-wilhelm-raabe-presentation-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pazderka-soukup-rudolf-medek-prize-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "luxembourg-unfinished-peace-archive-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "yasnaya-polyana-kuzminskaya-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "scariest-book-2027-preorder-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+      "reason": "unanchored-summary-mentions"
+    },
+    {
+      "newsId": "noon-strugatsky-trailer-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nizhny-novgorod-book-fair-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "parfenov-nabokov-namedni-tour-announced-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "patrick-dewitt-dodge-city-russian-edition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "fred-vargas-unique-lueur-corpus-rights-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "joel-dicker-prime-video-three-novels-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "li-juan-my-altay-russian-announcement-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "tawada-where-europe-begins-russian-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "childrens-detective-reading-conference-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lenfilm-samokat-family-film-reading-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "kruzhkov-mukha-pukha-reading-theatre-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "mama-read-draw-family-awards-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "rsl-multilingual-literary-evening-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "hafiz-alontsev-rsl-presentation-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "rsl-sri-lanka-books-culture-days-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "history-of-a-town-rsl-stage-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "chebatkov-dovlatov-foreigner-reading-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "natalya-balayan-russian-fairy-tale-book-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "vladimir-dal-manuscripts-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "chekhodal-short-fiction-call-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pesnyary-minsk-moscow-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lilya-brik-mamm-literary-museum-loans-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "shershenevich-drozdov-collection-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "russian-book-market-conference-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "daniil-granin-prize-second-season-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "litres-yasnaya-polyana-free-reading-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "novosibirsk-book-projects-seminar-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "moscow-book-week-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "viktor-likhonosov-krasnodar-square-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "jaume-cabre-feixes-first-russian-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "liu-cixin-direct-russian-translation-interview-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "yesenin-konstantinovo-poetry-festival-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "radzinsky-eighteen-volume-collected-works-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "rgali-sergei-markov-archive-feature-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "gorodets-norwegian-folk-tales-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ditan-beijing-book-market-opening-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pen-america-alim-aliiev-literary-interview-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pen-belarus-three-writers-released-20260916",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "cordoba-books-education-programme-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "tv5monde-un-pays-un-livre-announced-2026",
+      "reason": "unanchored-summary-mentions"
+    },
+    {
+      "newsId": "china-publishing-development-report-2025-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "bugojanska-vaza-short-story-deadline-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "wmf-martins-fontes-amazon-supply-announcement-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "devenir-un-monstre-quebec-release-2027",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "sarajevo-amer-tikvesa-literary-corner-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pen-catala-eritrean-writers-audio-postcards-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "dublin-imprisoned-writer-gallagher-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "livres-en-vignes-awards-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "madeline-cash-page-america-award-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "marie-dorleans-grand-est-award-presentation-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "vanity-fair-literary-selection-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ens-editions-first-alef-prize-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "musicians-literary-prize-selection-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "utopiales-comics-shortlist-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ouest-france-quai-bulles-finalists-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "scam-recit-dessine-selection-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "esther-teillard-vocation-prize-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "florent-oiseau-francoise-sagan-prize-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "european-authors-day-programme-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "sables-de-dune-french-edition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "kill-jackie-series-premiere-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "poerio-goethe-iphigenia-attribution-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "geluck-chat-museum-ixelles-plan-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lucashenko-eddie-blanket-french-edition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "liechtenstein-helena-brehm-poetry-workshop-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "asymptote-maria-messina-camilla-translation-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lithuania-winnie-pooh-centenary-programme-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lithuania-ekultura-digital-heritage-finalist-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lithuania-italian-literature-reading-lists-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "slovakia-bibliography-days-seminars-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "slovak-literary-fund-incunabula-publications-award-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "slovakia-power-story-library-webinar-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "darlowo-morze-literatury-first-festival-report-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "european-literacy-coalition-brussels-launch-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+      "reason": "title-names-are-eponyms"
+    },
+    {
+      "newsId": "adeb-namur-publishing-future-colloquium-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pantin-comics-publishing-conference-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "turin-italiano-al-mondo-translators-conference-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "saluzzo-medieval-book-festival-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "gianni-mura-fuoriclasse-winner-announcement-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "liber-innovation-audio-programme-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "pistoia-deans-rag-books-exhibition-closing-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nobel-literature-announcement-schedule-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "piedmont-independent-book-tour-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "bnf-oulipo-season-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "foucault-college-france-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "nli-redevelopment-tender-approved-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "yeats-a-vision-digitised-papers-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "mcmonagle-letters-stephen-rea-reading-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "richard-oram-wind-water-cleave-talk-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lynne-campbell-fungi-language-song-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "steven-veerapen-witches-talk-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "macdiarmid-thistle-centenary-talk-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "erin-farley-lighthouse-lives-talk-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "weather-spirits-international-storytelling-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "kvinnsam-periodicals-svenska-tidningar-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "svenska-tidningar-remote-search-restored-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "svensk-bokkonst-awards-ceremony-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "romania-erasmus-libraries-meeting-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "bulgaria-chaika-periodical-restored-exhibition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lom-gaza-two-books-presentation-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lom-juan-guzman-memory-book-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "lom-plan-condor-illustrated-book-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "bruno-montane-efimera-critical-feature-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "peter-stamm-cuando-oscurece-rebon-review-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "princeton-cashmere-licensing-partnership-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "jung-critical-edition-video-introduction-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "small-piece-night-student-anthology-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "louise-erdrich-everybody-reads-selection-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ayad-akhtar-portland-lecture-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "isabel-wilkerson-portland-lecture-2027",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "ben-rhodes-portland-lecture-2027",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "libro-fm-ebook-beta-announcement-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "vromans-book-soup-hoffman-ownership-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "podium-entertainment-acquisition-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "chooseco-cyoa-unbound-adult-imprint-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "stephen-wright-black-moon-making-feature-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "dayton-literary-peace-prize-winners-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "heather-cox-richardson-gitlin-auster-award-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "paulina-borsook-cyberselfish-reissue-announced-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "sam-a-miller-still-lost-interview-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    },
+    {
+      "newsId": "sanna-wani-lantern-daughterhood-essay-2026",
+      "reason": "no-exact-reviewed-writer-name"
+    }
+  ],
+  "limitations": [
+    "Cached facts currently provide no aliases; no aliases or QIDs are invented.",
+    "John Green is absent from this fact cache, so both current John Green records return no match. Virginia Woolf Q40909 is covered by a positive fixture.",
+    "Surname-only names, mononyms, declensions, transliterations and fuzzy name guesses are held.",
+    "An exact identity mention does not prove authorship, suitable portrait context or media licensing; the downstream resolver must make those separate checks.",
+    "Headline identities take precedence; two returned identities mean multi-person ambiguity, never permission to choose arbitrarily.",
+    "Summary-only names require a literal surname anchor in the headline; known award/institution eponyms are held. This avoids choosing former winners or incidental influences as portraits."
+  ],
+  "testFileSha256": "57a32fdaadf9884e5dc53abe15630fedbd0643edae5eca220238b3ae35e7f03c",
+  "tests": {
+    "files": 1,
+    "passed": 13,
+    "command": "node node_modules/vitest/vitest.mjs run scripts/lib/literary-news-media-subjects.test.mjs --configLoader runner --cache=false",
+    "networkCalls": 0
+  },
+  "freshSearchHints": {
+    "scope": "Unapproved offline search queries only; actual network identity verification belongs to the downstream resolver.",
+    "recordsWithHints": 136,
+    "unmatchedRecordsWithHints": 124,
+    "uniqueQueries": 166,
+    "hintsTotal": 168,
+    "networkCalls": 0,
+    "identitiesApproved": 0,
+    "records": [
+      {
+        "newsId": "tolstoy-birthday-2026",
+        "searchHints": [
+          {
+            "query": "Leo Tolstoy",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Leo Tolstoy’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "kiki-third-english-edition-announcement",
+        "searchHints": [
+          {
+            "query": "Eiko Kadono",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Eiko Kadono’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "british-library-agatha-christie-exhibition-2026",
+        "searchHints": [
+          {
+            "query": "Agatha Christie",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Agatha Christie",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "bnf-richelieu-heritage-days-2026",
+        "searchHints": [
+          {
+            "query": "Heritage Days",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Heritage Days",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "mandelstam-days-2026-announcement",
+        "searchHints": [
+          {
+            "query": "Mandelstam Days",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Mandelstam Days",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "mandel-exit-party-us-2026",
+        "searchHints": [
+          {
+            "query": "Emily St. John Mandel",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Emily St. John Mandel’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Exit Party",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Exit Party",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "john-green-hollywood-ending-us-2026",
+        "searchHints": [
+          {
+            "query": "John Green",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "John Green",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "marlon-james-disappearers-us-catalog-2026",
+        "searchHints": [
+          {
+            "query": "Marlon James",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Marlon James’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "whisper-man-netflix-release-20260828",
+        "searchHints": [
+          {
+            "query": "Alex North",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Alex North’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "ubud-writers-readers-festival-2026",
+        "searchHints": [
+          {
+            "query": "Kiran Desai",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Kiran Desai",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Tash Aw",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Tash Aw",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "gioconda-belli-fil-prize-2026",
+        "searchHints": [
+          {
+            "query": "Gioconda Belli",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Gioconda Belli",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "hay-queretaro-emiliano-monge-2026",
+        "searchHints": [
+          {
+            "query": "Emiliano Monge",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Emiliano Monge",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "new-zealand-childrens-book-awards-2026",
+        "searchHints": [
+          {
+            "query": "A Guide",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "A Guide",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "john-green-signed-tip-in-record-2026",
+        "searchHints": [
+          {
+            "query": "John Green",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "John Green",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "kokila-jason-reynolds-lamplighters-son-acquisition-2026",
+        "searchHints": [
+          {
+            "query": "Jason Reynolds",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Jason Reynolds’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "tara-westover-brothers-and-sisters-us-2027",
+        "searchHints": [
+          {
+            "query": "Tara Westover",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Tara Westover’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "viking-beth-brower-emma-lion-rights-2026",
+        "searchHints": [
+          {
+            "query": "Viking Penguin",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Viking Penguin",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Beth Brower",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Beth Brower’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Emma M. Lion",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Emma M. Lion",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "george-w-bush-call-of-freedom-us-2027",
+        "searchHints": [
+          {
+            "query": "George W. Bush",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "George W. Bush’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "frankfurt-book-to-screen-day-2026",
+        "searchHints": [
+          {
+            "query": "Book-to-Screen Day",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Book-to-Screen Day",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "aficionado-award-words-without-borders-2026",
+        "searchHints": [
+          {
+            "query": "Words Without Borders",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Words Without Borders",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "frankfurt-audio-business-centre-2026",
+        "searchHints": [
+          {
+            "query": "Audio Business Centre",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Audio Business Centre",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "frankfurt-comic-business-centre-2026",
+        "searchHints": [
+          {
+            "query": "Comic Business Centre",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Comic Business Centre",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "frankfurt-rights-meeting-40-reception-2026",
+        "searchHints": [
+          {
+            "query": "Frankfurt Rights Meeting",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Frankfurt Rights Meeting",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "fil-editorial-merit-ekare-2026",
+        "searchHints": [
+          {
+            "query": "Ediciones Ekaré",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Ediciones Ekaré",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "wingston-gonzalez-plia-2026",
+        "searchHints": [
+          {
+            "query": "Wingston González",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Wingston González",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Indigenous Literatures",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Indigenous Literatures",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "pen-index-victoria-amelina-fellowship-2026",
+        "searchHints": [
+          {
+            "query": "Victoria Amelina Fellowship Programme",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Victoria Amelina Fellowship Programme",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "nlo-venediktova-literary-haptics-podcast-20260912",
+        "searchHints": [
+          {
+            "query": "Tatyana Venediktova",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Tatyana Venediktova",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "nlo-tsyganov-stalin-era-philology-20260901",
+        "searchHints": [
+          {
+            "query": "Dmitry Tsyganov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Dmitry Tsyganov’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "nlo-zenkin-scholars-french-literature-20260818",
+        "searchHints": [
+          {
+            "query": "Sergey Zenkin",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Sergey Zenkin",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "nlo-anya-fyodorova-conversation-20260813",
+        "searchHints": [
+          {
+            "query": "Anya Fyodorova",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Anya Fyodorova",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "charles-spencer-swan-song-us-announcement-2026",
+        "searchHints": [
+          {
+            "query": "Charles Spencer",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Charles Spencer’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "our-strange-duet-audiobook-cast-2026",
+        "searchHints": [
+          {
+            "query": "Erin A. Craig",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Erin A. Craig’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Our Strange Duet",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Our Strange Duet",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "lit-connect-jakarta-2026",
+        "searchHints": [
+          {
+            "query": "Lit Connect",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Lit Connect",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "indonesia-rights-fellowship-recipients-2026",
+        "searchHints": [
+          {
+            "query": "Indonesia Rights Fair",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Indonesia Rights Fair",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "degol-hailu-pillaging-the-dead-2026",
+        "searchHints": [
+          {
+            "query": "Degol Hailu",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Degol Hailu’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "maren-baudet-lackner-aquatics-translation-2026",
+        "searchHints": [
+          {
+            "query": "Maren Baudet-Lackner",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Maren Baudet-Lackner",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Osvalde Lewat",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Osvalde Lewat",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "funmike-ogaosun-shipikisha-cover-2026",
+        "searchHints": [
+          {
+            "query": "Funmike Ogaosun",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Funmike Ogaosun",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "san-martin-digital-repository-agreement-2026",
+        "searchHints": [
+          {
+            "query": "San Martín",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "San Martín",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "emmanuel-carrere-montevideo-kolkhoz-2026",
+        "searchHints": [
+          {
+            "query": "Emmanuel Carrère",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Emmanuel Carrère",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "padura-liber-award-decision-2026",
+        "searchHints": [
+          {
+            "query": "Leonardo Padura",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Leonardo Padura",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "asymptote-hossaini-war-ends-translation-2026",
+        "searchHints": [
+          {
+            "query": "S. Asef Hossaini",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "S. Asef Hossaini’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+        "searchHints": [
+          {
+            "query": "Cheryl Ntumy",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Cheryl Ntumy’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "scarlett-robinson-kean-mahy-illustration-prize-2026",
+        "searchHints": [
+          {
+            "query": "Scarlett Robinson-Kean",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Scarlett Robinson-Kean",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "hiromi-kawakami-far-from-everywhere-2027",
+        "searchHints": [
+          {
+            "query": "Hiromi Kawakami",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Hiromi Kawakami’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Far From Everywhere",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Far From Everywhere",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "dubravka-rebic-vladan-desnica-decision-2026",
+        "searchHints": [
+          {
+            "query": "Dubravka Rebić",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Dubravka Rebić",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "jose-ruben-zamora-hermann-kesten-decision-2026",
+        "searchHints": [
+          {
+            "query": "José Rubén Zamora",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "José Rubén Zamora",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "danish-pen-banned-books-opening-2026",
+        "searchHints": [
+          {
+            "query": "Dansk PEN",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Dansk PEN’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+        "searchHints": [
+          {
+            "query": "Stanisław Rosiek",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Stanisław Rosiek",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "nonna-gruffalo-italian-edition-2026",
+        "searchHints": [
+          {
+            "query": "Nonna Gruffalò",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Nonna Gruffalò",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Julia Donaldson",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Julia Donaldson",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Axel Scheffler",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Axel Scheffler",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "katarina-wennstam-crimetime-honorary-award-2026",
+        "searchHints": [
+          {
+            "query": "Katarina Wennstam",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Katarina Wennstam",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "jamaica-kincaid-sjojungfrun-presentation-2026",
+        "searchHints": [
+          {
+            "query": "Jamaica Kincaid",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Jamaica Kincaid",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "nicolas-lunabba-gothenburg-bildning-award-2026",
+        "searchHints": [
+          {
+            "query": "Nicolas Lunabba",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Nicolas Lunabba",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "shida-bazyar-wilhelm-raabe-presentation-2026",
+        "searchHints": [
+          {
+            "query": "Shida Bazyar",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Shida Bazyar",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Die Lücken",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Die Lücken",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "pazderka-soukup-rudolf-medek-prize-2026",
+        "searchHints": [
+          {
+            "query": "Josef Pazderka",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Josef Pazderka",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Ondřej Soukup",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Ondřej Soukup",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "yasnaya-polyana-kuzminskaya-exhibition-2026",
+        "searchHints": [
+          {
+            "query": "Tatiana Kuzminskaya",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Tatiana Kuzminskaya’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+        "searchHints": [
+          {
+            "query": "Vladislav Otroshenko",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Vladislav Otroshenko",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "nizhny-novgorod-book-fair-2026",
+        "searchHints": [
+          {
+            "query": "Nizhny Novgorod",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Nizhny Novgorod’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+        "searchHints": [
+          {
+            "query": "Prosvetitel Translation",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Prosvetitel Translation",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "parfenov-nabokov-namedni-tour-announced-2026",
+        "searchHints": [
+          {
+            "query": "Leonid Parfyonov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Leonid Parfyonov",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "patrick-dewitt-dodge-city-russian-edition-2026",
+        "searchHints": [
+          {
+            "query": "Dodge City",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Dodge City",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "fred-vargas-unique-lueur-corpus-rights-2026",
+        "searchHints": [
+          {
+            "query": "Fred Vargas",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Fred Vargas’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "joel-dicker-prime-video-three-novels-2026",
+        "searchHints": [
+          {
+            "query": "Joël Dicker",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Joël Dicker",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "li-juan-my-altay-russian-announcement-2026",
+        "searchHints": [
+          {
+            "query": "Li Juan",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Li Juan’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "My Altay",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "My Altay",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "avrutina-ozlu-tanpinar-books-meeting-2026",
+        "searchHints": [
+          {
+            "query": "Apollinaria Avrutina",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Apollinaria Avrutina",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "tawada-where-europe-begins-russian-2026",
+        "searchHints": [
+          {
+            "query": "Yoko Tawada",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Yoko Tawada’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Where Europe Begins",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Where Europe Begins",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "lenfilm-samokat-family-film-reading-2026",
+        "searchHints": [
+          {
+            "query": "Family Film Readings",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Family Film Readings",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "kruzhkov-mukha-pukha-reading-theatre-2026",
+        "searchHints": [
+          {
+            "query": "Grigory Kruzhkov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Grigory Kruzhkov’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "rsl-sri-lanka-books-culture-days-2026",
+        "searchHints": [
+          {
+            "query": "Sri Lankan Culture Days",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Sri Lankan Culture Days",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "history-of-a-town-rsl-stage-2026",
+        "searchHints": [
+          {
+            "query": "A History",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "A History",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "chebatkov-dovlatov-foreigner-reading-2026",
+        "searchHints": [
+          {
+            "query": "Yevgeny Chebatkov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Yevgeny Chebatkov",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "A Foreign Woman",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "A Foreign Woman",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "natalya-balayan-russian-fairy-tale-book-2026",
+        "searchHints": [
+          {
+            "query": "Natalya Balayan",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Natalya Balayan",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "vladimir-dal-manuscripts-exhibition-2026",
+        "searchHints": [
+          {
+            "query": "Vladimir Dal",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Vladimir Dal’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "lilya-brik-mamm-literary-museum-loans-2026",
+        "searchHints": [
+          {
+            "query": "Lilya Brik",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Lilya Brik",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "shershenevich-drozdov-collection-exhibition-2026",
+        "searchHints": [
+          {
+            "query": "Vadim Shershenevich",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Vadim Shershenevich",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "litres-yasnaya-polyana-free-reading-2026",
+        "searchHints": [
+          {
+            "query": "Yasnaya Polyana",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Yasnaya Polyana",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "viktor-likhonosov-krasnodar-square-2026",
+        "searchHints": [
+          {
+            "query": "Viktor Likhonosov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Viktor Likhonosov",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "jaume-cabre-feixes-first-russian-2026",
+        "searchHints": [
+          {
+            "query": "Jaume Cabré",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Jaume Cabré’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "liu-cixin-direct-russian-translation-interview-2026",
+        "searchHints": [
+          {
+            "query": "Liu Cixin",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Liu Cixin",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "wells-brynhild-first-russian-2026",
+        "searchHints": [
+          {
+            "query": "H. G. Wells",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "H. G. Wells’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "radzinsky-eighteen-volume-collected-works-2026",
+        "searchHints": [
+          {
+            "query": "Edvard Radzinsky",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Edvard Radzinsky’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "rgali-sergei-markov-archive-feature-2026",
+        "searchHints": [
+          {
+            "query": "Sergei Markov",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Sergei Markov’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "pen-america-alim-aliiev-literary-interview-2026",
+        "searchHints": [
+          {
+            "query": "Alim Aliiev",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Alim Aliiev’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Crimean Tatar",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Crimean Tatar",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "tv5monde-un-pays-un-livre-announced-2026",
+        "searchHints": [
+          {
+            "query": "Augustin Trapenard",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Augustin Trapenard’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+        "searchHints": [
+          {
+            "query": "Isabel J. Kim",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Isabel J. Kim",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "wmf-martins-fontes-amazon-supply-announcement-2026",
+        "searchHints": [
+          {
+            "query": "Martins Fontes",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Martins Fontes",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "devenir-un-monstre-quebec-release-2027",
+        "searchHints": [
+          {
+            "query": "Jean Barbe",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Jean Barbe",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "sarajevo-amer-tikvesa-literary-corner-2026",
+        "searchHints": [
+          {
+            "query": "Amer Tikveša",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Amer Tikveša",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "dublin-imprisoned-writer-gallagher-2026",
+        "searchHints": [
+          {
+            "query": "Caoilfhionn Gallagher",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Caoilfhionn Gallagher",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "madeline-cash-page-america-award-2026",
+        "searchHints": [
+          {
+            "query": "Madeline Cash",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Madeline Cash",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "marie-dorleans-grand-est-award-presentation-2026",
+        "searchHints": [
+          {
+            "query": "Marie Dorléans",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Marie Dorléans",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Grand Est",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Grand Est",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "vanity-fair-literary-selection-2026",
+        "searchHints": [
+          {
+            "query": "Vanity Fair",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Vanity Fair",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "musicians-literary-prize-selection-2026",
+        "searchHints": [
+          {
+            "query": "Prix Littéraire",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Prix Littéraire",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "scam-recit-dessine-selection-2026",
+        "searchHints": [
+          {
+            "query": "La Scam",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "La Scam",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "esther-teillard-vocation-prize-2026",
+        "searchHints": [
+          {
+            "query": "Esther Teillard",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Esther Teillard",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Prix Littéraire de la Vocation",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Prix Littéraire de la Vocation",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Fuck Circus",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Fuck Circus",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "florent-oiseau-francoise-sagan-prize-2026",
+        "searchHints": [
+          {
+            "query": "Florent Oiseau",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Florent Oiseau",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "european-authors-day-programme-2026",
+        "searchHints": [
+          {
+            "query": "European Authors Day",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "European Authors Day",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "sables-de-dune-french-edition-2026",
+        "searchHints": [
+          {
+            "query": "Les Sables de Dune",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Les Sables de Dune",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "kill-jackie-series-premiere-2026",
+        "searchHints": [
+          {
+            "query": "Aidan Truhen",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Aidan Truhen",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Kill Jackie",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Kill Jackie",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "poerio-goethe-iphigenia-attribution-2026",
+        "searchHints": [
+          {
+            "query": "Italian Iphigenia",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Italian Iphigenia",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "geluck-chat-museum-ixelles-plan-2026",
+        "searchHints": [
+          {
+            "query": "Philippe Geluck",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Philippe Geluck’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "lucashenko-eddie-blanket-french-edition-2026",
+        "searchHints": [
+          {
+            "query": "Melissa Lucashenko",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Melissa Lucashenko’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "La Chute",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "La Chute",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "liechtenstein-helena-brehm-poetry-workshop-2026",
+        "searchHints": [
+          {
+            "query": "Helena Brehm",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Helena Brehm’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "asymptote-maria-messina-camilla-translation-2026",
+        "searchHints": [
+          {
+            "query": "Maria Messina",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Maria Messina’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "ken-bugul-julie-huntington-asymptote-interview-2026",
+        "searchHints": [
+          {
+            "query": "Ken Bugul",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Ken Bugul",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Julie Huntington",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Julie Huntington",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Felix Faure Street",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Felix Faure Street",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "slovakia-bibliography-days-seminars-2026",
+        "searchHints": [
+          {
+            "query": "Bibliography Days",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Bibliography Days",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "european-literacy-coalition-brussels-launch-2026",
+        "searchHints": [
+          {
+            "query": "European Literacy Coalition",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "European Literacy Coalition",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+        "searchHints": [
+          {
+            "query": "Krzysztof Pomian",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Krzysztof Pomian",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "gianni-mura-fuoriclasse-winner-announcement-2026",
+        "searchHints": [
+          {
+            "query": "Gianni Mura Prize",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Gianni Mura Prize’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "bnf-oulipo-season-2026",
+        "searchHints": [
+          {
+            "query": "Oulipo Wednesdays",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Oulipo Wednesdays",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "foucault-college-france-exhibition-2026",
+        "searchHints": [
+          {
+            "query": "Collège de France",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Collège de France",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Michel Foucault",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Michel Foucault",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "yeats-a-vision-digitised-papers-2026",
+        "searchHints": [
+          {
+            "query": "A Vision",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "A Vision",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "mcmonagle-letters-stephen-rea-reading-2026",
+        "searchHints": [
+          {
+            "query": "Stephen Rea",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Stephen Rea",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "richard-oram-wind-water-cleave-talk-2026",
+        "searchHints": [
+          {
+            "query": "Richard Oram",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Richard Oram",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "lynne-campbell-fungi-language-song-2026",
+        "searchHints": [
+          {
+            "query": "Lynne Campbell",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Lynne Campbell",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "steven-veerapen-witches-talk-2026",
+        "searchHints": [
+          {
+            "query": "Steven Veerapen",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Steven Veerapen",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "A King",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "A King’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "macdiarmid-thistle-centenary-talk-2026",
+        "searchHints": [
+          {
+            "query": "A Drunk Man Looks",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "A Drunk Man Looks",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "erin-farley-lighthouse-lives-talk-2026",
+        "searchHints": [
+          {
+            "query": "Erin Farley",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Erin Farley",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "weather-spirits-international-storytelling-2026",
+        "searchHints": [
+          {
+            "query": "South American",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "South American",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "svensk-bokkonst-awards-ceremony-2026",
+        "searchHints": [
+          {
+            "query": "Svensk Bokkonst",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Svensk Bokkonst",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "lom-juan-guzman-memory-book-2026",
+        "searchHints": [
+          {
+            "query": "Judge Juan Guzmán",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Judge Juan Guzmán",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "lom-plan-condor-illustrated-book-2026",
+        "searchHints": [
+          {
+            "query": "Plan Cóndor",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Plan Cóndor",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "bruno-montane-efimera-critical-feature-2026",
+        "searchHints": [
+          {
+            "query": "Bruno Montané",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Bruno Montané’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "peter-stamm-cuando-oscurece-rebon-review-2026",
+        "searchHints": [
+          {
+            "query": "Marta Rebón",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Marta Rebón",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Peter Stamm",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Peter Stamm’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "phillip-lopate-washington-irving-sketch-book-2026",
+        "searchHints": [
+          {
+            "query": "Phillip Lopate",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Phillip Lopate’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "small-piece-night-student-anthology-2026",
+        "searchHints": [
+          {
+            "query": "A Small Piece",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "A Small Piece",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "louise-erdrich-everybody-reads-selection-2026",
+        "searchHints": [
+          {
+            "query": "Louise Erdrich",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Louise Erdrich’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Everybody Reads",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Everybody Reads",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "ayad-akhtar-portland-lecture-2026",
+        "searchHints": [
+          {
+            "query": "Ayad Akhtar",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Ayad Akhtar",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Portland Arts",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Portland Arts",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "isabel-wilkerson-portland-lecture-2027",
+        "searchHints": [
+          {
+            "query": "Isabel Wilkerson",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Isabel Wilkerson",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "ben-rhodes-portland-lecture-2027",
+        "searchHints": [
+          {
+            "query": "Ben Rhodes",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Ben Rhodes",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Portland Arts",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Portland Arts",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "podium-entertainment-acquisition-2026",
+        "searchHints": [
+          {
+            "query": "Podium Entertainment",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Podium Entertainment",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "stephen-wright-black-moon-making-feature-2026",
+        "searchHints": [
+          {
+            "query": "Stephen Wright",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Stephen Wright’s",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Black Moon",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Black Moon",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "rivera-garza-kwon-literary-influences-2026",
+        "searchHints": [
+          {
+            "query": "Cristina Rivera Garza",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Cristina Rivera Garza",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "R. O. Kwon",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "R. O. Kwon",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "heather-cox-richardson-gitlin-auster-award-2026",
+        "searchHints": [
+          {
+            "query": "Heather Cox Richardson",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Heather Cox Richardson",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "paulina-borsook-cyberselfish-reissue-announced-2026",
+        "searchHints": [
+          {
+            "query": "Paulina Borsook",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Paulina Borsook",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "sam-a-miller-still-lost-interview-2026",
+        "searchHints": [
+          {
+            "query": "Sam A. Miller",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Sam A. Miller",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          },
+          {
+            "query": "Still Lost",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Still Lost",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "newsId": "sanna-wani-lantern-daughterhood-essay-2026",
+        "searchHints": [
+          {
+            "query": "Sanna Wani",
+            "matchedField": "title.en",
+            "evidence": {
+              "method": "bounded-headline-search-hint",
+              "matchedText": "Sanna Wani",
+              "identityApproved": false,
+              "imageApproved": false,
+              "requiredChecks": [
+                "fresh-unique-exact-label-or-alias",
+                "fresh-P31-human",
+                "fresh-P106-literary-occupation",
+                "headline-identity-and-semantic-context",
+                "image-and-destination-rights"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

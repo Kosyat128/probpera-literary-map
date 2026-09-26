@@ -1,0 +1,303 @@
+{
+  "version": 1,
+  "batchId": "r10-08",
+  "status": "prepared-not-published",
+  "createdAt": "2026-09-26T22:50:52.754Z",
+  "editorialTimeZone": "Europe/Moscow",
+  "originalBaseline": {
+    "count": 33,
+    "ids": [
+      "tolstoy-birthday-2026",
+      "booker-shortlist-2026-announcement",
+      "love-hypothesis-2026-release-announcement",
+      "kiki-third-english-edition-announcement",
+      "booker-longlist-2026",
+      "german-book-prize-longlist-2026",
+      "german-book-prize-shortlist-2026-announcement",
+      "frankfurt-book-fair-2026-announcement",
+      "gothenburg-book-fair-2026-announcement",
+      "british-library-agatha-christie-exhibition-2026",
+      "bnf-richelieu-heritage-days-2026",
+      "yasnaya-polyana-tolstoy-library-20260912",
+      "goslitmuz-people-of-december-publication-2026",
+      "mandelstam-days-2026-announcement",
+      "giller-longlist-2026-schedule",
+      "national-book-awards-longlists-2026",
+      "nbf-presents-fall-2026-announced",
+      "brooklyn-book-festival-2026-main-day",
+      "mandel-exit-party-us-2026",
+      "john-green-hollywood-ending-us-2026",
+      "marlon-james-disappearers-us-catalog-2026",
+      "guernsey-medieval-fragments-research-2026",
+      "whisper-man-netflix-release-20260828",
+      "international-booker-funding-20260702",
+      "ubud-writers-readers-festival-2026",
+      "shanghai-childrens-book-fair-2026",
+      "ake-arts-book-festival-2026",
+      "nairobi-international-book-fair-2026",
+      "gioconda-belli-fil-prize-2026",
+      "guadalajara-international-book-fair-2026",
+      "hay-queretaro-emiliano-monge-2026",
+      "brisbane-writers-festival-2026",
+      "new-zealand-childrens-book-awards-2026"
+    ],
+    "sha256": "73022c08ab8b1b18ebfda3ced9046d5e619e6d7a70e609af0903680e57e931af"
+  },
+  "previousReviewed": {
+    "count": 235,
+    "recordSha256": "8d59a67be10ad17a0421b3b22fe0d38547e6bb1eef91fdd6cc5551e8ae88db9f"
+  },
+  "counts": {
+    "prepared": 4,
+    "productionSelectorEligible": 4,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "records": [
+    {
+      "id": "university-press-waheed-akin-olajide-obituary-2026",
+      "eventKey": "university-press-waheed-akin-olajide-obituary-2026",
+      "category": "obituaries",
+      "kind": "news",
+      "eventDate": "2026-08-25",
+      "publishedAt": "2026-08-28T05:34:54.000Z",
+      "verifiedAt": "2026-09-26T22:50:52.754Z",
+      "title": {
+        "ru": "University Press Plc сообщило о смерти бывшего руководителя Вахида Акина Оладжиде",
+        "en": "University Press Plc announces the death of former managing director Waheed Akin Olajide"
+      },
+      "summary": {
+        "ru": "Нигерийское издательство сообщило, что Вахид Акин Оладжиде умер 25 августа в возрасте 76 лет. Он пришёл в University Press Plc в 1983 году, возглавил компанию в 1993-м и оставался управляющим директором до выхода на пенсию 31 марта 2005 года. В некрологе издательство отмечает его работу с молодыми сотрудниками.",
+        "en": "The Nigerian publisher reported that Waheed Akin Olajide died on August 25, aged 76. He joined University Press Plc in 1983, became managing director in 1993 and held the position until his retirement on March 31, 2005. The company’s obituary also recalls his mentoring of younger staff."
+      },
+      "source": {
+        "name": "University Press Plc",
+        "url": "https://universitypressplc.com/2026/08/28/the-passing-of-alhaji-waheed-akin-olajide-immediate-past-md-university-press-plc/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "africa"
+    },
+    {
+      "id": "oratia-maori-picture-books-ibby-unesco-collection-2026",
+      "eventKey": "oratia-maori-picture-books-ibby-unesco-collection-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-08-07",
+      "publishedAt": "2026-08-06T20:00:18.000Z",
+      "verifiedAt": "2026-09-26T22:50:52.754Z",
+      "title": {
+        "ru": "Две маорийские книги Oratia вошли в коллекцию IBBY и ЮНЕСКО",
+        "en": "Two Māori picture books from Oratia join the IBBY-UNESCO collection"
+      },
+      "summary": {
+        "ru": "В коллекцию детских книг на языках коренных народов и исчезающих языках включены две двуязычные книги Oratia Books: Rere Atu Taku Poi! / Let My Poi Fly! Тангароа Пола с иллюстрациями Ребекки Гиббс и Tōku Whānau Rerehua / My Beautiful Family Раухины Купер с иллюстрациями Изобел Те Ахо-Уайт. PANZ сообщила о включении 7 августа.",
+        "en": "Two bilingual Oratia Books titles have been included in the IBBY-UNESCO collection of children’s books in indigenous and endangered languages: Rere Atu Taku Poi! / Let My Poi Fly! by Tangaroa Paul, illustrated by Rebecca Gibbs, and Tōku Whānau Rerehua / My Beautiful Family by Rauhina Cooper, illustrated by Isobel Te Aho-White. PANZ reported the selection on August 7."
+      },
+      "source": {
+        "name": "Publishers Association of New Zealand",
+        "url": "https://publishers.org.nz/major-international-recognition-announced-for-maori-childrens-authors-and-illustrators/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "oceania"
+    },
+    {
+      "id": "asymptote-lianbin-ni-translation-interview-2026",
+      "eventKey": "asymptote-lianbin-ni-translation-interview-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24T13:00:31.000Z",
+      "verifiedAt": "2026-09-26T22:50:52.754Z",
+      "title": {
+        "ru": "Asymptote опубликовал интервью с поэтом и переводчиком Ни Лянбинем",
+        "en": "Asymptote publishes an interview with poet and translator Lianbin Ni"
+      },
+      "summary": {
+        "ru": "24 сентября журнал опубликовал беседу Каспарса Клявиньша с Ни Лянбинем, который пишет под именем Lien Bin и живёт в Латвии. Поэт обсуждает перевод как взаимодействие культур, значение малых языков и связь поэзии с памятью. Среди переводимых им авторов - Дерек Уолкотт, Махмуд Дарвиш и Александр Чак.",
+        "en": "On September 24, the journal published Kaspars Kļaviņš’s interview with Lianbin Ni, who writes as Lien Bin and lives in Latvia. The poet discusses translation across cultures, the significance of smaller languages and poetry’s relationship with memory. His translations include work by Derek Walcott, Mahmoud Darwish and Aleksandrs Čaks."
+      },
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/24/between-civilizations-languages-and-worlds-an-interview-with-lianbin-ni/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "global"
+    },
+    {
+      "id": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+      "eventKey": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-16T08:39:11.000Z",
+      "verifiedAt": "2026-09-26T22:50:52.754Z",
+      "title": {
+        "ru": "В Литве вышла книга Элизабет Бьюкенен о Гренландии",
+        "en": "Elizabeth Buchanan’s book on Greenland appears in Lithuanian"
+      },
+      "summary": {
+        "ru": "Центр научного и энциклопедического книгоиздания Национальной библиотеки Литвы выпустил первый литовский перевод книги Элизабет Бьюкенен Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui. Издание представлено в сообщении библиотеки от 16 сентября. Книгу об истории Гренландии перевела с английского Элена Бельските; редактор - Дайна Дайлидонене.",
+        "en": "The National Library of Lithuania’s Science and Encyclopaedia Publishing Centre has issued the first Lithuanian translation of Elizabeth Buchanan’s Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui. The library presented the edition in its September 16 news post. Elena Belskytė translated the book on Greenland’s history from English, and Daina Dailidonienė edited it."
+      },
+      "source": {
+        "name": "National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15124-isleista-elizabeth-buchanan-knyga-tai-norite-tureti-grenlandija-vikingu-pamokos-donaldui-trumpui",
+        "language": "lt"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "university-press-waheed-akin-olajide-obituary-2026",
+      "sourceId": "universitypressplc-com",
+      "sourceCountryCodes": [
+        "NG"
+      ],
+      "coverageCountryCodes": [
+        "NG"
+      ],
+      "url": "https://universitypressplc.com/2026/08/28/the-passing-of-alhaji-waheed-akin-olajide-immediate-past-md-university-press-plc/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T22:48:32.424Z",
+      "responseSha256": "c30afda36fab83c0d54bc30741b5bff97df97b703564efd8b7dae1dc81a16cd4",
+      "responseBytes": 154584,
+      "sourcePublishedAt": "2026-08-28T05:34:54.000Z",
+      "eventDate": "2026-08-25",
+      "method": "primary source opened and read; bounded direct detail fetch; factual RU/EN editorial drafting",
+      "facts": [
+        "The Nigerian publisher reported that Waheed Akin Olajide died on August 25, aged 76. He joined University Press Plc in 1983, became managing director in 1993 and held the position until his retirement on March 31, 2005. The company’s obituary also recalls his mentoring of younger staff."
+      ],
+      "dateFinding": "Death explicitly August25; publisher obituary dated August28. No announcement outcome inferred.",
+      "stage": "confirmed past report or completed publication; no inferred outcome",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://universitypressplc.com/wp-content/uploads/2026/04/upplc-logo.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "held pending licensed media evidence",
+        "note": "Source metadata is evidence only, not reproduction permission."
+      }
+    },
+    {
+      "id": "oratia-maori-picture-books-ibby-unesco-collection-2026",
+      "sourceId": "publishers-org-nz",
+      "sourceCountryCodes": [
+        "NZ"
+      ],
+      "coverageCountryCodes": [
+        "NZ",
+        "CA"
+      ],
+      "url": "https://publishers.org.nz/major-international-recognition-announced-for-maori-childrens-authors-and-illustrators/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T22:48:33.585Z",
+      "responseSha256": "145f6c1e12c5986e676caa026284852adb66b49d131e22d6bbad8958ea696584",
+      "responseBytes": 86202,
+      "sourcePublishedAt": "2026-08-06T20:00:18.000Z",
+      "eventDate": "2026-08-07",
+      "method": "primary source opened and read; bounded direct detail fetch; factual RU/EN editorial drafting",
+      "facts": [
+        "Two bilingual Oratia Books titles have been included in the IBBY-UNESCO collection of children’s books in indigenous and endangered languages: Rere Atu Taku Poi! / Let My Poi Fly! by Tangaroa Paul, illustrated by Rebecca Gibbs, and Tōku Whānau Rerehua / My Beautiful Family by Rauhina Cooper, illustrated by Isobel Te Aho-White. PANZ reported the selection on August 7."
+      ],
+      "dateFinding": "EventDate is the visible New Zealand announcement date August7; source publication instant August6 20:00UTC is retained separately. Inclusion is not described as a competitive prize.",
+      "stage": "confirmed past report or completed publication; no inferred outcome",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://publishers.org.nz/wp-content/uploads/2026/08/Oratia-Media-Release-Books-Aug-26.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "held pending licensed media evidence",
+        "note": "Source metadata is evidence only, not reproduction permission."
+      }
+    },
+    {
+      "id": "asymptote-lianbin-ni-translation-interview-2026",
+      "sourceId": "asymptote",
+      "sourceCountryCodes": [
+        "SG"
+      ],
+      "coverageCountryCodes": [
+        "CN",
+        "LV"
+      ],
+      "url": "https://www.asymptotejournal.com/blog/2026/09/24/between-civilizations-languages-and-worlds-an-interview-with-lianbin-ni/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T22:48:32.148Z",
+      "responseSha256": "f44ea3127d7d81582a6ecedd3bbb04dce66068ac317921118d4474198c01b18d",
+      "responseBytes": 1469533,
+      "sourcePublishedAt": "2026-09-24T13:00:31.000Z",
+      "eventDate": "2026-09-24",
+      "method": "primary source opened and read; bounded direct detail fetch; factual RU/EN editorial drafting",
+      "facts": [
+        "On September 24, the journal published Kaspars Kļaviņš’s interview with Lianbin Ni, who writes as Lien Bin and lives in Latvia. The poet discusses translation across cultures, the significance of smaller languages and poetry’s relationship with memory. His translations include work by Derek Walcott, Mahmoud Darwish and Aleksandrs Čaks."
+      ],
+      "dateFinding": "The event is the publication of this original interview, not a new book release or a newly occurring interview topic.",
+      "stage": "confirmed past report or completed publication; no inferred outcome",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/09/ni.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "held pending licensed media evidence",
+        "note": "Source metadata is evidence only, not reproduction permission."
+      }
+    },
+    {
+      "id": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+      "sourceId": "lnb-lt",
+      "sourceCountryCodes": [
+        "LT"
+      ],
+      "coverageCountryCodes": [
+        "LT",
+        "GL"
+      ],
+      "url": "https://www.lnb.lt/naujienos/15124-isleista-elizabeth-buchanan-knyga-tai-norite-tureti-grenlandija-vikingu-pamokos-donaldui-trumpui",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T22:48:31.958Z",
+      "responseSha256": "f5dc0efc5c6b400883edb7a67d5f4aef5970a2fac94fd2287bbb50907ee30ac2",
+      "responseBytes": 65161,
+      "sourcePublishedAt": "2026-09-16T08:39:11.000Z",
+      "eventDate": "2026-09-16",
+      "method": "primary source opened and read; bounded direct detail fetch; factual RU/EN editorial drafting",
+      "facts": [
+        "The National Library of Lithuania’s Science and Encyclopaedia Publishing Centre has issued the first Lithuanian translation of Elizabeth Buchanan’s Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui. The library presented the edition in its September 16 news post. Elena Belskytė translated the book on Greenland’s history from English, and Daina Dailidonienė edited it."
+      ],
+      "dateFinding": "September16 is the publisher’s dated report confirming an already issued Lithuanian edition. The original first edition is separately described as September2025, not a 2026 first publication.",
+      "stage": "confirmed past report or completed publication; no inferred outcome",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.lnb.lt/images/Naujienos/0916_Knyga_Elizabeth-Buchanan-794x530.jpg#joomlaImage://local-images/Naujienos/0916_Knyga_Elizabeth-Buchanan-794x530.jpg?width=794&height=530",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "held pending licensed media evidence",
+        "note": "Source metadata is evidence only, not reproduction permission."
+      }
+    }
+  ],
+  "recordSha256": "13bb5deb49cef4e8a46b55c27d1f34c726ba9600839ca7b9881ea7ee88cf680b",
+  "receipt": {
+    "publication": "not-run",
+    "socialDelivery": "not-run"
+  },
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 4
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "No ID, eventKey, canonical URL or identified semantic event overlap with existing235 records; all4 are independent events.",
+    "schema": "production selectReviewed4/4 at current Moscowdate",
+    "dateScope": "All kind news; dated within60days; actualevent/report dates distinguished; no expiredannouncement relabelled."
+  },
+  "held": [],
+  "nextStep": "Guarded additive merge only; root release and destination-specific history extension remain separately verified."
+}

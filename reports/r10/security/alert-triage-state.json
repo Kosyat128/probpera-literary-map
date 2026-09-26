@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-09-26T22:40:51Z",
+  "repository": "Kosyat128/probpera-literary-map",
+  "reviewedAlertNumbers": [289, 290, 291],
+  "independentReview": "codeql-network-file-review.json",
+  "remoteDismissalPerformed": false,
+  "remoteAlertsRemainOpen": true,
+  "automaticApprovalReview": {
+    "decision": "rejected",
+    "action": "Persistently dismiss CodeQL alerts 289, 290 and 291 as false positives",
+    "reason": "Explicit authorization to suppress these remote security findings was not provided."
+  },
+  "resolution": "Do not retry dismissal or change security settings. Preserve the open alerts and their independent review evidence; fix substantive findings in code and rerun the required checks."
+}

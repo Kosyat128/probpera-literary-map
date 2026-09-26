@@ -84,6 +84,20 @@ describe("bounded media and destination rights",()=>{
     expect(overflow.media).toBeNull();expect(overflow.fallbackReason).toBe("required_credit_or_caption_exceeds_limit");
     expect(overflow.payload.text).toContain(item.summary.ru);expect(overflow.payload.text).toContain(item.source.url);
   });
+  it("keeps full facts with native source/brand links when verbose URLs would overflow a photo caption",async()=>{
+    const f=await fixture();
+    const news={...item,title:{...item.title,ru:"📚 Книга: полное название"},summary:{...item.summary,ru:"Проверенное предложение. ".repeat(15).trim()},
+      source:{...item.source,url:"https://publisher.example/news/"+"long-path-".repeat(60)}};
+    const p=await prepareNewsPost(news,snapshot,"telegram",{destination:telegram,mediaOptions:f.mediaOptions});
+    expect(p.media).not.toBeNull();expect(p.payload.caption.length).toBeLessThanOrEqual(1024);
+    expect(p.payload.caption).toContain(news.title.ru);expect(p.payload.caption).toContain(news.summary.ru);
+    expect(p.payload.caption).toContain(f.asset.credit);expect(p.payload.show_caption_above_media).toBe(false);
+    const links=p.payload.caption_entities.filter(e=>e.type==="text_link");
+    expect(links.map(e=>e.url)).toEqual([news.source.url,"https://probpera.ru/#literary-news"]);
+    expect(p.payload.caption.slice(links[0].offset,links[0].offset+links[0].length)).toBe(news.source.name);
+    expect(p.payload.caption_entities[0].length).toBe(news.title.ru.length);
+    await validatePreparedNewsMedia(p,telegram,f.mediaOptions);
+  });
   it("validates the latest rights and exact cached bytes again at delivery",async()=>{
     const f=await prepared();f.asset.status="revoked";await expect(validatePreparedNewsMedia(f.prepared,telegram,f.mediaOptions)).rejects.toThrow();
     f.asset.status="approved";await expect(validatePreparedNewsMedia(f.prepared,telegram,{...f.mediaOptions,readBytes:async()=>Buffer.from("changed")})).rejects.toThrow("media_cache_bytes_changed");
@@ -103,6 +117,7 @@ describe("native photo delivery without duplicate creates",()=>{
     const fetchImpl=vi.fn(async(url,options)=>{calls.push(url.split("/").at(-1));expect(options.body).toBeInstanceOf(FormData);
       expect(Buffer.from(await options.body.get("news_photo").arrayBuffer())).toEqual(f.bytes);
       const caption=options.body.get("caption")||JSON.parse(options.body.get("media")).caption;expect(caption).toBe(f.prepared.payload.caption);
+      expect(options.body.has("media")?JSON.parse(options.body.get("media")).show_caption_above_media:options.body.get("show_caption_above_media")).toBe(options.body.has("media")?false:"false");
       return Response.json({ok:true,result:{message_id:17,chat:{id:-100123},photo:[{file_id:"fixture-photo"}]}});});
     const transport=createNewsSocialTransport({mode:"live",telegramToken:"fixture",fetchImpl,mediaOptions:f.mediaOptions});
     const {delivery}=await transport.prepareDelivery({destination:telegram,prepared:f.prepared,providerAccountId:"42"});
@@ -194,7 +209,8 @@ describe("native photo delivery without duplicate creates",()=>{
       const stored=(await f.store.read(f.key)).state;expect(stored.mediaCache).toEqual({platform:"vk",destinationId:"-456",providerAccountId:"42",sha256:f.descriptor.sha256,attachment:"photo-456_19"});
       expect(stored.dispatchStartedAt).toBeFalsy();
       await f.store.seed("destination:vk:-456",{mode:"on",paused:false,historyReconciled:true});
-      expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+61000)})).status).toBe("sent_current");
+      if(scenario==="rate") expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+61000)})).reason).toBe("destination_pacing");
+      expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+(scenario==="rate"?1800000:61000))})).status).toBe("sent_current");
       expect(uploadImpl).toHaveBeenCalledTimes(1);expect(fetchImpl.mock.calls.filter(([url])=>url.endsWith("photos.saveWallPhoto"))).toHaveLength(1);
     }
   });

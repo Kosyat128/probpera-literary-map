@@ -1,0 +1,64 @@
+{
+  "batchId": "r10-08",
+  "checkedAt": "2026-09-26T22:50:52.754Z",
+  "platform": "telegram",
+  "destinationId": "-1002791579809",
+  "sourceAuditSha256": "6c0bae458e4019898d785e441f8b2c08f67dd581729401fa3462933b4af70b4b",
+  "observedPublicCount": 363,
+  "minId": 1,
+  "maxId": 410,
+  "scope": "Captured accessible public history only; deleted/private posts are not inferred absent.",
+  "method": "Exact canonical-source URL and normalized title/entity-term screening of all363 captured posts; editorial comparison of the four distinct events against the observed source/topic inventory.",
+  "decision": "no_identified_duplicate",
+  "humanReview": false,
+  "records": [
+    {
+      "newsId": "university-press-waheed-akin-olajide-obituary-2026",
+      "terms": [
+        "olajide",
+        "оладжиде",
+        "university press"
+      ],
+      "exactCanonicalUrlMatches": [],
+      "entityTermMatches": []
+    },
+    {
+      "newsId": "oratia-maori-picture-books-ibby-unesco-collection-2026",
+      "terms": [
+        "oratia",
+        "tangaroa",
+        "rauhina",
+        "rere atu",
+        "tōku whānau",
+        "тангароа",
+        "маорий"
+      ],
+      "exactCanonicalUrlMatches": [],
+      "entityTermMatches": []
+    },
+    {
+      "newsId": "asymptote-lianbin-ni-translation-interview-2026",
+      "terms": [
+        "lianbin",
+        "lien bin",
+        "лянбин",
+        "kaspars kļaviņš"
+      ],
+      "exactCanonicalUrlMatches": [],
+      "entityTermMatches": []
+    },
+    {
+      "newsId": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+      "terms": [
+        "buchanan",
+        "бьюкенен",
+        "grenland",
+        "greenland",
+        "гренланд"
+      ],
+      "exactCanonicalUrlMatches": [],
+      "entityTermMatches": []
+    }
+  ],
+  "note": "Does not set historyReconciled or approve current channel head; root must append these exact new candidates to the reviewed history approval and perform the existing fresh-head gate."
+}

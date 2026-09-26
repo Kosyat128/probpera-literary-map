@@ -5630,5 +5630,101 @@
     },
     "verification": "confirmed",
     "region": "north-america"
+  },
+  {
+    "id": "university-press-waheed-akin-olajide-obituary-2026",
+    "eventKey": "university-press-waheed-akin-olajide-obituary-2026",
+    "category": "obituaries",
+    "kind": "news",
+    "eventDate": "2026-08-25",
+    "publishedAt": "2026-08-28T05:34:54.000Z",
+    "verifiedAt": "2026-09-26T22:50:52.754Z",
+    "title": {
+      "ru": "University Press Plc сообщило о смерти бывшего руководителя Вахида Акина Оладжиде",
+      "en": "University Press Plc announces the death of former managing director Waheed Akin Olajide"
+    },
+    "summary": {
+      "ru": "Нигерийское издательство сообщило, что Вахид Акин Оладжиде умер 25 августа в возрасте 76 лет. Он пришёл в University Press Plc в 1983 году, возглавил компанию в 1993-м и оставался управляющим директором до выхода на пенсию 31 марта 2005 года. В некрологе издательство отмечает его работу с молодыми сотрудниками.",
+      "en": "The Nigerian publisher reported that Waheed Akin Olajide died on August 25, aged 76. He joined University Press Plc in 1983, became managing director in 1993 and held the position until his retirement on March 31, 2005. The company’s obituary also recalls his mentoring of younger staff."
+    },
+    "source": {
+      "name": "University Press Plc",
+      "url": "https://universitypressplc.com/2026/08/28/the-passing-of-alhaji-waheed-akin-olajide-immediate-past-md-university-press-plc/",
+      "language": "en"
+    },
+    "verification": "confirmed",
+    "region": "africa"
+  },
+  {
+    "id": "oratia-maori-picture-books-ibby-unesco-collection-2026",
+    "eventKey": "oratia-maori-picture-books-ibby-unesco-collection-2026",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-08-07",
+    "publishedAt": "2026-08-06T20:00:18.000Z",
+    "verifiedAt": "2026-09-26T22:50:52.754Z",
+    "title": {
+      "ru": "Две маорийские книги Oratia вошли в коллекцию IBBY и ЮНЕСКО",
+      "en": "Two Māori picture books from Oratia join the IBBY-UNESCO collection"
+    },
+    "summary": {
+      "ru": "В коллекцию детских книг на языках коренных народов и исчезающих языках включены две двуязычные книги Oratia Books: Rere Atu Taku Poi! / Let My Poi Fly! Тангароа Пола с иллюстрациями Ребекки Гиббс и Tōku Whānau Rerehua / My Beautiful Family Раухины Купер с иллюстрациями Изобел Те Ахо-Уайт. PANZ сообщила о включении 7 августа.",
+      "en": "Two bilingual Oratia Books titles have been included in the IBBY-UNESCO collection of children’s books in indigenous and endangered languages: Rere Atu Taku Poi! / Let My Poi Fly! by Tangaroa Paul, illustrated by Rebecca Gibbs, and Tōku Whānau Rerehua / My Beautiful Family by Rauhina Cooper, illustrated by Isobel Te Aho-White. PANZ reported the selection on August 7."
+    },
+    "source": {
+      "name": "Publishers Association of New Zealand",
+      "url": "https://publishers.org.nz/major-international-recognition-announced-for-maori-childrens-authors-and-illustrators/",
+      "language": "en"
+    },
+    "verification": "confirmed",
+    "region": "oceania"
+  },
+  {
+    "id": "asymptote-lianbin-ni-translation-interview-2026",
+    "eventKey": "asymptote-lianbin-ni-translation-interview-2026",
+    "category": "publishing",
+    "kind": "news",
+    "eventDate": "2026-09-24",
+    "publishedAt": "2026-09-24T13:00:31.000Z",
+    "verifiedAt": "2026-09-26T22:50:52.754Z",
+    "title": {
+      "ru": "Asymptote опубликовал интервью с поэтом и переводчиком Ни Лянбинем",
+      "en": "Asymptote publishes an interview with poet and translator Lianbin Ni"
+    },
+    "summary": {
+      "ru": "24 сентября журнал опубликовал беседу Каспарса Клявиньша с Ни Лянбинем, который пишет под именем Lien Bin и живёт в Латвии. Поэт обсуждает перевод как взаимодействие культур, значение малых языков и связь поэзии с памятью. Среди переводимых им авторов - Дерек Уолкотт, Махмуд Дарвиш и Александр Чак.",
+      "en": "On September 24, the journal published Kaspars Kļaviņš’s interview with Lianbin Ni, who writes as Lien Bin and lives in Latvia. The poet discusses translation across cultures, the significance of smaller languages and poetry’s relationship with memory. His translations include work by Derek Walcott, Mahmoud Darwish and Aleksandrs Čaks."
+    },
+    "source": {
+      "name": "Asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/24/between-civilizations-languages-and-worlds-an-interview-with-lianbin-ni/",
+      "language": "en"
+    },
+    "verification": "confirmed",
+    "region": "global"
+  },
+  {
+    "id": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+    "eventKey": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+    "category": "releases",
+    "kind": "news",
+    "eventDate": "2026-09-16",
+    "publishedAt": "2026-09-16T08:39:11.000Z",
+    "verifiedAt": "2026-09-26T22:50:52.754Z",
+    "title": {
+      "ru": "В Литве вышла книга Элизабет Бьюкенен о Гренландии",
+      "en": "Elizabeth Buchanan’s book on Greenland appears in Lithuanian"
+    },
+    "summary": {
+      "ru": "Центр научного и энциклопедического книгоиздания Национальной библиотеки Литвы выпустил первый литовский перевод книги Элизабет Бьюкенен Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui. Издание представлено в сообщении библиотеки от 16 сентября. Книгу об истории Гренландии перевела с английского Элена Бельските; редактор - Дайна Дайлидонене.",
+      "en": "The National Library of Lithuania’s Science and Encyclopaedia Publishing Centre has issued the first Lithuanian translation of Elizabeth Buchanan’s Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui. The library presented the edition in its September 16 news post. Elena Belskytė translated the book on Greenland’s history from English, and Daina Dailidonienė edited it."
+    },
+    "source": {
+      "name": "National Library of Lithuania",
+      "url": "https://www.lnb.lt/naujienos/15124-isleista-elizabeth-buchanan-knyga-tai-norite-tureti-grenlandija-vikingu-pamokos-donaldui-trumpui",
+      "language": "lt"
+    },
+    "verification": "confirmed",
+    "region": "europe"
   }
 ]

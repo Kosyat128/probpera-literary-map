@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { newsDigest, verifyPublishedNewsSnapshot } from "./literary-news-publication.mjs";
 import { newsAnnouncementEligible } from "./literary-news-reviewed.mjs";
 import { selectNewsMedia } from "./literary-news-media.mjs";
+import { reserveNewsDeliverySlot } from "./literary-news-pacing.mjs";
 
 /** JSONB may reorder every object, including objects inside Telegram entities.
  * Canonicalize social payloads only; the public snapshot wire contract is unchanged.
@@ -32,6 +33,16 @@ export async function newsSemanticRevision(item) {
   const { id, title, summary, source, category, kind, eventDate, publishedAt, eventKey } = item;
   return newsSocialPayloadDigest({ id, title, summary, source, category, kind, eventDate, publishedAt, eventKey });
 }
+function telegramPhotoCaption({ title, summary, dateLabel, date, source, credit }) {
+  let caption = `${title}\n\n${summary}\n\n${dateLabel}: ${date}\n\nИсточник: `;
+  const entities = [{ type: "bold", offset: 0, length: title.length },
+    { type: "text_link", offset: caption.length, length: source.name.length, url: source.url }];
+  caption += `${source.name}\n\n`;
+  const brand = "Литературная повестка «Пробы пера»";
+  entities.push({ type: "text_link", offset: caption.length, length: brand.length, url: NEWS_SECTION_URL });
+  caption += `${brand}\n\nИзображение: ${credit}`;
+  return { caption, caption_entities: entities };
+}
 /** Exact native payload shared by preview and dispatch. No source HTML or invented details. */
 export async function prepareNewsPost(item, snapshot, platform, { destination, mediaOptions } = {}) {
   if (!["telegram", "vk"].includes(platform) || item?.verification !== "confirmed"
@@ -47,12 +58,16 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
     ? { text, entities: [{ type: "bold", offset: 0, length: title.length }], link_preview_options: { is_disabled: true } }
     : { message: text, attachments: "", from_group: 1, close_comments: 0 };
   let { media, reason: fallbackReason } = await selectNewsMedia(item.id, destination, mediaOptions);
+  const resolution = mediaOptions?.resolutions?.[item.id];
+  const mediaPending = !media && resolution && resolution.status !== "held";
+  if (!media && resolution) fallbackReason = `media_discovery_${resolution.status}:${resolution.reason || "asset_unavailable"}`;
   if (media) {
-    const caption = `${text}\n\nИзображение: ${media.credit}`;
+    const telegram = telegramPhotoCaption({ title, summary, dateLabel, date, source: item.source, credit: media.credit });
+    const caption = platform === "telegram" ? telegram.caption : `${text}\n\nИзображение: ${media.credit}`;
     if (caption.length > (platform === "telegram" ? 1024 : 16000)) {
       media = null; fallbackReason = "required_credit_or_caption_exceeds_limit";
     } else payload = platform === "telegram"
-      ? { photo: "attach://news_photo", caption, caption_entities: [{ type: "bold", offset: 0, length: title.length }] }
+      ? { photo: "attach://news_photo", ...telegram, show_caption_above_media: false }
       : { ...payload, message: caption, attachments: "prepared://news_photo" };
   }
   const textRevision = await newsSemanticRevision(item);
@@ -66,6 +81,7 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
     revision, textRevision, publication: { snapshotId: snapshot.id, release: snapshot.release },
     temporal: { kind: item.kind, eventDate: item.eventDate, verifiedAt: item.verifiedAt },
     media, fallbackReason, payload: canonicalNewsSocialValue(payload),
+    ...(mediaPending ? { mediaPending: true } : {}),
     payloadSha256: await newsSocialPayloadDigest(payload) };
 }
 
@@ -73,7 +89,7 @@ async function prepareWithdrawal(prepared, withdrawal) {
   const text = `Сообщение отозвано редакцией.\n\n${withdrawal.reason}\n\n${NEWS_SECTION_URL}`;
   const payload = prepared.platform === "telegram" ? {text,link_preview_options:{is_disabled:true}}
     : {message:text,attachments:""};
-  return {...prepared,profile:"literary-news-withdrawal-v1",media:null,payload:canonicalNewsSocialValue(payload),
+  return {...prepared,profile:"literary-news-withdrawal-v1",media:null,mediaPending:false,payload:canonicalNewsSocialValue(payload),
     payloadSha256:await newsSocialPayloadDigest(payload),
     revision:await newsSocialPayloadDigest({newsId:prepared.newsId,withdrawal})};
 }
@@ -167,6 +183,10 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
           && prior.prepared.media.licenseEvidenceSha256 === prepared.media.licenseEvidenceSha256)
           prepared = {...prior.prepared,temporal:prepared.temporal,publication:prepared.publication};
         if (prior?.desiredRevision === prepared.revision) {
+          if (prior.status === "blocked" && prior.lastError === "archived_media_requires_source_resolution")
+            return {...prior,prepared,status:prior.remoteId?"correction_pending":"pending",nextDueAt:now.toISOString(),lastError:null};
+          if (!prior.remoteId && Boolean(prior.prepared?.mediaPending) !== Boolean(prepared.mediaPending))
+            return { ...prior, prepared };
           if (prior.prepared?.temporal?.verifiedAt === item.verifiedAt) return null;
           const renewed = prior.status === "blocked" && prior.lastError === "expired_announcement_requires_source_resolution";
           return { ...prior, prepared, ...(renewed ? {
@@ -183,10 +203,24 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
   }
   // Repair a crash between durable admission and per-destination job creation,
   // including items that have since expired from the current projection.
-  let restoredMissingJobs = 0;
+  let restoredMissingJobs = 0, heldArchivedMediaJobs = 0;
+  const observedIds = new Set([...feed.items.map(item=>item.id),...feed.withdrawals.map(row=>row.id)]);
   for (const {state:admitted} of await store.list("admission:")) for (const destination of destinations) {
     const key = newsPostKey(admitted.newsId,destination);
-    if ((await store.read(key)).state) continue;
+    if ((await store.read(key)).state) {
+      if (!observedIds.has(admitted.newsId)) {
+        // An absent item cannot finish current-only image discovery. Keep its
+        // durable expectation visible for source resolution, rather than leave
+        // a hidden infinite pending loop or infer permission to send old text.
+        // Announcements retain their separate expiry/source-resolution path.
+        const held = await transition(store,key,prior=>prior?.status === "pending" && !prior.remoteId
+          && !prior.dispatchStartedAt && !prior.withdrawal && prior.prepared?.mediaPending
+          && prior.prepared.temporal?.kind !== "announcement"
+          ? {...prior,status:"blocked",lastError:"archived_media_requires_source_resolution"} : null);
+        if (held.applied) heldArchivedMediaJobs++;
+      }
+      continue;
+    }
     let prepared = null;
     try {prepared = await prepareNewsPost(admitted.record,{id:admitted.snapshotId,release:admitted.release},destination.platform,
       {destination,mediaOptions:{...mediaOptions,now}});} catch { /* Retain a blocked expectation. */ }
@@ -198,6 +232,7 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
     if (repaired.applied) restoredMissingJobs++;
   }
   result.restoredMissingJobs = restoredMissingJobs;
+  result.heldArchivedMediaJobs = heldArchivedMediaJobs;
   for (const withdrawal of feed.withdrawals) for (const destination of destinations) {
     const key = newsPostKey(withdrawal.id, destination);
     await transition(store, key, async (prior) => {
@@ -220,6 +255,12 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
   const prior = await store.read(key);
   if (!prior.state) return { status: "missing_job" };
   const initial = prior.state;
+  if (["sent_current","ambiguous","blocked","explicitly_closed"].includes(initial.status))
+    return {status:initial.status,...(initial.status === "blocked" && initial.lastError ? {reason:initial.lastError} : {})};
+  const editorialToday = new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Moscow",year:"numeric",month:"2-digit",day:"2-digit"}).format(now());
+  if (initial.prepared?.mediaPending && !initial.withdrawal
+    && (!initial.prepared.temporal || newsAnnouncementEligible(initial.prepared.temporal,editorialToday,"Europe/Moscow")))
+    return { status: "pending", reason: "media_discovery_pending" };
   const destinationKey = `destination:${initial.destination.platform}:${initial.destination.id}`;
   let control = (await store.read(destinationKey)).state;
   if (!control || !["on", "canary"].includes(control.mode) || control.paused || control.historyReconciled !== true)
@@ -305,6 +346,17 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
     await store.compareAppend(key,claimId,{...job,status:"blocked",lastError:"prepared_bytes_changed",runnerId:null,leaseUntil:null});
     return {status:"blocked",reason:"prepared_bytes_changed"};
   }
+  // Only new posts consume a channel slot. Corrections retain their existing
+  // remote identity and remain available while the next create is waiting.
+  if (!job.remoteId) {
+    const slot = await reserveNewsDeliverySlot({store,destination:job.destination,now:now(),
+      jobKey:key,attemptId:job.attemptId});
+    if (!slot.applied) {
+      await store.compareAppend(key,claimId,{...job,status:"pending",runnerId:null,leaseUntil:null,
+        ...(slot.nextDueAt ? {nextDueAt:slot.nextDueAt} : {}),lastError:slot.reason});
+      return {status:"pending",reason:"destination_pacing",nextDueAt:slot.nextDueAt};
+    }
+  }
   const started = await store.compareAppend(key, claimId, { ...job, dispatchStartedAt: now().toISOString() },
     { key: destinationKey, id: controlRow.id });
   if (!started.applied) return { status: "pending", reason: "claim_superseded" };
@@ -357,7 +409,7 @@ export async function dispatchNewsBatch({ store, jobs, transport, now = () => ne
       const outcome = await dispatchNewsJob({ store, key: job.key, transport, now });
       outcomes.push({ key: job.key, ...outcome });
       if (outcome.dispatchAttempted) attempts++;
-      if (["destination_not_enabled_or_history_gap", "destination_rate_limit", "destination_rights_unverified"].includes(outcome.reason))
+      if (["destination_not_enabled_or_history_gap", "destination_rate_limit", "destination_rights_unverified", "destination_pacing"].includes(outcome.reason))
         controls.set(controlKey, null);
     } catch {
       // A storage failure may follow a real external call; count it conservatively.

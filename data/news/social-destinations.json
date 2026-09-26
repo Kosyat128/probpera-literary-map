@@ -13,10 +13,10 @@
       "mode": "off"
     }
   ],
-  "connectionStatus": "telegram_rights_verified_vk_user_token_required",
+  "connectionStatus": "telegram_rights_verified_vk_deferred_by_owner",
   "hints": {
     "telegram": "@probbaperra",
     "vk": "probperaru"
   },
-  "note": "User-selected numeric destinations resolved by official APIs. Both remain off until separately reviewed history and native canary checks. VK currently has a community token; publishing requires an authorized user token."
+  "note": "Telegram identity and rights are verified; delivery still requires its reviewed history and native canary. The owner explicitly deferred all VK setup and activation. VK remains off and does not block Telegram or the website release."
 }

@@ -5,8 +5,8 @@
       "platform": "telegram",
       "destinationId": "-1002791579809",
       "status": "approved",
-      "reviewedAt": "2026-09-26T22:30:46.448Z",
-      "expiresAt": "2026-10-03T22:30:46.448Z",
+      "reviewedAt": "2026-09-26T22:50:52.754Z",
+      "expiresAt": "2026-10-03T22:50:52.754Z",
       "providerAccountId": "7972811583",
       "history": {
         "scope": "public_observed_only",
@@ -15,7 +15,7 @@
         "maxId": 410,
         "observedCount": 363,
         "auditSha256": "6c0bae458e4019898d785e441f8b2c08f67dd581729401fa3462933b4af70b4b",
-        "semanticReviewSha256": "e925e7f744bebd9c6c8055b19d4467a24b7767e156276b0a6b0644a612070303",
+        "semanticReviewSha256": "725f21b8501acceafa2c23e54c09a7cabed89423749922deb75af475190abdb8",
         "candidates": [
           {
             "newsId": "adeb-namur-publishing-future-colloquium-2026",
@@ -36,6 +36,10 @@
           {
             "newsId": "asymptote-hossaini-war-ends-translation-2026",
             "revision": "1de764d492dede7d008a167b873bb95a6ec204055a083e246458c01cc5bfa412"
+          },
+          {
+            "newsId": "asymptote-lianbin-ni-translation-interview-2026",
+            "revision": "a7cef3e4748e56a89cab91a0e06a607ec6bdc0e496b732d1b815b50dcb27c420"
           },
           {
             "newsId": "asymptote-maria-messina-camilla-translation-2026",
@@ -450,6 +454,10 @@
             "revision": "a2aa5b84256a968b9fff0f523ae6419797bfa0e4f108763d471d0a2dd1d9c562"
           },
           {
+            "newsId": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+            "revision": "0132f131d92df23990d8358f0a39f4c0e91d600e360c1b09398ef30aaa9c6184"
+          },
+          {
             "newsId": "lithuania-italian-literature-reading-lists-2026",
             "revision": "5e3f2d83ee91d1d6baa9b93ab860e5feebb5ede53ddbb511353f82583b2a88f8"
           },
@@ -628,6 +636,10 @@
           {
             "newsId": "omnibird-panz-design-awards-2026",
             "revision": "9f07225a4241b933af9985c58c58385694ac00d3dbc39a8b517704cb79e9f290"
+          },
+          {
+            "newsId": "oratia-maori-picture-books-ibby-unesco-collection-2026",
+            "revision": "52911650d4cc596861574eccfda05ad8f82af482de5de93f95794d0f2c4f3d7b"
           },
           {
             "newsId": "ouest-france-quai-bulles-finalists-2026",
@@ -886,6 +898,10 @@
             "revision": "6933ca7875f51f6126537b5f333379f1e259e85e44184faf425aa620573efaa6"
           },
           {
+            "newsId": "university-press-waheed-akin-olajide-obituary-2026",
+            "revision": "574f68427897b2516971efa0bd63b2465d004c51dad72515838317cceb6ca023"
+          },
+          {
             "newsId": "utopiales-comics-shortlist-2026",
             "revision": "83fd5757bec1e59eb1dd2af06714b075d286a786856e7084b7502fb439051870"
           },
@@ -1040,7 +1056,8 @@
           "Deleted/private/unobserved posts are not inferred",
           "Approval covers the reviewed candidate revisions and public snapshot only",
           "Recheck public head before each canary action"
-        ]
+        ],
+        "reviewManifest": "reports/r10/social/history/telegram-combined-review.json"
       },
       "canaryNewsId": "kokila-jason-reynolds-lamplighters-son-acquisition-2026"
     }
