@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-26T23:44:34.966Z",
+  "stage": "S15",
+  "checkpoint": "233b692977363379fa7b27dd3f608dee83e8f8c5",
+  "previous": "docs/mobile/evidence/S15/booky-calm-motion-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/result.json",
+    "sha256": "23a21d429fe78af05f9294a0e95f30e65c7ff881c5c5a1094a65ed6f20723af2"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/result.json",
+    "sha256": "23a21d429fe78af05f9294a0e95f30e65c7ff881c5c5a1094a65ed6f20723af2"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/source-manifests/88cc8fe5b88377d5.json",
+    "sha256": "88cc8fe5b88377d5101f03b5e70d1f374bfef3e9606cb0589e81d0b43bc1219a",
+    "fileCount": 1654
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/scope.json",
+    "sha256": "b5efaa07b51e841409ff81c0e7fbdeb67bb768356957d038d35cffe1c68e9027"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "0de837a8d17b3701f8a34841e6420a555d4a26eed2d1faaa143cdf583344bc0c"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "bcf70c7fa368e04ab34f5e0fbdcc53cb7079caf44951ccb3cb2145e4c04dc4f8"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "3ad4b0a4a7b32d3355ea83f051ee79eeb57afbf811763cc4f6cbac5e9e2698e7"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "619907879befe4d39e4f9798d1cce0a5a79772418e1e318eec95b910a401e02f"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "3db38eaf20da075e4be572f703d6adb12b82b0123592af9e687952c8d5db89e4"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "7c6dd75c197dfad889dbdf49090932ea8ed254701e8f66dbc278b297e6190e74"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "f4da847209e566a2ae4a7b55a047dd3b00160cdad7d94ff9878474c23f772ce9"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "7e82ff24f50f0713ff32c3e076c331252b9a64b9d7d6e7ff1db500f1d380f4ea"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookyPlacement.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "9451573b068146518b02fd43b96f77d549848f0517c93b185567e837d942c0b2"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "190cdfb93491afd8badf387418c8cec502b26ee3ab4dd90c568b1f5fa93618c1"
+    },
+    {
+      "path": "src/host/bookyPlacement.test.ts",
+      "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+    },
+    {
+      "path": "src/host/bookyPlacement.ts",
+      "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "c635031670e3bba11476a71dec68168ec7f99a2a02e30d70a5ee9a08d18804bf"
+    }
+  ],
+  "sourceInputCount": 1654,
+  "protectedInputCount": 1649,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyPlacement.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "233b692977363379fa7b27dd3f608dee83e8f8c5",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookyWalk.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky short landscape companion navigation space ru",
+    "Booky short landscape companion navigation space en",
+    "Booky persistent calm movements touch ru",
+    "Booky persistent calm movements touch en",
+    "Booky actual App font-only 200 percent stress ru",
+    "Booky actual App font-only 200 percent stress en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 35,
+  "expectedBrowserTests": 6,
+  "expectedImages": 22,
+  "scope": "Bounded Booky reflow addresses reproduced control overflow and recovery-control reachability under a controlled font-only 200 percent synthetic browser stress. Measured text and action-group geometry selects an expanded title/actions layout and restores the compact layout when fonts return to normal; available card height accounts for the measured heading. Existing automatic Android WebView text scaling is preserved; no duplicate font-scale bridge is added. Selected RU/EN actual-App cases cover enlarged control text, trusted critical actions, recovery, exact two-times fonts, normal-mode restoration and source-state preservation, alongside retained Calm movements and short-landscape navigation cases. Claims remain scoped to measured browser behavior and do not establish native OS Dynamic Type, installed-device or full A11Y-003 acceptance.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

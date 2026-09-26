@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-26T23:51:42.121Z",
+  "pass": true,
+  "sourceCommit": "521440d310beed0f5c1f1a9f25ca4597f4485f01",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/source-manifests/0f5ad00b846f0f7c.json",
+    "sha256": "0f5ad00b846f0f7c383640a845c686e28b174bcba2931e83e1185e18d41f6366",
+    "fileCount": 1654
+  },
+  "inspectedCount": 10,
+  "totalCapturedCount": 22,
+  "scope": "Direct review of the explicitly selected final RU/EN Booky synthetic large-text captures, covering visible control labels, card header and body framing, character framing and the selected recovery/gesture states. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 10 of 22 final captures. It does not claim all retained images were inspected again.",
+    "The enlarged-font browser condition is synthetic and does not establish native OS text scaling or Dynamic Type behavior.",
+    "Static images establish only visible framing and text at their captured scroll positions. They cannot establish trusted-touch activation, focus, scrolling reachability, persistence, recovery readback or source-state preservation; those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/final-visual-receipt.json",
+    "sha256": "3913a77232ff8b917a09eab02a4a6f3548dbbe036ae1fb22b558f7d466b85c53"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-baseline.png",
+      "sha256": "35f357f70715324991ec0e120fb7736a9fee26c22d9aad45e0d1cdde8252084d",
+      "width": 390,
+      "height": 844,
+      "bytes": 359189,
+      "scenario": "booky-font-only-200-stress-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The full localized Booky name, Stop and Close fit in the compact header.",
+        "The visible body copy stays inside the card; lower content continues in its scroll region."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-help-200.png",
+      "sha256": "276e68b487b1a40336959dbfd35a6486f013f5e91c8e42dad2ab9ab95b38dd00",
+      "width": 390,
+      "height": 844,
+      "bytes": 316123,
+      "scenario": "booky-font-only-200-stress-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The full enlarged localized name fits on its own title row; Stop and Close occupy a separate row with contained labels.",
+        "Enlarged body copy extends below the visible scroll region; this static frame does not by itself establish scrolling reachability."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-walk-200.png",
+      "sha256": "554ed2f07b00d16b99e5b88ef4a33c5c078f770d3edc229f874f0a5155837ffa",
+      "width": 390,
+      "height": 844,
+      "bytes": 411696,
+      "scenario": "booky-font-only-200-stress-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The enlarged disabled walking label wraps inside the expanded button border rather than spilling below it.",
+        "The separate movement and hide controls and the character remain visible in the captured viewport."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-landscape-help-200.png",
+      "sha256": "a6b001de339e7e9f614ad922b7f17e3dce49d935f8e83e79844c9df7e56fe0b3",
+      "width": 568,
+      "height": 320,
+      "bytes": 104435,
+      "scenario": "booky-font-only-200-stress-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The localized title remains readable in the short landscape card; Stop and Close are fully visible with contained labels.",
+        "The help body is only partly visible below the sticky header and continues in a scroll region; the static view is not a full-content accessibility claim."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-recovery-200.png",
+      "sha256": "3bdbb65a81e1da1a224e51d771033d16befe5b12427f68b94879af817b9fcc75",
+      "width": 390,
+      "height": 844,
+      "bytes": 227182,
+      "scenario": "booky-font-only-200-stress-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The complete localized Replace with calm movements label fits inside its visible recovery button.",
+        "The expanded title and header actions remain visible while the recovery button is fully exposed at this scroll position."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-baseline.png",
+      "sha256": "a6f2db70334b96f7b161c385c754dbf6ebada04332ce785e66d876761a59ca79",
+      "width": 320,
+      "height": 844,
+      "bytes": 287978,
+      "scenario": "booky-font-only-200-stress-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The full localized Booky name, Stop and Close fit in the compact header.",
+        "The visible body copy stays inside the card; lower content continues in its scroll region."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-help-200.png",
+      "sha256": "d65f3cc62b574d3468277cee1cc6e030c9106fd0a06e92e13024cc322aa495c4",
+      "width": 320,
+      "height": 844,
+      "bytes": 255173,
+      "scenario": "booky-font-only-200-stress-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The full enlarged localized name fits on its own title row; Stop and Close occupy a separate row with contained labels.",
+        "Enlarged body copy extends below the visible scroll region; this static frame does not by itself establish scrolling reachability."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-walk-200.png",
+      "sha256": "6fdc11e1b402f5b2384899d88d228191a307ca5186148d6b0663ade3eb314ecf",
+      "width": 320,
+      "height": 844,
+      "bytes": 334647,
+      "scenario": "booky-font-only-200-stress-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The enlarged disabled walking label wraps inside the expanded button border rather than spilling below it.",
+        "The separate movement and hide controls and the character remain visible in the captured viewport."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-landscape-help-200.png",
+      "sha256": "2cd7f79d62385603592827a135051b8ffceb8a3618f17274e02b277b20398b85",
+      "width": 640,
+      "height": 360,
+      "bytes": 133896,
+      "scenario": "booky-font-only-200-stress-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The localized title remains readable in the short landscape card; Stop and Close are fully visible with contained labels.",
+        "The help body is only partly visible below the sticky header and continues in a scroll region; the static view is not a full-content accessibility claim."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-recovery-200.png",
+      "sha256": "84ff8d8c48a087a7f3e9e3ce291c6803262bd0fdf3371c888e61d71f8d5f88fe",
+      "width": 320,
+      "height": 844,
+      "bytes": 199783,
+      "scenario": "booky-font-only-200-stress-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The complete localized Replace with calm movements label fits inside its visible recovery button.",
+        "The expanded title and header actions remain visible while the recovery button is fully exposed at this scroll position."
+      ]
+    }
+  ],
+  "releaseReady": false
+}

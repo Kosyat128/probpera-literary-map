@@ -1,0 +1,704 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-26T23:43:54.986Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/result.json",
+    "sha256": "23a21d429fe78af05f9294a0e95f30e65c7ff881c5c5a1094a65ed6f20723af2"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/record-diagnostics.mjs",
+    "sha256": "0100376db8d956493cfd3cb57c62c8f492cbe95f8f60e5d91b2458a09f5bc6e8"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/diagnostic-inputs.json",
+    "sha256": "8b51e9107ebcd87aae8c8eae5367694fde99898ca4c5ea4193473658f67ad427"
+  },
+  "isolatedProbe": {
+    "scope": "Original isolated static-HTML Chromium font-scaling probe, separate from actual-App diagnostics.",
+    "actualApp": false,
+    "nativeFontScaleEquivalent": false,
+    "testCasesExecuted": 0,
+    "execution": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/execution.json",
+      "sha256": "ddac71024543b68576bf64486d4c04f64c0d856bb29430b42a662773f37c1a56"
+    },
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/result.json",
+      "sha256": "9d3c17e47efafe4d69f1fb361098a9e17f1923758991554e542fbdb87b5f492f"
+    },
+    "script": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/probe.cjs",
+      "sha256": "a314ff8dbf7a1fff2dcf2a372df22bb879d998f5a6c1c1432363f8e041eb37ed"
+    },
+    "log": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/probe.log",
+      "sha256": "81116a1cb49edee734e898cf587d3b241d964b884d7c6162228fe8f57223fb70"
+    },
+    "images": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/01-baseline.png",
+        "sha256": "73ca7790ebcea7db100d087d28da1db4f48d18483594d733300daee1a0881c2a"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/02-os-text-scale-2.png",
+        "sha256": "73ca7790ebcea7db100d087d28da1db4f48d18483594d733300daee1a0881c2a"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/03-os-reset.png",
+        "sha256": "73ca7790ebcea7db100d087d28da1db4f48d18483594d733300daee1a0881c2a"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/04-root-font-200.png",
+        "sha256": "68e4cf9e2883386353f7f22ccd19418fb4c79c74aa449a5e58f086e37bfefec6"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/probe/05-explicit-font-stress-200.png",
+        "sha256": "df215c0f77fe9760554f4b5cbd3bc2d23c57175fe95cbd7c754ac152c3fee904"
+      }
+    ],
+    "measuredFonts": [
+      {
+        "label": "01-baseline",
+        "rootFont": "16px",
+        "px": "14px",
+        "rem": "14px",
+        "env": "14px"
+      },
+      {
+        "label": "02-os-text-scale-2",
+        "rootFont": "16px",
+        "px": "14px",
+        "rem": "14px",
+        "env": "14px"
+      },
+      {
+        "label": "03-os-reset",
+        "rootFont": "16px",
+        "px": "14px",
+        "rem": "14px",
+        "env": "14px"
+      },
+      {
+        "label": "04-root-font-200",
+        "rootFont": "32px",
+        "px": "14px",
+        "rem": "28px",
+        "env": "14px"
+      },
+      {
+        "label": "05-explicit-font-stress-200",
+        "rootFont": "16px",
+        "px": "28px",
+        "rem": "28px",
+        "env": "28px"
+      }
+    ],
+    "interpretation": "The CDP OS text-scale command was accepted, but px/rem/env samples stayed at 14px in this isolated Chromium probe. Root font 200 percent enlarged only rem; explicit font-only stress enlarged all three samples to 28px. This motivates a labeled synthetic stress test and does not reproduce an application defect or establish Android WebView/OS equivalence.",
+    "imagesReinspectedForThisRecord": false,
+    "stageAccepted": false,
+    "releaseReady": false
+  },
+  "attempts": [
+    {
+      "id": "browser-diagnostic-a1",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "syntheticFontStress": true,
+      "nativeTextScaleEquivalent": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/execution.json",
+        "sha256": "1553f862efa8d7e86074c7487bcf45e0fae6e720b19801796c7d24702985e458"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/stdout.log",
+          "sha256": "7d2de8059800025a6dc038dbe81a7563cb7cfb2ade336c0e4a9bce299e15e34e"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/stderr.log",
+          "sha256": "71131050114edadde8e038b73b835d84b197eabab2d6a60d2391ace1006e2fe5"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/playwright.json",
+        "sha256": "8c475922d70580845313c8127fe1897bff59ef5a805091df56ea6b66b2da0910"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original baseline diagnostic failed while its observer sampled placement before a finite 0.01ms reduced-motion CSS transition settled. This observer failure is retained and is not product-defect evidence.",
+      "failures": [
+        {
+          "test": "Booky actual App font-only 200 percent stress ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  433 |   const read=selector=>page.evaluate(selector=>window.__fontStress.read(selector??null),selector),restore=()=>page.evaluate(()=>window.__fontStress.restore());\n  434 |   async function settle(){let last,matches=0;await expect.poll(async()=>{const value=await read(),key=JSON.stringify({card:value.card,heading:value.heading,scroll:value.scrollTop});matches=key===last?matches+1:0;last=key;return matches;},{timeout:3000,intervals:[80]}).toBeGreaterThanOrEqual(3);await page.evaluate(()=>document.fonts.ready);}\n> 435 |   async function scale(label){await page.evaluate(()=>document.fonts.ready);const value=await page.evaluate(()=>window.__fontStress.scale());o.scales.push({label,...value});expect(value.elements.length).toBeGreaterThan(5);expect(value.elements.every(row=>Math.abs(row.actualFontSize-row.baselineFontSize*2)<.01)).toBe(true);await settle();}\n      |                                                                                                                                                                                                                                                                                                                          ^\n  436 |   async function expose(selector,label){for(let step=0;step<24;step++){const before=await read(selector);if(!before.visible)return{reachable:false,reason:'not rendered in this state',state:before};if(before.inside&&before.points.every(point=>point.hit))return{reachable:true,state:before};if(!before.inCard||before.inHeading)return{reachable:false,reason:'critical fixed target is clipped or occluded',state:before};const available=before.clip.bottom-before.clip.top;if(available<44||before.target.height>available+1)return{reachable:false,reason:'target cannot fit below the sticky heading',state:before};const upward=before.target.bottom>before.clip.bottom,overflow=upward?before.target.bottom-before.clip.bottom:before.clip.top-before.target.top,distance=Math.min(available-20,Math.max(24,overflow+14)),x=(before.clip.left+before.clip.right)/2,startY=upward?before.clip.bottom-10:before.clip.top+10,endY=startY+(upward?-distance:distance),start=await page.evaluate(label=>{window.__fontStress.phase='scroll '+label;return window.__fontStress.events.length;},label);await touch('touchStart',[{x,y:startY,id:111}]);for(let n=1;n<=8;n++){await touch('touchMove',[{x,y:startY+(endY-startY)*n/8,id:111}]);await page.waitForTimeout(20);}await page.waitForTimeout(100);await touch('touchEnd',[]);await settle();const after=await read(selector),events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);o.swipes.push({label,before,after,events});expect(after.documentScroll).toEqual(before.documentScroll);expect(events.filter(event=>event.type==='click')).toEqual([]);if(Math.abs(after.scrollTop-before.scrollTop)<1)return{reachable:false,reason:'trusted panel scrolling made no further progress',state:after};}return{reachable:false,reason:'bounded trusted scroll budget exhausted',state:await read(selector)};}\n  437 |   async function tap(selector,label,{required=false,stress=false}={}){const exposed=await expose(selector,label),action={label,selector,stress,...exposed,events:[]};o.actions.push(action);if(!exposed.reachable){if(stress)o.findings.push({label,kind:'unreachable critical target',reason:exposed.reason,state:exposed.state});if(required)throw Error(label+': '+exposed.reason);return false;}const state=exposed.state;expect(state.target.width).toBeGreaterThanOrEqual(44);expect(state.target.height).toBeGreaterThanOrEqual(44);const start=await page.evaluate(label=>{window.__fontStress.phase=label;return window.__fontStress.events.length;},label),x=state.target.left+state.target.width/2,y=state.target.top+state.target.height/2;await touch('touchStart',[{x,y,id:112}]);await touch('touchEnd',[]);await twoFrames(page);action.events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);for(const type of state.disabled?['pointerdown','pointerup']:['pointerdown','pointerup','click'])expect(action.events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch')).toBe(true);return true;}\n  438 |   async function inspect(label,{stress=false,imageName=null}={}){await settle();const value=await page.evaluate(label=>window.__fontStress.measure(label),label);o.phases.push(value);if(stress){for(const text of value.texts)if(text.control&&text.exceedsControlBorder)o.findings.push({label,kind:'text exceeds critical control border',control:text.control,text:text.text,decorative:text.decorative,glyphs:text.glyphs,controlRect:text.controlRect,overflow:text.intrinsicOverflow});for(const [name,control]of Object.entries(value.controls))if(control.visible&&['stop','close','walk','retry','recover'].includes(name)){if(control.target.width<44||control.target.height<44)o.findings.push({label,kind:'critical target below 44 CSS pixels',name,state:control});if(control.inHeading&&(!control.inside||!control.points.every(p=>p.hit)))o.findings.push({label,kind:'sticky heading control clipped or occluded',name,state:control});}const c=value.controls.close;if(c.card&&c.heading&&c.card.bottom-Math.max(c.card.top,c.heading.bottom)<44)o.findings.push({label,kind:'sticky heading leaves less than one 44px body target',card:c.card,heading:c.heading});}if(imageName){await capture(page,result,testInfo,imageName);Object.assign(result.screenshots.at(-1),{framing:stress?'actual-App synthetic font-only 200 percent stress':'actual-App baseline before synthetic font stress',syntheticTextStress:stress,factor:stress?2:1,nativeFontScaleEquivalent:false});}return value;}\n    at scale (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-review\\a1\\large-text.spec.mjs:435:314)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-review\\a1\\large-text.spec.mjs:443:262"
+        },
+        {
+          "test": "Booky actual App font-only 200 percent stress en",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  433 |   const read=selector=>page.evaluate(selector=>window.__fontStress.read(selector??null),selector),restore=()=>page.evaluate(()=>window.__fontStress.restore());\n  434 |   async function settle(){let last,matches=0;await expect.poll(async()=>{const value=await read(),key=JSON.stringify({card:value.card,heading:value.heading,scroll:value.scrollTop});matches=key===last?matches+1:0;last=key;return matches;},{timeout:3000,intervals:[80]}).toBeGreaterThanOrEqual(3);await page.evaluate(()=>document.fonts.ready);}\n> 435 |   async function scale(label){await page.evaluate(()=>document.fonts.ready);const value=await page.evaluate(()=>window.__fontStress.scale());o.scales.push({label,...value});expect(value.elements.length).toBeGreaterThan(5);expect(value.elements.every(row=>Math.abs(row.actualFontSize-row.baselineFontSize*2)<.01)).toBe(true);await settle();}\n      |                                                                                                                                                                                                                                                                                                                          ^\n  436 |   async function expose(selector,label){for(let step=0;step<24;step++){const before=await read(selector);if(!before.visible)return{reachable:false,reason:'not rendered in this state',state:before};if(before.inside&&before.points.every(point=>point.hit))return{reachable:true,state:before};if(!before.inCard||before.inHeading)return{reachable:false,reason:'critical fixed target is clipped or occluded',state:before};const available=before.clip.bottom-before.clip.top;if(available<44||before.target.height>available+1)return{reachable:false,reason:'target cannot fit below the sticky heading',state:before};const upward=before.target.bottom>before.clip.bottom,overflow=upward?before.target.bottom-before.clip.bottom:before.clip.top-before.target.top,distance=Math.min(available-20,Math.max(24,overflow+14)),x=(before.clip.left+before.clip.right)/2,startY=upward?before.clip.bottom-10:before.clip.top+10,endY=startY+(upward?-distance:distance),start=await page.evaluate(label=>{window.__fontStress.phase='scroll '+label;return window.__fontStress.events.length;},label);await touch('touchStart',[{x,y:startY,id:111}]);for(let n=1;n<=8;n++){await touch('touchMove',[{x,y:startY+(endY-startY)*n/8,id:111}]);await page.waitForTimeout(20);}await page.waitForTimeout(100);await touch('touchEnd',[]);await settle();const after=await read(selector),events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);o.swipes.push({label,before,after,events});expect(after.documentScroll).toEqual(before.documentScroll);expect(events.filter(event=>event.type==='click')).toEqual([]);if(Math.abs(after.scrollTop-before.scrollTop)<1)return{reachable:false,reason:'trusted panel scrolling made no further progress',state:after};}return{reachable:false,reason:'bounded trusted scroll budget exhausted',state:await read(selector)};}\n  437 |   async function tap(selector,label,{required=false,stress=false}={}){const exposed=await expose(selector,label),action={label,selector,stress,...exposed,events:[]};o.actions.push(action);if(!exposed.reachable){if(stress)o.findings.push({label,kind:'unreachable critical target',reason:exposed.reason,state:exposed.state});if(required)throw Error(label+': '+exposed.reason);return false;}const state=exposed.state;expect(state.target.width).toBeGreaterThanOrEqual(44);expect(state.target.height).toBeGreaterThanOrEqual(44);const start=await page.evaluate(label=>{window.__fontStress.phase=label;return window.__fontStress.events.length;},label),x=state.target.left+state.target.width/2,y=state.target.top+state.target.height/2;await touch('touchStart',[{x,y,id:112}]);await touch('touchEnd',[]);await twoFrames(page);action.events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);for(const type of state.disabled?['pointerdown','pointerup']:['pointerdown','pointerup','click'])expect(action.events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch')).toBe(true);return true;}\n  438 |   async function inspect(label,{stress=false,imageName=null}={}){await settle();const value=await page.evaluate(label=>window.__fontStress.measure(label),label);o.phases.push(value);if(stress){for(const text of value.texts)if(text.control&&text.exceedsControlBorder)o.findings.push({label,kind:'text exceeds critical control border',control:text.control,text:text.text,decorative:text.decorative,glyphs:text.glyphs,controlRect:text.controlRect,overflow:text.intrinsicOverflow});for(const [name,control]of Object.entries(value.controls))if(control.visible&&['stop','close','walk','retry','recover'].includes(name)){if(control.target.width<44||control.target.height<44)o.findings.push({label,kind:'critical target below 44 CSS pixels',name,state:control});if(control.inHeading&&(!control.inside||!control.points.every(p=>p.hit)))o.findings.push({label,kind:'sticky heading control clipped or occluded',name,state:control});}const c=value.controls.close;if(c.card&&c.heading&&c.card.bottom-Math.max(c.card.top,c.heading.bottom)<44)o.findings.push({label,kind:'sticky heading leaves less than one 44px body target',card:c.card,heading:c.heading});}if(imageName){await capture(page,result,testInfo,imageName);Object.assign(result.screenshots.at(-1),{framing:stress?'actual-App synthetic font-only 200 percent stress':'actual-App baseline before synthetic font stress',syntheticTextStress:stress,factor:stress?2:1,nativeFontScaleEquivalent:false});}return value;}\n    at scale (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-review\\a1\\large-text.spec.mjs:435:314)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-review\\a1\\large-text.spec.mjs:443:262"
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/playwright.config.mjs",
+          "sha256": "d6f1ea65c7db18e128e1bdb393b8bc78aec348c875bb0e697e0f43a29a33c7a4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/run.mjs",
+          "sha256": "5e58cfaa4752e5bf575adf2c68cbb031ad562b7c38c2b828c2c36496ecb11d52"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/bind.mjs",
+          "sha256": "b541725772e0d06c2ec9c666517672ceeffb924cf020adf14cfe7bf5c18db6b7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/canonical-fixture.mjs",
+          "sha256": "98e313de4a5a08b91a5c498754cd11080d760bba6ffe5b1fee9d010daa38b064"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/large-text.spec.mjs",
+          "sha256": "ab2b7a48a51acbf48f28cd63a74bfc7fea492e2dd6a20df4ccf70998480add79"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/prefix-provenance.json",
+          "sha256": "f242bf8f4af096abcf93a1f8a7c67b9940d9d33d23a7666270fa48d8c8543b0f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/authorized-source.json",
+          "sha256": "3859e20cb458836a86c6b1fe11df2edeec131471ce72ee96da3b966ec482f12b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/execution-start.json",
+          "sha256": "369c41199f4940934ca660979e60e99cd8096254847111d5d91ac2d9f33eab47"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/dirty.diff",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/preflight-start.json",
+          "sha256": "92961e49bdf1558f255ecd3cbe5c352c83dfeefb023076085be0b87296700e3d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/preflight-result.json",
+          "sha256": "ff52745970264eb85fb82c35a11520d7330bd0d0404280f0beec2b6c9bb9b1ee"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/preflight-stdout.log",
+          "sha256": "cc758a48089765950527049a1b780e04c104e694cc9843549ca74829efa8b9d6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/attachments/booky-live-character-source-evidence-6765af952c63b38bcee311d6a99a04cd73b7c16c.json",
+          "sha256": "e5fd46cd286cf17b61098d8212d856a13d24528bffde6e509800768a5a0dd307"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-live-character.json",
+          "sha256": "e5fd46cd286cf17b61098d8212d856a13d24528bffde6e509800768a5a0dd307"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-portrait-baseline.png",
+          "sha256": "b22e693d4543ed472bf4746fb07c2c73381260d5bcf61a8e10999cbb3fad83c3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/error-context.md",
+          "sha256": "d144e0f4c8b4b9a6ec4103d75560fdffe4a183603213b2a366183ef24d3e4988"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/attachments/booky-live-character-source-evidence-022be84d1161a6f29f34c5ab5876c8d96c254f78.json",
+          "sha256": "0462f5b243e8a77cb2fd1c69f26cf5fe1304a36353840303c2bc5e52a45e343b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-live-character.json",
+          "sha256": "0462f5b243e8a77cb2fd1c69f26cf5fe1304a36353840303c2bc5e52a45e343b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-baseline.png",
+          "sha256": "761802d6b105ca7f35c80017649678d30db99a16df895c565b340f06b2ce090c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a1/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/error-context.md",
+          "sha256": "e507b0c4e02002bfb1855e5e9c45c332addae06fc8c6da0e78d0fba0f4894f92"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a2",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "syntheticFontStress": true,
+      "nativeTextScaleEquivalent": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/execution.json",
+        "sha256": "a46c8f778cc1cda00fb5cbcf4c07540cb15a39e3b158c40478331ef8b09e20a5"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/stdout.log",
+          "sha256": "4a5335f1242d5b66c08d93a303934729da1a08e55c90d8e0bddd964cbacfa523"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/stderr.log",
+          "sha256": "4c3bc98ea3fd0e74f4f0cea99b29c524f4fc590c57f2fb5de4c7147ab8971ce4"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/playwright.json",
+        "sha256": "b9b47547579681700d5a6b89c26813c0558104966990d03b4c40b98a4441f051"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original baseline diagnostic with settled observation reproduced walking-label overflow and a recovery control taller than the available sticky-header card body under synthetic font-only 200 percent stress. Native OS text-scaling equivalence is not claimed.",
+      "failures": [
+        {
+          "test": "Booky actual App font-only 200 percent stress ru",
+          "message": "Error: Synthetic font stress findings require review; this is not native accessibility acceptance\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -   1\u001b[39m\n\u001b[31m+ Received  + 360\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"control\": \"walk\",\u001b[39m\n\u001b[31m+     \"controlRect\": Object {\u001b[39m\n\u001b[31m+       \"bottom\": 576,\u001b[39m\n\u001b[31m+       \"height\": 52,\u001b[39m\n\u001b[31m+       \"left\": 258,\u001b[39m\n\u001b[31m+       \"right\": 370,\u001b[39m\n\u001b[31m+       \"top\": 524,\u001b[39m\n\u001b[31m+       \"width\": 112,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"decorative\": false,\u001b[39m\n\u001b[31m+     \"glyphs\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 606,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 275.390625,\u001b[39m\n\u001b[31m+         \"right\": 352.59375,\u001b[39m\n\u001b[31m+         \"top\": 573,\u001b[39m\n\u001b[31m+         \"width\": 77.203125,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 641.09375,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 271.046875,\u001b[39m\n\u001b[31m+         \"right\": 356.953125,\u001b[39m\n\u001b[31m+         \"top\": 608.09375,\u001b[39m\n\u001b[31m+         \"width\": 85.90625,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"kind\": \"text exceeds critical control border\",\u001b[39m\n\u001b[31m+     \"label\": \"portrait help 200 percent\",\u001b[39m\n\u001b[31m+     \"overflow\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 30,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 65.09375,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"text\": \"Прогуляться\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"control\": \"walk\",\u001b[39m\n\u001b[31m+     \"controlRect\": Object {\u001b[39m\n\u001b[31m+       \"bottom\": 576,\u001b[39m\n\u001b[31m+       \"height\": 52,\u001b[39m\n\u001b[31m+       \"left\": 258,\u001b[39m\n\u001b[31m+       \"right\": 370,\u001b[39m\n\u001b[31m+       \"top\": 524,\u001b[39m\n\u001b[31m+       \"width\": 112,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"decorative\": false,\u001b[39m\n\u001b[31m+     \"glyphs\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 606,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 275.390625,\u001b[39m\n\u001b[31m+         \"right\": 352.59375,\u001b[39m\n\u001b[31m+         \"top\": 573,\u001b[39m\n\u001b[31m+         \"width\": 77.203125,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 641.09375,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 271.046875,\u001b[39m\n\u001b[31m+         \"right\": 356.953125,\u001b[39m\n\u001b[31m+         \"top\": 608.09375,\u001b[39m\n\u001b[31m+         \"width\": 85.90625,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"kind\": \"text exceeds critical control border\",\u001b[39m\n\u001b[31m+     \"label\": \"portrait closed companion 200 percent\",\u001b[39m\n\u001b[31m+     \"overflow\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 30,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 65.09375,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"text\": \"Прогуляться\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"control\": \"walk\",\u001b[39m\n\u001b[31m+     \"controlRect\": Object {\u001b[39m\n\u001b[31m+       \"bottom\": 576,\u001b[39m\n\u001b[31m+       \"height\": 52,\u001b[39m\n\u001b[31m+       \"left\": 258,\u001b[39m\n\u001b[31m+       \"right\": 370,\u001b[39m\n\u001b[31m+       \"top\": 524,\u001b[39m\n\u001b[31m+       \"width\": 112,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"decorative\": false,\u001b[39m\n\u001b[31m+     \"glyphs\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 606,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 275.390625,\u001b[39m\n\u001b[31m+         \"right\": 352.59375,\u001b[39m\n\u001b[31m+         \"top\": 573,\u001b[39m\n\u001b[31m+         \"width\": 77.203125,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 641.09375,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 271.046875,\u001b[39m\n\u001b[31m+         \"right\": 356.953125,\u001b[39m\n\u001b[31m+         \"top\": 608.09375,\u001b[39m\n\u001b[31m+         \"width\": 85.90625,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"kind\": \"text exceeds critical control border\",\u001b[39m\n\u001b[31m+     \"label\": \"read-failure recovery 200 percent\",\u001b[39m\n\u001b[31m+     \"overflow\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 30,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 65.09375,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"text\": \"Прогуляться\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"kind\": \"unreachable critical target\",\u001b[39m\n\u001b[31m+     \"label\": \"large-text Retry\",\u001b[39m\n\u001b[31m+     \"reason\": \"bounded trusted scroll budget exhausted\",\u001b[39m\n\u001b[31m+     \"state\": Object {\u001b[39m\n\u001b[31m+       \"animating\": \"false\",\u001b[39m\n\u001b[31m+       \"at\": 20804.399999999907,\u001b[39m\n\u001b[31m+       \"card\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 342,\u001b[39m\n\u001b[31m+         \"height\": 200,\u001b[39m\n\u001b[31m+         \"left\": 38,\u001b[39m\n\u001b[31m+         \"right\": 378,\u001b[39m\n\u001b[31m+         \"top\": 142,\u001b[39m\n\u001b[31m+         \"width\": 340,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"clientHeight\": 198,\u001b[39m\n\u001b[31m+       \"clip\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 340,\u001b[39m\n\u001b[31m+         \"left\": 40,\u001b[39m\n\u001b[31m+         \"right\": 376,\u001b[39m\n\u001b[31m+         \"top\": 278.40625,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"disabled\": false,\u001b[39m\n\u001b[31m+       \"documentScroll\": Object {\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+         \"x\": 0,\u001b[39m\n\u001b[31m+         \"y\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"font\": Object {\u001b[39m\n\u001b[31m+         \"borderRadius\": \"6px\",\u001b[39m\n\u001b[31m+         \"clipPath\": \"none\",\u001b[39m\n\u001b[31m+         \"lineHeight\": \"37.8px\",\u001b[39m\n\u001b[31m+         \"overflowX\": \"visible\",\u001b[39m\n\u001b[31m+         \"overflowY\": \"visible\",\u001b[39m\n\u001b[31m+         \"size\": \"28px\",\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"gesture\": \"greeting\",\u001b[39m\n\u001b[31m+       \"heading\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 278.40625,\u001b[39m\n\u001b[31m+         \"height\": 135.40625,\u001b[39m\n\u001b[31m+         \"left\": 61,\u001b[39m\n\u001b[31m+         \"right\": 351,\u001b[39m\n\u001b[31m+         \"top\": 143,\u001b[39m\n\u001b[31m+         \"width\": 290,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"inCard\": true,\u001b[39m\n\u001b[31m+       \"inHeading\": false,\u001b[39m\n\u001b[31m+       \"inside\": false,\u001b[39m\n\u001b[31m+       \"points\": Array [\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": null,\u001b[39m\n\u001b[31m+           \"element\": undefined,\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 206,\u001b[39m\n\u001b[31m+           \"y\": 1293.9140625,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": null,\u001b[39m\n\u001b[31m+           \"element\": undefined,\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 148,\u001b[39m\n\u001b[31m+           \"y\": 1293.9140625,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": null,\u001b[39m\n\u001b[31m+           \"element\": undefined,\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 264,\u001b[39m\n\u001b[31m+           \"y\": 1293.9140625,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+       ],\u001b[39m\n\u001b[31m+       \"scrollHeight\": 5653,\u001b[39m\n\u001b[31m+       \"scrollTop\": 2082,\u001b[39m\n\u001b[31m+       \"target\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 1322.8125,\u001b[39m\n\u001b[31m+         \"height\": 57.796875,\u001b[39m\n\u001b[31m+         \"left\": 61,\u001b[39m\n\u001b[31m+         \"right\": 351,\u001b[39m\n\u001b[31m+         \"top\": 1265.015625,\u001b[39m\n\u001b[31m+         \"width\": 290,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"visible\": true,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"control\": \"walk\",\u001b[39m\n\u001b[31m+     \"controlRect\": Object {\u001b[39m\n\u001b[31m+       \"bottom\": 576,\u001b[39m\n\u001b[31m+       \"height\": 52,\u001b[39m\n\u001b[31m+       \"left\": 258,\u001b[39m\n\u001b[31m+       \"right\": 370,\u001b[39m\n\u001b[31m+       \"top\": 524,\u001b[39m\n\u001b[31m+       \"width\": 112,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"decorative\": false,\u001b[39m\n\u001b[31m+     \"glyphs\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 606,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 275.390625,\u001b[39m\n\u001b[31m+         \"right\": 352.59375,\u001b[39m\n\u001b[31m+         \"top\": 573,\u001b[39m\n\u001b[31m+         \"width\": 77.203125,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 641.09375,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 271.046875,\u001b[39m\n\u001b[31m+         \"right\": 356.953125,\u001b[39m\n\u001b[31m+         \"top\": 608.09375,\u001b[39m\n\u001b[31m+         \"width\": 85.90625,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"kind\": \"text exceeds critical control border\",\u001b[39m\n\u001b[31m+     \"label\": \"recovery after retry 200 percent\",\u001b[39m\n\u001b[31m+     \"overflow\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 30,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 65.09375,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"text\": \"Прогуляться\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"kind\": \"unreachable critical target\",\u001b[39m\n\u001b[31m+     \"label\": \"large-text Recover\",\u001b[39m\n\u001b[31m+     \"reason\": \"target cannot fit below the sticky heading\",\u001b[39m\n\u001b[31m+     \"state\": Object {\u001b[39m\n\u001b[31m+       \"animating\": \"false\",\u001b[39m\n\u001b[31m+       \"at\": 22037,\u001b[39m\n\u001b[31m+       \"card\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 342,\u001b[39m\n\u001b[31m+         \"height\": 200,\u001b[39m\n\u001b[31m+         \"left\": 38,\u001b[39m\n\u001b[31m+         \"right\": 378,\u001b[39m\n\u001b[31m+         \"top\": 142,\u001b[39m\n\u001b[31m+         \"width\": 340,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"clientHeight\": 198,\u001b[39m\n\u001b[31m+       \"clip\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 340,\u001b[39m\n\u001b[31m+         \"left\": 40,\u001b[39m\n\u001b[31m+         \"right\": 376,\u001b[39m\n\u001b[31m+         \"top\": 278.40625,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"disabled\": false,\u001b[39m\n\u001b[31m+       \"documentScroll\": Object {\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+         \"x\": 0,\u001b[39m\n\u001b[31m+         \"y\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"font\": Object {\u001b[39m\n\u001b[31m+         \"borderRadius\": \"6px\",\u001b[39m\n\u001b[31m+         \"clipPath\": \"none\",\u001b[39m\n\u001b[31m+         \"lineHeight\": \"37.8px\",\u001b[39m\n\u001b[31m+         \"overflowX\": \"visible\",\u001b[39m\n\u001b[31m+         \"overflowY\": \"visible\",\u001b[39m\n\u001b[31m+         \"size\": \"28px\",\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"gesture\": \"greeting\",\u001b[39m\n\u001b[31m+       \"heading\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 278.40625,\u001b[39m\n\u001b[31m+         \"height\": 135.40625,\u001b[39m\n\u001b[31m+         \"left\": 61,\u001b[39m\n\u001b[31m+         \"right\": 351,\u001b[39m\n\u001b[31m+         \"top\": 143,\u001b[39m\n\u001b[31m+         \"width\": 290,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"inCard\": true,\u001b[39m\n\u001b[31m+       \"inHeading\": false,\u001b[39m\n\u001b[31m+       \"inside\": false,\u001b[39m\n\u001b[31m+       \"points\": Array [\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": null,\u001b[39m\n\u001b[31m+           \"element\": undefined,\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 206,\u001b[39m\n\u001b[31m+           \"y\": 1198.3203125,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": null,\u001b[39m\n\u001b[31m+           \"element\": undefined,\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 148,\u001b[39m\n\u001b[31m+           \"y\": 1198.3203125,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": null,\u001b[39m\n\u001b[31m+           \"element\": undefined,\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 264,\u001b[39m\n\u001b[31m+           \"y\": 1198.3203125,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+       ],\u001b[39m\n\u001b[31m+       \"scrollHeight\": 5653,\u001b[39m\n\u001b[31m+       \"scrollTop\": 2082,\u001b[39m\n\u001b[31m+       \"target\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 1265.015625,\u001b[39m\n\u001b[31m+         \"height\": 133.390625,\u001b[39m\n\u001b[31m+         \"left\": 61,\u001b[39m\n\u001b[31m+         \"right\": 351,\u001b[39m\n\u001b[31m+         \"top\": 1131.625,\u001b[39m\n\u001b[31m+         \"width\": 290,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"visible\": true,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  445 |     await restore();await settle();await page.setViewportSize(landscape);await twoFrames(page);await stablePose(page);await openGallery('landscape baseline');await inspect('landscape baseline');const landscapeScene=await sample(page);await scale('short landscape help');await inspect('short landscape help 200 percent',{stress:true,imageName:'booky-font-stress-'+language+'-landscape-help-200.png'});await tap(keys.stop,'landscape large-text Stop',{stress:true});await tap(keys.close,'landscape large-text Close',{stress:true});expect(legacy()).toEqual(prefs);retained(await sample(page),landscapeScene);await restore();await settle();\n  446 |     o.eventSegments.push({label:'normal preference lifetime',events:await page.evaluate(()=>window.__fontStress.events)});const malformed='synthetic-font-stress-malformed-motion';o.controlledPreferenceInput={key:motionKey,value:malformed,reason:'Expose real read-failure Retry and Recover controls without replacing product outcomes'};fixture.memory.set(motionKey,malformed);await page.setViewportSize(portrait);await page.reload();await ready(page);await stablePose(page);await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await install();await openGallery('recovery baseline');await expect(page.locator(keys.retry)).toBeEnabled();await expect(page.locator(keys.recover)).toBeEnabled();const recoveryScene=await sample(page);await inspect('recovery baseline');await scale('read-failure recovery');await expose(keys.recover,'large-text recovery framing');await inspect('read-failure recovery 200 percent',{stress:true,imageName:'booky-font-stress-'+language+'-recovery-200.png'});await tap(keys.retry,'large-text Retry',{stress:true});await expect(page.locator(keys.retry)).toBeEnabled();await expect(page.locator(keys.recover)).toBeEnabled();await restore();await settle();await scale('recovery after retry');await inspect('recovery after retry 200 percent',{stress:true});await tap(keys.recover,'large-text Recover',{stress:true});await twoFrames(page);expect(legacy()).toEqual(prefs);retained(await sample(page),recoveryScene);o.motionWrites=fixture.operations.filter(value=>value.operation!=='get'&&value.key===motionKey).map(({operation,key,value})=>({operation,key,value}));expect(o.motionWrites.every(row=>row.operation==='set'&&row.value==='calm')).toBe(true);expect(o.motionWrites.length).toBeLessThanOrEqual(1);\n> 447 |     o.eventSegments.push({label:'recovery lifetime',events:await page.evaluate(()=>window.__fontStress.events)});o.events=o.eventSegments.flatMap(segment=>segment.events);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted&&event.pointerType==='touch')).toBe(true);await fixture.verify();result.observationsComplete=true;result.pass=o.findings.length===0;result.fontStressFindings=o.findings.length;expect(o.findings,'Synthetic font stress findings require review; this is not native accessibility acceptance').toEqual([]);\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^\n  448 |   }catch(error){o.setupErrors.push({message:error.message,stack:error.stack??null});throw error;}finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}await fixture.close();}\n  449 | });\n  450 |\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-review\\a2\\large-text.spec.mjs:447:539"
+        },
+        {
+          "test": "Booky actual App font-only 200 percent stress en",
+          "message": "Error: Synthetic font stress findings require review; this is not native accessibility acceptance\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -   1\u001b[39m\n\u001b[31m+ Received  + 360\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"control\": \"walk\",\u001b[39m\n\u001b[31m+     \"controlRect\": Object {\u001b[39m\n\u001b[31m+       \"bottom\": 600,\u001b[39m\n\u001b[31m+       \"height\": 52,\u001b[39m\n\u001b[31m+       \"left\": 87.109375,\u001b[39m\n\u001b[31m+       \"right\": 199.109375,\u001b[39m\n\u001b[31m+       \"top\": 548,\u001b[39m\n\u001b[31m+       \"width\": 112,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"decorative\": false,\u001b[39m\n\u001b[31m+     \"glyphs\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 630,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 103.171875,\u001b[39m\n\u001b[31m+         \"right\": 183.03125,\u001b[39m\n\u001b[31m+         \"top\": 597,\u001b[39m\n\u001b[31m+         \"width\": 79.859375,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 665.09375,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 114.140625,\u001b[39m\n\u001b[31m+         \"right\": 172.078125,\u001b[39m\n\u001b[31m+         \"top\": 632.09375,\u001b[39m\n\u001b[31m+         \"width\": 57.9375,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"kind\": \"text exceeds critical control border\",\u001b[39m\n\u001b[31m+     \"label\": \"portrait help 200 percent\",\u001b[39m\n\u001b[31m+     \"overflow\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 30,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 65.09375,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"text\": \"Take a walk\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"control\": \"walk\",\u001b[39m\n\u001b[31m+     \"controlRect\": Object {\u001b[39m\n\u001b[31m+       \"bottom\": 600,\u001b[39m\n\u001b[31m+       \"height\": 52,\u001b[39m\n\u001b[31m+       \"left\": 87.109375,\u001b[39m\n\u001b[31m+       \"right\": 199.109375,\u001b[39m\n\u001b[31m+       \"top\": 548,\u001b[39m\n\u001b[31m+       \"width\": 112,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"decorative\": false,\u001b[39m\n\u001b[31m+     \"glyphs\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 630,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 103.171875,\u001b[39m\n\u001b[31m+         \"right\": 183.03125,\u001b[39m\n\u001b[31m+         \"top\": 597,\u001b[39m\n\u001b[31m+         \"width\": 79.859375,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 665.09375,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 114.140625,\u001b[39m\n\u001b[31m+         \"right\": 172.078125,\u001b[39m\n\u001b[31m+         \"top\": 632.09375,\u001b[39m\n\u001b[31m+         \"width\": 57.9375,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"kind\": \"text exceeds critical control border\",\u001b[39m\n\u001b[31m+     \"label\": \"portrait closed companion 200 percent\",\u001b[39m\n\u001b[31m+     \"overflow\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 30,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 65.09375,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"text\": \"Take a walk\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"control\": \"walk\",\u001b[39m\n\u001b[31m+     \"controlRect\": Object {\u001b[39m\n\u001b[31m+       \"bottom\": 600,\u001b[39m\n\u001b[31m+       \"height\": 52,\u001b[39m\n\u001b[31m+       \"left\": 87.109375,\u001b[39m\n\u001b[31m+       \"right\": 199.109375,\u001b[39m\n\u001b[31m+       \"top\": 548,\u001b[39m\n\u001b[31m+       \"width\": 112,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"decorative\": false,\u001b[39m\n\u001b[31m+     \"glyphs\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 630,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 103.171875,\u001b[39m\n\u001b[31m+         \"right\": 183.03125,\u001b[39m\n\u001b[31m+         \"top\": 597,\u001b[39m\n\u001b[31m+         \"width\": 79.859375,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 665.09375,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 114.140625,\u001b[39m\n\u001b[31m+         \"right\": 172.078125,\u001b[39m\n\u001b[31m+         \"top\": 632.09375,\u001b[39m\n\u001b[31m+         \"width\": 57.9375,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"kind\": \"text exceeds critical control border\",\u001b[39m\n\u001b[31m+     \"label\": \"read-failure recovery 200 percent\",\u001b[39m\n\u001b[31m+     \"overflow\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 30,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 65.09375,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"text\": \"Take a walk\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"kind\": \"unreachable critical target\",\u001b[39m\n\u001b[31m+     \"label\": \"large-text Retry\",\u001b[39m\n\u001b[31m+     \"reason\": \"bounded trusted scroll budget exhausted\",\u001b[39m\n\u001b[31m+     \"state\": Object {\u001b[39m\n\u001b[31m+       \"animating\": \"false\",\u001b[39m\n\u001b[31m+       \"at\": 20930.80000000028,\u001b[39m\n\u001b[31m+       \"card\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 357.203125,\u001b[39m\n\u001b[31m+         \"height\": 216.203125,\u001b[39m\n\u001b[31m+         \"left\": 12,\u001b[39m\n\u001b[31m+         \"right\": 308,\u001b[39m\n\u001b[31m+         \"top\": 141,\u001b[39m\n\u001b[31m+         \"width\": 296,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"clientHeight\": 214,\u001b[39m\n\u001b[31m+       \"clip\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 355.203125,\u001b[39m\n\u001b[31m+         \"left\": 14,\u001b[39m\n\u001b[31m+         \"right\": 306,\u001b[39m\n\u001b[31m+         \"top\": 277.40625,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"disabled\": false,\u001b[39m\n\u001b[31m+       \"documentScroll\": Object {\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+         \"x\": 0,\u001b[39m\n\u001b[31m+         \"y\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"font\": Object {\u001b[39m\n\u001b[31m+         \"borderRadius\": \"6px\",\u001b[39m\n\u001b[31m+         \"clipPath\": \"none\",\u001b[39m\n\u001b[31m+         \"lineHeight\": \"37.8px\",\u001b[39m\n\u001b[31m+         \"overflowX\": \"visible\",\u001b[39m\n\u001b[31m+         \"overflowY\": \"visible\",\u001b[39m\n\u001b[31m+         \"size\": \"28px\",\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"gesture\": \"greeting\",\u001b[39m\n\u001b[31m+       \"heading\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 277.40625,\u001b[39m\n\u001b[31m+         \"height\": 135.40625,\u001b[39m\n\u001b[31m+         \"left\": 35,\u001b[39m\n\u001b[31m+         \"right\": 281,\u001b[39m\n\u001b[31m+         \"top\": 142,\u001b[39m\n\u001b[31m+         \"width\": 246,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"inCard\": true,\u001b[39m\n\u001b[31m+       \"inHeading\": false,\u001b[39m\n\u001b[31m+       \"inside\": false,\u001b[39m\n\u001b[31m+       \"points\": Array [\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": \"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-country-sheet-toggle\",\u001b[39m\n\u001b[31m+           \"element\": \"BUTTON\",\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 158,\u001b[39m\n\u001b[31m+           \"y\": 723.5234375,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": \"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-country-sheet-toggle\",\u001b[39m\n\u001b[31m+           \"element\": \"BUTTON\",\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 108.8,\u001b[39m\n\u001b[31m+           \"y\": 723.5234375,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": \"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-country-sheet-toggle\",\u001b[39m\n\u001b[31m+           \"element\": \"BUTTON\",\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 207.2,\u001b[39m\n\u001b[31m+           \"y\": 723.5234375,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+       ],\u001b[39m\n\u001b[31m+       \"scrollHeight\": 5349,\u001b[39m\n\u001b[31m+       \"scrollTop\": 2425,\u001b[39m\n\u001b[31m+       \"target\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 752.421875,\u001b[39m\n\u001b[31m+         \"height\": 57.796875,\u001b[39m\n\u001b[31m+         \"left\": 35,\u001b[39m\n\u001b[31m+         \"right\": 281,\u001b[39m\n\u001b[31m+         \"top\": 694.625,\u001b[39m\n\u001b[31m+         \"width\": 246,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"visible\": true,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"control\": \"walk\",\u001b[39m\n\u001b[31m+     \"controlRect\": Object {\u001b[39m\n\u001b[31m+       \"bottom\": 600,\u001b[39m\n\u001b[31m+       \"height\": 52,\u001b[39m\n\u001b[31m+       \"left\": 87.109375,\u001b[39m\n\u001b[31m+       \"right\": 199.109375,\u001b[39m\n\u001b[31m+       \"top\": 548,\u001b[39m\n\u001b[31m+       \"width\": 112,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+     \"decorative\": false,\u001b[39m\n\u001b[31m+     \"glyphs\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 630,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 103.171875,\u001b[39m\n\u001b[31m+         \"right\": 183.03125,\u001b[39m\n\u001b[31m+         \"top\": 597,\u001b[39m\n\u001b[31m+         \"width\": 79.859375,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 665.09375,\u001b[39m\n\u001b[31m+         \"height\": 33,\u001b[39m\n\u001b[31m+         \"left\": 114.140625,\u001b[39m\n\u001b[31m+         \"right\": 172.078125,\u001b[39m\n\u001b[31m+         \"top\": 632.09375,\u001b[39m\n\u001b[31m+         \"width\": 57.9375,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"kind\": \"text exceeds critical control border\",\u001b[39m\n\u001b[31m+     \"label\": \"recovery after retry 200 percent\",\u001b[39m\n\u001b[31m+     \"overflow\": Array [\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 30,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       Object {\u001b[39m\n\u001b[31m+         \"bottom\": 65.09375,\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"right\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+     ],\u001b[39m\n\u001b[31m+     \"text\": \"Take a walk\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"kind\": \"unreachable critical target\",\u001b[39m\n\u001b[31m+     \"label\": \"large-text Recover\",\u001b[39m\n\u001b[31m+     \"reason\": \"target cannot fit below the sticky heading\",\u001b[39m\n\u001b[31m+     \"state\": Object {\u001b[39m\n\u001b[31m+       \"animating\": \"false\",\u001b[39m\n\u001b[31m+       \"at\": 22175.200000000186,\u001b[39m\n\u001b[31m+       \"card\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 357.203125,\u001b[39m\n\u001b[31m+         \"height\": 216.203125,\u001b[39m\n\u001b[31m+         \"left\": 12,\u001b[39m\n\u001b[31m+         \"right\": 308,\u001b[39m\n\u001b[31m+         \"top\": 141,\u001b[39m\n\u001b[31m+         \"width\": 296,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"clientHeight\": 214,\u001b[39m\n\u001b[31m+       \"clip\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 355.203125,\u001b[39m\n\u001b[31m+         \"left\": 14,\u001b[39m\n\u001b[31m+         \"right\": 306,\u001b[39m\n\u001b[31m+         \"top\": 277.40625,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"disabled\": false,\u001b[39m\n\u001b[31m+       \"documentScroll\": Object {\u001b[39m\n\u001b[31m+         \"left\": 0,\u001b[39m\n\u001b[31m+         \"top\": 0,\u001b[39m\n\u001b[31m+         \"x\": 0,\u001b[39m\n\u001b[31m+         \"y\": 0,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"font\": Object {\u001b[39m\n\u001b[31m+         \"borderRadius\": \"6px\",\u001b[39m\n\u001b[31m+         \"clipPath\": \"none\",\u001b[39m\n\u001b[31m+         \"lineHeight\": \"37.8px\",\u001b[39m\n\u001b[31m+         \"overflowX\": \"visible\",\u001b[39m\n\u001b[31m+         \"overflowY\": \"visible\",\u001b[39m\n\u001b[31m+         \"size\": \"28px\",\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"gesture\": \"greeting\",\u001b[39m\n\u001b[31m+       \"heading\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 277.40625,\u001b[39m\n\u001b[31m+         \"height\": 135.40625,\u001b[39m\n\u001b[31m+         \"left\": 35,\u001b[39m\n\u001b[31m+         \"right\": 281,\u001b[39m\n\u001b[31m+         \"top\": 142,\u001b[39m\n\u001b[31m+         \"width\": 246,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"inCard\": true,\u001b[39m\n\u001b[31m+       \"inHeading\": false,\u001b[39m\n\u001b[31m+       \"inside\": false,\u001b[39m\n\u001b[31m+       \"points\": Array [\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": \"planet-mascot-controls__walk\",\u001b[39m\n\u001b[31m+           \"element\": \"BUTTON\",\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 158,\u001b[39m\n\u001b[31m+           \"y\": 646.828125,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": Object {},\u001b[39m\n\u001b[31m+           \"element\": \"svg\",\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 108.8,\u001b[39m\n\u001b[31m+           \"y\": 646.828125,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+         Object {\u001b[39m\n\u001b[31m+           \"className\": \"\",\u001b[39m\n\u001b[31m+           \"element\": \"SMALL\",\u001b[39m\n\u001b[31m+           \"hit\": false,\u001b[39m\n\u001b[31m+           \"x\": 207.2,\u001b[39m\n\u001b[31m+           \"y\": 646.828125,\u001b[39m\n\u001b[31m+         },\u001b[39m\n\u001b[31m+       ],\u001b[39m\n\u001b[31m+       \"scrollHeight\": 5349,\u001b[39m\n\u001b[31m+       \"scrollTop\": 2425,\u001b[39m\n\u001b[31m+       \"target\": Object {\u001b[39m\n\u001b[31m+         \"bottom\": 694.625,\u001b[39m\n\u001b[31m+         \"height\": 95.59375,\u001b[39m\n\u001b[31m+         \"left\": 35,\u001b[39m\n\u001b[31m+         \"right\": 281,\u001b[39m\n\u001b[31m+         \"top\": 599.03125,\u001b[39m\n\u001b[31m+         \"width\": 246,\u001b[39m\n\u001b[31m+       },\u001b[39m\n\u001b[31m+       \"visible\": true,\u001b[39m\n\u001b[31m+     },\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  445 |     await restore();await settle();await page.setViewportSize(landscape);await twoFrames(page);await stablePose(page);await openGallery('landscape baseline');await inspect('landscape baseline');const landscapeScene=await sample(page);await scale('short landscape help');await inspect('short landscape help 200 percent',{stress:true,imageName:'booky-font-stress-'+language+'-landscape-help-200.png'});await tap(keys.stop,'landscape large-text Stop',{stress:true});await tap(keys.close,'landscape large-text Close',{stress:true});expect(legacy()).toEqual(prefs);retained(await sample(page),landscapeScene);await restore();await settle();\n  446 |     o.eventSegments.push({label:'normal preference lifetime',events:await page.evaluate(()=>window.__fontStress.events)});const malformed='synthetic-font-stress-malformed-motion';o.controlledPreferenceInput={key:motionKey,value:malformed,reason:'Expose real read-failure Retry and Recover controls without replacing product outcomes'};fixture.memory.set(motionKey,malformed);await page.setViewportSize(portrait);await page.reload();await ready(page);await stablePose(page);await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await install();await openGallery('recovery baseline');await expect(page.locator(keys.retry)).toBeEnabled();await expect(page.locator(keys.recover)).toBeEnabled();const recoveryScene=await sample(page);await inspect('recovery baseline');await scale('read-failure recovery');await expose(keys.recover,'large-text recovery framing');await inspect('read-failure recovery 200 percent',{stress:true,imageName:'booky-font-stress-'+language+'-recovery-200.png'});await tap(keys.retry,'large-text Retry',{stress:true});await expect(page.locator(keys.retry)).toBeEnabled();await expect(page.locator(keys.recover)).toBeEnabled();await restore();await settle();await scale('recovery after retry');await inspect('recovery after retry 200 percent',{stress:true});await tap(keys.recover,'large-text Recover',{stress:true});await twoFrames(page);expect(legacy()).toEqual(prefs);retained(await sample(page),recoveryScene);o.motionWrites=fixture.operations.filter(value=>value.operation!=='get'&&value.key===motionKey).map(({operation,key,value})=>({operation,key,value}));expect(o.motionWrites.every(row=>row.operation==='set'&&row.value==='calm')).toBe(true);expect(o.motionWrites.length).toBeLessThanOrEqual(1);\n> 447 |     o.eventSegments.push({label:'recovery lifetime',events:await page.evaluate(()=>window.__fontStress.events)});o.events=o.eventSegments.flatMap(segment=>segment.events);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted&&event.pointerType==='touch')).toBe(true);await fixture.verify();result.observationsComplete=true;result.pass=o.findings.length===0;result.fontStressFindings=o.findings.length;expect(o.findings,'Synthetic font stress findings require review; this is not native accessibility acceptance').toEqual([]);\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^\n  448 |   }catch(error){o.setupErrors.push({message:error.message,stack:error.stack??null});throw error;}finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}await fixture.close();}\n  449 | });\n  450 |\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-review\\a2\\large-text.spec.mjs:447:539"
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/playwright.config.mjs",
+          "sha256": "d6f1ea65c7db18e128e1bdb393b8bc78aec348c875bb0e697e0f43a29a33c7a4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/run.mjs",
+          "sha256": "5e58cfaa4752e5bf575adf2c68cbb031ad562b7c38c2b828c2c36496ecb11d52"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/bind.mjs",
+          "sha256": "b541725772e0d06c2ec9c666517672ceeffb924cf020adf14cfe7bf5c18db6b7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/canonical-fixture.mjs",
+          "sha256": "98e313de4a5a08b91a5c498754cd11080d760bba6ffe5b1fee9d010daa38b064"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/large-text.spec.mjs",
+          "sha256": "6cda2521715e368646f4213004a4bac7adaa386f0491924a3b2338ada764d0ae"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/prefix-provenance.json",
+          "sha256": "f242bf8f4af096abcf93a1f8a7c67b9940d9d33d23a7666270fa48d8c8543b0f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/authorized-source.json",
+          "sha256": "a65192411d7b606203b52d4f42ff0362d43bdda5ca4ef196d485eca8d0be00bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/execution-start.json",
+          "sha256": "4ce7b9a92acf9b2d2c0e5bb9a11d1f40db7d00d5faca917df29194a5e153ccec"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/dirty.diff",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/preflight-start.json",
+          "sha256": "7b28ebd8a0edf298f93420dfc938fa393a5dee55882102187770bad676182372"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/preflight-result.json",
+          "sha256": "f6eaaf00b530cd1acbb08cc12a613ab1e06f5fc0767db612d1ebed9a6e2be300"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/preflight-stdout.log",
+          "sha256": "cc758a48089765950527049a1b780e04c104e694cc9843549ca74829efa8b9d6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/preparation.json",
+          "sha256": "f4820e5bbd42eb6bb9f5209ec12905b9068fc1f7d3100013591086f858170e51"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/attachments/booky-live-character-source-evidence-e64108e346ec4b9ef3a4e6138f95fd21aae1a51c.json",
+          "sha256": "e426c59d4a1fc30303abc577c9c920e77e96ed7e07b41d17f8d0dfc2ec4c7766"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-live-character.json",
+          "sha256": "e426c59d4a1fc30303abc577c9c920e77e96ed7e07b41d17f8d0dfc2ec4c7766"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-portrait-baseline.png",
+          "sha256": "b22e693d4543ed472bf4746fb07c2c73381260d5bcf61a8e10999cbb3fad83c3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-portrait-help-200.png",
+          "sha256": "20d34e8f86fa94f127eb1a450b018881c6f2cdfc8ee4d34750e332b7889f36bd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-portrait-walk-200.png",
+          "sha256": "d4e13e7e50840f0ca87817aa00272ac96731571ef16c554b5afd8bf5f16ce877"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-landscape-help-200.png",
+          "sha256": "30ca182d4e706295f725962296d1763cce3993e27c43193ec28c9448acee8230"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-recovery-200.png",
+          "sha256": "10e31a1ff71fc8036552e00db76e74bbeb72ea0f7abecf81f0cd5e8f7db783e0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/error-context.md",
+          "sha256": "e209635d85d9670c3a47fd66f94ebdf8d2c6da0b96accc79452a777ba314e5e3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/attachments/booky-live-character-source-evidence-c5cfc138230b1ffd868fd14563006e47aef2a0dd.json",
+          "sha256": "9f7b5bab666d3f5e7067694f70e4f7cda22fd9957e6d91929cd3669b7cde656b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-live-character.json",
+          "sha256": "9f7b5bab666d3f5e7067694f70e4f7cda22fd9957e6d91929cd3669b7cde656b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-baseline.png",
+          "sha256": "761802d6b105ca7f35c80017649678d30db99a16df895c565b340f06b2ce090c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-help-200.png",
+          "sha256": "add90f251891aaba858d160bef4fce56d5540d3b5ae2da7900ed842556b4eae2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-walk-200.png",
+          "sha256": "2ef4752c9353b1f372a47034499526aea69898efe70feb12a7425379cf4722b8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-landscape-help-200.png",
+          "sha256": "b0f95a0b545a742993bba09cb057b8e801b8f392fa13352b7a785beaf2374c86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-recovery-200.png",
+          "sha256": "ab3dfd043814950e3fc20cdeb39876d46eac058ed2f6a16ac9b876097bb21aa6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a2/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/error-context.md",
+          "sha256": "3a173ff6095dc6437e5168553d4f97ea8f932a32b5e9b087aa7be703ad49d3bc"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a3",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "syntheticFontStress": true,
+      "nativeTextScaleEquivalent": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/execution.json",
+        "sha256": "6de268e569d818e60ccc1a4fea22d3ebd31e30e950470661ed8b4843ab5f70fb"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/stdout.log",
+          "sha256": "1f6b30d84f87077bc8269e1cc03326072a60e3826514f9bfa28c854e6acf7dbe"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/stderr.log",
+          "sha256": "91cd9dbd5a885936addd0fcd72ef74b11d7332b6a079c477829c1a4f52e7457e"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/playwright.json",
+        "sha256": "533302934d66770179035b887ce7ae7073f4b9c5a98418f6a3dfd0cbfbc95f8f"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original a3 diagnostic recorded one pass and one failure. EN completed the measured two-times font checks without findings; RU missed the intended initial quick-entry control during early layout shift before font scaling. The RU failure is retained as observer/input-target evidence, not as a large-font product failure. Direct EN visual review subsequently motivated the separate expanded title-row refinement; final formal validation remains separate.",
+      "failures": [
+        {
+          "test": "Booky actual App font-only 200 percent stress ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-gestures]')\nExpected: \u001b[32m\"\"\u001b[39m\nReceived: serializes to the same string\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-gestures]')\u001b[22m\n\u001b[2m    14 × locator resolved to <details id=\":rb:-gestures\" data-booky-gestures=\"\" class=\"planet-mascot-controls__extras planet-mascot-controls__gestures\">…</details>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n  438 |   async function tap(selector,label,{required=false,stress=false}={}){const exposed=await expose(selector,label),action={label,selector,stress,...exposed,events:[]};o.actions.push(action);if(!exposed.reachable){if(stress)o.findings.push({label,kind:'unreachable critical target',reason:exposed.reason,state:exposed.state});if(required)throw Error(label+': '+exposed.reason);return false;}const state=exposed.state;expect(state.target.width).toBeGreaterThanOrEqual(44);expect(state.target.height).toBeGreaterThanOrEqual(44);const start=await page.evaluate(label=>{window.__fontStress.phase=label;return window.__fontStress.events.length;},label),x=state.target.left+state.target.width/2,y=state.target.top+state.target.height/2;await touch('touchStart',[{x,y,id:112}]);await touch('touchEnd',[]);await twoFrames(page);action.events=await page.evaluate(start=>window.__fontStress.events.slice(start),start);for(const type of state.disabled?['pointerdown','pointerup']:['pointerdown','pointerup','click'])expect(action.events.some(event=>event.type===type&&event.trusted&&event.pointerType==='touch')).toBe(true);return true;}\n  439 |   async function inspect(label,{stress=false,imageName=null}={}){await settle();const value=await page.evaluate(label=>window.__fontStress.measure(label),label);o.phases.push(value);if(stress){for(const text of value.texts)if(text.control&&text.exceedsControlBorder)o.findings.push({label,kind:'text exceeds critical control border',control:text.control,text:text.text,decorative:text.decorative,glyphs:text.glyphs,controlRect:text.controlRect,overflow:text.intrinsicOverflow});for(const [name,control]of Object.entries(value.controls))if(control.visible&&['stop','close','walk','retry','recover'].includes(name)){if(control.target.width<44||control.target.height<44)o.findings.push({label,kind:'critical target below 44 CSS pixels',name,state:control});if(control.inHeading&&(!control.inside||!control.points.every(p=>p.hit)))o.findings.push({label,kind:'sticky heading control clipped or occluded',name,state:control});}const c=value.controls.close;if(c.card&&c.heading&&c.card.bottom-Math.max(c.card.top,c.heading.bottom)<44)o.findings.push({label,kind:'sticky heading leaves less than one 44px body target',card:c.card,heading:c.heading});}if(imageName){await capture(page,result,testInfo,imageName);Object.assign(result.screenshots.at(-1),{framing:stress?'actual-App synthetic font-only 200 percent stress':'actual-App baseline before synthetic font stress',syntheticTextStress:stress,factor:stress?2:1,nativeFontScaleEquivalent:false});}return value;}\n> 440 |   async function openGallery(label){if(!await panel(page).isVisible())await tap(keys.toggle,label+' help',{required:true});await expect(panel(page)).toBeVisible();await tap(keys.quick,label+' gallery',{required:true});await expect(page.locator('[data-booky-gestures]')).toHaveAttribute('open','');await settle();}\n      |                                                                                                                                                                                                                                                                               ^\n  441 |   async function closeForNext(label){if(await panel(page).isVisible()){await tap(keys.close,label,{required:true});await expect(panel(page)).toBeHidden();}}\n  442 |   try{\n  443 |     await page.setViewportSize(portrait);await page.emulateMedia({reducedMotion:'reduce'});await ready(page);if(language==='en'){await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:/^EN$/u}).tap();await ready(page);await expect(page.locator('html')).toHaveAttribute('lang','en');}await actual(page);await stablePose(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await install();cdp=await page.context().newCDPSession(page);await openGallery('portrait baseline');await expect.poll(()=>JSON.parse(fixture.memory.get(BOOKY)??'null')?.visible).toBe(true);await live(page);const prefs=legacy(),scene=await sample(page),model=await character(page);o.initial={preferences:prefs,scene,model:{id:model.model,renderer:model.rendererId,canvasRect:model.rect}};\n    at openGallery (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-review\\a3\\large-text.spec.mjs:440:271)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-review\\a3\\large-text.spec.mjs:443:491"
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/playwright.config.mjs",
+          "sha256": "d6f1ea65c7db18e128e1bdb393b8bc78aec348c875bb0e697e0f43a29a33c7a4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/run.mjs",
+          "sha256": "5e58cfaa4752e5bf575adf2c68cbb031ad562b7c38c2b828c2c36496ecb11d52"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/bind.mjs",
+          "sha256": "b541725772e0d06c2ec9c666517672ceeffb924cf020adf14cfe7bf5c18db6b7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/canonical-fixture.mjs",
+          "sha256": "98e313de4a5a08b91a5c498754cd11080d760bba6ffe5b1fee9d010daa38b064"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/large-text.spec.mjs",
+          "sha256": "9591691f0d2c3f3cc6a0e85b494c7bcdb1f7f3ba357ac15b9c8e75da13343967"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/prefix-provenance.json",
+          "sha256": "f242bf8f4af096abcf93a1f8a7c67b9940d9d33d23a7666270fa48d8c8543b0f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/authorized-source.json",
+          "sha256": "768cfd32f59c9b6a87ae8cb493000393bb1aac456b6223b7121b509496526bf3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/execution-start.json",
+          "sha256": "2b4aff7abc55a4063dd4c71d556dc414ce716b1b79f317f345d7f25f06add799"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/dirty.diff",
+          "sha256": "77f470e2aa0df7d8a5482d03253260606ac25911c0ead228cd1fd96821d4e4fc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/preflight-start.json",
+          "sha256": "e02dfde9b7f7e6e1a53f0ee91630098058b161b40e3e8a91f097c10beaf92fa3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/preflight-result.json",
+          "sha256": "2f5eb9939b2cee0688f8b0ee158d24eb701fa0ed55471b41078bff9d37c8125c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/preflight-stdout.log",
+          "sha256": "cc758a48089765950527049a1b780e04c104e694cc9843549ca74829efa8b9d6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/preparation.json",
+          "sha256": "c61bca6d2899a8757b6388b155405d0df4c5695999f97b2ac5d972f4129dc9a7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/attachments/booky-live-character-source-evidence-35cc1f316fc8fcb85c297e17647a59b76fab81b5.json",
+          "sha256": "224a80e538fdbdcd809b5dca307d5616f0ba8034b57ad4299ed24da802cf5603"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-live-character.json",
+          "sha256": "224a80e538fdbdcd809b5dca307d5616f0ba8034b57ad4299ed24da802cf5603"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/error-context.md",
+          "sha256": "1f8a6e91bfb5e949fe322c0f9789fd1d9b824128c2e374d58e902acb93e2f7bb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/attachments/booky-live-character-source-evidence-58dba77eaac7e09e7cfa631c0485b252f1ccd14c.json",
+          "sha256": "2a666719c03b69c2a96e6f99a73f732e8578369473f50f2cb0f30c3a331df19e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-live-character.json",
+          "sha256": "2a666719c03b69c2a96e6f99a73f732e8578369473f50f2cb0f30c3a331df19e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-baseline.png",
+          "sha256": "a6f2db70334b96f7b161c385c754dbf6ebada04332ce785e66d876761a59ca79"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-help-200.png",
+          "sha256": "bb976cec306d03ce56494629cbd83f4287eb502e4657bb92e630bf84280ee92b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-walk-200.png",
+          "sha256": "c4344fb2c296a24ae01dda476d300ed2765f5c6fb5789b93fb0c748b7a6c8414"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-landscape-help-200.png",
+          "sha256": "4e57d026a613622d55be7c4a3e2b9c7630f241de63b7fe78827d1952e369627f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a3/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-recovery-200.png",
+          "sha256": "d77c2e377a97f6dd3099d7908d1a7dcb46c28f84aba02a164402149a5a27bde0"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a4",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "syntheticFontStress": true,
+      "nativeTextScaleEquivalent": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/execution.json",
+        "sha256": "c78bd6cd85049b86fddc4e735bc1de76886c6adfa31420170e92dc7648f18dbb"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/stdout.log",
+          "sha256": "195dd544c6ecbd258e4f58146c95cb81b9b953d0fc067c993b2ad3e0da02260d"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/stderr.log",
+          "sha256": "fe043e69099bd5a14740566360a3b140fdb2dac30a8f96a33778eae6dbb97b00"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/playwright.json",
+        "sha256": "43e59857cfc6c7851326e871348466a616ec4e712367caec557425538791a3fa"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original a4 diagnostic passed both cases on its exact pre-final source. Subsequent read-only review found a layout feedback risk when normal fonts return: the expanded full-width title increased total header height enough to keep expansion selected. Final runtime selection uses independent action-group height, and final canonical cases add normal-to-expanded-to-normal assertions. Those final changes are validated by the formal six-case run, not by this earlier a4 pass.",
+      "failures": [],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/playwright.config.mjs",
+          "sha256": "d6f1ea65c7db18e128e1bdb393b8bc78aec348c875bb0e697e0f43a29a33c7a4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/run.mjs",
+          "sha256": "5e58cfaa4752e5bf575adf2c68cbb031ad562b7c38c2b828c2c36496ecb11d52"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/bind.mjs",
+          "sha256": "b541725772e0d06c2ec9c666517672ceeffb924cf020adf14cfe7bf5c18db6b7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/canonical-fixture.mjs",
+          "sha256": "98e313de4a5a08b91a5c498754cd11080d760bba6ffe5b1fee9d010daa38b064"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/large-text.spec.mjs",
+          "sha256": "6507cee2be732abb9b82af33d25a78b634f72c5efaa9d88c198c23312b003915"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/prefix-provenance.json",
+          "sha256": "f242bf8f4af096abcf93a1f8a7c67b9940d9d33d23a7666270fa48d8c8543b0f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/authorized-source.json",
+          "sha256": "4c1261b8016ad5c9b814d8b95459275e5eb73c1c8ba73de0b29b52d107b03788"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/execution-start.json",
+          "sha256": "ae3fe4fc14cc66c06c3f777de809ebe0166235ed00c0dbaf521215d2e38dd405"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/dirty.diff",
+          "sha256": "d5c19ee555aaaabf4f722264ff1bdda2019fbb494e4d768bf71c0d4b5be78d29"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/preflight-start.json",
+          "sha256": "b301c8f6a3b23310d9f1b01666ba72a8a51ea373a4f60e6447f0a4a80a33f9c6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/preflight-result.json",
+          "sha256": "350bbc7ca786e572d4b4f84aebf9ece4a7935aff7d4f4b2ed1094e8b0fbf245a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/preflight-stdout.log",
+          "sha256": "cc758a48089765950527049a1b780e04c104e694cc9843549ca74829efa8b9d6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/preparation.json",
+          "sha256": "257d511bcf4141b183b2e4acb84c7674cb0846e1ac478da18a76ede2af525e6d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/attachments/booky-live-character-source-evidence-baaa557e7c2a9f996739265fca6ef46052c61b83.json",
+          "sha256": "7688cdc79cba00cc50580f443bdec798358d7871f050c0b3e055bf64bee9fe10"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-live-character.json",
+          "sha256": "7688cdc79cba00cc50580f443bdec798358d7871f050c0b3e055bf64bee9fe10"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-portrait-baseline.png",
+          "sha256": "bdfc1ed08eb80418d6744b03112dd2126df1fcc4b125f35ea648897e074a0dd1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-portrait-help-200.png",
+          "sha256": "f3a89e89b597340f1890163663ff3ae33e32f2272903c1d36ed960eed2be740d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-portrait-walk-200.png",
+          "sha256": "c900149f520ec7758dd6411502e096bb87d838a962e3473f129ff2f8c40cfca6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-landscape-help-200.png",
+          "sha256": "c13d78e6571f9c4732c1c51015307ca0ca8ad719ab7cec2c179da5462b2ae5e3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-ru/booky-font-stress-ru-recovery-200.png",
+          "sha256": "3bdbb65a81e1da1a224e51d771033d16befe5b12427f68b94879af817b9fcc75"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/attachments/booky-live-character-source-evidence-a1b8cf70650255a7d26d190f9c149ba26e3b294d.json",
+          "sha256": "86ed0e2876aeb08537fd019a879c685956f5c277d8a8422e2aeb9a0c2238bd4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-live-character.json",
+          "sha256": "86ed0e2876aeb08537fd019a879c685956f5c277d8a8422e2aeb9a0c2238bd4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-baseline.png",
+          "sha256": "a6f2db70334b96f7b161c385c754dbf6ebada04332ce785e66d876761a59ca79"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-help-200.png",
+          "sha256": "3c6d42ceccb915a2b83ca628cf41091aafda82828258211806f3fecbb0c42064"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-portrait-walk-200.png",
+          "sha256": "c4344fb2c296a24ae01dda476d300ed2765f5c6fb5789b93fb0c748b7a6c8414"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-landscape-help-200.png",
+          "sha256": "fa2d12e3b1eafe7123900a8745d456a00050702a61abf477a13bfd782171a9b4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-review/a4/artifacts/large-text-Booky-actual-App-font-only-200-percent-stress-en/booky-font-stress-en-recovery-200.png",
+          "sha256": "b8018dc7568e5029395672f1b3fe20edc0b10078af25f9440cf2e682fb121491"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only actual D199 diagnostic executions and their isolated preliminary probe are recorded; prior D198 failure chains are not copied.",
+    "Baseline a1 is an observer-settling issue. Baseline a2 supplies the reproduced browser layout defects. All original failures and original driver/source copies remain preserved.",
+    "The isolated static-HTML probe is separate from actual-App evidence and proves no product fix. All enlargement evidence is scoped synthetic browser stress, not OS Dynamic Type or installed-device acceptance. Final formal checks remain separate."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

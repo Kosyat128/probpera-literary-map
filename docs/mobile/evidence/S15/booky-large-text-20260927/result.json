@@ -1,0 +1,726 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-26T23:51:48.757Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_LARGE_TEXT_SCOPED_VALIDATION",
+  "sourceCommit": "521440d310beed0f5c1f1a9f25ca4597f4485f01",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/entry.json",
+    "sha256": "4b3cd052bde477fb775f7c913a62d770ee1dba11e8f42f1203122c36b9c3e08c"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/checkpoint.mjs",
+    "sha256": "d1718f72a005ef9b7c802cb503e9b9e01a72078a1078012e5f47c83646aaaaa9"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/result.json",
+    "sha256": "23a21d429fe78af05f9294a0e95f30e65c7ff881c5c5a1094a65ed6f20723af2"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/source-manifests/0f5ad00b846f0f7c.json",
+    "sha256": "0f5ad00b846f0f7c383640a845c686e28b174bcba2931e83e1185e18d41f6366",
+    "fileCount": 1654
+  },
+  "sourceCommits": [
+    "521440d310beed0f5c1f1a9f25ca4597f4485f01"
+  ],
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a1"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-large-text-20260927/unit-a1/result.json",
+      "sha256": "1ed202f06a6c787c803c5970402853dc1a577b2d3966374fe370137f7c7edcd5",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-large-text-20260927/unit-a1/execution.json",
+        "sha256": "485a51c750d8ec62d73b0996d53a5904e2881eac117cf535b9e56e6d822445ec"
+      },
+      "tests": {
+        "passed": 35,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-large-text-20260927/unit-a1/vitest.json",
+        "sha256": "203def4b58c7d2f913870c9649a144f931fe4e253703531033d20ca575e376fd"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-large-text-20260927/static-a1/result.json",
+      "sha256": "94c6b050ce77647b01070a571670ad7012d14aac7f8ac490e28fde4015b3c56e",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-large-text-20260927/static-a1/execution.json",
+        "sha256": "59b5e05656b935a7543db7d57fcc38a38e417ed8ad3720526ed1db4ee285a526"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-large-text-20260927/browser-a1/result.json",
+      "sha256": "3c84c309b44f5dea03abd9a1204746230be58914d059710b73f2130df4ecac24",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-large-text-20260927/browser-a1/execution.json",
+        "sha256": "aa37942e8a2857a00b6bdf825df4cd2e1cf3c31561395ba1395fa34891e22849"
+      },
+      "tests": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-large-text-20260927/browser-a1/playwright.json",
+        "sha256": "d9af5e3d12f9b2cb0285e678fdc9c0f923912684156d02a4ebe785f7aac747d9"
+      }
+    }
+  },
+  "earlierAttempts": [],
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/diagnostic-history.json",
+    "sha256": "caaac936c582a57a306925277d4e9a8fda612b1e153e40f7e98cecfb9fadf290"
+  },
+  "unitCount": 35,
+  "unitFiles": [
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookyWalk.test.ts"
+  ],
+  "browserCases": 6,
+  "actualAppCaseCount": 6,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-6a410-mpanion-navigation-space-ru\\booky-live-character.json",
+      "sha256": "00cfd0be11fcca459610e4e670ade81c78b252ebe69d5558f36d675810586fdc",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-6a410-mpanion-navigation-space-ru\\attachments\\booky-live-character-source-evidence-441deeb1483c56d257c5c3e07d896fff7bdae234.json",
+        "sha256": "00cfd0be11fcca459610e4e670ade81c78b252ebe69d5558f36d675810586fdc"
+      },
+      "test": "Booky short landscape companion navigation space ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-6d207-mpanion-navigation-space-en\\booky-live-character.json",
+      "sha256": "e7a724fb9f6ddab8369381327b995d575c713aa0beaada096821a76bf26b723e",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-6d207-mpanion-navigation-space-en\\attachments\\booky-live-character-source-evidence-53b48bc29fcb0c92f6dd9bd488e32888d6b8fb30.json",
+        "sha256": "e7a724fb9f6ddab8369381327b995d575c713aa0beaada096821a76bf26b723e"
+      },
+      "test": "Booky short landscape companion navigation space en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru\\booky-live-character.json",
+      "sha256": "7dddb762b73e3453abc12a53732b0679163deb670f8782256be5e76cfb32e6d8",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru\\attachments\\booky-live-character-source-evidence-d180149bb9cd0467397ee37d02c6178e30824a5d.json",
+        "sha256": "7dddb762b73e3453abc12a53732b0679163deb670f8782256be5e76cfb32e6d8"
+      },
+      "test": "Booky persistent calm movements touch ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-1f52e-ent-calm-movements-touch-en\\booky-live-character.json",
+      "sha256": "da8461c31f35513d68470ed9e1761ec56ba863351f2e613c2802f6cd63c65f7f",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-1f52e-ent-calm-movements-touch-en\\attachments\\booky-live-character-source-evidence-ca9c63bf13ef1051aa0213047795274f372293e5.json",
+        "sha256": "da8461c31f35513d68470ed9e1761ec56ba863351f2e613c2802f6cd63c65f7f"
+      },
+      "test": "Booky persistent calm movements touch en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-ad053--only-200-percent-stress-ru\\booky-live-character.json",
+      "sha256": "60ad5071a092f2daace66ad72430f280c3d5aa8287d52e5169d373d5487a115d",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-ad053--only-200-percent-stress-ru\\attachments\\booky-live-character-source-evidence-53f088ca8656b67de1224166f0001dd5981d591e.json",
+        "sha256": "60ad5071a092f2daace66ad72430f280c3d5aa8287d52e5169d373d5487a115d"
+      },
+      "test": "Booky actual App font-only 200 percent stress ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-35ad3--only-200-percent-stress-en\\booky-live-character.json",
+      "sha256": "64bab1f367354d4401d624e957c9f0baba730ab3cdeca36d08680e91cd1dd893",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-large-text-evidence\\browser-a1\\booky-live-character-Booky-35ad3--only-200-percent-stress-en\\attachments\\booky-live-character-source-evidence-59d649e2d289b97dab332f43db63dfc04dfc8f2d.json",
+        "sha256": "64bab1f367354d4401d624e957c9f0baba730ab3cdeca36d08680e91cd1dd893"
+      },
+      "test": "Booky actual App font-only 200 percent stress en"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "Booky short landscape companion navigation space ru",
+      "scenario": "short-landscape-navigation-space-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "landscapeCompanionClearsAllNavigation": true,
+        "landscapeHeaderControlsReachableByTouch": true,
+        "landscapeLastEditionReachableByTouch": true,
+        "landscapeRailRestoresAfterHide": true,
+        "portraitRailRestoresAfterRotation": true,
+        "landscapeSpacePreservesSceneAndPreferences": true
+      },
+      "observationChecks": {
+        "observation": "landscapeSpace",
+        "checks": [
+          {
+            "name": "open landscape reserves full companion space and reachable header",
+            "pass": true
+          },
+          {
+            "name": "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+            "pass": true
+          },
+          {
+            "name": "explicit hide and portrait rotation restore original rail geometry",
+            "pass": true
+          },
+          {
+            "name": "source scene and preferences remain exact",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky short landscape companion navigation space en",
+      "scenario": "short-landscape-navigation-space-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "landscapeCompanionClearsAllNavigation": true,
+        "landscapeHeaderControlsReachableByTouch": true,
+        "landscapeLastEditionReachableByTouch": true,
+        "landscapeRailRestoresAfterHide": true,
+        "portraitRailRestoresAfterRotation": true,
+        "landscapeSpacePreservesSceneAndPreferences": true
+      },
+      "observationChecks": {
+        "observation": "landscapeSpace",
+        "checks": [
+          {
+            "name": "open landscape reserves full companion space and reachable header",
+            "pass": true
+          },
+          {
+            "name": "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+            "pass": true
+          },
+          {
+            "name": "explicit hide and portrait rotation restore original rail geometry",
+            "pass": true
+          },
+          {
+            "name": "source scene and preferences remain exact",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky persistent calm movements touch ru",
+      "scenario": "persistent-calm-movements-touch-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "calmPreferenceTrustedTouch": true,
+        "calmPreferenceStopsActiveGesture": true,
+        "systemReducedMotionOverridesCalmOff": true,
+        "calmDisableDoesNotReplay": true,
+        "freshGestureAfterCalmDisableAnimates": true,
+        "calmDisablesWalking": true,
+        "calmPersistsAcrossResumeAndReload": true,
+        "calmMalformedReadRecoveryRequiresExplicitTouch": true,
+        "calmPreservesLegacyPreferencesAndCanonicalScene": true
+      },
+      "observationChecks": {
+        "observation": "calmMotion",
+        "checks": [
+          {
+            "name": "default system setting is localized and does not write a preference",
+            "pass": true
+          },
+          {
+            "name": "trusted calm toggle settles an active gesture and preserves its selected pose",
+            "pass": true
+          },
+          {
+            "name": "system reduced motion takes precedence and disabling calm never replays a gesture",
+            "pass": true
+          },
+          {
+            "name": "only a fresh trusted gesture restarts animation after calm is disabled",
+            "pass": true
+          },
+          {
+            "name": "calm disables the actual closed-help walking control without changing saved progress",
+            "pass": true
+          },
+          {
+            "name": "saved calm survives native background resume under normal OS motion",
+            "pass": true
+          },
+          {
+            "name": "saved calm survives a full reload without new or legacy preference writes",
+            "pass": true
+          },
+          {
+            "name": "malformed motion data stays unchanged on retry and recovers only after explicit trusted consent",
+            "pass": true
+          },
+          {
+            "name": "only four explicit motion writes occur and all recorded controls use trusted touch",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky persistent calm movements touch en",
+      "scenario": "persistent-calm-movements-touch-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "calmPreferenceTrustedTouch": true,
+        "calmPreferenceStopsActiveGesture": true,
+        "systemReducedMotionOverridesCalmOff": true,
+        "calmDisableDoesNotReplay": true,
+        "freshGestureAfterCalmDisableAnimates": true,
+        "calmDisablesWalking": true,
+        "calmPersistsAcrossResumeAndReload": true,
+        "calmMalformedReadRecoveryRequiresExplicitTouch": true,
+        "calmPreservesLegacyPreferencesAndCanonicalScene": true
+      },
+      "observationChecks": {
+        "observation": "calmMotion",
+        "checks": [
+          {
+            "name": "default system setting is localized and does not write a preference",
+            "pass": true
+          },
+          {
+            "name": "trusted calm toggle settles an active gesture and preserves its selected pose",
+            "pass": true
+          },
+          {
+            "name": "system reduced motion takes precedence and disabling calm never replays a gesture",
+            "pass": true
+          },
+          {
+            "name": "only a fresh trusted gesture restarts animation after calm is disabled",
+            "pass": true
+          },
+          {
+            "name": "calm disables the actual closed-help walking control without changing saved progress",
+            "pass": true
+          },
+          {
+            "name": "saved calm survives native background resume under normal OS motion",
+            "pass": true
+          },
+          {
+            "name": "saved calm survives a full reload without new or legacy preference writes",
+            "pass": true
+          },
+          {
+            "name": "malformed motion data stays unchanged on retry and recovers only after explicit trusted consent",
+            "pass": true
+          },
+          {
+            "name": "only four explicit motion writes occur and all recorded controls use trusted touch",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky actual App font-only 200 percent stress ru",
+      "scenario": "booky-font-only-200-stress-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "observationsComplete": true,
+        "fontStressExactTwoHundredPercent": true,
+        "fontStressCriticalControlsFitAndRespond": true,
+        "fontStressRecoveryReachableByTouch": true,
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved": true,
+        "fontStressPortraitModelPreserved": true,
+        "fontStressNormalModeRestored": true
+      },
+      "observationChecks": {
+        "observation": "fontStress",
+        "checks": [
+          {
+            "name": "all four font passes reach exactly 200 percent after settling",
+            "pass": true
+          },
+          {
+            "name": "portrait Stop, Close and disabled walking target receive trusted touch",
+            "pass": true
+          },
+          {
+            "name": "short-landscape Stop and Close receive trusted touch",
+            "pass": true
+          },
+          {
+            "name": "Retry and Recover remain reachable under enlarged text",
+            "pass": true
+          },
+          {
+            "name": "critical control text stays within measured button borders",
+            "pass": true
+          },
+          {
+            "name": "font stress preserves legacy preferences and canonical scene",
+            "pass": true
+          },
+          {
+            "name": "portrait scaling preserves the existing Booky model and canvas size",
+            "pass": true
+          },
+          {
+            "name": "expanded text mode returns to compact after font restoration",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky actual App font-only 200 percent stress en",
+      "scenario": "booky-font-only-200-stress-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "observationsComplete": true,
+        "fontStressExactTwoHundredPercent": true,
+        "fontStressCriticalControlsFitAndRespond": true,
+        "fontStressRecoveryReachableByTouch": true,
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved": true,
+        "fontStressPortraitModelPreserved": true,
+        "fontStressNormalModeRestored": true
+      },
+      "observationChecks": {
+        "observation": "fontStress",
+        "checks": [
+          {
+            "name": "all four font passes reach exactly 200 percent after settling",
+            "pass": true
+          },
+          {
+            "name": "portrait Stop, Close and disabled walking target receive trusted touch",
+            "pass": true
+          },
+          {
+            "name": "short-landscape Stop and Close receive trusted touch",
+            "pass": true
+          },
+          {
+            "name": "Retry and Recover remain reachable under enlarged text",
+            "pass": true
+          },
+          {
+            "name": "critical control text stays within measured button borders",
+            "pass": true
+          },
+          {
+            "name": "font stress preserves legacy preferences and canonical scene",
+            "pass": true
+          },
+          {
+            "name": "portrait scaling preserves the existing Booky model and canvas size",
+            "pass": true
+          },
+          {
+            "name": "expanded text mode returns to compact after font restoration",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/visual-review.json",
+    "sha256": "2fe5baa3af441d89dfc7a1922f352d9f8942bba2a5ea0bd8f357c0967a41fd97"
+  },
+  "newPhotoReview": null,
+  "newModelPhotoCount": 0,
+  "retainedModelPhotoReview": null,
+  "historicalModelPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "inspectedImageCount": 10,
+  "totalCapturedImageCount": 22,
+  "visualReviewScope": "Direct review of the explicitly selected final RU/EN Booky synthetic large-text captures, covering visible control labels, card header and body framing, character framing and the selected recovery/gesture states. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "visualReviewLimitations": [
+    "This visual review covers 10 of 22 final captures. It does not claim all retained images were inspected again.",
+    "The enlarged-font browser condition is synthetic and does not establish native OS text scaling or Dynamic Type behavior.",
+    "Static images establish only visible framing and text at their captured scroll positions. They cannot establish trusted-touch activation, focus, scrolling reachability, persistence, recovery readback or source-state preservation; those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1649,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookyPlacement.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "233b692977363379fa7b27dd3f608dee83e8f8c5",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/pwa-a1/result.json",
+    "sha256": "ca059468a354977829ea19e7c11a694c681650c36d1ff5f161c5536f1b8bdd67"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/android-a1/result.json",
+    "sha256": "e8117502fc201c3ce32dc47b5ed583414a50419effd04bb88ab8bc98e0f412d5"
+  },
+  "pwaBuildId": "5c44652e93eee45b28937a638b08edc18ecbdd3047efbc0f1c92d2e2f365770a",
+  "androidBuildId": "8e9782a665b1d5bd7cad65aa7a26ec5168eb4b7ffc48a3599881cf63fabdcf53",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/android-8e9782a6/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "daafbcec14fdb3381cdae2bbfa1cfb054776d3e92110631119208b9ecf0344fa"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/pwa-5c44652e/artifact.json",
+      "sha256": "c2fbd5490dd3c93bef4b45a75f8b8c5c6c6685936c4dd1da8845f66277b7557d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-large-text-evidence/android-8e9782a6/runtime/artifact.json",
+      "sha256": "7a60b4d977ba9834c27dd37aa2e1c9f2979a3405e0e27377d8f33330506a9dcc"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-large-text-20260927/pwa-a1/strict-audit.json",
+      "sha256": "a06ce39c88771bdc75bf511284c56e3e60883cefe5104a2ee7494b10dde1abcf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-large-text-20260927/android-a1/native-artifact-audit.json",
+      "sha256": "26142e172a2dd217a2122454b8ab771c7e59950621a0ff8b21d98624b90aca94"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-large-text-20260927/android-a1/android-dev-apk-verification.json",
+      "sha256": "4d937bb33311ab7b048d673dc02ed9c78d71e0a0b17ec3070ec7c7baed74da4e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-large-text-20260927/android-a1/build-run.json",
+      "sha256": "38d37edf7f018ea0461b0a59c972f61abbd20034600c0320b27fed431fa304bd"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/build-baseline.json",
+    "sha256": "f308dceb22607548b92a5938b8238bbec864baccaf6b85b14ee89f31f94e24da"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/pwa-a1/copy-verification.json",
+    "sha256": "bc059cef679dc802f11cc70c3f3a76b053db5c4d0752a176bdeb394c39165a14"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/pwa-a1/playwright.json",
+    "sha256": "d8bd7423a042b2f6bf0c31f761ad90f2fc826c12dfed7b0a6a45249799df35b6"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "6bec9a6415ec60f4724e2af782b068e246fe9b55",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/result.json",
+      "sha256": "23a21d429fe78af05f9294a0e95f30e65c7ff881c5c5a1094a65ed6f20723af2"
+    },
+    "unitCount": 422,
+    "browserCases": 6,
+    "allPriorSelectedCasesRerun": false,
+    "priorSelectedBrowserCaseCount": 6,
+    "currentSelectedBrowserCaseCount": 6,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+      "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+    },
+    "photosHistoricalOnly": true,
+    "photosClaimCurrentRenderer": false
+  },
+  "criteriaUpdated": [
+    "PLANETKA-002",
+    "A11Y-003"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-002",
+    "S04.A11Y-003",
+    "S23.A11Y-003"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD199Recorded": true,
+  "nextAction": "Continue with explicit Booky graphics recovery: after permanent renderer fallback, offer a localized trusted-touch action that restores the decorative 3D avatar without hiding the current help card. Preserve adult context, Calm movements, gestures, saved progress and canonical globe ownership. Read-only analysis and an unapplied external draft are available; no D200 runtime change is included in this checkpoint. Preserve the validated synthetic large-text reflow and automatic WebView text scaling. Full journey integration remains deferred. S03.acceptance remains first unresolved; native OS large-text behavior, installed-device, full accessibility and stage/release acceptance remain open.",
+  "limitations": [
+    "Fresh browser evidence covers two selected RU/EN font-only 200 percent synthetic-stress cases and four retained calm-motion and short-landscape navigation-space cases. The two previous standalone gesture-quick-access cases are not rerun separately; new stress cases exercise the tested quick-access path. Broader suites retain their original source attribution.",
+    "Font-only 200 percent enlargement is a controlled browser stress condition. It is not equivalent to OS Dynamic Type or installed Android WebView text scaling. Automatic WebView scaling remains unchanged; no duplicate font-scale bridge is added.",
+    "Only the focused placement and walking unit files are freshly rerun. The earlier 422 storage, port, model and controller cases remain historical evidence and are not claimed as freshly rerun here.",
+    "Booky model geometry, animation definitions, renderer policy and saved-motion implementation remain unchanged from D198. Three D193 standalone photos remain historical evidence for their original renderer; current-model visual claims use selected actual-App screenshots.",
+    "Reflow claims are limited to the configured synthetic font sizes, phone viewports and tested control/card states. The help card remains an ordinary overlay. No universal layout, native OS large-text behavior, installed-device, full accessibility, performance, art, stage or release acceptance is claimed.",
+    "Only S15.PLANETKA-002, S04.A11Y-003 and S23.A11Y-003 receive scoped evidence references. All requirement and criterion statuses stay unchanged, including global A11Y-003 OPEN. S07/S25/S39 large-text criteria are not advanced or claimed by this limited Booky evidence.",
+    "Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved. All requirement and stage statuses remain unchanged.",
+    "This visual review covers 10 of 22 final captures. It does not claim all retained images were inspected again.",
+    "The enlarged-font browser condition is synthetic and does not establish native OS text scaling or Dynamic Type behavior.",
+    "Static images establish only visible framing and text at their captured scroll positions. They cannot establish trusted-touch activation, focus, scrolling reachability, persistence, recovery readback or source-state preservation; those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "bookyLargeTextImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

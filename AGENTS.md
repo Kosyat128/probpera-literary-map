@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-large-text-20260927:begin -->
+Latest source 521440d3: bounded Booky control/card reflow addresses the reproduced font-only 200 percent synthetic browser stress. Selected actual-App checks cover the configured RU/EN enlarged-text states with retained calm-motion and short-landscape navigation cases. Native OS text scaling and Dynamic Type equivalence are not claimed; Android WebView automatic scaling remains unchanged. Model, animation and renderer inputs remain unchanged from D198; older standalone model photos remain historical evidence only. Scoped references cover S15.PLANETKA-002, S04.A11Y-003 and S23.A11Y-003 with all statuses and acceptance gates unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-large-text-20260927/result.json. D199. 35 unit cases and 6 selected browser cases; 22 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-large-text-20260927:end -->
+
 <!-- s15-booky-calm-motion-20260927:begin -->
 Latest source 6bec9a64: Книжулик / Mr. Booky has an independent saved Calm movements setting. Calm choice, system reduced motion or an unread preference keeps Booky still. Selected actual-App checks cover trusted-touch activation, OS precedence, no automatic replay, explicit fresh gestures, disabled walking, persistence through resume/reload, malformed-read retry without writing and deliberate calm recovery with readback; retained cases cover quick gesture access and short-landscape navigation space. All fifteen gestures, Surprise, Stop and the existing adult preference schema remain available. Model geometry and animation definitions are unchanged, but renderer motion policy changed; D193 photos remain historical evidence only. This is scoped Booky behavior, not full sensory quiet mode or A11Y-004 acceptance. Claims remain limited to tested sizes and states; acceptance statuses are unchanged.
 

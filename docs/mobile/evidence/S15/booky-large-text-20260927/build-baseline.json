@@ -1,0 +1,15 @@
+{
+  "checkpoint": "233b692977363379fa7b27dd3f608dee83e8f8c5",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/pwa-a1/result.json",
+    "sha256": "40c50defca2718d0ba36463e0bad4bd5f80eb39b9fabeb46a139b5e65664df2d",
+    "buildId": "74dddc29ef15ae3cf46f97e0748619c9f7139e6480b43ef8229f78a429789cad",
+    "sourceCommit": "6bec9a6415ec60f4724e2af782b068e246fe9b55"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/android-a1/result.json",
+    "sha256": "de5c47a5de087d4a51d4195fba726141fe5c68fb6aca6fd0032424daf22527e4",
+    "buildId": "600d0b390e284421d569cf08f4349aa438766fe51623153460c96304ffd8d063",
+    "sourceCommit": "6bec9a6415ec60f4724e2af782b068e246fe9b55"
+  }
+}

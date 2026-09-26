@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "description": "Bounded Booky reflow addresses reproduced control overflow and recovery-control reachability under a controlled font-only 200 percent synthetic browser stress. Measured text and action-group geometry selects an expanded title/actions layout and restores the compact layout when fonts return to normal; available card height accounts for the measured heading. Existing automatic Android WebView text scaling is preserved; no duplicate font-scale bridge is added. Selected RU/EN actual-App cases cover enlarged control text, trusted critical actions, recovery, exact two-times fonts, normal-mode restoration and source-state preservation, alongside retained Calm movements and short-landscape navigation cases. Claims remain scoped to measured browser behavior and do not establish native OS Dynamic Type, installed-device or full A11Y-003 acceptance.",
+  "changedPaths": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookyPlacement.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookyWalk.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedUnitTests": 35,
+  "expectedBrowserTests": 6,
+  "expectedImages": 22,
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "9451573b068146518b02fd43b96f77d549848f0517c93b185567e837d942c0b2"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "190cdfb93491afd8badf387418c8cec502b26ee3ab4dd90c568b1f5fa93618c1"
+    },
+    {
+      "path": "src/host/bookyPlacement.test.ts",
+      "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+    },
+    {
+      "path": "src/host/bookyPlacement.ts",
+      "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "c635031670e3bba11476a71dec68168ec7f99a2a02e30d70a5ee9a08d18804bf"
+    }
+  ],
+  "requiredCaptureFlags": [
+    {
+      "scenario": "short-landscape-navigation-space-ru",
+      "flags": [
+        "landscapeCompanionClearsAllNavigation",
+        "landscapeHeaderControlsReachableByTouch",
+        "landscapeLastEditionReachableByTouch",
+        "landscapeRailRestoresAfterHide",
+        "portraitRailRestoresAfterRotation",
+        "landscapeSpacePreservesSceneAndPreferences"
+      ]
+    },
+    {
+      "scenario": "short-landscape-navigation-space-en",
+      "flags": [
+        "landscapeCompanionClearsAllNavigation",
+        "landscapeHeaderControlsReachableByTouch",
+        "landscapeLastEditionReachableByTouch",
+        "landscapeRailRestoresAfterHide",
+        "portraitRailRestoresAfterRotation",
+        "landscapeSpacePreservesSceneAndPreferences"
+      ]
+    },
+    {
+      "scenario": "persistent-calm-movements-touch-ru",
+      "flags": [
+        "calmPreferenceTrustedTouch",
+        "calmPreferenceStopsActiveGesture",
+        "systemReducedMotionOverridesCalmOff",
+        "calmDisableDoesNotReplay",
+        "freshGestureAfterCalmDisableAnimates",
+        "calmDisablesWalking",
+        "calmPersistsAcrossResumeAndReload",
+        "calmPreservesLegacyPreferencesAndCanonicalScene",
+        "calmMalformedReadRecoveryRequiresExplicitTouch"
+      ]
+    },
+    {
+      "scenario": "persistent-calm-movements-touch-en",
+      "flags": [
+        "calmPreferenceTrustedTouch",
+        "calmPreferenceStopsActiveGesture",
+        "systemReducedMotionOverridesCalmOff",
+        "calmDisableDoesNotReplay",
+        "freshGestureAfterCalmDisableAnimates",
+        "calmDisablesWalking",
+        "calmPersistsAcrossResumeAndReload",
+        "calmPreservesLegacyPreferencesAndCanonicalScene",
+        "calmMalformedReadRecoveryRequiresExplicitTouch"
+      ]
+    },
+    {
+      "scenario": "booky-font-only-200-stress-ru",
+      "flags": [
+        "fontStressExactTwoHundredPercent",
+        "fontStressCriticalControlsFitAndRespond",
+        "fontStressRecoveryReachableByTouch",
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved",
+        "fontStressPortraitModelPreserved",
+        "fontStressNormalModeRestored"
+      ]
+    },
+    {
+      "scenario": "booky-font-only-200-stress-en",
+      "flags": [
+        "fontStressExactTwoHundredPercent",
+        "fontStressCriticalControlsFitAndRespond",
+        "fontStressRecoveryReachableByTouch",
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved",
+        "fontStressPortraitModelPreserved",
+        "fontStressNormalModeRestored"
+      ]
+    }
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "short-landscape-navigation-space-ru",
+      "observation": "landscapeSpace",
+      "checks": [
+        "open landscape reserves full companion space and reachable header",
+        "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+        "explicit hide and portrait rotation restore original rail geometry",
+        "source scene and preferences remain exact"
+      ]
+    },
+    {
+      "scenario": "short-landscape-navigation-space-en",
+      "observation": "landscapeSpace",
+      "checks": [
+        "open landscape reserves full companion space and reachable header",
+        "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+        "explicit hide and portrait rotation restore original rail geometry",
+        "source scene and preferences remain exact"
+      ]
+    },
+    {
+      "scenario": "persistent-calm-movements-touch-ru",
+      "observation": "calmMotion",
+      "checks": [
+        "default system setting is localized and does not write a preference",
+        "trusted calm toggle settles an active gesture and preserves its selected pose",
+        "system reduced motion takes precedence and disabling calm never replays a gesture",
+        "only a fresh trusted gesture restarts animation after calm is disabled",
+        "calm disables the actual closed-help walking control without changing saved progress",
+        "saved calm survives native background resume under normal OS motion",
+        "saved calm survives a full reload without new or legacy preference writes",
+        "malformed motion data stays unchanged on retry and recovers only after explicit trusted consent",
+        "only four explicit motion writes occur and all recorded controls use trusted touch"
+      ]
+    },
+    {
+      "scenario": "persistent-calm-movements-touch-en",
+      "observation": "calmMotion",
+      "checks": [
+        "default system setting is localized and does not write a preference",
+        "trusted calm toggle settles an active gesture and preserves its selected pose",
+        "system reduced motion takes precedence and disabling calm never replays a gesture",
+        "only a fresh trusted gesture restarts animation after calm is disabled",
+        "calm disables the actual closed-help walking control without changing saved progress",
+        "saved calm survives native background resume under normal OS motion",
+        "saved calm survives a full reload without new or legacy preference writes",
+        "malformed motion data stays unchanged on retry and recovers only after explicit trusted consent",
+        "only four explicit motion writes occur and all recorded controls use trusted touch"
+      ]
+    },
+    {
+      "scenario": "booky-font-only-200-stress-ru",
+      "observation": "fontStress",
+      "checks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ]
+    },
+    {
+      "scenario": "booky-font-only-200-stress-en",
+      "observation": "fontStress",
+      "checks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ]
+    }
+  ],
+  "requiredVisualFilenames": [
+    "booky-font-stress-ru-portrait-baseline.png",
+    "booky-font-stress-ru-portrait-help-200.png",
+    "booky-font-stress-ru-portrait-walk-200.png",
+    "booky-font-stress-ru-landscape-help-200.png",
+    "booky-font-stress-ru-recovery-200.png",
+    "booky-font-stress-en-portrait-baseline.png",
+    "booky-font-stress-en-portrait-help-200.png",
+    "booky-font-stress-en-portrait-walk-200.png",
+    "booky-font-stress-en-landscape-help-200.png",
+    "booky-font-stress-en-recovery-200.png"
+  ],
+  "browserTestTitles": [
+    "Booky short landscape companion navigation space ru",
+    "Booky short landscape companion navigation space en",
+    "Booky persistent calm movements touch ru",
+    "Booky persistent calm movements touch en",
+    "Booky actual App font-only 200 percent stress ru",
+    "Booky actual App font-only 200 percent stress en"
+  ],
+  "retainedCaseCaptureSubtotal": 12,
+  "requireDiagnosticHistory": true,
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-002",
+    "S04.A11Y-003",
+    "S23.A11Y-003"
+  ],
+  "requirementEvidenceTargets": [
+    "PLANETKA-002",
+    "A11Y-003"
+  ],
+  "requiredCaptureValues": [
+    {
+      "scenario": "booky-font-only-200-stress-ru",
+      "values": {
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "fontStressFindings": 0
+      }
+    },
+    {
+      "scenario": "booky-font-only-200-stress-en",
+      "values": {
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "fontStressFindings": 0
+      }
+    }
+  ]
+}
