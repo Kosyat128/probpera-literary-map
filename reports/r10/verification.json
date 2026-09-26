@@ -1,8 +1,8 @@
 {
-  "checkedAt": "2026-09-26T19:39:57.879Z",
+  "checkedAt": "2026-09-26T20:40:31.587Z",
   "scope": "local implementation, source HTTP and browser verification; no production acceptance",
   "sourceCommit": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
-  "workingTreeFingerprint": "99e026b079f457998bdafd194182f75388f0be8d4c1941e28ed7fb66acdbea10",
+  "workingTreeFingerprint": "0df152411f1fa5ddec6ba4398e942f3b0681b790ddd56db492e12f724c68e6cc",
   "inputs": {
     ".github/workflows/publish-literary-news.yml": "c918aeb43f7deb7bc0abe259efcacd3b08a2a8235d95150839fa62557bdfa6b1",
     ".github/workflows/refresh-literary-news.yml": "e0b47299aa421973e0f1bf4fca82f85bf36c1a80fd3f8da135489eaf8fb70f0e",
@@ -45,7 +45,7 @@
     "scripts/export-literary-news-fallback.mjs": "c250a14f9b8d724a7c2a9496205e5d7689b3b5b2ec718c122e36c956b97f6916",
     "scripts/finalize-literary-news-sources.mjs": "16afdf0de1c94de307a128b50e0511b698bc094e31cae3ae82153363a155ba7b",
     "scripts/governance/calendar-reviewed-precision.r10.json": "2c6a129cc9c10a245983373d5fce4a9e7cba7364462f20e71a3e6f432fd7ee2b",
-    "scripts/governance/r10-forward-delta-20260926.json": "e64ff13eec38f4bcce3dfc8485e27e062cf735d0670e21edfbb1dc394a3712b7",
+    "scripts/governance/r10-forward-delta-20260926.json": "28f3e068ab84932f917dcea4e0a86974a9546f9b6a70c7b8bc86819ef219d748",
     "scripts/lib/literary-news-feed.mjs": "9c44f8f1902caeddad69b431d906bbd881752c509b93cc24e6b7d46984cdc13d",
     "scripts/lib/literary-news-feed.node-test.mjs": "07a2e54307074b3d529af27937ba683fc73f103373202aa64085ee009b0cad24",
     "scripts/lib/literary-news-ingestion.mjs": "a2c726dfc89c765a6a7c58d5945659857ff3e4879d74446d8bd6dee1b914db60",
@@ -83,7 +83,7 @@
     "scripts/lib/reviewed-premium-title-evidence.test.mjs": "ea902b9d092b38330261019c714affd28ff7408a50a1a278a3ae5f9dd092004f",
     "scripts/lib/reviewed-r10-delta.d.mts": "3fcedd98116f14294170d76e6addd4a7bf70760b6b0a0de46768b3b40dae0fa6",
     "scripts/lib/reviewed-r10-delta.mjs": "638fa25fb62c8c5d79c07d88d3ff711dc8ce50529531f0b441379b6bd77e77de",
-    "scripts/lib/reviewed-r10-delta.test.mjs": "ea5e266e47c614ff3d83c59e89ae1d6cf08d615b4ce7fbe67c575fd806115df8",
+    "scripts/lib/reviewed-r10-delta.test.mjs": "352099b86aa2a8711fa7f7bbed510d5e2934c5501df754d93efcd1d359c8cb0d",
     "scripts/lib/reviewed-r49n-package.test.mjs": "ed189d31cfe31694f2e174883667de72b71ac44dd1c3a324e03b6fda5b87f133",
     "scripts/lib/reviewed-reference-release.test.mjs": "7647cec118083dc002a5609a141c85ffdc5ba65f88941641a86299b5de8df451",
     "scripts/lib/stage5-content-data-lock.test.mjs": "bb4f119a8e6d8d1aece5e30b8e5a5809019ae500caf681b94b8bdc0d3904460a",
@@ -126,14 +126,16 @@
     "src/utils/headerArticleLoader.ts": "f10ea3eb242054be0963857fb229224ec83baa5a7d848ff17ab7bb7c3c660a91",
     "src/utils/headerArticleSelection.test.ts": "c3c400be1d0624bae57ab1ec69eba6a450df88371db7f55aa6fd3fab893ed4f1",
     "src/utils/headerArticleSelection.ts": "6256afd2fb19757dc78b5f533ebd4e2dfb71aed6d7db2204ac906549e4b42411",
-    "supabase/migrations/20260926_literary_news_runtime_cas.sql": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402"
+    "supabase/migrations/20260926_literary_news_runtime_cas.sql": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402",
+    "tests/e2e/header-hero-polish.spec.mjs": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda"
   },
   "fullSuite": {
-    "passed": 3754,
+    "passed": 3755,
     "failed": 0,
     "pending": 11,
     "suiteFailures": 0,
-    "report": "reports/r10/tests-complete.json",
+    "report": "reports/r10/tests-ci-final.json",
+    "command": "vitest run --configLoader runner --maxWorkers=4; exact checkout safe.directory scoped to this process",
     "skipped": [
       {
         "file": "database/article-publication-permissions.integration.test.mjs",
@@ -233,7 +235,8 @@
     "calendar": "reports/r10/calendar/browser-check.json",
     "onsiteImages": "reports/r10/publication/article-thumbnails.json",
     "socialQuality": "reports/r10/social/quality/verification.json",
-    "socialMedia": "reports/r10/social/MEDIA_Q.md"
+    "socialMedia": "reports/r10/social/MEDIA_Q.md",
+    "headerCIContract": "reports/r10/ci-contract-validation.json"
   },
   "sourceRuntime": {
     "total": 108,
@@ -246,6 +249,66 @@
   "deployed": false,
   "configuredDestinations": 0,
   "delivered": 0,
-  "requiredRemoteCI": "not_yet_complete",
-  "humanReview": false
+  "requiredRemoteCI": "pending_final_commit_verify",
+  "humanReview": false,
+  "originalFullSuite": {
+    "passed": 3754,
+    "failed": 0,
+    "pending": 11,
+    "suiteFailures": 0,
+    "report": "reports/r10/tests-complete.json",
+    "skipped": [
+      {
+        "file": "database/article-publication-permissions.integration.test.mjs",
+        "test": "article publication PostgreSQL permissions reproduces both old permission failures and preserves atomic, role-bound publication after the fix"
+      },
+      {
+        "file": "database/article-rls-integration.test.mjs",
+        "test": "article RLS integration contract executes staff INSERT ... RETURNING and keeps drafts private"
+      },
+      {
+        "file": "database/atomic-article-bundle.integration.test.mjs",
+        "test": "atomic article bundle PostgreSQL contract commits Russian and English together and rolls every side effect back on failure"
+      },
+      {
+        "file": "database/book-evidence-v2-registry-rotation.integration.test.mjs",
+        "test": "forward Evidence V2 registry SQL boundary executes the exact forward migration twice and tests stale snapshots, prior-public coverage, rollback, enforcement and idempotency in PostgreSQL"
+      },
+      {
+        "file": "database/book-evidence-v2-registry-transport.integration.test.mjs",
+        "test": "registry JavaScript/PostgreSQL evidence transport binds actual JSONB bytes and JavaScript-generated reference and coverage payloads"
+      },
+      {
+        "file": "database/literary-archive-editorial-references.integration.test.mjs",
+        "test": "atomic editorial reference initialization executes replay36/37/38, exact proof gates, preservation, rollback and full-scale needed references"
+      },
+      {
+        "file": "database/literary-archive-native-commit.integration.test.mjs",
+        "test": "native archive commit transaction transport executes real psql parameters, role isolation, retry, rollback and restored session settings"
+      },
+      {
+        "file": "database/literary-archive-native-postflight.integration.test.mjs",
+        "test": "native archive read-only PostgreSQL boundary executes the real published assertion, enforces read-only service context and rejects content or child drift"
+      },
+      {
+        "file": "database/literary-translation-draft-storage.integration.test.mjs",
+        "test": "short literary translation draft storage stores all exact prepared translations and rejects invalid text, false reviews, promotion and unknown schemas"
+      },
+      {
+        "file": "database/literary-work-evidence-v2-postgres.integration.test.mjs",
+        "test": "literary-work Evidence V2 PostgreSQL grammar compiles the exact function with check_function_bodies and rolls it back"
+      },
+      {
+        "file": "database/wells-editorial-evidence-repair.integration.test.mjs",
+        "test": "reviewed Wells editorial repair executes the reviewed packet through the real attester with rollback, preservation, idempotence and origin guards"
+      }
+    ]
+  },
+  "governanceFollowup": {
+    "report": "reports/r10/governance/ci-followup-validation.json",
+    "historicalPinsChanged": false,
+    "productionUIChanged": false,
+    "paths": 18,
+    "fragments": 34
+  }
 }

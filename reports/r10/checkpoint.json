@@ -35,8 +35,8 @@
     }
   ],
   "exact_next_step": "Review the prepared branch and required verify result; resolve the single listed connection/release/history prerequisites. Keep sender off. Complete destination setup/native acceptance and the operational restore drill; preserve conditional identity limits before claiming every applicable archive criterion. Do not refetch the seven accepted content batches or reset cumulative baselines.",
-  "updatedAt": "2026-09-26T19:39:57.879Z",
-  "workingTreeFingerprint": "99e026b079f457998bdafd194182f75388f0be8d4c1941e28ed7fb66acdbea10",
+  "updatedAt": "2026-09-26T20:40:31.587Z",
+  "workingTreeFingerprint": "0df152411f1fa5ddec6ba4398e942f3b0681b790ddd56db492e12f724c68e6cc",
   "acceptedBatches": [
     {
       "id": "r10-01",
@@ -131,7 +131,10 @@
       "confirmedReference": "User supplied the same final news-panel screenshot and repeated: Изображение на уровне главного текста без белых полос.",
       "constraints": "Compact square at the headline level; image fills the square without white bands on any side.",
       "referenceAndDeliveredScreenshotPixelsIdentical": true,
-      "referenceDimensions": [509, 862],
+      "referenceDimensions": [
+        509,
+        862
+      ],
       "referenceRgbaSha256": "106f266904355b474c422b02aacc1b9ad17b0914f1e6eb06656ce02eb2c9147d",
       "date": "2026-09-26"
     },
@@ -148,5 +151,18 @@
       "date": "2026-09-26",
       "separateUserAcceptance": true
     }
-  ]
+  ],
+  "ciFollowup": {
+    "reason": "The accepted full-width showcase changes an old browser contract; historical checks must retain the prior test bytes.",
+    "solution": "One exact bounded R10 reversal for the showcase test; all prior manifests, hashes and adapters unchanged.",
+    "validation": {
+      "fullSuite": "reports/r10/tests-ci-final.json",
+      "passed": 3755,
+      "failed": 0,
+      "pending": 11,
+      "headerBrowserTests": 14,
+      "independentReview": "passed"
+    },
+    "release": "Required verify must pass for the next exact commit; visual acceptance does not enable social delivery."
+  }
 }

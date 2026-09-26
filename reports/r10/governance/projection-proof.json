@@ -1,6 +1,6 @@
 {
   "baselineSourceCommitSha": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
-  "manifestSha256": "555da30ee64c534b4dd2b4a73b1da994f73e0ac4eeb4669282ad2c00be92b33b",
+  "manifestSha256": "0338172f956f2a3e8f0f0a5b58b69dd08ee6f4e9b98232b8b07f6b3786ad5d5d",
   "historicalPinsChanged": false,
   "humanReview": false,
   "proof": [
@@ -122,6 +122,28 @@
       "afterSha256Lf": "7647cec118083dc002a5609a141c85ffdc5ba65f88941641a86299b5de8df451",
       "restoredSha256Lf": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6",
       "matches": true
+    },
+    {
+      "path": "tests/e2e/header-hero-polish.spec.mjs",
+      "beforeSha256Lf": "2d5d8511b546aa47ce35453664659cf6ffa0cbe6b5628379c6e941a4455a2b92",
+      "afterSha256Lf": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda",
+      "restoredSha256Lf": "2d5d8511b546aa47ce35453664659cf6ffa0cbe6b5628379c6e941a4455a2b92",
+      "matches": true
     }
-  ]
+  ],
+  "additions": [
+    {
+      "path": "src/data/countries/writerDatePatches.ts",
+      "sha256Lf": "9b83050583771229857f4f6af165852e4099fd71908c34566153369a3b637024"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10.json",
+      "sha256Lf": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080"
+    }
+  ],
+  "followup": {
+    "checkedAt": "2026-09-26T20:34:20.778Z",
+    "reason": "CI exposed the missing exact R10 reverse mapping for the owner-confirmed full-width showcase browser contract.",
+    "authorization": "R10 workpacks/50_SHOWCASE.md:91-93 explicitly requires preserving historical hashes and recording a new delta."
+  }
 }

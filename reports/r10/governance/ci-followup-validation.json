@@ -1,0 +1,92 @@
+{
+  "checkedAt": "2026-09-26T20:40:31.587Z",
+  "firstCI": {
+    "run": 36266950424,
+    "conclusion": "failure",
+    "cause": "Pre-R10 browser expectation for no outer scroll/fixed 16:9."
+  },
+  "secondCI": {
+    "run": 36269552919,
+    "conclusion": "failure",
+    "failedTests": 4,
+    "passedTests": 3761,
+    "cause": "Missing exact reverse mapping for the updated showcase test; browser matrix did not run."
+  },
+  "localEnvironmentAttempt": {
+    "passed": 3681,
+    "failed": 14,
+    "pending": 11,
+    "suiteFailures": 12,
+    "cause": "Elevated Windows process lacked checkout-specific safe.directory; concurrent audit checks also hit resource timeouts.",
+    "correction": "Set safe.directory only for this exact process and use four workers; no global Git config, production code, timeouts or assertions changed."
+  },
+  "independentReview": {
+    "reviewer": "calendar_dates agent",
+    "human": false,
+    "status": "passed",
+    "oldPacketUnchangedApartFromOneAppendedMapping": true,
+    "exactBaselineFiles": 18,
+    "rejectedMutationDeletionDuplicationCases": 102,
+    "preservedUnrelatedTails": 18,
+    "unchangedHistoricalManifestsAndAdapters": 10
+  },
+  "fullSuite": {
+    "passed": 3755,
+    "failed": 0,
+    "pending": 11,
+    "suiteFailures": 0,
+    "report": "reports/r10/tests-ci-final.json",
+    "command": "vitest run --configLoader runner --maxWorkers=4; exact checkout safe.directory scoped to this process",
+    "skipped": [
+      {
+        "file": "database/article-publication-permissions.integration.test.mjs",
+        "test": "article publication PostgreSQL permissions reproduces both old permission failures and preserves atomic, role-bound publication after the fix"
+      },
+      {
+        "file": "database/article-rls-integration.test.mjs",
+        "test": "article RLS integration contract executes staff INSERT ... RETURNING and keeps drafts private"
+      },
+      {
+        "file": "database/atomic-article-bundle.integration.test.mjs",
+        "test": "atomic article bundle PostgreSQL contract commits Russian and English together and rolls every side effect back on failure"
+      },
+      {
+        "file": "database/book-evidence-v2-registry-rotation.integration.test.mjs",
+        "test": "forward Evidence V2 registry SQL boundary executes the exact forward migration twice and tests stale snapshots, prior-public coverage, rollback, enforcement and idempotency in PostgreSQL"
+      },
+      {
+        "file": "database/book-evidence-v2-registry-transport.integration.test.mjs",
+        "test": "registry JavaScript/PostgreSQL evidence transport binds actual JSONB bytes and JavaScript-generated reference and coverage payloads"
+      },
+      {
+        "file": "database/literary-archive-editorial-references.integration.test.mjs",
+        "test": "atomic editorial reference initialization executes replay36/37/38, exact proof gates, preservation, rollback and full-scale needed references"
+      },
+      {
+        "file": "database/literary-archive-native-commit.integration.test.mjs",
+        "test": "native archive commit transaction transport executes real psql parameters, role isolation, retry, rollback and restored session settings"
+      },
+      {
+        "file": "database/literary-archive-native-postflight.integration.test.mjs",
+        "test": "native archive read-only PostgreSQL boundary executes the real published assertion, enforces read-only service context and rejects content or child drift"
+      },
+      {
+        "file": "database/literary-translation-draft-storage.integration.test.mjs",
+        "test": "short literary translation draft storage stores all exact prepared translations and rejects invalid text, false reviews, promotion and unknown schemas"
+      },
+      {
+        "file": "database/literary-work-evidence-v2-postgres.integration.test.mjs",
+        "test": "literary-work Evidence V2 PostgreSQL grammar compiles the exact function with check_function_bodies and rolls it back"
+      },
+      {
+        "file": "database/wells-editorial-evidence-repair.integration.test.mjs",
+        "test": "reviewed Wells editorial repair executes the reviewed packet through the real attester with rollback, preservation, idempotence and origin guards"
+      }
+    ]
+  },
+  "manifestSha256": "0338172f956f2a3e8f0f0a5b58b69dd08ee6f4e9b98232b8b07f6b3786ad5d5d",
+  "headerTestSha256": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda",
+  "acceptedDesignChanged": false,
+  "remoteCI": "pending final commit",
+  "productionDeployed": false
+}
