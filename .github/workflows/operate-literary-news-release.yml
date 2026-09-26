@@ -1,0 +1,115 @@
+name: Literary news Telegram release operator
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: Exact current main commit SHA
+        required: true
+        type: string
+      action:
+        description: One bounded operator action for verified Telegram destination
+        required: true
+        type: choice
+        options: [inspect, enable-canary, send-canary, pause, promote]
+        default: inspect
+      expected_control_id:
+        description: Exact durable control row ID from inspect; 0 only when absent
+        required: true
+        default: "0"
+        type: string
+      history_sha256:
+        description: Exact code-owned observed public history digest from inspect
+        required: false
+        type: string
+      canary_news_id:
+        description: Exact reviewed canary identity
+        required: true
+        default: kokila-jason-reynolds-lamplighters-son-acquisition-2026
+        type: string
+      payload_sha256:
+        description: Exact native prepared payload SHA-256 from inspect
+        required: false
+        type: string
+      confirmation:
+        description: "Type action exactly: inspect, enable-canary, send-canary, pause or promote"
+        required: true
+        type: string
+      expected_canary_remote_id:
+        description: Exact accepted Telegram message ID, required for promotion
+        required: false
+        type: string
+      native_observation_url:
+        description: Exact https://t.me/probbaperra/message_id reviewed by the operator
+        required: false
+        type: string
+      native_viewed:
+        description: Operator confirms checking the actual native canary appearance
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+concurrency:
+  group: literary-agenda-delivery
+  cancel-in-progress: false
+jobs:
+  telegram-operator:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: production
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Validate immutable invocation
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          ACTION: ${{ inputs.action }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" && "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$ACTION" == "$CONFIRMATION" ]]
+          case "$ACTION" in inspect|enable-canary|send-canary|pause|promote) ;; *) exit 1 ;; esac
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Recheck main and perform one bounded action
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          ACTION: ${{ inputs.action }}
+          EXPECTED_CONTROL_ID: ${{ inputs.expected_control_id }}
+          HISTORY_SHA256: ${{ inputs.history_sha256 }}
+          CANARY_NEWS_ID: ${{ inputs.canary_news_id }}
+          PAYLOAD_SHA256: ${{ inputs.payload_sha256 }}
+          EXPECTED_CANARY_REMOTE_ID: ${{ inputs.expected_canary_remote_id }}
+          NATIVE_OBSERVATION_URL: ${{ inputs.native_observation_url }}
+          NATIVE_VIEWED: ${{ inputs.native_viewed }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
+          node scripts/operate-literary-news-release.mjs \
+            --action "$ACTION" --platform telegram --repository-sha "$EXPECTED_MAIN_SHA" \
+            --expected-control-id "$EXPECTED_CONTROL_ID" --history-sha256 "$HISTORY_SHA256" \
+            --canary-news-id "$CANARY_NEWS_ID" --payload-sha256 "$PAYLOAD_SHA256" \
+            --expected-canary-remote-id "$EXPECTED_CANARY_REMOTE_ID" \
+            --native-observation-url "$NATIVE_OBSERVATION_URL" --native-viewed "$NATIVE_VIEWED"
+      - name: Persist redacted operator receipt and exact public preview
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: news-telegram-operator-${{ github.run_id }}-${{ github.run_attempt }}
+          path: news-runtime-operator/result.json
+          if-no-files-found: warn
+          retention-days: 90
