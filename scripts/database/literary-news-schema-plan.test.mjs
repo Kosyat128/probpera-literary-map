@@ -1,12 +1,62 @@
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
-import { describe, expect, it } from "vitest";
+import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, readdirSync, rmSync, symlinkSync, linkSync } from "node:fs";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { spawnSync } from "node:child_process";
+import { afterEach, describe, expect, it } from "vitest";
 import { parse } from "yaml";
 import { buildLiteraryNewsSchemaPlan, NEWS_RUNTIME_MIGRATION } from "./build-literary-news-schema-plan.mjs";
 
 const repositorySha = "a".repeat(40);
 const workflow = parse(readFileSync(".github/workflows/apply-literary-news-schema.yml", "utf8"));
+const temporaryRoots=[];
+afterEach(()=>{
+  for(const root of temporaryRoots.splice(0)){
+    if(!path.resolve(root).startsWith(path.join(path.resolve(tmpdir()),"r10-schema-cli-")))throw Error("Unexpected cleanup path");
+    rmSync(root,{recursive:true,force:true});
+  }
+});
+function cliFixture(){
+  const base=mkdtempSync(path.join(tmpdir(),"r10-schema-cli-"));temporaryRoots.push(base);
+  const root=path.join(base,"repo"),outside=path.join(base,"outside");
+  mkdirSync(path.join(root,"scripts/database"),{recursive:true});mkdirSync(path.join(root,"supabase/migrations"),{recursive:true});mkdirSync(outside);
+  const compiler=path.join(root,"scripts/database/build-literary-news-schema-plan.mjs");
+  writeFileSync(compiler,readFileSync("scripts/database/build-literary-news-schema-plan.mjs"));
+  writeFileSync(path.join(root,"supabase/migrations",NEWS_RUNTIME_MIGRATION.filename),readFileSync(`supabase/migrations/${NEWS_RUNTIME_MIGRATION.filename}`));
+  return{root,outside,run:output=>spawnSync(process.execPath,[compiler,"--repository-sha",repositorySha,
+    "--migration-sha",NEWS_RUNTIME_MIGRATION.sha256,"--output-dir",output],{cwd:outside,encoding:"utf8"})};
+}
 describe("guarded literary news runtime schema rollout", () => {
+  it("writes both literal CLI targets inside its own checkout, preserving exact plan bytes from another cwd",()=>{
+    const fixture=cliFixture(),expected=buildLiteraryNewsSchemaPlan({repositorySha});
+    for(const output of ["news-runtime-schema","news-runtime-schema-recheck"]){
+      const result=fixture.run(output);expect(result.status,result.stderr).toBe(0);
+      for(const name of ["plan","rehearsal","preflight","verification"])
+        expect(readFileSync(path.join(fixture.root,output,`${name}.sql`),"utf8")).toBe(expected[name]);
+      expect(JSON.parse(readFileSync(path.join(fixture.root,output,"manifest.json"),"utf8"))).toEqual(expected.manifest);
+      expect(fixture.run(output).status).toBe(0); // safe, byte-identical repeat
+    }
+    expect(readdirSync(fixture.outside)).toEqual([]);
+  });
+  it("rejects traversal, absolute paths and alternate encodings before any output write",()=>{
+    const fixture=cliFixture();
+    for(const input of ["../outside",fixture.outside,"news-runtime-schema/../outside","./news-runtime-schema",
+      "news-runtime-schema\\..\\outside","news-runtime-schema%2f..%2foutside","file:///tmp/elsewhere"]){
+      const result=fixture.run(input);expect(result.status).not.toBe(0);expect(result.stderr).toContain("Schema output must be");
+    }
+    expect(readdirSync(fixture.root).sort()).toEqual(["scripts","supabase"]);expect(readdirSync(fixture.outside)).toEqual([]);
+  });
+  it("rejects a fixed output directory redirected through a symlink or Windows junction",()=>{
+    const fixture=cliFixture();symlinkSync(fixture.outside,path.join(fixture.root,"news-runtime-schema"),"junction");
+    const result=fixture.run("news-runtime-schema");expect(result.status).not.toBe(0);
+    expect(result.stderr).toContain("must not redirect");expect(readdirSync(fixture.outside)).toEqual([]);
+  });
+  it("rejects an existing hard-linked output without modifying its external target or writing a partial plan",()=>{
+    const fixture=cliFixture(),output=path.join(fixture.root,"news-runtime-schema"),outsideFile=path.join(fixture.outside,"keep.sql");
+    mkdirSync(output);writeFileSync(outsideFile,"unchanged");linkSync(outsideFile,path.join(output,"plan.sql"));
+    const result=fixture.run("news-runtime-schema");expect(result.status).not.toBe(0);expect(result.stderr).toContain("must not redirect");
+    expect(readFileSync(outsideFile,"utf8")).toBe("unchanged");expect(readdirSync(output)).toEqual(["plan.sql"]);
+  });
   it("pins the exact reviewed source and immutable invocation, including every output hash", () => {
     const result = buildLiteraryNewsSchemaPlan({ repositorySha });
     const source = readFileSync(`supabase/migrations/${NEWS_RUNTIME_MIGRATION.filename}`, "utf8");

@@ -12,10 +12,20 @@ describe("literary news connection preflight", () => {
     let calls = 0;
     const fetcher = readonlyConnectionFetch(async () => { calls++; return reply({}); });
     for (const url of ["https://api.vk.com/method/wall.post", "https://api.telegram.org/botfake/sendMessage",
-      "https://example.org/getChat", "https://api.vk.com/method/groups.getById?access_token=secret"]) {
+      "https://example.org/getChat", "https://api.vk.com/method/groups.getById?access_token=secret",
+      "https://api.vk.com/method/other/groups.getById", "https://api.telegram.org/botfake%2FsendMessage/getChat",
+      "https://api.telegram.org/botfake/getChat#hidden", "https://api.telegram.org.evil.example/botfake/getChat",
+      "https://api.vk.com@evil.example/method/groups.getById"]) {
       await expect(fetcher(url, { method: "POST" })).rejects.toThrow("connection_probe_readonly_violation");
     }
     expect(calls).toBe(0);
+  });
+  it("rejects credential path delimiters without making a network request or logging the token",async()=>{
+    let calls=0;
+    const result=await checkLiteraryNewsConnections({env:{TELEGRAM_BOT_TOKEN:"private/../sendMessage?x=1"},
+      fetchImpl:async()=>{calls++;return reply({});}});
+    expect(calls).toBe(0);expect(result.destinations[0].reason).toBe("provider_read_failed");
+    expect(JSON.stringify(result)).not.toContain("private");
   });
   it("verifies channel identity and actual existing transport permissions without enabling delivery", async () => {
     const calls = [];

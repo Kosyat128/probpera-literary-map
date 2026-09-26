@@ -13,9 +13,10 @@ export function readonlyConnectionFetch(fetchImpl = fetch) {
     const url = new URL(target);
     const platform = url.hostname === "api.telegram.org" ? "telegram" : url.hostname === "api.vk.com" ? "vk" : null;
     const method = url.pathname.split("/").at(-1);
-    if (!platform || url.protocol !== "https:" || url.port || url.username || url.password || url.search
+    if (!platform || url.protocol !== "https:" || url.port || url.username || url.password || url.search || url.hash
+      || (url.hostname !== "api.telegram.org" && url.hostname !== "api.vk.com")
       || !methods[platform].has(method) || options.method !== "POST"
-      || (platform === "vk" ? !url.pathname.startsWith("/method/") : !/^\/bot[^/]+\/[^/]+$/.test(url.pathname))) {
+      || (platform === "vk" ? url.pathname !== `/method/${method}` : !/^\/bot[A-Za-z0-9_.:-]{1,1024}\/(?:getMe|getChat|getChatMember)$/.test(url.pathname))) {
       throw new Error("connection_probe_readonly_violation");
     }
     return fetchImpl(url, { ...options, redirect: "error", signal: AbortSignal.timeout(20000) });
@@ -63,6 +64,7 @@ export async function checkLiteraryNewsConnections({ env = process.env, fetchImp
     const entry = { platform, requestedHandle: hint, status: "blocked", destinationId: null };
     if (!token) { result.destinations.push({ ...entry, reason: "token_not_configured" }); continue; }
     try {
+      if (typeof token !== "string" || !/^[A-Za-z0-9_.:-]{1,1024}$/.test(token)) throw new Error("provider_credential_format_invalid");
       const target = platform === "telegram" ? `https://api.telegram.org/bot${token}/getChat` : "https://api.vk.com/method/groups.getById";
       const response = await json(await read(target, { method: "POST", headers: {
         "Content-Type": platform === "telegram" ? "application/json" : "application/x-www-form-urlencoded",

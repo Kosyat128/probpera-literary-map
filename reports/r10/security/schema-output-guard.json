@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-09-26T23:22:15.617Z",
+  "alerts": [
+    293,
+    294,
+    295
+  ],
+  "status": "local-guards-and-tests-pass",
+  "cliTargets": [
+    "news-runtime-schema",
+    "news-runtime-schema-recheck"
+  ],
+  "guards": [
+    "literal branch selects code-owned module-relative directory",
+    "reject directory symlink/junction and canonical parent outside repository",
+    "reject nonregular/symlink/hardlinked destination before all writes",
+    "exclusive temporary plus atomic rename"
+  ],
+  "testsPassed": 8,
+  "exactGeneratedPlanAndManifestEqualToPushedHead": true,
+  "migration": {
+    "filename": "20260926_literary_news_runtime_cas.sql",
+    "sha256": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402"
+  },
+  "planSha256": "7fb4c9d6a5ff82da57c253875263241be6eaae41f37b6e95952d19d2abdd3874",
+  "externalWrites": false
+}

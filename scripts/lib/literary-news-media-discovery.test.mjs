@@ -12,7 +12,7 @@ const item={id:"virginia-news",category:"anniversaries",kind:"news",eventDate:"2
 const registry={assets:[],downloadHosts:[]},subject={qid:"Q40909",name:"Virginia Woolf",matchedField:"title.en",evidence:{method:"exact-reviewed-writer-name"}};
 function storeFixture(){const rows=new Map();let sequence=0;return{rows,async list(){return [...rows.values()];},
   async compareAppend(key,expected,state){const previous=rows.get(key);if((previous?.id||null)!==expected)return{applied:false};const row={id:++sequence,state};rows.set(key,row);return{applied:true,...row};}};}
-async function fixture(overrides={}){
+async function fixture(overrides={},fileName="Fixture.png"){
   const bytes=await sharp({create:{width:480,height:640,channels:3,background:"#a29285"}}).png().toBuffer();
   const metadata={Artist:{value:"<a>Fixture Author</a>"},LicenseShortName:{value:"CC BY 4.0"},
     LicenseUrl:{value:"https://creativecommons.org/licenses/by/4.0/"},UsageTerms:{value:"Creative Commons Attribution 4.0"},Copyrighted:{value:"True"},...overrides};
@@ -20,13 +20,23 @@ async function fixture(overrides={}){
     sha1:createHash("sha1").update(bytes).digest("hex"),extmetadata:metadata};
   const fetchImpl=vi.fn(async(input,options)=>{expect(options.redirect).toBe("error");const url=new URL(input);
     if(url.hostname==="www.wikidata.org")return Response.json({entities:{Q40909:{id:"Q40909",claims:{
-      P31:[{mainsnak:{datavalue:{value:{id:"Q5"}}}}],P18:[{rank:"normal",mainsnak:{snaktype:"value",datavalue:{value:"Fixture.png"}}}]}}}});
-    if(url.hostname==="commons.wikimedia.org")return Response.json({query:{pages:[{title:"File:Fixture.png",imageinfo:[info]}]}});
+      P31:[{mainsnak:{datavalue:{value:{id:"Q5"}}}}],P18:[{rank:"normal",mainsnak:{snaktype:"value",datavalue:{value:fileName}}}]}}}});
+    if(url.hostname==="commons.wikimedia.org")return Response.json({query:{pages:[{title:`File:${fileName}`,imageinfo:[info]}]}});
     if(url.hostname==="upload.wikimedia.org")return new Response(bytes,{headers:{"content-type":"image/png"}});
     throw Error("unexpected URL");});
   return{bytes,info,fetchImpl,options:{registry,now,fetchImpl,matchSubjects:()=>[subject],searchCandidates:()=>[]}};
 }
 describe("bounded actual-portrait discovery, no provider uploads",()=>{
+  it("keeps all dynamic Commons filename delimiters encoded after the literal File namespace",async()=>{
+    const fileName="Portrait:series:100% /Русский?#.png",f=await fixture({},fileName);
+    const result=await resolveNewsMediaBatch([item],[destination],f.options);
+    expect(result.report.approved).toBe(1);
+    const evidence=result.mediaOptions.registry.assets[0].licenseEvidenceUrl,url=new URL(evidence);
+    expect(evidence).toBe("https://commons.wikimedia.org/wiki/File:Portrait%3Aseries%3A100%25%20%2F%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9%3F%23.png");
+    expect(url.search).toBe("");expect(url.hash).toBe("");
+    expect(decodeURIComponent(url.pathname.slice("/wiki/File:".length))).toBe(fileName);
+    expect(result.mediaOptions.registry.assets[0].permissions[0].evidenceUrl).toBe(evidence);
+  });
   it("pins one exact human/P18/Commons license and bytes, persists metadata, and replays without a network request",async()=>{
     const f=await fixture(),store=storeFixture();
     const result=await resolveNewsMediaBatch([item],[destination],{...f.options,store});

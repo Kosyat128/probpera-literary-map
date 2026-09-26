@@ -172,7 +172,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
       if (![sha1,BigInt(`0x${sha1}`).toString(36).padStart(31,"0")].includes(info.sha1)
         || image.mime?.split(";")[0].trim().toLowerCase() !== info.mime) fail("media_commons_bytes_changed");
       const normalized = await normalizeNewsMedia(image.bytes, image.mime);
-      const evidenceUrl = `https://commons.wikimedia.org/wiki/${encodeURIComponent(fileTitle).replace("%3A", ":")}`;
+      const evidenceUrl = `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(images[0])}`;
       const validUntil = new Date(now.getTime() + 30 * 86400000).toISOString();
       const asset = { id: `auto-${semanticRevision.slice(0,32)}`, status: "approved", newsIds: [item.id], sourceUrl,
         sourceSha256: mediaByteHash(image.bytes), subject: "portrait",

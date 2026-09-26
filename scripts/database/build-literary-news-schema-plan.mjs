@@ -1,7 +1,7 @@
-import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { createHash, randomUUID } from "node:crypto";
+import { readFileSync, writeFileSync, mkdirSync, lstatSync, realpathSync, renameSync } from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { pathToFileURL, fileURLToPath } from "node:url";
 
 export const NEWS_RUNTIME_MIGRATION = Object.freeze({ filename:"20260926_literary_news_runtime_cas.sql",
   sha256:"4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402" });
@@ -173,7 +173,30 @@ if(process.argv[1] && import.meta.url===pathToFileURL(path.resolve(process.argv[
   const args=process.argv.slice(2);
   if(args.length!==6 || args[0]!=="--repository-sha" || args[2]!=="--migration-sha" || args[4]!=="--output-dir")
     throw new Error("Usage: --repository-sha SHA --migration-sha SHA256 --output-dir DIRECTORY");
-  const result=buildLiteraryNewsSchemaPlan({repositorySha:args[1],migrationSha:args[3]});mkdirSync(args[5],{recursive:true});
-  for(const name of ["plan","rehearsal","preflight","verification"])writeFileSync(path.join(args[5],`${name}.sql`),result[name]);
-  writeFileSync(path.join(args[5],"manifest.json"),JSON.stringify(result.manifest,null,2)+"\n");
+  // The CLI selects a code-owned destination, never a caller-supplied path.
+  // These are the workflow's preparation and independent recheck directories.
+  const output=args[5]==="news-runtime-schema" ? new URL("../../news-runtime-schema/",import.meta.url)
+    : args[5]==="news-runtime-schema-recheck" ? new URL("../../news-runtime-schema-recheck/",import.meta.url) : null;
+  if(!output)throw new Error("Schema output must be news-runtime-schema or news-runtime-schema-recheck");
+  const root=realpathSync(new URL("../../",import.meta.url));
+  const existing=lstatSync(output,{throwIfNoEntry:false});
+  if(existing && (!existing.isDirectory() || existing.isSymbolicLink()))throw new Error("Schema output directory must not redirect");
+  mkdirSync(output,{recursive:true});
+  if(path.dirname(realpathSync(output))!==root)throw new Error("Schema output must remain inside repository");
+  const result=buildLiteraryNewsSchemaPlan({root,repositorySha:args[1],migrationSha:args[3]});
+  const outputs=[["plan.sql",result.plan],["rehearsal.sql",result.rehearsal],
+    ["preflight.sql",result.preflight],["verification.sql",result.verification],
+    ["manifest.json",JSON.stringify(result.manifest,null,2)+"\n"]];
+  // Validate every target before writing any plan. Atomic replacement avoids
+  // following an existing hard link; exclusive temporaries cannot redirect.
+  for(const [name] of outputs){
+    const entry=lstatSync(new URL(name,output),{throwIfNoEntry:false});
+    if(entry && (!entry.isFile() || entry.isSymbolicLink() || entry.nlink!==1))
+      throw new Error("Schema output file must not redirect");
+  }
+  for(const [name,bytes] of outputs){
+    const temporary=new URL(`.${name}.${randomUUID()}.tmp`,output);
+    writeFileSync(temporary,bytes,{flag:"wx"});
+    renameSync(temporary,fileURLToPath(new URL(name,output)));
+  }
 }
