@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-calm-motion-dev-apk",
+  "sourceCommit": "6bec9a6415ec60f4724e2af782b068e246fe9b55",
+  "buildId": "600d0b390e284421d569cf08f4349aa438766fe51623153460c96304ffd8d063",
+  "sourceInputsSha256": "e8c2ccf35132579765fc7540f7537e95528143599ec974b8abaa248bc701c71a",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/android-600d0b39/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "d6c84fcef904293d380f91b44e64bf49803854f9422d06afa200d34967f4e19e"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/android-600d0b39/runtime",
+    "sha256": "37b0145dafa8d369fb211c6391da6b3d13d063b1c9f70f3149e99a640741c03f",
+    "files": 1408,
+    "bytes": 74870429
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/booky-calm-motion-20260927/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/booky-calm-motion-20260927/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/booky-calm-motion-20260927/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/android-6d7ddaf5/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

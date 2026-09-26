@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "description": "Adult Booky has a separate strict local probpera-booky-motion-v1 preference with system/calm values and a localized Calm movements switch. Explicit calm, OS reduced motion or an unread preference uses still poses across Booky rendering, walking, approach, page and target effects. The existing adult Booky schema remains unchanged. All fifteen gestures, Surprise and Stop remain available, and disabling calm or OS reduced motion does not automatically replay a gesture. Selected RU/EN actual-App touch checks cover persistence through resume and reload, OS precedence and explicit fresh gestures alongside retained quick access and short-landscape navigation clearance. This is Booky-only behavior; full sensory quiet mode and A11Y-004 acceptance remain open. Model geometry and animation definitions are unchanged; prior standalone model photos remain historical evidence because renderer motion policy changed. A failed or malformed read preserves its raw value and reduced motion. Retry rereads without writing; a separate deliberate localized recovery action saves only the Booky motion preference as calm and confirms readback.",
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/HostPlatformServices.test.ts",
+    "src/host/HostPlatformServices.ts",
+    "src/host/PlanetMascotAvatar.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/useBookyRenderer.ts",
+    "src/host/useBookyWalk.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyMotionPreference.test.ts",
+    "src/host/bookyMotionPreference.ts"
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts",
+    "src/host/bookyMotionPreference.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedUnitTests": 422,
+  "expectedBrowserTests": 6,
+  "expectedImages": 16,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "short-landscape-navigation-space-ru",
+      "flags": [
+        "landscapeCompanionClearsAllNavigation",
+        "landscapeHeaderControlsReachableByTouch",
+        "landscapeLastEditionReachableByTouch",
+        "landscapeRailRestoresAfterHide",
+        "portraitRailRestoresAfterRotation",
+        "landscapeSpacePreservesSceneAndPreferences"
+      ]
+    },
+    {
+      "scenario": "short-landscape-navigation-space-en",
+      "flags": [
+        "landscapeCompanionClearsAllNavigation",
+        "landscapeHeaderControlsReachableByTouch",
+        "landscapeLastEditionReachableByTouch",
+        "landscapeRailRestoresAfterHide",
+        "portraitRailRestoresAfterRotation",
+        "landscapeSpacePreservesSceneAndPreferences"
+      ]
+    },
+    {
+      "scenario": "mobile-gesture-quick-access-ru",
+      "flags": [
+        "quickAccessOpensAndFocusesGallery",
+        "surpriseIsFirstReachableAction",
+        "trustedTouchSurpriseFiniteAndDifferent",
+        "quickAccessStopRemainsReachable",
+        "quickAccessReducedMotionStaticAndManualRestart",
+        "quickAccessPreservesScenePreferencesAndContext",
+        "quickAccessScrollConfinedToPanel"
+      ]
+    },
+    {
+      "scenario": "mobile-gesture-quick-access-en",
+      "flags": [
+        "quickAccessOpensAndFocusesGallery",
+        "surpriseIsFirstReachableAction",
+        "trustedTouchSurpriseFiniteAndDifferent",
+        "quickAccessStopRemainsReachable",
+        "quickAccessReducedMotionStaticAndManualRestart",
+        "quickAccessPreservesScenePreferencesAndContext",
+        "quickAccessScrollConfinedToPanel"
+      ]
+    },
+    {
+      "scenario": "persistent-calm-movements-touch-ru",
+      "flags": [
+        "calmPreferenceTrustedTouch",
+        "calmPreferenceStopsActiveGesture",
+        "systemReducedMotionOverridesCalmOff",
+        "calmDisableDoesNotReplay",
+        "freshGestureAfterCalmDisableAnimates",
+        "calmDisablesWalking",
+        "calmPersistsAcrossResumeAndReload",
+        "calmPreservesLegacyPreferencesAndCanonicalScene",
+        "calmMalformedReadRecoveryRequiresExplicitTouch"
+      ]
+    },
+    {
+      "scenario": "persistent-calm-movements-touch-en",
+      "flags": [
+        "calmPreferenceTrustedTouch",
+        "calmPreferenceStopsActiveGesture",
+        "systemReducedMotionOverridesCalmOff",
+        "calmDisableDoesNotReplay",
+        "freshGestureAfterCalmDisableAnimates",
+        "calmDisablesWalking",
+        "calmPersistsAcrossResumeAndReload",
+        "calmPreservesLegacyPreferencesAndCanonicalScene",
+        "calmMalformedReadRecoveryRequiresExplicitTouch"
+      ]
+    }
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "short-landscape-navigation-space-ru",
+      "observation": "landscapeSpace",
+      "checks": [
+        "open landscape reserves full companion space and reachable header",
+        "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+        "explicit hide and portrait rotation restore original rail geometry",
+        "source scene and preferences remain exact"
+      ]
+    },
+    {
+      "scenario": "short-landscape-navigation-space-en",
+      "observation": "landscapeSpace",
+      "checks": [
+        "open landscape reserves full companion space and reachable header",
+        "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+        "explicit hide and portrait rotation restore original rail geometry",
+        "source scene and preferences remain exact"
+      ]
+    },
+    {
+      "scenario": "mobile-gesture-quick-access-ru",
+      "observation": "gestureAccess",
+      "checks": [
+        "portrait shortcut opens focused gallery and Surprise is the first reachable action",
+        "trusted Surprise completes then repeats differently and Stop remains reachable",
+        "landscape shortcut preserves context and reduced poses restart only on touch",
+        "all input is trusted and scrolling stays within the help panel"
+      ]
+    },
+    {
+      "scenario": "mobile-gesture-quick-access-en",
+      "observation": "gestureAccess",
+      "checks": [
+        "portrait shortcut opens focused gallery and Surprise is the first reachable action",
+        "trusted Surprise completes then repeats differently and Stop remains reachable",
+        "landscape shortcut preserves context and reduced poses restart only on touch",
+        "all input is trusted and scrolling stays within the help panel"
+      ]
+    },
+    {
+      "scenario": "persistent-calm-movements-touch-ru",
+      "observation": "calmMotion",
+      "checks": [
+        "default system setting is localized and does not write a preference",
+        "trusted calm toggle settles an active gesture and preserves its selected pose",
+        "system reduced motion takes precedence and disabling calm never replays a gesture",
+        "only a fresh trusted gesture restarts animation after calm is disabled",
+        "calm disables the actual closed-help walking control without changing saved progress",
+        "saved calm survives native background resume under normal OS motion",
+        "saved calm survives a full reload without new or legacy preference writes",
+        "malformed motion data stays unchanged on retry and recovers only after explicit trusted consent",
+        "only four explicit motion writes occur and all recorded controls use trusted touch"
+      ]
+    },
+    {
+      "scenario": "persistent-calm-movements-touch-en",
+      "observation": "calmMotion",
+      "checks": [
+        "default system setting is localized and does not write a preference",
+        "trusted calm toggle settles an active gesture and preserves its selected pose",
+        "system reduced motion takes precedence and disabling calm never replays a gesture",
+        "only a fresh trusted gesture restarts animation after calm is disabled",
+        "calm disables the actual closed-help walking control without changing saved progress",
+        "saved calm survives native background resume under normal OS motion",
+        "saved calm survives a full reload without new or legacy preference writes",
+        "malformed motion data stays unchanged on retry and recovers only after explicit trusted consent",
+        "only four explicit motion writes occur and all recorded controls use trusted touch"
+      ]
+    }
+  ],
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "requireDiagnosticHistory": true,
+  "requiredVisualFilenames": [
+    "booky-calm-motion-ru-390-enabled.png",
+    "booky-calm-motion-ru-390-reloaded.png",
+    "booky-calm-motion-en-320-enabled.png",
+    "booky-calm-motion-en-320-reloaded.png",
+    "booky-calm-motion-ru-390-read-failed.png",
+    "booky-calm-motion-en-320-read-failed.png"
+  ],
+  "browserTestTitles": [
+    "Booky short landscape companion navigation space ru",
+    "Booky short landscape companion navigation space en",
+    "Booky mobile gesture quick access ru",
+    "Booky mobile gesture quick access en",
+    "Booky persistent calm movements touch ru",
+    "Booky persistent calm movements touch en"
+  ],
+  "retainedCaseCaptureSubtotal": 10,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "expectedSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "ecd10a09b8ed0fbb0f859316626a6bb8a6154a5666e0c254d8b9351997f3f9c8"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "271c6a7c0f019a37a2ec519f9b2b866624f81e183876962dd23f1709c28c8717"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.tsx",
+      "sha256": "8074a616556c1aa38550fed6bbbf29d07f39f0300da566f32157a2fe4f0e347d"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "d826e081627e59932dcb5738a2856322b9d543231498527d54d3888a31321c0f"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "5bab924efcbbb6b077fe3c9eb658b2f32858f7ea3eea6407b541f5fea23a94fc"
+    },
+    {
+      "path": "src/host/bookyMotionPreference.test.ts",
+      "sha256": "fe7632320e2a092c5b847d264bcee14e6395333a40f45d64976fc83503912d44"
+    },
+    {
+      "path": "src/host/bookyMotionPreference.ts",
+      "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+    },
+    {
+      "path": "src/host/useBookyRenderer.ts",
+      "sha256": "00907c5a72165c5cc7f5d5d1efcb14c450bd8a83d0876db562168375329614d8"
+    },
+    {
+      "path": "src/host/useBookyWalk.ts",
+      "sha256": "2ae26f83712648aa5a096aeefe235cae6d71bcbd31e7ff61659822724ec3eec2"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "aebaa2d5775cb8d7613b66e9e36cfa2df30607cdb0b33c5555acf4ce716f124a"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "98e313de4a5a08b91a5c498754cd11080d760bba6ffe5b1fee9d010daa38b064"
+    }
+  ],
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0
+}

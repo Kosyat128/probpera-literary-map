@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-calm-motion-20260927/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 21440,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "c0fe8eee7f10195d0576d2646b6ebba256a76a45c8ca9a56c8969388658a18fb"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "0722d2ef5d3016e91bed98c3bc101f0b7473d1431025c0e82d45cda9800f8001"
+  }
+}

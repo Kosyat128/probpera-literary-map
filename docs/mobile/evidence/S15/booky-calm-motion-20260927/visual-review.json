@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-26T23:05:14.308Z",
+  "pass": true,
+  "sourceCommit": "6bec9a6415ec60f4724e2af782b068e246fe9b55",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/source-manifests/88cc8fe5b88377d5.json",
+    "sha256": "88cc8fe5b88377d5101f03b5e70d1f374bfef3e9606cb0589e81d0b43bc1219a",
+    "fileCount": 1654
+  },
+  "inspectedCount": 6,
+  "totalCapturedCount": 16,
+  "scope": "Direct review of six selected final RU/EN Booky Calm movements captures, covering the enabled and reloaded checked preference with still-pose notice, the deliberate recovery action and visible portions of its explanation, card header controls, current character framing and visible localized text. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 6 of 16 final captures. It does not claim all retained images were inspected again.",
+    "The failed-read captures are scrolled to the recovery action; the failure-status text and Retry control are outside these captured card views. In the EN 320px capture the beginning of the recovery explanation is partly above the sticky header clipping boundary; the remaining explanation and the complete recovery button are visible. This review does not claim the entire explanation is simultaneously visible.",
+    "Static images show selected calm-motion/help and read-recovery layouts; they cannot establish trusted-touch activation, persistence, error recovery consent and readback, OS motion precedence, no replay, gesture timing or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/final-visual-receipt.json",
+    "sha256": "3c850da19152c3077c1262c1a2d8d03bf05b8d496815b12de89c07f9fbb315ca"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/browser-a1/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-enabled.png",
+      "sha256": "42c3971daa31608cc4d41fa14ce14a5607ed033bdc0d3ac7f6e54e1c2af927d4",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex calm_motion_evidence agent",
+      "findings": [
+        "At 390px the Книжулик card title and Стоп/close controls are visible. The complete localized still-pose notice and checked Спокойные движения switch are readable within the card.",
+        "The current green book character is clearly framed below the card. Its nearby movement/hide controls and visibly subdued walking button are separate from the card and lower globe-control row."
+      ],
+      "bytes": 327276,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/browser-a1/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-reloaded.png",
+      "sha256": "8cbba8499642498f28d67e78d0dff6a4d36d0fb2463171fa573e8664e36a430a",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex calm_motion_evidence agent",
+      "findings": [
+        "The selected reload-state image shows the complete Russian still-pose notice and checked Calm movements switch in the card, with readable Книжулик title and Стоп/close header controls.",
+        "The current character remains visible below the card; companion controls, the subdued walking button, scale badge, globe-control row and country panel are individually visible. The screenshot alone does not establish persistence or resource identity."
+      ],
+      "bytes": 274921,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/browser-a1/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-enabled.png",
+      "sha256": "6856fcfd737dcc3796dd6838ec15ef63e4c2bd2ad6e39fe9f94b4e3b363eae18",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex calm_motion_evidence agent",
+      "findings": [
+        "At 320px the Mr. Booky title and Stop/close controls remain readable. The complete two-line still-pose notice and checked Calm movements switch fit within the card.",
+        "The current character is visible below the card, and its movement/hide controls and two-line subdued Take a walk button are separately framed above the globe controls."
+      ],
+      "bytes": 270926,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/browser-a1/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-reloaded.png",
+      "sha256": "3a4d1dbcc021df567eb67bb58197fbc8f4b81cad2043b37b764a46f00e2b3601",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex calm_motion_evidence agent",
+      "findings": [
+        "The selected reload-state image shows the complete English still-pose notice and checked Calm movements switch beneath the readable Mr. Booky header.",
+        "The current character and companion controls remain visible below the card. The narrow Take a walk label wraps onto two lines without visible text truncation; persistence and lifecycle behavior rely on the formal assertions."
+      ],
+      "bytes": 233264,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/browser-a1/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-read-failed.png",
+      "sha256": "f1c4b3950f8a40276bfd45e3834465c525fe0db5b087917bdcf310fc4ac4e2ff",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex calm_motion_evidence agent",
+      "findings": [
+        "The card is scrolled to the recovery action. The complete Russian explanation that only this setting will be replaced and other settings/progress will remain is visible, followed by the full Заменить на спокойные движения button.",
+        "The Книжулик title and Стоп/close header controls remain visible, with the current character below the card. Failure-status text and Retry are outside this captured scrolled view and are not visually claimed here."
+      ],
+      "bytes": 296585,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/browser-a1/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-read-failed.png",
+      "sha256": "2f6e38ed785b28923c81f899c7f969fd0b52859f3c3fe1b6da57c1d49d576d23",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex calm_motion_evidence agent",
+      "findings": [
+        "The card is scrolled to the recovery action. The complete Replace with calm movements button is visible and readable; the later explanation text about preserving other settings and progress is readable above it.",
+        "The opening of the recovery explanation is partly above the sticky-header clipping boundary in this capture. Failure-status text and Retry are also outside the captured card view. This image does not show the full explanation simultaneously.",
+        "The Mr. Booky title, Stop/close controls and current character remain visible. No additional control obstruction is visible in this selected frame."
+      ],
+      "bytes": 247200,
+      "width": 320,
+      "height": 844
+    }
+  ],
+  "releaseReady": false
+}

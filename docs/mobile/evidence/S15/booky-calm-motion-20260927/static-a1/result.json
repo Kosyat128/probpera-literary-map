@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/source-manifests/88cc8fe5b88377d5.json",
+    "sha256": "88cc8fe5b88377d5101f03b5e70d1f374bfef3e9606cb0589e81d0b43bc1219a",
+    "fileCount": 1654
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/check.mjs",
+      "sha256": "8fad2e2f6a11bd7c26643c8c93546edba52e5199d27478ff74f6f8509529b7e2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/entry.json",
+      "sha256": "b6f6bbc7f64371168c7656bed9efc03f4afc4008b95d752e275f1896e02fd89e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit.config.mjs",
+      "sha256": "d856bb1f29d87f34df07cdc8f71bca9eb509d0420826d691fcb6cbda98f38902"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/configure.mjs",
+      "sha256": "c804658e7ceade53be6201bdc21afb55ba9b8f45430756dba6d7e5b2f79de9e1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/scope.json",
+      "sha256": "9af4b3a1462e40a48e28042b74b83027399325055d761b2664c88e57b57e6a1a"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 24795
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyCalmMotionImplemented": true,
+  "journeyCharacterWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-26T22:58:11.450Z",
+  "stage": "S15",
+  "checkpoint": "7655285f115eb3495cd2be54fc99bedf927f9d8c",
+  "previous": "docs/mobile/evidence/S15/booky-gesture-access-20260924/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-access-20260924/result.json",
+    "sha256": "b580c1b67a9763a38b2be0ebca356b5045363e58f2751d8bd6f7cf86f21a0938"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-access-20260924/result.json",
+    "sha256": "b580c1b67a9763a38b2be0ebca356b5045363e58f2751d8bd6f7cf86f21a0938"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-access-20260924/source-manifests/127585b19ffc2ecc.json",
+    "sha256": "127585b19ffc2eccb96f9b148fae75d10354e624dff06d63ed87e55e1ff1574c",
+    "fileCount": 1652
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/scope.json",
+    "sha256": "9af4b3a1462e40a48e28042b74b83027399325055d761b2664c88e57b57e6a1a"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "2fefd40d97b9926e66724cfa1db99f1585ee26b44eb55d31164e85ecc16f6154"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "076b4ae28161b34f4cdac730df87ce558c9fed4594d86ef4b456eac198cb207f"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "636bd6bd4957d69d198e1cfdeb33bbd3944f8101c5e4067cb5220899a01dd117"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "35746d544001b107c907be3c551fa0225c35d68eae09602c19dad65083c82278"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "e5c60b96686b53647707ba363d2183db9891ae31b635e376495cf77dcf592f0b"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "7b5aa31c56bdcc124939ce52456f829d6202d202faeebb8c1c18669b01f10155"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "bd0382cc63c45048d7049eed07e5034aa6bb124178f98fecb23b71c716b89041"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "db05001d2101d3bdb9b47b33f256bd13986bbbd1316a5d4691193b6b48b71f2a"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/HostPlatformServices.test.ts",
+    "src/host/HostPlatformServices.ts",
+    "src/host/PlanetMascotAvatar.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/useBookyRenderer.ts",
+    "src/host/useBookyWalk.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyMotionPreference.test.ts",
+    "src/host/bookyMotionPreference.ts"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyMotionPreference.ts"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "ecd10a09b8ed0fbb0f859316626a6bb8a6154a5666e0c254d8b9351997f3f9c8"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "271c6a7c0f019a37a2ec519f9b2b866624f81e183876962dd23f1709c28c8717"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.tsx",
+      "sha256": "8074a616556c1aa38550fed6bbbf29d07f39f0300da566f32157a2fe4f0e347d"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "d826e081627e59932dcb5738a2856322b9d543231498527d54d3888a31321c0f"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "5bab924efcbbb6b077fe3c9eb658b2f32858f7ea3eea6407b541f5fea23a94fc"
+    },
+    {
+      "path": "src/host/useBookyRenderer.ts",
+      "sha256": "00907c5a72165c5cc7f5d5d1efcb14c450bd8a83d0876db562168375329614d8"
+    },
+    {
+      "path": "src/host/useBookyWalk.ts",
+      "sha256": "2ae26f83712648aa5a096aeefe235cae6d71bcbd31e7ff61659822724ec3eec2"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "aebaa2d5775cb8d7613b66e9e36cfa2df30607cdb0b33c5555acf4ce716f124a"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "98e313de4a5a08b91a5c498754cd11080d760bba6ffe5b1fee9d010daa38b064"
+    },
+    {
+      "path": "src/host/bookyMotionPreference.test.ts",
+      "sha256": "fe7632320e2a092c5b847d264bcee14e6395333a40f45d64976fc83503912d44"
+    },
+    {
+      "path": "src/host/bookyMotionPreference.ts",
+      "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+    }
+  ],
+  "sourceInputCount": 1654,
+  "protectedInputCount": 1641,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/host/HostPlatformServices.ts",
+    "src/host/PlanetMascotAvatar.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/useBookyRenderer.ts",
+    "src/host/useBookyWalk.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.ts",
+    "src/host/bookyMotionPreference.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "7655285f115eb3495cd2be54fc99bedf927f9d8c",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts",
+    "src/host/bookyMotionPreference.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky short landscape companion navigation space ru",
+    "Booky short landscape companion navigation space en",
+    "Booky mobile gesture quick access ru",
+    "Booky mobile gesture quick access en",
+    "Booky persistent calm movements touch ru",
+    "Booky persistent calm movements touch en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 422,
+  "expectedBrowserTests": 6,
+  "expectedImages": 16,
+  "scope": "Adult Booky has a separate strict local probpera-booky-motion-v1 preference with system/calm values and a localized Calm movements switch. Explicit calm, OS reduced motion or an unread preference uses still poses across Booky rendering, walking, approach, page and target effects. The existing adult Booky schema remains unchanged. All fifteen gestures, Surprise and Stop remain available, and disabling calm or OS reduced motion does not automatically replay a gesture. Selected RU/EN actual-App touch checks cover persistence through resume and reload, OS precedence and explicit fresh gestures alongside retained quick access and short-landscape navigation clearance. This is Booky-only behavior; full sensory quiet mode and A11Y-004 acceptance remain open. Model geometry and animation definitions are unchanged; prior standalone model photos remain historical evidence because renderer motion policy changed. A failed or malformed read preserves its raw value and reduced motion. Retry rereads without writing; a separate deliberate localized recovery action saves only the Booky motion preference as calm and confirms readback.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

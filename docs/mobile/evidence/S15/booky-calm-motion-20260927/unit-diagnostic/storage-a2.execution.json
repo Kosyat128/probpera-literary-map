@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "attempt": "storage-a2",
+  "scope": "Booky calm-motion storage diagnostic only; not stage, device or release acceptance.",
+  "provenance": {
+    "kind": "Original functions.exec -> tools.exec_command execution observed in the sub-agent conversation",
+    "toolChunkId": "437ffb",
+    "recordedRetrospectively": true,
+    "rerun": false
+  },
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "shell": "powershell",
+  "sandboxPermissions": "require_escalated",
+  "command": "$out='docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic'; node node_modules/vitest/vitest.mjs run src/host/bookyMotionPreference.test.ts src/host/HostPlatformServices.test.ts src/platform/adapters/web/WebPlatformAdapter.test.ts --testNamePattern 'Booky motion' --maxWorkers=2 --reporter=json --outputFile \"$out/storage-a2.json\" *> \"$out/storage-a2.log\"; $result=$LASTEXITCODE; Get-Content \"$out/storage-a2.log\" -Tail 22; exit $result",
+  "nodeCommand": "node node_modules/vitest/vitest.mjs run src/host/bookyMotionPreference.test.ts src/host/HostPlatformServices.test.ts src/platform/adapters/web/WebPlatformAdapter.test.ts --testNamePattern 'Booky motion' --maxWorkers=2 --reporter=json --outputFile \"docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a2.json\"",
+  "shellExitCode": 0,
+  "nodeExitCode": 0,
+  "exitCodeEvidence": "Original shell captured $LASTEXITCODE immediately after node in $result, before reading the log, then executed exit $result. Original tools.exec_command returned this exit_code.",
+  "startedAt": null,
+  "startedAtNote": "Original exec_command receipt did not expose an exact shell start timestamp.",
+  "execCommandWallTimeSeconds": 2.0610732,
+  "durationEvidence": "Original tools.exec_command wall_time_seconds; elapsed command execution/wait time, not isolated test-run duration.",
+  "combinedRawLog": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a2.log",
+    "sha256": "CB9CA26E926CA763D4E8EB6C68A36E1AF7BCD9AA5996FED6430A6E0D4955C8CE",
+    "capture": "PowerShell *> redirected all node output streams to this file."
+  },
+  "vitest": {
+    "report": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a2.json",
+    "sha256": "ABF4B7B4D2B01D32B33EF9B80A15BC5F81F0AFE9D9847E311C1860DE2142999D",
+    "startTimeUnixMs": 1790462376441,
+    "startTimeSource": "Original Vitest JSON report startTime, not an exec-command shell start timestamp.",
+    "success": true,
+    "passed": 30,
+    "failed": 0,
+    "pendingOrFiltered": 217
+  },
+  "outcome": "30 newly added focused cases passed; 217 unrelated cases were skipped by the test-name filter. Diagnostic evidence only."
+}

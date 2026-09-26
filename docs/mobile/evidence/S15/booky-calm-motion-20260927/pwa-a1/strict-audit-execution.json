@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/verify-pwa-artifact.mjs",
+    "--allow-qa"
+  ],
+  "exitCode": 0,
+  "durationMs": 4553,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/pwa-a1/strict-audit-stdout.log",
+    "bytes": 796,
+    "sha256": "4b247cd8aaaaa83589bc8ca90ce0332ead56712c16afb7ff766bf45cc0c91b47"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/pwa-a1/strict-audit-stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

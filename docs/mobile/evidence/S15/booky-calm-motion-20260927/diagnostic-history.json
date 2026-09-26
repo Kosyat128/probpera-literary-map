@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-26T22:57:11.278Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-access-20260924/result.json",
+    "sha256": "b580c1b67a9763a38b2be0ebca356b5045363e58f2751d8bd6f7cf86f21a0938"
+  },
+  "previousTaskHistory": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/diagnostic-history-before-recovery.json",
+    "sha256": "25c28b320c8882b3960b6e14b671f94151a20d0e63cd1b5d66c9ca6e1011a438"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/record-diagnostics-recovery.mjs",
+    "sha256": "0302773d318f1f1d37922fbb255652a3b051cf45ed3dfc713b361d93cb823920"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/diagnostic-inputs-recovery.json",
+    "sha256": "1422af39d45bec49188a4c224896eb49a67c9e46cba2d90b6622dd51f4a17ed8"
+  },
+  "attempts": [
+    {
+      "id": "storage-a1",
+      "reportFormat": "vitest",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a1.execution.json",
+        "sha256": "4ccb03b40b2611e30c74677d5f58db3762a1ab198deb76200f7966afbf385532"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "not-recorded",
+        "log": {
+          "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a1.log",
+          "sha256": "e18dcec22f378721219a9d03941ca4e2cc995c2336125120da36d155447eac81"
+        },
+        "stdout": null,
+        "stderr": null
+      },
+      "report": null,
+      "tests": null,
+      "browserStarted": false,
+      "interpretation": "Failed before test discovery: esbuild could not read an ancestor directory under the sandbox; no test result was produced.",
+      "failures": [],
+      "additionalEvidence": []
+    },
+    {
+      "id": "storage-a2",
+      "reportFormat": "vitest",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a2.execution.json",
+        "sha256": "9ca9573cfcc414d4d1ca5e2467a1b9b698fbec12c5b75f5f63d2421b312f4a3c"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "streamSeparation": "not-recorded",
+        "log": {
+          "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a2.log",
+          "sha256": "cb9ca26e926ca763d4e8eb6c68a36e1af7bcd9aa5996fed6430a6e0d4955c8ce"
+        },
+        "stdout": null,
+        "stderr": null
+      },
+      "report": {
+        "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a2.json",
+        "sha256": "abf4b7b4d2b01d32b33ef9b80a15bc5f81f0afe9d9847e311c1860de2142999d"
+      },
+      "tests": {
+        "passed": 30,
+        "failed": 0,
+        "skipped": 217
+      },
+      "browserStarted": false,
+      "interpretation": "30 newly added focused cases passed; 217 unrelated cases were skipped by the test-name filter. Diagnostic evidence only.",
+      "failures": [],
+      "additionalEvidence": []
+    },
+    {
+      "id": "browser-diagnostic-a1",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/execution.json",
+        "sha256": "7613827d90ff71d77f3fc72b3da6675a0bf5b29f237526f8d155e1766f64983e"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/stdout.log",
+          "sha256": "d02f1f24c031cafcdf604aa9ef4c36dec03fc6a34164f7f9f299a6a631de81eb"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/stderr.log",
+          "sha256": "46865a1410430a4db6c526129370ea325dc3501c3a8c19d5668ed00f2590491b"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/playwright.json",
+        "sha256": "a8b01b650f8ca45e8e4823722d0ae1a89cb0ed8ffd762efca01962866863cd99"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original pre-freeze browser diagnostic; 0 passed, 2 failed, 0 skipped. This run is retained for its original dirty source and does not replace final committed-source validation.",
+      "failures": [
+        {
+          "test": "Booky persistent calm movements touch ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 4\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"system reduced motion takes precedence and disabling calm never replays a gesture\",\u001b[39m\n\u001b[31m+   \"saved calm survives a full reload without new or legacy preference writes\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2935 |       o.eventSegments.push({label:'final page',events:await page.evaluate(()=>window.__calmMotion.events)});o.events=o.eventSegments.flatMap(segment=>segment.events);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted&&event.pointerType==='touch')).toBe(true);expect(o.events.filter(event=>event.type==='click'&&event.calm)).toHaveLength(3);expect(o.events.filter(event=>event.type==='click'&&event.surprise)).toHaveLength(2);expect(motionWrites()).toEqual(['calm','system','calm'].map(value=>({operation:'set',key:motionKey,value})));expect(saved()).toEqual(originalPreferences);expect(o.swipes.length).toBeGreaterThan(0);o.final={preferences:saved(),motionWrites:motionWrites(),state:await read()};await fixture.verify();\n  2936 |     });\n> 2937 |     result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{calmPreferenceTrustedTouch:true,calmPreferenceStopsActiveGesture:true,systemReducedMotionOverridesCalmOff:true,calmDisableDoesNotReplay:true,freshGestureAfterCalmDisableAnimates:true,calmDisablesWalking:true,calmPersistsAcrossResumeAndReload:true,calmPreservesLegacyPreferencesAndCanonicalScene:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                              ^\n  2938 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.eventSegments.push({label:'final cleanup',events:await page.evaluate(()=>window.__calmMotion?.events??[]).catch(()=>[])});await fixture.close();}\n  2939 | });\n  2940 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2937:430"
+        },
+        {
+          "test": "Booky persistent calm movements touch en",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 4\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"system reduced motion takes precedence and disabling calm never replays a gesture\",\u001b[39m\n\u001b[31m+   \"saved calm survives a full reload without new or legacy preference writes\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2935 |       o.eventSegments.push({label:'final page',events:await page.evaluate(()=>window.__calmMotion.events)});o.events=o.eventSegments.flatMap(segment=>segment.events);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted&&event.pointerType==='touch')).toBe(true);expect(o.events.filter(event=>event.type==='click'&&event.calm)).toHaveLength(3);expect(o.events.filter(event=>event.type==='click'&&event.surprise)).toHaveLength(2);expect(motionWrites()).toEqual(['calm','system','calm'].map(value=>({operation:'set',key:motionKey,value})));expect(saved()).toEqual(originalPreferences);expect(o.swipes.length).toBeGreaterThan(0);o.final={preferences:saved(),motionWrites:motionWrites(),state:await read()};await fixture.verify();\n  2936 |     });\n> 2937 |     result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{calmPreferenceTrustedTouch:true,calmPreferenceStopsActiveGesture:true,systemReducedMotionOverridesCalmOff:true,calmDisableDoesNotReplay:true,freshGestureAfterCalmDisableAnimates:true,calmDisablesWalking:true,calmPersistsAcrossResumeAndReload:true,calmPreservesLegacyPreferencesAndCanonicalScene:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                              ^\n  2938 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.eventSegments.push({label:'final cleanup',events:await page.evaluate(()=>window.__calmMotion?.events??[]).catch(()=>[])});await fixture.close();}\n  2939 | });\n  2940 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2937:430"
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/run.mjs",
+          "sha256": "e81d45eeaba39e9f248cdd93718a8108c47bc8246ec44667026bd099f4261105"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/bind.mjs",
+          "sha256": "97857ed5d01d087db26dcdaff39faf3ee9d2450b887d4421b61857f371dcddd8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/canonical-fixture.mjs",
+          "sha256": "7466fdda1c894ea9705fb72cc7ac28541bf692f689d82ec1743089cb90267863"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/authorized-source.json",
+          "sha256": "aba019eadfba7b91c96fb07e8b81dfa78f0b3d9cb3720578fdb5dcf3133d2971"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/preparation.json",
+          "sha256": "1453cd345d839daa473286c832e798c02533b7b3a578d3f453ad428cc26c6d76"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/execution-start.json",
+          "sha256": "5966e93ac7904ffb219a70afa61b71ccfe04d61b79c6a7d7ce143cebe7056bcd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/dirty.diff",
+          "sha256": "eff3d0da61de262177616b58942e03a75ebcd093e0a4e69b09cbb826f4e45ff7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/preflight-start.json",
+          "sha256": "f9c143572fea94094b93d7f729987a9a8f7ec563292fbf2c7c5097e4f5a5b019"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/preflight-result.json",
+          "sha256": "41058f3524d50531564c57c6cb5a76af5dc070a560b54ff75bd5d01771bce19a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/preflight-stdout.log",
+          "sha256": "4001fe0837937c963943abea24743815728bf5996d5083bc9e13deac28a74a13"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/attachments/booky-live-character-source-evidence-00d927ee1500a7df1e1ddfd3dbd4cbd62e25f224.json",
+          "sha256": "b4af9dea0547a62e1960df435ed4d9f7b42094c70b108fc4ea46bbdca5a2c9cf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-live-character.json",
+          "sha256": "b4af9dea0547a62e1960df435ed4d9f7b42094c70b108fc4ea46bbdca5a2c9cf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-enabled.png",
+          "sha256": "5a322745a2b1b87f382be3c60331f61a57b20628c1288807400dc6db73e03b55"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/error-context.md",
+          "sha256": "9de62eae8cba9ff40c5f12f0954f569363bd13323581b2fc1f0136463df36b6c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/attachments/booky-live-character-source-evidence-c9ef2bf6518b2a813499ae0b3a44989920bef84b.json",
+          "sha256": "438d27e9f1aa0ad289a49465834d70906f3fa37dd155c80938db29e7cbe4d289"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-live-character.json",
+          "sha256": "438d27e9f1aa0ad289a49465834d70906f3fa37dd155c80938db29e7cbe4d289"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-enabled.png",
+          "sha256": "ad9db884e2f9e09aa805650470b8fdba1593b080fac0e9535384883c99757e84"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a1/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/error-context.md",
+          "sha256": "6abd665a9c23aabd0b0c42a773f813faae246ec7b0148bf5a7c5f49abbc293a7"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a2",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/execution.json",
+        "sha256": "9246845a2a122a7cba6dbc2bab85cfa54507d64f9ce6cdeee0250408cb570629"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/stdout.log",
+          "sha256": "f3ce8af253a6850ba40d09d5d4d75221cecf0bffc688a3e3f3aa9d421eb19516"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/stderr.log",
+          "sha256": "274858ef5b9cdb64540323eccca5b2c904bd323fce3faa6675cdeae7c50b4c07"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/playwright.json",
+        "sha256": "8a2075bad94fc35b8b767a0d8fb0d5453ec7b67909be553bd7bc52d47a9f21ef"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original pre-freeze browser diagnostic; 2 passed, 0 failed, 0 skipped. This run is retained for its original dirty source and does not replace final committed-source validation.",
+      "failures": [],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/run.mjs",
+          "sha256": "e81d45eeaba39e9f248cdd93718a8108c47bc8246ec44667026bd099f4261105"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/bind.mjs",
+          "sha256": "97857ed5d01d087db26dcdaff39faf3ee9d2450b887d4421b61857f371dcddd8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/canonical-fixture.mjs",
+          "sha256": "7575a9b54517f56634e5fc7c3b8142b73a368dd71c888b2a9bb33d4d8bd1e24d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/authorized-source.json",
+          "sha256": "926f1b70802f779f94a6b17349e8643bfefd3cb429c92bb654efdeefba87628d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/preparation.json",
+          "sha256": "84f07e37869ac06d0932e4ccfa9e1356afb4fa1be1fb8376c546f5c8c15e309a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/execution-start.json",
+          "sha256": "0be7a700e51db8b2d7d64a3dc031ff30fe49c7c46fef7d50e4b9db7a830fa90e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/dirty.diff",
+          "sha256": "0dcb64c9f0ca7864f843aacdb967024f36348b9f2e7a20b43ec66ebf185c99b8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/preflight-start.json",
+          "sha256": "38a90fb6aad0d826104889632b00aac5614f3b2bf4a633375803571bcf0da37e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/preflight-result.json",
+          "sha256": "3ce3e8d7b722e9bf71d64fe72db8800755211d1e02911139d8fb03fc0702c3aa"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/preflight-stdout.log",
+          "sha256": "4001fe0837937c963943abea24743815728bf5996d5083bc9e13deac28a74a13"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/attachments/booky-live-character-source-evidence-100d28fb4890064ae6e366260ae7078999abeb00.json",
+          "sha256": "b38a9178af6cfb3df43fef117471dec74e7ab12ab7a99dec768920d1079c5297"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-live-character.json",
+          "sha256": "b38a9178af6cfb3df43fef117471dec74e7ab12ab7a99dec768920d1079c5297"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-enabled.png",
+          "sha256": "975330d8a6963106698f0275cbe768eeed7b25d5222de5f9b3541f23818b5197"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-reloaded.png",
+          "sha256": "a6a55f6508bf22e45663fd5d7c525318a979c7e693b6068075877d354fc58ef7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/attachments/booky-live-character-source-evidence-c17e7f7e95a0ad2d3005a3d9f4ffa58c83e82792.json",
+          "sha256": "bceed2e7c47113c9610da984224ca367c32f4365e6ead29365811f1ebe53c9c8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-live-character.json",
+          "sha256": "bceed2e7c47113c9610da984224ca367c32f4365e6ead29365811f1ebe53c9c8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-enabled.png",
+          "sha256": "ce45f3f593f92e4bfade3840f5c3e5bb1869c48e489f9b899a3b618ed0bee25b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a2/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-reloaded.png",
+          "sha256": "905242cde6e1e667e6f1c51de30006a417761aca11128fa7d7ccf2540b5ea5b9"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a3",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/execution.json",
+        "sha256": "84ee5603e2c0d4896f7e668d56511e7a8cef97499492483743159b803e29e928"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/stdout.log",
+          "sha256": "0630d4e41c7efdc7c3b89e737124d4090b3872b7500b7b8fca93da702ed37a84"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/stderr.log",
+          "sha256": "3834f2153ccee50900cfe542a24609d0e1e0c9fdbe5013e99fb61fcba8d30194"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/playwright.json",
+        "sha256": "93afc240849dea0d0a0680aef8517053ef554ac60875a75b210738ba175a411e"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original pre-freeze browser diagnostic; 0 passed, 2 failed, 0 skipped. This run is retained for its original dirty source and does not replace final committed-source validation.",
+      "failures": [
+        {
+          "test": "Booky persistent calm movements touch ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"malformed motion data stays unchanged on retry and recovers only after explicit trusted consent\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2944 |       o.eventSegments.push({label:'final page',events:await page.evaluate(()=>window.__calmMotion.events)});o.events=o.eventSegments.flatMap(segment=>segment.events);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted&&event.pointerType==='touch')).toBe(true);expect(o.events.filter(event=>event.type==='click'&&event.calm)).toHaveLength(3);expect(o.events.filter(event=>event.type==='click'&&event.surprise)).toHaveLength(2);expect(o.events.filter(event=>event.type==='click'&&event.retry)).toHaveLength(1);expect(o.events.filter(event=>event.type==='click'&&event.recover)).toHaveLength(1);expect(motionWrites()).toEqual(['calm','system','calm','calm'].map(value=>({operation:'set',key:motionKey,value})));expect(saved()).toEqual(originalPreferences);expect(o.swipes.length).toBeGreaterThan(0);o.final={preferences:saved(),motionWrites:motionWrites(),state:await read()};await fixture.verify();\n  2945 |     });\n> 2946 |     result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{calmPreferenceTrustedTouch:true,calmPreferenceStopsActiveGesture:true,systemReducedMotionOverridesCalmOff:true,calmDisableDoesNotReplay:true,freshGestureAfterCalmDisableAnimates:true,calmDisablesWalking:true,calmPersistsAcrossResumeAndReload:true,calmMalformedReadRecoveryRequiresExplicitTouch:true,calmPreservesLegacyPreferencesAndCanonicalScene:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  2947 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.eventSegments.push({label:'final cleanup',events:await page.evaluate(()=>window.__calmMotion?.events??[]).catch(()=>[])});await fixture.close();}\n  2948 | });\n  2949 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2946:482"
+        },
+        {
+          "test": "Booky persistent calm movements touch en",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"malformed motion data stays unchanged on retry and recovers only after explicit trusted consent\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  2944 |       o.eventSegments.push({label:'final page',events:await page.evaluate(()=>window.__calmMotion.events)});o.events=o.eventSegments.flatMap(segment=>segment.events);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted&&event.pointerType==='touch')).toBe(true);expect(o.events.filter(event=>event.type==='click'&&event.calm)).toHaveLength(3);expect(o.events.filter(event=>event.type==='click'&&event.surprise)).toHaveLength(2);expect(o.events.filter(event=>event.type==='click'&&event.retry)).toHaveLength(1);expect(o.events.filter(event=>event.type==='click'&&event.recover)).toHaveLength(1);expect(motionWrites()).toEqual(['calm','system','calm','calm'].map(value=>({operation:'set',key:motionKey,value})));expect(saved()).toEqual(originalPreferences);expect(o.swipes.length).toBeGreaterThan(0);o.final={preferences:saved(),motionWrites:motionWrites(),state:await read()};await fixture.verify();\n  2945 |     });\n> 2946 |     result.pass=o.findings.length===0;result.observationsComplete=true;if(result.pass)Object.assign(result,{calmPreferenceTrustedTouch:true,calmPreferenceStopsActiveGesture:true,systemReducedMotionOverridesCalmOff:true,calmDisableDoesNotReplay:true,freshGestureAfterCalmDisableAnimates:true,calmDisablesWalking:true,calmPersistsAcrossResumeAndReload:true,calmMalformedReadRecoveryRequiresExplicitTouch:true,calmPreservesLegacyPreferencesAndCanonicalScene:true});expect(o.findings).toEqual([]);\n       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  2947 |   }finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}if(!o.events)o.eventSegments.push({label:'final cleanup',events:await page.evaluate(()=>window.__calmMotion?.events??[]).catch(()=>[])});await fixture.close();}\n  2948 | });\n  2949 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:2946:482"
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/run.mjs",
+          "sha256": "e81d45eeaba39e9f248cdd93718a8108c47bc8246ec44667026bd099f4261105"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/bind.mjs",
+          "sha256": "97857ed5d01d087db26dcdaff39faf3ee9d2450b887d4421b61857f371dcddd8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/canonical-fixture.mjs",
+          "sha256": "0ae4975b355769983bbca63986158ad9a4dca7d0a9ddd4f9ec40b954c921dd17"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/authorized-source.json",
+          "sha256": "17398e54905bddaaa8750e7500b7edb3de67f4cb3f7dee250d79e6e2696483fb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/preparation.json",
+          "sha256": "d4f83ab003ceef99498bde57c6147959420d481ea426b7310947a95adebce185"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/execution-start.json",
+          "sha256": "f94d9e32fae31760e36e2ca9393428c7712af1fbf2284c7346978a8a74118a9d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/dirty.diff",
+          "sha256": "0e022bd3f49eb4829634c70e36d927bbc546cf94ad603b675660b88861e6463b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/preflight-start.json",
+          "sha256": "42a1f98d4fb5161f9ca19fde3a9e8da0f4b2cce7f7816ce46e21f6c8601d7da1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/preflight-result.json",
+          "sha256": "c90d0bf6470988990e3a134babf060bdb6cdd6479e7a6b6ba6c7a2d283185f4d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/preflight-stdout.log",
+          "sha256": "4001fe0837937c963943abea24743815728bf5996d5083bc9e13deac28a74a13"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/attachments/booky-live-character-source-evidence-6a676131ba63694b9b2a1d7666d9d1b8b76e0f5b.json",
+          "sha256": "83027248e8ce843e2bc9346c0d373a5451699929b03d4d76fde9bd0819253a14"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-live-character.json",
+          "sha256": "83027248e8ce843e2bc9346c0d373a5451699929b03d4d76fde9bd0819253a14"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-enabled.png",
+          "sha256": "fd0737bdaac89d514fa452ff6fe5eb6a2a573cb68f8b6c7d4a22d10bbed5a776"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-reloaded.png",
+          "sha256": "09d8d18bec71f7d4b24fba5e3a6790dc10d5c9512b5739689f9b4ee5020735fe"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/booky-calm-motion-ru-390-read-failed.png",
+          "sha256": "eb76444c0935d2ef49cc7122325a78c7940bb9489505bf696712a671abc0bdca"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-0bef8-ent-calm-movements-touch-ru/error-context.md",
+          "sha256": "88dd95beb851f9797686250af4a49b3edaea70911d2a033843190477ac3eb790"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/attachments/booky-live-character-source-evidence-446507abd204af4dd827de1f2e48f57894445073.json",
+          "sha256": "3d038de86a6a679230341fd4209d2a14d14473b01d2874a0c31ac1ffe23ac06c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-live-character.json",
+          "sha256": "3d038de86a6a679230341fd4209d2a14d14473b01d2874a0c31ac1ffe23ac06c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-enabled.png",
+          "sha256": "41820e77949a53062a84041accd84463feaba2cdfd5a5a72967a36eaafdfe1dd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-reloaded.png",
+          "sha256": "e6c418342a02f6380e090ea14c0138cedb5c834922163b8c0b9242bd09889916"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/booky-calm-motion-en-320-read-failed.png",
+          "sha256": "de48ba27bffc379e94a8fc3489f452a9b6eb2bce0d942097199e43a5964baba4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-review/a3/artifacts/booky-live-character-Booky-1f52e-ent-calm-movements-touch-en/error-context.md",
+          "sha256": "000d75d6c27df1552d6f52f414f7d87ee86907dc28d5429fa94024fe48874c89"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only original diagnostic executions from this D198 task are recorded. No inherited prior-checkpoint failure chains are copied.",
+    "The filtered storage diagnostic proves 30 selected cases; its 217 filtered cases are not claimed as passing.",
+    "Browser diagnostics remain bound to their original source hashes and driver copies. Final formal evidence is separately recorded after source freeze."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

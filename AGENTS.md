@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-calm-motion-20260927:begin -->
+Latest source 6bec9a64: Книжулик / Mr. Booky has an independent saved Calm movements setting. Calm choice, system reduced motion or an unread preference keeps Booky still. Selected actual-App checks cover trusted-touch activation, OS precedence, no automatic replay, explicit fresh gestures, disabled walking, persistence through resume/reload, malformed-read retry without writing and deliberate calm recovery with readback; retained cases cover quick gesture access and short-landscape navigation space. All fifteen gestures, Surprise, Stop and the existing adult preference schema remain available. Model geometry and animation definitions are unchanged, but renderer motion policy changed; D193 photos remain historical evidence only. This is scoped Booky behavior, not full sensory quiet mode or A11Y-004 acceptance. Claims remain limited to tested sizes and states; acceptance statuses are unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-calm-motion-20260927/result.json. D198. 422 unit cases and 6 selected browser cases; 16 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-calm-motion-20260927:end -->
+
 <!-- s15-booky-gesture-access-20260924:begin -->
 Latest source 3f071a5c: a localized entry near the top of help opens the existing gesture gallery for Книжулик / Mr. Booky, with Surprise as its first action. Selected actual-App checks cover direct access, focus and card-only scrolling, explicit gesture/Stop behavior and reduced motion, while retained cases cover companion/navigation clearance, last-edition reachability after closing help, and full rail restoration after hiding the companion or rotating to portrait. Existing model, animation and renderer inputs retain the three D193 photos through exact dependency hashes and their original standalone scope. The help card remains an ordinary overlay. Claims remain limited to tested sizes and states; acceptance statuses are unchanged.
 

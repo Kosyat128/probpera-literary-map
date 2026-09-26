@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76790415,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/pwa-a1-copy-verification.json",
+    "sha256": "0bfb808e4810d9f9bbd8e7806484054003e9753fdb6c6a4e7a4309a17dd89cd8"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-calm-motion-evidence/pwa-74dddc29/artifact.json",
+    "sha256": "6e7965a4800e12c5001ac3358e94b2a361b3501d0fbd627bd1a35193c4066a16"
+  }
+}

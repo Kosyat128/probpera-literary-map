@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "attempt": "storage-a1",
+  "scope": "Booky calm-motion storage diagnostic only; not stage, device or release acceptance.",
+  "provenance": {
+    "kind": "Original functions.exec -> tools.exec_command execution observed in the sub-agent conversation",
+    "toolChunkId": "d877f9",
+    "recordedRetrospectively": true,
+    "rerun": false
+  },
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "shell": "powershell",
+  "sandboxPermissions": "use_default",
+  "command": "$out='docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic'; New-Item -ItemType Directory -Path $out -Force | Out-Null; node node_modules/vitest/vitest.mjs run src/host/bookyMotionPreference.test.ts src/host/HostPlatformServices.test.ts src/platform/adapters/web/WebPlatformAdapter.test.ts --testNamePattern 'Booky motion' --maxWorkers=2 --reporter=json --outputFile \"$out/storage-a1.json\" *> \"$out/storage-a1.log\"; $result=$LASTEXITCODE; Get-Content \"$out/storage-a1.log\" -Tail 18; exit $result",
+  "nodeCommand": "node node_modules/vitest/vitest.mjs run src/host/bookyMotionPreference.test.ts src/host/HostPlatformServices.test.ts src/platform/adapters/web/WebPlatformAdapter.test.ts --testNamePattern 'Booky motion' --maxWorkers=2 --reporter=json --outputFile \"docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a1.json\"",
+  "shellExitCode": 1,
+  "nodeExitCode": 1,
+  "exitCodeEvidence": "Original shell captured $LASTEXITCODE immediately after node in $result, before reading the log, then executed exit $result. Original tools.exec_command returned this exit_code.",
+  "startedAt": null,
+  "startedAtNote": "Original exec_command receipt did not expose an exact shell start timestamp.",
+  "execCommandWallTimeSeconds": 0.7496332,
+  "durationEvidence": "Original tools.exec_command wall_time_seconds; elapsed command execution/wait time, not isolated test-run duration.",
+  "combinedRawLog": {
+    "path": "docs/mobile/evidence/S15/booky-calm-motion-20260927/unit-diagnostic/storage-a1.log",
+    "sha256": "E18DCEC22F378721219A9D03941CA4E2CC995C2336125120DA36D155447EAC81",
+    "capture": "PowerShell *> redirected all node output streams to this file."
+  },
+  "vitest": null,
+  "outcome": "Failed before test discovery: esbuild could not read an ancestor directory under the sandbox; no test result was produced."
+}
