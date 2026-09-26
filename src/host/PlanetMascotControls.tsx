@@ -9,6 +9,7 @@ import { BOOKY_APPROACH_MS, planBookyApproach, planBookyDockReturn } from "./boo
 import { bookyCardHeightLimit, bookyCardViewport, bookyCardWidth, placeBooky, placeBookyCard } from "./bookyPlacement";
 import type { PlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
 import type { PlanetMascotPersistenceSnapshot } from "./planetMascotPersistence";
+import type { BookyMotionMode, BookyMotionSnapshot } from "./bookyMotionPreference";
 import { isBookyRouteComplete } from "./bookyTourProgress";
 import { PLANET_MASCOT_ROUTES, getPlanetMascotStep, type PlanetMascotAction,
   type PlanetMascotScreen, type PlanetMascotTarget } from "./planetMascotRoutes";
@@ -28,6 +29,10 @@ export type PlanetMascotControlsProps = {
   onPositionChange: (position: Position | null) => void;
   persistence: PlanetMascotPersistenceSnapshot;
   onRetryPersistence: () => boolean;
+  motion: BookyMotionSnapshot;
+  onMotionChange: (mode: BookyMotionMode) => boolean;
+  onRetryMotion: () => boolean;
+  onRecoverMotion: () => boolean;
   onRetryContent: (target: "countries" | "books") => void;
   readerSettings?: ReactNode;
 };
@@ -99,9 +104,11 @@ function companionViewport(): Rect {
   return { ...view, top, height: Math.max(0, view.top + view.height - top) };
 }
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, pointRequest, position, onPositionChange, persistence, onRetryPersistence, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
+  onAction, pointRequest, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
+  onRetryMotion, onRecoverMotion, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
+  const calmMotion = !motion.hydrated || motion.mode === "calm";
   const id = useId(), root = useRef<HTMLDivElement>(null), card = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null), heading = useRef<HTMLHeadingElement>(null);
   const gestureGallery = useRef<HTMLDetailsElement>(null), gestureSummary = useRef<HTMLElement>(null);
@@ -172,10 +179,10 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     // A new instruction starts at the top of its leaf; context updates and
     // locale switches never move a page the user is already reading.
     if (card.current) card.current.scrollTop = 0;
-    setPageTurn(value => value + 1);
+    setPageTurn(value => calmMotion || window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : value + 1);
     setGesture("rest");
     setReactionKey(value => value + 1);
-  }, [snapshot.mode, snapshot.route, snapshot.step, snapshot.available, open]);
+  }, [snapshot.mode, snapshot.route, snapshot.step, snapshot.available, open, calmMotion]);
 
   useLayoutEffect(() => {
     const watched = new Set<Element>();
@@ -318,13 +325,16 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const restingPosition = floating ? preferredPosition
     : placeBooky(preferredPosition, petSize, dock ?? view, navigation);
   const walk = useBookyWalk({ available: shown && snapshot.available && !open && snapshot.mode === "help",
+    calmMotion,
     revision: snapshot.revision, position: restingPosition, committedPosition: position ?? preferredPosition,
     size: petSize, viewport: view, controls: navigation, onFinish: onPositionChange });
+  useLayoutEffect(() => { if (walk.reducedMotion) setPageTurn(0); }, [walk.reducedMotion]);
   const walkNeedsSpace = !walk.active && !walk.canStart && !walk.reducedMotion && !open
     && snapshot.available && snapshot.mode === "help";
   const petPosition = walk.position ?? restingPosition;
   const pointEnvironment = useRef({ position: petPosition, size: petSize, view, dock });
   pointEnvironment.current = { position: petPosition, size: petSize, view, dock };
+  useLayoutEffect(() => { cancelPoint.current?.(); }, [calmMotion]);
   useEffect(() => {
     if (!pointRequest || handledPoint.current === pointRequest.id) return;
     if (!shown || !snapshot.available || open || snapshot.mode !== "help" || document.hidden) {
@@ -360,7 +370,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     const finish = () => {
       if (cancelled) return;
       const current = pointEnvironment.current, destination = current.dock;
-      if (!destination || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { stop(); return; }
+      if (!destination || calmMotion || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { stop(); return; }
       const path = planBookyDockReturn(current.position, current.size, current.view, destination);
       if (!path) { stop(); return; }
       const arrived = () => { returnedToDock = true; dockDetached.current = false; stop(); };
@@ -416,7 +426,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       }
       handledPoint.current = pointRequest.id;
       document.addEventListener("scroll", stop, true);
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { tap(path.touch); return; }
+      if (calmMotion || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { tap(path.touch); return; }
       // Catalog readiness can revise the helper while this exact visible
       // section is unchanged. Fence this route by its target and user intent.
       const currentTarget = () => {
@@ -447,7 +457,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     // StrictMode may replay setup before the first frame. Only an actual start,
     // timeout or user interruption consumes the one-shot request.
     return () => stop(false);
-  }, [pointRequest, shown, snapshot.available, open, snapshot.mode, screen, language, walk.start, walk.stop]);
+  }, [pointRequest, shown, snapshot.available, open, snapshot.mode, screen, language, calmMotion, walk.start, walk.stop]);
   useEffect(() => {
     if ((targetCue?.phase === "approaching" || targetCue?.phase === "returning") && !walk.active) cancelPoint.current?.();
   }, [walk.active, targetCue?.phase]);
@@ -632,10 +642,12 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   if (!snapshot.available) return null;
   return <>
     {targetCue && targetCue.phase !== "returning" && <div className="planet-mascot-target" aria-hidden="true" data-booky-target={targetCue.phase}
+      data-booky-calm={calmMotion ? "true" : undefined}
       data-booky-target-action={targetCue.action} style={{ left: targetCue.touch.left - 20, top: targetCue.touch.top - 20 }} />}
     {open && highlight && snapshot.highlight && <div className="planet-mascot-highlight" aria-hidden="true"
       data-planet-mascot-highlight={snapshot.highlight} style={highlight as CSSProperties} />}
     <div ref={root} className="planet-mascot-controls" data-planet-mascot-pet=""
+      data-booky-calm={calmMotion ? "true" : undefined}
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-panel-state={open ? "open" : "closed"}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
@@ -688,7 +700,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         {shown ? <PlanetMascotAvatar src={mascotImage} mood={snapshot.completedRoute ? "celebrate" : snapshot.mode === "tour" ? "guiding" : "idle"}
           lookAt={walk.active ? { x: walk.direction * .45, y: 0 } : pointerLook ?? guidedLook}
           interaction={walk.active ? "walking" : gesture === "rest" && open && highlight ? "pointing" : gesture}
-          reactionKey={reactionKey} active={snapshot.available} /> : name}
+          reactionKey={reactionKey} active={snapshot.available} calmMotion={calmMotion} /> : name}
       </button>
       {shown && <div className="planet-mascot-controls__tools">
         <button type="button" data-planet-mascot-move="" className="planet-mascot-controls__move"
@@ -877,9 +889,51 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             : "Choose a gesture and I'll respond. Try it again whenever you like. Use Stop beside my name to end a gesture."}</p>
           <div data-booky-motion-notice="" role="status" aria-live="polite" aria-atomic="true">
             {walk.reducedMotion && <p className="planet-mascot-controls__response">
-              {ru ? "Меньше движения: все жесты доступны как неподвижные позы."
-                : "Reduced motion is on. All gestures are available as still poses."}
+              {walk.systemReducedMotion
+                ? ru ? "Меньше движения: все жесты доступны как неподвижные позы."
+                  : "Reduced motion is on. All gestures are available as still poses."
+                : ru ? "Спокойные движения: жесты показываются неподвижными позами."
+                  : "Calm movements: gestures appear as still poses."}
             </p>}
+          </div>
+          <div className="planet-mascot-controls__motion">
+            <button type="button" role="switch" data-booky-calm-motion="" aria-checked={motion.mode === "calm"}
+              disabled={!motion.hydrated} aria-describedby={`${id}-motion-status`}
+              onClick={() => {
+                const current = controller.getSnapshot();
+                if (current.revision === snapshot.revision && current.available && current.visibility === "shown"
+                  && current.panel === "open" && !document.hidden && !drag.current) {
+                  onMotionChange(motion.mode === "calm" ? "system" : "calm");
+                }
+              }}><span aria-hidden="true">{motion.mode === "calm" ? "✓" : "○"}</span> {ru ? "Спокойные движения" : "Calm movements"}</button>
+            <div id={`${id}-motion-status`} data-booky-motion-save-status="" role="status" aria-live="polite" aria-atomic="true">
+              {motion.state === "loading" && <p>{ru ? "Загружаем настройку движения…" : "Loading the movement setting…"}</p>}
+              {motion.state === "saving" && <p>{ru ? "Сохраняем настройку…" : "Saving the setting…"}</p>}
+              {motion.state === "failed" && <p>{motion.error === "read"
+                ? ru ? "Не удалось прочитать настройку. Пока движения уменьшены." : "The setting could not be read. Movements are reduced for now."
+                : ru ? "Не удалось подтвердить сохранение. Выбор действует до закрытия приложения." : "Saving could not be confirmed. Your choice applies until the app closes."}</p>}
+            </div>
+            {motion.state === "failed" && !motion.hydrated && <>
+              <p id={`${id}-motion-recovery`}>{ru
+                ? "Можно заменить только эту настройку на спокойные движения. Остальные настройки и прогресс сохранятся."
+                : "You can replace just this setting with calm movements. Your other settings and progress will stay."}</p>
+              <button type="button" data-booky-motion-recover="" aria-describedby={`${id}-motion-recovery`} onClick={() => {
+                const current = controller.getSnapshot();
+                if (current.revision === snapshot.revision && current.available && current.visibility === "shown"
+                  && current.panel === "open" && !document.hidden && !drag.current && onRecoverMotion()) {
+                  heading.current?.focus({ preventScroll: true });
+                }
+              }}>{ru ? "Заменить на спокойные движения" : "Replace with calm movements"}</button>
+            </>}
+            {motion.state === "failed" && <button type="button" data-booky-motion-retry="" onClick={() => {
+              const current = controller.getSnapshot();
+              if (current.revision === snapshot.revision && current.available && current.visibility === "shown"
+                && current.panel === "open" && !document.hidden && !drag.current && onRetryMotion()) {
+                heading.current?.focus({ preventScroll: true });
+              }
+            }}>
+              {ru ? "Повторить" : "Try again"}
+            </button>}
           </div>
           <div className="planet-mascot-controls__actions">
             <button type="button" data-booky-surprise="" onClick={() => {

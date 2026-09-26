@@ -3,6 +3,47 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createHostPlatformServices, type HostAppBridge, type HostAppState, type HostListenerHandle,
   type HostNetworkBridge, type HostNetworkState, type HostPlatformServicesOptions, type HostPreferenceBridge } from "./HostPlatformServices";
 import { GLOBE_EDITION_IDS } from "../components/globeEditions";
+import { BOOKY_MOTION_PREFERENCE_KEY as MOTION } from "./bookyMotionPreference";
+
+describe("Booky motion native preference port", () => {
+  it("allows only exact motion writes and preserves raw unknown reads", async () => {
+    const f = fixture(), store = f.services.preferences;
+    expect(await store.get(MOTION)).toBeNull();
+    for (const value of ["system", "calm"]) {
+      expect(await store.set(MOTION, value)).toBe(true); expect(await store.get(MOTION)).toBe(value);
+    }
+    f.preferences.set.mockClear();
+    for (const value of ["", "CALM", "calm ", "future", "{}", null, true]) {
+      expect(await store.set(MOTION, value as string)).toBe(false);
+    }
+    expect(f.preferences.set).not.toHaveBeenCalled();
+    f.memory.set(MOTION, "future"); expect(await store.get(MOTION)).toBe("future");
+    expect(f.memory.get(MOTION)).toBe("future"); expect(await store.set(MOTION + "-other", "calm")).toBe(false);
+    expect(await store.get(MOTION + "-other")).toBeNull();
+    expect(await store.remove(MOTION)).toBe(true); expect(await store.get(MOTION)).toBeNull();
+  });
+  it("rejects unavailable or nonstring reads and requires actual writes/readback", async () => {
+    const f = fixture(), store = f.services.preferences;
+    f.preferences.get.mockRejectedValueOnce(Error("private")); await expect(store.get(MOTION)).rejects.toThrow("booky-motion-preference-unavailable");
+    f.preferences.get.mockResolvedValueOnce({ value: true } as unknown as { value: string }); await expect(store.get(MOTION)).rejects.toThrow("booky-motion-preference-unavailable");
+    f.preferences.set.mockResolvedValueOnce(undefined); expect(await store.set(MOTION, "calm")).toBe(false);
+    f.preferences.set.mockRejectedValueOnce(Error("private")); expect(await store.set(MOTION, "calm")).toBe(false);
+    f.preferences.set.mockResolvedValueOnce(false as unknown as void); expect(await store.set(MOTION, "calm")).toBe(false);
+    f.preferences.get.mockRejectedValueOnce(Error("private")); expect(await store.set(MOTION, "calm")).toBe(false);
+    expect(await store.set(MOTION, "system")).toBe(true);
+    f.preferences.remove.mockResolvedValueOnce(undefined); expect(await store.remove(MOTION)).toBe(false);
+    await expect(fixture({ preferences: undefined }).services.preferences.get(MOTION)).rejects.toThrow("booky-motion-preference-unavailable");
+  });
+  it("orders motion writes and their confirmations before subsequent reads", async () => {
+    const f = fixture(), gate = deferred<void>(), trace: string[] = [];
+    f.preferences.set.mockImplementation(async ({ key, value }) => { trace.push("set:" + value); if (value === "calm") await gate.promise; f.memory.set(key, value); });
+    f.preferences.get.mockImplementation(async ({ key }) => { const value = f.memory.get(key) ?? null; trace.push("get:" + value); return { value }; });
+    const first = f.services.preferences.set(MOTION, "calm"), second = f.services.preferences.set(MOTION, "system"), read = f.services.preferences.get(MOTION);
+    await flush(); expect(trace).toEqual(["set:calm"]); gate.resolve();
+    expect(await Promise.all([first, second, read])).toEqual([true, true, "system"]);
+    expect(trace).toEqual(["set:calm", "get:calm", "set:system", "get:system", "get:system"]);
+  });
+});
 
 const LANGUAGE = "probpera-interface-language";
 const DISPLAY = "probpera-display-mode";

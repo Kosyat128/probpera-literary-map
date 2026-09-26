@@ -5,13 +5,15 @@ import { isBookyWalkPathClear, planBookyWalk, sampleBookyWalk, type BookyWalkBou
 export function useBookyWalk(options: {
   available: boolean; revision: number; position: BookyWalkPoint;
   committedPosition?: BookyWalkPoint;
+  calmMotion?: boolean;
   size: Readonly<{ width: number; height: number }>; viewport: BookyWalkBounds;
   controls?: readonly BookyWalkBounds[];
   onFinish: (point: BookyWalkPoint) => void;
 }) {
   const latest = useRef(options); latest.current = options;
-  const [reducedMotion, setReducedMotion] = useState(() => typeof window !== "undefined"
+  const [systemReducedMotion, setReducedMotion] = useState(() => typeof window !== "undefined"
     && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const reducedMotion = systemReducedMotion || options.calmMotion === true;
   const [walk, setWalk] = useState<{ position: BookyWalkPoint; active: boolean; previous: BookyWalkPoint } | null>(null);
   const [direction, setDirection] = useState<-1 | 1>(-1);
   const point = useRef<BookyWalkPoint | null>(null), frame = useRef(0), sequence = useRef(0);
@@ -33,7 +35,7 @@ export function useBookyWalk(options: {
   const start = useCallback((planned?: BookyWalkPath, onArrive?: () => void, duration = BOOKY_WALK_MS,
     targetIsCurrent?: () => boolean) => {
     const current = latest.current;
-    if (point.current || !current.available || document.hidden
+    if (point.current || !current.available || current.calmMotion || document.hidden
       || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
     const path = planned ?? planBookyWalk(handoff.current ?? current.position, current.size, current.viewport, current.controls);
     if (!path) return false;
@@ -48,7 +50,7 @@ export function useBookyWalk(options: {
       // A persistence notice or host toolbar can resize through ResizeObserver
       // without a window resize. Retire the old path before another moving frame.
       const stale = targetIsCurrent ? !targetIsCurrent() : live.revision !== current.revision;
-      if (!live.available || stale || boundsChanged || document.hidden
+      if (!live.available || live.calmMotion || stale || boundsChanged || document.hidden
         || !planned && !isBookyWalkPathClear(path, live.size, live.viewport, live.controls)) { stop(); return; }
       const progress = Math.min(1, Math.max(0, (time - began) / duration));
       point.current = sampleBookyWalk(path, progress);
@@ -78,6 +80,7 @@ export function useBookyWalk(options: {
     };
   }, [stop]);
   useEffect(() => { if (!options.available) stop(); }, [options.available, options.revision, stop]);
+  useLayoutEffect(() => { if (options.calmMotion) stop(); }, [options.calmMotion, stop]);
   const canStart = options.available && !reducedMotion
     && planBookyWalk(options.position, options.size, options.viewport, options.controls) !== null;
   const active = walk?.active === true;
@@ -93,5 +96,5 @@ export function useBookyWalk(options: {
       handoff.current = null; setWalk(null);
     }
   }, [walk, parentPending, committed.left, committed.top]);
-  return { active, position, direction, reducedMotion, canStart, start, stop };
+  return { active, position, direction, reducedMotion, systemReducedMotion, canStart, start, stop };
 }

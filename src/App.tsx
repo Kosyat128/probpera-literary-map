@@ -34,6 +34,7 @@ import { createPlanetMascotController } from "./host/planetMascot";
 import { createPlanetMascotPersistence } from "./host/planetMascotPersistence";
 import BookyReaderSettings, { useBookyReaderSettingsState } from "./host/BookyReaderSettings";
 import { createBookyReaderPolicyStore } from "./host/bookyReaderPolicyStore";
+import { createBookyMotionController } from "./host/bookyMotionPreference";
 import BookyJourneyControls from "./host/BookyJourneyControls";
 import { useBookyJourney, type BookyJourneyNavigation } from "./host/useBookyJourney";
 import type { BookArchiveDetailView } from "./books/bookArchiveDetailView";
@@ -598,6 +599,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const mascotPersistenceSnapshot = useSyncExternalStore(mascotPersistence.subscribe,
     mascotPersistence.getSnapshot, mascotPersistence.getSnapshot);
   useEffect(() => mascotPersistence.activate(), [mascotPersistence]);
+  const bookyMotion = useMemo(() => createBookyMotionController({ preferences: platformServices.preferences,
+    enabled: isPlanetApplication }), [platformServices.preferences, isPlanetApplication]);
+  const bookyMotionSnapshot = useSyncExternalStore(bookyMotion.subscribe, bookyMotion.getSnapshot, bookyMotion.getServerSnapshot);
+  useLayoutEffect(() => {
+    if (isPlanetApplication && platformVisibility === "active") return bookyMotion.activate();
+  }, [bookyMotion, isPlanetApplication, platformVisibility]);
   const readerPolicyStore = useMemo(() => createBookyReaderPolicyStore({ preferences: platformServices.preferences }), [platformServices.preferences]);
   const readerPolicySnapshot = useSyncExternalStore(readerPolicyStore.subscribe, readerPolicyStore.getSnapshot, readerPolicyStore.getSnapshot);
   const readJourneyPolicy = useCallback(() => readerPolicyStore.getSnapshot().policy, [readerPolicyStore]);
@@ -3352,6 +3359,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       onAction={handleMascotActionWithPoint} pointRequest={mascotPointRequest}
       position={mascotPosition} onPositionChange={setMascotPosition}
       persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
+      motion={bookyMotionSnapshot} onMotionChange={bookyMotion.selectMode} onRetryMotion={bookyMotion.retry}
+      onRecoverMotion={bookyMotion.recoverWithCalm}
       onRetryContent={target => { if (target === "countries") retryArchiveData(); else retryBookArchive(); }}
       readerSettings={<>
         {journey.needsBooks && <button type="button" data-booky-journey-load=""

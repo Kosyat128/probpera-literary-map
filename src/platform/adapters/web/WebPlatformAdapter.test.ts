@@ -2,6 +2,46 @@ import { BOOKY_JOURNEY_PROGRESS_KEY as JOURNEY_PROGRESS, BOOKY_JOURNEY_PROGRESS_
 import { afterEach, describe, expect, it, onTestFinished, vi } from "vitest";
 import { installSafeWebStorage } from "../../../utils/safeWebStorage";
 import { GLOBE_EDITION_IDS } from "../../../components/globeEditions";
+import { BOOKY_MOTION_PREFERENCE_KEY as MOTION } from "../../../host/bookyMotionPreference";
+
+describe("Booky motion browser preference port", () => {
+  it("allows exact motion values and preserves unknown raw records without arbitrary keys", async () => {
+    const env = browserEnvironment(), store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    expect(await store.get(MOTION)).toBeNull();
+    for (const value of ["system", "calm"]) { expect(await store.set(MOTION, value)).toBe(true); expect(await store.get(MOTION)).toBe(value); }
+    vi.mocked(env.browser.localStorage.setItem).mockClear();
+    for (const value of ["", "CALM", "calm ", "future", "{}", null, true]) expect(await store.set(MOTION, value as string)).toBe(false);
+    expect(env.browser.localStorage.setItem).not.toHaveBeenCalled();
+    env.browser.localStorage.setItem(MOTION, "future"); expect(await store.get(MOTION)).toBe("future");
+    expect(env.browser.localStorage.getItem(MOTION)).toBe("future"); expect(await store.set(MOTION + "-other", "calm")).toBe(false);
+    expect(await store.get(MOTION + "-other")).toBeNull();
+    expect(await store.remove(MOTION)).toBe(true); expect(await store.get(MOTION)).toBeNull();
+  });
+  it("rejects failed reads, failed storage writes and mismatched readback", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage, store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw Error("private"); });
+    await expect(store.get(MOTION)).rejects.toThrow("booky-motion-preference-unavailable");
+    vi.mocked(storage.getItem).mockReturnValueOnce(true as unknown as string); await expect(store.get(MOTION)).rejects.toThrow("booky-motion-preference-unavailable");
+    vi.mocked(storage.setItem).mockImplementationOnce(() => { throw Error("private"); }); expect(await store.set(MOTION, "calm")).toBe(false);
+    vi.mocked(storage.setItem).mockImplementationOnce(() => undefined); expect(await store.set(MOTION, "calm")).toBe(false);
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw Error("private"); }); expect(await store.set(MOTION, "calm")).toBe(false);
+    expect(await store.set(MOTION, "system")).toBe(true);
+    vi.mocked(storage.removeItem).mockImplementationOnce(() => undefined); expect(await store.remove(MOTION)).toBe(false);
+    const missing = createWebPlatformAdapter({ window: null }).preferences;
+    await expect(missing.get(MOTION)).rejects.toThrow("booky-motion-preference-unavailable"); expect(await missing.set(MOTION, "calm")).toBe(false);
+  });
+  it("bypasses the safe facade's cached fallback rather than confirming unsaved motion", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    storage.setItem(MOTION, "calm"); const read = vi.mocked(storage.getItem).getMockImplementation()!;
+    installSafeWebStorage(env.browser, null);
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    vi.mocked(storage.setItem).mockImplementation(() => { throw Error("denied"); });
+    vi.mocked(storage.getItem).mockImplementation(() => { throw Error("denied"); });
+    env.browser.localStorage.setItem(MOTION, "system"); expect(env.browser.localStorage.getItem(MOTION)).toBe("system");
+    expect(await store.set(MOTION, "system")).toBe(false); await expect(store.get(MOTION)).rejects.toThrow("booky-motion-preference-unavailable");
+    vi.mocked(storage.getItem).mockImplementation(read); expect(await store.get(MOTION)).toBe("calm");
+  });
+});
 import {
   createWebPlatformAdapter,
   type WebAdapterWindow,

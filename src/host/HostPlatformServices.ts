@@ -8,6 +8,7 @@ import { BOOKY_PREFERENCE_KEY, BookyPreferenceUnsupportedError, decodeBookyPrefe
   isUnsupportedBookyPreference, parseBookyPreference } from "./planetMascotPreference";
 import { BOOKY_READER_POLICY_KEY, parseBookyReaderPolicy } from "./bookyReaderPolicy";
 import { BOOKY_JOURNEY_PROGRESS_KEY, parseBookyJourneyProgress } from "./bookyJourneyProgress";
+import { BOOKY_MOTION_PREFERENCE_KEY } from "./bookyMotionPreference";
 
 export interface HostListenerHandle { remove(): void | Promise<void>; }
 export interface HostAppState { readonly isActive: boolean; }
@@ -58,6 +59,7 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-display-mode", ["dark", "light", "book"]],
   ["probpera-planet-welcome-v1", ["completed"]],
   ["probpera-planet-graphics-quality-v1", ["high", "balanced", "economy"]],
+  [BOOKY_MOTION_PREFERENCE_KEY, ["system", "calm"]],
   ["probpera-planet-download-network-v1", ["any-network", "wifi-only"]],
   ["probpera.globe-edition.v2", [...GLOBE_EDITION_IDS, "antique", "modern", "earth"]],
   ["probpera.globe-style.v1", ["antique", "modern", "earth"]],
@@ -141,7 +143,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     if (!options.preferences) { report(operation, "unavailable"); return { valid: false, value: null }; }
     const result = await options.preferences.get({ key });
     const value = result?.value;
-    if (key === BOOKY_READER_POLICY_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY) {
+    if (key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY) {
       // The owning controllers distinguish invalid/future records from absence.
       // Preserve raw bytes; only an actual native string/null is authoritative.
       if (value === null || typeof value === "string") return { valid: true, value };
@@ -162,7 +164,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     persistence: "best-effort" as const,
     get(key: string) {
       if (!permittedPreferenceKey(key)) return Promise.resolve(null);
-      if (key === BOOKY_JOURNEY_PROGRESS_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY || key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
+      if (key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY || key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
         || key === "probpera.globe-edition.v2" || key === "probpera.globe-style.v1") {
         // Migration may use a truly absent native preference. A failed read must
         // not authorize an older WebView value to overwrite native storage.
@@ -171,7 +173,8 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
           () => readPreference(key, "preference-get")
         ).then(result => {
           if (result.unsupported) throw new BookyPreferenceUnsupportedError();
-          if (!result.valid) throw new Error(key === BOOKY_JOURNEY_PROGRESS_KEY ? "booky-journey-progress-unavailable"
+          if (!result.valid) throw new Error(key === BOOKY_MOTION_PREFERENCE_KEY ? "booky-motion-preference-unavailable"
+            : key === BOOKY_JOURNEY_PROGRESS_KEY ? "booky-journey-progress-unavailable"
             : key === BOOKY_READER_POLICY_KEY ? "booky-reader-policy-unavailable"
             : key === BOOKY_PREFERENCE_KEY ? "booky-preference-unavailable" : key === GLOBE_COMPOSITION_PREFERENCE_KEY
             ? "composition-preference-unavailable" : key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
@@ -187,7 +190,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
       return serialPreference(key, "preference-set", false, async () => {
         if (!options.preferences) { report("preference-set", "unavailable"); return false; }
         const written: unknown = await options.preferences.set({ key, value });
-        if ((key === BOOKY_READER_POLICY_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY) && written === false) { report("preference-set", "invalid-response"); return false; }
+        if ((key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY) && written === false) { report("preference-set", "invalid-response"); return false; }
         const result = await readPreference(key, "preference-set");
         if (result.valid && result.value === value) return true;
         if (result.valid) report("preference-set", "readback-mismatch");
@@ -199,7 +202,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
       return serialPreference(key, "preference-remove", false, async () => {
         if (!options.preferences) { report("preference-remove", "unavailable"); return false; }
         const removed: unknown = await options.preferences.remove({ key });
-        if ((key === BOOKY_READER_POLICY_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY) && removed === false) { report("preference-remove", "invalid-response"); return false; }
+        if ((key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY) && removed === false) { report("preference-remove", "invalid-response"); return false; }
         const result = await readPreference(key, "preference-remove");
         if (result.valid && result.value === null) return true;
         if (result.valid) report("preference-remove", "readback-mismatch");

@@ -5,19 +5,20 @@ import { BOOKY_LOOK_MS, bookyReactionDuration, boundedBookyLook, createBookyPose
 
 type RendererState = "loading" | "live3d" | "fallback";
 type RendererSnapshot = Readonly<{ state: RendererState; active: boolean }>;
-type Runtime = { update(input: BookyInput): void };
+type RendererInput = BookyInput & Readonly<{ calmMotion?: boolean }>;
+type Runtime = { update(input: RendererInput): void };
 type OwnedModel = ReturnType<typeof import("./bookyModel")["createBookyModel"]>;
 const RECOVERY_TIMEOUT_MS = 1800;
 
 /** Independent decorative viewport. It never borrows the literary globe's
  * camera, textures or controls, and has no resting animation loop. */
-export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>, input: BookyInput) {
+export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>, input: RendererInput) {
   const committed = useRef(input), runtime = useRef<Runtime | null>(null);
   const [snapshot, setSnapshot] = useState<RendererSnapshot>({ state: "loading", active: false });
   useLayoutEffect(() => {
     committed.current = input;
     runtime.current?.update(input);
-  }, [input.mood, input.interaction, input.lookAt.x, input.lookAt.y, input.reactionKey, input.active]);
+  }, [input.mood, input.interaction, input.lookAt.x, input.lookAt.y, input.reactionKey, input.active, input.calmMotion]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -35,7 +36,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     let lossExtension: WEBGL_lose_context | null = null;
     let observer: ResizeObserver | null = null, intersection: IntersectionObserver | null = null;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let reducedMotion = motion.matches;
+    let reducedMotion = motion.matches || committed.current.calmMotion === true;
     const isActive = () => alive && !failed && !contextLost && pageVisible && intersecting && committed.current.active;
     const publish = () => {
       if (!alive) return;
@@ -84,7 +85,9 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
       publish();
     };
     const onReducedMotion = () => {
-      reducedMotion = motion.matches; stopFrame(); settlePose?.(); requestFrame();
+      const next = motion.matches || committed.current.calmMotion === true;
+      if (next === reducedMotion) return;
+      reducedMotion = next; stopFrame(); settlePose?.(); requestFrame();
     };
     const onContextLost = (event: Event) => {
       event.preventDefault();
@@ -112,7 +115,13 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     document.addEventListener("visibilitychange", visibility);
     motion.addEventListener("change", onReducedMotion);
     runtime.current = { update(value) {
+      const nextReduced = motion.matches || value.calmMotion === true;
+      const policyChanged = nextReduced !== reducedMotion;
+      reducedMotion = nextReduced;
       updatePose?.(value);
+      // Both enabling and disabling calm movement retire the old reaction.
+      // Only another explicit gesture may start a fresh animation afterward.
+      if (policyChanged) { stopFrame(); settlePose?.(); }
       if (!isActive()) { stopFrame(); settlePose?.(); } else requestFrame();
       publish();
     } };
