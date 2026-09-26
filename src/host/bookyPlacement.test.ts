@@ -134,4 +134,43 @@ describe("open companion help placement", () => {
       { left: -400, top: 180, width: 100, height: 300 }];
     expect(placeBookyCard(preferred, size, view, pet, controls)).toEqual({ ...preferred, ...size });
   });
+  it("preserves an expanded actionable minimum even when a smaller gap would avoid navigation", () => {
+    const view = { left: 0, top: 70, width: 800, height: 630 };
+    const pet = { left: 640, top: 500, width: 112, height: 180 };
+    const controls = [{ left: 0, top: 100, width: 800, height: 80 },
+      { left: 0, top: 420, width: 800, height: 280 }];
+    const preferred = { left: 120, top: 100 }, size = { width: 340, height: 400 };
+    const ordinary = placeBookyCard(preferred, size, view, pet, controls);
+    expect(ordinary.height).toBeLessThan(300);
+    expect(controls.every(rect => !overlaps(ordinary, rect))).toBe(true);
+    const expanded = placeBookyCard(preferred, size, view, pet, controls, 300);
+    expect(expanded.height).toBeGreaterThanOrEqual(300);
+    expect(expanded.height).toBeLessThanOrEqual(size.height);
+    expect(controls.some(rect => overlaps(expanded, rect))).toBe(true);
+    expect(overlaps(expanded, pet)).toBe(false);
+    expect(expanded.top).toBeGreaterThanOrEqual(view.top + 12);
+    expect(expanded.top + expanded.height).toBeLessThanOrEqual(view.top + view.height - 12);
+  });
+  it("caps the requested minimum to real short-screen space and the supplied card height", () => {
+    const view = { left: 20, top: 60, width: 640, height: 270 };
+    const pet = { left: 480, top: 100, width: 144, height: 96 };
+    const preferred = { left: 32, top: 72 };
+    const tall = placeBookyCard(preferred, { width: 340, height: 400 }, view, pet, [view], 360);
+    expect(tall.height).toBe(246);
+    expect(tall.top).toBe(72);
+    expect(tall.top + tall.height).toBe(view.top + view.height - 12);
+    expect(overlaps(tall, pet)).toBe(false);
+    const short = placeBookyCard(preferred, { width: 340, height: 180 }, view, pet, [view], 360);
+    expect(short.height).toBe(180);
+    expect(short.top + short.height).toBeLessThanOrEqual(view.top + view.height - 12);
+  });
+  it.each([NaN, Infinity, -Infinity, 0, -40])("uses the existing safe minimum for invalid request %s", minimum => {
+    const view = { left: 0, top: 70, width: 800, height: 630 };
+    const pet = { left: 640, top: 500, width: 112, height: 180 };
+    const controls = [{ left: 0, top: 100, width: 800, height: 80 },
+      { left: 0, top: 420, width: 800, height: 280 }];
+    const preferred = { left: 120, top: 100 }, size = { width: 340, height: 400 };
+    expect(placeBookyCard(preferred, size, view, pet, controls, minimum))
+      .toEqual(placeBookyCard(preferred, size, view, pet, controls));
+  });
 });

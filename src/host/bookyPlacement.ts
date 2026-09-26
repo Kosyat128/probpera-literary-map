@@ -71,12 +71,14 @@ export function bookyCardHeightLimit(view: BookyPlacementRect, pet: BookyPlaceme
  * Keep a readable scroll area; a crowded screen cannot promise zero overlap.
  */
 export function placeBookyCard(preferred: Point, size: Size, view: BookyPlacementRect,
-  pet: BookyPlacementRect, controls: readonly BookyPlacementRect[]): BookyPlacementRect {
+  pet: BookyPlacementRect, controls: readonly BookyPlacementRect[], minimumHeight = 200): BookyPlacementRect {
   const width = Math.min(size.width, Math.max(1, view.width - GAP * 2));
   const height = Math.min(size.height, Math.max(1, view.height - GAP * 2));
   // Leave room below the sticky heading and selected-entity summary to read a
-  // useful part of the page. Smaller viewports still cap this to real space.
-  const minHeight = Math.min(200, height);
+  // useful part of the page. Enlarged text may need a taller actionable area;
+  // neither that request nor the default can exceed the actual card/view space.
+  const requestedMinimum = Number.isFinite(minimumHeight) && minimumHeight > 0 ? Math.max(1, minimumHeight) : 200;
+  const minHeight = Math.min(requestedMinimum, height);
   const leftEdge = view.left + GAP, topEdge = view.top + GAP;
   const rightEdge = view.left + view.width - GAP, bottomEdge = view.top + view.height - GAP;
   const clampX = (x: number) => Math.max(leftEdge, Math.min(rightEdge - width, x));

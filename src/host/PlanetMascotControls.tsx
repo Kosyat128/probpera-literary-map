@@ -123,6 +123,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const dockDetached = useRef(false);
   const measuredViewport = useRef<Rect | null>(null);
   const [cardHeight, setCardHeight] = useState(360);
+  const [cardTextSize, setCardTextSize] = useState({ heading: 0, controls: 0, action: 0 });
   const [highlight, setHighlight] = useState<Rect | null>(null);
   const drag = useRef<{ pointerId: number; x: number; y: number; origin: Position; source: "avatar" | "handle";
     moved: boolean; element: HTMLButtonElement } | null>(null);
@@ -262,6 +263,14 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       // grow again after a resize or after a nearby control disappears.
       const contentHeight = card.current ? card.current.scrollHeight + 2 : null;
       if (contentHeight !== null) setCardHeight(previous => Math.abs(previous - contentHeight) < .5 ? previous : contentHeight);
+      if (card.current) {
+        const headingHeight = heading.current?.parentElement?.getBoundingClientRect().height ?? 0;
+        const controlsHeight = card.current.querySelector(".planet-mascot-controls__heading-actions")?.getBoundingClientRect().height ?? 0;
+        const actionHeight = Math.max(0, ...Array.from(card.current.querySelectorAll("button, summary"),
+          element => element.getBoundingClientRect().height));
+        setCardTextSize(previous => Math.abs(previous.heading - headingHeight) < .5 && Math.abs(previous.controls - controlsHeight) < .5
+          && Math.abs(previous.action - actionHeight) < .5 ? previous : { heading: headingHeight, controls: controlsHeight, action: actionHeight });
+      }
     };
     const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
     if (root.current) observer?.observe(root.current);
@@ -464,12 +473,20 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const petRect = { ...petPosition, ...petSize };
   const cardWidth = bookyCardWidth(view, petRect);
   const cardView = bookyCardViewport(view, petSize, navigation);
-  const maxCardHeight = bookyCardHeightLimit(cardView, petRect, cardWidth);
+  // Use measured typography so native text zoom also reflows the card without
+  // applying a second font multiplier. Leave room for a whole action below the
+  // sticky heading, including the deliberate recovery action after a read error.
+  // The action row does not wrap with the title, so returning to normal text
+  // can also return to the compact heading without a layout feedback loop.
+  const expandedText = cardTextSize.controls > 52;
+  const minimumCardHeight = expandedText ? Math.max(200, cardTextSize.heading + cardTextSize.action + 24) : 200;
+  const maxCardHeight = Math.max(bookyCardHeightLimit(cardView, petRect, cardWidth),
+    expandedText ? Math.min(minimumCardHeight, Math.max(0, cardView.height - MARGIN * 2)) : 0);
   const height = Math.min(cardHeight, maxCardHeight);
   const cardObstacles = highlight && highlight.width * highlight.height < view.width * view.height * .45
     ? [...navigation, highlight] : navigation;
   const cardPosition = open ? placeBookyCard({ left: petPosition.left - cardWidth - MARGIN,
-    top: petPosition.top + petSize.height - height }, { width: cardWidth, height }, cardView, petRect, cardObstacles)
+    top: petPosition.top + petSize.height - height }, { width: cardWidth, height }, cardView, petRect, cardObstacles, minimumCardHeight)
     : { left: 0, top: 0, width: cardWidth, height };
   const perform = (action: PlanetMascotAction) => {
     const performed = controller.act(action, snapshot.revision, () => onAction(action));
@@ -648,6 +665,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-planet-mascot-highlight={snapshot.highlight} style={highlight as CSSProperties} />}
     <div ref={root} className="planet-mascot-controls" data-planet-mascot-pet=""
       data-booky-calm={calmMotion ? "true" : undefined}
+      data-booky-expanded-text={expandedText ? "true" : undefined}
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-panel-state={open ? "open" : "closed"}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
