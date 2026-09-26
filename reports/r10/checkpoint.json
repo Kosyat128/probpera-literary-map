@@ -128,15 +128,25 @@
     {
       "scope": "news miniature UI",
       "decision": "Accepted by user: Да повестка пойдет нормально",
+      "confirmedReference": "User supplied the same final news-panel screenshot and repeated: Изображение на уровне главного текста без белых полос.",
+      "constraints": "Compact square at the headline level; image fills the square without white bands on any side.",
+      "referenceAndDeliveredScreenshotPixelsIdentical": true,
+      "referenceDimensions": [509, 862],
+      "referenceRgbaSha256": "106f266904355b474c422b02aacc1b9ad17b0914f1e6eb06656ce02eb2c9147d",
+      "date": "2026-09-26"
+    },
+    {
+      "scope": "showcase lead image sizing and shown local preview",
+      "decision": "User clarified automatic full-width image without side bands; confirmed intrinsic-height interpretation and shown local result: Вот так да. This is visual-scope acceptance, not production release or social activation authorization.",
       "date": "2026-09-26"
     }
   ],
   "implementedUserRequirements": [
     {
       "scope": "showcase image",
-      "requirement": "Full image at original aspect; no side crop. Short viewport may use existing internal scroll.",
+      "requirement": "Automatically fill the entire lead-media width without side bands; preserve the full image and original proportions by adapting height. Short viewport may use existing internal scroll.",
       "date": "2026-09-26",
-      "separateUserAcceptance": false
+      "separateUserAcceptance": true
     }
   ]
 }
