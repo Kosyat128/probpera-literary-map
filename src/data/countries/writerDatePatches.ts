@@ -1,6 +1,7 @@
 import type { Country, WriterDateEvidence, WriterProfile } from "./types";
 import { parseWriterDate } from "../../utils/writerDates";
 import generated from "./generated/writerDatePatches.r10.json";
+import supplemental from "./generated/writerDatePatches.r10-supplemental.json";
 import identityRegistry from "./generated/curatedWriterQids.generated.json";
 
 export type WriterDatePatch = {
@@ -13,7 +14,7 @@ export type WriterDatePatch = {
   evidence: WriterDateEvidence;
 };
 
-export const writerDatePatches = generated.patches as WriterDatePatch[];
+export const writerDatePatches = [...generated.patches, ...supplemental.patches] as WriterDatePatch[];
 
 const same = (left: unknown, right: unknown) =>
   JSON.stringify(left ?? null) === JSON.stringify(right ?? null);

@@ -80,11 +80,15 @@
   "additions": [
     {
       "path": "src/data/countries/writerDatePatches.ts",
-      "sha256Lf": "9b83050583771229857f4f6af165852e4099fd71908c34566153369a3b637024"
+      "sha256Lf": "3119c1ebf63cff9f285580bdca015f2ed5cacc253d9bc88e025afa83fed427d5"
     },
     {
       "path": "src/data/countries/generated/writerDatePatches.r10.json",
       "sha256Lf": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-supplemental.json",
+      "sha256Lf": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217"
     }
   ],
   "projections": [

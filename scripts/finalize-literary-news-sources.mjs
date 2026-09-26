@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { checkedProbeSourceId } from './lib/literary-news-probe-patterns.mjs';
 
 const root='reports/r10/sources';
 const candidates=JSON.parse(await readFile('data/news/r10-source-candidates.json','utf8'));
@@ -25,8 +26,9 @@ const rejected={
 };
 const family=id=>['prh','prh-library','penguinrandomhousegrupoeditorial-com'].includes(id)?'penguin-random-house':['ast','corpus','eksmo'].includes(id)?'eksmo-ast':id;
 const uncertainCountries=new Set(['penbelarus-org','pen-kurd-org','brittle-paper']);
-const profiles=[];const records=[];const geography={};
+const profiles=[];const records=[];const geography=new Map();
 for(const c of candidates.candidates){
+  checkedProbeSourceId(c.id);
   let r;try{r=JSON.parse(await readFile(root+'/'+c.id+'.json','utf8'));}catch{r={sourceId:c.id,status:'not_probed',reason:'No runtime evidence recorded.'};}
   c.sourceFamilyId=family(c.id);
   if(c.id==='netflix-book-adaptations'){c.discoveryEnabled=false;c.disabledReason='robots_disallowed';r.discoveryEnabled=false;r.disabledReason='robots_disallowed';await writeFile(root+'/'+c.id+'.json',JSON.stringify(r,null,2)+'\n');}
@@ -41,14 +43,14 @@ for(const c of candidates.candidates){
   if(uncertainCountries.has(c.id)){c.countryCodes=[];evidence.status='office_country_unconfirmed';evidence.statement='Literary constituency is recorded as coverage only; no office-country claim is made.';}
   else evidence.status='organisation_country';
   c.countryEvidence=evidence;
-  geography[c.id]={sourceFamilyId:c.sourceFamilyId,countryCodes:c.countryCodes,coverageCountryCodes:c.coverageCountryCodes,countryEvidence:evidence};
+  geography.set(c.id,{sourceFamilyId:c.sourceFamilyId,countryCodes:c.countryCodes,coverageCountryCodes:c.coverageCountryCodes,countryEvidence:evidence});
   if(rejected[c.id]){
     r.technicalProbeStatus=r.technicalProbeStatus||r.status;r.status='editorial_profile_held';r.reason=rejected[c.id];
     await writeFile(root+'/'+c.id+'.json',JSON.stringify(r,null,2)+'\n');
   }
   c.status=r.status;c.probe={attemptedAt:r.attemptedAt||null,lastSuccessAt:r.status==='runtime_verified'?r.lastSuccessAt:null,reason:r.reason,report:root+'/'+c.id+'.json'};
   if(r.status==='runtime_verified'){
-    const p={...r.endpoint,...geography[c.id]};
+    const p={...r.endpoint,...geography.get(c.id)};
     p.sourceClass=c.sourceClass;
     p.evidenceReport=root+'/'+c.id+'.json';
     p.autoPublication=false;
@@ -59,7 +61,7 @@ for(const c of candidates.candidates){
   records.push({sourceId:c.id,name:c.name,countryCodes:c.countryCodes,coverageCountryCodes:c.coverageCountryCodes,sourceFamilyId:c.sourceFamilyId,sourceClass:c.sourceClass,status:r.status,reason:r.reason,endpoint:r.endpoint?.url||null,format:r.endpoint?.format||null,language:r.endpoint?.language||c.languageHint,finds:r.status==='runtime_verified'?r.candidateCount||0:0,ready:0,public:0,sample:r.status==='runtime_verified'?{url:r.sample.source.url,title:r.sample.title,detailHeadline:r.sample.detail.headline,sourcePublishedAt:r.sample.publishedAt||null,observedAt:r.sample.detail.accessedAt}:null,evidence:root+'/'+c.id+'.json'});
 }
 const serialize=p=>'{\n'+Object.entries(p).map(([key,value])=>'  '+JSON.stringify(key)+': '+(key==='linkPattern'?'new RegExp('+JSON.stringify(value)+')':key==='keywordPattern'?'new RegExp('+JSON.stringify(value)+', "iu")':JSON.stringify(value,null,2))).join(',\n')+'\n}';
-await writeFile('scripts/lib/literary-news-source-profiles.mjs','/** Code-owned destinations, promoted only after recorded bounded HTTP, runtime parser and item-detail probes. */\nexport const R10_SOURCE_PROFILES = [\n'+profiles.map(serialize).join(',\n')+'\n];\n\nexport const R10_SOURCE_GEOGRAPHY = '+JSON.stringify(geography,null,2)+';\n');
+await writeFile('scripts/lib/literary-news-source-profiles.mjs','/** Code-owned destinations, promoted only after recorded bounded HTTP, runtime parser and item-detail probes. */\nexport const R10_SOURCE_PROFILES = [\n'+profiles.map(serialize).join(',\n')+'\n];\n\nexport const R10_SOURCE_GEOGRAPHY = '+JSON.stringify(Object.fromEntries(geography),null,2)+';\n');
 await writeFile('data/news/r10-source-candidates.json',JSON.stringify(candidates,null,2)+'\n');
 const counts={researchedCandidates:records.length,runtimeVerifiedEndpoints:profiles.length,verifiedSourceFamilies:new Set(profiles.map(x=>x.sourceFamilyId)).size,verifiedOrganisationCountries:[...new Set(profiles.flatMap(x=>x.countryCodes))].sort(),researchedOrganisationCountries:[...new Set(records.flatMap(x=>x.countryCodes))].sort(),languages:[...new Set(profiles.map(x=>x.language))].sort(),formats:Object.fromEntries(['rss','atom','html'].map(f=>[f,profiles.filter(x=>x.format===f).length])),finds:records.reduce((n,x)=>n+x.finds,0),ready:0,public:0};
 const summary={schemaVersion:1,generatedAt:new Date().toISOString(),observedPeriod:'2026-09-26 only; no invented 7-day or 30-day history',scope:'Local live source research and runtime parser probes; not a deployment or publication receipt.',counts,statusCounts:Object.fromEntries([...new Set(records.map(x=>x.status))].map(s=>[s,records.filter(x=>x.status===s).length])),records};

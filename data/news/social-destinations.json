@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "editorialTimeZone": "Europe/Moscow",
-  "destinations": [],
-  "connectionStatus": "not_configured",
-  "hints": { "telegram": "@probbaperra", "vk": "probperaru" },
-  "note": "Numeric destination IDs and existing delivery history must be verified before an authorized canary. Usernames are discovery hints only."
+  "destinations": [
+    {
+      "platform": "telegram",
+      "id": "-1002791579809",
+      "mode": "off"
+    },
+    {
+      "platform": "vk",
+      "id": "-231377018",
+      "mode": "off"
+    }
+  ],
+  "connectionStatus": "telegram_rights_verified_vk_user_token_required",
+  "hints": {
+    "telegram": "@probbaperra",
+    "vk": "probperaru"
+  },
+  "note": "User-selected numeric destinations resolved by official APIs. Both remain off until separately reviewed history and native canary checks. VK currently has a community token; publishing requires an authorized user token."
 }

@@ -1,0 +1,474 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-27",
+  "scope": "One bounded source-reviewed supplemental batch of existing identities; cached exact referenced statements corroborated by newly inspected institutional sources.",
+  "humanReview": false,
+  "sourcePackets": [
+    {
+      "name": "candidates-a.json",
+      "sha256": "07e6d3fdf0457e5abc8d69dc398af91671c05476c0a995174eb9b7e8c14c9609"
+    },
+    {
+      "name": "batch-b.json",
+      "sha256": "24f96d37ae964606e0c937cfe5c4e7926fb30d00b8246e5a38f5e87f033372df"
+    }
+  ],
+  "original60Sha256": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080",
+  "cachedSnapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+  "cachedRetrievedAt": "2026-08-31T21:18:08.951Z",
+  "ready": [
+    {
+      "writerKey": "south_africa:nadine_gordimer",
+      "wikidataId": "Q47619",
+      "field": "birthDate",
+      "expectedOld": "1923",
+      "expectedEvidence": null,
+      "proposedValue": "1923-11-20",
+      "status": "ready",
+      "identityFinding": "Nobel API laureate 668 names Nadine Gordimer and the 1991 Literature prize, matching existing reviewed Q47619.",
+      "sources": [
+        {
+          "sourceUrl": "https://api.nobelprize.org/2.1/laureate/668",
+          "checkedAt": "2026-09-26T21:47:55.379Z",
+          "finding": "Official Nobel structured record gives birth.date = 1923-11-20.",
+          "sourceDocumentSha256": "d1bf12cdce8c90eac198be87d2dfabfcb9d18d9f0524cfdaaca8bd5193a335cc"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:nadine_gordimer",
+      "wikidataId": "Q47619",
+      "field": "deathDate",
+      "expectedOld": "2014",
+      "expectedEvidence": null,
+      "proposedValue": "2014-07-13",
+      "status": "ready",
+      "identityFinding": "Nobel API laureate 668 names Nadine Gordimer and the 1991 Literature prize, matching existing reviewed Q47619.",
+      "sources": [
+        {
+          "sourceUrl": "https://api.nobelprize.org/2.1/laureate/668",
+          "checkedAt": "2026-09-26T21:47:55.379Z",
+          "finding": "Official Nobel structured record gives death.date = 2014-07-13.",
+          "sourceDocumentSha256": "d1bf12cdce8c90eac198be87d2dfabfcb9d18d9f0524cfdaaca8bd5193a335cc"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:jm_coetzee",
+      "wikidataId": "Q43293",
+      "field": "birthDate",
+      "expectedOld": "1940",
+      "expectedEvidence": null,
+      "proposedValue": "1940-02-09",
+      "status": "ready",
+      "identityFinding": "Nobel API laureate 763 names J. M. Coetzee and the 2003 Literature prize, matching existing reviewed Q43293.",
+      "sources": [
+        {
+          "sourceUrl": "https://api.nobelprize.org/2.1/laureate/763",
+          "checkedAt": "2026-09-26T21:47:55.422Z",
+          "finding": "Official Nobel structured record gives birth.date = 1940-02-09.",
+          "sourceDocumentSha256": "bcd96b99ea725d78a8ab357ef2594a3b59a1a3124ba94c971d58bd8aaef9af3d"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:andre_brink",
+      "wikidataId": "Q380664",
+      "field": "birthDate",
+      "expectedOld": "1935",
+      "expectedEvidence": null,
+      "proposedValue": "1935-05-29",
+      "status": "ready",
+      "identityFinding": "UCT institutional article identifies its former English professor and author of A Dry White Season, matching reviewed Q380664.",
+      "sources": [
+        {
+          "sourceUrl": "https://www.news.uct.ac.za/article/-2015-03-25-uct-great-minds-four-of-south-africas-most-important-writers",
+          "checkedAt": "2026-09-26T21:47:55.423Z",
+          "finding": "The UCT profile gives the complete lifetime dates 29 May 1935 and 6 February 2015; first date is birth.",
+          "sourceDocumentSha256": "6e52244443fc4255cb0483ddcee68de07932a8f1f0a73a5f17c12c8bc71a7ecc"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:andre_brink",
+      "wikidataId": "Q380664",
+      "field": "deathDate",
+      "expectedOld": "2015",
+      "expectedEvidence": null,
+      "proposedValue": "2015-02-06",
+      "status": "ready",
+      "identityFinding": "UCT institutional article identifies its former English professor and author of A Dry White Season, matching reviewed Q380664.",
+      "sources": [
+        {
+          "sourceUrl": "https://www.news.uct.ac.za/article/-2015-03-25-uct-great-minds-four-of-south-africas-most-important-writers",
+          "checkedAt": "2026-09-26T21:47:55.423Z",
+          "finding": "The UCT profile gives the complete lifetime dates 29 May 1935 and 6 February 2015; second date is death.",
+          "sourceDocumentSha256": "6e52244443fc4255cb0483ddcee68de07932a8f1f0a73a5f17c12c8bc71a7ecc"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:breyten_breytenbach",
+      "wikidataId": "Q364207",
+      "field": "birthDate",
+      "expectedOld": "1939",
+      "expectedEvidence": null,
+      "proposedValue": "1939-09-16",
+      "status": "ready",
+      "identityFinding": "Breytenbach Centre memorial identifies the poet, author and painter, family and former parental home; reviewed Q364207 is unchanged.",
+      "sources": [
+        {
+          "sourceUrl": "https://breytenbachsentrum.co.za/nuusvrystelling-breyten-breytenbach-se-lewe-en-werk/",
+          "checkedAt": "2026-09-26T21:47:56.293Z",
+          "finding": "The Centre memorial explicitly states birth on 16 September 1939 in Bonnievale.",
+          "sourceDocumentSha256": "26357f1db4f5dd13a65341ddc892366a2bbe7ed10cdd1464ced1bb85bfba0735"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:breyten_breytenbach",
+      "wikidataId": "Q364207",
+      "field": "deathDate",
+      "expectedOld": "2024",
+      "expectedEvidence": null,
+      "proposedValue": "2024-11-24",
+      "status": "ready",
+      "identityFinding": "Breytenbach Centre memorial identifies the poet, author and painter, family and former parental home; reviewed Q364207 is unchanged.",
+      "sources": [
+        {
+          "sourceUrl": "https://breytenbachsentrum.co.za/nuusvrystelling-breyten-breytenbach-se-lewe-en-werk/",
+          "checkedAt": "2026-09-26T21:47:56.293Z",
+          "finding": "The Centre memorial explicitly states death on 24 November 2024 in Paris; the French presidential notice independently agrees.",
+          "sourceDocumentSha256": "26357f1db4f5dd13a65341ddc892366a2bbe7ed10cdd1464ced1bb85bfba0735"
+        },
+        {
+          "sourceUrl": "https://www.elysee.fr/emmanuel-macron/2024/11/25/deces-de-breyten-breytenbach",
+          "checkedAt": "2026-09-26T21:47:56.293Z",
+          "finding": "Independent presidential notice confirms death on 24 November 2024.",
+          "sourceDocumentSha256": "68e169a92135d6e21d39d69a32bcc1ffb9c3bd0093332d9e47550a9fa94db6ac"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:sol_plaatje",
+      "wikidataId": "Q2143151",
+      "field": "birthDate",
+      "expectedOld": "1876",
+      "expectedEvidence": null,
+      "proposedValue": "1876-10-09",
+      "status": "ready",
+      "identityFinding": "The university names its namesake Solomon Tshekisho Plaatje, writer of Mhudi and Native Life in South Africa, matching reviewed Q2143151.",
+      "sources": [
+        {
+          "sourceUrl": "https://www.spu.ac.za/index.php/sol-plaatje/",
+          "checkedAt": "2026-09-26T21:47:57.156Z",
+          "finding": "The university namesake biography explicitly gives 9 October 1876 as the first of the complete lifetime dates.",
+          "sourceDocumentSha256": "f2323d393ede4b518b90ffafc85bb9a85bf8147e2ea0337e0b0c2e5e21551864"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:eskia_mphahlele",
+      "wikidataId": "Q1372674",
+      "field": "birthDate",
+      "expectedOld": "1919",
+      "expectedEvidence": null,
+      "proposedValue": "1919-12-17",
+      "status": "ready",
+      "identityFinding": "Unisa and SAHO identify the writer of Down Second Avenue, academic and autobiographer, matching reviewed Q1372674.",
+      "sources": [
+        {
+          "sourceUrl": "https://www.unisa.ac.za/sites/corporate/default/News-%26-Media/Articles/Celebrating-the-legacy-of-a-literary-giant-and-pioneer-of-African-humanism",
+          "checkedAt": "2026-09-26T21:49:15.726Z",
+          "finding": "The university memorial report explicitly states birth on 17 December 1919 in Marabastad, Pretoria.",
+          "sourceDocumentSha256": "f86b097bbce150a963fb3ca9d808a6353f9e688495ff7c905a4d800fd87b07d5"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:eskia_mphahlele",
+      "wikidataId": "Q1372674",
+      "field": "deathDate",
+      "expectedOld": "2008",
+      "expectedEvidence": null,
+      "proposedValue": "2008-10-27",
+      "status": "ready",
+      "identityFinding": "Unisa and SAHO identify the writer of Down Second Avenue, academic and autobiographer, matching reviewed Q1372674.",
+      "sources": [
+        {
+          "sourceUrl": "https://sahistory.org.za/people/eskia-mphahlele",
+          "checkedAt": "2026-09-26T21:47:57.341Z",
+          "finding": "SAHO reproduces Minister Pallo Jordan's statement: Mphahlele died on the evening of 27 October 2008. This is a named primary statement reproduced by an institutional archive, not a newly accessed original ministry page.",
+          "sourceDocumentSha256": "1651b20d14dd10c1964fe246e48e3d3de4d7ea71d6c19531043041aeca1a5aa2"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:zakes_mda",
+      "wikidataId": "Q144653",
+      "field": "birthDate",
+      "expectedOld": "1948",
+      "expectedEvidence": null,
+      "proposedValue": "1948-10-06",
+      "status": "ready",
+      "identityFinding": "The publisher-hosted introduction names Zanemvula Kizito Gatyeni Mda and this collection of his plays, matching reviewed Q144653.",
+      "sources": [
+        {
+          "sourceUrl": "https://www.cambridge.org/core/books/abs/and-the-girls-in-their-sunday-dresses/introduction/86E8DA6CD7DDE7B1DF3AC5A0AA50D2BA",
+          "checkedAt": "2026-09-26T21:47:57.676Z",
+          "finding": "The publisher-hosted introduction to And the Girls in their Sunday Dresses explicitly gives birth on 6 October 1948.",
+          "sourceDocumentSha256": "792e4e3a9739f7aa843335caedbb0a4157fc511f8a834cb502b83dd3d270cec2"
+        }
+      ]
+    },
+    {
+      "writerKey": "south_africa:damon_galgut",
+      "wikidataId": "Q510119",
+      "field": "birthDate",
+      "expectedOld": "1963",
+      "expectedEvidence": null,
+      "proposedValue": "1963-11-12",
+      "status": "ready",
+      "identityFinding": "Damon Galgut; South African novelist and playwright; The Promise; Pretoria/Cape Town. Official prize profile identifies the same writer.",
+      "sources": [
+        {
+          "sourceUrl": "https://thebookerprizes.com/the-booker-library/authors/damon-galgut",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "Born field explicitly states 12 November 1963.",
+          "method": "web.open/read",
+          "locator": "Born field"
+        }
+      ]
+    },
+    {
+      "writerKey": "burkina_faso:jean_pierre_guingane",
+      "wikidataId": "Q1685215",
+      "field": "birthDate",
+      "expectedOld": "1947",
+      "expectedEvidence": null,
+      "proposedValue": "1947-07-11",
+      "status": "ready",
+      "identityFinding": "Daogo Jean-Pierre Guingané; Garango; playwright/director of Théâtre de la Fraternité and University of Ouagadougou scholar. Both institutional sources match.",
+      "sources": [
+        {
+          "sourceUrl": "https://catalogue.bnf.fr/ark:/12148/cb120545344",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "Birth is explicitly 1947-07-11 at Garango. Death field conflicts with ITI and is separately held.",
+          "method": "web.open/read",
+          "locator": "Naissance field"
+        },
+        {
+          "sourceUrl": "https://iti-worldwide.org/ru/pdfs/publications/Jean-Pierre_Guingane_L_homme_et_son_oeuvre_Vol2_T%C3%A9moignages.pdf",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The institutional memorial gives 11 July 1947 at Garango in two biographical contributions.",
+          "method": "web.open/read",
+          "locator": "PDF page 173 (zero-based 172), printed p. 180; also PDF page 182"
+        }
+      ]
+    },
+    {
+      "writerKey": "mauritius:nathacha_appanah",
+      "wikidataId": "Q467796",
+      "field": "birthDate",
+      "expectedOld": "1973",
+      "expectedEvidence": null,
+      "proposedValue": "1973-05-24",
+      "status": "ready",
+      "identityFinding": "Mauritian novelist/journalist from Mahébourg; Les Rochers de Poudre d’Or and Tropique de la violence. The FME heading misspells Apannah, but body, works and birthplace clearly match Appanah.",
+      "sources": [
+        {
+          "sourceUrl": "https://ciclic.fr/ressources/tropique-de-la-violence",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The agency author profile explicitly gives 24 May 1973 in Mahébourg.",
+          "method": "web.open/read",
+          "locator": "Author biography below resources"
+        },
+        {
+          "sourceUrl": "https://memoire-esclavage.org/biographies/nathacha-apannah",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The foundation biography independently displays the full birth date; named works and family identify Appanah despite the heading typo.",
+          "method": "web.open/read",
+          "locator": "First biography paragraph"
+        }
+      ]
+    },
+    {
+      "writerKey": "democratic_republic_of_congo:kama_sywor_kamanda",
+      "wikidataId": "Q379125",
+      "field": "birthDate",
+      "expectedOld": "1952",
+      "expectedEvidence": null,
+      "proposedValue": "1952-11-11",
+      "status": "ready",
+      "identityFinding": "Kama Sywor Kamanda; Congolese francophone writer/poet born in Luebo. Author site header and body identify the same writer; the birth sentence has a minor Kamana spelling typo.",
+      "sources": [
+        {
+          "sourceUrl": "https://www.kamasyworkamanda.com/biographie/",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The author biography explicitly gives 11 November 1952 at Luebo.",
+          "method": "web.open/read",
+          "locator": "Biography opening"
+        }
+      ]
+    },
+    {
+      "writerKey": "equatorial_guinea:juan_tomas_avila_laurel",
+      "wikidataId": "Q151806",
+      "field": "birthDate",
+      "expectedOld": "1966",
+      "expectedEvidence": null,
+      "proposedValue": "1966-11-06",
+      "status": "ready",
+      "identityFinding": "Juan Tomás Ávila Laurel; Equatorial Guinean writer and nurse; La carga, Avión de ricos ladrón de cerdos and Arde el monte de noche. Interview names him and records his own birth statement.",
+      "sources": [
+        {
+          "sourceUrl": "https://birdlikecultura.wordpress.com/wp-content/uploads/2015/10/17_interview_17okt2008_juantomasavilalaurel.pdf",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "In the opening answer, Ávila Laurel states his own full birth date: 6 November 1966, Bioko.",
+          "method": "web.open/read",
+          "locator": "PDF page 1, opening question/answer"
+        }
+      ]
+    },
+    {
+      "writerKey": "mauritius:ananda_devi",
+      "wikidataId": "Q2845313",
+      "field": "birthDate",
+      "expectedOld": "1957",
+      "expectedEvidence": null,
+      "proposedValue": "1957-03-23",
+      "status": "ready",
+      "identityFinding": "Ananda Devi, Mauritian novelist from Trois-Boutiques; ethnology training, Le Sari vert and Le rire des déesses. Institutional event and award dossier match the existing writer.",
+      "sources": [
+        {
+          "sourceUrl": "https://villamedici.it/programme/rencontre-lecture-avec-ananda-devi/",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The author biography on the French Academy in Rome event page explicitly gives 23 March 1957 at Trois-Boutiques.",
+          "method": "web.open/read",
+          "locator": "Author biography"
+        },
+        {
+          "sourceUrl": "https://www.la-reunion-des-livres.re/wp-content/uploads/2023/02/gprm-prmlsd-2022-laureat-dp.pdf",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The laureate biography confirms 23 March 1957 at Trois-Boutiques.",
+          "method": "web.open/read",
+          "locator": "PDF page 4 (zero-based 3), BIOGRAPHIE DE L’AUTRICE"
+        }
+      ]
+    }
+  ],
+  "held": [
+    {
+      "writerKey": "south_africa:sindiwe_magona",
+      "wikidataId": "Q3961617",
+      "field": "birthDate",
+      "status": "held",
+      "expectedOld": "1943",
+      "proposedValue": null,
+      "reason": "conflicting-exact-days-across-sources",
+      "observedAlternatives": [
+        {
+          "value": "1943-08-23",
+          "sourceUrl": "https://sahistory.org.za/people/sindiwe-magona",
+          "sourceDocumentSha256": "32733ffb231f9cd85643f15125f1eadd57d1893b4c342f687fbc83f45db83fc1",
+          "finding": "Directly inspected SAHO body and vital record state 23 August 1943."
+        },
+        {
+          "value": "1943-08-27",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q3961617",
+          "finding": "Existing referenced day claim in repository snapshot states 27 August 1943; no authority obtained to resolve this contradiction."
+        }
+      ],
+      "action": "Retain year 1943; no new date event.",
+      "applied": false
+    },
+    {
+      "writerKey": "rwanda:scholastique_mukasonga",
+      "wikidataId": "Q3475485",
+      "field": "birthDate",
+      "expectedOld": "1956",
+      "status": "held",
+      "candidateValue": "1956-12-20",
+      "reason": "primary-source-lacks-day-precision",
+      "previousHeldReason": "existing-precision-needs-source-review",
+      "checkedAt": "2026-09-26T21:49:29.443Z",
+      "sources": [
+        {
+          "url": "https://scholastiquemukasonga.net/en/biography/",
+          "title": "Biography \u2014 Scholastique Mukasonga official website",
+          "kind": "author-official-site",
+          "inspected": true,
+          "method": "web.open/read",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The official biography and About Me both give 1956, with Rwanda/Gikongoro identity and matching books. They do not state a month or day. Candidate 20 December was not independently confirmed.",
+          "quote": "Born in Rwanda in 1956",
+          "locator": "Biography opening and About Me"
+        }
+      ]
+    },
+    {
+      "writerKey": "cote_d_ivoire:tanella_boni",
+      "wikidataId": "Q637396",
+      "field": "birthDate",
+      "expectedOld": "1954",
+      "status": "held",
+      "candidateValue": null,
+      "reason": "primary-source-lacks-day-precision",
+      "previousHeldReason": "existing-precision-needs-source-review",
+      "checkedAt": "2026-09-26T21:49:29.443Z",
+      "sources": [
+        {
+          "url": "https://www.editions-brunodoucey.com/pages/auteurs/tanella-boni",
+          "title": "Tanella Boni \u2014 Éditions Bruno Doucey",
+          "kind": "publisher-author-profile",
+          "inspected": true,
+          "method": "web.open/read",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "Her publisher identifies the Ivorian poet/philosopher and explicitly gives birth in Abidjan in 1954 only. Exact day not supported; no guessed anniversary admitted.",
+          "quote": "Tanella Boni est née à Abidjan, en Côte d’Ivoire, en 1954.",
+          "locator": "Author profile opening"
+        }
+      ]
+    },
+    {
+      "writerKey": "burkina_faso:jean_pierre_guingane",
+      "wikidataId": "Q1685215",
+      "field": "deathDate",
+      "expectedOld": "2011",
+      "status": "held",
+      "candidateValue": "2011-01-23",
+      "reason": "conflicting-institutional-exact-dates",
+      "previousHeldReason": "existing-precision-needs-source-review",
+      "checkedAt": "2026-09-26T21:49:29.443Z",
+      "sources": [
+        {
+          "url": "https://iti-worldwide.org/ru/pdfs/publications/Jean-Pierre_Guingane_L_homme_et_son_oeuvre_Vol2_T%C3%A9moignages.pdf",
+          "title": "Daogo Jean-Pierre Guingané \u2014 L’homme et son œuvre, vol. 2",
+          "kind": "professional-institution-memorial",
+          "inspected": true,
+          "method": "web.open/read",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "Contributions by Mamadou Dia and Hermas Gbaguidi explicitly identify death on 23 January 2011. The record remains held because the national-library authority states a different day.",
+          "quote": "23 janvier 2011",
+          "locator": "PDF pages 65 and 67 (zero-based 64 and 66), printed pp. 72 and 74"
+        },
+        {
+          "url": "https://catalogue.bnf.fr/ark:/12148/cb120545344",
+          "title": "Guingané, Jean-Pierre (1947-2011) \u2014 BnF authority",
+          "kind": "national-library-authority",
+          "inspected": true,
+          "method": "web.open/read",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The BnF authority explicitly gives 24 January 2011. This conflicts with the ITI memorial; no automatic reconciliation or calendar entry.",
+          "quote": "Mort : 2011-01-24, Ouagadougou (Burkina Faso)",
+          "locator": "Mort field"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The cached normalized Wikidata snapshot does not preserve qualifiers; this batch does not claim to recheck qualifier absence. Independently inspected institutional sources establish exact-day precision.",
+    "Wikidata retrieval remains the original 2026-08-31 cache timestamp, not the new source-review date.",
+    "No new identities or biography/book/photo changes are authorized."
+  ]
+}

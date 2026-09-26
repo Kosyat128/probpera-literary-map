@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-26T22:34:05.495Z",
+  "reviewer": "Codex independent agent",
+  "humanReview": false,
+  "mode": "read-only source/data-flow inspection; report files only",
+  "inputHead": "e64c3b27837ae2e2456c1ed94910f7f1fa5031c0",
+  "query": {
+    "id": "js/http-to-file-access",
+    "documentation": "https://codeql.github.com/codeql-query-help/javascript/js-http-to-file-access/",
+    "precision": "medium",
+    "securitySeverity": 6.3
+  },
+  "verdict": "intended-data-storage-no-vulnerability-at-reviewed-sinks",
+  "recommendedDisposition": "precise false-positive vulnerability classification after current hardening is included and fingerprints rechecked",
+  "alerts": [
+    {
+      "number": 289,
+      "path": "scripts/probe-literary-news-source-candidates.mjs",
+      "line": 112,
+      "purpose": "bounded response cache for parser replay",
+      "pathControl": "fixed scratch directory plus checked ID plus .json",
+      "consumer": "JSON.parse and inert Cheerio parser",
+      "dataExecuted": false
+    },
+    {
+      "number": 290,
+      "path": "scripts/probe-literary-news-source-candidates.mjs",
+      "line": 114,
+      "purpose": "source evidence report",
+      "pathControl": "fixed report directory plus checked ID plus .json",
+      "consumer": "explicit source-profile generator; escaped/code-owned regex patterns and JSON-stringified data",
+      "dataExecuted": false,
+      "automaticPublication": false
+    },
+    {
+      "number": 291,
+      "path": "scripts/sync-literary-news.mjs",
+      "line": 40,
+      "purpose": "bounded Nobel public-source capture and validated-profile diagnostics",
+      "pathControl": "literal nobel-profile-check.json under repository-resolved .tmp directory",
+      "consumer": "JSON CI artifact; 14-day retention",
+      "dataExecuted": false,
+      "rawSourceDocumentRetainedAsEvidence": true,
+      "surroundingKvWriteIsSeparate": true
+    }
+  ],
+  "inspectedFiles": [
+    {
+      "path": "scripts/probe-literary-news-source-candidates.mjs",
+      "sha256": "c80f181e257775c00e35d7593b4aa417f06b6d54981b4c7cdac9121327cdc2f4"
+    },
+    {
+      "path": "scripts/lib/literary-news-probe-patterns.mjs",
+      "sha256": "44e46a20e8fe6f90cd4cd07d64aac4333233c2827203bc56a63304e5738c465f"
+    },
+    {
+      "path": "scripts/research-literary-news-sources.mjs",
+      "sha256": "5df26c80e8ec5c579502b53dca18eccd66c7abf95a60c09964a2af52c396aac4"
+    },
+    {
+      "path": "scripts/finalize-literary-news-sources.mjs",
+      "sha256": "9cd25b097b06fb9a1e3bb388df4b89a9b3992a46ff487227a6ccc12b475ba54d"
+    },
+    {
+      "path": "scripts/sync-literary-news.mjs",
+      "sha256": "39d99860f7099442a45934d3a4235ce60f63a8cce70d3c067b17b9f93dcd7c66"
+    },
+    {
+      "path": "scripts/lib/literary-news-nobel-profile.mjs",
+      "sha256": "cf7ad609e40de7721a530bd636ead7a2607d96862056d353754e95ceab1ed9eb"
+    },
+    {
+      "path": ".github/workflows/refresh-literary-news.yml",
+      "sha256": "e0b47299aa421973e0f1bf4fca82f85bf36c1a80fd3f8da135489eaf8fb70f0e"
+    }
+  ],
+  "actions": {
+    "alertsDismissed": 0,
+    "alertsSuppressed": 0,
+    "codeChanged": false,
+    "providerCalls": 0,
+    "syncExecuted": false,
+    "externalWrites": 0
+  },
+  "limitations": [
+    "The file sink verdict does not approve unrelated fetch, regex, property-injection or SSRF paths.",
+    "Trusted checkout and local filesystem; local script replacement/symlink attacks are outside this review.",
+    "Source-profile promotion and approved-profile KV writes are separate operations.",
+    "No CodeQL rerun or full test-suite run was performed by this review."
+  ],
+  "governance": {
+    "status": "PASS_READ_ONLY_SCOPE",
+    "packetCanonicalSha256": "e4a632dc6bfe7427d27edb20b5a2ef6bc77f9288be7accf2630e54979ea39ca9",
+    "baselineCommit": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+    "allowedProjectionPaths": 18,
+    "fragments": 34,
+    "oldProjectionsUnchanged": true,
+    "original60BytesUnchanged": true,
+    "additionChanges": [
+      "exact writerDatePatches.ts hash update",
+      "exact writerDatePatches.r10-supplemental.json addition"
+    ],
+    "selfPinTestChanges": [
+      "canonical packet SHA",
+      "exact addition paths"
+    ],
+    "broaderExemptionAdded": false,
+    "parentReportedFocusedTests": 50,
+    "testsIndependentlyRerun": false
+  }
+}

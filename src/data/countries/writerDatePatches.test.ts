@@ -8,18 +8,25 @@ import { selectCalendarEvents, calendarEventsForMonth } from '../../components/L
 import { parseWriterDate } from '../../utils/writerDates';
 import type { Country } from './types';
 import registry from './generated/curatedWriterQids.generated.json';
+import supplemental from './generated/writerDatePatches.r10-supplemental.json';
 
 const rawText=readFileSync(new URL('../../../reports/r10/calendar/wikidata-date-evidence.json', import.meta.url),'utf8');
 const raw=JSON.parse(rawText);
 const snapshotHash=createHash('sha256').update(rawText).digest('hex');
 const entities=new Map(raw.entities.map((e: {qid:string})=>[e.qid,e])) as Map<string,any>;
+const cachedText=readFileSync(new URL('./generated/writerFacts.wikidata.json', import.meta.url),'utf8');
+const cached=JSON.parse(cachedText);
+const cachedHash=createHash('sha256').update(cachedText).digest('hex');
+const cachedEntities=new Map(cached.entities.map((e: {qid:string})=>[e.qid,e])) as Map<string,any>;
+const sourceReview=JSON.parse(readFileSync(new URL('../../../reports/r10/calendar/supplemental-source-review.json', import.meta.url),'utf8'));
+const supplementalIds=new Set(supplemental.patches.map(p=>p.id));
 const writerMap=(source:Country[])=>new Map<string, Country["writers"][number]>(source.flatMap(c=>c.writers.map(w=>[`${c.id}:${w.id}`,w] as const)));
 const baseline=writerMap(editorialCatalogCountries);
 const effective=writerMap(countries);
 const nonDate=(writer:object)=>Object.fromEntries(Object.entries(writer).filter(([key])=>!['birthDate','deathDate','dateEvidence'].includes(key)));
 
 describe('R10 guarded date facts on the production country/calendar path',()=>{
-  it('validates every added date against the refreshed exact referenced claim, identity and chronology',()=>{
+  it('validates every added date against its recorded referenced claim snapshot, identity and chronology',()=>{
     expect(writerDatePatches.length).toBeGreaterThan(0);
     expect(new Set(writerDatePatches.map(p=>p.id)).size).toBe(writerDatePatches.length);
     for(const p of writerDatePatches){
@@ -30,20 +37,60 @@ describe('R10 guarded date facts on the production country/calendar path',()=>{
       const opposite=p.field==='birthDate'?'deathDate':'birthDate';
       if(!writerDatePatches.some(other=>other.writerKey===p.writerKey&&other.field===opposite))expect(w[opposite]).toBe(baseline.get(p.writerKey)?.[opposite]);
       expect(parseWriterDate(p.appliedValue)?.precision).toBe('day');
-      expect(p.evidence.snapshotSha256).toBe(snapshotHash);
+      const isSupplemental=supplementalIds.has(p.id);
+      expect(p.evidence.snapshotSha256).toBe(isSupplemental?cachedHash:snapshotHash);
       expect((registry.writers as Record<string,{wikidataId:string}>)[p.writerKey].wikidataId).toBe(p.evidence.wikidataId);
       const property=p.field==='birthDate'?'P569':'P570';
-      const e=entities.get(p.evidence.wikidataId)!;
+      const e=(isSupplemental?cachedEntities:entities).get(p.evidence.wikidataId)!;
       expect(p.evidence.sourceUrl).toContain(`oldid=${e.lastrevid}`);
       for(const claimId of p.evidence.claimIds){
-        const claim=e.claims[property].find((c:any)=>c.id===claimId);
-        expect(claim.references.length).toBeGreaterThan(0);
-        expect(claim.mainsnak.datavalue.value).toMatchObject({time:`+${p.appliedValue}T00:00:00Z`,precision:11,calendarmodel:p.evidence.calendarModel});
-        expect(Object.keys(claim.qualifiers||{})).toHaveLength(0);
+        if(isSupplemental){
+          const claim=e.claims[property].find((c:any)=>c.claimId===claimId);
+          expect(claim).toMatchObject({referenced:true,time:`+${p.appliedValue}T00:00:00Z`,precision:11,calendarmodel:p.evidence.calendarModel});
+          expect(claim.referenceCount).toBeGreaterThan(0);
+          expect(claim.rank).not.toBe('deprecated');
+        } else {
+          const claim=e.claims[property].find((c:any)=>c.id===claimId);
+          expect(claim.references.length).toBeGreaterThan(0);
+          expect(claim.mainsnak.datavalue.value).toMatchObject({time:`+${p.appliedValue}T00:00:00Z`,precision:11,calendarmodel:p.evidence.calendarModel});
+          expect(Object.keys(claim.qualifiers||{})).toHaveLength(0);
+        }
+      }
+      if(isSupplemental){
+        expect(p.evidence.retrievedAt).toBe(cached.retrievedAt);
+        const review=sourceReview.ready.find((r:any)=>r.writerKey===p.writerKey&&r.field===p.field);
+        expect(review.proposedValue).toBe(p.appliedValue);
+        expect(review.wikidataId).toBe(p.evidence.wikidataId);
+        expect(p.evidence.supportingSources).toEqual(review.sources);
+        expect(review.sources.length).toBeGreaterThan(0);
       }
       if(p.field==='deathDate')expect(p.appliedValue<='2026-09-26').toBe(true);
       if(w.birthDate&&w.deathDate&&parseWriterDate(w.birthDate)?.precision==='day'&&parseWriterDate(w.deathDate)?.precision==='day')expect(w.birthDate<=w.deathDate).toBe(true);
       expect(nonDate(w)).toEqual(nonDate(baseline.get(p.writerKey)!));
+    }
+  });
+  it('preserves the original 60 bytes and keeps all four unconfirmed supplemental fields held',()=>{
+    const originalText=readFileSync(new URL('./generated/writerDatePatches.r10.json',import.meta.url),'utf8');
+    expect(createHash('sha256').update(originalText).digest('hex')).toBe(sourceReview.original60Sha256);
+    expect(JSON.parse(originalText).patches).toHaveLength(60);
+    expect(sourceReview.held).toHaveLength(4);
+    for(const h of sourceReview.held){
+      expect(writerDatePatches.some(p=>p.writerKey===h.writerKey&&p.field===h.field)).toBe(false);
+      expect(effective.get(h.writerKey)?.[h.field]).toBe(baseline.get(h.writerKey)?.[h.field]);
+    }
+  });
+  it('rejects later date and evidence edits for each supplemental field without changing unrelated data',()=>{
+    for(const entry of supplemental.patches){
+      const p=entry as WriterDatePatch;
+      const original=baseline.get(p.writerKey)!;
+      const [countryId]=p.writerKey.split(':');
+      for(const changed of [{[p.field]:'2001-03-10'},{dateEvidence:{[p.field]:{...p.evidence,sourceUrl:'https://example.org/later-editorial-review'}}}]){
+        const writer={...original,...changed,bio:'Later editorial text'};
+        const input=[{id:countryId,writers:[writer]}] as Country[];
+        const applied=applyWriterDatePatches(input,[p]);
+        expect(applied.conflicts).toEqual([{patchId:p.id,reason:'expected-old-conflict'}]);
+        expect(applied.countries[0].writers[0]).toEqual(writer);
+      }
     }
   });
   it('is idempotent and rollback restores only owned fields',()=>{

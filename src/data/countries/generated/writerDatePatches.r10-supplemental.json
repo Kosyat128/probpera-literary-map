@@ -1,0 +1,535 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-27",
+  "sourceReviewSha256": "bfb614350ee7cb6ee941fed04a4243338b3b1c621a13ce80fc02e9d2ef431ea1",
+  "original60Sha256": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080",
+  "cachedSnapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+  "patches": [
+    {
+      "id": "r10-supplemental:south_africa:nadine_gordimer:birthDate:0853d76068e3",
+      "writerKey": "south_africa:nadine_gordimer",
+      "field": "birthDate",
+      "expectedOld": "1923",
+      "expectedEvidence": null,
+      "appliedValue": "1923-11-20",
+      "evidence": {
+        "value": "1923-11-20",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q47619",
+        "claimIds": [
+          "q47619$C29DFDED-005B-40AF-8027-A014BDF47305"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q47619&oldid=2533018463",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://api.nobelprize.org/2.1/laureate/668",
+            "checkedAt": "2026-09-26T21:47:55.379Z",
+            "finding": "Official Nobel structured record gives birth.date = 1923-11-20.",
+            "sourceDocumentSha256": "d1bf12cdce8c90eac198be87d2dfabfcb9d18d9f0524cfdaaca8bd5193a335cc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:nadine_gordimer:deathDate:ef1319835644",
+      "writerKey": "south_africa:nadine_gordimer",
+      "field": "deathDate",
+      "expectedOld": "2014",
+      "expectedEvidence": null,
+      "appliedValue": "2014-07-13",
+      "evidence": {
+        "value": "2014-07-13",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q47619",
+        "claimIds": [
+          "Q47619$c794e8ec-4ed1-cb62-803b-2c1045d1777a"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q47619&oldid=2533018463",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://api.nobelprize.org/2.1/laureate/668",
+            "checkedAt": "2026-09-26T21:47:55.379Z",
+            "finding": "Official Nobel structured record gives death.date = 2014-07-13.",
+            "sourceDocumentSha256": "d1bf12cdce8c90eac198be87d2dfabfcb9d18d9f0524cfdaaca8bd5193a335cc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:jm_coetzee:birthDate:c4662b69b459",
+      "writerKey": "south_africa:jm_coetzee",
+      "field": "birthDate",
+      "expectedOld": "1940",
+      "expectedEvidence": null,
+      "appliedValue": "1940-02-09",
+      "evidence": {
+        "value": "1940-02-09",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q43293",
+        "claimIds": [
+          "q43293$7791B35C-829F-45A7-AD0E-1EF286CB08C1"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q43293&oldid=2534960132",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://api.nobelprize.org/2.1/laureate/763",
+            "checkedAt": "2026-09-26T21:47:55.422Z",
+            "finding": "Official Nobel structured record gives birth.date = 1940-02-09.",
+            "sourceDocumentSha256": "bcd96b99ea725d78a8ab357ef2594a3b59a1a3124ba94c971d58bd8aaef9af3d"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:andre_brink:birthDate:f6774bbaf466",
+      "writerKey": "south_africa:andre_brink",
+      "field": "birthDate",
+      "expectedOld": "1935",
+      "expectedEvidence": null,
+      "appliedValue": "1935-05-29",
+      "evidence": {
+        "value": "1935-05-29",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q380664",
+        "claimIds": [
+          "Q380664$FA06CBB2-0A09-4524-A37B-58B7D5DA89CE"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q380664&oldid=2529679251",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.news.uct.ac.za/article/-2015-03-25-uct-great-minds-four-of-south-africas-most-important-writers",
+            "checkedAt": "2026-09-26T21:47:55.423Z",
+            "finding": "The UCT profile gives the complete lifetime dates 29 May 1935 and 6 February 2015; first date is birth.",
+            "sourceDocumentSha256": "6e52244443fc4255cb0483ddcee68de07932a8f1f0a73a5f17c12c8bc71a7ecc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:andre_brink:deathDate:bdfbc9a1a7ec",
+      "writerKey": "south_africa:andre_brink",
+      "field": "deathDate",
+      "expectedOld": "2015",
+      "expectedEvidence": null,
+      "appliedValue": "2015-02-06",
+      "evidence": {
+        "value": "2015-02-06",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q380664",
+        "claimIds": [
+          "Q380664$4973cb63-499f-bc92-1c41-f035bef590ce"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q380664&oldid=2529679251",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.news.uct.ac.za/article/-2015-03-25-uct-great-minds-four-of-south-africas-most-important-writers",
+            "checkedAt": "2026-09-26T21:47:55.423Z",
+            "finding": "The UCT profile gives the complete lifetime dates 29 May 1935 and 6 February 2015; second date is death.",
+            "sourceDocumentSha256": "6e52244443fc4255cb0483ddcee68de07932a8f1f0a73a5f17c12c8bc71a7ecc"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:breyten_breytenbach:birthDate:91139b815035",
+      "writerKey": "south_africa:breyten_breytenbach",
+      "field": "birthDate",
+      "expectedOld": "1939",
+      "expectedEvidence": null,
+      "appliedValue": "1939-09-16",
+      "evidence": {
+        "value": "1939-09-16",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q364207",
+        "claimIds": [
+          "Q364207$3265B724-0052-4C3A-B2F6-FCE68AE09B61"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q364207&oldid=2533933625",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://breytenbachsentrum.co.za/nuusvrystelling-breyten-breytenbach-se-lewe-en-werk/",
+            "checkedAt": "2026-09-26T21:47:56.293Z",
+            "finding": "The Centre memorial explicitly states birth on 16 September 1939 in Bonnievale.",
+            "sourceDocumentSha256": "26357f1db4f5dd13a65341ddc892366a2bbe7ed10cdd1464ced1bb85bfba0735"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:breyten_breytenbach:deathDate:fe6f6d724345",
+      "writerKey": "south_africa:breyten_breytenbach",
+      "field": "deathDate",
+      "expectedOld": "2024",
+      "expectedEvidence": null,
+      "appliedValue": "2024-11-24",
+      "evidence": {
+        "value": "2024-11-24",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q364207",
+        "claimIds": [
+          "Q364207$bad18302-4059-d6df-cb23-ab2ec98566ac"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q364207&oldid=2533933625",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://breytenbachsentrum.co.za/nuusvrystelling-breyten-breytenbach-se-lewe-en-werk/",
+            "checkedAt": "2026-09-26T21:47:56.293Z",
+            "finding": "The Centre memorial explicitly states death on 24 November 2024 in Paris; the French presidential notice independently agrees.",
+            "sourceDocumentSha256": "26357f1db4f5dd13a65341ddc892366a2bbe7ed10cdd1464ced1bb85bfba0735"
+          },
+          {
+            "sourceUrl": "https://www.elysee.fr/emmanuel-macron/2024/11/25/deces-de-breyten-breytenbach",
+            "checkedAt": "2026-09-26T21:47:56.293Z",
+            "finding": "Independent presidential notice confirms death on 24 November 2024.",
+            "sourceDocumentSha256": "68e169a92135d6e21d39d69a32bcc1ffb9c3bd0093332d9e47550a9fa94db6ac"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:sol_plaatje:birthDate:feeab249718c",
+      "writerKey": "south_africa:sol_plaatje",
+      "field": "birthDate",
+      "expectedOld": "1876",
+      "expectedEvidence": null,
+      "appliedValue": "1876-10-09",
+      "evidence": {
+        "value": "1876-10-09",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q2143151",
+        "claimIds": [
+          "q2143151$3C8457B3-4874-4C9B-8E35-DA7EBB7D072D"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q2143151&oldid=2532038603",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.spu.ac.za/index.php/sol-plaatje/",
+            "checkedAt": "2026-09-26T21:47:57.156Z",
+            "finding": "The university namesake biography explicitly gives 9 October 1876 as the first of the complete lifetime dates.",
+            "sourceDocumentSha256": "f2323d393ede4b518b90ffafc85bb9a85bf8147e2ea0337e0b0c2e5e21551864"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:eskia_mphahlele:birthDate:c66b5aff9354",
+      "writerKey": "south_africa:eskia_mphahlele",
+      "field": "birthDate",
+      "expectedOld": "1919",
+      "expectedEvidence": null,
+      "appliedValue": "1919-12-17",
+      "evidence": {
+        "value": "1919-12-17",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q1372674",
+        "claimIds": [
+          "q1372674$799D84C0-82D5-4EDB-B729-65D61A6D2F84"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1372674&oldid=2537046823",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.unisa.ac.za/sites/corporate/default/News-%26-Media/Articles/Celebrating-the-legacy-of-a-literary-giant-and-pioneer-of-African-humanism",
+            "checkedAt": "2026-09-26T21:49:15.726Z",
+            "finding": "The university memorial report explicitly states birth on 17 December 1919 in Marabastad, Pretoria.",
+            "sourceDocumentSha256": "f86b097bbce150a963fb3ca9d808a6353f9e688495ff7c905a4d800fd87b07d5"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:eskia_mphahlele:deathDate:c3686d91b1e2",
+      "writerKey": "south_africa:eskia_mphahlele",
+      "field": "deathDate",
+      "expectedOld": "2008",
+      "expectedEvidence": null,
+      "appliedValue": "2008-10-27",
+      "evidence": {
+        "value": "2008-10-27",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q1372674",
+        "claimIds": [
+          "q1372674$54DCE314-F91A-4807-B589-D6690856CA4A"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1372674&oldid=2537046823",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://sahistory.org.za/people/eskia-mphahlele",
+            "checkedAt": "2026-09-26T21:47:57.341Z",
+            "finding": "SAHO reproduces Minister Pallo Jordan's statement: Mphahlele died on the evening of 27 October 2008. This is a named primary statement reproduced by an institutional archive, not a newly accessed original ministry page.",
+            "sourceDocumentSha256": "1651b20d14dd10c1964fe246e48e3d3de4d7ea71d6c19531043041aeca1a5aa2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:zakes_mda:birthDate:857304d01c09",
+      "writerKey": "south_africa:zakes_mda",
+      "field": "birthDate",
+      "expectedOld": "1948",
+      "expectedEvidence": null,
+      "appliedValue": "1948-10-06",
+      "evidence": {
+        "value": "1948-10-06",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q144653",
+        "claimIds": [
+          "Q144653$c18b0426-45a2-5792-5095-8ab978fa480f"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q144653&oldid=2521307601",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.cambridge.org/core/books/abs/and-the-girls-in-their-sunday-dresses/introduction/86E8DA6CD7DDE7B1DF3AC5A0AA50D2BA",
+            "checkedAt": "2026-09-26T21:47:57.676Z",
+            "finding": "The publisher-hosted introduction to And the Girls in their Sunday Dresses explicitly gives birth on 6 October 1948.",
+            "sourceDocumentSha256": "792e4e3a9739f7aa843335caedbb0a4157fc511f8a834cb502b83dd3d270cec2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:south_africa:damon_galgut:birthDate:6c720c120e93",
+      "writerKey": "south_africa:damon_galgut",
+      "field": "birthDate",
+      "expectedOld": "1963",
+      "expectedEvidence": null,
+      "appliedValue": "1963-11-12",
+      "evidence": {
+        "value": "1963-11-12",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q510119",
+        "claimIds": [
+          "Q510119$38F5215D-7DB8-4A6D-9448-4388FABE498B"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q510119&oldid=2536848567",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://thebookerprizes.com/the-booker-library/authors/damon-galgut",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "Born field explicitly states 12 November 1963.",
+            "method": "web.open/read",
+            "locator": "Born field"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:burkina_faso:jean_pierre_guingane:birthDate:842e49a42285",
+      "writerKey": "burkina_faso:jean_pierre_guingane",
+      "field": "birthDate",
+      "expectedOld": "1947",
+      "expectedEvidence": null,
+      "appliedValue": "1947-07-11",
+      "evidence": {
+        "value": "1947-07-11",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q1685215",
+        "claimIds": [
+          "Q1685215$5D20DBE1-1EC0-4C8C-A3DB-8C91A6AF0926"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1685215&oldid=2521443459",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://catalogue.bnf.fr/ark:/12148/cb120545344",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "Birth is explicitly 1947-07-11 at Garango. Death field conflicts with ITI and is separately held.",
+            "method": "web.open/read",
+            "locator": "Naissance field"
+          },
+          {
+            "sourceUrl": "https://iti-worldwide.org/ru/pdfs/publications/Jean-Pierre_Guingane_L_homme_et_son_oeuvre_Vol2_T%C3%A9moignages.pdf",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "The institutional memorial gives 11 July 1947 at Garango in two biographical contributions.",
+            "method": "web.open/read",
+            "locator": "PDF page 173 (zero-based 172), printed p. 180; also PDF page 182"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:mauritius:nathacha_appanah:birthDate:ff8320b16a3e",
+      "writerKey": "mauritius:nathacha_appanah",
+      "field": "birthDate",
+      "expectedOld": "1973",
+      "expectedEvidence": null,
+      "appliedValue": "1973-05-24",
+      "evidence": {
+        "value": "1973-05-24",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q467796",
+        "claimIds": [
+          "Q467796$376362D5-5CC3-431A-8B29-15301DACC824"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q467796&oldid=2533925032",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://ciclic.fr/ressources/tropique-de-la-violence",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "The agency author profile explicitly gives 24 May 1973 in Mahébourg.",
+            "method": "web.open/read",
+            "locator": "Author biography below resources"
+          },
+          {
+            "sourceUrl": "https://memoire-esclavage.org/biographies/nathacha-apannah",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "The foundation biography independently displays the full birth date; named works and family identify Appanah despite the heading typo.",
+            "method": "web.open/read",
+            "locator": "First biography paragraph"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:democratic_republic_of_congo:kama_sywor_kamanda:birthDate:43b5685586a0",
+      "writerKey": "democratic_republic_of_congo:kama_sywor_kamanda",
+      "field": "birthDate",
+      "expectedOld": "1952",
+      "expectedEvidence": null,
+      "appliedValue": "1952-11-11",
+      "evidence": {
+        "value": "1952-11-11",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q379125",
+        "claimIds": [
+          "Q379125$930AC1EE-AE29-47A7-B72D-7710BF4D919B"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q379125&oldid=2533740300",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.kamasyworkamanda.com/biographie/",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "The author biography explicitly gives 11 November 1952 at Luebo.",
+            "method": "web.open/read",
+            "locator": "Biography opening"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:equatorial_guinea:juan_tomas_avila_laurel:birthDate:a06016742790",
+      "writerKey": "equatorial_guinea:juan_tomas_avila_laurel",
+      "field": "birthDate",
+      "expectedOld": "1966",
+      "expectedEvidence": null,
+      "appliedValue": "1966-11-06",
+      "evidence": {
+        "value": "1966-11-06",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q151806",
+        "claimIds": [
+          "Q151806$AC0AFF8C-BA8C-4B8B-B39A-F46BFFE25903"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q151806&oldid=2536725112",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://birdlikecultura.wordpress.com/wp-content/uploads/2015/10/17_interview_17okt2008_juantomasavilalaurel.pdf",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "In the opening answer, Ávila Laurel states his own full birth date: 6 November 1966, Bioko.",
+            "method": "web.open/read",
+            "locator": "PDF page 1, opening question/answer"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-supplemental:mauritius:ananda_devi:birthDate:7d82bb6651a3",
+      "writerKey": "mauritius:ananda_devi",
+      "field": "birthDate",
+      "expectedOld": "1957",
+      "expectedEvidence": null,
+      "appliedValue": "1957-03-23",
+      "evidence": {
+        "value": "1957-03-23",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q2845313",
+        "claimIds": [
+          "Q2845313$FB1E2EA8-CF16-4D8D-BB15-DF39BB9E9F90"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q2845313&oldid=2533925323",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://villamedici.it/programme/rencontre-lecture-avec-ananda-devi/",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "The author biography on the French Academy in Rome event page explicitly gives 23 March 1957 at Trois-Boutiques.",
+            "method": "web.open/read",
+            "locator": "Author biography"
+          },
+          {
+            "sourceUrl": "https://www.la-reunion-des-livres.re/wp-content/uploads/2023/02/gprm-prmlsd-2022-laureat-dp.pdf",
+            "checkedAt": "2026-09-26T21:49:29.443Z",
+            "finding": "The laureate biography confirms 23 March 1957 at Trois-Boutiques.",
+            "method": "web.open/read",
+            "locator": "PDF page 4 (zero-based 3), BIOGRAPHIE DE L’AUTRICE"
+          }
+        ]
+      }
+    }
+  ]
+}

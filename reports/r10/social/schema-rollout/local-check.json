@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-09-26T22:23:56.293Z",
+  "engine": "PGlite isolated PostgreSQL",
+  "remoteDatabase": false,
+  "dockerRestoreExecuted": false,
+  "workflowDispatched": false,
+  "productionApplied": false,
+  "passed": 21,
+  "checks": [
+    "missing prerequisite stops read-only preflight",
+    "fresh read-only preflight creates nothing",
+    "unknown pre-existing function fails closed",
+    "unknown pre-existing index fails closed",
+    "verification refuses missing schema/receipt",
+    "schema and protected receipt rollback together",
+    "Supabase default grants normalize to the same narrow reviewed callers",
+    "fixed migration installs atomically without historical ledger or article changes",
+    "second exact apply is idempotent and does not append another receipt",
+    "changed function definition fails closed",
+    "changed function owner fails closed",
+    "broad CAS grant fails closed",
+    "extra nonstandard role grant fails closed",
+    "grant option escalation fails closed",
+    "disabled protection trigger fails closed",
+    "missing runtime index fails closed",
+    "receipt hash drift fails closed",
+    "duplicate receipt fails closed",
+    "rehearsal cannot run against production database identity",
+    "staff cannot forge protected receipt or invoke service CAS",
+    "installed owner/path permits actual service CAS after deployment"
+  ],
+  "migration": {
+    "filename": "20260926_literary_news_runtime_cas.sql",
+    "sha256": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402"
+  }
+}

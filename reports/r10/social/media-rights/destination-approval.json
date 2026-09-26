@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-26T22:26:33.305Z",
+  "userAuthorized": true,
+  "source": "Explicit user instruction to configure Telegram @probbaperra and VK probperaru; public-domain/CC0 permission independently documented in proposed-assets.json",
+  "visuallyInspected": [
+    {
+      "assetId": "jason-reynolds-loc-2020",
+      "sha256": "d00296d95546d7043fee07ce968b540a5b21367781f0b4f6aea7803e6ab704a4"
+    },
+    {
+      "assetId": "millay-genthe-1914",
+      "sha256": "59a05207b3f99f31b26fc81c75abb50b0dcbc118d9009f89398655dc22265d0b"
+    },
+    {
+      "assetId": "george-w-bush-official-2003",
+      "sha256": "c289e7e096c6a5405bba500f0105c603f308c5668c51a92470c76f14743c93e3"
+    }
+  ],
+  "destinations": [
+    {
+      "platform": "telegram",
+      "id": "-1002791579809"
+    },
+    {
+      "platform": "vk",
+      "id": "-231377018"
+    }
+  ],
+  "senderEnabled": false,
+  "externalUploads": 0
+}

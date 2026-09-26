@@ -3,6 +3,8 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { boundedFetch, pool, sha } from './research-literary-news-sources.mjs';
 import { createNewsService } from './lib/literary-news-feed.mjs';
 import { LEGACY_LITERARY_NEWS_SOURCES as LITERARY_NEWS_SOURCES } from './lib/literary-news-sources.mjs';
+import { R10_SOURCE_PROFILES } from './lib/literary-news-source-profiles.mjs';
+import { checkedProbeSourceId, probePathPattern } from './lib/literary-news-probe-patterns.mjs';
 
 const out='reports/r10/sources';
 const scratch='.tmp/r10-source-research';
@@ -50,23 +52,20 @@ function facts(html,url) {
   const main=$('article,main,.entry-content,.post-content').first();const text=normalized((main.length?main:$.root()).text());
   return {headline:headline.slice(0,500),excerpt:text.slice(0,400),publishedDates:dates.slice(0,5),canonical:$('link[rel="canonical"]').attr('href')||url,language:$('html').attr('lang')?.slice(0,40)||null};
 }
-function pathPattern(urls) {
-  const patterns=new Set();
-  for(const href of urls.slice(0,12)){const u=new URL(href);let p=u.pathname;
-    if(/^\/\d{4}\/\d{2}\//.test(p))patterns.add('^/\\d{4}/\\d{2}/(?:\\d{2}/)?[^/]+/?$');
-    else if(/^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?(?:news|noticias|actualites|aktuelles|novosti|aktualnosci|articles|blog|events|press|presse|nieuws|nyheter|event|en-news|novinky)\//i.test(p)){const parts=p.split('/').filter(Boolean);const depth=/^[a-z]{2}(?:-[a-z]{2})?$/i.test(parts[0])?2:1;patterns.add('^/'+parts.slice(0,depth).join('/')+'/.+');}
-    else if(p.split('/').filter(Boolean).length===1&&!/\.[a-z]+$/i.test(p))patterns.add('^/[^/]{12,}/?$');
-    else if(u.search&&p.endsWith('.php')||u.search&&p.endsWith('.asp'))patterns.add('^'+p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$');
-    else {const parts=p.split('/').filter(Boolean);patterns.add('^/'+parts.slice(0,-1).join('/')+'/[^/]+/?$');}
-  }
-  return [...patterns].slice(0,6).join('|');
-}
 async function parserCheck(profile,response) {
-  const source={...profile,linkPattern:new RegExp(profile.linkPattern),keywordPattern:profile.keywordPattern?new RegExp(profile.keywordPattern,'iu'):undefined};
+  const approved=[...LITERARY_NEWS_SOURCES,...R10_SOURCE_PROFILES].find(row=>row.id===profile.id && row.url===profile.url);
+  const pattern=approved?.linkPattern || (profile.format==='html' ? probePathPattern(linksFor(response.text,response.url).map(row=>row.url)) : undefined);
+  const keywordPattern=approved?.keywordPattern;
+  // Replayed reports cannot inject executable patterns; only code-owned patterns
+  // or escaped paths derived from the current bounded response are evaluated.
+  const source={...profile,linkPattern:pattern,keywordPattern};
+  profile.linkPattern=pattern?.source;
+  profile.keywordPattern=keywordPattern?.source;
   const service=createNewsService({sources:[source],readReviewed:()=>[],timeoutMs:2000,fetchImpl:async()=>new Response(response.text,{status:200,headers:{'content-type':response.contentType}})});
   try{await service.refresh();return service.getReviewQueue();}finally{service.close();}
 }
 async function probe(c,index) {
+  checkedProbeSourceId(c.id);
   const record={sourceId:c.id,name:c.name,entryUrl:c.entryUrl,countryCodes:c.countryCodes,coverageCountryCodes:c.coverageCountryCodes,attemptedAt:new Date().toISOString(),requests:[],status:'blocked',reason:null};
   try {
     let previous=null,cached=null;
@@ -90,7 +89,7 @@ async function probe(c,index) {
         if(options[0]){try{await robots(options[0]);const n=await boundedFetch(options[0]);record.requests.push(clean(n));r=n;profile.url=r.url;profile.articleOrigins=[new URL(r.url).origin];found=linksFor(r.text,r.url).filter(x=>!ADMIN.test(x.title));}catch(e){record.indexAttemptError=e.message;}}
       }
       if(existing&&new URL(existing.url).pathname===new URL(r.url).pathname){profile={...profile,linkPattern:existing.linkPattern?.source||'^/',articleContainer:existing.articleContainer,titleSelector:existing.titleSelector,articleOrigins:existing.articleOrigins||profile.articleOrigins,keywordPattern:existing.keywordPattern?.source};}
-      else if(!cached){profile.linkPattern=pathPattern(found.map(x=>x.url));profile.linkSelector='a[href]:not(nav a):not(header a):not(footer a)';}
+      else if(!cached){profile.linkPattern=probePathPattern(found.map(x=>x.url)).source;profile.linkSelector='a[href]:not(nav a):not(header a):not(footer a)';}
       if(!profile.linkPattern)throw new Error('no_literary_article_links');
       if(c.id==='yasnaya-polyana'){profile.articleContainer='.slide';profile.titleSelector='.event-title';}
     }

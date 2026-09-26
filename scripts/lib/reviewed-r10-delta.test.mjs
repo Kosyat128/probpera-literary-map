@@ -7,12 +7,12 @@ const read=path=>readFileSync(path,"utf8").replace(/\r\n?/gu,"\n");
 const historical=path=>execFileSync("git",["-c",`safe.directory=${process.cwd()}`,"show",`${packet.baselineSourceCommitSha}:${path}`],{encoding:"utf8",maxBuffer:5*1024*1024}).replace(/\r\n?/gu,"\n");
 describe("R10 exact additive projection without rewriting historical acceptance",()=>{
   it("pins the bounded agent-reviewed packet and explicitly excludes human/release claims",()=>{
-    expect(sha(JSON.stringify(packet))).toBe("0338172f956f2a3e8f0f0a5b58b69dd08ee6f4e9b98232b8b07f6b3786ad5d5d");
+    expect(sha(JSON.stringify(packet))).toBe("e4a632dc6bfe7427d27edb20b5a2ef6bc77f9288be7accf2630e54979ea39ca9");
     expect(packet).toMatchObject({id:"R10-FORWARD-DELTA-20260926",baselineSourceCommitSha:"63ce3112846e3e49f4b15d1cb64b3c29cb98af70",historicalPinsChanged:false,authorization:{humanReview:false,releaseAccepted:false,productionApplied:false}});
     expect(packet.allowedProjectionPaths).toEqual(["src/components/HeaderArticlesMenu.tsx","apps/admin/app/(dashboard)/homepage/page.tsx","src/data/countries/index.ts","src/data/countries/types.ts","package.json","scripts/lib/reviewed-header-library.test.mjs","scripts/lib/reviewed-r49n-package.test.mjs","scripts/lib/reviewed-dependency-security.test.mjs","scripts/lib/reviewed-header-showcase.test.mjs","src/components/stage5Governance.test.ts","scripts/lib/stage5-content-data-lock.test.mjs","scripts/lib/reviewed-cms-source-punctuation.test.mjs","scripts/lib/reviewed-draft-storage.test.mjs","scripts/lib/reviewed-native-archive-read.test.mjs","scripts/lib/reviewed-native-archive-transport.test.mjs","scripts/lib/reviewed-premium-title-evidence.test.mjs","scripts/lib/reviewed-reference-release.test.mjs","tests/e2e/header-hero-polish.spec.mjs"]);
     expect([...new Set(packet.projections.map(entry=>entry.path))]).toEqual(packet.allowedProjectionPaths);
     expect(new Set(packet.projections.map(entry=>entry.id)).size).toBe(packet.projections.length);
-    expect([...reviewedR10AdditionPaths]).toEqual(["src/data/countries/writerDatePatches.ts","src/data/countries/generated/writerDatePatches.r10.json"]);
+    expect([...reviewedR10AdditionPaths]).toEqual(["src/data/countries/writerDatePatches.ts","src/data/countries/generated/writerDatePatches.r10.json","src/data/countries/generated/writerDatePatches.r10-supplemental.json"]);
   });
   it.each(packet.allowedProjectionPaths)("restores exact pre-R10 Git bytes with no drift allowance: %s",path=>{
     const current=read(path),before=projectReviewedR10Delta(path,current);

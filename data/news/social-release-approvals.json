@@ -1,0 +1,1048 @@
+{
+  "schemaVersion": 1,
+  "approvals": [
+    {
+      "platform": "telegram",
+      "destinationId": "-1002791579809",
+      "status": "approved",
+      "reviewedAt": "2026-09-26T22:30:46.448Z",
+      "expiresAt": "2026-10-03T22:30:46.448Z",
+      "providerAccountId": "7972811583",
+      "history": {
+        "scope": "public_observed_only",
+        "reachedPublicStart": true,
+        "minId": 1,
+        "maxId": 410,
+        "observedCount": 363,
+        "auditSha256": "6c0bae458e4019898d785e441f8b2c08f67dd581729401fa3462933b4af70b4b",
+        "semanticReviewSha256": "e925e7f744bebd9c6c8055b19d4467a24b7767e156276b0a6b0644a612070303",
+        "candidates": [
+          {
+            "newsId": "adeb-namur-publishing-future-colloquium-2026",
+            "revision": "61c010338e6729652d56bd8303bd8bf53836e2bec75d04fdd263ec3665d6d6fb"
+          },
+          {
+            "newsId": "aficionado-award-words-without-borders-2026",
+            "revision": "c5554c10ba88bb3cace0e1a17ba2af0c48a253dba70bf69dc9121356429d9b53"
+          },
+          {
+            "newsId": "ake-arts-book-festival-2026",
+            "revision": "f244659b7680260a1693ef2bddd88df90d3f51b81fcd763eaec20be57e8c4461"
+          },
+          {
+            "newsId": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+            "revision": "188295a162fa54b3c2c1903b883c4c14591f576e4bab77201f1d49c9bfda2bb2"
+          },
+          {
+            "newsId": "asymptote-hossaini-war-ends-translation-2026",
+            "revision": "1de764d492dede7d008a167b873bb95a6ec204055a083e246458c01cc5bfa412"
+          },
+          {
+            "newsId": "asymptote-maria-messina-camilla-translation-2026",
+            "revision": "3242a19252419d3aa982de38e17b9c275cbb88436a3d3e5a2fbe64d542e8e4ec"
+          },
+          {
+            "newsId": "avrutina-ozlu-tanpinar-books-meeting-2026",
+            "revision": "c003ff4aa51f8118ec07a9080b9ef86c60bfd473ef34e4e618246a16f37a2f17"
+          },
+          {
+            "newsId": "ayad-akhtar-portland-lecture-2026",
+            "revision": "0271c54716579bf195e5d6faffe36d5349bb0bc9c21cb33a4c5129d429069427"
+          },
+          {
+            "newsId": "bakwa-12-lost-manuscript-issue-2026",
+            "revision": "c0e4fc4dbf6ac4510f2a7a7f9e906640faa1502765911675ac2fa74e33d87fdb"
+          },
+          {
+            "newsId": "ben-rhodes-portland-lecture-2027",
+            "revision": "d7a4869752064c8c0ffaf34b9997e36077c4af99d7f7d2e0a825816152abfcfb"
+          },
+          {
+            "newsId": "bnf-oulipo-season-2026",
+            "revision": "4f2585536e6f90cd1ccb66aeef07cf5b378bd9a3bae34664990c08616bca0bb3"
+          },
+          {
+            "newsId": "bnf-richelieu-heritage-days-2026",
+            "revision": "4fa4d6d43eee90cbfe2a21dc1235e85f16799ae84888dbe3e5decbcc75e312af"
+          },
+          {
+            "newsId": "bogota-children-book-festival-bookshop-call-2026",
+            "revision": "bb521665dd5211a2dcb8a92753da5be6228459a3773c7d03fe6ce3c2c4f35e1e"
+          },
+          {
+            "newsId": "booker-longlist-2026",
+            "revision": "6f62c18808ae41944b63c36b8a34ee221ae15f0945ed3bcb6b07d4db1b97a26e"
+          },
+          {
+            "newsId": "booker-shortlist-2026-announcement",
+            "revision": "8a630cca680bb69fa6a691c99a88af805f600269c090406990083ea2b5c7b7dd"
+          },
+          {
+            "newsId": "brisbane-writers-festival-2026",
+            "revision": "c667f9407a6e27c0cdc8017c850d40a4c90b4b1b236f4931df2f7c298dc1a446"
+          },
+          {
+            "newsId": "british-library-agatha-christie-exhibition-2026",
+            "revision": "87a87adcc62a2d3baa6f50b35590edf3d56d1c090019c2c35d557d988e960d91"
+          },
+          {
+            "newsId": "brooklyn-book-festival-2026-main-day",
+            "revision": "8b09f6b1774afa5cfa4bce701491d1f85374a63e335a20b66c35f7f98d26657e"
+          },
+          {
+            "newsId": "bruno-montane-efimera-critical-feature-2026",
+            "revision": "7a13ccfc4955ed0847652422b1609031bdf1ddaf3997a93d2ae682684a6e2957"
+          },
+          {
+            "newsId": "bugojanska-vaza-short-story-deadline-2026",
+            "revision": "3f95feafd87a14e673c1f7339c6849bf86e69fb1309c1fa7cde597fd6ce3bbf1"
+          },
+          {
+            "newsId": "bulgaria-chaika-periodical-restored-exhibition-2026",
+            "revision": "16ae0bd76e44714845be9275c46f3ab960e92d22106c0c43b6eae36c2844660f"
+          },
+          {
+            "newsId": "callao-colibri-childrens-book-2026",
+            "revision": "a06812a4fdb4030ade41b04dd862b93219e21551a2919dcaf35c08fb561cb73e"
+          },
+          {
+            "newsId": "canadian-publisher-certification-expanded-2026",
+            "revision": "cb73bc9a9d77f49b2364fbd1aeda9a242d86e591515e67828d86c23572c1052a"
+          },
+          {
+            "newsId": "charles-spencer-swan-song-us-announcement-2026",
+            "revision": "8164b83e364d8e93003d82fac936b95392e590ca8e160b0d8a47ed5be943b612"
+          },
+          {
+            "newsId": "chebatkov-dovlatov-foreigner-reading-2026",
+            "revision": "e9acc3a59e873a034a54a2efb29903c845c8ed5f276baf3af2cc88794381dc36"
+          },
+          {
+            "newsId": "chekhodal-short-fiction-call-2026",
+            "revision": "173cb1e4cfb0251bc68e56cc90b0f4752074a1549c76b54786ffac569fd66f19"
+          },
+          {
+            "newsId": "childrens-detective-reading-conference-2026",
+            "revision": "92157ed0547824f3693545b55f9efdf3fc365f15864391fecd774a8a88d3c590"
+          },
+          {
+            "newsId": "chile-library-140-words-contest-2026",
+            "revision": "66aae18b8b7b0e4c655eebcb63f55505f34a05f08322768357556783912b262b"
+          },
+          {
+            "newsId": "china-publishing-development-report-2025-2026",
+            "revision": "f31c4a37c3852df6a3ffc9649d543c6b7ecbce043e9887104cc5188995dd5492"
+          },
+          {
+            "newsId": "chisinau-cosbuc-bacovia-exhibition-2026",
+            "revision": "67a77aec2e504888a1a4084c3117ecbeba4488c69577bc7e71e759a21966ee26"
+          },
+          {
+            "newsId": "chooseco-cyoa-unbound-adult-imprint-2026",
+            "revision": "45b54673c38a0856e14a0af4d01a82551cac6dee4149f3e96989d74359e6e1af"
+          },
+          {
+            "newsId": "cordoba-books-education-programme-2026",
+            "revision": "9fc499227ca55130c1d642e680d7595842763faaf84a35e64c57bf7371ccce6a"
+          },
+          {
+            "newsId": "daniil-granin-prize-second-season-2026",
+            "revision": "873e0db0d1d9bdc8d56f4ee13283e0ae2ccf0781c2b630c3abc4690085324ea0"
+          },
+          {
+            "newsId": "danish-pen-banned-books-opening-2026",
+            "revision": "3215cb508d8b54bf740fc57536bb39c694f64b0106ff5b2f3adb5cffaf097316"
+          },
+          {
+            "newsId": "darlowo-morze-literatury-first-festival-report-2026",
+            "revision": "c14c224ed646057c272769d300c88b99d122c52000e685c6367754515f4fcf3f"
+          },
+          {
+            "newsId": "dayton-literary-peace-prize-winners-2026",
+            "revision": "a1cca6449290079fdfdda6cd866df5382332851d2ac58afef50dde477da72a63"
+          },
+          {
+            "newsId": "degol-hailu-pillaging-the-dead-2026",
+            "revision": "c6ea26d96b731fa7643b3aee303633f7ef7acdeba24aa24a2fbf47176820e194"
+          },
+          {
+            "newsId": "devenir-un-monstre-quebec-release-2027",
+            "revision": "353d13d087b1a4fe75fe94fb957433759f08dfee8d99c957b425d49b7ecc7f4a"
+          },
+          {
+            "newsId": "ditan-beijing-book-market-opening-2026",
+            "revision": "091dfe8fd605bba25789ac544addb8872932b17d273cdfaf75a1c8536611d991"
+          },
+          {
+            "newsId": "dublin-imprisoned-writer-gallagher-2026",
+            "revision": "cac0461d39b9bee430a6efdd0f0538963bad4683ea32a974c3821464467721d6"
+          },
+          {
+            "newsId": "dubravka-rebic-vladan-desnica-decision-2026",
+            "revision": "e0110324971c76daf2f3595900db11d399aa635d33a2dbc5948b32e192d9b636"
+          },
+          {
+            "newsId": "emmanuel-carrere-montevideo-kolkhoz-2026",
+            "revision": "4c5d3ec2b62dc387af965e92908fb23a73eb469d458dc7af9fd2c90e6843e070"
+          },
+          {
+            "newsId": "ens-editions-first-alef-prize-2026",
+            "revision": "9c144a7ee17e0fdb854bdeacab8651a7d6848014b24e77e5961ae662548cd873"
+          },
+          {
+            "newsId": "erin-farley-lighthouse-lives-talk-2026",
+            "revision": "846cc942b9b3f18f2fd7d9f177214506af1a1dfa4914f4dfb28098447eca7641"
+          },
+          {
+            "newsId": "esther-teillard-vocation-prize-2026",
+            "revision": "5409b8f582bacf992351ed601cdd8e8fb7ded636e5949a05beeab5ce93954a19"
+          },
+          {
+            "newsId": "european-authors-day-programme-2026",
+            "revision": "23a32ff7e937a8e30fd93167fb45c2779368674b28733f0af6404d9453316aee"
+          },
+          {
+            "newsId": "european-literacy-coalition-brussels-launch-2026",
+            "revision": "be11456695293de7fa0f6f82cc0785ce2bce0514b6f16f948b87acef1f461453"
+          },
+          {
+            "newsId": "fil-editorial-merit-ekare-2026",
+            "revision": "b1a275203bf51628f273b523b4708c450b4a2a70e91b4afa1f08ab22ed20655b"
+          },
+          {
+            "newsId": "finland-publishers-first-half-sales-report-2026",
+            "revision": "b5f60d9a6deb82e12a35b38f3a2b4de3228d8fc960b5609c0762c1ff561e621e"
+          },
+          {
+            "newsId": "florent-oiseau-francoise-sagan-prize-2026",
+            "revision": "5614925a54c088ad54033b531d58affbbc6c07b03db377a3d8f097dc89855265"
+          },
+          {
+            "newsId": "foucault-college-france-exhibition-2026",
+            "revision": "fe08749444b00fa92454e7532ec1f054760299805aec21d55e44b500ef87df4c"
+          },
+          {
+            "newsId": "frankfurt-audio-business-centre-2026",
+            "revision": "57862647ae0e0020fe132e22e294104db76d1d59a3321e719dc4bc0a51831d20"
+          },
+          {
+            "newsId": "frankfurt-book-fair-2026-announcement",
+            "revision": "16f6b618f98c1bcfb0b88404ddbc1a2041d6eba851ae0c8a21d34104d38427ed"
+          },
+          {
+            "newsId": "frankfurt-book-to-screen-day-2026",
+            "revision": "0f68668bcc90c8755ab2e7c69c5942686f67e531e504f0a6fb45e82d3a6384e2"
+          },
+          {
+            "newsId": "frankfurt-comic-business-centre-2026",
+            "revision": "63d816761da45fea45fa84ddcd028d9f12ba242d5782513b3936e57cd3c999fb"
+          },
+          {
+            "newsId": "frankfurt-rights-meeting-40-reception-2026",
+            "revision": "eaf2513337aec2a62f0e4fbbb9058f93596d2ae9bc265027c5de8a7082c02627"
+          },
+          {
+            "newsId": "fred-vargas-unique-lueur-corpus-rights-2026",
+            "revision": "b90941cede481d2f873552756605ffc7bbe551ba7768dcd755cdaaf0567915e5"
+          },
+          {
+            "newsId": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+            "revision": "aaefa5d6ea1dea58eb58876f6625afb34b32203a35749207de05f2e782b93a3c"
+          },
+          {
+            "newsId": "funmike-ogaosun-shipikisha-cover-2026",
+            "revision": "03fef4acb6be250b7b752dd7d41262a587f6c9944a56271314dbc40c9d065c98"
+          },
+          {
+            "newsId": "geluck-chat-museum-ixelles-plan-2026",
+            "revision": "4c1036dbf02f984099e272f77026538f5b6d9a611e69a3a94995a071d12774cc"
+          },
+          {
+            "newsId": "george-w-bush-call-of-freedom-us-2027",
+            "revision": "e6118896636860abb3750ceb8cb7c9c0e7b647e2bfce963b0176729960f78222"
+          },
+          {
+            "newsId": "german-book-prize-longlist-2026",
+            "revision": "03b0d1f821ca835752fccfd1a9a3b186e648215c2457f66bea8e2122f9ed8e77"
+          },
+          {
+            "newsId": "german-book-prize-shortlist-2026-announcement",
+            "revision": "b79c814146d29e6448fbfcb50b3da7adb7241ac3a30e80cd412b657dce6887bb"
+          },
+          {
+            "newsId": "gianni-mura-fuoriclasse-winner-announcement-2026",
+            "revision": "f53fcc400127309b5407e8a1145ab4d72afcdc42cd4436c6ef93a36e33f09eaf"
+          },
+          {
+            "newsId": "giller-longlist-2026-schedule",
+            "revision": "4a02a9424a24c1ba4651ad1eaa15dc0419e49eac2d8de5934184c9a4bd779019"
+          },
+          {
+            "newsId": "gioconda-belli-fil-prize-2026",
+            "revision": "51bf1fbdbf9074288794b57106d78e0bbc322680c68c106a9519041fe25e11c4"
+          },
+          {
+            "newsId": "gorodets-norwegian-folk-tales-2026",
+            "revision": "a7cd099c8cc7966da2fb7b44b2337d922a25a573917a039cc3dc977202651d2a"
+          },
+          {
+            "newsId": "goslitmuz-people-of-december-publication-2026",
+            "revision": "c4a389fef5d980c91ba1992815905028cea2049507651909026baf8d294503be"
+          },
+          {
+            "newsId": "gothenburg-book-fair-2026-announcement",
+            "revision": "d3798d2193e9031c11e08575b487372ac602f5123abd32799e5a82c23bdadb72"
+          },
+          {
+            "newsId": "guadalajara-international-book-fair-2026",
+            "revision": "ceb0751d4855133ce40ecba77c848c65433a6323ccdcd1e53d2b56c4be6aee39"
+          },
+          {
+            "newsId": "guernsey-medieval-fragments-research-2026",
+            "revision": "671842c9e18b6d02f0daa302213fab9526b4ae84a91a46e384ce0a826ddbf80c"
+          },
+          {
+            "newsId": "hafiz-alontsev-rsl-presentation-2026",
+            "revision": "73e3d355e61e1e8894af295f4076c9845d38ff85aa1b817b9feacf45a3a137e1"
+          },
+          {
+            "newsId": "hay-queretaro-emiliano-monge-2026",
+            "revision": "7ecf8b71a0c216ab5746fa4355f5df8b231fb7058c3a0895fe5bbaa409ac9430"
+          },
+          {
+            "newsId": "heather-cox-richardson-gitlin-auster-award-2026",
+            "revision": "0ad7617215178f4071e32b52de6c46ffada04ed7509a96d7702ac66b2a5fb858"
+          },
+          {
+            "newsId": "hiromi-kawakami-far-from-everywhere-2027",
+            "revision": "53ab8dca0886925a96e8b095f47c5cd2b7716eaf83eed02269095c64c1532ebb"
+          },
+          {
+            "newsId": "history-of-a-town-rsl-stage-2026",
+            "revision": "555bd12fdc701c76b331ddcae775c190e6ff60b582d3e147ff2d1854ea5258c6"
+          },
+          {
+            "newsId": "ikapi-awards-ceremony-2026",
+            "revision": "12b89396d5250570b5aa275ccc2d5c1c5b467c6841fac0067d64529157b6935f"
+          },
+          {
+            "newsId": "ilcl-limited-colour-picture-books-2026",
+            "revision": "f427b729ecb886e3cca805956f59bc0f3ff85e88eb5f7d558fd5fbabd78fcd36"
+          },
+          {
+            "newsId": "indonesia-rights-fellowship-recipients-2026",
+            "revision": "ac905f4dc67556e4050253d840028fa160aa6f9629f34c7733ac42c9029b8020"
+          },
+          {
+            "newsId": "international-booker-funding-20260702",
+            "revision": "49caa83afcd4704b98108d5e1de43fb49297fd31f60b162908db1a3c1309683d"
+          },
+          {
+            "newsId": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+            "revision": "be7a7d9a0836fb3dd022c71c9a0fcbd6fa1a2d2266da1e6939417e7f54c9b234"
+          },
+          {
+            "newsId": "isabel-wilkerson-portland-lecture-2027",
+            "revision": "236f4d96fc476fe9ee4d85bbb62065868f9ad0bc2d91e99f341fca47ac3a34a0"
+          },
+          {
+            "newsId": "isbn-agencies-madrid-meeting-2026",
+            "revision": "cbb522993ae2c2a11e00703d6890baa165d8af164f246fb81770671d7fcfc4d2"
+          },
+          {
+            "newsId": "jamaica-kincaid-sjojungfrun-presentation-2026",
+            "revision": "1ff397edb910df4b53cf4e48816b46e7b6a0f64943e3b603798cea1787a14d13"
+          },
+          {
+            "newsId": "jaume-cabre-feixes-first-russian-2026",
+            "revision": "f6cbd9b9bcc0bff8ed7ad8d427bbae8b51062160f5e886b1e141e0886b3a0133"
+          },
+          {
+            "newsId": "joel-dicker-prime-video-three-novels-2026",
+            "revision": "9f3ed63780c80c8171d62eafb0d61f3138c17e7de945df25848a5e7e77b85cce"
+          },
+          {
+            "newsId": "john-green-hollywood-ending-us-2026",
+            "revision": "459dd5794a245d5df64d5b89b6dd142e163cde99b4a6f19b6af9ed0febec72d4"
+          },
+          {
+            "newsId": "john-green-signed-tip-in-record-2026",
+            "revision": "7815d4ccd5271c7a5e413da7226d8f734a65270cf7acf6bfe0ec90310753a28e"
+          },
+          {
+            "newsId": "jorge-basadre-library-awards-2026",
+            "revision": "362d87df8e1a540d9d41e3d5fcf462768bfe149fab2dd7ffe4b7fb4fc8a6d8d9"
+          },
+          {
+            "newsId": "jose-ruben-zamora-hermann-kesten-decision-2026",
+            "revision": "eefa1a677de63314e06695098ef94b904ee8e6814bcc17f4300b0885b454c63e"
+          },
+          {
+            "newsId": "jung-critical-edition-video-introduction-2026",
+            "revision": "22333220f403be7f2dd28ce6c8327d7d0ec79d1b13909c757dc83069a23c96f4"
+          },
+          {
+            "newsId": "kamen-writers-in-exile-portraits-opening-2026",
+            "revision": "3412ab025d1d84abf51e473f7b094a2bb8a8f3e930e3c64c82dcbb9fc4d80547"
+          },
+          {
+            "newsId": "katarina-wennstam-crimetime-honorary-award-2026",
+            "revision": "95e531cf9d56ede093e3bd72abe90bc0565c9d4df1d424405c8354f3a2f447b7"
+          },
+          {
+            "newsId": "ken-bugul-julie-huntington-asymptote-interview-2026",
+            "revision": "dbcb785e44b4e6840ae074de36004ce7a345cbf64b717c0f1a8a4b1cc1c0521d"
+          },
+          {
+            "newsId": "kiki-third-english-edition-announcement",
+            "revision": "44a513e96fca493ccd82c7b28a43a0c923503024bc7ea373795b5119bbff51db"
+          },
+          {
+            "newsId": "kill-jackie-series-premiere-2026",
+            "revision": "957105603f18ddf45cb142131ac74bbafc189b5fcf045b202eb1632dabc4c254"
+          },
+          {
+            "newsId": "kokila-jason-reynolds-lamplighters-son-acquisition-2026",
+            "revision": "751cca78d0a77362f80fc09dacb6279b50ebba5fd7f1ddfd5a6a54d4bb6059d6"
+          },
+          {
+            "newsId": "kruzhkov-mukha-pukha-reading-theatre-2026",
+            "revision": "3158b858fa58d94a3c42eaefc9925305b534f4c4b38f173eefe092842b027cb7"
+          },
+          {
+            "newsId": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+            "revision": "57f3dc6698f4d948a21149c9987a74104d478afadcbcf9efecfe8e9a95f771ea"
+          },
+          {
+            "newsId": "kvinnsam-periodicals-svenska-tidningar-2026",
+            "revision": "a1aa1c4d13badff227b66709db4d5522bbdc572dd4ebe3ae3dc06b04fddd7880"
+          },
+          {
+            "newsId": "lenfilm-samokat-family-film-reading-2026",
+            "revision": "304e531e3aba23a2165f174098c46e30178ac5e7e27464ed3aa134f584b26a17"
+          },
+          {
+            "newsId": "li-juan-my-altay-russian-announcement-2026",
+            "revision": "fd1833f05a2bc7f4fd62aa914b94813c34b21c83875a139a9d3f2040d8a97866"
+          },
+          {
+            "newsId": "liber-innovation-audio-programme-2026",
+            "revision": "a87fd1cf8634aa5bca26a9745af34e6359e2796bee04377fe5be152b9fedcda3"
+          },
+          {
+            "newsId": "libro-fm-ebook-beta-announcement-2026",
+            "revision": "05c87a1569d671a5c27b73c01b687136a062e879ec362cc988e1917b6325e587"
+          },
+          {
+            "newsId": "liechtenstein-helena-brehm-poetry-workshop-2026",
+            "revision": "b520e2faba17e03e3b4f819b3091a0f6f31f212eababd492ac150d8e1a7dde8e"
+          },
+          {
+            "newsId": "lilya-brik-mamm-literary-museum-loans-2026",
+            "revision": "54224b36c72ab6690106945342f5d7c53027e647504d58731a9b95dbc8dbb60d"
+          },
+          {
+            "newsId": "lit-connect-jakarta-2026",
+            "revision": "d5fd70cebfdea6c481869d4aa1e2bb56c444289d8905e625f8792d5cea7ad1f7"
+          },
+          {
+            "newsId": "lithuania-ekultura-digital-heritage-finalist-2026",
+            "revision": "a2aa5b84256a968b9fff0f523ae6419797bfa0e4f108763d471d0a2dd1d9c562"
+          },
+          {
+            "newsId": "lithuania-italian-literature-reading-lists-2026",
+            "revision": "5e3f2d83ee91d1d6baa9b93ab860e5feebb5ede53ddbb511353f82583b2a88f8"
+          },
+          {
+            "newsId": "lithuania-winnie-pooh-centenary-programme-2026",
+            "revision": "163b2ad65991dc753f76f3989f4c89c9749b57524e73bbc0e4f8c11043bace72"
+          },
+          {
+            "newsId": "litres-yasnaya-polyana-free-reading-2026",
+            "revision": "cdb48dd24dc55c0563f456449958b37b4466f24ec905281658a1ff480290fac1"
+          },
+          {
+            "newsId": "liu-cixin-direct-russian-translation-interview-2026",
+            "revision": "0f203e919f58648a7d6afb5f235886b43296172c4f702f61b4ee56b7130cc040"
+          },
+          {
+            "newsId": "livres-en-vignes-awards-2026",
+            "revision": "14ef63ac37dfb7fc589ff835fdbdc04887fe7f6cd0d25ee8142964a2aca7ee45"
+          },
+          {
+            "newsId": "lom-gaza-two-books-presentation-2026",
+            "revision": "00bee8d46d9d3f793f135bc41a22d0de6672691c520706e4aa9f760275e14d02"
+          },
+          {
+            "newsId": "lom-juan-guzman-memory-book-2026",
+            "revision": "5d340d0194fc50b7a48359f5c3f156ee42221ccf9e89a7c97a3069f3ccb066c6"
+          },
+          {
+            "newsId": "lom-plan-condor-illustrated-book-2026",
+            "revision": "a4dae9ca37ad9602e4528abc194accf9889caf85f7eff4743d5eedbe2b2edfae"
+          },
+          {
+            "newsId": "louise-erdrich-everybody-reads-selection-2026",
+            "revision": "2d291069fd211ad0ad63422e09b16cc226a44b4222462e0b48ab2588058886fb"
+          },
+          {
+            "newsId": "love-hypothesis-2026-release-announcement",
+            "revision": "e8c612f3a3f7dcc93c64bd37e13c0860343e3e55cf04c5bbd3ef186d66f3a17d"
+          },
+          {
+            "newsId": "lucashenko-eddie-blanket-french-edition-2026",
+            "revision": "7c5c3f1d29e8b8cd219fb13ba81c8bcf3c1d200b1e297b97d9d10a4620c51e3f"
+          },
+          {
+            "newsId": "luxembourg-unfinished-peace-archive-exhibition-2026",
+            "revision": "749038a9cf213d33cf878374436a70043a44b17bd67f22461c990e5ad89fb4c7"
+          },
+          {
+            "newsId": "lynne-campbell-fungi-language-song-2026",
+            "revision": "7fa02fba525c2fca7cc1b48a01fa8eec9fd5bc77ad7c6f879c422e5d7cbb4af9"
+          },
+          {
+            "newsId": "macdiarmid-thistle-centenary-talk-2026",
+            "revision": "d35f27843ca435c33a34e33c75722e0c4d1d94588763e12bd97e3d539ffa0f50"
+          },
+          {
+            "newsId": "madeline-cash-page-america-award-2026",
+            "revision": "314ace19a0cd576a0b5077750fb359381c58d209801d0ee6b96860e18facdfcd"
+          },
+          {
+            "newsId": "mama-read-draw-family-awards-2026",
+            "revision": "1429ea59c2d589f49217bb3568a18647f1fcd71c52d14293b47155c3f91041a0"
+          },
+          {
+            "newsId": "mandel-exit-party-us-2026",
+            "revision": "c1e21ce8cbb78570d7e7c50b0b507a493208f89825bdec21f42e8f70680e4108"
+          },
+          {
+            "newsId": "mandelstam-days-2026-announcement",
+            "revision": "d9ba07ff3cce42178cd134283bb4d24a39a5806586e289479a17f5629e5b0168"
+          },
+          {
+            "newsId": "maren-baudet-lackner-aquatics-translation-2026",
+            "revision": "9d7f3ca097cdde4242294987f36e29cfc5fe185b684e6dbd0bcfda0bf3b16657"
+          },
+          {
+            "newsId": "marie-dorleans-grand-est-award-presentation-2026",
+            "revision": "fd3418ef023358e29eef54dbe1638340f7ce85f139f9792c5b4285f59bace84f"
+          },
+          {
+            "newsId": "marlon-james-disappearers-us-catalog-2026",
+            "revision": "569a84b9280b2173d419c2eaba498f4dfe7d965e5d811bd8234ceb63101dfec2"
+          },
+          {
+            "newsId": "mcmonagle-letters-stephen-rea-reading-2026",
+            "revision": "12b5ec9c7f2a7a2e761ce24273440d58263d92b80b3a3176e7a683bd0bc42143"
+          },
+          {
+            "newsId": "montevideo-international-book-fair-2026",
+            "revision": "a343f345e88912312eb5a35342f17b454af5dbd80de3eb9b23f2765a2977fa58"
+          },
+          {
+            "newsId": "moscow-book-week-2026",
+            "revision": "ec5f5b1df2629b02408af10a64c75520986b17a6c533d2bc817b53b99a4e9626"
+          },
+          {
+            "newsId": "musicians-literary-prize-selection-2026",
+            "revision": "eea123f3297c32ca4cc4a1fe777e8cac82dcd608b6539abcdf0e34337bb5ac73"
+          },
+          {
+            "newsId": "nairobi-international-book-fair-2026",
+            "revision": "f9766bad5a1ade2054576a66191a11680f6229f3658a79b47910b53a79b5121e"
+          },
+          {
+            "newsId": "natalya-balayan-russian-fairy-tale-book-2026",
+            "revision": "bc78129894f761b94f72db2aa82b67ef1cdf0efcf9988ec98d65cc9410b6878a"
+          },
+          {
+            "newsId": "national-book-awards-longlists-2026",
+            "revision": "44b739e81c1224d34e35afdee0115015ebd0fb90480e05e861967830140548b7"
+          },
+          {
+            "newsId": "nbf-presents-fall-2026-announced",
+            "revision": "e31d9c3281452a2c2fd07ef9a4f73eb1e6790a51d822f7b5a323024d0cc9c42a"
+          },
+          {
+            "newsId": "ndl-rare-books-fulltext-75000-2026",
+            "revision": "327a7b534ab38fc83d08df3e9d901a8e61e0ec862e7f5afe977ef51d1220c341"
+          },
+          {
+            "newsId": "new-zealand-childrens-book-awards-2026",
+            "revision": "5f86c59e9e0a2d09e8525f96cb39883b51e5d51d53357faaade2f6122f346bfd"
+          },
+          {
+            "newsId": "nicolas-lunabba-gothenburg-bildning-award-2026",
+            "revision": "5a1ab1bb8f61db95cd55bd94c4ad81af28fae37cf3f3c291f9040dbb7d1b5e30"
+          },
+          {
+            "newsId": "nizhny-novgorod-book-fair-2026",
+            "revision": "f976ac450701c4f8b7e47ec5d53c8bc10dff139bc37b2c8e1e7ac20d9912cce4"
+          },
+          {
+            "newsId": "nli-redevelopment-tender-approved-2026",
+            "revision": "47250cdaeeaf5f1a400f04a09be26ee42c44f920a62f015de22071ea0b806c22"
+          },
+          {
+            "newsId": "nlo-anya-fyodorova-conversation-20260813",
+            "revision": "6750d49dab7ed931efb2e305e19383dc631edfe060e2e37dc102c72746dd1f56"
+          },
+          {
+            "newsId": "nlo-tsyganov-stalin-era-philology-20260901",
+            "revision": "adbfcca832b79fa08b128aa1d4ae55049c76341132dee7a97afbfc7c00504366"
+          },
+          {
+            "newsId": "nlo-venediktova-literary-haptics-podcast-20260912",
+            "revision": "5400e07dcbdf41b469b95878bb986c1042c55dc2bd42a0f119db962e96d665d7"
+          },
+          {
+            "newsId": "nlo-zenkin-scholars-french-literature-20260818",
+            "revision": "57a414824551de43b113dc9a854a2c096bc0120255981c5f2b93516efe885653"
+          },
+          {
+            "newsId": "nobel-literature-announcement-schedule-2026",
+            "revision": "439fb634fd3d96131a355f0818a0cf047ddafe04a9d8527043e2fde9bce04eba"
+          },
+          {
+            "newsId": "nonna-gruffalo-italian-edition-2026",
+            "revision": "9799b924db443fe278039661df751f7b4fe9e1a7e8595699202b84e4dab83940"
+          },
+          {
+            "newsId": "noon-strugatsky-trailer-2026",
+            "revision": "16a27f1438b4844db337a30cebf0982e8f47ecd1147e2c12906f90288551d5c9"
+          },
+          {
+            "newsId": "norwegian-pen-ossietzky-nominations-deadline-2026",
+            "revision": "430149b40d468f884e91fc47f43c7e87beeb86a877046f9cb293eed842c6f630"
+          },
+          {
+            "newsId": "novosibirsk-book-projects-seminar-2026",
+            "revision": "21aa3c9d879cd7f9f11ced72cbc88ad0ea8ffffaf44cb1210e4f5849fe3e1681"
+          },
+          {
+            "newsId": "nuestra-tierra-radio-animation-season2-2026",
+            "revision": "79776034deb4169970be2466fe2447efbe901fdc3ee3ccf0b3a886da648ecad1"
+          },
+          {
+            "newsId": "omnibird-panz-design-awards-2026",
+            "revision": "9f07225a4241b933af9985c58c58385694ac00d3dbc39a8b517704cb79e9f290"
+          },
+          {
+            "newsId": "ouest-france-quai-bulles-finalists-2026",
+            "revision": "f2a4f2ef3703edbc3856b527592f486a2c9b4deaec797d6d5837f31d24c9af39"
+          },
+          {
+            "newsId": "our-strange-duet-audiobook-cast-2026",
+            "revision": "16314931284aba694722b4bba3684e0c9a2a4ccffdf5c805cbdccfb6317edb16"
+          },
+          {
+            "newsId": "padura-liber-award-decision-2026",
+            "revision": "2fc4137e309ea1eec089f139369564c1939e71ab99d71e18b1270d799628f875"
+          },
+          {
+            "newsId": "pantin-comics-publishing-conference-2026",
+            "revision": "af8d3e35c3fc29170b060b332c78201a575574c014c31a17416445020383a335"
+          },
+          {
+            "newsId": "parfenov-nabokov-namedni-tour-announced-2026",
+            "revision": "6c24da68b3e7ce6831bea38634320da94a93267b9a843fdfe791ed1639d17ed8"
+          },
+          {
+            "newsId": "patrick-dewitt-dodge-city-russian-edition-2026",
+            "revision": "f28a0fe1a39c1f684f3a0f50d58afa541e7da1c9b5b09b336e23d9c417c2f880"
+          },
+          {
+            "newsId": "paulina-borsook-cyberselfish-reissue-announced-2026",
+            "revision": "990738f39bacc1d4f5301f6c616fe52179bec4e676784af814be433427bd0976"
+          },
+          {
+            "newsId": "pazderka-soukup-rudolf-medek-prize-2026",
+            "revision": "b32241d80c9f55c34ee5ece5180bb5eec62a07b540d92f6857837529c4fec503"
+          },
+          {
+            "newsId": "pen-america-alim-aliiev-literary-interview-2026",
+            "revision": "1454106e5c3f522dc5a86edde69825dc3b0b579232510d7892eda1841609e22b"
+          },
+          {
+            "newsId": "pen-belarus-three-writers-released-20260916",
+            "revision": "40c51b46b269f8842d4abfe9e7b68cb344927329c6dbc41e13e53bbef22991a3"
+          },
+          {
+            "newsId": "pen-belarus-writers-frankfurt-panel-2026",
+            "revision": "f82735814c2a1b1f91299d6cdf8acc8b4cf9bfa5c2fbc99ed982383e4a417161"
+          },
+          {
+            "newsId": "pen-catala-eritrean-writers-audio-postcards-2026",
+            "revision": "b3d08a0a6ab6cfe049eeb2696bff9d405161954ae07e38a1d874e51a9623fde7"
+          },
+          {
+            "newsId": "pen-index-victoria-amelina-fellowship-2026",
+            "revision": "7a5038f2a069b917ffb4a215126a3a35a8a73341cd064f8b876022f65127d263"
+          },
+          {
+            "newsId": "pesnyary-minsk-moscow-exhibition-2026",
+            "revision": "0b7617b0714e986e8b7be42b780bf97f974dcb64f8864d2ff722ac56fb10b589"
+          },
+          {
+            "newsId": "peter-stamm-cuando-oscurece-rebon-review-2026",
+            "revision": "b41fcfb82b1a466fae250122420d9f2da65de2cd0a1493653f8dd1c4062df5e1"
+          },
+          {
+            "newsId": "phillip-lopate-washington-irving-sketch-book-2026",
+            "revision": "6c5776cd3bd0b2fa57fc6509024970de60bcf103ba6a7f38ce67fb736bd5b628"
+          },
+          {
+            "newsId": "piedmont-independent-book-tour-2026",
+            "revision": "cbab7aadbd4ab9e718356757fb1aec4193ce0c1fa556cbb112ecca4c8df3c958"
+          },
+          {
+            "newsId": "pistoia-deans-rag-books-exhibition-closing-2026",
+            "revision": "4caa983b2226b13bad2a94917ec65294a5251cac28d6a06867afee01ebf01a6c"
+          },
+          {
+            "newsId": "podium-entertainment-acquisition-2026",
+            "revision": "f6327380973ff3b2e477bc4bc1cf53481eb0197e2f13555985e2e6007283eb11"
+          },
+          {
+            "newsId": "poerio-goethe-iphigenia-attribution-2026",
+            "revision": "55ad39a120da4a2afbcaf88cbb0ace39d8c1632e97068b4cdcc3dce7edf5cc0f"
+          },
+          {
+            "newsId": "princeton-cashmere-licensing-partnership-2026",
+            "revision": "211dce292bb747f10066726341b0b63d1d58dcf414d7c1ae2593c82feb994d63"
+          },
+          {
+            "newsId": "radzinsky-eighteen-volume-collected-works-2026",
+            "revision": "c5f6a285de0346aeddd636a563aaa612ed87d333e2593a6fe79e20480358be45"
+          },
+          {
+            "newsId": "rgali-sergei-markov-archive-feature-2026",
+            "revision": "fdca9f54faab5055fc1145c4f8e9256e4394a99a4e9b2c5d5387b147bf6ae109"
+          },
+          {
+            "newsId": "richard-oram-wind-water-cleave-talk-2026",
+            "revision": "057be3672f213a5f84398e58030efcadbef025b24062266234d69c28680a9afc"
+          },
+          {
+            "newsId": "rivera-garza-kwon-literary-influences-2026",
+            "revision": "b053d193e25ec3f2ad03f18ba7569a77a8852fee1920e1600112685d915e225d"
+          },
+          {
+            "newsId": "romania-erasmus-libraries-meeting-2026",
+            "revision": "11cdddd4674f0e80cb5f5822e1c317e96c3b5bb3589fba988b193259ed4b520e"
+          },
+          {
+            "newsId": "rsl-multilingual-literary-evening-2026",
+            "revision": "808e362754138bc03303399a4477c5eec600323883bc94f651d789ccf710d16c"
+          },
+          {
+            "newsId": "rsl-sri-lanka-books-culture-days-2026",
+            "revision": "abbe98cef25b673f09f23f0fc84e4dda973cd15701e6226f43b59b2980cb7487"
+          },
+          {
+            "newsId": "russian-book-market-conference-2026",
+            "revision": "d919bbebd5805ca7b331de7c84328b0c42ea68bf9d1d94f239950cb420d3645b"
+          },
+          {
+            "newsId": "sables-de-dune-french-edition-2026",
+            "revision": "ca76cf884adb6f39193e9fc789ae0aca7ad3c1b5e6f84cfdcb35f1826c081b72"
+          },
+          {
+            "newsId": "saluzzo-medieval-book-festival-2026",
+            "revision": "5f533ccf03b342a4ce74186e6f5c8ae7162672882c5a2e47a510eb688f1ef17e"
+          },
+          {
+            "newsId": "sam-a-miller-still-lost-interview-2026",
+            "revision": "bcc9176ffce4fb6fdd4337dbbb79bac6f07a74a5a8bae417a1e090c7c26240d3"
+          },
+          {
+            "newsId": "san-martin-digital-repository-agreement-2026",
+            "revision": "8b11207285d1bb36ee58da198e0e76b0d469e60c42dfa1b28acde6cd5e32a9f9"
+          },
+          {
+            "newsId": "sanna-wani-lantern-daughterhood-essay-2026",
+            "revision": "468e7d835509519cc865a245f984090ed72eb293b26d018835b7465ba5052713"
+          },
+          {
+            "newsId": "sarajevo-amer-tikvesa-literary-corner-2026",
+            "revision": "2fdeca23c9a63433ef40b56d1e1003b63cbf37c1745e009962fcd25a1ca35050"
+          },
+          {
+            "newsId": "scam-recit-dessine-selection-2026",
+            "revision": "2fc2f338ebe5e433120d6844e55c63ef4c178fa5bc16ff25ef9fb0d2be32504d"
+          },
+          {
+            "newsId": "scariest-book-2027-preorder-2026",
+            "revision": "e6df43a22993a6dc4891bcdd1c0ba1d12bb5c2407f040a4058bc182da17c9790"
+          },
+          {
+            "newsId": "scarlett-robinson-kean-mahy-illustration-prize-2026",
+            "revision": "324cbef1b7aba29a2d8fc3c5b11ae3481e3462ab665f4a0b14afcf0507f095e1"
+          },
+          {
+            "newsId": "serapis-millay-anthology-presented-2026",
+            "revision": "ea852be31872dfd816fba3ee8405daf75f3ceb4fc174b102f6229bf435a47bbc"
+          },
+          {
+            "newsId": "shanghai-childrens-book-fair-2026",
+            "revision": "31de01fab16c64c58e1aed317caae1e168bd4b8494285afd4d6eb4221e65bfde"
+          },
+          {
+            "newsId": "sharjah-filbo-guest-honour-announced-2026",
+            "revision": "1f5d151464fcbb3109cbc524ea0bb0c1c8c0bb0833e0ccf220058642d895d09c"
+          },
+          {
+            "newsId": "shershenevich-drozdov-collection-exhibition-2026",
+            "revision": "d94111a7a93fb7c02a9b98225abaa942f298ff8cb9be617e0a44fb9e5b944cc4"
+          },
+          {
+            "newsId": "shida-bazyar-wilhelm-raabe-presentation-2026",
+            "revision": "cce88a50d06caa4224e03f54fd4af3135e15cecfbfd7dd594c311ecd9de62252"
+          },
+          {
+            "newsId": "slovak-literary-fund-incunabula-publications-award-2026",
+            "revision": "438efad03498253e2cf0e3dd48a2bcdff6e9b8d74f233002713e5e87d0148af5"
+          },
+          {
+            "newsId": "slovakia-bibliography-days-seminars-2026",
+            "revision": "e669c83e7dc65afb330a684753c6d2f983a044934722a715d644156a6d2bc7c3"
+          },
+          {
+            "newsId": "slovakia-power-story-library-webinar-2026",
+            "revision": "1e264de11a1aa0fd0745bd2f8e707af479c77a7376c8e811ddb261e63c3a61bd"
+          },
+          {
+            "newsId": "small-piece-night-student-anthology-2026",
+            "revision": "0bcd344eab51f25c56d94ba4173b58546049a50158dede91182057efce8e5f18"
+          },
+          {
+            "newsId": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+            "revision": "7bd3f07f19d2628755dba3015303e266b708c24935c50fc1a74c485f2382b3b7"
+          },
+          {
+            "newsId": "stephen-wright-black-moon-making-feature-2026",
+            "revision": "2c2d72f49a0492d17cf446e0c3a9dd30a00b03a4a421d8d7108f6ff0e2e408d4"
+          },
+          {
+            "newsId": "steven-veerapen-witches-talk-2026",
+            "revision": "c8f82265c0c2fcfd3b884b03e044305a04e96f50d5240a0b19b3cd1b7ec18419"
+          },
+          {
+            "newsId": "stevenson-cevennes-illustrated-french-edition-2026",
+            "revision": "fee7574dd6fb66d66d931099fa2e6bb59658bb569caf82e64c2680133d6a7f86"
+          },
+          {
+            "newsId": "svensk-bokkonst-awards-ceremony-2026",
+            "revision": "6c7d51018735720df651f845fdb5246ad81f9d0b7f57573dacaa406bdf7dbe43"
+          },
+          {
+            "newsId": "svenska-tidningar-remote-search-restored-2026",
+            "revision": "545d83332f884d269ed7a280bb0d14796abf880cd3e99250380017d24be9d370"
+          },
+          {
+            "newsId": "tacna-national-legal-deposit-centre-2026",
+            "revision": "3db3ddecbbc652b120dbdc50d3a20886ab092e8dfb4c62970beaee3934813465"
+          },
+          {
+            "newsId": "taipei-book-exhibition-czech-guest-2027",
+            "revision": "26e34aeba56100dd58f28df60d9ceeeb3e025acd131cd368c2652c69a76a8a4f"
+          },
+          {
+            "newsId": "taiwan-picture-book-creation-support-2026",
+            "revision": "3454d2c05baeb90a972cdc4314aff49b2f0fe5d94a575f3c05e24e564a886b46"
+          },
+          {
+            "newsId": "tara-westover-brothers-and-sisters-us-2027",
+            "revision": "6eed69a1152216a8fb8fc36ef5d615a68ad3d9e4a44246178916e42c80477376"
+          },
+          {
+            "newsId": "tawada-where-europe-begins-russian-2026",
+            "revision": "bb353f015a0b42f19946a2dc700daf51d91cbb916c9ceff22967e53d9cad3c00"
+          },
+          {
+            "newsId": "tiktok-book-awards-mexico-ceremony-2026",
+            "revision": "8b991b5aa3cb1245aa48664add18fba9d27e563909d2c4abac056c511581cc6c"
+          },
+          {
+            "newsId": "tolstoy-birthday-2026",
+            "revision": "9398d30e893aabd401cb6ddc8e74b4a8d7dcc726d281a7567449bd8d14a9718d"
+          },
+          {
+            "newsId": "turin-italiano-al-mondo-translators-conference-2026",
+            "revision": "6bbf2321b536b4b1ca5ab08aa344d5909f269decaa68f1374c4ecfebb66e416b"
+          },
+          {
+            "newsId": "turkey-childrens-editing-workshop-deadline-2026",
+            "revision": "953aac396bb0fc6a31a42c5cb12508ce8d8c3d826233008735433b6f2535153f"
+          },
+          {
+            "newsId": "tv5monde-un-pays-un-livre-announced-2026",
+            "revision": "6185e41a9ae23065ebb96127a36289c0b67bbd5b61b81abea3cbf0355ac533cb"
+          },
+          {
+            "newsId": "ubud-writers-readers-festival-2026",
+            "revision": "6933ca7875f51f6126537b5f333379f1e259e85e44184faf425aa620573efaa6"
+          },
+          {
+            "newsId": "utopiales-comics-shortlist-2026",
+            "revision": "83fd5757bec1e59eb1dd2af06714b075d286a786856e7084b7502fb439051870"
+          },
+          {
+            "newsId": "vanity-fair-literary-selection-2026",
+            "revision": "ab9d3e9c4ced215f6391a79d43219fade70b40f941598160cb0c9841fd9cbeda"
+          },
+          {
+            "newsId": "vernadsky-dnipro-digitised-periodicals-2026",
+            "revision": "ddf490ed4a59188b79f003ed49cd71c247ab25de2c8aa77fc201f13fb8c9b8b3"
+          },
+          {
+            "newsId": "vernadsky-world-literature-ukrainian-exhibition-2026",
+            "revision": "e65bba5888f086f1a15b96f0f6d679fc9feed317482ad52454094fa99a86a02d"
+          },
+          {
+            "newsId": "viking-beth-brower-emma-lion-rights-2026",
+            "revision": "86c400d0fb4c12268c2bfd594fe199c99f072e08a49bb601f38b9966c61d5f5f"
+          },
+          {
+            "newsId": "viktor-likhonosov-krasnodar-square-2026",
+            "revision": "7cfd0f303bf2c7194b41fa8fee45b8607fdcca064923755e7c76c7630a8c0574"
+          },
+          {
+            "newsId": "vladimir-dal-manuscripts-exhibition-2026",
+            "revision": "11f5fe7e689656281d34b29a0c46e32a7ced1a942be7759cc092d2624316ebc3"
+          },
+          {
+            "newsId": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+            "revision": "c62ab2d86d1c2e053bcf996276d43640e74d6e09b51b7a751d37f195514025ea"
+          },
+          {
+            "newsId": "vromans-book-soup-hoffman-ownership-2026",
+            "revision": "ee248143bcfb9a41049d7babab8e7d9e429f3f93f6488aa1e808fda068d2f46c"
+          },
+          {
+            "newsId": "weather-spirits-international-storytelling-2026",
+            "revision": "0d8c9f2818cc5e60fb9ae70b20d182b9bc31c0c624a66a0c3afd76eaa2f7b5a0"
+          },
+          {
+            "newsId": "wells-brynhild-first-russian-2026",
+            "revision": "c4df3b2588fe4c64e63cf937a8cad5c21d4005a5f2509424844013aa55c43f07"
+          },
+          {
+            "newsId": "whisper-man-netflix-release-20260828",
+            "revision": "db521eb5402b2e68361fb4868a8c164a57b9cb149d42c896762a90043f5b789d"
+          },
+          {
+            "newsId": "wingston-gonzalez-plia-2026",
+            "revision": "63395245b58b19ca61569fa5e88aa4b348e09b81cf57bfe7126a778bb4e29a1b"
+          },
+          {
+            "newsId": "wmf-martins-fontes-amazon-supply-announcement-2026",
+            "revision": "fc73448229e26cbf91d36a089ecee46fa7ed9272cea5c8036185418487c648ad"
+          },
+          {
+            "newsId": "yasnaya-polyana-kuzminskaya-exhibition-2026",
+            "revision": "7dd2ce04de28c326b78bf39d5a03fe151395be9b29e59226dd1d9bc3321c5678"
+          },
+          {
+            "newsId": "yasnaya-polyana-tolstoy-library-20260912",
+            "revision": "c139a9059241253fbd9e508ac19bd85b835ddcc8b0dba796f024d07981c62161"
+          },
+          {
+            "newsId": "yeats-a-vision-digitised-papers-2026",
+            "revision": "e0f9dad7b9ddb2f011cea09d5e361c4de3d6c6b3eee98723f9be653fd0bdf1c2"
+          },
+          {
+            "newsId": "yesenin-konstantinovo-poetry-festival-2026",
+            "revision": "7431318f4335594248ad7cf861e5884e9104eafce448869e76a7a451bc0c945d"
+          }
+        ],
+        "pages": [
+          {
+            "url": "https://t.me/s/probbaperra",
+            "sha256": "8762459b7e0b84f826a9e4ebf565602615cd11b2236a5195023becb5c6515e4f"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=391",
+            "sha256": "3a48186c4b1bf90a9e30d068a4ce036404cc1357c93561bbef813948d51b8658"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=369",
+            "sha256": "47892e620a25e05b069b7566ff81543296361d66543c867bc011ff008e5cc70f"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=349",
+            "sha256": "7e8a20fd6919c5228ca4f3c84321c239ab1e84217d34dba18201c516b6587473"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=326",
+            "sha256": "2725849107f2b0956cedf7f7f063f4a50dbc5c3f45b63497c2a5b719884358c6"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=301",
+            "sha256": "7da220f6d07f52d6fe2ba922f9f247f9494ca363e1aded5e22ad19815956526c"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=280",
+            "sha256": "8a8b596dbac2db9d2c80a291bc4c1279c027f81f718661c4021b3208ec488e57"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=250",
+            "sha256": "d0c330121ae17a68ca764c85d24d78cf8dcb2f48dc999ca609c2319b4dca43fc"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=227",
+            "sha256": "0d288e9430b5f9fea957ebfbac6c5a6086c5e1b320ccb72ada06978f23558a7c"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=204",
+            "sha256": "f59df79e1bd7be65048014f9eac68cab1cd4102efb2e4ad83d3c39005263e454"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=184",
+            "sha256": "98fdeeb6932434cad214b061e3dacca18ca6f14166e1131293087b9a37d4b861"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=163",
+            "sha256": "0776ec41476f01018768b40d95997fa50001ba1b8c83f99afb65ddb24e694250"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=143",
+            "sha256": "5e208efb157fa13f369b3ffaac80a868212ec865312ceb410ddd8b40bad7381e"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=116",
+            "sha256": "f6da79db9ce946aceb796b56ce9df64d0b19657d6e15a1ea71d9800ac873b67a"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=96",
+            "sha256": "3f8d302e72c2bc43a1b6cfafb678bc0ac1c4f244c2f9192c300e0e9bfd719a31"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=72",
+            "sha256": "2303b54272b7cbf38c1a40c5c2699657a7f397c816948a07daf6e27158d327f3"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=44",
+            "sha256": "1ac01cb466b959041edec302fcda7dbb2321006d0c60e9aa9542baceeb6dd31d"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=24",
+            "sha256": "95bb13efeef2fe0f4960f788e5fdafe53aaef9cad77ff07ef4005b3a4846ca3c"
+          },
+          {
+            "url": "https://t.me/s/probbaperra?before=4",
+            "sha256": "2c8083a667b85c635d82d07b0811f8369585e3a927b80f81fa7f60c7766013ad"
+          }
+        ],
+        "limitations": [
+          "Deleted/private/unobserved posts are not inferred",
+          "Approval covers the reviewed candidate revisions and public snapshot only",
+          "Recheck public head before each canary action"
+        ]
+      },
+      "canaryNewsId": "kokila-jason-reynolds-lamplighters-son-acquisition-2026"
+    }
+  ]
+}
