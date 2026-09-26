@@ -4,7 +4,7 @@ import { createNewsSocialTransport } from "./lib/literary-news-social-transport.
 
 const names = Object.freeze({ telegram: "probbaperra", vk: "probperaru" });
 const methods = Object.freeze({ telegram: new Set(["getMe", "getChat", "getChatMember"]),
-  vk: new Set(["groups.getById", "users.get", "account.getAppPermissions"]) });
+  vk: new Set(["groups.getById", "users.get", "account.getAppPermissions", "groups.getTokenPermissions"]) });
 const validId = value => Number.isSafeInteger(value) && value > 0;
 
 /** Only the existing provider's read methods can receive a credential here. */
@@ -36,7 +36,23 @@ async function json(response) {
 }
 
 export async function checkLiteraryNewsConnections({ env = process.env, fetchImpl = fetch } = {}) {
-  const read = readonlyConnectionFetch(fetchImpl);
+  const diagnostics = [];
+  const read = readonlyConnectionFetch(async (url, options) => {
+    const response = await fetchImpl(url, options);
+    if (url.hostname === "api.vk.com") {
+      const data = await json(response.clone());
+      const method = url.pathname.split("/").at(-1);
+      const group = data.response?.groups?.[0] || (method === "groups.getById" ? data.response?.[0] : null);
+      diagnostics.push({ method, status: response.status,
+        errorCode: Number.isSafeInteger(data.error?.error_code) ? data.error.error_code : null,
+        ...(group ? { groupId: validId(group.id) ? group.id : null, canPost: group.can_post === 1,
+          isAdmin: group.is_admin === 1, adminLevel: [1,2,3].includes(group.admin_level) ? group.admin_level : null } : {}),
+        ...(method === "account.getAppPermissions" ? { permissionMask: Number.isSafeInteger(data.response) ? data.response : null } : {}),
+        ...(method === "groups.getTokenPermissions" ? { groupTokenRecognized: Number.isSafeInteger(data.response?.mask),
+          permissionMask: Number.isSafeInteger(data.response?.mask) ? data.response.mask : null } : {}) });
+    }
+    return response;
+  });
   const transport = createNewsSocialTransport({ mode: "shadow", telegramToken: env.TELEGRAM_BOT_TOKEN,
     vkToken: env.VK_ACCESS_TOKEN, fetchImpl: read });
   const result = { checkedAt: new Date().toISOString(), release: /^[a-f0-9]{40}$/.test(env.GITHUB_SHA || "") ? env.GITHUB_SHA : null,
@@ -63,6 +79,10 @@ export async function checkLiteraryNewsConnections({ env = process.env, fetchImp
         result.destinations.push({ ...entry, reason: "configured_vk_group_mismatch" }); continue;
       }
       const permissions = await transport.preflight({ platform, id: entry.destinationId, mode: "off" });
+      if (platform === "vk") await json(await read("https://api.vk.com/method/groups.getTokenPermissions", {
+        method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ access_token: token, v: "5.199" }).toString(),
+      }));
       const rightsVerified = platform === "telegram" ? permissions.ok === true : permissions.identityVerified === true && permissions.rightsVerified === true;
       result.destinations.push({ ...entry, status: rightsVerified ? "identity_and_rights_verified" : "blocked",
         providerAccountId: permissions.providerAccountId || null, rightsVerified,
@@ -72,7 +92,7 @@ export async function checkLiteraryNewsConnections({ env = process.env, fetchImp
       result.destinations.push({ ...entry, reason: "provider_read_failed" });
     }
   }
-  return result;
+  return { ...result, vkDiagnostics: diagnostics };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

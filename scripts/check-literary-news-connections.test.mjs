@@ -28,6 +28,7 @@ describe("literary news connection preflight", () => {
         if (url.pathname.endsWith("groups.getById")) return reply({ response: { groups: [{ id: 321, screen_name: "probperaru", can_post: 1, is_admin: 1, admin_level: 3 }] } });
         if (url.pathname.endsWith("users.get")) return reply({ response: [{ id: 123 }] });
         if (url.pathname.endsWith("account.getAppPermissions")) return reply({ response: 8192 });
+        if (url.pathname.endsWith("groups.getTokenPermissions")) return reply({ error: { error_code: 27, error_msg: "vk-private" } });
         throw Error("unexpected method");
       } });
     expect(result.destinations.map(row => [row.destinationId, row.rightsVerified])).toEqual([["-10012345", true], ["-321", true]]);
@@ -35,6 +36,7 @@ describe("literary news connection preflight", () => {
     expect(result.destinations.every(row => row.canaryStillRequired)).toBe(true);
     expect(calls).not.toContain("wall.post");
     expect(JSON.stringify(result)).not.toMatch(/vk-private|tg-private/);
+    expect(result.vkDiagnostics.at(-1)).toMatchObject({ errorCode: 27, groupTokenRecognized: false });
   });
   it("does not accept the wrong group and never exposes a provider exception containing a token", async () => {
     const result = await checkLiteraryNewsConnections({ env: { VK_ACCESS_TOKEN: "vk-private", TELEGRAM_BOT_TOKEN: "tg-private" },
