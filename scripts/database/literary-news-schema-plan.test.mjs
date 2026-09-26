@@ -49,7 +49,8 @@ describe("guarded literary news runtime schema rollout", () => {
   it("rejects a fixed output directory redirected through a symlink or Windows junction",()=>{
     const fixture=cliFixture();symlinkSync(fixture.outside,path.join(fixture.root,"news-runtime-schema"),"junction");
     const result=fixture.run("news-runtime-schema");expect(result.status).not.toBe(0);
-    expect(result.stderr).toContain("must not redirect");expect(readdirSync(fixture.outside)).toEqual([]);
+    expect(result.stderr).toMatch(/Schema output (?:directory must not redirect|must remain inside repository)/);
+    expect(readdirSync(fixture.outside)).toEqual([]);
   });
   it("rejects an existing hard-linked output without modifying its external target or writing a partial plan",()=>{
     const fixture=cliFixture(),output=path.join(fixture.root,"news-runtime-schema"),outsideFile=path.join(fixture.outside,"keep.sql");
