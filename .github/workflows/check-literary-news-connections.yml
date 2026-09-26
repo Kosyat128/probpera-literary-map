@@ -1,0 +1,40 @@
+name: Check literary agenda channel connections
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/r10-connections-probe]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: literary-agenda-connection-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    if: github.repository == 'Kosyat128/probpera-literary-map' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/codex/r10-connections-probe')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Resolve the user-selected public channels and verify read-only permissions
+        run: node scripts/check-literary-news-connections.mjs
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          VK_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}
+          VK_GROUP_ID: ${{ secrets.VK_GROUP_ID }}
+      - uses: actions/upload-artifact@v7
+        with:
+          name: literary-agenda-connections-${{ github.run_id }}-${{ github.run_attempt }}
+          path: connection-check/result.json
+          retention-days: 30
+          if-no-files-found: error
