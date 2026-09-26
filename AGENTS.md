@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-gesture-access-20260924:begin -->
+Latest source 3f071a5c: a localized entry near the top of help opens the existing gesture gallery for Книжулик / Mr. Booky, with Surprise as its first action. Selected actual-App checks cover direct access, focus and card-only scrolling, explicit gesture/Stop behavior and reduced motion, while retained cases cover companion/navigation clearance, last-edition reachability after closing help, and full rail restoration after hiding the companion or rotating to portrait. Existing model, animation and renderer inputs retain the three D193 photos through exact dependency hashes and their original standalone scope. The help card remains an ordinary overlay. Claims remain limited to tested sizes and states; acceptance statuses are unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-gesture-access-20260924/result.json. D197. 169 unit cases and 4 selected browser cases; 10 authenticated captures. Earlier full-suite evidence remains bound to its original source. Stage/device/release acceptance remains open.
+<!-- s15-booky-gesture-access-20260924:end -->
+
 <!-- s15-booky-landscape-space-20260924:begin -->
 Latest source d4003bbc: selected RU/EN short-landscape layouts reserve room while the companion is shown for Книжулик / Mr. Booky beside navigation. Selected actual-App checks cover companion/navigation clearance, trusted-touch header controls, last-edition reachability after closing help and portrait restoration, with retained reduced-motion notice behavior. The unchanged model, animation and renderer retain three D193 rest/bow/balance photos through exact dependency hashes and their original standalone scope. The help card remains an ordinary overlay; navigation reachability through open help is not claimed. Claims remain limited to the tested sizes and states; acceptance statuses are unchanged.
 

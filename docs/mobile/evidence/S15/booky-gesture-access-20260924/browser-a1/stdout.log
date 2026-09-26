@@ -1,0 +1,10 @@
+
+Running 4 tests using 1 worker
+
+
+
+[1/4] tests\pwa\booky-live-character.spec.mjs:2723:150 › Booky short landscape companion navigation space ru
+[2/4] tests\pwa\booky-live-character.spec.mjs:2723:150 › Booky short landscape companion navigation space en
+[3/4] tests\pwa\booky-live-character.spec.mjs:2791:150 › Booky mobile gesture quick access ru
+[4/4] tests\pwa\booky-live-character.spec.mjs:2791:150 › Booky mobile gesture quick access en
+  4 passed (1.4m)

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-gesture-access-20260924/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-24T11:32:40.976Z",
+  "exitCode": 0,
+  "durationMs": 83237,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-access-20260924/browser-a1/stdout.log",
+    "bytes": 467,
+    "sha256": "8bebe8d4803254a07224276135ae3828e67fc3fd3d94a1133f858d3e941fae2c"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-access-20260924/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "bddb048e1ad5f5b15e8679216e73818290d7756704c2884ae270f0cf98baeca8"
+  }
+}

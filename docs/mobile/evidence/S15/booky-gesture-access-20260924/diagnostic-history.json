@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-24T11:31:02.490Z",
+  "recordingComplete": true,
+  "priorResult": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-landscape-space-20260924/result.json",
+    "sha256": "a13ceb8cce71b36631dd9ec76b16e421c48891c13a5731770e34b1be4c85c499"
+  },
+  "attempts": [
+    {
+      "attempt": "external-gesture-access-a1",
+      "reportFormat": "playwright",
+      "classification": "external-fixture-startup-failure",
+      "formalAcceptance": false,
+      "pass": false,
+      "browserStarted": null,
+      "applicationAssertionsReached": false,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/playwright.json",
+        "sha256": "7e1e38499ab839ba67bc2256c1d807157e157bedbe871b386f3a5eb5e5cda9fa"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 1,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/execution.json",
+        "sha256": "09f4ebb7d148be190544dbfdd3ad596611078244b6aa875b665f4377b754afb6"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/stdout.log",
+          "sha256": "c45de8ca35b3597146c9d8c068bfff4408ba523e745d70f82f1d9f92a189f88a"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/stderr.log",
+          "sha256": "b329bed0ba4e7b5908bad7af05423301fde30d080cda3b2077d62fdeb3e839ae"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/authorized-source.json",
+        "sha256": "28d238d5137fb92e42f10f17b672361deb03d86dac20ed3f982bbfeaac92073d"
+      },
+      "sourceUnchanged": true,
+      "captures": [],
+      "qualification": "App fixture startup failed while esbuild attempted a denied parent-directory read. No runtime behavior passed; EN was skipped. No actual-App captures were produced. Original 0 PASS / 1 FAIL / 1 skipped / 0 flaky; true exit 1. Source-bound external two-case diagnostic, separate from formal four-case acceptance.",
+      "additionalEvidence": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-access-review\\a1\\playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-access-review\\a1\\run.mjs",
+          "sha256": "6f3d24beb5b07acfae35b7e3e101357b9cb1686cae09ce15e67344192670bb8f"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-access-review\\a1\\bind.mjs",
+          "sha256": "0521c2451daefbc17e10165c083ef8a23c2bc1acee0189673d9b285a83241bc8"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-access-review\\a1\\canonical-fixture.mjs",
+          "sha256": "faff5606a3d108117c9227025c5ccfaccc1464ece6beed8216b8d14761b5d261"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/App.tsx",
+          "sha256": "98c62e65a3233f812ce1a76003885890de481abdce55ec51d0e4f9f3cc9ea5e1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "e4e2dafae1166d2ab4952f93514726cf38ace495ade2a9b15fa529bd2f71568d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "1841c35b35c95b8953b662cbb8909735d658e1f9c7eaeaf5c64708f8b045b0f7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "faff5606a3d108117c9227025c5ccfaccc1464ece6beed8216b8d14761b5d261"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "0a3da8edfa6819cf76517b3a0025f4d47ebf55beaa3c39f16637b57c5dadedac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "b72db00c105e290ef02a4a42b2563028b90297246fdfa1d04ee421125c2742da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/authorized-source.json",
+          "sha256": "28d238d5137fb92e42f10f17b672361deb03d86dac20ed3f982bbfeaac92073d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/execution-start.json",
+          "sha256": "47a629c15412b122a143618999dddc64bef7f1e30a219434c49b76d51848c7f1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/preflight-start.json",
+          "sha256": "3176192a330081874c02d1c463b5276203b9831a679a581627bf8a051062f5df"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/preflight-result.json",
+          "sha256": "bacd4ed1ebfeae84f1455ee0356aac2a766c8bed2cbd6c0652a3ed7e2a6ca2e4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/preflight-stdout.log",
+          "sha256": "edc7186c0dd535396d1440ec3613e847755bf6871f1446279db93ad3073d4293"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/dirty.diff",
+          "sha256": "097a084340472822a713170cfcc86f91e3fc4151304a361acd61da79c68862ea"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a1/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-ru/error-context.md",
+          "sha256": "9b4eba9e9fe36bd8078c269af3faad385284530356f49a62681d22a2c69c3fde"
+        }
+      ]
+    },
+    {
+      "attempt": "external-gesture-access-a2",
+      "reportFormat": "playwright",
+      "classification": "external-focused-gesture-access-diagnostic-pass",
+      "formalAcceptance": false,
+      "pass": true,
+      "browserStarted": true,
+      "applicationAssertionsReached": true,
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/playwright.json",
+        "sha256": "5bc47ff6159659372c3b74a322d7a0105b691142226cab99dca804d1b57a2944"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/execution.json",
+        "sha256": "a114541e0abcb70180fde4ed953f0b291523a567056f1ab97cbb64945b40b18c"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/stdout.log",
+          "sha256": "77448a90e75a53d161c15644884a6e1f7bb9269e348e9bc95af31529ea6ac5f0"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/stderr.log",
+          "sha256": "5e784a77e9eee151419154ffd378130347e2d56b16ef23e4bd337e22ff5c9264"
+        }
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/authorized-source.json",
+        "sha256": "6735da564b4fa6ce8679df54e722349e1141a45a66d4be0df8c883c1e8d19e39"
+      },
+      "sourceUnchanged": true,
+      "captures": [
+        {
+          "test": "Booky mobile gesture quick access ru",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-ru/booky-live-character.json",
+            "sha256": "838b334d4cdaa1a31b7977670d753226b4c05557109f49408face0a4c0cf5304"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-ru/attachments/booky-live-character-source-evidence-379b27571d25f98df37b4c5e131d2dfdd90b500d.json",
+            "sha256": "838b334d4cdaa1a31b7977670d753226b4c05557109f49408face0a4c0cf5304"
+          },
+          "pass": true,
+          "scenario": "mobile-gesture-quick-access-ru",
+          "errors": []
+        },
+        {
+          "test": "Booky mobile gesture quick access en",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-en/booky-live-character.json",
+            "sha256": "6a5a7dc7a9d95ba7214423a0b2eeab9d101ce556c867bdfbe39243a7c6f7fd46"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-en/attachments/booky-live-character-source-evidence-c58a8f5a8c4c66f437df7c4f42ef0de23b8ea4c3.json",
+            "sha256": "6a5a7dc7a9d95ba7214423a0b2eeab9d101ce556c867bdfbe39243a7c6f7fd46"
+          },
+          "pass": true,
+          "scenario": "mobile-gesture-quick-access-en",
+          "errors": []
+        }
+      ],
+      "qualification": "Original 2 PASS / 0 FAIL / 0 skipped / 0 flaky; true exit 0. Source-bound external two-case diagnostic, separate from formal four-case acceptance.",
+      "additionalEvidence": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-access-review\\a2\\playwright.config.mjs",
+          "sha256": "afd7bec544566337867bb378db69287c45a9912042865244f11b96e194414ae5"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-access-review\\a2\\run.mjs",
+          "sha256": "6f3d24beb5b07acfae35b7e3e101357b9cb1686cae09ce15e67344192670bb8f"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-access-review\\a2\\bind.mjs",
+          "sha256": "0521c2451daefbc17e10165c083ef8a23c2bc1acee0189673d9b285a83241bc8"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-gesture-access-review\\a2\\canonical-fixture.mjs",
+          "sha256": "faff5606a3d108117c9227025c5ccfaccc1464ece6beed8216b8d14761b5d261"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/App.tsx",
+          "sha256": "98c62e65a3233f812ce1a76003885890de481abdce55ec51d0e4f9f3cc9ea5e1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "e4e2dafae1166d2ab4952f93514726cf38ace495ade2a9b15fa529bd2f71568d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "1841c35b35c95b8953b662cbb8909735d658e1f9c7eaeaf5c64708f8b045b0f7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "faff5606a3d108117c9227025c5ccfaccc1464ece6beed8216b8d14761b5d261"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "0a3da8edfa6819cf76517b3a0025f4d47ebf55beaa3c39f16637b57c5dadedac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "b72db00c105e290ef02a4a42b2563028b90297246fdfa1d04ee421125c2742da"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/authorized-source.json",
+          "sha256": "6735da564b4fa6ce8679df54e722349e1141a45a66d4be0df8c883c1e8d19e39"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/execution-start.json",
+          "sha256": "55181469ed4d03e73f8aa679cb6c35a7001133e4005bcf52dd8770a007c0cc40"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/preflight-start.json",
+          "sha256": "dffa8f6cd31cac365c8dea5e890856672ca1b54ec8134321ead99a17fe56c9e2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/preflight-result.json",
+          "sha256": "77845573f92d6ebbb6ed3f399d0cf14a39ae00def7e54a03d1a54bffaa1268cd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/preflight-stdout.log",
+          "sha256": "edc7186c0dd535396d1440ec3613e847755bf6871f1446279db93ad3073d4293"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/dirty.diff",
+          "sha256": "097a084340472822a713170cfcc86f91e3fc4151304a361acd61da79c68862ea"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-ru/attachments/booky-live-character-source-evidence-379b27571d25f98df37b4c5e131d2dfdd90b500d.json",
+          "sha256": "838b334d4cdaa1a31b7977670d753226b4c05557109f49408face0a4c0cf5304"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-ru/booky-live-character.json",
+          "sha256": "838b334d4cdaa1a31b7977670d753226b4c05557109f49408face0a4c0cf5304"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-ru/booky-gesture-access-ru-390.png",
+          "sha256": "8af5c043b84f8f9377d754c188e2265df6823a8f150778dfff51c1e4e5ccf4d6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-ru/booky-gesture-access-ru-568.png",
+          "sha256": "2861b2921b79bc8b091ea624f2beb7e3b948f1b273a979b573c7e767c36fc5d1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-en/attachments/booky-live-character-source-evidence-c58a8f5a8c4c66f437df7c4f42ef0de23b8ea4c3.json",
+          "sha256": "6a5a7dc7a9d95ba7214423a0b2eeab9d101ce556c867bdfbe39243a7c6f7fd46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-en/booky-live-character.json",
+          "sha256": "6a5a7dc7a9d95ba7214423a0b2eeab9d101ce556c867bdfbe39243a7c6f7fd46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-en/booky-gesture-access-en-320.png",
+          "sha256": "11285f41b4318a8ea64fe1226d82730213d04a1b24e8d9f041e78f7eeb434b04"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-review/a2/artifacts/booky-live-character-Booky-mobile-gesture-quick-access-en/booky-gesture-access-en-640.png",
+          "sha256": "4cf00dcb3c1176d9949fe8ccb83e5f82fa85cb137b9cc509c682d6b30808c95d"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Only completed external two-case gesture-access diagnostics are recorded here; they are not the formal four-case acceptance run.",
+    "Each attempt preserves original runtime/fixture copies, source hashes, raw logs, report, attachments and PNG hashes. Failed attempts remain failed.",
+    "PNG authentication does not claim direct visual review of diagnostic images.",
+    "Root-reported only: a preliminary invocation without --execute was rejected by the existing run guard before preflight. It is outside the actual browser attempts; no separate raw execution receipt exists or is manufactured."
+  ],
+  "releaseReady": false
+}

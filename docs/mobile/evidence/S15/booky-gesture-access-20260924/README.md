@@ -1,0 +1,18 @@
+# S15 mobile gesture quick access
+
+Source: 3f071a5c8a7bf4bd24c07afe20f24b69206aedaa.
+
+A localized entry near the top of Booky help opens the existing gesture gallery, focuses its summary and scrolls only the existing card. The existing Surprise action is first. Selected RU/EN actual-App mobile checks cover quick access, trusted-touch Surprise and Stop, reduced-motion static poses and manual restart, and unchanged saved context/preferences, together with retained short-landscape companion/navigation clearance and restoration. No new CSS, model, animation, renderer or persistence implementation is introduced. Three D193 standalone photos retain their original scope through exact unchanged dependency hashes. Fresh 169 focused unit cases, TypeScript and 4 selected actual-App browser cases pass with 10 authenticated captures; 4 selected screenshots are visually reviewed. Three D193 standalone rest, bow and balance photos retain their original review and scope; exact model, animation and renderer dependencies match this source. PWA b5e22002 and Android-dev 6d7ddaf5 are freshly rebuilt and byte-audited. 1650 source inputs remain exact. This validates direct mobile gesture access and first-action Surprise with retained companion/navigation clearance, last-edition reachability after closing help, and rail restoration after hiding the companion or rotating to portrait; full accessibility, installed-device, art and stage acceptance remain open.
+
+- Fresh browser evidence covers four selected RU/EN gesture quick-access and retained short-landscape navigation-space cases; broader walking, utilities, full gesture-gallery, notice lifecycle, live-model and layout suites remain attributed to their original sources.
+- Model geometry, animation and renderer inputs are unchanged. The three D193 rest/bow/balance photos are retained only through exact dependency hashes and keep their original standalone-render scope.
+- Static standalone pose renders do not demonstrate application timing, reachability or device performance. Those claims are limited to the separately recorded selected actual-App browser checks.
+- Navigation-space claims are limited to the configured phone sizes and tested help states. The open help card remains an ordinary overlay; background-navigation reachability through it is not promised. Last-edition trusted-touch reachability is checked after help closes. No universal layout, installed-device, full accessibility, performance, art, stage or release acceptance is claimed.
+- Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved. All requirement and stage statuses remain unchanged.
+- This visual review covers 4 of 10 final captures. It does not claim all retained images were inspected again.
+- Static images show selected gesture/help layouts; they cannot establish trusted-touch activation, focus, card-only scrolling, gesture timing or preservation of application context. Those claims depend on the corresponding formal browser assertions.
+- No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed.
+- Three static posed standalone renders using the current canonical model and animation; they are not application screenshots or installed-device evidence.
+- The images inspect rest plus the midpoints of bow and balance. Finite duration, restoration, reduced motion and touch behavior depend on the separate formal tests.
+- All three poses use the same neutral-model camera and lighting. No image generation, retouching or per-pose framing was used.
+- The model source is unchanged; the new pose evidence must also remain bound to the recorded animation dependency SHA.

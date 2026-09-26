@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76783891,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/pwa-a1-copy-verification.json",
+    "sha256": "5e2d052a28987036887b449685c9c89637349e4a5f9a7e876a7e8fc319344ce6"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/pwa-b5e22002/artifact.json",
+    "sha256": "029c3fe0afcf58c5f26ade618da612ccf331b41cd3fc9103cb846269c9f83480"
+  }
+}

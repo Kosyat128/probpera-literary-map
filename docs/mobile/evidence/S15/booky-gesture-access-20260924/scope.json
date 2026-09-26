@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "description": "A localized entry near the top of Booky help opens the existing gesture gallery, focuses its summary and scrolls only the existing card. The existing Surprise action is first. Selected RU/EN actual-App mobile checks cover quick access, trusted-touch Surprise and Stop, reduced-motion static poses and manual restart, and unchanged saved context/preferences, together with retained short-landscape companion/navigation clearance and restoration. No new CSS, model, animation, renderer or persistence implementation is introduced. Three D193 standalone photos retain their original scope through exact unchanged dependency hashes.",
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts",
+    "src/host/bookySurprise.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedUnitTests": 169,
+  "expectedBrowserTests": 4,
+  "expectedImages": 10,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "short-landscape-navigation-space-ru",
+      "flags": [
+        "landscapeCompanionClearsAllNavigation",
+        "landscapeHeaderControlsReachableByTouch",
+        "landscapeLastEditionReachableByTouch",
+        "landscapeRailRestoresAfterHide",
+        "portraitRailRestoresAfterRotation",
+        "landscapeSpacePreservesSceneAndPreferences"
+      ]
+    },
+    {
+      "scenario": "short-landscape-navigation-space-en",
+      "flags": [
+        "landscapeCompanionClearsAllNavigation",
+        "landscapeHeaderControlsReachableByTouch",
+        "landscapeLastEditionReachableByTouch",
+        "landscapeRailRestoresAfterHide",
+        "portraitRailRestoresAfterRotation",
+        "landscapeSpacePreservesSceneAndPreferences"
+      ]
+    },
+    {
+      "scenario": "mobile-gesture-quick-access-ru",
+      "flags": [
+        "quickAccessOpensAndFocusesGallery",
+        "surpriseIsFirstReachableAction",
+        "trustedTouchSurpriseFiniteAndDifferent",
+        "quickAccessStopRemainsReachable",
+        "quickAccessReducedMotionStaticAndManualRestart",
+        "quickAccessPreservesScenePreferencesAndContext",
+        "quickAccessScrollConfinedToPanel"
+      ]
+    },
+    {
+      "scenario": "mobile-gesture-quick-access-en",
+      "flags": [
+        "quickAccessOpensAndFocusesGallery",
+        "surpriseIsFirstReachableAction",
+        "trustedTouchSurpriseFiniteAndDifferent",
+        "quickAccessStopRemainsReachable",
+        "quickAccessReducedMotionStaticAndManualRestart",
+        "quickAccessPreservesScenePreferencesAndContext",
+        "quickAccessScrollConfinedToPanel"
+      ]
+    }
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "short-landscape-navigation-space-ru",
+      "observation": "landscapeSpace",
+      "checks": [
+        "open landscape reserves full companion space and reachable header",
+        "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+        "explicit hide and portrait rotation restore original rail geometry",
+        "source scene and preferences remain exact"
+      ]
+    },
+    {
+      "scenario": "short-landscape-navigation-space-en",
+      "observation": "landscapeSpace",
+      "checks": [
+        "open landscape reserves full companion space and reachable header",
+        "closed companion stays clear and last edition is reachable by trusted touch scrolling",
+        "explicit hide and portrait rotation restore original rail geometry",
+        "source scene and preferences remain exact"
+      ]
+    },
+    {
+      "scenario": "mobile-gesture-quick-access-ru",
+      "observation": "gestureAccess",
+      "checks": [
+        "portrait shortcut opens focused gallery and Surprise is the first reachable action",
+        "trusted Surprise completes then repeats differently and Stop remains reachable",
+        "landscape shortcut preserves context and reduced poses restart only on touch",
+        "all input is trusted and scrolling stays within the help panel"
+      ]
+    },
+    {
+      "scenario": "mobile-gesture-quick-access-en",
+      "observation": "gestureAccess",
+      "checks": [
+        "portrait shortcut opens focused gallery and Surprise is the first reachable action",
+        "trusted Surprise completes then repeats differently and Stop remains reachable",
+        "landscape shortcut preserves context and reduced poses restart only on touch",
+        "all input is trusted and scrolling stays within the help panel"
+      ]
+    }
+  ],
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "requireDiagnosticHistory": true,
+  "requiredVisualFilenames": [
+    "booky-gesture-access-ru-390.png",
+    "booky-gesture-access-ru-568.png",
+    "booky-gesture-access-en-320.png",
+    "booky-gesture-access-en-640.png"
+  ],
+  "browserTestTitles": [
+    "Booky short landscape companion navigation space ru",
+    "Booky short landscape companion navigation space en",
+    "Booky mobile gesture quick access ru",
+    "Booky mobile gesture quick access en"
+  ],
+  "retainedCaseCaptureSubtotal": 6,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "e4e2dafae1166d2ab4952f93514726cf38ace495ade2a9b15fa529bd2f71568d"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "faff5606a3d108117c9227025c5ccfaccc1464ece6beed8216b8d14761b5d261"
+    }
+  ],
+  "retainPriorModelPhotos": true,
+  "expectedRetainedModelPhotos": 3
+}

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-26T22:30:11.617Z",
+  "pass": true,
+  "sourceCommit": "3f071a5c8a7bf4bd24c07afe20f24b69206aedaa",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-gesture-access-20260924/source-manifests/127585b19ffc2ecc.json",
+    "sha256": "127585b19ffc2eccb96f9b148fae75d10354e624dff06d63ed87e55e1ff1574c",
+    "fileCount": 1652
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 10,
+  "scope": "Direct review of four selected final RU/EN mobile gesture quick-access captures, covering the visible gallery entry or opened gallery, first Surprise action, header controls, character framing and visible text. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 4 of 10 final captures. It does not claim all retained images were inspected again.",
+    "Static images show selected gesture/help layouts; they cannot establish trusted-touch activation, focus, card-only scrolling, gesture timing or preservation of application context. Those claims depend on the corresponding formal browser assertions.",
+    "No universal absence of overlap, installed-device, nonzero OS safe-area or iOS acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/final-visual-receipt.json",
+    "sha256": "8676513a13beb66c4b591a84321f1057b77b22d0e5ab9cabc22c1514b3d9ea7d"
+  },
+  "images": [
+    {
+      "filename": "booky-gesture-access-ru-390.png",
+      "sha256": "13ff9527f94626c9a44b14e8c602fd735a0a08e81a5a3b3669f7ceb0721d305e",
+      "width": 390,
+      "height": 844,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-ru/booky-gesture-access-ru-390.png",
+      "scenario": "mobile-gesture-quick-access-ru",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-ru/booky-live-character.json",
+        "sha256": "15c5a05196e461eaf0f8bd0ea5bb735e504cd9f254bf05b2b150e2f9f6e0b11e"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-ru/attachments/booky-live-character-source-evidence-e33e07df9eed3815b7876b6d0a2b9558b8356a52.json",
+        "sha256": "15c5a05196e461eaf0f8bd0ea5bb735e504cd9f254bf05b2b150e2f9f6e0b11e"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "The localized «Поиграть с Книжуликом» entry is fully visible on one line beneath the selected-writer line. Книжулик, Stop and Close remain visible and readable in the header.",
+        "The complete character is visible below the card with separate move/hide controls and the walk label. The card is an ordinary overlay; the writer paragraph continues beyond its lower scroll edge."
+      ],
+      "bytes": 346371
+    },
+    {
+      "filename": "booky-gesture-access-ru-568.png",
+      "sha256": "9a09b892591fe71a5276a69506164697319ceda948af5cf7369779df3dd428c0",
+      "width": 568,
+      "height": 320,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-ru/booky-gesture-access-ru-568.png",
+      "scenario": "mobile-gesture-quick-access-ru",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-ru/booky-live-character.json",
+        "sha256": "15c5a05196e461eaf0f8bd0ea5bb735e504cd9f254bf05b2b150e2f9f6e0b11e"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-ru/attachments/booky-live-character-source-evidence-e33e07df9eed3815b7876b6d0a2b9558b8356a52.json",
+        "sha256": "15c5a05196e461eaf0f8bd0ea5bb735e504cd9f254bf05b2b150e2f9f6e0b11e"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "The first visible gallery row contains the entire «Удиви меня» and «Помахать» controls. Header name, active Stop and Close are readable, and the complete character with magnifier remains visible to the right.",
+        "The reduced-motion notice is scrolled partially behind the sticky header: its upper line is clipped. This view shows the first gesture actions clearly but does not establish complete notice readability at this scroll position. The help card covers background navigation as an ordinary overlay."
+      ],
+      "bytes": 100449
+    },
+    {
+      "filename": "booky-gesture-access-en-320.png",
+      "sha256": "0bdd1c8b2b52a76528440caf3ccac151e38e1f8eca710b97b8dce57789bb68b9",
+      "width": 320,
+      "height": 844,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-en/booky-gesture-access-en-320.png",
+      "scenario": "mobile-gesture-quick-access-en",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-en/booky-live-character.json",
+        "sha256": "ef1e36ae5f541b2e8fe72cf4460baee016077492a2843f7a9e415ef195725d5e"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-en/attachments/booky-live-character-source-evidence-3547f4a6b3bed4714167aa227f87275febf4b6b0.json",
+        "sha256": "ef1e36ae5f541b2e8fe72cf4460baee016077492a2843f7a9e415ef195725d5e"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "The localized «Play with Mr. Booky» entry is fully visible on one line below the selected-writer line. Mr. Booky, Stop and Close fit visibly in the header.",
+        "The complete character is below the card, with move/hide and the two-line walk label visible above the zoom badge. The following writer paragraph is clipped at the card bottom; the screenshot does not claim all help text is simultaneously visible."
+      ],
+      "bytes": 283622
+    },
+    {
+      "filename": "booky-gesture-access-en-640.png",
+      "sha256": "10b6307fc5d6e5fcc52394e46507cb3fc0fd61020b94765012c39b2941a8bd1b",
+      "width": 640,
+      "height": 360,
+      "framing": "actual-app-independent-live-3d-companion",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-en/booky-gesture-access-en-640.png",
+      "scenario": "mobile-gesture-quick-access-en",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-en/booky-live-character.json",
+        "sha256": "ef1e36ae5f541b2e8fe72cf4460baee016077492a2843f7a9e415ef195725d5e"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-gesture-access-evidence/browser-a1/booky-live-character-Booky-mobile-gesture-quick-access-en/attachments/booky-live-character-source-evidence-3547f4a6b3bed4714167aa227f87275febf4b6b0.json",
+        "sha256": "ef1e36ae5f541b2e8fe72cf4460baee016077492a2843f7a9e415ef195725d5e"
+      },
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/booky_utility_visual",
+      "findings": [
+        "The first visible gallery row contains the entire «Surprise me» and «Wave» actions. Mr. Booky, active Stop and Close are readable; the reduced-motion notice is fully visible in two lines.",
+        "The character and magnifier are fully framed beside the card, with both square dock controls visible. The card remains an overlay on background navigation; static visibility alone does not establish focus, scrolling or gesture timing."
+      ],
+      "bytes": 118414
+    }
+  ],
+  "releaseReady": false
+}

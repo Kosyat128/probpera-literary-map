@@ -1,0 +1,15 @@
+{
+  "checkpoint": "347653804edd0e8b4e42fb90920eceece86c568a",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/pwa-a1/result.json",
+    "sha256": "6cba4fd74dfae07c0869aa851d44587ba6bfcb944178f9c249e00f4c13e3652e",
+    "buildId": "446224a72c12ba20fc5879b58f8aaa27bc7c1bd6bd3b6a4a45a723ff866d10a1",
+    "sourceCommit": "d4003bbc4fe5cd6dd1d3ef86e5c568e292aa4556"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-landscape-space-20260924/android-a1/result.json",
+    "sha256": "3c908ed6416cc7b6dd2d490bb2e0a1ad4f0dcdc7c4f1e5f1f94f83ce8ab4bbfd",
+    "buildId": "ecf0908147eaf5ab299afac812de98c5ae7d2dfee6a92f0052986a69b024a972",
+    "sourceCommit": "d4003bbc4fe5cd6dd1d3ef86e5c568e292aa4556"
+  }
+}
