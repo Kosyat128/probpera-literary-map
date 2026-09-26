@@ -1,7 +1,30 @@
+import { setTimeout as delay } from "node:timers/promises";
+import { createHash } from "node:crypto";
+import limits from "../../data/news/contract.json" with { type: "json" };
 export const NEWS_STATE_KEY = "literary-news:v1:source-state";
 export const NEWS_QUEUE_KEY = "literary-news:v1:held-queue";
+export const NEWS_GENERATION_KEY = "literary-news:v2:ingestion";
+export const NEWS_APPROVED_PROFILE_KEY = "literary-news:v1:approved-profile:nobel-literature";
 const NAMESPACE_ID = "f3ae59fd55ee4c0cac8ff1613db81680";
-const MAX_BYTES = 16 * 1024 * 1024;
+const MAX_BYTES = limits.maxHeldBytes + limits.maxSourceStateBytes + 4096;
+const digest = (value) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
+export function makeNewsGeneration(entries) {
+  validateNewsBulk(entries);
+  const payload = { state: JSON.parse(entries.find((entry) => entry.key === NEWS_STATE_KEY).value),
+    queue: JSON.parse(entries.find((entry) => entry.key === NEWS_QUEUE_KEY).value) };
+  const value = { schemaVersion: 2, sha256: digest(payload), ...payload };
+  if (Buffer.byteLength(JSON.stringify(value)) > MAX_BYTES) throw new Error("News generation exceeds its limit");
+  return value;
+}
+export function parseNewsGeneration(text) {
+  if (Buffer.byteLength(text) > MAX_BYTES) throw new Error("News generation exceeds its limit");
+  const value = JSON.parse(text);
+  if (value?.schemaVersion !== 2 || value.sha256 !== digest({state:value.state,queue:value.queue}))
+    throw new Error("News generation is incomplete or corrupted");
+  const entries = [{key:NEWS_STATE_KEY,value:JSON.stringify(value.state)}, {key:NEWS_QUEUE_KEY,value:JSON.stringify(value.queue)}];
+  validateNewsBulk(entries);
+  return {previousState:entries[0].value,previousQueue:entries[1].value};
+}
 
 async function boundedText(response) {
   if (Number(response.headers.get("content-length")) > MAX_BYTES) throw new Error("News storage response exceeds its limit");
@@ -43,9 +66,9 @@ export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch
     });
     return { response, text: await boundedText(response) };
   }
-  return {
+  const client = {
     async read(key) {
-      if (![NEWS_STATE_KEY, NEWS_QUEUE_KEY].includes(key)) throw new Error("Unexpected news storage key");
+      if (![NEWS_STATE_KEY, NEWS_QUEUE_KEY, NEWS_GENERATION_KEY, NEWS_APPROVED_PROFILE_KEY].includes(key)) throw new Error("Unexpected news storage key");
       const { response, text } = await request(`/values/${encodeURIComponent(key)}`);
       if (response.status === 404) {
         let payload;
@@ -77,7 +100,31 @@ export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch
       }
       throw new Error("News storage did not confirm both updated keys after three attempts");
     },
+    async readGeneration() {
+      const text = await client.read(NEWS_GENERATION_KEY);
+      return text === null ? null : parseNewsGeneration(text);
+    },
+    async commitGeneration(entries) {
+      // One bounded KV value contains both data and cursor/state. A failed legacy
+      // projection cannot corrupt this committed generation or erase pending finds.
+      const {response,text} = await request(`/values/${encodeURIComponent(NEWS_GENERATION_KEY)}`, {
+        method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(makeNewsGeneration(entries)),
+      });
+      if (!response.ok || JSON.parse(text)?.success !== true) throw new Error("News generation commit unconfirmed");
+    },
+    async readApprovedProfile() { return client.read(NEWS_APPROVED_PROFILE_KEY); },
+    async writeApprovedProfile(value) {
+      const {validateNobelApprovedPayload} = await import("./literary-news-nobel-profile.mjs");
+      const body = JSON.stringify(await validateNobelApprovedPayload(value));
+      if (!value || typeof value !== "object" || Array.isArray(value) || Buffer.byteLength(body) > 262144)
+        throw new Error("Approved news profile exceeds its contract");
+      const {response,text} = await request(`/values/${encodeURIComponent(NEWS_APPROVED_PROFILE_KEY)}`,{
+        method:"PUT",headers:{"Content-Type":"application/json"},body,
+      });
+      if (!response.ok || JSON.parse(text)?.success !== true) throw new Error("Approved news profile commit unconfirmed");
+    },
   };
+  return client;
 }
 
 export function validateNewsBulk(entries) {
@@ -102,7 +149,8 @@ export function validateNewsBulk(entries) {
 export async function syncNewsStorage({ storage, collect }) {
   // A failed read never becomes an empty snapshot. Only a genuine missing-key
   // response for both keys permits the first bootstrap.
-  const [previousState, previousQueue] = await Promise.all([
+  const generation = storage.readGeneration ? await storage.readGeneration() : null;
+  const [previousState, previousQueue] = generation ? [generation.previousState,generation.previousQueue] : await Promise.all([
     storage.read(NEWS_STATE_KEY), storage.read(NEWS_QUEUE_KEY),
   ]);
   if ((previousState === null) !== (previousQueue === null)) {
@@ -110,7 +158,7 @@ export async function syncNewsStorage({ storage, collect }) {
   }
   const entries = await collect({ previousState, previousQueue });
   const state = validateNewsBulk(entries);
+  if (storage.commitGeneration) await storage.commitGeneration(entries);
   await storage.write(entries);
   return state;
 }
-import { setTimeout as delay } from "node:timers/promises";

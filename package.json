@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run content:export:cms && npm run build:from-snapshot",
-    "build:from-snapshot": "npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && npm run assets:images:prepare && npm run assets:images:check && tsc && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs",
+    "build:from-snapshot": "npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && npm run assets:images:prepare && npm run assets:images:check && tsc && npm run news:fallback && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs",
     "build:all": "npm run build && npm run admin:build",
     "build:domain": "node scripts/build-domain-release.mjs",
     "domain:audit": "node scripts/audit-domain-release.mjs",
@@ -154,7 +154,8 @@
     "assets:globe:cassini:sources": "node scripts/acquire-globe-production-sources.mjs --config scripts/globe-editions/cassini-1790-production-sources.json",
     "assets:globe:cassini:runtime:check": "node scripts/export-cassini-runtime-textures.mjs --check",
     "assets:globe:scherer:source:check": "node scripts/check-scherer-preservation-source.mjs",
-    "assets:globe:evidence:check": "npm run assets:globe:historical:check && npm run assets:globe:historical:registration:check && npm run assets:globe:cassini:runtime:check && npm run assets:globe:scherer:source:check"
+    "assets:globe:evidence:check": "npm run assets:globe:historical:check && npm run assets:globe:historical:registration:check && npm run assets:globe:cassini:runtime:check && npm run assets:globe:scherer:source:check",
+    "news:fallback": "node scripts/export-literary-news-fallback.mjs"
   },
   "dependencies": {
     "@react-three/drei": "9.122.0",

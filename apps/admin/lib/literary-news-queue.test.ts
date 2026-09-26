@@ -1,11 +1,12 @@
 import { readFileSync } from "node:fs";
+import limits from "../../../data/news/contract.json";
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@opennextjs/cloudflare", () => ({ getCloudflareContext: () => { throw new Error("no worker runtime"); } }));
 
 import {
   filterHeldNewsQueue, formatNewsQueueDate, literaryNewsQueueHref, loadLiteraryNewsQueue,
-  NEWS_QUEUE_KEY, NEWS_SOURCE_STATE_KEY, NEWS_QUEUE_MAX_BYTES,
+  NEWS_QUEUE_KEY, NEWS_SOURCE_STATE_KEY, NEWS_QUEUE_MAX_BYTES, NEWS_GENERATION_KEY,
   newsHoldReason, parseHeldNewsQueue, parseNewsSourceState,
 } from "./literary-news-queue";
 
@@ -57,7 +58,7 @@ describe("private literary news queue", () => {
 
   it("rejects duplicated candidates, excessive cardinality and oversized input before rendering", () => {
     expect(() => parseHeldNewsQueue(JSON.stringify({ ...queue, items: [candidate, candidate] }))).toThrow();
-    expect(() => parseHeldNewsQueue(JSON.stringify({ ...queue, items: Array.from({ length: 5_001 }, (_, i) => ({ ...candidate, source: { ...candidate.source, url: `https://example.com/${i}` } })) }))).toThrow();
+    expect(() => parseHeldNewsQueue(JSON.stringify({ ...queue, items: Array.from({ length: limits.maxHeldItems + 1 }, (_, i) => ({ ...candidate, source: { ...candidate.source, url: `https://example.com/${i}` } })) }))).toThrow();
     expect(() => parseHeldNewsQueue(" ".repeat(NEWS_QUEUE_MAX_BYTES + 1))).toThrow("size limit");
     expect(() => parseHeldNewsQueue(`"${"я".repeat(NEWS_QUEUE_MAX_BYTES / 2)}"`)).toThrow("size limit");
   });
@@ -72,11 +73,12 @@ describe("private literary news queue", () => {
 
   it("reads only fixed news keys and keeps queue available when source-state fails", async () => {
     const get = vi.fn(async (key: string) => {
+      if (key === NEWS_GENERATION_KEY) return null;
       if (key === NEWS_QUEUE_KEY) return JSON.stringify(queue);
       throw new Error("temporary KV failure");
     });
     const loaded = await loadLiteraryNewsQueue({ get });
-    expect(get.mock.calls.map(([key]) => key).sort()).toEqual([NEWS_QUEUE_KEY, NEWS_SOURCE_STATE_KEY].sort());
+    expect(get.mock.calls.map(([key]) => key).sort()).toEqual([NEWS_GENERATION_KEY, NEWS_QUEUE_KEY, NEWS_SOURCE_STATE_KEY].sort());
     expect(loaded.queue?.items).toHaveLength(1);
     expect(loaded.sourcesError).toBe(true);
     expect(loaded.sources).toBeNull();

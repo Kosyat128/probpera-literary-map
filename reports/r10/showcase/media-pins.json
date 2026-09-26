@@ -1,0 +1,95 @@
+{
+  "media": [
+    {
+      "label": "portrait",
+      "natural": [
+        180,
+        360
+      ],
+      "fit": "contain",
+      "bounds": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 210.1875,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 447.578125,
+        "left": 201
+      },
+      "parent": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 210.1875,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 447.578125,
+        "left": 201
+      }
+    },
+    {
+      "label": "square",
+      "natural": [
+        240,
+        240
+      ],
+      "fit": "contain",
+      "bounds": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 210.1875,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 447.578125,
+        "left": 201
+      },
+      "parent": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 210.1875,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 447.578125,
+        "left": 201
+      }
+    },
+    {
+      "label": "wide",
+      "natural": [
+        480,
+        180
+      ],
+      "fit": "contain",
+      "bounds": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 210.1875,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 447.578125,
+        "left": 201
+      },
+      "parent": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 210.1875,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 447.578125,
+        "left": 201
+      }
+    }
+  ],
+  "pins": {
+    "status": "passed",
+    "oldChoice": true,
+    "openOrderStable": true,
+    "reopenExpiry": true,
+    "knownWithdrawalFocus": true
+  }
+}

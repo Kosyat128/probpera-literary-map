@@ -1,0 +1,142 @@
+{
+  "package": "R10_FINAL",
+  "status": "local_delivery_ready_release_and_acceptance_incomplete",
+  "operation_scope_id": null,
+  "original_baseline": null,
+  "baseline_status": "Previous R9.1 operation checkpoint not found in scoped local worktrees or current main; do not reset or invent cumulative counts.",
+  "this_run": {
+    "startedAt": "2026-09-26",
+    "baseHead": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+    "branch": "codex/r10-literary-agenda-20260926",
+    "initialTrackedReviewedRecords": 33,
+    "initialConfiguredEndpoints": 29,
+    "newPublic": 0,
+    "delivered": 0,
+    "newPrepared": 202,
+    "reviewedTotal": 235,
+    "eligibleLocal": 222,
+    "sourceCandidates": 250,
+    "researchVerifiedEndpoints": 108,
+    "verifiedOrganisationCountries": 54,
+    "currentAvailableEndpoints": 101,
+    "currentAvailableCountries": 53,
+    "onsiteThumbnails": 101,
+    "calendarNewOrRefinedDates": 51,
+    "calendarConfirmedExistingPrecision": 9,
+    "calendarAddedVisibleEvents": 60
+  },
+  "user_addition": "Maximize verified country diversity of literary-news sources; count country of organization separately from event coverage, language, and endpoint families.",
+  "decisions": [
+    {
+      "reason": "The historical news checkout is older than current protected main.",
+      "choice": "Isolated branch from the verified current main; preserve existing working copies.",
+      "check": "Remote refs/heads/main equals baseHead; starting status clean.",
+      "rollback": "Discard this isolated branch only; no production changes have been made."
+    }
+  ],
+  "exact_next_step": "Review the prepared branch and required verify result; resolve the single listed connection/release/history prerequisites. Keep sender off. Complete destination setup/native acceptance and the operational restore drill; preserve conditional identity limits before claiming every applicable archive criterion. Do not refetch the seven accepted content batches or reset cumulative baselines.",
+  "updatedAt": "2026-09-26T19:39:57.879Z",
+  "workingTreeFingerprint": "99e026b079f457998bdafd194182f75388f0be8d4c1941e28ed7fb66acdbea10",
+  "acceptedBatches": [
+    {
+      "id": "r10-01",
+      "records": 20,
+      "recordSha256": "5fef9da1b6feb6db49af9cf0afe796fb411ad415865dc6dcc9b914e250f6ced7",
+      "status": "prepared-not-published"
+    },
+    {
+      "id": "r10-02",
+      "records": 20,
+      "recordSha256": "b059fdef211a76f54107e4028cfd6fda396ac23a28b1325c4e46f41a14ace246",
+      "status": "prepared-not-published"
+    },
+    {
+      "id": "r10-03",
+      "records": 30,
+      "recordSha256": "885b3e89628e12a75c4a057d582fe806b0f19cc2f6aee138d670ead5fc8fd0f0",
+      "status": "prepared-not-published"
+    },
+    {
+      "id": "r10-04",
+      "records": 40,
+      "recordSha256": "336ff4ac2172e694aa42ed897099bbd0add6b7fb8214ee0b81601a0c52d38762",
+      "status": "prepared-not-published"
+    },
+    {
+      "id": "r10-05",
+      "records": 31,
+      "recordSha256": "8496790affd7c1771e3954ae392fd9cbf7e3938fcee53ba2580538a9f57c4c0c",
+      "status": "prepared-not-published"
+    },
+    {
+      "id": "r10-06",
+      "records": 40,
+      "recordSha256": "0f9466d964d67c588e16a1564dea8c137b0b147dc051cea02ae1b7210871fdb8",
+      "status": "prepared-not-published"
+    },
+    {
+      "id": "r10-07",
+      "records": 21,
+      "recordSha256": "b52bd1c89162c39d648214b200f185f8d3a4f708541071f682b1777fa82df174",
+      "status": "prepared-not-published"
+    }
+  ],
+  "cumulative": {
+    "originalBaseline": null,
+    "newPublic": null,
+    "calendarGrowth": null,
+    "reason": "Previous R9.1 operation checkpoint not found in scoped local worktrees or current main; do not reset or invent cumulative counts."
+  },
+  "blockers": [
+    {
+      "id": "release",
+      "kind": "external",
+      "detail": "Protected main review/required verify and authorized project release remain. No code, dates or prepared records from this branch have been deployed."
+    },
+    {
+      "id": "destinations",
+      "kind": "external",
+      "detail": "Need API-verified numeric Telegram/VK destinations, Telegram bot secret, current rights and agreed general canary. Destination config remains empty/off."
+    },
+    {
+      "id": "history",
+      "kind": "evidence",
+      "detail": "Original operation_scope_id/original_baseline and earlier public/social history are unknown. Durable admission starts only with a verified observed release; a missed past admission remains an explicit gap."
+    },
+    {
+      "id": "calendar-growth",
+      "kind": "data",
+      "detail": "60 added visible calendar events (51 new/refined dates + 9 confirmed January-1 precision). +1000 not met; 940 event remainder or 949 new-date-value remainder. Do not invent deaths or precision."
+    },
+    {
+      "id": "social-media",
+      "kind": "connection-rights-and-native-acceptance",
+      "detail": "Native image preparation/upload/edit and durable scoped provider references are implemented and locally tested. Six synthetic profiles/18 screenshots and three held real portrait candidates have evidence. Runtime asset permissions remain empty until numeric destinations are verified; no live platform visual acceptance. Onsite thumbnails are not licensed social assets."
+    },
+    {
+      "id": "identity-migrations",
+      "kind": "conditional-not-exercised",
+      "detail": "No identity merge/split operation occurred in these 202 unique records. P36 is conditional and not exercised; universal aliases/lineage support is not claimed. See final-scope-audit.md."
+    },
+    {
+      "id": "restore",
+      "kind": "operational-validation",
+      "detail": "Archive S18 permits the mandatory external stop, pause/shadow and history reconciliation procedure. Five actual guards tests passed; live restore was not performed. No automatic stale backup detector is claimed. See final-scope-audit.md."
+    }
+  ],
+  "acceptedUserDecisions": [
+    {
+      "scope": "news miniature UI",
+      "decision": "Accepted by user: Да повестка пойдет нормально",
+      "date": "2026-09-26"
+    }
+  ],
+  "implementedUserRequirements": [
+    {
+      "scope": "showcase image",
+      "requirement": "Full image at original aspect; no side crop. Short viewport may use existing internal scroll.",
+      "date": "2026-09-26",
+      "separateUserAcceptance": false
+    }
+  ]
+}

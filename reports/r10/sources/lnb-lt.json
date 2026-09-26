@@ -1,0 +1,636 @@
+{
+  "sourceId": "lnb-lt",
+  "name": "Martynas Mazvydas National Library of Lithuania",
+  "entryUrl": "https://www.lnb.lt/",
+  "countryCodes": [
+    "LT"
+  ],
+  "coverageCountryCodes": [
+    "LT"
+  ],
+  "attemptedAt": "2026-09-26T17:29:11.727Z",
+  "requests": [
+    {
+      "url": "https://www.lnb.lt/?format=feed&type=rss",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=utf-8",
+      "bytes": 23794,
+      "sha256": "6a56b0ba8dcdda806f132a9fb4b87a7e5d75197cc656e040b1056ea5d20522eb",
+      "accessedAt": "2026-09-26T17:23:01.670Z"
+    },
+    {
+      "url": "https://www.lnb.lt/naujienos/15114-nordic-libraries-together-2026-ka-parsivezame-is-oslo",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 66041,
+      "sha256": "23935f8fa3a31ec7a63878016adc968ee74c071e2d21a25318ba3053b744abb6",
+      "accessedAt": "2026-09-26T17:29:12.559Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.lnb.lt/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 842,
+    "sha256": "22aa0adeed7730e6a83520a4013a3500ccb280a2f55c57b5a59183ffd05d611b",
+    "accessedAt": "2026-09-26T17:29:12.095Z",
+    "disallowed": [
+      "/administrator/",
+      "/bin/",
+      "/cache/",
+      "/cli/",
+      "/components/",
+      "/includes/",
+      "/installation/",
+      "/language/",
+      "/layouts/",
+      "/libraries/",
+      "/logs/",
+      "/modules/",
+      "/plugins/",
+      "/tmp/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:59.790Z",
+    "sourceDocumentSha256": "6a56b0ba8dcdda806f132a9fb4b87a7e5d75197cc656e040b1056ea5d20522eb"
+  },
+  "endpoint": {
+    "id": "lnb-lt",
+    "name": "Martynas Mazvydas National Library of Lithuania",
+    "url": "https://www.lnb.lt/?format=feed&type=rss",
+    "format": "rss",
+    "language": "lt",
+    "region": "europe",
+    "sourceFamilyId": "lnb-lt",
+    "countryCodes": [
+      "LT"
+    ],
+    "coverageCountryCodes": [
+      "LT"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.lnb.lt"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.lnb.lt/naujienos/15114-nordic-libraries-together-2026-ka-parsivezame-is-oslo"
+    ],
+    "verifiedAt": "2026-09-26T17:29:12.568Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 20,
+  "sample": {
+    "sourceId": "lnb-lt",
+    "source": {
+      "name": "Martynas Mazvydas National Library of Lithuania",
+      "url": "https://www.lnb.lt/naujienos/15114-nordic-libraries-together-2026-ka-parsivezame-is-oslo",
+      "language": "lt"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "„Nordic Libraries Together 2026“: ką parsivežame iš Oslo?",
+    "publishedAt": "2026-09-14T04:27:06.000Z",
+    "description": "Rugsėjo 9\u201311 d. vyko kasmetinė tarptautinė konferencija „Nordic Libraries Together 2026“, subūrusi Šiaurės ir Baltijos šalių bibliotekų profesionalus Oslo centrinėje bibliotekoje „Deichman Bjørvika“, kuriai Tarptautinė bibliotekų asociacijų ir institucijų federacija (IFLA) 2021 metais skyrė prestižinį „Metų viešosios bibliotekos“ (angl. Public Library of the Year) apdovanojimą ir oficialiai pripa…",
+    "discoveredAt": "2026-09-26T17:29:12.096Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.lnb.lt/naujienos/15114-nordic-libraries-together-2026-ka-parsivezame-is-oslo",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 66041,
+      "sha256": "23935f8fa3a31ec7a63878016adc968ee74c071e2d21a25318ba3053b744abb6",
+      "accessedAt": "2026-09-26T17:29:12.559Z",
+      "headline": "„Nordic Libraries Together 2026“: ką parsivežame iš Oslo?",
+      "excerpt": "Pradžia Naujienos„Nordic Libraries Together 2026“: ką parsivežame iš Oslo? 2026 m. rugsėjo 14 d. „Nordic Libraries Together 2026“: ką parsivežame iš Oslo? Rugsėjo 9\u201311 d. vyko kasmetinė tarptautinė konferencija „Nordic Libraries Together 2026“, subūrusi Šiaurės ir Baltijos šalių bibliotekų profesionalus Oslo centrinėje bibliotekoje „Deichman Bjørvika“, kuriai Tarptautinė bibliotekų asociacijų ir i",
+      "publishedDates": [],
+      "canonical": "https://www.lnb.lt/naujienos/15114-nordic-libraries-together-2026-ka-parsivezame-is-oslo",
+      "language": "lt",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:12.568Z",
+  "foundItems": [
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15114-nordic-libraries-together-2026-ka-parsivezame-is-oslo",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "„Nordic Libraries Together 2026“: ką parsivežame iš Oslo?",
+      "publishedAt": "2026-09-14T04:27:06.000Z",
+      "description": "Rugsėjo 9\u201311 d. vyko kasmetinė tarptautinė konferencija „Nordic Libraries Together 2026“, subūrusi Šiaurės ir Baltijos šalių bibliotekų profesionalus Oslo centrinėje bibliotekoje „Deichman Bjørvika“, kuriai Tarptautinė bibliotekų asociacijų ir institucijų federacija (IFLA) 2021 metais skyrė prestižinį „Metų viešosios bibliotekos“ (angl. Public Library of the Year) apdovanojimą ir oficialiai pripa…",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15124-isleista-elizabeth-buchanan-knyga-tai-norite-tureti-grenlandija-vikingu-pamokos-donaldui-trumpui",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Išleista Elizabeth Buchanan knyga „Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui“",
+      "publishedAt": "2026-09-16T08:39:11.000Z",
+      "description": "Lietuvos nacionalinės Martyno Mažvydo bibliotekos Mokslo ir enciklopedijų leidybos centras išleido Elizabeth Buchanan knygą „Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui“.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15104-atrinkta-jums-italu-literatura",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Atrinkta Jums: italų literatūra",
+      "publishedAt": "2026-09-10T05:07:17.000Z",
+      "description": "Nuo Dante ir Boccaccio iki Umberto Eco, Italo Calvino, Alessandro Baricco ar Elenos Ferrante, italų autoriai jau daugelį amžių yra neatsiejama Europos literatūros dalis. Jų kūriniai skaitomi, verčiami ir atrandami visame pasaulyje, tačiau gausioje literatūros pasiūloje ne visada lengva atsirinkti, nuo ko pradėti.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15177-lietuvos-kultura-atrasti-padedanti-platforma-ekultura-konkurso-skaitmeninis-knygnesys-finale",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lietuvos kultūrą atrasti padedanti platforma „ekultūra“ \u2013 konkurso „Skaitmeninis knygnešys“ finale",
+      "publishedAt": "2026-09-25T09:16:43.000Z",
+      "description": "Lietuvos nacionalinės Martyno Mažvydo bibliotekos kartu su dar 22 partneriais sukurta platforma „ekultūra“ pateko į kasmetinio konkurso „Skaitmeninis knygnešys 2026“ finalą. Ji varžosi kategorijoje „Kultūra ir paveldas“, kurios nugalėtojas įgis teisę atstovauti Lietuvai pasauliniame „World Summit Awards“ (WSA) konkurse \u2013 prestižiniuose pasaulio skaitmeninių inovacijų ir visuomenei kuriamų skaitme…",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15170-oksfordo-universiteto-leidyklos-istekliai-atveria-naujas-galimybes-lietuvos-nacionalines-bibliotekos-skaitytojams",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Oksfordo universiteto leidyklos ištekliai atveria naujas galimybes Lietuvos nacionalinės bibliotekos skaitytojams",
+      "publishedAt": "2026-09-25T05:56:14.000Z",
+      "description": "Informacijos gausos amžiuje didžiausiu iššūkiu studentams, dėstytojams ir tyrėjams tampa šaltinių patikimumas. Kasdien susiduriame su begale duomenų, tačiau rasti tikrai vertingą, moksliškai pagrįstą ir pripažintą medžiagą reikalauja nemažai laiko bei pastangų. Siekdama užtikrinti prieigą prie vertingiausių pasaulio mokslo šaltinių, Lietuvos nacionalinė Martyno Mažvydo biblioteka suteikia išskirt…",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15166-nacionaline-biblioteka-kviecia-senjorus-i-ypatinga-diena-kuryba-muzika-bendryste-ir-nauji-atradimai",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nacionalinė biblioteka kviečia senjorus į ypatingą dieną: kūryba, muzika, bendrystė ir nauji atradimai",
+      "publishedAt": "2026-09-24T13:13:25.000Z",
+      "description": "Spalio 2 d. Lietuvos nacionalinė Martyno Mažvydo biblioteka kartu su Vilniaus žydų viešąja biblioteka kviečia senjorus į vyresnio amžiaus žmonių dienos renginius „Aš ir draugė (-as) bibliotekoje“.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15168-ebsco-publishing-rask-informacija-sklandziai-ir-patikimai",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "„EBSCO Publishing“ \u2013 rask informaciją sklandžiai ir patikimai",
+      "publishedAt": "2026-09-24T08:32:49.000Z",
+      "description": "Ar pastebite, kad vis sunkiau surasti patikimą informaciją? Mus kasdien supa įvairios antraštės, kuriose trūksta aiškumo arba pateikiamos žinios būna visiškai neaktualios. Kartu interneto platybėse slepiasi daug melagienų, kurios verčia abejoti pasauliu, todėl turime likti budrūs ir viską patikrinti.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15164-lietuviu-kalbos-mokymosi-leidiniai-ivairaus-lygio-mokiniams",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lietuvių kalbos mokymosi leidiniai įvairaus lygio mokiniams",
+      "publishedAt": "2026-09-24T05:56:23.000Z",
+      "description": "Lietuvos nacionalinės Martyno Mažvydo bibliotekos Lituanistikos skaityklos fondas pasipildė naujais leidiniais, skirtais kitakalbiams mokytis lietuvių kalbos.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15156-valio-pukuotukui-winnie-the-p-1-o-o-h",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Valio Pūkuotukui: Winnie-the-P (1) O O h!",
+      "publishedAt": "2026-09-23T08:21:49.000Z",
+      "description": "Šiemet minime 100 metų sukaktį nuo Alano Alexanderio Milne’o ir Ernesto Howardo Shepardo knygos „Winnie-the-Pooh“ pirmojo leidimo pasirodymo Londone. 1926 m. spalio 14 d. leidykla „Methuen & Co.“ išleido kūrinį, tapusį vienu reikšmingiausių ir labiausiai atpažįstamų vaikų literatūros darbų pasaulyje.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15145-pasiklausyk-degancios-partituros-nacionalineje-bibliotekoje-astuoni-fluxus-vakarai",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Pasiklausyk degančios partitūros: Nacionalinėje bibliotekoje \u2013 aštuoni „Fluxus“ vakarai",
+      "publishedAt": "2026-09-21T09:51:04.000Z",
+      "description": "Nuo spalio 9 iki gruodžio 18 d. Lietuvos nacionalinėje Martyno Mažvydo bibliotekoje vyks aštuoni nemokami edukaciniai vakarai „Fluxus“ praktiškai: žaisk su taisyklėmis“. Ciklo autorius ir vedėjas \u2013 „Fluxus“ tyrinėtojas Mantas Kuginis. Susitikimai vyks penktadieniais 18 val., dalyvavimas nemokamas, būtina registracija. Įvadinis susitikimas numatytas rugsėjo 25 d.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15146-bibliografine-informacija-apie-numatomus-leisti-leidinius-rugsejo-14-20-d",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliografinė informacija apie numatomus leisti leidinius (rugsėjo 14\u201320 d.)",
+      "publishedAt": "2026-09-21T04:09:22.000Z",
+      "description": "Pasirodė naujas valstybinės bibliografijos leidinys:",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15133-saugoti-ar-leisti-keistis-kur-breziame-paveldo-ribas-xxi-amziaus-mieste",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Saugoti ar leisti keistis? Kur brėžiame paveldo ribas XXI amžiaus mieste",
+      "publishedAt": "2026-09-17T13:37:26.000Z",
+      "description": "Kalėjimas, tapęs koncertų ir meno erdve. Sovietinis paminklas, kurį vieni nori išsaugoti kaip istorijos liudijimą, o kiti \u2013 pašalinti iš viešosios erdvės. Kas sieja šiuos iš pirmo žvilgsnio skirtingus atvejus? Abu jie kelia tą patį klausimą: ką reiškia saugoti paveldą visuomenėje, kuri pati nuolat keičiasi? Kaip tokioje visuomenėje nusprendžiama, kas yra paveldas?",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15120-nauji-atvirosios-prieigos-el-leidiniai-duomenu-bazeje-ebsco-publishing-kaip-technologijos-keicia-musu-visuomene",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nauji atvirosios prieigos el. leidiniai duomenų bazėje „EBSCO Publishing“: kaip technologijos keičia mūsų visuomenę?",
+      "publishedAt": "2026-09-16T05:46:40.000Z",
+      "description": "Kaip algoritmai veikia tai, ką matome, skaitome ir kuo tikime? Kokią įtaką mūsų sprendimams daro dirbtinis intelektas? Ar skaitmeninė pažanga visada reiškia progresą? Ir kokią vietą sparčiai kintančiame technologijų pasaulyje užima žmogus \u2013 jo vertybės, pasirinkimai ir emocijos?",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15118-atmintini-kankliu-metai-skambanti-tradicija-istorija-ir-kulturine-atmintis",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Atmintini Kanklių metai: skambanti tradicija, istorija ir kultūrinė atmintis",
+      "publishedAt": "2026-09-15T04:49:19.000Z",
+      "description": "2026-ieji Lietuvoje paskelbti atmintinais Kanklių metais. Šia proga Muzikos ir vizualiųjų menų skyrius kviečia aplankyti ekspoziciją, skirtą vienam seniausių ir paslaptingiausių lietuvių muzikos instrumentų.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15110-kauno-knygu-mugeje-nacionaline-biblioteka-kvies-pazinti-istorijas-padedancias-geriau-suprasti-siandiena",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Kauno knygų mugėje Nacionalinė biblioteka kvies pažinti istorijas, padedančias geriau suprasti šiandieną",
+      "publishedAt": "2026-09-14T14:30:56.000Z",
+      "description": "Ko šiandien galime pasimokyti iš tarpukario Kauno gyventojų likimų, pokario išbandymų, rezistencijos, tremties patirčių ar Lietuvos šaulijos kūrėjo minčių? Rugsėjo 18\u201320 dienomis Kauno knygų mugėje Lietuvos nacionalinė Martyno Mažvydo biblioteka kvies lankytojus į susitikimus, kurie padės ne tik atrasti įdomias knygas, bet ir naujai pažvelgti į mūsų valstybės, miestų ir žmonių istoriją. Nacionali…",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15109-bibliografine-informacija-apie-numatomus-leisti-leidinius-rugsejo-7-13-d",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliografinė informacija apie numatomus leisti leidinius (rugsėjo 7\u201313 d.)",
+      "publishedAt": "2026-09-14T06:21:45.000Z",
+      "description": "Pasirodė naujas valstybinės bibliografijos leidinys:",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15108-nenuobodziam-vakarui-nauja-temine-lentyna-romantika-fantastika-romantasy",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nenuobodžiam vakarui \u2013 nauja teminė lentyna „Romantika + fantastika = romantasy“",
+      "publishedAt": "2026-09-11T11:54:44.000Z",
+      "description": "Kokią knygą iš bibliotekos pasiimsite šiandien? Galbūt esate išsiilgę romantiškos intrigos, kuri iki paskutinio puslapio neatskleis, ar Gideono jausmai Runei yra tikri. O gal norėtumėte vakarą praskaidrinti trupučiu magijos ir tapti gėrio ir blogio kovos heroje ar herojumi. Bet kodėl nepasirinkus abiejų? Siūlome stabtelėti prie naujos teminės lentynos Laisvalaikio skaitinių erdvėje (III a.) ir iš…",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15097-patirk-mokslo-zinias-is-arciau",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Patirk mokslo žinias iš arčiau",
+      "publishedAt": "2026-09-08T14:24:09.000Z",
+      "description": "Prasidėjus naujiems mokslo metams moksleivius, studentus, mokslininkus ir visus besidominčius pasaulio įdomybėmis, tyrimais bei naujausiomis žiniomis kviečiame atrasti vieną iš svarbių ir reikšmingų bibliotekos lobių \u2013 duomenų bazes. Jas galite pasiekti būdami bet kur pasaulyje, reikia tik vieno \u2013 turėti LIBIS skaitytojo pažymėjimą, kuris yra išduodamas visoje Lietuvoje.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15096-garsiniu-knygu-kolekcijoje-dar-daugiau-leidiniu",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Garsinių knygų kolekcijoje \u2013 dar daugiau leidinių",
+      "publishedAt": "2026-09-08T14:15:18.000Z",
+      "description": "Nuo rugsėjo skaitytojų laukia dar daugiau garsinių knygų \u2013 kolekciją papildė nauji leidiniai, tad jų platformoje iBiblioteka.lt jau galima rasti apie 400.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15068-mokymai-nacionalineje-bibliotekoje-prisijunk-suzinok-tobulek-3",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Mokymai Nacionalinėje bibliotekoje: prisijunk, sužinok, tobulėk",
+      "publishedAt": "2026-09-07T07:45:18.000Z",
+      "description": "Baigdami vasarą, kviečiame švęsti spalvingą rudens sezoną ir pradėti jį dalyvaujant mokymuose, kuriuose sužinosite naujų bei dar negirdėtų dalykų ir atnaujinsite pamirštus įgūdžius, reikalingus kasdienybėje. Nuo sąmokslo teorijų iki duomenų bazių subtilybių \u2013 išsirinkite temą, kuri bus vertinga tiek asmeniškai, tiek siekiant profesinio tobulėjimo.",
+      "discoveredAt": "2026-09-26T17:29:12.096Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "6a56b0ba8dcdda806f132a9fb4b87a7e5d75197cc656e040b1056ea5d20522eb"
+}

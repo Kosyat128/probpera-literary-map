@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "failureInjection": "header loader rejects without breaking unrelated catalog consumers",
+  "requests": 2,
+  "retry": "explicit reload avoids browser module failure cache",
+  "noAutomaticRetry": true,
+  "archive": "/stati/"
+}

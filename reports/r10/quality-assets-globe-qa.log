@@ -1,0 +1,9 @@
+
+> literary-map@0.1.0 assets:globe:qa
+> node scripts/qa-globe-alignment.mjs
+
+antique: 4096x2048 (2901792 bytes), mobile 2048x1024 (687972 bytes) -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\scripts\.cache\globe-alignment-qa.png
+earth: 4096x2048 (434610 bytes), mobile 2048x1024 (126246 bytes) -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\scripts\.cache\globe-alignment-qa-earth.png
+modern: 4096x2048 (1477124 bytes), mobile 2048x1024 (395324 bytes) -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\scripts\.cache\globe-alignment-qa-modern-ru.png
+modern: 4096x2048 (1461376 bytes), mobile 2048x1024 (390810 bytes) -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\scripts\.cache\globe-alignment-qa-modern-en.png
+modern: Natural Earth repository v5.1.2 (theme v5.1.1), 177 features; raster surface, procedural fallback, and hit testing share countries.geojson

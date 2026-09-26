@@ -1,0 +1,381 @@
+{
+  "sourceId": "norskpen-no",
+  "name": "Norwegian PEN",
+  "entryUrl": "https://www.norskpen.no/",
+  "countryCodes": [
+    "NO"
+  ],
+  "coverageCountryCodes": [
+    "NO"
+  ],
+  "attemptedAt": "2026-09-26T17:29:32.553Z",
+  "requests": [
+    {
+      "url": "https://norskpen.no/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 156065,
+      "sha256": "abcd57efa1c42dcc47886618c0708736335778ccf8b3e467692cd694b040f600",
+      "accessedAt": "2026-09-26T17:23:42.452Z"
+    },
+    {
+      "url": "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 163339,
+      "sha256": "c63459b6e6baf95cadc17125423e397b7d7b5a6ec1af2538e67c8c5def23820b",
+      "accessedAt": "2026-09-26T17:29:40.411Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://norskpen.no/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 439,
+    "sha256": "0f5f39242dac74572c5c2f1859e17c507ef264af94938ab5a56168c836d3b10d",
+    "accessedAt": "2026-09-26T17:29:36.030Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:32.489Z",
+    "sourceDocumentSha256": "abcd57efa1c42dcc47886618c0708736335778ccf8b3e467692cd694b040f600"
+  },
+  "endpoint": {
+    "id": "norskpen-no",
+    "name": "Norwegian PEN",
+    "url": "https://norskpen.no/feed/",
+    "format": "rss",
+    "language": "nb-NO",
+    "region": "europe",
+    "sourceFamilyId": "norskpen-no",
+    "countryCodes": [
+      "NO"
+    ],
+    "coverageCountryCodes": [
+      "NO"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://norskpen.no"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:40.420Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "norskpen-no",
+    "source": {
+      "name": "Norwegian PEN",
+      "url": "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/",
+      "language": "nb-NO"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "Åpent for nominasjoner",
+    "publishedAt": "2026-09-19T19:15:37.000Z",
+    "description": "Innlegget Åpent for nominasjoner dukket først opp på Norsk PEN.",
+    "discoveredAt": "2026-09-26T17:29:36.045Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 163339,
+      "sha256": "c63459b6e6baf95cadc17125423e397b7d7b5a6ec1af2538e67c8c5def23820b",
+      "accessedAt": "2026-09-26T17:29:40.411Z",
+      "headline": "Åpent for nominasjoner",
+      "excerpt": "Link to: Forside Sentralen Øvre Slottsgate 3, OSLO pen@norskpen.no Org. nr: 983 886 760 Bli medlem Ta kontakt med oss Støtt oss Få nyhetsbrev Norsk PENs fond for ytringsfrihet Min side Cookies og personvernerklæring PEN Norway’s website in English Facebook Twitter Instagram",
+      "publishedDates": [
+        {
+          "value": "2026-09-19T19:15:37+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-19T19:15:37+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-19T19:15:37+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/",
+      "language": "nb-NO",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:40.420Z",
+  "foundItems": [
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Åpent for nominasjoner",
+      "publishedAt": "2026-09-19T19:15:37.000Z",
+      "description": "Innlegget Åpent for nominasjoner dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/norsk-pen-pa-arendalsuka-2026/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Norsk PEN på Arendalsuka: Fokus på unges ytringsfrihet",
+      "publishedAt": "2026-08-07T07:11:26.000Z",
+      "description": "Innlegget Norsk PEN på Arendalsuka: Fokus på unges ytringsfrihet dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/september-opprop-mot-lhbt-forfolgelse/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Over 450 organisasjoner står sammen mot LHBT+-forfølgelse",
+      "publishedAt": "2026-09-22T10:00:15.000Z",
+      "description": "Innlegget Over 450 organisasjoner står sammen mot LHBT+-forfølgelse dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/over-180-forfattere-krever-svar-pa-eritreas-forsvunne-forfattere-og-journalister/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Over 180 forfattere krever svar på Eritreas forsvunne forfattere og journalister",
+      "publishedAt": "2026-09-18T07:00:01.000Z",
+      "description": "Innlegget Over 180 forfattere krever svar på Eritreas forsvunne forfattere og journalister dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/imaan-mazari-hazir-loslates/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Imaan Mazari-Hazir løslates",
+      "publishedAt": "2026-09-17T14:29:34.000Z",
+      "description": "Innlegget Imaan Mazari-Hazir løslates dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/en-viktig-del-av-meg-selv-ble-tatt-fra-meg/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Freshta Safi: \u2013 En viktig del av meg selv ble tatt fra meg",
+      "publishedAt": "2026-08-31T17:13:41.000Z",
+      "description": "Innlegget Freshta Safi: \u2013 En viktig del av meg selv ble tatt fra meg dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/landet-vi-vendte-ryggen-til/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Landet vi vendte ryggen til",
+      "publishedAt": "2026-08-16T16:55:15.000Z",
+      "description": "Innlegget Landet vi vendte ryggen til dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/undertrykkelsen-av-ytrere-fortsetter-i-belarus-seks-ar-etter/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Undertrykkelsen fortsetter seks år etter omstridt presidentvalg",
+      "publishedAt": "2026-08-07T10:23:01.000Z",
+      "description": "Innlegget Undertrykkelsen fortsetter seks år etter omstridt presidentvalg dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/25-ar-uten-svar-hvor-er-eritreas-forsvunne-forfattere-og-journalister/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hvor er Eritreas forsvunne forfattere og journalister?",
+      "publishedAt": "2026-07-02T09:16:21.000Z",
+      "description": "Innlegget Hvor er Eritreas forsvunne forfattere og journalister? dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/eides-taushet-er-vanskelig-a-forsta-til/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eides taushet er vanskelig å forstå til",
+      "publishedAt": "2026-08-21T09:14:35.000Z",
+      "description": "Innlegget Eides taushet er vanskelig å forstå til dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:29:36.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "abcd57efa1c42dcc47886618c0708736335778ccf8b3e467692cd694b040f600"
+}

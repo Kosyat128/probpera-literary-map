@@ -1,0 +1,67 @@
+{
+  "sourceId": "landsbokasafn-is",
+  "name": "National and University Library of Iceland",
+  "entryUrl": "https://landsbokasafn.is/",
+  "countryCodes": [
+    "IS"
+  ],
+  "coverageCountryCodes": [
+    "IS"
+  ],
+  "attemptedAt": "2026-09-26T17:29:08.509Z",
+  "requests": [
+    {
+      "url": "https://landsbokasafn.is/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 267027,
+      "sha256": "7a937846655165da100a0b9c0c836889b24d39677902a45637489281ce38b464",
+      "accessedAt": "2026-09-26T17:29:10.267Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 39400,
+      "sha256": "5a0337007f81e6471c63ff0bfa0603429071958766443cfa2ecdebc18847dbff",
+      "accessedAt": "2026-09-26T17:29:10.558Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/read-japan-project-2025-faerir-landsbokasafni-bokagjof/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103177,
+      "sha256": "a16971ed0c7c420d2e01f1f758068ba2fc1b12f59bd9c97015defbd20d18b35e",
+      "accessedAt": "2026-09-26T17:29:10.733Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/ertu-ad-byrja-i-haskola-islands/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 94096,
+      "sha256": "db5e63dccb05ddf8da6bf81b23c917b67a50088370b253e0ee034bf3e1f5a916",
+      "accessedAt": "2026-09-26T17:29:11.378Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/uppfaersla/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 93824,
+      "sha256": "2982e577763e143a958dc7db42bb6ca3588f87a525593e69f91f309f35c220a6",
+      "accessedAt": "2026-09-26T17:29:12.009Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://landsbokasafn.is/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 117,
+    "sha256": "de2a10265c7d7b521696ea441953ea41119a68f1f4c22923f0cf546b1ca2d422",
+    "accessedAt": "2026-09-26T17:29:09.409Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

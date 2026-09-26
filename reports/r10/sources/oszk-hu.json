@@ -1,0 +1,535 @@
+{
+  "sourceId": "oszk-hu",
+  "name": "National Library of Hungary",
+  "entryUrl": "https://www.oszk.hu/en",
+  "countryCodes": [
+    "HU"
+  ],
+  "coverageCountryCodes": [
+    "HU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:07.854Z",
+  "requests": [
+    {
+      "url": "https://oszk.hu/en",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 49698,
+      "sha256": "0b0c1e926d8eb6a1531483d9351fdf540dad5f553456000d9555222192e9fd22",
+      "accessedAt": "2026-09-26T17:22:58.028Z"
+    },
+    {
+      "url": "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 38883,
+      "sha256": "f3893c6f3f8eaae70880a66b6a271cfdcc0571ba0831a74a5c5a575665f8ff8b",
+      "accessedAt": "2026-09-26T17:29:09.159Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://oszk.hu/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1590,
+    "sha256": "cb4d1056280b7d55cc83720c2343d5be805ac74cc6e2f87e49d81e72b021857c",
+    "accessedAt": "2026-09-26T17:29:08.746Z",
+    "disallowed": [
+      "/lists/",
+      "/includes/",
+      "/misc/",
+      "/modules/",
+      "/profiles/",
+      "/scripts/",
+      "/themes/",
+      "/CHANGELOG.txt",
+      "/cron.php",
+      "/INSTALL.mysql.txt",
+      "/INSTALL.pgsql.txt",
+      "/install.php",
+      "/INSTALL.txt",
+      "/LICENSE.txt",
+      "/MAINTAINERS.txt",
+      "/update.php",
+      "/UPGRADE.txt",
+      "/xmlrpc.php",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips/",
+      "/logout/",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/?q=admin/",
+      "/?q=comment/reply/",
+      "/?q=filter/tips/",
+      "/?q=logout/",
+      "/?q=node/add/",
+      "/?q=search/",
+      "/?q=user/password/",
+      "/?q=user/register/",
+      "/?q=user/login/",
+      "/calendar/",
+      "/mnbwww/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:57.058Z",
+    "sourceDocumentSha256": "0b0c1e926d8eb6a1531483d9351fdf540dad5f553456000d9555222192e9fd22"
+  },
+  "endpoint": {
+    "id": "oszk-hu",
+    "name": "National Library of Hungary",
+    "url": "https://oszk.hu/en",
+    "format": "html",
+    "language": "en",
+    "region": "europe",
+    "sourceFamilyId": "oszk-hu",
+    "countryCodes": [
+      "HU"
+    ],
+    "coverageCountryCodes": [
+      "HU"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://oszk.hu"
+    ],
+    "linkPattern": "^/en/[^/]+/?$|^/en/news/.+|^/[^/]{12,}/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324"
+    ],
+    "verifiedAt": "2026-09-26T17:29:09.168Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 15,
+  "literaryCandidateCount": 15,
+  "sample": {
+    "sourceId": "oszk-hu",
+    "source": {
+      "name": "National Library of Hungary",
+      "url": "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324",
+      "language": "en"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Azerbaijani Book Corner Opened at the National Library of Foreign Literature",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:08.793Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 38883,
+      "sha256": "f3893c6f3f8eaae70880a66b6a271cfdcc0571ba0831a74a5c5a575665f8ff8b",
+      "accessedAt": "2026-09-26T17:29:09.159Z",
+      "headline": "Azerbaijani Book Corner Opened at the National Library of Foreign Literature",
+      "excerpt": "Országos Széchényi Könyvtár Contact Phonebook Sitemap English Magyar About us Information for visitors Services Collections Catalogues, databases Digital Library What's on? Home » Azerbaijani Book Corner Opened at the National Library of Foreign Literature News, events Temporary Exhibitions Permanent Exhibitions Azerbaijani Book Corner Opened at the National Library of Foreign Literature 2026/03/3",
+      "publishedDates": [],
+      "canonical": "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:09.168Z",
+  "foundItems": [
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Azerbaijani Book Corner Opened at the National Library of Foreign Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/grand-commander-sovereign-order-malta-national-szechenyi-library_260909",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Grand Commander of the Sovereign Order of Malta at the National Széchényi Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/greek-national-day-reception-national-szechenyi-library_260325",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Greek National Day Reception at the National Széchényi Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/ambassador-kosovo-hungary-national-szechenyi-library_260424",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Ambassador of Kosovo to Hungary at the National Széchényi Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/strategic-cooperation-french-institute_260327",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Strategic Cooperation with the French Institute",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/charge-d-affaires-united-states-visits-national-szechenyi-library-again_260319",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Chargé d’Affaires of the United States visits the National Széchényi Library again",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/international-music-history-sensation-16th-17th-century-musical-score-manuscripts-bartfa_260320",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "International Music History Sensation: 16th\u201317th Century Musical Score Manuscripts from Bártfa",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/560-year-old-rarity-national-library-fragment-gutenberg-s-36-line-bible-discovered_260129",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A 560-year-old Rarity in the National Library: A Fragment of Gutenberg’s 36-line Bible Discovered",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/catalogues_databases",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Catalogues, databases",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/digital_library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Digital Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/ask_the_librarian",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ask the Librarian",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/copying_service",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Copying service",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/how_to_get_to_the_library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "How to get to the Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/rules",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "DATA OF PUBLIC INTEREST",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/konyvtarkozi_dokumentumellatas",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Interlibrary document supply",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:08.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0b0c1e926d8eb6a1531483d9351fdf540dad5f553456000d9555222192e9fd22"
+}

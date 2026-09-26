@@ -1,0 +1,382 @@
+{
+  "sourceId": "bakwa-magazine",
+  "name": "Bakwa Magazine",
+  "entryUrl": "https://bakwamagazine.com/news/",
+  "countryCodes": [
+    "CM"
+  ],
+  "coverageCountryCodes": [
+    "CM"
+  ],
+  "attemptedAt": "2026-09-26T17:29:48.009Z",
+  "requests": [
+    {
+      "url": "https://bakwamagazine.com/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 111137,
+      "sha256": "0900672f5a6dfd3bffa5ffbc312af7e1c80b8fb428f4ceb24ebca376435a8766",
+      "accessedAt": "2026-09-26T17:29:50.834Z"
+    },
+    {
+      "url": "https://bakwamagazine.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 173210,
+      "sha256": "79fc917869532b2ba9aadc317c6270ac4d2b7f5c5d63ba7eae3195e9093dec99",
+      "accessedAt": "2026-09-26T17:29:51.330Z"
+    },
+    {
+      "url": "https://bakwamagazine.com/featured-content/on-territoriality-and-african-literature/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 83636,
+      "sha256": "9db9fde4c76e8502669482f34044864289bdc7bd8aa58613e8a81b51dcd9290d",
+      "accessedAt": "2026-09-26T17:29:51.553Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://bakwamagazine.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 320,
+    "sha256": "a78f0157bf217a81bef3b84a2c98dba0c1422dcb59add61558160d1606f45f84",
+    "accessedAt": "2026-09-26T17:29:49.023Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "bakwa-magazine",
+    "name": "Bakwa Magazine",
+    "url": "https://bakwamagazine.com/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "africa",
+    "sourceFamilyId": "bakwa-magazine",
+    "countryCodes": [
+      "CM"
+    ],
+    "coverageCountryCodes": [
+      "CM"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://bakwamagazine.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bakwamagazine.com/featured-content/on-territoriality-and-african-literature/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:51.561Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "bakwa-magazine",
+    "source": {
+      "name": "Bakwa Magazine",
+      "url": "https://bakwamagazine.com/featured-content/on-territoriality-and-african-literature/",
+      "language": "en-GB"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "On Territoriality and African Literature",
+    "publishedAt": "2026-08-05T14:18:56.000Z",
+    "description": "This three-part diagram traces the literary feud between Chinua Achebe and Ayi Kwei Armah, as well as Armah’s conflictual relationship with the Heinemann African Writers’ Series, for which Achebe served as editorial advisor until 1972. The conflict was sparked by negative comments Achebe made about Armah’s debut novel, The Beautyful Ones Are Not Yet Born,…",
+    "discoveredAt": "2026-09-26T17:29:51.334Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bakwamagazine.com/featured-content/on-territoriality-and-african-literature/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 83636,
+      "sha256": "9db9fde4c76e8502669482f34044864289bdc7bd8aa58613e8a81b51dcd9290d",
+      "accessedAt": "2026-09-26T17:29:51.553Z",
+      "headline": "On Territoriality and African Literature",
+      "excerpt": "This three-part diagram traces the literary feud between Chinua Achebe and Ayi Kwei Armah, as well as Armah’s conflictual relationship with the Heinemann African Writers’ Series, for which Achebe served as editorial advisor until 1972. The conflict was sparked by negative comments Achebe made about Armah’s debut novel, The Beautyful Ones Are Not Yet Born, published in 1968. In the 1980s, after Arm",
+      "publishedDates": [],
+      "canonical": "https://bakwamagazine.com/featured-content/on-territoriality-and-african-literature/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:51.561Z",
+  "foundItems": [
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/on-territoriality-and-african-literature/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On Territoriality and African Literature",
+      "publishedAt": "2026-08-05T14:18:56.000Z",
+      "description": "This three-part diagram traces the literary feud between Chinua Achebe and Ayi Kwei Armah, as well as Armah’s conflictual relationship with the Heinemann African Writers’ Series, for which Achebe served as editorial advisor until 1972. The conflict was sparked by negative comments Achebe made about Armah’s debut novel, The Beautyful Ones Are Not Yet Born,…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/online-content/on-contiguous-narratives-and-poetic-cosmologies/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On Contiguous Narratives and Poetic Cosmologies",
+      "publishedAt": "2024-11-25T08:14:11.000Z",
+      "description": "Kokende Liboso Eza Kokoma Te: On Contiguous Narratives and Poetic Cosmologies is a project by Laboratoire Kontempo, curated by Dzekashu MacViban. You can read the announcement in French here and in German here. The theorization of contemporary art and art history in Kinshasa is currently mainly formed by contemporary witnesses, oral traditions, discussions and collective…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/online-content/kokende-liboso-eza-kokoma-te-on-contiguous-narratives-and-poetic-cosmologies/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kokende Liboso Eza Kokoma Te: On Contiguous Narratives and Poetic Cosmologies",
+      "publishedAt": "2024-11-25T08:08:46.000Z",
+      "description": "So many are asleep under the ground, When we dance at the festival Embracing the earth with our feet. Maybe the place on which we stand Is where they also stood with their dreams. They dreamed until they were tired And handed us the tail with which we shall dance. Excerpt from “Cycle”, Mazisi…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/online-content/the-shape-of-unbroken-things-ce-quon-ne-brise-pas/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Shape of Unbroken Things/Ce qu’on ne brise pas",
+      "publishedAt": "2026-08-16T08:50:26.000Z",
+      "description": "Today marked her first day at a new school, where she would be repeating the Form 3 year. Consistently among the top ten students in her class, she had missed the second and third term examinations last year, and was now forced to repeat the year. What was the point of all her discipline and…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/issues/bakwa-12/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bakwa 12",
+      "publishedAt": "2026-08-05T20:08:14.000Z",
+      "description": "Bakwa 12: The Lost Manuscript and Other Meditations Release date: August 2026 “While my former friends were having profound literary conversations at Conference Two in Yaoundé today, I instead went there and stole the original, handwritten manuscript of Things Fall Apart. But see eh, that didn’t just happen the way I said it o,…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/issues/bakwa-11/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bakwa 11",
+      "publishedAt": "2026-08-05T20:07:41.000Z",
+      "description": "Bakwa 11: When Love is a Scream Release date: May 2023 From Gorée Island to Sugartown, Bakwa 11: When Love Is a Scream assembles stories, essays, poetry and translation that contemplate and contextualise the realities and experiences of women. This genre-defying issue of Bakwa Magazine includes contributions by Jamila Osman, Nadia Ahidjo, Bertille Mbarga, Yvette…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/when-you-read-suzanne-cesaire-you-take-your-koutla/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "When You Read Suzanne Césaire, You Take Your Koutla",
+      "publishedAt": "2026-08-05T14:17:04.000Z",
+      "description": "“When you read Suzanne, you take your Koutla.” Those are the words Valérie Adam said to me in Le Bureau d’Aimé Césaire during my last visit to my home country, Martinique. It is also this phrase that reignited the fire of my writing about Suzanne, to whom we are indebted for her liberating thinking.…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/learning-to-feel-the-world-differently/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Learning to Feel the World Differently",
+      "publishedAt": "2026-07-03T10:02:03.000Z",
+      "description": "I first became aware that my way of seeing the world was not neutral through an encounter that felt fleeting at the time but has stayed with me ever since. I was at a community event as a reporter, working on a story about inclusive education, and arrived before the program began. The venue was…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/killing-achebe/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Killing Achebe",
+      "publishedAt": "2026-02-20T21:34:26.000Z",
+      "description": "While my former friends were having profound literary conversations at Conference Two in Yaoundé today, I went there and stole the original handwritten manuscript of Things Fall Apart. But see eh, that didn’t just happen the way I said it o, because the story is far more complex than you think; and it is only when I tell you the whole story, very honestly, that you will understand that I am not r…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/lifesavers/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lifesavers",
+      "publishedAt": "2025-11-22T10:10:34.000Z",
+      "description": "Fifteen-year-old Belinda made up her mind to take her life while in the bathroom on Saturday afternoon. She was bathing at 2 pm, because that’s what one did during school vacations when they had nothing to do. Somehow, even if you were the kind of person who bathed routinely first thing in the morning, the…",
+      "discoveredAt": "2026-09-26T17:29:51.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "79fc917869532b2ba9aadc317c6270ac4d2b7f5c5d63ba7eae3195e9093dec99"
+}

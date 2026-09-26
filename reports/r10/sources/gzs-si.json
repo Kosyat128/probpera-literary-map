@@ -1,0 +1,46 @@
+{
+  "sourceId": "gzs-si",
+  "name": "Association of Slovenian PublishersKersnikova",
+  "entryUrl": "https://www.gzs.si/",
+  "countryCodes": [
+    "SI"
+  ],
+  "coverageCountryCodes": [
+    "SI"
+  ],
+  "attemptedAt": "2026-09-26T17:28:37.490Z",
+  "requests": [
+    {
+      "url": "https://www.gzs.si/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 104474,
+      "sha256": "1abf327050833ff0b0ac6abb5ca2a16655013cf066d72df6c8d1190c1ed9663e",
+      "accessedAt": "2026-09-26T17:28:39.307Z"
+    },
+    {
+      "url": "https://www.gzs.si/medijska_zbornica",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 106919,
+      "sha256": "9684e257b41091f81cb4885a1cdf5c1e3f5d2a9b7411058bc5e3cf971de1d893",
+      "accessedAt": "2026-09-26T17:28:40.532Z"
+    },
+    {
+      "url": "https://www.gzs.si/skupne_naloge/stalisca_in_komentarji/vsebina/Klju%C4%8Dna-stali%C5%A1%C4%8Da-GZS",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 82475,
+      "sha256": "5cbada8d58fbb766c356ed9e06fbe0e94a6391a66cc1009116ed013a10be1ebd",
+      "accessedAt": "2026-09-26T17:28:41.124Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.gzs.si/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  },
+  "detailAttemptError": "response_too_large"
+}

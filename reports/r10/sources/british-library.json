@@ -1,0 +1,596 @@
+{
+  "sourceId": "british-library",
+  "name": "British Library",
+  "entryUrl": "https://www.bl.uk/about/press/releases",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:27:26.344Z",
+  "requests": [
+    {
+      "url": "https://www.bl.uk/about/press/releases",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 135474,
+      "sha256": "aa89e0e184a387030ff19c1765c2d3f218831bcbb507432028d3e3a461ec39c6",
+      "accessedAt": "2026-09-26T17:20:01.628Z"
+    },
+    {
+      "url": "https://www.bl.uk/about/press/releases/british-library-announces-2026-food-season-awards-winners",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 116343,
+      "sha256": "995cbf7981f61cc84fbe228b1f8661b5f20e5e55090a4f62d4dd68028451b592",
+      "accessedAt": "2026-09-26T17:27:27.639Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.bl.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 63,
+    "sha256": "5bc5bf1eb2d44da7f3217b28bfca0a8c8db4a25d8ad612edb020930c54b2e7f6",
+    "accessedAt": "2026-09-26T17:27:26.960Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:00.048Z",
+    "sourceDocumentSha256": "aa89e0e184a387030ff19c1765c2d3f218831bcbb507432028d3e3a461ec39c6"
+  },
+  "endpoint": {
+    "id": "british-library",
+    "name": "British Library",
+    "url": "https://www.bl.uk/about/press/releases",
+    "format": "html",
+    "language": "en",
+    "region": "europe",
+    "sourceFamilyId": "british-library",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [
+      "GB"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.bl.uk"
+    ],
+    "linkPattern": "^\\/about\\/press\\/releases\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.bl.uk/about/press/releases/british-library-announces-2026-food-season-awards-winners"
+    ],
+    "verifiedAt": "2026-09-26T17:27:27.645Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 19,
+  "sample": {
+    "sourceId": "british-library",
+    "source": {
+      "name": "British Library",
+      "url": "https://www.bl.uk/about/press/releases/british-library-announces-2026-food-season-awards-winners",
+      "language": "en"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "British Library announces 2026 Food Season Awards winners",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:26.973Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.bl.uk/about/press/releases/british-library-announces-2026-food-season-awards-winners",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 116343,
+      "sha256": "995cbf7981f61cc84fbe228b1f8661b5f20e5e55090a4f62d4dd68028451b592",
+      "accessedAt": "2026-09-26T17:27:27.639Z",
+      "headline": "British Library announces 2026 Food Season Awards winners",
+      "excerpt": "British Library announces 2026 Food Season Awards winners17 June 2026The British Library has announced the winners of the 2026 Food Season Awards, shining a light on some of the most innovative voices in food writing, curation and culture. Now in its second year, the awards celebrate those positively impacting the UK food scene and the power of archival resources, including the Library's unique fo",
+      "publishedDates": [],
+      "canonical": "https://www.bl.uk/about/press/releases/british-library-announces-2026-food-season-awards-winners",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:27.645Z",
+  "foundItems": [
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-announces-2026-food-season-awards-winners",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library announces 2026 Food Season Awards winners",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/writers-award-2026-goes-to-jacqueline-crooks-and-vanessa-londono",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writer’s Award 2026 goes to Jacqueline Crooks and Vanessa Londoño",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-announces-2025-food-season-awards-winners",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library announces 2025 Food Season Awards winners",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-announces-2026-exhibitions",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library announces 2026 exhibitions",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-celebrates-fairy-tales-in-a-major-new-exhibition",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library celebrates fairy tales in a major new exhibition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-announces-major-exhibition-on-acclaimed-writer-agatha-christie",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library announces major exhibition on writer Agatha Christie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-acquires-rare-medieval-manuscripts",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library acquires rare medieval manuscripts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/rachel-calderon-appointed-as-senior-director-of-development",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library appoints Senior Director of Development",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-to-open-major-exhibition-on-agatha-christie",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library to open major exhibition on Agatha Christie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/culture-and-cuisine-british-librarys-food-season-returns",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Culture and cuisine: British Library's Food Season returns",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/fairy-tales-opens-at-the-british-library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fairy Tales opens at the British Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/business-and-ip-centre-celebrates-20-years",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library’s Business & IP Centre celebrates 20 years",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-acquires-archive-of-ronald-blythe",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library acquires archive of writer Ronald Blythe",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/last-chance-to-see-major-exhibition-on-secret-maps-at-the-british-library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Last chance to see Secret Maps exhibition at the British Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/kickstart-your-business-at-british-library-start-up-day",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kickstart your business at British Library Start-up Day",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-board-statement",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library Board statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-opens-major-exhibition-on-secret-maps",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library opens major exhibition on secret maps",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-symbolically-reinstates-oscar-wildes-pass",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library symbolically reinstates Oscar Wilde’s Reader Pass",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/mustapha-matura-archive",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library acquires archive of playwright Mustapha Matura",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.973Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "aa89e0e184a387030ff19c1765c2d3f218831bcbb507432028d3e3a461ec39c6"
+}

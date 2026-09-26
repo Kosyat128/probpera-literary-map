@@ -1,0 +1,600 @@
+{
+  "sourceId": "bookunion-ru",
+  "name": "bookunion.ru/",
+  "entryUrl": "https://bookunion.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:28:25.031Z",
+  "requests": [
+    {
+      "url": "https://bookunion.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 137831,
+      "sha256": "4344f0231952945514b5e512d9e49564d4a620f21996c32167d5e994da3a0677",
+      "accessedAt": "2026-09-26T17:22:05.859Z"
+    },
+    {
+      "url": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 110772,
+      "sha256": "174297c34106605c467f11f04e2c11241211965368215db13257ae2245a9e450",
+      "accessedAt": "2026-09-26T17:28:25.619Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://bookunion.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 122,
+    "sha256": "b36c13396533d039cfaeb1ba7b2618676a7a0540076a2c669ab35ce36e7565bb",
+    "accessedAt": "2026-09-26T17:28:25.315Z",
+    "disallowed": [
+      "/admin/",
+      "/preview/",
+      "/private/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:05.278Z",
+    "sourceDocumentSha256": "4344f0231952945514b5e512d9e49564d4a620f21996c32167d5e994da3a0677"
+  },
+  "endpoint": {
+    "id": "bookunion-ru",
+    "name": "bookunion.ru/",
+    "url": "https://bookunion.ru/",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "bookunion-ru",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://bookunion.ru"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/news/.+",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:25.628Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 19,
+  "literaryCandidateCount": 19,
+  "sample": {
+    "sourceId": "bookunion-ru",
+    "source": {
+      "name": "bookunion.ru/",
+      "url": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Отраслевая конференция «Книжный рынок России \u2014 2026»: ключевые итоги, вызовы и точки роста",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:28:25.363Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 110772,
+      "sha256": "174297c34106605c467f11f04e2c11241211965368215db13257ae2245a9e450",
+      "accessedAt": "2026-09-26T17:28:25.619Z",
+      "headline": "Отраслевая конференция «Книжный рынок России \u2014 2026»: ключевые итоги, вызовы и точки роста",
+      "excerpt": "Меню О нас О РКС Документы Структура Состав членов РКС История Съезды РКС Партнёры Вступление в РКС Мероприятия Выставочная деятельность Премии Общественная экспертиза РКС защитникам Отечества Открывая книгу с… Лучший книжный магазин Москвы Читательская Ассамблея Содружества Экспертный центр Аналитика Мониторинг московского книжного рынка Экспертный опрос специалистов Отраслевой доклад о книжном р",
+      "publishedDates": [],
+      "canonical": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:25.628Z",
+  "foundItems": [
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Отраслевая конференция «Книжный рынок России \u2014 2026»: ключевые итоги, вызовы и точки роста",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/otkryt-priem-zaiavok-na-vtoroi-sezon-natsionalnoi-literaturnoi-premii-imeni-daniila-granina/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Открыт приём заявок на второй сезон Национальной литературной премии имени Даниила Гранина",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/litres-otkryvaet-besplatnyi-dostup-k-knigam-finalistov-24-sezona-premii-iasnaia-poliana/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литрес открывает бесплатный доступ к книгам финалистов 24 сезона премии «Ясная Поляна»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/prezident-rossiiskogo-knizhnogo-soiuza-sergei-stepashin-prinial-uchastii-v-tseremonii-peredachi-knig-bibliotekam-belgorodskoi-oblasti-v-ramkakh-blagot/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Президент Российского книжного союза Сергей Степашин принял участии в церемонии передачи книг библиотекам Белгородской области в рамках благотворительной программы ДоброFON компании FONBET",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/v-zhurnale-universitetskaia-kniga-k-iubileiu-rks-vyshlo-interviu-s-ekaterinoi-khokhlogorskoi-predsedatelem-komiteta-rks-po-podgotovke-kadrov-i-povyshe/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В журнале \"Университетская книга\" к юбилею РКС вышло интервью с Екатериной Хохлогорской, председателем Комитета РКС по подготовке кадров и повышению квалификации специалистов книжной отрасли",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/kniga-za-predelami-knizhnoi-polki-luchshie-praktiki-prodvizheniia-bolshikh-knizhnykh-proektov-obsudili-v-novosibirske/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Книга за пределами книжной полки: лучшие практики продвижения больших книжных проектов обсудили в Новосибирске",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/razmestite-pzhsta-na-sait-rks-zagolovok-novosti-18-sentiabria-mezhdunarodnyi-den-elektronnoi-knigi-podzagolovok-rossiiskii-knizhnyi-soiuz-pozdravliaet/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "18 сентября \u2014 Международный день электронной книги",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/delovaia-programma-vtoroi-nizhegorodskoi-knizhnoi-iarmarki/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Деловая программа второй Нижегородской книжной ярмарки",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/opublikovana-programma-vtoroi-nizhegorodskoi-knizhnoi-iarmarki/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Опубликована программа второй Нижегородской книжной ярмарки",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/news/v-zhurnale-knizhnaia-industriia-k-iubileiu-rks-vyshlo-interviu-s-prezidentom-soiuza-sergeem-stepashinym/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В журнале \"Книжная индустрия\" к юбилею РКС вышло интервью с Президентом Союза Сергеем Степашиным",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/otkryvaya-knigu-s/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Открывая книгу с…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/sovet-po-detskoj-knige/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Совет по детской книге",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/obshestvennaya-ekspertiza/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Общественная экспертиза",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/rks-zashitnikam-otechestva/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "РКС защитникам Отечества",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/luchshij-knizhnyj-magazin-moskvy/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Лучший книжный магазин Москвы",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/chitatelskaya-assambleya-sodruzhestva/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Читательская Ассамблея Содружества",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/annual_report/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Отраслевой доклад о книжном рынке",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/vseros-raiting/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Всероссийский книжный рейтинг",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "source": {
+        "name": "bookunion.ru/",
+        "url": "https://bookunion.ru/otraslevaya_konferentsiya_knizhnyj_rynok/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Отраслевая конференция",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.363Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "4344f0231952945514b5e512d9e49564d4a620f21996c32167d5e994da3a0677"
+}

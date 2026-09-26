@@ -1,0 +1,110 @@
+{
+  "batchId": "r10-06",
+  "at": "2026-09-26T18:19:57.752Z",
+  "recordSha256": "0f9466d964d67c588e16a1564dea8c137b0b147dc051cea02ae1b7210871fdb8",
+  "counts": {
+    "prepared": 40,
+    "productionSelectorEligible": 40,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "sourceIds": [
+    "bnf",
+    "nli-ie",
+    "nls-uk",
+    "kb-se",
+    "bibnat-ro",
+    "nationallibrary-bg",
+    "lom",
+    "el-boomeran",
+    "press-princeton-edu",
+    "literary-arts",
+    "publishers-weekly",
+    "literary-hub"
+  ],
+  "sourceCountries": [
+    "BG",
+    "CL",
+    "ES",
+    "FR",
+    "GB",
+    "IE",
+    "RO",
+    "SE",
+    "US"
+  ],
+  "coverageCountries": [
+    "FR",
+    "IE",
+    "US",
+    "GB",
+    "JP",
+    "CL",
+    "SE",
+    "RO",
+    "BG",
+    "PS",
+    "NI",
+    "ES",
+    "CH"
+  ],
+  "categories": [
+    "festivals",
+    "heritage",
+    "discoveries",
+    "awards",
+    "publishing",
+    "releases"
+  ],
+  "public": false,
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 40
+    },
+    "factExtraction": "complete-for-every-record from saved source pages; no repeated network requests",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "IDs/event keys checked against current reviewed and batches01\u201305/07; event topics manually checked",
+    "schema": "production selectReviewed 40/40",
+    "images": "Source image rights not established; text-only",
+    "stageBoundaries": "Future scheduled events remain announcements; publication reports do not invent first-release days; award report and ceremony dates separated"
+  },
+  "held": [
+    {
+      "sourceId": "bl",
+      "reason": "Inspected acquisitions and prizes were outside the recent window; no stale announcements promoted."
+    },
+    {
+      "sourceId": "nls-uk",
+      "reason": "Older exhibition starts and undated Heaney coverage excluded; selected events have explicit new dates."
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "reason": "Past September workshop announcement excluded without a completion report."
+    },
+    {
+      "sourceId": "lom",
+      "reason": "Image-only agenda not used to infer dates or completion."
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "reason": "Baseline award lists not duplicated; future imprints and releases described as plans."
+    },
+    {
+      "sourceId": "literary-hub",
+      "reason": "Past telethon announcement held; future reissue stage taken from body rather than ambiguous headline."
+    }
+  ],
+  "typographyCheck": {
+    "checkedAt": "2026-09-26T18:24:41.489Z",
+    "normalizer": "scripts/lib/short-hyphens.mjs normalizeShortHyphens",
+    "scope": "New authored title/summary RU/EN only",
+    "changedFields": 11,
+    "recordSha256": "0f9466d964d67c588e16a1564dea8c137b0b147dc051cea02ae1b7210871fdb8",
+    "evidenceSemanticSha256": "4d65b36938afa9ae3fce70d27977f5b86192abead8756d3e772bc1d115778ee6",
+    "sourceEvidencePreserved": true,
+    "serialization": "Unicode dash and HTML-entity escapes preserve parsed source values"
+  }
+}

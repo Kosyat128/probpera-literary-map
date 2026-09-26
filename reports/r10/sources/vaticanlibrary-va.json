@@ -1,0 +1,1168 @@
+{
+  "sourceId": "vaticanlibrary-va",
+  "name": "The Vatican Library",
+  "entryUrl": "https://www.vaticanlibrary.va/",
+  "countryCodes": [
+    "VA"
+  ],
+  "coverageCountryCodes": [
+    "VA"
+  ],
+  "attemptedAt": "2026-09-26T17:29:19.979Z",
+  "requests": [
+    {
+      "url": "https://www.vaticanlibrary.va/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 66479,
+      "sha256": "4b9d7407185a2967976dd4252849af4abcb091f05d7c6bca1fbd6888c4bd1920",
+      "accessedAt": "2026-09-26T17:23:13.364Z"
+    },
+    {
+      "url": "https://www.vaticanlibrary.va/it/news/in-evidenza/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 52216,
+      "sha256": "11281f9ecfae2d6de00b7f9f7370e2fc81378c5bb91b147b30a330a34746209c",
+      "accessedAt": "2026-09-26T17:29:20.678Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is a generic news landing page; detail identity not demonstrated.",
+  "robots": {
+    "url": "https://www.vaticanlibrary.va/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:12.615Z",
+    "sourceDocumentSha256": "4b9d7407185a2967976dd4252849af4abcb091f05d7c6bca1fbd6888c4bd1920"
+  },
+  "endpoint": {
+    "id": "vaticanlibrary-va",
+    "name": "The Vatican Library",
+    "url": "https://www.vaticanlibrary.va/",
+    "format": "html",
+    "language": "it",
+    "region": "europe",
+    "sourceFamilyId": "vaticanlibrary-va",
+    "countryCodes": [
+      "VA"
+    ],
+    "coverageCountryCodes": [
+      "VA"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.vaticanlibrary.va"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/it/[^/]+/?$|^/it/la-biblioteca/[^/]+/?$|^/it/news/.+|^/it/studio-e-consultazione/[^/]+/?$|^/it/scuola-biblioteconomia/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.vaticanlibrary.va/it/news/in-evidenza/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:20.685Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 43,
+  "literaryCandidateCount": 42,
+  "sample": {
+    "sourceId": "vaticanlibrary-va",
+    "source": {
+      "name": "The Vatican Library",
+      "url": "https://www.vaticanlibrary.va/it/news/in-evidenza/",
+      "language": "it"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Notizie In Evidenza",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:20.394Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.vaticanlibrary.va/it/news/in-evidenza/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 52216,
+      "sha256": "11281f9ecfae2d6de00b7f9f7370e2fc81378c5bb91b147b30a330a34746209c",
+      "accessedAt": "2026-09-26T17:29:20.678Z",
+      "headline": "Momentanea chiusura della Sezione Archivi",
+      "excerpt": "News ItalianoItalianoInglese BibliotecaApostolicaVaticana Area privataAccedi all'area privataEmail *Campo obbligatorioInserire da 6 a 70 caratteri alfanumericiPassword *Campo obbligatorioInserire da 8 a 15 caratteri alfanumericiHai dimenticato la password ? Recupera passwordVuoi completare una iscrizione sospesa ? Clicca QuiNon sei iscritto all'area privata del sito ?Iscriviti CarrelloCarrello acq",
+      "publishedDates": [],
+      "canonical": "https://www.vaticanlibrary.va/it/news/in-evidenza/",
+      "language": "it",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:20.685Z",
+  "foundItems": [
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/news/in-evidenza/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Notizie In Evidenza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/news/avvisi-didattici/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Avvisi didattici",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/news/novita-editoriali/articolo-news-7.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Persia istoriata in Roma",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/la-storia-della-BAV.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Da Nicolò V a Sisto V",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/dipartimento-manoscritti.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Dipartimento Manoscritti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/dipartimento-stampati.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Dipartimento Stampati",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/dipartimento-gabinetto-numismatico.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Dipartimento del Gabinetto numismatico",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/laboratorio-restauro.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Laboratorio di Restauro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/laboratorio-fotografico.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Laboratorio Fotografico",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/centro-elaborazione-dati.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Centro Elaborazione Dati",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/scuola-biblioteconomia/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Scuola Vaticana di Biblioteconomia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/coordinamento-servizi-informatici.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Coordinamento dei Servizi Informatici",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/in-digitalizzazione.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Digital preservation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/il-progetto-di-digitalizzazione.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Il progetto di digitalizzazione",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/fits-files.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "I file FITS della Biblioteca",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/spazio-colore-fits.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lo Spazio Colore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/materiali-informativi.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Materiali informativi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Studio e consultazione",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/mss-non-consultabili.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Manoscritti temporaneamente non consultabili",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/servizi-agli-studiosi.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Servizi agli studiosi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/prenotazione-stampato.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prenota stampato",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/coupon-fotocopie.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Coupon fotocopie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/supporto-allo-studio.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Supporto allo studio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/fotoriproduzioni.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fotoriproduzioni",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/indici-e-inventari.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Inventari e Indici",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/ammissione-in-bav.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ammissione in BAV",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/criteri-di-ammissione.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Criteri di ammissione",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/studio-e-consultazione/dipartimento-gabinetto-numismatico.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Norme accesso dipartimento numismatico",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/pubblico-visitatori/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Eventi e Visite",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/mostre.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prestiti esterni di opere",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/scuola-biblioteconomia/direzione-e-corpo-docenti.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Direzione e corpo docenti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/scuola-biblioteconomia/struttura-e-servizi-scuola.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Struttura e Servizi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/scuola-biblioteconomia/organizzazione-del-corso.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Organizzazione del corso",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/scuola-biblioteconomia/programma-didattico.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Offerta formativa",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/scuola-biblioteconomia/ammessi-e-riserve-scuola.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ammessi e Riserve",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/sessione-autunnale.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sessione autunnale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/sessione-estiva.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sessione estiva",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/viaggiare-con-dante.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Viaggiare con Dante Mostra online in occasione del settimo centenario dalla morte di Dante Alighieri (1321-2021).",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/viaggiare-con-dante.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Viaggiare con Dante",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Vai alla sezione",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/scuola-biblioteconomia/iscriviti-alla-scuola.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Iscriviti alla scuola",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vaticanlibrary-va",
+      "source": {
+        "name": "The Vatican Library",
+        "url": "https://www.vaticanlibrary.va/it/la-biblioteca/fai-una-donazione.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sostieni la Biblioteca",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:20.394Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "4b9d7407185a2967976dd4252849af4abcb091f05d7c6bca1fbd6888c4bd1920",
+  "technicalProbeStatus": "runtime_verified"
+}

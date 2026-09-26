@@ -1,0 +1,1874 @@
+{
+  "sourceId": "ndl-japan",
+  "name": "National Diet Library",
+  "entryUrl": "https://www.ndl.go.jp/en/news/news_index",
+  "countryCodes": [
+    "JP"
+  ],
+  "coverageCountryCodes": [
+    "JP"
+  ],
+  "attemptedAt": "2026-09-26T17:29:41.927Z",
+  "requests": [
+    {
+      "url": "https://www.ndl.go.jp/en/news/news_index",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 192742,
+      "sha256": "55a06e53d15827dd8bab1b31ed7b352bc90ab7ef583f1773509e93c240199194",
+      "accessedAt": "2026-09-26T17:29:45.756Z"
+    },
+    {
+      "url": "https://www.ndl.go.jp/en/news/fy2025/260317_02",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 155705,
+      "sha256": "04bb799e2b46d265441fda860fbf55a8ef130fd86e543cf4c54a62634e579ec8",
+      "accessedAt": "2026-09-26T17:29:47.724Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.ndl.go.jp/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 66,
+    "sha256": "5e28d616f29b1cdf58c17865243fa21c13b78a1caea87bbc056bb7d21d64feb9",
+    "accessedAt": "2026-09-26T17:29:43.956Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "ndl-japan",
+    "name": "National Diet Library",
+    "url": "https://www.ndl.go.jp/en/news/news_index",
+    "format": "html",
+    "language": "en",
+    "region": "asia",
+    "sourceFamilyId": "ndl-japan",
+    "countryCodes": [
+      "JP"
+    ],
+    "coverageCountryCodes": [
+      "JP"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.ndl.go.jp"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/en/[^/]+/?$|^/en/news/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.ndl.go.jp/en/news/fy2025/260317_02"
+    ],
+    "verifiedAt": "2026-09-26T17:29:47.733Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 70,
+  "literaryCandidateCount": 70,
+  "sample": {
+    "sourceId": "ndl-japan",
+    "source": {
+      "name": "National Diet Library",
+      "url": "https://www.ndl.go.jp/en/news/fy2025/260317_02",
+      "language": "en"
+    },
+    "region": "asia",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "The ILCL will hold an event entitled Polish Children’s Books: Illustrator Piotr Socha and the Picture Book of Bees on Sunday, April 19, 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:45.867Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.ndl.go.jp/en/news/fy2025/260317_02",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 155705,
+      "sha256": "04bb799e2b46d265441fda860fbf55a8ef130fd86e543cf4c54a62634e579ec8",
+      "accessedAt": "2026-09-26T17:29:47.724Z",
+      "headline": "2026-3-17 The ILCL will hold an event entitled Polish Children’s Books: Illustrator Piotr Socha and the Picture Book of Bees on Sunday, April 19, 2026",
+      "excerpt": "2026-3-17 The ILCL will hold an event entitled Polish Children’s Books: Illustrator Piotr Socha and the Picture Book of Bees on Sunday, April 19, 2026In Japan, April 23 is Children’s Reading Day! And every year on this date, the International Library of Children's Literature holds an event in celebration of children's books.This year, in collaboration with the Polish Cultural Institute in Tokyo, w",
+      "publishedDates": [
+        {
+          "value": "2026-03-17T05:59:00.000Z+09:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.ndl.go.jp/en/news/fy2025/260317_02",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:47.733Z",
+  "foundItems": [
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260317_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The ILCL will hold an event entitled Polish Children’s Books: Illustrator Piotr Socha and the Picture Book of Bees on Sunday, April 19, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260825_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ILCL exhibition \"Picture Books with Limited Coloration\" will be held. (International Library of Children's Literature)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260609_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ILCL exhibition “Books Recommendable for Children: Cultural Materials for Child Welfare Recommended in FY2024\u2013FY2025”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251223_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lecture: Magpie: Looking for Story Seeds Around Us by British author Frances Hardinge to be held at the International Library of Children's Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250826_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ILCL exhibition \"'Search and Find Books' and Their Friends\" will be held. (International Library of Children's Literature)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260901_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Revision of Copying Fees (Effective October 1, 2026)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260901_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "75,000 Rare Books and Old Materials are available for full-text searches in the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260401_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "National Diet Library Vision 2026-2030: Co-create the Circulation of Knowledge",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260323_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Science and Technology Research Project reports released: “Global Research Collaboration and Economic Security: How Should We Respond in the Age of Closed Science?” “Circular economy” and “Robotics in the AI Era.”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260312_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Temporary closure of the Tokyo Main Library, the Kansai-kan and the International Library of Children's Literature in May",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260311_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Unauthorized Access to a System Under Development (Third Report)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260105_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "KITO Junko appointed new Deputy Director General of the National Diet Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251223_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lecture\u2014Connecting the World with Intelligence and Culture: Initiatives of the National Library of Korea will be held on February 4, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251217_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The National Diet Library and the International Library of Children’s Literature unveil completely redesigned websites",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251128_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Unauthorized Access to a System Under Development (Second Report)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251127_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "“Building, Sustaining, and Passing On to the Next Generation Earthquake Archives―The FY2025 Great East Japan Earthquake Archive Symposium” will be held on January 11, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251125_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The International Library of Children's Literature will be open on Thursday, December 25",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251114_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Unauthorized Access to a System Under Development",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250916_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Renewal of the NDL Web Archiving Project (WARP) in December 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250901_03",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "National Diet Library is experiencing a high volume of new user registrations and requests for upgrades from simple to official registered user",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250901_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The International Library of Children's Literature will be closed on Thursday, December 25",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250618_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "National Diet Library is experiencing a high volume of new user registrations and requests for upgrades from simple to official registered user",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250610_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ILCL exhibition \"Books Recommendable for Children: Cultural Materials for Child Welfare Recommended in FY 2023\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250508_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "National Diet Library is experiencing a high volume of new user registrations and requests for upgrades from simple to official registered user",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260903_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "17,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260805_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "45,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260728_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Tokyo Main Library expected to be crowded during August",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260703_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "130,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260603_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "More than 4 million materials are available for full-text searches in the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260603_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "98,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260427_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "21,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260417_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Tokyo Main Library expected to be crowded before and after Golden Week holidays",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260331_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Selected Articles from the Research and Legislative Reference Bureau",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260331_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "5,200 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260319_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Renewed and Expanded: Digital Exhibition \"Autograph manuscripts and original artwork of well-known people\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260318_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Some materials will be unavailable while undergoing digitization",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260317_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Login Method for the National Diet Library Search and Related Services to Change in June",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260218_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Some microfilm materials will be unavailable while being duplicated",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260129_02",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The number of digitized materials that can be full-text searched will increase",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260129_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "36,400 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260121_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Some materials will be unavailable while undergoing digitization",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260109_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Council on the Organization of Information on Science and Technology submitted its proposal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/20260105_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "New Year's Greetings",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251225_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Renewal of the NDL Web Archiving Project (WARP)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251224_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "3,600 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251218_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The earliest available start date for requesting materials between the Tokyo Main Library and Kansai-kan, which can be specified when applying for a visit, will change",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251209_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Tokyo Main Library expected to be crowded around the year-end and New Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251202_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Library services at the year-end and New Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251127_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "50,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/251029_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "16,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250930_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "15,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250917_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Some microfilm materials will be unavailable while being duplicated",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250901_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Kansai-kan will be closed on November 25 and November 26",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250827_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "69,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250730_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "5,300 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250729_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Tokyo Main Library expected to be crowded during August",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250728_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Some materials will be unavailable while undergoing digitization",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250627_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "140,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250609_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Revised Copying Fees",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250604_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "280,000 items from the National Diet Library Digital Collections have been made available via the Digitized Contents Transmission Service",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250515_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "66,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250430_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "51,000 items added to the National Diet Library Digital Collections",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250425_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The number of digitized materials that can be full-text searched will increase",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2025/250417_01",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "National Diet Library expected to be crowded before and after Golden Week holidays",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/news_index",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Jump to main content",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/public_index",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Go to List of Publications",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/employ_index",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Go to List of Recruitment Info.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/maintenance",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Go to List of Service Stoppage",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/event",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Go to List of Events",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ndl-japan",
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Go to List of All What's New",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:45.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "55a06e53d15827dd8bab1b31ed7b352bc90ab7ef583f1773509e93c240199194"
+}

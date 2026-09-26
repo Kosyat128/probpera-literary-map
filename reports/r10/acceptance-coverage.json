@@ -1,0 +1,2511 @@
+{
+  "schemaVersion": 1,
+  "source": "R10_FINAL acceptance.json",
+  "scenarioCount": 228,
+  "releaseAccepted": false,
+  "note": "Evidence index, not 228 automatic PASS claims. Local evidence availability does not establish every clause or human/live acceptance.",
+  "scenarios": [
+    {
+      "id": "E01",
+      "group": "E",
+      "title": "Фактическое рабочее дерево",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E02",
+      "group": "E",
+      "title": "Продолжение принятого прогресса",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E03",
+      "group": "E",
+      "title": "Постоянное состояние",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E04",
+      "group": "E",
+      "title": "Инвалидация зависимостей",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E05",
+      "group": "E",
+      "title": "Свежие внешние условия",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E06",
+      "group": "E",
+      "title": "Осмысленные повторные попытки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E07",
+      "group": "E",
+      "title": "Обязательные проверки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E08",
+      "group": "E",
+      "title": "Побочные действия build",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E09",
+      "group": "E",
+      "title": "Без runtime Codex",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E10",
+      "group": "E",
+      "title": "Граница готовности",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "N01",
+      "group": "N",
+      "title": "Реальное подключение",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N02",
+      "group": "N",
+      "title": "Честные количества",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N03",
+      "group": "N",
+      "title": "Conditional GET",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N04",
+      "group": "N",
+      "title": "Частичный сбой источника",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N05",
+      "group": "N",
+      "title": "Недоверенные URL и XML",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N06",
+      "group": "N",
+      "title": "Ограниченная нагрузка",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N07",
+      "group": "N",
+      "title": "Корректный URL identity",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N08",
+      "group": "N",
+      "title": "Разные этапы события",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N09",
+      "group": "N",
+      "title": "Память решения",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N10",
+      "group": "N",
+      "title": "Переполнение старого лимита",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N11",
+      "group": "N",
+      "title": "Действующий путь публикации",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N12",
+      "group": "N",
+      "title": "Содержание и права",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "P01",
+      "group": "P",
+      "title": "Более 500 карточек повестки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P02",
+      "group": "P",
+      "title": "Один выпуск при пагинации",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P03",
+      "group": "P",
+      "title": "Неполный manifest",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P04",
+      "group": "P",
+      "title": "Отзыв и старая версия",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P05",
+      "group": "P",
+      "title": "Барьер опубликованного NewsItem",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P06",
+      "group": "P",
+      "title": "Fallback первого визита",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P07",
+      "group": "P",
+      "title": "Порядок сетевых ответов",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P08",
+      "group": "P",
+      "title": "ETag и время",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P09",
+      "group": "P",
+      "title": "Честная свежесть",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P10",
+      "group": "P",
+      "title": "С прошлого визита",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P11",
+      "group": "P",
+      "title": "Ссылка на существующую повестку",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P12",
+      "group": "P",
+      "title": "Тот же feed без второй системы",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "S01",
+      "group": "S",
+      "title": "Полный начальный набор самой повестки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S02",
+      "group": "S",
+      "title": "Новая карточка без новой статьи",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S03",
+      "group": "S",
+      "title": "Конкурентный create",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S04",
+      "group": "S",
+      "title": "Исправление существующего поста",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S05",
+      "group": "S",
+      "title": "Порядок ревизий",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S06",
+      "group": "S",
+      "title": "Неизвестный исход",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S07",
+      "group": "S",
+      "title": "Реальные возможности Telegram",
+      "status": "no_live_native_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S08",
+      "group": "S",
+      "title": "Изоляция площадок",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S09",
+      "group": "S",
+      "title": "Rate limit и авторизация",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S10",
+      "group": "S",
+      "title": "Свежие и первоначальные задания",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S11",
+      "group": "S",
+      "title": "Устаревание анонса в очереди",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S12",
+      "group": "S",
+      "title": "Сверка полноты",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S13",
+      "group": "S",
+      "title": "Shadow и canary",
+      "status": "canary_not_configured",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S14",
+      "group": "S",
+      "title": "Правильное назначение",
+      "status": "destinations_not_configured",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S15",
+      "group": "S",
+      "title": "Текст и медиа",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S16",
+      "group": "S",
+      "title": "Секреты и admin writes",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S17",
+      "group": "S",
+      "title": "Отзыв и удаление",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S18",
+      "group": "S",
+      "title": "Старый backup",
+      "status": "local_guards_passed_operational_restore_not_verified",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "C01",
+      "group": "C",
+      "title": "Baseline и смысл 179",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "C02",
+      "group": "C",
+      "title": "Архитектура календаря не переделана",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "C03",
+      "group": "C",
+      "title": "Массовое пополнение существующих писателей",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "C04",
+      "group": "C",
+      "title": "Цель объёма без заглушек",
+      "status": "verified_remainder_recorded_1000_goal_not_met",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "C05",
+      "group": "C",
+      "title": "Точность и идентичность",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "C06",
+      "group": "C",
+      "title": "Provenance и конфликты",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "C07",
+      "group": "C",
+      "title": "Накопительные партии и fingerprint",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "C08",
+      "group": "C",
+      "title": "Регрессия существующего календаря",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "V01",
+      "group": "V",
+      "title": "Правильный объект",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V02",
+      "group": "V",
+      "title": "Подтверждаемый reference",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V03",
+      "group": "V",
+      "title": "Текущий контент",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V04",
+      "group": "V",
+      "title": "Стандартный короткий desktop",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V05",
+      "group": "V",
+      "title": "Mobile и увеличенный текст",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V06",
+      "group": "V",
+      "title": "Клавиатура",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V07",
+      "group": "V",
+      "title": "Мышь, touch, outside",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V08",
+      "group": "V",
+      "title": "Loading/error/empty",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V09",
+      "group": "V",
+      "title": "Редакторские закрепления",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V10",
+      "group": "V",
+      "title": "Авторское содержание",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V11",
+      "group": "V",
+      "title": "Производительность",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V12",
+      "group": "V",
+      "title": "Governance и visual proof",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "R01",
+      "group": "R",
+      "title": "Совместимая миграция",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R02",
+      "group": "R",
+      "title": "Защищённые области",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R03",
+      "group": "R",
+      "title": "Требуемый CI",
+      "status": "required_CI_not_complete",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R04",
+      "group": "R",
+      "title": "Ресурсный бюджет",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R05",
+      "group": "R",
+      "title": "Разрешение production",
+      "status": "release_gates_preserved_no_production_write",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R06",
+      "group": "R",
+      "title": "Проверка живого блока и доставки",
+      "status": "production_not_performed",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R07",
+      "group": "R",
+      "title": "Честные границы проверки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R08",
+      "group": "R",
+      "title": "Восстановление",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R09",
+      "group": "R",
+      "title": "Передача владельцу",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R10",
+      "group": "R",
+      "title": "Раздельный итог",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "Q01",
+      "group": "Q",
+      "title": "Самостоятельный смысл поста",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q02",
+      "group": "Q",
+      "title": "Один подтверждённый набор фактов",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q03",
+      "group": "Q",
+      "title": "Русские названия без выдумки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q04",
+      "group": "Q",
+      "title": "Точный спокойный новостной тон",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q05",
+      "group": "Q",
+      "title": "Источник, блок сайта и кредит",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q06",
+      "group": "Q",
+      "title": "Telegram: граничная длина",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q07",
+      "group": "Q",
+      "title": "Telegram: Unicode и entities",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q08",
+      "group": "Q",
+      "title": "VK: собственный нативный формат",
+      "status": "no_live_native_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q09",
+      "group": "Q",
+      "title": "Одна логическая публикация при длинном caption",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q10",
+      "group": "Q",
+      "title": "Без фото и без повторного выпуска",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q11",
+      "group": "Q",
+      "title": "Не аватар журналиста",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q12",
+      "group": "Q",
+      "title": "Правильная книга и издание",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q13",
+      "group": "Q",
+      "title": "Не ложный снимок события",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q14",
+      "group": "Q",
+      "title": "Права на конкретное распространение",
+      "status": "no_social_media_rights",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q15",
+      "group": "Q",
+      "title": "Кредит и условия лицензии сохранены",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q16",
+      "group": "Q",
+      "title": "Основания проверки различаются",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q17",
+      "group": "Q",
+      "title": "Настоящие bytes и формат",
+      "status": "actual_byte_validation_tested",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q18",
+      "group": "Q",
+      "title": "SSRF и внешний upload",
+      "status": "pinned_download_and_upload_tested",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q19",
+      "group": "Q",
+      "title": "Мобильная читаемость иллюстрации",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q20",
+      "group": "Q",
+      "title": "Фирменный стиль без однообразия",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q21",
+      "group": "Q",
+      "title": "Один builder для preview и sender",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q22",
+      "group": "Q",
+      "title": "Шесть preview не шесть реальных рассылок",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q23",
+      "group": "Q",
+      "title": "Исправление текста и картинки без дубля",
+      "status": "mocked_native_edit_same_identity_tested",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q24",
+      "group": "Q",
+      "title": "Неопределённая отправка не разрешает fallback",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q25",
+      "group": "Q",
+      "title": "Экономия повторной загрузки",
+      "status": "durable_scoped_provider_reuse_tested",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q26",
+      "group": "Q",
+      "title": "Отзыв/изменение asset",
+      "status": "revocation_guard_and_correction_policy_tested",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q27",
+      "group": "Q",
+      "title": "Кэш не отменяет актуальность",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q28",
+      "group": "Q",
+      "title": "Шаблон не рестайлит архив",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q29",
+      "group": "Q",
+      "title": "Публичная повестка \u2014 каналы автоматически",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q30",
+      "group": "Q",
+      "title": "Без скрытой платной генерации",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q31",
+      "group": "Q",
+      "title": "Недоступность источника \u2014 честный статус",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q32",
+      "group": "Q",
+      "title": "Даты и независимость подтверждений",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "E11",
+      "group": "E",
+      "title": "Нет проверок ради новой версии",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "N13",
+      "group": "N",
+      "title": "Изоляция conditional-cache источников",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "S19",
+      "group": "S",
+      "title": "Прежние ручные и сторонние публикации",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S20",
+      "group": "S",
+      "title": "Устаревший retry и remote ordering",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "C09",
+      "group": "C",
+      "title": "Разрешённые поля и конкурентная правка",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "Q33",
+      "group": "Q",
+      "title": "Права по назначениям",
+      "status": "no_social_media_rights",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "V13",
+      "group": "V",
+      "title": "Реальный viewport и containing block",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V14",
+      "group": "V",
+      "title": "Честный режим недостатка высоты",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V15",
+      "group": "V",
+      "title": "Полные заголовки и анонс",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V16",
+      "group": "V",
+      "title": "Целая картинка разных пропорций",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V17",
+      "group": "V",
+      "title": "Существующий мобильный путь",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V18",
+      "group": "V",
+      "title": "Один вариант и локальная область",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V19",
+      "group": "V",
+      "title": "Количество от нуля до семи",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V20",
+      "group": "V",
+      "title": "Детерминированная свежесть",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V21",
+      "group": "V",
+      "title": "Честная маркировка закрепления",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V22",
+      "group": "V",
+      "title": "Период и право показа",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V23",
+      "group": "V",
+      "title": "Редакторский preview и конфликт",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V24",
+      "group": "V",
+      "title": "Обновления и поздние ответы",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V25",
+      "group": "V",
+      "title": "Клик-open не зависит от мыши",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V26",
+      "group": "V",
+      "title": "Нативные ссылки и фокус",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V27",
+      "group": "V",
+      "title": "Семантика и интерактивные состояния",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V28",
+      "group": "V",
+      "title": "Одна загрузка и понятная ошибка",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V29",
+      "group": "V",
+      "title": "Никакой тяжёлой работы ради семи карточек",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V30",
+      "group": "V",
+      "title": "Поздние шрифты и reflow",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V31",
+      "group": "V",
+      "title": "Свежие реальные доказательства",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V32",
+      "group": "V",
+      "title": "Замороженное решение и экономное продолжение",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "E12",
+      "group": "E",
+      "title": "Карта чтения и только нужная дельта",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E13",
+      "group": "E",
+      "title": "Ограниченный рабочий блок и повторное использование среды",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "N14",
+      "group": "N",
+      "title": "Курсор только после устойчивой записи",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N15",
+      "group": "N",
+      "title": "Проверяемое постепенное подключение источников",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "P13",
+      "group": "P",
+      "title": "Подготовленная версия публичной карточки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P14",
+      "group": "P",
+      "title": "Отзыв и граница отправки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "S21",
+      "group": "S",
+      "title": "Истёкший lease не разрешает повторный create",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S22",
+      "group": "S",
+      "title": "Жизнеспособность расписания и реальная ёмкость",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "Q34",
+      "group": "Q",
+      "title": "Один профиль оформления и preflight готового результата",
+      "status": "same_builder_synthetic_previews_and_native_mocks_tested",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q35",
+      "group": "Q",
+      "title": "Жизненный цикл медиа",
+      "status": "scoped_cache_revocation_and_correction_tested",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "C10",
+      "group": "C",
+      "title": "Прирост на сопоставимой основе и хронология",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "C11",
+      "group": "C",
+      "title": "Обратимый date patch без затирания новых правок",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "V33",
+      "group": "V",
+      "title": "Повторное открытие и возврат из bfcache",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "V34",
+      "group": "V",
+      "title": "Селектор с валидными датами без изменения статей",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "R11",
+      "group": "R",
+      "title": "Выпуск области не включает другие области",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R12",
+      "group": "R",
+      "title": "Безопасная сквозная репетиция",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "E14",
+      "group": "E",
+      "title": "Одно согласованное задание",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "N16",
+      "group": "N",
+      "title": "Новые публичные карточки, не только held",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "P15",
+      "group": "P",
+      "title": "Восемь записей при трёх видимых",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P16",
+      "group": "P",
+      "title": "Нет произвольного окна актуальности",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P17",
+      "group": "P",
+      "title": "Без Article и новых approval полей",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P18",
+      "group": "P",
+      "title": "Два значения календарного события",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "S23",
+      "group": "S",
+      "title": "Независимость от посетителя",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S24",
+      "group": "S",
+      "title": "Сверка полноты не скрывает пропуски",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "Q36",
+      "group": "Q",
+      "title": "Отсутствие медиа не возвращает карточку в редакцию",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "Q37",
+      "group": "Q",
+      "title": "Опубликованный текст достаточен",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "R13",
+      "group": "R",
+      "title": "Сквозной выпуск правильного модуля",
+      "status": "isolated_news_path_verified_no_production_release",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "E15",
+      "group": "E",
+      "title": "Переиспользование подготовки карточек",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "N17",
+      "group": "N",
+      "title": "Не только первая страница источника",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N18",
+      "group": "N",
+      "title": "Достаточные факты вместо одинаковых hold reasons",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N19",
+      "group": "N",
+      "title": "101-я находка не стирает pending",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N20",
+      "group": "N",
+      "title": "Пакетное расписание сохраняет не опрошенные источники",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N21",
+      "group": "N",
+      "title": "Ширина источников и свежесть измеряются отдельно",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "P19",
+      "group": "P",
+      "title": "Значительное настоящее наполнение",
+      "status": "prepared_not_public",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P20",
+      "group": "P",
+      "title": "Честный прирост идентичностей",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P21",
+      "group": "P",
+      "title": "Устойчивые реальные партии",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P22",
+      "group": "P",
+      "title": "Окно поиска не ограничивает весь публичный набор",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P23",
+      "group": "P",
+      "title": "Автопополнение по допустимым узким профилям",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P24",
+      "group": "P",
+      "title": "Качественные RU и EN без новых скрытых расходов",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P25",
+      "group": "P",
+      "title": "Разные литературные поводы без мусорной квоты",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P26",
+      "group": "P",
+      "title": "Новый этап не сливается, список не дробится",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P27",
+      "group": "P",
+      "title": "Большая повестка остаётся доступной в том же блоке",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P28",
+      "group": "P",
+      "title": "Переносы и отмены не размножают ложные события",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P29",
+      "group": "P",
+      "title": "Медиа не блокирует фактологическое наполнение",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "S25",
+      "group": "S",
+      "title": "Массовое наполнение не теряется в соцочереди",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "Q38",
+      "group": "Q",
+      "title": "Проверена каждая карточка, не только выборка",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "R14",
+      "group": "R",
+      "title": "Источники, ready и public имеют разные результаты",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "E16",
+      "group": "E",
+      "title": "Одна исходная точка и конечные цели",
+      "status": "original_cumulative_baseline_explicitly_unknown",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E17",
+      "group": "E",
+      "title": "Проверки сгруппированы, а не размножены",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "N22",
+      "group": "N",
+      "title": "Смена реестра не стирает историю",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N23",
+      "group": "N",
+      "title": "Частично сохранённое поколение не продвигает сбор",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "P30",
+      "group": "P",
+      "title": "Стабильная идентичность в реальном публичном selector",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P31",
+      "group": "P",
+      "title": "Минувшая дата не является доказательством результата",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P32",
+      "group": "P",
+      "title": "Семантические версии и кэш не зависят от heartbeat",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "S26",
+      "group": "S",
+      "title": "Карточка между двумя опросами не теряется",
+      "status": "observed_admissions_only_history_gap",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S27",
+      "group": "S",
+      "title": "Ротация токена не равна смене постов",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S28",
+      "group": "S",
+      "title": "Доказательства доставки разделены",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "Q39",
+      "group": "Q",
+      "title": "Готовый пост и резервный путь не противоречат проверке",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "C12",
+      "group": "C",
+      "title": "Отсутствующий claim и rollback не затирают даты",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "V35",
+      "group": "V",
+      "title": "Шрифт и viewport не ломают принятую композицию",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "R15",
+      "group": "R",
+      "title": "Сквозное завершение без скрытой смены объёма",
+      "status": "not_complete",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "E18",
+      "group": "E",
+      "title": "Версия определяется происхождением, не номером",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "N24",
+      "group": "N",
+      "title": "Лимиты совместимы на всём пути",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N25",
+      "group": "N",
+      "title": "Переразбор источника сохраняет идентичность",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "P33",
+      "group": "P",
+      "title": "Новый контракт не ломает старого читателя",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P34",
+      "group": "P",
+      "title": "Повторный цикл наполнения даёт только настоящую дельту",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "S29",
+      "group": "S",
+      "title": "Пауза после claim учитывается перед отправкой",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S30",
+      "group": "S",
+      "title": "Одна неисправная запись не удерживает все задания",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "Q40",
+      "group": "Q",
+      "title": "Готовый шаблон не публикует служебные значения",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "C13",
+      "group": "C",
+      "title": "Даты доходят до эффективного слоя календаря",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "V36",
+      "group": "V",
+      "title": "Правка витрины не меняет соседние компоненты",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "R16",
+      "group": "R",
+      "title": "Передача показывает действительную эксплуатацию",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "E19",
+      "group": "E",
+      "title": "Самостоятельное устранение необходимых пробелов",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E20",
+      "group": "E",
+      "title": "Инициатива сохраняет границы и экономит работу",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "R17",
+      "group": "R",
+      "title": "Собственный механизм доведён до интегрированного результата",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "R18",
+      "group": "R",
+      "title": "Финиш отделяет результат от внешних блокировок",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    },
+    {
+      "id": "E21",
+      "group": "E",
+      "title": "Закрытый результат не переоткрывается без причины",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "E22",
+      "group": "E",
+      "title": "Короткие контракты сохраняют полное покрытие",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/checkpoint.json",
+        "reports/r10/verification.json"
+      ]
+    },
+    {
+      "id": "N26",
+      "group": "N",
+      "title": "Изменение профиля не подменяет факты",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "N27",
+      "group": "N",
+      "title": "Покрытие подтверждено наблюдаемым результатом",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/sources/coverage.json",
+        "reports/r10/sources/pinned-runtime/runtime-verification.json",
+        "reports/r10/news/pagination/live-check.json"
+      ]
+    },
+    {
+      "id": "P35",
+      "group": "P",
+      "title": "Полнота проверена в существующем reducer",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "P36",
+      "group": "P",
+      "title": "Merge и split сохраняют историю",
+      "status": "conditional_not_exercised_in_this_diff",
+      "evidence": [
+        "reports/r10/publication/browser/withdrawal-hardening/receipt.json",
+        "data/news/batches",
+        "reports/r10/news/nobel/README.md"
+      ]
+    },
+    {
+      "id": "S31",
+      "group": "S",
+      "title": "Статус HTTP не является подтверждением поста",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "S32",
+      "group": "S",
+      "title": "Очистка не уничтожает память отправки",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/social/sql-check.json",
+        "reports/r10/social/operator-sql-check.json",
+        "reports/r10/social/admin-controls.md"
+      ]
+    },
+    {
+      "id": "Q41",
+      "group": "Q",
+      "title": "Качество медиа не заменено постоянным fallback",
+      "status": "six_profiles_and_three_real_candidates_inspected_no_live_posts",
+      "evidence": [
+        "reports/r10/social/previews.json",
+        "reports/r10/social/q-text-review.md",
+        "reports/r10/publication/article-thumbnails.json",
+        "reports/r10/social/MEDIA_Q.md",
+        "reports/r10/social/quality/verification.json",
+        "reports/r10/social/media-rights/proposed-assets.json"
+      ]
+    },
+    {
+      "id": "C14",
+      "group": "C",
+      "title": "29 февраля и сравнение годов не искажают прирост",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/calendar/audit.json",
+        "reports/r10/calendar/browser-check.json"
+      ]
+    },
+    {
+      "id": "V37",
+      "group": "V",
+      "title": "Визуальный порядок совпадает с чтением и Tab",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/showcase/receipt.json"
+      ]
+    },
+    {
+      "id": "R19",
+      "group": "R",
+      "title": "Проверка упражняет внедрённый механизм",
+      "status": "local_evidence_available_not_release_acceptance",
+      "evidence": [
+        "reports/r10/verification.json",
+        "reports/r10/README.md"
+      ]
+    }
+  ]
+}

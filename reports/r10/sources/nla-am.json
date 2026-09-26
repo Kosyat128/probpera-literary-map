@@ -1,0 +1,65 @@
+{
+  "sourceId": "nla-am",
+  "name": "National Library of Armenia",
+  "entryUrl": "https://nla.am/en_US",
+  "countryCodes": [
+    "AM"
+  ],
+  "coverageCountryCodes": [
+    "AM"
+  ],
+  "attemptedAt": "2026-09-26T17:28:57.597Z",
+  "requests": [
+    {
+      "url": "https://nla.am/en_US",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 225538,
+      "sha256": "809ddc62eb1bd99f10ac230f3b4de4b7e3817e2c24479e34eeceb79b902b7e9b",
+      "accessedAt": "2026-09-26T17:29:00.032Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 325105,
+      "sha256": "8922ac14d1abb512863c9cc87846ef568f966fbaf3c8708250438b2a0fe36c6f",
+      "accessedAt": "2026-09-26T17:29:02.046Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/hayastani-azgayin-gradarany-ifla-wlic-2026-hamashkharhayin-hamazhvoghvovvoum",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 201249,
+      "sha256": "bbe0b15fe51aa369f03ae427a1a2597913b028db79aaa06acc2407203fb0f110",
+      "accessedAt": "2026-09-26T17:29:02.949Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/banber-hayastani-gradaranneri-2025-thvakani-arajin-hamar",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 199274,
+      "sha256": "b180d995eaa05a09dc788d17d28ab6c2c7d475fa093a53bb7fc7672a7979a48d",
+      "accessedAt": "2026-09-26T17:29:03.726Z"
+    },
+    {
+      "url": "https://nla.am/en_US/blog/haykakan-mijazgayin-arvoghjapahakan-cvoucahandes-2025",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 199301,
+      "sha256": "5265da0d4ce4f50c62baf56d4987f5b30ff28b3385fede9b34f22f5da1d0ffdc",
+      "accessedAt": "2026-09-26T17:29:05.726Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://nla.am/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-09-26T17:28:58.970Z",
+    "disallowed": []
+  }
+}

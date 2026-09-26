@@ -9,6 +9,8 @@ import { InterfaceLanguageProvider } from "../i18n/InterfaceLanguage";
 import LiteraryCalendar, {
   calendarWriterIdentity,
   dateParts,
+  selectCalendarEvents,
+  calendarEventsForMonth,
   visibleCalendarAgendaDays,
 } from "./LiteraryCalendar";
 
@@ -86,45 +88,45 @@ describe("литературный календарь", () => {
       deathDate: "1977-07-02",
     } as Writer;
 
-    expect(calendarWriterIdentity(russianEntry)).toBe(
-      calendarWriterIdentity(americanEntry)
+    expect(calendarWriterIdentity(russianEntry, "russia")).toBe(
+      calendarWriterIdentity(americanEntry, "usa")
     );
   });
 
   it("объединяет дубликат, даже если в одной карточке не заполнена дата смерти", () => {
     const completeEntry = {
-      id: "mystery_complete",
+      id: "rohinton_mistry",
       name: "Рохинтон Мистри",
       birthDate: "1952-07-03",
       deathDate: "2025-01-01",
     } as Writer;
     const incompleteEntry = {
-      id: "mystery_incomplete",
+      id: "rohinton_mistry",
       name: "Рохинтон Мистри",
       birthDate: "1952-07-03",
     } as Writer;
 
-    expect(calendarWriterIdentity(completeEntry)).toBe(
-      calendarWriterIdentity(incompleteEntry)
+    expect(calendarWriterIdentity(completeEntry, "canada")).toBe(
+      calendarWriterIdentity(incompleteEntry, "canada")
     );
   });
 
   it("нормализует даты Wikidata перед поиском дубликатов", () => {
     const curatedEntry = {
-      id: "joyce_curated",
+      id: "james_joyce",
       name: "Джеймс Джойс",
       birthDate: "1882-02-02",
       deathDate: "1941-01-13",
     } as Writer;
     const generatedEntry = {
-      id: "joyce_generated",
+      id: "james_joyce",
       name: "Джеймс Джойс",
       birthDate: "+1882-02-02",
       deathDate: "+1941-01-13",
     } as Writer;
 
-    expect(calendarWriterIdentity(curatedEntry)).toBe(
-      calendarWriterIdentity(generatedEntry)
+    expect(calendarWriterIdentity(curatedEntry, "ireland")).toBe(
+      calendarWriterIdentity(generatedEntry, "ireland")
     );
   });
 
@@ -159,5 +161,33 @@ describe("литературный календарь", () => {
     expect(countryOnlyTransition).toContain('"replace"');
     expect(countryOnlyTransition).toContain("focusCountryPresentation()");
     expect(appSource).toContain(": selectCalendarCountryOnly(country)");
+  });
+});
+
+
+describe("R10 date and identity regressions on the calendar selector", () => {
+  it("requires explicit precision for 1 January and validates the actual historical year", () => {
+    expect(dateParts("1919-01-01", "day")).toEqual({ year: 1919, month: 0, day: 1 });
+    expect(dateParts("1919-01-01", "year")).toBeNull();
+    expect(dateParts("1600-02-29")).toEqual({ year: 1600, month: 1, day: 29 });
+    expect(dateParts("1700-02-29")).toBeNull();
+    expect(dateParts("1900-02-29")).toBeNull();
+  });
+  it("retains same-surname same-birthday people without an exact reviewed identity", () => {
+    const country = { id: "test", writers: [
+      { id: "one", name: "Anna Smith", birthDate: "1900-03-10" },
+      { id: "two", name: "Mary Smith", birthDate: "1900-03-10" },
+    ] } as Country;
+    expect(selectCalendarEvents([country])).toHaveLength(2);
+  });
+  it("does not create or shift 29 February in a non-leap display year", () => {
+    const country = { id: "test", writers: [
+      { id: "leap", name: "Leap", birthDate: "1952-02-29" },
+    ] } as Country;
+    const events = selectCalendarEvents([country]);
+    expect(events).toHaveLength(1);
+    expect(calendarEventsForMonth(events, 2026, 1)).toHaveLength(0);
+    expect(calendarEventsForMonth(events, 2026, 2)).toHaveLength(0);
+    expect(calendarEventsForMonth(events, 2028, 1)).toHaveLength(1);
   });
 });

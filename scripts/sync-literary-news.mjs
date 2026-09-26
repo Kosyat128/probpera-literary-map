@@ -3,6 +3,7 @@ import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { createNewsStorageClient, syncNewsStorage } from "./lib/literary-news-kv-sync.mjs";
+import { syncNobelProfile } from "./lib/literary-news-nobel-profile.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const output = path.join(root, ".tmp", "literary-news-sync");
@@ -33,6 +34,15 @@ const state = await syncNewsStorage({
   },
 });
 await writeFile(path.join(output, "source-health.json"), `${JSON.stringify(state, null, 2)}\n`, "utf8");
-const summary = `Checked ${state.sources.length} literary sources; ${state.sources.filter(source => source.status === "ok").length} available. ${state.pendingCount} discoveries remain in the private editorial queue. No discoveries were automatically published.\n`;
+let profileSummary = "Nobel profile sync was not confirmed; no empty replacement was attempted.";
+try {
+  const profile = await syncNobelProfile({storage});
+  await writeFile(path.join(output,"nobel-profile-check.json"),`${JSON.stringify(profile,null,2)}\n`,"utf8");
+  profileSummary = `Nobel literature profile: ${profile.newlyAccepted} newly accepted; ${profile.payload.records.length} durable approved; ${profile.held.length} held cases. Public availability requires the deployed reviewed profile.`;
+} catch {
+  await writeFile(path.join(output,"nobel-profile-check.json"),`${JSON.stringify({status:"sync_unconfirmed",historyClearingAttempted:false})}\n`,"utf8");
+  process.exitCode=1;
+}
+const summary = `Checked ${state.sources.length} literary sources; ${state.sources.filter(source => source.status === "ok").length} available. ${state.pendingCount} discoveries remain in the private editorial queue. ${profileSummary}\n`;
 console.log(summary.trim());
 if (!state.sources.some(source => source.status === "ok")) process.exitCode = 1;

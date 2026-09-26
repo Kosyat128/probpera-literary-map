@@ -1,0 +1,386 @@
+{
+  "sourceId": "nb-rs",
+  "name": "National Library of Serbia",
+  "entryUrl": "https://www.nb.rs/",
+  "countryCodes": [
+    "RS"
+  ],
+  "coverageCountryCodes": [
+    "RS"
+  ],
+  "attemptedAt": "2026-09-26T17:29:14.593Z",
+  "requests": [
+    {
+      "url": "https://nb.rs/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 61919,
+      "sha256": "b717b50f6bcafaa50048276d74108798ca31c07b3e00dc50d48099db9add6fff",
+      "accessedAt": "2026-09-26T17:23:10.479Z"
+    },
+    {
+      "url": "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 273856,
+      "sha256": "904237edb53dc2e5c897b17a89edc003daa95cc67cca57632a9314d258e77042",
+      "accessedAt": "2026-09-26T17:29:18.617Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://nb.rs/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 163,
+    "sha256": "632f314dbcd0f259e14ea5533f10a00aed87c759eb9322fd9e7f2a1e33b2171f",
+    "accessedAt": "2026-09-26T17:29:16.398Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:04.955Z",
+    "sourceDocumentSha256": "b717b50f6bcafaa50048276d74108798ca31c07b3e00dc50d48099db9add6fff"
+  },
+  "endpoint": {
+    "id": "nb-rs",
+    "name": "National Library of Serbia",
+    "url": "https://nb.rs/feed/",
+    "format": "rss",
+    "language": "sr-RS",
+    "region": "europe",
+    "sourceFamilyId": "nb-rs",
+    "countryCodes": [
+      "RS"
+    ],
+    "coverageCountryCodes": [
+      "RS"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://nb.rs"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:18.627Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "nb-rs",
+    "source": {
+      "name": "National Library of Serbia",
+      "url": "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/",
+      "language": "sr-RS"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Годишњи међународни састанак ИСБН агенција 15. и 16. септембар 2026.",
+    "publishedAt": "2026-09-24T07:21:31.000Z",
+    "description": "У организацији Међународне ISBN агенције и Националне библиотеке Шпаније, у Мадриду је 15. и 16. септембра 2026. године одржан редовни Годишњи међународни састанак ИСБН агенција. Састанку су присуствовале Јасмина Нинков, управница Народне библиотеке Србије, и Ана Савић, начелник Одељења монографских публикација. Национална библиотека Шпаније била је изузетан домаћин учесницима Годишњег међународн…",
+    "discoveredAt": "2026-09-26T17:29:16.401Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 273856,
+      "sha256": "904237edb53dc2e5c897b17a89edc003daa95cc67cca57632a9314d258e77042",
+      "accessedAt": "2026-09-26T17:29:18.617Z",
+      "headline": "Годишњи међународни састанак ИСБН агенција 15. и 16. септембар 2026. - Народна библиотека Србије",
+      "excerpt": "Годишњи међународни састанак ИСБН агенција 15. и 16. септембар 2026. - Народна библиотека Србије Close <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-KSBNTSL\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> Годишњи међународни састанак ИСБН агенција 15. и 16. септембар 2026. 24/09/2026 Назад на вести У организацији Међународне ISBN агенције и Националне библиоте",
+      "publishedDates": [
+        {
+          "value": "2026-09-24T07:21:31+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-24T07:21:31+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-24T07:21:31+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/",
+      "language": "sr-RS",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:18.627Z",
+  "foundItems": [
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Годишњи међународни састанак ИСБН агенција 15. и 16. септембар 2026.",
+      "publishedAt": "2026-09-24T07:21:31.000Z",
+      "description": "У организацији Међународне ISBN агенције и Националне библиотеке Шпаније, у Мадриду је 15. и 16. септембра 2026. године одржан редовни Годишњи међународни састанак ИСБН агенција. Састанку су присуствовале Јасмина Нинков, управница Народне библиотеке Србије, и Ана Савић, начелник Одељења монографских публикација. Национална библиотека Шпаније била је изузетан домаћин учесницима Годишњег међународн…",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/otvoren-je-strucno-naucni-skup-biblionet-2026/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Отворен је стручно-научни скуп Библионет 2026.",
+      "publishedAt": "2026-09-18T15:35:28.000Z",
+      "description": "У организацији Заједнице матичних библиотека Србије и Народне библиотеке Крушевац отворен је стручно-научни скуп Библионет 2026. Јубиларни двадесети скуп Заједнице, који се сваке године одржава у другом граду, ове године се бави темом дигиталне промоције библиотечких услуга, програма и колекција. Скуп су отворила уводна предавања реномираних гостију, Хелен Мандл, заменика генералног секретара ИФЛ…",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/nagrada-vladan-desnica-dodeljena-romanu-letu-je-kraj-dubravke-rebic/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "НАГРАДА „ВЛАДАН ДЕСНИЦА“ ДОДЕЉЕНА РОМАНУ „ЛЕТУ ЈЕ КРАЈ“ ДУБРАВКЕ РЕБИЋ",
+      "publishedAt": "2026-09-17T11:00:13.000Z",
+      "description": "У четвртак, 17. септембра 2026. године, на Конференцији за новинаре одржаној у Народној библиотеци Србије жири је саопштио да је роман ЛЕТУ ЈЕ КРАЈ Дубравке Ребић, у издању Прометеја, овогодишњи добитник Награде „Владан Десница“. Жири је радио у саставу: Мухарем Баздуљ, председник, и чланови: Љубица Арсић, Ивана Димић, Мирјана Митровић, Сања Савић Милосављевић, Горан Гоцић […] Чланак НАГРАДА „ВЛА…",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/knjizevna-nagrada-vladan-desnica-urucena-dubravki-rebic/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Књижевна награда „Владан Десница“ уручена Дубравки Ребић",
+      "publishedAt": "2026-09-21T12:07:37.000Z",
+      "description": "У понедељак, 21. септембра 2026. године, у Галеријском простору Народне библиотеке Србије свечано је уручена књижевна награда „Владан Десница“ за најбољи роман на српском језику објављен 2025. године. Овогодишња добитница је књижевница Дубравка Ребић, награђена за роман „Лету је крај“, у издању новосадског Прометеја. На свечаности се присутнима обратила управница Народне библиотеке Србије Јасмина…",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/narodnu-biblioteku-srbije-posetili-su-helen-mandl-i-endru-kranfild/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Народну библиотеку Србије посетили су Хелен Мандл и Ендру Кранфилд",
+      "publishedAt": "2026-09-21T11:58:53.000Z",
+      "description": "По повратку из Крушевца, са стручно научног скупа Библионет 2026, Хелен Мандл, заменик генералног секретара Ифле, и Ендру Кранфилд, директор Еблиде, посетили су Народну библиотеку Србије. Чланак Народну библиотеку Србије посетили су Хелен Мандл и Ендру Кранфилд се појављује прво на Народна библиотека Србије.",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/uredjivacki-odbor-arheografskih-priloga/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Уређивачки одбор Археографских прилога",
+      "publishedAt": "2026-09-15T11:58:49.000Z",
+      "description": "ДР НИНА ГЛИБЕТИЋ доцент, Универзитет Јејл, Њу Хејвен ДР МИРОСЛАВ А. ЛАЗИЋ научни сарадник, Институт за српски језик САНУ, Београд ЖАНА ЛЕОНИДОВНА ЛЕВШИНА руководилац Сектора словенско-руске археографије, Руска национална библиотека, Санкт Петербург ДР АЛЕКСАНДЕР НАУМОВ професор емеритус, Универзитет Ка Фоскари, Венеција Супрасаљска академија, Супрасаљ ДР ВИКТОР САВИЋ редовни професор, Филолошки ф…",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/dan-srpskog-jedinstva-u-narodnoj-biblioteci-srbije/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ДАН СРПСКОГ ЈЕДИНСТВА У НАРОДНОЈ БИБЛИОТЕЦИ СРБИЈЕ",
+      "publishedAt": "2026-09-15T11:36:13.000Z",
+      "description": "Поводом државног празника Дана српског јединства, слободе и националне заставе, којим се обележава датум пробоја Солунског фронта у Првом светском рату, у Народној библиотеци Србије отворена је изложба „У гротлу Великог рата: рукописни листови Станислава Кракова и Ранка Младеновића“. На отварању су се присутнима обратили др Драган Пурешић, заменик управника Народне библиотеке Србије, и др […] Чла…",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/prof-dr-gordana-jovanovic/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ПРОФ. ДР ГОРДАНА ЈОВАНОВИЋ",
+      "publishedAt": "2026-09-14T12:02:01.000Z",
+      "description": "(29. јануар 1940 \u2013 17. мај 2024) Јасмина М. НедељковићНародна библиотека Србије Преузми текст Чланак ПРОФ. ДР ГОРДАНА ЈОВАНОВИЋ се појављује прво на Народна библиотека Србије.",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/prof-dr-hajnc-miklas-heinz-miklas-univ-prof-dr-dr-h-c-grac-28-oktobar-1948-bec-13-decembar-2023/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Проф. др Хајнц Миклас (Heinz Miklas, Univ. Prof. Dr. Dr. h. c.) (Грац, 28. октобар 1948 \u2013 Беч, 13. децембар 2023)",
+      "publishedAt": "2026-09-11T09:52:36.000Z",
+      "description": "ВИКТОР САВИЋФилолошки факултет Универзитета у Београду Институт за српски језик САНУ https://orcid.org/0000-0001-7003-3201 Преузми текст Извори Милтенова, Анисава. „In memoriam. Хайнц Миклас (1948\u20132023).“ Българистика/Bulgarica, 47 (2023), 157\u2013158. Редакция на сп. Palaeobulgarica, Кирило-Методиевски научен център. „Хайнц Миклас. In memoriam.“ Palaeobulgarica/Старобългаристика, XLVII/4 (2023), 3\u20139…",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/dva-izdanja-srpskih-rukopisnih-knjiga-u-madjarskoj/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ДВА ИЗДАЊА СРПСКИХ РУКОПИСНИХ КЊИГА У МАЂАРСКОЈ",
+      "publishedAt": "2026-09-11T09:41:26.000Z",
+      "description": "(Владан Тријић, Бранислав Тодић, Зоран Ранковић, Зоран Ракић. Српске рукописне књиге у Мађарској. Београд: Библиотека Српске патријаршије, 2025, 466 стр.; Српске рукописне књиге у Мађарској: илустрације и палеографски албум. Приредио Зоран Ранковић. Београд: Библиотека Српске патријаршије, 2025, 218 стр.) ГРБИЋ ДУШИЦА Библиотека Матице српске Преузми текст Чланак ДВА ИЗДАЊА СРПСКИХ РУКОПИСНИХ КЊИ…",
+      "discoveredAt": "2026-09-26T17:29:16.401Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b717b50f6bcafaa50048276d74108798ca31c07b3e00dc50d48099db9add6fff"
+}

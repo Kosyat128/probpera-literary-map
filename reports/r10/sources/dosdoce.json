@@ -1,0 +1,387 @@
+{
+  "sourceId": "dosdoce",
+  "name": "Dosdoce",
+  "entryUrl": "https://www.dosdoce.com/",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [
+    "ES"
+  ],
+  "attemptedAt": "2026-09-26T17:31:59.209Z",
+  "requests": [
+    {
+      "url": "https://www.dosdoce.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 127607,
+      "sha256": "93980b0719dded9ff38f6e063de96ee2135c446d20cd193762f9b1ec00f19334",
+      "accessedAt": "2026-09-26T17:32:01.036Z"
+    },
+    {
+      "url": "https://www.dosdoce.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 72986,
+      "sha256": "a75e5bfad1e2f51f8f80e85cfcaf8fdaf682ecd4980ca7976df48c3f0b41ae8c",
+      "accessedAt": "2026-09-26T17:32:02.075Z"
+    },
+    {
+      "url": "https://www.dosdoce.com/2026/09/23/el-85-de-los-productores-de-audiolibros-usan-ia-pero-los-ahorros-de-costos-reales-estan-muy-por-debajo-de-la-exageracion-de-la-industria/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97574,
+      "sha256": "e960a4c3caf6114f84b837dd72d32c058620364ab9ae5e190eae6957eee20ac1",
+      "accessedAt": "2026-09-26T17:32:03.132Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.dosdoce.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 34,
+    "sha256": "c4d1066c8154c47db3b0cd1d201ea3ae845ca12c22638c744a5d83686151e8fa",
+    "accessedAt": "2026-09-26T17:31:59.804Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "dosdoce",
+    "name": "Dosdoce",
+    "url": "https://www.dosdoce.com/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "europe",
+    "sourceFamilyId": "dosdoce",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [
+      "ES"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.dosdoce.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.dosdoce.com/2026/09/23/el-85-de-los-productores-de-audiolibros-usan-ia-pero-los-ahorros-de-costos-reales-estan-muy-por-debajo-de-la-exageracion-de-la-industria/"
+    ],
+    "verifiedAt": "2026-09-26T17:32:03.140Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "dosdoce",
+    "source": {
+      "name": "Dosdoce",
+      "url": "https://www.dosdoce.com/2026/09/23/el-85-de-los-productores-de-audiolibros-usan-ia-pero-los-ahorros-de-costos-reales-estan-muy-por-debajo-de-la-exageracion-de-la-industria/",
+      "language": "es"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "El 85 % de los productores de audiolibros usan IA, pero los ahorros de costos reales están muy por debajo de las estimaciones",
+    "publishedAt": "2026-09-23T06:25:00.000Z",
+    "description": "El informe «Who is narrating the future?», publicado por Dosdoce.com en asociación con Frankfurter Buchmesse, encuentra que la industria editorial ha pasado del escepticismo de la IA a la adopción activa en menos de un año, al tiempo que advierte que el crecimiento no controlado podría dañar la confianza del oyente en el formato. El... Read More La entrada El 85 % de los productores de audiolibro…",
+    "discoveredAt": "2026-09-26T17:32:02.079Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.dosdoce.com/2026/09/23/el-85-de-los-productores-de-audiolibros-usan-ia-pero-los-ahorros-de-costos-reales-estan-muy-por-debajo-de-la-exageracion-de-la-industria/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97574,
+      "sha256": "e960a4c3caf6114f84b837dd72d32c058620364ab9ae5e190eae6957eee20ac1",
+      "accessedAt": "2026-09-26T17:32:03.132Z",
+      "headline": "El 85 % de los productores de audiolibros usan IA, pero los ahorros de costos reales están muy por debajo de las estimaciones - Dosdoce.com",
+      "excerpt": "23 septiembre 2026 El informe «Who is narrating the future?», publicado por Dosdoce.com en asociación con Frankfurter Buchmesse, encuentra que la industria editorial ha pasado del escepticismo de la IA a la adopción activa en menos de un año, al tiempo que advierte que el crecimiento no controlado podría dañar la confianza del oyente en el formato. El informe se basa en las respuestas a los cuesti",
+      "publishedDates": [
+        {
+          "value": "2026-09-23T06:25:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-23T06:25:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.dosdoce.com/2026/09/23/el-85-de-los-productores-de-audiolibros-usan-ia-pero-los-ahorros-de-costos-reales-estan-muy-por-debajo-de-la-exageracion-de-la-industria/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:03.140Z",
+  "foundItems": [
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/23/el-85-de-los-productores-de-audiolibros-usan-ia-pero-los-ahorros-de-costos-reales-estan-muy-por-debajo-de-la-exageracion-de-la-industria/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El 85 % de los productores de audiolibros usan IA, pero los ahorros de costos reales están muy por debajo de las estimaciones",
+      "publishedAt": "2026-09-23T06:25:00.000Z",
+      "description": "El informe «Who is narrating the future?», publicado por Dosdoce.com en asociación con Frankfurter Buchmesse, encuentra que la industria editorial ha pasado del escepticismo de la IA a la adopción activa en menos de un año, al tiempo que advierte que el crecimiento no controlado podría dañar la confianza del oyente en el formato. El... Read More La entrada El 85 % de los productores de audiolibro…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/22/jornadas-liber-innovacion-2026/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jornadas LIBER Innovación 2026",
+      "publishedAt": "2026-09-22T14:17:45.000Z",
+      "description": "La innovación, la inteligencia artificial, el auge del audiolibro, la expansión internacional, la captación de lectores y la evolución de las competencias profesionales serán algunos de los ejes que marcarán las Jornadas de Liber 2026. Con 80 actividades y cerca de 150 ponentes, la feria volverá a convertirse en un espacio de reflexión y análisis sobre... Read More La entrada Jornadas LIBER Innov…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/22/jornadas-liber-audio-2026/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jornadas LIBER Audio 2026",
+      "publishedAt": "2026-09-22T06:28:00.000Z",
+      "description": "La inteligencia artificial, el auge del audiolibro, la expansión internacional, la captación de lectores y la evolución de las competencias profesionales serán algunos de los ejes que marcarán las Jornadas de Liber 2026. Con 80 actividades y cerca de 150 ponentes, la feria volverá a convertirse en un espacio de reflexión y análisis sobre los... Read More La entrada Jornadas LIBER Audio 2026 apare…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/10/el-fantasma-en-el-borrador-autoria-y-edicion-en-la-era-de-la-ia/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El fantasma en el borrador. Autoría y edición en la era de la IA",
+      "publishedAt": "2026-09-10T06:32:00.000Z",
+      "description": "Un reciente y extenso artículo explora cuándo una persona que edita un borrador generado por un LLM se convierte en el autor legal de la obra final. La pregunta clave es si las revisiones del editor reemplazan suficientemente las elecciones expresivas de la IA. Según recuerda el artículo, en 1967 Arthur Koestler acuñó el término... Read More La entrada El fantasma en el borrador. Autoría y edició…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/24/los-lectores-valoran-mas-los-textos-escritos-por-ia/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Los lectores valoran más los textos escritos por IA",
+      "publishedAt": "2026-09-24T06:31:00.000Z",
+      "description": "A finales del pasado mes de julio compartíamos las conclusiones de un informe que señalaba cómo los consumidores de audiolibros preferían los textos narrados por una multivoz de inteligencia artificial a la voz humana. Ahora, una investigación reciente dada a conocer a principios de agosto de 2026 en la revista ‘Judgment and Decision Making’ revela... Read More La entrada Los lectores valoran más…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/21/la-nueva-red-social-que-ha-irrumpido-en-estados-unidos-se-llama-upscrolled/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La nueva red social que ha irrumpido en Estados Unidos se llama UpScrolled",
+      "publishedAt": "2026-09-21T06:30:00.000Z",
+      "description": "Hacía mucho tiempo que no dábamos a conocer nuevas herramientas de marketing. O más bien, redes sociales que con posterioridad de convirtieron en herramientas de marketing, como Snapchat, Pinterest, Instagam, TikTok, etc. Hay nueva red social ha irrumpido con fuerza en Estados Unidos y ya se perfila como una alternativa a TikTok. Se llama UpScrolled.... Read More La entrada La nueva red social qu…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/17/alkar-contemporary-cuando-el-coleccionismo-privado-se-abre-a-la-ciudad/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alkar Contemporary: cuando el coleccionismo privado se abre a la ciudad",
+      "publishedAt": "2026-09-17T06:28:00.000Z",
+      "description": "Bilbao acaba de sumar un espacio que merece aplauso por partida doble: por lo que muestra y por lo que representa. Alkar Contemporary, la sede que Fernando Arriola y Yolanda Zugaza han abierto para dar a conocer su colección privada de arte contemporáneo es una de esas iniciativas que en nuestro país siguen siendo una... Read More La entrada Alkar Contemporary: cuando el coleccionismo privado se …",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/16/el-gobierno-de-estados-unidos-defiende-a-openai-frente-el-new-york-times/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El gobierno de Estados Unidos defiende a OpenAI frente al New York Times",
+      "publishedAt": "2026-09-16T07:05:00.000Z",
+      "description": "El gobierno de Estados Unidos ha decidido intervenir en el conflicto legal entre OpenAI y el New York Times, posicionándose claramente a favor de la empresa de inteligencia artificial. El origen de la disputa se remonta a diciembre de 2023, cuando el prestigioso periódico acusó a OpenAI de haber utilizado, sin autorización, millones de sus... Read More La entrada El gobierno de Estados Unidos def…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/15/chatgpt-prepara-una-funcion-para-imitar-el-estilo-de-escritura-de-los-usuarios/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ChatGPT prepara una función para imitar el estilo de escritura de los usuarios",
+      "publishedAt": "2026-09-15T06:33:00.000Z",
+      "description": "ChatGPT prepara una nueva función que permitirá a la IA analizar el estilo de escritura de los usuarios para generar textos que se parezcan a su forma habitual de expresarse. La herramienta, desarrollada por OpenAI, podrá utilizar información procedente de distintas aplicaciones conectadas a la cuenta del usuario, como Gmail, Google Drive, Slack, Notion o... Read More La entrada ChatGPT prepara u…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "dosdoce",
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/14/nuevo-codigo-de-practicas-para-la-ia-en-europa/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nuevo código de prácticas para la IA en Europa",
+      "publishedAt": "2026-09-14T06:29:00.000Z",
+      "description": "Desde el pasado domingo 2 de agosto, Europa da un paso histórico en la regulación del contenido generado por inteligencia artificial con la entrada en vigor de una nueva fase de la Ley de IA, aprobada dos años atrás. Hasta ahora, los usuarios podían interactuar con chatbots, ver vídeos manipulados o leer artículos escritos por... Read More La entrada Nuevo código de prácticas para la IA en Europa…",
+      "discoveredAt": "2026-09-26T17:32:02.079Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a75e5bfad1e2f51f8f80e85cfcaf8fdaf682ecd4980ca7976df48c3f0b41ae8c"
+}

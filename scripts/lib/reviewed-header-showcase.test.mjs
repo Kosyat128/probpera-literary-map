@@ -4,8 +4,9 @@ import { describe, expect, it } from "vitest";
 import { headerShowcaseAttestation, projectReviewedHeaderShowcase } from "./reviewed-header-showcase.mjs";
 import { headerLibraryAttestation, projectReviewedHeaderLibrary } from "./reviewed-header-library.mjs";
 import { projectReviewedNativeArchiveTransport } from "./reviewed-native-archive-transport.mjs";
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 
-const read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, "utf8"));
+const read = path => projectReviewedNativeArchiveTransport(path, projectReviewedR10Delta(path, readFileSync(path, "utf8")));
 const sha = text => createHash("sha256").update(text).digest("hex");
 const paths = [
   "scripts/lib/reviewed-r49n-package.test.mjs",

@@ -1,0 +1,462 @@
+[
+  {
+    "width": 1440,
+    "height": 1000,
+    "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+    "title": "15 лучших художественных книг о рыцарях",
+    "imageAttrs": {
+      "src": "/media/optimized/c902c3296c4ca55e625fa1a1-640w.webp",
+      "width": "1155",
+      "height": "719",
+      "srcset": "/media/optimized/c902c3296c4ca55e625fa1a1-640w.webp 640w, /media/optimized/c902c3296c4ca55e625fa1a1-1155w.webp 1155w",
+      "sizes": "(max-height: 740px) 300px, 416px",
+      "alt": "",
+      "loading": "lazy",
+      "decoding": "async"
+    },
+    "currentSrc": "http://127.0.0.1:5173/media/optimized/c902c3296c4ca55e625fa1a1-640w.webp",
+    "natural": [
+      416,
+      258
+    ],
+    "articleImageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+    "originalImageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+    "image": {
+      "rect": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 415.1875,
+        "height": 233.53125,
+        "top": 237.390625,
+        "right": 616.1875,
+        "bottom": 470.921875,
+        "left": 201
+      },
+      "style": {
+        "position": "absolute",
+        "width": "415.188px",
+        "height": "233.531px",
+        "maxWidth": "100%",
+        "maxHeight": "none",
+        "minWidth": "0px",
+        "minHeight": "0px",
+        "overflow": "clip",
+        "objectFit": "contain",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "inset": "0px",
+        "margin": "0px",
+        "padding": "0px",
+        "aspectRatio": "auto 1155 / 719",
+        "boxSizing": "border-box",
+        "clipPath": "none"
+      }
+    },
+    "parents": [
+      {
+        "class": "articles-mega-lead-media",
+        "rect": {
+          "x": 201,
+          "y": 237.390625,
+          "width": 415.1875,
+          "height": 233.53125,
+          "top": 237.390625,
+          "right": 616.1875,
+          "bottom": 470.921875,
+          "left": 201
+        },
+        "style": {
+          "position": "relative",
+          "width": "415.188px",
+          "height": "233.531px",
+          "maxWidth": "none",
+          "maxHeight": "none",
+          "minWidth": "auto",
+          "minHeight": "auto",
+          "overflow": "hidden",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "none",
+          "inset": "0px",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "16 / 9",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      },
+      {
+        "class": "articles-mega-lead",
+        "rect": {
+          "x": 201,
+          "y": 237.390625,
+          "width": 415.1875,
+          "height": 481.515625,
+          "top": 237.390625,
+          "right": 616.1875,
+          "bottom": 718.90625,
+          "left": 201
+        },
+        "style": {
+          "position": "relative",
+          "width": "415.188px",
+          "height": "481.516px",
+          "maxWidth": "none",
+          "maxHeight": "none",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "overflow": "hidden",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "none",
+          "inset": "0px",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "auto",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      },
+      {
+        "class": "articles-mega-content",
+        "rect": {
+          "x": 201,
+          "y": 237.390625,
+          "width": 1038,
+          "height": 481.515625,
+          "top": 237.390625,
+          "right": 1239,
+          "bottom": 718.90625,
+          "left": 201
+        },
+        "style": {
+          "position": "static",
+          "width": "1038px",
+          "height": "481.516px",
+          "maxWidth": "none",
+          "maxHeight": "none",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "overflow": "visible",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "none",
+          "inset": "auto",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "auto",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      },
+      {
+        "class": "articles-mega-menu",
+        "rect": {
+          "x": 200,
+          "y": 152,
+          "width": 1040,
+          "height": 624.90625,
+          "top": 152,
+          "right": 1240,
+          "bottom": 776.90625,
+          "left": 200
+        },
+        "style": {
+          "position": "fixed",
+          "width": "1040px",
+          "height": "624.906px",
+          "maxWidth": "none",
+          "maxHeight": "836px",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "overflow": "hidden auto",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "matrix(1, 0, 0, 1, -520, 0)",
+          "inset": "118px -320px -625.906px 720px",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "auto",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      },
+      {
+        "class": "articles-menu",
+        "rect": {
+          "x": 599.359375,
+          "y": 99,
+          "width": 63.734375,
+          "height": 42,
+          "top": 99,
+          "right": 663.09375,
+          "bottom": 141,
+          "left": 599.359375
+        },
+        "style": {
+          "position": "relative",
+          "width": "63.7344px",
+          "height": "42px",
+          "maxWidth": "none",
+          "maxHeight": "none",
+          "minWidth": "auto",
+          "minHeight": "auto",
+          "overflow": "visible",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "none",
+          "inset": "0px",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "auto",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      }
+    ],
+    "panelScroll": 0,
+    "hover": {
+      "transform": "none",
+      "bounds": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 415.1875,
+        "height": 233.53125,
+        "top": 237.390625,
+        "right": 616.1875,
+        "bottom": 470.921875,
+        "left": 201
+      }
+    }
+  },
+  {
+    "width": 1280,
+    "height": 600,
+    "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+    "title": "15 лучших художественных книг о рыцарях",
+    "imageAttrs": {
+      "src": "/media/optimized/c902c3296c4ca55e625fa1a1-640w.webp",
+      "width": "1155",
+      "height": "719",
+      "srcset": "/media/optimized/c902c3296c4ca55e625fa1a1-640w.webp 640w, /media/optimized/c902c3296c4ca55e625fa1a1-1155w.webp 1155w",
+      "sizes": "(max-height: 740px) 300px, 416px",
+      "alt": "",
+      "loading": "lazy",
+      "decoding": "async"
+    },
+    "currentSrc": "http://127.0.0.1:5173/media/optimized/c902c3296c4ca55e625fa1a1-640w.webp",
+    "natural": [
+      299,
+      186
+    ],
+    "articleImageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+    "originalImageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+    "image": {
+      "rect": {
+        "x": 216.59375,
+        "y": 213.390625,
+        "width": 224,
+        "height": 126,
+        "top": 213.390625,
+        "right": 440.59375,
+        "bottom": 339.390625,
+        "left": 216.59375
+      },
+      "style": {
+        "position": "absolute",
+        "width": "224px",
+        "height": "126px",
+        "maxWidth": "100%",
+        "maxHeight": "none",
+        "minWidth": "0px",
+        "minHeight": "0px",
+        "overflow": "clip",
+        "objectFit": "contain",
+        "objectPosition": "50% 50%",
+        "transform": "none",
+        "inset": "0px",
+        "margin": "0px",
+        "padding": "0px",
+        "aspectRatio": "auto 1155 / 719",
+        "boxSizing": "border-box",
+        "clipPath": "none"
+      }
+    },
+    "parents": [
+      {
+        "class": "articles-mega-lead-media",
+        "rect": {
+          "x": 216.59375,
+          "y": 213.390625,
+          "width": 224,
+          "height": 126,
+          "top": 213.390625,
+          "right": 440.59375,
+          "bottom": 339.390625,
+          "left": 216.59375
+        },
+        "style": {
+          "position": "relative",
+          "width": "224px",
+          "height": "126px",
+          "maxWidth": "none",
+          "maxHeight": "none",
+          "minWidth": "auto",
+          "minHeight": "auto",
+          "overflow": "hidden",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "none",
+          "inset": "0px",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "16 / 9",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      },
+      {
+        "class": "articles-mega-lead",
+        "rect": {
+          "x": 121,
+          "y": 213.390625,
+          "width": 415.1875,
+          "height": 322.984375,
+          "top": 213.390625,
+          "right": 536.1875,
+          "bottom": 536.375,
+          "left": 121
+        },
+        "style": {
+          "position": "relative",
+          "width": "415.188px",
+          "height": "322.984px",
+          "maxWidth": "none",
+          "maxHeight": "none",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "overflow": "hidden",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "none",
+          "inset": "0px",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "auto",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      },
+      {
+        "class": "articles-mega-content",
+        "rect": {
+          "x": 121,
+          "y": 213.390625,
+          "width": 1038,
+          "height": 322.984375,
+          "top": 213.390625,
+          "right": 1159,
+          "bottom": 536.375,
+          "left": 121
+        },
+        "style": {
+          "position": "static",
+          "width": "1038px",
+          "height": "322.984px",
+          "maxWidth": "none",
+          "maxHeight": "none",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "overflow": "visible",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "none",
+          "inset": "auto",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "auto",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      },
+      {
+        "class": "articles-mega-menu",
+        "rect": {
+          "x": 120,
+          "y": 152,
+          "width": 1040,
+          "height": 434.375,
+          "top": 152,
+          "right": 1160,
+          "bottom": 586.375,
+          "left": 120
+        },
+        "style": {
+          "position": "fixed",
+          "width": "1040px",
+          "height": "434.375px",
+          "maxWidth": "none",
+          "maxHeight": "436px",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "overflow": "hidden auto",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "matrix(1, 0, 0, 1, -520, 0)",
+          "inset": "118px -400px -435.375px 640px",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "auto",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      },
+      {
+        "class": "articles-menu",
+        "rect": {
+          "x": 523.4375,
+          "y": 99,
+          "width": 63.734375,
+          "height": 42,
+          "top": 99,
+          "right": 587.171875,
+          "bottom": 141,
+          "left": 523.4375
+        },
+        "style": {
+          "position": "relative",
+          "width": "63.7344px",
+          "height": "42px",
+          "maxWidth": "none",
+          "maxHeight": "none",
+          "minWidth": "auto",
+          "minHeight": "auto",
+          "overflow": "visible",
+          "objectFit": "fill",
+          "objectPosition": "50% 50%",
+          "transform": "none",
+          "inset": "0px",
+          "margin": "0px",
+          "padding": "0px",
+          "aspectRatio": "auto",
+          "boxSizing": "border-box",
+          "clipPath": "none"
+        }
+      }
+    ],
+    "panelScroll": 0,
+    "hover": {
+      "transform": "none",
+      "bounds": {
+        "x": 216.59375,
+        "y": 213.390625,
+        "width": 224,
+        "height": 126,
+        "top": 213.390625,
+        "right": 440.59375,
+        "bottom": 339.390625,
+        "left": 216.59375
+      }
+    }
+  }
+]

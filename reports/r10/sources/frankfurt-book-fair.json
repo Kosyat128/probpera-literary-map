@@ -1,0 +1,848 @@
+{
+  "sourceId": "frankfurt-book-fair",
+  "name": "Frankfurter Buchmesse",
+  "entryUrl": "https://www.buchmesse.de/en/press/press-releases",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-09-26T17:27:25.839Z",
+  "requests": [
+    {
+      "url": "https://www.buchmesse.de/en/press/press-releases",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 129833,
+      "sha256": "eaabbeb27555c95c302af94344077c8a8291933cee4c0d6c05c1103603959c45",
+      "accessedAt": "2026-09-26T17:19:59.811Z"
+    },
+    {
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97966,
+      "sha256": "c2af86fefbe701b3df5092cb9bf5189c3b8c1ee99c60b10a9a9ddb294bc27e05",
+      "accessedAt": "2026-09-26T17:27:26.552Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.buchmesse.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 186,
+    "sha256": "ac3e966787a0eb8d62f28c09a6be4c5f8b8ed784c4acc2989f24a24c7fa4d4bc",
+    "accessedAt": "2026-09-26T17:27:26.247Z",
+    "disallowed": [
+      "/ics/*"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:19:59.033Z",
+    "sourceDocumentSha256": "eaabbeb27555c95c302af94344077c8a8291933cee4c0d6c05c1103603959c45"
+  },
+  "endpoint": {
+    "id": "frankfurt-book-fair",
+    "name": "Frankfurter Buchmesse",
+    "url": "https://www.buchmesse.de/en/press/press-releases",
+    "format": "html",
+    "language": "en",
+    "region": "europe",
+    "sourceFamilyId": "frankfurt-book-fair",
+    "countryCodes": [
+      "DE"
+    ],
+    "coverageCountryCodes": [
+      "DE"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.buchmesse.de"
+    ],
+    "linkPattern": "^\\/en\\/press\\/press-releases\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026"
+    ],
+    "verifiedAt": "2026-09-26T17:27:26.558Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 29,
+  "literaryCandidateCount": 29,
+  "sample": {
+    "sourceId": "frankfurt-book-fair",
+    "source": {
+      "name": "Frankfurter Buchmesse",
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+      "language": "en"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "From Literary Rights to Global Screens: Book-to-Screen Day 2026 at Frankfurter Buchmesse",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:26.304Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97966,
+      "sha256": "c2af86fefbe701b3df5092cb9bf5189c3b8c1ee99c60b10a9a9ddb294bc27e05",
+      "accessedAt": "2026-09-26T17:27:26.552Z",
+      "headline": "From Literary Rights to Global Screens: Book-to-Screen Day 2026 at Frankfurter Buchmesse",
+      "excerpt": "From Literary Rights to Global Screens: Book-to-Screen Day 2026 at Frankfurter Buchmesse Book-to-Screen Day on 9 October 2026 with talks, matchmaking and networking around film and television adaptations | International perspectives on the European adaptation marketWhich literary works have the potential to become films or TV series? What trends are shaping the European adaptation market? And how ",
+      "publishedDates": [],
+      "canonical": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:26.558Z",
+  "foundItems": [
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Literary Rights to Global Screens: Book-to-Screen Day 2026 at Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-aficionado-award-words-without-borders",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 2026 Aficionado Award goes to the translation project Words Without Borders",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-11-czechia-guest-honour-frankfurter-buchmesse-2026-presents-its",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Czechia, Guest of Honour at Frankfurter Buchmesse 2026, presents its literary and cultural programme and the pavilion design",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-05-12-guest-honour-czechia-authors",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "75 Czech authors will attend the 2026 Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-well-prepared-2026-frankfurter-buchmesse-app-map-halls-and-tips",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Well Prepared for the 2026 Frankfurter Buchmesse: App, Map of the Halls, and Tips for Visiting the Fair",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-16-trade-programme-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AI, rights trading and the future of the industry \u2013 Frankfurter Buchmesse's trade programme 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-who-narrating-future-frankfurter-buchmesses-audio-programme-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Who is narrating the future? Frankfurter Buchmesse’s audio programme 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-08-27-comics-manga-and-visual-stories-frankfurter-buchmesse-creating-new",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Comics, manga and visual stories: Frankfurter Buchmesse is creating new spaces for the industry and the community",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-07-04-frankfurter-buchmesse-make-its-debut-filgua-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse to make its debut at FILGUA 2026: Germany is Guest of Honour in Guatemala",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-24-frankfurter-buchmesse-tickets-are-sale",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Five days of meetings, expert talks and events: tickets for Frankfurter Buchmesse 2026 are on sale now",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-03-30-call-participation-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Make way for powerful voices and fresh ideas: the Call for Participation for the 78th edition of Frankfurter Buchmesse is now open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-03-26-new-book-screen-kviff-project-opens-door-literary-adaptations",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New 'Book-to-Screen at KVIFF' project opens the door to literary adaptations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-03-17-jill-lepore-fbm26",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "US historian Jill Lepore to speak at the Opening Press Conference of the 2026 Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-02-25-applications-open-international-grant-programmes",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse 2026: Applications open for international grant programmes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-02-18-romania-guest-honour-2028-book-fair-frankfurt",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Romania to be Guest of Honour at Frankfurter Buchmesse 2028",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-02-19-experience-meets-ai-wildcard-brings-two-tech-partners-frankfurter",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Experience meets AI: Wildcard brings two tech partners to Frankfurter Buchmesse 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-01-27-frankfurter-buchmesse-announces-change-top-organisation-joachim",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse announces change at the top of the organisation: Joachim Kaufmann to succeed Juergen Boos in autumn 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-01-12-20-years-books-berlinale-which-novel-will-make-it-big-screen",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "20 Years of Books at Berlinale: Which novel will make it to the big screen?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-11-19-wildcard-publishing-partners-two-exceptional-exhibitors-will",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wildcard for publishing partners: Two exceptional exhibitors will receive a free stand at Frankfurter Buchmesse 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-11-05-frankfurter-buchmesse-course-expansion-scholz-friends-becomes-new",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse on course for expansion: Scholz & Friends becomes new lead agency",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-10-19-guest-honour-philippines-czechia",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From the Philippines to Czechia: Guest of Honour Handover Ceremony 2025 at Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-10-19-frankfurter-buchmesse-continues-grow-and-connect-world-literature",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse continues to grow \u2013 and connect the world of literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-10-17-frankfurter-buchmesse-2025-report-midway-through-fair",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse 2025: Report from midway through the fair",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-11-major-names-major-issues-78th-frankfurter-buchmesse",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Major names, major issues: 78th Frankfurter Buchmesse will bring international guests to Frankfurt and provide a forum for debate",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-23-more-space-childrens-and-young-adult-books",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "More space for children’s and young adult books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-23-public-programme-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Public programme: New worlds for stories and their fans",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-realm-transformation-hall-41",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In the realm of transformation: Hall 4.1",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-08-40-years-frankfurt-rights-meeting",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Rights Then. Rights Now”: 40 years Frankfurt Rights Meeting",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-05-07-masterclasses-and-hof-ai-personal-branding",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Masterclasses and The Hof: From AI to personal branding",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "eaabbeb27555c95c302af94344077c8a8291933cee4c0d6c05c1103603959c45"
+}

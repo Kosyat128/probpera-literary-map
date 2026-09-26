@@ -1,0 +1,34 @@
+{
+  "sourceId": "dhaka-lit-fest",
+  "name": "Dhaka Lit Fest",
+  "entryUrl": "https://www.dhakalitfest.com/",
+  "countryCodes": [
+    "BD"
+  ],
+  "coverageCountryCodes": [
+    "BD"
+  ],
+  "attemptedAt": "2026-09-26T17:31:49.668Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_503",
+  "robots": {
+    "url": "https://www.dhakalitfest.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 206,
+    "sha256": "627197abca53a9490e478ed25efdfcf73aee2f3de71b76897dcf11754129a26a",
+    "accessedAt": "2026-09-26T17:31:50.810Z",
+    "disallowed": [
+      "/cgi-bin/",
+      "/register/",
+      "/login/",
+      "/register",
+      "/login",
+      "/api/",
+      "/api",
+      "/old/",
+      "/old"
+    ]
+  }
+}

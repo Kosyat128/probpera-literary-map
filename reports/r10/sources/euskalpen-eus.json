@@ -1,0 +1,26 @@
+{
+  "sourceId": "euskalpen-eus",
+  "name": "Basque PEN",
+  "entryUrl": "https://www.euskalpen.eus/who-we-are",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [
+    "ES"
+  ],
+  "attemptedAt": "2026-09-26T17:29:21.812Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_404",
+  "robots": {
+    "url": "https://www.euskalpen.eus/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 491,
+    "sha256": "53a76bca3a199560e2e17cd7d6ec8ae72a78ab4d45f3f3f8c0e26c1f7b4dbc61",
+    "accessedAt": "2026-09-26T17:29:22.461Z",
+    "disallowed": [
+      "*?lightbox="
+    ]
+  }
+}

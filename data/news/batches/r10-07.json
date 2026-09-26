@@ -1,0 +1,1275 @@
+{
+  "version": 1,
+  "batchId": "r10-07",
+  "status": "prepared-not-published",
+  "createdAt": "2026-09-26T18:12:35.131Z",
+  "editorialTimeZone": "Europe/Moscow",
+  "originalBaseline": {
+    "count": 33,
+    "ids": [
+      "tolstoy-birthday-2026",
+      "booker-shortlist-2026-announcement",
+      "love-hypothesis-2026-release-announcement",
+      "kiki-third-english-edition-announcement",
+      "booker-longlist-2026",
+      "german-book-prize-longlist-2026",
+      "german-book-prize-shortlist-2026-announcement",
+      "frankfurt-book-fair-2026-announcement",
+      "gothenburg-book-fair-2026-announcement",
+      "british-library-agatha-christie-exhibition-2026",
+      "bnf-richelieu-heritage-days-2026",
+      "yasnaya-polyana-tolstoy-library-20260912",
+      "goslitmuz-people-of-december-publication-2026",
+      "mandelstam-days-2026-announcement",
+      "giller-longlist-2026-schedule",
+      "national-book-awards-longlists-2026",
+      "nbf-presents-fall-2026-announced",
+      "brooklyn-book-festival-2026-main-day",
+      "mandel-exit-party-us-2026",
+      "john-green-hollywood-ending-us-2026",
+      "marlon-james-disappearers-us-catalog-2026",
+      "guernsey-medieval-fragments-research-2026",
+      "whisper-man-netflix-release-20260828",
+      "international-booker-funding-20260702",
+      "ubud-writers-readers-festival-2026",
+      "shanghai-childrens-book-fair-2026",
+      "ake-arts-book-festival-2026",
+      "nairobi-international-book-fair-2026",
+      "gioconda-belli-fil-prize-2026",
+      "guadalajara-international-book-fair-2026",
+      "hay-queretaro-emiliano-monge-2026",
+      "brisbane-writers-festival-2026",
+      "new-zealand-childrens-book-awards-2026"
+    ],
+    "sha256": "73022c08ab8b1b18ebfda3ced9046d5e619e6d7a70e609af0903680e57e931af"
+  },
+  "counts": {
+    "prepared": 21,
+    "productionSelectorEligible": 21,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "records": [
+    {
+      "id": "liechtenstein-helena-brehm-poetry-workshop-2026",
+      "eventKey": "liechtenstein-helena-brehm-poetry-workshop-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-03",
+      "publishedAt": "2026-08-10T14:28:25.000Z",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Библиотека Лихтенштейна проведёт поэтическую мастерскую Хелены Брем",
+        "en": "Liechtenstein library to host Helena Brehm’s poetry workshop"
+      },
+      "summary": {
+        "ru": "3 октября с 18:00 до 19:30 Хелена Брем проведёт в Национальной библиотеке Лихтенштейна мастерскую по созданию стихов. Участникам предложат простые упражнения с языком и первые опыты собственного письма; предварительная подготовка не требуется. Библиотека просит записываться заранее.",
+        "en": "Helena Brehm will lead a poetry-writing workshop at Liechtenstein’s national library on October 3, 18:00-19:30. Participants will try language exercises and write their own poems; no substantial prior experience is required. The library requests advance registration."
+      },
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+        "language": "de"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "asymptote-maria-messina-camilla-translation-2026",
+      "eventKey": "asymptote-maria-messina-camilla-translation-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-15",
+      "publishedAt": "2026-09-15T13:00:13.000Z",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Asymptote опубликовал английский перевод «Камиллы» Марии Мессины",
+        "en": "Asymptote publishes an English translation of Maria Messina’s Camilla"
+      },
+      "summary": {
+        "ru": "15 сентября в Translation Tuesday появился рассказ Марии Мессины Camilla в переводе Ричарда Чирьелло. Текст взят из сборника Ragazze siciliane 1921 года. Во вступлении переводчик объясняет, как сохранял ритм сицилийской речи и сдержанность оригинала.",
+        "en": "Translation Tuesday published Maria Messina’s Camilla in Richard Ciriello’s English translation on September 15. The story comes from the 1921 collection Ragazze siciliane. The translator’s introduction explains his approach to preserving the cadence of Sicilian speech and the original’s restraint."
+      },
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/15/translation-tuesday-camilla-by-maria-messina/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "lithuania-winnie-pooh-centenary-programme-2026",
+      "eventKey": "lithuania-winnie-pooh-centenary-programme-2026",
+      "category": "anniversaries",
+      "kind": "announcement",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-09-23T08:21:49.000Z",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Национальная библиотека Литвы подготовила программу к столетию Винни-Пуха",
+        "en": "Lithuania’s national library prepares a Winnie-the-Pooh centenary programme"
+      },
+      "summary": {
+        "ru": "С 30 сентября Национальная библиотека Литвы начнёт программу к столетию первого издания Winnie-the-Pooh. Запланированы выставка изданий и материалов литовского перевода, занятия для детей и встречи. 14 октября состоится онлайн-семинар о книге, а 16 октября - разговор о её литературном мире.",
+        "en": "Lithuania’s national library will begin its programme marking a century since the first Winnie-the-Pooh edition on September 30. Plans include displays of editions and Lithuanian translation materials, children’s activities and meetings. An online seminar is scheduled for October 14 and a discussion of the book’s world for October 16."
+      },
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15156-valio-pukuotukui-winnie-the-p-1-o-o-h",
+        "language": "lt"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "ken-bugul-julie-huntington-asymptote-interview-2026",
+      "eventKey": "ken-bugul-julie-huntington-asymptote-interview-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-17T13:00:39.000Z",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Кен Бугул и Джули Хантингтон обсудили перевод Felix Faure Street",
+        "en": "Ken Bugul and Julie Huntington discuss translating Felix Faure Street"
+      },
+      "summary": {
+        "ru": "Asymptote опубликовал совместное интервью с сенегальской писательницей Кен Бугул, также известной как Мариету Мбай, и переводчицей Джули Хантингтон. Разговор посвящён Felix Faure Street: соединению жанров, образу Дакара и тому, как переводчик выбирает книгу и предлагает её издателю.",
+        "en": "Asymptote has published a joint interview with Senegalese novelist Ken Bugul, also known as Mariètou Mbaye, and translator Julie Huntington. They discuss Felix Faure Street, its combination of genres, its portrayal of Dakar, and the translator’s work of selecting a book and pitching it to publishers."
+      },
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/17/fearlessness-in-various-combinations-an-interview-with-marietou-mbaye-and-julie-huntington/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "lithuania-ekultura-digital-heritage-finalist-2026",
+      "eventKey": "lithuania-ekultura-digital-heritage-finalist-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25T09:16:43.000Z",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Литовская платформа ekultūra вышла в финал конкурса цифровых проектов",
+        "en": "Lithuania’s ekultūra reaches the digital projects competition final"
+      },
+      "summary": {
+        "ru": "Платформа ekultūra, созданная Национальной библиотекой Литвы с 22 партнёрами, вошла в финал конкурса Skaitmeninis knygnešys 2026 в категории культуры и наследия. Портал объединяет около 800 тысяч культурных объектов, включая книги и рукописи. Финал запланирован на 29 сентября.",
+        "en": "The ekultūra platform, developed by Lithuania’s national library with 22 partners, has reached the culture and heritage final of Skaitmeninis knygnešys 2026. It brings together around 800,000 cultural objects, including books and manuscripts. The final is scheduled for September 29."
+      },
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15177-lietuvos-kultura-atrasti-padedanti-platforma-ekultura-konkurso-skaitmeninis-knygnesys-finale",
+        "language": "lt"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "lithuania-italian-literature-reading-lists-2026",
+      "eventKey": "lithuania-italian-literature-reading-lists-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-10",
+      "publishedAt": "2026-09-10T05:07:17.000Z",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Литовская библиотека и посольство Италии представили литературные подборки",
+        "en": "Lithuania’s national library and Italian embassy present reading selections"
+      },
+      "summary": {
+        "ru": "Национальная библиотека Литвы вместе с посольством Италии подготовила экспертные подборки итальянской литературы. Они охватывают художественные книги для взрослых, детскую литературу и документальные издания. Все включённые книги можно найти и заказать через библиотечный портал ibiblioteka.lt.",
+        "en": "Lithuania’s national library and the Italian embassy have prepared expert selections of Italian literature. The lists cover adult fiction, children’s literature and nonfiction. All the listed books can be found and requested through the ibiblioteka.lt library portal."
+      },
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15104-atrinkta-jums-italu-literatura",
+        "language": "lt"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "slovakia-bibliography-days-seminars-2026",
+      "eventKey": "slovakia-bibliography-days-seminars-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-10-02",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "В Словакии пройдут три семинара «Библиографические дни»",
+        "en": "Slovakia schedules three Bibliography Days seminars"
+      },
+      "summary": {
+        "ru": "Словацкая национальная библиотека объявила «Библиографические дни» 2 октября в Прешове, 8 октября в Мартине и 20 октября в Братиславе. В программе - каталогизация, обязательный экземпляр, биографический электронный каталог и терминологический словарь библиотечной науки. Участие требует бронирования.",
+        "en": "The Slovak National Library has announced Bibliography Days on October 2 in Prešov, October 8 in Martin and October 20 in Bratislava. Topics include cataloguing, legal deposit, a biographical electronic catalogue and a library-science terminology dictionary. Advance booking is required."
+      },
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "slovak-literary-fund-incunabula-publications-award-2026",
+      "eventKey": "slovak-literary-fund-incunabula-publications-award-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-21",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Литературный фонд Словакии отметил книги об инкунабулах Национальной библиотеки",
+        "en": "Slovakia’s Literary Fund recognises national library incunabula studies"
+      },
+      "summary": {
+        "ru": "Словацкая национальная библиотека сообщила, что Мартин Балога и Даниэла Шкулова отмечены Литературным фондом за две книги 2025 года об инкунабулах её собрания. Монография посвящена наследию ранних печатных книг, а каталог содержит 641 библиографическую запись о 803 экземплярах.",
+        "en": "The Slovak National Library reports that Martin Baloga and Daniela Škulová have been recognised by the Literary Fund for two 2025 publications about its incunabula collection. The monograph examines early printed-book heritage, while the catalogue contains 641 bibliographic records covering 803 copies."
+      },
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/literarny-fond-ocenil-nasu-publikaciu",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "slovakia-power-story-library-webinar-2026",
+      "eventKey": "slovakia-power-story-library-webinar-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-11-19",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Словацкая национальная библиотека проведёт вебинар о работе с историями",
+        "en": "Slovak National Library to hold a webinar on working with stories"
+      },
+      "summary": {
+        "ru": "19 ноября с 9:30 до 11:30 библиотека проведёт онлайн-встречу Sila príbehu v knižnici. Библиотекари и специалисты обсудят работу с литературным текстом, взаимодействие с сообществом и этические границы использования личных историй. В программу включён опыт занятий с пожилыми читателями.",
+        "en": "The library will host Sila príbehu v knižnici online on November 19, 9:30-11:30. Librarians and specialists will discuss literary texts, community engagement and ethical boundaries when working with personal stories. The programme includes experience of activities with older readers."
+      },
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/webinar-sila-pribehu-v-kniznici",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "darlowo-morze-literatury-first-festival-report-2026",
+      "eventKey": "darlowo-morze-literatury-first-festival-report-2026",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-21",
+      "publishedAt": "2026-09-22",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "В Дарлово завершился первый фестиваль Morze Literatury",
+        "en": "Darłowo concludes the first Morze Literatury festival"
+      },
+      "summary": {
+        "ru": "Первый фестиваль Morze Literatury прошёл в Дарлово 18-21 сентября и был посвящён разным формам одиночества. Национальная библиотека Польши подвела итоги программы: дискуссий с авторами и исследователями, ночных чтений стихов, встреч и мастерских для молодёжи.",
+        "en": "The first Morze Literatury festival took place in Darłowo on September 18-21, exploring different forms of solitude. Poland’s national library has reviewed a programme of discussions with writers and researchers, night-time poetry readings, meetings and workshops for young people."
+      },
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+        "language": "pl"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "european-literacy-coalition-brussels-launch-2026",
+      "eventKey": "european-literacy-coalition-brussels-launch-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-24",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "В Брюсселе начала работу Европейская коалиция в поддержку чтения",
+        "en": "European Literacy Coalition launches in Brussels"
+      },
+      "summary": {
+        "ru": "22-23 сентября в Брюсселе прошла стартовая конференция European Literacy Coalition. По сообщению Национальной библиотеки Польши, участникам представили Варшавский меморандум, подготовленный на майских встречах в библиотеке. Инициатива объединяет разные отрасли для поддержки чтения и читательских навыков.",
+        "en": "The European Literacy Coalition held its launch conference in Brussels on September 22-23. Poland’s national library reports that participants were presented with the Warsaw Memorandum, developed during May workshops at the library. The initiative brings sectors together to support reading and literacy."
+      },
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6241-koalicja-unii-europejskiej-na-rzecz-czytelnictwa-oficjalnie-zainaugurowana-w-brukseli.html",
+        "language": "pl"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+      "eventKey": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-19",
+      "publishedAt": "2026-09-19",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Кшиштоф Помян получил первую премию имени Чеслава Милоша",
+        "en": "Krzysztof Pomian receives the inaugural Czesław Miłosz Prize"
+      },
+      "summary": {
+        "ru": "19 сентября в Дарлово историку, философу и эссеисту Кшиштофу Помяну вручили первую премию имени Чеслава Милоша за совокупность творчества. Награда учреждена Национальной библиотекой Польши в 2026 году и отмечает достижения в поэзии, эссеистике и прозе.",
+        "en": "Historian, philosopher and essayist Krzysztof Pomian received the inaugural Czesław Miłosz Prize for his body of work in Darłowo on September 19. Established by Poland’s national library in 2026, the award recognises achievement in poetry, essays and prose."
+      },
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6235-gala-nagrody-im-czeslawa-milosza-w-darlowie-krzysztof-pomian-laureatem.html",
+        "language": "pl"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "adeb-namur-publishing-future-colloquium-2026",
+      "eventKey": "adeb-namur-publishing-future-colloquium-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-11-16",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Бельгийские издатели объявили конференцию о будущем книги в Намюре",
+        "en": "Belgian publishers announce a conference on the future of books in Namur"
+      },
+      "summary": {
+        "ru": "ADEB объявила вторую конференцию L’édition au futur на 16 ноября в La Bourse de Namur, с 9:00 до 17:00. Профессионалы книжного дела обсудят изменения издательской среды; ассоциация представит результаты своей работы о цене книги и вкладе издателя.",
+        "en": "ADEB has announced the second L’édition au futur conference for November 16 at La Bourse de Namur, 9:00-17:00. Book professionals will discuss changes affecting publishing, and the association will present its work on book pricing and the publisher’s contribution."
+      },
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "pantin-comics-publishing-conference-2026",
+      "eventKey": "pantin-comics-publishing-conference-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-09-28",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "В Пантене пройдёт профессиональная встреча о будущем комиксов",
+        "en": "Pantin to host a professional meeting on the future of comics"
+      },
+      "summary": {
+        "ru": "28 сентября библиотека Nelson Mandela в Пантене примет встречу Créer et lire demain, организованную группой комиксов французского Союза издателей с партнёрами. Программа охватывает мангу, вебтуны, графический роман, новых авторов и работу с читателями. Среди участников - Гийом Сингелен и Жюльет Брокаль.",
+        "en": "Pantin’s Nelson Mandela Library will host Créer et lire demain on September 28, organised by the French publishers’ union’s comics group and partners. Sessions cover manga, webtoons, graphic novels, emerging creators and reader engagement. Participants include Guillaume Singelin and Juliette Brocal."
+      },
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/evenement_sne/creer-et-lire-demain-comprendre-le-nouveau-paysage-de-la-bd/",
+        "language": "fr-FR"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "turin-italiano-al-mondo-translators-conference-2026",
+      "eventKey": "turin-italiano-al-mondo-translators-conference-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-11-20",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Туринский книжный салон проведёт онлайн-конференцию для переводчиков с итальянского",
+        "en": "Turin Book Fair to hold an online conference for translators from Italian"
+      },
+      "summary": {
+        "ru": "20 ноября с 14:30 пройдёт бесплатная конференция Dall’italiano al mondo под руководством Илиде Карминьяни. В программе - современные проза, эссеистика, поэзия, детская литература и комиксы Италии, а также работа переводчика как литературного скаута. Организатор - Туринский международный книжный салон.",
+        "en": "The free Dall’italiano al mondo conference, led by Ilide Carmignani, will begin online on November 20 at 14:30. Sessions cover contemporary Italian fiction, essays, poetry, children’s books and comics, as well as translators’ work as literary scouts. The Turin International Book Fair organises the event."
+      },
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/italiano-al-mondo-2026.html",
+        "language": "it"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "saluzzo-medieval-book-festival-2026",
+      "eventKey": "saluzzo-medieval-book-festival-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-23",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "В Салуццо откроется фестиваль средневековой и старинной книги",
+        "en": "Saluzzo to open its medieval and early book festival"
+      },
+      "summary": {
+        "ru": "Шестая Festa del libro medievale e antico начнётся в Салуццо 23 октября; основные встречи пройдут 24-25 октября, дополнительная программа - 31 октября. Тема выпуска - еда и застолье в Средние века. Среди объявленных участников - Якопо Венециани, Стефано Нацци и Жорди Саваль.",
+        "en": "The sixth Festa del libro medievale e antico opens in Saluzzo on October 23, with its main programme on October 24-25 and additional events on October 31. This edition explores food and dining in the Middle Ages. Announced participants include Jacopo Veneziani, Stefano Nazzi and Jordi Savall."
+      },
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/2026/festa-libro-medievale-saluzzo-2026.html",
+        "language": "it"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "gianni-mura-fuoriclasse-winner-announcement-2026",
+      "eventKey": "gianni-mura-fuoriclasse-winner-announcement-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-11-14",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Победителя школьной секции премии Джанни Муры объявят 14 ноября",
+        "en": "Gianni Mura Prize’s school-jury winner to be announced on November 14"
+      },
+      "summary": {
+        "ru": "Победителя секции Fuoriclasse литературной премии Джанни Муры объявят 14 ноября во время Nitto ATP Finals. Книгу выбирают четвёртые и пятые классы итальянских начальных школ из пяти финалистов спортивной литературы для детей. Приём заявок в жюри уже закрыт.",
+        "en": "The Fuoriclasse winner of the Gianni Mura sports literature prize will be announced on November 14 during the Nitto ATP Finals. Fourth- and fifth-year primary school classes across Italy choose from five children’s sports-literature finalists. Applications to join the jury are already closed."
+      },
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/Premio-Gianni-Mura-2026.html",
+        "language": "it"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "liber-innovation-audio-programme-2026",
+      "eventKey": "liber-innovation-audio-programme-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-09-22T14:17:45.000Z",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Liber объявил профессиональные программы об инновациях и аудиокнигах",
+        "en": "Liber announces professional programmes on innovation and audiobooks"
+      },
+      "summary": {
+        "ru": "29 сентября в Барселоне пройдёт блок Liber Innovación о будущем издательского дела, данных и работе с каталогом. На 30 сентября заявлена аудиопрограмма: международный рынок испаноязычных аудиокниг, производство, продажи и вручение премий Bookwire. Обе программы входят в деловую повестку ярмарки Liber.",
+        "en": "Liber Innovación in Barcelona on September 29 will address publishing’s future, data and backlist development. The September 30 audio programme covers the international Spanish-language audiobook market, production, sales and the Bookwire awards. Both form part of Liber’s professional agenda."
+      },
+      "source": {
+        "name": "Dosdoce",
+        "url": "https://www.dosdoce.com/2026/09/22/jornadas-liber-innovacion-2026/",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "pistoia-deans-rag-books-exhibition-closing-2026",
+      "eventKey": "pistoia-deans-rag-books-exhibition-closing-2026",
+      "category": "heritage",
+      "kind": "announcement",
+      "eventDate": "2026-10-03",
+      "publishedAt": "2026-09-26T00:49:24.000Z",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Выставка старинных тканевых книг в Пистойе завершится 3 октября",
+        "en": "Pistoia’s historic cloth-book exhibition runs until October 3"
+      },
+      "summary": {
+        "ru": "До 3 октября библиотека San Giorgio в Пистойе показывает Libri da abbracciare - выставку ранних Dean’s Rag Books из собрания Фабрицио Муньяини. Около 80 исторических тканевых книг позволяют проследить развитие детского издания, рассчитанного на чтение и игру.",
+        "en": "Pistoia’s San Giorgio Library is showing Libri da abbracciare until October 3, featuring early Dean’s Rag Books from Fabrizio Mugnaini’s collection. Around 80 historic cloth books trace the development of children’s publications designed for both reading and play."
+      },
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/bambini-e-ragazzi/libri-di-pezza-per-linfanzia-1508827/",
+        "language": "it"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "nobel-literature-announcement-schedule-2026",
+      "eventKey": "nobel-literature-announcement-schedule-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-10-08",
+      "publishedAt": "2026-02-02",
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Нобелевского лауреата по литературе объявят 8 октября",
+        "en": "Nobel Prize in Literature announcement scheduled for October 8"
+      },
+      "summary": {
+        "ru": "Шведская академия объявит решение о Нобелевской премии по литературе 2026 года 8 октября, не ранее 13:00 по центральноевропейскому летнему времени. Объявление пройдёт в Стокгольме; Нобелевский фонд планирует прямую трансляцию на официальных цифровых каналах.",
+        "en": "The Swedish Academy will announce its 2026 Nobel Prize in Literature decision on October 8, no earlier than 13:00 CEST. The announcement takes place in Stockholm, with a live broadcast planned on the Nobel Prize’s official digital channels."
+      },
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "piedmont-independent-book-tour-2026",
+      "eventKey": "piedmont-independent-book-tour-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-03",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:12:35.131Z",
+      "title": {
+        "ru": "Independent Book Tour представит 27 независимых издательств Пьемонта",
+        "en": "Independent Book Tour to present 27 independent Piedmont publishers"
+      },
+      "summary": {
+        "ru": "С 3 октября по 5 декабря Independent Book Tour проведёт девять встреч в восьми городах Пьемонта. В программе - 27 независимых издательств, презентации книг, музыка и театральные фрагменты. Вход свободный в пределах вместимости площадок; первая встреча пройдёт в Новаре.",
+        "en": "Independent Book Tour will hold nine meetings across eight Piedmont cities from October 3 to December 5. The programme features 27 independent publishers, book presentations, music and theatrical contributions. Admission is free subject to capacity; the first event is in Novara."
+      },
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/independent-book-tour-2026.html",
+        "language": "it"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "liechtenstein-helena-brehm-poetry-workshop-2026",
+      "sourceId": "landesbibliothek-li",
+      "sourceCountryCodes": [
+        "LI"
+      ],
+      "coverageCountryCodes": [
+        "LI"
+      ],
+      "url": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.990Z",
+      "responseSha256": "7c70a51a940cfaadf23e79f4bcbdab973400cde9466183f4d44028cff1b3d55d",
+      "responseBytes": 1638375,
+      "sourcePublishedAt": "2026-08-10T14:28:25.000Z",
+      "eventDate": "2026-10-03",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Helena Brehm will lead a poetry-writing workshop at Liechtenstein’s national library on October 3, 18:00\u201319:30. Participants will try language exercises and write their own poems; no substantial prior experience is required. The library requests advance registration."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.landesbibliothek.li/wp-content/uploads/2016/04/logo_lilb.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "lithuania-winnie-pooh-centenary-programme-2026",
+      "sourceId": "lnb-lt",
+      "sourceCountryCodes": [
+        "LT"
+      ],
+      "coverageCountryCodes": [
+        "LT",
+        "GB"
+      ],
+      "url": "https://www.lnb.lt/naujienos/15156-valio-pukuotukui-winnie-the-p-1-o-o-h",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.647Z",
+      "responseSha256": "027697233d2dbd9acc2821d241cf45f5b1d9fcaa9842b1b3b386cf3463715573",
+      "responseBytes": 68359,
+      "sourcePublishedAt": "2026-09-23T08:21:49.000Z",
+      "eventDate": "2026-09-30",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Lithuania’s national library will begin its programme marking a century since the first Winnie-the-Pooh edition on September 30. Plans include displays of editions and Lithuanian translation materials, children’s activities and meetings. An online seminar is scheduled for October 14 and a discussion of the book’s world for October 16."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.lnb.lt/images/Naujienos/pukuotukas_794x530_naujiena.jpg#joomlaImage://local-images/Naujienos/pukuotukas_794x530_naujiena.jpg?width=794&height=530",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "lithuania-ekultura-digital-heritage-finalist-2026",
+      "sourceId": "lnb-lt",
+      "sourceCountryCodes": [
+        "LT"
+      ],
+      "coverageCountryCodes": [
+        "LT"
+      ],
+      "url": "https://www.lnb.lt/naujienos/15177-lietuvos-kultura-atrasti-padedanti-platforma-ekultura-konkurso-skaitmeninis-knygnesys-finale",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.694Z",
+      "responseSha256": "b51292dcc1d0e0a205385318ddd6f8f2272c659c218ec7965b5e0a4ca87f6cba",
+      "responseBytes": 66535,
+      "sourcePublishedAt": "2026-09-25T09:16:43.000Z",
+      "eventDate": "2026-09-25",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The ekultūra platform, developed by Lithuania’s national library with 22 partners, has reached the culture and heritage final of Skaitmeninis knygnešys 2026. It brings together around 800,000 cultural objects, including books and manuscripts. The final is scheduled for September 29."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.lnb.lt/images/Naujienos/0925_794x530_lnb.jpg#joomlaImage://local-images/Naujienos/0925_794x530_lnb.jpg?width=794&height=530",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "lithuania-italian-literature-reading-lists-2026",
+      "sourceId": "lnb-lt",
+      "sourceCountryCodes": [
+        "LT"
+      ],
+      "coverageCountryCodes": [
+        "LT",
+        "IT"
+      ],
+      "url": "https://www.lnb.lt/naujienos/15104-atrinkta-jums-italu-literatura",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.693Z",
+      "responseSha256": "4626b1f73b6ef13d09bb692bc28e7c646be6b96cc8427c5a03e39c1a04f45090",
+      "responseBytes": 66143,
+      "sourcePublishedAt": "2026-09-10T05:07:17.000Z",
+      "eventDate": "2026-09-10",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Lithuania’s national library and the Italian embassy have prepared expert selections of Italian literature. The lists cover adult fiction, children’s literature and nonfiction. All the listed books can be found and requested through the ibiblioteka.lt library portal."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.lnb.lt/images/Naujienos/0916_italulit_794x530.png#joomlaImage://local-images/Naujienos/0916_italulit_794x530.png?width=794&height=530",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "slovakia-bibliography-days-seminars-2026",
+      "sourceId": "snk-sk",
+      "sourceCountryCodes": [
+        "SK"
+      ],
+      "coverageCountryCodes": [
+        "SK"
+      ],
+      "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.152Z",
+      "responseSha256": "44596d35f06e54b6b0405dbe88d4f5f4158bac2759a0a0e28fcf0f5a7710b8d8",
+      "responseBytes": 37063,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-02",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The Slovak National Library has announced Bibliography Days on October 2 in Prešov, October 8 in Martin and October 20 in Bratislava. Topics include cataloguing, legal deposit, a biographical electronic catalogue and a library-science terminology dictionary. Advance booking is required."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://snk.sk/fileadmin/_processed_/1/e/csm_Bibliografick%C3%A9_dni_2026_4bcbc7ecc2.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "slovak-literary-fund-incunabula-publications-award-2026",
+      "sourceId": "snk-sk",
+      "sourceCountryCodes": [
+        "SK"
+      ],
+      "coverageCountryCodes": [
+        "SK"
+      ],
+      "url": "https://snk.sk/en/novinky/literarny-fond-ocenil-nasu-publikaciu",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.209Z",
+      "responseSha256": "661272e78667db2047e4885019cae47533c0cec4c3cda37d8eebf13bd15f083f",
+      "responseBytes": 54504,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-09-21",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The Slovak National Library reports that Martin Baloga and Daniela Škulová have been recognised by the Literary Fund for two 2025 publications about its incunabula collection. The monograph examines early printed-book heritage, while the catalogue contains 641 bibliographic records covering 803 copies."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://snk.sk/fileadmin/_processed_/9/7/csm_A3_portrait_KD_1-scaled_0933926b03.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "slovakia-power-story-library-webinar-2026",
+      "sourceId": "snk-sk",
+      "sourceCountryCodes": [
+        "SK"
+      ],
+      "coverageCountryCodes": [
+        "SK"
+      ],
+      "url": "https://snk.sk/en/novinky/webinar-sila-pribehu-v-kniznici",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.215Z",
+      "responseSha256": "cbe367a6c3ded52c1ae18623e7ebe6e8eb94b50d3b2932b3cff223f83d3ef89a",
+      "responseBytes": 37003,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-11-19",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The library will host Sila príbehu v knižnici online on November 19, 9:30\u201311:30. Librarians and specialists will discuss literary texts, community engagement and ethical boundaries when working with personal stories. The programme includes experience of activities with older readers."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://snk.sk/fileadmin/_processed_/2/e/csm_Sila_pr%C3%ADbehu_v_kni%C5%BEnici_7131e391bc.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "darlowo-morze-literatury-first-festival-report-2026",
+      "sourceId": "bn-org-pl",
+      "sourceCountryCodes": [
+        "PL"
+      ],
+      "coverageCountryCodes": [
+        "PL"
+      ],
+      "url": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.984Z",
+      "responseSha256": "6ad7447d49e4536f912cbcd01964340022404e04bbcb25cc14575f4f4460d17f",
+      "responseBytes": 51508,
+      "sourcePublishedAt": "2026-09-22",
+      "eventDate": "2026-09-21",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The first Morze Literatury festival took place in Darłowo on September 18\u201321, exploring different forms of solitude. Poland’s national library has reviewed a programme of discussions with writers and researchers, night-time poetry readings, meetings and workshops for young people."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.bn.org.pl/download/cover/1790150432.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "european-literacy-coalition-brussels-launch-2026",
+      "sourceId": "bn-org-pl",
+      "sourceCountryCodes": [
+        "PL"
+      ],
+      "coverageCountryCodes": [
+        "BE",
+        "PL"
+      ],
+      "url": "https://www.bn.org.pl/aktualnosci/6241-koalicja-unii-europejskiej-na-rzecz-czytelnictwa-oficjalnie-zainaugurowana-w-brukseli.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.321Z",
+      "responseSha256": "c4e3e7b64762d6eea6bebc9e238ecccf3b1d7e8667babacd4ebce90544cd9b74",
+      "responseBytes": 35099,
+      "sourcePublishedAt": "2026-09-24",
+      "eventDate": "2026-09-22",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The European Literacy Coalition held its launch conference in Brussels on September 22\u201323. Poland’s national library reports that participants were presented with the Warsaw Memorandum, developed during May workshops at the library. The initiative brings sectors together to support reading and literacy."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.bn.org.pl/download/cover/1790227740.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+      "sourceId": "bn-org-pl",
+      "sourceCountryCodes": [
+        "PL"
+      ],
+      "coverageCountryCodes": [
+        "PL"
+      ],
+      "url": "https://www.bn.org.pl/aktualnosci/6235-gala-nagrody-im-czeslawa-milosza-w-darlowie-krzysztof-pomian-laureatem.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.083Z",
+      "responseSha256": "3b63de1c26f3e46a9d4cb43bd924a40afc7f8a17642d60ad2aac527334237ebb",
+      "responseBytes": 36185,
+      "sourcePublishedAt": "2026-09-19",
+      "eventDate": "2026-09-19",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Historian, philosopher and essayist Krzysztof Pomian received the inaugural Czesław Miłosz Prize for his body of work in Darłowo on September 19. Established by Poland’s national library in 2026, the award recognises achievement in poetry, essays and prose."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.bn.org.pl/download/cover/1789852610.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "adeb-namur-publishing-future-colloquium-2026",
+      "sourceId": "adeb-be",
+      "sourceCountryCodes": [
+        "BE"
+      ],
+      "coverageCountryCodes": [
+        "BE"
+      ],
+      "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.577Z",
+      "responseSha256": "efcb3cd54cab8c1983547c984e54a31dea8fb95bc28c8255df5f5a47b8445855",
+      "responseBytes": 91260,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-11-16",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "ADEB has announced the second L’édition au futur conference for November 16 at La Bourse de Namur, 9:00\u201317:00. Book professionals will discuss changes affecting publishing, and the association will present its work on book pricing and the publisher’s contribution."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      },
+      "dateBoundary": "The source states 16 November2026 twice; its weekday label is inconsistent with that calendar date. Record follows the explicit date and omits the weekday."
+    },
+    {
+      "id": "pantin-comics-publishing-conference-2026",
+      "sourceId": "sne-fr",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://www.sne.fr/evenement_sne/creer-et-lire-demain-comprendre-le-nouveau-paysage-de-la-bd/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.949Z",
+      "responseSha256": "27aeb4a0007daf7a750d47025746d6bf768721ab53a7e1560ceec1378f0caf29",
+      "responseBytes": 136645,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-09-28",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Pantin’s Nelson Mandela Library will host Créer et lire demain on September 28, organised by the French publishers’ union’s comics group and partners. Sessions cover manga, webtoons, graphic novels, emerging creators and reader engagement. Participants include Guillaume Singelin and Juliette Brocal."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.sne.fr/app/uploads/2026/05/rencontre-en-region-Pantin-1.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "turin-italiano-al-mondo-translators-conference-2026",
+      "sourceId": "salone-libro-torino",
+      "sourceCountryCodes": [
+        "IT"
+      ],
+      "coverageCountryCodes": [
+        "IT"
+      ],
+      "url": "https://www.salonelibro.it/news/tutte-news/italiano-al-mondo-2026.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.422Z",
+      "responseSha256": "1b57a1d0f2f3f63bd0c701156c886b133fcbdf8e46fdb326be828803e19b1c3f",
+      "responseBytes": 42535,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-11-20",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The free Dall’italiano al mondo conference, led by Ilide Carmignani, will begin online on November 20 at 14:30. Sessions cover contemporary Italian fiction, essays, poetry, children’s books and comics, as well as translators’ work as literary scouts. The Turin International Book Fair organises the event."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.salonelibro.it/.resources/salonelibro/webresources/img/salone-libro_OG.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "saluzzo-medieval-book-festival-2026",
+      "sourceId": "salone-libro-torino",
+      "sourceCountryCodes": [
+        "IT"
+      ],
+      "coverageCountryCodes": [
+        "IT"
+      ],
+      "url": "https://www.salonelibro.it/news/tutte-news/2026/festa-libro-medievale-saluzzo-2026.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.438Z",
+      "responseSha256": "065dcc0799059812dc7b223eff2353eb6d0fcf85386c23556dc0e9e69efc3486",
+      "responseBytes": 42337,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-23",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The sixth Festa del libro medievale e antico opens in Saluzzo on October 23, with its main programme on October 24\u201325 and additional events on October 31. This edition explores food and dining in the Middle Ages. Announced participants include Jacopo Veneziani, Stefano Nazzi and Jordi Savall."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.salonelibro.it/.resources/salonelibro/webresources/img/salone-libro_OG.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "gianni-mura-fuoriclasse-winner-announcement-2026",
+      "sourceId": "salone-libro-torino",
+      "sourceCountryCodes": [
+        "IT"
+      ],
+      "coverageCountryCodes": [
+        "IT"
+      ],
+      "url": "https://www.salonelibro.it/news/tutte-news/Premio-Gianni-Mura-2026.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.577Z",
+      "responseSha256": "ccf4befc9b8babfc632489b85d02b2158002b9e85c99769e3d214c07e4eda8dd",
+      "responseBytes": 41055,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-11-14",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The Fuoriclasse winner of the Gianni Mura sports literature prize will be announced on November 14 during the Nitto ATP Finals. Fourth- and fifth-year primary school classes across Italy choose from five children’s sports-literature finalists. Applications to join the jury are already closed."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.salonelibro.it/.resources/salonelibro/webresources/img/salone-libro_OG.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "liber-innovation-audio-programme-2026",
+      "sourceId": "dosdoce",
+      "sourceCountryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [
+        "ES"
+      ],
+      "url": "https://www.dosdoce.com/2026/09/22/jornadas-liber-innovacion-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:58.828Z",
+      "responseSha256": "67eb98491f4560d1e892b9718e74a704de5ba24937c1afd2cab0307843f6e57b",
+      "responseBytes": 91389,
+      "sourcePublishedAt": "2026-09-22T14:17:45.000Z",
+      "eventDate": "2026-09-29",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Liber Innovación in Barcelona on September 29 will address publishing’s future, data and backlist development. The September 30 audio programme covers the international Spanish-language audiobook market, production, sales and the Bookwire awards. Both form part of Liber’s professional agenda."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.dosdoce.com/wp-content/uploads/2026/09/Screenshot-2026-09-22-at-16.12.55.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      },
+      "supplementalPrimaryEvidence": [
+        {
+          "url": "https://www.dosdoce.com/2026/09/22/jornadas-liber-audio-2026/",
+          "status": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 90032,
+          "sha256": "8d55addd246acb87da29dae5b46cc9e4c2dd668c11db5ed3007101c6ad33757c",
+          "accessedAt": "2026-09-26T18:06:58.785Z"
+        }
+      ]
+    },
+    {
+      "id": "pistoia-deans-rag-books-exhibition-closing-2026",
+      "sourceId": "il-libraio",
+      "sourceCountryCodes": [
+        "IT"
+      ],
+      "coverageCountryCodes": [
+        "IT",
+        "GB"
+      ],
+      "url": "https://www.illibraio.it/news/bambini-e-ragazzi/libri-di-pezza-per-linfanzia-1508827/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:58.065Z",
+      "responseSha256": "c75953f9721ed475a0fac6e04ac6784506c12bc6879542e171de95bb3d3dc436",
+      "responseBytes": 88737,
+      "sourcePublishedAt": "2026-09-26T00:49:24.000Z",
+      "eventDate": "2026-10-03",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Pistoia’s San Giorgio Library is showing Libri da abbracciare until October 3, featuring early Dean’s Rag Books from Fabrizio Mugnaini’s collection. Around 80 historic cloth books trace the development of children’s publications designed for both reading and play."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.illibraio.it/wp-content/uploads/2026/09/libri-di-pezza-per-linfanzia.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "nobel-literature-announcement-schedule-2026",
+      "sourceId": "nobel",
+      "sourceCountryCodes": [
+        "SE"
+      ],
+      "coverageCountryCodes": [
+        "SE"
+      ],
+      "url": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:08:18.661Z",
+      "responseSha256": "0bcbb9db30b9b0ad841114881e2a22c2349a11291066461c3ca1587d4bc128dc",
+      "responseBytes": 167468,
+      "sourcePublishedAt": "2026-02-02",
+      "eventDate": "2026-10-08",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The Swedish Academy will announce its 2026 Nobel Prize in Literature decision on October 8, no earlier than 13:00 CEST. The announcement takes place in Stockholm, with a live broadcast planned on the Nobel Prize’s official digital channels."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.nobelprize.org/images/52987-hero-desktop-thin-2x.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      },
+      "dateBoundary": "February2 source publication retained; October8 is a future explicitly announced event, not fresh news of a prize result."
+    },
+    {
+      "id": "piedmont-independent-book-tour-2026",
+      "sourceId": "salone-libro-torino",
+      "sourceCountryCodes": [
+        "IT"
+      ],
+      "coverageCountryCodes": [
+        "IT"
+      ],
+      "url": "https://www.salonelibro.it/news/tutte-news/independent-book-tour-2026.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:08:19.468Z",
+      "responseSha256": "a0f64bb06b0226f4aac6437770f5e8989555f6f13c2cd5edc9d62cba4a866314",
+      "responseBytes": 41490,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-03",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Independent Book Tour will hold nine meetings across eight Piedmont cities from October 3 to December 5. The programme features 27 independent publishers, book presentations, music and theatrical contributions. Admission is free subject to capacity; the first event is in Novara."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.salonelibro.it/.resources/salonelibro/webresources/img/salone-libro_OG.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "asymptote-maria-messina-camilla-translation-2026",
+      "sourceId": "asymptote",
+      "sourceCountryCodes": [
+        "SG"
+      ],
+      "coverageCountryCodes": [
+        "IT"
+      ],
+      "url": "https://www.asymptotejournal.com/blog/2026/09/15/translation-tuesday-camilla-by-maria-messina/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:09:14.631Z",
+      "responseSha256": "264ac6bf0452630ec297176a2106eff347029867da517f0f683303f0e86defd4",
+      "responseBytes": 1465032,
+      "sourcePublishedAt": "2026-09-15T13:00:13.000Z",
+      "eventDate": "2026-09-15",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Translation Tuesday published Maria Messina’s Camilla in Richard Ciriello’s English translation on September 15. The story comes from the 1921 collection Ragazze siciliane. The translator’s introduction explains his approach to preserving the cadence of Sicilian speech and the original’s restraint."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/09/TT_Italy_I.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "ken-bugul-julie-huntington-asymptote-interview-2026",
+      "sourceId": "asymptote",
+      "sourceCountryCodes": [
+        "SG"
+      ],
+      "coverageCountryCodes": [
+        "SN"
+      ],
+      "url": "https://www.asymptotejournal.com/blog/2026/09/17/fearlessness-in-various-combinations-an-interview-with-marietou-mbaye-and-julie-huntington/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:09:15.385Z",
+      "responseSha256": "119ff00a908e87013b5969209b82ca5e225993e5378f055e2213640fee56b1e4",
+      "responseBytes": 1467157,
+      "sourcePublishedAt": "2026-09-17T13:00:39.000Z",
+      "eventDate": "2026-09-17",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Asymptote has published a joint interview with Senegalese novelist Ken Bugul, also known as Mariètou Mbaye, and translator Julie Huntington. They discuss Felix Faure Street, its combination of genres, its portrayal of Dakar, and the translator’s work of selecting a book and pitching it to publishers."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/09/mbaye-huntington.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    }
+  ],
+  "recordSha256": "b52bd1c89162c39d648214b200f185f8d3a4f708541071f682b1777fa82df174",
+  "receipt": {
+    "publication": "not-run",
+    "socialDelivery": "not-run"
+  },
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 21
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "no id/eventKey/canonical URL match in reviewed.json or other prepared batches; semantic review against existing events; single combined Liber professional-programme card; separate Poland festival report and inaugural award ceremony",
+    "schema": "production selectReviewed 21/21",
+    "dateScope": "news event/announcement dates within 60 days; precise future event dates explicitly sourced; report dates kept distinct from source-described event dates; late reports of old editions not labelled new book releases"
+  },
+  "held": [
+    {
+      "researchIndex": 10,
+      "reason": "June29 event, outside60days",
+      "sourceId": "adeb-be",
+      "url": "https://www.adeb.be/fr/infos/presse/les-nouveautes-de-l-edition-belge-a-l-honneur"
+    },
+    {
+      "researchIndex": 11,
+      "reason": "report release date not established",
+      "sourceId": "adeb-be",
+      "url": "https://www.adeb.be/fr/infos/presse/un-marche-en-recul-une-production-qui-resiste-grace-au-numerique"
+    },
+    {
+      "researchIndex": 13,
+      "reason": "February5 project, outside60days",
+      "sourceId": "anel-qc-ca",
+      "url": "https://www.anel.qc.ca/inspirantes-50-ans-dedition-feministe-et-demergence-des-femmes-en-edition-au-quebec/"
+    },
+    {
+      "researchIndex": 14,
+      "reason": "June29 report update, outside60days",
+      "sourceId": "sne-fr",
+      "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/"
+    },
+    {
+      "researchIndex": 17,
+      "reason": "application call already closed; merged relevant tour into one independent event",
+      "sourceId": "salone-libro-torino",
+      "url": "https://www.salonelibro.it/news/tutte-news/call-hangar-del-libro-2025.html"
+    },
+    {
+      "researchIndex": 20,
+      "reason": "merged into single Liber professional programme card; not a second card",
+      "sourceId": "dosdoce",
+      "url": "https://www.dosdoce.com/2026/09/22/jornadas-liber-audio-2026/"
+    },
+    {
+      "researchIndex": 23,
+      "reason": "general free-expression commentary, no specific new literary event",
+      "sourceId": "commonwealth-foundation",
+      "url": "https://commonwealthfoundation.com/freedom-of-expression-is-at-risk/"
+    },
+    {
+      "researchIndex": 26,
+      "reason": "Commonwealth2027 opening postponed to January2027, no exact day and no dated announcement; cannot invent deadline",
+      "sourceId": "commonwealth-foundation",
+      "url": "https://commonwealthfoundation.com/short-story-prize/"
+    }
+  ],
+  "nextStep": "Root additive integration, publication eligibility verification and separately authorised release; do not treat prepared count as published count."
+}

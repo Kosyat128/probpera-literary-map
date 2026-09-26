@@ -1,0 +1,1006 @@
+{
+  "sourceId": "samokat",
+  "name": "Самокат",
+  "entryUrl": "https://samokatbook.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:40.938Z",
+  "requests": [
+    {
+      "url": "https://samokatbook.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 476723,
+      "sha256": "bdf821bf562f65d2152b6466965e04eff03746ccb5015a33c3386961957a27fe",
+      "accessedAt": "2026-09-26T17:23:53.319Z"
+    },
+    {
+      "url": "https://samokatbook.ru/news/bukvy-i-znaki-festival-lyubvi-k-knigam-i-rodnomu-gorodu-v-vyborge/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 170621,
+      "sha256": "1010acd4aa2de3561f76bbaf0eb9db3be6ff46d5a78faaf7cfcf60a890ab15a3",
+      "accessedAt": "2026-09-26T17:29:41.542Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://samokatbook.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 2305,
+    "sha256": "afb2a54149584be1adb4b50459af131556204f91a7be903415f2c13774cd4f5a",
+    "accessedAt": "2026-09-26T17:29:41.015Z",
+    "disallowed": [
+      "/*?",
+      "/test/",
+      "/logs/",
+      "/test.php",
+      "/catalog/filter/",
+      "/catalog/search/",
+      "/ajax/",
+      "/auth/",
+      "/bitrix/",
+      "/cgi-bin/",
+      "/desktop_app/",
+      "/forum/",
+      "/include/",
+      "/includes/",
+      "/login/",
+      "/personal/",
+      "/search/",
+      "/webstat/",
+      "*/index.php",
+      "/*&action=",
+      "/*&bxajaxid=",
+      "/*&print=",
+      "/*&view_result=",
+      "/*&view=",
+      "/*/gallery/*order=*",
+      "/*/search/",
+      "/search-new/",
+      "/ds-comf/",
+      "/adm/",
+      "/*/slide_show/",
+      "/*?action=",
+      "/*?back_url_admin=",
+      "/*?bxajaxid=",
+      "/*?COURSE_ID=",
+      "/*?letter=",
+      "/*?option=",
+      "/*?print=",
+      "/*action=",
+      "/*ADD_TO_COMPARE_LIST",
+      "/*arrFilter_*",
+      "/*auth=",
+      "/*back_url_admin=",
+      "/*back_url=",
+      "/*BACK_URL=",
+      "/*backurl=",
+      "/*BACKURL=",
+      "/*bitrix_*=",
+      "/*bitrix_include_areas=",
+      "/*change_password=",
+      "/*clear_cache_session=",
+      "/*clear_cache=",
+      "/*COURSE_ID=",
+      "/*ELEMENT_CODE=",
+      "/*forgot_password=",
+      "/*from=",
+      "/*ID=",
+      "/*index*.php$",
+      "/*login=",
+      "/*logout=",
+      "/*ORDER_BY",
+      "/*order=*",
+      "/*PAGE_NAME=",
+      "/*print_course=",
+      "/*register=",
+      "/*SECTION_CODE=",
+      "/*set_filter=*",
+      "/*show_all=",
+      "/*show_include_exec_time=",
+      "/*show_page_exec_time=",
+      "/*show_sql_stat=",
+      "/*SHOWALL",
+      "/*sphrase_id=",
+      "/404.php",
+      "*/*utm_",
+      "*/?event=",
+      "*/?fbclid=",
+      "*/?PageSpeed=",
+      "*/?ref=",
+      "*/?source=",
+      "*/?web_view=",
+      "/*?q=",
+      "/*?view_result=",
+      "/*_escaped_fragment*",
+      "/*_openstat"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:45.896Z",
+    "sourceDocumentSha256": "bdf821bf562f65d2152b6466965e04eff03746ccb5015a33c3386961957a27fe"
+  },
+  "endpoint": {
+    "id": "samokat",
+    "name": "Самокат",
+    "url": "https://samokatbook.ru/",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "samokat",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://samokatbook.ru"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/news/.+|^/meropriyatiya/v-moskve/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://samokatbook.ru/news/bukvy-i-znaki-festival-lyubvi-k-knigam-i-rodnomu-gorodu-v-vyborge/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:41.564Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 32,
+  "literaryCandidateCount": 32,
+  "sample": {
+    "sourceId": "samokat",
+    "source": {
+      "name": "Самокат",
+      "url": "https://samokatbook.ru/news/bukvy-i-znaki-festival-lyubvi-k-knigam-i-rodnomu-gorodu-v-vyborge/",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "«Буквы и знаки» \u2014 фестиваль любви к книгам и родному городу в Выборге",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:41.138Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://samokatbook.ru/news/bukvy-i-znaki-festival-lyubvi-k-knigam-i-rodnomu-gorodu-v-vyborge/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 170621,
+      "sha256": "1010acd4aa2de3561f76bbaf0eb9db3be6ff46d5a78faaf7cfcf60a890ab15a3",
+      "accessedAt": "2026-09-26T17:29:41.542Z",
+      "headline": "«Буквы и знаки» \u2014 фестиваль любви к книгам и родному городу в Выборге",
+      "excerpt": "«Буквы и знаки» \u2014 фестиваль любви к книгам и родному городу в Выборге <img src=\"https://vk.com/rtrg?p=VK-RTRG-1264488-9GNRJ\" style=\"position:fixed; left:-999px;\" alt=\"\"/> <img src=\"https://vk.com/rtrg?p=VK-RTRG-1362726-cheoH\" style=\"position:fixed; left:-999px;\" alt=\"\"/> 0 0 Р 0 0 Р Войти/Регистрация каталог изданий малышам и дошкольникам Виммельбухи Детские детективы Книги из картона Книжки с кар",
+      "publishedDates": [],
+      "canonical": "https://samokatbook.ru/news/bukvy-i-znaki-festival-lyubvi-k-knigam-i-rodnomu-gorodu-v-vyborge/",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:41.564Z",
+  "foundItems": [
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/bukvy-i-znaki-festival-lyubvi-k-knigam-i-rodnomu-gorodu-v-vyborge/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Буквы и знаки» \u2014 фестиваль любви к книгам и родному городу в Выборге",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/priglashaem-na-semeynyy-festival-idyem-za-knigami/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Приглашаем на семейный фестиваль «Идём за книгами!»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/short-list-10-go-sezona-konkursa-kniga-vnutri/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Шорт-лист 10-го сезона конкурса \"Книга внутри\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/grigoriy-kruzhkov-poluchil-premiyu-pravitelstva-rf-za-sbornik-daleko-ne-zaplyvay/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Григорий Кружков получил премию Правительства РФ за сборник «Далеко не заплывай»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/knigi-kotorye-rekomenduyut-studenty-psikhologi/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Книги, которые рекомендуют студенты-психологи",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/za-vashe-mnenie-darim-bonusy/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "За ваше мнение дарим бонусы!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/kuda-my-katimsya-na-vtoruyu-nizhegorodskuyu-knizhnuyu-yarmarku-v-nizhniy-novgorod/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Куда мы катимся? На Вторую Нижегородскую книжную ярмарку в Нижний Новгород!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/onlayn-konferentsiya-detektivy-i-priklyucheniya-dlya-detey-i-podrostkov-professionalnoe-soobshchestv/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Онлайн-конференция «Детективы и приключения для детей и подростков»: профессиональное сообщество соберётся, чтобы раскрыть секреты жанра",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/kinostudiya-lenfilm-i-samokat-zapuskayut-proekt-semeynye-kinochteniya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Киностудия «Ленфильм» и «Самокат» запускают проект «Семейные киночтения»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/karta-druzey-i-khoroshikh-mest-petrogradskogo-rayona/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Карта друзей и хороших мест Петроградского района",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/konkurs-book-inside/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "конкурс «книга внутри»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/peshchera-chuvstv-razbiraemsya-so-slukhom-zreniem-vkusom-obonyaniem-i-osyazaniem-na-interaktivnom-za/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Пещера чувств: разбираемся со слухом, зрением, вкусом, обонянием и осязанием на интерактивном занятии по книге «У меня такое чувство»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/muzykalnaya-masterskaya-tantsuet-pod-afrikanskie-ritmy-i-masterit-ptichek-s-knigoy-straus-bez-paniki/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Музыкальная мастерская танцует под африканские ритмы и мастерит птичек с книгой «Страус, без паники!»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/booklovegallery/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "галерея книголюбов",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/tematicheskie-podborki/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Что бы почитать. Чтение на лето",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/club-readers/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Программа лояльности",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "события, онлайн-мастерские, галерея",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/mekhanika-izuchaem-zubchatye-mekhanizmy/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Механика: изучаем зубчатые механизмы.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/mekhanika-izuchaem-silu-vody-ili-gidravlicheskie-mekhanizmy-i-sozdayem-svoy-podyemnyy-kran/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Механика: изучаем силу воды или гидравлические механизмы, и создаём свой подъёмный кран.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/teatr-na-samokate-daleko-ne-zaplyvay-edim-gryushi-nakhodim-ritm-i-vklyuchaem-fantaziyu-s-semeynym-te/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Театр на Самокате! «Далеко не заплывай» - едим грЮши, находим ритм и включаем фантазию с семейным театром МУХА-ПУХА!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/teatr-na-samokate-14-lesnykh-myshey-parad-gribov-ustraivaem-tikhuyu-okhotu-i-delaem-zapasy-na-osen-s/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Театр на Самокате! «14 лесных мышей. Парад грибов» - устраиваем тихую охоту и делаем запасы на осень с семейным театром МУХА-ПУХА!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/muzykalnaya-skazka-khuliganim-vmeste-s-lisom-i-porosyenkom-khvost-morkovskoy-i-strunnym-duetom-malen/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Музыкальная сказка: хулиганим вместе с Лисом и Поросёнком Хвост Морковской и струнным дуэтом «Маленькая консерватория».",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/multklub-samokata-snimaem-smeshnye-istorii-po-rasskazam-very-fedoruk-ananasovaya-devochka/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Мультклуб Самоката! Снимаем смешные истории по рассказам Веры Федорук «Ананасовая девочка»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/teatr-v-karmashke-istoriya-odnoy-krylatoy-mechty/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Театр в кармашке: история одной крылатой мечты.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/teatr-v-karmashke-istoriya-odnogo-serdechka/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Театр в кармашке: история одного сердечка!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/foreign-rights/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "foreign rights contacts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/politika-konfidentsialnosti/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "политика конфиденциальности",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/publichnaya-oferta/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "публичная оферта",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/polzovatelskoe-soglashenie/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "пользовательское соглашение",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/kupit-optom-dlya-yul-i-ip/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "купить оптом (для юл и ип)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/organizatoram-sovmestnykh-zakupok/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "организаторам совместных закупок",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "samokat",
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/moskovskoe-i-piterskoe-ralli/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "московское и питерское ралли",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:41.138Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "bdf821bf562f65d2152b6466965e04eff03746ccb5015a33c3386961957a27fe"
+}

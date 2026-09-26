@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-09-26T19:38:47.007Z",
+  "engine": "PGlite 0.3.10 isolated PostgreSQL WASM",
+  "remoteDatabase": false,
+  "realConcurrentProcesses": false,
+  "checks": [
+    "first durable append",
+    "stale expected ID rejected",
+    "two same-version claims only one applied",
+    "namespace restriction",
+    "state byte bound",
+    "conflicts append nothing",
+    "dispatch without atomic destination guard rejected",
+    "pause and stale control version prevent dispatch",
+    "missing destination cannot bypass guard with SQL null",
+    "current enabled destination permits guarded dispatch",
+    "JSONB admission reconstructs missing Telegram and VK jobs",
+    "JSONB telegram payload hash and exact native send survive reload",
+    "JSONB vk payload hash and exact native send survive reload",
+    "JSONB withdrawal reload remains closed without duplicate correction jobs",
+    "JSONB telegram exact media and scoped uploaded resource reuse create once then edit same remote ID",
+    "JSONB vk exact media and scoped uploaded resource reuse create once then edit same remote ID",
+    "authenticated cannot call service CAS",
+    "direct staff runtime forgery rejected",
+    "existing non-news audit writes preserved"
+  ],
+  "passed": 19,
+  "deployment": "not_applied"
+}

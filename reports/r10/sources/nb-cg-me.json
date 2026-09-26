@@ -1,0 +1,667 @@
+{
+  "sourceId": "nb-cg-me",
+  "name": "National Library of Montenegro “Djurdje Crnojevic”",
+  "entryUrl": "https://www.nb-cg.me/en",
+  "countryCodes": [
+    "ME"
+  ],
+  "coverageCountryCodes": [
+    "ME"
+  ],
+  "attemptedAt": "2026-09-26T17:29:12.756Z",
+  "requests": [
+    {
+      "url": "https://www.nb-cg.me/en",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 48583,
+      "sha256": "5cf4110e37fa92bed0c9f2b2d830442fb3a41099dbe4ed1324a0d74a00cf3c95",
+      "accessedAt": "2026-09-26T17:23:03.982Z"
+    },
+    {
+      "url": "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 18821,
+      "sha256": "02efdaf5ee4079648597e18a5f936f5ef66b5d541586325997a29329d6b8af94",
+      "accessedAt": "2026-09-26T17:29:13.528Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.nb-cg.me/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:02.747Z",
+    "sourceDocumentSha256": "5cf4110e37fa92bed0c9f2b2d830442fb3a41099dbe4ed1324a0d74a00cf3c95"
+  },
+  "endpoint": {
+    "id": "nb-cg-me",
+    "name": "National Library of Montenegro “Djurdje Crnojevic”",
+    "url": "https://www.nb-cg.me/en",
+    "format": "html",
+    "language": "en",
+    "region": "europe",
+    "sourceFamilyId": "nb-cg-me",
+    "countryCodes": [
+      "ME"
+    ],
+    "coverageCountryCodes": [
+      "ME"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.nb-cg.me"
+    ],
+    "linkPattern": "^/en/about-us/[^/]+/?$|^/en/catalogues/[^/]+/?$|^/en/collections/[^/]+/?$|^/en/our-publications/[^/]+/?$|^/en/events/.+|^/en/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald"
+    ],
+    "verifiedAt": "2026-09-26T17:29:13.534Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 22,
+  "literaryCandidateCount": 22,
+  "sample": {
+    "sourceId": "nb-cg-me",
+    "source": {
+      "name": "National Library of Montenegro “Djurdje Crnojevic”",
+      "url": "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald",
+      "language": "en"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "20 Jul NOTICE TO AUTHORS AND CONTRIBUTORS OF BIBLIOGRAFSKI VJESNIK (BIBIBLIOGRAPHIC HERALD) We are pleased to inform you that Issue No. 1 (2026) of Bibliografski vjesnik is currently in print and will soon be available to readers. At the same time, we invite all interested authors to submit their scholarly and professional papers for publication in forthcoming issues of the journal.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:13.323Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 18821,
+      "sha256": "02efdaf5ee4079648597e18a5f936f5ef66b5d541586325997a29329d6b8af94",
+      "accessedAt": "2026-09-26T17:29:13.528Z",
+      "headline": "NOTICE TO AUTHORS AND CONTRIBUTORS OF BIBLIOGRAFSKI VJESNIK (BIBIBLIOGRAPHIC HERALD)",
+      "excerpt": "NOTICE TO AUTHORS AND CONTRIBUTORS OF BIBLIOGRAFSKI VJESNIK (BIBIBLIOGRAPHIC HERALD) 20.07.2026. News We are pleased to inform you that Issue No. 1 (2026) of Bibliografski vjesnik is currently in print and will soon be available to readers. At the same time, we invite all interested authors to submit their scholarly and professional papers for publication in forthcoming issues of the journal. Manu",
+      "publishedDates": [],
+      "canonical": "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:13.534Z",
+  "foundItems": [
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "20 Jul NOTICE TO AUTHORS AND CONTRIBUTORS OF BIBLIOGRAFSKI VJESNIK (BIBIBLIOGRAPHIC HERALD) We are pleased to inform you that Issue No. 1 (2026) of Bibliografski vjesnik is currently in print and will soon be available to readers. At the same time, we invite all interested authors to submit their scholarly and professional papers for publication in forthcoming issues of the journal.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/events/1092-national-library-of-montenegro-durde-crnojevic-marks-statehood-day-with-the-exhibition-13-july-through-artistic-creativity",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "09 Jul NATIONAL LIBRARY OF MONTENEGRO “ĐURĐE CRNOJEVIĆ” MARKS STATEHOOD DAY WITH THE EXHIBITION “13 JULY THROUGH ARTISTIC CREATIVITY” The 13 July Uprising, a symbol of resistance to fascism and the Montenegrin people's struggle for freedom, is presented through the visual art of Petar Lubarda, Anton Lukateli, Aleksandar Prijić, Luka Tomanović, and other artists; musical works and arrangements of partisan folk songs; literary works, including the poetry of Mirko Banjević, Aleksandar Ivanović, Ra…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/events/1091-stocktaking-of-the-montenegrina-collection-in-the-building-of-the-former-french-embassy",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "09 Jul STOCKTAKING OF THE MONTENEGRINA COLLECTION IN THE BUILDING OF THE FORMER FRENCH EMBASSY From 7 May to 16 June 2026, a committee comprising Đurđa Martinović, Danijela Radulović, and Marija Mašanović successfully carried out an electronic stocktaking of the section of the Montenegrina Collection housed in the building of the former French Embassy. This marks the first electronic stocktaking of its kind undertaken by the National Library of Montenegro.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/about-us/vision-and-mission",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Vision and Mission",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/about-us/reports-and-programs",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Reports and Programs",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/about-us/donations-and-donors-of-library-materials",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Donations and Donors of library materials",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/about-us/public-procurement",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Public procurement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/catalogues/virtual-library-of-montenegro",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Virtual Library of Montenegro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/catalogues/e-catalogue-of-montenegro",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "E \u2013 catalogue of Montenegro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/catalogues/nlm-e-catalogue",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "NLM e \u2013 catalogue",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/our-publications/publishing-activity-of-nlm",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Publishing Activity of NLM",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/catalogue-of-publications",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Catalogue of Publications",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/electronic-publications",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Electronic Publications",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/our-publications/montenegrin-bibliography-1494-1994",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Montenegrin Bibliography (1494-1994)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/our-publications/current-bibliography",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Current Bibliography",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/our-publications/bibliografski-vjesnik",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliografski vjesnik",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/old-and-rare-book-collection",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Old and Rare Book Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/manuscripts-and-archival-records",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Manuscripts and Archival Records",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/cartographic-collection",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Cartographic Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/music-and-av-material",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Music and AV Material",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/the-fine-arts-and-graphics-collection",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Fine Arts and Graphics Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/digital-library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Digital Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:13.323Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5cf4110e37fa92bed0c9f2b2d830442fb3a41099dbe4ed1324a0d74a00cf3c95"
+}

@@ -1,0 +1,53 @@
+{
+  "sourceId": "bildungsmedien-de",
+  "name": "Verband Bildungsmedien",
+  "entryUrl": "https://bildungsmedien.de/",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-09-26T17:27:51.445Z",
+  "requests": [
+    {
+      "url": "https://bildungsmedien.de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 80694,
+      "sha256": "65e5c4327af3c590f5c4991cee6207a6bd41669ca6be20b7f289cbb16924cfa8",
+      "accessedAt": "2026-09-26T17:27:52.526Z"
+    },
+    {
+      "url": "https://bildungsmedien.de/presse",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 70872,
+      "sha256": "2458da4e4dcb14b98666da5b8caa15828ba81cfc0ee74900ae3b5b0921984c39",
+      "accessedAt": "2026-09-26T17:27:53.439Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://bildungsmedien.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 859,
+    "sha256": "01893b3b4d3d91551049967a8f7681130860126058ef13ce9a5913692b99b1de",
+    "accessedAt": "2026-09-26T17:27:51.732Z",
+    "disallowed": [
+      "/administrator/",
+      "/bin/",
+      "/cache/",
+      "/cli/",
+      "/includes/",
+      "/installation/",
+      "/language/",
+      "/layouts/",
+      "/libraries/",
+      "/logs/",
+      "/tmp/"
+    ]
+  }
+}

@@ -1,0 +1,792 @@
+{
+  "sourceId": "publishers-weekly",
+  "name": "Publishers Weekly",
+  "entryUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/index.html",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:29:38.807Z",
+  "requests": [
+    {
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/index.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 82908,
+      "sha256": "b0d7a0a26590002e85aef22d881fbabf6856557a4e5dc0d814291f588b3383fe",
+      "accessedAt": "2026-09-26T17:23:43.389Z"
+    },
+    {
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101236-2026-national-book-award-longlists-announced.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 53078,
+      "sha256": "25bcc6bebe49a0f18a981e70b9887f74ce7bf9b7ace6668638047b2c6c9a5041",
+      "accessedAt": "2026-09-26T17:29:40.369Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.publishersweekly.com/robots.txt",
+    "error": "unsupported_content_type:text/text",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:42.061Z",
+    "sourceDocumentSha256": "b0d7a0a26590002e85aef22d881fbabf6856557a4e5dc0d814291f588b3383fe"
+  },
+  "endpoint": {
+    "id": "publishers-weekly",
+    "name": "Publishers Weekly",
+    "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/index.html",
+    "format": "html",
+    "language": "en",
+    "region": "north-america",
+    "sourceFamilyId": "publishers-weekly",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.publishersweekly.com"
+    ],
+    "linkPattern": "^/pw/by-topic/industry-news/financial-reporting/article/[^/]+/?$|^/pw/by-topic/industry-news/publisher-news/article/[^/]+/?$|^/pw/by-topic/industry-news/bookselling/article/[^/]+/?$|^/pw/by-topic/industry-news/book-deals/article/[^/]+/?$|^/pw/by-topic/industry-news/religion/article/[^/]+/?$|^/pw/by-topic/industry-news/tip-sheet/article/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101236-2026-national-book-award-longlists-announced.html"
+    ],
+    "verifiedAt": "2026-09-26T17:29:40.374Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 27,
+  "literaryCandidateCount": 27,
+  "sample": {
+    "sourceId": "publishers-weekly",
+    "source": {
+      "name": "Publishers Weekly",
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101236-2026-national-book-award-longlists-announced.html",
+      "language": "en"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "2026 National Book Award Longlists Announced",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:39.904Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101236-2026-national-book-award-longlists-announced.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 53078,
+      "sha256": "25bcc6bebe49a0f18a981e70b9887f74ce7bf9b7ace6668638047b2c6c9a5041",
+      "accessedAt": "2026-09-26T17:29:40.369Z",
+      "headline": "2026 NBA Longlists for Fiction, Nonfiction Announced",
+      "excerpt": "2026 NBA Longlists for Fiction, Nonfiction Announced By PW Staff | Sep 15, 2026 Loading the Elevenlabs Text to Speech AudioNative Player... The longlists for the 2026 National Book Awards will be rolled out throughout this week. Five finalists in each of the five categories\u2014fiction, nonfiction, poetry, translated literature, and young people's literature\u2014will be named October 6. The winners will b",
+      "publishedDates": [],
+      "canonical": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101236-2026-national-book-award-longlists-announced.html",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:40.374Z",
+  "foundItems": [
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101236-2026-national-book-award-longlists-announced.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 National Book Award Longlists Announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/book-deals/article/101345-book-deals-week-of-september-28-2026.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Deals: Week of September 28, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/book-deals/article/101220-book-deals-week-of-september-14-2026.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Deals: Week of September 14, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/book-deals/article/101099-book-deals-week-of-august-24-2026.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Deals: Week of August 24, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/book-deals/article/101057-book-deals-week-of-august-17-2026.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Deals: Week of August 17, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/101352-this-week-s-bestsellers-september-28-2026.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "This Week’s Bestsellers: September 28, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/financial-reporting/article/101193-publishing-industry-sales-up-in-first-half-of-2026.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishing Industry Sales Up in First Half of 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/101288-this-week-s-bestsellers-september-21-2026.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "This Week’s Bestsellers: September 21, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101015-libro-fm-to-offer-digital-arcs-and-e-books.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Libro.fm to Offer Digital ARCs and E-Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/financial-reporting/article/101309-nonfiction-drove-july-publishing-sales-gains.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nonfiction Drove July Publishing Sales Gains",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/financial-reporting/article/101349-scholastic-remains-optimistic-after-mediocre-first-quarter.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scholastic Remains Optimistic After Mediocre First Quarter",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/101348-socal-s-vroman-s-book-soup-find-new-owner.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "SoCal’s Vroman’s, Book Soup Find New Owner",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101327-shelves-and-the-city-is-bringing-the-influencer-trip-to-the-book-world.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "HarperCollins Brings the Influencer Trip to the Book World",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/religion/article/101241-jerry-jenkins-and-mark-yarbrough-take-a-novel-look-at-the-origins-of-evil.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jerry Jenkins and Mark Yarbrough Take a Novel Look at the Origins of Evil",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/99032-authors-guild-webinar-talks-self-publishing-conglomeration.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Authors Guild Webinar Talks Self-Publishing, Conglomeration",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101139-5-non-traditional-crime-novels-for-fans-of-james-sallis.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "5 Non-Traditional Crime Novels for Fans of James Sallis",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/financial-reporting/article/101308-podium-entertainment-acquired-by-private-equity-firms.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Podium Entertainment Acquired by Private Equity Firms",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101325-choose-your-own-adventure-publisher-launches-adult-imprint.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Choose Your Own Adventure Publisher Launches Adult Imprint",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101344-how-black-moon-by-stephen-wright-got-made.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How ‘Black Moon’ by Stephen Wright Got Made",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/religion/article/101339-religion-publishers-look-to-help-modern-families.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Religion Publishers Look to Help Modern Families",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/religion/article/101338-religion-publishers-aim-to-teach-the-children-well.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Religion Publishers Aim to Teach the Children Well",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101347-writers-talking-writers-cristina-rivera-garza-on-theresa-hak-kyung-cha-and-r-o-kwon-on-mavis-gallant.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers Talking Writers: Cristina Rivera Garza on Theresa Hak Kyung Cha and R.O. Kwon on Mavis Gallant",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/101289-barnes-noble-continues-acquisitions-streak-buying-stationery-brand-levenger.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Barnes & Noble Continues Acquisitions Streak, Buying Stationery Brand Levenger",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/religion/article/101250-mahar-sperling-named-inner-traditions-vp-and-associate-publisher.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mahar Sperling Named Inner Traditions' VP and Associate Publisher",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101178-five-short-story-collections-where-reality-is-broken.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Five Short Story Collections Where Reality Is Broken",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101179-celebrating-gloria-steinem.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celebrating Gloria Steinem",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101132-writers-talking-writers-marlon-james-on-jean-rhys-and-hernan-diaz-on-franz-kafka.html",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers Talking Writers: Marlon James on Jean Rhys and Hernan Diaz on Franz Kafka",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.904Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b0d7a0a26590002e85aef22d881fbabf6856557a4e5dc0d814291f588b3383fe"
+}

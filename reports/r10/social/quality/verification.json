@@ -1,0 +1,1334 @@
+{
+  "checkedAt": "2026-09-26T19:16:27.673Z",
+  "status": "passed-local-fixtures-rechecked",
+  "sendable": false,
+  "fixtureOnly": true,
+  "humanReview": false,
+  "visualInspection": {
+    "status": "inspected_visual",
+    "method": "Actual local Chrome screenshots opened with view_image",
+    "checkedAt": "2026-09-26T19:18:12.157Z",
+    "humanReview": false,
+    "scope": "18 full-page PNGs: six profiles at desktop 1200px and mobile 360px/430px; synthetic local fixtures only, not native app acceptance",
+    "findings": [
+      "Complete image borders and intrinsic aspect ratios preserved for cover, portrait, adaptation, festival and archive fixtures.",
+      "Year/date labels, sources and required credits remain readable; no horizontal overflow.",
+      "Telegram title entities preserve combining mark, ampersand and ZWJ emoji without markup leakage; VK remains plain text.",
+      "Missing-photo fallback is one complete text payload. Long required credit triggers Telegram text fallback; VK retains full credit."
+    ],
+    "screens": [
+      {
+        "filename": "book-1200.png",
+        "sha256": "e17478210b42b2d69e38bd7bdae3a62048b1e6c93de1e34d2942a4a7a3206ed8",
+        "status": "inspected"
+      },
+      {
+        "filename": "portrait-1200.png",
+        "sha256": "ed9310d60d1db2cd515caeef2c69c9615e6807fed683f149d3eadbf8624bf870",
+        "status": "inspected"
+      },
+      {
+        "filename": "adaptation-1200.png",
+        "sha256": "8fbc457c3641c37bd9dd52970e86a7dbfe26165c7fddcbdf745172031ef2dca8",
+        "status": "inspected"
+      },
+      {
+        "filename": "festival-1200.png",
+        "sha256": "f2a221ae5e3b8b672a2451aed4fe1eab8f252552a7e9d5d7e1897f86fa15c217",
+        "status": "inspected"
+      },
+      {
+        "filename": "archive-1200.png",
+        "sha256": "11e7b7deda64568728bcd20ec6fe8a54334a34feaa2ae69f9516166613d119ae",
+        "status": "inspected"
+      },
+      {
+        "filename": "no-photo-1200.png",
+        "sha256": "8f27e79996c9d631b8471c31eaa90a0c88d5ed843c0604b8b33010b96f42ed9f",
+        "status": "inspected"
+      },
+      {
+        "filename": "book-360.png",
+        "sha256": "3abbc106004e4cda226d6c665f42a8b1371003c49d5e82066bad8c15b595d3b3",
+        "status": "inspected"
+      },
+      {
+        "filename": "portrait-360.png",
+        "sha256": "2c6769b08414c4535fa17561675107142c49eb4bd5454d240d9781faa8341ea9",
+        "status": "inspected"
+      },
+      {
+        "filename": "adaptation-360.png",
+        "sha256": "8a29d55a0e21e779e4289f93ef96d44a0073e49eb3686d2abd446b04546874c8",
+        "status": "inspected"
+      },
+      {
+        "filename": "festival-360.png",
+        "sha256": "eff776c51dfa015812a77d38e03e3933e5f6415150503e30a3011a40bda9f9ca",
+        "status": "inspected"
+      },
+      {
+        "filename": "archive-360.png",
+        "sha256": "912d08b1a0c7699e061b33fe981db160b65c3958efaaf8d50af981c93fe649f0",
+        "status": "inspected"
+      },
+      {
+        "filename": "no-photo-360.png",
+        "sha256": "26c4fd4ecd2b37427b8b6d921ffb79a3054a2951ba78bbcb0e33121b6149a14c",
+        "status": "inspected"
+      },
+      {
+        "filename": "book-430.png",
+        "sha256": "a6290e197aa73f85caf79b08055e52bb4aedb5c4e45da73519d26fe9f628339d",
+        "status": "inspected"
+      },
+      {
+        "filename": "portrait-430.png",
+        "sha256": "cea4c9cea9fb6179df7973c85eeee9cff22dac86c7f126c0661d24b1d61881e2",
+        "status": "inspected"
+      },
+      {
+        "filename": "adaptation-430.png",
+        "sha256": "bfb003bbb70ce25684e031d0282283b4bd15c3aff98c81171dd3c45f2b68d584",
+        "status": "inspected"
+      },
+      {
+        "filename": "festival-430.png",
+        "sha256": "af512392309ff1c49a548152bb3ee611072d0e6290abc40242a19628713fa966",
+        "status": "inspected"
+      },
+      {
+        "filename": "archive-430.png",
+        "sha256": "7ec87f77cec0494fef74016b5b3a1b72e94e7463523474f2e0c18140d8fecc39",
+        "status": "inspected"
+      },
+      {
+        "filename": "no-photo-430.png",
+        "sha256": "f4571c75adadf93711af3a5862d3f74d3778ae487537967a3f20b004f046fb18",
+        "status": "inspected"
+      }
+    ]
+  },
+  "externalRequests": 0,
+  "apiWrites": 0,
+  "productionRegistryChanged": false,
+  "profiles": 6,
+  "preparedVariants": 14,
+  "sourceHashes": [
+    {
+      "path": "scripts/lib/literary-news-social.mjs",
+      "sha256": "8eb07adab515bd4418ae297e996e916ca5de856741feb39dac1f904673794d50"
+    },
+    {
+      "path": "scripts/lib/literary-news-media.mjs",
+      "sha256": "11cc34428c7e145c984ffbfe14db487aa227acd243dd7eb1101b1bd722a58f76"
+    },
+    {
+      "path": "reports/r10/social/quality/synthetic-fixtures.mjs",
+      "sha256": "a6049da9436909eae903d59dfa33366e9091875e2b3760caf117e280622b685f"
+    },
+    {
+      "path": "reports/r10/social/quality/render-synthetic-previews.mjs",
+      "sha256": "f0fb2f802436dbcb4ac029c1428da42928e8fe4fa1aa051a6789c2f8fc3ed27b"
+    }
+  ],
+  "limits": {
+    "telegramPhotoCaption": 1024,
+    "telegramText": 4096,
+    "vkText": 16000
+  },
+  "checks": [
+    {
+      "fixture": "book",
+      "platforms": [
+        {
+          "platform": "telegram",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "c60cfe19f44bc07fb89fa8f2ad42aef7105da8fd85da7e782ca2731f7c02f2be",
+          "sendable": false
+        },
+        {
+          "platform": "vk",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "f641343bb0a64060672e4a57849c1e6def646dab52a6ce0da2c13946db65f5a1",
+          "sendable": false
+        }
+      ]
+    },
+    {
+      "fixture": "portrait",
+      "platforms": [
+        {
+          "platform": "telegram",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "e7492351fb3cf8d2c9bd8ba1fc2c657af33ca8b2e2f202a18389f474f04bad7e",
+          "sendable": false
+        },
+        {
+          "platform": "vk",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "7c945c0f8c4d17e40fa7ce0790454128b98ba3bb3e76c2c69058ea268352f190",
+          "sendable": false
+        }
+      ]
+    },
+    {
+      "fixture": "adaptation",
+      "platforms": [
+        {
+          "platform": "telegram",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "994ce5c7a71e28e4ce5ce8fdab9fdfdc9264c7d68cb58bb26568beea01d03150",
+          "sendable": false
+        },
+        {
+          "platform": "vk",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "8234055496fabf709a3bf95c38fac2072a9e16fa91fe56ac567556efd6cad0ad",
+          "sendable": false
+        }
+      ]
+    },
+    {
+      "fixture": "festival",
+      "platforms": [
+        {
+          "platform": "telegram",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "554e6287a2154deca0fadb572a76e51f11b1850d27a8aee1b9579e70f0eccca3",
+          "sendable": false
+        },
+        {
+          "platform": "vk",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "dc44ece732f5de3424fdc61183faad3d29d4e41df43d7c2678bd2bc2fa75a357",
+          "sendable": false
+        }
+      ]
+    },
+    {
+      "fixture": "archive",
+      "platforms": [
+        {
+          "platform": "telegram",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "b11811ebfe6d1f74d269b33309157755d1bc853ca57ec64aedf5170d948ffd53",
+          "sendable": false
+        },
+        {
+          "platform": "vk",
+          "hasMedia": true,
+          "profile": "literary-news-photo-v1",
+          "fallbackReason": null,
+          "payloadSha256": "7cc43ad8292304cf6008014c4092524ebba54a27d3d7b7eb93fece2157583c15",
+          "sendable": false
+        }
+      ]
+    },
+    {
+      "fixture": "no-photo",
+      "platforms": [
+        {
+          "platform": "telegram",
+          "hasMedia": false,
+          "profile": "literary-news-text-v1",
+          "fallbackReason": "no_destination_licensed_asset",
+          "payloadSha256": "f11088c194349ad994d6fd633efe6d5218220cddb759b1b6ba56d95445723776",
+          "sendable": false
+        },
+        {
+          "platform": "vk",
+          "hasMedia": false,
+          "profile": "literary-news-text-v1",
+          "fallbackReason": "no_destination_licensed_asset",
+          "payloadSha256": "f607d0386aa94fd995430f1cfc54e48f132eefc68fd65e2ea399456d96672041",
+          "sendable": false
+        }
+      ]
+    }
+  ],
+  "longCredit": [
+    {
+      "platform": "telegram",
+      "hasMedia": false,
+      "fallbackReason": "required_credit_or_caption_exceeds_limit",
+      "sendable": false
+    },
+    {
+      "platform": "vk",
+      "hasMedia": true,
+      "fallbackReason": null,
+      "sendable": false
+    }
+  ],
+  "screens": [
+    {
+      "fixture": "book",
+      "width": 1200,
+      "filename": "book-1200.png",
+      "sha256": "e17478210b42b2d69e38bd7bdae3a62048b1e6c93de1e34d2942a4a7a3206ed8",
+      "overflow": 0,
+      "height": 1122,
+      "images": [
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            285,
+            380
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            285,
+            380
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "portrait",
+      "width": 1200,
+      "filename": "portrait-1200.png",
+      "sha256": "ed9310d60d1db2cd515caeef2c69c9615e6807fed683f149d3eadbf8624bf870",
+      "overflow": 0,
+      "height": 1122,
+      "images": [
+        {
+          "natural": [
+            720,
+            900
+          ],
+          "visible": [
+            304,
+            380
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            720,
+            900
+          ],
+          "visible": [
+            304,
+            380
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "adaptation",
+      "width": 1200,
+      "filename": "adaptation-1200.png",
+      "sha256": "8fbc457c3641c37bd9dd52970e86a7dbfe26165c7fddcbdf745172031ef2dca8",
+      "overflow": 0,
+      "height": 1046,
+      "images": [
+        {
+          "natural": [
+            1200,
+            675
+          ],
+          "visible": [
+            540,
+            303.75
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            1200,
+            675
+          ],
+          "visible": [
+            540,
+            303.75
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "festival",
+      "width": 1200,
+      "filename": "festival-1200.png",
+      "sha256": "f2a221ae5e3b8b672a2451aed4fe1eab8f252552a7e9d5d7e1897f86fa15c217",
+      "overflow": 0,
+      "height": 1122,
+      "images": [
+        {
+          "natural": [
+            960,
+            720
+          ],
+          "visible": [
+            506.65625,
+            379.984375
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            960,
+            720
+          ],
+          "visible": [
+            506.65625,
+            379.984375
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "archive",
+      "width": 1200,
+      "filename": "archive-1200.png",
+      "sha256": "11e7b7deda64568728bcd20ec6fe8a54334a34feaa2ae69f9516166613d119ae",
+      "overflow": 0,
+      "height": 1122,
+      "images": [
+        {
+          "natural": [
+            1000,
+            780
+          ],
+          "visible": [
+            487.171875,
+            379.984375
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            1000,
+            780
+          ],
+          "visible": [
+            487.171875,
+            379.984375
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "no-photo",
+      "width": 1200,
+      "filename": "no-photo-1200.png",
+      "sha256": "8f27e79996c9d631b8471c31eaa90a0c88d5ed843c0604b8b33010b96f42ed9f",
+      "overflow": 0,
+      "height": 2199,
+      "images": [
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            285,
+            380
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "book",
+      "width": 360,
+      "filename": "book-360.png",
+      "sha256": "3abbc106004e4cda226d6c665f42a8b1371003c49d5e82066bad8c15b595d3b3",
+      "overflow": 0,
+      "height": 2366,
+      "images": [
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            302,
+            402.65625
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            302,
+            402.65625
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "portrait",
+      "width": 360,
+      "filename": "portrait-360.png",
+      "sha256": "2c6769b08414c4535fa17561675107142c49eb4bd5454d240d9781faa8341ea9",
+      "overflow": 0,
+      "height": 2365,
+      "images": [
+        {
+          "natural": [
+            720,
+            900
+          ],
+          "visible": [
+            302,
+            377.5
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            720,
+            900
+          ],
+          "visible": [
+            302,
+            377.5
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "adaptation",
+      "width": 360,
+      "filename": "adaptation-360.png",
+      "sha256": "8a29d55a0e21e779e4289f93ef96d44a0073e49eb3686d2abd446b04546874c8",
+      "overflow": 0,
+      "height": 1999,
+      "images": [
+        {
+          "natural": [
+            1200,
+            675
+          ],
+          "visible": [
+            302,
+            169.875
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            1200,
+            675
+          ],
+          "visible": [
+            302,
+            169.875
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "festival",
+      "width": 360,
+      "filename": "festival-360.png",
+      "sha256": "eff776c51dfa015812a77d38e03e3933e5f6415150503e30a3011a40bda9f9ca",
+      "overflow": 0,
+      "height": 2063,
+      "images": [
+        {
+          "natural": [
+            960,
+            720
+          ],
+          "visible": [
+            302,
+            226.5
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            960,
+            720
+          ],
+          "visible": [
+            302,
+            226.5
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "archive",
+      "width": 360,
+      "filename": "archive-360.png",
+      "sha256": "912d08b1a0c7699e061b33fe981db160b65c3958efaaf8d50af981c93fe649f0",
+      "overflow": 0,
+      "height": 2131,
+      "images": [
+        {
+          "natural": [
+            1000,
+            780
+          ],
+          "visible": [
+            302,
+            235.546875
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            1000,
+            780
+          ],
+          "visible": [
+            302,
+            235.546875
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "no-photo",
+      "width": 360,
+      "filename": "no-photo-360.png",
+      "sha256": "26c4fd4ecd2b37427b8b6d921ffb79a3054a2951ba78bbcb0e33121b6149a14c",
+      "overflow": 0,
+      "height": 4370,
+      "images": [
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            302,
+            402.65625
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "book",
+      "width": 430,
+      "filename": "book-430.png",
+      "sha256": "a6290e197aa73f85caf79b08055e52bb4aedb5c4e45da73519d26fe9f628339d",
+      "overflow": 0,
+      "height": 2299,
+      "images": [
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            315,
+            420
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            315,
+            420
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "portrait",
+      "width": 430,
+      "filename": "portrait-430.png",
+      "sha256": "cea4c9cea9fb6179df7973c85eeee9cff22dac86c7f126c0661d24b1d61881e2",
+      "overflow": 0,
+      "height": 2349,
+      "images": [
+        {
+          "natural": [
+            720,
+            900
+          ],
+          "visible": [
+            336,
+            420
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            720,
+            900
+          ],
+          "visible": [
+            336,
+            420
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "adaptation",
+      "width": 430,
+      "filename": "adaptation-430.png",
+      "sha256": "bfb003bbb70ce25684e031d0282283b4bd15c3aff98c81171dd3c45f2b68d584",
+      "overflow": 0,
+      "height": 2005,
+      "images": [
+        {
+          "natural": [
+            1200,
+            675
+          ],
+          "visible": [
+            372,
+            209.25
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            1200,
+            675
+          ],
+          "visible": [
+            372,
+            209.25
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "festival",
+      "width": 430,
+      "filename": "festival-430.png",
+      "sha256": "af512392309ff1c49a548152bb3ee611072d0e6290abc40242a19628713fa966",
+      "overflow": 0,
+      "height": 2067,
+      "images": [
+        {
+          "natural": [
+            960,
+            720
+          ],
+          "visible": [
+            372,
+            279
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            960,
+            720
+          ],
+          "visible": [
+            372,
+            279
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "archive",
+      "width": 430,
+      "filename": "archive-430.png",
+      "sha256": "7ec87f77cec0494fef74016b5b3a1b72e94e7463523474f2e0c18140d8fecc39",
+      "overflow": 0,
+      "height": 2139,
+      "images": [
+        {
+          "natural": [
+            1000,
+            780
+          ],
+          "visible": [
+            372,
+            290.15625
+          ],
+          "fit": "contain"
+        },
+        {
+          "natural": [
+            1000,
+            780
+          ],
+          "visible": [
+            372,
+            290.15625
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "fixture": "no-photo",
+      "width": 430,
+      "filename": "no-photo-430.png",
+      "sha256": "f4571c75adadf93711af3a5862d3f74d3778ae487537967a3f20b004f046fb18",
+      "overflow": 0,
+      "height": 4067,
+      "images": [
+        {
+          "natural": [
+            720,
+            960
+          ],
+          "visible": [
+            315,
+            420
+          ],
+          "fit": "contain"
+        }
+      ],
+      "cards": [
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        },
+        {
+          "overflow": 0
+        }
+      ]
+    }
+  ],
+  "sourceHashesCurrent": [
+    {
+      "path": "scripts/lib/literary-news-social.mjs",
+      "sha256": "8eb07adab515bd4418ae297e996e916ca5de856741feb39dac1f904673794d50",
+      "currentSha256": "8eb07adab515bd4418ae297e996e916ca5de856741feb39dac1f904673794d50"
+    },
+    {
+      "path": "scripts/lib/literary-news-media.mjs",
+      "sha256": "11cc34428c7e145c984ffbfe14db487aa227acd243dd7eb1101b1bd722a58f76",
+      "currentSha256": "11cc34428c7e145c984ffbfe14db487aa227acd243dd7eb1101b1bd722a58f76"
+    },
+    {
+      "path": "reports/r10/social/quality/synthetic-fixtures.mjs",
+      "sha256": "a6049da9436909eae903d59dfa33366e9091875e2b3760caf117e280622b685f",
+      "currentSha256": "a6049da9436909eae903d59dfa33366e9091875e2b3760caf117e280622b685f"
+    },
+    {
+      "path": "reports/r10/social/quality/render-synthetic-previews.mjs",
+      "sha256": "f0fb2f802436dbcb4ac029c1428da42928e8fe4fa1aa051a6789c2f8fc3ed27b",
+      "currentSha256": "f0fb2f802436dbcb4ac029c1428da42928e8fe4fa1aa051a6789c2f8fc3ed27b"
+    }
+  ],
+  "recheckAt": "2026-09-26T19:34:05.601Z",
+  "initialRenderingSourceHashes": [
+    {
+      "path": "scripts/lib/literary-news-social.mjs",
+      "sha256": "3d284e0f3a8aed9a69600439cb456edd3f0a1947f49bb2f57c6a736afcc68e0b"
+    },
+    {
+      "path": "scripts/lib/literary-news-media.mjs",
+      "sha256": "86658291e94915d106b5d7cafef035d49d10bc60094244e50ed6c8c52e2e5012"
+    },
+    {
+      "path": "reports/r10/social/quality/synthetic-fixtures.mjs",
+      "sha256": "a6049da9436909eae903d59dfa33366e9091875e2b3760caf117e280622b685f"
+    }
+  ],
+  "postFreezeRecheck": {
+    "checkedAt": "2026-09-26T19:34:05.601Z",
+    "status": "payload-equal after transport-only changes",
+    "scope": "Current builder and media validators executed locally. All 14 payload byte strings and six rendered HTML templates are identical. Existing 18 visually inspected PNG bytes retained. No new screenshot or visual-review claim.",
+    "previousReceiptSha256": "0c44d8dd68174253d1ac2bf9498997c3d79ef94b2ec86a7ba02c31496d285a9a",
+    "previousPreparedFileSha256": "e4ccaf2404af32062557332ed01755d2f9d5cc762cc771c29b234b8b211d31ec",
+    "currentPreparedFileSha256": "c017a32659cc9ab19d6472feafe7ea26eb1d63704d191f5b000c1ae93b345da9",
+    "payloadComparisons": [
+      {
+        "index": 0,
+        "newsId": "fixture-book",
+        "platform": "telegram",
+        "byteEqual": true,
+        "previousPayloadSha256": "c60cfe19f44bc07fb89fa8f2ad42aef7105da8fd85da7e782ca2731f7c02f2be",
+        "currentPayloadSha256": "c60cfe19f44bc07fb89fa8f2ad42aef7105da8fd85da7e782ca2731f7c02f2be",
+        "sendable": false
+      },
+      {
+        "index": 1,
+        "newsId": "fixture-book",
+        "platform": "vk",
+        "byteEqual": true,
+        "previousPayloadSha256": "f641343bb0a64060672e4a57849c1e6def646dab52a6ce0da2c13946db65f5a1",
+        "currentPayloadSha256": "f641343bb0a64060672e4a57849c1e6def646dab52a6ce0da2c13946db65f5a1",
+        "sendable": false
+      },
+      {
+        "index": 2,
+        "newsId": "fixture-portrait",
+        "platform": "telegram",
+        "byteEqual": true,
+        "previousPayloadSha256": "e7492351fb3cf8d2c9bd8ba1fc2c657af33ca8b2e2f202a18389f474f04bad7e",
+        "currentPayloadSha256": "e7492351fb3cf8d2c9bd8ba1fc2c657af33ca8b2e2f202a18389f474f04bad7e",
+        "sendable": false
+      },
+      {
+        "index": 3,
+        "newsId": "fixture-portrait",
+        "platform": "vk",
+        "byteEqual": true,
+        "previousPayloadSha256": "7c945c0f8c4d17e40fa7ce0790454128b98ba3bb3e76c2c69058ea268352f190",
+        "currentPayloadSha256": "7c945c0f8c4d17e40fa7ce0790454128b98ba3bb3e76c2c69058ea268352f190",
+        "sendable": false
+      },
+      {
+        "index": 4,
+        "newsId": "fixture-adaptation",
+        "platform": "telegram",
+        "byteEqual": true,
+        "previousPayloadSha256": "994ce5c7a71e28e4ce5ce8fdab9fdfdc9264c7d68cb58bb26568beea01d03150",
+        "currentPayloadSha256": "994ce5c7a71e28e4ce5ce8fdab9fdfdc9264c7d68cb58bb26568beea01d03150",
+        "sendable": false
+      },
+      {
+        "index": 5,
+        "newsId": "fixture-adaptation",
+        "platform": "vk",
+        "byteEqual": true,
+        "previousPayloadSha256": "8234055496fabf709a3bf95c38fac2072a9e16fa91fe56ac567556efd6cad0ad",
+        "currentPayloadSha256": "8234055496fabf709a3bf95c38fac2072a9e16fa91fe56ac567556efd6cad0ad",
+        "sendable": false
+      },
+      {
+        "index": 6,
+        "newsId": "fixture-festival",
+        "platform": "telegram",
+        "byteEqual": true,
+        "previousPayloadSha256": "554e6287a2154deca0fadb572a76e51f11b1850d27a8aee1b9579e70f0eccca3",
+        "currentPayloadSha256": "554e6287a2154deca0fadb572a76e51f11b1850d27a8aee1b9579e70f0eccca3",
+        "sendable": false
+      },
+      {
+        "index": 7,
+        "newsId": "fixture-festival",
+        "platform": "vk",
+        "byteEqual": true,
+        "previousPayloadSha256": "dc44ece732f5de3424fdc61183faad3d29d4e41df43d7c2678bd2bc2fa75a357",
+        "currentPayloadSha256": "dc44ece732f5de3424fdc61183faad3d29d4e41df43d7c2678bd2bc2fa75a357",
+        "sendable": false
+      },
+      {
+        "index": 8,
+        "newsId": "fixture-archive",
+        "platform": "telegram",
+        "byteEqual": true,
+        "previousPayloadSha256": "b11811ebfe6d1f74d269b33309157755d1bc853ca57ec64aedf5170d948ffd53",
+        "currentPayloadSha256": "b11811ebfe6d1f74d269b33309157755d1bc853ca57ec64aedf5170d948ffd53",
+        "sendable": false
+      },
+      {
+        "index": 9,
+        "newsId": "fixture-archive",
+        "platform": "vk",
+        "byteEqual": true,
+        "previousPayloadSha256": "7cc43ad8292304cf6008014c4092524ebba54a27d3d7b7eb93fece2157583c15",
+        "currentPayloadSha256": "7cc43ad8292304cf6008014c4092524ebba54a27d3d7b7eb93fece2157583c15",
+        "sendable": false
+      },
+      {
+        "index": 10,
+        "newsId": "fixture-no-photo",
+        "platform": "telegram",
+        "byteEqual": true,
+        "previousPayloadSha256": "f11088c194349ad994d6fd633efe6d5218220cddb759b1b6ba56d95445723776",
+        "currentPayloadSha256": "f11088c194349ad994d6fd633efe6d5218220cddb759b1b6ba56d95445723776",
+        "sendable": false
+      },
+      {
+        "index": 11,
+        "newsId": "fixture-no-photo",
+        "platform": "vk",
+        "byteEqual": true,
+        "previousPayloadSha256": "f607d0386aa94fd995430f1cfc54e48f132eefc68fd65e2ea399456d96672041",
+        "currentPayloadSha256": "f607d0386aa94fd995430f1cfc54e48f132eefc68fd65e2ea399456d96672041",
+        "sendable": false
+      },
+      {
+        "index": 12,
+        "newsId": "fixture-no-photo",
+        "platform": "telegram",
+        "byteEqual": true,
+        "previousPayloadSha256": "f11088c194349ad994d6fd633efe6d5218220cddb759b1b6ba56d95445723776",
+        "currentPayloadSha256": "f11088c194349ad994d6fd633efe6d5218220cddb759b1b6ba56d95445723776",
+        "sendable": false
+      },
+      {
+        "index": 13,
+        "newsId": "fixture-no-photo",
+        "platform": "vk",
+        "byteEqual": true,
+        "previousPayloadSha256": "76d1c2da01d9b9a41070225bef08e32bfd350fbf7814f3d7a774975fb68e9576",
+        "currentPayloadSha256": "76d1c2da01d9b9a41070225bef08e32bfd350fbf7814f3d7a774975fb68e9576",
+        "sendable": false
+      }
+    ],
+    "templateComparisons": [
+      {
+        "filename": "book.html",
+        "byteEqual": true,
+        "previousSha256": "d34e116c9bd061d90dbfd230e102909555076a4fff5c17800facce04f514e4bd",
+        "currentSha256": "d34e116c9bd061d90dbfd230e102909555076a4fff5c17800facce04f514e4bd"
+      },
+      {
+        "filename": "portrait.html",
+        "byteEqual": true,
+        "previousSha256": "0eea6ffd808112c4fda71d7921d9280451d09109ef1e6734aec35e7f072b6cc3",
+        "currentSha256": "0eea6ffd808112c4fda71d7921d9280451d09109ef1e6734aec35e7f072b6cc3"
+      },
+      {
+        "filename": "adaptation.html",
+        "byteEqual": true,
+        "previousSha256": "66f58dc1737058f084588e15466e5a3d94576df15f48202120fb11298e61554c",
+        "currentSha256": "66f58dc1737058f084588e15466e5a3d94576df15f48202120fb11298e61554c"
+      },
+      {
+        "filename": "festival.html",
+        "byteEqual": true,
+        "previousSha256": "19ce45c55b511949c89056722cee738af0b1fc8825f5325f882e7fd35c69cff4",
+        "currentSha256": "19ce45c55b511949c89056722cee738af0b1fc8825f5325f882e7fd35c69cff4"
+      },
+      {
+        "filename": "archive.html",
+        "byteEqual": true,
+        "previousSha256": "05ffad82b2735491a978ced0466b082bfee69016783607809bfdad0683014f89",
+        "currentSha256": "05ffad82b2735491a978ced0466b082bfee69016783607809bfdad0683014f89"
+      },
+      {
+        "filename": "no-photo.html",
+        "byteEqual": true,
+        "previousSha256": "11ca699a336ced113b7d3b5039d65ed8d3f6366c83a7452fdc470417a32b365d",
+        "currentSha256": "11ca699a336ced113b7d3b5039d65ed8d3f6366c83a7452fdc470417a32b365d"
+      }
+    ],
+    "retainedScreens": [
+      {
+        "filename": "book-1200.png",
+        "previousSha256": "e17478210b42b2d69e38bd7bdae3a62048b1e6c93de1e34d2942a4a7a3206ed8",
+        "currentSha256": "e17478210b42b2d69e38bd7bdae3a62048b1e6c93de1e34d2942a4a7a3206ed8",
+        "byteEqual": true
+      },
+      {
+        "filename": "portrait-1200.png",
+        "previousSha256": "ed9310d60d1db2cd515caeef2c69c9615e6807fed683f149d3eadbf8624bf870",
+        "currentSha256": "ed9310d60d1db2cd515caeef2c69c9615e6807fed683f149d3eadbf8624bf870",
+        "byteEqual": true
+      },
+      {
+        "filename": "adaptation-1200.png",
+        "previousSha256": "8fbc457c3641c37bd9dd52970e86a7dbfe26165c7fddcbdf745172031ef2dca8",
+        "currentSha256": "8fbc457c3641c37bd9dd52970e86a7dbfe26165c7fddcbdf745172031ef2dca8",
+        "byteEqual": true
+      },
+      {
+        "filename": "festival-1200.png",
+        "previousSha256": "f2a221ae5e3b8b672a2451aed4fe1eab8f252552a7e9d5d7e1897f86fa15c217",
+        "currentSha256": "f2a221ae5e3b8b672a2451aed4fe1eab8f252552a7e9d5d7e1897f86fa15c217",
+        "byteEqual": true
+      },
+      {
+        "filename": "archive-1200.png",
+        "previousSha256": "11e7b7deda64568728bcd20ec6fe8a54334a34feaa2ae69f9516166613d119ae",
+        "currentSha256": "11e7b7deda64568728bcd20ec6fe8a54334a34feaa2ae69f9516166613d119ae",
+        "byteEqual": true
+      },
+      {
+        "filename": "no-photo-1200.png",
+        "previousSha256": "8f27e79996c9d631b8471c31eaa90a0c88d5ed843c0604b8b33010b96f42ed9f",
+        "currentSha256": "8f27e79996c9d631b8471c31eaa90a0c88d5ed843c0604b8b33010b96f42ed9f",
+        "byteEqual": true
+      },
+      {
+        "filename": "book-360.png",
+        "previousSha256": "3abbc106004e4cda226d6c665f42a8b1371003c49d5e82066bad8c15b595d3b3",
+        "currentSha256": "3abbc106004e4cda226d6c665f42a8b1371003c49d5e82066bad8c15b595d3b3",
+        "byteEqual": true
+      },
+      {
+        "filename": "portrait-360.png",
+        "previousSha256": "2c6769b08414c4535fa17561675107142c49eb4bd5454d240d9781faa8341ea9",
+        "currentSha256": "2c6769b08414c4535fa17561675107142c49eb4bd5454d240d9781faa8341ea9",
+        "byteEqual": true
+      },
+      {
+        "filename": "adaptation-360.png",
+        "previousSha256": "8a29d55a0e21e779e4289f93ef96d44a0073e49eb3686d2abd446b04546874c8",
+        "currentSha256": "8a29d55a0e21e779e4289f93ef96d44a0073e49eb3686d2abd446b04546874c8",
+        "byteEqual": true
+      },
+      {
+        "filename": "festival-360.png",
+        "previousSha256": "eff776c51dfa015812a77d38e03e3933e5f6415150503e30a3011a40bda9f9ca",
+        "currentSha256": "eff776c51dfa015812a77d38e03e3933e5f6415150503e30a3011a40bda9f9ca",
+        "byteEqual": true
+      },
+      {
+        "filename": "archive-360.png",
+        "previousSha256": "912d08b1a0c7699e061b33fe981db160b65c3958efaaf8d50af981c93fe649f0",
+        "currentSha256": "912d08b1a0c7699e061b33fe981db160b65c3958efaaf8d50af981c93fe649f0",
+        "byteEqual": true
+      },
+      {
+        "filename": "no-photo-360.png",
+        "previousSha256": "26c4fd4ecd2b37427b8b6d921ffb79a3054a2951ba78bbcb0e33121b6149a14c",
+        "currentSha256": "26c4fd4ecd2b37427b8b6d921ffb79a3054a2951ba78bbcb0e33121b6149a14c",
+        "byteEqual": true
+      },
+      {
+        "filename": "book-430.png",
+        "previousSha256": "a6290e197aa73f85caf79b08055e52bb4aedb5c4e45da73519d26fe9f628339d",
+        "currentSha256": "a6290e197aa73f85caf79b08055e52bb4aedb5c4e45da73519d26fe9f628339d",
+        "byteEqual": true
+      },
+      {
+        "filename": "portrait-430.png",
+        "previousSha256": "cea4c9cea9fb6179df7973c85eeee9cff22dac86c7f126c0661d24b1d61881e2",
+        "currentSha256": "cea4c9cea9fb6179df7973c85eeee9cff22dac86c7f126c0661d24b1d61881e2",
+        "byteEqual": true
+      },
+      {
+        "filename": "adaptation-430.png",
+        "previousSha256": "bfb003bbb70ce25684e031d0282283b4bd15c3aff98c81171dd3c45f2b68d584",
+        "currentSha256": "bfb003bbb70ce25684e031d0282283b4bd15c3aff98c81171dd3c45f2b68d584",
+        "byteEqual": true
+      },
+      {
+        "filename": "festival-430.png",
+        "previousSha256": "af512392309ff1c49a548152bb3ee611072d0e6290abc40242a19628713fa966",
+        "currentSha256": "af512392309ff1c49a548152bb3ee611072d0e6290abc40242a19628713fa966",
+        "byteEqual": true
+      },
+      {
+        "filename": "archive-430.png",
+        "previousSha256": "7ec87f77cec0494fef74016b5b3a1b72e94e7463523474f2e0c18140d8fecc39",
+        "currentSha256": "7ec87f77cec0494fef74016b5b3a1b72e94e7463523474f2e0c18140d8fecc39",
+        "byteEqual": true
+      },
+      {
+        "filename": "no-photo-430.png",
+        "previousSha256": "f4571c75adadf93711af3a5862d3f74d3778ae487537967a3f20b004f046fb18",
+        "currentSha256": "f4571c75adadf93711af3a5862d3f74d3778ae487537967a3f20b004f046fb18",
+        "byteEqual": true
+      }
+    ],
+    "retainedVisualReviewAt": "2026-09-26T19:18:12.157Z",
+    "newVisualReview": false,
+    "newScreenshots": 0,
+    "apiWrites": 0,
+    "externalRequests": 0,
+    "inheritedSendableFalseChecked": true,
+    "sourceHashes": [
+      {
+        "path": "scripts/lib/literary-news-social.mjs",
+        "sha256": "8eb07adab515bd4418ae297e996e916ca5de856741feb39dac1f904673794d50"
+      },
+      {
+        "path": "scripts/lib/literary-news-media.mjs",
+        "sha256": "11cc34428c7e145c984ffbfe14db487aa227acd243dd7eb1101b1bd722a58f76"
+      },
+      {
+        "path": "reports/r10/social/quality/synthetic-fixtures.mjs",
+        "sha256": "a6049da9436909eae903d59dfa33366e9091875e2b3760caf117e280622b685f"
+      },
+      {
+        "path": "reports/r10/social/quality/render-synthetic-previews.mjs",
+        "sha256": "f0fb2f802436dbcb4ac029c1428da42928e8fe4fa1aa051a6789c2f8fc3ed27b"
+      }
+    ]
+  }
+}

@@ -1,0 +1,3561 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-26T18:29:04.258Z",
+  "counts": {
+    "records": 202,
+    "found": 101,
+    "skipped": 101,
+    "first20Found": 17,
+    "requests": 202,
+    "maxRequests": 202,
+    "cachedInitialCandidates": 168,
+    "visualHeld": 30
+  },
+  "policy": {
+    "publisherMetadataOnly": true,
+    "externalDisplayOnly": true,
+    "downloadedImages": 0,
+    "reuploadedImages": 0,
+    "socialReuseApproved": false,
+    "sourceRecordsModified": false
+  },
+  "skipReasons": {
+    "non_raster_image_mime": 4,
+    "metadata_generic_or_non_https": 25,
+    "visual_semantic_held": 30,
+    "no_og_or_twitter_image": 30,
+    "image_http_500": 1,
+    "request_budget_reached": 11
+  },
+  "items": [
+    {
+      "id": "jamaica-kincaid-sjojungfrun-presentation-2026",
+      "sourceUrl": "https://bokmassan.se/2026/09/jamaica-kincaid-har-tagit-emot-sjojungfrun-2026/",
+      "priority": 0,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:37.820Z",
+        "resolvedUrl": "https://bokmassan.se/uploads/2026/09/G2_2085.jpg?_t=1790431384"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 1,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "moscow-book-week-2026",
+      "sourceUrl": "https://www.culture.ru/news/259347/s-26-sentyabrya-po-4-oktyabrya-proidet-moskovskaya-knizhnaya-nedelya",
+      "priority": 1,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:37.793Z",
+        "resolvedUrl": "https://cdn.culture.ru/images/55b0255d-97d5-5205-a554-64bb252a4e14"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 2,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "nonna-gruffalo-italian-edition-2026",
+      "sourceUrl": "https://www.illibraio.it/news/bambini-e-ragazzi/nonna-gruffalo-serie-libri-1509151/",
+      "priority": 2,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:37.822Z",
+        "resolvedUrl": "https://www.illibraio.it/wp-content/uploads/2026/09/Nonna-Gruffalo-Emme-Edizioni.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 3,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "lithuania-ekultura-digital-heritage-finalist-2026",
+      "sourceUrl": "https://www.lnb.lt/naujienos/15177-lietuvos-kultura-atrasti-padedanti-platforma-ekultura-konkurso-skaitmeninis-knygnesys-finale",
+      "priority": 3,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:38.023Z",
+        "resolvedUrl": "https://www.lnb.lt/images/Naujienos/0925_794x530_lnb.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 4,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "livres-en-vignes-awards-2026",
+      "sourceUrl": "https://actualitte.com/article/134207/prix-litteraires/livres-en-vignes-2026-gautier-battistella-francois-henri-deserable-et-bruno-verjus-recompenses",
+      "priority": 4,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:38.215Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/livres-en-vignes-2026-gautier-battistella-francois-henri-deserable-et-bruno-verjus-recompenses-6ab6c24c4245e539312275.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 5,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "madeline-cash-page-america-award-2026",
+      "sourceUrl": "https://actualitte.com/article/134206/prix-litteraires/madeline-cash-remporte-le-prix-du-roman-page-america-2026",
+      "priority": 5,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:38.231Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/madeline-cash-remporte-le-prix-du-roman-page-america-2026-6ab6b1cdb9e99891271449.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 6,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "noon-strugatsky-trailer-2026",
+      "sourceUrl": "https://ast.ru/news/vyshel-treyler-seriala-polden-po-povesti-bratev-strugatskikh/",
+      "priority": 6,
+      "skip": "non_raster_image_mime",
+      "candidateUrl": "https://ast.ru/upload/resize_cache/iblock/b4a/1152vasq1767lrocjf2tdnu95r7w3g6y/600_315_2/polden_1200.jpg",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "checkedAt": "2026-09-26T18:28:38.249Z",
+        "resolvedUrl": "https://ast.ru/upload/resize_cache/iblock/b4a/1152vasq1767lrocjf2tdnu95r7w3g6y/600_315_2/polden_1200.jpg"
+      }
+    },
+    {
+      "id": "paulina-borsook-cyberselfish-reissue-announced-2026",
+      "sourceUrl": "https://lithub.com/a-prophetic-classic-about-the-dangers-of-tech-is-back-in-print/",
+      "priority": 7,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://s26162.pcdn.co/wp-content/uploads/2026/09/right-sidebar-banner-images-7.png"
+    },
+    {
+      "id": "rivera-garza-kwon-literary-influences-2026",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101347-writers-talking-writers-cristina-rivera-garza-on-theresa-hak-kyung-cha-and-r-o-kwon-on-mavis-gallant.html",
+      "priority": 8,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:39.145Z",
+        "resolvedUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131703-1.JPG"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 7,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "rsl-sri-lanka-books-culture-days-2026",
+      "sourceUrl": "https://www.rsl.ru/news/dni-kultury-shri-lanki",
+      "priority": 9,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:38.761Z",
+        "resolvedUrl": "https://www.rsl.ru/files/rsl/7188bc78-f26e-41c8-ab15-2f06d4642d7d.jpeg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 8,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "sharjah-filbo-guest-honour-announced-2026",
+      "sourceUrl": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+      "priority": 10,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:39.488Z",
+        "resolvedUrl": "https://camlibro.com.co/wp-content/uploads/2026/09/Lanzamiento-102-scaled.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 9,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "stephen-wright-black-moon-making-feature-2026",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101344-how-black-moon-by-stephen-wright-got-made.html",
+      "priority": 11,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:39.144Z",
+        "resolvedUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131699-1.PNG"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 10,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "viktor-likhonosov-krasnodar-square-2026",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/25/skver-v-centre-krasnodara-poluchit-imia-pisatelia-viktora-lihonosova",
+      "priority": 12,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:39.274Z",
+        "resolvedUrl": "https://glstatic.rg.ru/uploads/images/2026/09/25/viktor-lihonosov-v-yasnoy-polyane-sentyabr-2008-goda-foto-dshevarova_b83_b6b.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 11,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+      "sourceUrl": "https://ast.ru/news/premiyu-aleksandra-solzhenitsyna-vruchili-pisatelyu-vladislavu-otroshenko/",
+      "priority": 13,
+      "skip": "non_raster_image_mime",
+      "candidateUrl": "https://ast.ru/upload/resize_cache/iblock/089/70xfchr029bvaxrlt95to3vkub611fjy/600_315_2/sokjj_1200.jpg",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "checkedAt": "2026-09-26T18:28:39.409Z",
+        "resolvedUrl": "https://ast.ru/upload/resize_cache/iblock/089/70xfchr029bvaxrlt95to3vkub611fjy/600_315_2/sokjj_1200.jpg"
+      }
+    },
+    {
+      "id": "vromans-book-soup-hoffman-ownership-2026",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/101348-socal-s-vroman-s-book-soup-find-new-owner.html",
+      "priority": 14,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:39.602Z",
+        "resolvedUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131706-1.JPG"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 12,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "chooseco-cyoa-unbound-adult-imprint-2026",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101325-choose-your-own-adventure-publisher-launches-adult-imprint.html",
+      "priority": 15,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:39.874Z",
+        "resolvedUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131635-1.PNG"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 13,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "ens-editions-first-alef-prize-2026",
+      "sourceUrl": "https://actualitte.com/article/134185/prix-litteraires/le-prix-alef-de-l-edition-scientifique-2026-distingue-une-publication-d-ens-editions",
+      "priority": 16,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:39.762Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/le-prix-alef-de-l-edition-scientifique-2026-distingue-une-publication-d-ens-editions-6ab63824c0ba0573388323.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 14,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "geluck-chat-museum-ixelles-plan-2026",
+      "sourceUrl": "https://actualitte.com/article/134178/expos/le-musee-du-chat-de-philippe-geluck-renait-a-bruxelles",
+      "priority": 17,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:39.837Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/le-musee-du-chat-de-philippe-geluck-renait-a-bruxelles-6ab567bbf22c1449082397.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 15,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "history-of-a-town-rsl-stage-2026",
+      "sourceUrl": "https://www.rsl.ru/news/gorod-glupov-na-stsene-leninki",
+      "priority": 18,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:39.851Z",
+        "resolvedUrl": "https://www.rsl.ru/files/rsl/a19fe06b-e6ad-4932-8968-26580738ce9d.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 16,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "musicians-literary-prize-selection-2026",
+      "sourceUrl": "https://actualitte.com/article/134177/prix-litteraires/eric-emmanuel-schmitt-et-erik-orsenna-en-lice-au-prix-litteraire-des-musiciens-2026",
+      "priority": 19,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:40.017Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/eric-emmanuel-schmitt-et-erik-orsenna-en-lice-au-prix-litteraire-des-musiciens-2026-6ab56529bf6cd834434925.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 17,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "omnibird-panz-design-awards-2026",
+      "sourceUrl": "https://publishers.org.nz/book-for-bird-lovers-judges-best-designed-in-aotearoa/",
+      "priority": 20,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:53.455Z",
+        "resolvedUrl": "https://publishers.org.nz/wp-content/uploads/2026/09/2026-Winners-Books-1.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "contactSheetIndex": 18,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "rgali-sergei-markov-archive-feature-2026",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/24/rgali-k-120-letiiu-so-dnia-rozhdeniia-sergeia-nikolaevicha-markova",
+      "priority": 21,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:53.156Z",
+        "resolvedUrl": "https://glstatic.rg.ru/uploads/images/2026/09/23/rgali_c1d.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 19,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "sam-a-miller-still-lost-interview-2026",
+      "sourceUrl": "https://lithub.com/sam-a-miller-on-youtube-storytelling-and-choosing-science-fiction/",
+      "priority": 22,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://s26162.pcdn.co/wp-content/uploads/2026/09/banner-FNF26.png"
+    },
+    {
+      "id": "sanna-wani-lantern-daughterhood-essay-2026",
+      "sourceUrl": "https://lithub.com/sanna-wani-on-crafting-a-poetics-of-daughterhood/",
+      "priority": 23,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:53.362Z",
+        "resolvedUrl": "https://s26162.pcdn.co/wp-content/uploads/2026/09/light.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 20,
+        "humanReview": false,
+        "reason": "Abstract blurred lights do not establish a visual connection to the named poet or Lantern."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "scam-recit-dessine-selection-2026",
+      "sourceUrl": "https://actualitte.com/article/134165/prix-litteraires/7-albums-selectionnes-pour-le-prix-du-recit-dessine-2026",
+      "priority": 24,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:53.396Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/7-albums-selectionnes-pour-le-prix-du-recit-dessine-2026-6ab4fd2de98c6180407443.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 21,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "scariest-book-2027-preorder-2026",
+      "sourceUrl": "https://ast.ru/news/otkrylsya-predzakaz-na-sbornik-samaya-strashnaya-kniga-2027/",
+      "priority": 25,
+      "skip": "non_raster_image_mime",
+      "candidateUrl": "https://ast.ru/upload/resize_cache/iblock/bc6/nw4bzumzqfkw52qa1131sgi5urlbq9mf/600_315_2/ssk_1200.jpg",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "checkedAt": "2026-09-26T18:28:53.417Z",
+        "resolvedUrl": "https://ast.ru/upload/resize_cache/iblock/bc6/nw4bzumzqfkw52qa1131sgi5urlbq9mf/600_315_2/ssk_1200.jpg"
+      }
+    },
+    {
+      "id": "utopiales-comics-shortlist-2026",
+      "sourceUrl": "https://actualitte.com/article/134174/prix-litteraires/prix-utopiales-bd-2026-six-albums-pour-succeder-aux-navigateurs",
+      "priority": 26,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:53.620Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/prix-utopiales-bd-2026-six-albums-pour-succeder-aux-navigateurs-6ab5341a55b63452377783.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 22,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+      "sourceUrl": "https://brittlepaper.com/2026/09/ankara-press-acquires-cheryl-ntumys-romantasy-trilogy-the-seven-states/",
+      "priority": 27,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:54.117Z",
+        "resolvedUrl": "https://web.s3.wisc.edu/brittle-paper/prod/uploads/2026/09/cheryl-Ntumy-sm.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 23,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "cordoba-books-education-programme-2026",
+      "sourceUrl": "https://actualitte.com/article/134216/international/pour-aider-les-editeurs-locaux-cordoba-commande-50-000-livres",
+      "priority": 28,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:53.713Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/pour-aider-les-editeurs-locaux-cordoba-commande-50-000-livres-6ab7b9a3ea80e058407713.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 24,
+        "humanReview": false,
+        "reason": "Generic city-square photograph does not show the book-supply programme."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "esther-teillard-vocation-prize-2026",
+      "sourceUrl": "https://actualitte.com/article/134153/prix-litteraires/fuck-circus-esther-teillard-remporte-le-prix-litteraire-de-la-vocation-2026",
+      "priority": 29,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:53.780Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/fuck-circus-esther-teillard-remporte-le-prix-litteraire-de-la-vocation-2026-6ab41ce93998c558388631.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 25,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "nicolas-lunabba-gothenburg-bildning-award-2026",
+      "sourceUrl": "https://bokmassan.se/2026/09/nicolas-lunabba-tilldelas-bokmassans-bildningspris-2026/",
+      "priority": 30,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:53.865Z",
+        "resolvedUrl": "https://bokmassan.se/uploads/2026/09/BOK26-lunabba.jpg?_t=1790242241"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 26,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "poerio-goethe-iphigenia-attribution-2026",
+      "sourceUrl": "https://actualitte.com/article/134210/bibliophilie/200-ans-qu-on-cherchait-cette-traduction-elle-etait-dans-la-bibliotheque-de-goethe",
+      "priority": 31,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:54.041Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/200-ans-qu-on-cherchait-cette-traduction-elle-etait-dans-la-bibliotheque-de-goethe-6ab7ae6e8a200316685870.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 27,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "radzinsky-eighteen-volume-collected-works-2026",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/23/k-90-letiiu-edvarda-radzinskogo-vyhodit-18-tomnoe-sobranie-ego-sochinenij",
+      "priority": 32,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:53.876Z",
+        "resolvedUrl": "https://glstatic.rg.ru/uploads/images/2026/09/23/ria_5900452mr900_7b9.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 28,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "tv5monde-un-pays-un-livre-announced-2026",
+      "sourceUrl": "https://actualitte.com/article/134151/television/un-pays-un-livre-augustin-trapenard-rejoint-tv5monde-pour-une-nouvelle-emission",
+      "priority": 33,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:54.181Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/un-pays-un-livre-augustin-trapenard-rejoint-tv5monde-pour-une-nouvelle-emission-6ab3f21fc49bf743192931.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 29,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "vanity-fair-literary-selection-2026",
+      "sourceUrl": "https://actualitte.com/article/134138/prix-litteraires/9-livres-selectionnes-pour-le-prix-litteraire-vanity-fair-2026",
+      "priority": 34,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:54.206Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/9-livres-selectionnes-pour-le-prix-litteraire-vanity-fair-2026-6ab3c8b1cad76092344383.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 30,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "asymptote-hossaini-war-ends-translation-2026",
+      "sourceUrl": "https://www.asymptotejournal.com/blog/2026/09/22/translation-tuesday-war-ends-in-the-wrong-place-by-s-asef-hossaini/",
+      "priority": 35,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:54.378Z",
+        "resolvedUrl": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/09/TT_Afghanistan.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 31,
+        "humanReview": false,
+        "reason": "Translation-series decoration and a newspaper do not establish the specific poem or author."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "european-literacy-coalition-brussels-launch-2026",
+      "sourceUrl": "https://www.bn.org.pl/aktualnosci/6241-koalicja-unii-europejskiej-na-rzecz-czytelnictwa-oficjalnie-zainaugurowana-w-brukseli.html",
+      "priority": 36,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:54.758Z",
+        "resolvedUrl": "https://www.bn.org.pl/download/cover/1790227740.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 32,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "florent-oiseau-francoise-sagan-prize-2026",
+      "sourceUrl": "https://actualitte.com/article/134120/prix-litteraires/florent-oiseau-recoit-le-prix-francoise-sagan-2026-pour-ma-gloire",
+      "priority": 37,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:54.500Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/florent-oiseau-recoit-le-prix-francoise-sagan-2026-pour-ma-gloire-6ab290db578d7036724679.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 33,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "john-green-signed-tip-in-record-2026",
+      "sourceUrl": "https://global.penguinrandomhouse.com/announcements/author-john-green-earns-a-guinness-world-records-achievement-for-the-most-tip-in-sheets-signed-by-an-author/",
+      "priority": 38,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "jung-critical-edition-video-introduction-2026",
+      "sourceUrl": "https://press.princeton.edu/ideas/inside-junghaus-the-making-of-the-critical-edition-of-c-g-jung",
+      "priority": 39,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:54.285Z",
+        "resolvedUrl": "https://press.princeton.edu/sites/default/files/styles/facebook/public/image/2026-09/Junghaus_Still.png?h=b8c23d6f&itok=h98-vPSi"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 34,
+        "humanReview": false,
+        "reason": "Exterior building image does not establish the announced critical edition; association remains ambiguous."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "pen-america-alim-aliiev-literary-interview-2026",
+      "sourceUrl": "https://pen.org/alim-aliiev-crimean-tatar/",
+      "priority": 40,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:54.856Z",
+        "resolvedUrl": "https://cdn.pen.org/wp-content/uploads/2026/09/22162211/Alim-Aliiev-headshot-Courtesy-Image.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 35,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "podium-entertainment-acquisition-2026",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/financial-reporting/article/101308-podium-entertainment-acquired-by-private-equity-firms.html",
+      "priority": 41,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:54.931Z",
+        "resolvedUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131596-2.PNG"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "contactSheetIndex": 36,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "wells-brynhild-first-russian-2026",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/22/brungilda-ili-obraz-bez-prikras-pozdnij-roman-gerberta-uellsa-vpervye-vyshel-na-russkom-iazyke",
+      "priority": 42,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:54.575Z",
+        "resolvedUrl": "https://glstatic.rg.ru/uploads/images/2026/09/21/afisha---2026-09-21t124934054_f84.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 37,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "darlowo-morze-literatury-first-festival-report-2026",
+      "sourceUrl": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+      "priority": 43,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:54.853Z",
+        "resolvedUrl": "https://www.bn.org.pl/download/cover/1790150432.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 38,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+      "sourceUrl": "https://www.corpus.ru/news/svoboda-prihodit-v-polnoch-voshla-v-short-list-premii-prosvetitel-perevod.htm",
+      "priority": 44,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.corpus.ru/img/og.jpg"
+    },
+    {
+      "id": "lilya-brik-mamm-literary-museum-loans-2026",
+      "sourceUrl": "https://goslitmuz.ru/news/gmirli/22403/",
+      "priority": 45,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:55.247Z",
+        "resolvedUrl": "https://goslitmuz.ru/upload/iblock/189/l7wpplpfgkvwugueif8vjznmzfigt0uq/1-_9_.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 39,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "natalya-balayan-russian-fairy-tale-book-2026",
+      "sourceUrl": "https://www.rsl.ru/news/balayan",
+      "priority": 46,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:55.043Z",
+        "resolvedUrl": "https://www.rsl.ru/files/rsl/fb89b560-6f4b-45a5-850e-a04161d63834.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 40,
+        "humanReview": false,
+        "reason": "Generic open-book photograph, without the named book or presentation."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "pesnyary-minsk-moscow-exhibition-2026",
+      "sourceUrl": "https://goslitmuz.ru/news/gmirli/22401/",
+      "priority": 47,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:55.279Z",
+        "resolvedUrl": "https://goslitmuz.ru/upload/iblock/299/43wdpk3bblu9uqxbapkbmelc8jnb4x80/2026_09_11-Pesnyary-_27_.JPG"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 41,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "slovak-literary-fund-incunabula-publications-award-2026",
+      "sourceUrl": "https://snk.sk/en/novinky/literarny-fond-ocenil-nasu-publikaciu",
+      "priority": 48,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:55.850Z",
+        "resolvedUrl": "https://snk.sk/fileadmin/_processed_/9/7/csm_A3_portrait_KD_1-scaled_0933926b03.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 42,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "peter-stamm-cuando-oscurece-rebon-review-2026",
+      "sourceUrl": "https://www.elboomeran.com/once-miradas-para-explorar-la-irracionalidad-con-los-ojos-de-peter-stamm/",
+      "priority": 49,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:55.851Z",
+        "resolvedUrl": "https://www.elboomeran.com/wp-content/uploads/2026/09/Captura-de-pantalla-2026-09-14-163026.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 43,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "heather-cox-richardson-gitlin-auster-award-2026",
+      "sourceUrl": "https://lithub.com/heather-cox-richardson-has-been-awarded-the-inaugural-gitlin-auster-defender-of-democracy-award/",
+      "priority": 50,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:55.550Z",
+        "resolvedUrl": "https://s26162.pcdn.co/wp-content/uploads/2026/09/HCRWDA.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 44,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+      "sourceUrl": "https://www.bn.org.pl/aktualnosci/6235-gala-nagrody-im-czeslawa-milosza-w-darlowie-krzysztof-pomian-laureatem.html",
+      "priority": 51,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:55.564Z",
+        "resolvedUrl": "https://www.bn.org.pl/download/cover/1789852610.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 45,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "pen-catala-eritrean-writers-audio-postcards-2026",
+      "sourceUrl": "https://www.pencatala.cat/noticia/prova-de-vida-ja-dotze-postals-sonores-contra-25-anys-de-silenci/",
+      "priority": 52,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:55.962Z",
+        "resolvedUrl": "https://www.pencatala.cat/wp-content/uploads/2026/09/RADIO-PODCAST-MARC-GIRO_-PROVA-DE-VIDA-ja.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 46,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "viking-beth-brower-emma-lion-rights-2026",
+      "sourceUrl": "https://global.penguinrandomhouse.com/announcements/viking-penguin-acquires-u-s-rights-to-bestselling-self-published-series-the-unselected-journals-of-emma-m-lion/",
+      "priority": 53,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "bruno-montane-efimera-critical-feature-2026",
+      "sourceUrl": "https://lom.cl/blogs/blog/efimera-el-sutil-juego-de-ficciones-con-que-bruno-montane-subvierte-la-biografia",
+      "priority": 54,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:55.904Z",
+        "resolvedUrl": "https://cdn.shopify.com/s/files/1/0275/1568/2868/files/images_bd6ee7a5-f7dd-462a-9b82-58bdd0a5095e.jpg?v=1787331335"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 47,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "chebatkov-dovlatov-foreigner-reading-2026",
+      "sourceUrl": "https://www.rsl.ru/news/chebatkov-dovlatov",
+      "priority": 55,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:56.055Z",
+        "resolvedUrl": "https://www.rsl.ru/files/rsl/c1888897-ec4c-4ec0-bec1-19b899ac1993.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 48,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "dayton-literary-peace-prize-winners-2026",
+      "sourceUrl": "https://lithub.com/here-are-the-winners-of-the-2026-dayton-literary-peace-prize/",
+      "priority": 56,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:56.164Z",
+        "resolvedUrl": "https://s26162.pcdn.co/wp-content/uploads/2021/08/daytonliterary.png"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 49,
+        "humanReview": false,
+        "reason": "General prize logo rather than the announced winners or their books."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "ditan-beijing-book-market-opening-2026",
+      "sourceUrl": "https://www.pac.org.cn/hangyedongtai/141399.html",
+      "priority": 57,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "dubravka-rebic-vladan-desnica-decision-2026",
+      "sourceUrl": "https://nb.rs/nagrada-vladan-desnica-dodeljena-romanu-letu-je-kraj-dubravke-rebic/",
+      "priority": 58,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:56.161Z",
+        "resolvedUrl": "https://nb.rs/wp-content/uploads/2026/09/sve-fotke.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 50,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "ken-bugul-julie-huntington-asymptote-interview-2026",
+      "sourceUrl": "https://www.asymptotejournal.com/blog/2026/09/17/fearlessness-in-various-combinations-an-interview-with-marietou-mbaye-and-julie-huntington/",
+      "priority": 59,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:56.204Z",
+        "resolvedUrl": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/09/mbaye-huntington.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 51,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "kvinnsam-periodicals-svenska-tidningar-2026",
+      "sourceUrl": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+      "priority": 60,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:56.458Z",
+        "resolvedUrl": "https://www.kb.se/images/200.46f08a0d1a08b7d116a34/1789111638461/KvinnSamm-nyhet.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 52,
+        "humanReview": false,
+        "reason": "Image did not render in the browser contact sheet; visual match could not be inspected."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "novosibirsk-book-projects-seminar-2026",
+      "sourceUrl": "https://bookunion.ru/news/kniga-za-predelami-knizhnoi-polki-luchshie-praktiki-prodvizheniia-bolshikh-knizhnykh-proektov-obsudili-v-novosibirske/",
+      "priority": 61,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:56.413Z",
+        "resolvedUrl": "https://bookunion.ru/media/post_images/26-21-09-02.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 53,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "rsl-multilingual-literary-evening-2026",
+      "sourceUrl": "https://www.rsl.ru/news/mnogoobrazit-yazykov-i-literatury-narodov-rossii",
+      "priority": 62,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:56.339Z",
+        "resolvedUrl": "https://www.rsl.ru/files/rsl/ab14e8d9-9d2e-4812-beaf-1095c2f1178e.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "contactSheetIndex": 54,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "vernadsky-dnipro-digitised-periodicals-2026",
+      "sourceUrl": "https://nbuv.gov.ua/node/7320",
+      "priority": 63,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "chisinau-cosbuc-bacovia-exhibition-2026",
+      "sourceUrl": "https://www.bnrm.md/?p=7522",
+      "priority": 64,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "kokila-jason-reynolds-lamplighters-son-acquisition-2026",
+      "sourceUrl": "https://global.penguinrandomhouse.com/announcements/bestselling-and-award-winning-author-jason-reynolds-to-publish-the-lamplighters-son-with-kokila/",
+      "priority": 65,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "pen-belarus-three-writers-released-20260916",
+      "sourceUrl": "https://penbelarus.org/en/2026/09/16/troe-lyudzej-slova-na-voli.html",
+      "priority": 66,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:56.569Z",
+        "resolvedUrl": "https://penbelarus.org/wp-content/uploads/2026/09/6.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 55,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "san-martin-digital-repository-agreement-2026",
+      "sourceUrl": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+      "priority": 67,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:57.629Z",
+        "resolvedUrl": "https://www.bibliotecanacional.gob.cl/sites/www.bibliotecanacional.gob.cl/files/2026-09/descarga%20%286%29.jpeg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 56,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "serapis-millay-anthology-presented-2026",
+      "sourceUrl": "https://eternacadencia.com.ar/blog/tuve-lo-que-a-mi-no-me-toca-recuperan-poemas-de-edna-st-vincent-millay",
+      "priority": 68,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:59.209Z",
+        "resolvedUrl": "https://cfluna.com/eternacadencia.com.ar/cdn/files/tmp/compressed/normal/coe09p9ew1pu6iy9eqm9.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 57,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "asymptote-maria-messina-camilla-translation-2026",
+      "sourceUrl": "https://www.asymptotejournal.com/blog/2026/09/15/translation-tuesday-camilla-by-maria-messina/",
+      "priority": 69,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:56.739Z",
+        "resolvedUrl": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/09/TT_Italy_I.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 58,
+        "humanReview": false,
+        "reason": "Generic seaside image with a translation-series banner; specific story connection unclear."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "isbn-agencies-madrid-meeting-2026",
+      "sourceUrl": "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/",
+      "priority": 70,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:56.873Z",
+        "resolvedUrl": "https://nb.rs/wp-content/uploads/2026/09/1000059438-scaled.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 59,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "parfenov-nabokov-namedni-tour-announced-2026",
+      "sourceUrl": "https://www.corpus.ru/news/leonid-parfyonov-predstavit-dokumentalnyj-film-nabokove-novyj-tom-namedni.htm",
+      "priority": 71,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.corpus.ru/img/og.jpg"
+    },
+    {
+      "id": "li-juan-my-altay-russian-announcement-2026",
+      "sourceUrl": "https://admarginem.ru/2026/09/14/vnutri-moego-tela-zhivet-tanecz-otryvok-iz-knigi-li-czzyuan-moj-altaj/",
+      "priority": 72,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:56.934Z",
+        "resolvedUrl": "https://admarginem.ru/wp-content/uploads/2026/09/oblozhka-stati-copy2.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 60,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "mama-read-draw-family-awards-2026",
+      "sourceUrl": "https://www.rsl.ru/news/mama-pochitay-mne-nagrazhdenie-2026",
+      "priority": 73,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:57.090Z",
+        "resolvedUrl": "https://www.rsl.ru/files/rsl/a4200dff-bc70-4d63-a1a1-a7ec20a1fd77.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 61,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "nlo-venediktova-literary-haptics-podcast-20260912",
+      "sourceUrl": "https://nlobooks.ru/nlomedia/catalog/slovesnost/tatyana-venediktova-o-literaturnoy-gaptike/",
+      "priority": 74,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "ouest-france-quai-bulles-finalists-2026",
+      "sourceUrl": "https://actualitte.com/article/134166/prix-litteraires/prix-ouest-france-quai-des-bulles-les-cinq-finalistes-de-l-edition-2026",
+      "priority": 75,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:57.267Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/prix-ouest-france-quai-des-bulles-les-cinq-finalistes-de-l-edition-2026-6ab51870a1bce468580385.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 62,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+      "sourceUrl": "https://penclub.com.pl/2026/09/14/uroczystosc-wreczenia-nagrody-edytorskiej-2026/",
+      "priority": 76,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:57.659Z",
+        "resolvedUrl": "https://penclub.com.pl/wp-content/uploads/2023/09/Zrzut-ekranu-2023-09-7-o-00.57.18.png"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 63,
+        "humanReview": false,
+        "reason": "Generic award logo without the named recipient or his publication."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "kamen-writers-in-exile-portraits-opening-2026",
+      "sourceUrl": "https://pen-deutschland.de/weil-ich-beschlossen-habe-mich-nie-bezwingen-zu-lassen-2/",
+      "priority": 77,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:57.530Z",
+        "resolvedUrl": "https://pen-deutschland.de/wp-content/uploads/2026/09/Stella-e1789991741551-1024x341.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 64,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "lenfilm-samokat-family-film-reading-2026",
+      "sourceUrl": "https://samokatbook.ru/news/kinostudiya-lenfilm-i-samokat-zapuskayut-proekt-semeynye-kinochteniya/",
+      "priority": 78,
+      "skip": "image_http_500",
+      "candidateUrl": "https://samokatbook.ru/upload/resize_cache/iblock/ee6/1024_1024_1/hvtlx8tr4yh05nxsh9l253n531v3aoty.png",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 500,
+        "contentType": "text/html; charset=UTF-8",
+        "checkedAt": "2026-09-26T18:28:57.901Z",
+        "resolvedUrl": "https://samokatbook.ru/upload/resize_cache/iblock/ee6/1024_1024_1/hvtlx8tr4yh05nxsh9l253n531v3aoty.png"
+      }
+    },
+    {
+      "id": "pantin-comics-publishing-conference-2026",
+      "sourceUrl": "https://www.sne.fr/evenement_sne/creer-et-lire-demain-comprendre-le-nouveau-paysage-de-la-bd/",
+      "priority": 79,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:57.928Z",
+        "resolvedUrl": "https://www.sne.fr/app/uploads/2026/05/rencontre-en-region-Pantin-1.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 65,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "romania-erasmus-libraries-meeting-2026",
+      "sourceUrl": "https://bibnat.ro/comunicat-de-presa-erasmus-plus-in-biblioteci-cultura-educatie-si-dezvoltare-comunitara/",
+      "priority": 80,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:58.063Z",
+        "resolvedUrl": "https://bibnat.ro/wp-content/uploads/2026/09/erasmus.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 66,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "avrutina-ozlu-tanpinar-books-meeting-2026",
+      "sourceUrl": "https://admarginem.ru/2026/08/28/dajdzhest-sobytij-sentyabr-2026/",
+      "priority": 81,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:58.087Z",
+        "resolvedUrl": "https://admarginem.ru/wp-content/uploads/2026/08/dajdzhest-oblozhka-scaled.png"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 67,
+        "humanReview": false,
+        "reason": "General September events digest artwork, not the named translator or books."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "emmanuel-carrere-montevideo-kolkhoz-2026",
+      "sourceUrl": "https://cul.com.uy/emmanuel-carrere-visitara-uruguay/",
+      "priority": 82,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "liber-innovation-audio-programme-2026",
+      "sourceUrl": "https://www.dosdoce.com/2026/09/22/jornadas-liber-innovacion-2026/",
+      "priority": 83,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:58.193Z",
+        "resolvedUrl": "https://www.dosdoce.com/wp-content/uploads/2026/09/Screenshot-2026-09-22-at-16.12.55.png"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 68,
+        "humanReview": false,
+        "reason": "General Liber fair logo rather than the specific professional programme."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "mcmonagle-letters-stephen-rea-reading-2026",
+      "sourceUrl": "https://www.nli.ie/exhibitions-events/where-murdering-cannons-roar",
+      "priority": 84,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:58.551Z",
+        "resolvedUrl": "https://www.nli.ie/sites/default/files/styles/event_large_large/public/2026-08/image.png?h=a96e430e&itok=uCVDW5Md"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 69,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "yasnaya-polyana-kuzminskaya-exhibition-2026",
+      "sourceUrl": "https://ypmuseum.ru/event/2004",
+      "priority": 85,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:58.261Z",
+        "resolvedUrl": "https://ypmuseum.ru/images/share_3.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 70,
+        "humanReview": false,
+        "reason": "Generic Yasnaya Polyana museum branding, not the Kuzminskaya exhibition."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "bnf-oulipo-season-2026",
+      "sourceUrl": "https://www.bnf.fr/fr/agenda/les-mercredis-de-loulipo",
+      "priority": 86,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "foucault-college-france-exhibition-2026",
+      "sourceUrl": "https://www.bnf.fr/fr/agenda/foucault-une-aventure-intellectuelle-au-college-de-france",
+      "priority": 87,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:58.440Z",
+        "resolvedUrl": "https://www.bnf.fr/sites/default/files/2026-08/michel-foucault-photo.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 71,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "ikapi-awards-ceremony-2026",
+      "sourceUrl": "https://www.ikapi.org/2026/08/15/usulan-penerima-ikapi-awards-2026-telah-dibuka/",
+      "priority": 88,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "lithuania-winnie-pooh-centenary-programme-2026",
+      "sourceUrl": "https://www.lnb.lt/naujienos/15156-valio-pukuotukui-winnie-the-p-1-o-o-h",
+      "priority": 89,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:58.464Z",
+        "resolvedUrl": "https://www.lnb.lt/images/Naujienos/pukuotukas_794x530_naujiena.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "contactSheetIndex": 72,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "hafiz-alontsev-rsl-presentation-2026",
+      "sourceUrl": "https://www.rsl.ru/events/hafiz-chitateli-i-perevodchiki",
+      "priority": 90,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:58.618Z",
+        "resolvedUrl": "https://www.rsl.ru/files/rsl/48bc60c0-9bb9-486d-baba-770bc77ef5e2.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 73,
+        "humanReview": false,
+        "reason": "Generic stack of old books, without the named Hafez edition."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "lucashenko-eddie-blanket-french-edition-2026",
+      "sourceUrl": "https://actualitte.com/article/134109/avant-parutions/la-chute-d-eddie-blanket-une-histoire-de-famille-sur-deux-siecles",
+      "priority": 91,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:58.796Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/la-chute-d-eddie-blanket-une-histoire-de-famille-sur-deux-siecles-6ab256710b993297536907.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 74,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "richard-oram-wind-water-cleave-talk-2026",
+      "sourceUrl": "https://www.nls.uk/whats-on/where-wind-and-water-cleave/",
+      "priority": 92,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:28:58.923Z",
+        "resolvedUrl": "https://www.nls.uk/media/wffjgmie/where-wind-and-water-cleave.jpg?width=1200&height=630&format=webp&v=1dcf98dd9209b50"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 75,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "sables-de-dune-french-edition-2026",
+      "sourceUrl": "https://actualitte.com/article/134116/avant-parutions/dune-n-a-pas-livre-tous-ses-secrets-quatres-nouvelles-inedites",
+      "priority": 93,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:58.950Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/dune-n-a-pas-livre-tous-ses-secrets-quatres-nouvelles-inedites-6ab28d49aa9d6537535836.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 76,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "bogota-children-book-festival-bookshop-call-2026",
+      "sourceUrl": "https://camlibro.com.co/convocatoria-librerias-festival-lij/",
+      "priority": 94,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:59.527Z",
+        "resolvedUrl": "https://camlibro.com.co/wp-content/uploads/2026/09/0922_bannerWebCCL-convocatoriaLIJ226-1.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 77,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "montevideo-international-book-fair-2026",
+      "sourceUrl": "https://cul.com.uy/programa-de-actividades-48-a-feria-internacional-del-libro-de-montevideo/",
+      "priority": 95,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "nizhny-novgorod-book-fair-2026",
+      "sourceUrl": "https://ast.ru/news/avtory-izdatelskoy-gruppy-eksmo-ast-primut-uchastie-v-nizhegorodskoy-knizhnoy-yarmarke/",
+      "priority": 96,
+      "skip": "non_raster_image_mime",
+      "candidateUrl": "https://ast.ru/upload/resize_cache/iblock/872/jynp7d3d4rpq90vcmdcf2l9xwadd6fvr/600_315_2/nka_1200.jpg",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "application/octet-stream",
+        "checkedAt": "2026-09-26T18:28:59.199Z",
+        "resolvedUrl": "https://ast.ru/upload/resize_cache/iblock/872/jynp7d3d4rpq90vcmdcf2l9xwadd6fvr/600_315_2/nka_1200.jpg"
+      }
+    },
+    {
+      "id": "slovakia-bibliography-days-seminars-2026",
+      "sourceUrl": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+      "priority": 97,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:59.287Z",
+        "resolvedUrl": "https://snk.sk/fileadmin/_processed_/1/e/csm_Bibliografick%C3%A9_dni_2026_4bcbc7ecc2.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 78,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "turkey-childrens-editing-workshop-deadline-2026",
+      "sourceUrl": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler-atolyesi-kayitlari-basladi/",
+      "priority": 98,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "liechtenstein-helena-brehm-poetry-workshop-2026",
+      "sourceUrl": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+      "priority": 99,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.landesbibliothek.li/wp-content/uploads/2016/04/logo_lilb.png"
+    },
+    {
+      "id": "lit-connect-jakarta-2026",
+      "sourceUrl": "https://www.ikapi.org/2026/09/23/lit-connect-an-ikapi-forum-kembali-hadir-di-iibf-2026-dengan-lebih-banyak-sesi/",
+      "priority": 100,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "luxembourg-unfinished-peace-archive-exhibition-2026",
+      "sourceUrl": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+      "priority": 101,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": null
+    },
+    {
+      "id": "piedmont-independent-book-tour-2026",
+      "sourceUrl": "https://www.salonelibro.it/news/tutte-news/independent-book-tour-2026.html",
+      "priority": 102,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.salonelibro.it/.resources/salonelibro/webresources/img/salone-libro_OG.png"
+    },
+    {
+      "id": "pistoia-deans-rag-books-exhibition-closing-2026",
+      "sourceUrl": "https://www.illibraio.it/news/bambini-e-ragazzi/libri-di-pezza-per-linfanzia-1508827/",
+      "priority": 103,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:59.486Z",
+        "resolvedUrl": "https://www.illibraio.it/wp-content/uploads/2026/09/libri-di-pezza-per-linfanzia.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 79,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "yesenin-konstantinovo-poetry-festival-2026",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/23/opublikovana-polnaia-programma-vserossijskogo-eseninskogo-prazdnika-poezii",
+      "priority": 104,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:59.286Z",
+        "resolvedUrl": "https://glstatic.rg.ru/uploads/images/2026/09/23/afisha-9_579_3fe.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 80,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "chile-library-140-words-contest-2026",
+      "sourceUrl": "https://www.bibliotecanacional.gob.cl/noticias/con-seminario-concurso-literario-y-actividades-para-la-comunidad-la-bn-celebrara-los-140",
+      "priority": 105,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.509Z",
+        "resolvedUrl": "https://www.bibliotecanacional.gob.cl/sites/www.bibliotecanacional.gob.cl/files/2026-09/prestamodomicilio-30-09-26-JQ-3.JPG"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 81,
+        "humanReview": false,
+        "reason": "Generic library-reading photograph, with no visible connection to the 140-word contest."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "danish-pen-banned-books-opening-2026",
+      "sourceUrl": "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/",
+      "priority": 106,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://danskpen.dk/wp-content/uploads/2025/05/LOGO_23FB-smal_beige.jpg"
+    },
+    {
+      "id": "frankfurt-rights-meeting-40-reception-2026",
+      "sourceUrl": "https://www.buchmesse.de/en/press/press-releases/2026-06-08-40-years-frankfurt-rights-meeting",
+      "priority": 107,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "ilcl-limited-colour-picture-books-2026",
+      "sourceUrl": "https://www.ndl.go.jp/en/news/fy2026/260825_01",
+      "priority": 108,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.ndl.go.jp/assets/hp/og.png"
+    },
+    {
+      "id": "frankfurt-audio-business-centre-2026",
+      "sourceUrl": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-who-narrating-future-frankfurter-buchmesses-audio-programme-2026",
+      "priority": 109,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "frankfurt-comic-business-centre-2026",
+      "sourceUrl": "https://www.buchmesse.de/en/press/press-releases/2026-08-27-comics-manga-and-visual-stories-frankfurter-buchmesse-creating-new",
+      "priority": 110,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "aficionado-award-words-without-borders-2026",
+      "sourceUrl": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-aficionado-award-words-without-borders",
+      "priority": 111,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "kill-jackie-series-premiere-2026",
+      "sourceUrl": "https://actualitte.com/article/134158/bande-annonce/kill-jackie-une-mini-serie-tiree-d-un-livre-d-aidan-truhen",
+      "priority": 112,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:59.606Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/kill-jackie-une-mini-serie-tiree-d-un-livre-d-aidan-truhen-6ab4d1f8b2e76842861942.jpeg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 82,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "nobel-literature-announcement-schedule-2026",
+      "sourceUrl": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+      "priority": 113,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.nobelprize.org/images/52987-hero-desktop-thin-2x.jpg"
+    },
+    {
+      "id": "frankfurt-book-to-screen-day-2026",
+      "sourceUrl": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+      "priority": 114,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "marie-dorleans-grand-est-award-presentation-2026",
+      "sourceUrl": "https://actualitte.com/article/134125/prix-litteraires/marie-dorleans-remporte-le-prix-du-livre-grand-est-2026",
+      "priority": 115,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:28:59.836Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/marie-dorleans-remporte-le-prix-du-livre-grand-est-2026-6ab2cbdbae831849785122.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 83,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "pen-belarus-writers-frankfurt-panel-2026",
+      "sourceUrl": "https://pen-deutschland.de/pen-veranstaltung-mit-friedensnobelpreistraeger-ales-bialatski-auf-der-frankfurter-buchmesse/",
+      "priority": 116,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:59.786Z",
+        "resolvedUrl": "https://pen-deutschland.de/wp-content/uploads/2026/09/FBM-2026-Bialatski-PEN-Website-3-1024x513.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 84,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "childrens-detective-reading-conference-2026",
+      "sourceUrl": "https://samokatbook.ru/news/onlayn-konferentsiya-detektivy-i-priklyucheniya-dlya-detey-i-podrostkov-professionalnoe-soobshchestv/",
+      "priority": 117,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:28:59.681Z",
+        "resolvedUrl": "https://samokatbook.ru/upload/iblock/286/1jqyxpkxswfqwl9imlsxh6kqi7hoy06c.png"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 85,
+        "humanReview": false,
+        "reason": "Poster visibly gives October 2025, conflicting with the 2026 conference news."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "sarajevo-amer-tikvesa-literary-corner-2026",
+      "sourceUrl": "https://penbih.ba/2026/09/knjizevni-korner-54-razgovor-sa-amerom-tikvesom/",
+      "priority": 118,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "http://penbih.ba/wp-content/uploads/2026/09/post.png"
+    },
+    {
+      "id": "lynne-campbell-fungi-language-song-2026",
+      "sourceUrl": "https://www.nls.uk/whats-on/a-foray-into-fungi-in-language-and-song/",
+      "priority": 119,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:00.039Z",
+        "resolvedUrl": "https://www.nls.uk/media/2ycbphvd/mushroom-day-talk.jpg?width=1200&height=630&format=webp&v=1dd24ca40b43ad0"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 86,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "stevenson-cevennes-illustrated-french-edition-2026",
+      "sourceUrl": "https://actualitte.com/article/134080/avant-parutions/le-voyage-de-robert-louis-stevenson-dans-les-cevennes-s-offre-une-nouvelle-edition-illustree",
+      "priority": 120,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:00.103Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/le-voyage-de-robert-louis-stevenson-dans-les-cevennes-s-offre-une-nouvelle-edition-illustree-6ab1076a84ede444499575.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 87,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "litres-yasnaya-polyana-free-reading-2026",
+      "sourceUrl": "https://bookunion.ru/news/litres-otkryvaet-besplatnyi-dostup-k-knigam-finalistov-24-sezona-premii-iasnaia-poliana/",
+      "priority": 121,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.096Z",
+        "resolvedUrl": "https://bookunion.ru/media/post_images/05-03_3ejYFBb.2.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 88,
+        "humanReview": false,
+        "reason": "Litres company logo rather than the finalist books or the reading offer."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "norwegian-pen-ossietzky-nominations-deadline-2026",
+      "sourceUrl": "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/",
+      "priority": 122,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.279Z",
+        "resolvedUrl": "https://norskpen.no/wp-content/uploads/2024/08/Nettside_Cover3-scaled.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 89,
+        "humanReview": false,
+        "reason": "Generic Ossietzky prize typography, not a dated call or specific programme."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "bugojanska-vaza-short-story-deadline-2026",
+      "sourceUrl": "https://penbih.ba/2026/08/natjecaj-za-kratku-pricu-pripovijetkuxiv-bugojnaska-vaza-bugojno-2026/",
+      "priority": 123,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "http://penbih.ba/wp-content/uploads/2026/08/Bugojanska-vaza-foto-sama-scaled.jpg"
+    },
+    {
+      "id": "svensk-bokkonst-awards-ceremony-2026",
+      "sourceUrl": "https://www.kb.se/om-oss/evenemang/evenemang/2026-10-20-svensk-bokkonst-2025.html",
+      "priority": 124,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.260Z",
+        "resolvedUrl": "https://www.kb.se/images/200.5c4746ff197581d1a74b574/1757579270973/Svensk-bokkonst.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "contactSheetIndex": 90,
+        "humanReview": false,
+        "reason": "Image did not render in the browser contact sheet; visual match could not be inspected."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "ayad-akhtar-portland-lecture-2026",
+      "sourceUrl": "https://literary-arts.org/2026/04/2627pal/",
+      "priority": 125,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.758Z",
+        "resolvedUrl": "https://literary-arts.org/wp-content/uploads/2026/04/PAL2627_600x900_V2_series.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 91,
+        "humanReview": false,
+        "reason": "Whole-season speaker collage; square crop can show a different person from the named speaker."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "weather-spirits-international-storytelling-2026",
+      "sourceUrl": "https://www.nls.uk/whats-on/weather-spirits-and-rain-lore/",
+      "priority": 126,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:00.636Z",
+        "resolvedUrl": "https://www.nls.uk/media/ko0f3ut2/rain-lore.jpg?width=1200&height=630&format=webp&v=1dd356759931d20"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 92,
+        "humanReview": false,
+        "reason": "Decorative ceramic-style illustration; its connection to this specific storytelling event remains ambiguous."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "saluzzo-medieval-book-festival-2026",
+      "sourceUrl": "https://www.salonelibro.it/news/tutte-news/2026/festa-libro-medievale-saluzzo-2026.html",
+      "priority": 127,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.salonelibro.it/.resources/salonelibro/webresources/img/salone-libro_OG.png"
+    },
+    {
+      "id": "kruzhkov-mukha-pukha-reading-theatre-2026",
+      "sourceUrl": "https://samokatbook.ru/meropriyatiya/v-moskve/teatr-na-samokate-daleko-ne-zaplyvay-edim-gryushi-nakhodim-ritm-i-vklyuchaem-fantaziyu-s-semeynym-te/",
+      "priority": 128,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.349Z",
+        "resolvedUrl": "https://samokatbook.ru/upload/resize_cache/iblock/e5c/1024_1024_1/79yr12r5ocsqzg83dd4fn0twih4r16zd.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 93,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "steven-veerapen-witches-talk-2026",
+      "sourceUrl": "https://www.nls.uk/whats-on/witch-obsession-with-steven-veerapen/",
+      "priority": 129,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:00.744Z",
+        "resolvedUrl": "https://www.nls.uk/media/r1fhksuf/stevenveerapen-witches.jpg?width=1200&height=630&format=webp&v=1dd24256dfa6820"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 94,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "chekhodal-short-fiction-call-2026",
+      "sourceUrl": "https://goslitmuz.ru/news/gmirli/22385/",
+      "priority": 130,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.785Z",
+        "resolvedUrl": "https://goslitmuz.ru/upload/iblock/f77/yw6xazm3oq2vo25xjujdhgxq7j100gua/kmsHwlWo5fc6XxnbW1UCwHwwitUzAep9UzeleHF0DUTKyV62nXF_WMzda74BfV0hBmbRYGGKRU59wAZvYZ18AAT_.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 95,
+        "humanReview": false,
+        "reason": "Generic contest logo without dated programme information."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "degol-hailu-pillaging-the-dead-2026",
+      "sourceUrl": "https://cassavarepublic.biz/qa-with-degol-hailu/",
+      "priority": 131,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:00.879Z",
+        "resolvedUrl": "https://mlcohovbxf2x.i.optimole.com/cb:qKbK.478/w:940/h:788/q:mauto/f:best/https://cassavarepublic.biz/wp-content/uploads/2026/09/CRP-Blog-Headers-15.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 96,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "dublin-imprisoned-writer-gallagher-2026",
+      "sourceUrl": "https://irishpen.com/2026/09/16/irish-pen-event-at-dublin-book-festival/",
+      "priority": 132,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:01.108Z",
+        "resolvedUrl": "https://irishpen.com/wp-content/uploads/2026/09/DBF-299x300.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 97,
+        "humanReview": false,
+        "reason": "General Dublin Book Festival branding rather than the specific censorship discussion."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "shida-bazyar-wilhelm-raabe-presentation-2026",
+      "sourceUrl": "https://www.kiwi-verlag.de/magazin/ausgezeichnet/shida-bazyar-erhaelt-den-wilhelm-raabe-literaturpreis-2026",
+      "priority": 133,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:01.471Z",
+        "resolvedUrl": "https://res.cloudinary.com/holtzbrinck-buchverlage/image/fetch/w_1200,c_fill,g_auto,q_auto,f_jpg/https%3A%2F%2Fbilder-kiwi.s3.eu-central-1.amazonaws.com%2Fs3fs-public%2F2026-08%2Fbazyar_0.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 98,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "small-piece-night-student-anthology-2026",
+      "sourceUrl": "https://literary-arts.org/2026/09/wits-student-anthology-2026-a-small-piece-of-night/",
+      "priority": 134,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:01.145Z",
+        "resolvedUrl": "https://literary-arts.org/wp-content/uploads/2026/09/WITS-Cover-Reveal_600x900.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 99,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "european-authors-day-programme-2026",
+      "sourceUrl": "https://actualitte.com/article/134183/rencontres-dedicaces/une-nouvelle-edition-de-la-journee-des-auteurs-europeens",
+      "priority": 135,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:01.199Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/une-nouvelle-edition-de-la-journee-des-auteurs-europeens-6ab631c95e9d2950375253.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 100,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "erin-farley-lighthouse-lives-talk-2026",
+      "sourceUrl": "https://www.nls.uk/whats-on/lighthouse-lives/",
+      "priority": 136,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:01.459Z",
+        "resolvedUrl": "https://www.nls.uk/media/52up2is1/erin-farley-lighthouses.jpg?width=1200&height=630&format=webp&v=1dd24bdb39d43f0"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 101,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "gianni-mura-fuoriclasse-winner-announcement-2026",
+      "sourceUrl": "https://www.salonelibro.it/news/tutte-news/Premio-Gianni-Mura-2026.html",
+      "priority": 137,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.salonelibro.it/.resources/salonelibro/webresources/img/salone-libro_OG.png"
+    },
+    {
+      "id": "adeb-namur-publishing-future-colloquium-2026",
+      "sourceUrl": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+      "priority": 138,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "macdiarmid-thistle-centenary-talk-2026",
+      "sourceUrl": "https://www.nls.uk/whats-on/a-drunk-man-looks-at-the-thistle/",
+      "priority": 139,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:01.499Z",
+        "resolvedUrl": "https://www.nls.uk/media/0jrbe1bi/thistle.jpg?width=1200&height=630&format=webp&v=1dd24b4b1961860"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 102,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "slovakia-power-story-library-webinar-2026",
+      "sourceUrl": "https://snk.sk/en/novinky/webinar-sila-pribehu-v-kniznici",
+      "priority": 140,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:02.687Z",
+        "resolvedUrl": "https://snk.sk/fileadmin/_processed_/2/e/csm_Sila_pr%C3%ADbehu_v_kni%C5%BEnici_7131e391bc.png"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 103,
+        "humanReview": false,
+        "reason": "General library-webinar series graphic, without the named storytelling session."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "turin-italiano-al-mondo-translators-conference-2026",
+      "sourceUrl": "https://www.salonelibro.it/news/tutte-news/italiano-al-mondo-2026.html",
+      "priority": 141,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.salonelibro.it/.resources/salonelibro/webresources/img/salone-libro_OG.png"
+    },
+    {
+      "id": "daniil-granin-prize-second-season-2026",
+      "sourceUrl": "https://bookunion.ru/news/otkryt-priem-zaiavok-na-vtoroi-sezon-natsionalnoi-literaturnoi-premii-imeni-daniila-granina/",
+      "priority": 142,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:01.719Z",
+        "resolvedUrl": "https://bookunion.ru/media/post_images/26-21-09-01.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 104,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "fil-editorial-merit-ekare-2026",
+      "sourceUrl": "https://fil.com.mx/prensa/boletin.asp?id=3345&ids=1",
+      "priority": 143,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.fil.com.mx/images/redes/FIL.jpg"
+    },
+    {
+      "id": "tiktok-book-awards-mexico-ceremony-2026",
+      "sourceUrl": "https://fil.com.mx/prensa/boletin.asp?id=3347&ids=1",
+      "priority": 144,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.fil.com.mx/images/redes/FIL.jpg"
+    },
+    {
+      "id": "isabel-wilkerson-portland-lecture-2027",
+      "sourceUrl": "https://literary-arts.org/2026/04/2627pal/",
+      "priority": 145,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.758Z",
+        "resolvedUrl": "https://literary-arts.org/wp-content/uploads/2026/04/PAL2627_600x900_V2_series.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 105,
+        "humanReview": false,
+        "reason": "Whole-season speaker collage; square crop can show a different person from the named speaker."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "hiromi-kawakami-far-from-everywhere-2027",
+      "sourceUrl": "https://electricliterature.com/exclusive-cover-reveal-of-far-from-everywhere-by-hiromi-kawakami-translated-by-allison-markin-powell/",
+      "priority": 146,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:01.706Z",
+        "resolvedUrl": "https://electricliterature.com/wp-content/uploads/2026/09/final-cover-Far-From-Everywhere-Darcy-Glastonbury-e1789665146782.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 106,
+        "humanReview": false,
+        "reason": "Unlabelled streetscape illustration; connection to the named book cannot be established visually."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "taipei-book-exhibition-czech-guest-2027",
+      "sourceUrl": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+      "priority": 147,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:02.281Z",
+        "resolvedUrl": "https://www.tibe.org.tw/upload_files/fonlego-rwd/website/20260918%E9%A6%96%E5%9C%96.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 107,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "ben-rhodes-portland-lecture-2027",
+      "sourceUrl": "https://literary-arts.org/2026/04/2627pal/",
+      "priority": 148,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:00.758Z",
+        "resolvedUrl": "https://literary-arts.org/wp-content/uploads/2026/04/PAL2627_600x900_V2_series.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "contactSheetIndex": 108,
+        "humanReview": false,
+        "reason": "Whole-season speaker collage; square crop can show a different person from the named speaker."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "george-w-bush-call-of-freedom-us-2027",
+      "sourceUrl": "https://global.penguinrandomhouse.com/announcements/crown-to-publish-former-president-george-w-bushs-the-call-of-freedom/",
+      "priority": 149,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "devenir-un-monstre-quebec-release-2027",
+      "sourceUrl": "https://actualitte.com/article/134179/bande-annonce/devenir-un-monstre-le-livre-de-jean-barbe-devient-un-film",
+      "priority": 150,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:02.014Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/devenir-un-monstre-le-livre-de-jean-barbe-devient-un-film-6ab61d812fe4b997887809.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 109,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "tara-westover-brothers-and-sisters-us-2027",
+      "sourceUrl": "https://global.penguinrandomhouse.com/announcements/random-house-to-publish-a-new-memoir-by-tara-westover-1-nyt-bestselling-author-of-educated/",
+      "priority": 151,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "china-publishing-development-report-2025-2026",
+      "sourceUrl": "https://www.pac.org.cn/hangyedongtai/141395.html",
+      "priority": 152,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "jaume-cabre-feixes-first-russian-2026",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/10/muzyka-i-dogmy-kniga-fejshesa-zhaume-kabre",
+      "priority": 153,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:01.843Z",
+        "resolvedUrl": "https://glstatic.rg.ru/uploads/images/2026/09/10/afisha---2026-09-10t144302154_003.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 110,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "nuestra-tierra-radio-animation-season2-2026",
+      "sourceUrl": "https://www.bibliotecanacional.gob.cl/noticias/lanzan-segunda-temporada-de-radioteatros-y-relatos-animados-de-nuestra-tierra-para",
+      "priority": 154,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:03.066Z",
+        "resolvedUrl": "https://www.bibliotecanacional.gob.cl/sites/www.bibliotecanacional.gob.cl/files/2026-09/344A2992.JPG"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 111,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "funmike-ogaosun-shipikisha-cover-2026",
+      "sourceUrl": "https://cassavarepublic.biz/qa-illustrating-the-shikipisha-club-by-funmike-ogaosun/",
+      "priority": 155,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:02.199Z",
+        "resolvedUrl": "https://mlcohovbxf2x.i.optimole.com/cb:qKbK.478/w:940/h:788/q:mauto/f:best/https://cassavarepublic.biz/wp-content/uploads/2026/07/CRP-Blog-Headers-12.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 112,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+      "sourceUrl": "https://pen.org/isabel-j-kim-the-pen-ten-interview/",
+      "priority": 156,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:02.673Z",
+        "resolvedUrl": "https://cdn.pen.org/wp-content/uploads/2026/09/08095743/Isabel-J-Kim-PEN-Ten-Featured-Image.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 113,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "katarina-wennstam-crimetime-honorary-award-2026",
+      "sourceUrl": "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/",
+      "priority": 157,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:02.535Z",
+        "resolvedUrl": "https://bokmassan.se/uploads/2026/09/KatarinaWennstam_Bookmark_KajsaGoransson7-webb.jpg?_t=1789027842"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 114,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "lithuania-italian-literature-reading-lists-2026",
+      "sourceUrl": "https://www.lnb.lt/naujienos/15104-atrinkta-jums-italu-literatura",
+      "priority": 158,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:02.734Z",
+        "resolvedUrl": "https://www.lnb.lt/images/Naujienos/0916_italulit_794x530.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 115,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "lom-juan-guzman-memory-book-2026",
+      "sourceUrl": "https://lom.cl/blogs/blog/juan-guzman-una-vida-frente-al-deber-de-la-justicia",
+      "priority": 159,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:03.007Z",
+        "resolvedUrl": "https://cdn.shopify.com/s/files/1/0275/1568/2868/files/Juansinmiedo_480x480.jpg?v=1775009787"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 116,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "pen-index-victoria-amelina-fellowship-2026",
+      "sourceUrl": "https://www.pen-international.org/news/pen-international-partners-with-index-to-support-writers-carrying-victoria-amelinas-legacy",
+      "priority": 160,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "http://static1.squarespace.com/static/628f9ae10b12c8255bd8814d/6298db625ac70e646e1763c6/6aa276fcb999b8027c5a6782/1789037725576/Screenshot+2026-09-10+at+10.29.12.png?format=1500w"
+    },
+    {
+      "id": "vernadsky-world-literature-ukrainian-exhibition-2026",
+      "sourceUrl": "https://nbuv.gov.ua/node/7317",
+      "priority": 161,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "patrick-dewitt-dodge-city-russian-edition-2026",
+      "sourceUrl": "https://www.corpus.ru/news/novyj-roman-patrika-de-vitta-dodzh-citi-nominirovan-na-premiyu-giller.htm",
+      "priority": 162,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.corpus.ru/img/og.jpg"
+    },
+    {
+      "id": "gorodets-norwegian-folk-tales-2026",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/08/trolli-magiia-i-severnyj-folklor-norvezhskie-narodnye-skazki",
+      "priority": 163,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:02.803Z",
+        "resolvedUrl": "https://glstatic.rg.ru/uploads/images/2026/09/05/bez-imeni-2_e14.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 117,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "liu-cixin-direct-russian-translation-interview-2026",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/07/interviu-s-liu-cysinem-po-sluchaiu-20-letiia-izdaniia-zadachi-treh-tel",
+      "priority": 164,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:02.823Z",
+        "resolvedUrl": "https://glstatic.rg.ru/uploads/images/2026/09/07/bez-nazvaniya-94_202609071643_24420_db5.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 118,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "nli-redevelopment-tender-approved-2026",
+      "sourceUrl": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+      "priority": 165,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:02.962Z",
+        "resolvedUrl": "https://www.nli.ie/sites/default/files/styles/event_large_large/public/2026-09/img_1244.jpeg?h=9c4c0580&itok=YEgW62Gu"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 119,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "taiwan-picture-book-creation-support-2026",
+      "sourceUrl": "https://www.tibe.org.tw/tw/news_detail/6/1917",
+      "priority": 166,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:03.241Z",
+        "resolvedUrl": "https://www.tibe.org.tw/upload_files/fonlego-rwd/website/%E5%87%BA%E7%89%88%E5%8B%95%E6%85%8B_%E9%A6%96%E5%9C%96_1000x563.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 120,
+        "humanReview": false,
+        "reason": "General publishing-updates category graphic rather than the picture-book support programme."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "yeats-a-vision-digitised-papers-2026",
+      "sourceUrl": "https://www.nli.ie/news-stories/news/celebrating-century-vision",
+      "priority": 167,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:03.135Z",
+        "resolvedUrl": "https://www.nli.ie/sites/default/files/styles/event_large_large/public/2026-09/nli-a-vision-event-overall.png?h=3181f0b6&itok=zeCa6-Me"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 121,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "shershenevich-drozdov-collection-exhibition-2026",
+      "sourceUrl": "https://goslitmuz.ru/news/gmirli/22384/",
+      "priority": 168,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:03.258Z",
+        "resolvedUrl": "https://goslitmuz.ru/upload/iblock/4ad/jj3n30x90iyuhvaw43wkie5ry2rkigpz/2026_09_01-Imazhinisty.-Prevyu-_21_.JPG"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 122,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "callao-colibri-childrens-book-2026",
+      "sourceUrl": "https://www.gob.pe/institucion/bnp/noticias/1447691-ninos-del-callao-convierten-sus-historias-en-un-libro-y-reciben-el-respaldo-de-la-biblioteca-nacional-del-peru",
+      "priority": 169,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:04.037Z",
+        "resolvedUrl": "https://cdn.www.gob.pe/uploads/document/file/10675077/standard_1447691-foto-para-gob-pe-50.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 123,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "bulgaria-chaika-periodical-restored-exhibition-2026",
+      "sourceUrl": "https://www.nationallibrary.bg/www/2026/09/04/%d0%b8%d0%b7%d0%bb%d0%be%d0%b6%d0%b1%d0%b0%d1%82%d0%b0-%d0%b8%d0%b2%d0%b0%d0%bd-%d0%bc%d0%b8%d0%bb%d0%b5%d0%b2-%d0%ba%d0%b0%d1%82%d0%be-%d1%87%d0%b0%d0%b9%d0%ba%d0%b0-%d0%bd%d0%b0/",
+      "priority": 170,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:03.581Z",
+        "resolvedUrl": "https://www.nationallibrary.bg/www/wp-content/uploads/2026/09/01.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 124,
+        "humanReview": false,
+        "reason": "Concert-stage photograph does not establish the magazine restoration exhibition."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "lom-plan-condor-illustrated-book-2026",
+      "sourceUrl": "https://lom.cl/blogs/blog/intervencion-en-el-lanzamiento-del-libro-plan-condor-viejos-secretos-y-nuevos-hallazgos-de-francesca-lessa-y-sebastian-santana",
+      "priority": 171,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/webp",
+        "checkedAt": "2026-09-26T18:29:03.553Z",
+        "resolvedUrl": "https://cdn.shopify.com/s/files/1/0275/1568/2868/files/Plan_C_ndor_Imprenta_03-10-25__page-00167_600x600.jpg?v=1786026778"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 125,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "pazderka-soukup-rudolf-medek-prize-2026",
+      "sourceUrl": "https://www.nkp.cz/o-knihovne/aktuality/cena-rudolfa-medka-pro-rok-2026",
+      "priority": 172,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:03.622Z",
+        "resolvedUrl": "https://www.nkp.cz/file/897253060391230d3ba6d0f0950e25e6/13976/cena_rudolfa_medka.png"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "contactSheetIndex": 126,
+        "humanReview": false,
+        "reason": "Historical portrait montage cannot be connected visually to the two named current prize recipients."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "russian-book-market-conference-2026",
+      "sourceUrl": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+      "priority": 173,
+      "provenance": "refetched_source_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:03.822Z",
+        "resolvedUrl": "https://bookunion.ru/media/post_images/mmkaya26.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-8.png",
+        "contactSheetIndex": 127,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "vladimir-dal-manuscripts-exhibition-2026",
+      "sourceUrl": "https://www.rsl.ru/events/yazyk-naroda-rodnik-nash",
+      "priority": 174,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:03.758Z",
+        "resolvedUrl": "https://www.rsl.ru/files/rsl/8cc94649-cc84-4031-b0ce-b1dc34c41f79.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-8.png",
+        "contactSheetIndex": 128,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "svenska-tidningar-remote-search-restored-2026",
+      "sourceUrl": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-02-skyddat-material-aterigen-sokbart-i-svenska-tidningar.html",
+      "priority": 175,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:03.787Z",
+        "resolvedUrl": "https://www.kb.se/images/200.44166cc219758175f414dd6/1756709741180/Svenska_dagstidningar.jpg"
+      },
+      "imageQA": {
+        "status": "held_after_visual_inspection",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-8.png",
+        "contactSheetIndex": 129,
+        "humanReview": false,
+        "reason": "Image did not render in the browser contact sheet; visual match could not be inspected."
+      },
+      "skip": "visual_semantic_held"
+    },
+    {
+      "id": "wmf-martins-fontes-amazon-supply-announcement-2026",
+      "sourceUrl": "https://actualitte.com/article/134132/economie/un-editeur-bresilien-majeur-decide-de-retirer-ses-ouvrages-d-amazon",
+      "priority": 176,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/jpeg",
+        "checkedAt": "2026-09-26T18:29:04.083Z",
+        "resolvedUrl": "https://actualitte.com/uploads/images/un-editeur-bresilien-majeur-decide-de-retirer-ses-ouvrages-d-amazon-6ab387f262f42973993957.jpg"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-8.png",
+        "contactSheetIndex": 130,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "jose-ruben-zamora-hermann-kesten-decision-2026",
+      "sourceUrl": "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/",
+      "priority": 177,
+      "provenance": "cached_article_og_metadata",
+      "imageCheck": {
+        "method": "HEAD",
+        "httpStatus": 200,
+        "contentType": "image/png",
+        "checkedAt": "2026-09-26T18:29:04.015Z",
+        "resolvedUrl": "https://pen-deutschland.de/wp-content/uploads/2026/09/Jose-Ruben-Zamora-Marroquin-2-e1788249497994-1024x326.png"
+      },
+      "imageQA": {
+        "status": "inspected_visual_accepted",
+        "inspectedAt": "2026-09-26T18:37:14.685Z",
+        "contactSheet": "reports/r10/publication/thumbnail-visual/sheet-8.png",
+        "contactSheetIndex": 131,
+        "humanReview": false,
+        "reason": "Publisher-selected article image is visually compatible with the news title; portrait identities are supported by publisher context, not independently identified from pixels."
+      }
+    },
+    {
+      "id": "louise-erdrich-everybody-reads-selection-2026",
+      "sourceUrl": "https://literary-arts.org/2026/09/multnomah-county-library-selects-louise-erdrichs-the-mighty-red-for-everybody-reads-2027/",
+      "priority": 178,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://literary-arts.org/wp-content/uploads/2026/08/Blog-600x900-1.png"
+    },
+    {
+      "id": "ndl-rare-books-fulltext-75000-2026",
+      "sourceUrl": "https://www.ndl.go.jp/en/news/fy2026/260901_02",
+      "priority": 179,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.ndl.go.jp/assets/hp/og.png"
+    },
+    {
+      "id": "nlo-tsyganov-stalin-era-philology-20260901",
+      "sourceUrl": "https://nlobooks.ru/nlomedia/catalog/khronika-nauchnoy-zhizni/dmitriy-tsyganov-svoboda-eto-umenie-vovremya-podchinitsya-partii-filologiya-v-stalinskuyu-epokhu/",
+      "priority": 180,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "jorge-basadre-library-awards-2026",
+      "sourceUrl": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+      "priority": 181,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://cdn.www.gob.pe/uploads/document/file/10544466/standard_1437512-foto-para-gob-pe-2026-09-01t152208-880.jpg"
+    },
+    {
+      "id": "padura-liber-award-decision-2026",
+      "sourceUrl": "https://federacioneditores.org/leonardo-padura-premio-liber-2026-al-autor-hispanoamericano-mas-destacado/",
+      "priority": 182,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "lom-gaza-two-books-presentation-2026",
+      "sourceUrl": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+      "priority": 183,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://cdn.shopify.com/s/files/1/0275/1568/2868/files/Nos_rehusamos_a_ser_borrados.jpg?v=1785264385"
+    },
+    {
+      "id": "scarlett-robinson-kean-mahy-illustration-prize-2026",
+      "sourceUrl": "https://publishers.org.nz/surprising-delightful-and-completely-refreshing-winner-of-2026-margaret-mahy-illustration-prize-announced/",
+      "priority": 184,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://publishers.org.nz/wp-content/uploads/2026/08/MM-Illustration-Prize-logo.png"
+    },
+    {
+      "id": "canadian-publisher-certification-expanded-2026",
+      "sourceUrl": "https://publishers.ca/certified-canadian-publisher-non-members/",
+      "priority": 185,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://publishers.ca/wp-content/uploads/2026/08/Copy-of-higher-ed-rfp-2.png"
+    },
+    {
+      "id": "finland-publishers-first-half-sales-report-2026",
+      "sourceUrl": "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua",
+      "priority": 186,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://kustantajat.fi/media/image-3.jpeg"
+    },
+    {
+      "id": "tacna-national-legal-deposit-centre-2026",
+      "sourceUrl": "https://www.gob.pe/institucion/bnp/noticias/1437375-la-biblioteca-nacional-del-peru-completa-la-red-nacional-de-deposito-legal-con-la-acreditacion-de-su-centro-de-acopio-numero-23-en-tacna",
+      "priority": 187,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://cdn.www.gob.pe/uploads/document/file/10543268/standard_1437375-foto-para-gob-pe-2026-09-01t124727-731.jpg"
+    },
+    {
+      "id": "wingston-gonzalez-plia-2026",
+      "sourceUrl": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
+      "priority": 188,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.fil.com.mx/images/redes/FIL.jpg"
+    },
+    {
+      "id": "fred-vargas-unique-lueur-corpus-rights-2026",
+      "sourceUrl": "https://www.corpus.ru/news/novyj-roman-fred-vargas-o-komissare-adamberge-vyjdet-v-izdatelstve-corpus.htm",
+      "priority": 189,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.corpus.ru/img/og.jpg"
+    },
+    {
+      "id": "indonesia-rights-fellowship-recipients-2026",
+      "sourceUrl": "https://www.ikapi.org/2026/08/22/announcement-of-the-2026-indonesia-rights-fair-fellowship-program-recipients/",
+      "priority": 190,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "charles-spencer-swan-song-us-announcement-2026",
+      "sourceUrl": "https://global.penguinrandomhouse.com/announcements/penguin-press-to-publish-charles-spencers-swan-song-the-story-of-his-sister-diana-princess-of-wales/",
+      "priority": 191,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "maren-baudet-lackner-aquatics-translation-2026",
+      "sourceUrl": "https://cassavarepublic.biz/women-in-translation-month-with-maren-baudet-lackner/",
+      "priority": 192,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://mlcohovbxf2x.i.optimole.com/cb:qKbK.478/w:940/h:788/q:mauto/f:best/https://cassavarepublic.biz/wp-content/uploads/2026/08/CRP-Blog-Headers-14.png"
+    },
+    {
+      "id": "tawada-where-europe-begins-russian-2026",
+      "sourceUrl": "https://admarginem.ru/2026/08/20/talisman-odin-rasskaz-iz-sbornika-yoko-tavady/",
+      "priority": 193,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://admarginem.ru/wp-content/uploads/2026/08/oblozhka-stati-copy.png"
+    },
+    {
+      "id": "nlo-zenkin-scholars-french-literature-20260818",
+      "sourceUrl": "https://nlobooks.ru/nlomedia/catalog/khronika-nauchnoy-zhizni/sergey-zenkin-svideteli-tolkovateli-soblazniteli-figury-uchenogo-vo-frantsuzskoy-literature-xix-veka/",
+      "priority": 194,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "phillip-lopate-washington-irving-sketch-book-2026",
+      "sourceUrl": "https://press.princeton.edu/books/hardcover/9780691284439/a-washington-irving-sketch-book",
+      "priority": 195,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://pup-assets.imgix.net/onix/images/9780691284439.jpg?fit=fill&fill=solid&fill-color=ffffff&w=1200&h=630"
+    },
+    {
+      "id": "nlo-anya-fyodorova-conversation-20260813",
+      "sourceUrl": "https://nlobooks.ru/nlomedia/catalog/slovesnost/anya-fyedorova-35-iyulya-no-eto-ne-tochno/",
+      "priority": 196,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "libro-fm-ebook-beta-announcement-2026",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101015-libro-fm-to-offer-digital-arcs-and-e-books.html",
+      "priority": 197,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/130/130798-2.JPG"
+    },
+    {
+      "id": "bakwa-12-lost-manuscript-issue-2026",
+      "sourceUrl": "https://bakwamagazine.com/issues/bakwa-12/",
+      "priority": 198,
+      "skip": "request_budget_reached",
+      "candidateUrl": "https://bakwamagazine.com/wp-content/uploads/2026/08/1.png"
+    },
+    {
+      "id": "our-strange-duet-audiobook-cast-2026",
+      "sourceUrl": "https://global.penguinrandomhouse.com/announcements/listening-library-announces-star-cast-of-audiobook-our-strange-duet-by-erin-a-craig/",
+      "priority": 199,
+      "skip": "no_og_or_twitter_image",
+      "initialCandidate": null
+    },
+    {
+      "id": "joel-dicker-prime-video-three-novels-2026",
+      "sourceUrl": "https://www.corpus.ru/news/tri-romana-zhoehlya-dikkera-stanut-serialami-prime-video.htm",
+      "priority": 200,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://www.corpus.ru/img/og.jpg"
+    },
+    {
+      "id": "princeton-cashmere-licensing-partnership-2026",
+      "sourceUrl": "https://press.princeton.edu/news/cashmere",
+      "priority": 201,
+      "skip": "metadata_generic_or_non_https",
+      "initialCandidate": "https://press.princeton.edu/themes/custom/themekit/logo-social.png"
+    }
+  ],
+  "imageQA": {
+    "status": "inspected_visual",
+    "reviewer": "Codex",
+    "humanReview": false,
+    "inspectedAt": "2026-09-26T18:37:14.685Z",
+    "scope": {
+      "inputManifestItems": 131,
+      "contactSheets": 8,
+      "viewedContactSheets": 8,
+      "retained": 101,
+      "held": 30,
+      "criteria": [
+        "Visual relationship between article title and publisher-selected image",
+        "Generic logos, category images, ambiguous illustrations and misleading crops held",
+        "Portrait identities not inferred from pixels"
+      ],
+      "browserMethod": "Playwright remote image DOM with title and square-crop preview; local screenshots inspected with view_image",
+      "originalImageDownloads": 0,
+      "imageReuploads": 0
+    },
+    "contactSheets": [
+      {
+        "path": "reports/r10/publication/thumbnail-visual/sheet-1.png",
+        "count": 18,
+        "sha256": "25aba4b0536fca2762f4dcf062694a1d59d6cd262abcac65710c2d90a82ba52e"
+      },
+      {
+        "path": "reports/r10/publication/thumbnail-visual/sheet-2.png",
+        "count": 18,
+        "sha256": "ffa363b0be2f43e844c30dca3ee7abb8bdba6b23469f1c24ab03f99d3c47a402"
+      },
+      {
+        "path": "reports/r10/publication/thumbnail-visual/sheet-3.png",
+        "count": 18,
+        "sha256": "754f8a8f7ff3e182a24626df7c6bc756ce635c656bb2e720e406279d86b401a7"
+      },
+      {
+        "path": "reports/r10/publication/thumbnail-visual/sheet-4.png",
+        "count": 18,
+        "sha256": "0dcc8dfecd8ab200a20fccc491fc5acf5da2253a3470eedc7fa434cbde8bf606"
+      },
+      {
+        "path": "reports/r10/publication/thumbnail-visual/sheet-5.png",
+        "count": 18,
+        "sha256": "d1a1330dfa47b62aaa1af01f668a95a387d08a62cdce0ac32815bd4b814202f3"
+      },
+      {
+        "path": "reports/r10/publication/thumbnail-visual/sheet-6.png",
+        "count": 18,
+        "sha256": "7b46c0d79e813e86cd10acb4e717a962ffbfa0034b0cadf7e4c559ff90a05803"
+      },
+      {
+        "path": "reports/r10/publication/thumbnail-visual/sheet-7.png",
+        "count": 18,
+        "sha256": "174aa591132d3b4715b352c4d486cc7ca452382b1ff5d66b5c669121c1884670"
+      },
+      {
+        "path": "reports/r10/publication/thumbnail-visual/sheet-8.png",
+        "count": 5,
+        "sha256": "c37479be5071a4f559e538e978a741e17af03c75a956266141683ae0987bdb10"
+      }
+    ],
+    "removed": [
+      {
+        "index": 20,
+        "id": "sanna-wani-lantern-daughterhood-essay-2026",
+        "reason": "Abstract blurred lights do not establish a visual connection to the named poet or Lantern."
+      },
+      {
+        "index": 24,
+        "id": "cordoba-books-education-programme-2026",
+        "reason": "Generic city-square photograph does not show the book-supply programme."
+      },
+      {
+        "index": 31,
+        "id": "asymptote-hossaini-war-ends-translation-2026",
+        "reason": "Translation-series decoration and a newspaper do not establish the specific poem or author."
+      },
+      {
+        "index": 34,
+        "id": "jung-critical-edition-video-introduction-2026",
+        "reason": "Exterior building image does not establish the announced critical edition; association remains ambiguous."
+      },
+      {
+        "index": 40,
+        "id": "natalya-balayan-russian-fairy-tale-book-2026",
+        "reason": "Generic open-book photograph, without the named book or presentation."
+      },
+      {
+        "index": 49,
+        "id": "dayton-literary-peace-prize-winners-2026",
+        "reason": "General prize logo rather than the announced winners or their books."
+      },
+      {
+        "index": 52,
+        "id": "kvinnsam-periodicals-svenska-tidningar-2026",
+        "reason": "Image did not render in the browser contact sheet; visual match could not be inspected."
+      },
+      {
+        "index": 58,
+        "id": "asymptote-maria-messina-camilla-translation-2026",
+        "reason": "Generic seaside image with a translation-series banner; specific story connection unclear."
+      },
+      {
+        "index": 63,
+        "id": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+        "reason": "Generic award logo without the named recipient or his publication."
+      },
+      {
+        "index": 67,
+        "id": "avrutina-ozlu-tanpinar-books-meeting-2026",
+        "reason": "General September events digest artwork, not the named translator or books."
+      },
+      {
+        "index": 68,
+        "id": "liber-innovation-audio-programme-2026",
+        "reason": "General Liber fair logo rather than the specific professional programme."
+      },
+      {
+        "index": 70,
+        "id": "yasnaya-polyana-kuzminskaya-exhibition-2026",
+        "reason": "Generic Yasnaya Polyana museum branding, not the Kuzminskaya exhibition."
+      },
+      {
+        "index": 73,
+        "id": "hafiz-alontsev-rsl-presentation-2026",
+        "reason": "Generic stack of old books, without the named Hafez edition."
+      },
+      {
+        "index": 81,
+        "id": "chile-library-140-words-contest-2026",
+        "reason": "Generic library-reading photograph, with no visible connection to the 140-word contest."
+      },
+      {
+        "index": 85,
+        "id": "childrens-detective-reading-conference-2026",
+        "reason": "Poster visibly gives October 2025, conflicting with the 2026 conference news."
+      },
+      {
+        "index": 88,
+        "id": "litres-yasnaya-polyana-free-reading-2026",
+        "reason": "Litres company logo rather than the finalist books or the reading offer."
+      },
+      {
+        "index": 89,
+        "id": "norwegian-pen-ossietzky-nominations-deadline-2026",
+        "reason": "Generic Ossietzky prize typography, not a dated call or specific programme."
+      },
+      {
+        "index": 90,
+        "id": "svensk-bokkonst-awards-ceremony-2026",
+        "reason": "Image did not render in the browser contact sheet; visual match could not be inspected."
+      },
+      {
+        "index": 91,
+        "id": "ayad-akhtar-portland-lecture-2026",
+        "reason": "Whole-season speaker collage; square crop can show a different person from the named speaker."
+      },
+      {
+        "index": 92,
+        "id": "weather-spirits-international-storytelling-2026",
+        "reason": "Decorative ceramic-style illustration; its connection to this specific storytelling event remains ambiguous."
+      },
+      {
+        "index": 95,
+        "id": "chekhodal-short-fiction-call-2026",
+        "reason": "Generic contest logo without dated programme information."
+      },
+      {
+        "index": 97,
+        "id": "dublin-imprisoned-writer-gallagher-2026",
+        "reason": "General Dublin Book Festival branding rather than the specific censorship discussion."
+      },
+      {
+        "index": 103,
+        "id": "slovakia-power-story-library-webinar-2026",
+        "reason": "General library-webinar series graphic, without the named storytelling session."
+      },
+      {
+        "index": 105,
+        "id": "isabel-wilkerson-portland-lecture-2027",
+        "reason": "Whole-season speaker collage; square crop can show a different person from the named speaker."
+      },
+      {
+        "index": 106,
+        "id": "hiromi-kawakami-far-from-everywhere-2027",
+        "reason": "Unlabelled streetscape illustration; connection to the named book cannot be established visually."
+      },
+      {
+        "index": 108,
+        "id": "ben-rhodes-portland-lecture-2027",
+        "reason": "Whole-season speaker collage; square crop can show a different person from the named speaker."
+      },
+      {
+        "index": 120,
+        "id": "taiwan-picture-book-creation-support-2026",
+        "reason": "General publishing-updates category graphic rather than the picture-book support programme."
+      },
+      {
+        "index": 124,
+        "id": "bulgaria-chaika-periodical-restored-exhibition-2026",
+        "reason": "Concert-stage photograph does not establish the magazine restoration exhibition."
+      },
+      {
+        "index": 126,
+        "id": "pazderka-soukup-rudolf-medek-prize-2026",
+        "reason": "Historical portrait montage cannot be connected visually to the two named current prize recipients."
+      },
+      {
+        "index": 129,
+        "id": "svenska-tidningar-remote-search-restored-2026",
+        "reason": "Image did not render in the browser contact sheet; visual match could not be inspected."
+      }
+    ],
+    "manifestSha256": "9cac52f77ef308d62cc525bf5e194fc8c6394d72f9a861143af242a8f92d3fee"
+  }
+}

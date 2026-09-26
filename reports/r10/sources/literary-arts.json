@@ -1,0 +1,1094 @@
+{
+  "sourceId": "literary-arts",
+  "name": "Literary Arts",
+  "entryUrl": "https://literary-arts.org/feed/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:27:29.161Z",
+  "requests": [
+    {
+      "url": "https://literary-arts.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 873570,
+      "sha256": "dd1d6016026ad40edb08d3f6a9a9ee5827da462f4fac379dbf07692c3f92cbf1",
+      "accessedAt": "2026-09-26T17:20:07.359Z"
+    },
+    {
+      "url": "https://literary-arts.org/2026/03/2025-portland-book-festival-audiobook/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 178805,
+      "sha256": "5f55f3ce34b76a7c31142542a80e700425ad732a8d8a480b629deefec977b442",
+      "accessedAt": "2026-09-26T17:27:30.776Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://literary-arts.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 544,
+    "sha256": "83dd0bb9ec8d02f28119eb03c315c97ebd48b30ac91d96093a05da1cd5691fa0",
+    "accessedAt": "2026-09-26T17:27:30.129Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:04.297Z",
+    "sourceDocumentSha256": "dd1d6016026ad40edb08d3f6a9a9ee5827da462f4fac379dbf07692c3f92cbf1"
+  },
+  "endpoint": {
+    "id": "literary-arts",
+    "name": "Literary Arts",
+    "url": "https://literary-arts.org/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "north-america",
+    "sourceFamilyId": "literary-arts",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://literary-arts.org"
+    ],
+    "linkPattern": "^/",
+    "keywordPattern": "(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://literary-arts.org/2026/03/2025-portland-book-festival-audiobook/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:30.785Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 38,
+  "literaryCandidateCount": 38,
+  "sample": {
+    "sourceId": "literary-arts",
+    "source": {
+      "name": "Literary Arts",
+      "url": "https://literary-arts.org/2026/03/2025-portland-book-festival-audiobook/",
+      "language": "en"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "2025 Portland Book Festival Audiobook",
+    "publishedAt": "2026-03-26T17:58:49.000Z",
+    "description": "Literary Arts is excited to announce that we have partnered with Libro.FM to bring you an exclusive audiobook showcasing some of the most popular 2025 Portland Book Festival author sessions. The post 2025 Portland Book Festival Audiobook appeared first on Literary Arts.",
+    "discoveredAt": "2026-09-26T17:27:30.187Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://literary-arts.org/2026/03/2025-portland-book-festival-audiobook/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 178805,
+      "sha256": "5f55f3ce34b76a7c31142542a80e700425ad732a8d8a480b629deefec977b442",
+      "accessedAt": "2026-09-26T17:27:30.776Z",
+      "headline": "2025 Portland Book Festival Audiobook",
+      "excerpt": "Literary Arts is excited to announce that we have partnered with Libro.FM to bring you an exclusive audiobook showcasing some of the most popular 2025 Portland Book Festival author sessions. You’ll hear from authors like Stacey Abrams, Kristen Arnett, Omar El Akkad, Tara Roberts, Karen Russell, and more! This audiobook is free; all you need to do is create a Libro.FM account to enjoy. 2025 Portlan",
+      "publishedDates": [
+        {
+          "value": "2026-03-26T17:58:49+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-03-26T17:58:49+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-03-26T17:58:49+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://literary-arts.org/2026/03/2025-portland-book-festival-audiobook/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:30.785Z",
+  "foundItems": [
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/03/2025-portland-book-festival-audiobook/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2025 Portland Book Festival Audiobook",
+      "publishedAt": "2026-03-26T17:58:49.000Z",
+      "description": "Literary Arts is excited to announce that we have partnered with Libro.FM to bring you an exclusive audiobook showcasing some of the most popular 2025 Portland Book Festival author sessions. The post 2025 Portland Book Festival Audiobook appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/book-recs-from-2026-27-portland-arts-lectures-author-george-saunders/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Recs from 2026/27 Portland Arts & Lectures Author George Saunders",
+      "publishedAt": "2026-09-25T15:58:53.000Z",
+      "description": "George Saunders, author of Liberation Day and Vigil, joined us for our 2026-27 Portland Arts & Lectures on Thursday, September 24, 2026. We like to ask all of our Portland The post Book Recs from 2026/27 Portland Arts & Lectures Author George Saunders appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/05/oregon-book-awards-author-tour-visits-the-coast-2/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oregon Book Awards Author Tour Visits the Coast",
+      "publishedAt": "2026-05-18T17:53:42.000Z",
+      "description": "Port Orford, and Sea Wolf Books. Photos credit: Evan P. Schneider This May, the Oregon Book Awards Author Tour headed to the Oregon coast for readings in Port Orford and Newport. The post Oregon Book Awards Author Tour Visits the Coast appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/book-recs-from-author-patrick-radden-keefe/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Recs from 2025/26 Portland Arts & Lectures Author Patrick Radden Keefe",
+      "publishedAt": "2026-04-24T17:35:26.000Z",
+      "description": "Patrick Radden Keefe, author of Empire of Pain and Say Nothing joined us for our 2025/26 season of Portland Arts & Lectures on April 23, 2026. We like to ask The post Book Recs from 2025/26 Portland Arts & Lectures Author Patrick Radden Keefe appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/2026-oba-winners/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the 2026 Oregon Book Awards Winners",
+      "publishedAt": "2026-04-21T05:00:00.000Z",
+      "description": "Literary Arts is thrilled to announce this year’s Oregon Book Awards Winners. Winners across seven categories were announced live at the 2026 Oregon Book Awards Ceremony on Monday, April 20, hosted The post Announcing the 2026 Oregon Book Awards Winners appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/oregon-book-awards-author-tour-visits-corvallis/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oregon Book Awards Author Tour Visits Corvallis",
+      "publishedAt": "2026-04-07T22:53:02.000Z",
+      "description": "On a spring evening in April, the Oregon Book Awards Author Tour headed to Grassroots Bookstore in Corvallis. The reading featured Oregon Book Awards finalists in Creative Nonfiction: Judith Barrington, Karleigh Frisbie-Brogan, The post Oregon Book Awards Author Tour Visits Corvallis appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/03/celebrating-the-states-literary-talent-at-the-oregon-book-awards/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celebrating the state’s literary talent at the Oregon Book Awards",
+      "publishedAt": "2026-03-31T23:12:46.000Z",
+      "description": "Content created for The Oregonian He worked in Portland as a Freightliner truck assembly lineman for 13 years, attending local writing workshops in the evenings as he completed his first The post Celebrating the state’s literary talent at the Oregon Book Awards appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/02/book-recs-from-2025-26-portland-arts-lectures-author-imani-perry/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Recs from 2025/26 Portland Arts & Lectures Author Imani Perry",
+      "publishedAt": "2026-02-13T18:19:58.000Z",
+      "description": "Imani Perry, author of Black in Blues and South to America, joined us for our 2025/26 season of Portland Arts & Lectures on February 12, 2026. We like to ask The post Book Recs from 2025/26 Portland Arts & Lectures Author Imani Perry appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/02/announcing-the-2026-oregon-book-awards-finalists/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the 2026 Oregon Book Awards Finalists",
+      "publishedAt": "2026-02-09T16:00:00.000Z",
+      "description": "Literary Arts is thrilled to announce this year’s Oregon Book Awards finalists and Special Award recipient. Thirty-five titles from Oregonians across seven genre categories were chosen as finalists by panels of The post Announcing the 2026 Oregon Book Awards Finalists appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/wits-student-anthology-2026-a-small-piece-of-night/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Arts Student Anthology 2025-26: A Small Piece of Night",
+      "publishedAt": "2026-09-03T20:26:06.000Z",
+      "description": "Each year, Literary Arts publishes an anthology of the student work created in our Writers in the Schools workshops and Verselandia!. The anthology’s title is chosen from one of the published The post Literary Arts Student Anthology 2025-26: A Small Piece of Night appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/meet-casey-walker-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Casey Walker, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-07-21T22:04:39.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Casey Walker, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/meet-amy-marcott-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Amy Marcott, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-07-14T16:56:46.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Amy Marcott, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/meet-jason-sepac-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Jason Sepac, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-07-09T18:42:05.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Jason Sepac, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/meet-pooja-nukala-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Pooja Nukala, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-07-02T17:36:41.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Pooja Nukala, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-jeffree-morel-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Jeffree Morel, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-06-26T21:38:36.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Jeffree Morel, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-jeremy-klemin-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Jeremy Klemin, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-06-22T18:02:03.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Jeremy Klemin, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/the-literary-arts-bookstore-summer-reading-challenge/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Literary Arts Bookstore Summer Reading Challenge",
+      "publishedAt": "2026-06-15T23:38:30.000Z",
+      "description": "Literary Arts has a summer reading challenge for you! Follow our prompts and track your reading from June 15th through September 7th, 2025 for a chance to win exciting prizes. The post The Literary Arts Bookstore Summer Reading Challenge appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-jae-nichelle-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Jae Nichelle, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-06-12T21:14:24.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Jae Nichelle, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-molly-reid-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Molly Reid, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-06-08T19:12:14.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Molly Reid, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-devon-fredericksen-2026-oregon-literary-career-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Devon Fredericksen, 2026 Oregon Literary Career Fellow",
+      "publishedAt": "2026-06-02T18:29:08.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Devon Fredericksen, 2026 Oregon Literary Career Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/05/meet-diana-oropeza-2026-oregon-literary-career-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Diana Oropeza, 2026 Oregon Literary Career Fellow",
+      "publishedAt": "2026-05-28T21:11:54.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers The post Meet Diana Oropeza, 2026 Oregon Literary Career Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/05/congratulations-to-the-2026-verselandia-youth-poetry-slam-championship-winners/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Congratulations to the 2026 Verselandia! Youth Poetry Slam Championship winners",
+      "publishedAt": "2026-05-01T17:08:19.000Z",
+      "description": "On April 30, 2026, twenty-two students from twelve high schools competed for the title of Grand Slam Champion at the annual Verselandia! Youth Poetry Slam Championship. Our top five poets were: The post Congratulations to the 2026 Verselandia! Youth Poetry Slam Championship winners appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/02/olf-2026-announcement/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the 2026 Oregon Literary Fellowships",
+      "publishedAt": "2026-02-09T16:00:00.000Z",
+      "description": "Announcing the 2025 Oregon Literary Fellowships The post Announcing the 2026 Oregon Literary Fellowships appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/multnomah-county-library-selects-louise-erdrichs-the-mighty-red-for-everybody-reads-2027/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Multnomah County Library selects Louise Erdrich’s THE MIGHTY RED for Everybody Reads 2027",
+      "publishedAt": "2026-09-01T22:23:08.000Z",
+      "description": "PORTLAND, Ore. \u2014 September 1, 2026 \u2014 Multnomah County Library has selected The Mighty Red by Louise Erdrich for Everybody Reads 2027. This year’s signature community reading project marks 25 The post Multnomah County Library selects Louise Erdrich’s THE MIGHTY RED for Everybody Reads 2027 appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/literary-arts-welcomes-new-strunk-white-society-members/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Arts Welcomes New Strunk & White Society Members",
+      "publishedAt": "2026-07-30T17:54:28.000Z",
+      "description": "We are excited to welcome former Literary Arts board members, Anis Mojgani, and Corrine Oishi, to the Strunk & White Society. The Strunk & White Society is an honorary society of distinguished advisors made up of individuals who have made The post Literary Arts Welcomes New Strunk & White Society Members appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/welcoming-jonathan-hill-as-literary-arts-new-board-chair/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Welcoming Jonathan Hill as Literary Arts’ New Board Chair",
+      "publishedAt": "2026-06-24T16:55:55.000Z",
+      "description": "We’re pleased to share that Jonathan Hill\u2014award-winning cartoonist, author, and illustrator\u2014has been named the new chair of our board of directors. He steps into this role alongside Joan Cirillo and Chabre Vickers as The post Welcoming Jonathan Hill as Literary Arts’ New Board Chair appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/literary-arts-cafe-celebrates-one-year-of-community-and-connection/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Arts cafe celebrates one year of community and connection",
+      "publishedAt": "2026-06-04T18:44:45.000Z",
+      "description": "On June 14, the cafe at Literary Arts will celebrate its first anniversary. A year ago, Literary Arts opened the doors to the Mendoza Cafe with a vision to create a The post Literary Arts cafe celebrates one year of community and connection appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/2627pal/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the Portland Arts & Lectures 2026\u201327 Season Lineup",
+      "publishedAt": "2026-04-24T05:05:00.000Z",
+      "description": "Literary Arts is pleased to announce the lineup of the 42nd season of Portland Arts & Lectures. Join us at the Arlene Schnitzer Concert Hall for an inspiring lineup of The post Announcing the Portland Arts & Lectures 2026\u201327 Season Lineup appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/01/named-spaces-at-literary-arts/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Named Spaces at Literary Arts",
+      "publishedAt": "2026-01-27T21:48:16.000Z",
+      "description": "In early 2026, Literary Arts celebrated one year at its new home at The Susan Hammer Center, located at 716 SE Grand Avenue. This gathering included the unveiling of a The post Named Spaces at Literary Arts appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/08/september-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "September Events & Writing Classes",
+      "publishedAt": "2026-08-31T17:53:58.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. One Page Wednesday [FREE]Wednesday, September 2, 6:30\u20138:00 p.m. Here is an opportunity The post September Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/08/ticketing-information-for-portland-arts-lectures-subscribers-2/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ticketing information for Portland Arts & Lectures subscribers",
+      "publishedAt": "2026-08-24T23:19:20.000Z",
+      "description": "All Portland Arts & Lectures subscriber tickets are being managed by Portland’5 to allow for enhanced customer service and security. All subscribers can view their tickets at any time by The post Ticketing information for Portland Arts & Lectures subscribers appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/august-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "August Events & Writing Classes",
+      "publishedAt": "2026-07-27T16:53:12.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. Kelly Anderson in conversation with Rachel Hochhauser [FREE]Wednesday, August 12, 6:30\u20137:30 p.m. The post August Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/july-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "July Events & Writing Classes",
+      "publishedAt": "2026-06-17T22:29:04.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. One Page Wednesday \u2013 NEW TIME! [FREE]Wednesday, July 1, 6:30\u20138:00 p.m. One The post July Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/05/june-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "June Events & Writing Classes",
+      "publishedAt": "2026-05-13T23:41:41.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. Rosiee Thor in conversation with Sydney Langford [FREE]Tuesday, June 2, 6:30\u20138:00 p.m. The post June Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/may-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "May Events & Writing Classes",
+      "publishedAt": "2026-04-21T20:42:25.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. Erin L. McCoy in conversation with Erica Berry [FREE]Tuesday, May 5, 6:30\u20138:30 The post May Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/03/april-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "April Events & Writing Classes",
+      "publishedAt": "2026-03-27T21:53:28.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. One Page Wednesday \u2013 April [FREE]Wednesday, April 1, 7:00\u20139:00 p.m. Here is The post April Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/02/march-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "March Events & Writing Classes",
+      "publishedAt": "2026-02-21T00:35:30.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. Paige Thomas in conversation with Blair Thomas [FREE] Tuesday, March 3, 6:30\u20137:30 The post March Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/01/february-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "February Events & Writing Classes",
+      "publishedAt": "2026-01-31T19:00:15.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. The Weary Blues at 100: Maude Hines and Emmett Wheatfall Discuss Langston The post February Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T17:27:30.187Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "dd1d6016026ad40edb08d3f6a9a9ee5827da462f4fac379dbf07692c3f92cbf1"
+}

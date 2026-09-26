@@ -1,0 +1,1093 @@
+{
+  "sourceId": "ubud-writers-readers-festival",
+  "name": "Ubud Writers & Readers Festival",
+  "entryUrl": "https://ubudwritersfestival.com/news",
+  "countryCodes": [
+    "ID"
+  ],
+  "coverageCountryCodes": [
+    "ID"
+  ],
+  "attemptedAt": "2026-09-26T17:27:30.833Z",
+  "requests": [
+    {
+      "url": "https://ubudwritersfestival.com/news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1058357,
+      "sha256": "3e2cebef9919aa450e4516d4d9324a6ec01752794d5f6848e54883e65a9f66e4",
+      "accessedAt": "2026-09-26T17:20:10.214Z"
+    },
+    {
+      "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-reveals-main-program-2025-four-days-of-conversations-from-booker-prize-winners-to-emerging-voices",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 927123,
+      "sha256": "c458ea8fd7bb87228a5d1046da145d60178addd58b2e0848c93331b9c18e1bb0",
+      "accessedAt": "2026-09-26T17:27:33.123Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://ubudwritersfestival.com/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:08.100Z",
+    "sourceDocumentSha256": "3e2cebef9919aa450e4516d4d9324a6ec01752794d5f6848e54883e65a9f66e4"
+  },
+  "endpoint": {
+    "id": "ubud-writers-readers-festival",
+    "name": "Ubud Writers & Readers Festival",
+    "url": "https://ubudwritersfestival.com/news",
+    "format": "html",
+    "language": "en",
+    "region": "asia",
+    "sourceFamilyId": "ubud-writers-readers-festival",
+    "countryCodes": [
+      "ID"
+    ],
+    "coverageCountryCodes": [
+      "ID"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://ubudwritersfestival.com",
+      "https://www.ubudwritersfestival.com"
+    ],
+    "linkPattern": "^\\/news\\/[^/?#]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-reveals-main-program-2025-four-days-of-conversations-from-booker-prize-winners-to-emerging-voices"
+    ],
+    "verifiedAt": "2026-09-26T17:27:33.149Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 40,
+  "literaryCandidateCount": 39,
+  "sample": {
+    "sourceId": "ubud-writers-readers-festival",
+    "source": {
+      "name": "Ubud Writers & Readers Festival",
+      "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-reveals-main-program-2025-four-days-of-conversations-from-booker-prize-winners-to-emerging-voices",
+      "language": "en"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Ubud Writers & Readers Festival Reveals Main Program 2025 \u2013 Four Days of Conversations from Booker Prize Winners to Emerging Voices",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:31.650Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-reveals-main-program-2025-four-days-of-conversations-from-booker-prize-winners-to-emerging-voices",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 927123,
+      "sha256": "c458ea8fd7bb87228a5d1046da145d60178addd58b2e0848c93331b9c18e1bb0",
+      "accessedAt": "2026-09-26T17:27:33.123Z",
+      "headline": "Ubud Writers & Readers Festival Reveals Main Program 2025 \u2013 Four Days of Conversations from Booker Prize Winners to Emerging Voices",
+      "excerpt": "Close 2026 Festival Meet our Speakers Explore Main Programme Book Special Events Join Masterclasses Your Visit Check Ticket FAQs Join Writers Retreats Read Latest News Connect Your Classroom Advertise with us Contact us Your Favorites Get Tickets 2026 Festival Meet our Speakers Explore Main Programme Book Special Events Join Masterclasses Your Visit Your Favorites Get Tickets Get Tickets Menu Clos",
+      "publishedDates": [],
+      "canonical": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-reveals-main-program-2025-four-days-of-conversations-from-booker-prize-winners-to-emerging-voices",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:33.149Z",
+  "foundItems": [
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-reveals-main-program-2025-four-days-of-conversations-from-booker-prize-winners-to-emerging-voices",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ubud Writers & Readers Festival Reveals Main Program 2025 \u2013 Four Days of Conversations from Booker Prize Winners to Emerging Voices",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/first-lineup-revealed-for-2025-festival-with-three-booker-prize-winners-early-bird-tickets-on-sale",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "First lineup revealed for 2025 Festival, with Three Booker Prize Winners - Early Bird Tickets On Sale!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/extraordinary-voices-and-bold-thinkers-announced-for-festival-2026",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Extraordinary Voices and Bold Thinkers Announced for Festival 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/aris-sarmanta-on-interpreting-samarasa-at-ubud-writers-and-readers-festival-2026",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aris Sarmanta on interpreting Samarasā at Ubud Writers & Readers Festival 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/announcing-2026-festival-theme-samarasa-and-early-bird-tickets-on-sale",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing 2026 Festival Theme: Samarasā and Early Bird Tickets on Sale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/secrets-from-the-green-room-2025-festival-edition",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Secrets from the Green Room: 2025 Festival Edition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/your-2025-pre-festival-reading-list",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Your 2025 Pre-Festival Reading List",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/media-accreditation-for-the-2025-festival-is-now-open",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Media Accreditation for the 2025 Festival is now open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/fly-to-our-2025-festival-with-qatar-airways-and-save",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fly to our 2025 Festival with Qatar Airways and Save!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/2025-festival-more-inspiring-minds-joining-the-lineup",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2025 Festival - More inspiring minds joining the Lineup",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/festival-unveils-the-2025-theme-aham-brahmasmi-i-am-the-universe",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festival Unveils the 2025 theme 'Aham Brahmasmi: I Am The Universe’",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-umumkan-rangkaian-seleksi-emerging-writers-2025-untuk-penulis-indonesia",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ubud Writers & Readers Festival Umumkan Rangkaian Seleksi Emerging Writers 2025 Untuk Penulis Indonesia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/2025-emerging-writers-finalists-announced",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2025 Emerging Writers Finalists Announced!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/a-look-into-the-2024-nobel-prize-in-literature-winner-han-kang-and-south-korean-literature",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Look into the 2024 Nobel Prize in Literature Winner Han Kang & South Korean Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/make-your-mark-on-a-new-festival-mural",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Make your mark on a new Festival Mural",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/bring-your-book-club-and-save-10percent-on-festival-passes",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bring Your Book Club and Save 10% on Festival Passes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/the-faces-behind-the-festival-dwi-ermayanthis-journey-with-the-festival",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Faces Behind the Festival: Dwi Ermayanthi’s Journey with the Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-awarded-impactful-event-of-the-year",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ubud Writers & Readers Festival Awarded Impactful Event of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/2024-festival-presents-200-programs-and-reflects-on-its-literary-impact",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2024 Festival Presents 200+ Programs and Reflects on its literary Impact",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/main-programme-released-which-weaves-human-stories-throughout-inspiring-us-to-take-action",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Main programme released which weaves human stories throughout, inspiring us to take action",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/malaysia-airlines-offers-special-festival-fares",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Malaysia Airlines Offers Special Festival Fares",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-our-new-head-of-international-programme-namal-siddiqui",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet our new Head of International Programme: Namal Siddiqui",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/feasts-of-flavours-await-at-the-ubud-food-festival-from-30-may-to-1-june",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Feasts of Flavours await at the Ubud Food Festival from 30 May to 1 June!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/the-faces-behind-the-festival-i-made-suka-merta",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Faces Behind the Festival: I Made Suka Merta",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/the-faces-behind-the-festival-patricia-emanuelle",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The faces behind the Festival: Patricia Emanuelle",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/the-faces-behind-the-festival-dharmayeni-putri",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Faces Behind the Festival: Dharmayeni Putri",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/janet-deneefes-reflections-on-the-2024-festival",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Janet DeNeefe's reflections on the 2024 Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/call-for-applications-the-art-of-moderation-with-gill-westaway",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Call for Applications: The Art of Moderation with Gill Westaway",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/janet-deneefe-nominated-for-impact-hero-of-the-year",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Janet DeNeefe nominated for Impact Hero of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-our-programme-curators-namal-siddiqui",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet our Programme Curators: Namal Siddiqui",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-our-programme-curators-gustra-adnyana",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Our Programme Curators: Gustra Adnyana",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-the-moderators-qanda-with-jewel-topsfield",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet The Moderators: Q&A with Jewel Topsfield",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-the-moderators-qanda-with-luna-vidya",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet the Moderators: Q&A with Luna Vidya",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-the-moderators-qanda-with-janet-steele",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet the Moderators: Q&A with Janet Steele",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-the-moderators-qanda-with-michael-vatikiotis",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet the Moderators: Q&A with Michael Vatikiotis",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/penguin-sea-and-uwrf-partner-to-publish-stories-from-the-islands",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Penguin SEA and UWRF partner to publish Stories from the Islands",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/enchanted-bali-drawings-by-the-children-of-batuan",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Enchanted Bali: Drawings by the Children of Batuan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/rayakan-sastra-indonesia-uwrf-2024-hadirkan-satellite-program-di-solo-yogyakarta-dan-banggai",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rayakan sastra Indonesia, UWRF 2024 hadirkan satellite program di Solo, Yogyakarta, dan Banggai",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/unraveling-colonial-legacies-through-storytelling-a-conversation-with-amitav-ghosh",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Unraveling Colonial Legacies Through Storytelling: A Conversation with Amitav Ghosh",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:31.650Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "3e2cebef9919aa450e4516d4d9324a6ec01752794d5f6848e54883e65a9f66e4"
+}

@@ -11,6 +11,7 @@ import { projectReviewedHeaderLibrary } from "./reviewed-header-library.mjs";
 import { projectReviewedHeaderShowcase } from "./reviewed-header-showcase.mjs";
 import { projectReviewedNativeArchiveTransport } from "./reviewed-native-archive-transport.mjs";
 import { projectReviewedDependencySecurity } from "./reviewed-dependency-security.mjs";
+import { projectReviewedR10Delta, reviewedR10AdditionPaths, isReviewedR10Addition } from "./reviewed-r10-delta.mjs";
 import {
   isReviewedR49nDickensAddition,
   projectReviewedR49nDickens,
@@ -48,7 +49,7 @@ function readGovernanceSource(absolutePath, encoding) {
       projectReviewedR49nPackage(relativePath,
         projectReviewedDependencySecurity(relativePath,
           projectReviewedHeaderShowcase(relativePath,
-            projectReviewedNativeArchiveTransport(relativePath, readFileSync(absolutePath, encoding))))))
+            projectReviewedNativeArchiveTransport(relativePath, projectReviewedR10Delta(relativePath, readFileSync(absolutePath, encoding)))))))
   );
 }
 
@@ -246,6 +247,8 @@ function fingerprint(paths, include) {
         .filter((absolutePath) => {
           const relativePath = repositoryPath(absolutePath);
           if (!include(relativePath)) return false;
+          if (reviewedR10AdditionPaths.has(relativePath) &&
+            isReviewedR10Addition(relativePath, readFileSync(absolutePath, "utf8"))) return false;
           if (reviewedR49nPackageAdditionPaths.has(relativePath) &&
             isReviewedR49nPackageAddition(relativePath, readFileSync(absolutePath, "utf8"))) {
             return false;

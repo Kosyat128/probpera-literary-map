@@ -1,0 +1,753 @@
+{
+  "sourceId": "amabooks",
+  "name": "amaBooks",
+  "entryUrl": "https://amabooksbyo.blogspot.com/",
+  "countryCodes": [
+    "ZW"
+  ],
+  "coverageCountryCodes": [
+    "ZW"
+  ],
+  "attemptedAt": "2026-09-26T17:31:51.330Z",
+  "requests": [
+    {
+      "url": "https://amabooksbyo.blogspot.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 243238,
+      "sha256": "245307e816ce6045cbea07675cd2d5cc097f44b1aee5f507ef05dd03faec31a0",
+      "accessedAt": "2026-09-26T17:31:52.973Z"
+    },
+    {
+      "url": "https://amabooksbyo.blogspot.com/feeds/posts/default",
+      "status": 200,
+      "contentType": "application/atom+xml; charset=UTF-8",
+      "bytes": 539060,
+      "sha256": "1537ddf651fb4b8d830f2ea098e614123b36c31bd473a359cb4f5fa3560ca4e1",
+      "accessedAt": "2026-09-26T17:31:53.694Z"
+    },
+    {
+      "url": "https://amabooksbyo.blogspot.com/2026/03/interview-with-university-of-georgia.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 174970,
+      "sha256": "ad7d7f67fd8fe2f141ccaec3615a3b589f4076d52d876721024ad0483dd7c8d6",
+      "accessedAt": "2026-09-26T17:31:54.189Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://amabooksbyo.blogspot.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 166,
+    "sha256": "6ede9399372afbb211a7801a0caafb837ea82a8daecb6cefba068096b9225488",
+    "accessedAt": "2026-09-26T17:31:52.053Z",
+    "disallowed": [
+      "/search",
+      "/share-widget"
+    ]
+  },
+  "endpoint": {
+    "id": "amabooks",
+    "name": "amaBooks",
+    "url": "https://amabooksbyo.blogspot.com/feeds/posts/default",
+    "format": "atom",
+    "language": "en",
+    "region": "africa",
+    "sourceFamilyId": "amabooks",
+    "countryCodes": [
+      "ZW"
+    ],
+    "coverageCountryCodes": [
+      "ZW"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://amabooksbyo.blogspot.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://amabooksbyo.blogspot.com/2026/03/interview-with-university-of-georgia.html"
+    ],
+    "verifiedAt": "2026-09-26T17:31:54.226Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 25,
+  "literaryCandidateCount": 25,
+  "sample": {
+    "sourceId": "amabooks",
+    "source": {
+      "name": "amaBooks",
+      "url": "https://amabooksbyo.blogspot.com/2026/03/interview-with-university-of-georgia.html",
+      "language": "en"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Interview with the University of Georgia Press's editors of African Language Literatures in Translation",
+    "publishedAt": "2026-03-29T12:33:00.000Z",
+    "description": "Reproduced from https://hopscotchtranslation.com/2026/03/22/allt-interview/North American CoverZimbabwe/UK cover Erik Beranek in conversation with Alexander Fyfe and Nate Holly'We see the translation as a creative practice, in the same way that the original is. We want the translators to do their thing. And for that to be something that readers will engage with too.'Earlier this month, Hopscotch …",
+    "discoveredAt": "2026-09-26T17:31:53.714Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://amabooksbyo.blogspot.com/2026/03/interview-with-university-of-georgia.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 174970,
+      "sha256": "ad7d7f67fd8fe2f141ccaec3615a3b589f4076d52d876721024ad0483dd7c8d6",
+      "accessedAt": "2026-09-26T17:31:54.189Z",
+      "headline": "amaBooks",
+      "excerpt": "Reproduced from https://hopscotchtranslation.com/2026/03/22/allt-interview/North American CoverZimbabwe/UK coverErik Beranek in conversation with Alexander Fyfe and Nate Holly'We see the translation as a creative practice, in the same way that the original is. We want the translators to do their thing. And for that to be something that readers will engage with too.'Earlier this month, Hopscotch ed",
+      "publishedDates": [],
+      "canonical": "http://amabooksbyo.blogspot.com/2026/03/interview-with-university-of-georgia.html",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:31:54.226Z",
+  "foundItems": [
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/interview-with-university-of-georgia.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interview with the University of Georgia Press's editors of African Language Literatures in Translation",
+      "publishedAt": "2026-03-29T12:33:00.000Z",
+      "description": "Reproduced from https://hopscotchtranslation.com/2026/03/22/allt-interview/North American CoverZimbabwe/UK cover Erik Beranek in conversation with Alexander Fyfe and Nate Holly'We see the translation as a creative practice, in the same way that the original is. We want the translators to do their thing. And for that to be something that readers will engage with too.'Earlier this month, Hopscotch …",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/08/african-novels-are-being-translated-to.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "African novels are being translated to English in a bold new trend: Ignatius Mabasa's The Mad reviewed.",
+      "publishedAt": "2025-08-28T18:07:00.000Z",
+      "description": "Reproduced from The Conversation https://theconversation.com/african-novels-are-being-translated-to-english-in-a-bold-new-trend-we-review-ignatius-mabasas-the-mad-263958 When it comes to African literature, translation has mostly meant translating work from European languages into African ones. Translation from African languages into English has been long overdue.Now it appears that a shift in th…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/01/book-review-mad-by-ignatius-t-mabasa.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Review: The Mad by Ignatius T. Mabasa - Translated by J. Tsitsi Mutiti",
+      "publishedAt": "2026-01-09T17:49:00.000Z",
+      "description": "The Mad reviewed by Tafadzwa Madzika in Greedy South (https://www.greedysouth.co.zw/2026/01/book-review-mad-by-ignatius-t-mabasa.html) In Zimbabwean society, and to a broader extent Southern African society, there are larger than life characters who are regulars at the local shopping centre, who have their sanity constantly in question. They always have alcohol on hand and offer up monologues and…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/12/the-mad-chosen-as-one-of-100-notable.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mad chosen as one of the '100 Notable African Books of 2025'",
+      "publishedAt": "2025-12-30T17:58:00.000Z",
+      "description": "Brittle Paper have included Ignatius Mabasa's The Mad in its list of 100 Notable African Books of 2025(https://brittlepaper.com/100-notable-african-books-of-2025/), saying 'Originally published in Shona as Mapenzi, this milestone of Zimbabwean literature finally receives a fearless English translation.' The translation, by J. Tsitsi Mutiti, follows the original novel in being recognised - Mapenzi…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/ignatius-mabasa-nominated-for-2026.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ignatius Mabasa nominated for the 2026 Astrid Lindgren Memorial Award for Storytelling",
+      "publishedAt": "2025-10-20T14:30:00.000Z",
+      "description": "Renowned Zimbabwean author and storyteller Ignatius Mabasa has been nominated for the 2026 Astrid Lindgren Memorial Award for storytelling. The Astrid Lindgren Memorial Award is an international children's literary award established by the Swedish government in 2002 to honour the Swedish children's author Astrid Lindgren (1907\u20132002) and to promote every child's right to great stories. This global…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/08/the-bulawayo-book-club-and-maestro.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Maestro, The Magistrate and The Mathematician by Tendai Huchu is August's book at the Bulawayo Book Club",
+      "publishedAt": "2025-08-28T11:14:00.001Z",
+      "description": "Tendai Huchu's novel The Maestro, The Magistrate and The Mathematician is to be discussed this weekend (30 August) at the Bulawayo Book Club.Three very different men struggle with thoughts of belonging, loss, identity and love as they attempt to find a place for themselves in Britain. The Magistrate tries to create new memories and roots, fusing a wandering exploration of Edinburgh with music. Th…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/the-north-american-edition-of-mad-has.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The North American edition of The Mad has arrived",
+      "publishedAt": "2026-03-16T14:21:00.000Z",
+      "description": "'Time. Let us learn to give time a chance. What is the hurry after all? What is it you are rushing for? A grasshopper in a man's palm does not even know the size of a man.' Copies of the University of Georgia Press edition of The Mad have been delivered to amaBooks.Congratulations to author Ignatius T. Mabasa and translator J. Tsitsi Mutiti.In North America, copies are available through https://w…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/j-tsitsi-mutiti-about-translation-of.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "J. Tsitsi Mutiti about the translation of Mapenzi to The Mad",
+      "publishedAt": "2026-03-12T11:42:00.000Z",
+      "description": "J. Tsitsi Mutiti's speech at the Harare launch of Ignatius Mabasa's The Mad My sincere thanks to all who are gathered here to help us celebrate the completion and publishing of this English translation of Mapenzi to The Mad. I very much appreciate it. I will begin by answering a question that I’ve been asked many times: why translation and why Mapenzi? The simple answer is that I fell in love wit…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/zimbabwean-writer-philani-nyoni-writes.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zimbabwean writer Philani Nyoni, writes an interesting and candid review of Ignatius Mabasa's book 'The Mad' with its colourful insights of Harare, Africa and... sanity.",
+      "publishedAt": "2026-03-06T10:07:00.001Z",
+      "description": "The Mad reviewed by Philani Nyoni in teambooktu.comhttps://teambooktu.com/harare-is-a-garishly-painted-whore-a-review-of-ignatius-mabasas-the-mad? TITLE: The MadPUBLISHED BY: amaBooks Publishers & Carnelian Heart PublishingISBN: 978-1-914287-96-1PAGES: 235AUTHOR: Ignatius Mabasa, Translated by J. Tsitsi Mutiti I received a copy of Ignatius Mabasa’s The Mad with the anticipation of a bottle green …",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/11/john-eppel-at-bulawayo-book-club.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Eppel at the Bulawayo Book Club",
+      "publishedAt": "2025-11-23T15:45:00.000Z",
+      "description": "John Eppel will be at the Bulawayo Book Club on 29 November to discuss his novel Hatchings. It is New Year in Bulawayo, and anybody who is anybody is out celebrating. Based on Alexander Pope's dictum that 'those who are ashamed of nothing else are so of being ridiculous', Hatchings sets out to ridicule people of all races who abuse power - behind the pulpit, the podium, and the paint brush. The n…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/05/the-mad-reviewed-on-amazoncom-in-usa.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mad reviewed on Amazon.com in the USA",
+      "publishedAt": "2026-05-31T21:40:48.566Z",
+      "description": "A compelling and valuable novel about life in late 20th century Zimbabwe Reviewed in Amazon.com the United States on April 5, 2026'Just what goes on in Harare? Is it an aberration or is there perhaps some issue that needs to be fixed using the traditional cleansing rituals? Truly I don't know. Harare barked outside and I thought he must be through with the other dogs. Harare had no problems like …",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/05/the-black-man-cannot-write-storytelling.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Black Man Cannot Write: Storytelling is My Other Mother by Ignatius Mabasa",
+      "publishedAt": "2026-05-04T13:58:00.000Z",
+      "description": "Reproduced from Writing in Practice, Volume 11, March 2025. CrossRef DOI: 10.62959/WIP-11-2025-06 Ignatius Mabasa Authorial Reflections on Indigenous Language, Education and Creative Writing in Zimbabwe ABSTRACT Before the introduction of books, radio, and film through colonisation, folklore functioned as a vital form of home-schooling for the indigenous people of Zimbabwe. When creative writing …",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/05/whatever-happened-to-rick-astley-he.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Whatever Happened to Rick Astley? He Grew Up",
+      "publishedAt": "2026-05-04T12:17:00.000Z",
+      "description": "Reproduced from https://bryonyrheam.blogspot.com/2026/04/whatever-happened-to-rick-astley-he.html Whatever Happened to Rick Astley? may be an unusual title for a book of short stories set in Africa. Western expectations of African literature demand something more exotic, something at least with connotations of heat, dust and hardship. Like every place, Africa has more than one side to it and ther…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/the-mad-by-ignatius-t-mabasa-reviewed.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mad, by Ignatius T. Mabasa, reviewed by M.A. Orthofer in The Complete Review",
+      "publishedAt": "2026-03-11T20:28:00.000Z",
+      "description": "Reproduced from https://www.complete-review.com/reviews/zimbabwe/mabasait.htm#ours The complete review's Review: The Mad features a number of variously related figures, its chapters shifting in perspective from one to the next, various voices coming to the fore, whether in the first person or in action and dialogue in the chapters presented in the third person. A central figure is the teacher Sek…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/12/ignatius-t-mabasas-mad-reviewed-by-pat.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ignatius T. Mabasa's The Mad reviewed by Pat Brickhill in the Zimbabwe Review",
+      "publishedAt": "2025-12-18T16:13:00.000Z",
+      "description": "Getting through the 1990sThe 90s were a vibrant time of political and economic shifts. The 25-year-old State of Emergency was lifted and the Economic Structural Adjustment Programme (ESAP) was implemented. A new generation of young Zimbabweans had initiated radical ferment, students at the University of Zimbabwe “dared to dream of a freer world” and post independent writers emerged onto the liter…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/mabasa-vazhure-carry-zimbabwean-art-to.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mabasa, Vazhure carry Zimbabwean art to the world",
+      "publishedAt": "2025-10-25T07:46:00.001Z",
+      "description": "Elliot Ziwira's article in The Herald on the launch of Ignatius Mabasa's The Mad and the opening of Samantha Vezhure's exhibition Nzwisa.https://www.heraldonline.co.zw/mabasa-vazhure-carry-zimbabwean-art-to-the-world/ THERE are moments when Zimbabwe’s creative spirit refuses to be contained; instants when its words, colours and rhythms transcend borders, languages, and the limits of genre. The pa…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/photos-from-launch-of-mad.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Photos from the Launch of 'The Mad'",
+      "publishedAt": "2025-10-14T18:44:00.005Z",
+      "description": "Photos thanks to Samantha Rumvidzai Vezhure, Hope Masike and others. Amongst those present and featured in the photos are: Aaron Chiundura Moyo, Albert Nyathi, Batsirai Chigama, Brain Garusa, Chirikure Chirikure, Conelia Mabasa, Ignatius Mabasa, Memory Chirere, Raphael Chikukwa, Tinashe Muchuri, Tsitsi Mutiti and representatives of Wisrod (who sponsored the event)",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/celebrating-launch-of-ignatius-mabasa-s.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celebrating the Launch of Ignatius Mabasa' s ‘The Mad’",
+      "publishedAt": "2025-10-14T08:58:00.000Z",
+      "description": "Reproduced from https://munyori.org/2025/10/mad-about-mabasa-a-celebration-of-the-mad/ by Beaven Tapureta In the cool evening of October 10 a gathering of ‘the mad’ writers, publishers, artists, arts journalists, academics, friends and family enjoyed the memorable official launch of The Mad, a newly co-published English translation of Ignatius T Mabasa’s 1999 Shona novel Mapenzi, a classic.A char…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/the-mad-reviewed-in-financial-gazette.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mad reviewed in The Financial Gazette",
+      "publishedAt": "2025-10-09T17:25:00.000Z",
+      "description": "'We are all the richer for the penetrative insights and experiences this important novel can give us.'Read the full review by Diana Rodrigues on p31 of The Financial Gazette of 9 October 2025: (https://epaper.fingaz.co.zw/subscriber/read-mac-publication/205#Thursday%209%20October%202025/31).",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/09/the-harare-launch-of-ignatius-mabasas.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Harare Launch of Ignatius Mabasa's The Mad",
+      "publishedAt": "2025-09-17T13:48:00.000Z",
+      "description": "You are invited to the launch of The Mad at the National Gallery of Zimbabwe in Harare on 10 October 2025 from 6.00pm to 7.30pm.Ignatius Mabasa, the author of the original chiShona version Mapenzi, and J. Tsitsi Mutiti, the translator of Mapenzi into English as The Mad, will be in discussion moderated by Memory Chirere.Thanks to Wisrod Investments and the National Gallery of Zimbabwe for supporti…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/09/becoming-digital-guest-blog-by-fungai.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Becoming Digital: A Guest Blog by Fungai Machirori",
+      "publishedAt": "2025-09-09T14:05:00.000Z",
+      "description": "Fungai is a storyteller, ethnographer and archivist who weaves digitality into her ways of seeing the world. Erections don’t mean affection. This is obvious, I know. But in the 2010s of my 20s, it feels unprecedented to announce, especially as my first ever blog post. It’s an era where the internet still feels like a small community of likeminds; thankfully, trolls are something I am yet to disco…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/08/a-review-by-raisedon-baya-of-tendai.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A review by Raisedon Baya of Tendai Huchu's The Maestro, The Magistrate & The Mathematician",
+      "publishedAt": "2025-08-30T18:06:00.000Z",
+      "description": "There is literature that comes to you, sits with you, keeps you company, helps you sleep and then goes away and never bothers you or visits you again. Then there is literature that comes -usually without much fanfare or much ado - grabs you by the collar, sits you down, commands you to listen, asks you important questions, demands you to think, takes away your sleep and when it leaves, leaves you…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/08/the-first-review-of-ignatius-t-mabasas.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The first review of Ignatius T. Mabasa's The Mad",
+      "publishedAt": "2025-08-27T17:38:00.000Z",
+      "description": "Review by Rutendo ChichayaReproduced from negwande.com/post/the mad-by-ignatius-t-mabasa-translated-by-j-tsitsi-mutiti'I tried to pick up my jacket and missed it as I stumbled. I tried to laugh at myself but what I was feeling led to self-pity. The hunger was now a real pain, like a hot brick in my belly. I decided to go to the bins, where I had often seen people in search of food. Shyness is a l…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/07/ignatius-mabasas-mad-now-available.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ignatius Mabasa's The Mad now available!",
+      "publishedAt": "2025-07-29T12:14:00.000Z",
+      "description": "We’re proud to announce the release of The Mad, a searing, satirical novel that paints a vivid portrait of poverty, violence, dehumanisation, and postcolonial dislocation in Zimbabwe.Originally published in ChiShona as Mapenzi, this powerful translation by J. Tsitsi Mutiti brings Ignatius Mabasa’s groundbreaking work to a wider audience. The novel unfolds through dramatic monologues and dialogue-…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/07/potholes-in-whatever-happened-to-rick.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Potholes in 'Whatever Happened to Rick Astley?'",
+      "publishedAt": "2025-07-15T11:55:00.003Z",
+      "description": "Raisedon Baya discusses the story 'Potholes' from Bryony Rheam's short story collection Whatever Happened to Rick Astley?, which was being discussed by the Bulawayo Book Club. ---------------------------------------------------\"Potholes\"I'm a sucker for political satire. I sometimes see it where it's not there. So please forgive me for seeing Potholes as some kind of political piece. Subtle but t…",
+      "discoveredAt": "2026-09-26T17:31:53.714Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "1537ddf651fb4b8d830f2ea098e614123b36c31bd473a359cb4f5fa3560ca4e1"
+}

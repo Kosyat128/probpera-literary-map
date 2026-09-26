@@ -1,0 +1,61 @@
+{
+  "sourceId": "lnb-lv",
+  "name": "National Library of Latvia",
+  "entryUrl": "https://lnb.gov.lv/",
+  "countryCodes": [
+    "LV"
+  ],
+  "coverageCountryCodes": [
+    "LV"
+  ],
+  "attemptedAt": "2026-09-26T17:29:09.961Z",
+  "requests": [
+    {
+      "url": "https://lnb.gov.lv/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 325416,
+      "sha256": "343d6af86c22401196d39b0174a372ac75209e20cc496c72ec50afa33849df19",
+      "accessedAt": "2026-09-26T17:29:12.017Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/news/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 288676,
+      "sha256": "f21373956ae7d60064fc952c37ffa3be07f55045b7d1fbe48e6e9864ced14c05",
+      "accessedAt": "2026-09-26T17:29:12.172Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/library/atbalsti-biblioteku/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 289086,
+      "sha256": "08dff25a4448b1c1e253d8c31e551c40b7ebe5c23ac310d06cc23f3f3ff73e78",
+      "accessedAt": "2026-09-26T17:29:12.371Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/library/fotografesana-un-filmesana/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 289110,
+      "sha256": "89728bfc47fe2238f213e31b7e0c6efa04a73c061c9a241f532031afb1172e2b",
+      "accessedAt": "2026-09-26T17:29:12.574Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/library/klusti-par-lasitaju/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 289090,
+      "sha256": "ed6c8332aa1c8bc551b13d0ede6bff7b94a17bb1805a04d75ef8b257946a51e1",
+      "accessedAt": "2026-09-26T17:29:12.739Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://lnb.gov.lv/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

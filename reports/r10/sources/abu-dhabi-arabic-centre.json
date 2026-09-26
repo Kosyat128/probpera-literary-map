@@ -1,0 +1,38 @@
+{
+  "sourceId": "abu-dhabi-arabic-centre",
+  "name": "Abu Dhabi Arabic Language Centre",
+  "entryUrl": "https://alc.ae/en/",
+  "countryCodes": [
+    "AE"
+  ],
+  "coverageCountryCodes": [
+    "AE"
+  ],
+  "attemptedAt": "2026-09-26T17:31:45.206Z",
+  "requests": [
+    {
+      "url": "https://alc.ae/en/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 400808,
+      "sha256": "fbf95649ae14af1fa6e09627f1cc51094a3e917fdeee1e91f4cc107f9f2c8a93",
+      "accessedAt": "2026-09-26T17:31:47.050Z"
+    },
+    {
+      "url": "https://alc.ae/en/authors/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 252717,
+      "sha256": "550850e3df1db5ac193f78f204357320106d7041610628ffed73e12a38972907",
+      "accessedAt": "2026-09-26T17:31:50.503Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://alc.ae/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "indexAttemptError": "response_too_large"
+}

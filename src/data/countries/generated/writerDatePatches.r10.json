@@ -1,0 +1,1297 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-26",
+  "inputFingerprint": "d8d01ad1da5a3663397fab02883af563e689137d2e78206d0cb0e52344f88661",
+  "patches": [
+    {
+      "id": "r10:australia:gregory_david_roberts:birthDate:abca76c541eb",
+      "writerKey": "australia:gregory_david_roberts",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1952-06-21",
+      "evidence": {
+        "value": "1952-06-21",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q1370495",
+        "claimIds": [
+          "Q1370495$530B58C0-0E1D-4E89-AE9B-3F4D26A8645C"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1370495&oldid=2529801986",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:australia:terry_hayes:birthDate:be5e9df6c7ca",
+      "writerKey": "australia:terry_hayes",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1951-10-08",
+      "evidence": {
+        "value": "1951-10-08",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q437121",
+        "claimIds": [
+          "Q437121$A2DD34EC-ECB7-4D99-9794-189244768B78"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q437121&oldid=2549539006",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:bolivia:jesus_lara:birthDate:36b151ec793c",
+      "writerKey": "bolivia:jesus_lara",
+      "field": "birthDate",
+      "expectedOld": "1898-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1898-01-01",
+      "evidence": {
+        "value": "1898-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q5814633",
+        "claimIds": [
+          "Q5814633$670D059B-5B49-4785-8BDE-7311F8B2E360"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q5814633&oldid=2527235258",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:bosnia:branko_copic:birthDate:b8e4ae9bd474",
+      "writerKey": "bosnia:branko_copic",
+      "field": "birthDate",
+      "expectedOld": "1915-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1915-01-01",
+      "evidence": {
+        "value": "1915-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q472164",
+        "claimIds": [
+          "q472164$C1E34C8F-5AC9-4F24-903A-7A69FC01A4B9"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q472164&oldid=2549538952",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:rafael_sabatini:birthDate:3f4fbfda8313",
+      "writerKey": "england:rafael_sabatini",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1875-04-29",
+      "evidence": {
+        "value": "1875-04-29",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q345104",
+        "claimIds": [
+          "q345104$FE4D52BC-3BE3-4CF5-8FD4-65CF2F082C8F"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q345104&oldid=2529665977",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:rafael_sabatini:deathDate:32caa99adaa9",
+      "writerKey": "england:rafael_sabatini",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1950-02-13",
+      "evidence": {
+        "value": "1950-02-13",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q345104",
+        "claimIds": [
+          "q345104$6E8EB100-9FA8-4F7A-92C8-A73B825C9021"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q345104&oldid=2529665977",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:anthony_burgess:birthDate:238d97d6535f",
+      "writerKey": "england:anthony_burgess",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1917-02-25",
+      "evidence": {
+        "value": "1917-02-25",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q217619",
+        "claimIds": [
+          "q217619$BA4F8609-88D7-4ACE-AE2C-4783E1763636"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q217619&oldid=2540368268",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:anthony_burgess:deathDate:a83dd180cc57",
+      "writerKey": "england:anthony_burgess",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1993-11-22",
+      "evidence": {
+        "value": "1993-11-22",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q217619",
+        "claimIds": [
+          "q217619$96C44FDE-838F-41F5-AF01-0ECB95121ED0"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q217619&oldid=2540368268",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:paula_hawkins:birthDate:afaaa48486db",
+      "writerKey": "england:paula_hawkins",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1972-08-26",
+      "evidence": {
+        "value": "1972-08-26",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q20732317",
+        "claimIds": [
+          "Q20732317$393D3DFF-EBDB-4F45-ADA5-015823A826BE"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q20732317&oldid=2546576509",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:diane_setterfield:birthDate:f89070a58e4d",
+      "writerKey": "england:diane_setterfield",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1964-08-22",
+      "evidence": {
+        "value": "1964-08-22",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q2550958",
+        "claimIds": [
+          "Q2550958$496E3900-1E4C-416F-8BE7-23FE6D964BBA"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q2550958&oldid=2536139581",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:agatha_christie:birthDate:b4c6ff71124a",
+      "writerKey": "england:agatha_christie",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1890-09-15",
+      "evidence": {
+        "value": "1890-09-15",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q35064",
+        "claimIds": [
+          "q35064$91B5BEA6-A233-4831-97C5-AF97E1BF86E1"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q35064&oldid=2548904284",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:agatha_christie:deathDate:9e26c1aff982",
+      "writerKey": "england:agatha_christie",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1976-01-12",
+      "evidence": {
+        "value": "1976-01-12",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q35064",
+        "claimIds": [
+          "q35064$F7981715-1F4F-435B-89A5-96BA1F7A033E"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q35064&oldid=2548904284",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:lee_child:birthDate:806f4721d168",
+      "writerKey": "england:lee_child",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1954-10-29",
+      "evidence": {
+        "value": "1954-10-29",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q333719",
+        "claimIds": [
+          "Q333719$37DFC357-0239-46E0-9624-25376883857E"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q333719&oldid=2546518653",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:john_fowles:birthDate:82579d1bdbfa",
+      "writerKey": "england:john_fowles",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1926-03-31",
+      "evidence": {
+        "value": "1926-03-31",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q214660",
+        "claimIds": [
+          "q214660$C73E5FCC-658D-4457-88E5-2B7919B17501"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q214660&oldid=2540300775",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:john_fowles:deathDate:6f1d6c6e71a2",
+      "writerKey": "england:john_fowles",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "2005-11-05",
+      "evidence": {
+        "value": "2005-11-05",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q214660",
+        "claimIds": [
+          "q214660$F6F578C2-0650-4781-9915-2745F27FDEEF"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q214660&oldid=2540300775",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:england:alex_garland:birthDate:1c64946a20a6",
+      "writerKey": "england:alex_garland",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1970-05-26",
+      "evidence": {
+        "value": "1970-05-26",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q542634",
+        "claimIds": [
+          "Q542634$2c5026c8-4abc-5d14-6bd0-573d6ace6f8a"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q542634&oldid=2548792315",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:france:franck_thilliez:birthDate:340056f8fb9d",
+      "writerKey": "france:franck_thilliez",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1973-10-15",
+      "evidence": {
+        "value": "1973-10-15",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q779144",
+        "claimIds": [
+          "Q779144$C3B90D1D-A070-451D-BAF5-419A9C938A98"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q779144&oldid=2533045855",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:hungary:sandor_petofi:birthDate:a8f9cf2917e4",
+      "writerKey": "hungary:sandor_petofi",
+      "field": "birthDate",
+      "expectedOld": "1823-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1823-01-01",
+      "evidence": {
+        "value": "1823-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q81219",
+        "claimIds": [
+          "q81219$44CAACE0-0391-40DB-8FC5-9BC4AC1A03C9"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q81219&oldid=2530388086",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:italy:emilio_salgari:birthDate:80844cb45f5b",
+      "writerKey": "italy:emilio_salgari",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1862-08-21",
+      "evidence": {
+        "value": "1862-08-21",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q309786",
+        "claimIds": [
+          "Q309786$dc38d7af-9f7d-42bc-b388-fd9902bc5f1a"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q309786&oldid=2529894481",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:italy:emilio_salgari:deathDate:ac4c8400b3cb",
+      "writerKey": "italy:emilio_salgari",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1911-04-25",
+      "evidence": {
+        "value": "1911-04-25",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q309786",
+        "claimIds": [
+          "q309786$EF9AA617-0A16-4B62-BE60-2CDF76A41048"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q309786&oldid=2529894481",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:latvia:rudolfs_blaumanis:birthDate:2c3c2ca0b091",
+      "writerKey": "latvia:rudolfs_blaumanis",
+      "field": "birthDate",
+      "expectedOld": "1863-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1863-01-01",
+      "evidence": {
+        "value": "1863-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q1082044",
+        "claimIds": [
+          "Q1082044$1B898DDC-0DB2-44F4-8CA8-1B6974C1C3E3"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1082044&oldid=2543795456",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:lithuania:kristijonas_donelaitis:birthDate:810f7c17c849",
+      "writerKey": "lithuania:kristijonas_donelaitis",
+      "field": "birthDate",
+      "expectedOld": "1714-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1714-01-01",
+      "evidence": {
+        "value": "1714-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q467490",
+        "claimIds": [
+          "Q467490$B9F71BD2-413B-4DEF-9E4E-84A34F33249F"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q467490&oldid=2521431093",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:mexico:mariano_azuela:birthDate:b88d456cf359",
+      "writerKey": "mexico:mariano_azuela",
+      "field": "birthDate",
+      "expectedOld": "1873-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1873-01-01",
+      "evidence": {
+        "value": "1873-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q355676",
+        "claimIds": [
+          "Q355676$3D3E4D41-CD75-4FEF-AD5A-9F3ADC457078"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q355676&oldid=2549363955",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:alexander_kuprin:deathDate:51394a23d182",
+      "writerKey": "russia:alexander_kuprin",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1938-08-25",
+      "evidence": {
+        "value": "1938-08-25",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q271457",
+        "claimIds": [
+          "q271457$5AD1A3FB-5E80-42EF-B2BA-F0E79C2AD84A"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q271457&oldid=2549527066",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:andrei_bely:deathDate:bfc36070f40e",
+      "writerKey": "russia:andrei_bely",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1934-01-08",
+      "evidence": {
+        "value": "1934-01-08",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q212632",
+        "claimIds": [
+          "Q212632$CD76A5D6-E283-452D-86D6-7C4FA54DC8D0"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q212632&oldid=2525277473",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:vladimir_mayakovsky:deathDate:fff42cdf17ea",
+      "writerKey": "russia:vladimir_mayakovsky",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1930-04-14",
+      "evidence": {
+        "value": "1930-04-14",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q132964",
+        "claimIds": [
+          "q132964$807A02BF-0D3C-41B9-9762-2CBBF68FFB3E"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q132964&oldid=2533408306",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:mikhail_zoshchenko:deathDate:a65d58278315",
+      "writerKey": "russia:mikhail_zoshchenko",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1958-07-22",
+      "evidence": {
+        "value": "1958-07-22",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q360507",
+        "claimIds": [
+          "q360507$30F85A6E-6646-4496-9686-493651535D4D"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q360507&oldid=2548608116",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:andrei_platonov:deathDate:2d86b5f47057",
+      "writerKey": "russia:andrei_platonov",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1951-01-05",
+      "evidence": {
+        "value": "1951-01-05",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q315147",
+        "claimIds": [
+          "Q315147$D12EAC6D-C647-452C-B175-BD4CD3F91EFE"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q315147&oldid=2530033063",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:vasily_grossman:deathDate:e41d1c990986",
+      "writerKey": "russia:vasily_grossman",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1964-09-14",
+      "evidence": {
+        "value": "1964-09-14",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q313767",
+        "claimIds": [
+          "q313767$A99BE7EB-810A-4228-B66E-5341E7EB5C77"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q313767&oldid=2546402394",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:varlam_shalamov:deathDate:d7f936537101",
+      "writerKey": "russia:varlam_shalamov",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1982-01-17",
+      "evidence": {
+        "value": "1982-01-17",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q220816",
+        "claimIds": [
+          "q220816$62819D89-690C-45BA-8D87-62D7EA177225"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q220816&oldid=2542344845",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:alexander_tvardovsky:deathDate:cfadcd1d7783",
+      "writerKey": "russia:alexander_tvardovsky",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1971-12-18",
+      "evidence": {
+        "value": "1971-12-18",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q362828",
+        "claimIds": [
+          "Q362828$4451CE26-9E67-4CD6-963C-7C94F9F34A11"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q362828&oldid=2546053521",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:robert_shtilmark:birthDate:0fff6cac88be",
+      "writerKey": "russia:robert_shtilmark",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1909-04-03",
+      "evidence": {
+        "value": "1909-04-03",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q4526879",
+        "claimIds": [
+          "Q4526879$5A268294-D625-465A-9F81-36809A83B570"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q4526879&oldid=2531126608",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:robert_shtilmark:deathDate:6cc1bf10d4e3",
+      "writerKey": "russia:robert_shtilmark",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1985-09-30",
+      "evidence": {
+        "value": "1985-09-30",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q4526879",
+        "claimIds": [
+          "Q4526879$95CF62A5-31EC-403F-9B2D-968A221111C5"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q4526879&oldid=2531126608",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:russia:sergey_lukyanenko:birthDate:2b0a64220429",
+      "writerKey": "russia:sergey_lukyanenko",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1968-04-11",
+      "evidence": {
+        "value": "1968-04-11",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q52224",
+        "claimIds": [
+          "q52224$51BF21E6-6EA2-4567-A502-B7EF3473E889"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q52224&oldid=2549521494",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:samoa:sia_figiel:deathDate:f859a13fd35d",
+      "writerKey": "samoa:sia_figiel",
+      "field": "deathDate",
+      "expectedOld": "",
+      "expectedEvidence": null,
+      "appliedValue": "2026-01-26",
+      "evidence": {
+        "value": "2026-01-26",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q1217640",
+        "claimIds": [
+          "Q1217640$2321b715-438f-f571-548f-f6c7922e9f86"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1217640&oldid=2521476874",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:senegal:ousmane_sembene:birthDate:cc3c2acd2797",
+      "writerKey": "senegal:ousmane_sembene",
+      "field": "birthDate",
+      "expectedOld": "1923-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1923-01-01",
+      "evidence": {
+        "value": "1923-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q314966",
+        "claimIds": [
+          "q314966$11EA3A78-CFD0-4542-883B-5B348C0B6EA4"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q314966&oldid=2546407352",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:south_africa:alan_paton:birthDate:70b0b107de0e",
+      "writerKey": "south_africa:alan_paton",
+      "field": "birthDate",
+      "expectedOld": "1903",
+      "expectedEvidence": null,
+      "appliedValue": "1903-01-11",
+      "evidence": {
+        "value": "1903-01-11",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q361623",
+        "claimIds": [
+          "q361623$AA1FED89-A303-4C42-9686-8F6DFA34C0B4"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q361623&oldid=2533430614",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "writerKey": "south_africa:alan_paton",
+            "field": "birthDate",
+            "value": "1903-01-11",
+            "sourceUrl": "https://paton.ukzn.ac.za/internal-links/alan-patons-biography/",
+            "checkedAt": "2026-09-26",
+            "finding": "University archive timeline explicitly gives 11 January 1903."
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10:south_africa:alan_paton:deathDate:d46de804477d",
+      "writerKey": "south_africa:alan_paton",
+      "field": "deathDate",
+      "expectedOld": "1988",
+      "expectedEvidence": null,
+      "appliedValue": "1988-04-12",
+      "evidence": {
+        "value": "1988-04-12",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q361623",
+        "claimIds": [
+          "q361623$958B4EAD-0D4C-4778-9D76-4B2A36BC12A0"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q361623&oldid=2533430614",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "writerKey": "south_africa:alan_paton",
+            "field": "deathDate",
+            "value": "1988-04-12",
+            "sourceUrl": "https://paton.ukzn.ac.za/internal-links/alan-patons-biography/",
+            "checkedAt": "2026-09-26",
+            "finding": "University archive timeline explicitly gives 12 April 1988."
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10:south_africa:alex_la_guma:birthDate:67de81e0ee7d",
+      "writerKey": "south_africa:alex_la_guma",
+      "field": "birthDate",
+      "expectedOld": "1925",
+      "expectedEvidence": null,
+      "appliedValue": "1925-02-20",
+      "evidence": {
+        "value": "1925-02-20",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q984558",
+        "claimIds": [
+          "Q984558$EB8D98C1-C8BD-4856-9965-42F50EE7810D"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q984558&oldid=2520223404",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "writerKey": "south_africa:alex_la_guma",
+            "field": "birthDate",
+            "value": "1925-02-20",
+            "sourceUrl": "https://sahistory.org.za/dated-event/justin-alexander-alex-la-guma-sa-novelist-short-story-writer-and-political-activist",
+            "checkedAt": "2026-09-26",
+            "finding": "Historical event record E-0094871 explicitly gives 20 February 1925."
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10:tanzania:shaaban_robert:birthDate:a7ba1c13cb82",
+      "writerKey": "tanzania:shaaban_robert",
+      "field": "birthDate",
+      "expectedOld": "1909-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1909-01-01",
+      "evidence": {
+        "value": "1909-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q45236",
+        "claimIds": [
+          "q45236$F5684ADC-3E7E-487B-854F-F79E505265B5"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q45236&oldid=2532420889",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:jerome_david_salinger:birthDate:f6f68f83fc6d",
+      "writerKey": "usa:jerome_david_salinger",
+      "field": "birthDate",
+      "expectedOld": "1919-01-01",
+      "expectedEvidence": null,
+      "appliedValue": "1919-01-01",
+      "evidence": {
+        "value": "1919-01-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q79904",
+        "claimIds": [
+          "Q79904$F209187E-C5D9-4240-B3AF-107F9D55903F"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q79904&oldid=2533445801",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:tim_powers:birthDate:17a8007d79cd",
+      "writerKey": "usa:tim_powers",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1952-02-29",
+      "evidence": {
+        "value": "1952-02-29",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q363810",
+        "claimIds": [
+          "q363810$94CCDCB1-A1BC-43C4-981F-3FBA89F1A087"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q363810&oldid=2539256415",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:howard_pyle:birthDate:57bdf2a8ae6e",
+      "writerKey": "usa:howard_pyle",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1853-03-05",
+      "evidence": {
+        "value": "1853-03-05",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q525713",
+        "claimIds": [
+          "q525713$844B3964-1744-48F6-8E37-16DFEE6AD9B2"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q525713&oldid=2536855585",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:howard_pyle:deathDate:a5e17d300397",
+      "writerKey": "usa:howard_pyle",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1911-11-09",
+      "evidence": {
+        "value": "1911-11-09",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q525713",
+        "claimIds": [
+          "q525713$173955D2-29D5-4ED7-A431-5B1DBF8C04F3"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q525713&oldid=2536855585",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:donna_tartt:birthDate:1609699f6a4a",
+      "writerKey": "usa:donna_tartt",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1963-12-23",
+      "evidence": {
+        "value": "1963-12-23",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q255339",
+        "claimIds": [
+          "Q255339$5BC6E404-FFAB-4ED6-ADD5-705D21098B31"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q255339&oldid=2546598447",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:min_jin_lee:birthDate:0d97eca93409",
+      "writerKey": "usa:min_jin_lee",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1968-11-11",
+      "evidence": {
+        "value": "1968-11-11",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q13563026",
+        "claimIds": [
+          "Q13563026$0BDA80CA-9DF3-44E7-A667-2B74AF53EEEB"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q13563026&oldid=2548296156",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:suzanne_collins:birthDate:0b3b819cf294",
+      "writerKey": "usa:suzanne_collins",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1962-08-10",
+      "evidence": {
+        "value": "1962-08-10",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q228624",
+        "claimIds": [
+          "Q228624$93FECA96-E1C5-44C5-8B7E-10DC5C9620E6"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q228624&oldid=2546609295",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:gillian_flynn:birthDate:519962f75aa9",
+      "writerKey": "usa:gillian_flynn",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1971-02-24",
+      "evidence": {
+        "value": "1971-02-24",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q311755",
+        "claimIds": [
+          "Q311755$95C6F99B-710A-43DA-8D7B-B0FB5EFA0C59"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q311755&oldid=2548907944",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:dennis_lehane:birthDate:fe1b63cce8c0",
+      "writerKey": "usa:dennis_lehane",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1965-08-04",
+      "evidence": {
+        "value": "1965-08-04",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q311744",
+        "claimIds": [
+          "Q311744$BAAF8A3D-465F-4F83-8BDB-FDAC8D69A7E5"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q311744&oldid=2548541076",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:thomas_harris:birthDate:eea3a3d404a7",
+      "writerKey": "usa:thomas_harris",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1940-04-11",
+      "evidence": {
+        "value": "1940-04-11",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q313377",
+        "claimIds": [
+          "q313377$78AD3ADB-A109-4E7E-8536-2917FD9ABD31"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q313377&oldid=2540254929",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:blake_crouch:birthDate:938acb75bdd8",
+      "writerKey": "usa:blake_crouch",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1978-10-15",
+      "evidence": {
+        "value": "1978-10-15",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q20630583",
+        "claimIds": [
+          "Q20630583$B4B91F8C-CFFC-426B-8109-409FB6A0ACB2"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q20630583&oldid=2540290762",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:ernest_cline:birthDate:1d48e5332e03",
+      "writerKey": "usa:ernest_cline",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1972-03-29",
+      "evidence": {
+        "value": "1972-03-29",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q3732112",
+        "claimIds": [
+          "Q3732112$D0B5B969-B8F8-4E75-B155-05998472C4D1"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q3732112&oldid=2547512332",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:james_rollins:birthDate:b243279326a7",
+      "writerKey": "usa:james_rollins",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1961-08-20",
+      "evidence": {
+        "value": "1961-08-20",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q467404",
+        "claimIds": [
+          "Q467404$294CD5FD-35FE-41D5-AECF-B3859E5A654F"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q467404&oldid=2529652230",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:robert_ludlum:birthDate:b5c92acb8455",
+      "writerKey": "usa:robert_ludlum",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1927-05-25",
+      "evidence": {
+        "value": "1927-05-25",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q224113",
+        "claimIds": [
+          "q224113$CA8EE633-3891-46C4-9265-75DC0E0BBA5D"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q224113&oldid=2540388668",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:robert_ludlum:deathDate:7f895e1230fb",
+      "writerKey": "usa:robert_ludlum",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "2001-03-12",
+      "evidence": {
+        "value": "2001-03-12",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q224113",
+        "claimIds": [
+          "q224113$85903E4B-687C-461E-B2FF-92B8B346F031"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q224113&oldid=2540388668",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:dean_koontz:birthDate:ead8e7e6d496",
+      "writerKey": "usa:dean_koontz",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1945-07-09",
+      "evidence": {
+        "value": "1945-07-09",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q272076",
+        "claimIds": [
+          "q272076$A8584C94-E4FC-44E1-9C78-2A9A7B1AA449"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q272076&oldid=2546512290",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:michael_connelly:birthDate:6f49da8fa143",
+      "writerKey": "usa:michael_connelly",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1956-07-21",
+      "evidence": {
+        "value": "1956-07-21",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q313193",
+        "claimIds": [
+          "Q313193$88E05117-5BD9-47F2-A272-DAE602E0C58E"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q313193&oldid=2529533831",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:john_irving:birthDate:9e061770408d",
+      "writerKey": "usa:john_irving",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1942-03-02",
+      "evidence": {
+        "value": "1942-03-02",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q310379",
+        "claimIds": [
+          "q310379$114B4B5A-024F-459E-ABE8-639AEB14A38C"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q310379&oldid=2546554622",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:tom_clancy:birthDate:11aa30331cf9",
+      "writerKey": "usa:tom_clancy",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1947-04-12",
+      "evidence": {
+        "value": "1947-04-12",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q105167",
+        "claimIds": [
+          "q105167$F81E1F80-C927-4EC3-AA59-D4648A44E7CA"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q105167&oldid=2549633824",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    },
+    {
+      "id": "r10:usa:tom_clancy:deathDate:108c32e8ec96",
+      "writerKey": "usa:tom_clancy",
+      "field": "deathDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "2013-10-01",
+      "evidence": {
+        "value": "2013-10-01",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q105167",
+        "claimIds": [
+          "Q105167$61C25DF0-B3C3-4246-B15B-4807502FD8E4"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q105167&oldid=2549633824",
+        "retrievedAt": "2026-09-26T17:25:21.966Z",
+        "snapshotSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+        "method": "referenced-wikidata-statement"
+      }
+    }
+  ]
+}

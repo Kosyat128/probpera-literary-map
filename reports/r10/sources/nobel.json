@@ -1,0 +1,629 @@
+{
+  "sourceId": "nobel",
+  "name": "NobelPrize.org",
+  "entryUrl": "https://www.nobelprize.org/press-release/",
+  "countryCodes": [
+    "SE"
+  ],
+  "coverageCountryCodes": [
+    "SE"
+  ],
+  "attemptedAt": "2026-09-26T17:27:25.232Z",
+  "requests": [
+    {
+      "url": "https://www.nobelprize.org/press-release/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 198685,
+      "sha256": "3965c2d33e77df699d2f815d57c849ae1b5b23dd05142a14cd2c92f93cac30ea",
+      "accessedAt": "2026-09-26T17:19:59.377Z"
+    },
+    {
+      "url": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 167468,
+      "sha256": "c3b132b33ba56b95dbd59d940c0068dfebcb7858fb918ee8506fe7ae7fd430ed",
+      "accessedAt": "2026-09-26T17:27:26.145Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.nobelprize.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 187,
+    "sha256": "4c197efee1d5c9199826e5486508164696894f7e3684523373ef884dca4e5ede",
+    "accessedAt": "2026-09-26T17:27:25.558Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:19:58.360Z",
+    "sourceDocumentSha256": "3965c2d33e77df699d2f815d57c849ae1b5b23dd05142a14cd2c92f93cac30ea"
+  },
+  "endpoint": {
+    "id": "nobel",
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/press-release/",
+    "format": "html",
+    "language": "en-US",
+    "region": "europe",
+    "sourceFamilyId": "nobel",
+    "countryCodes": [
+      "SE"
+    ],
+    "coverageCountryCodes": [
+      "SE"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.nobelprize.org"
+    ],
+    "linkPattern": "^\\/press-release\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:26.152Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 20,
+  "sample": {
+    "sourceId": "nobel",
+    "source": {
+      "name": "NobelPrize.org",
+      "url": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+      "language": "en-US"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "The 2026 Nobel Prize announcements",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:25.649Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 167468,
+      "sha256": "c3b132b33ba56b95dbd59d940c0068dfebcb7858fb918ee8506fe7ae7fd430ed",
+      "accessedAt": "2026-09-26T17:27:26.145Z",
+      "headline": "The 2026 Nobel Prize announcements",
+      "excerpt": "Press release from the Nobel Foundation The 2026 Nobel Prize announcements 2 February 2026 View in Swedish The Nobel Prize Medal. Photo: Alexander Mahmoud This year’s Nobel Prize announcements will take place from 5-12 October. All prize announcements will be broadcast live on the official digital channels of the Nobel Prize. More info about terms of use. In-depth information about the prizes will",
+      "publishedDates": [
+        {
+          "value": "2026-02-02T09:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:26.152Z",
+  "foundItems": [
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 2026 Nobel Prize announcements",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/new-animation-series-about-nobel-prize-discoveries-launched/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New animation series about Nobel Prize discoveries launched",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-collide-stockholm-international-residency-award-recipient-is-announced/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Collide Stockholm international residency award recipient is announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/tomas-transtromers-nobel-prize-medal-and-diploma-presented-to-the-nobel-prize-museum/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tranströmer’s medal and diploma presented to the Nobel Prize Museum",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/a-book-with-a-dedication-by-hemingway-has-been-handed-over-in-stockholm/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A book with a dedication by Hemingway has been handed over in Stockholm",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-nobel-prize-is-increased-by-sek-1-million/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Nobel Prize is increased by SEK 1 million",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/nobel-peace-prize-laureates-and-gen-z-leaders-gather-for-democracy-in-oslo/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Peace Prize Laureates and Gen Z Leaders Gather for Democracy in Oslo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/seoul-to-host-nobel-prize-laureates-for-a-discussion-on-ais-impact-on-science/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seoul to host Nobel Prize laureates for a discussion on AI’s impact on science",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/two-new-senior-appointments-to-the-nobel-organization/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Two new senior appointments to the Nobel organization",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/watercolours-jerome-friedman/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Watercolours by Jerome Friedman donated to the Nobel Prize Museum",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/cells-nerves-genes-new-exhibition-highlights-illustrations-and-artefacts-from-karolinska-institutet/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cells, nerves, genes \u2013 new exhibition highlights illustrations and artefacts from Karolinska Institutet",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/nobel-week-lights-receives-international-award/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Week Lights receives international award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/nobel-prize-laureates-in-madrid-to-discuss-where-science-takes-us/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Prize laureates in Madrid to discuss where science takes us",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/donato-chieppa-wins-the-nobel-prize-museums-photo-competition-from-the-popular-light-art-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Donato Chieppa wins photo competition from the light art festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/nobel-prize-laureate-morten-meldal-comes-to-stockholm/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Prize laureate Morten Meldal comes to Stockholm",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/quiz-ai-and-lab-visits-during-nobel-calling-stockholm/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quiz, AI and Lab Visits During Nobel Calling Stockholm",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/hundreds-of-dresses-raise-awareness-of-sexual-violence/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hundreds of dresses raise awareness of sexual violence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/new-board-members-to-the-nobel-foundation/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New board members to the Nobel Foundation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/someone-needs-to-speak-up-for-peace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Someone needs to speak up for peace”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-nobel-center-is-granted-a-building-permit/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Nobel Center is granted a building permit",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "3965c2d33e77df699d2f815d57c849ae1b5b23dd05142a14cd2c92f93cac30ea"
+}

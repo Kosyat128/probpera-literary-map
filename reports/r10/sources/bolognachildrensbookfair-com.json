@@ -1,0 +1,242 @@
+{
+  "sourceId": "bolognachildrensbookfair-com",
+  "name": "Bologna Children’s Book Fair",
+  "entryUrl": "https://www.bolognachildrensbookfair.com/",
+  "countryCodes": [
+    "IT"
+  ],
+  "coverageCountryCodes": [
+    "IT"
+  ],
+  "attemptedAt": "2026-09-26T17:27:55.926Z",
+  "requests": [
+    {
+      "url": "https://www.bolognachildrensbookfair.com/home/878.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 111760,
+      "sha256": "bafccb46fbe506e605dc36a40f990c115fa50fba4ee339ca1cdcced91d0762a0",
+      "accessedAt": "2026-09-26T17:21:32.264Z"
+    },
+    {
+      "url": "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-crossmedia-awards/10693.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 88399,
+      "sha256": "8dce9d6bcd5afeb0487d2158b5dda4b1446e1c8424eb1a77063e2a0c1b5c1d24",
+      "accessedAt": "2026-09-26T17:27:56.756Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.bolognachildrensbookfair.com/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:30.820Z",
+    "sourceDocumentSha256": "bafccb46fbe506e605dc36a40f990c115fa50fba4ee339ca1cdcced91d0762a0"
+  },
+  "endpoint": {
+    "id": "bolognachildrensbookfair-com",
+    "name": "Bologna Children’s Book Fair",
+    "url": "https://www.bolognachildrensbookfair.com/home/878.html",
+    "format": "html",
+    "language": "it",
+    "region": "europe",
+    "sourceFamilyId": "bolognachildrensbookfair-com",
+    "countryCodes": [
+      "IT"
+    ],
+    "coverageCountryCodes": [
+      "IT"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.bolognachildrensbookfair.com"
+    ],
+    "linkPattern": "^/focus-on/centro-traduttori/world-directory-of-childrens-book-translators/[^/]+/?$|^/eventi/eventi-bolognabookplus/[^/]+/?$|^/mostre/illustrations-and-books-on-the-move/[^/]+/?$|^/mostre/the-braw-amazing-bookshelf/[^/]+/?$|^/premi/bolognaragazzi-awards/[^/]+/?$|^/premi/bolognaragazzi-crossmedia-awards/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-crossmedia-awards/10693.html"
+    ],
+    "verifiedAt": "2026-09-26T17:27:56.761Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 6,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "bolognachildrensbookfair-com",
+    "source": {
+      "name": "Bologna Children’s Book Fair",
+      "url": "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-crossmedia-awards/10693.html",
+      "language": "it"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "BolognaRagazzi CrossMedia Awards",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:56.420Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-crossmedia-awards/10693.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 88399,
+      "sha256": "8dce9d6bcd5afeb0487d2158b5dda4b1446e1c8424eb1a77063e2a0c1b5c1d24",
+      "accessedAt": "2026-09-26T17:27:56.756Z",
+      "headline": "BolognaRagazzi CrossMedia Awards",
+      "excerpt": "BolognaRagazzi CrossMedia Awards <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-KHHLQ36\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden;\"></iframe> BolognaRagazzi CrossMedia Awards Nati nel 2021 e giunti nel 2027 alla loro settima edizione, i BolognaRagazzi CrossMedia Awards raccontano tre diverse evoluzioni delle narrazioni contemporanee: dal libro ad altri media, attrav",
+      "publishedDates": [],
+      "canonical": "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-crossmedia-awards/10693.html",
+      "language": "it",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:56.761Z",
+  "foundItems": [
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-crossmedia-awards/10693.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BolognaRagazzi CrossMedia Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:56.420Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/eventi/eventi-bolognabookplus/13302.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eventi BolognaBookPlus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:56.420Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/mostre/illustrations-and-books-on-the-move/9681.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Illustrations and Books on the Move",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:56.420Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/mostre/the-braw-amazing-bookshelf/11656.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The BRAW Amazing Bookshelf",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:56.420Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-awards/8382.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BolognaRagazzi Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:56.420Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "bafccb46fbe506e605dc36a40f990c115fa50fba4ee339ca1cdcced91d0762a0"
+}

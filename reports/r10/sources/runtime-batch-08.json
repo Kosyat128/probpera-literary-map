@@ -1,0 +1,3741 @@
+{
+  "batch": 8,
+  "checkedAt": "2026-09-26T17:38:36.032Z",
+  "sourceCount": 12,
+  "availableSourceCount": 12,
+  "candidateCount": 138,
+  "sources": [
+    {
+      "id": "bn-peru",
+      "name": "Biblioteca Nacional del Perú",
+      "url": "https://www.gob.pe/institucion/bnp/noticias",
+      "format": "html",
+      "language": "es-PE",
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "bn-peru",
+      "countryCodes": [
+        "PE"
+      ],
+      "coverageCountryCodes": [
+        "PE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:33.763Z",
+      "candidateCount": 25
+    },
+    {
+      "id": "brittle-paper",
+      "name": "Brittle Paper",
+      "url": "https://brittlepaper.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "brittle-paper",
+      "countryCodes": [],
+      "coverageCountryCodes": [
+        "NG",
+        "ZA",
+        "KE",
+        "GH"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:32.796Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "asymptote",
+      "name": "Asymptote",
+      "url": "https://www.asymptotejournal.com/blog/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "asymptote",
+      "countryCodes": [
+        "SG"
+      ],
+      "coverageCountryCodes": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:32.775Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "bakwa-magazine",
+      "name": "Bakwa Magazine",
+      "url": "https://bakwamagazine.com/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "bakwa-magazine",
+      "countryCodes": [
+        "CM"
+      ],
+      "coverageCountryCodes": [
+        "CM"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:32.988Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "cassava-republic",
+      "name": "Cassava Republic Press",
+      "url": "https://cassavarepublic.biz/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "cassava-republic",
+      "countryCodes": [
+        "NG"
+      ],
+      "coverageCountryCodes": [
+        "NG",
+        "GB"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:36.031Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "modjaji",
+      "name": "Modjaji Books",
+      "url": "https://modjajibooks.co.za/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "modjaji",
+      "countryCodes": [
+        "ZA"
+      ],
+      "coverageCountryCodes": [
+        "ZA"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:34.904Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "taipei-book-fair",
+      "name": "Taipei International Book Exhibition",
+      "url": "https://www.tibe.org.tw/",
+      "format": "html",
+      "language": "zh-Hant",
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "taipei-book-fair",
+      "countryCodes": [
+        "TW"
+      ],
+      "coverageCountryCodes": [
+        "TW"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:33.792Z",
+      "candidateCount": 7
+    },
+    {
+      "id": "seoul-book-fair",
+      "name": "Seoul International Book Fair",
+      "url": "https://sibf.or.kr/en/",
+      "format": "html",
+      "language": "ko",
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "seoul-book-fair",
+      "countryCodes": [
+        "KR"
+      ],
+      "coverageCountryCodes": [
+        "KR"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:35.441Z",
+      "candidateCount": 4
+    },
+    {
+      "id": "femrite",
+      "name": "FEMRITE",
+      "url": "https://femrite.org/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "femrite",
+      "countryCodes": [
+        "UG"
+      ],
+      "coverageCountryCodes": [
+        "UG"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:35.133Z",
+      "candidateCount": 7
+    },
+    {
+      "id": "amabooks",
+      "name": "amaBooks",
+      "url": "https://amabooksbyo.blogspot.com/feeds/posts/default",
+      "format": "atom",
+      "language": "en",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "amabooks",
+      "countryCodes": [
+        "ZW"
+      ],
+      "coverageCountryCodes": [
+        "ZW"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:35.802Z",
+      "candidateCount": 25
+    },
+    {
+      "id": "loatad",
+      "name": "Library of Africa and the African Diaspora",
+      "url": "https://loatad.org/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "loatad",
+      "countryCodes": [
+        "GH"
+      ],
+      "coverageCountryCodes": [
+        "GH"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:35.465Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "jalada",
+      "name": "Jalada Africa",
+      "url": "https://jaladaafrica.org/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "jalada",
+      "countryCodes": [
+        "KE"
+      ],
+      "coverageCountryCodes": [
+        "KE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:35.730Z",
+      "candidateCount": 10
+    }
+  ],
+  "items": [
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/25/weekly-dispatches-from-the-frontlines-of-world-literature-267/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Weekly Dispatches from the Frontlines of World Literature",
+      "publishedAt": "2026-09-25T13:00:46.000Z",
+      "description": "This week, our editors-at-large share remembrances of champions of regional literature, campaigns for the release of imprisoned journalists, and new translations of women’s writing. From award announcements to surrealists in translation, read on to find out more! Mary Noorlander, Editor-at-Large, reporting from the United States On September 16, the CUNY Graduate Center in New York […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/24/between-civilizations-languages-and-worlds-an-interview-with-lianbin-ni/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Between Civilizations, Languages, and Worlds: An Interview with Lianbin Ni",
+      "publishedAt": "2026-09-24T13:00:31.000Z",
+      "description": "Lianbin Ni (also known as Edward Ni, and by his pen name Lien Bin) is a poet, translator, and writer, author, whose translations include work from English-, Arabic-, and Latvian-language writers, including Derek Walcott, Seamus Heaney, Mahmoud Darwish, Saadi Youssef, Aleksandrs Čaks, and others. Since 2016, he has lived in Latvia, where his work has […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/23/when-japanese-senryu-learned-to-smile-in-hungarian-on-interlingual-adaptation-irony-and-the-hungarian-haiku-tradition/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "When Japanese Senryū Learned to Smile in Hungarian: On Interlingual Adaptation, Irony, and the Hungarian Haiku Tradition",
+      "publishedAt": "2026-09-23T13:00:33.000Z",
+      "description": "When Japanese short-form poetry found its way into the Hungarian language and poetic tradition, there was a collapsing of distinction, as various short forms all came to be known under the singular label haiku. In this essay, Hungarian poet, writer, and artist Zsolt L. Rakusz traces this blurring of traditional boundaries, while also demonstrating that this shift is […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/22/translation-tuesday-war-ends-in-the-wrong-place-by-s-asef-hossaini/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Translation Tuesday: “War Ends in the Wrong Place” by S. Asef Hossaini",
+      "publishedAt": "2026-09-22T13:00:32.000Z",
+      "description": "Could it end in the right one? No. In this week’s Translation Tuesday, Afghani author and translator S. Asef Hossaini writes not of the literal violence of war, but of its essential breach of all civilization, all human life. In the image of words broken across lines on a newspaper, in the putrescent ugliness of ants marching like […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/21/fear-and-loathing-in-athens-an-interview-with-makis-malafekas/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fear and Loathing in Athens: An Interview with Makis Malafekas",
+      "publishedAt": "2026-09-21T13:00:01.000Z",
+      "description": "Deepfake, the English-language debut of Greek author Makis Malafekas, is an electric, scintillating noir that courses through the illusions and pretensions of our histrionic present. As the narrator, a writer, is implicated in a plot to infiltrate a rising alt-right party, the novel swirls through the glistening streets of Athens and the surreal topographies of contradictory social […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/18/weekly-dispatches-from-the-frontlines-of-world-literature-266/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Weekly Dispatches from the Frontlines of World Literature",
+      "publishedAt": "2026-09-18T13:00:24.000Z",
+      "description": "This week, our editors report on a fascinating research project centering the representation of trauma in literature, exciting opportunities for translators of non-fiction in India, and a literature festival (disguised as a poetry festival) in Germany. Sofija Popovska, Editor-at-Large, reporting from North Macedonia The literature, media, and communications scholar Tamara Kjupeva has just introdu…",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/17/fearlessness-in-various-combinations-an-interview-with-marietou-mbaye-and-julie-huntington/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fearlessness in Various Combinations: An Interview with Mariètou Mbaye and Julie Huntington",
+      "publishedAt": "2026-09-17T13:00:39.000Z",
+      "description": "Felix Faure Street, by Ken Bugul\u2014the penname of Senegalese novelist Mariètou Mbaye\u2014takes the reader straight into the tumult and dazzling music of Dakar, positioning its various hierarchies, architectures, accents, and socialities together on the page. A vivid portrait of urban existence that lyrically depicts how such densities conceal points of intensive conflict, Bugul’s novel exacts the […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/16/a-new-arcana-of-queer-palestinian-love-a-review-of-eden-at-dawn-by-karim-kattan/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A New Arcana of Queer Palestinian Love: A Review of Eden at Dawn by Karim Kattan",
+      "publishedAt": "2026-09-16T13:00:37.000Z",
+      "description": "Eden at Dawn by Karim Kattan, translated from the French by Jeffrey Zuckerman, Restless Books, 2026 In her short story collection Moral Disorder, Margaret Atwood writes: “In the end, we’ll all become stories.” This statement rings curiously true even when taken out of context, although of course what really matters is the question of which […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/15/translation-tuesday-camilla-by-maria-messina/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Translation Tuesday: “Camilla” by Maria Messina",
+      "publishedAt": "2026-09-15T13:00:13.000Z",
+      "description": "Taken from Maria Messina’s Ragazze siciliane (1921), Camilla traces the emotional life of a young woman navigating the constraints of Sicilian petit-bourgeois society. Moving between outward composure and inner turmoil, the story captures Camilla at a moment of quiet but decisive rupture, as she confronts the expectations that shape her life and begins, tentatively, to […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/14/whats-new-in-translation-september-2026/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What’s New in Translation: September 2026",
+      "publishedAt": "2026-09-14T13:00:38.000Z",
+      "description": "September is a smorgasbord in the publishing industry, and in this edition, our reviewers have selected thirteen titles from the rich buffet. From a dreaming Palestinian fiction that travels along the escapist proportions of sleep; a ruthless, haunting novel that takes us inside the disturbing psychology of a sniper; a posthumous collection that delineates the […]",
+      "discoveredAt": "2026-09-26T17:38:32.771Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/10-african-books-that-take-on-mental-health/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 African Books That Take on Mental Health",
+      "publishedAt": "2026-09-25T17:54:14.000Z",
+      "description": "In Africa, mental health is something we don’t often talk about. We understand headaches. We understand stomach ulcers and other illnesses that manifest physically. But when it comes to mental health, our understanding becomes amiss. This is more apparent within African families, where many of us are not raised to talk openly about our feelings […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/nerine-dormans-legacy-of-obsidian-begins-with-a-prince-who-isnt-ready-to-be-king/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nerine Dorman’s Legacy of Obsidian Begins With a Prince Who Isn’t Ready to Be King",
+      "publishedAt": "2026-09-25T17:32:56.000Z",
+      "description": "In Legacy of Obsidian, Nerine Dorman drops a sheltered young prince into a world where winter has swallowed almost everything and the clans fighting for what remains are already turning on one another. Prince Linnard Skylark is expected to inherit the Sky Clan, but Dorman is less interested in the glamour of a destined ruler […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/cajetan-ihekas-horizontal-comparison-takes-on-comparative-literatures-africa-problem/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cajetan Iheka’s Horizontal Comparison Takes On Comparative Literature’s “Africa Problem”",
+      "publishedAt": "2026-09-25T17:18:33.000Z",
+      "description": "What happens when African and Caribbean literature is read alongside itself, rather than continually measured against Europe and the United States? That is the question at the heart of Horizontal Comparison: Africa, the Caribbean, and the Making of Black World Literature, Cajetan Iheka’s forthcoming book from the University of Chicago Press. In it, Iheka argues […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/dar-ile-wardah-abbas-poetry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dār / Ilé | Wardah Abbas | Poetry",
+      "publishedAt": "2026-09-25T05:01:43.000Z",
+      "description": "Mallam calls it dār. The elders call it ilé. I measure the distance between the two words, an imaginary tape widening between my teeth. Outside, the rain hammers on the leaking roofs flapping the iron sheets until they slap against the ceiling. The red muddy paths wind through the compound, narrowing until Nana and […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/omayeli-arenyekas-itsekiri-language-folktale-kpojo-kpojo-featured-in-the-html-review/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Omayeli Arenyeka’s Itsẹkiri Language Folktale Kp’ọjọ Kp’ọjọ Featured in The HTML Review",
+      "publishedAt": "2026-09-24T21:56:37.000Z",
+      "description": "Nigerian artist and technologist Omayeli Arenyeka has a new piece in the latest issue of The HTML Review: Kp’ọjọ kp’ọjọ, an interactive folktale written in Itsẹkiri that unveils itself to readers as they learn words from the language. The work sits alongside thirteen other pieces in Issue 05, released this spring, a lineup spanning interactive […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/oyinkan-braithwaite-interviews-wunmi-mosaku-for-british-vogues-october-issue/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oyinkan Braithwaite Interviews Wunmi Mosaku for British Vogue’s October Issue",
+      "publishedAt": "2026-09-24T21:31:09.000Z",
+      "description": "Novelist Oyinkan Braithwaite sits down with actor Wunmi Mosaku for the October 2026 issue of British Vogue, bringing together two Nigerian-British creatives for a conversation that moves between motherhood, Nigerian identity, Hollywood, fashion, and the pressures of being seen. The interview also marks Mosaku’s first public confirmation that she has welcomed her second child. In […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/18-year-old-nigerian-american-poet-daniel-umemezie-becomes-the-us-2026-national-youth-poet-laureate/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "18-Year-Old Nigerian-American Poet Daniel Umemezie Becomes the US 2026 National Youth Poet Laureate",
+      "publishedAt": "2026-09-24T16:12:49.000Z",
+      "description": "At 18, Nigerian-American poet Daniel Somtochukwu Umemezie has become the tenth National Youth Poet Laureate of the United States, joining a decade-long tradition of young poets using their work to explore identity, community, and social change. Umemezie, from Cedar Falls, Iowa, was selected in April 2026 from a national network of more than 120 local […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/emmanuel-akinwotu-appointed-the-new-york-times-west-africa-correspondent/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Emmanuel Akinwotu Appointed The New York Times’ West Africa Correspondent",
+      "publishedAt": "2026-09-23T21:27:52.000Z",
+      "description": "Nigerian-British journalist Emmanuel Akinwotu has been appointed The New York Times’ new West Africa correspondent, joining the newspaper’s International desk and relocating to Lagos for the role. The appointment was announced by International editor Philip Pan, International managing editor Greg Winter, and editor Lauretta Charlton. Akinwotu joins the Times from NPR, where he has worked […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/ankara-press-acquires-cheryl-ntumys-romantasy-trilogy-the-seven-states/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ankara Press Acquires Cheryl Ntumy’s Romantasy Trilogy The Seven States",
+      "publishedAt": "2026-09-23T20:45:09.000Z",
+      "description": "Ankara Press, the commercial imprint of Cassava Republic Press, has acquired UK and Commonwealth rights to Ghanaian writer Cheryl Ntumy’s The Seven States, a three-book romantasy series blending political intrigue, forbidden magic, commerce, and slow-burn romance. The trilogy will open with A Guide to Silk and Seduction, scheduled for May 2027, followed by A Manifesto […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/ifeoluwa-ayandele-finds-home-in-my-father-paints-his-dreams-on-my-body/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ifeoluwa Ayandele Finds Home in My Father Paints His Dreams on My Body",
+      "publishedAt": "2026-09-23T18:17:41.000Z",
+      "description": "Years after the Nigerian Civil War, Ìfẹ́olúwa Ayandele’s grandfather was still carrying the weight of what he had lost. He had served as a soldier, returned home, and later travelled to Lagos to collect a pension that never came. His story became one of the threads behind My Father Paints His Dreams on My Body, […]",
+      "discoveredAt": "2026-09-26T17:38:32.793Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/online-content/the-shape-of-unbroken-things-ce-quon-ne-brise-pas/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Shape of Unbroken Things/Ce qu’on ne brise pas",
+      "publishedAt": "2026-08-16T08:50:26.000Z",
+      "description": "Today marked her first day at a new school, where she would be repeating the Form 3 year. Consistently among the top ten students in her class, she had missed the second and third term examinations last year, and was now forced to repeat the year. What was the point of all her discipline and…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/issues/bakwa-12/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bakwa 12",
+      "publishedAt": "2026-08-05T20:08:14.000Z",
+      "description": "Bakwa 12: The Lost Manuscript and Other Meditations Release date: August 2026 “While my former friends were having profound literary conversations at Conference Two in Yaoundé today, I instead went there and stole the original, handwritten manuscript of Things Fall Apart. But see eh, that didn’t just happen the way I said it o,…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/issues/bakwa-11/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bakwa 11",
+      "publishedAt": "2026-08-05T20:07:41.000Z",
+      "description": "Bakwa 11: When Love is a Scream Release date: May 2023 From Gorée Island to Sugartown, Bakwa 11: When Love Is a Scream assembles stories, essays, poetry and translation that contemplate and contextualise the realities and experiences of women. This genre-defying issue of Bakwa Magazine includes contributions by Jamila Osman, Nadia Ahidjo, Bertille Mbarga, Yvette…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/on-territoriality-and-african-literature/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On Territoriality and African Literature",
+      "publishedAt": "2026-08-05T14:18:56.000Z",
+      "description": "This three-part diagram traces the literary feud between Chinua Achebe and Ayi Kwei Armah, as well as Armah’s conflictual relationship with the Heinemann African Writers’ Series, for which Achebe served as editorial advisor until 1972. The conflict was sparked by negative comments Achebe made about Armah’s debut novel, The Beautyful Ones Are Not Yet Born,…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/when-you-read-suzanne-cesaire-you-take-your-koutla/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "When You Read Suzanne Césaire, You Take Your Koutla",
+      "publishedAt": "2026-08-05T14:17:04.000Z",
+      "description": "“When you read Suzanne, you take your Koutla.” Those are the words Valérie Adam said to me in Le Bureau d’Aimé Césaire during my last visit to my home country, Martinique. It is also this phrase that reignited the fire of my writing about Suzanne, to whom we are indebted for her liberating thinking.…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/learning-to-feel-the-world-differently/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Learning to Feel the World Differently",
+      "publishedAt": "2026-07-03T10:02:03.000Z",
+      "description": "I first became aware that my way of seeing the world was not neutral through an encounter that felt fleeting at the time but has stayed with me ever since. I was at a community event as a reporter, working on a story about inclusive education, and arrived before the program began. The venue was…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/killing-achebe/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Killing Achebe",
+      "publishedAt": "2026-02-20T21:34:26.000Z",
+      "description": "While my former friends were having profound literary conversations at Conference Two in Yaoundé today, I went there and stole the original handwritten manuscript of Things Fall Apart. But see eh, that didn’t just happen the way I said it o, because the story is far more complex than you think; and it is only when I tell you the whole story, very honestly, that you will understand that I am not r…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/featured-content/lifesavers/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lifesavers",
+      "publishedAt": "2025-11-22T10:10:34.000Z",
+      "description": "Fifteen-year-old Belinda made up her mind to take her life while in the bathroom on Saturday afternoon. She was bathing at 2 pm, because that’s what one did during school vacations when they had nothing to do. Somehow, even if you were the kind of person who bathed routinely first thing in the morning, the…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/online-content/on-contiguous-narratives-and-poetic-cosmologies/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On Contiguous Narratives and Poetic Cosmologies",
+      "publishedAt": "2024-11-25T08:14:11.000Z",
+      "description": "Kokende Liboso Eza Kokoma Te: On Contiguous Narratives and Poetic Cosmologies is a project by Laboratoire Kontempo, curated by Dzekashu MacViban. You can read the announcement in French here and in German here. The theorization of contemporary art and art history in Kinshasa is currently mainly formed by contemporary witnesses, oral traditions, discussions and collective…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bakwa-magazine",
+      "source": {
+        "name": "Bakwa Magazine",
+        "url": "https://bakwamagazine.com/online-content/kokende-liboso-eza-kokoma-te-on-contiguous-narratives-and-poetic-cosmologies/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kokende Liboso Eza Kokoma Te: On Contiguous Narratives and Poetic Cosmologies",
+      "publishedAt": "2024-11-25T08:08:46.000Z",
+      "description": "So many are asleep under the ground, When we dance at the festival Embracing the earth with our feet. Maybe the place on which we stand Is where they also stood with their dreams. They dreamed until they were tired And handed us the tail with which we shall dance. Excerpt from “Cycle”, Mazisi…",
+      "discoveredAt": "2026-09-26T17:38:32.984Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447781-una-noche-magica-se-vivio-en-la-biblioteca-nacional-con-la-celebracion-de-los-20-anos-de-chimoc",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Una noche mágica se vivió en la Biblioteca Nacional con la celebración de los 20 años de Chimoc",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447780-la-biblioteca-nacional-del-peru-fortalece-la-inclusion-digital-de-personas-con-discapacidad-visual-en-la-gran-biblioteca-publica-de-lima",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional del Perú fortalece la inclusión digital de personas con discapacidad visual en la Gran Biblioteca Pública de Lima",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447778-la-gran-biblioteca-publica-de-lima-abre-espacio-de-dialogo-sobre-el-patrimonio-peruano-con-conversatorio-pasaporte-cultural-junin",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Gran Biblioteca Pública de Lima abre espacio de diálogo sobre el patrimonio peruano con conversatorio “Pasaporte Cultural Junín\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447776-la-biblioteca-nacional-imprimira-1000-ejemplares-del-pasaporte-cultural-de-junin-en-su-nueva-imprenta-digital",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional imprimirá 1000 ejemplares del Pasaporte Cultural de Junín en su nueva imprenta digital",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447724-ninos-y-jovenes-escritores-de-piura-descubrieron-en-la-biblioteca-nacional-como-una-idea-se-convierte-en-un-libro",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Niños y jóvenes escritores de Piura descubrieron en la Biblioteca Nacional cómo una idea se convierte en un libro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447718-la-biblioteca-nacional-llevo-sus-rutas-lectoras-a-las-aulas-y-compartio-historias-en-la-maraton-de-la-lectura",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional llevó sus “Rutas lectoras” a las aulas y compartió historias en la Maratón de la Lectura",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447706-la-biblioteca-nacional-logra-la-declaratoria-de-13-documentos-de-la-coleccion-felipe-cossio-del-pomar-como-patrimonio-cultural-de-la-nacion",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional logra la declaratoria de 13 documentos de la colección Felipe Cossío del Pomar como Patrimonio Cultural de la Nación",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447691-ninos-del-callao-convierten-sus-historias-en-un-libro-y-reciben-el-respaldo-de-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Niños del Callao convierten sus historias en un libro y reciben el respaldo de la Biblioteca Nacional del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447688-la-voz-de-chabuca-volvio-a-la-gran-biblioteca-publica-de-lima-en-homenaje-por-su-natalicio",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La voz de Chabuca volvió a la Gran Biblioteca Pública de Lima en homenaje por su natalicio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447684-la-fotografia-como-memoria-e-identidad-la-bnp-acerca-la-obra-de-martin-chambi-a-estudiantes-de-secundaria",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La fotografía como memoria e identidad: La BNP acerca la obra de Martín Chambi a estudiantes de secundaria",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447676-la-biblioteca-nacional-y-san-marcos-unen-esfuerzos-para-fortalecer-la-formacion-de-futuros-profesionales-de-la-bibliotecologia",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional y San Marcos unen esfuerzos para fortalecer la formación de futuros profesionales de la bibliotecología",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437521-declaran-patrimonio-cultural-de-la-nacion-ocho-obras-de-franklin-pease-que-custodia-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Declaran Patrimonio Cultural de la Nación ocho obras de Franklin Pease que custodia la Biblioteca Nacional del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437517-la-biblioteca-nacional-cerro-la-celebracion-de-sus-205-anos-llevando-libros-y-lectura-a-comunidades-de-ayacucho-y-huanta",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional cerró la celebración de sus 205 años llevando libros y lectura a comunidades de Ayacucho y Huanta",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "“Reconocimiento Jorge Basadre Grohmann” 2026: La BNP distinguió a quienes transforman sus comunidades a través de las bibliotecas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437498-la-biblioteca-nacional-del-peru-inicio-la-celebracion-de-sus-205-anos-con-una-serenata-y-el-encendido-de-luces-en-su-sede-historica",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional del Perú inició la celebración de sus 205 años con una serenata y el encendido de luces en su sede histórica",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437503-la-biblioteca-nacional-celebro-205-anos-de-historia-mirando-al-futuro-y-presento-el-libro-la-bnp-en-205-imagenes",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional celebró 205 años de historia mirando al futuro y presentó el libro La BNP en 205 imágenes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437491-casi-500-personas-vibraron-con-una-noche-de-rock-argentino-en-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Casi 500 personas vibraron con una noche de rock argentino en la Biblioteca Nacional del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437388-la-bnp-promovio-una-lectura-sin-limites-en-la-gran-biblioteca-publica-de-lima-con-estudiantes-del-ceba-luis-braille",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La BNP promovió una lectura sin límites en la Gran Biblioteca Pública de Lima con estudiantes del CEBA Luis Braille",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437375-la-biblioteca-nacional-del-peru-completa-la-red-nacional-de-deposito-legal-con-la-acreditacion-de-su-centro-de-acopio-numero-23-en-tacna",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional del Perú completa la red nacional de Depósito Legal con la acreditación de su Centro de Acopio número 23 en Tacna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437366-la-biblioteca-nacional-reunio-a-especialistas-para-fortalecer-la-proteccion-del-patrimonio-bibliografico-y-documental-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional reunió a especialistas para fortalecer la protección del patrimonio bibliográfico y documental del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437361-ministro-de-cultura-inaugura-moderna-imprenta-digital-en-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ministro de Cultura inaugura moderna imprenta digital en la Biblioteca Nacional del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437349-la-gran-biblioteca-publica-de-lima-cerro-exposicion-coleccion-ancash-chavin-sechin-con-un-dialogo-entre-la-arqueologia-y-la-fotografia",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Gran Biblioteca Pública de Lima cerró exposición “Colección Áncash: Chavín\u2013Sechín” con un diálogo entre la arqueología y la fotografía",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437337-el-canal-de-huatica-la-historia-del-agua-que-todavia-permanece-bajo-las-calles-de-lima",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "El canal de Huatica: la historia del agua que todavía permanece bajo las calles de Lima",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437297-mas-de-12-400-visitas-recibio-la-sala-alfredo-bryce-echenique-de-la-biblioteca-nacional-en-sus-primeros-tres-meses-de-funcionamiento",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Más de 12 400 visitas recibió la Sala Alfredo Bryce Echenique de la Biblioteca Nacional en sus primeros tres meses de funcionamiento",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437223-dia-del-nino-biblioteca-nacional-organiza-fiesta-cultural-y-entrega-libros-a-ninos-de-comedores-populares-y-ollas-comunes-de-vmt",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Día del Niño: Biblioteca Nacional organiza fiesta cultural y entrega libros a niños de comedores populares y ollas comunes de VMT",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.743Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2027台北國際書展 徵展起跑 主題國捷克 揮灑「閱讀自由捷」活力",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.782Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/19/1918",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "敬邀參加：2027年第35屆台北國際書展－徵展說明會",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.782Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/6/1917",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "文化部繪本及圖文書創作及出版行銷獎勵要點",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.782Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/7/1895",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "台中新秘境：歡迎光臨綠美圖「驚奇市場」！",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.782Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/7/1761",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "台北國際書展城市在閱讀- -前進高雄",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.782Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/7/1827",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "數位主題館 ( 2樓 第二會議室)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.782Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/7/1828",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "書展大賞館 ( 2樓 第二會議室)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:33.782Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/newsflash-poets-selected-for-modjajis-woordeloos-anthology/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Newsflash: Poets selected for Modjaji’s Woordeloos anthology",
+      "publishedAt": "2026-05-16T07:13:37.000Z",
+      "description": "2026 marks the 19th birthday of Modjaji Books and the Woordeloos poetry anthology is a celebration of our work and the writings of southern African women. Thank you to all 240 poets who submitted from all over southern Africa. We were delighted by the inventive use of language, the humour, the interplay between languages, the […]",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/more-about-woordeloos/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "More about Woordeloos",
+      "publishedAt": "2026-05-15T06:07:59.000Z",
+      "description": "More about the process Firstly we want to thank all of you, who submitted for submitting! It was wonderful to read all the poems and to see what is on your minds and what is important to you. Unfortunately, we had to disqualify about 50 poems because they didn’t meet the criteria we laid down […]",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/interview-with-hannah-botsis-about-writing-a-clergymans-daughter/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interview with Hannah Botsis about writing A Clergyman’s Daughter",
+      "publishedAt": "2026-03-10T09:09:17.000Z",
+      "description": "\"My background is in narrative research and I think this was really helpful in working with interview material, and fusing it with sociological description. Narratives allow us to tend to big questions (“what kind of society are we?”), but using individual stories as starting points. It is an amazingly productive technique. Every person has a story, and their class, race, religion, accent, gender…",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/modjaji-books-launches-a-call-for-our-woordeloos-anthology-celebrating-southern-african-women-poets/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Modjaji Books launches a call for our Woordeloos anthology celebrating southern African women poets",
+      "publishedAt": "2026-01-28T08:49:47.000Z",
+      "description": "“Woordeloos is an invitation: astonish us, give us language where language falters, and help us see South Africa and the world we live in anew.”",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/a-clergymans-daughter-hannah-botsis-comes-to-cape-town/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Clergyman’s Daughter, Hannah Botsis comes to Cape Town",
+      "publishedAt": "2026-01-22T10:52:35.000Z",
+      "description": "We’re excited that Hannah Botsis, author of A Clergyman’s Daughter will be in Cape Town in the first week of February. She lives in Joburg, so this is a great opportunity for us to have here down here. We’ve arranged several events for her. Don’t miss out on hearing her talk about her memoir. We […]",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/resources-for-writers/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Resources for writers",
+      "publishedAt": "2025-12-08T11:20:43.000Z",
+      "description": "Writers sometimes need support to write, opportunities to learn more and get feedback before submitting a manuscript for publication. As well ways to connect with other writers. Here are some suggestions: There are many universities in South Africa that offer degrees in creative writing. Check out the links here. Rhodes University, Wits University, UCT, University […]",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/november-dezemba-is-almost-upon-us/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "November: Dezemba is almost upon us",
+      "publishedAt": "2025-11-07T08:36:41.000Z",
+      "description": "From Colleen’s desk Launching the movie tie-in edition of Snake by Tracey Farren, was a highlight this year! I was reminded that Tracey’s writing, the manuscript of Whiplash, which became her first book, published by Modjaji in 2008, is what made me decide to become a full-time publisher. I couldn’t put the manuscript down, I […]",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/october-busy-and-buzzing/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "October: Busy and buzzing",
+      "publishedAt": "2025-10-01T08:18:02.000Z",
+      "description": "Yes, October is busy and buzzing: we have reprints coming up, your submissions questions answered & a publisher’s Monday morning before 10am From Colleen’s Desk October is a busy month for us, there is lots to do before Dezemba. Launches across the country. We’ve just reprinted some of our favourite back list titles. New titles […]",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/submissions-are-open-till-the-end-of-november/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Submissions are open till the end of November",
+      "publishedAt": "2025-09-01T07:15:17.000Z",
+      "description": "Our submissions are open from September 1st, 2025 until the end of November 2025 Submit your work via this portal. We publish the work of southern African women writers. In this submission period we will be accepting novels, short story collections, memoir, collections of essays, narrative non-fiction. Please note: We aren’t accepting […]",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/august-every-month-is-womens-month/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "August: Every month is women’s month",
+      "publishedAt": "2025-08-07T10:36:50.000Z",
+      "description": "In this issue we say a big thank you, look at one of our books crossing borders, a new longlist honour, & your chance to submit. (We publish our newsletter on Substack first, you can reply or ask questions if you follow us there.) From Colleen’s desk Dear friends, supporters and book-lovers Firstly, thank you […]",
+      "discoveredAt": "2026-09-26T17:38:34.901Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2026/03/11/we-only-live-once/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "We Only Live Once",
+      "publishedAt": "2026-03-11T15:53:59.000Z",
+      "description": "FEMRITE \u2013 Uganda Women Writers Association, with support of the McKnight Foundation, is running a poetry award for Youths on sustainable Agro-ecological Food Systems.",
+      "discoveredAt": "2026-09-26T17:38:35.131Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2025/10/24/her-humility-carried-more-power-than-her-authority/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Her humility carried more power than her authority”",
+      "publishedAt": "2025-10-24T08:25:07.000Z",
+      "description": "Celebrating the Life and Works of Mary Karooro Okurut, Founder of FEMRITE \u2013 Uganda Women Writers Association We gather in this digital space to pay…",
+      "discoveredAt": "2026-09-26T17:38:35.131Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2025/10/24/a-lunatic-sanity-makes-its-journey-to-kabale-university/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Lunatic Sanity makes its journey to Kabale University",
+      "publishedAt": "2025-10-24T08:08:36.000Z",
+      "description": "Kabale University received copies of A Lunatic Sanity, an anthology of poetry by students from six universities and several guest poets. The books were received…",
+      "discoveredAt": "2026-09-26T17:38:35.131Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2024/08/21/support-femrite-writing-and-wellness-centre/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Support FEMRITE Writing and Wellness Centre",
+      "publishedAt": "2024-08-21T08:48:45.000Z",
+      "description": "Having existed for over 2 decades of steadfast mentoring and inspiring both female and male writers, FEMRITE \u2013 Uganda Women Writers Association, has come to…",
+      "discoveredAt": "2026-09-26T17:38:35.131Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2023/11/18/femrite-pawa-and-kyambogo-university-to-host-an-international-conference-in-honour-of-the-life-works-of-nobel-prize-laureate-abdurazak-gurnah/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "FEMRITE, PAWA and Kyambogo University, to host an International Conference in honour of the Life & Works of Nobel Prize Laureate: Abdurazak Gurnah",
+      "publishedAt": "2023-11-18T17:41:12.000Z",
+      "description": "FEMRITE - Uganda Women Writers Association in partnership with PAWA - The Pan-African Writers Association and Kyambogo University and with support of development partners; The Ford Foundation, Aga Khan Foundation, The Swedish Embassy and Fountain Publishers, will host the International Conference in celebration of African Literature and in honour of the Life & Works of the 2021 Nobel Prize Laurea…",
+      "discoveredAt": "2026-09-26T17:38:35.131Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2023/07/07/poetry-poster-project/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "poetry poster project 2023",
+      "publishedAt": "2023-07-07T14:09:25.000Z",
+      "description": "This is a writing collaboration with six universities on the themes: Climate Justice and Mental Health for Youths. It will be accompanied by a book caravan through different regions of the country.",
+      "discoveredAt": "2026-09-26T17:38:35.131Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2023/07/07/celebrating-the-life-and-works-of-abdulrazak-gurnah-for-the-future-of-african-literature-22nd-24th-2023/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "International Literature conference",
+      "publishedAt": "2023-07-07T13:53:17.000Z",
+      "description": "Abdulrazak Gurnah is a novelist and an academic, Emeritus Professor of English and Postcolonial Literatures at the University of Kent. Some of his notable works include Paradise (1994), shortlisted for the Booker Prize and Whitbread Prize, Desertion (2005) and By the Sea (2001) longlisted for the Booker and shortlisted for the Los Angeles Times Book Prize. He is author of many short stories, essa…",
+      "discoveredAt": "2026-09-26T17:38:35.131Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "seoul-book-fair",
+      "source": {
+        "name": "Seoul International Book Fair",
+        "url": "https://sibf.or.kr/en/62_en/44",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "📢 [SIBF 2026] Announcement of the result for the SIBF×Changbi Culture… 2026.04.28",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:35.429Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "seoul-book-fair",
+      "source": {
+        "name": "Seoul International Book Fair",
+        "url": "https://sibf.or.kr/en/62_en/43",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "📢 [SIBF 2026] Rights Professional Registration and Professional Pass … 2026.03.27",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:35.429Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "seoul-book-fair",
+      "source": {
+        "name": "Seoul International Book Fair",
+        "url": "https://sibf.or.kr/en/62_en/42",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "📢 [SIBF 2026] Fellowship Program Application OPEN! 2026.03.18",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:35.429Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "seoul-book-fair",
+      "source": {
+        "name": "Seoul International Book Fair",
+        "url": "https://sibf.or.kr/en/page/13?gbn=3&year=2026",
+        "language": "ko"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "[Newly Published Books] Luminous",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:35.429Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2026/04/29/meet-the-2026-loatad-west-africa-road-residents/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Meet the 2026 LOATAD West Africa Road Residents",
+      "publishedAt": "2026-04-29T08:59:37.000Z",
+      "description": "Badji Alfousseynou lives in Dakar, Senegal. Trained as a volunteer community development practitioner, he has been active for more than twenty years, supporting local development initiatives, particularly working with youth and women in rural communities across Senegal. He has also contributed to mentoring and educating children through various educational programmes and holiday camps. Throughout…",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2026/03/23/new-event-voices-of-afrika-and-the-diaspora-how-writing-bridges-the-black-atlantic-gap/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "New event \u2013 Voices of Afrika and the Diaspora: How writing bridges the Black Atlantic gap",
+      "publishedAt": "2026-03-23T08:55:00.000Z",
+      "description": "Library Of Africa and The African Diaspora (Ghana) and Harambee Organisation of Black Unity (UK), in collaboration with Schomburg Center for Research in Black Culture (USA) and Tender Photos (Nigeria), present a conversation that illuminates and excavates the Black Atlantic gap and how writers have sought to bridge that gap with their words. Through their […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2026/01/15/loatad-featured-on-essence-com/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "LOATAD featured on Essence.com",
+      "publishedAt": "2026-01-15T19:58:38.000Z",
+      "description": "Inside A Vast Library In Ghana That Celebrates The Works Of The African Diaspora The Library of Africa and the African Diaspora is a place where literature becomes both archive and altar, and where the past, present, and future converge Larada Lee-Wallace “In a quiet neighborhood of Adenta stands a bright yellow house behind a tall black […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/12/15/loatad-named-one-of-the-150-libraries-to-visit-before-you-die/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "LOATAD named one of 150 libraries to visit before you die",
+      "publishedAt": "2025-12-15T09:00:00.000Z",
+      "description": "The Library Of Africa and The African Diaspora (LOATAD) has been recognised as one of “150 Libraries to Visit Before You Die!” Published by Belgian publisher, Lannoo, the book features “the ultimate list of the world’s most beautiful libraries,” of which LOATAD is one, repping Africa along with 10 other libraries on the continent: “Discover […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/12/10/apply-to-the-2026-west-africa-road-residency/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Apply to the 2026 West Africa Road Residency",
+      "publishedAt": "2025-12-10T09:00:00.000Z",
+      "description": "Library Of Africa and The African Diaspora (LOATAD), in collaboration with the Harambee Organisation of Black Unity (UK), invites applications from writers and visual artists across West Africa for a landmark creative residency: an 18-day, 3,000-kilometre journey from Accra to Banjul and back, beginning April 2026. This is not a road trip. It is a […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/11/30/announcing-our-2026-loatad-black-atlantic-residents/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Announcing our 2026 LOATAD Black Atlantic residents",
+      "publishedAt": "2025-11-30T15:22:26.000Z",
+      "description": "We are delighted to announce the recipients of our third and final LOATAD Black Atlantic Residency, supported by Hawthornden Foundation. Nine exceptional writers and thinkers from Ghana, Nigeria, Sierra Leone, Tanzania, Trinidad and Tobago, the USA, and the UK will be in residence at LOATAD in Accra, Ghana, in 2026 to work individually and in […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/10/29/a-day-for-assata/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "For Assata",
+      "publishedAt": "2025-10-29T18:10:13.000Z",
+      "description": "The last weekend of October, we hosted a beautiful afternoon of reading and reflection with Noname Book Club in honour of Assata Shakur. Following a community reading of “Assata: An Autobiography,” a powerful text tracing the life, resistance, and legacy of Assata Shakur, we screened “Eyes of the Rainbow,” Gloria Rolando’s intimate documentary featuring Assata’s […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/08/14/open-call-loatad-black-atlantic-residency-3/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Open Call: LOATAD Black Atlantic Residency 3",
+      "publishedAt": "2025-08-14T09:27:08.000Z",
+      "description": "Applications are now open for the third and final iteration of LOATAD’s Black Atlantic Residency. Are you a writer of African descent based in: Does your work grapple with the complexities and nuances of what it means to be African/of African descent in the 21st century? Writers are invited to apply to be in residence […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/05/05/a-message-from-noor-salah-h-elfaki/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A message from Noor Salah H. Elfaki",
+      "publishedAt": "2025-05-05T09:31:25.000Z",
+      "description": "We’ve come to the end of the 2025 LOATAD Black Atlantic Residency! It’s been a beautiful time of community and growth, and we’re grateful to all our residents for bringing their full selves to the experience. We’re sharing a powerful message from resident, Noor Salah H. Elfaki, which touched us deeply and which we hope […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/01/21/introducing-the-precious-gordon-collection-at-loatad/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Introducing The Precious Gordon Collection at LOATAD",
+      "publishedAt": "2025-01-21T11:47:40.000Z",
+      "description": "The Library Of Africa and The African Diaspora (LOATAD) is delighted to announce the acquisition of a new collection! Donated to LOATAD by elder Precious Gordon, The Precious Gordon Collection comprises of over 250 books, Black history calendars, and ephemera gathered over decades, representing a lifelong quest for knowledge and deeper understanding rooted in an Afrocentric perspective. […]",
+      "discoveredAt": "2026-09-26T17:38:35.462Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2025/05/29/jalada-africa-joins-the-world-to-mourn-ngugi-wa-thiongo-1938-2025/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jalada Africa Joins the World to Mourn Ngũgĩ wa Thiong’o (1938 \u2013 2025)",
+      "publishedAt": "2025-05-29T11:48:46.000Z",
+      "description": "All of us at Jalada are deeply saddened to mark the passing of Professor Ngũgĩ wa Thiong’o (1938\u20142025). Ngũgĩ was not only a pioneering figure in African literature; his work also transformed the field of Africana studies and spoke strongly for Africanist historiography on equal terms within the larger corpus of global ideas. A fierce…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2024/03/21/mandela-se-leah/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela sẹ Leah",
+      "publishedAt": "2024-03-21T08:46:04.000Z",
+      "description": "Esan Ansel Ahabue « Eye », ọle wẹ, « E i sabo zẹ obho rie umiẹnfan »Ele mu fi bhi ighan nọnsi Robben Island, ọne eyokulo ọmaen« Eye », ọle wẹ, « Ilẹnmin bha ji ọria ri obọ ghae agbọn »Iyaman ọle mọnlen, sokpan ofẹn i mun ọle, ẹlolo nọnsi ọmanmen nọnsi Pakistan.« Eye »,…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/jalada-translation-issue-02-wole-%e1%b9%a3oyinka/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jalada Translation Issue 02: Wọlé Ṣóyínká",
+      "publishedAt": "2023-10-01T15:36:52.000Z",
+      "description": "Introduction Original poem in English by Prof. Wọlé Ṣóyínká Translations Available in 49 Languages » ・“Yorùbá” by Kọ́lá Túbọ̀sún ・“Kiswahili” by Hassan Kassim Hassan・“Persian” by Babak Mazloumi ・“Shetlandic” by Christine De Luca ・ “Igbo” by Nzube Ifechukwu ・“IsiZulu” by Mamodiehi Gwala ・“Ekegusii” by Jane Obuchi ・“French” by Sem Beasnael ・“Lubukusu” by Alexander Opicho ・“Arabic” by Ala Younis…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/credits-2/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Credits",
+      "publishedAt": "2023-10-01T15:35:47.000Z",
+      "description": "Project Lead, Issue 02: Wanjeri GakuruProject Conceptor & Issue 01 Lead: Moses Kilolo, Original Text in English by Prof. Wọlé ṢóyínkáCover Design and Images: Marziya Mohammedali First published in October 2023 Copyright © 2023 by Jalada Africa. P.O. Box 45140Nairobi 00100Kenya.jaladatranslations@gmail.com We encourage writers and translators who do not find their languages featured in this issue …",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/introduction/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Introduction by Wanjeri Gakuru",
+      "publishedAt": "2023-10-01T14:35:31.000Z",
+      "description": "The second anthology in Jalada Africa’s Translation Series was launched on October 1st 2023, the same day Nigeria marked 53 years since the proclamation of independence from British rule. We selected this special day in honour of our Featured Author, Prof. Wole Soyinka who hails from the nation. He has been a lifelong political activist…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/mandela-w%c9%99-s%c9%94-bi-leah-2/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela wə́ sɔ́’ bí Leah",
+      "publishedAt": "2023-10-01T14:15:28.000Z",
+      "description": "Ghomala Nelson Kamkuimo E lə ghɔ̌m gaə́ “Gɛ̌ŋ, pə́ cə́ â hə́ŋ ywə́ tə́ nə̀ há lə̀pʉə̀ ɔ̀” Pə́ nə́ŋ sʉm mtǿ nə́ bú yú tâmbɛŋ Robɛn Ayland. E lə ghɔ̌m gaə́ “Gɛ̌ŋ, zhyə̌nwə̀ cə̂ pá’ bíŋ ŋkyə ɔ́” \u2013 Yú Môgò Pakistan, pó mtø̀pféŋ nə́ sə́ ě, da’gaə́ pə́ cə̀ pwɔ̀k. E lə ghɔ̌m…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/mandela-anakujia-leah/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela anakujia Leah",
+      "publishedAt": "2023-10-01T13:57:44.000Z",
+      "description": "Sheng Mwangi Wa Mahugu ‘Zii,’ msee alidai,’Freedom si yaku-chongwa kwa brain ’ba ma-shengerere kwa miguu ya veteranmzito wa Robben Island.‘Zii’, ngeus alidai, ufahamu hai-achi room ya mpenyo’-Kuingizia lakini si kuingiza njeve, face ya ngeus wa Pakistan.Zii’ m-she alisema, ’imani si ya kulazimishwa’-Voice imeshikwa, imetulia but imechorea design ya Dapchi.Light ya torch haiko dim kwa marima…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/leah-kiel-mandela/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leah kvazaŭ Mandela",
+      "publishedAt": "2023-10-01T13:39:12.000Z",
+      "description": "Esperanto Riccio Antonio “Ne” li diris, “La libero estas neniam kondiĉita” Kaj katenitis la veterano de Robben Island. “Ne” ŝi diris, “La kono permesas neniun ekskludon” Ĉagrena, sed fiera, la mieno de la Pakistana knabino. “Ne” ŝi diris, “La kredo ne estas altrudo” Humila, sed firma, la voĉo kaptita en Dapchi, Viva torĉo en la…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/dagaare/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela wa la Leaa zie",
+      "publishedAt": "2023-10-01T13:20:47.000Z",
+      "description": "Dagaare Mark Ali, Adams Bodomo & Faustina Tantie “Ai”, dɔɔ nang da yeli, “Mengɛ soobo ba taa yelesɛre zaa” Kyɛ ka Rubin kɔngsogɔ tuu nengbeenee gbɛɛ nang eng gbɛbɔnne. “Ai”, pɔgelee nang da yeli, bɔmmo ba taa neɛ kanga zaa iri baroo \u2013 Pa ne felpɛmpɛlɛ, kyɛ ba zoro dabeɛ, Pakesetane deme pɔgyalee la lɛ.…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/mandela-okwiija-owa-leeya/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela okwiija owa Leeya",
+      "publishedAt": "2023-10-01T13:00:00.000Z",
+      "description": "Rukiga Clare D. Kyasiimire Omwoojo yagiira ati ‘Ingaaha’, Obusingye tibukayongyerwaho amateeka” Ninga empiingo zikasibwa emponoka y’ekirwa kya Robbeni Omuhara yagira ati ‘Ingaaha”, “Okumanya tikurikwiiriza kujogoora’ Enkojo, koonka batiine bwooba, kureeba busimba amaisho g’o mwirukazi wa Pakistaani ‘Ingaaha! ’Okwikiriza tibugyemwa’- Iraka ry’obukwatwa, ryebundarize koonka ry’obujeemu omuri Dapchi…",
+      "discoveredAt": "2026-09-26T17:38:35.727Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/05/the-mad-reviewed-on-amazoncom-in-usa.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mad reviewed on Amazon.com in the USA",
+      "publishedAt": "2026-05-31T21:40:48.566Z",
+      "description": "A compelling and valuable novel about life in late 20th century Zimbabwe Reviewed in Amazon.com the United States on April 5, 2026'Just what goes on in Harare? Is it an aberration or is there perhaps some issue that needs to be fixed using the traditional cleansing rituals? Truly I don't know. Harare barked outside and I thought he must be through with the other dogs. Harare had no problems like …",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/05/the-black-man-cannot-write-storytelling.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Black Man Cannot Write: Storytelling is My Other Mother by Ignatius Mabasa",
+      "publishedAt": "2026-05-04T13:58:00.000Z",
+      "description": "Reproduced from Writing in Practice, Volume 11, March 2025. CrossRef DOI: 10.62959/WIP-11-2025-06 Ignatius Mabasa Authorial Reflections on Indigenous Language, Education and Creative Writing in Zimbabwe ABSTRACT Before the introduction of books, radio, and film through colonisation, folklore functioned as a vital form of home-schooling for the indigenous people of Zimbabwe. When creative writing …",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/05/whatever-happened-to-rick-astley-he.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Whatever Happened to Rick Astley? He Grew Up",
+      "publishedAt": "2026-05-04T12:17:00.000Z",
+      "description": "Reproduced from https://bryonyrheam.blogspot.com/2026/04/whatever-happened-to-rick-astley-he.html Whatever Happened to Rick Astley? may be an unusual title for a book of short stories set in Africa. Western expectations of African literature demand something more exotic, something at least with connotations of heat, dust and hardship. Like every place, Africa has more than one side to it and ther…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/interview-with-university-of-georgia.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interview with the University of Georgia Press's editors of African Language Literatures in Translation",
+      "publishedAt": "2026-03-29T12:33:00.000Z",
+      "description": "Reproduced from https://hopscotchtranslation.com/2026/03/22/allt-interview/North American CoverZimbabwe/UK cover Erik Beranek in conversation with Alexander Fyfe and Nate Holly'We see the translation as a creative practice, in the same way that the original is. We want the translators to do their thing. And for that to be something that readers will engage with too.'Earlier this month, Hopscotch …",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/the-north-american-edition-of-mad-has.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The North American edition of The Mad has arrived",
+      "publishedAt": "2026-03-16T14:21:00.000Z",
+      "description": "'Time. Let us learn to give time a chance. What is the hurry after all? What is it you are rushing for? A grasshopper in a man's palm does not even know the size of a man.' Copies of the University of Georgia Press edition of The Mad have been delivered to amaBooks.Congratulations to author Ignatius T. Mabasa and translator J. Tsitsi Mutiti.In North America, copies are available through https://w…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/j-tsitsi-mutiti-about-translation-of.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "J. Tsitsi Mutiti about the translation of Mapenzi to The Mad",
+      "publishedAt": "2026-03-12T11:42:00.000Z",
+      "description": "J. Tsitsi Mutiti's speech at the Harare launch of Ignatius Mabasa's The Mad My sincere thanks to all who are gathered here to help us celebrate the completion and publishing of this English translation of Mapenzi to The Mad. I very much appreciate it. I will begin by answering a question that I’ve been asked many times: why translation and why Mapenzi? The simple answer is that I fell in love wit…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/the-mad-by-ignatius-t-mabasa-reviewed.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mad, by Ignatius T. Mabasa, reviewed by M.A. Orthofer in The Complete Review",
+      "publishedAt": "2026-03-11T20:28:00.000Z",
+      "description": "Reproduced from https://www.complete-review.com/reviews/zimbabwe/mabasait.htm#ours The complete review's Review: The Mad features a number of variously related figures, its chapters shifting in perspective from one to the next, various voices coming to the fore, whether in the first person or in action and dialogue in the chapters presented in the third person. A central figure is the teacher Sek…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/03/zimbabwean-writer-philani-nyoni-writes.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zimbabwean writer Philani Nyoni, writes an interesting and candid review of Ignatius Mabasa's book 'The Mad' with its colourful insights of Harare, Africa and... sanity.",
+      "publishedAt": "2026-03-06T10:07:00.001Z",
+      "description": "The Mad reviewed by Philani Nyoni in teambooktu.comhttps://teambooktu.com/harare-is-a-garishly-painted-whore-a-review-of-ignatius-mabasas-the-mad? TITLE: The MadPUBLISHED BY: amaBooks Publishers & Carnelian Heart PublishingISBN: 978-1-914287-96-1PAGES: 235AUTHOR: Ignatius Mabasa, Translated by J. Tsitsi Mutiti I received a copy of Ignatius Mabasa’s The Mad with the anticipation of a bottle green …",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2026/01/book-review-mad-by-ignatius-t-mabasa.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Review: The Mad by Ignatius T. Mabasa - Translated by J. Tsitsi Mutiti",
+      "publishedAt": "2026-01-09T17:49:00.000Z",
+      "description": "The Mad reviewed by Tafadzwa Madzika in Greedy South (https://www.greedysouth.co.zw/2026/01/book-review-mad-by-ignatius-t-mabasa.html) In Zimbabwean society, and to a broader extent Southern African society, there are larger than life characters who are regulars at the local shopping centre, who have their sanity constantly in question. They always have alcohol on hand and offer up monologues and…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/12/the-mad-chosen-as-one-of-100-notable.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mad chosen as one of the '100 Notable African Books of 2025'",
+      "publishedAt": "2025-12-30T17:58:00.000Z",
+      "description": "Brittle Paper have included Ignatius Mabasa's The Mad in its list of 100 Notable African Books of 2025(https://brittlepaper.com/100-notable-african-books-of-2025/), saying 'Originally published in Shona as Mapenzi, this milestone of Zimbabwean literature finally receives a fearless English translation.' The translation, by J. Tsitsi Mutiti, follows the original novel in being recognised - Mapenzi…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/12/ignatius-t-mabasas-mad-reviewed-by-pat.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ignatius T. Mabasa's The Mad reviewed by Pat Brickhill in the Zimbabwe Review",
+      "publishedAt": "2025-12-18T16:13:00.000Z",
+      "description": "Getting through the 1990sThe 90s were a vibrant time of political and economic shifts. The 25-year-old State of Emergency was lifted and the Economic Structural Adjustment Programme (ESAP) was implemented. A new generation of young Zimbabweans had initiated radical ferment, students at the University of Zimbabwe “dared to dream of a freer world” and post independent writers emerged onto the liter…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/11/john-eppel-at-bulawayo-book-club.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Eppel at the Bulawayo Book Club",
+      "publishedAt": "2025-11-23T15:45:00.000Z",
+      "description": "John Eppel will be at the Bulawayo Book Club on 29 November to discuss his novel Hatchings. It is New Year in Bulawayo, and anybody who is anybody is out celebrating. Based on Alexander Pope's dictum that 'those who are ashamed of nothing else are so of being ridiculous', Hatchings sets out to ridicule people of all races who abuse power - behind the pulpit, the podium, and the paint brush. The n…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/mabasa-vazhure-carry-zimbabwean-art-to.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mabasa, Vazhure carry Zimbabwean art to the world",
+      "publishedAt": "2025-10-25T07:46:00.001Z",
+      "description": "Elliot Ziwira's article in The Herald on the launch of Ignatius Mabasa's The Mad and the opening of Samantha Vezhure's exhibition Nzwisa.https://www.heraldonline.co.zw/mabasa-vazhure-carry-zimbabwean-art-to-the-world/ THERE are moments when Zimbabwe’s creative spirit refuses to be contained; instants when its words, colours and rhythms transcend borders, languages, and the limits of genre. The pa…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/ignatius-mabasa-nominated-for-2026.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ignatius Mabasa nominated for the 2026 Astrid Lindgren Memorial Award for Storytelling",
+      "publishedAt": "2025-10-20T14:30:00.000Z",
+      "description": "Renowned Zimbabwean author and storyteller Ignatius Mabasa has been nominated for the 2026 Astrid Lindgren Memorial Award for storytelling. The Astrid Lindgren Memorial Award is an international children's literary award established by the Swedish government in 2002 to honour the Swedish children's author Astrid Lindgren (1907\u20132002) and to promote every child's right to great stories. This global…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/photos-from-launch-of-mad.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Photos from the Launch of 'The Mad'",
+      "publishedAt": "2025-10-14T18:44:00.005Z",
+      "description": "Photos thanks to Samantha Rumvidzai Vezhure, Hope Masike and others. Amongst those present and featured in the photos are: Aaron Chiundura Moyo, Albert Nyathi, Batsirai Chigama, Brain Garusa, Chirikure Chirikure, Conelia Mabasa, Ignatius Mabasa, Memory Chirere, Raphael Chikukwa, Tinashe Muchuri, Tsitsi Mutiti and representatives of Wisrod (who sponsored the event)",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/celebrating-launch-of-ignatius-mabasa-s.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celebrating the Launch of Ignatius Mabasa' s ‘The Mad’",
+      "publishedAt": "2025-10-14T08:58:00.000Z",
+      "description": "Reproduced from https://munyori.org/2025/10/mad-about-mabasa-a-celebration-of-the-mad/ by Beaven Tapureta In the cool evening of October 10 a gathering of ‘the mad’ writers, publishers, artists, arts journalists, academics, friends and family enjoyed the memorable official launch of The Mad, a newly co-published English translation of Ignatius T Mabasa’s 1999 Shona novel Mapenzi, a classic.A char…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/10/the-mad-reviewed-in-financial-gazette.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mad reviewed in The Financial Gazette",
+      "publishedAt": "2025-10-09T17:25:00.000Z",
+      "description": "'We are all the richer for the penetrative insights and experiences this important novel can give us.'Read the full review by Diana Rodrigues on p31 of The Financial Gazette of 9 October 2025: (https://epaper.fingaz.co.zw/subscriber/read-mac-publication/205#Thursday%209%20October%202025/31).",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/09/the-harare-launch-of-ignatius-mabasas.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Harare Launch of Ignatius Mabasa's The Mad",
+      "publishedAt": "2025-09-17T13:48:00.000Z",
+      "description": "You are invited to the launch of The Mad at the National Gallery of Zimbabwe in Harare on 10 October 2025 from 6.00pm to 7.30pm.Ignatius Mabasa, the author of the original chiShona version Mapenzi, and J. Tsitsi Mutiti, the translator of Mapenzi into English as The Mad, will be in discussion moderated by Memory Chirere.Thanks to Wisrod Investments and the National Gallery of Zimbabwe for supporti…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/09/becoming-digital-guest-blog-by-fungai.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Becoming Digital: A Guest Blog by Fungai Machirori",
+      "publishedAt": "2025-09-09T14:05:00.000Z",
+      "description": "Fungai is a storyteller, ethnographer and archivist who weaves digitality into her ways of seeing the world. Erections don’t mean affection. This is obvious, I know. But in the 2010s of my 20s, it feels unprecedented to announce, especially as my first ever blog post. It’s an era where the internet still feels like a small community of likeminds; thankfully, trolls are something I am yet to disco…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/08/a-review-by-raisedon-baya-of-tendai.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A review by Raisedon Baya of Tendai Huchu's The Maestro, The Magistrate & The Mathematician",
+      "publishedAt": "2025-08-30T18:06:00.000Z",
+      "description": "There is literature that comes to you, sits with you, keeps you company, helps you sleep and then goes away and never bothers you or visits you again. Then there is literature that comes -usually without much fanfare or much ado - grabs you by the collar, sits you down, commands you to listen, asks you important questions, demands you to think, takes away your sleep and when it leaves, leaves you…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/08/african-novels-are-being-translated-to.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "African novels are being translated to English in a bold new trend: Ignatius Mabasa's The Mad reviewed.",
+      "publishedAt": "2025-08-28T18:07:00.000Z",
+      "description": "Reproduced from The Conversation https://theconversation.com/african-novels-are-being-translated-to-english-in-a-bold-new-trend-we-review-ignatius-mabasas-the-mad-263958 When it comes to African literature, translation has mostly meant translating work from European languages into African ones. Translation from African languages into English has been long overdue.Now it appears that a shift in th…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/08/the-bulawayo-book-club-and-maestro.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Maestro, The Magistrate and The Mathematician by Tendai Huchu is August's book at the Bulawayo Book Club",
+      "publishedAt": "2025-08-28T11:14:00.001Z",
+      "description": "Tendai Huchu's novel The Maestro, The Magistrate and The Mathematician is to be discussed this weekend (30 August) at the Bulawayo Book Club.Three very different men struggle with thoughts of belonging, loss, identity and love as they attempt to find a place for themselves in Britain. The Magistrate tries to create new memories and roots, fusing a wandering exploration of Edinburgh with music. Th…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/08/the-first-review-of-ignatius-t-mabasas.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The first review of Ignatius T. Mabasa's The Mad",
+      "publishedAt": "2025-08-27T17:38:00.000Z",
+      "description": "Review by Rutendo ChichayaReproduced from negwande.com/post/the mad-by-ignatius-t-mabasa-translated-by-j-tsitsi-mutiti'I tried to pick up my jacket and missed it as I stumbled. I tried to laugh at myself but what I was feeling led to self-pity. The hunger was now a real pain, like a hot brick in my belly. I decided to go to the bins, where I had often seen people in search of food. Shyness is a l…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/07/ignatius-mabasas-mad-now-available.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ignatius Mabasa's The Mad now available!",
+      "publishedAt": "2025-07-29T12:14:00.000Z",
+      "description": "We’re proud to announce the release of The Mad, a searing, satirical novel that paints a vivid portrait of poverty, violence, dehumanisation, and postcolonial dislocation in Zimbabwe.Originally published in ChiShona as Mapenzi, this powerful translation by J. Tsitsi Mutiti brings Ignatius Mabasa’s groundbreaking work to a wider audience. The novel unfolds through dramatic monologues and dialogue-…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "amabooks",
+      "source": {
+        "name": "amaBooks",
+        "url": "https://amabooksbyo.blogspot.com/2025/07/potholes-in-whatever-happened-to-rick.html",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Potholes in 'Whatever Happened to Rick Astley?'",
+      "publishedAt": "2025-07-15T11:55:00.003Z",
+      "description": "Raisedon Baya discusses the story 'Potholes' from Bryony Rheam's short story collection Whatever Happened to Rick Astley?, which was being discussed by the Bulawayo Book Club. ---------------------------------------------------\"Potholes\"I'm a sucker for political satire. I sometimes see it where it's not there. So please forgive me for seeing Potholes as some kind of political piece. Subtle but t…",
+      "discoveredAt": "2026-09-26T17:38:35.761Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/qa-with-degol-hailu/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A with Degol Hailu",
+      "publishedAt": "2026-09-16T11:05:38.000Z",
+      "description": "What happens when books become dangerous? In Pillaging the Dead, Degol Hailu takes us into a world where books are banned, political cartoons are dangerous, and a young bookseller finds himself caught up in a struggle far bigger than he expected. Darkly comic, sharp and deeply concerned with the relationship between power and ideas, the [...] The post Q&A with Degol Hailu appeared first on Cassav…",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/qa-illustrating-the-shikipisha-club-by-funmike-ogaosun/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A: Illustrating The Shikipisha Club by Funmike Ogaosun",
+      "publishedAt": "2026-09-10T14:18:59.000Z",
+      "description": "Illustrations do more than accompany a story. They shape a reader’s first impression, breathe life into characters and invite readers into the world of a book before they’ve even turned the first page. For The Shikipisha Club, illustrator, Funmike Ogaosun created artwork that captures the story at the heart of Mubanga Kalimamukwento’s story. We caught [...] The post Q&A: Illustrating The Shikipis…",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/women-in-translation-month-with-maren-baudet-lackner/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Women in Translation Month with Maren Baudet-Lackner",
+      "publishedAt": "2026-08-20T11:03:31.000Z",
+      "description": "For Women in Translation Month, we’re celebrating the women who help stories cross borders. Translators are not simply carrying words from one language to another; they are literary collaborators whose choices and craft help shape how a story is experienced by new readers. Maren Baudet-Lackner, translator of Osvalde Lewat’s The Aquatics, shares her thoughts on [...] The post Women in Translation …",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/cassava-republic-acquires-debut-childrens-alphabetical-guide-to-africas-minerals/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CASSAVA REPUBLIC ACQUIRES DEBUT CHILDREN’S ALPHABETICAL GUIDE TO AFRICA’S MINERALS",
+      "publishedAt": "2026-07-09T10:03:00.000Z",
+      "description": "Cassava Republic Press is delighted to announce the world rights acquisition of The A\u2013Z of Rocks and Minerals of Africa, a debut, fully-illustrated middle-grade non-fiction title by author and mining specialist, Allison George, publishing in Autumn 2027. Critical minerals touch every aspect of our lives, from the technology and games we love, to the medicine [...] The post CASSAVA REPUBLIC ACQUIR…",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/on-friendship-as-resistance/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ON FRIENDSHIP AS RESISTANCE",
+      "publishedAt": "2026-06-15T13:03:59.000Z",
+      "description": "At the heart of The Aquatics is a friendship that refuses to remain private. As political oppression closes in, the bond between Katmé and Samy becomes more than a source of comfort, it becomes a test of loyalty, courage, and moral conviction. In this reflection, author, Osvalde Lewat explores friendship not simply as an emotional [...] The post ON FRIENDSHIP AS RESISTANCE appeared first on Cassa…",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/character-reflection-samy/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Character Reflection \u2013 Samy",
+      "publishedAt": "2026-06-15T12:58:38.000Z",
+      "description": "Samy, the protagonist in The Aquatics is unforgettable. Brilliant, infuriating, passionate, and deeply loyal, he is the emotional and moral catalyst at the centre of the novel. Through his friendships, ambitions, and refusal to conform, Samy challenges the social order around him and forces those closest to him to confront difficult truths. In this character [...] The post Character Reflection \u2013 …",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/qa-with-osvalde-lewat/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A with Osvalde Lewat",
+      "publishedAt": "2026-06-15T12:45:05.000Z",
+      "description": "Cameroonian writer, filmmaker, and photographer Osvalde Lewat makes her fiction debut with The Aquatics, a novel that explores friendship, loyalty, identity, and the quiet violences embedded within social norms. In this conversation, she reflects on the friendship that inspired The Aquatics, the influence of documentary filmmaking on her writing process, the creation of Zambuena, and [...] The po…",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/behind-the-story-the-aquatics-by-osvalde-lewat/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Behind the Story: The Aquatics by Osvalde Lewat",
+      "publishedAt": "2026-06-11T10:39:22.000Z",
+      "description": "Award-winning photographer and writer Osvalde Lewat shares the winding path that led her to write her novel in this edition of Behind the Story. What began as a long-postponed dream became an unexpected lesson in patience, and perseverance. From bargaining with herself to confronting the realities of the creative process, her story is a candid [...] The post Behind the Story: The Aquatics by Osva…",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/the-mercy-step-is-shortlisted-for-the-womens-prize-for-fiction/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mercy Step is Shortlisted for the Women’s Prize for Fiction",
+      "publishedAt": "2026-04-22T14:15:00.000Z",
+      "description": "Today is a day we will never forget. The Mercy Step by Marcia Hutchinson has been shortlisted for the 2026 Women’s Prize for Fiction and in doing so, Cassava Republic Press has become the first Black-owned African independent publisher to reach the shortlist in the prize’s 30-year history. This news is coming in the same [...] The post The Mercy Step is Shortlisted for the Women’s Prize for Ficti…",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/historic-first-a-nigerian-publisher-just-made-the-womens-prize-shortlist-and-its-their-20th-birthday/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "HISTORIC FIRST: A NIGERIAN PUBLISHER JUST MADE THE WOMEN’S PRIZE SHORTLIST \u2014 AND IT’S THEIR 20TH BIRTHDAY",
+      "publishedAt": "2026-04-22T09:33:00.000Z",
+      "description": "The Mercy Step by Marcia Hutchinson, published by Cassava Republic Press, shortlisted for the 2026 Women’s Prize for Fiction. Nigerian founded publishing house, Cassava Republic Press makes the Women’s Prize for Fiction shortlist for the first time in the prize’s history. This marks a significant moment not only for the author, but for independent African [...] The post HISTORIC FIRST: A NIGERIAN…",
+      "discoveredAt": "2026-09-26T17:38:36.028Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ]
+}

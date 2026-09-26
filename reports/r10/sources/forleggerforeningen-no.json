@@ -1,0 +1,57 @@
+{
+  "sourceId": "forleggerforeningen-no",
+  "name": "Norske ForleggerforeningØvre Vollgate",
+  "entryUrl": "https://www.forleggerforeningen.no/",
+  "countryCodes": [
+    "NO"
+  ],
+  "coverageCountryCodes": [
+    "NO"
+  ],
+  "attemptedAt": "2026-09-26T17:28:27.425Z",
+  "requests": [
+    {
+      "url": "https://forleggerforeningen.no/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 100306,
+      "sha256": "8ad2d30ad84c028f4654454f20e6628e0f0e1a8cce4ff264e2df1a944667e22c",
+      "accessedAt": "2026-09-26T17:28:30.613Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/kalenderhendelser/hosten-2026-presentasjonsmote-for-sma-forlag/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 62880,
+      "sha256": "0676edef75dde4153968abd57620db1e27190d83ba1d1b0f3dc26dcf9201062d",
+      "accessedAt": "2026-09-26T17:28:31.142Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/nyhetsarkiv/alarmerende-og-uakseptabelt/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 68405,
+      "sha256": "5e32c8e898721f4037df5399bc5b388e6380c0dad846ebaad3c99b0069edf02e",
+      "accessedAt": "2026-09-26T17:28:31.533Z"
+    },
+    {
+      "url": "https://forleggerforeningen.no/kalenderhendelser/hostmote-gyldendal-11/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57135,
+      "sha256": "1268c5935c4e3f761c98da6e5fe651d7149b057f9375ce6fa24c90ad669fbb5c",
+      "accessedAt": "2026-09-26T17:28:31.836Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://forleggerforeningen.no/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 180,
+    "sha256": "051da9a1cafed69ac8baaade8b870808902c018cc3980016d7c892b49e7a8693",
+    "accessedAt": "2026-09-26T17:28:27.886Z",
+    "disallowed": []
+  }
+}

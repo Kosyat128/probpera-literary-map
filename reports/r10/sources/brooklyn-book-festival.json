@@ -1,0 +1,1432 @@
+{
+  "sourceId": "brooklyn-book-festival",
+  "name": "Brooklyn Book Festival",
+  "entryUrl": "https://brooklynbookfestival.org/event_type/festival-day/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:33:25.168Z",
+  "requests": [
+    {
+      "url": "https://brooklynbookfestival.org/event_type/festival-day/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 855144,
+      "sha256": "fe18d1cb8d938ef4223deac6be7c70076e360b43fe0b07454bcd486352feca74",
+      "accessedAt": "2026-09-26T17:33:25.886Z"
+    },
+    {
+      "url": "https://brooklynbookfestival.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1146,
+      "sha256": "67360041158436bea796fd7f8a32c09c74e60a7ca24cf37b2709f62c99819713",
+      "accessedAt": "2026-09-26T17:33:26.125Z"
+    },
+    {
+      "url": "https://brooklynbookfestival.org/event/2026-bobi-honoree-amitav-ghosh-in-conversation-with-nathaniel-rich/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 113842,
+      "sha256": "8d2560e2bacbe7994648ac6fd315ec723090c8484e9b3cda21694f15b8af95d9",
+      "accessedAt": "2026-09-26T17:33:26.908Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://brooklynbookfestival.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 182,
+    "sha256": "5f84f5cdc1165d311c0995a9f33d94365dcd66f6185b09825bc96123769597be",
+    "accessedAt": "2026-09-26T17:33:25.590Z",
+    "disallowed": []
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links",
+  "endpoint": {
+    "id": "brooklyn-book-festival",
+    "name": "Brooklyn Book Festival",
+    "url": "https://brooklynbookfestival.org/event_type/festival-day/",
+    "format": "html",
+    "language": "en-US",
+    "region": "north-america",
+    "sourceFamilyId": "brooklyn-book-festival",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://brooklynbookfestival.org"
+    ],
+    "linkPattern": "^\\/event\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://brooklynbookfestival.org/event/2026-bobi-honoree-amitav-ghosh-in-conversation-with-nathaniel-rich/"
+    ],
+    "verifiedAt": "2026-09-26T17:33:26.921Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 52,
+  "literaryCandidateCount": 52,
+  "sample": {
+    "sourceId": "brooklyn-book-festival",
+    "source": {
+      "name": "Brooklyn Book Festival",
+      "url": "https://brooklynbookfestival.org/event/2026-bobi-honoree-amitav-ghosh-in-conversation-with-nathaniel-rich/",
+      "language": "en-US"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "2026 BoBi Honoree Amitav Ghosh in Conversation with Nathaniel Rich",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:33:26.214Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://brooklynbookfestival.org/event/2026-bobi-honoree-amitav-ghosh-in-conversation-with-nathaniel-rich/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 113842,
+      "sha256": "8d2560e2bacbe7994648ac6fd315ec723090c8484e9b3cda21694f15b8af95d9",
+      "accessedAt": "2026-09-26T17:33:26.908Z",
+      "headline": "2026 BoBi Honoree Amitav Ghosh in Conversation with Nathaniel Rich",
+      "excerpt": "2026 BoBi Honoree Amitav Ghosh in Conversation with Nathaniel Rich - Brooklyn Book Festival Menu Search Search Close this search box. Events Festival Day 2026 BoBi Honoree Amitav Ghosh in Conversation with Nathaniel Rich Covid Guidelines for Physical Events We continue to follow government guidelines regarding Covid-19 safety at the Festival. We encourage masks for indoor events. Please be aware t",
+      "publishedDates": [
+        {
+          "value": "2026-08-27T16:30:21+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://brooklynbookfestival.org/event/2026-bobi-honoree-amitav-ghosh-in-conversation-with-nathaniel-rich/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:33:26.921Z",
+  "foundItems": [
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/2026-bobi-honoree-amitav-ghosh-in-conversation-with-nathaniel-rich/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 BoBi Honoree Amitav Ghosh in Conversation with Nathaniel Rich",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/breaking-through-navigating-the-journey-from-emerging-writer-to-debut-novelist-presented-by-the-center-for-fiction/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Breaking Through: Navigating the Journey from “Emerging Writer” to Debut Novelist presented by the Center for Fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/brooklyn-public-librarys-book-prize-winners-panel/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Brooklyn Public Library’s Book Prize Winners’ Panel with Meghan O’Rourke",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/politics-and-the-responsibility-of-writing-presented-by-new-york-review-books/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Politics and the Responsibility of Writing, presented by New York Review Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-poet-translator/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Poet Translator",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/trans-voices-in-horror-presented-by-bloodletter-magazine-and-lofty-pigeon-books/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Trans Voices in Horror, presented by Bloodletter Magazine and Lofty Pigeon Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/reclaiming-the-human-connection-movement-media-and-micro-rituals/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reclaiming the Human Connection: Movement, Media, and Micro-Rituals",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/branching-out-on-the-future-of-environmental-storytelling-presented-by-orion-magazine-2/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Branching Out: On the Future of Environmental Storytelling, presented by Orion Magazine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/bold-paths-to-reform-presented-by-brooklyn-law-school/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bold Paths to Reform, presented by Brooklyn Law School",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/booked-banned/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Booked & Banned",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/250-years-in-search-of-a-more-perfect-union-presented-by-the-nation/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "250 Years in Search of a More Perfect Union, presented by The Nation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/new-works-a-poetry-reading-5/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New Works: A Poetry Reading",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/when-we-gather-on-food-celebration-and-ritual/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "When We Gather: On Food, Celebration, and Ritual",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/nostalgia-with-a-twist/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nostalgia With A Twist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/give-us-our-daily-dread-horror-comics/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Give Us Our Daily Dread: Horror Comics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/phases-of-the-self/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Phases of the Self",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/secrets-of-the-stacks-of-new-york-city-2/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Secrets of the Stacks of New York City",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/musical-lives-revisited/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Musical Lives Revisited",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/myths-monsters-and-the-stories-we-tell/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Myths, Monsters, and the Stories We Tell",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/reimagining-america/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reimagining America",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/secrets-lies-and-memory/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Secrets, Lies, and Memory",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/fall-into-fantasy/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fall Into Fantasy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/women-changing-history/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Women Changing History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/nbf-presents-returning-to-the-page/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NBF Presents: Returning to the Page",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-price-of-a-good-life/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Price of a Good Life",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-anti-equality-era/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Anti-Equality Era",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/come-to-my-cottage/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Come to My Cottage",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/worlds-in-transit/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Worlds in Transit",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-many-facets-of-toni-morrison/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Many Facets of Toni Morrison",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-lives-we-fight-for/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Lives We Fight For",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/against-evolution/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mountains, Jungles and Deserts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-trials-of-incessant-proximity/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Too Close For Comfort",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-culinary-life-crafting-narrative-and-memoir-through-food/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Culinary Life: Crafting Narrative and Memoir Through Food",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/nature-from-the-margins/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nature from the Margins",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/can-you-keep-a-secret/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Can You Keep A Secret?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/250-years-of-american-activism/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "250 Years of American Activism",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/motherhood-and-violence/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Motherhood and Violence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-consequences-of-desire/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Consequences of Desire",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/what-we-inherit-what-we-retell/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What We Inherit, What We Retell",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-cost-of-fame/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Cost of Fame",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/liberation-sounds/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liberation Sounds",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-places-we-carry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Places We Carry",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/you-then-me-now/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "You Then, Me Now",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/what-the-past-refuses-to-bury/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What the Past Refuses to Bury",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-women-who-shape-us/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Women Who Shape Us",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/dissidents-and-movements-being-part-of-the-solution/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dissidents and Movements: Being Part of the Solution",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/survive-salvage-and-protest-comics-and-the-climate/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Survive, Salvage and Protest: Comics and the Climate",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/multifaceted-manifestos-a-conversation-with-marlon-james-and-colson-whitehead/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Multifaceted Manifestos: A Conversation with Marlon James and Colson Whitehead",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/when-worlds-collide-how-the-nyc-underground-rewrote-global-culture/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sonic Reducers: The Evolution of New York Noise",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/future-ancestors/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Future Ancestors",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/how-to-build-a-fascist-free-future-lessons-from-the-past-encouragement-for-the-present/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How to Build A Fascist-Free Future: Lessons from the Past, Encouragement for the Present",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/re-enacting-revisiting-history/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Re-enacting, Revisiting History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:26.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "fe18d1cb8d938ef4223deac6be7c70076e360b43fe0b07454bcd486352feca74"
+}

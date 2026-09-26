@@ -1,3 +1,4 @@
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
@@ -5,7 +6,7 @@ import { nativeArchiveReadAttestation, projectPublishedNativeArchiveRead as proj
 import { projectReviewedCmsSourcePunctuation } from "./reviewed-cms-source-punctuation.mjs";
 import { draftStorageAttestation, projectPublishedDraftStorage, projectReviewedDraftStorage } from "./reviewed-draft-storage.mjs";
 
-const read = path => projectReviewedCmsSourcePunctuation(path, readFileSync(path, "utf8"));
+const read = path => projectReviewedCmsSourcePunctuation(path, projectReviewedR10Delta(path, readFileSync(path, "utf8")));
 const sha = text => createHash("sha256").update(text).digest("hex");
 const paths = [
   ".github/workflows/reconcile-production-database.yml",
@@ -40,7 +41,7 @@ describe("Native archive read additive governance", () => {
 
   it.each(paths)("restores exact published bytes and fails closed on altered fragments in %s", path => {
     const source = read(path), previous = projectReviewedNativeArchiveRead(path, source);
-    const currentSource = readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+    const currentSource = projectReviewedR10Delta(path, readFileSync(path, "utf8")).replace(/\r\n?/gu, "\n");
     expect(sha(source)).toBe(nativeArchiveReadAttestation.reviewedSourceSha256[path]);
     expect(sha(previous)).toBe(nativeArchiveReadAttestation.sourceBaselines[path]);
     expect(projectReviewedNativeArchiveRead(path, source.replaceAll("\n", "\r\n"))).toBe(previous);

@@ -1,0 +1,403 @@
+{
+  "sourceId": "bn-chile",
+  "name": "Biblioteca Nacional de Chile",
+  "entryUrl": "https://www.bibliotecanacional.gob.cl/noticias",
+  "countryCodes": [
+    "CL"
+  ],
+  "coverageCountryCodes": [
+    "CL"
+  ],
+  "attemptedAt": "2026-09-26T17:29:43.342Z",
+  "requests": [
+    {
+      "url": "https://www.bibliotecanacional.gob.cl/noticias",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 52887,
+      "sha256": "5d94b41445b69393bee488cf217d9841ab76451c840ea72b61a16b745354c19f",
+      "accessedAt": "2026-09-26T17:29:46.059Z"
+    },
+    {
+      "url": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 43261,
+      "sha256": "2ff863c97405c79261918af67e4293f45414bdb530e9b7661c4baddba5790983",
+      "accessedAt": "2026-09-26T17:29:46.796Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.bibliotecanacional.gob.cl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 2027,
+    "sha256": "773fb8d35bb9a39d35335ee6db8dc5c912d2aacbfb823152d9c61cd647dd902d",
+    "accessedAt": "2026-09-26T17:29:45.386Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed"
+    ]
+  },
+  "endpoint": {
+    "id": "bn-chile",
+    "name": "Biblioteca Nacional de Chile",
+    "url": "https://www.bibliotecanacional.gob.cl/noticias",
+    "format": "html",
+    "language": "es",
+    "region": "latin-america",
+    "sourceFamilyId": "bn-chile",
+    "countryCodes": [
+      "CL"
+    ],
+    "coverageCountryCodes": [
+      "CL"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.bibliotecanacional.gob.cl"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/bajo-la-lupa/[^/]+/?$|^/noticias/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose"
+    ],
+    "verifiedAt": "2026-09-26T17:29:46.801Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "bn-chile",
+    "source": {
+      "name": "Biblioteca Nacional de Chile",
+      "url": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+      "language": "es"
+    },
+    "region": "latin-america",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Bibliotecas nacionales de Chile, Perú y Argentina crearán repositorio digital dedicado a José de San Martín",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:46.077Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 43261,
+      "sha256": "2ff863c97405c79261918af67e4293f45414bdb530e9b7661c4baddba5790983",
+      "accessedAt": "2026-09-26T17:29:46.796Z",
+      "headline": "Bibliotecas nacionales de Chile, Perú y Argentina crearán repositorio digital dedicado a José de San Martín",
+      "excerpt": "Bibliotecas nacionales de Chile, Perú y Argentina crearán repositorio digital dedicado a José de San Martín Publicado el 16/09/2026 Fuente: Biblioteca Nacional Comparte FacebookWhatsApp General José de San Martín, retrato de cuerpo entero parado, con uniforme. Sala Medina. Año 1937. La iniciativa permitirá reunir y poner a disposición del público e investigadores documentación histórica vinculada ",
+      "publishedDates": [],
+      "canonical": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:46.801Z",
+  "foundItems": [
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliotecas nacionales de Chile, Perú y Argentina crearán repositorio digital dedicado a José de San Martín",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/con-seminario-concurso-literario-y-actividades-para-la-comunidad-la-bn-celebrara-los-140",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Con Seminario, Concurso Literario y actividades para la comunidad, la BN celebrará los 140 años de su Sección Préstamo a Domicilio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/sintesis-historica-de-la-seccion-prestamo-domicilio-de-la-biblioteca-nacional-140-anos-de",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Síntesis histórica de la Sección Préstamo a Domicilio de la Biblioteca Nacional. 140 años de circulación pública del libro y acceso a la lectura",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/sala-infantil-presenta-seleccion-de-lecturas-para-el-mes-de-septiembre",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sala Infantil presenta selección de lecturas para el mes de septiembre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/seccion-prestamo-domicilio-incorpora-308-nuevos-libros-en-su-mes-de-aniversario",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sección Préstamo a Domicilio incorpora 308 nuevos libros en su mes de aniversario",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/union-femenina-de-chile-una-organizacion-clave-del-feminismo-chileno",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Unión Femenina de Chile: una organización clave del feminismo chileno",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/lanzan-segunda-temporada-de-radioteatros-y-relatos-animados-de-nuestra-tierra-para",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lanzan segunda temporada de Radioteatros y Relatos Animados de Nuestra Tierra para celebrar la cultura rural de Chile",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/grabados-y-antigrabados-exposicion-que-conmemora-los-70-anos-del-taller-99",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "“Grabados y Antigrabados”: exposición que conmemora los 70 años del Taller 99",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/biblioteca-nacional-y-universidad-finis-terrae-suscriben-acuerdo-de-colaboracion-para",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Biblioteca Nacional y Universidad Finis Terrae suscriben acuerdo de colaboración para fortalecer el desarrollo cultural",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-chile",
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/biblioteca-nacional-y-club-de-ajedrez-de-chile-firman-acuerdo-de-cooperacion",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Biblioteca Nacional y Club de Ajedrez de Chile firman acuerdo de cooperación",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:46.077Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5d94b41445b69393bee488cf217d9841ab76451c840ea72b61a16b745354c19f"
+}

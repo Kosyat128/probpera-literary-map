@@ -1,0 +1,458 @@
+{
+  "sourceId": "scottishpen-org",
+  "name": "PEN Scotland",
+  "entryUrl": "https://www.scottishpen.org/",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:29:36.063Z",
+  "requests": [
+    {
+      "url": "https://scottishpen.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 61060,
+      "sha256": "83ba44b5034fdefdf64665bfcc8099d7002ff77b8295e18b6c0299a0b23c78e0",
+      "accessedAt": "2026-09-26T17:23:40.313Z"
+    },
+    {
+      "url": "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 70656,
+      "sha256": "eb6fcd4bc60319f91a5bdb54e752089f7a6c5c47fbdb433d1221037563ae68ff",
+      "accessedAt": "2026-09-26T17:29:37.047Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.scottishpen.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 68,
+    "sha256": "f9ca4dae241b5d204eeaabae38d5f89a1e817e33d09d898ff2142c52611c9e79",
+    "accessedAt": "2026-09-26T17:29:36.399Z",
+    "disallowed": [
+      "/cgi-bin",
+      "/wc-logs"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:37.899Z",
+    "sourceDocumentSha256": "83ba44b5034fdefdf64665bfcc8099d7002ff77b8295e18b6c0299a0b23c78e0"
+  },
+  "endpoint": {
+    "id": "scottishpen-org",
+    "name": "PEN Scotland",
+    "url": "https://scottishpen.org/",
+    "format": "html",
+    "language": "en-US",
+    "region": "europe",
+    "sourceFamilyId": "scottishpen-org",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [
+      "GB"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://scottishpen.org"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/campaign/[^/]+/?$|^//[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:37.052Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 14,
+  "literaryCandidateCount": 14,
+  "sample": {
+    "sourceId": "scottishpen-org",
+    "source": {
+      "name": "PEN Scotland",
+      "url": "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/",
+      "language": "en-US"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "Updated August 2025: Scottish poets respond to Israel’s genocide in Gaza",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:36.415Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 70656,
+      "sha256": "eb6fcd4bc60319f91a5bdb54e752089f7a6c5c47fbdb433d1221037563ae68ff",
+      "accessedAt": "2026-09-26T17:29:37.047Z",
+      "headline": "Updated August 2025: Scottish poets respond to Israel’s genocide in Gaza",
+      "excerpt": "Updated August 2025: Scottish poets respond to Israel’s genocide in Gaza <style>.woocommerce-product-gallery{ opacity: 1 !important; }</style> Updated August 2025: Scottish poets respond to Israel’s genocide in Gaza A number of our members and other Scottish poets have written poems in response to the current conflict, and have kindly given permission for them to be shared here. Scottish PEN invit",
+      "publishedDates": [],
+      "canonical": "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:37.052Z",
+  "foundItems": [
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Updated August 2025: Scottish poets respond to Israel’s genocide in Gaza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/the-pen-charter/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "The PEN Charter",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/day-of-the-imprisoned-writer-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "DAY OF THE IMPRISONED WRITER",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/writers-at-risk-working-to-establish-international-cities-of-refuge-in-scotland/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "International Cities of Refuge Network",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/campaign/writers-at-risk/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers at Risk",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/campaign/writers-in-exile/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers in Exile",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/writers-for-peace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers for Peace",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/defamation-reform/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Defamation Reform",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/international-womens-day-free-event-women-of-courage-and-endurance/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "International Women’s Day free event: Women of Courage and Endurance",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/statement-on-the-arrest-of-activists-under-the-terrorism-act/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on the Arrest of Activists under the Terrorism Act",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/statement-on-the-arrest-of-scottish-pen-vice-president/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on the Arrest of Scottish PEN Vice-President",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/lizzie-eldridge-interviewed-by-palestine-international-broadcast/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lizzie Eldridge Interviewed by Palestine International Broadcast",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/scottish-chilling/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scottish Chilling",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "source": {
+        "name": "PEN Scotland",
+        "url": "https://scottishpen.org/declarations-on-freedom-for-writers-and-readers/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Declarations: On Freedom for Writers and Readers",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "83ba44b5034fdefdf64665bfcc8099d7002ff77b8295e18b6c0299a0b23c78e0"
+}

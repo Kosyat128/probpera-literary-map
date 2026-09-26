@@ -1,4 +1,6 @@
 import Link from "next/link";
+import HeaderShowcaseEditor from "@/components/HeaderShowcaseEditor";
+import { articleCatalog } from "../../../../../src/data/articles/catalog";
 
 import HomepageMediaField, {
   type HomepageMediaOption,
@@ -822,7 +824,7 @@ export default async function HomepagePage({
                         }
                         allowUpload={section.key !== "book-archive"}
                       />
-                      {section.key === "book-archive" && (
+                  {section.key === "book-archive" && (
                         <small>
                           Для сцены доступны только растровые изображения с
                           заполненными автором, лицензией и HTTPS-источниками.
@@ -831,6 +833,7 @@ export default async function HomepagePage({
                       )}
                     </div>
                   </div>
+                  {section.key === "featured-journal" && <HeaderShowcaseEditor articles={articleCatalog} value={settings.headerShowcasePins} now={Date.now()} />}
                   {section.key === "book-archive" && (
                     <BookArchiveSceneControls
                       settings={readBookArchiveSceneSettings(settings)}

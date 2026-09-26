@@ -1,0 +1,41 @@
+{
+  "sourceId": "library-wales",
+  "name": "National Library of Wales",
+  "entryUrl": "https://www.library.wales/",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:29:19.519Z",
+  "requests": [
+    {
+      "url": "https://www.library.wales/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 72739,
+      "sha256": "9cf332b29d957b47b5e0fec4769aa66e2c46777b60701de73d2c954f9159ab04",
+      "accessedAt": "2026-09-26T17:29:20.498Z"
+    },
+    {
+      "url": "https://www.library.wales/about-nlw/about-us/corporate-structure/rss",
+      "status": 200,
+      "contentType": "application/xml; charset=UTF-8",
+      "bytes": 319,
+      "sha256": "ddd5267e936476142e0635de64784b738049bb8d18110a428cbe1917fcb6b3e8",
+      "accessedAt": "2026-09-26T17:29:20.667Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.library.wales/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 76,
+    "sha256": "06c29dee5321122db93ec38c432fe9671d9493dd4c84ef172900fce689f38e56",
+    "accessedAt": "2026-09-26T17:29:20.193Z",
+    "disallowed": []
+  }
+}

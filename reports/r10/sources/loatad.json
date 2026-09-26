@@ -1,0 +1,395 @@
+{
+  "sourceId": "loatad",
+  "name": "Library of Africa and the African Diaspora",
+  "entryUrl": "https://loatad.org/",
+  "countryCodes": [
+    "GH"
+  ],
+  "coverageCountryCodes": [
+    "GH"
+  ],
+  "attemptedAt": "2026-09-26T17:31:52.789Z",
+  "requests": [
+    {
+      "url": "https://loatad.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 159828,
+      "sha256": "b03de7a8f5a924896cc6a9d0568879e348e06c160cea6a5aa10b1fc5b8693071",
+      "accessedAt": "2026-09-26T17:31:54.874Z"
+    },
+    {
+      "url": "https://loatad.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 102015,
+      "sha256": "e72a96911b868f1d481807721a6272c8a09c156290a99ff5c9136f1fa33dde26",
+      "accessedAt": "2026-09-26T17:31:55.625Z"
+    },
+    {
+      "url": "https://loatad.org/2026/04/29/meet-the-2026-loatad-west-africa-road-residents/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 151437,
+      "sha256": "0b20f45fa0cec97437cd431f911fa1af01dab166bc2b7baa831e2c4d1cbbc744",
+      "accessedAt": "2026-09-26T17:31:56.525Z"
+    },
+    {
+      "url": "https://loatad.org/2025/12/10/apply-to-the-2026-west-africa-road-residency/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 114556,
+      "sha256": "83dca1cdac03f0264028e3dcece4e976bd4a815ddad10b2ebd81d2ff4c68a0c5",
+      "accessedAt": "2026-09-26T17:31:57.534Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://loatad.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 489,
+    "sha256": "4de184e9d3aa8fc01b0e828a7d5244de7dbc11c16b5d3dd05947516ed69612c5",
+    "accessedAt": "2026-09-26T17:31:53.755Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "loatad",
+    "name": "Library of Africa and the African Diaspora",
+    "url": "https://loatad.org/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "africa",
+    "sourceFamilyId": "loatad",
+    "countryCodes": [
+      "GH"
+    ],
+    "coverageCountryCodes": [
+      "GH"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://loatad.org"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://loatad.org/2025/12/10/apply-to-the-2026-west-africa-road-residency/"
+    ],
+    "verifiedAt": "2026-09-26T17:31:57.542Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "loatad",
+    "source": {
+      "name": "Library of Africa and the African Diaspora",
+      "url": "https://loatad.org/2025/12/10/apply-to-the-2026-west-africa-road-residency/",
+      "language": "en-US"
+    },
+    "region": "africa",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Apply to the 2026 West Africa Road Residency",
+    "publishedAt": "2025-12-10T09:00:00.000Z",
+    "description": "Library Of Africa and The African Diaspora (LOATAD), in collaboration with the Harambee Organisation of Black Unity (UK), invites applications from writers and visual artists across West Africa for a landmark creative residency: an 18-day, 3,000-kilometre journey from Accra to Banjul and back, beginning April 2026. This is not a road trip. It is a […]",
+    "discoveredAt": "2026-09-26T17:31:55.626Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://loatad.org/2025/12/10/apply-to-the-2026-west-africa-road-residency/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 114556,
+      "sha256": "83dca1cdac03f0264028e3dcece4e976bd4a815ddad10b2ebd81d2ff4c68a0c5",
+      "accessedAt": "2026-09-26T17:31:57.534Z",
+      "headline": "Apply to the 2026 West Africa Road Residency",
+      "excerpt": "Library Of Africa and The African Diaspora (LOATAD), in collaboration with the Harambee Organisation of Black Unity (UK), invites applications from writers and visual artists across West Africa for a landmark creative residency: an 18-day, 3,000-kilometre journey from Accra to Banjul and back, beginning April 2026. This is not a road trip. It is a radical act of listening, seeing, movement, and me",
+      "publishedDates": [
+        {
+          "value": "2025-12-10T09:00:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2025-12-10T09:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://loatad.org/2025/12/10/apply-to-the-2026-west-africa-road-residency/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:31:57.542Z",
+  "foundItems": [
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2026/04/29/meet-the-2026-loatad-west-africa-road-residents/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Meet the 2026 LOATAD West Africa Road Residents",
+      "publishedAt": "2026-04-29T08:59:37.000Z",
+      "description": "Badji Alfousseynou lives in Dakar, Senegal. Trained as a volunteer community development practitioner, he has been active for more than twenty years, supporting local development initiatives, particularly working with youth and women in rural communities across Senegal. He has also contributed to mentoring and educating children through various educational programmes and holiday camps. Throughout…",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/12/10/apply-to-the-2026-west-africa-road-residency/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Apply to the 2026 West Africa Road Residency",
+      "publishedAt": "2025-12-10T09:00:00.000Z",
+      "description": "Library Of Africa and The African Diaspora (LOATAD), in collaboration with the Harambee Organisation of Black Unity (UK), invites applications from writers and visual artists across West Africa for a landmark creative residency: an 18-day, 3,000-kilometre journey from Accra to Banjul and back, beginning April 2026. This is not a road trip. It is a […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/11/30/announcing-our-2026-loatad-black-atlantic-residents/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Announcing our 2026 LOATAD Black Atlantic residents",
+      "publishedAt": "2025-11-30T15:22:26.000Z",
+      "description": "We are delighted to announce the recipients of our third and final LOATAD Black Atlantic Residency, supported by Hawthornden Foundation. Nine exceptional writers and thinkers from Ghana, Nigeria, Sierra Leone, Tanzania, Trinidad and Tobago, the USA, and the UK will be in residence at LOATAD in Accra, Ghana, in 2026 to work individually and in […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2026/03/23/new-event-voices-of-afrika-and-the-diaspora-how-writing-bridges-the-black-atlantic-gap/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "New event \u2013 Voices of Afrika and the Diaspora: How writing bridges the Black Atlantic gap",
+      "publishedAt": "2026-03-23T08:55:00.000Z",
+      "description": "Library Of Africa and The African Diaspora (Ghana) and Harambee Organisation of Black Unity (UK), in collaboration with Schomburg Center for Research in Black Culture (USA) and Tender Photos (Nigeria), present a conversation that illuminates and excavates the Black Atlantic gap and how writers have sought to bridge that gap with their words. Through their […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2026/01/15/loatad-featured-on-essence-com/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "LOATAD featured on Essence.com",
+      "publishedAt": "2026-01-15T19:58:38.000Z",
+      "description": "Inside A Vast Library In Ghana That Celebrates The Works Of The African Diaspora The Library of Africa and the African Diaspora is a place where literature becomes both archive and altar, and where the past, present, and future converge Larada Lee-Wallace “In a quiet neighborhood of Adenta stands a bright yellow house behind a tall black […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/12/15/loatad-named-one-of-the-150-libraries-to-visit-before-you-die/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "LOATAD named one of 150 libraries to visit before you die",
+      "publishedAt": "2025-12-15T09:00:00.000Z",
+      "description": "The Library Of Africa and The African Diaspora (LOATAD) has been recognised as one of “150 Libraries to Visit Before You Die!” Published by Belgian publisher, Lannoo, the book features “the ultimate list of the world’s most beautiful libraries,” of which LOATAD is one, repping Africa along with 10 other libraries on the continent: “Discover […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/10/29/a-day-for-assata/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "For Assata",
+      "publishedAt": "2025-10-29T18:10:13.000Z",
+      "description": "The last weekend of October, we hosted a beautiful afternoon of reading and reflection with Noname Book Club in honour of Assata Shakur. Following a community reading of “Assata: An Autobiography,” a powerful text tracing the life, resistance, and legacy of Assata Shakur, we screened “Eyes of the Rainbow,” Gloria Rolando’s intimate documentary featuring Assata’s […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/08/14/open-call-loatad-black-atlantic-residency-3/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Open Call: LOATAD Black Atlantic Residency 3",
+      "publishedAt": "2025-08-14T09:27:08.000Z",
+      "description": "Applications are now open for the third and final iteration of LOATAD’s Black Atlantic Residency. Are you a writer of African descent based in: Does your work grapple with the complexities and nuances of what it means to be African/of African descent in the 21st century? Writers are invited to apply to be in residence […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/05/05/a-message-from-noor-salah-h-elfaki/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A message from Noor Salah H. Elfaki",
+      "publishedAt": "2025-05-05T09:31:25.000Z",
+      "description": "We’ve come to the end of the 2025 LOATAD Black Atlantic Residency! It’s been a beautiful time of community and growth, and we’re grateful to all our residents for bringing their full selves to the experience. We’re sharing a powerful message from resident, Noor Salah H. Elfaki, which touched us deeply and which we hope […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "loatad",
+      "source": {
+        "name": "Library of Africa and the African Diaspora",
+        "url": "https://loatad.org/2025/01/21/introducing-the-precious-gordon-collection-at-loatad/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Introducing The Precious Gordon Collection at LOATAD",
+      "publishedAt": "2025-01-21T11:47:40.000Z",
+      "description": "The Library Of Africa and The African Diaspora (LOATAD) is delighted to announce the acquisition of a new collection! Donated to LOATAD by elder Precious Gordon, The Precious Gordon Collection comprises of over 250 books, Black history calendars, and ephemera gathered over decades, representing a lifelong quest for knowledge and deeper understanding rooted in an Afrocentric perspective. […]",
+      "discoveredAt": "2026-09-26T17:31:55.626Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "e72a96911b868f1d481807721a6272c8a09c156290a99ff5c9136f1fa33dde26"
+}

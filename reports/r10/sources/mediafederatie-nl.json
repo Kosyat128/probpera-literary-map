@@ -1,0 +1,59 @@
+{
+  "sourceId": "mediafederatie-nl",
+  "name": "De MediafederatieHogehilweg",
+  "entryUrl": "https://mediafederatie.nl/",
+  "countryCodes": [
+    "NL"
+  ],
+  "coverageCountryCodes": [
+    "NL"
+  ],
+  "attemptedAt": "2026-09-26T17:28:49.745Z",
+  "requests": [
+    {
+      "url": "https://www.mediafederatie.nl/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 73275,
+      "sha256": "d67c5d72dc6db64349224647d2d741ebf2e46c2b439e5040b104c1fef9d6f8d8",
+      "accessedAt": "2026-09-26T17:28:50.836Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/agenda/leer-werken-met-chatgpt-en-copilot-verdieping-okt-2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 76627,
+      "sha256": "1f397348b111ce5d042d7fc9b1e6c37e1bb8b532b478975e9403481b9a64099d",
+      "accessedAt": "2026-09-26T17:28:51.126Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/agenda/video-s-maken-voor-social-media",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 76788,
+      "sha256": "78d8d045d26ff1d3d9d9bc7dd0acd08602b9d29d86e4027e00e29a04c9029544",
+      "accessedAt": "2026-09-26T17:28:51.284Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/themas/auteursrecht-en-collectieve-rechten",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 35952,
+      "sha256": "fede62bf146f9edc8ac107260e5db6062de163034698be8236f017ec321300bf",
+      "accessedAt": "2026-09-26T17:28:51.490Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.mediafederatie.nl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 38,
+    "sha256": "5adb441027c8ce50686a8caa74565be2ab7b14daccd6e9db3653c828a62ab872",
+    "accessedAt": "2026-09-26T17:28:50.605Z",
+    "disallowed": [
+      "/api/"
+    ]
+  }
+}

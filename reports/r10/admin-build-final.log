@@ -1,0 +1,95 @@
+
+> literary-map@0.1.0 admin:build
+> npm run editorial:catalog && npm run build --workspace @probpera/admin
+
+
+> literary-map@0.1.0 editorial:catalog
+> node scripts/export-editorial-catalog.mjs
+
+Editorial catalog: 200 countries, 1686 writers.
+
+> @probpera/admin@0.1.0 build
+> node ../../scripts/export-editorial-catalog.mjs && node ../../scripts/export-interface-copy-catalog.mjs && next build --webpack && node ../../scripts/check-admin-client-secrets.mjs
+
+Editorial catalog: 200 countries, 1686 writers.
+Exported 1454 site-copy fields for the admin.
+▲ Next.js 16.3.3 (webpack)
+✓ Running next.config.ts took 63ms
+- Experiments (use with caution):
+  · serverActions
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
+
+  To migrate automatically, run:
+  npx @next/codemod@canary middleware-to-proxy .
+
+  Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 6.5s
+  Running TypeScript ...
+  Finished TypeScript in 6.6s ...
+  Collecting page data using 15 workers ...
+⚠ You are using an experimental edge runtime, the API might change.
+⚠ The Edge Runtime is deprecated. You can use the "nodejs" runtime instead. Learn more: https://nextjs.org/docs/messages/edge-runtime-deprecated
+  Generating static pages using 15 workers (0/8) ...
+  Generating static pages using 15 workers (2/8)
+  Generating static pages using 15 workers (4/8)
+  Generating static pages using 15 workers (6/8)
+✓ Generating static pages using 15 workers (8/8) in 1406ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /.well-known/security.txt
+├ ƒ /analytics
+├ ƒ /analytics/export
+├ ƒ /api/media/assets
+├ ƒ /api/media/upload
+├ ƒ /api/site-fonts/upload
+├ ƒ /articles
+├ ƒ /articles/[id]
+├ ƒ /articles/[id]/preview
+├ ƒ /articles/edit
+├ ƒ /articles/new
+├ ƒ /auth/callback
+├ ƒ /banners
+├ ƒ /categories
+├ ƒ /comments
+├ ƒ /dashboard
+├ ƒ /data-studio
+├ ƒ /editorial-database
+├ ƒ /health
+├ ƒ /history
+├ ƒ /homepage
+├ ƒ /library
+├ ƒ /library/dossiers
+├ ƒ /literary-news
+├ ƒ /login
+├ ƒ /media
+├ ƒ /menus
+├ ƒ /mfa
+├ ƒ /pages
+├ ƒ /pages/[id]
+├ ƒ /pages/[id]/preview
+├ ƒ /publication
+├ ƒ /reset-password
+├ ○ /robots.txt
+├ ƒ /seo
+├ ƒ /settings
+├ ƒ /site-copy
+├ ƒ /site-studio
+├ ƒ /site-studio/components
+├ ƒ /site-studio/fonts
+├ ƒ /site-studio/releases
+├ ƒ /site-studio/tokens
+└ ƒ /translations
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+Admin client static assets contain no server-secret identifiers or configured values.

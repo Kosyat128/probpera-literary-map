@@ -1,0 +1,8 @@
+{
+  "changedFiles": 575,
+  "totalBytes": 51710586,
+  "validJSONFiles": 362,
+  "suspiciousFiles": [],
+  "check": "limited well-known credential signatures; values never output",
+  "privatePaths": []
+}

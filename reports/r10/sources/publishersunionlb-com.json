@@ -1,0 +1,29 @@
+{
+  "sourceId": "publishersunionlb-com",
+  "name": "Syndicate of Publishers Union of LebanonBeir HassanAl Chadi Building, first floorPO Box",
+  "entryUrl": "https://www.publishersunionlb.com/",
+  "countryCodes": [
+    "LB"
+  ],
+  "coverageCountryCodes": [
+    "LB"
+  ],
+  "attemptedAt": "2026-09-26T17:28:41.254Z",
+  "requests": [
+    {
+      "url": "https://www.publishersunionlb.com/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 176,
+      "sha256": "bef72fd3e0a202d93452b237001efdce8296acd9e502b6847695c423a6317296",
+      "accessedAt": "2026-09-26T17:28:42.614Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.publishersunionlb.com/robots.txt",
+    "error": "http_500",
+    "disallowed": []
+  }
+}

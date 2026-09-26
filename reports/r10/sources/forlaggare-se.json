@@ -1,0 +1,43 @@
+{
+  "sourceId": "forlaggare-se",
+  "name": "Svenska FörläggareföreningenDrottninggatan",
+  "entryUrl": "https://www.forlaggare.se/",
+  "countryCodes": [
+    "SE"
+  ],
+  "coverageCountryCodes": [
+    "SE"
+  ],
+  "attemptedAt": "2026-09-26T17:28:26.087Z",
+  "requests": [
+    {
+      "url": "https://forlaggare.se/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 484994,
+      "sha256": "b5cc6cd4bdc867f5f26fc8503be8883b1b4937d818e675256aaefa1fd47448d5",
+      "accessedAt": "2026-09-26T17:28:28.337Z"
+    },
+    {
+      "url": "https://forlaggare.se/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1107,
+      "sha256": "9bd9e2f8629505ed041fd00743e69ca398f91c54a4034d2f257e5a723b11f473",
+      "accessedAt": "2026-09-26T17:28:28.929Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://forlaggare.se/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 114,
+    "sha256": "2a16321e174d15459ee66e37e2f0864e9a597334031ba2fe364f3d3c50a27cb5",
+    "accessedAt": "2026-09-26T17:28:27.146Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

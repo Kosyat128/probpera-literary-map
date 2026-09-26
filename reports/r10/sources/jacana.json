@@ -1,0 +1,249 @@
+{
+  "sourceId": "jacana",
+  "name": "Jacana Media",
+  "entryUrl": "https://jacana.co.za/",
+  "countryCodes": [
+    "ZA"
+  ],
+  "coverageCountryCodes": [
+    "ZA"
+  ],
+  "attemptedAt": "2026-09-26T17:29:50.713Z",
+  "requests": [
+    {
+      "url": "https://jacana.co.za/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 524576,
+      "sha256": "6880e82cc532532a7a234399c7b3f84cdc8d39712480766f82f6376110a2273c",
+      "accessedAt": "2026-09-26T17:29:53.941Z"
+    },
+    {
+      "url": "https://jacana.co.za/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml",
+      "bytes": 21457,
+      "sha256": "206dc9bdabf906549375fcd04eb46abbb16960b2bc73b8f9c984578cc00fe608",
+      "accessedAt": "2026-09-26T17:29:54.548Z"
+    },
+    {
+      "url": "https://jacana.co.za/test-title6446/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 193867,
+      "sha256": "29bfeab0186fd4bdfd32f501838019e337d40414b11cc63dd8a36b47768c00ba",
+      "accessedAt": "2026-09-26T17:29:56.324Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Feed includes a test title; profile held until content identity is repaired.",
+  "robots": {
+    "url": "https://jacana.co.za/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 518,
+    "sha256": "0f6f9a8a70cafe6368cd582774981dd83c3bb8d9442233ca94e149bb4f56d979",
+    "accessedAt": "2026-09-26T17:29:51.976Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/wp-content/uploads/wpo/wpo-plugins-tables-list.json"
+    ]
+  },
+  "endpoint": {
+    "id": "jacana",
+    "name": "Jacana Media",
+    "url": "https://jacana.co.za/feed/",
+    "format": "rss",
+    "language": "en-ZA",
+    "region": "africa",
+    "sourceFamilyId": "jacana",
+    "countryCodes": [
+      "ZA"
+    ],
+    "coverageCountryCodes": [
+      "ZA"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://jacana.co.za"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://jacana.co.za/test-title6446/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:56.343Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 4,
+  "literaryCandidateCount": 4,
+  "sample": {
+    "sourceId": "jacana",
+    "source": {
+      "name": "Jacana Media",
+      "url": "https://jacana.co.za/test-title6446/",
+      "language": "en-ZA"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "test title6446",
+    "publishedAt": "2023-04-16T21:16:41.000Z",
+    "description": "sdfgsdfg wert wert5452 The post test title6446 appeared first on Jacana.",
+    "discoveredAt": "2026-09-26T17:29:54.549Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://jacana.co.za/test-title6446/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 193867,
+      "sha256": "29bfeab0186fd4bdfd32f501838019e337d40414b11cc63dd8a36b47768c00ba",
+      "accessedAt": "2026-09-26T17:29:56.324Z",
+      "headline": "Independent thought needs independent publishers.",
+      "excerpt": "test title6446 sdfgsdfg wert wert5452 You might also be interested in: Episode 1: ‘Letters to my mother’ with Kumi Naidoo Podcast What does a person do when losing both his mother \u2013 a working-class woman \u2013 and his son \u2013 a famous rapper \u2013 through suicide? Activist Kumi Naidoo bares his soul in this podcast about his moving book, “Letters to my Mother: the making of a troublemaker”. Episode 2: Freed",
+      "publishedDates": [
+        {
+          "value": "2023-04-16T21:16:41+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2023-04-16T21:16:41+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2023-04-16T21:16:41+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://jacana.co.za/test-title6446/",
+      "language": "en-ZA",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:56.343Z",
+  "foundItems": [
+    {
+      "sourceId": "jacana",
+      "source": {
+        "name": "Jacana Media",
+        "url": "https://jacana.co.za/test-title6446/",
+        "language": "en-ZA"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "test title6446",
+      "publishedAt": "2023-04-16T21:16:41.000Z",
+      "description": "sdfgsdfg wert wert5452 The post test title6446 appeared first on Jacana.",
+      "discoveredAt": "2026-09-26T17:29:54.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jacana",
+      "source": {
+        "name": "Jacana Media",
+        "url": "https://jacana.co.za/episode-3-against-the-ruck-a-history-of-black-rugby/",
+        "language": "en-ZA"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Episode 3: ‘Against the Ruck’ \u2013 A History of Black Rugby",
+      "publishedAt": "2023-02-13T08:39:37.000Z",
+      "description": "‘Rugby, Resistance and Politics’, by historian Buntu Siwisa takes us back to the roots of black rugby back in the 1820s, and tells Charles Leonard why rugby is far more popular than football in black communities of the Eastern Cape. The post Episode 3: ‘Against the Ruck’ \u2013 A History of Black Rugby appeared first on Jacana.",
+      "discoveredAt": "2026-09-26T17:29:54.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jacana",
+      "source": {
+        "name": "Jacana Media",
+        "url": "https://jacana.co.za/episode-2-freedom-writer-mixtape/",
+        "language": "en-ZA"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Episode 2: Freedom Writer \u2013 Mixtape",
+      "publishedAt": "2023-02-13T08:29:51.000Z",
+      "description": "This podcast by journalist Charles Leonard is a celebration of the South African reporter, Juby Mayet, whose autobiography, “Freedom Writer \u2013 My Life and Times”, has just been published by Jacana Media. The post Episode 2: Freedom Writer \u2013 Mixtape appeared first on Jacana.",
+      "discoveredAt": "2026-09-26T17:29:54.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jacana",
+      "source": {
+        "name": "Jacana Media",
+        "url": "https://jacana.co.za/episode-1-letters-to-my-mother-with-kumi-naidoo-by-charles-leonard/",
+        "language": "en-ZA"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Episode 1: ‘Letters to my mother’ with Kumi Naidoo",
+      "publishedAt": "2023-02-13T07:52:16.000Z",
+      "description": "What does a person do when losing both his mother \u2013 a working-class woman \u2013 and his son \u2013 a famous rapper \u2013 through suicide? Activist Kumi Naidoo bares his soul in this podcast about his moving book, “Letters to my Mother: the making of a troublemaker”. The post Episode 1: ‘Letters to my mother’ with Kumi Naidoo appeared first on Jacana.",
+      "discoveredAt": "2026-09-26T17:29:54.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "206dc9bdabf906549375fcd04eb46abbb16960b2bc73b8f9c984578cc00fe608",
+  "technicalProbeStatus": "runtime_verified"
+}

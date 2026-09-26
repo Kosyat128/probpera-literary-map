@@ -1,0 +1,261 @@
+{
+  "sourceId": "camlibro-com-co",
+  "name": "Cámara Colombiana del LibroCalle",
+  "entryUrl": "https://www.camlibro.com.co/",
+  "countryCodes": [
+    "CO"
+  ],
+  "coverageCountryCodes": [
+    "CO"
+  ],
+  "attemptedAt": "2026-09-26T17:28:05.091Z",
+  "requests": [
+    {
+      "url": "https://camlibro.com.co/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 31364,
+      "sha256": "18d7c24eda2e53d2a24bd7ce913f4f3e0b3070cc9594e279a2ace37cbab4b0d7",
+      "accessedAt": "2026-09-26T17:21:47.075Z"
+    },
+    {
+      "url": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 181397,
+      "sha256": "623c7f773e91b573c9d52e6a24d315cd67788012d1fa670877bce62d64f4b772",
+      "accessedAt": "2026-09-26T17:28:09.154Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://camlibro.com.co/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 173,
+    "sha256": "9476cabcef1ea1eb190eba44a8136adbb73a00972e18db802e2466eba905c404",
+    "accessedAt": "2026-09-26T17:28:07.866Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:42.113Z",
+    "sourceDocumentSha256": "18d7c24eda2e53d2a24bd7ce913f4f3e0b3070cc9594e279a2ace37cbab4b0d7"
+  },
+  "endpoint": {
+    "id": "camlibro-com-co",
+    "name": "Cámara Colombiana del LibroCalle",
+    "url": "https://camlibro.com.co/feed/",
+    "format": "rss",
+    "language": "es-CO",
+    "region": "latin-america",
+    "sourceFamilyId": "camlibro-com-co",
+    "countryCodes": [
+      "CO"
+    ],
+    "coverageCountryCodes": [
+      "CO"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://camlibro.com.co"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:09.166Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 5,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "camlibro-com-co",
+    "source": {
+      "name": "Cámara Colombiana del LibroCalle",
+      "url": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+      "language": "es-CO"
+    },
+    "region": "latin-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Sharjah, Emirato de los Emiratos Árabes Unidos, será Invitado de Honor de la FILBo 2027",
+    "publishedAt": "2026-09-25T21:29:57.000Z",
+    "description": "Bogotá, 25 de septiembre de 2026. La Cámara Colombiana del Libro (CCL), Corferias y la Sharjah Book Authority (SBA) anunciaron oficialmente que, por primera vez, Sharjah, uno de los siete emiratos que conforman los Emiratos Árabes Unidos, será el Invitado de Honor de la 39.ª edición de la Feria Internacional del Libro de Bogotá, FILBo, […] La entrada Sharjah, Emirato de los Emiratos Árabes Unidos…",
+    "discoveredAt": "2026-09-26T17:28:07.869Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 181397,
+      "sha256": "623c7f773e91b573c9d52e6a24d315cd67788012d1fa670877bce62d64f4b772",
+      "accessedAt": "2026-09-26T17:28:09.154Z",
+      "headline": "Sharjah, Emirato de los Emiratos Árabes Unidos, será Invitado de Honor de la FILBo 2027",
+      "excerpt": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Merriweather%3A700%7CRoboto%3A400%7CRoboto%3A500%2C%2C500%2C700%2C500%2C&amp;display=swap\"> Sharjah, Emirato de los Emiratos Árabes Unidos, será Invitado de Honor de la FILBo 2027 - Cámara Colombiana del Libro La Cámara Acerca de la Cámara Acerca de la Cámara Junta Directiva 2025-2026 Equipo humano Afiliados Cómo afiliarse Direct",
+      "publishedDates": [
+        {
+          "value": "2026-09-25T21:29:57+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-25T21:29:57+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T21:29:57+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+      "language": "es-CO",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:09.166Z",
+  "foundItems": [
+    {
+      "sourceId": "camlibro-com-co",
+      "source": {
+        "name": "Cámara Colombiana del LibroCalle",
+        "url": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+        "language": "es-CO"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sharjah, Emirato de los Emiratos Árabes Unidos, será Invitado de Honor de la FILBo 2027",
+      "publishedAt": "2026-09-25T21:29:57.000Z",
+      "description": "Bogotá, 25 de septiembre de 2026. La Cámara Colombiana del Libro (CCL), Corferias y la Sharjah Book Authority (SBA) anunciaron oficialmente que, por primera vez, Sharjah, uno de los siete emiratos que conforman los Emiratos Árabes Unidos, será el Invitado de Honor de la 39.ª edición de la Feria Internacional del Libro de Bogotá, FILBo, […] La entrada Sharjah, Emirato de los Emiratos Árabes Unidos…",
+      "discoveredAt": "2026-09-26T17:28:07.869Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "camlibro-com-co",
+      "source": {
+        "name": "Cámara Colombiana del LibroCalle",
+        "url": "https://camlibro.com.co/fellowship-program-filbo-2027/",
+        "language": "es-CO"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fellowship Program, FILBo 2027",
+      "publishedAt": "2026-09-01T18:30:11.000Z",
+      "description": "La entrada Fellowship Program, FILBo 2027 se publicó primero en Cámara Colombiana del Libro.",
+      "discoveredAt": "2026-09-26T17:28:07.869Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "camlibro-com-co",
+      "source": {
+        "name": "Cámara Colombiana del LibroCalle",
+        "url": "https://camlibro.com.co/convocatoria-librerias-festival-lij/",
+        "language": "es-CO"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Convocatoria dirigida a librerías que deseen participar en el 20.º Festival de Libros para Niños y Jóvenes 2026",
+      "publishedAt": "2026-09-22T21:48:05.000Z",
+      "description": "Las librerías son una parte fundamental del ecosistema del libro y la lectura. Son espacios donde los libros encuentran a sus lectores, donde nacen conversaciones, recomendaciones y comunidades alrededor de las historias. Por eso, el Festival de Libros para Niños y Jóvenes 2026 invita a las librerías interesadas en sumarse a esta celebración de la […] La entrada Convocatoria dirigida a librerías …",
+      "discoveredAt": "2026-09-26T17:28:07.869Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "camlibro-com-co",
+      "source": {
+        "name": "Cámara Colombiana del LibroCalle",
+        "url": "https://camlibro.com.co/campana-antipirateria/",
+        "language": "es-CO"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nueva campaña de antipiratería de la CCL: Proteger un libro es proteger a quienes lo hacen posible",
+      "publishedAt": "2026-09-11T14:57:57.000Z",
+      "description": "La entrada Nueva campaña de antipiratería de la CCL: Proteger un libro es proteger a quienes lo hacen posible se publicó primero en Cámara Colombiana del Libro.",
+      "discoveredAt": "2026-09-26T17:28:07.869Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "camlibro-com-co",
+      "source": {
+        "name": "Cámara Colombiana del LibroCalle",
+        "url": "https://camlibro.com.co/seminario-de-actualizacion-practica-en-ia-para-la-industria-del-libro/",
+        "language": "es-CO"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seminario de actualización práctica en IA para la industria del libro",
+      "publishedAt": "2026-09-08T15:04:48.000Z",
+      "description": "La entrada Seminario de actualización práctica en IA para la industria del libro se publicó primero en Cámara Colombiana del Libro.",
+      "discoveredAt": "2026-09-26T17:28:07.869Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "18d7c24eda2e53d2a24bd7ce913f4f3e0b3070cc9594e279a2ace37cbab4b0d7"
+}

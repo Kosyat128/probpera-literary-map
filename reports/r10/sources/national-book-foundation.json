@@ -1,0 +1,366 @@
+{
+  "sourceId": "national-book-foundation",
+  "name": "National Book Foundation",
+  "entryUrl": "https://www.nationalbook.org/all-story/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:27:27.379Z",
+  "requests": [
+    {
+      "url": "https://www.nationalbook.org/all-story/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 106000,
+      "sha256": "b174cf5e73780070c078f10ca4900e140d8832f6485a0e593f158c2f2fae256e",
+      "accessedAt": "2026-09-26T17:20:03.142Z"
+    },
+    {
+      "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-translated-literature/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 118651,
+      "sha256": "760291910b1414412ca35961adfad719791d46d88800c922ab15cbe24ce46139",
+      "accessedAt": "2026-09-26T17:27:28.697Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.nationalbook.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 256,
+    "sha256": "c22e86a773b211a01db113610bd84004c27c13ff16564312abbc34475be79bad",
+    "accessedAt": "2026-09-26T17:27:28.005Z",
+    "disallowed": [
+      "/?s=",
+      "/page/*/?s=",
+      "/search/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:01.210Z",
+    "sourceDocumentSha256": "b174cf5e73780070c078f10ca4900e140d8832f6485a0e593f158c2f2fae256e"
+  },
+  "endpoint": {
+    "id": "national-book-foundation",
+    "name": "National Book Foundation",
+    "url": "https://www.nationalbook.org/all-story/",
+    "format": "html",
+    "language": "en-US",
+    "region": "north-america",
+    "sourceFamilyId": "national-book-foundation",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.nationalbook.org"
+    ],
+    "linkPattern": "^\\/(?!all-story\\/|national-book-awards\\/|other-prizes-honors\\/|lifetime-achievement\\/|programs\\/|public-programs\\/|events-calendar\\/|adventure\\/|donor-advised-funds\\/|leave-a-literary-legacy\\/|strategic-plan-|bridge-to-|donor-privacy-policy\\/|mission-history\\/|foundation-board-of-directors\\/|make-a-stock-donation\\/|contact\\/|about\\/|privacy-policy\\/|adventure-)[a-z0-9][a-z0-9-]+\\/?$",
+    "keywordPattern": "announc|award|honore|literary|championing books",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-translated-literature/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:28.702Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "national-book-foundation",
+    "source": {
+      "name": "National Book Foundation",
+      "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-translated-literature/",
+      "language": "en-US"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Longlist for the 2026 National Book Award for Translated Literature",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:28.025Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-translated-literature/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 118651,
+      "sha256": "760291910b1414412ca35961adfad719791d46d88800c922ab15cbe24ce46139",
+      "accessedAt": "2026-09-26T17:27:28.697Z",
+      "headline": "Longlist for the 2026 National Book Award for Translated Literature",
+      "excerpt": "Longlist for the 2026 National Book Award for Translated Literature - National Book Foundation <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-MFBKMX35\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> Longlist for the 2026 National Book Award for Translated Literature September 2026NewsThe ten contenders for the National Book Award for Translated LiteratureFind t",
+      "publishedDates": [
+        {
+          "value": "2026-09-15T15:52:02+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-15T15:52:02+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-15T15:52:02+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-translated-literature/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:28.702Z",
+  "foundItems": [
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-translated-literature/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlist for the 2026 National Book Award for Translated Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-fiction/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlist for the 2026 National Book Award for Fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-poetry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlist for the 2026 National Book Award for Poetry",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-nonfiction/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlist for the 2026 National Book Award for Nonfiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/2026-national-book-awards-longlist-for-young-peoples-literature/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 National Book Awards Longlist for Young People’s Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/national-book-foundation-announces-2026-fall-season-of-nbf-presents/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Book Foundation Announces 2026 Fall Season of NBF Presents",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/77th-national-book-awards/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "77th National Book Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/national-book-foundation-to-present-lifetime-achievement-award-to-salman-rushdie/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Book Foundation to Present Lifetime Achievement Award to Salman Rushdie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/national-book-foundation-to-present-lifetime-achievement-award-to-perri-klass/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Book Foundation to Present Lifetime Achievement Award to Perri Klass",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:28.025Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b174cf5e73780070c078f10ca4900e140d8832f6485a0e593f158c2f2fae256e"
+}

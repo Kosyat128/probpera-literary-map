@@ -1,0 +1,39 @@
+{
+  "sourceId": "kb-dk",
+  "name": "Royal Danish Library",
+  "entryUrl": "https://www.kb.dk/en/nb/",
+  "countryCodes": [
+    "DK"
+  ],
+  "coverageCountryCodes": [
+    "DK"
+  ],
+  "attemptedAt": "2026-09-26T17:29:05.744Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "unsafe_destination",
+  "robots": {
+    "url": "https://www.kb.dk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 1321,
+    "sha256": "8cccaddd593c72367f4ad4eda06262c0a40c58c3cbd20f973109c6f91d748605",
+    "accessedAt": "2026-09-26T17:29:06.080Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/user/logout/",
+      "/index.php/*"
+    ]
+  }
+}

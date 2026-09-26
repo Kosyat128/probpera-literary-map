@@ -1,3 +1,4 @@
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
@@ -11,7 +12,7 @@ import {
   projectPublishedR49nPackage, projectReviewedR49nPackage, r49nPackageAttestation,
 } from "./reviewed-r49n-package.mjs";
 
-const read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, "utf8"));
+const read = path => projectReviewedNativeArchiveTransport(path, projectReviewedR10Delta(path, readFileSync(path, "utf8")));
 const sha = text => createHash("sha256").update(text).digest("hex");
 const protectedPaths = [
   ".github/workflows/dispatch-premium-database-reconciliation.yml",

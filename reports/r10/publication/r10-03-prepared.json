@@ -1,0 +1,443 @@
+{
+  "batchId": "r10-03",
+  "at": "2026-09-26T17:56:46.907Z",
+  "recordSha256": "885b3e89628e12a75c4a057d582fe806b0f19cc2f6aee138d670ead5fc8fd0f0",
+  "counts": {
+    "prepared": 30,
+    "productionSelectorEligible": 30,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "sourceIds": [
+    "asymptote",
+    "bakwa-magazine",
+    "bnl-public-lu",
+    "bnrm-md",
+    "brittle-paper",
+    "electric-literature",
+    "eterna-cadencia",
+    "federacioneditores-org",
+    "gothenburg-book-fair",
+    "il-libraio",
+    "kiwi-verlag-de",
+    "nb-rs",
+    "nbuv-gov-ua",
+    "nkp-cz",
+    "norskpen-no",
+    "pen-deutschland-de",
+    "pen-dk",
+    "penclub-com-pl",
+    "publishers-ca",
+    "publishers-fi",
+    "publishers-org-nz",
+    "turkyaybir-org-tr",
+    "yasnaya-polyana"
+  ],
+  "sourceCountries": [
+    "AR",
+    "CA",
+    "CM",
+    "CZ",
+    "DE",
+    "DK",
+    "ES",
+    "FI",
+    "IT",
+    "LU",
+    "MD",
+    "NO",
+    "NZ",
+    "PL",
+    "RS",
+    "RU",
+    "SE",
+    "SG",
+    "TR",
+    "UA",
+    "US"
+  ],
+  "coverageCountries": [
+    "AF",
+    "AR",
+    "BY",
+    "CA",
+    "CM",
+    "CU",
+    "CZ",
+    "DE",
+    "DK",
+    "ES",
+    "FI",
+    "GB",
+    "GH",
+    "GT",
+    "IT",
+    "JP",
+    "LU",
+    "MD",
+    "NO",
+    "NZ",
+    "PL",
+    "RO",
+    "RS",
+    "RU",
+    "SE",
+    "TR",
+    "UA",
+    "US"
+  ],
+  "categories": [
+    "awards",
+    "festivals",
+    "heritage",
+    "publishing",
+    "releases"
+  ],
+  "public": false,
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 30
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "no id/eventKey/canonical URL match in reviewed.json or other prepared batches; distinct Gothenburg awards and distinct PEN events retained",
+    "schema": "production selectReviewed 30/30",
+    "dateScope": "news event/announcement dates within 60 days; precise future event dates explicitly sourced; original monthly issue release not promoted to invented exact release day"
+  },
+  "held": [
+    {
+      "researchIndex": 6,
+      "reason": "past festival preview; completion not verified"
+    },
+    {
+      "researchIndex": 7,
+      "reason": "past book-event preview; completion not verified"
+    },
+    {
+      "researchIndex": 21,
+      "reason": "September review of March2026 release; stale event"
+    },
+    {
+      "researchIndex": 22,
+      "reason": "forthcoming scholarly book; exact event date not established"
+    },
+    {
+      "researchIndex": 23,
+      "reason": "September article about spring2026 issue; stale event"
+    },
+    {
+      "researchIndex": 25,
+      "reason": "not used to subdivide Bakwa issue into extra cards"
+    },
+    {
+      "researchIndex": 27,
+      "reason": "review alone does not establish recent release date"
+    },
+    {
+      "researchIndex": 28,
+      "reason": "poster-only event; precise date absent from extracted text"
+    },
+    {
+      "researchIndex": 29,
+      "reason": "poster-only event; precise date absent from extracted text"
+    },
+    {
+      "researchIndex": 37,
+      "reason": "March2026 event; stale"
+    },
+    {
+      "researchIndex": 38,
+      "reason": "January2026 discovery; stale"
+    }
+  ],
+  "verifiedRequests": [
+    {
+      "id": "padura-liber-award-decision-2026",
+      "sourceId": "federacioneditores-org",
+      "url": "https://federacioneditores.org/leonardo-padura-premio-liber-2026-al-autor-hispanoamericano-mas-destacado/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:06.529Z",
+      "responseSha256": "b4b04972dd2d335c9d18884aaccd58d33a0a822a2c5a0592a39486b00f758154",
+      "responseBytes": 103242
+    },
+    {
+      "id": "turkey-childrens-editing-workshop-deadline-2026",
+      "sourceId": "turkyaybir-org-tr",
+      "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler-atolyesi-kayitlari-basladi/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:06.975Z",
+      "responseSha256": "164871b50e7be58438295d48ea9c3aa48a91e71f7d06baa174d2ca05ff233b6e",
+      "responseBytes": 105029
+    },
+    {
+      "id": "canadian-publisher-certification-expanded-2026",
+      "sourceId": "publishers-ca",
+      "url": "https://publishers.ca/certified-canadian-publisher-non-members/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:08.884Z",
+      "responseSha256": "07e25909eea1a5dfe8d2f619f517e9542648b5d57a92f1fb8d0e8f9457d50805",
+      "responseBytes": 307378
+    },
+    {
+      "id": "omnibird-panz-design-awards-2026",
+      "sourceId": "publishers-org-nz",
+      "url": "https://publishers.org.nz/book-for-bird-lovers-judges-best-designed-in-aotearoa/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:07.817Z",
+      "responseSha256": "fe8067df4986eb549652e40ee12bba9c2df24a6ed2db17c3d733cc48a30e17ce",
+      "responseBytes": 90740
+    },
+    {
+      "id": "scarlett-robinson-kean-mahy-illustration-prize-2026",
+      "sourceId": "publishers-org-nz",
+      "url": "https://publishers.org.nz/surprising-delightful-and-completely-refreshing-winner-of-2026-margaret-mahy-illustration-prize-announced/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:08.715Z",
+      "responseSha256": "b399074e379b3dce8cd4f2e4e68a1eebcf28c7542817b05030d61336417e301d",
+      "responseBytes": 86658
+    },
+    {
+      "id": "finland-publishers-first-half-sales-report-2026",
+      "sourceId": "publishers-fi",
+      "url": "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:08.264Z",
+      "responseSha256": "89d5d92d96d800a46da819966588b8423d7e5eb2f1e2c084587d951841260dc6",
+      "responseBytes": 102730
+    },
+    {
+      "id": "chisinau-cosbuc-bacovia-exhibition-2026",
+      "sourceId": "bnrm-md",
+      "url": "https://www.bnrm.md/?p=7522",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:09.158Z",
+      "responseSha256": "65b17cfbc5e788c9afdb5b9b6369bf07b16dd4ba689cec5b14ce889cf84ee987",
+      "responseBytes": 194881
+    },
+    {
+      "id": "dubravka-rebic-vladan-desnica-decision-2026",
+      "sourceId": "nb-rs",
+      "url": "https://nb.rs/nagrada-vladan-desnica-dodeljena-romanu-letu-je-kraj-dubravke-rebic/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:10.874Z",
+      "responseSha256": "4d2a210fefaa337e7b9f1a192eab3aba7feb12a47ab748e00f804c62e64c96ff",
+      "responseBytes": 276776
+    },
+    {
+      "id": "isbn-agencies-madrid-meeting-2026",
+      "sourceId": "nb-rs",
+      "url": "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:10.765Z",
+      "responseSha256": "904237edb53dc2e5c897b17a89edc003daa95cc67cca57632a9314d258e77042",
+      "responseBytes": 273856
+    },
+    {
+      "id": "vernadsky-world-literature-ukrainian-exhibition-2026",
+      "sourceId": "nbuv-gov-ua",
+      "url": "https://nbuv.gov.ua/node/7317",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:09.936Z",
+      "responseSha256": "030cfb172eb5e7c9b00cf2146b6aa30decb616ca5efb2c50d05f2ac2d6abf363",
+      "responseBytes": 46855
+    },
+    {
+      "id": "vernadsky-dnipro-digitised-periodicals-2026",
+      "sourceId": "nbuv-gov-ua",
+      "url": "https://nbuv.gov.ua/node/7320",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:09.905Z",
+      "responseSha256": "6b62b7089601e1ceec8b90922acc3d2e14c66c7a26ae02117ca5d7425d97b254",
+      "responseBytes": 61268
+    },
+    {
+      "id": "jose-ruben-zamora-hermann-kesten-decision-2026",
+      "sourceId": "pen-deutschland-de",
+      "url": "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:10.493Z",
+      "responseSha256": "12a238f5e75e7d0331bc198fda422c3308cc167eeabd573ef7d9ee3de5f5b57f",
+      "responseBytes": 220624
+    },
+    {
+      "id": "kamen-writers-in-exile-portraits-opening-2026",
+      "sourceId": "pen-deutschland-de",
+      "url": "https://pen-deutschland.de/weil-ich-beschlossen-habe-mich-nie-bezwingen-zu-lassen-2/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:10.511Z",
+      "responseSha256": "a95327250e6ed0c8ee8bab5124455c9406e5ee176e2cde2ab56bde85ecaa30db",
+      "responseBytes": 219017
+    },
+    {
+      "id": "pen-belarus-writers-frankfurt-panel-2026",
+      "sourceId": "pen-deutschland-de",
+      "url": "https://pen-deutschland.de/pen-veranstaltung-mit-friedensnobelpreistraeger-ales-bialatski-auf-der-frankfurter-buchmesse/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:11.070Z",
+      "responseSha256": "9fc310a24ed92f7a3c41d2a677f697d432db70c87fe60c2c55ab3f29e7a991ca",
+      "responseBytes": 216319
+    },
+    {
+      "id": "danish-pen-banned-books-opening-2026",
+      "sourceId": "pen-dk",
+      "url": "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:11.086Z",
+      "responseSha256": "199f24e0904250ff35f203e2cd8085015a33a77353ccd5d262aad33272d597d6",
+      "responseBytes": 129821
+    },
+    {
+      "id": "norwegian-pen-ossietzky-nominations-deadline-2026",
+      "sourceId": "norskpen-no",
+      "url": "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:12.639Z",
+      "responseSha256": "67e88d66946997159bf5299284f3cafb04111fed5ba660b20620701c65f38e1f",
+      "responseBytes": 163338
+    },
+    {
+      "id": "stanislaw-rosiek-polish-pen-editorial-award-2026",
+      "sourceId": "penclub-com-pl",
+      "url": "https://penclub.com.pl/2026/09/14/uroczystosc-wreczenia-nagrody-edytorskiej-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:11.823Z",
+      "responseSha256": "004d6570a413e167f20fc2cf82adacae6859577a5b32cfac3f8c629edeb5ff97",
+      "responseBytes": 80352
+    },
+    {
+      "id": "asymptote-hossaini-war-ends-translation-2026",
+      "sourceId": "asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/22/translation-tuesday-war-ends-in-the-wrong-place-by-s-asef-hossaini/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:11.925Z",
+      "responseSha256": "0243a854367b7f70c9e2a391c5b67c989cf7a4b9095dd92b0c7ff42d082670f2",
+      "responseBytes": 1456071
+    },
+    {
+      "id": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+      "sourceId": "brittle-paper",
+      "url": "https://brittlepaper.com/2026/09/ankara-press-acquires-cheryl-ntumys-romantasy-trilogy-the-seven-states/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:12.138Z",
+      "responseSha256": "e2bda999517c0179b6463aa85335f48a1acabaa24556236a7d12297c1de81e1a",
+      "responseBytes": 99216
+    },
+    {
+      "id": "bakwa-12-lost-manuscript-issue-2026",
+      "sourceId": "bakwa-magazine",
+      "url": "https://bakwamagazine.com/issues/bakwa-12/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:13.332Z",
+      "responseSha256": "fb17b889c7fb17c0c17d2af4a9156f113322d735ca995c480fd85cf07637c4f4",
+      "responseBytes": 73837
+    },
+    {
+      "id": "serapis-millay-anthology-presented-2026",
+      "sourceId": "eterna-cadencia",
+      "url": "https://eternacadencia.com.ar/blog/tuve-lo-que-a-mi-no-me-toca-recuperan-poemas-de-edna-st-vincent-millay",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:13.790Z",
+      "responseSha256": "6caecdafce94e40f721ee0ca3a915465cfd7830d8d9842b7b45193c541624cb7",
+      "responseBytes": 51958
+    },
+    {
+      "id": "nonna-gruffalo-italian-edition-2026",
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/bambini-e-ragazzi/nonna-gruffalo-serie-libri-1509151/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:14.595Z",
+      "responseSha256": "d6a629a6b9e799610388ad3dc10b027855272727632b2bfdb41464fd02cbd198",
+      "responseBytes": 87118
+    },
+    {
+      "id": "hiromi-kawakami-far-from-everywhere-2027",
+      "sourceId": "electric-literature",
+      "url": "https://electricliterature.com/exclusive-cover-reveal-of-far-from-everywhere-by-hiromi-kawakami-translated-by-allison-markin-powell/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:16.154Z",
+      "responseSha256": "42c45f30e089572014999b3b5c0be5e9fc54c58f6ee0ad068ca01472ecd88cf3",
+      "responseBytes": 151500
+    },
+    {
+      "id": "katarina-wennstam-crimetime-honorary-award-2026",
+      "sourceId": "gothenburg-book-fair",
+      "url": "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:14.603Z",
+      "responseSha256": "4321bab902d336b10a8b2107ce8084bc9c529b6d71129f292afd0fe05a9c9579",
+      "responseBytes": 214428
+    },
+    {
+      "id": "jamaica-kincaid-sjojungfrun-presentation-2026",
+      "sourceId": "gothenburg-book-fair",
+      "url": "https://bokmassan.se/2026/09/jamaica-kincaid-har-tagit-emot-sjojungfrun-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:14.503Z",
+      "responseSha256": "68b0922dc9a5441994ca511d86044c4bcda966cd07007dbaf68c5040ef8cde50",
+      "responseBytes": 211812
+    },
+    {
+      "id": "nicolas-lunabba-gothenburg-bildning-award-2026",
+      "sourceId": "gothenburg-book-fair",
+      "url": "https://bokmassan.se/2026/09/nicolas-lunabba-tilldelas-bokmassans-bildningspris-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:14.875Z",
+      "responseSha256": "539fda54c03f92def93386b241f75d4b6f21fa02998ed2ef258d60cb77c73551",
+      "responseBytes": 213897
+    },
+    {
+      "id": "shida-bazyar-wilhelm-raabe-presentation-2026",
+      "sourceId": "kiwi-verlag-de",
+      "url": "https://www.kiwi-verlag.de/magazin/ausgezeichnet/shida-bazyar-erhaelt-den-wilhelm-raabe-literaturpreis-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:15.166Z",
+      "responseSha256": "1e8d77dbefe6b88c94bcacbc61b10580ac7c5537e4c95230fd5b0c70de8ba7b6",
+      "responseBytes": 378070
+    },
+    {
+      "id": "pazderka-soukup-rudolf-medek-prize-2026",
+      "sourceId": "nkp-cz",
+      "url": "https://www.nkp.cz/o-knihovne/aktuality/cena-rudolfa-medka-pro-rok-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:15.804Z",
+      "responseSha256": "dd2582fd537fc453ac5a2cd275644628111973e532aaabe67218be4c36f630da",
+      "responseBytes": 81254
+    },
+    {
+      "id": "luxembourg-unfinished-peace-archive-exhibition-2026",
+      "sourceId": "bnl-public-lu",
+      "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:15.829Z",
+      "responseSha256": "5ae0e0674865531957bc154db391fd9b54df0298b4b1168a6099f6a2fac45c78",
+      "responseBytes": 134418
+    },
+    {
+      "id": "yasnaya-polyana-kuzminskaya-exhibition-2026",
+      "sourceId": "yasnaya-polyana",
+      "url": "https://ypmuseum.ru/event/2004",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:50:16.126Z",
+      "responseSha256": "1f9a3bdb01c9e7bf0fca85cd2f3a66bfdd7ea69b0287f74440fa183d75fb4829",
+      "responseBytes": 36887
+    }
+  ],
+  "typographyCheck": {
+    "checkedAt": "2026-09-26T18:24:41.489Z",
+    "normalizer": "scripts/lib/short-hyphens.mjs normalizeShortHyphens",
+    "scope": "New authored title/summary RU/EN only",
+    "changedFields": 10,
+    "recordSha256": "885b3e89628e12a75c4a057d582fe806b0f19cc2f6aee138d670ead5fc8fd0f0",
+    "evidenceSemanticSha256": "741a033cd4d7f683d80644fd0f2143821f1a53f0b9afd622f6c5cbd7d07b9f9c",
+    "sourceEvidencePreserved": true,
+    "serialization": "Unicode dash and HTML-entity escapes preserve parsed source values",
+    "sourceCountryCorrection": {
+      "id": "ankara-press-cheryl-ntumy-seven-states-acquisition-2026",
+      "value": [],
+      "reason": "Source registry country unknown"
+    }
+  }
+}

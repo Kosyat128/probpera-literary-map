@@ -1,0 +1,309 @@
+{
+  "sourceId": "penbelarus-org",
+  "name": "Belarusian PEN",
+  "entryUrl": "https://penbelarus.org/en/",
+  "countryCodes": [
+    "BY"
+  ],
+  "coverageCountryCodes": [
+    "BY"
+  ],
+  "attemptedAt": "2026-09-26T17:29:22.637Z",
+  "requests": [
+    {
+      "url": "https://penbelarus.org/en/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 165687,
+      "sha256": "93f319b8e19caafe9a356088299ddfb475f278292c3cc9c096c4f3de51af5895",
+      "accessedAt": "2026-09-26T17:23:16.363Z"
+    },
+    {
+      "url": "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 140752,
+      "sha256": "144a4494107d842aef3222d71305bfa9649865700d3ebc36528665e942b78932",
+      "accessedAt": "2026-09-26T17:29:23.953Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://penbelarus.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 958,
+    "sha256": "56e0bedd69543e71d21735554b6621191d4d92df88dd305f24e41a153247902c",
+    "accessedAt": "2026-09-26T17:29:22.940Z",
+    "disallowed": [
+      "/cgi-bin",
+      "/wp-admin/",
+      "/wp/",
+      "/?",
+      "*?s=",
+      "*&s=",
+      "*?action=",
+      "/search",
+      "/author/",
+      "*/embed",
+      "*/page/",
+      "*/xmlrpc.php",
+      "*utm*=",
+      "*action*=",
+      "*openstat=",
+      "/wp-"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:15.711Z",
+    "sourceDocumentSha256": "93f319b8e19caafe9a356088299ddfb475f278292c3cc9c096c4f3de51af5895"
+  },
+  "endpoint": {
+    "id": "penbelarus-org",
+    "name": "Belarusian PEN",
+    "url": "https://penbelarus.org/en/",
+    "format": "html",
+    "language": "en-US",
+    "region": "europe",
+    "sourceFamilyId": "penbelarus-org",
+    "countryCodes": [
+      "BY"
+    ],
+    "coverageCountryCodes": [
+      "BY"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://penbelarus.org"
+    ],
+    "linkPattern": "^/en/2026/03/04/[^/]+/?$|^/en/[^/]+/?$|^/en/2026/07/31/[^/]+/?$|^/en/2026/09/17/[^/]+/?$|^/en/2026/03/03/[^/]+/?$|^/en/2026/09/16/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html"
+    ],
+    "verifiedAt": "2026-09-26T17:29:23.958Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 8,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "penbelarus-org",
+    "source": {
+      "name": "Belarusian PEN",
+      "url": "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html",
+      "language": "en-US"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "On February 27, 2026, the KGB designated PEN Belarus an “extremist formation”",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:22.957Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 140752,
+      "sha256": "144a4494107d842aef3222d71305bfa9649865700d3ebc36528665e942b78932",
+      "accessedAt": "2026-09-26T17:29:23.953Z",
+      "headline": "PEN Belarus Designated an “Extremist Formation”!",
+      "excerpt": "NewsCultural rightsPEN Belarus Designated an “Extremist Formation”! Cultural rights PEN Belarus Designated an “Extremist Formation”! Last update: 4 March 2026 The Belarusian authorities continue the systematic destruction of the independent cultural space. On 16 February 2026, the website of PEN Belarus and all of our social media accounts (Instagram, Facebook, X, YouTube and others) were designat",
+      "publishedDates": [
+        {
+          "value": "2026-03-04T16:07:50+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:23.958Z",
+  "foundItems": [
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "On February 27, 2026, the KGB designated PEN Belarus an “extremist formation”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:22.957Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/07/31/manitoryng-parushennyau-kulturnyh-pravou-i-pravou-chalaveka-u-dachynenni-da-dzeyachau-kultury-belarus-studzen-%e2%80%93-cherven-2026-goda.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Monitoring of violations of cultural rights and human rights of cultural figures. Belarus, January \u2013 June 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:22.957Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/09/17/hronika-parushennyau-pravou-chalaveka-u-sfery-kultury-1-15-verasnya-2026-goda.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chronicle of human rights violations in the sphere of culture (1-15 September 2026)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:22.957Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/03/03/prynty-z-vyyavami-kaczyaryny-andreevaj-vaczlava-areshki-i-dzmitryya-galavacha.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prints featuring Kaciaryna Andrejeva, Vacłaŭ Areška and Dzmitryj Hałavač",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:22.957Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/09/16/troe-lyudzej-slova-na-voli.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Three Imprisoned Writers Are Free!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:22.957Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/padtrymacz-pen.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Support PEN Belarus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:22.957Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/deklaracy-manfesty.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Manifestos & Declarations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:22.957Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "93f319b8e19caafe9a356088299ddfb475f278292c3cc9c096c4f3de51af5895"
+}

@@ -1,0 +1,20 @@
+{
+  "sourceId": "pencanada-ca",
+  "name": "PEN Canada",
+  "entryUrl": "https://www.pencanada.ca/",
+  "countryCodes": [
+    "CA"
+  ],
+  "coverageCountryCodes": [
+    "CA"
+  ],
+  "attemptedAt": "2026-09-26T17:29:24.196Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "getaddrinfo ENOTFOUND www.pencanada.ca",
+  "robots": {
+    "url": "https://www.pencanada.ca/robots.txt",
+    "error": "getaddrinfo ENOTFOUND www.pencanada.ca",
+    "disallowed": []
+  }
+}

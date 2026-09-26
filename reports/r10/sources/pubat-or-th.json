@@ -1,0 +1,373 @@
+{
+  "sourceId": "pubat-or-th",
+  "name": "Publishers &. Booksellers Association of Thailand",
+  "entryUrl": "https://www.pubat.or.th/",
+  "countryCodes": [
+    "TH"
+  ],
+  "coverageCountryCodes": [
+    "TH"
+  ],
+  "attemptedAt": "2026-09-26T17:28:18.453Z",
+  "requests": [
+    {
+      "url": "https://pubat.or.th/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 267413,
+      "sha256": "0f4fb81ca5b40654edb47ce3d6bcb0d7ed98da671fce328b3fdf7a8138c94934",
+      "accessedAt": "2026-09-26T17:22:10.868Z"
+    },
+    {
+      "url": "https://pubat.or.th/100-annual-book-and-cover-design-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 142701,
+      "sha256": "537e8ae7ae9ce959df89c41c2ec0fcad0f30e9af79d8a9e9ff4623517df9ac3f",
+      "accessedAt": "2026-09-26T17:28:25.012Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://pubat.or.th/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 112,
+    "sha256": "8a9045009ad31131c8acabea0174089dafe9dc0a01a5d3d65310bd71ded8131c",
+    "accessedAt": "2026-09-26T17:28:22.583Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:01.668Z",
+    "sourceDocumentSha256": "0f4fb81ca5b40654edb47ce3d6bcb0d7ed98da671fce328b3fdf7a8138c94934"
+  },
+  "endpoint": {
+    "id": "pubat-or-th",
+    "name": "Publishers &. Booksellers Association of Thailand",
+    "url": "https://pubat.or.th/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "asia",
+    "sourceFamilyId": "pubat-or-th",
+    "countryCodes": [
+      "TH"
+    ],
+    "coverageCountryCodes": [
+      "TH"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pubat.or.th"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pubat.or.th/100-annual-book-and-cover-design-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:25.027Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "pubat-or-th",
+    "source": {
+      "name": "Publishers &. Booksellers Association of Thailand",
+      "url": "https://pubat.or.th/100-annual-book-and-cover-design-2026/",
+      "language": "en-US"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "100 ANNUAL BOOK AND COVER DESIGN 2026",
+    "publishedAt": "2026-08-29T16:18:46.000Z",
+    "description": "ประกาศรายชื่อผลงานที่ได้รับการคัดเลือก เพื่อจัดแสดงนิทรรศการในงานมหกรรมหนังสือระดับชาติ ครั้งที่ 31 *รายชื่อผลงานไม่เรียงตามลำดับคะแนน ข้อมูลแนวคิดการออกแบบผลงาน Click ลำดับที่ ชื่อหนังสือ ประเภท ผู้ออกแบบปก ผู้แต่ง สำนักพิมพ์ ช่องทางการติดต่อสำนักพิมพ์ ช่องทางการติดต่อผู้ออกแบบปก 10 ปกหนังสือที่ได้รับคะแนนสูงสุด 1 บ้านตอไม้กับเจ้าแมวน้อย หนังสือเด็ก / Children’s กฤษณะ กาญจนาภา และ วชิราวรรณ ทับเ…",
+    "discoveredAt": "2026-09-26T17:28:22.607Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pubat.or.th/100-annual-book-and-cover-design-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 142701,
+      "sha256": "537e8ae7ae9ce959df89c41c2ec0fcad0f30e9af79d8a9e9ff4623517df9ac3f",
+      "accessedAt": "2026-09-26T17:28:25.012Z",
+      "headline": "100 ANNUAL BOOK AND COVER DESIGN 2026 \u2013 สมาคมผู้จัดพิมพ์และผู้จำหน่ายหนังสือแห่งประเทศไทย",
+      "excerpt": "ประกาศรายชื่อผลงานที่ได้รับการคัดเลือก เพื่อจัดแสดงนิทรรศการในงานมหกรรมหนังสือระดับชาติ ครั้งที่ 31*รายชื่อผลงานไม่เรียงตามลำดับคะแนนข้อมูลแนวคิดการออกแบบผลงาน Clickลำดับที่ชื่อหนังสือประเภทผู้ออกแบบปกผู้แต่งสำนักพิมพ์ช่องทางการติดต่อสำนักพิมพ์ช่องทางการติดต่อผู้ออกแบบปก10 ปกหนังสือที่ได้รับคะแนนสูงสุด1บ้านตอไม้กับเจ้าแมวน้อยหนังสือเด็ก / Children’sกฤษณะ กาญจนาภา และ วชิราวรรณ ทับเสือกฤษณะ กาญจนาภ",
+      "publishedDates": [],
+      "canonical": "https://pubat.or.th/100-annual-book-and-cover-design-2026/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:25.027Z",
+  "foundItems": [
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/100-annual-book-and-cover-design-2026/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "100 ANNUAL BOOK AND COVER DESIGN 2026",
+      "publishedAt": "2026-08-29T16:18:46.000Z",
+      "description": "ประกาศรายชื่อผลงานที่ได้รับการคัดเลือก เพื่อจัดแสดงนิทรรศการในงานมหกรรมหนังสือระดับชาติ ครั้งที่ 31 *รายชื่อผลงานไม่เรียงตามลำดับคะแนน ข้อมูลแนวคิดการออกแบบผลงาน Click ลำดับที่ ชื่อหนังสือ ประเภท ผู้ออกแบบปก ผู้แต่ง สำนักพิมพ์ ช่องทางการติดต่อสำนักพิมพ์ ช่องทางการติดต่อผู้ออกแบบปก 10 ปกหนังสือที่ได้รับคะแนนสูงสุด 1 บ้านตอไม้กับเจ้าแมวน้อย หนังสือเด็ก / Children’s กฤษณะ กาญจนาภา และ วชิราวรรณ ทับเ…",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/%e0%b8%aa%e0%b8%a3%e0%b8%b8%e0%b8%9b%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%82%e0%b9%89%e0%b8%b2%e0%b8%a3%e0%b9%88%e0%b8%a7%e0%b8%a1%e0%b8%87%e0%b8%b2%e0%b8%99-seoul-international-book-fair-2026/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "สรุปการเข้าร่วมงาน Seoul International Book Fair 2026",
+      "publishedAt": "2026-07-07T04:14:31.000Z",
+      "description": "สมาคมผู้จัดพิมพ์และผู้จำหน่ายหนังสือแห่งประเทศไทย เข้าร่วมงาน Seoul International Book Fair 2026 ระหว่างวันที่ 24 \u2013 28 มิถุนายน 2568 ณ COEX Halls A&B1 ภายใต้ธีม “𝑯𝒐𝒎𝒐 𝒅𝒖𝒅𝒖𝒓𝒊: A New Name for the Questioning Human” เปรียบมนุษย์เหมือนช่างตีเหล็กในตำนานที่ไม่หนีจากไฟ แต่ใช้ปัญญาเผชิญและสร้างสิ่งใหม่จากมัน ในยุคที่ AI สามารถให้คำตอบได้อย่างรวดเร็ว มนุษย์ยังมีความแตกต่างสำคัญ คือความสามารถในการตั้งคำถา…",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/%e0%b8%aa%e0%b8%a3%e0%b8%b8%e0%b8%9b%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b8%88%e0%b8%b1%e0%b8%94%e0%b8%87%e0%b8%b2%e0%b8%99-asian-rights-fair-2026-kuala-lumpur/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "สรุปการจัดงาน Asian Rights Fair 2026 KUALA LUMPUR",
+      "publishedAt": "2026-07-07T02:55:37.000Z",
+      "description": "สมาคมผู้จัดพิมพ์และผู้จำหน่ายหนังสือแห่งประเทศไทย (PUBAT) ได้เข้าร่วมงาน Asian Rights Fair 2026 (ARF-KL2026) ในฐานะ Strategic Partner ซึ่งจัดขึ้นระหว่างวันที่ 29 \u2013 31 พฤษภาคม 2569 ณ ห้อง Redang ชั้น 3 World Trade Centre Kuala Lumpur ควบคู่กับงานแสดงหนังสือนานาชาติมาเลเซีย (Kuala Lumpur International Book Fair 2026) การเดินทางไปเจรจาและขยายตลาดลิขสิทธิ์หนังสือในครั้งนี้ สมาคมผู้จัดพิมพ์ฯ ได้รับการ…",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/taipei-international-book-exhibition/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "สรุปการเข้าร่วมงาน Taipei International Book Exhibition 2026",
+      "publishedAt": "2026-02-18T02:30:41.000Z",
+      "description": "สมาคมผู้จัดพิมพ์และผู้จำหน่ายหนังสือแห่งประเทศไทย ร่วมกับกรมส่งเสริมการค้าระหว่างประเทศ และสำนักงานส่งเสริมการค้าในต่างประเทศ เข้าร่วมงาน Taipei International Book Exhibition 2026 ระหว่างวันที่ 3 \u2013 8 กุมภาพันธ์ 2569 ณ อาคาร Taipei World Trade Center ฮอลล์ 1 ภายใต้ธีม “Reading is Amazing” โดยในปีนี้มีประเทศไทยเป็นแขกเกียรติยศ (Guest of Honor) ธีมของคูหาประเทศไทยคือ CreaTHAIvity ครีเอตไทยวิถี ในปีน…",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/%e0%b8%aa%e0%b8%a3%e0%b8%b8%e0%b8%9b%e0%b8%81%e0%b8%b2%e0%b8%a3%e0%b9%80%e0%b8%82%e0%b9%89%e0%b8%b2%e0%b8%a3%e0%b9%88%e0%b8%a7%e0%b8%a1%e0%b8%87%e0%b8%b2%e0%b8%99-the-35th-international-publishers-con/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "สรุปการเข้าร่วมงาน The 35th International Publishers Congress",
+      "publishedAt": "2026-07-16T07:20:32.000Z",
+      "description": "แลกเปลี่ยนวิสัยทัศน์ ขับเคลื่อนอุตสาหกรรมสิ่งพิมพ์โลก ในงาน The 35th International Publishers Congress ณ กรุงกัวลาลัมเปอร์ ประเทศมาเลเซีย สมาคมผู้จัดพิมพ์และผู้จำหน่ายหนังสือแห่งประเทศไทย (PUBAT) เข้าร่วมการประชุม The 35th International Publishers Congress ระหว่างวันที่ 5\u20139 กรกฎาคม 2569 ณ กรุงกัวลาลัมเปอร์ ประเทศมาเลเซีย ร่วมกับผู้แทนจากกว่า 40 ประเทศ เพื่อแลกเปลี่ยนมุมมองและกำหนดทิศทางอุตสาหกรรม…",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/member-list-2569/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "รายชื่อสมาชิกที่มีสิทธิ์เข้าร่วม \u2013 2569",
+      "publishedAt": "2026-05-25T15:55:21.000Z",
+      "description": "ลำดับ ประเภทสมาชิก ชื่อหน่วยงาน 1 สามัญ 113 2 สามัญ 1168 3 สามัญ 13357 4 สามัญ 10 มิลลิเมตร 5 สามัญ 55 บุ๊คสตอล 6 สามัญ กนกบรรณสาร 7 สามัญ กรองอักษร พับลิชชิ่ง 8 สามัญ กรู๊ฟ พับลิชชิ่ง 9 สามัญ การท่องเที่ยวแห่งประเทศไทย (อนุสาร อสท.) 10 สามัญ กาลครั้งหนึ่งสำนักพิมพ์ 11 สามัญ กำมะหยี่ 12 สามัญ กิฟท์ บุ๊ค พับลิชชิ่ง 13 สามัญ กุลภัทร์ บุ๊คส์ 14 สามัญ กู๊ด คอนเทนส์ […]",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/gen-meeting-2569/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "การประชุมใหญ่สามัญประจำปี 2569 และการเลือกตั้งคณะกรรมการสมาคมผู้จัดพิมพ์ฯ",
+      "publishedAt": "2026-05-25T15:44:55.000Z",
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/%e0%b8%a3%e0%b8%b2%e0%b8%a2%e0%b8%8a%e0%b8%b7%e0%b9%88%e0%b8%ad%e0%b8%aa%e0%b8%a1%e0%b8%b2%e0%b8%8a%e0%b8%b4%e0%b8%81%e0%b9%83%e0%b8%ab%e0%b8%a1%e0%b9%88-2569/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "รายชื่อสมาชิกใหม่ 2569",
+      "publishedAt": "2026-04-20T16:00:07.000Z",
+      "description": "รายชื่อสมาชิกใหม่ที่ผ่านการพิจารณา ผลการพิจารณาสมาชิก ประจำเดือน มกราคม 2569บริษัท/สำนักพิมพ์ผ่านการพิจารณาสมาชิก จำนวน 6 ราย ลำดับ ประเภทสมาชิก ชื่อบริษัท/สำนักพิมพ์ 1 สามัญ บริษัท พริ้นท์เอ็มอัพ จำกัด 2 สามัญ บริษัท สแนปเอก็กซ์ จำกัด 3 สามัญ สำนักพิมพ์ขีดเขียนอะคาเดมี 4 สามัญ (ร้านหนังสือ) บุ๊ค เอเวอร์รี่ติง 5 สมทบ บริษัท คิดาริสตูดิโอ (ไทยแลนด์) จำกัด 6 สมทบ บริษัท ซากุระ โปรดัคส์ (ไทยแลนด์) จ…",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/statistics2569/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ข้อมูลสถิติงานหนังสือปี 2569",
+      "publishedAt": "2026-04-09T01:56:09.000Z",
+      "description": "งานสัปดาห์หนังสือแห่งชาติ ครั้งที่ 54 และสัปดาห์หนังสือนานาชาติ ครั้งที่ 24 งานวิจัยพฤติกรรมการอ่านและการซื้อหนังสือของคนไทย ปี 2568 REPORT INFOGRAPHIC \u2013 BOOK STORE",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "source": {
+        "name": "Publishers &. Booksellers Association of Thailand",
+        "url": "https://pubat.or.th/%e0%b8%9c%e0%b8%99%e0%b8%b6%e0%b8%81%e0%b8%84%e0%b8%a7%e0%b8%b2%e0%b8%a1%e0%b8%a3%e0%b9%88%e0%b8%a7%e0%b8%a1%e0%b8%a1%e0%b8%b7%e0%b8%ad%e0%b8%aa%e0%b9%88%e0%b8%87%e0%b9%80%e0%b8%aa%e0%b8%a3%e0%b8%b4/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ผนึกความร่วมมือส่งเสริมการอ่าน มอบหนังสือสร้างโอกาสการเรียนรู้แก่ผู้ต้องขัง ภายใต้โครงการ “อ่านหนังสือลดวันต้องโทษ” (Read for Release) ผ่านการอ่านหนังสือประกอบการเลื่อนชั้น",
+      "publishedAt": "2026-02-27T03:00:11.000Z",
+      "description": "เมื่อวันที่ 26 กุมภาพันธ์ 2569นายมณฑล ประภากรเกียรติ และ นายคธาวุฒิ เกนุ้ย กรรมการสมาคมผู้จัดพิมพ์และผู้จำหน่ายหนังสือแห่งประเทศไทย, นายสกล ไม้เกตุ ผู้ช่วยผู้อำนวยการฝ่ายไปรษณีย์นครหลวง 1 บริษัท ไปรษณีย์ไทย จำกัด, นางวาสนา ธิติธรรมพฤกษ์ ผู้อำนวยการส่วนพัฒนาผู้ต้องขัง ทัณฑสถานหญิงกลาง และนางเบญจมาศ ศรีประวัติ ผู้อำนวยการกลุ่มงานพัฒนาระบบการพัฒนาพฤตินิสัย กองพัฒนาพฤตินิสัย กรมราชทัณฑ์ ร่วมพิธีมอบหน…",
+      "discoveredAt": "2026-09-26T17:28:22.607Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0f4fb81ca5b40654edb47ce3d6bcb0d7ed98da671fce328b3fdf7a8138c94934"
+}

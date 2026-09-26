@@ -1,0 +1,15 @@
+# Literary news delivery overview and operator decisions
+
+Implemented on the existing `/literary-news` admin page. The existing `requireStaff()` / MFA gate precedes every private read. Owner/admin operator Server Actions repeat that gate and call the session-authenticated `operate_literary_news_runtime` RPC. There is no provider send, service-role secret, new destination creation, or mode-enable control in this UI.
+
+- Overview reads only `admin_audit_log` rows with `entity_type = literary_news_runtime`, descending ID keyset pages, latest per key. It scans at most 10,000 audit rows / 8 MiB. A cap, invalid row or partial failure is explicitly incomplete; no denominator is derived from today's feed.
+- Scheduler finish, acknowledged delivery, destination mode/pause, retained historical jobs, oldest backlog, exact prepared Telegram/VK text, and channel-bound remote links are separate fields. Neither heartbeat counts nor an unproven `sent_current` label can manufacture delivery.
+- Pause/resume retains mode, canary scope, history approvals and rights. The destination lock matches the dispatch-start lock. A request already started may finish.
+- Ambiguous-result decisions: bind a positive remote ID to its exact numeric-destination proof URL after operator verification; confirm an attempt definitely failed with evidence/reason; or explicitly close. Active requests cannot be resolved. Existing remote IDs and acknowledgements are retained. Binding means correction pending, not a new acknowledgement.
+- Every decision requires the displayed audit ID as CAS version. The SQL helper is the existing `public.is_staff(owner/admin)` plus `auth.uid()`. As in existing migrations, an enrolled verified MFA factor requires `auth.jwt().aal = aal2`. Anonymous execution is revoked.
+
+Validation: 67 focused Vitest cases passed across the admin overview/input/queue and Nobel/Worker suites at the frozen source checkpoint; both public and admin TypeScript checks passed. `operator-sql-check.json` records eight groups of behavioural checks against the actual migration in isolated PGlite. This includes staff/MFA denial, stale versions, two competing decisions, pause preserving rights, positive remote IDs/proof URLs, missing status, and inflight/lease refusal. This was not a remote database and not a test of separate PostgreSQL processes.
+
+No authenticated live admin session, live database migration, save, delivery, or production verification was performed. Native Next Server Action origin/CSRF handling follows the existing admin stack; it was not exercised through a logged-in browser. The missing-schema/runtime UI remains honest and the RPC returns a safe unavailable message.
+
+Implementation: `apps/admin/lib/literary-news-runtime-overview.ts`, `apps/admin/lib/literary-news-operator-input.ts`, `apps/admin/components/LiteraryNewsDeliveryOverview.tsx`, `apps/admin/components/LiteraryNewsRuntimeControls.tsx`, `apps/admin/app/(dashboard)/literary-news/page.tsx`, `apps/admin/app/(dashboard)/literary-news/actions.ts`, appended operator function in `supabase/migrations/20260926_literary_news_runtime_cas.sql`.

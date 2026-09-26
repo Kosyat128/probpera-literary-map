@@ -1,4 +1,5 @@
 import type { Country } from "./types";
+import { applyWriterDatePatches } from "./writerDatePatches";
 import { generatedWriterDraftCount, mergeGeneratedWriters } from "./generated";
 import { mergeWriterPortraits } from "./generated/writerPortraits";
 import { mergeNobelLaureates } from "./nobelLaureatesSupplement";
@@ -520,7 +521,7 @@ export const editorialCatalogCountries: Country[] =
 /** Public globe/writer corpus after writer-only corrections and fact review. */
 export const countries: Country[] = applyCmsWriterProfileOverrides(
   applyCmsCountryProfileOverrides(
-    editorialCatalogCountries
+    applyWriterDatePatches(editorialCatalogCountries).countries
   )
 );
 export { generatedWriterDraftCount };

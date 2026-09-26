@@ -1,0 +1,386 @@
+{
+  "sourceId": "brittle-paper",
+  "name": "Brittle Paper",
+  "entryUrl": "https://brittlepaper.com/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "NG",
+    "ZA",
+    "KE",
+    "GH"
+  ],
+  "attemptedAt": "2026-09-26T17:29:46.805Z",
+  "requests": [
+    {
+      "url": "https://brittlepaper.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97784,
+      "sha256": "0120092c7b8ba6d99e1dae2088a0f3d9d268d4f1399ae134537629e4cd81af00",
+      "accessedAt": "2026-09-26T17:29:48.036Z"
+    },
+    {
+      "url": "https://brittlepaper.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 14930,
+      "sha256": "2f0713a16a3cb7d3d8d39065a33e034d08e49f0e82fd59030a261001eac9200f",
+      "accessedAt": "2026-09-26T17:29:48.265Z"
+    },
+    {
+      "url": "https://brittlepaper.com/2026/09/18-year-old-nigerian-american-poet-daniel-umemezie-becomes-the-us-2026-national-youth-poet-laureate/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 100667,
+      "sha256": "84878c30b303b194cece8ccc4122eeef9e0d959f6fe6228292d59d1b50e0f378",
+      "accessedAt": "2026-09-26T17:29:48.512Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://brittlepaper.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 261,
+    "sha256": "025fc4078ad788a369e47dea14c467a8954a327bb3f65e3d2e2192334b8dd567",
+    "accessedAt": "2026-09-26T17:29:47.625Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "brittle-paper",
+    "name": "Brittle Paper",
+    "url": "https://brittlepaper.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "north-america",
+    "sourceFamilyId": "brittle-paper",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "NG",
+      "ZA",
+      "KE",
+      "GH"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://brittlepaper.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://brittlepaper.com/2026/09/18-year-old-nigerian-american-poet-daniel-umemezie-becomes-the-us-2026-national-youth-poet-laureate/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:48.521Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "brittle-paper",
+    "source": {
+      "name": "Brittle Paper",
+      "url": "https://brittlepaper.com/2026/09/18-year-old-nigerian-american-poet-daniel-umemezie-becomes-the-us-2026-national-youth-poet-laureate/",
+      "language": "en-US"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "18-Year-Old Nigerian-American Poet Daniel Umemezie Becomes the US 2026 National Youth Poet Laureate",
+    "publishedAt": "2026-09-24T16:12:49.000Z",
+    "description": "At 18, Nigerian-American poet Daniel Somtochukwu Umemezie has become the tenth National Youth Poet Laureate of the United States, joining a decade-long tradition of young poets using their work to explore identity, community, and social change. Umemezie, from Cedar Falls, Iowa, was selected in April 2026 from a national network of more than 120 local […]",
+    "discoveredAt": "2026-09-26T17:29:48.266Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://brittlepaper.com/2026/09/18-year-old-nigerian-american-poet-daniel-umemezie-becomes-the-us-2026-national-youth-poet-laureate/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 100667,
+      "sha256": "84878c30b303b194cece8ccc4122eeef9e0d959f6fe6228292d59d1b50e0f378",
+      "accessedAt": "2026-09-26T17:29:48.512Z",
+      "headline": "18-Year-Old Nigerian-American Poet Daniel Umemezie Becomes the US 2026 National Youth Poet Laureate",
+      "excerpt": "News 18-Year-Old Nigerian-American Poet Daniel Umemezie Becomes the US 2026 National Youth Poet Laureate by Blessing Uwisike September 24, 2026 At 18, Nigerian-American poet Daniel Somtochukwu Umemezie has become the tenth National Youth Poet Laureate of the United States, joining a decade-long tradition of young poets using their work to explore identity, community, and social change. Umemezie, f",
+      "publishedDates": [
+        {
+          "value": "2026-09-24T11:12:49-05:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://brittlepaper.com/2026/09/18-year-old-nigerian-american-poet-daniel-umemezie-becomes-the-us-2026-national-youth-poet-laureate/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:48.521Z",
+  "foundItems": [
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/18-year-old-nigerian-american-poet-daniel-umemezie-becomes-the-us-2026-national-youth-poet-laureate/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "18-Year-Old Nigerian-American Poet Daniel Umemezie Becomes the US 2026 National Youth Poet Laureate",
+      "publishedAt": "2026-09-24T16:12:49.000Z",
+      "description": "At 18, Nigerian-American poet Daniel Somtochukwu Umemezie has become the tenth National Youth Poet Laureate of the United States, joining a decade-long tradition of young poets using their work to explore identity, community, and social change. Umemezie, from Cedar Falls, Iowa, was selected in April 2026 from a national network of more than 120 local […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/10-african-books-that-take-on-mental-health/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 African Books That Take on Mental Health",
+      "publishedAt": "2026-09-25T17:54:14.000Z",
+      "description": "In Africa, mental health is something we don’t often talk about. We understand headaches. We understand stomach ulcers and other illnesses that manifest physically. But when it comes to mental health, our understanding becomes amiss. This is more apparent within African families, where many of us are not raised to talk openly about our feelings […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/cajetan-ihekas-horizontal-comparison-takes-on-comparative-literatures-africa-problem/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cajetan Iheka’s Horizontal Comparison Takes On Comparative Literature’s “Africa Problem”",
+      "publishedAt": "2026-09-25T17:18:33.000Z",
+      "description": "What happens when African and Caribbean literature is read alongside itself, rather than continually measured against Europe and the United States? That is the question at the heart of Horizontal Comparison: Africa, the Caribbean, and the Making of Black World Literature, Cajetan Iheka’s forthcoming book from the University of Chicago Press. In it, Iheka argues […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/dar-ile-wardah-abbas-poetry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dār / Ilé | Wardah Abbas | Poetry",
+      "publishedAt": "2026-09-25T05:01:43.000Z",
+      "description": "Mallam calls it dār. The elders call it ilé. I measure the distance between the two words, an imaginary tape widening between my teeth. Outside, the rain hammers on the leaking roofs flapping the iron sheets until they slap against the ceiling. The red muddy paths wind through the compound, narrowing until Nana and […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/nerine-dormans-legacy-of-obsidian-begins-with-a-prince-who-isnt-ready-to-be-king/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nerine Dorman’s Legacy of Obsidian Begins With a Prince Who Isn’t Ready to Be King",
+      "publishedAt": "2026-09-25T17:32:56.000Z",
+      "description": "In Legacy of Obsidian, Nerine Dorman drops a sheltered young prince into a world where winter has swallowed almost everything and the clans fighting for what remains are already turning on one another. Prince Linnard Skylark is expected to inherit the Sky Clan, but Dorman is less interested in the glamour of a destined ruler […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/omayeli-arenyekas-itsekiri-language-folktale-kpojo-kpojo-featured-in-the-html-review/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Omayeli Arenyeka’s Itsẹkiri Language Folktale Kp’ọjọ Kp’ọjọ Featured in The HTML Review",
+      "publishedAt": "2026-09-24T21:56:37.000Z",
+      "description": "Nigerian artist and technologist Omayeli Arenyeka has a new piece in the latest issue of The HTML Review: Kp’ọjọ kp’ọjọ, an interactive folktale written in Itsẹkiri that unveils itself to readers as they learn words from the language. The work sits alongside thirteen other pieces in Issue 05, released this spring, a lineup spanning interactive […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/oyinkan-braithwaite-interviews-wunmi-mosaku-for-british-vogues-october-issue/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oyinkan Braithwaite Interviews Wunmi Mosaku for British Vogue’s October Issue",
+      "publishedAt": "2026-09-24T21:31:09.000Z",
+      "description": "Novelist Oyinkan Braithwaite sits down with actor Wunmi Mosaku for the October 2026 issue of British Vogue, bringing together two Nigerian-British creatives for a conversation that moves between motherhood, Nigerian identity, Hollywood, fashion, and the pressures of being seen. The interview also marks Mosaku’s first public confirmation that she has welcomed her second child. In […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/emmanuel-akinwotu-appointed-the-new-york-times-west-africa-correspondent/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Emmanuel Akinwotu Appointed The New York Times’ West Africa Correspondent",
+      "publishedAt": "2026-09-23T21:27:52.000Z",
+      "description": "Nigerian-British journalist Emmanuel Akinwotu has been appointed The New York Times’ new West Africa correspondent, joining the newspaper’s International desk and relocating to Lagos for the role. The appointment was announced by International editor Philip Pan, International managing editor Greg Winter, and editor Lauretta Charlton. Akinwotu joins the Times from NPR, where he has worked […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/ankara-press-acquires-cheryl-ntumys-romantasy-trilogy-the-seven-states/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ankara Press Acquires Cheryl Ntumy’s Romantasy Trilogy The Seven States",
+      "publishedAt": "2026-09-23T20:45:09.000Z",
+      "description": "Ankara Press, the commercial imprint of Cassava Republic Press, has acquired UK and Commonwealth rights to Ghanaian writer Cheryl Ntumy’s The Seven States, a three-book romantasy series blending political intrigue, forbidden magic, commerce, and slow-burn romance. The trilogy will open with A Guide to Silk and Seduction, scheduled for May 2027, followed by A Manifesto […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brittle-paper",
+      "source": {
+        "name": "Brittle Paper",
+        "url": "https://brittlepaper.com/2026/09/ifeoluwa-ayandele-finds-home-in-my-father-paints-his-dreams-on-my-body/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ifeoluwa Ayandele Finds Home in My Father Paints His Dreams on My Body",
+      "publishedAt": "2026-09-23T18:17:41.000Z",
+      "description": "Years after the Nigerian Civil War, Ìfẹ́olúwa Ayandele’s grandfather was still carrying the weight of what he had lost. He had served as a soldier, returned home, and later travelled to Lagos to collect a pension that never came. His story became one of the threads behind My Father Paints His Dreams on My Body, […]",
+      "discoveredAt": "2026-09-26T17:29:48.266Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "2f0713a16a3cb7d3d8d39065a33e034d08e49f0e82fd59030a261001eac9200f"
+}

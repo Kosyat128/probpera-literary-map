@@ -1,0 +1,208 @@
+{
+  "variant_id": "header-1-plus-6-preserved-r10",
+  "status": "implemented-and-locally-verified",
+  "acceptance": "release-review-pending",
+  "humanReview": false,
+  "liveVerification": false,
+  "generatedAt": "2026-09-26T18:58:26.233Z",
+  "sourceCommit": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+  "fingerprint": "a60bfd4868ca29883591c746440639a4025873ba1ae7d1e273512d718b054c67",
+  "files": {
+    "src/components/HeaderArticlesMenu.tsx": "bcdc72a78cc76c09d82a499e84f8f94b0d993a2e24e1edf03256e6ea76648857",
+    "src/styles/header-showcase-r10.css": "06ebde10600119ba12e625a063d8ec20d78d7c40b88a0078ff078d26562adbb8",
+    "src/utils/headerArticleSelection.ts": "6256afd2fb19757dc78b5f533ebd4e2dfb71aed6d7db2204ac906549e4b42411",
+    "src/utils/headerArticleSelection.test.ts": "c3c400be1d0624bae57ab1ec69eba6a450df88371db7f55aa6fd3fab893ed4f1",
+    "src/utils/headerArticleLoader.ts": "f10ea3eb242054be0963857fb229224ec83baa5a7d848ff17ab7bb7c3c660a91",
+    "src/utils/articleRoutes.ts": "cbb58876aaceee89c5c8d636ad85a97309e75a6b5848ce265eeeb6f38ac946d9",
+    "apps/admin/components/HeaderShowcaseEditor.tsx": "d2f504aedb956617cda416df4cf8566fce210c6bed60c07a6c1fb0cdbfe894bf",
+    "apps/admin/app/(dashboard)/homepage/page.tsx": "54c6ac81ba42fcb76d4d82908c82e6a868a3d225094b47434569f0a6e6849d25",
+    "apps/admin/app/(dashboard)/homepage/actions.ts": "b8bdd0bcac3e3c1cf48af51e8820cd64f9ca0294a3b719bf3ea8d1d979099ee0",
+    "scripts/r10-showcase-image-contain-check.mjs": "a0b79d5871d7e86f92484978dc73b500579a64e36c3e8e10beb2cf695b3e595b",
+    "scripts/r10-showcase-runtime.mjs": "acde206e6b7099e0e53ea21ccd824813d2adbfdd42ebc2a1dd3f9ea9d4fc5621",
+    "scripts/r10-showcase-css-policy.mjs": "d972649e0508b026cfbdc0ada43ed58b1f04cb4e067ecaedfbea5326ae43773a"
+  },
+  "layout": {
+    "composition": "one lead plus up to six, row-major DOM and visual order",
+    "width": 1040,
+    "leadShare": 0.4,
+    "leadTitleRem": 1.5,
+    "shortLeadTitleRem": 1.25,
+    "secondaryRem": 1,
+    "bodyRem": 0.9375,
+    "metaRem": 0.8125,
+    "media": "full-width original aspect ratio, intrinsic height, contain, no forced frame or zoom; existing uncropped delivery variants retained",
+    "overflow": "one panel vertical scroll when required, including short screens; full source image takes priority over zero scroll",
+    "mobile": "preserved mobile rail and article archive link; no mobile showcase added"
+  },
+  "implemented": [
+    "click-open persists on mouseleave; explicit keyboard/outside/navigation closure",
+    "single shared promise for hover/focus/click; explicit error reload retry plus native archive",
+    "valid-date deterministic pure selector, 28-item diversity pool, unique localized public counts",
+    "timed ID/order/UTC pins and shared preview inside existing homepage CMS, existing expected_updated_at CAS retained",
+    "source descriptions and titles unchanged, absent reading time omitted, image failures have clean fallback",
+    "open and pageshow recompute expiry; current open order frozen until user opens/returns; removed focused known record restores summary focus",
+    "full 1+6 remains reachable with one panel scroll on short desktops; single-card avoids an empty second column",
+    "2026-09-26 user image refinement: full-width intrinsic lead image removes side bands without source cropping, stretching or text reduction"
+  ],
+  "validation": {
+    "unit": {
+      "command": "node node_modules/vitest/vitest.mjs run --configLoader runner src/utils/headerArticleSelection.test.ts src/utils/articleRoutes.test.ts src/utils/editorialImagePresentation.test.ts src/components/articlePublicationCounts.test.tsx",
+      "tests": 35,
+      "status": "passed"
+    },
+    "publicTypes": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "status": "passed"
+    },
+    "adminTypes": {
+      "command": "node node_modules/typescript/bin/tsc -p apps/admin/tsconfig.json --noEmit --incremental false",
+      "status": "passed"
+    },
+    "runtime": {
+      "command": "node scripts/r10-showcase-runtime.mjs",
+      "sessions": [
+        {
+          "name": "2 real RU desktop and media",
+          "status": "passed"
+        },
+        {
+          "name": "5 mouse keyboard native links and competition",
+          "status": "passed"
+        },
+        {
+          "name": "6 mobile fallback breakpoint and enlarged text",
+          "status": "passed"
+        },
+        {
+          "name": "1 data fixture load",
+          "status": "passed"
+        },
+        {
+          "name": "3 adversarial full titles RU EN and 0 1 2 6 7",
+          "status": "passed"
+        },
+        {
+          "name": "4 media fallback and one concurrent catalog request",
+          "status": "passed"
+        },
+        {
+          "name": "7 reopen locale and pageshow",
+          "status": "passed"
+        },
+        {
+          "name": "8 closed header and sections regression",
+          "status": "passed"
+        }
+      ],
+      "evidence": "runtime.json",
+      "sourceCssSha256": "06ebde10600119ba12e625a063d8ec20d78d7c40b88a0078ff078d26562adbb8",
+      "status": "passed",
+      "currentGeometry": "Short-screen internal scrolling is permitted; footer reachability asserted. All eight groups rerun against current CSS."
+    },
+    "mediaPins": {
+      "command": "node scripts/r10-showcase-media-pins.mjs",
+      "evidence": "media-pins.json",
+      "status": "passed"
+    },
+    "errorRetry": {
+      "command": "node scripts/r10-showcase-error-check.mjs",
+      "evidence": "error-retry.json",
+      "status": "passed"
+    },
+    "cssPolicy": {
+      "command": "node scripts/audit-typography.mjs",
+      "status": "passed",
+      "issues": 0,
+      "evidence": "css-policy-check.json",
+      "runtime": "Current1280x600 full image with scroll131px and reachable footer; long RU/EN and unbroken words pass",
+      "latest": {
+        "command": "node scripts/audit-typography.mjs",
+        "status": "passed",
+        "issues": 0,
+        "publicCssFiles": 34,
+        "sourceCssSha256": "06ebde10600119ba12e625a063d8ec20d78d7c40b88a0078ff078d26562adbb8"
+      },
+      "runtimeCommand": "node scripts/r10-showcase-css-policy.mjs",
+      "runtimeScriptSha256": "d972649e0508b026cfbdc0ada43ed58b1f04cb4e067ecaedfbea5326ae43773a",
+      "runtimeExecution": "The delivered script is byte-identical to the successfully executed .tmp copy."
+    },
+    "imageGeometry": {
+      "command": "node scripts/r10-showcase-image-contain-check.mjs",
+      "status": "passed",
+      "evidence": "image-contain-after.json",
+      "beforeEvidence": "image-contain-before.json",
+      "viewports": [
+        "1440x1000",
+        "1280x600"
+      ],
+      "fixtures": [
+        "portrait",
+        "square",
+        "wide"
+      ],
+      "shortScreenScrollPx": 131,
+      "footerReachable": true,
+      "hoverZoom": false,
+      "visualInspection": "Before and after PNGs plus all three edge-marked image fixtures opened with view_image; Codex self-review",
+      "humanReview": false,
+      "fallbackGeometry": "1280x600 legacy missing-image fallback remains224x126; real image415.19x258.19",
+      "currentSourceCssSha256": "06ebde10600119ba12e625a063d8ec20d78d7c40b88a0078ff078d26562adbb8"
+    }
+  },
+  "visual": {
+    "before": "before-ru-1280x600.png",
+    "after": [
+      "after-ru-1440x900",
+      "after-ru-1280x720",
+      "after-ru-1280x600",
+      "after-mobile-320",
+      "after-mobile-390",
+      "after-text-spacing-footer",
+      "after-stress-ru",
+      "after-stress-ru-footer",
+      "after-stress-en",
+      "after-stress-en-footer",
+      "after-media-fallback",
+      "after-closed-header",
+      "after-sections"
+    ],
+    "additional": [
+      "after-media-portrait",
+      "after-media-square",
+      "after-media-wide",
+      "after-error",
+      "after-css-policy-real600",
+      "after-css-policy-long-ru",
+      "after-css-policy-long-en"
+    ],
+    "inspectedBy": "agent, images opened with view_image",
+    "notes": [
+      "Before mouseleave close reproduced, lead title measured18px.",
+      "After full image inspected including source edges; short lead20px, all7 cards and footer visible.",
+      "Stress and exact200% text plus spacing preserve reachability via one scroll.",
+      "Wide/portrait/square fixtures and 404 fallback opened and inspected.",
+      "Brand header/hero/mobile/sections palette and authored reader CSS preserved.",
+      "CSS policy regression inspected: approved font alias, break-word with zero-minimum grid tracks; all real cards fit at600px, long RU/EN and unbroken words wrap with reachable footer."
+    ],
+    "imageGeometry": [
+      "image-contain-before-1440x1000.png",
+      "image-contain-before-1280x600.png",
+      "image-contain-after-1440x1000.png",
+      "image-contain-after-1280x600.png",
+      "image-contain-after-1280x600-footer.png",
+      "image-contain-after-fixture-portrait.png",
+      "image-contain-after-fixture-square.png",
+      "image-contain-after-fixture-wide.png"
+    ]
+  },
+  "limitations": [
+    "Authenticated admin save/conflict and real DB readback not run; existing CAS path retained and both TypeScript projects pass.",
+    "Native bfcache navigation not run: persisted pageshow event tested, including expiry and focused known withdrawal.",
+    "Physical mobile device, WebKit/Firefox and live deployment not run; project Chrome desktop/mobile viewport coverage used.",
+    "Reader authored image caps covered by existing source tests; fresh reader browser regression left to release suite.",
+    "No production deployment or migration, no editorial article text mutation, no live pin publication."
+  ],
+  "exact_next_step": "Run repository release checks and authenticated admin pin save/version conflict review; preserve this variant and repeat only affected runtime sessions. Native bfcache/physical-device/live evidence remains separate from local acceptance.",
+  "previousFingerprint": "b7337fd60fdf3bd08e501f9f768222ce487e1a1fc24ab24b62f3b0e795fed684",
+  "fingerprintMethod": "sha256(JSON.stringify(files)) in recorded insertion order"
+}

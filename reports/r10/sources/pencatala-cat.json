@@ -1,0 +1,559 @@
+{
+  "sourceId": "pencatala-cat",
+  "name": "PEN Catalan",
+  "entryUrl": "https://www.pencatala.cat/",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [
+    "ES"
+  ],
+  "attemptedAt": "2026-09-26T17:29:27.658Z",
+  "requests": [
+    {
+      "url": "https://www.pencatala.cat/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 124399,
+      "sha256": "54baf6c1f0ffb382271c2d9b6567690d407de1be4622e980f473dd8392790338",
+      "accessedAt": "2026-09-26T17:23:25.548Z"
+    },
+    {
+      "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 95150,
+      "sha256": "712c180f2900af557496808b09d3fd7d0df35ac067471771f5ef8b6e4c042cdb",
+      "accessedAt": "2026-09-26T17:29:29.644Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.pencatala.cat/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 124,
+    "sha256": "57863cbdc96a912116ca70f82af9db207e974691ba53abca38ca6de871b6378b",
+    "accessedAt": "2026-09-26T17:29:28.027Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:23.267Z",
+    "sourceDocumentSha256": "54baf6c1f0ffb382271c2d9b6567690d407de1be4622e980f473dd8392790338"
+  },
+  "endpoint": {
+    "id": "pencatala-cat",
+    "name": "PEN Catalan",
+    "url": "https://www.pencatala.cat/",
+    "format": "html",
+    "language": "ca",
+    "region": "europe",
+    "sourceFamilyId": "pencatala-cat",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [
+      "ES"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.pencatala.cat"
+    ],
+    "linkPattern": "^/programes/[^/]+/?$|^/[^/]{12,}/?$|^/programes/traduccio/[^/]+/?$|^/noticia/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:29.649Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 18,
+  "literaryCandidateCount": 18,
+  "sample": {
+    "sourceId": "pencatala-cat",
+    "source": {
+      "name": "PEN Catalan",
+      "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/",
+      "language": "ca"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "«Prova de vida ja!»: Màrius Serra escriu a Temesgen Ghebreyesus",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:28.045Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 95150,
+      "sha256": "712c180f2900af557496808b09d3fd7d0df35ac067471771f5ef8b6e4c042cdb",
+      "accessedAt": "2026-09-26T17:29:29.644Z",
+      "headline": "«Prova de vida ja!»: Màrius Serra escriu a Temesgen Ghebreyesus - PEN Català",
+      "excerpt": "El PEN Català amb «Prova de vida ja!», se suma a la campanya del PEN International i el PEN Eritrea que reclama informació sobre els dotze escriptors i periodistes eritreus desapareguts després de la gran onada de detencions del setembre de 2001. La primera postal sonora està dedicada a Temesgen Ghebreyesus i ha estat escrita per Màrius Serra. Escolta la postal sonora aquí Periodista, humorista, a",
+      "publishedDates": [
+        {
+          "value": "2026-09-24T09:17:14+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/",
+      "language": "ca",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:29.649Z",
+  "foundItems": [
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Prova de vida ja!»: Màrius Serra escriu a Temesgen Ghebreyesus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-dotze-postals-sonores-contra-25-anys-de-silenci/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Prova de vida ja!»: dotze postals sonores contra 25 anys de silenci",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/escriure-era-triar-la-vida-les-residents-de-villa-joana-conversen-amb-nuria-cadenes-a-la-llibreria-alibri/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Escriure era triar la vida”, les residents de Vil·la Joana conversen amb Núria Cadenes a la llibreria Alibri",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/el-pen-catala-sadhereix-a-lacord-per-promoure-un-model-de-contracte-per-escriptors-traductors-i-dramaturgs-impulsat-per-laelc/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "El PEN Català s’adhereix a l’acord per promoure un model de contracte per escriptors, traductors i dramaturgs impulsat per l’AELC",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/finalitza-la-convocatoria-del-iii-premi-de-poesia-roissy-en-brie-per-a-persones-refugiades/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Finalitza la convocatòria del III Premi de Poesia Roissy-en-Brie per a Persones Refugiades",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/ali-lmbrabet-detingut-al-marroc/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ali Lmbrabet detingut al Marroc",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/el-pen-catala/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vull saber-ne més",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/escriptor-acollit/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Escriptor Acollit",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/traduccio/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vull saber-ne més",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/drets-linguistics/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Drets lingüístics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/llibertat-dexpressio/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Llibertat d’expressió",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/sigues-del-pen-2/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fes-te soci del PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/sigues-del-pen/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fes-te amic del PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/traduccio/premi-de-traduccio/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Premi PEN Català Montserrat Franquesa de Traducció",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/traduccio/declaracio-del-quebec/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Declaració del Quebec",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/traduccio/revista-visat-2/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Coneix la revista Visat",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/notes-legals/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "política de privacitat",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/politica-de-cookies/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Política de cookies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:28.045Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "54baf6c1f0ffb382271c2d9b6567690d407de1be4622e980f473dd8392790338"
+}

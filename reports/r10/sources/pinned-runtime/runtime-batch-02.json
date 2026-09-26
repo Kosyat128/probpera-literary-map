@@ -1,0 +1,4800 @@
+{
+  "batch": 2,
+  "checkedAt": "2026-09-26T18:51:58.270Z",
+  "sourceCount": 12,
+  "availableSourceCount": 11,
+  "candidateCount": 180,
+  "sources": [
+    {
+      "id": "pen-america",
+      "name": "PEN America",
+      "url": "https://pen.org/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "pen-america",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:54.605Z",
+      "candidateCount": 9
+    },
+    {
+      "id": "literary-arts",
+      "name": "Literary Arts",
+      "url": "https://literary-arts.org/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "literary-arts",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:53.846Z",
+      "candidateCount": 38
+    },
+    {
+      "id": "aaww",
+      "name": "Asian American Writers’ Workshop",
+      "url": "https://aaww.org/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "aaww",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:55.064Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "ubud-writers-readers-festival",
+      "name": "Ubud Writers & Readers Festival",
+      "url": "https://ubudwritersfestival.com/news",
+      "format": "html",
+      "language": "en",
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "ubud-writers-readers-festival",
+      "countryCodes": [
+        "ID"
+      ],
+      "coverageCountryCodes": [
+        "ID"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:55.398Z",
+      "candidateCount": 40
+    },
+    {
+      "id": "shanghai-childrens-book-fair",
+      "name": "Shanghai International Children’s Book Fair",
+      "url": "https://www.ccbookfair.com/en/index/news-center/news",
+      "format": "html",
+      "language": "en",
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "shanghai-childrens-book-fair",
+      "countryCodes": [
+        "CN"
+      ],
+      "coverageCountryCodes": [
+        "CN"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:55.439Z",
+      "candidateCount": 4
+    },
+    {
+      "id": "ake-arts-book-festival",
+      "name": "Aké Arts & Book Festival",
+      "url": "https://akefestival.org/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "ake-arts-book-festival",
+      "countryCodes": [
+        "NG"
+      ],
+      "coverageCountryCodes": [
+        "NG"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:58.254Z",
+      "candidateCount": 7
+    },
+    {
+      "id": "kenya-publishers-association",
+      "name": "Kenya Publishers Association",
+      "url": "https://kenyapublishers.org/category/news/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "kenya-publishers-association",
+      "countryCodes": [
+        "KE"
+      ],
+      "coverageCountryCodes": [
+        "KE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:56.857Z",
+      "candidateCount": 7
+    },
+    {
+      "id": "brisbane-writers-festival",
+      "name": "Brisbane Writers Festival",
+      "url": "https://bwf.org.au/news/articles",
+      "format": "html",
+      "language": "en",
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "brisbane-writers-festival",
+      "countryCodes": [
+        "AU"
+      ],
+      "coverageCountryCodes": [
+        "AU"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:56.587Z",
+      "candidateCount": 16
+    },
+    {
+      "id": "nz-children-young-adults-book-awards",
+      "name": "New Zealand Book Awards Trust - Children and Young Adults",
+      "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/",
+      "format": "html",
+      "language": "en",
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "nz-children-young-adults-book-awards",
+      "countryCodes": [
+        "NZ"
+      ],
+      "coverageCountryCodes": [
+        "NZ"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:58.103Z",
+      "candidateCount": 5
+    },
+    {
+      "id": "word-christchurch",
+      "name": "WORD Christchurch",
+      "url": "https://wordchristchurch.co.nz/news",
+      "format": "html",
+      "language": "en",
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "word-christchurch",
+      "countryCodes": [
+        "NZ"
+      ],
+      "coverageCountryCodes": [
+        "NZ"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:58.268Z",
+      "candidateCount": 35
+    },
+    {
+      "id": "federacioneditores-org",
+      "name": "FGEE",
+      "url": "https://federacioneditores.org/feed/",
+      "format": "rss",
+      "language": "es",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "federacioneditores-org",
+      "countryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [
+        "ES"
+      ],
+      "status": "error",
+      "lastSuccessAt": null,
+      "candidateCount": 0,
+      "error": "http_403"
+    },
+    {
+      "id": "mabopa-com-my",
+      "name": "Malaysian Book Publishers Association (MABOPA)",
+      "url": "https://www.mabopa.com.my/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "mabopa-com-my",
+      "countryCodes": [
+        "MY"
+      ],
+      "coverageCountryCodes": [
+        "MY"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:58.238Z",
+      "candidateCount": 9
+    }
+  ],
+  "items": [
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/pen-america-speaks-september-21/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 21",
+      "publishedAt": "2026-09-25T20:10:43.000Z",
+      "description": "PEN America works tirelessly to defend free expression, support persecuted writers, and promote literary culture. Here are some of the latest ways PEN America is speaking out. The post PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 21 appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/alim-aliiev-crimean-tatar/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘A Critical Part of Our Code’: Alim Aliiev, PEN Ukraine Member, on Crimean Tatar Language, Literature, and Identity",
+      "publishedAt": "2026-09-22T20:25:25.000Z",
+      "description": "Russia’s illegal occupation in 2014 came with new attempts to dismantle the Crimean Tatar identity in a bid to re-colonize Crimea. The post ‘A Critical Part of Our Code’: Alim Aliiev, PEN Ukraine Member, on Crimean Tatar Language, Literature, and Identity appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/pen-america-speaks-how-we-defended-and-celebrated-free-expression-the-week-of-september-14/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 14",
+      "publishedAt": "2026-09-18T17:56:10.000Z",
+      "description": "PEN America works tirelessly to defend free expression, support persecuted writers, and promote literary culture. Here are some of the latest ways PEN America is speaking out. The post PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 14 appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/florida-600-banned-books/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books",
+      "publishedAt": "2026-09-18T16:39:36.000Z",
+      "description": "More than 600 books were banned from schools in 10 of Florida’s districts during the 2025\u201326 academic year. The post John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/pen-america-speaks-week-of-september-7/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 7",
+      "publishedAt": "2026-09-15T16:00:09.000Z",
+      "description": "PEN America works tirelessly to defend free expression, support persecuted writers, and promote literary culture. Here are some of the latest ways PEN America is speaking out. The post PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 7 appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/were-coming-for-the-books-texas/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘We’re Coming for the Books’: Texas Lt. Gov. Dan Patrick Calls for Bans on 2,000+ Titles, Including Works by Elie Wiesel, Oscar Wilde, and John Green",
+      "publishedAt": "2026-09-11T19:29:19.000Z",
+      "description": "This call from Lt. Gov. Patrick ratchets up intimidation and fear across Texas public schools, ultimately emptying library shelves of books. The post ‘We’re Coming for the Books’: Texas Lt. Gov. Dan Patrick Calls for Bans on 2,000+ Titles, Including Works by Elie Wiesel, Oscar Wilde, and John Green appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/isabel-j-kim-the-pen-ten-interview/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Isabel J. Kim’s Sci-Fi Debut Cracks the Immigrant Experience Wide Open",
+      "publishedAt": "2026-09-10T13:49:14.000Z",
+      "description": "Isabel J. Kim talks about her novel Sublimation and the sense of “alienated intimacy” she wants to bestow on readers. The post Isabel J. Kim’s Sci-Fi Debut Cracks the Immigrant Experience Wide Open appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/pen-america-speaks-week-of-august-31/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America Speaks: How We Defended and Celebrated Free Expression the Week of August 31",
+      "publishedAt": "2026-09-04T17:07:18.000Z",
+      "description": "PEN America works tirelessly to defend free expression, support persecuted writers, and promote literary culture. Here are some of the latest ways PEN America is speaking out. The post PEN America Speaks: How We Defended and Celebrated Free Expression the Week of August 31 appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/librarians-facing-slew-of-attacks/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Faced With Book Bans and Verbal Harassment, Public Librarians Are Reaching a Breaking Point",
+      "publishedAt": "2026-09-01T12:25:00.000Z",
+      "description": "Public librarians speak out about how individuals, organized groups, and government officials have questioned and villainized their work. The post Faced With Book Bans and Verbal Harassment, Public Librarians Are Reaching a Breaking Point appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T18:51:54.601Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/book-recs-from-2026-27-portland-arts-lectures-author-george-saunders/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Recs from 2026/27 Portland Arts & Lectures Author George Saunders",
+      "publishedAt": "2026-09-25T15:58:53.000Z",
+      "description": "George Saunders, author of Liberation Day and Vigil, joined us for our 2026-27 Portland Arts & Lectures on Thursday, September 24, 2026. We like to ask all of our Portland The post Book Recs from 2026/27 Portland Arts & Lectures Author George Saunders appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/wits-student-anthology-2026-a-small-piece-of-night/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Arts Student Anthology 2025-26: A Small Piece of Night",
+      "publishedAt": "2026-09-03T20:26:06.000Z",
+      "description": "Each year, Literary Arts publishes an anthology of the student work created in our Writers in the Schools workshops and Verselandia!. The anthology’s title is chosen from one of the published The post Literary Arts Student Anthology 2025-26: A Small Piece of Night appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/multnomah-county-library-selects-louise-erdrichs-the-mighty-red-for-everybody-reads-2027/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Multnomah County Library selects Louise Erdrich’s THE MIGHTY RED for Everybody Reads 2027",
+      "publishedAt": "2026-09-01T22:23:08.000Z",
+      "description": "PORTLAND, Ore. \u2014 September 1, 2026 \u2014 Multnomah County Library has selected The Mighty Red by Louise Erdrich for Everybody Reads 2027. This year’s signature community reading project marks 25 The post Multnomah County Library selects Louise Erdrich’s THE MIGHTY RED for Everybody Reads 2027 appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/08/september-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "September Events & Writing Classes",
+      "publishedAt": "2026-08-31T17:53:58.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. One Page Wednesday [FREE]Wednesday, September 2, 6:30\u20138:00 p.m. Here is an opportunity The post September Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/08/ticketing-information-for-portland-arts-lectures-subscribers-2/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ticketing information for Portland Arts & Lectures subscribers",
+      "publishedAt": "2026-08-24T23:19:20.000Z",
+      "description": "All Portland Arts & Lectures subscriber tickets are being managed by Portland’5 to allow for enhanced customer service and security. All subscribers can view their tickets at any time by The post Ticketing information for Portland Arts & Lectures subscribers appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/literary-arts-welcomes-new-strunk-white-society-members/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Arts Welcomes New Strunk & White Society Members",
+      "publishedAt": "2026-07-30T17:54:28.000Z",
+      "description": "We are excited to welcome former Literary Arts board members, Anis Mojgani, and Corrine Oishi, to the Strunk & White Society. The Strunk & White Society is an honorary society of distinguished advisors made up of individuals who have made The post Literary Arts Welcomes New Strunk & White Society Members appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/august-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "August Events & Writing Classes",
+      "publishedAt": "2026-07-27T16:53:12.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. Kelly Anderson in conversation with Rachel Hochhauser [FREE]Wednesday, August 12, 6:30\u20137:30 p.m. The post August Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/meet-casey-walker-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Casey Walker, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-07-21T22:04:39.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Casey Walker, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/meet-amy-marcott-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Amy Marcott, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-07-14T16:56:46.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Amy Marcott, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/meet-jason-sepac-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Jason Sepac, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-07-09T18:42:05.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Jason Sepac, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/07/meet-pooja-nukala-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Pooja Nukala, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-07-02T17:36:41.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Pooja Nukala, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-jeffree-morel-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Jeffree Morel, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-06-26T21:38:36.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Jeffree Morel, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/welcoming-jonathan-hill-as-literary-arts-new-board-chair/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Welcoming Jonathan Hill as Literary Arts’ New Board Chair",
+      "publishedAt": "2026-06-24T16:55:55.000Z",
+      "description": "We’re pleased to share that Jonathan Hill\u2014award-winning cartoonist, author, and illustrator\u2014has been named the new chair of our board of directors. He steps into this role alongside Joan Cirillo and Chabre Vickers as The post Welcoming Jonathan Hill as Literary Arts’ New Board Chair appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-jeremy-klemin-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Jeremy Klemin, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-06-22T18:02:03.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Jeremy Klemin, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/july-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "July Events & Writing Classes",
+      "publishedAt": "2026-06-17T22:29:04.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. One Page Wednesday \u2013 NEW TIME! [FREE]Wednesday, July 1, 6:30\u20138:00 p.m. One The post July Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/the-literary-arts-bookstore-summer-reading-challenge/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Literary Arts Bookstore Summer Reading Challenge",
+      "publishedAt": "2026-06-15T23:38:30.000Z",
+      "description": "Literary Arts has a summer reading challenge for you! Follow our prompts and track your reading from June 15th through September 7th, 2025 for a chance to win exciting prizes. The post The Literary Arts Bookstore Summer Reading Challenge appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-jae-nichelle-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Jae Nichelle, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-06-12T21:14:24.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Jae Nichelle, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-molly-reid-2026-oregon-literary-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Molly Reid, 2026 Oregon Literary Fellow",
+      "publishedAt": "2026-06-08T19:12:14.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Molly Reid, 2026 Oregon Literary Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/literary-arts-cafe-celebrates-one-year-of-community-and-connection/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary Arts cafe celebrates one year of community and connection",
+      "publishedAt": "2026-06-04T18:44:45.000Z",
+      "description": "On June 14, the cafe at Literary Arts will celebrate its first anniversary. A year ago, Literary Arts opened the doors to the Mendoza Cafe with a vision to create a The post Literary Arts cafe celebrates one year of community and connection appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/06/meet-devon-fredericksen-2026-oregon-literary-career-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Devon Fredericksen, 2026 Oregon Literary Career Fellow",
+      "publishedAt": "2026-06-02T18:29:08.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers and The post Meet Devon Fredericksen, 2026 Oregon Literary Career Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/05/meet-diana-oropeza-2026-oregon-literary-career-fellow/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Diana Oropeza, 2026 Oregon Literary Career Fellow",
+      "publishedAt": "2026-05-28T21:11:54.000Z",
+      "description": "We’re thrilled to introduce the 2026 Oregon Literary Fellowship recipients with individual profile features on our blog. Out-of-state judges spent several months evaluating the 400+ applications we received, and selected eight writers The post Meet Diana Oropeza, 2026 Oregon Literary Career Fellow appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/05/oregon-book-awards-author-tour-visits-the-coast-2/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oregon Book Awards Author Tour Visits the Coast",
+      "publishedAt": "2026-05-18T17:53:42.000Z",
+      "description": "Port Orford, and Sea Wolf Books. Photos credit: Evan P. Schneider This May, the Oregon Book Awards Author Tour headed to the Oregon coast for readings in Port Orford and Newport. The post Oregon Book Awards Author Tour Visits the Coast appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/05/june-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "June Events & Writing Classes",
+      "publishedAt": "2026-05-13T23:41:41.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. Rosiee Thor in conversation with Sydney Langford [FREE]Tuesday, June 2, 6:30\u20138:00 p.m. The post June Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/05/congratulations-to-the-2026-verselandia-youth-poetry-slam-championship-winners/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Congratulations to the 2026 Verselandia! Youth Poetry Slam Championship winners",
+      "publishedAt": "2026-05-01T17:08:19.000Z",
+      "description": "On April 30, 2026, twenty-two students from twelve high schools competed for the title of Grand Slam Champion at the annual Verselandia! Youth Poetry Slam Championship. Our top five poets were: The post Congratulations to the 2026 Verselandia! Youth Poetry Slam Championship winners appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/book-recs-from-author-patrick-radden-keefe/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Recs from 2025/26 Portland Arts & Lectures Author Patrick Radden Keefe",
+      "publishedAt": "2026-04-24T17:35:26.000Z",
+      "description": "Patrick Radden Keefe, author of Empire of Pain and Say Nothing joined us for our 2025/26 season of Portland Arts & Lectures on April 23, 2026. We like to ask The post Book Recs from 2025/26 Portland Arts & Lectures Author Patrick Radden Keefe appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/2627pal/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the Portland Arts & Lectures 2026\u201327 Season Lineup",
+      "publishedAt": "2026-04-24T05:05:00.000Z",
+      "description": "Literary Arts is pleased to announce the lineup of the 42nd season of Portland Arts & Lectures. Join us at the Arlene Schnitzer Concert Hall for an inspiring lineup of The post Announcing the Portland Arts & Lectures 2026\u201327 Season Lineup appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/may-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "May Events & Writing Classes",
+      "publishedAt": "2026-04-21T20:42:25.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. Erin L. McCoy in conversation with Erica Berry [FREE]Tuesday, May 5, 6:30\u20138:30 The post May Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/2026-oba-winners/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the 2026 Oregon Book Awards Winners",
+      "publishedAt": "2026-04-21T05:00:00.000Z",
+      "description": "Literary Arts is thrilled to announce this year’s Oregon Book Awards Winners. Winners across seven categories were announced live at the 2026 Oregon Book Awards Ceremony on Monday, April 20, hosted The post Announcing the 2026 Oregon Book Awards Winners appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/oregon-book-awards-author-tour-visits-corvallis/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oregon Book Awards Author Tour Visits Corvallis",
+      "publishedAt": "2026-04-07T22:53:02.000Z",
+      "description": "On a spring evening in April, the Oregon Book Awards Author Tour headed to Grassroots Bookstore in Corvallis. The reading featured Oregon Book Awards finalists in Creative Nonfiction: Judith Barrington, Karleigh Frisbie-Brogan, The post Oregon Book Awards Author Tour Visits Corvallis appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/03/celebrating-the-states-literary-talent-at-the-oregon-book-awards/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celebrating the state’s literary talent at the Oregon Book Awards",
+      "publishedAt": "2026-03-31T23:12:46.000Z",
+      "description": "Content created for The Oregonian He worked in Portland as a Freightliner truck assembly lineman for 13 years, attending local writing workshops in the evenings as he completed his first The post Celebrating the state’s literary talent at the Oregon Book Awards appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/03/april-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "April Events & Writing Classes",
+      "publishedAt": "2026-03-27T21:53:28.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. One Page Wednesday \u2013 April [FREE]Wednesday, April 1, 7:00\u20139:00 p.m. Here is The post April Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/03/2025-portland-book-festival-audiobook/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2025 Portland Book Festival Audiobook",
+      "publishedAt": "2026-03-26T17:58:49.000Z",
+      "description": "Literary Arts is excited to announce that we have partnered with Libro.FM to bring you an exclusive audiobook showcasing some of the most popular 2025 Portland Book Festival author sessions. The post 2025 Portland Book Festival Audiobook appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/02/march-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "March Events & Writing Classes",
+      "publishedAt": "2026-02-21T00:35:30.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. Paige Thomas in conversation with Blair Thomas [FREE] Tuesday, March 3, 6:30\u20137:30 The post March Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/02/book-recs-from-2025-26-portland-arts-lectures-author-imani-perry/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Recs from 2025/26 Portland Arts & Lectures Author Imani Perry",
+      "publishedAt": "2026-02-13T18:19:58.000Z",
+      "description": "Imani Perry, author of Black in Blues and South to America, joined us for our 2025/26 season of Portland Arts & Lectures on February 12, 2026. We like to ask The post Book Recs from 2025/26 Portland Arts & Lectures Author Imani Perry appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/02/announcing-the-2026-oregon-book-awards-finalists/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the 2026 Oregon Book Awards Finalists",
+      "publishedAt": "2026-02-09T16:00:00.000Z",
+      "description": "Literary Arts is thrilled to announce this year’s Oregon Book Awards finalists and Special Award recipient. Thirty-five titles from Oregonians across seven genre categories were chosen as finalists by panels of The post Announcing the 2026 Oregon Book Awards Finalists appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/02/olf-2026-announcement/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the 2026 Oregon Literary Fellowships",
+      "publishedAt": "2026-02-09T16:00:00.000Z",
+      "description": "Announcing the 2025 Oregon Literary Fellowships The post Announcing the 2026 Oregon Literary Fellowships appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/01/february-events-writing-classes/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "February Events & Writing Classes",
+      "publishedAt": "2026-01-31T19:00:15.000Z",
+      "description": "All events and classes take place at Literary Arts, 716 SE Grand Ave., Portland, OR, unless otherwise noted. The Weary Blues at 100: Maude Hines and Emmett Wheatfall Discuss Langston The post February Events & Writing Classes appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-arts",
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/01/named-spaces-at-literary-arts/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Named Spaces at Literary Arts",
+      "publishedAt": "2026-01-27T21:48:16.000Z",
+      "description": "In early 2026, Literary Arts celebrated one year at its new home at The Susan Hammer Center, located at 716 SE Grand Avenue. This gathering included the unveiling of a The post Named Spaces at Literary Arts appeared first on Literary Arts.",
+      "discoveredAt": "2026-09-26T18:51:53.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/into-the-ocean/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Into the Ocean",
+      "publishedAt": "2026-08-11T16:27:10.000Z",
+      "description": "Overcoming barriers to learning how to swim in Indonesia",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/rain-studies/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "研究雨 | Rain Studies",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "你只能等待雨 | You can only wait for the rain",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/two-poems-by-blake-traylor/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Two Poems by Blake Traylor",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "“Manscaping” and “White Hair Silver Needle”",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/the-end-of-youth/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The End of Youth",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "I said sorry always thrice like a prayer.",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/bitter-gourd/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bitter Gourd",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "To eat you, sliced or diced, and boiled over",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/i-need-my-ordinary-surprises/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "أحتاج إلى مفاجأتي العادية | I Need My Ordinary Surprises",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "المفاجآت العادية، تلك التي ليست خارجة عن المألوف، | Moments that are ordinary\u2014ordinary surprises, not extraordinary.",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/bodycount-as/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "bodycount as",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "If a man thinks of my body as just a body I am free from betrayal.",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/move/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Move",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "I think she goes to the woods and dances.",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/lessons-in-softness/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lessons in Softness",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "In this language, so many words/ for hurt.",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/art-for-bankers/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Art for bankers",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "Dear Bored Witness: free me!",
+      "discoveredAt": "2026-09-26T18:51:55.060Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/main-programme-released-which-weaves-human-stories-throughout-inspiring-us-to-take-action",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Main programme released which weaves human stories throughout, inspiring us to take action",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/extraordinary-voices-and-bold-thinkers-announced-for-festival-2026",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Extraordinary Voices and Bold Thinkers Announced for Festival 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/aris-sarmanta-on-interpreting-samarasa-at-ubud-writers-and-readers-festival-2026",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aris Sarmanta on interpreting Samarasā at Ubud Writers & Readers Festival 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/announcing-2026-festival-theme-samarasa-and-early-bird-tickets-on-sale",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing 2026 Festival Theme: Samarasā and Early Bird Tickets on Sale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/call-for-applications-the-art-of-moderation-with-gill-westaway",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Call for Applications: The Art of Moderation with Gill Westaway",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/janet-deneefe-nominated-for-impact-hero-of-the-year",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Janet DeNeefe nominated for Impact Hero of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/secrets-from-the-green-room-2025-festival-edition",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Secrets from the Green Room: 2025 Festival Edition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-our-programme-curators-namal-siddiqui",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet our Programme Curators: Namal Siddiqui",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-our-programme-curators-gustra-adnyana",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Our Programme Curators: Gustra Adnyana",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-the-moderators-qanda-with-jewel-topsfield",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet The Moderators: Q&A with Jewel Topsfield",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-the-moderators-qanda-with-luna-vidya",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet the Moderators: Q&A with Luna Vidya",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-the-moderators-qanda-with-janet-steele",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet the Moderators: Q&A with Janet Steele",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-the-moderators-qanda-with-michael-vatikiotis",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet the Moderators: Q&A with Michael Vatikiotis",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/your-2025-pre-festival-reading-list",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Your 2025 Pre-Festival Reading List",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/malaysia-airlines-offers-special-festival-fares",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Malaysia Airlines Offers Special Festival Fares",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-reveals-main-program-2025-four-days-of-conversations-from-booker-prize-winners-to-emerging-voices",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ubud Writers & Readers Festival Reveals Main Program 2025 \u2013 Four Days of Conversations from Booker Prize Winners to Emerging Voices",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/media-accreditation-for-the-2025-festival-is-now-open",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Media Accreditation for the 2025 Festival is now open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/fly-to-our-2025-festival-with-qatar-airways-and-save",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fly to our 2025 Festival with Qatar Airways and Save!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/penguin-sea-and-uwrf-partner-to-publish-stories-from-the-islands",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Penguin SEA and UWRF partner to publish Stories from the Islands",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/2025-festival-more-inspiring-minds-joining-the-lineup",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2025 Festival - More inspiring minds joining the Lineup",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/make-your-mark-on-a-new-festival-mural",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Make your mark on a new Festival Mural",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/bring-your-book-club-and-save-10percent-on-festival-passes",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bring Your Book Club and Save 10% on Festival Passes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/meet-our-new-head-of-international-programme-namal-siddiqui",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet our new Head of International Programme: Namal Siddiqui",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/first-lineup-revealed-for-2025-festival-with-three-booker-prize-winners-early-bird-tickets-on-sale",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "First lineup revealed for 2025 Festival, with Three Booker Prize Winners - Early Bird Tickets On Sale!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/feasts-of-flavours-await-at-the-ubud-food-festival-from-30-may-to-1-june",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Feasts of Flavours await at the Ubud Food Festival from 30 May to 1 June!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/the-faces-behind-the-festival-i-made-suka-merta",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Faces Behind the Festival: I Made Suka Merta",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/enchanted-bali-drawings-by-the-children-of-batuan",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Enchanted Bali: Drawings by the Children of Batuan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/2025-emerging-writers-finalists-announced",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2025 Emerging Writers Finalists Announced!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/the-faces-behind-the-festival-patricia-emanuelle",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The faces behind the Festival: Patricia Emanuelle",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/festival-unveils-the-2025-theme-aham-brahmasmi-i-am-the-universe",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festival Unveils the 2025 theme 'Aham Brahmasmi: I Am The Universe’",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/the-faces-behind-the-festival-dharmayeni-putri",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Faces Behind the Festival: Dharmayeni Putri",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/the-faces-behind-the-festival-dwi-ermayanthis-journey-with-the-festival",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Faces Behind the Festival: Dwi Ermayanthi’s Journey with the Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/join-our-team-job-opportunities-for-our-2025-festival-season",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Join our team: Job Opportunities for our 2025 Festival Season",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-awarded-impactful-event-of-the-year",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ubud Writers & Readers Festival Awarded Impactful Event of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/ubud-writers-and-readers-festival-umumkan-rangkaian-seleksi-emerging-writers-2025-untuk-penulis-indonesia",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ubud Writers & Readers Festival Umumkan Rangkaian Seleksi Emerging Writers 2025 Untuk Penulis Indonesia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/rayakan-sastra-indonesia-uwrf-2024-hadirkan-satellite-program-di-solo-yogyakarta-dan-banggai",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rayakan sastra Indonesia, UWRF 2024 hadirkan satellite program di Solo, Yogyakarta, dan Banggai",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/janet-deneefes-reflections-on-the-2024-festival",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Janet DeNeefe's reflections on the 2024 Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/a-look-into-the-2024-nobel-prize-in-literature-winner-han-kang-and-south-korean-literature",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Look into the 2024 Nobel Prize in Literature Winner Han Kang & South Korean Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/unraveling-colonial-legacies-through-storytelling-a-conversation-with-amitav-ghosh",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Unraveling Colonial Legacies Through Storytelling: A Conversation with Amitav Ghosh",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "source": {
+        "name": "Ubud Writers & Readers Festival",
+        "url": "https://ubudwritersfestival.com/news/2024-festival-presents-200-programs-and-reflects-on-its-literary-impact",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2024 Festival Presents 200+ Programs and Reflects on its literary Impact",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.333Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shanghai-childrens-book-fair",
+      "source": {
+        "name": "Shanghai International Children’s Book Fair",
+        "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!2026visitorregistration",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CCBF 2026 Visitor Registration Now Open!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.431Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shanghai-childrens-book-fair",
+      "source": {
+        "name": "Shanghai International Children’s Book Fair",
+        "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!shanghai-comics-week",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Childhood to Youth: CCBF Shanghai Comics Week",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.431Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shanghai-childrens-book-fair",
+      "source": {
+        "name": "Shanghai International Children’s Book Fair",
+        "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!From-Rights-to-Licensing-Why-Global-Content-Companies-Are-Looking-to-China",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Rights to Licensing: Why Global Content Companies Are Looking to China",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.431Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shanghai-childrens-book-fair",
+      "source": {
+        "name": "Shanghai International Children’s Book Fair",
+        "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!ccbf2026-opencall",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Connect with Asia’s Leading Children’s Book Fair CCBF 2026 Exhibitor Applications Now Open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:55.431Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/pre-festival-press-conference-recap/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pre-Festival Press Conference Recap",
+      "publishedAt": "2025-11-19T15:23:13.000Z",
+      "description": "We are in the art season and Ouida Lagos, the premier cultural hub of Lagos is once again taking charge with what one journalist called “the most unique literary festival in Africa.” The post Pre-Festival Press Conference Recap appeared first on Ake Arts and Books Festival.",
+      "discoveredAt": "2026-09-26T18:51:58.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/the-ake-festival-just-got-a-whole-lot-funnier/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Ake Festival Just Got a Whole Lot Funnier!",
+      "publishedAt": "2024-11-22T20:33:58.000Z",
+      "description": "For the very first time in the history of Ake Festival, we had a comedy show that left us in stitches! Aditi Mittal took the stage and gave us a serious bellyache \u2013 the good kind, of course! Her jokes were on point, and we couldn't get enough. But the night was just getting started!... The post The Ake Festival Just Got a Whole Lot Funnier! appeared first on Ake Arts and Books Festival.",
+      "discoveredAt": "2026-09-26T18:51:58.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/democracy-new-voices-and-literary-insights/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Democracy, New Voices, and Literary Insights",
+      "publishedAt": "2024-11-22T20:28:22.000Z",
+      "description": "Day 2 Panel Discussions: Democracy, New Voices, and Literary Insights The sparks from our panel discussion two days ago were still flying, and we couldn't wait to jump into another day of thought-provoking conversations. Day 2 of the Ake festival picked up right where we left off, delivering a fresh lineup of discussions that left... The post Democracy, New Voices, and Literary Insights appeared …",
+      "discoveredAt": "2026-09-26T18:51:58.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/ake-festivals-book-chats-are-second-to-none/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ake Festival’s Book Chats Are Second to None",
+      "publishedAt": "2024-11-22T19:33:01.000Z",
+      "description": "If there’s one thing, out of the many things, Ake Festival knows how to do, it’s curating unforgettable book chats. Day 2’s book chats took attendees on a journey through diverse genres, from feminist writing to historical fiction, African Gothic literature, and queer literature. Here’s a quick recap: Feminist Writing Moderated by Sharon Adeoye Ajanlekoko,... The post Ake Festival’s Book Chats Ar…",
+      "discoveredAt": "2026-09-26T18:51:58.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/panel-discussions-day-1-ake-festival-is-more-than-books/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Panel Discussions, Day 1: Ake Festival is More Than Books",
+      "publishedAt": "2024-11-21T21:20:04.000Z",
+      "description": "Think Ake Festival is all about books? Think again! Day 1 wasn’t just about books\u2014it was also a deep exploration into thought-provoking and educating conversations. Let’s talk about the panel discussions that kicked off the festival. Panel Recap 1: Demystifying Cancer First up, a session that peeled back the layers of stigma and misconceptions around... The post Panel Discussions, Day 1: Ake Fest…",
+      "discoveredAt": "2026-09-26T18:51:58.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/ake-festival-vibes-book-chat/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ake Festival Vibes: Book Chat!",
+      "publishedAt": "2024-11-21T20:18:11.000Z",
+      "description": "Vibes were high at the Ake Festival’s first book chat, and we’re spilling all the tea! I mean, what’s an Arts and Book festival without a book chat? Book Chat 1: Nnamdi Ehirim and Shani Akilah We kicked off this session with the amazing Omotoke Solarin-Sodara at the helm, hosting talented authors Ehirim Nnamdi and... The post Ake Festival Vibes: Book Chat! appeared first on Ake Arts and Books Fes…",
+      "discoveredAt": "2026-09-26T18:51:58.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/ake-festival-2024-the-coolest-arts-and-book-party-in-town/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ake Festival 2024: The Coolest Arts and Book Party in Town",
+      "publishedAt": "2024-11-21T19:09:15.000Z",
+      "description": "The story is told of a little dove that travelled the seven seas with a slightly tattered scroll clutched in its beak. This daring bird landed on the shoulder of a young girl engrossed in a book (nope, it’s not Merlin). Dropping the scroll, it fluttered away, leaving her curious. She unfolded it and the... The post Ake Festival 2024: The Coolest Arts and Book Party in Town appeared first on Ake A…",
+      "discoveredAt": "2026-09-26T18:51:58.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MERU REGIONAL BOOK FAIR 2026",
+      "publishedAt": "2026-05-06T17:40:45.000Z",
+      "description": "MERU REGIONAL BOOK FAIR 2026Theme: Read. Think. Lead.Dates: 27th to 31st May, 2026Venue: KINORU STADIUM The Kenya Publishers Association (KPA) is delighted to invite you to the Meru Regional Book Fair 2026 set to take place in the heart of Meru County, a vibrant educational...",
+      "discoveredAt": "2026-09-26T18:51:56.855Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2025/04/07/26th-nairobi-international-book-fair-2025/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "26th Nairobi International Book Fair \u2013 2025",
+      "publishedAt": "2025-04-07T09:40:50.000Z",
+      "description": "Theme: Inspiring Readers, Shaping FuturesDates: 24th \u2013 28th September 2025Venue: Sarit Center Expo Hall, Westlands, Nairobi, Kenya We are thrilled to announce the 26th edition of the Nairobi International Book Fair (NIBF)\u2014a literary event that continues to champion the transformative power of books, culture, and...",
+      "discoveredAt": "2026-09-26T18:51:56.855Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2025/04/07/invitation-to-exhibit-at-the-kisii-regional-book-fair-2025/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Invitation to Exhibit at the Kisii Regional Book Fair 2025",
+      "publishedAt": "2025-04-07T09:36:36.000Z",
+      "description": "Theme: Inspiring Readers, Shaping FuturesDates: 28th May \u2013 1st June 2025Venue: Quickmart Parking Area, Kisii-Kisumu Road The Kenya Publishers Association (KPA) is delighted to invite you to exhibit at the Kisii Regional Book Fair 2025\u2014a key literary event set to take place in the heart...",
+      "discoveredAt": "2026-09-26T18:51:56.855Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2024/08/16/nairobi-book-fair-2024/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nairobi International Book Fair 2024",
+      "publishedAt": "2024-08-16T01:03:29.000Z",
+      "description": "We are pleased to announce that the 25th Anniversary celebration of the Nairobi International Bookfair will be held from September 25th to 29th, 2024 at the Sarit Center Expo Hall in Westlands, Nairobi, Kenya.This annual event provides a unique opportunity for people to connect with...",
+      "discoveredAt": "2026-09-26T18:51:56.855Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2024/08/16/mombasa-book-fair-a-success/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mombasa Book Fair a Success",
+      "publishedAt": "2024-08-16T00:42:06.000Z",
+      "description": "By Mbugua Ngunjiri The Mombasa Regional Book Fair almost failed to take place despite the Kenya Publishers Association (KPA) having set dates and scouted a venue for the event. The indecision was informed by the rains that were pounding most parts of the country in...",
+      "discoveredAt": "2026-09-26T18:51:56.855Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2024/08/16/kpa-csr-at-the-mombasa-book-fair/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "KPA CSR at the Mombasa Book Fair",
+      "publishedAt": "2024-08-16T00:37:53.000Z",
+      "description": "The beneficiary of Kenya Publishers Association’s CSR, during the Mombasa Regional Book Fair was Wema Center, a home that rescues and rehabilitates street children.Wema Center, situated in Bamburi, offers these reformed street children holistic education up to the highest levels possible.The publishers donated books, sanitary...",
+      "discoveredAt": "2026-09-26T18:51:56.855Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2024/08/08/hello-world/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Abidjan International Book Fair",
+      "publishedAt": "2024-08-08T12:56:27.000Z",
+      "description": "The Kenyan stand at the Abidjan International Book Fair. The Kenyan delegation, which was led by Kiarie Kamau, the chairman of Kenya Publishers Association, was the chief guest of at the Fair.",
+      "discoveredAt": "2026-09-26T18:51:56.855Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/brisbane-writers-festival-to-administer-the-queensland-literary-awards",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Brisbane Writers Festival to Administer the Queensland Literary Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2025-microfiction-competition",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read the winning entries of the 2025 Microfiction Competition!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/our-featured-authors-share-their-top-picks-for-the-festival",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our featured authors share their top picks for the festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/signed-edition-of-quicksilver-by-callie-hart",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Signed edition of Quicksilver by Callie Hart",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/win-your-book-club-a-vip-big-day-out-at-brisbane-writers-festival",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Win your book club a VIP Big Day Out at Brisbane Writers Festival!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/were-moving-2025-dates-and-venue-announcement",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "We're moving! 2025 dates and venue announcement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/celines-bwf-2024-wrap-up",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celine's BWF 2024 Wrap Up",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2024-microfiction-competition",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read the winning entries of the 2024 Microfiction Competition!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/this_book_that_book",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "If you liked that book, you'll love this book!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/lets-never-speak-of-this-again-book-review",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "\"Let's Never Speak of This Again\" Book Review",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/a-love-letter-to-australian-ya",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Love Letter to Australian YA",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/character-perspectives-in-amie-kaufmans-the-isles-of-the-gods",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Character Perspectives in Amie Kaufman's 'The Isles of the Gods'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/completely-normal-book-review",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "'Completely Normal (and other lies)' Book Review",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/author-interview-sydney-khoo-chats-to-youth-ambassador-alex",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author Interview: sydney khoo chats to Youth Ambassador, Alex",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/book-review-the-roots-of-chaos-series-by-samantha-shannon",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Review: The Roots of Chaos series by Samantha Shannon",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/author-interview-biffy-james-chats-to-youth-ambassador-celine",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author Interview: Biffy James chats to Youth Ambassador, Celine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:56.574Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/picture-book-duo-claim-top-prize-at-childrens-book-awards-for-second-time/53690?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "19 Aug 26 Picture Book Duo Claim Top Prize at Children’s Book Awards for Second Time",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.098Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/emerging-voices-recognised-alongside-established-writers-in-2026-childrens-book-awards-shortlist/53438?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 Jun 26 Emerging voices recognised alongside established writers in 2026 Children’s Book Awards shortlist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.098Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/judges-announced-for-2026-new-zealand-book-awards-for-children-and-young-adults/51974?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "11 Dec 25 Judges announced for 2026 New Zealand Book Awards for Children and Young Adults",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.098Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/entries-open-for-2026-new-zealand-book-awards-for-children-and-young-adults/51619?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "27 Nov 25 Entries open for 2026 New Zealand Book Awards for Children and Young Adults",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.098Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/call-for-judges-of-the-2026-new-zealand-book-awards-for-children-and-young-adults/51433?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "30 Sep 25 Call for judges of the 2026 New Zealand Book Awards for Children and Young Adults",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.098Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2026-launch-gallery",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hot pics from the WORD Christchurch Festival 2026 Programme Launch",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/matariki-reading-list",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mānawatia a Matariki! Enjoy this whetū-aligned reading list",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/winter-warmers-word-y-events-in-otautahi-this-june",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Winter Warmers - WORD-y events in Ōtautahi this June",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2026-festival-dates-announced",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Festival dates announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/24-25-summer-reading-stacks",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Summer Reading Stacks",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/o-a-spooky-reading-list",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": ":-o A Spooky Reading List",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2024-te-wiki-o-te-reo-maori-how-can-we-learn-more",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2024 Te Wiki o te reo Māori - how can we learn more?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2024-word-in-the-media",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2024 - WORD in the media!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2024-festival-passes-available-now",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2024 Festival passes available now!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/the-ockhams-shortlist-is-out",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Ockhams shortlist is out!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/our-2024-programmers-at-large",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our 2024 Programmers-at-Large",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/summer-read-watch-listen-tips",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Summer Read/Watch/Listen tips",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2023-word-christchurch-festival-in-the-media",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WORD Christchurch Festival in the media",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/watch-on-demand-until-17-sep-2023",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MISSED OUT? GET WORD ON-DEMAND AT HOME!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/programmer-at-large-hot-picks-catarina-de-peters-leitao",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programmer at Large Hot Picks: Catarina de Peters Leitão",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/programmer-at-large-hot-picks-melanie-dixon",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programmer at Large Hot Picks: Melanie Dixon",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/programmer-at-large-hot-picks-audrey-baldwin",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programmer at Large Hot Picks: Audrey Baldwin",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/our-programmers-at-large",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our Programmers-at-Large!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/a-change-for-word-in-2023",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Changes for WORD in 2023",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/flying-nun-book-launches-at-lyttelton-coffee-company",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Flying Nun book launches at Lyttelton Coffee Company",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2022-ngaio-marsh-award-winner-goes-global",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ngaio Marsh Award winner goes global",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2022-festival-done",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WORD 2022 FESTIVAL - DONE!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2021-ngaio-marsh-awards-winners-revealed",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2021 Ngaio Marsh Awards winners revealed",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/a-word-about-keeping-us-all-safe",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A WORD ABOUT KEEPING US ALL SAFE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/ngaio-marsh-finalists-announced",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NGAIO MARSH FINALISTS ANNOUNCED",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/word-christchurch-festival-postponed",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WORD CHRISTCHURCH FESTIVAL RESCHEDULED",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/lockdown-listening",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LOCKDOWN LISTENING",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/nz-writers-at-cheltenham",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NZ WRITERS AT CHELTENHAM",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/partner-spotlight-university-of-canterbury",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PARTNER SPOTLIGHT: UNIVERSITY OF CANTERBURY",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/word-writers-scoop-awards",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WORD WRITERS SCOOP AWARDS",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/covid-19-update",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "COVID-19 UPDATE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/are-you-a-writer-here-are-the-amazing-hands-on-events-and-workshops-word-has-created-for-you-in-2021",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Are you a writer? Here are the amazing hands-on events and workshops WORD has created for you in 2021.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/4853-2",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Te Papa Tupu \u2013 Welcome",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/guest-curators-aj-fitzwater-daisy-speaks",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "GUEST CURATORS: AJ FITZWATER & DAISY SPEAKS",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/introducing-the-faraway-near",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "INTRODUCING THE FARAWAY NEAR",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.254Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2024/10/25/mabopa-and-higher-education-press-china-forge-new-publishing-partnership/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MABOPA and Higher Education Press China Forge New Publishing Partnership",
+      "publishedAt": "2024-10-25T13:37:00.000Z",
+      "description": "Kuala Lumpur, October 23, 2024 \u2013 MABOPA (the Malaysian Book Publishers Association) hosted a highly successful meeting today with a delegation from the Higher Education Press (HEP), China, led by President Liu Chao. The event, hosted by Sunway University, marked a significant milestone in fostering international collaboration between Malaysian and Chinese publishing industries. The meeting […]",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2024/06/01/appreciation-from-the-malaysian-book-publishers-association/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Appreciation from the Malaysian Book Publishers Association",
+      "publishedAt": "2024-06-01T01:39:00.000Z",
+      "description": "The Malaysian Book Publishers Association (MABOPA) would like to express its gratitude to the Prime Minister, YAB Dato’ Seri Anwar bin Ibrahim for announcing the awarding of vouchers to all Year 4, Year 5 and Year 6 students in primary schools, all secondary school students and all higher education institution students, in his opening speech […]",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2023/11/01/mabopa-joins-the-sdg-publishers-compact-to-advance-sustainable-development-goals-through-publishing/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MABOPA Joins the SDG Publishers Compact to Advance Sustainable Development Goals through Publishing",
+      "publishedAt": "2023-11-01T04:35:43.000Z",
+      "description": "The Malaysian Book Publishers Association (MABOPA) is pleased to announce our commitment as a signatory to the SDG Publishers Compact, a global initiative aimed at harnessing the power of the publishing industry to promote and contribute to the United Nations Sustainable Development Goals (SDGs). By aligning our efforts with the SDG Publishers Compact, MABOPA underscores […]",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2023/10/16/statement-from-the-malaysian-book-publishers-association-mabopa/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement from the Malaysian Book Publishers Association (MABOPA)",
+      "publishedAt": "2023-10-16T12:25:00.000Z",
+      "description": "The Malaysian Book Publishers Association (MABOPA) expresses its deepest disappointment with the recent statement by the organizers of the Frankfurt Book Fair, who have taken sides in a war that has caused countless civilian casualties for many years. Frankfurt Book Fair’s statement has resulted in discomfort and dismay among publishers from Malaysia at this time. […]",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2022/06/08/majlis-penyerahan-anugerah-dan-piala-pusingan-anugerah-buku-malaysia-2020/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Majlis Penyerahan Anugerah dan Piala Pusingan Anugerah Buku Malaysia 2020",
+      "publishedAt": "2022-06-08T04:39:00.000Z",
+      "description": "Majlis Penyerahan Anugerah dan Piala Pusingan Anugerah Buku Malaysia 2020. Piala pusingan dan plak telah disampaikan oleh YBrs. Tuan Mohd Khair Ngadiron.",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2022/02/08/anugerah-buku-malaysia-ke-2/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anugerah Buku Malaysia Ke-2",
+      "publishedAt": "2022-02-08T06:41:00.000Z",
+      "description": "Salam sejahtera. Insya-Allah, MABOPA sekali lagi menganjurkan Anugerah Buku Malaysia untuk tahun ke-2, mulai 7hb Februari hingga 4 Jun 2022. Dijemput semua penerbit mencalonkan buku masing-masing untuk anugerah ini. Buat kali kedua juga, e-Sentral menjadi rakan teknologi anugerah, di mana semua buku yang dicalonkan perlu dimuat naik “softcopy”nya ke platform yang disediakan khusus oleh e-Sentral.…",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2021/02/02/mabopa_mba_and_shopee_to_address_textbook_issue/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mabopa, MBA and Shopee to address textbook issue",
+      "publishedAt": "2021-02-02T14:00:35.000Z",
+      "description": "The Malaysian Book Publishers Association (Mabopa) and Malaysian Booksellers Association (MBA) have urged their members with official distribution rights of school textbooks and workbooks to increase stock allocations on their Shopee stores to address the nationwide distribution issue.",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2020/05/03/world_book_day_-_international_publishers_authors_and_booksellers_statement/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "World Book Day \u2013 International Publishers, Authors and Booksellers Statement",
+      "publishedAt": "2020-05-03T04:13:55.000Z",
+      "description": "International Publishers Association (IPA) publishing a joint statement about the importance of books and calling on governments around the world to support our industry alongside the International Authors Forum, the European Publishers and Booksellers Federation, IFRRO and STM in conjunction with the celebration of The World Book Day last 23 April 2020.",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2019/10/23/kenyataan-media-belanjawan-2020-tiada-berita-gembira-untuk-industri-buku-en/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "KENYATAAN MEDIA: Belanjawan 2020 Tiada Berita Gembira Untuk Industri Buku.",
+      "publishedAt": "2019-10-23T10:39:54.000Z",
+      "description": "MABOPA menggesa supaya kerajaan memberikan perhatian khusus kepada kejatuhan industri buku tempatan. Industri kreatif, budaya dan intelektual ini sedang berdepan dengan pelbagai cabaran; disrupsi digital, kejatuhan jualan retail, kejatuhan pembelian perpustakaan, dan kelemahan tabiat membaca buku.",
+      "discoveredAt": "2026-09-26T18:51:58.235Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ]
+}

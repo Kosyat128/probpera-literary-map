@@ -1,0 +1,742 @@
+{
+  "url": "https://www.cenl.org/member-libraries/",
+  "status": 200,
+  "accessedAt": "2026-09-26T17:13:11.289Z",
+  "links": [
+    {
+      "label": "Network Groups",
+      "url": "https://www.cenl.org/network-groups-public/",
+      "context": "Network Groups"
+    },
+    {
+      "label": "Bursaries",
+      "url": "https://www.cenl.org/bursaries/",
+      "context": "Bursaries"
+    },
+    {
+      "label": "AGM 2026",
+      "url": "https://www.cenl.org/agm/14-16-june-2026-luxembourg/",
+      "context": "AGM 2026"
+    },
+    {
+      "label": "",
+      "url": "https://www.cenl.org/",
+      "context": ""
+    },
+    {
+      "label": "Home",
+      "url": "https://www.cenl.org/",
+      "context": "Home"
+    },
+    {
+      "label": "Member Libraries",
+      "url": "https://www.cenl.org/member-libraries/",
+      "context": "Member Libraries"
+    },
+    {
+      "label": "Activities",
+      "url": "https://www.cenl.org/cenl-activities/",
+      "context": "Activities Network Groups Bursaries Publications"
+    },
+    {
+      "label": "Network Groups",
+      "url": "https://www.cenl.org/network-groups-public/",
+      "context": "Network Groups"
+    },
+    {
+      "label": "Bursaries",
+      "url": "https://www.cenl.org/bursaries/",
+      "context": "Bursaries"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.cenl.org/publications/",
+      "context": "Publications"
+    },
+    {
+      "label": "News & Events",
+      "url": "https://www.cenl.org/news-events/",
+      "context": "News & Events"
+    },
+    {
+      "label": "Looking back and ahead",
+      "url": "https://www.cenl.org/looking-back-and-ahead/",
+      "context": "Looking back and ahead"
+    },
+    {
+      "label": "#StandWithUkraine",
+      "url": "https://www.cenl.org/standwithukraine/",
+      "context": "#StandWithUkraine"
+    },
+    {
+      "label": "Sign in / Register",
+      "url": "https://www.cenl.org/sign-in-register",
+      "context": "Sign in / Register"
+    },
+    {
+      "label": "More",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": "MoreBack"
+    },
+    {
+      "label": "",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "",
+      "url": "https://www.cenl.org/",
+      "context": ""
+    },
+    {
+      "label": "Home",
+      "url": "https://www.cenl.org/",
+      "context": "Home"
+    },
+    {
+      "label": "Member Libraries",
+      "url": "https://www.cenl.org/member-libraries/",
+      "context": "Member Libraries"
+    },
+    {
+      "label": "Activities",
+      "url": "https://www.cenl.org/cenl-activities/",
+      "context": "Activities Network Groups Bursaries Publications"
+    },
+    {
+      "label": "Network Groups",
+      "url": "https://www.cenl.org/network-groups-public/",
+      "context": "Network Groups"
+    },
+    {
+      "label": "Bursaries",
+      "url": "https://www.cenl.org/bursaries/",
+      "context": "Bursaries"
+    },
+    {
+      "label": "Publications",
+      "url": "https://www.cenl.org/publications/",
+      "context": "Publications"
+    },
+    {
+      "label": "News & Events",
+      "url": "https://www.cenl.org/news-events/",
+      "context": "News & Events"
+    },
+    {
+      "label": "Looking back and ahead",
+      "url": "https://www.cenl.org/looking-back-and-ahead/",
+      "context": "Looking back and ahead"
+    },
+    {
+      "label": "#StandWithUkraine",
+      "url": "https://www.cenl.org/standwithukraine/",
+      "context": "#StandWithUkraine"
+    },
+    {
+      "label": "Sign in / Register",
+      "url": "https://www.cenl.org/sign-in-register",
+      "context": "Sign in / Register"
+    },
+    {
+      "label": "",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "list / grid",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "Biblioteka Kombëtare e Shqipërisë / National Library of Albania",
+      "url": "https://www.cenl.org/library/national-library-of-albania-biblioteka-kombetare/",
+      "context": ""
+    },
+    {
+      "label": "Հայաստանի Ազգային Գրադարան / National Library of Armenia",
+      "url": "https://www.cenl.org/library/national-library-of-armenia/",
+      "context": ""
+    },
+    {
+      "label": "Österreichische Nationalbibliothek / Austrian National Library",
+      "url": "https://www.cenl.org/library/national-library-of-austria-osterreichische-nationalbibliothek/",
+      "context": ""
+    },
+    {
+      "label": "Azerbaycan Milli Kitabxana / National Library of Azerbaijan",
+      "url": "https://www.cenl.org/library/national-library-of-azerbaijan-m-f-axundov-adina-azerbaycan-milli-kitabxana/",
+      "context": ""
+    },
+    {
+      "label": "Koninklijke Bibliotheek van België / Royal Library of Belgium",
+      "url": "https://www.cenl.org/library/koninklijke-bibliotheek-van-belgie-bibliotheque-royale-de-belgique/",
+      "context": ""
+    },
+    {
+      "label": "Nacionalna i univerzitetska biblioteka / National and University Library of Bosnia and Herzegovina",
+      "url": "https://www.cenl.org/library/nacionalna-i-univerzitetska-biblioteka/",
+      "context": ""
+    },
+    {
+      "label": "Национална библиотека „Св. cв. Кирил и Методий / St.St. Cyril and Methodius National Library",
+      "url": "https://www.cenl.org/library/national-library-of-bulgaria-st-st-cyrill-and-methodius-national-library/",
+      "context": ""
+    },
+    {
+      "label": "Nacionalna i sveučilišna knjižnica u Zagrebu / National and University Library in Zagreb",
+      "url": "https://www.cenl.org/library/national-and-university-library-in-zagreb/",
+      "context": ""
+    },
+    {
+      "label": "Κυπριακή Βιβλιοθήκη / Cyprus Library",
+      "url": "https://www.cenl.org/library/cyprus-library/",
+      "context": ""
+    },
+    {
+      "label": "Národní knihovna České republiky / National Library of the Czech Republic",
+      "url": "https://www.cenl.org/library/national-library-of-the-czech-republic-narodni-knihovna-ceske-republiky/",
+      "context": ""
+    },
+    {
+      "label": "Det Kongelige Bibliotek / Royal Danish Library",
+      "url": "https://www.cenl.org/library/national-library-of-denmark-det-kongelige-bibliotek/",
+      "context": ""
+    },
+    {
+      "label": "Eesti Rahvusraamatukogu / National Library of Estonia",
+      "url": "https://www.cenl.org/library/national-library-of-estonia-eesti-rahvusraamatukogu/",
+      "context": ""
+    },
+    {
+      "label": "Kansalliskirjasto / The National Library of Finland",
+      "url": "https://www.cenl.org/library/the-national-library-of-finland-kansalliskirjasto/",
+      "context": ""
+    },
+    {
+      "label": "Bibliothèque nationale de France / National Library of France",
+      "url": "https://www.cenl.org/library/bibliotheque-nationale-de-france/",
+      "context": ""
+    },
+    {
+      "label": "სსიპ ილია ჭავჭავაძის სახელობის საქართველოს ეროვნული ბიბლიოთეკა / National Library of Georgia",
+      "url": "https://www.cenl.org/library/national-library-of-georgia/",
+      "context": ""
+    },
+    {
+      "label": "Deutsche Nationalbibliothek / German National Library",
+      "url": "https://www.cenl.org/library/deutsche-nationalbibliothek-german-national-library/",
+      "context": ""
+    },
+    {
+      "label": "Εθνική Βιβλιοθήκη της Ελλάδος / National Library of Greece",
+      "url": "https://www.cenl.org/library/national-library-of-greece/",
+      "context": ""
+    },
+    {
+      "label": "Országos Széchényi Könyvtár (OSZK) / National Library of Hungary",
+      "url": "https://www.cenl.org/library/national-library-of-hungary-orszagos-szechenyi-konyvtar-oszk/",
+      "context": ""
+    },
+    {
+      "label": "Landsbókasafn Íslands \u2013 Háskólabókasafn / National and University Library of Iceland",
+      "url": "https://www.cenl.org/library/national-university-library-of-iceland/",
+      "context": ""
+    },
+    {
+      "label": "Leabharlann Náisiúnta na hÉireann / National Library of Ireland",
+      "url": "https://www.cenl.org/library/national-library-of-ireland/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Nazionale Centrale di Firenze / The Central National Library of Florence",
+      "url": "https://www.cenl.org/library/the-central-national-library-of-florence/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca nazionale centrale di Roma / National Central Library of Rome",
+      "url": "https://www.cenl.org/library/the-central-national-library-of-rome/",
+      "context": ""
+    },
+    {
+      "label": "Latvijas Nacionālā bibliotēka / National Library of Latvia",
+      "url": "https://www.cenl.org/library/national-library-of-latvia/",
+      "context": ""
+    },
+    {
+      "label": "Liechtensteinische Landesbibliothek / National Library of Liechtenstein",
+      "url": "https://www.cenl.org/library/national-library-of-liechtenstein/",
+      "context": ""
+    },
+    {
+      "label": "Lietuvos nacionalinė Martyno Mažvydo biblioteka / Martynas Mazvydas National Library of Lithuania",
+      "url": "https://www.cenl.org/library/martynas-mazvydas-national-library-of-lithuania/",
+      "context": ""
+    },
+    {
+      "label": "Bibliothèque nationale du Luxembourg / National Library of Luxembourg",
+      "url": "https://www.cenl.org/library/national-library-of-luxembourg/",
+      "context": ""
+    },
+    {
+      "label": "Bibljoteka Nazzjonali ta’ Malta / Malta Libraries \u2013 The National Library of Malta",
+      "url": "https://www.cenl.org/library/malta-libraries-the-national-library-of-malta/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Natională a Republicii Moldova / National Library of the Republic of Moldova",
+      "url": "https://www.cenl.org/library/national-library-of-the-republic-of-moldova-biblioteca-nationala-a-republicii-moldova/",
+      "context": ""
+    },
+    {
+      "label": "Nacionalna biblioteka Crne Gore „Đurđe Crnojević“/ National Library of Montenegro “Djurdje Crnojevic”",
+      "url": "https://www.cenl.org/library/national-library-of-montenegro-djurdje-crnojevic-cetinje-naciocalna-biblioteka-crne-gore-djurdje-crnojevic-cetinje/",
+      "context": ""
+    },
+    {
+      "label": "KB nationale bibliotheek / KB national library",
+      "url": "https://www.cenl.org/library/koninklijke-bibliotheek/",
+      "context": ""
+    },
+    {
+      "label": "Национална и универзитетска библиотека „Св. Климент Охридски“ / National and University Library “St Clement of Ohrid”",
+      "url": "https://www.cenl.org/library/national-and-university-library-st-kliment-ohridski/",
+      "context": ""
+    },
+    {
+      "label": "Nasjonalbiblioteket / National Library of Norway",
+      "url": "https://www.cenl.org/library/national-library-of-norway-nasjonalbiblioteket/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteka Narodowa / National Library of Poland",
+      "url": "https://www.cenl.org/library/national-library-of-poland-biblioteka-narodowa/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Nacional de Portugal (BNP) / National Library of Portugal",
+      "url": "https://www.cenl.org/library/national-library-of-portugal/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Naţională a României / National Library of Romania",
+      "url": "https://www.cenl.org/library/national-library-of-romania/",
+      "context": ""
+    },
+    {
+      "label": "Народна библиотека Србије / National Library of Serbia",
+      "url": "https://www.cenl.org/library/national-library-of-serbia/",
+      "context": ""
+    },
+    {
+      "label": "Slovenská národná knižnica / Slovak National Library",
+      "url": "https://www.cenl.org/library/slovak-national-library-slovenska-narodna-kni/",
+      "context": ""
+    },
+    {
+      "label": "Narodna in univerzitetna knjižnica (NUK) / National and University Library of Slovenia",
+      "url": "https://www.cenl.org/library/national-and-university-library-of-slovenia/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Nacional de España / National Library of Spain",
+      "url": "https://www.cenl.org/library/national-library-of-spain/",
+      "context": ""
+    },
+    {
+      "label": "Kungliga Biblioteket / National Library of Sweden",
+      "url": "https://www.cenl.org/library/national-library-of-sweden-kungliga-biblioteket/",
+      "context": ""
+    },
+    {
+      "label": "Schweizerische Nationalbibliothek / Swiss National Library",
+      "url": "https://www.cenl.org/library/swiss-national-library-schweizerische-nationalbibliothek/",
+      "context": ""
+    },
+    {
+      "label": "Türkiye Millî Kütüphane / National Library of Türkiye",
+      "url": "https://www.cenl.org/library/national-library-of-turkiye/",
+      "context": ""
+    },
+    {
+      "label": "Національна бібліотека України імені В. І. Вернадського / Vernadsky National Library of Ukraine",
+      "url": "https://www.cenl.org/library/v-vernadsky-national-library-of-ukraine/",
+      "context": ""
+    },
+    {
+      "label": "British Library",
+      "url": "https://www.cenl.org/library/british-library/",
+      "context": ""
+    },
+    {
+      "label": "Leabharlann Nàiseanta na h-Alba / National Library of Scotland",
+      "url": "https://www.cenl.org/library/leabharlann-naiseanta-na-h-alba-national-library-of-scotland/",
+      "context": ""
+    },
+    {
+      "label": "Llyfrgell Genedlaethol Cymru / National Library of Wales",
+      "url": "https://www.cenl.org/library/llyfrgell-genedlaethol-cymru-national-library-of-wales/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Apostolica Vaticana / The Vatican Library",
+      "url": "https://www.cenl.org/library/the-vatican-library-biblioteca-apostolica-vaticana/",
+      "context": ""
+    },
+    {
+      "label": "all",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "a",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "b",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "c",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "d",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "e",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "f",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "g",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "h",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "i",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "l",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "m",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "n",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "p",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "r",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "s",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "t",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "u",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "v",
+      "url": "https://www.cenl.org/member-libraries/#",
+      "context": ""
+    },
+    {
+      "label": "Biblioteka Kombëtare e Shqipërisë / National Library of Albania",
+      "url": "https://www.cenl.org/library/national-library-of-albania-biblioteka-kombetare/",
+      "context": ""
+    },
+    {
+      "label": "Հայաստանի Ազգային Գրադարան / National Library of Armenia",
+      "url": "https://www.cenl.org/library/national-library-of-armenia/",
+      "context": ""
+    },
+    {
+      "label": "Österreichische Nationalbibliothek / Austrian National Library",
+      "url": "https://www.cenl.org/library/national-library-of-austria-osterreichische-nationalbibliothek/",
+      "context": ""
+    },
+    {
+      "label": "Azerbaycan Milli Kitabxana / National Library of Azerbaijan",
+      "url": "https://www.cenl.org/library/national-library-of-azerbaijan-m-f-axundov-adina-azerbaycan-milli-kitabxana/",
+      "context": ""
+    },
+    {
+      "label": "Koninklijke Bibliotheek van België / Royal Library of Belgium",
+      "url": "https://www.cenl.org/library/koninklijke-bibliotheek-van-belgie-bibliotheque-royale-de-belgique/",
+      "context": ""
+    },
+    {
+      "label": "Nacionalna i univerzitetska biblioteka / National and University Library of Bosnia and Herzegovina",
+      "url": "https://www.cenl.org/library/nacionalna-i-univerzitetska-biblioteka/",
+      "context": ""
+    },
+    {
+      "label": "Национална библиотека „Св. cв. Кирил и Методий / St.St. Cyril and Methodius National Library",
+      "url": "https://www.cenl.org/library/national-library-of-bulgaria-st-st-cyrill-and-methodius-national-library/",
+      "context": ""
+    },
+    {
+      "label": "Nacionalna i sveučilišna knjižnica u Zagrebu / National and University Library in Zagreb",
+      "url": "https://www.cenl.org/library/national-and-university-library-in-zagreb/",
+      "context": ""
+    },
+    {
+      "label": "Κυπριακή Βιβλιοθήκη / Cyprus Library",
+      "url": "https://www.cenl.org/library/cyprus-library/",
+      "context": ""
+    },
+    {
+      "label": "Národní knihovna České republiky / National Library of the Czech Republic",
+      "url": "https://www.cenl.org/library/national-library-of-the-czech-republic-narodni-knihovna-ceske-republiky/",
+      "context": ""
+    },
+    {
+      "label": "Det Kongelige Bibliotek / Royal Danish Library",
+      "url": "https://www.cenl.org/library/national-library-of-denmark-det-kongelige-bibliotek/",
+      "context": ""
+    },
+    {
+      "label": "Eesti Rahvusraamatukogu / National Library of Estonia",
+      "url": "https://www.cenl.org/library/national-library-of-estonia-eesti-rahvusraamatukogu/",
+      "context": ""
+    },
+    {
+      "label": "Kansalliskirjasto / The National Library of Finland",
+      "url": "https://www.cenl.org/library/the-national-library-of-finland-kansalliskirjasto/",
+      "context": ""
+    },
+    {
+      "label": "Bibliothèque nationale de France / National Library of France",
+      "url": "https://www.cenl.org/library/bibliotheque-nationale-de-france/",
+      "context": ""
+    },
+    {
+      "label": "სსიპ ილია ჭავჭავაძის სახელობის საქართველოს ეროვნული ბიბლიოთეკა / National Library of Georgia",
+      "url": "https://www.cenl.org/library/national-library-of-georgia/",
+      "context": ""
+    },
+    {
+      "label": "Deutsche Nationalbibliothek / German National Library",
+      "url": "https://www.cenl.org/library/deutsche-nationalbibliothek-german-national-library/",
+      "context": ""
+    },
+    {
+      "label": "Εθνική Βιβλιοθήκη της Ελλάδος / National Library of Greece",
+      "url": "https://www.cenl.org/library/national-library-of-greece/",
+      "context": ""
+    },
+    {
+      "label": "Országos Széchényi Könyvtár (OSZK) / National Library of Hungary",
+      "url": "https://www.cenl.org/library/national-library-of-hungary-orszagos-szechenyi-konyvtar-oszk/",
+      "context": ""
+    },
+    {
+      "label": "Landsbókasafn Íslands \u2013 Háskólabókasafn / National and University Library of Iceland",
+      "url": "https://www.cenl.org/library/national-university-library-of-iceland/",
+      "context": ""
+    },
+    {
+      "label": "Leabharlann Náisiúnta na hÉireann / National Library of Ireland",
+      "url": "https://www.cenl.org/library/national-library-of-ireland/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Nazionale Centrale di Firenze / The Central National Library of Florence",
+      "url": "https://www.cenl.org/library/the-central-national-library-of-florence/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca nazionale centrale di Roma / National Central Library of Rome",
+      "url": "https://www.cenl.org/library/the-central-national-library-of-rome/",
+      "context": ""
+    },
+    {
+      "label": "Latvijas Nacionālā bibliotēka / National Library of Latvia",
+      "url": "https://www.cenl.org/library/national-library-of-latvia/",
+      "context": ""
+    },
+    {
+      "label": "Liechtensteinische Landesbibliothek / National Library of Liechtenstein",
+      "url": "https://www.cenl.org/library/national-library-of-liechtenstein/",
+      "context": ""
+    },
+    {
+      "label": "Lietuvos nacionalinė Martyno Mažvydo biblioteka / Martynas Mazvydas National Library of Lithuania",
+      "url": "https://www.cenl.org/library/martynas-mazvydas-national-library-of-lithuania/",
+      "context": ""
+    },
+    {
+      "label": "Bibliothèque nationale du Luxembourg / National Library of Luxembourg",
+      "url": "https://www.cenl.org/library/national-library-of-luxembourg/",
+      "context": ""
+    },
+    {
+      "label": "Bibljoteka Nazzjonali ta’ Malta / Malta Libraries \u2013 The National Library of Malta",
+      "url": "https://www.cenl.org/library/malta-libraries-the-national-library-of-malta/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Natională a Republicii Moldova / National Library of the Republic of Moldova",
+      "url": "https://www.cenl.org/library/national-library-of-the-republic-of-moldova-biblioteca-nationala-a-republicii-moldova/",
+      "context": ""
+    },
+    {
+      "label": "Nacionalna biblioteka Crne Gore „Đurđe Crnojević“/ National Library of Montenegro “Djurdje Crnojevic”",
+      "url": "https://www.cenl.org/library/national-library-of-montenegro-djurdje-crnojevic-cetinje-naciocalna-biblioteka-crne-gore-djurdje-crnojevic-cetinje/",
+      "context": ""
+    },
+    {
+      "label": "KB nationale bibliotheek / KB national library",
+      "url": "https://www.cenl.org/library/koninklijke-bibliotheek/",
+      "context": ""
+    },
+    {
+      "label": "Национална и универзитетска библиотека „Св. Климент Охридски“ / National and University Library “St Clement of Ohrid”",
+      "url": "https://www.cenl.org/library/national-and-university-library-st-kliment-ohridski/",
+      "context": ""
+    },
+    {
+      "label": "Nasjonalbiblioteket / National Library of Norway",
+      "url": "https://www.cenl.org/library/national-library-of-norway-nasjonalbiblioteket/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteka Narodowa / National Library of Poland",
+      "url": "https://www.cenl.org/library/national-library-of-poland-biblioteka-narodowa/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Nacional de Portugal (BNP) / National Library of Portugal",
+      "url": "https://www.cenl.org/library/national-library-of-portugal/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Naţională a României / National Library of Romania",
+      "url": "https://www.cenl.org/library/national-library-of-romania/",
+      "context": ""
+    },
+    {
+      "label": "Народна библиотека Србије / National Library of Serbia",
+      "url": "https://www.cenl.org/library/national-library-of-serbia/",
+      "context": ""
+    },
+    {
+      "label": "Slovenská národná knižnica / Slovak National Library",
+      "url": "https://www.cenl.org/library/slovak-national-library-slovenska-narodna-kni/",
+      "context": ""
+    },
+    {
+      "label": "Narodna in univerzitetna knjižnica (NUK) / National and University Library of Slovenia",
+      "url": "https://www.cenl.org/library/national-and-university-library-of-slovenia/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Nacional de España / National Library of Spain",
+      "url": "https://www.cenl.org/library/national-library-of-spain/",
+      "context": ""
+    },
+    {
+      "label": "Kungliga Biblioteket / National Library of Sweden",
+      "url": "https://www.cenl.org/library/national-library-of-sweden-kungliga-biblioteket/",
+      "context": ""
+    },
+    {
+      "label": "Schweizerische Nationalbibliothek / Swiss National Library",
+      "url": "https://www.cenl.org/library/swiss-national-library-schweizerische-nationalbibliothek/",
+      "context": ""
+    },
+    {
+      "label": "Türkiye Millî Kütüphane / National Library of Türkiye",
+      "url": "https://www.cenl.org/library/national-library-of-turkiye/",
+      "context": ""
+    },
+    {
+      "label": "Національна бібліотека України імені В. І. Вернадського / Vernadsky National Library of Ukraine",
+      "url": "https://www.cenl.org/library/v-vernadsky-national-library-of-ukraine/",
+      "context": ""
+    },
+    {
+      "label": "British Library",
+      "url": "https://www.cenl.org/library/british-library/",
+      "context": ""
+    },
+    {
+      "label": "Leabharlann Nàiseanta na h-Alba / National Library of Scotland",
+      "url": "https://www.cenl.org/library/leabharlann-naiseanta-na-h-alba-national-library-of-scotland/",
+      "context": ""
+    },
+    {
+      "label": "Llyfrgell Genedlaethol Cymru / National Library of Wales",
+      "url": "https://www.cenl.org/library/llyfrgell-genedlaethol-cymru-national-library-of-wales/",
+      "context": ""
+    },
+    {
+      "label": "Biblioteca Apostolica Vaticana / The Vatican Library",
+      "url": "https://www.cenl.org/library/the-vatican-library-biblioteca-apostolica-vaticana/",
+      "context": ""
+    },
+    {
+      "label": "Privacy policy",
+      "url": "https://www.cenl.org/privacy-policy/",
+      "context": "Privacy policy"
+    },
+    {
+      "label": "Cookie policy",
+      "url": "https://www.cenl.org/cookie-policy/",
+      "context": "Cookie policy"
+    },
+    {
+      "label": "Accessibility",
+      "url": "https://www.cenl.org/accessibility/",
+      "context": "Accessibility"
+    },
+    {
+      "label": "Contact",
+      "url": "https://www.cenl.org/contact/",
+      "context": "Contact"
+    },
+    {
+      "label": "Sitemap",
+      "url": "https://www.cenl.org/sitemap/",
+      "context": "Sitemap"
+    }
+  ]
+}

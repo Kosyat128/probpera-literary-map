@@ -1,0 +1,35 @@
+{
+  "sourceId": "premio-strega",
+  "name": "Premio Strega",
+  "entryUrl": "https://premiostrega.it/",
+  "countryCodes": [
+    "IT"
+  ],
+  "coverageCountryCodes": [
+    "IT"
+  ],
+  "attemptedAt": "2026-09-26T17:32:06.243Z",
+  "requests": [
+    {
+      "url": "https://www.premiostrega.it/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 496837,
+      "sha256": "e3d24fb80fe7663879051b9f681477d08781c4c245b43301d6ac31733d21b0b3",
+      "accessedAt": "2026-09-26T17:32:09.900Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.premiostrega.it/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 128,
+    "sha256": "e6e129c1b0e05c195649da175e8451e7dbe366682286efbe2621a85f6e812b3f",
+    "accessedAt": "2026-09-26T17:32:08.035Z",
+    "disallowed": [
+      "/PSP/wp-admin/"
+    ]
+  }
+}

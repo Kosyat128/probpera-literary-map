@@ -1,0 +1,382 @@
+{
+  "sourceId": "modjaji",
+  "name": "Modjaji Books",
+  "entryUrl": "https://modjajibooks.co.za/topics/imprint-africa/",
+  "countryCodes": [
+    "ZA"
+  ],
+  "coverageCountryCodes": [
+    "ZA"
+  ],
+  "attemptedAt": "2026-09-26T17:29:51.565Z",
+  "requests": [
+    {
+      "url": "https://modjajibooks.co.za/topics/imprint-africa/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 264645,
+      "sha256": "56552807a08b370ee996864abf79baf36417ed16f5dc479418907d1bb26ab59d",
+      "accessedAt": "2026-09-26T17:29:56.063Z"
+    },
+    {
+      "url": "https://modjajibooks.co.za/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 15946,
+      "sha256": "1e9f1f457287b617254e80c433ae596a3f1257cede2eef1574711db0c8a6dbaa",
+      "accessedAt": "2026-09-26T17:29:58.454Z"
+    },
+    {
+      "url": "https://modjajibooks.co.za/modjaji-books-launches-a-call-for-our-woordeloos-anthology-celebrating-southern-african-women-poets/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 270245,
+      "sha256": "1468d9348148f3aec788a38ca3ea386dff23f9c3d5081890f8f663afa87053b0",
+      "accessedAt": "2026-09-26T17:29:59.712Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://modjajibooks.co.za/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 321,
+    "sha256": "6868a393b627d89a58e24197d1988902232bec703e13bbd13141ca681951db6f",
+    "accessedAt": "2026-09-26T17:29:54.879Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "modjaji",
+    "name": "Modjaji Books",
+    "url": "https://modjajibooks.co.za/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "africa",
+    "sourceFamilyId": "modjaji",
+    "countryCodes": [
+      "ZA"
+    ],
+    "coverageCountryCodes": [
+      "ZA"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://modjajibooks.co.za"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://modjajibooks.co.za/modjaji-books-launches-a-call-for-our-woordeloos-anthology-celebrating-southern-african-women-poets/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:59.720Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "modjaji",
+    "source": {
+      "name": "Modjaji Books",
+      "url": "https://modjajibooks.co.za/modjaji-books-launches-a-call-for-our-woordeloos-anthology-celebrating-southern-african-women-poets/",
+      "language": "en-GB"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Modjaji Books launches a call for our Woordeloos anthology celebrating southern African women poets",
+    "publishedAt": "2026-01-28T08:49:47.000Z",
+    "description": "“Woordeloos is an invitation: astonish us, give us language where language falters, and help us see South Africa and the world we live in anew.”",
+    "discoveredAt": "2026-09-26T17:29:58.455Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://modjajibooks.co.za/modjaji-books-launches-a-call-for-our-woordeloos-anthology-celebrating-southern-african-women-poets/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 270245,
+      "sha256": "1468d9348148f3aec788a38ca3ea386dff23f9c3d5081890f8f663afa87053b0",
+      "accessedAt": "2026-09-26T17:29:59.712Z",
+      "headline": "Modjaji Books launches a call for our Woordeloos anthology celebrating southern African women poets",
+      "excerpt": "Modjaji Books launches a call for our Woordeloos anthology celebrating southern African women poets | Modjaji Books<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Work%20Sans%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2Citalic%2C500italic%2C600italic%2C700italic%2C800italic%2C900italic%7CBitter%3A100%2C200%2C300%2Cregular%2C50",
+      "publishedDates": [],
+      "canonical": "https://modjajibooks.co.za/modjaji-books-launches-a-call-for-our-woordeloos-anthology-celebrating-southern-african-women-poets/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:59.720Z",
+  "foundItems": [
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/modjaji-books-launches-a-call-for-our-woordeloos-anthology-celebrating-southern-african-women-poets/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Modjaji Books launches a call for our Woordeloos anthology celebrating southern African women poets",
+      "publishedAt": "2026-01-28T08:49:47.000Z",
+      "description": "“Woordeloos is an invitation: astonish us, give us language where language falters, and help us see South Africa and the world we live in anew.”",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/newsflash-poets-selected-for-modjajis-woordeloos-anthology/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Newsflash: Poets selected for Modjaji’s Woordeloos anthology",
+      "publishedAt": "2026-05-16T07:13:37.000Z",
+      "description": "2026 marks the 19th birthday of Modjaji Books and the Woordeloos poetry anthology is a celebration of our work and the writings of southern African women. Thank you to all 240 poets who submitted from all over southern Africa. We were delighted by the inventive use of language, the humour, the interplay between languages, the […]",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/more-about-woordeloos/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "More about Woordeloos",
+      "publishedAt": "2026-05-15T06:07:59.000Z",
+      "description": "More about the process Firstly we want to thank all of you, who submitted for submitting! It was wonderful to read all the poems and to see what is on your minds and what is important to you. Unfortunately, we had to disqualify about 50 poems because they didn’t meet the criteria we laid down […]",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/interview-with-hannah-botsis-about-writing-a-clergymans-daughter/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interview with Hannah Botsis about writing A Clergyman’s Daughter",
+      "publishedAt": "2026-03-10T09:09:17.000Z",
+      "description": "\"My background is in narrative research and I think this was really helpful in working with interview material, and fusing it with sociological description. Narratives allow us to tend to big questions (“what kind of society are we?”), but using individual stories as starting points. It is an amazingly productive technique. Every person has a story, and their class, race, religion, accent, gender…",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/a-clergymans-daughter-hannah-botsis-comes-to-cape-town/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Clergyman’s Daughter, Hannah Botsis comes to Cape Town",
+      "publishedAt": "2026-01-22T10:52:35.000Z",
+      "description": "We’re excited that Hannah Botsis, author of A Clergyman’s Daughter will be in Cape Town in the first week of February. She lives in Joburg, so this is a great opportunity for us to have here down here. We’ve arranged several events for her. Don’t miss out on hearing her talk about her memoir. We […]",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/resources-for-writers/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Resources for writers",
+      "publishedAt": "2025-12-08T11:20:43.000Z",
+      "description": "Writers sometimes need support to write, opportunities to learn more and get feedback before submitting a manuscript for publication. As well ways to connect with other writers. Here are some suggestions: There are many universities in South Africa that offer degrees in creative writing. Check out the links here. Rhodes University, Wits University, UCT, University […]",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/november-dezemba-is-almost-upon-us/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "November: Dezemba is almost upon us",
+      "publishedAt": "2025-11-07T08:36:41.000Z",
+      "description": "From Colleen’s desk Launching the movie tie-in edition of Snake by Tracey Farren, was a highlight this year! I was reminded that Tracey’s writing, the manuscript of Whiplash, which became her first book, published by Modjaji in 2008, is what made me decide to become a full-time publisher. I couldn’t put the manuscript down, I […]",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/october-busy-and-buzzing/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "October: Busy and buzzing",
+      "publishedAt": "2025-10-01T08:18:02.000Z",
+      "description": "Yes, October is busy and buzzing: we have reprints coming up, your submissions questions answered & a publisher’s Monday morning before 10am From Colleen’s Desk October is a busy month for us, there is lots to do before Dezemba. Launches across the country. We’ve just reprinted some of our favourite back list titles. New titles […]",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/submissions-are-open-till-the-end-of-november/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Submissions are open till the end of November",
+      "publishedAt": "2025-09-01T07:15:17.000Z",
+      "description": "Our submissions are open from September 1st, 2025 until the end of November 2025 Submit your work via this portal. We publish the work of southern African women writers. In this submission period we will be accepting novels, short story collections, memoir, collections of essays, narrative non-fiction. Please note: We aren’t accepting […]",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "modjaji",
+      "source": {
+        "name": "Modjaji Books",
+        "url": "https://modjajibooks.co.za/august-every-month-is-womens-month/",
+        "language": "en-GB"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "August: Every month is women’s month",
+      "publishedAt": "2025-08-07T10:36:50.000Z",
+      "description": "In this issue we say a big thank you, look at one of our books crossing borders, a new longlist honour, & your chance to submit. (We publish our newsletter on Substack first, you can reply or ask questions if you follow us there.) From Colleen’s desk Dear friends, supporters and book-lovers Firstly, thank you […]",
+      "discoveredAt": "2026-09-26T17:29:58.455Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "1e9f1f457287b617254e80c433ae596a3f1257cede2eef1574711db0c8a6dbaa"
+}

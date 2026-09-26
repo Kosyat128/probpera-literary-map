@@ -1,0 +1,69 @@
+{
+  "sourceId": "pensweden-org",
+  "name": "Swedish PEN",
+  "entryUrl": "https://www.svenskapen.se/",
+  "countryCodes": [
+    "SE"
+  ],
+  "coverageCountryCodes": [
+    "SE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:37.054Z",
+  "requests": [
+    {
+      "url": "https://www.svenskapen.se/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 301804,
+      "sha256": "3e0530d6ec6d3e306ef2af40f2df4885c25ff9a980fb0e575e550a0f10da0a8f",
+      "accessedAt": "2026-09-26T17:29:37.921Z"
+    },
+    {
+      "url": "https://www.svenskapen.se/senaste-nytt",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 201047,
+      "sha256": "d1e8d3049ae80feffc263661e485d9a54d9964e7cfe7bbc8d2696417e0487820",
+      "accessedAt": "2026-09-26T17:29:38.773Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.svenskapen.se/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1508,
+    "sha256": "230bc3f9cc73decf177bdb4d7d582dff60d23b5af0fd040ec635382aad5bd802",
+    "accessedAt": "2026-09-26T17:29:37.678Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  }
+}

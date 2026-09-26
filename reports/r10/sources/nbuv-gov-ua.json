@@ -1,0 +1,409 @@
+{
+  "sourceId": "nbuv-gov-ua",
+  "name": "Vernadsky National Library of Ukraine",
+  "entryUrl": "https://nbuv.gov.ua/",
+  "countryCodes": [
+    "UA"
+  ],
+  "coverageCountryCodes": [
+    "UA"
+  ],
+  "attemptedAt": "2026-09-26T17:29:18.630Z",
+  "requests": [
+    {
+      "url": "https://nbuv.gov.ua/rss.xml",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=utf-8",
+      "bytes": 9296,
+      "sha256": "5612ea06629ce66826fedf9427a76fe15f8715c2820d1087635a061555a4002e",
+      "accessedAt": "2026-09-26T17:23:10.842Z"
+    },
+    {
+      "url": "https://nbuv.gov.ua/node/7320",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 61268,
+      "sha256": "ac5faab7f56731cb4bf3419f6fd68d2a343c664e3ef662e817a8502bc9647b18",
+      "accessedAt": "2026-09-26T17:29:19.512Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://nbuv.gov.ua/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 1570,
+    "sha256": "0596c102e0fe8a393aa082400a3e019f4e9ec57ba59f6d80419d7c336d756662",
+    "accessedAt": "2026-09-26T17:29:19.072Z",
+    "disallowed": [
+      "/includes/",
+      "/misc/",
+      "/modules/",
+      "/profiles/",
+      "/scripts/",
+      "/themes/",
+      "/CHANGELOG.txt",
+      "/cron.php",
+      "/INSTALL.mysql.txt",
+      "/INSTALL.pgsql.txt",
+      "/INSTALL.sqlite.txt",
+      "/install.php",
+      "/INSTALL.txt",
+      "/LICENSE.txt",
+      "/MAINTAINERS.txt",
+      "/update.php",
+      "/UPGRADE.txt",
+      "/xmlrpc.php",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips/",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/user/logout/",
+      "/?q=admin/",
+      "/?q=comment/reply/",
+      "/?q=filter/tips/",
+      "/?q=node/add/",
+      "/?q=search/",
+      "/?q=user/password/",
+      "/?q=user/register/",
+      "/?q=user/login/",
+      "/?q=user/logout/",
+      "/old_jrn/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:09.597Z",
+    "sourceDocumentSha256": "5612ea06629ce66826fedf9427a76fe15f8715c2820d1087635a061555a4002e"
+  },
+  "endpoint": {
+    "id": "nbuv-gov-ua",
+    "name": "Vernadsky National Library of Ukraine",
+    "url": "https://nbuv.gov.ua/rss.xml",
+    "format": "rss",
+    "language": "uk",
+    "region": "europe",
+    "sourceFamilyId": "nbuv-gov-ua",
+    "countryCodes": [
+      "UA"
+    ],
+    "coverageCountryCodes": [
+      "UA"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://nbuv.gov.ua"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://nbuv.gov.ua/node/7320"
+    ],
+    "verifiedAt": "2026-09-26T17:29:19.516Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "nbuv-gov-ua",
+    "source": {
+      "name": "Vernadsky National Library of Ukraine",
+      "url": "https://nbuv.gov.ua/node/7320",
+      "language": "uk"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Книгознавчі читання і презентація нової цифрової колекції «Історія регіонів»: Дніпро",
+    "publishedAt": "2026-09-23T16:19:38.000Z",
+    "description": "Дата події: 17-09-2026",
+    "discoveredAt": "2026-09-26T17:29:19.073Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://nbuv.gov.ua/node/7320",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 61268,
+      "sha256": "ac5faab7f56731cb4bf3419f6fd68d2a343c664e3ef662e817a8502bc9647b18",
+      "accessedAt": "2026-09-26T17:29:19.512Z",
+      "headline": "Національна бібліотека України",
+      "excerpt": "Книгознавчі читання і презентація нової цифрової колекції «Історія регіонів»: Дніпро | Національна бібліотека України імені В. І. Вернадського Перейти до основного матеріалу Національна бібліотека України імені В. І. Вернадського Оберіть мовуUkrainianArabicArmenianAzerbaijaniBelarusianBulgarianChinese (Simplified)Chinese (Traditional)CzechDanishDutchEnglishEstonianFinnishFrenchGeorgianGermanGreekH",
+      "publishedDates": [],
+      "canonical": "/node/7320",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:19.516Z",
+  "foundItems": [
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7320",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Книгознавчі читання і презентація нової цифрової колекції «Історія регіонів»: Дніпро",
+      "publishedAt": "2026-09-23T16:19:38.000Z",
+      "description": "Дата події: 17-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7316",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Книгознавчі читання присвячені представленню цифрової колекції «Історія регіонів : Дніпро \u2013 Дніпропетровськ \u2013 Катеринослав \u2013 Стара Самар».",
+      "publishedAt": "2026-09-10T06:45:11.000Z",
+      "description": "Дата події: 10-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7319",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Затверджено підсумки та визначено перспективи наукових досліджень",
+      "publishedAt": "2026-09-16T15:47:45.000Z",
+      "description": "Дата події: 15-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7318",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Особові колекції українських бібліотекознавців у фондах наукових бібліотек",
+      "publishedAt": "2026-09-10T12:32:39.000Z",
+      "description": "Дата події: 10-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7317",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "«Світова література в перекладі українською мовою»",
+      "publishedAt": "2026-09-10T08:21:11.000Z",
+      "description": "Дата події: 10-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7315",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Профілі науковців в Бібліометриці української науки!",
+      "publishedAt": "2026-09-09T11:01:00.000Z",
+      "description": "Дата події: 7-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7314",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Пам’яті колеги",
+      "publishedAt": "2026-09-08T17:02:59.000Z",
+      "description": "Дата події: 8-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7312",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Вітаємо з ювілеєм невтомну наукову дослідницю Ірину Олегівну Ціборовську-Римарович",
+      "publishedAt": "2026-09-04T19:21:15.000Z",
+      "description": "Дата події: 4-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7311",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Леонардо да Вінчі можна прочитати українською",
+      "publishedAt": "2026-09-04T18:31:20.000Z",
+      "description": "Дата події: 4-09-2026",
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7310",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Особові колекції українських бібліотекознавців у фондах наукових бібліотек",
+      "publishedAt": "2026-09-04T14:52:02.000Z",
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.073Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5612ea06629ce66826fedf9427a76fe15f8715c2820d1087635a061555a4002e"
+}

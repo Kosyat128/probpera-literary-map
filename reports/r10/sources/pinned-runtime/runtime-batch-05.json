@@ -1,0 +1,6249 @@
+{
+  "batch": 5,
+  "checkedAt": "2026-09-26T18:52:22.173Z",
+  "sourceCount": 12,
+  "availableSourceCount": 12,
+  "candidateCount": 238,
+  "sources": [
+    {
+      "id": "cul-com-uy",
+      "name": "cul.com.uy/",
+      "url": "https://cul.com.uy/feed/",
+      "format": "rss",
+      "language": "es",
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "cul-com-uy",
+      "countryCodes": [
+        "UY"
+      ],
+      "coverageCountryCodes": [
+        "UY"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:22.171Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "nkp-cz",
+      "name": "National Library of the Czech Republic",
+      "url": "https://www.nkp.cz/",
+      "format": "html",
+      "language": "cs",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "nkp-cz",
+      "countryCodes": [
+        "CZ"
+      ],
+      "coverageCountryCodes": [
+        "CZ"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:19.139Z",
+      "candidateCount": 39
+    },
+    {
+      "id": "oszk-hu",
+      "name": "National Library of Hungary",
+      "url": "https://oszk.hu/en",
+      "format": "html",
+      "language": "en",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "oszk-hu",
+      "countryCodes": [
+        "HU"
+      ],
+      "coverageCountryCodes": [
+        "HU"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:18.654Z",
+      "candidateCount": 15
+    },
+    {
+      "id": "nli-ie",
+      "name": "National Library of Ireland",
+      "url": "https://www.nli.ie/",
+      "format": "html",
+      "language": "en",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "nli-ie",
+      "countryCodes": [
+        "IE"
+      ],
+      "coverageCountryCodes": [
+        "IE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:19.060Z",
+      "candidateCount": 28
+    },
+    {
+      "id": "landesbibliothek-li",
+      "name": "National Library of Liechtenstein",
+      "url": "https://www.landesbibliothek.li/feed/",
+      "format": "rss",
+      "language": "de",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "landesbibliothek-li",
+      "countryCodes": [
+        "LI"
+      ],
+      "coverageCountryCodes": [
+        "LI"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:19.147Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "lnb-lt",
+      "name": "Martynas Mazvydas National Library of Lithuania",
+      "url": "https://www.lnb.lt/?format=feed&type=rss",
+      "format": "rss",
+      "language": "lt",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "lnb-lt",
+      "countryCodes": [
+        "LT"
+      ],
+      "coverageCountryCodes": [
+        "LT"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:19.888Z",
+      "candidateCount": 20
+    },
+    {
+      "id": "bnl-public-lu",
+      "name": "National Library of Luxembourg",
+      "url": "https://bnl.public.lu/fr.html",
+      "format": "html",
+      "language": "fr",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "bnl-public-lu",
+      "countryCodes": [
+        "LU"
+      ],
+      "coverageCountryCodes": [
+        "LU"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:19.726Z",
+      "candidateCount": 36
+    },
+    {
+      "id": "bnrm-md",
+      "name": "National Library of the Republic of Moldova",
+      "url": "https://www.bnrm.md/?feed=rss2",
+      "format": "rss",
+      "language": "ro-RO",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "bnrm-md",
+      "countryCodes": [
+        "MD"
+      ],
+      "coverageCountryCodes": [
+        "MD"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:19.771Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "nb-cg-me",
+      "name": "National Library of Montenegro “Djurdje Crnojevic”",
+      "url": "https://www.nb-cg.me/en",
+      "format": "html",
+      "language": "en",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "nb-cg-me",
+      "countryCodes": [
+        "ME"
+      ],
+      "coverageCountryCodes": [
+        "ME"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:20.161Z",
+      "candidateCount": 22
+    },
+    {
+      "id": "bn-org-pl",
+      "name": "National Library of Poland",
+      "url": "https://www.bn.org.pl/",
+      "format": "html",
+      "language": "pl",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "bn-org-pl",
+      "countryCodes": [
+        "PL"
+      ],
+      "coverageCountryCodes": [
+        "PL"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:20.186Z",
+      "candidateCount": 26
+    },
+    {
+      "id": "nb-rs",
+      "name": "National Library of Serbia",
+      "url": "https://nb.rs/feed/",
+      "format": "rss",
+      "language": "sr-RS",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "nb-rs",
+      "countryCodes": [
+        "RS"
+      ],
+      "coverageCountryCodes": [
+        "RS"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:21.068Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "snk-sk",
+      "name": "Slovak National Library",
+      "url": "https://snk.sk/en/",
+      "format": "html",
+      "language": "en-US",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "snk-sk",
+      "countryCodes": [
+        "SK"
+      ],
+      "coverageCountryCodes": [
+        "SK"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:20.555Z",
+      "candidateCount": 12
+    }
+  ],
+  "items": [
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026-2/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Autores invitados del exterior",
+      "publishedAt": "2026-09-21T22:33:55.000Z",
+      "description": "Autores invitados del exterior 48.ª Feria Internacional del Libro de Montevideo. Tamara Tenenbaum (Argentina) Es licenciada en Filosofía por la […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/ultimas-localidades-disponibles-para-la-presentacion-de-emmanuel-carrere/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Últimas localidades disponibles. Emmanuel Carrère en Montevideo.",
+      "publishedAt": "2026-09-21T14:56:28.000Z",
+      "description": "El próximo lunes 28 de setiembre, a partir de las 15:00 horas, se habilitará el canje presencial de las últimas […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/programa-de-actividades-48-a-feria-internacional-del-libro-de-montevideo/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Grilla de actividades 48.ª FIL MVD",
+      "publishedAt": "2026-09-21T10:56:37.000Z",
+      "description": "Del 2 al 18 de octubre, la Explanada, el atrio y el entrepiso de la Intendencia de Montevideo reciben la […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/finalistas-del-concurso-de-afiche/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Finalistas del concurso de afiche",
+      "publishedAt": "2026-07-31T19:41:07.000Z",
+      "description": "Nos complace anunciar que Diego Rodríguez Cubelli, Marisa Riera y Nino Fernández han sido seleccionados como finalistas del concurso de […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/emmanuel-carrere-visitara-uruguay/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Emmanuel Carrère visitará Uruguay",
+      "publishedAt": "2026-07-31T17:57:45.000Z",
+      "description": "La Feria Internacional del Libro de Montevideo se prepara para recibir a Emmanuel Carrère Fotografía © Vincent Muller/P.O.L El destacado […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jurado de los Premios Bartolomé Hidalgo 2026",
+      "publishedAt": "2026-07-24T19:43:04.000Z",
+      "description": "Jurados de los Bartolomé Hidalgo 2026 POESÍA Silvia Guerra Es poeta, narradora, investigadora y editora. Ha publicado una extensa obra […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/club-cultural-charco/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Club Cultural Charco",
+      "publishedAt": "2026-07-20T17:41:42.000Z",
+      "description": "Club Cultural Charco es un proyecto cooperativo que busca revalorizar el encuentro y la conversación. Su espacio cuenta con librería […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/convocatoria-y-bases-de-los-premios-bartolome-hidalgo-2026/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Convocatoria y bases de los Premios Bartolomé Hidalgo 2026",
+      "publishedAt": "2026-07-14T15:20:02.000Z",
+      "description": "Premios Bartolomé Hidalgo Bases 2026 Los Premios Bartolomé Hidalgo fueron creados por la Cámara Uruguaya del Libro (CUL) con la […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/boletin-informativo-julio-2026/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Boletín informativo \u2013 Julio 2026",
+      "publishedAt": "2026-07-07T18:48:53.000Z",
+      "description": "Boletín informativo JULIO 2026 Nos entusiasma acercarles este segundo número de nuestro boletín, un espacio para repasar las principales acciones […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/boletin-informativo-marzo-2026/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Boletín informativo \u2013 Marzo 2026",
+      "publishedAt": "2026-07-07T18:13:02.000Z",
+      "description": "Boletín informativo MARZO 2026 Nómade: estudio sobre hábitos de lectura y mercado del libro Atendiendo a las inquietudes de nuestro […]",
+      "discoveredAt": "2026-09-26T18:52:22.167Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/zakladni-informace",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Základní informace",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/organizacni-struktura",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Organizační struktura",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/odborne-cinnosti",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Odborné činnosti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/vydane-publikace",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Vydané publikace",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/historie-knihovny",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Historie knihovny",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/organizacni-struktura/slovanska-knihovna",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Slovanská knihovna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/sluzby/knihovna-bez-barier",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Knihovna bez bariér",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/studovny-a-prostory",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Studovny a prostory",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/studovny-a-prostory?areatype%5B%5D=4&areatype%5B%5D=7&areatype%5B%5D=2&areatype%5B%5D=5&text=",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ostatní prostory",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/studovny-a-prostory?areatype%5B%5D=6&text=",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prostory k pronájmu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/katalogy-databaze-digitalni-knihovny",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Katalogy, databáze, digitální knihovny",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/katalogy-databaze-digitalni-knihovny?sorttype%5B%5D=5&text=",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Digitální knihovny",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/katalogy-databaze-digitalni-knihovny?sort=&sorttype%5B%5D=4&text=",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Licencované zdroje",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/program-akci?daterangefrom=&daterangeto=&sorttype%5B%5D=2&text=",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Výstavy v Klementinu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/program-akci?daterangefrom=&daterangeto=&sorttype%5B%5D=3&text=",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Komentované prohlídky",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/navsteva-generalniho-reditele-albertiny-vklementinu",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Návštěva generálního ředitele Albertiny v Klementinu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/stitky/mezinarodni-spoluprace",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "mezinárodní spolupráce",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/stitky/zahranicni-navsteva",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "zahraniční návštěva",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/jubilejni-50-seminar-knihovniku-muzei-a-galerii",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Jubilejní 50. seminář knihovníků muzeí a galerií",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/oceneni-za-interaktivni-kiosek-na-slovicko-s-kosmou",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ocenění za interaktivní kiosek Na slovíčko s Kosmou",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/fotografie-nostalgickych-japonskych-sidlist",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fotografie nostalgických japonských sídlišť",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/cena-rudolfa-medka-pro-rok-2026",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Cena Rudolfa Medka pro rok 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/stitky/cena-rudolfa-medka",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Cena Rudolfa Medka",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/stitky/slovanska-knihovna",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Slovanská knihovna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/navsteva-japonske-delegace-v-klementinu",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Návštěva japonské delegace v Klementinu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/rajzovni-deniky-mapy-a-pruvodce",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Rajzovní deníky, mapy a průvodce",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/stitky/prirucka-pro-knihovniky",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "příručka pro knihovníky",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/stitky/z-klementinskych-pokladu",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Z klementinských pokladů",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/stitky/historicke-fondy",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "historické fondy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/klementinum-ucebnice-barokniho-umeni-a-architektury",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Klementinum \u2013 učebnice barokního umění a architektury",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/stitky/pro-nakladatele",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Informace pro nakladatele",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/sluzby/prijem-povinnych-vytisku-periodickych-a-neperiodickych-publikaci",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Povinné výtisky",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/rychle-hledani-stitky",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Rychlé hledání - štítky",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/faq-sluzby-nk-cr",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "FAQ - služby NK ČR",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/faq-katalog-nk-cr",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "FAQ - Katalog NK ČR",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/knihovna-bez-barier",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Knihovna bez bariér",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/gdpr-v-narodni-knihovne-cr",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "GDPR v Národní knihovně ČR",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/prohlaseni-o-pristupnosti",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prohlášení o přístupnosti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nkp-cz",
+      "source": {
+        "name": "National Library of the Czech Republic",
+        "url": "https://www.nkp.cz/zasady-pouzivani-cookies",
+        "language": "cs"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Zásady používání cookies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.105Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/catalogues_databases",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Catalogues, databases",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/digital_library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Digital Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/grand-commander-sovereign-order-malta-national-szechenyi-library_260909",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Grand Commander of the Sovereign Order of Malta at the National Széchényi Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/greek-national-day-reception-national-szechenyi-library_260325",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Greek National Day Reception at the National Széchényi Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/ambassador-kosovo-hungary-national-szechenyi-library_260424",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Ambassador of Kosovo to Hungary at the National Széchényi Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/strategic-cooperation-french-institute_260327",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Strategic Cooperation with the French Institute",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Azerbaijani Book Corner Opened at the National Library of Foreign Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/charge-d-affaires-united-states-visits-national-szechenyi-library-again_260319",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Chargé d’Affaires of the United States visits the National Széchényi Library again",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/international-music-history-sensation-16th-17th-century-musical-score-manuscripts-bartfa_260320",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "International Music History Sensation: 16th\u201317th Century Musical Score Manuscripts from Bártfa",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/news/560-year-old-rarity-national-library-fragment-gutenberg-s-36-line-bible-discovered_260129",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A 560-year-old Rarity in the National Library: A Fragment of Gutenberg’s 36-line Bible Discovered",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/ask_the_librarian",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ask the Librarian",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/copying_service",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Copying service",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/how_to_get_to_the_library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "How to get to the Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/en/rules",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "DATA OF PUBLIC INTEREST",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oszk-hu",
+      "source": {
+        "name": "National Library of Hungary",
+        "url": "https://oszk.hu/konyvtarkozi_dokumentumellatas",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Interlibrary document supply",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:18.633Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Exhibitions & Events",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/exhibition-seamus-heaney-listen-now-again",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Seamus Heaney: Listen Now Again",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/photographer-in-residence",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Photographer-In-Residence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/podcaster-in-residence",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Podcaster in Residence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/irish-presidency-eu-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Irish Presidency of the EU 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/copying-services",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Copying Services",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/learn/borrow-banner-exhibition",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Borrow a Banner Exhibition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/our-collections/official-publications",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Official Publications",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/our-collections/prints-and-drawings",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prints and Drawings",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/our-collections/born-digital-archives",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Born Digital Archives",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/our-collections/irish-queer-archive",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Irish Queer Archive",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/ordering-materials",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ordering Materials",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/ask-librarian",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ask a Librarian",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/permission-re-use",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Permission to re-use",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/loan-materials-nli",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Loan of materials from NLI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/safe-handling-guidelines",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Safe handling guidelines",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The next chapter in ‘Reimagining the National Library’ begins",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/online-talk-irish-and-european-empires",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Online Talk | The Irish and the European Empires",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/where-murdering-cannons-roar",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "‘Where the murdering cannons roar’",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events?end_date=&start_date=",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "See more exhibitions and events",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/news-stories/news/celebrating-century-vision",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Celebrating A Century of A Vision",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/news-stories",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Show more News & Stories",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/accessibility-statement",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Accessibility Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/filming-and-recording",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Filming & Recording",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/corporate-information",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Corporate Information",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/office-chief-herald",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Office of the Chief Herald",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/site-usage-policy",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Site Usage Notice",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/data-privacy-statement",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Data Privacy Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.033Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/die-wahrheit-ueber-eva-die-erfindung-der-ungleichheit-von-frauen-und-maennern-von-carel-van-schaik-kai-michel/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Die Wahrheit über Eva \u2013 die Erfindung der Ungleichheit von Frauen und Männern von Carel van Schaik, Kai Michel",
+      "publishedAt": "2026-09-24T07:00:32.000Z",
+      "description": "Wer hat Angst vor der »Evalution«? Wie konnte es dazu kommen, dass Frauen um Gleichberechtigung kämpfen müssen? Weil Eva eher der Schlange als Gott vertraute, müssen all ihre Nachfahrinnen den Männern untertan sein. Auch die Biologie schob lange den Frauen die Schuld zu: Sie seien nun mal das schwache Geschlecht. Kein Wunder, dass sich [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/bullshit-bingo-was-frauen-nicht-mehr-hoeren-wollen-von-tatjana-kiel-susanne-schloesser-sabine-gruengreiff/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bullshit-Bingo \u2013 was Frauen nicht mehr hören wollen von Tatjana Kiel, Susanne Schlösser, Sabine Grüngreiff",
+      "publishedAt": "2026-09-24T07:00:32.000Z",
+      "description": "\"Du musst nicht gleich hysterisch werden! Lächle doch mal! Hast du deine Tage? Und wer passt auf die Kinder auf?\" Wer kennt sie nicht, die Bullshit-Sätze, die uns sprachlos machen? Das Autorinnen-Team des Ladies Mentoring Netzwerks geht auf Recherchereise und sammelt unfassbare Geschichten, im beruflichen und privaten Kontext, die Frauen wirklich erlebt haben. Momente, [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/ressourcen-eine-herausforderung-fuer-die-menschheit-von-philippe-bihouix-und-vincent-perriot/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ressourcen \u2013 eine Herausforderung für die Menschheit von Philippe Bihouix und Vincent Perriot",
+      "publishedAt": "2026-09-17T07:00:26.000Z",
+      "description": "Ein zu wenig beachteter Aspekt des drohenden Kollapses ist die Verknappung der Ressourcen. Die Erde wird immer stärker ausgebeutet und es wird aufwendiger, an die Rohstoffe zu gelangen. Recycling ist auch keine Lösung. In einem Smartphone finden sich 45 verschiedene Metalle, die jedoch so tief in die Bestandsteile integriert sind, dass sie aus alten [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/welcome-to-sodom-dein-smartphone-ist-schon-hier/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Welcome to Sodom \u2013 Dein Smartphone ist schon hier",
+      "publishedAt": "2026-09-17T07:00:20.000Z",
+      "description": "Apropos Smartphone. Wenn Sie dachten, dass die Rückgewinnung der Metalle aus dem Gerät in einem Hightech-Fabrikgebäude in Ihrer Nähe stattfindet, werden Sie eines Besseren belehrt. Die grösste Müllhalde Europas befindet sich in Afrika. Schon mal von Agbogbloshie gehört? Hier werden Ihre ehemaligen Lieblingsgadgets mit Schlägen und Feuer zerlegt, um an den verwertbaren Bestandesteilen zu [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/faustschlag-von-rechts-von-stefanie-kaluza/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Faustschlag von rechts von Stefanie Kaluza",
+      "publishedAt": "2026-09-01T07:00:44.000Z",
+      "description": "Der 15-jährige Jarik hat genug: Sein Vater ist abgehauen, seine Mutter kritisiert ihn ständig und seine Freunde verstehen ihn nicht mehr. Im Boxclub, wo er seinen Ärger abreagieren kann, fällt er eines Tages Falk auf \u2013 dem Jungen, zu dem alle aufschauen. Er lädt Jarik in ein Zeltlager ein, wo man lernt, ein richtiger [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/nachrichten-aus-dem-inneren-der-katze-von-judith-burger/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nachrichten aus dem Inneren der Katze von Judith Burger",
+      "publishedAt": "2026-09-01T07:00:36.000Z",
+      "description": "Grellrode ist so ein Kaff! Sylvie will raus, am liebsten noch vor dem Abi. Um Geld zu verdienen, jobbt sie im kleinen Kunstmuseum vor Ort. Eines Morgens ist das schönste Bild verschwunden. Da, wo Nachrichten aus dem Inneren der Katze hing, ist nur ein leerer Fleck. Aber wieso zeigt Museumsdirektor Brunse den Diebstahl nicht [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/die-schneegans-und-andere-erzaehlungen-von-paul-gallico-cloned/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Die Tote von Lichtenberg von Armin Öhri",
+      "publishedAt": "2026-08-20T09:11:01.000Z",
+      "description": "Berlin 1869. Aus einem hermetisch abgeriegelten Raum im Museum des Markgrafen von Quednau verschwinden ein altes Totenbuch sowie ein wertvoller Onyx, auf dem ein Fluch liegen soll. Wie konnte der Einbrecher mit seiner Beute entkommen? Tatortzeichner Julius Bentheim und sein Freund Albrecht Krosick machen sich daran, das scheinbar unmögliche Verbrechen zu lösen. Bald führen [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/perfekt-pirschen-von-stefan-mayer/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Perfekt pirschen von Stefan Mayer",
+      "publishedAt": "2026-08-20T07:00:28.000Z",
+      "description": "Aktives Pirschen gilt als die Krone der Jagd und ist äusserst anspruchsvoll. Wer hier Fehler macht, bleibt nicht nur erfolglos, sondern vergrämt sein Wild unter Umständen sogar nachhaltig. Forstmann Stefan Mayer vermittelt in diesem Ratgeber, wie, wann und wo erfolgreiches Pirschen auf unterschiedliche Wildarten funktioniert. (gekürzter Verlagstext) Standort: 639.1 (Ebene 2) Bibliothekskatalog [.…",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/der-steinbock-von-flurin-filli/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Der Steinbock von Flurin Filli",
+      "publishedAt": "2026-08-20T07:00:26.000Z",
+      "description": "Majestätisch, trittsicher und ein Symboltier der Alpen, der Steinbock fasziniert die Menschen seit jeher. Vermutlich von Natur aus eher selten, wurde die Art im 19. Jahrhundert aufgrund starker Bejagung an den Rand des Aussterbens gebracht. Überlebt hat sie nur dank den Bemühungen der italienischen Könige. Intensive Zucht- und Schutzmassnahmen im 20. Jahrhundert erwiesen sich [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Gedichte-Workshop mit Helena Brehm",
+      "publishedAt": "2026-08-10T14:28:25.000Z",
+      "description": "Am Samstag, 3. Oktober, von 18.00 bis 19.30 Uhr gibt Helena Brehm praktische Tipps und Tricks rund um das kreative Schreiben von Gedichten. Im Mittelpunkt stehen einfache Methoden, mit denen auch ohne grosse Vorkenntnisse schnell eigene Texte entstehen können. Der Workshop lädt dazu ein, selbst auszuprobieren, mit Sprache zu spielen und erste eigene Gedichte [...]",
+      "discoveredAt": "2026-09-26T18:52:19.143Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15177-lietuvos-kultura-atrasti-padedanti-platforma-ekultura-konkurso-skaitmeninis-knygnesys-finale",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lietuvos kultūrą atrasti padedanti platforma „ekultūra“ \u2013 konkurso „Skaitmeninis knygnešys“ finale",
+      "publishedAt": "2026-09-25T09:16:43.000Z",
+      "description": "Lietuvos nacionalinės Martyno Mažvydo bibliotekos kartu su dar 22 partneriais sukurta platforma „ekultūra“ pateko į kasmetinio konkurso „Skaitmeninis knygnešys 2026“ finalą. Ji varžosi kategorijoje „Kultūra ir paveldas“, kurios nugalėtojas įgis teisę atstovauti Lietuvai pasauliniame „World Summit Awards“ (WSA) konkurse \u2013 prestižiniuose pasaulio skaitmeninių inovacijų ir visuomenei kuriamų skaitme…",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15170-oksfordo-universiteto-leidyklos-istekliai-atveria-naujas-galimybes-lietuvos-nacionalines-bibliotekos-skaitytojams",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Oksfordo universiteto leidyklos ištekliai atveria naujas galimybes Lietuvos nacionalinės bibliotekos skaitytojams",
+      "publishedAt": "2026-09-25T05:56:14.000Z",
+      "description": "Informacijos gausos amžiuje didžiausiu iššūkiu studentams, dėstytojams ir tyrėjams tampa šaltinių patikimumas. Kasdien susiduriame su begale duomenų, tačiau rasti tikrai vertingą, moksliškai pagrįstą ir pripažintą medžiagą reikalauja nemažai laiko bei pastangų. Siekdama užtikrinti prieigą prie vertingiausių pasaulio mokslo šaltinių, Lietuvos nacionalinė Martyno Mažvydo biblioteka suteikia išskirt…",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15166-nacionaline-biblioteka-kviecia-senjorus-i-ypatinga-diena-kuryba-muzika-bendryste-ir-nauji-atradimai",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nacionalinė biblioteka kviečia senjorus į ypatingą dieną: kūryba, muzika, bendrystė ir nauji atradimai",
+      "publishedAt": "2026-09-24T13:13:25.000Z",
+      "description": "Spalio 2 d. Lietuvos nacionalinė Martyno Mažvydo biblioteka kartu su Vilniaus žydų viešąja biblioteka kviečia senjorus į vyresnio amžiaus žmonių dienos renginius „Aš ir draugė (-as) bibliotekoje“.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15168-ebsco-publishing-rask-informacija-sklandziai-ir-patikimai",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "„EBSCO Publishing“ \u2013 rask informaciją sklandžiai ir patikimai",
+      "publishedAt": "2026-09-24T08:32:49.000Z",
+      "description": "Ar pastebite, kad vis sunkiau surasti patikimą informaciją? Mus kasdien supa įvairios antraštės, kuriose trūksta aiškumo arba pateikiamos žinios būna visiškai neaktualios. Kartu interneto platybėse slepiasi daug melagienų, kurios verčia abejoti pasauliu, todėl turime likti budrūs ir viską patikrinti.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15164-lietuviu-kalbos-mokymosi-leidiniai-ivairaus-lygio-mokiniams",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lietuvių kalbos mokymosi leidiniai įvairaus lygio mokiniams",
+      "publishedAt": "2026-09-24T05:56:23.000Z",
+      "description": "Lietuvos nacionalinės Martyno Mažvydo bibliotekos Lituanistikos skaityklos fondas pasipildė naujais leidiniais, skirtais kitakalbiams mokytis lietuvių kalbos.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15156-valio-pukuotukui-winnie-the-p-1-o-o-h",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Valio Pūkuotukui: Winnie-the-P (1) O O h!",
+      "publishedAt": "2026-09-23T08:21:49.000Z",
+      "description": "Šiemet minime 100 metų sukaktį nuo Alano Alexanderio Milne’o ir Ernesto Howardo Shepardo knygos „Winnie-the-Pooh“ pirmojo leidimo pasirodymo Londone. 1926 m. spalio 14 d. leidykla „Methuen & Co.“ išleido kūrinį, tapusį vienu reikšmingiausių ir labiausiai atpažįstamų vaikų literatūros darbų pasaulyje.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15145-pasiklausyk-degancios-partituros-nacionalineje-bibliotekoje-astuoni-fluxus-vakarai",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Pasiklausyk degančios partitūros: Nacionalinėje bibliotekoje \u2013 aštuoni „Fluxus“ vakarai",
+      "publishedAt": "2026-09-21T09:51:04.000Z",
+      "description": "Nuo spalio 9 iki gruodžio 18 d. Lietuvos nacionalinėje Martyno Mažvydo bibliotekoje vyks aštuoni nemokami edukaciniai vakarai „Fluxus“ praktiškai: žaisk su taisyklėmis“. Ciklo autorius ir vedėjas \u2013 „Fluxus“ tyrinėtojas Mantas Kuginis. Susitikimai vyks penktadieniais 18 val., dalyvavimas nemokamas, būtina registracija. Įvadinis susitikimas numatytas rugsėjo 25 d.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15146-bibliografine-informacija-apie-numatomus-leisti-leidinius-rugsejo-14-20-d",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliografinė informacija apie numatomus leisti leidinius (rugsėjo 14\u201320 d.)",
+      "publishedAt": "2026-09-21T04:09:22.000Z",
+      "description": "Pasirodė naujas valstybinės bibliografijos leidinys:",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15133-saugoti-ar-leisti-keistis-kur-breziame-paveldo-ribas-xxi-amziaus-mieste",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Saugoti ar leisti keistis? Kur brėžiame paveldo ribas XXI amžiaus mieste",
+      "publishedAt": "2026-09-17T13:37:26.000Z",
+      "description": "Kalėjimas, tapęs koncertų ir meno erdve. Sovietinis paminklas, kurį vieni nori išsaugoti kaip istorijos liudijimą, o kiti \u2013 pašalinti iš viešosios erdvės. Kas sieja šiuos iš pirmo žvilgsnio skirtingus atvejus? Abu jie kelia tą patį klausimą: ką reiškia saugoti paveldą visuomenėje, kuri pati nuolat keičiasi? Kaip tokioje visuomenėje nusprendžiama, kas yra paveldas?",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15124-isleista-elizabeth-buchanan-knyga-tai-norite-tureti-grenlandija-vikingu-pamokos-donaldui-trumpui",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Išleista Elizabeth Buchanan knyga „Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui“",
+      "publishedAt": "2026-09-16T08:39:11.000Z",
+      "description": "Lietuvos nacionalinės Martyno Mažvydo bibliotekos Mokslo ir enciklopedijų leidybos centras išleido Elizabeth Buchanan knygą „Tai norite turėti Grenlandiją? Vikingų pamokos Donaldui Trumpui“.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15120-nauji-atvirosios-prieigos-el-leidiniai-duomenu-bazeje-ebsco-publishing-kaip-technologijos-keicia-musu-visuomene",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nauji atvirosios prieigos el. leidiniai duomenų bazėje „EBSCO Publishing“: kaip technologijos keičia mūsų visuomenę?",
+      "publishedAt": "2026-09-16T05:46:40.000Z",
+      "description": "Kaip algoritmai veikia tai, ką matome, skaitome ir kuo tikime? Kokią įtaką mūsų sprendimams daro dirbtinis intelektas? Ar skaitmeninė pažanga visada reiškia progresą? Ir kokią vietą sparčiai kintančiame technologijų pasaulyje užima žmogus \u2013 jo vertybės, pasirinkimai ir emocijos?",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15118-atmintini-kankliu-metai-skambanti-tradicija-istorija-ir-kulturine-atmintis",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Atmintini Kanklių metai: skambanti tradicija, istorija ir kultūrinė atmintis",
+      "publishedAt": "2026-09-15T04:49:19.000Z",
+      "description": "2026-ieji Lietuvoje paskelbti atmintinais Kanklių metais. Šia proga Muzikos ir vizualiųjų menų skyrius kviečia aplankyti ekspoziciją, skirtą vienam seniausių ir paslaptingiausių lietuvių muzikos instrumentų.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15110-kauno-knygu-mugeje-nacionaline-biblioteka-kvies-pazinti-istorijas-padedancias-geriau-suprasti-siandiena",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Kauno knygų mugėje Nacionalinė biblioteka kvies pažinti istorijas, padedančias geriau suprasti šiandieną",
+      "publishedAt": "2026-09-14T14:30:56.000Z",
+      "description": "Ko šiandien galime pasimokyti iš tarpukario Kauno gyventojų likimų, pokario išbandymų, rezistencijos, tremties patirčių ar Lietuvos šaulijos kūrėjo minčių? Rugsėjo 18\u201320 dienomis Kauno knygų mugėje Lietuvos nacionalinė Martyno Mažvydo biblioteka kvies lankytojus į susitikimus, kurie padės ne tik atrasti įdomias knygas, bet ir naujai pažvelgti į mūsų valstybės, miestų ir žmonių istoriją. Nacionali…",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15109-bibliografine-informacija-apie-numatomus-leisti-leidinius-rugsejo-7-13-d",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliografinė informacija apie numatomus leisti leidinius (rugsėjo 7\u201313 d.)",
+      "publishedAt": "2026-09-14T06:21:45.000Z",
+      "description": "Pasirodė naujas valstybinės bibliografijos leidinys:",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15114-nordic-libraries-together-2026-ka-parsivezame-is-oslo",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "„Nordic Libraries Together 2026“: ką parsivežame iš Oslo?",
+      "publishedAt": "2026-09-14T04:27:06.000Z",
+      "description": "Rugsėjo 9\u201311 d. vyko kasmetinė tarptautinė konferencija „Nordic Libraries Together 2026“, subūrusi Šiaurės ir Baltijos šalių bibliotekų profesionalus Oslo centrinėje bibliotekoje „Deichman Bjørvika“, kuriai Tarptautinė bibliotekų asociacijų ir institucijų federacija (IFLA) 2021 metais skyrė prestižinį „Metų viešosios bibliotekos“ (angl. Public Library of the Year) apdovanojimą ir oficialiai pripa…",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15108-nenuobodziam-vakarui-nauja-temine-lentyna-romantika-fantastika-romantasy",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nenuobodžiam vakarui \u2013 nauja teminė lentyna „Romantika + fantastika = romantasy“",
+      "publishedAt": "2026-09-11T11:54:44.000Z",
+      "description": "Kokią knygą iš bibliotekos pasiimsite šiandien? Galbūt esate išsiilgę romantiškos intrigos, kuri iki paskutinio puslapio neatskleis, ar Gideono jausmai Runei yra tikri. O gal norėtumėte vakarą praskaidrinti trupučiu magijos ir tapti gėrio ir blogio kovos heroje ar herojumi. Bet kodėl nepasirinkus abiejų? Siūlome stabtelėti prie naujos teminės lentynos Laisvalaikio skaitinių erdvėje (III a.) ir iš…",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15104-atrinkta-jums-italu-literatura",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Atrinkta Jums: italų literatūra",
+      "publishedAt": "2026-09-10T05:07:17.000Z",
+      "description": "Nuo Dante ir Boccaccio iki Umberto Eco, Italo Calvino, Alessandro Baricco ar Elenos Ferrante, italų autoriai jau daugelį amžių yra neatsiejama Europos literatūros dalis. Jų kūriniai skaitomi, verčiami ir atrandami visame pasaulyje, tačiau gausioje literatūros pasiūloje ne visada lengva atsirinkti, nuo ko pradėti.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15097-patirk-mokslo-zinias-is-arciau",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Patirk mokslo žinias iš arčiau",
+      "publishedAt": "2026-09-08T14:24:09.000Z",
+      "description": "Prasidėjus naujiems mokslo metams moksleivius, studentus, mokslininkus ir visus besidominčius pasaulio įdomybėmis, tyrimais bei naujausiomis žiniomis kviečiame atrasti vieną iš svarbių ir reikšmingų bibliotekos lobių \u2013 duomenų bazes. Jas galite pasiekti būdami bet kur pasaulyje, reikia tik vieno \u2013 turėti LIBIS skaitytojo pažymėjimą, kuris yra išduodamas visoje Lietuvoje.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15096-garsiniu-knygu-kolekcijoje-dar-daugiau-leidiniu",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Garsinių knygų kolekcijoje \u2013 dar daugiau leidinių",
+      "publishedAt": "2026-09-08T14:15:18.000Z",
+      "description": "Nuo rugsėjo skaitytojų laukia dar daugiau garsinių knygų \u2013 kolekciją papildė nauji leidiniai, tad jų platformoje iBiblioteka.lt jau galima rasti apie 400.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lnb-lt",
+      "source": {
+        "name": "Martynas Mazvydas National Library of Lithuania",
+        "url": "https://www.lnb.lt/naujienos/15068-mokymai-nacionalineje-bibliotekoje-prisijunk-suzinok-tobulek-3",
+        "language": "lt"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Mokymai Nacionalinėje bibliotekoje: prisijunk, sužinok, tobulėk",
+      "publishedAt": "2026-09-07T07:45:18.000Z",
+      "description": "Baigdami vasarą, kviečiame švęsti spalvingą rudens sezoną ir pradėti jį dalyvaujant mokymuose, kuriuose sužinosite naujų bei dar negirdėtų dalykų ir atnaujinsite pamirštus įgūdžius, reikalingus kasdienybėje. Nuo sąmokslo teorijų iki duomenų bazių subtilybių \u2013 išsirinkite temą, kuri bus vertinga tiek asmeniškai, tiek siekiant profesinio tobulėjimo.",
+      "discoveredAt": "2026-09-26T18:52:19.881Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/luxembourgeois.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds luxembourgeois",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/non-luxembourgeois.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds non luxembourgeois",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/imprimes-rares-precieux.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des imprimés rares et précieux",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/manuscrits.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des manuscrits",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/musicaux.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds musical du Cedom",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/affiches-cartes-postales.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des affiches et des cartes postales illustrées",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/iconographique.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds iconographique",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/cartes-plans-atlas-vues.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des cartes, plans, atlas et vues",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/histoire-bibliotheques-livre.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds de l’histoire des bibliothèques et du livre au Luxembourg",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/documents-ephemeres.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des documents éphémères",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/eluxemburgensia.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "eluxemburgensia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/webarchive.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Archives du web",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/ebooks.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "E-books et livres audio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/musique-films.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Musique et films",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/presse-loisirs.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Presse de loisirs",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/revues-scientifiques.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Revues scientifiques",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/bases-donnees.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bases de données",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/bibliographie-nationale.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliographie nationale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/nouvelles-acquisitions.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nouvelles acquisitions",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/pret-consultation.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prêt et consultation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/pret-international.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prêt international",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/visites-guidees-offres-educatives.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Visites guidées et offres éducatives",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/issn-isbn-ismn-isni.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ISBN, ISSN, ISMN et ISNI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/identifiants-perennes.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Identifiants pérennes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/salle-lecture.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Salle de lecture",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/stations-automatiques.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Stations automatiques",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/espaces-travail.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Espaces de travail",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/consultation-specialisee.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Salle de consultation spécialisée",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/espaces-evenements.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Espaces pour vos événements",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/support/aide-contact/horaires-acces.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Horaires et accès",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/support/aide-contact/astuces.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Astuces pour votre première visite",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/support/aide-contact/lanceurs-alerte.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lanceurs d’alerte",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "En octobre : une nouvelle exposition à découvrir",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/inscription.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Voici comment vous inscrire gratuitement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/etat-de-droit.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Le 01.10.2026 de 18:00 jusqu'à 20:00 Conférence Français Le nouveau discours sur « l’État de droit » au Luxembourg : Cartographie & tectonique",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee-v.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Le 03.10.2026 de 11:00 jusqu'à 13:00 Vernissage Français Vernissage de l’exposition « La paix (in)achevée »",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:19.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7536",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ziua Europeană a Limbilor la BNRM",
+      "publishedAt": "2026-09-23T06:16:56.000Z",
+      "description": "În contextul Zilei Europene a Limbilor, Ministerul Culturii al Republicii Moldova, Biblioteca Națională a Republicii Moldova în parteneriat cu Asociația Profesorilor de Limba Engleză din Moldova (META Moldova) și Oficiul Consiliului Europei la Chișinău organizează un concurs intelectual interactiv Brain Ring „Limbile ne unesc!”. Evenimentul se adresează elevilor din diferite instituții de învățăm…",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7532",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Masă rotunda: „Artistul care a îmblânzit culoarea \u2013 Ion Daghi”",
+      "publishedAt": "2026-09-21T10:32:03.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova organizează în cadrul Salonului de Artă, masa rotundă cu genericul „Artistul care a îmblânzit culoarea \u2013 Ion Daghi”, consacrată celor 90 de ani de la nașterea lui Ion Daghi, personalitate marcantă a culturii naționale, pedagog, artist plastic, filosof și eminescolog, a cărui creație și activitate au depășit, prin profunzime și amploare, hotarele spațiului…",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7528",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lansare de cărți „Năframa Moldovei” și ”Năframa Scumpiei” de Maria ROMANCIUC",
+      "publishedAt": "2026-09-21T07:09:44.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova invită publicul interesat la lansarea volumelor „Năframa Moldovei” și „Năframa Scumpiei”, semnate de Maria Romanciuc. Cele două lucrări urmăresc drumul și soarta năframei, dezvăluind multiplele sale roluri în viața cotidiană și în gospodăriile neamului nostru. Dincolo de statutul de simplu accesoriu vestimentar al femeilor de altădată, năframa devine un e…",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7522",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ExpozițiE aniversară „Destine literare ale neamului românesc: Coșbuc și Bacovia”",
+      "publishedAt": "2026-09-16T08:53:44.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova invită publicul să descopere expoziția aniversară „Destine literare ale neamului românesc: Coșbuc și Bacovia”, dedicată împlinirii a 160 de ani de la nașterea lui George Coșbuc și a 145 de ani de la nașterea lui George Bacovia. Expoziția propune o întâlnire peste timp între două sensibilități poetice și oferă publicului prilejul de a redescoperi opera...",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7518",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Expoziție temaică „Un secol de învățământ superior în spațiul pruto-nistrean”",
+      "publishedAt": "2026-09-10T07:45:47.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova invită publicul să viziteze expoziția tematică „Un secol de învățământ superior în spațiul pruto-nistrean”, dedicată împlinirii a 100 de ani de la deschiderea la Chișinău a Facultății de Teologie a Universității din Iași, prima instituție de învățământ superior românesc din spațiul pruto-nistrean. Expoziția oferă publicului posibilitatea de a descoperi, p…",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7513",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "CONFERINȚA INTERNAȚIONALĂ „LECTURA CA BAZĂ PENTRU CULTURĂ, CUNOAȘTERE ȘI DEZVOLTARE”, EDIȚIA A VIII-A, 2026",
+      "publishedAt": "2026-09-10T07:36:54.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova, în parteneriat cu Ministerul Culturii al Republicii Moldova, organizează în cadrul Programului Național LecturaCentral, cea de-a VIII-a ediție a Conferinței internaționale „Lectura ca bază pentru cultură, cunoaștere și dezvoltare”. Conferința reprezintă unul dintre cele mai importante forumuri profesionale dedicate promovării lecturii, reunind biblioteca…",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7506",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prezentare de carte „Anastasia DICESCU- o mare personalitate de cultură din interbelic”",
+      "publishedAt": "2026-09-03T06:57:18.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova invită publicul interesat la prezentarea romanului jurnal „Uitasem să vă spun…”, semnat de poetul, publicistul și publicistul Ion ANTON. Lucrarea este consacrată vieții și activității Anastasiei Dicescu, întemeietoarea și directorul Conservatorului „Unirea” din Chișinău (1919-1940), soprană care a făcut studii de canto la Conservatorul din Odesa și la Aca…",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7500",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lansare de cărti Colecțiile „Moștenire” și „Memoriile Basarabiei”",
+      "publishedAt": "2026-09-02T11:00:23.000Z",
+      "description": "În cadrul Salonului Internațional de carte Bookfest 2026, la Biblioteca Națională a Republicii Moldova vor fi lansate mai multe volume editate de Editura „Știința”, reunite sub genericul „Cultură și ortodoxie”. Evenimentul valorifică patrimoniul cultural și spiritual românesc prin lucrări incluse în colecțiile „Moștenire” și „Memoriile Basarabiei”: Volumele readuc în atenția publicului personalit…",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7494",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lansare de carte “Malum” autor Yulia Max (Iulia Max)",
+      "publishedAt": "2026-09-02T07:10:04.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova în parteneriat cu rețeaua de librării Librarius organizează lansarea volumului “Malum” autor Yulia Max (Iulia Max). Autoarea este cunoscută pentru romanele sale în genurile thriller mistic, urban fantasy și fantasy de aventură. În prezent, cărțile sale nu sunt traduse oficial în limba română, dar unele ediții în limba rusă sunt disponibile în...",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7488",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Campania Națională „Septembrie \u2013 nicio zi fără lectură”, ediţia 2026",
+      "publishedAt": "2026-08-26T11:47:23.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova, sub egida Ministerului Culturii, anunță lansarea Campaniei Naționale „Septembrie \u2013 nicio zi fără lectură”, ediţia 2026, un eveniment cultural de amploare centrat pe promovarea cărții și a lecturii, care se desfășoară anual, din cadrul Programului Naţional LecturaCentral. Pe parcursul campaniei, vor fi organizate evenimente culturale, întâlniri cu scriito…",
+      "discoveredAt": "2026-09-26T18:52:19.767Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/about-us/vision-and-mission",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Vision and Mission",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/about-us/reports-and-programs",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Reports and Programs",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/about-us/donations-and-donors-of-library-materials",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Donations and Donors of library materials",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/about-us/public-procurement",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Public procurement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/catalogues/virtual-library-of-montenegro",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Virtual Library of Montenegro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/catalogues/e-catalogue-of-montenegro",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "E \u2013 catalogue of Montenegro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/catalogues/nlm-e-catalogue",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "NLM e \u2013 catalogue",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/old-and-rare-book-collection",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Old and Rare Book Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/manuscripts-and-archival-records",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Manuscripts and Archival Records",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/cartographic-collection",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Cartographic Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/music-and-av-material",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Music and AV Material",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/the-fine-arts-and-graphics-collection",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The Fine Arts and Graphics Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/collections/digital-library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Digital Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/our-publications/publishing-activity-of-nlm",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Publishing Activity of NLM",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/catalogue-of-publications",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Catalogue of Publications",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/electronic-publications",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Electronic Publications",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/our-publications/montenegrin-bibliography-1494-1994",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Montenegrin Bibliography (1494-1994)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/our-publications/current-bibliography",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Current Bibliography",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/our-publications/bibliografski-vjesnik",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliografski vjesnik",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "20 Jul NOTICE TO AUTHORS AND CONTRIBUTORS OF BIBLIOGRAFSKI VJESNIK (BIBIBLIOGRAPHIC HERALD) We are pleased to inform you that Issue No. 1 (2026) of Bibliografski vjesnik is currently in print and will soon be available to readers. At the same time, we invite all interested authors to submit their scholarly and professional papers for publication in forthcoming issues of the journal.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/events/1091-stocktaking-of-the-montenegrina-collection-in-the-building-of-the-former-french-embassy",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "09 Jul STOCKTAKING OF THE MONTENEGRINA COLLECTION IN THE BUILDING OF THE FORMER FRENCH EMBASSY From 7 May to 16 June 2026, a committee comprising Đurđa Martinović, Danijela Radulović, and Marija Mašanović successfully carried out an electronic stocktaking of the section of the Montenegrina Collection housed in the building of the former French Embassy. This marks the first electronic stocktaking of its kind undertaken by the National Library of Montenegro.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "source": {
+        "name": "National Library of Montenegro “Djurdje Crnojevic”",
+        "url": "https://www.nb-cg.me/en/events/1092-national-library-of-montenegro-durde-crnojevic-marks-statehood-day-with-the-exhibition-13-july-through-artistic-creativity",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "09 Jul NATIONAL LIBRARY OF MONTENEGRO “ĐURĐE CRNOJEVIĆ” MARKS STATEHOOD DAY WITH THE EXHIBITION “13 JULY THROUGH ARTISTIC CREATIVITY” The 13 July Uprising, a symbol of resistance to fascism and the Montenegrin people's struggle for freedom, is presented through the visual art of Petar Lubarda, Anton Lukateli, Aleksandar Prijić, Luka Tomanović, and other artists; musical works and arrangements of partisan folk songs; literary works, including the poetry of Mirko Banjević, Aleksandar Ivanović, Ra…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.148Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/pliki-cookies/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Biblioteka Narodowa używa na swojej stronie plików cookies. Brak zmiany ustawień przeglądarki oznacza zgodę na ich użycie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-czytelnikow/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "DLA CZYTELNIKÓW",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/zapytaj-bibliotekarza/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Zapytaj bibliotekarza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "DLA BIBLIOTEKARZY",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/poradnia-biblioteki-narodowej/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Poradnia Biblioteki Narodowej",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/krajowa-rada-biblioteczna/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Krajowa Rada Biblioteczna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/rada-ds.-narodowego-zasobu-bibliotecznego/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Rada ds. Narodowego Zasobu Bibliotecznego",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/zakup-nowosci-wydawniczych-do-bibliotek/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Zakup nowości wydawniczych do bibliotek",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/normy,-formaty,-standardy/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Normy, Formaty, Standardy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/wypozyczenia-miedzybiblioteczne/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Wypożyczenia międzybiblioteczne",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6241-koalicja-unii-europejskiej-na-rzecz-czytelnictwa-oficjalnie-zainaugurowana-w-brukseli.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Koalicja Unii Europejskiej na rzecz Czytelnictwa oficjalnie zainaugurowana w Brukseli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6240-wizyta-przedstawicieli-europejskiej-federacji-bibliotek-teologicznych.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Wizyta przedstawicieli Europejskiej Federacji Bibliotek Teologicznych",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Pierwsza edycja festiwalu Morze Literatury za nami",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6235-gala-nagrody-im-czeslawa-milosza-w-darlowie-krzysztof-pomian-laureatem.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Gala Nagrody im. Czesława Miłosza w Darłowie. Krzysztof Pomian laureatem",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6233-pierwsza-nagroda-im-czeslawa-milosza-dla-krzysztofa-pomiana.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Pierwsza Nagroda im. Czesława Miłosza dla Krzysztofa Pomiana",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6232-transmisje-ze-spotkan-festiwalu-morze-literatury.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Transmisje ze spotkań festiwalu Morze Literatury",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/deskryptory-bn/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Deskryptory Biblioteki Narodowej",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/ukd/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Uniwersalna Klasyfikacja Dziesiętna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/sprawozdanie-bn/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sprawozdanie BN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/mecenasi-i-darczyncy/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Mecenasi i darczyńcy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-wydawcow/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Egzemplarz obowiązkowy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/zakup-i-zdalny-dostep-do-nowosci-wydawniczych/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Zakup i zdalny dostęp do nowości wydawniczych",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/ogolnokrajowa-siec-biblioteczna/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ogólnokrajowa sieć biblioteczna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/punkt-blekitnej-tarczy/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Punkt Błękitnej Tarczy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/polityka-prywatnosci/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "POLITYKA PRYWATNOŚCI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/deklaracja-dostepnosci/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "DEKLARACJA DOSTĘPNOŚCI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.164Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/godisnji-medjunarodni-sastanak-isbn-agencija-15-i-16-septembar-2026/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Годишњи међународни састанак ИСБН агенција 15. и 16. септембар 2026.",
+      "publishedAt": "2026-09-24T07:21:31.000Z",
+      "description": "У организацији Међународне ISBN агенције и Националне библиотеке Шпаније, у Мадриду је 15. и 16. септембра 2026. године одржан редовни Годишњи међународни састанак ИСБН агенција. Састанку су присуствовале Јасмина Нинков, управница Народне библиотеке Србије, и Ана Савић, начелник Одељења монографских публикација. Национална библиотека Шпаније била је изузетан домаћин учесницима Годишњег међународн…",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/knjizevna-nagrada-vladan-desnica-urucena-dubravki-rebic/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Књижевна награда „Владан Десница“ уручена Дубравки Ребић",
+      "publishedAt": "2026-09-21T12:07:37.000Z",
+      "description": "У понедељак, 21. септембра 2026. године, у Галеријском простору Народне библиотеке Србије свечано је уручена књижевна награда „Владан Десница“ за најбољи роман на српском језику објављен 2025. године. Овогодишња добитница је књижевница Дубравка Ребић, награђена за роман „Лету је крај“, у издању новосадског Прометеја. На свечаности се присутнима обратила управница Народне библиотеке Србије Јасмина…",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/narodnu-biblioteku-srbije-posetili-su-helen-mandl-i-endru-kranfild/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Народну библиотеку Србије посетили су Хелен Мандл и Ендру Кранфилд",
+      "publishedAt": "2026-09-21T11:58:53.000Z",
+      "description": "По повратку из Крушевца, са стручно научног скупа Библионет 2026, Хелен Мандл, заменик генералног секретара Ифле, и Ендру Кранфилд, директор Еблиде, посетили су Народну библиотеку Србије. Чланак Народну библиотеку Србије посетили су Хелен Мандл и Ендру Кранфилд се појављује прво на Народна библиотека Србије.",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/otvoren-je-strucno-naucni-skup-biblionet-2026/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Отворен је стручно-научни скуп Библионет 2026.",
+      "publishedAt": "2026-09-18T15:35:28.000Z",
+      "description": "У организацији Заједнице матичних библиотека Србије и Народне библиотеке Крушевац отворен је стручно-научни скуп Библионет 2026. Јубиларни двадесети скуп Заједнице, који се сваке године одржава у другом граду, ове године се бави темом дигиталне промоције библиотечких услуга, програма и колекција. Скуп су отворила уводна предавања реномираних гостију, Хелен Мандл, заменика генералног секретара ИФЛ…",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/nagrada-vladan-desnica-dodeljena-romanu-letu-je-kraj-dubravke-rebic/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "НАГРАДА „ВЛАДАН ДЕСНИЦА“ ДОДЕЉЕНА РОМАНУ „ЛЕТУ ЈЕ КРАЈ“ ДУБРАВКЕ РЕБИЋ",
+      "publishedAt": "2026-09-17T11:00:13.000Z",
+      "description": "У четвртак, 17. септембра 2026. године, на Конференцији за новинаре одржаној у Народној библиотеци Србије жири је саопштио да је роман ЛЕТУ ЈЕ КРАЈ Дубравке Ребић, у издању Прометеја, овогодишњи добитник Награде „Владан Десница“. Жири је радио у саставу: Мухарем Баздуљ, председник, и чланови: Љубица Арсић, Ивана Димић, Мирјана Митровић, Сања Савић Милосављевић, Горан Гоцић […] Чланак НАГРАДА „ВЛА…",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/uredjivacki-odbor-arheografskih-priloga/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Уређивачки одбор Археографских прилога",
+      "publishedAt": "2026-09-15T11:58:49.000Z",
+      "description": "ДР НИНА ГЛИБЕТИЋ доцент, Универзитет Јејл, Њу Хејвен ДР МИРОСЛАВ А. ЛАЗИЋ научни сарадник, Институт за српски језик САНУ, Београд ЖАНА ЛЕОНИДОВНА ЛЕВШИНА руководилац Сектора словенско-руске археографије, Руска национална библиотека, Санкт Петербург ДР АЛЕКСАНДЕР НАУМОВ професор емеритус, Универзитет Ка Фоскари, Венеција Супрасаљска академија, Супрасаљ ДР ВИКТОР САВИЋ редовни професор, Филолошки ф…",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/dan-srpskog-jedinstva-u-narodnoj-biblioteci-srbije/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ДАН СРПСКОГ ЈЕДИНСТВА У НАРОДНОЈ БИБЛИОТЕЦИ СРБИЈЕ",
+      "publishedAt": "2026-09-15T11:36:13.000Z",
+      "description": "Поводом државног празника Дана српског јединства, слободе и националне заставе, којим се обележава датум пробоја Солунског фронта у Првом светском рату, у Народној библиотеци Србије отворена је изложба „У гротлу Великог рата: рукописни листови Станислава Кракова и Ранка Младеновића“. На отварању су се присутнима обратили др Драган Пурешић, заменик управника Народне библиотеке Србије, и др […] Чла…",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/prof-dr-gordana-jovanovic/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ПРОФ. ДР ГОРДАНА ЈОВАНОВИЋ",
+      "publishedAt": "2026-09-14T12:02:01.000Z",
+      "description": "(29. јануар 1940 \u2013 17. мај 2024) Јасмина М. НедељковићНародна библиотека Србије Преузми текст Чланак ПРОФ. ДР ГОРДАНА ЈОВАНОВИЋ се појављује прво на Народна библиотека Србије.",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/prof-dr-hajnc-miklas-heinz-miklas-univ-prof-dr-dr-h-c-grac-28-oktobar-1948-bec-13-decembar-2023/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Проф. др Хајнц Миклас (Heinz Miklas, Univ. Prof. Dr. Dr. h. c.) (Грац, 28. октобар 1948 \u2013 Беч, 13. децембар 2023)",
+      "publishedAt": "2026-09-11T09:52:36.000Z",
+      "description": "ВИКТОР САВИЋФилолошки факултет Универзитета у Београду Институт за српски језик САНУ https://orcid.org/0000-0001-7003-3201 Преузми текст Извори Милтенова, Анисава. „In memoriam. Хайнц Миклас (1948\u20132023).“ Българистика/Bulgarica, 47 (2023), 157\u2013158. Редакция на сп. Palaeobulgarica, Кирило-Методиевски научен център. „Хайнц Миклас. In memoriam.“ Palaeobulgarica/Старобългаристика, XLVII/4 (2023), 3\u20139…",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-rs",
+      "source": {
+        "name": "National Library of Serbia",
+        "url": "https://nb.rs/dva-izdanja-srpskih-rukopisnih-knjiga-u-madjarskoj/",
+        "language": "sr-RS"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ДВА ИЗДАЊА СРПСКИХ РУКОПИСНИХ КЊИГА У МАЂАРСКОЈ",
+      "publishedAt": "2026-09-11T09:41:26.000Z",
+      "description": "(Владан Тријић, Бранислав Тодић, Зоран Ранковић, Зоран Ракић. Српске рукописне књиге у Мађарској. Београд: Библиотека Српске патријаршије, 2025, 466 стр.; Српске рукописне књиге у Мађарској: илустрације и палеографски албум. Приредио Зоран Ранковић. Београд: Библиотека Српске патријаршије, 2025, 218 стр.) ГРБИЋ ДУШИЦА Библиотека Матице српске Преузми текст Чланак ДВА ИЗДАЊА СРПСКИХ РУКОПИСНИХ КЊИ…",
+      "discoveredAt": "2026-09-26T18:52:21.064Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/pre-knihovnikov-a-vydavatelov",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Pre knihovníkov a vydavateľov",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/cennik-poplatkov",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Cenník poplatkov",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/literarny-fond-ocenil-nasu-publikaciu",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Literárny fond ocenil našu publikáciu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/webinar-sila-pribehu-v-kniznici",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Webinár Sila príbehu v knižnici",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/online-seminar-verejna-kniznica-40",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Online seminár Verejná knižnica 4.0",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/online-seminar-benchmarking-verejnych-kniznic",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Online seminár Benchmarking verejných knižníc",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/workshop-akvizicia-katalogizacia-a-legislativa-v-kniznicnej-praxi",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Workshop Akvizícia, katalogizácia a legislatíva v knižničnej praxi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Seminár Bibliografické dni 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/prehlasenie-o-cookies",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prehlásenie o cookies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/vyhlasenie-o-pristupnosti",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Vyhlásenie o prístupnosti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/ochrana-osobnych-udajov",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ochrana osobných údajov",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/slobodny-pristup-k-informaciam",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Slobodný prístup k informáciám",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:20.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "batchId": "r10-05",
+  "at": "2026-09-26T18:05:24.395Z",
+  "recordSha256": "8496790affd7c1771e3954ae392fd9cbf7e3938fcee53ba2580538a9f57c4c0c",
+  "counts": {
+    "prepared": 31,
+    "productionSelectorEligible": 31,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "sourceIds": [
+    "actualitte",
+    "irishpen-com",
+    "pac-org-cn",
+    "pen-america",
+    "penbelarus-org",
+    "penbih-ba",
+    "pencatala-cat"
+  ],
+  "sourceCountries": [
+    "BA",
+    "CN",
+    "ES",
+    "FR",
+    "IE",
+    "US"
+  ],
+  "coverageCountries": [
+    "AR",
+    "AU",
+    "BA",
+    "BE",
+    "BR",
+    "BY",
+    "CA",
+    "CG",
+    "CH",
+    "CN",
+    "DE",
+    "DZ",
+    "ER",
+    "ES",
+    "FR",
+    "GB",
+    "HT",
+    "IE",
+    "IT",
+    "KH",
+    "KR",
+    "LT",
+    "MA",
+    "MU",
+    "SN",
+    "UA",
+    "US"
+  ],
+  "categories": [
+    "adaptations",
+    "awards",
+    "discoveries",
+    "festivals",
+    "heritage",
+    "publishing",
+    "releases"
+  ],
+  "public": false,
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 31
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "no id/eventKey/canonical URL match in reviewed.json or other prepared batches; semantic review against existing events; single combined Livres en Vignes awards card",
+    "schema": "production selectReviewed 31/31",
+    "dateScope": "news event/announcement dates within 60 days; precise future event dates explicitly sourced; report dates kept distinct from source-described event dates; late reports of old editions not labelled new book releases"
+  },
+  "held": [
+    {
+      "researchIndex": 2,
+      "reason": "empty article body / document-only page, unverified facts"
+    },
+    {
+      "researchIndex": 9,
+      "reason": "July21 event outside 60days"
+    },
+    {
+      "researchIndex": 10,
+      "reason": "July20 announcement outside60days"
+    },
+    {
+      "researchIndex": 11,
+      "reason": "http500, no verified detail"
+    },
+    {
+      "researchIndex": 12,
+      "reason": "festival preview began yesterday, completion not verified; not recast as new announcement"
+    },
+    {
+      "researchIndex": 35,
+      "reason": "exact award occurrence date not established from last-week wording"
+    }
+  ],
+  "verifiedRequests": [
+    {
+      "id": "ditan-beijing-book-market-opening-2026",
+      "sourceId": "pac-org-cn",
+      "url": "https://www.pac.org.cn/hangyedongtai/141399.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:01.304Z",
+      "responseSha256": "652ed09df189c3d7e73968e707c628f936143c2cb4334be2ad4e3e577bd58533",
+      "responseBytes": 40851
+    },
+    {
+      "id": "china-publishing-development-report-2025-2026",
+      "sourceId": "pac-org-cn",
+      "url": "https://www.pac.org.cn/hangyedongtai/141395.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:00.945Z",
+      "responseSha256": "2f281b9058bce96d8e575fd541c05ce7f86abdbc34a6d5f31cee493654754ecd",
+      "responseBytes": 46963
+    },
+    {
+      "id": "pen-america-alim-aliiev-literary-interview-2026",
+      "sourceId": "pen-america",
+      "url": "https://pen.org/alim-aliiev-crimean-tatar/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:00.362Z",
+      "responseSha256": "4cf20aa23b70267b98225eb498b568ed50674c97fb46d3ee3e4bc73248d8dd75",
+      "responseBytes": 503210
+    },
+    {
+      "id": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+      "sourceId": "pen-america",
+      "url": "https://pen.org/isabel-j-kim-the-pen-ten-interview/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:01.230Z",
+      "responseSha256": "9c601a84e9cfb34c98c26d5a550705b33c8ee658c1d6d45b080256652b6f6271",
+      "responseBytes": 510299
+    },
+    {
+      "id": "pen-belarus-three-writers-released-20260916",
+      "sourceId": "penbelarus-org",
+      "url": "https://penbelarus.org/en/2026/09/16/troe-lyudzej-slova-na-voli.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:02.211Z",
+      "responseSha256": "ca210fb1b803c3d8b416c730bdaf73b88f5f233ee9ff657cb3e830e343f46bf1",
+      "responseBytes": 137800
+    },
+    {
+      "id": "bugojanska-vaza-short-story-deadline-2026",
+      "sourceId": "penbih-ba",
+      "url": "https://penbih.ba/2026/08/natjecaj-za-kratku-pricu-pripovijetkuxiv-bugojnaska-vaza-bugojno-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:02.618Z",
+      "responseSha256": "3c80b43373a207eab666b7d19cce53a98247067b6c033d9b1a3c82a885425c7d",
+      "responseBytes": 199831
+    },
+    {
+      "id": "sarajevo-amer-tikvesa-literary-corner-2026",
+      "sourceId": "penbih-ba",
+      "url": "https://penbih.ba/2026/09/knjizevni-korner-54-razgovor-sa-amerom-tikvesom/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:02.702Z",
+      "responseSha256": "81cc69d2de49a9f57c7a8827cf7c2a4a455c6ed091b1cc4833e26c176a05765f",
+      "responseBytes": 200807
+    },
+    {
+      "id": "pen-catala-eritrean-writers-audio-postcards-2026",
+      "sourceId": "pencatala-cat",
+      "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-dotze-postals-sonores-contra-25-anys-de-silenci/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:03.384Z",
+      "responseSha256": "87cfe0a2618a58c29020367de09bb02c55ec81d9810980ea8d209ada4107214d",
+      "responseBytes": 98300
+    },
+    {
+      "id": "dublin-imprisoned-writer-gallagher-2026",
+      "sourceId": "irishpen-com",
+      "url": "https://irishpen.com/2026/09/16/irish-pen-event-at-dublin-book-festival/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:03.887Z",
+      "responseSha256": "f570130c304d31da12ca392654d01e69c9367ca2e12a648e7d0358944fa12369",
+      "responseBytes": 93677
+    },
+    {
+      "id": "livres-en-vignes-awards-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134207/prix-litteraires/livres-en-vignes-2026-gautier-battistella-francois-henri-deserable-et-bruno-verjus-recompenses",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.133Z",
+      "responseSha256": "00e273b1e1541e96fb0038ec286ed44ec53ece68c7a94258e551ae0a0a88f551",
+      "responseBytes": 171656
+    },
+    {
+      "id": "madeline-cash-page-america-award-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134206/prix-litteraires/madeline-cash-remporte-le-prix-du-roman-page-america-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.036Z",
+      "responseSha256": "bb32e1ebe1627282c7991ff36506963366e5b9c85ca36f3fa1dbd393ecc3dbf3",
+      "responseBytes": 153971
+    },
+    {
+      "id": "marie-dorleans-grand-est-award-presentation-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134125/prix-litteraires/marie-dorleans-remporte-le-prix-du-livre-grand-est-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.156Z",
+      "responseSha256": "437ec9049eb1c601ee8b164a707e108097683018f8e7ab937ea6b33d22d4fc50",
+      "responseBytes": 160968
+    },
+    {
+      "id": "vanity-fair-literary-selection-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134138/prix-litteraires/9-livres-selectionnes-pour-le-prix-litteraire-vanity-fair-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.347Z",
+      "responseSha256": "26c252cba865fdcd0cb8e09ec674a135636acc43d90b0d3d2f09fc2ff45583b2",
+      "responseBytes": 166338
+    },
+    {
+      "id": "ens-editions-first-alef-prize-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134185/prix-litteraires/le-prix-alef-de-l-edition-scientifique-2026-distingue-une-publication-d-ens-editions",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.639Z",
+      "responseSha256": "0faa4d6212ece664fe8fa68d537865b344eec3a110f09edce49e8bb1aa8e3835",
+      "responseBytes": 154443
+    },
+    {
+      "id": "musicians-literary-prize-selection-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134177/prix-litteraires/eric-emmanuel-schmitt-et-erik-orsenna-en-lice-au-prix-litteraire-des-musiciens-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.965Z",
+      "responseSha256": "e24ee5e43c7be473c252585a17935c92870f00bd5b118c39092a4f485710a1d2",
+      "responseBytes": 200145
+    },
+    {
+      "id": "utopiales-comics-shortlist-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134174/prix-litteraires/prix-utopiales-bd-2026-six-albums-pour-succeder-aux-navigateurs",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.963Z",
+      "responseSha256": "663b56634b40a76f17080383adac6d70230aa24f84b730d5911b2a3e2240b85f",
+      "responseBytes": 184597
+    },
+    {
+      "id": "ouest-france-quai-bulles-finalists-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134166/prix-litteraires/prix-ouest-france-quai-des-bulles-les-cinq-finalistes-de-l-edition-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.136Z",
+      "responseSha256": "87fd648ae5314f31c90e58657c3d25adf2a952ef18710d8496eda1f8c58c3afc",
+      "responseBytes": 176638
+    },
+    {
+      "id": "scam-recit-dessine-selection-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134165/prix-litteraires/7-albums-selectionnes-pour-le-prix-du-recit-dessine-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.371Z",
+      "responseSha256": "751f55f220122197bbdf868673eb0f68cfdf60b6c7fc7647efdcee35ed3ca652",
+      "responseBytes": 187365
+    },
+    {
+      "id": "esther-teillard-vocation-prize-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134153/prix-litteraires/fuck-circus-esther-teillard-remporte-le-prix-litteraire-de-la-vocation-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.703Z",
+      "responseSha256": "3204aa18e24ca609a046af0b4d200b811fd0228f90e5571749bc9c6184121401",
+      "responseBytes": 148795
+    },
+    {
+      "id": "florent-oiseau-francoise-sagan-prize-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134120/prix-litteraires/florent-oiseau-recoit-le-prix-francoise-sagan-2026-pour-ma-gloire",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.838Z",
+      "responseSha256": "0e4226554584afa2efd093292e21a1b11025af96a6c289b762997b9c23cea4b5",
+      "responseBytes": 154196
+    },
+    {
+      "id": "cordoba-books-education-programme-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134216/international/pour-aider-les-editeurs-locaux-cordoba-commande-50-000-livres",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.810Z",
+      "responseSha256": "fa856cece2f56d2866d2f970f1acc801c984013563266434dea4c478b01a2090",
+      "responseBytes": 261884
+    },
+    {
+      "id": "european-authors-day-programme-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134183/rencontres-dedicaces/une-nouvelle-edition-de-la-journee-des-auteurs-europeens",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.981Z",
+      "responseSha256": "5a9c7837ac74816aeda27f288c0b4ae7dce923059d690580e7f462578aee1c6e",
+      "responseBytes": 255380
+    },
+    {
+      "id": "tv5monde-un-pays-un-livre-announced-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134151/television/un-pays-un-livre-augustin-trapenard-rejoint-tv5monde-pour-une-nouvelle-emission",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:07.816Z",
+      "responseSha256": "67b2d3c8c726c85408deb5c28d98746ebc5ed5a193c53435f3b9d0234fd0e5df",
+      "responseBytes": 253372
+    },
+    {
+      "id": "sables-de-dune-french-edition-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134116/avant-parutions/dune-n-a-pas-livre-tous-ses-secrets-quatres-nouvelles-inedites",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:07.784Z",
+      "responseSha256": "6edb2eab653f4c2fd8fd1e8fc3a3f8465f1bc34326e5fdfe85c30c62c2b76d17",
+      "responseBytes": 255259
+    },
+    {
+      "id": "devenir-un-monstre-quebec-release-2027",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134179/bande-annonce/devenir-un-monstre-le-livre-de-jean-barbe-devient-un-film",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:07.691Z",
+      "responseSha256": "84e9c204b305c01e23209c577a7ebf16c8a7854454fa97f12d721aad6dc9df5d",
+      "responseBytes": 247341
+    },
+    {
+      "id": "kill-jackie-series-premiere-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134158/bande-annonce/kill-jackie-une-mini-serie-tiree-d-un-livre-d-aidan-truhen",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:07.853Z",
+      "responseSha256": "77c9a1149a19ebe943e324e3aac5794b3cf907d91b63607db8a9e60c00c71ec1",
+      "responseBytes": 247299
+    },
+    {
+      "id": "wmf-martins-fontes-amazon-supply-announcement-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134132/economie/un-editeur-bresilien-majeur-decide-de-retirer-ses-ouvrages-d-amazon",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:08.284Z",
+      "responseSha256": "214210e5277df4ef26dbcd66444500553575ab6b92ee5cc17bde81474014eb67",
+      "responseBytes": 261898
+    },
+    {
+      "id": "stevenson-cevennes-illustrated-french-edition-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134080/avant-parutions/le-voyage-de-robert-louis-stevenson-dans-les-cevennes-s-offre-une-nouvelle-edition-illustree",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:08.920Z",
+      "responseSha256": "ea4fddc546e35ede1d6c79ac92a7159736505c4be3f1db956935a8ba9ceec641",
+      "responseBytes": 258607
+    },
+    {
+      "id": "poerio-goethe-iphigenia-attribution-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134210/bibliophilie/200-ans-qu-on-cherchait-cette-traduction-elle-etait-dans-la-bibliotheque-de-goethe",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:08.463Z",
+      "responseSha256": "9f2e6858fff83f290312b62dab0f0b719997bab96dc8e3e6b6005ffbf607d555",
+      "responseBytes": 260442
+    },
+    {
+      "id": "geluck-chat-museum-ixelles-plan-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134178/expos/le-musee-du-chat-de-philippe-geluck-renait-a-bruxelles",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:08.504Z",
+      "responseSha256": "f375d24b2720f0d1ea4fd3eeebdba59c0844a53be63d0247863b85e627251b97",
+      "responseBytes": 255919
+    },
+    {
+      "id": "lucashenko-eddie-blanket-french-edition-2026",
+      "sourceId": "actualitte",
+      "url": "https://actualitte.com/article/134109/avant-parutions/la-chute-d-eddie-blanket-une-histoire-de-famille-sur-deux-siecles",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:09.144Z",
+      "responseSha256": "68041d7240a9bd1bc791a81d0ad6744759dc5da2828c0c9cd12b064d426e94d6",
+      "responseBytes": 256767
+    }
+  ],
+  "typographyCheck": {
+    "checkedAt": "2026-09-26T18:24:41.489Z",
+    "normalizer": "scripts/lib/short-hyphens.mjs normalizeShortHyphens",
+    "scope": "New authored title/summary RU/EN only",
+    "changedFields": 13,
+    "recordSha256": "8496790affd7c1771e3954ae392fd9cbf7e3938fcee53ba2580538a9f57c4c0c",
+    "evidenceSemanticSha256": "6c54aa5da8484c7862a76e4039442a1526366cba5dd5a084f8eca637be553afc",
+    "sourceEvidencePreserved": true,
+    "serialization": "Unicode dash and HTML-entity escapes preserve parsed source values"
+  }
+}

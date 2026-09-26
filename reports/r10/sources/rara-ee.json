@@ -1,0 +1,728 @@
+{
+  "sourceId": "rara-ee",
+  "name": "National Library of Estonia",
+  "entryUrl": "https://www.rara.ee/",
+  "countryCodes": [
+    "EE"
+  ],
+  "coverageCountryCodes": [
+    "EE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:06.151Z",
+  "requests": [
+    {
+      "url": "https://www.rara.ee/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 610930,
+      "sha256": "4bf270ebd2ec851716158a92870490585e908924e152226022ff6e59540c6f88",
+      "accessedAt": "2026-09-26T17:22:56.089Z"
+    },
+    {
+      "url": "https://www.rara.ee/uuri/desinformatsioon/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 421136,
+      "sha256": "dfef2c975f5cdd28dad32c92b2d666c6a14185254017d7c25240f190456ea59a",
+      "accessedAt": "2026-09-26T17:29:07.748Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is media literacy and misinformation; literary relevance not demonstrated.",
+  "robots": {
+    "url": "https://www.rara.ee/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 201,
+    "sha256": "051e27c99bd76ee788a190d8cef7d65bc6eb7c3d0dbe7ffc57e9d9eeaf3b2000",
+    "accessedAt": "2026-09-26T17:29:06.748Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:54.252Z",
+    "sourceDocumentSha256": "4bf270ebd2ec851716158a92870490585e908924e152226022ff6e59540c6f88"
+  },
+  "endpoint": {
+    "id": "rara-ee",
+    "name": "National Library of Estonia",
+    "url": "https://www.rara.ee/",
+    "format": "html",
+    "language": "et",
+    "region": "europe",
+    "sourceFamilyId": "rara-ee",
+    "countryCodes": [
+      "EE"
+    ],
+    "coverageCountryCodes": [
+      "EE"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.rara.ee"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/sirvi/[^/]+/?$|^/uuri/[^/]+/?$|^/laenuta/[^/]+/?$|^/partnerile/[^/]+/?$|^/pimedate-raamatukogu/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.rara.ee/uuri/desinformatsioon/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:07.832Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 24,
+  "literaryCandidateCount": 24,
+  "sample": {
+    "sourceId": "rara-ee",
+    "source": {
+      "name": "National Library of Estonia",
+      "url": "https://www.rara.ee/uuri/desinformatsioon/",
+      "language": "et"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Desinformatsioon ja meediapädevus",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:06.882Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.rara.ee/uuri/desinformatsioon/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 421136,
+      "sha256": "dfef2c975f5cdd28dad32c92b2d666c6a14185254017d7c25240f190456ea59a",
+      "accessedAt": "2026-09-26T17:29:07.748Z",
+      "headline": "Desinformatsioon ja meediapädevus",
+      "excerpt": "Vaata lahtiolekuaegu Ava info Tagasi Tõnismäele! Valmistume avamiseks 2027 RaRa Solarise saatkond E-L 10-20, P 10-19 Muud lahtiolekuajad [email protected] +372 6307 100 Avaleht Uuri Desinformatsioon ja meediapädevus Desinformatsioon ja meediapädevus Rahvusraamatukogu kogub desinformatsiooni ja infomanipulatsioonide alast kirjandust. Samuti vahendame Eesti teadlaste ja ekspertide poolt läbi viidud ",
+      "publishedDates": [
+        {
+          "value": "2023-03-10T15:09:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.rara.ee/uuri/desinformatsioon/",
+      "language": "et",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:07.832Z",
+  "foundItems": [
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/uuri/desinformatsioon/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Desinformatsioon ja meediapädevus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/rekonstrueerimine/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Valmistume avamiseks 2027",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/pimedate-raamatukogu/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Liigu pimedate raamatukogu lehele",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/sirvi/kirjandus-digarist/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Kirjandus DIGARis",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/koduraamatukogu/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Koduraamatukogu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/uuri/rahvusbibliograafia/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Rahvusbibliograafia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/uuri/uuringud/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Raamatuaasta lugemisuuring",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/uuri/raamatukogude-statistika/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Raamatukogude statistika",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/uuri/tippteadja/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Tippteadja konsultatsioon",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/laenuta/kuidas-laenutada/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Kuidas laenutada?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/laenuta/kasutajaks-registreerumine/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Registreeru raamatukogu kasutajaks",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/laenuta/rvl/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Laenuta teisest raamatukogust",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/laenuta/koopiate-tellimine/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Koopiate tellimine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/laenuta/mirko/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Minu Raamatukogu (MIRKO)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/laenuta/laenutuste-edetabelid/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Laenutuste edetabelid",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/partnerile/hoiuraamatukogu/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Hoiuraamatukogu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/pimedate-raamatukogu/uudised/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Pimedate raamatukogu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/partnerile/arendusprojektid/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Arendusprojektid",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/partnerile/audioraamatud-kirjastajale/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Audioraamatud kirjastajale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/partnerile/stuudio-broneerimine/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Stuudio broneerimine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/partnerile/riigiametnikule/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Riigiametnikule",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/partnerile/eesti-rahvusbibliograafia/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Eesti rahvusbibliograafia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/partnerile/isikuandmete-kaitse/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Isikuandmete kaitse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/hoiuraamatukogu/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Hoiuraamatukogu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:06.882Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "4bf270ebd2ec851716158a92870490585e908924e152226022ff6e59540c6f88",
+  "technicalProbeStatus": "runtime_verified"
+}

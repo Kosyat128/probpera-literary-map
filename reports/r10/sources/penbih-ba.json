@@ -1,0 +1,350 @@
+{
+  "sourceId": "penbih-ba",
+  "name": "Bosnian PEN",
+  "entryUrl": "https://www.penbih.ba/",
+  "countryCodes": [
+    "BA"
+  ],
+  "coverageCountryCodes": [
+    "BA"
+  ],
+  "attemptedAt": "2026-09-26T17:29:23.961Z",
+  "requests": [
+    {
+      "url": "https://penbih.ba/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 80891,
+      "sha256": "a7a60049cf44cbf0de5403c60b98e3a4d7196e85849d14aedf7a54d86ba7d56c",
+      "accessedAt": "2026-09-26T17:23:24.482Z"
+    },
+    {
+      "url": "https://penbih.ba/2026/09/izlozba-adnadina-jasarevica-8-9-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 196514,
+      "sha256": "5ad7d6d718583e4bea9553e4efc4da681eb33ed105698ed90463c23f8f783935",
+      "accessedAt": "2026-09-26T17:29:28.058Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://penbih.ba/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 166,
+    "sha256": "b7a0c572c682a9658069ab424758baafc48e78eed553e13bfee2ee2cd9536f15",
+    "accessedAt": "2026-09-26T17:29:25.958Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:17.390Z",
+    "sourceDocumentSha256": "a7a60049cf44cbf0de5403c60b98e3a4d7196e85849d14aedf7a54d86ba7d56c"
+  },
+  "endpoint": {
+    "id": "penbih-ba",
+    "name": "Bosnian PEN",
+    "url": "https://penbih.ba/feed/",
+    "format": "rss",
+    "language": "bs-BA",
+    "region": "europe",
+    "sourceFamilyId": "penbih-ba",
+    "countryCodes": [
+      "BA"
+    ],
+    "coverageCountryCodes": [
+      "BA"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://penbih.ba"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://penbih.ba/2026/09/izlozba-adnadina-jasarevica-8-9-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:28.065Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "penbih-ba",
+    "source": {
+      "name": "Bosnian PEN",
+      "url": "https://penbih.ba/2026/09/izlozba-adnadina-jasarevica-8-9-2026/",
+      "language": "bs-BA"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "IZLOŽBA ADNADINA JAŠAREVIĆA 8.9.2026.",
+    "publishedAt": "2026-09-07T17:12:52.000Z",
+    "description": "Pozivamo vas na večer posvećenu bosanskom stripu The post IZLOŽBA ADNADINA JAŠAREVIĆA 8.9.2026. appeared first on P.E.N..",
+    "discoveredAt": "2026-09-26T17:29:25.963Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://penbih.ba/2026/09/izlozba-adnadina-jasarevica-8-9-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 196514,
+      "sha256": "5ad7d6d718583e4bea9553e4efc4da681eb33ed105698ed90463c23f8f783935",
+      "accessedAt": "2026-09-26T17:29:28.058Z",
+      "headline": "IZLOŽBA ADNADINA JAŠAREVIĆA 8.9.2026.",
+      "excerpt": "Pozivamo vas na večer posvećenu bosanskom stripu Preporučite prijateljima putem ovih servisa: Facebook Twitter Pinterest Google + LinkedIn Email Bio Najnovije Sekretar Najnovije objave od Sekretar LJETOPIS, DRUGI DIO \u2013 GORAN SARIĆ Opjevana planina je sada i opričana \u2013 Konjuh: istine, sage i haberi o vilinskoj gori” IZLOŽBA ADNADINA JAŠAREVIĆA 8.9.2026. Pročitajte još Komentariši Poništi odgovorMor",
+      "publishedDates": [
+        {
+          "value": "2026-09-07T17:12:52+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-07T17:12:52+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-07T17:12:52+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://penbih.ba/2026/09/izlozba-adnadina-jasarevica-8-9-2026/",
+      "language": "bs-BA",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:28.065Z",
+  "foundItems": [
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/izlozba-adnadina-jasarevica-8-9-2026/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "IZLOŽBA ADNADINA JAŠAREVIĆA 8.9.2026.",
+      "publishedAt": "2026-09-07T17:12:52.000Z",
+      "description": "Pozivamo vas na večer posvećenu bosanskom stripu The post IZLOŽBA ADNADINA JAŠAREVIĆA 8.9.2026. appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/promocija-knjiga-naide-mujkic-25-9-2026/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROMOCIJA KNJIGA NAIDE MUJKIĆ 25.9.2026.",
+      "publishedAt": "2026-09-07T17:09:00.000Z",
+      "description": "PEN Centar Bosne i Hercegovine poziva vas na promociju novih knjiga naše članice, književnice Naide Mujkić, ‘Anatomija ljubavi i prašine’ i ‘Stravaruše’! Promocija će biti održana u... The post PROMOCIJA KNJIGA NAIDE MUJKIĆ 25.9.2026. appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/08/natjecaj-za-kratku-pricu-pripovijetkuxiv-bugojnaska-vaza-bugojno-2026/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Natječaj za kratku priču/pripovijetkuXIV Bugojnaska vaza \u2013 Bugojno 2026.",
+      "publishedAt": "2026-08-31T12:56:34.000Z",
+      "description": "Kulturno sportski centar Bugojno, na osnovu potpisanog sporazuma između JU Kulturno sportski centar Bugojno i općine Bugojno 2013. godine o ustanovljenju nagrade „Bugojanska vaza“,... The post Natječaj za kratku priču/pripovijetku<br>XIV Bugojnaska vaza \u2013 Bugojno 2026. appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/08/knjizevni-razgovor-zoran-bognar-27-8-2026/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "KNJIŽEVNO VEČE ZORANA BOGNARA, 27.8.2026.",
+      "publishedAt": "2026-08-23T13:49:59.000Z",
+      "description": "PEN Centar u BiH vas srdačno poziva na Književno veče Zorana Bognara. Razgovor će se održati u Historijskom muzeju BiH u četvrtak, 27.8.2026. s... The post KNJIŽEVNO VEČE ZORANA BOGNARA, 27.8.2026. appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/knjizevni-korner-54-razgovor-sa-amerom-tikvesom/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Književni korner 54 \u2013 Razgovor sa Amerom Tikvešom",
+      "publishedAt": "2026-09-25T05:48:24.000Z",
+      "description": "Gost narednog, 54. po redu Književnog kornera je Amer Tikveša, pisac, profesor i novinar. The post Književni korner 54 \u2013 Razgovor sa Amerom Tikvešom appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/ljetopis-drugi-dio-goran-saric/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "LJETOPIS, DRUGI DIO \u2013 GORAN SARIĆ",
+      "publishedAt": "2026-09-24T09:08:22.000Z",
+      "description": "LJETOPIS 2026. (2) Put za Novi Sad, Zvotničko Jezero i Frida Kalo Od njihovog preseljenja je prošlo ravno osamnaest godina. Danas im D. i... The post LJETOPIS, DRUGI DIO \u2013 GORAN SARIĆ appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/opsezi-i-oblici-duse-putovanja-dusa-predrag-finci/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Opsezi i oblici duše (Putovanja duša, Predrag Finci)",
+      "publishedAt": "2026-09-24T08:46:04.000Z",
+      "description": "O knjizi eseja Predraga Fincija, Putovanja duša, TIM press, Zagreb, 2026. PIŠE: TATJANA GROMAČA VADNJEL Preživjeti pakao rata znači iskusiti jedno od najtežih, najtragičnijih... The post Opsezi i oblici duše (Putovanja duša, Predrag Finci) appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/opjevana-planina-je-sada-i-opricana-konjuh-istine-sage-i-haberi-o-vilinskoj-gori/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Opjevana planina je sada i opričana \u2013 Konjuh: istine, sage i haberi o vilinskoj gori”",
+      "publishedAt": "2026-09-07T17:21:07.000Z",
+      "description": "INTERVJU S OMEROM Ć. IBRAHIMAGIĆEM Predstavite se našim čitateljima. Ko ste i kako je započelo Vaše književno putovanje? Pišem od konca srednje škole što... The post Opjevana planina je sada i opričana \u2013 Konjuh: istine, sage i haberi o vilinskoj gori” appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/08/ljetopis-prvi-dio-goran-saric/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "LJETOPIS, PRVI DIO \u2013 GORAN SARIĆ",
+      "publishedAt": "2026-08-31T12:58:11.000Z",
+      "description": "LJETOPIS 2026. (1) “Han”, Dino i ja Jutros idemo malo dalje na kafu, u restoran “Han”. Restoran je smješten blizu kapije fabrike “Igman”, odmah... The post LJETOPIS, PRVI DIO \u2013 GORAN SARIĆ appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:29:25.963Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a7a60049cf44cbf0de5403c60b98e3a4d7196e85849d14aedf7a54d86ba7d56c"
+}

@@ -1,0 +1,13 @@
+# R10 additive governance compatibility
+
+The first full Vitest run exposed eight failed historical assertions plus a Stage 5 suite initialization failure across six existing governance suites. These concerned the R10 header/pin editor, writer-date overlay and fallback build script. Their evidence remains in `reports/r10/full-tests.json`; no historical hash was replaced to make the tests pass.
+
+One new layer, `scripts/lib/reviewed-r10-delta.mjs`, reads the independently pinned `scripts/governance/r10-forward-delta-20260926.json`. The packet contains 33 exact reverse fragments across 17 paths: five changed production files and twelve narrow historical-test read adapters. Each fragment must occur exactly once. Everything outside these fragments remains visible to the downstream historical checks. Two new writer-date modules are excluded from the historical corpus only if their exact path and LF-normalized SHA-256 match. Any mutation returns them to the old corpus fingerprint and fails its existing lock.
+
+The packet identifies current user authorization for R10 implementation, agent review and local evidence separately. `humanReview`, `releaseAccepted`, and `productionApplied` are all false. It does not create a new owner approval or alter the scope of any old approval.
+
+`projection-proof.json` records every current, pre-R10 and restored SHA-256. All 17 restored files equal their exact Git bytes at `63ce3112846e3e49f4b15d1cb64b3c29cb98af70`. The twelve test adapters add only the outer R10 projection and the exact-addition filter; old expectations, negative drift checks and historical pins remain intact. The older header, R49N, dependency-security and reading-design `.mjs` projection implementations were not edited.
+
+After the change, 115 tests across seven files passed (`tests.json`). The new suite checks the packet pin, exact allowed paths, restoration against Git, CRLF handling, deletion/duplication/tampering, propagation of unrelated bytes, exact addition hashes, and byte-for-byte preservation of five prior attestations and five prior projection implementations. `git diff --check` passed. This is local implementation validation, not release acceptance.
+
+The final extension includes six further existing governance consumers. Its 91 focused checks passed, and the repository run before the media extension passed 3,699 tests with 11 skipped and no failures. Historical hashes and projection implementations still match their pre-R10 bytes. See the current projection-proof.json and ../tests-before-media.json; the first seven-file report remains historical evidence.

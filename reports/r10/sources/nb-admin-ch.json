@@ -1,0 +1,61 @@
+{
+  "sourceId": "nb-admin-ch",
+  "name": "Swiss National Library",
+  "entryUrl": "https://www.nb.admin.ch/",
+  "countryCodes": [
+    "CH"
+  ],
+  "coverageCountryCodes": [
+    "CH"
+  ],
+  "attemptedAt": "2026-09-26T17:29:17.693Z",
+  "requests": [
+    {
+      "url": "https://www.nb.admin.ch/de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 273932,
+      "sha256": "81d6c5c25adfd834f137dad56254bec27b0220fc263c6566d7c0c56ae47fe407",
+      "accessedAt": "2026-09-26T17:23:09.292Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/newnsb?display=list&newsCategoryIDs=all&publisherIDs=729&sort=dateDecreasing&start_date=2025-01-01&topicIDs=all",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 260277,
+      "sha256": "850046394cd28c19fe656b8b9b713c17681884c617e57f19d029f886daee46bc",
+      "accessedAt": "2026-09-26T17:29:18.484Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/unlesbar",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 234497,
+      "sha256": "62dfe9e06f2c37c1e38079d4c1a67c316e3717c51dca3ee47111e4f690b08673",
+      "accessedAt": "2026-09-26T17:29:18.698Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/jahresbericht",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 298027,
+      "sha256": "714101c9c339098065e889fcce0cf21adca85fe19e8fea6709f3d8febf687248",
+      "accessedAt": "2026-09-26T17:29:18.927Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.nb.admin.ch/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 68,
+    "sha256": "acfb5b745be168d2aa2ce6438569e5cd37c937d70e3bc335affc42eecb09dff8",
+    "accessedAt": "2026-09-26T17:29:18.081Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:08.374Z",
+    "sourceDocumentSha256": "81d6c5c25adfd834f137dad56254bec27b0220fc263c6566d7c0c56ae47fe407"
+  }
+}

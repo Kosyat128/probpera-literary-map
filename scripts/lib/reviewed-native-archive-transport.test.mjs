@@ -1,3 +1,4 @@
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
@@ -10,7 +11,7 @@ import { projectReviewedHeaderShowcase, headerShowcaseAttestation } from "./revi
 import { projectReviewedReferenceRelease, referenceReleaseAttestation } from "./reviewed-reference-release.mjs";
 import { projectPublishedR49nPackage, r49nPackageAttestation } from "./reviewed-r49n-package.mjs";
 
-const read = path => projectReviewedDraftStorage(path, readFileSync(path, "utf8"));
+const read = path => projectReviewedDraftStorage(path, projectReviewedR10Delta(path, readFileSync(path, "utf8")));
 const sha = text => createHash("sha256").update(text).digest("hex");
 const paths = [
   ".github/workflows/reconcile-production-database.yml",

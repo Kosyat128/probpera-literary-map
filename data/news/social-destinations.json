@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "editorialTimeZone": "Europe/Moscow",
+  "destinations": [],
+  "connectionStatus": "not_configured",
+  "hints": { "telegram": "@probbaperra", "vk": "probperaru" },
+  "note": "Numeric destination IDs and existing delivery history must be verified before an authorized canary. Usernames are discovery hints only."
+}

@@ -1,0 +1,376 @@
+{
+  "sourceId": "penclub-com-pl",
+  "name": "Polish PEN",
+  "entryUrl": "https://www.penclub.com.pl/",
+  "countryCodes": [
+    "PL"
+  ],
+  "coverageCountryCodes": [
+    "PL"
+  ],
+  "attemptedAt": "2026-09-26T17:29:33.354Z",
+  "requests": [
+    {
+      "url": "https://penclub.com.pl/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 63642,
+      "sha256": "7df3f40de6040955c7c729f16b90b9d2df1b6addbd7593324cd19e4a45e92b45",
+      "accessedAt": "2026-09-26T17:23:37.285Z"
+    },
+    {
+      "url": "https://penclub.com.pl/2026/09/14/literatura-zakazana-na-festiwalu-lublin-miasto-literatury/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 77495,
+      "sha256": "32f021c62bfe8c5f05c6acb6cdc3aee9e005586aa1a11473689089a911d6a027",
+      "accessedAt": "2026-09-26T17:29:36.393Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://penclub.com.pl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 164,
+    "sha256": "79fe7d5b616046cbac5fbb5682ffc41bc4381e7ffc4f5bb91510d9c7d1ce306a",
+    "accessedAt": "2026-09-26T17:29:35.210Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:33.201Z",
+    "sourceDocumentSha256": "7df3f40de6040955c7c729f16b90b9d2df1b6addbd7593324cd19e4a45e92b45"
+  },
+  "endpoint": {
+    "id": "penclub-com-pl",
+    "name": "Polish PEN",
+    "url": "https://penclub.com.pl/feed/",
+    "format": "rss",
+    "language": "pl-PL",
+    "region": "europe",
+    "sourceFamilyId": "penclub-com-pl",
+    "countryCodes": [
+      "PL"
+    ],
+    "coverageCountryCodes": [
+      "PL"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://penclub.com.pl"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://penclub.com.pl/2026/09/14/literatura-zakazana-na-festiwalu-lublin-miasto-literatury/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:36.397Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "penclub-com-pl",
+    "source": {
+      "name": "Polish PEN",
+      "url": "https://penclub.com.pl/2026/09/14/literatura-zakazana-na-festiwalu-lublin-miasto-literatury/",
+      "language": "pl-PL"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "„Literatura zakazana” na Festiwalu Lublin Miasto Literatury",
+    "publishedAt": "2026-09-14T23:04:58.000Z",
+    "description": "26 września o godz. 12.00 serdecznie zapraszamy do Lublina na pokaz filmu „Bibliotekarki” oraz towarzyszącą mu dyskusję o literaturze zakazanej z udziałem Opal Ćwikły i Katarzyny Poleszak. Rozmowę poprowadzi Edyta… The post „Literatura zakazana” na Festiwalu Lublin Miasto Literatury first appeared on Polski PEN Club.",
+    "discoveredAt": "2026-09-26T17:29:35.214Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://penclub.com.pl/2026/09/14/literatura-zakazana-na-festiwalu-lublin-miasto-literatury/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 77495,
+      "sha256": "32f021c62bfe8c5f05c6acb6cdc3aee9e005586aa1a11473689089a911d6a027",
+      "accessedAt": "2026-09-26T17:29:36.393Z",
+      "headline": "„Literatura zakazana” na Festiwalu Lublin Miasto Literatury",
+      "excerpt": "14 września 2026Aktualności, Literatura zakazana 2026, Zaproszenia„Literatura zakazana” na Festiwalu Lublin Miasto Literatury 26 września o godz. 12.00 serdecznie zapraszamy do Lublina na pokaz filmu „Bibliotekarki” oraz towarzyszącą mu dyskusję o literaturze zakazanej z udziałem Opal Ćwikły i Katarzyny Poleszak. Rozmowę poprowadzi Edyta Frelik. Spotkanie odbędzie się w ramach Festiwalu Lublin Mia",
+      "publishedDates": [
+        {
+          "value": "2026-09-14T23:04:58+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-14T23:04:58+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-14T23:04:58+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://penclub.com.pl/2026/09/14/literatura-zakazana-na-festiwalu-lublin-miasto-literatury/",
+      "language": "pl-PL",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:36.397Z",
+  "foundItems": [
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/09/14/literatura-zakazana-na-festiwalu-lublin-miasto-literatury/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Literatura zakazana” na Festiwalu Lublin Miasto Literatury",
+      "publishedAt": "2026-09-14T23:04:58.000Z",
+      "description": "26 września o godz. 12.00 serdecznie zapraszamy do Lublina na pokaz filmu „Bibliotekarki” oraz towarzyszącą mu dyskusję o literaturze zakazanej z udziałem Opal Ćwikły i Katarzyny Poleszak. Rozmowę poprowadzi Edyta… The post „Literatura zakazana” na Festiwalu Lublin Miasto Literatury first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/09/14/uroczystosc-wreczenia-nagrody-edytorskiej-2026/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Uroczystość wręczenia Nagrody Edytorskiej 2026",
+      "publishedAt": "2026-09-14T00:36:58.000Z",
+      "description": "Gala wręczenia STANISŁAWOWI ROŚKOWI Nagrody Edytorskiej Polskiego PEN Clubu i Konsula Honorowego Wielkiego Księstwa Luksemburga w Sopocie. Uroczystość odbyła się 12 września 2026 w Europejskim Centrum Solidarności w Gdańsku. laudacje… The post Uroczystość wręczenia Nagrody Edytorskiej 2026 first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/08/27/zapraszamy-na-wreczenie-nagrody-edytorskiej/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zapraszamy na wręczenie Nagrody Edytorskiej",
+      "publishedAt": "2026-08-27T20:36:57.000Z",
+      "description": "The post Zapraszamy na wręczenie Nagrody Edytorskiej first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/08/24/list-z-okazji-swieta-niepodleglosci-ukrainy/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "List z okazji Święta Niepodległości Ukrainy",
+      "publishedAt": "2026-08-24T00:52:49.000Z",
+      "description": "Szanowny Panie Prezesie, Drogi Volodymyrze, W dniu Święta Niepodległości Ukrainy, w trzydziestą piątą rocznicę proklamowania Aktu Niepodległości 24 sierpnia 1991 roku, przesyłamy na Twoje ręce gratulacje i najserdeczniejsze myśli dla… The post List z okazji Święta Niepodległości Ukrainy first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/08/09/zmarl-jaroslaw-abramow-newerly/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zmarł Jarosław Abramow-Newerly [informacje o pogrzebie]",
+      "publishedAt": "2026-08-09T21:25:04.000Z",
+      "description": "9 sierpnia 2026 r. w Warszawie zmarł Jarosław Abramow-Newerly pisarz, dramaturg, satyryk, autor piosenek, współzałożyciel legendarnego STS-u.Członek Polskiego PEN Clubu od 1965 roku. Nabożeństwo żałobne 17 sierpnia o godzinie 12.00… The post Zmarł Jarosław Abramow-Newerly [informacje o pogrzebie] first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/07/29/100-urodziny-jacka-bochenskiego/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "100. urodziny Jacka Bocheńskiego",
+      "publishedAt": "2026-07-29T14:27:47.000Z",
+      "description": "29 lipca setne urodziny obchodzi prezes Jacek Bocheński. Zamieszczamy list, który zarząd Polskiego PEN Clubu przekazał dziś Jubilatowi. Warszawa, 29 lipca 2026 Wielce Szanowny Jubilacie, Drogi Jacku! Z ogromnym szacunkiem… The post 100. urodziny Jacka Bocheńskiego first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/07/09/przedluzony-nabor-na-warsztaty-przekladu-literackiego/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Przedłużony nabór na warsztaty przekładu literackiego",
+      "publishedAt": "2026-07-09T10:29:00.000Z",
+      "description": "Odpowiadając na napływające do nas prośby, zdecydowaliśmy się o tydzień przedłużyć nabór na III edycję warsztatów przekładu literackiego. Nowy termin upływa 20 lipca. Szczegóły poniżej. Stowarzyszenie Autorów ZAiKS, Polski PEN… The post Przedłużony nabór na warsztaty przekładu literackiego first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/06/26/ustawa-anty-slapp-to-dlugo-oczekiwana-poprawa-sytuacji-pisarzy/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ustawa anty-SLAPP to długo oczekiwana poprawa sytuacji pisarzy",
+      "publishedAt": "2026-06-26T15:18:59.000Z",
+      "description": "Polska: Ustawa anty-SLAPP to długo oczekiwana poprawa sytuacji pisarzy „Przez lata pozwy typu SLAPP stanowiły dla polskich pisarzy i dziennikarzy źródło obciążeń emocjonalnych i finansowych. Cieszy nas uchwalenie ustawy anty-SLAPP,… The post Ustawa anty-SLAPP to długo oczekiwana poprawa sytuacji pisarzy first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/06/23/oswiadczenie-ukrainskiego-pen-clubu/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oświadczenie Ukraińskiego PEN Clubu / Заява Українського ПЕН",
+      "publishedAt": "2026-06-23T00:02:00.000Z",
+      "description": "Za wolność naszą i waszą Oświadczenie Ukraińskiego PEN Clubu Pragniemy wyrazić ubolewanie z powodu obecnego zaostrzenia stosunków między Polską a Ukrainą. Dziś, gdy wraz z Wami, nasi drodzy polscy przyjaciele,… The post Oświadczenie Ukraińskiego PEN Clubu / Заява Українського ПЕН first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclub-com-pl",
+      "source": {
+        "name": "Polish PEN",
+        "url": "https://penclub.com.pl/2026/06/22/zapraszamy-na-spotkanie-z-maximem-znakiem/",
+        "language": "pl-PL"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zapraszamy na spotkanie z Maximem Znakiem",
+      "publishedAt": "2026-06-22T15:35:57.000Z",
+      "description": "Zapraszamy na Festiwal Początek Sezonu do Bydgoszczy! 27 czerwca 2026sobotagodz. 18.00 PASMO SPOTKAŃ AUTORSKICH: „Rezydencja twórcza w sanatorium Łukaszenki„rozmowa z Maximem Znakiem prowadzenie: Justyna Czechowska Miejskie Centrum Kultury w Bydgoszczy,… The post Zapraszamy na spotkanie z Maximem Znakiem first appeared on Polski PEN Club.",
+      "discoveredAt": "2026-09-26T17:29:35.214Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "7df3f40de6040955c7c729f16b90b9d2df1b6addbd7593324cd19e4a45e92b45"
+}

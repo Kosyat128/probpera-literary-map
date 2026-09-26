@@ -1,0 +1,25 @@
+
+> literary-map@0.1.0 covers:audit
+> node scripts/audit-cover-rights.mjs && npm run books:themes:check && npm run covers:user:check
+
+Cover audit: 213/213 displayable, 0 blocked.
+
+> literary-map@0.1.0 books:themes:check
+> node scripts/build-book-scene-theme-manifest.mjs --check
+
+Book-scene palette manifest is current.
+
+> literary-map@0.1.0 covers:user:check
+> node scripts/import-user-supplied-book-covers.mjs --check && node scripts/import-user-supplied-book-covers-2026-08-13.mjs --check && node scripts/import-user-supplied-book-covers-2026-08-20.mjs --check && npm run content:link-books:scope-check
+
+User-supplied cover check: 54 imported, 6 existing preserved, 2 ambiguous, 14 unmatched.
+User-supplied covers 2026-08-13: 51 imported, 6 existing preserved, 33 unmatched, 1 rights quarantine.
+Cover batch 2026-08-20 verified: 43 artworks for 41 works, 31 primary, 12 secondary, 17 created works.
+
+> literary-map@0.1.0 content:link-books:scope-check
+> node scripts/build-book-article-mentions.mjs --check-user-cover-scope
+
+Article cover scope: 148 user-supplied covers excluded from generated article recommendations.
+Связи книг и журнала: 695 связей, 536 книг, 167 статей.
+Рекомендации в статьях: 53 карточек для 35 статей.
+«Морской волк»: 4 связанных материалов.

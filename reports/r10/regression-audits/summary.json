@@ -1,0 +1,191 @@
+{
+  "checkedAt": "2026-09-26T19:10:42.367Z",
+  "reportResults": [
+    {
+      "path": "reports/book-database-audit.json",
+      "sha256": "8ddebb85345f72d87edb0e1846f4325f120246d948ed281c5a5efc2198a91875",
+      "bytes": 4965324,
+      "counts": {
+        "summary": {
+          "records": 9763,
+          "rawSourceRecords": 10057,
+          "canonicalRecords": 9763,
+          "removedBySafeActions": 294,
+          "publicRecords": 69,
+          "uniqueLinks": 9763,
+          "detailedRecords": 6602,
+          "legacyRecords": 3161,
+          "statuses": {
+            "verified": 44,
+            "reviewed": 74,
+            "draft": 9645
+          },
+          "withFirstPublished": 6308,
+          "withOriginalLanguage": 116,
+          "withGenres": 6567,
+          "withDescription": 1618,
+          "withSource": 6567,
+          "withCoverArtwork": 201,
+          "bilingualReady": 69,
+          "reviewedWithTranslationIssues": 49,
+          "globalExternalIdDuplicates": 97,
+          "publishableExternalIdDuplicates": 0,
+          "quarantinedExternalIdDuplicates": 97,
+          "coverStatuses": {
+            "editorial-original": 200,
+            "external-preview": 1
+          },
+          "reviewQueue": 9730,
+          "duplicateLinks": 0,
+          "criticalIssues": 0
+        }
+      }
+    },
+    {
+      "path": "reports/book-database-audit.md",
+      "sha256": "80f55a4200b5e7f17187fb7518b2c208f19f5f251c76a07ed953f44c005de313",
+      "bytes": 96528
+    },
+    {
+      "path": "reports/book-evidence-v2-audit.json",
+      "sha256": "692aff895c905bff973c63b9e8a768b2ffb877d1a05b45d16cf982e97573f381",
+      "bytes": 2594,
+      "counts": {
+        "summary": {
+          "canonicalRecords": 9763,
+          "currentlyPublic": 69,
+          "evidenceV2Ready": 69,
+          "evidenceV2AttestationCandidates": 69,
+          "evidenceV2CanonicalizationFailures": 0,
+          "currentlyPublicEvidenceV2Ready": 69,
+          "currentlyPublicReauditRequired": 0,
+          "canonClaims": 0,
+          "canonClaimsRequiringReview": 0
+        }
+      }
+    },
+    {
+      "path": "reports/book-evidence-v2-audit.md",
+      "sha256": "4ded249526b35b34dd5b19b9a0674f8c8b297e83d8428a08333557c5d460f5cf",
+      "bytes": 936
+    },
+    {
+      "path": "reports/country-database-audit.json",
+      "sha256": "04105894f334089d8eead334b44f643c65d95e448a866d15f9cd7f5286915969",
+      "bytes": 90031,
+      "counts": {
+        "summary": {
+          "countryCards": 200,
+          "uniqueCountryIds": 200,
+          "uniqueCountryCodes": 200,
+          "cardsWithWriters": 190,
+          "cardsWithCoordinates": 5,
+          "cardsWithDescription": 5,
+          "cardsWithHistory": 5,
+          "cardsWithCapital": 5,
+          "cardsWithTimeline": 0,
+          "cardsWithFacts": 4,
+          "cardsWithLiteraryPlaces": 0,
+          "writerRecords": 1684,
+          "uniqueWriters": 1672,
+          "workRecords": 4490,
+          "uniqueWorks": 4469,
+          "verifiedWriters": 61,
+          "sourcedWriters": 141,
+          "expandedBiographies": 79,
+          "russianBiographiesReady": 1684,
+          "russianBiographiesVerified": 1684,
+          "russianBiographiesWithheld": 0,
+          "englishBiographiesReady": 20,
+          "englishBiographiesReviewed": 20,
+          "englishBiographiesVerified": 0,
+          "englishBiographiesWithheld": 1664,
+          "portraitedWriters": 1021,
+          "duplicateWriterLinks": 0,
+          "criticalIssues": 0,
+          "cardsInEditorialQueue": 200
+        }
+      }
+    },
+    {
+      "path": "reports/country-database-audit.md",
+      "sha256": "62be1a2080724833c5e0ae28d4313895e1ecc2bf1bc8e8229abe74efaff22935",
+      "bytes": 58008
+    },
+    {
+      "path": "reports/generated-writers-audit.json",
+      "sha256": "b927290c2b98d2974d2b55b588ecff8500f32be7388bd47045d13679d6672496",
+      "bytes": 546932,
+      "counts": {
+        "summary": {
+          "records": 2356,
+          "countryGroups": 128,
+          "valid": 2356,
+          "withIssues": 0,
+          "editorialDrafts": 2356,
+          "duplicateCountryQids": 0,
+          "russianFullNames": 13,
+          "russianRecords": 13
+        }
+      }
+    },
+    {
+      "path": "reports/generated-writers-audit.md",
+      "sha256": "4a653d3fd557f21319bbab0526501166a91645b66139763a79bfee637a55f6de",
+      "bytes": 526
+    },
+    {
+      "path": "reports/section-media-audit.json",
+      "sha256": "950c131d42d29b294283af4cf32934eb67eacbf63981cbe9981d0e451cd56fbc",
+      "bytes": 103,
+      "counts": {}
+    },
+    {
+      "path": "reports/writer-biography-audit.json",
+      "sha256": "27c7aadd9fb5065d5e4c725b84a29c461e9e2f32b8909552484a0c91c8060c97",
+      "bytes": 82266,
+      "counts": {
+        "summary": {
+          "writerRecords": 1684,
+          "russianReady": 1684,
+          "russianWithheld": 0,
+          "englishReady": 20,
+          "englishWithheld": 1664,
+          "legacyRussianTextPresent": 1684,
+          "structuredRussianBiographyPresent": 1684,
+          "missingBiography": 0,
+          "shortBiography": 0,
+          "overlyLongBiography": 0,
+          "genericBiography": 0,
+          "duplicateBiographyRecords": 0,
+          "duplicateBiographyGroups": 0,
+          "unsourcedBiography": 0,
+          "rightsUnproven": 0,
+          "licensedCopyMissingMetadata": 0,
+          "humanTranslationRightsMissing": 0,
+          "researchDrafts": 20,
+          "validResearchDrafts": 20,
+          "researchDraftsWithRussianAndEnglish": 20,
+          "researchDraftsAwaitingIndependentReview": 0,
+          "researchDraftsApprovedForPromotion": 20,
+          "duplicateResearchDraftKeys": 0,
+          "orphanResearchDrafts": 0,
+          "withheldWithoutResearchDraft": 0,
+          "stagingRecords": 2356,
+          "stagingRecordsWithLegacyProse": 2356
+        }
+      }
+    },
+    {
+      "path": "reports/writer-biography-audit.md",
+      "sha256": "67f1b5d3fe32add5c3fc93e2fb6b0fee9d2da6316969fc42e45726ad46b6478f",
+      "bytes": 2560
+    },
+    {
+      "path": "reports/writer-biography-enrichment-manifest.json",
+      "sha256": "1a1b0e63877801b79d43ba95a234f41f021f72035801ca528af6efc0562078e9",
+      "bytes": 752,
+      "counts": {}
+    }
+  ]
+}

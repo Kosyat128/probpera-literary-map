@@ -1,0 +1,5 @@
+
+> literary-map@0.1.0 media:audit
+> node scripts/audit-section-media.mjs
+
+Section media audit: 157 articles, 0 critical, 0 high, 0 style, 0 review.

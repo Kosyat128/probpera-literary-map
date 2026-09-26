@@ -1,0 +1,376 @@
+{
+  "sourceId": "salone-libro-torino",
+  "name": "Salone Internazionale del Libro di Torino",
+  "entryUrl": "https://www.salonelibro.it/",
+  "countryCodes": [
+    "IT"
+  ],
+  "coverageCountryCodes": [
+    "IT"
+  ],
+  "attemptedAt": "2026-09-26T17:32:08.372Z",
+  "requests": [
+    {
+      "url": "https://www.salonelibro.it/",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 43514,
+      "sha256": "b6e8f753ba6779b38d52b3f6e69b49b9218d64af885dceaf7403839f45207134",
+      "accessedAt": "2026-09-26T17:32:09.343Z"
+    },
+    {
+      "url": "https://www.salonelibro.it/news/tutte-news.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 48063,
+      "sha256": "9d2c58307ea5ffd139b462bded96bebf57829aba0b67083394c24be11196ede4",
+      "accessedAt": "2026-09-26T17:32:09.830Z"
+    },
+    {
+      "url": "https://www.salonelibro.it/news/tutte-news/call-hangar-del-libro-2025.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 38647,
+      "sha256": "f9c4d18b11fd904eea75fdeb5396a01b34323f9c4c89d45ec52a14fb8db4ae22",
+      "accessedAt": "2026-09-26T17:32:10.076Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.salonelibro.it/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=UTF-8",
+    "bytes": 70,
+    "sha256": "c22c315bb64e403fa73c4c9f5e92582cd06f30b0c8a69a2106fa80e35e75ce74",
+    "accessedAt": "2026-09-26T17:32:09.131Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "salone-libro-torino",
+    "name": "Salone Internazionale del Libro di Torino",
+    "url": "https://www.salonelibro.it/news/tutte-news.html",
+    "format": "html",
+    "language": "it",
+    "region": "europe",
+    "sourceFamilyId": "salone-libro-torino",
+    "countryCodes": [
+      "IT"
+    ],
+    "coverageCountryCodes": [
+      "IT"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.salonelibro.it"
+    ],
+    "linkPattern": "^/news/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.salonelibro.it/news/tutte-news/call-hangar-del-libro-2025.html"
+    ],
+    "verifiedAt": "2026-09-26T17:32:10.079Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "salone-libro-torino",
+    "source": {
+      "name": "Salone Internazionale del Libro di Torino",
+      "url": "https://www.salonelibro.it/news/tutte-news/call-hangar-del-libro-2025.html",
+      "language": "it"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Dal Salone La call di Hangar del Libro 2026 Il progetto dedicato ai lettori piemontesi che desiderano mettersi in gioco e recensire un libro tra quelli che verranno presentati durante le giornate dell’Independent Book Tour. Scopri di più",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:32:09.835Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.salonelibro.it/news/tutte-news/call-hangar-del-libro-2025.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 38647,
+      "sha256": "f9c4d18b11fd904eea75fdeb5396a01b34323f9c4c89d45ec52a14fb8db4ae22",
+      "accessedAt": "2026-09-26T17:32:10.076Z",
+      "headline": "La call di Hangar del Libro 2026 | Salone Internazionale del Libro di Torino",
+      "excerpt": "Sei un lettore o una lettrice appassionata di libri? Ti piace metterti in gioco, hai spirito critico e voglia di condividere le tue letture con gli altri? Hangar del Libro fa per te! È partita la nuova call rivolta ai lettori piemontesi, promossa in collaborazione con Exlibris20, pensata per chi desidera recensire uno dei libri protagonisti dell'Independent Book Tour, la rassegna che da ottobre to",
+      "publishedDates": [],
+      "canonical": "https://www.salonelibro.it/news/tutte-news/call-hangar-del-libro-2025.html",
+      "language": "it",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:10.079Z",
+  "foundItems": [
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/call-hangar-del-libro-2025.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dal Salone La call di Hangar del Libro 2026 Il progetto dedicato ai lettori piemontesi che desiderano mettersi in gioco e recensire un libro tra quelli che verranno presentati durante le giornate dell’Independent Book Tour. Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/2026/festa-libro-medievale-saluzzo-2026.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festa del libro medievale e antico 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/italiano-al-mondo-2026.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pro Dall'italiano al mondo 2026 Il 20 novembre torna il convegno online del Salone del Libro dedicato ai traduttori e alle traduttrici della letteratura italiana. Le iscrizioni sono aperte! Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/independent-book-tour-2026.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dal Salone Independent Book Tour 2026 Dal 3 ottobre al 5 dicembre torna il progetto che porta 27 case editrici piemontesi indipendenti negli 8 capoluoghi della Regione con 9 incontri per raccontarsi al pubblico. Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/2026/la-newsletter-di-Fuoriclasse.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La newsletter di Fuoriclasse Il meglio della produzione culturale sportiva insieme al Salone del Libro: scopri il nuovo progetto dedicato allo sport, alle storie che lo attraversano e alle persone che ogni giorno lo raccontano con passione e creatività. Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/2026/seconda-edizione-premio-ferrero.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dal Salone I vincitori della seconda edizione del Premio Ernesto Ferrero - Fondazione CRT Il riconoscimento dedicato ai progetti editoriali più innovativi al Salone del Libro. La cerimonia di premiazione della seconda edizione si è tenuta domenica 17 maggio alle 10:45 in Sala Blu. Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/2026/call-premio-ferrero-2026.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dal Salone La call del Premio Ernesto Ferrero \u2013 Fondazione CRT per la promozione della lettura Hai tempo fino alle ore 12.00 del 23 settembre per candidare la tua realtà a ricevere in dono le copie dei libri pubblicati dagli editori vincitori della seconda edizione! Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/2026/carte-da-decifrare-2026.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dal Salone Donatella Di Pietrantonio e Nicola Lagioia a Carte da decifrare Domenica 12 e sabato 18 luglio, la Collezione La Gaia e il Parco Museo dell’Ingenio a Busca (CN) ospitano la nona edizione della rassegna di letteratura e musica dal vivo organizzata da Fondazione Artea. Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/Premio-Gianni-Mura-2026.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Scuola Premio di letteratura sportiva Gianni Mura Sono aperte le candidature delle classi delle sezioni quarte e quinte delle scuole primarie per entrare a fare parte della giuria del Premio di letteratura sportiva. Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "salone-libro-torino",
+      "source": {
+        "name": "Salone Internazionale del Libro di Torino",
+        "url": "https://www.salonelibro.it/news/tutte-news/I-self-publisher-al-Salone0.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pro I Self Publisher al Salone Hai autopubblicato un libro e vuoi portarlo davanti a migliaia di lettori? Sono aperte le selezioni per partecipare alla sesta edizione della Libreria dei Self Publisher del Salone del Libro, l'area dedicata agli autori indipendenti italiani! Scopri di più",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:09.835Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "9d2c58307ea5ffd139b462bded96bebf57829aba0b67083394c24be11196ede4"
+}

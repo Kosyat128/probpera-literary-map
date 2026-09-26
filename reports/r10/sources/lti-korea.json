@@ -1,0 +1,27 @@
+{
+  "sourceId": "lti-korea",
+  "name": "Literature Translation Institute of Korea",
+  "entryUrl": "https://www.ltikorea.or.kr/kr/board/press/boardList.do",
+  "countryCodes": [
+    "KR"
+  ],
+  "coverageCountryCodes": [
+    "KR"
+  ],
+  "attemptedAt": "2026-09-26T17:29:49.658Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "This operation was aborted",
+  "robots": {
+    "url": "https://www.ltikorea.or.kr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 659,
+    "sha256": "2f624b645a37918cad918fc73fcdb86d4db80703d9d52487e6776e08ad2026cd",
+    "accessedAt": "2026-09-26T17:29:52.273Z",
+    "disallowed": [
+      "/withcms/",
+      "/search/"
+    ]
+  }
+}

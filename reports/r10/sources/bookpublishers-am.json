@@ -1,0 +1,20 @@
+{
+  "sourceId": "bookpublishers-am",
+  "name": "National Publishers Association of Armenia",
+  "entryUrl": "https://www.bookpublishers.am/",
+  "countryCodes": [
+    "AM"
+  ],
+  "coverageCountryCodes": [
+    "AM"
+  ],
+  "attemptedAt": "2026-09-26T17:28:45.069Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "getaddrinfo ENOTFOUND www.bookpublishers.am",
+  "robots": {
+    "url": "https://www.bookpublishers.am/robots.txt",
+    "error": "getaddrinfo ENOTFOUND www.bookpublishers.am",
+    "disallowed": []
+  }
+}

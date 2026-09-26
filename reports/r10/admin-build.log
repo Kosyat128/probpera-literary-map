@@ -1,0 +1,66 @@
+
+> literary-map@0.1.0 admin:build
+> npm run editorial:catalog && npm run build --workspace @probpera/admin
+
+
+> literary-map@0.1.0 editorial:catalog
+> node scripts/export-editorial-catalog.mjs
+
+Editorial catalog: 200 countries, 1686 writers.
+
+> @probpera/admin@0.1.0 build
+> node ../../scripts/export-editorial-catalog.mjs && node ../../scripts/export-interface-copy-catalog.mjs && next build --webpack && node ../../scripts/check-admin-client-secrets.mjs
+
+Editorial catalog: 200 countries, 1686 writers.
+Exported 1454 site-copy fields for the admin.
+▲ Next.js 16.3.3 (webpack)
+✓ Running next.config.ts took 181ms
+- Experiments (use with caution):
+  · serverActions
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
+
+  To migrate automatically, run:
+  npx @next/codemod@canary middleware-to-proxy .
+
+  Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (107kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (258kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+⚠ Compiled with warnings in 1720ms
+
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\server\app-render\dynamic-rendering.js
+A Node.js API is used (process.cwd at line: 1044) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\server\app-render\dynamic-rendering.js
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\server\request\connection.js
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\server\web\exports\index.js
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\api\server.js
+
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\server\app-render\dynamic-rendering.js
+A Node.js API is used (process.cwd at line: 1044) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\server\app-render\dynamic-rendering.js
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\server\request\connection.js
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\server\web\exports\index.js
+C:\Users\User\Documents\ChatGPT\Работа по сайту\.tmp\ui-security-physical-runtime-20260913\node_modules\next\dist\esm\api\server.js
+
+Failed to compile.
+
+Module not found: Error: Can't resolve './C:/Users/User/Documents/ChatGPT/Работа по сайту/.tmp/ui-security-physical-runtime-20260913/node_modules/next/dist/client/next.js' in 'D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\apps\admin'
+
+Module not found: Error: Can't resolve './C:/Users/User/Documents/ChatGPT/Работа по сайту/.tmp/ui-security-physical-runtime-20260913/node_modules/next/dist/client/app-next.js' in 'D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\apps\admin'
+
+
+> Build failed because of webpack errors
+npm error Lifecycle script `build` failed with error:
+npm error code 1
+npm error path D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\apps\admin
+npm error workspace @probpera/admin@0.1.0
+npm error location D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\apps\admin
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node ../../scripts/export-editorial-catalog.mjs && node ../../scripts/export-interface-copy-catalog.mjs && next build --webpack && node ../../scripts/check-admin-client-secrets.mjs

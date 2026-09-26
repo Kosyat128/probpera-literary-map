@@ -1,0 +1,388 @@
+{
+  "sourceId": "publishing-perspectives",
+  "name": "Publishing Perspectives",
+  "entryUrl": "https://publishingperspectives.com/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:29:39.124Z",
+  "requests": [
+    {
+      "url": "https://publishingperspectives.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 18091,
+      "sha256": "5fca3dd4879feadd0455b96f620694c7c77cbb143ef949f900c14238b23f9a0a",
+      "accessedAt": "2026-09-26T17:23:43.510Z"
+    },
+    {
+      "url": "https://publishingperspectives.com/2026/09/from-hilarious-to-the-discomfiting-the-u-k-s-booker-prize-announces-the-2026-shortlist/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 90284,
+      "sha256": "100bc88420ae16bc1b5696d0ff64eb2470f66e8c31ae9dc3337e485dabd4ea81",
+      "accessedAt": "2026-09-26T17:29:40.356Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://publishingperspectives.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 131,
+    "sha256": "0663189a7b7dd631ac36d01b99e351aabe1994ef36f4deaca282a7f3eaaf06b9",
+    "accessedAt": "2026-09-26T17:29:39.937Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:42.061Z",
+    "sourceDocumentSha256": "5fca3dd4879feadd0455b96f620694c7c77cbb143ef949f900c14238b23f9a0a"
+  },
+  "endpoint": {
+    "id": "publishing-perspectives",
+    "name": "Publishing Perspectives",
+    "url": "https://publishingperspectives.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "north-america",
+    "sourceFamilyId": "publishing-perspectives",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://publishingperspectives.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://publishingperspectives.com/2026/09/from-hilarious-to-the-discomfiting-the-u-k-s-booker-prize-announces-the-2026-shortlist/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:40.363Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "publishing-perspectives",
+    "source": {
+      "name": "Publishing Perspectives",
+      "url": "https://publishingperspectives.com/2026/09/from-hilarious-to-the-discomfiting-the-u-k-s-booker-prize-announces-the-2026-shortlist/",
+      "language": "en-US"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "‘From Hilarious to the Discomfiting:’ The U.K.’s Booker Prize Announces the 2026 Shortlist",
+    "publishedAt": "2026-09-23T12:10:09.000Z",
+    "description": "Featuring novels from dystopian fiction to contemporary realism, from campus satire to historical fiction, the Booker Prize shortlist offers a collection of books that illustrate the shape of our humanity. The post ‘From Hilarious to the Discomfiting:’ The U.K.’s Booker Prize Announces the 2026 Shortlist appeared first on Publishing Perspectives.",
+    "discoveredAt": "2026-09-26T17:29:39.940Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://publishingperspectives.com/2026/09/from-hilarious-to-the-discomfiting-the-u-k-s-booker-prize-announces-the-2026-shortlist/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 90284,
+      "sha256": "100bc88420ae16bc1b5696d0ff64eb2470f66e8c31ae9dc3337e485dabd4ea81",
+      "accessedAt": "2026-09-26T17:29:40.356Z",
+      "headline": "'From Hilarious to the Discomfiting:' The U.K.'s Booker Prize Announces the 2026 Shortlist - Publishing Perspectives",
+      "excerpt": "Featuring novels from dystopian fiction to contemporary realism, from campus satire to historical fiction, the Booker Prize shortlist offers a collection of books that illustrate the shape of our humanity. <img decoding=\"async\" class=\"size-large wp-image-219464 lazyload\" src=\"https://publishingperspectives.com/wp-content/uploads/2026/09/BP2026_Shortlist_Group_2-©-Yuki-Sugiura-for-Booker-Prize-Foun",
+      "publishedDates": [
+        {
+          "value": "2026-09-23T12:10:09+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-23T12:10:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-23T12:10:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://publishingperspectives.com/2026/09/from-hilarious-to-the-discomfiting-the-u-k-s-booker-prize-announces-the-2026-shortlist/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:40.363Z",
+  "foundItems": [
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/from-hilarious-to-the-discomfiting-the-u-k-s-booker-prize-announces-the-2026-shortlist/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘From Hilarious to the Discomfiting:’ The U.K.’s Booker Prize Announces the 2026 Shortlist",
+      "publishedAt": "2026-09-23T12:10:09.000Z",
+      "description": "Featuring novels from dystopian fiction to contemporary realism, from campus satire to historical fiction, the Booker Prize shortlist offers a collection of books that illustrate the shape of our humanity. The post ‘From Hilarious to the Discomfiting:’ The U.K.’s Booker Prize Announces the 2026 Shortlist appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/internationally-award-winning-novel-taiwan-travelogue-signals-a-new-generation-of-taiwanese-writing/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Internationally Award-winning Novel Taiwan Travelogue Signals a New Generation of Taiwanese Writing",
+      "publishedAt": "2026-09-25T07:26:40.000Z",
+      "description": "Taiwan Travelogue represents universal themes appealing to today’s readers. (Sponsored) The post Internationally Award-winning Novel Taiwan Travelogue Signals a New Generation of Taiwanese Writing appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/rights-agents-share-their-top-literary-picks-for-frankfurter-buchmesse/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rights Agents Share Their Top Literary Picks for Frankfurter Buchmesse",
+      "publishedAt": "2026-09-25T07:17:05.000Z",
+      "description": "Ahead of the book fair in two weeks, agents highlight some of the books they will be selling in Frankfurt. The post Rights Agents Share Their Top Literary Picks for Frankfurter Buchmesse appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/portugals-book-2-0-gets-back-to-basics-back-to-books/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Portugal’s Book 2.0 Gets ‘Back to Basics. Back to Books’",
+      "publishedAt": "2026-09-23T12:21:32.000Z",
+      "description": "The annual conference focusing on the Portuguese publishing industry highlighted why reading not only matters, but is good for a reader's health and the strength of a nation. The post Portugal’s Book 2.0 Gets ‘Back to Basics. Back to Books’ appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/argentinas-booksellers-declare-a-state-of-emergency/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Argentina’s Booksellers Declare a State of Emergency",
+      "publishedAt": "2026-09-22T11:45:33.000Z",
+      "description": "The move comes as independent bookstores report a 25% drop in unit sales and a 41.5% decline in real revenue as operating costs continue to rise. The post Argentina’s Booksellers Declare a State of Emergency appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/bisgs-industry-champion-kris-kliemann-works-to-improve-the-global-rights-business/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BISG’s Industry Champion Kris Kliemann Works to Improve the Global (Rights) Business",
+      "publishedAt": "2026-09-25T07:04:23.000Z",
+      "description": "From improving the system for rights discovery to standardizing royalty statements, this year's award winner seeks to better the global publishing industry. The post BISG’s Industry Champion Kris Kliemann Works to Improve the Global (Rights) Business appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/in-sheikh-zayeds-spirit-abu-dhabi-debates-arabics-creative-future/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In Sheikh Zayed’s Spirit, Abu Dhabi Debates Arabic’s Creative Future",
+      "publishedAt": "2026-09-24T13:13:21.000Z",
+      "description": "At the Congress of Arabic and Creative Industries, organized by the Abu Dhabi Arabic Language Center, speakers explored what Arabic needs to thrive across the creative industries. The post In Sheikh Zayed’s Spirit, Abu Dhabi Debates Arabic’s Creative Future appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/richard-charkin-learnings/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Richard Charkin: ‘Learnings’",
+      "publishedAt": "2026-09-24T13:06:01.000Z",
+      "description": "On the pub date for his new book, 'All Rights Reserved,' and ahead of the 2026 Frankfurt Book Fair Richard Charkin shares some personal lessons from his publishing career. The post Richard Charkin: ‘Learnings’ appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/columbia-university-press-ediciones-uniandes-announce-international-partnership/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Columbia University Press, Ediciones Uniandes Announce International Partnership",
+      "publishedAt": "2026-09-24T13:04:13.000Z",
+      "description": "The new partnership will enable distribution by Ediciones Uniandes of select Columbia University Press books in Latin America, and for distribution by Columbia University Press of select Spanish-language titles from Ediciones Uniandes in North America, Europe, and Asia. The post Columbia University Press, Ediciones Uniandes Announce International Partnership appeared first on Publishing Perspecti…",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishing-perspectives",
+      "source": {
+        "name": "Publishing Perspectives",
+        "url": "https://publishingperspectives.com/2026/09/in-its-second-edition-read-barcelona-continues-to-spread-its-wings/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In Its Second Edition, READ Barcelona Continues to Spread Its Wings",
+      "publishedAt": "2026-09-22T11:51:33.000Z",
+      "description": "Hundreds of progressive publishers traveled from all corners of the world to attend the upstart READ Barcelona’s second edition, which ran from September 16-18. The post In Its Second Edition, READ Barcelona Continues to Spread Its Wings appeared first on Publishing Perspectives.",
+      "discoveredAt": "2026-09-26T17:29:39.940Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5fca3dd4879feadd0455b96f620694c7c77cbb143ef949f900c14238b23f9a0a"
+}

@@ -1,0 +1,224 @@
+{
+  "sourceId": "shanghai-childrens-book-fair",
+  "name": "Shanghai International Children’s Book Fair",
+  "entryUrl": "https://ccbookfair.com/en/index/news-center/news",
+  "countryCodes": [
+    "CN"
+  ],
+  "coverageCountryCodes": [
+    "CN"
+  ],
+  "attemptedAt": "2026-09-26T17:27:31.345Z",
+  "requests": [
+    {
+      "url": "https://www.ccbookfair.com/en/index/news-center/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 53669,
+      "sha256": "cc70e8d33d94efc5e51e204852817cf48e917704317dc72ccdc412a1fea18965",
+      "accessedAt": "2026-09-26T17:20:12.609Z"
+    },
+    {
+      "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!ccbf2026-opencall",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 54571,
+      "sha256": "8cdbdf58fec350a606a1f29cf95aa4426cbbfe8e5d315618fc7a699d599d9b44",
+      "accessedAt": "2026-09-26T17:27:33.950Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://ccbookfair.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-09-26T17:27:32.286Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:08.965Z",
+    "sourceDocumentSha256": "cc70e8d33d94efc5e51e204852817cf48e917704317dc72ccdc412a1fea18965"
+  },
+  "endpoint": {
+    "id": "shanghai-childrens-book-fair",
+    "name": "Shanghai International Children’s Book Fair",
+    "url": "https://www.ccbookfair.com/en/index/news-center/news",
+    "format": "html",
+    "language": "en",
+    "region": "asia",
+    "sourceFamilyId": "shanghai-childrens-book-fair",
+    "countryCodes": [
+      "CN"
+    ],
+    "coverageCountryCodes": [
+      "CN"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://ccbookfair.com",
+      "https://www.ccbookfair.com"
+    ],
+    "linkPattern": "^\\/en\\/index\\/news-center\\/news\\/detail(?:!|%21)[^/?#]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "articleContainer": ".card-item",
+    "titleSelector": "h3.title",
+    "exampleArticleUrls": [
+      "https://www.ccbookfair.com/en/index/news-center/news/detail!ccbf2026-opencall"
+    ],
+    "verifiedAt": "2026-09-26T17:27:33.952Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 4,
+  "literaryCandidateCount": 4,
+  "sample": {
+    "sourceId": "shanghai-childrens-book-fair",
+    "source": {
+      "name": "Shanghai International Children’s Book Fair",
+      "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!ccbf2026-opencall",
+      "language": "en"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Connect with Asia’s Leading Children’s Book Fair CCBF 2026 Exhibitor Applications Now Open",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:32.293Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!ccbf2026-opencall",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 54571,
+      "sha256": "8cdbdf58fec350a606a1f29cf95aa4426cbbfe8e5d315618fc7a699d599d9b44",
+      "accessedAt": "2026-09-26T17:27:33.950Z",
+      "headline": "Connect with Asia’s Leading Children’s Book Fair CCBF 2026 Exhibitor Applications Now Open",
+      "excerpt": "Shanghai, China \u2013 March 11, 2026\u2013 The 2026 Shanghai International Children’s Book Fair (CCBF) will take place from 13\u201315 November at the Shanghai World Expo Exhibition & Convention Centre, bringing together the global children’s publishing community with Asia’s fast-evolving book market. The three-day fair will occupy 25,000 square metres, hosting publishing groups, literary agents, rights profess",
+      "publishedDates": [],
+      "canonical": "https://www.ccbookfair.com/en/index/news-center/news/detail!ccbf2026-opencall",
+      "language": "zh-cmn-Hans",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:33.952Z",
+  "foundItems": [
+    {
+      "sourceId": "shanghai-childrens-book-fair",
+      "source": {
+        "name": "Shanghai International Children’s Book Fair",
+        "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!ccbf2026-opencall",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Connect with Asia’s Leading Children’s Book Fair CCBF 2026 Exhibitor Applications Now Open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:32.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shanghai-childrens-book-fair",
+      "source": {
+        "name": "Shanghai International Children’s Book Fair",
+        "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!2026visitorregistration",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CCBF 2026 Visitor Registration Now Open!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:32.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shanghai-childrens-book-fair",
+      "source": {
+        "name": "Shanghai International Children’s Book Fair",
+        "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!shanghai-comics-week",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Childhood to Youth: CCBF Shanghai Comics Week",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:32.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shanghai-childrens-book-fair",
+      "source": {
+        "name": "Shanghai International Children’s Book Fair",
+        "url": "https://www.ccbookfair.com/en/index/news-center/news/detail!From-Rights-to-Licensing-Why-Global-Content-Companies-Are-Looking-to-China",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Rights to Licensing: Why Global Content Companies Are Looking to China",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:32.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "cc70e8d33d94efc5e51e204852817cf48e917704317dc72ccdc412a1fea18965"
+}

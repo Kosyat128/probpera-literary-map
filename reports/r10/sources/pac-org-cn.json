@@ -1,0 +1,846 @@
+{
+  "sourceId": "pac-org-cn",
+  "name": "Publishers Association of ChinaNo.",
+  "entryUrl": "https://www.pac.org.cn/",
+  "countryCodes": [
+    "CN"
+  ],
+  "coverageCountryCodes": [
+    "CN"
+  ],
+  "attemptedAt": "2026-09-26T17:28:24.581Z",
+  "requests": [
+    {
+      "url": "https://www.pac.org.cn/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 64860,
+      "sha256": "b80274f60752ad5380ca1e617a82d0232441b2aed8b0d53ae0d03069af512d56",
+      "accessedAt": "2026-09-26T17:22:07.147Z"
+    },
+    {
+      "url": "https://www.pac.org.cn/special/2026beijingtushudinghuohui.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 37208,
+      "sha256": "cbef71395661b6a6d3a8a9494d2e83e4a93d66eea71d72b434e2fabfcd8a467f",
+      "accessedAt": "2026-09-26T17:28:26.082Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.pac.org.cn/",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 64860,
+    "sha256": "6709cb985c491e14fac36f2455eded202ee22bd1a9b53475a3fba19bc85dabdb",
+    "accessedAt": "2026-09-26T17:28:25.789Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:04.724Z",
+    "sourceDocumentSha256": "b80274f60752ad5380ca1e617a82d0232441b2aed8b0d53ae0d03069af512d56"
+  },
+  "endpoint": {
+    "id": "pac-org-cn",
+    "name": "Publishers Association of ChinaNo.",
+    "url": "https://www.pac.org.cn/",
+    "format": "html",
+    "language": "zh",
+    "region": "asia",
+    "sourceFamilyId": "pac-org-cn",
+    "countryCodes": [
+      "CN"
+    ],
+    "coverageCountryCodes": [
+      "CN"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.pac.org.cn"
+    ],
+    "linkPattern": "^/yaowensudi/[^/]+/?$|^/hangyedongtai/[^/]+/?$|^/xiehuidongtai/[^/]+/?$|^/tongzhi/[^/]+/?$|^/zhongyaojiaoliu/[^/]+/?$|^/special/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.pac.org.cn/special/2026beijingtushudinghuohui.html"
+    ],
+    "verifiedAt": "2026-09-26T17:28:26.084Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 29,
+  "literaryCandidateCount": 29,
+  "sample": {
+    "sourceId": "pac-org-cn",
+    "source": {
+      "name": "Publishers Association of ChinaNo.",
+      "url": "https://www.pac.org.cn/special/2026beijingtushudinghuohui.html",
+      "language": "zh"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "2026北京图书订货会",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:28:25.804Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.pac.org.cn/special/2026beijingtushudinghuohui.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 37208,
+      "sha256": "cbef71395661b6a6d3a8a9494d2e83e4a93d66eea71d72b434e2fabfcd8a467f",
+      "accessedAt": "2026-09-26T17:28:26.082Z",
+      "headline": "2026北京图书订货会",
+      "excerpt": "热门专题 2026北京图书订货会 2026北京图书订货会阅读与少儿出版创新论坛在京举办 发布时间：2026年01月10日 2026北京图书订货会“出版发行高质量发展论坛”在京举行 发布时间：2026年01月10日 2026北京图书订货会出版发行营销创新交流会在京举办 发布时间：2026年01月10日 2026北京图书订货会今日开幕 发布时间：2026年01月08日 2026北京图书订货会将特设跨界文化产品展区 发布时间：2025年12月09日 从“平台搭建”到“精准赋能”，2026北京图书订货会这些亮点值得期待 发布时间：2025年12月08日 四大核心亮点闪耀2026北京图书订货会跨界文化产品展区 发布时间：2025年11月21日",
+      "publishedDates": [],
+      "canonical": "https://www.pac.org.cn/special/2026beijingtushudinghuohui.html",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:26.084Z",
+  "foundItems": [
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/special/2026beijingtushudinghuohui.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026北京图书订货会",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/hangyedongtai/5776.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026北京图书订货会",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/yaowensudi/141397.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "《求是》杂志发表习近平总书记重要文章 在加强基础研究座谈会上的讲话发布时间：2026.09.16",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/yaowensudi/141393.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "国家版权局印发《版权工作“十五五”规划》发布时间：2026.09.09",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/yaowensudi/141392.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "第二届习近平文化思想国际学术研讨会在深圳举行发布时间：2026.09.08",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/yaowensudi/141385.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "纪念中国人民抗日战争暨世界反法西斯战争胜利81周年座谈会在京举行 李书磊出席发布时间：2026.09.04",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/yaowensudi/141383.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "中宣部等印发通知组织开展2026年“全民国防教育月”活动发布时间：2026.09.03",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/hangyedongtai/141401.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "书香润陇原 理论入人心\u2014\u20142026“阅读新时代”·理论热点面对面系列活动走进甘肃发布时间：2026.09.18",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/hangyedongtai/141399.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026“我与地坛”北京书市启幕 展区面积与展棚数量创历届新高发布时间：2026.09.18",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/hangyedongtai/141395.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "《2025\u20142026中国出版业发展报告》呈现行业结构性特征 从守住基本盘到打开新空间发布时间：2026.09.11",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/hangyedongtai/141394.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "书香润昆仑 阅读启新程 2026“阅读新时代”新疆站活动在和田启动发布时间：2026.09.10",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/hangyedongtai/141391.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "《习近平生态文明思想概论》出版发行发布时间：2026.09.08",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/xiehuidongtai/141389.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "聚焦教育出版高质量发展 共话行业创新转型新路径\u2014\u2014中国出版协会教育图书工作委员会学术研讨会在济南召开发布时间：2026.09.07",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/xiehuidongtai/141305.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "中国出版协会召开七届九次常务理事会议发布时间：2026.08.28",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/xiehuidongtai/141274.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "第二十二届海图会汇聚两岸百余家出版单位发布时间：2026.07.17",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/xiehuidongtai/141268.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "中国出版协会党总支深入学习习近平总书记 “七一”重要讲话精神和习近平党建思想发布时间：2026.07.16",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/xiehuidongtai/141262.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "中国出版代表团亮相第35届国际出版商大会 积极贡献行业发展中国思路发布时间：2026.07.13",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/tongzhi/141405.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "关于举办2026年古籍出版业务专题培训班的通知",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/tongzhi/141302.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026年度国家出版基金资助项目评审结果公告",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/zhongyaojiaoliu/141384.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“阅读新时代”理论热点面对面阅读分享活动走进甘肃发布时间：2026.09.03",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/zhongyaojiaoliu/141273.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "第二十二届海图会汇聚两岸百余家出版单位发布时间：2026.07.17",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/zhongyaojiaoliu/141212.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026北京国际出版论坛凝聚行业转型共识 在技术变革中守护出版核心价值发布时间：2026.06.22",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/zhongyaojiaoliu/141119.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "关于组织参加第35届国际出版商大会的通知发布时间：2026.04.03",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/zhongyaojiaoliu/141054.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "20251212关于赴台参加第二十二届海峡两岸图书交易会的通知发布时间：2025.12.20",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/yaowensudi/141300.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "纪念江泽民同志诞辰100周年大会在京隆重举行 习近平发表重要讲话",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/tongzhi/113.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "中国出版协会召开七届九次常务理事会议在山东济南召开",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/tongzhi/141294.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "关于举办第十届数字出版创新发展论坛的通知",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/special/dijiujieshuzichubanchuangxinfazhanluntan.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "第九届数字出版创新发展论坛",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pac-org-cn",
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/special/dibajietaofenbeiquanguotushubianxiaojinengdasai.html",
+        "language": "zh"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "第八届韬奋杯全国图书编校技能大赛",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:25.804Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b80274f60752ad5380ca1e617a82d0232441b2aed8b0d53ae0d03069af512d56"
+}

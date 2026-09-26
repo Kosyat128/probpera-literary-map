@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+import { writeFileSync } from 'node:fs';
+const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const page = await browser.newPage({ viewport: {width: 1280, height: 600}, deviceScaleFactor:1 });
+await page.goto('http://127.0.0.1:5173/');
+await page.locator('.articles-menu > summary').click();
+await page.locator('.articles-mega-lead strong').waitFor();
+await page.evaluate(() => document.fonts.ready);
+await page.screenshot({path:'reports/r10/showcase/before-ru-1280x600.png'});
+const geometry=await page.locator('.articles-mega-menu').evaluate(el=>({panel:el.getBoundingClientRect().toJSON(),header:document.querySelector('.site-header').getBoundingClientRect().toJSON(),footer:el.querySelector('footer').getBoundingClientRect().toJSON(),titles:[...el.querySelectorAll('strong')].map(x=>x.textContent),leadTitleFont:getComputedStyle(el.querySelector('.articles-mega-lead strong')).fontSize,overflow:el.scrollHeight-el.clientHeight}));
+await page.mouse.move(5,590); await page.waitForTimeout(400);
+geometry.mouseleaveRemainsOpen=await page.locator('.articles-menu').evaluate(x=>x.open);
+writeFileSync('reports/r10/showcase/before.json', JSON.stringify(geometry,null,2));
+await browser.close();

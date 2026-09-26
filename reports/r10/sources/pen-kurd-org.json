@@ -1,0 +1,365 @@
+{
+  "sourceId": "pen-kurd-org",
+  "name": "Kurdish PEN",
+  "entryUrl": "https://pen-kurd.com/",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:31.491Z",
+  "requests": [
+    {
+      "url": "https://pen-kurd.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 267670,
+      "sha256": "749093ec410c9558aa01a6abd8506b99db6b5eb5f3ba5874a443fee9efbf7e41",
+      "accessedAt": "2026-09-26T17:29:32.256Z"
+    },
+    {
+      "url": "https://pen-kurd.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 9957,
+      "sha256": "fd1af0ce054aa4b2330f67ef4a860c6bac09fdd95e21d8e7fc08c71fdb01c8f2",
+      "accessedAt": "2026-09-26T17:29:32.396Z"
+    },
+    {
+      "url": "https://pen-kurd.com/pen-international-calls-for-an-end-to-book-bans-on-world-book-day-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 260867,
+      "sha256": "2853c4bd9b51f2a930f869d63c343d4ba20c1d13da23366c7e455252e1fe806f",
+      "accessedAt": "2026-09-26T17:29:32.543Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://pen-kurd.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 67,
+    "sha256": "9311bab30d8b5d05f5fa5563a251b8c96b8470873bb77c62d3d17c146d7acab7",
+    "accessedAt": "2026-09-26T17:29:32.038Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "pen-kurd-org",
+    "name": "Kurdish PEN",
+    "url": "https://pen-kurd.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "europe",
+    "sourceFamilyId": "pen-kurd-org",
+    "countryCodes": [
+      "DE"
+    ],
+    "coverageCountryCodes": [
+      "DE"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pen-kurd.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pen-kurd.com/pen-international-calls-for-an-end-to-book-bans-on-world-book-day-2025/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:32.551Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "pen-kurd-org",
+    "source": {
+      "name": "Kurdish PEN",
+      "url": "https://pen-kurd.com/pen-international-calls-for-an-end-to-book-bans-on-world-book-day-2025/",
+      "language": "en-US"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "PEN International calls for an end to book bans on World Book Day 2025",
+    "publishedAt": "2025-09-21T09:22:32.000Z",
+    "description": "“Censoring books is not just silencing authors, it is an attempt to suppress society’s ability to question, and to reflect. Authoritarian governments fear the transformative power of words\u2014words that challenge injustice, expose truths, and inspire change. At PEN International, we continue defending the right to write, to read, publish and imagine alternative futures. We believe […]",
+    "discoveredAt": "2026-09-26T17:29:32.396Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pen-kurd.com/pen-international-calls-for-an-end-to-book-bans-on-world-book-day-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 260867,
+      "sha256": "2853c4bd9b51f2a930f869d63c343d4ba20c1d13da23366c7e455252e1fe806f",
+      "accessedAt": "2026-09-26T17:29:32.543Z",
+      "headline": "PEN International calls for an end to book bans on World Book Day 2025 \u2013 Pen-Kurd",
+      "excerpt": "“Censoring books is not just silencing authors, it is an attempt to suppress society’s ability to question, and to reflect. Authoritarian governments fear the transformative power of words\u2014words that challenge injustice, expose truths, and inspire change. At PEN International, we continue defending the right to write, to read, publish and imagine alternative futures. We believe that books are not ",
+      "publishedDates": [],
+      "canonical": "https://pen-kurd.com/pen-international-calls-for-an-end-to-book-bans-on-world-book-day-2025/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:32.551Z",
+  "foundItems": [
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/pen-international-calls-for-an-end-to-book-bans-on-world-book-day-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN International calls for an end to book bans on World Book Day 2025",
+      "publishedAt": "2025-09-21T09:22:32.000Z",
+      "description": "“Censoring books is not just silencing authors, it is an attempt to suppress society’s ability to question, and to reflect. Authoritarian governments fear the transformative power of words\u2014words that challenge injustice, expose truths, and inspire change. At PEN International, we continue defending the right to write, to read, publish and imagine alternative futures. We believe […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/twelfth-congress-of-kurdish-pen-2025-in-oldenburg/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kurdish PEN Centre Successfully Holds Its Twelfth Congress",
+      "publishedAt": "2025-09-08T16:11:01.000Z",
+      "description": "On September 5\u20136, 2025, the Kurdish PEN Centre held its twelfth congress at the Yazidi House in Oldenburg, Germany, under the slogan “The National Umbrella.” The gathering brought together more than 120 members and guests, marking an important milestone in the Centre’s evolution. What began as a local initiative has now taken a decisive step […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/the-echo-of-silence-an-open-call-to-pen-international-and-the-global-conscience-on-the-verge-of-the-systematic-eradication-of-kurdish-identity/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Echo of Silence: An Open Call to PEN International and the Global Conscience On the Verge of the Systematic Eradication of Kurdish Identity",
+      "publishedAt": "2026-01-14T22:18:23.000Z",
+      "description": "An Official Manifesto from the Kurdish PEN Centre to PEN International and the Global Community of Thinkers, Writers, and Defenders of Liberty. Introduction: The Topography of Agony and the Philosophy of Persistence Beyond History In the metaphysical theatre where “Being” contends with “non-being,” there exists a nation whose history is inscribed in blood and whose […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/91st-pen-international-congress-krakow/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "91st PEN International Congress Kraków",
+      "publishedAt": "2025-09-12T10:24:39.000Z",
+      "description": "“At this 91st Congress we affirmed that freedom of expression cannot be atomized \u2014whether in defending peace against authoritarianism, protecting our planet, standing with trans and gender-diverse people, or confronting censorship in the United States and beyond. With these resolutions, PEN International and its writers commit to continue using words as acts of conscience, to […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/dear-ladies-and-gentlemen-honored-guests-dear-friends/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dear Ladies and Gentlemen, Honored Guests, Dear Friends",
+      "publishedAt": "2025-09-07T16:51:23.000Z",
+      "description": "Dear Ladies and Gentlemen, Honored Guests, Dear Friends, On behalf of the Preparatory Committee of the 12th Annual Congress of the Kurdish PEN Centre, it is my great pleasure to welcome you most warmly and to thank you for joining us today. Before we continue in Kurdish, allow me to briefly share with you\u2014in German\u2014some […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/crimes-against-the-kurds/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Crimes Against the Kurds",
+      "publishedAt": "2025-08-12T12:27:34.000Z",
+      "description": "by Miran Abraham Published by Shanidar in collaboration with Kurdistan Chronicle, this series presents a profound and compelling exploration of the suffering and resilience of the Kurdish people. It sheds light on the relentless persecution they have endured for decades, transcending borders and political regimes. Each book serves as a powerful testament to their unwavering […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/the-overlooked-history-of-the-kurds/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Overlooked History of the Kurds",
+      "publishedAt": "2025-07-12T12:39:39.000Z",
+      "description": "The tapestry of Kurdish history and culture is as intricate as it is ancient, a rich and vibrant narrative that spans millennia yet remains overshadowed in global academia. Despite their profound influence on the cultural and political landscapes of the Middle East, the Kurds and their heritage are conspicuously underrepresented in scholarly discourse. This glaring […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/for-the-public-opinion/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "For the public opinion",
+      "publishedAt": "2024-10-24T12:15:43.000Z",
+      "description": "The Kurdish PEN Center condemns the six years and three months prison sentence imposed by the Turkish regime and its politically active courts on Mr. Eyyüp Subaşı, a Kurdish language teacher, and calls for the immediate annulment of this ruling. The right to education and living in one’s mother tongue is one of the most […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/history-of-the-kurdish-centre/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "History of the Kurdish Pen Centre",
+      "publishedAt": "2022-11-02T15:25:05.000Z",
+      "description": "By Bêrîvan Doskî Kurdish PEN (Navenda PEN a Kurd) is one of over 140 Centres that are members of PEN International \u2013 an important and diverse community of writers all over the world. It was vital for the global human heritage of cultures and literatures to include Kurdish literature, language and culture, which have faced […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/pen-international-88th-congress-a-message-of-solidarity-with-the-women-and-people-of-kurdistan/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN International 88th Congress: A Message of Solidarity with the Women and People of Kurdistan",
+      "publishedAt": "2022-10-04T12:38:03.000Z",
+      "description": "Zhina (Mahsa) Amini was a 22-year-old Kurdish woman from Saqqez, in Kurdistan (Iran). Her death in custody, following her arrest by Iran’s so-called “morality police,” sparked mass and ongoing protests throughout Iran and Kurdistan. Zhina was arrested in Tehran on September 13 for allegedly not complying with the country’s dress code for women. According to […]",
+      "discoveredAt": "2026-09-26T17:29:32.396Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "fd1af0ce054aa4b2330f67ef4a860c6bac09fdd95e21d8e7fc08c71fdb01c8f2"
+}

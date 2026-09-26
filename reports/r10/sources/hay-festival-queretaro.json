@@ -1,0 +1,57 @@
+{
+  "sourceId": "hay-festival-queretaro",
+  "name": "Hay Festival Querétaro",
+  "entryUrl": "https://www.hayfestival.com/m-235-queretaro-2026.aspx?skinid=19&localesetting=es-ES&currencysetting=MXN&resetfilters=true",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "MX"
+  ],
+  "attemptedAt": "2026-09-26T17:27:37.437Z",
+  "requests": [
+    {
+      "url": "https://www.hayfestival.com/m-235-queretaro-2026.aspx?skinid=19&localesetting=es-ES&currencysetting=MXN&resetfilters=true",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 164189,
+      "sha256": "b91690e95181a27610bd041db81940f8b4882951cff3f3c8c0b01d0595695987",
+      "accessedAt": "2026-09-26T17:20:14.882Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25828-book-club-with-iveth-luna-flores-and-paula-astorga.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 27975,
+      "sha256": "555466022387fbf3efad8bc5118f41221b80a16d06d349afb6c064a9e9e49e97",
+      "accessedAt": "2026-09-26T17:27:38.345Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25798-cristina-bendek-in-conversation-with-yunuen-tapia-torres.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30744,
+      "sha256": "7ec5642667642fb20161a6fa81c1d49578cbabe39303370a1465a27f5ddb34ad",
+      "accessedAt": "2026-09-26T17:27:38.499Z"
+    },
+    {
+      "url": "https://www.hayfestival.com/p-25801-pol-guasch-in-conversation-with-mara-rahab-bautista-lopez.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28432,
+      "sha256": "93562a5019568071bb22919e723f6a94da4d86ceffd35d326008731f5710b23a",
+      "accessedAt": "2026-09-26T17:27:38.698Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.hayfestival.com/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:13.664Z",
+    "sourceDocumentSha256": "b91690e95181a27610bd041db81940f8b4882951cff3f3c8c0b01d0595695987"
+  }
+}

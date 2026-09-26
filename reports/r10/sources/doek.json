@@ -1,0 +1,27 @@
+{
+  "sourceId": "doek",
+  "name": "Doek!",
+  "entryUrl": "https://doeklitmag.com/",
+  "countryCodes": [
+    "NA"
+  ],
+  "coverageCountryCodes": [
+    "NA"
+  ],
+  "attemptedAt": "2026-09-26T17:29:56.346Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "This operation was aborted",
+  "robots": {
+    "url": "https://doeklitmag.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 193,
+    "sha256": "a61a75933e16b0b76d04cb01f6d4dafc8af18df3ea19288eee20c169beba45a5",
+    "accessedAt": "2026-09-26T17:30:00.360Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-content/uploads/wpo/wpo-plugins-tables-list.json"
+    ]
+  }
+}

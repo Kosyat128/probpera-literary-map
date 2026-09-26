@@ -1,0 +1,102 @@
+{
+  "sourceId": "gummerus-fi",
+  "name": "Gummerus Publishers",
+  "entryUrl": "https://gummerus.fi/",
+  "countryCodes": [
+    "FI"
+  ],
+  "coverageCountryCodes": [
+    "FI"
+  ],
+  "attemptedAt": "2026-09-26T17:27:42.916Z",
+  "requests": [
+    {
+      "url": "https://gummerus.fi/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 567271,
+      "sha256": "019e21cc913153fd6bdd12dc5b411c1048c60dc032ee997f84eb98384c9e5397",
+      "accessedAt": "2026-09-26T17:20:20.855Z"
+    },
+    {
+      "url": "https://gummerus.fi/collections/runot-novellit-ja-esseet",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 179634,
+      "sha256": "b83f1274d99bb94f8f3363d35564c97bd73160b6ac69b23956ed45c73b4bb6e3",
+      "accessedAt": "2026-09-26T17:27:43.751Z"
+    },
+    {
+      "url": "https://gummerus.fi/collections/kaunokirjallisuus",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 347484,
+      "sha256": "31b3820936539860f0ff2532a48143fd2930d2c213e86a5274aed17d3352d6e2",
+      "accessedAt": "2026-09-26T17:27:44.207Z"
+    },
+    {
+      "url": "https://gummerus.fi/collections/kotimainen-kaunokirjallisuus",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 316763,
+      "sha256": "d62462781045a85a104023397524c3e7bdec77d1b070301b3f10eaf56488de46",
+      "accessedAt": "2026-09-26T17:27:44.795Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://gummerus.fi/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 3612,
+    "sha256": "121d5e16e13499612c7b75b25c57a2b4908cef35b9e3573402f94bec65800a77",
+    "accessedAt": "2026-09-26T17:27:43.224Z",
+    "disallowed": [
+      "/admin",
+      "/cart/",
+      "/*/cart/",
+      "/checkout",
+      "/*/checkout",
+      "/checkouts/",
+      "/*/checkouts/",
+      "/orders",
+      "/*/orders",
+      "/account",
+      "/*/account",
+      "/55547822358",
+      "/cdn/wpm/*.js",
+      "/services",
+      "/sf_*",
+      "/cart.js",
+      "/*/cart.js",
+      "/recommendations/products",
+      "/*/recommendations/products",
+      "/collections/*sort_by*",
+      "/*/collections/*sort_by*",
+      "/collections/*+*",
+      "/collections/*%2B*",
+      "/collections/*%2b*",
+      "/*/collections/*+*",
+      "/*/collections/*%2B*",
+      "/*/collections/*%2b*",
+      "/collections/*filter*&*filter*",
+      "/*/collections/*filter*&*filter*",
+      "/blogs/*+*",
+      "/blogs/*%2B*",
+      "/blogs/*%2b*",
+      "/*/blogs/*+*",
+      "/*/blogs/*%2B*",
+      "/*/blogs/*%2b*",
+      "/*?*ls=*&ls=*",
+      "/*?*ls%3*ls%3*",
+      "/*?*oseid=*",
+      "/*?*preview_theme_id=*",
+      "/*?*preview_script_id=*"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:20.056Z",
+    "sourceDocumentSha256": "019e21cc913153fd6bdd12dc5b411c1048c60dc032ee997f84eb98384c9e5397"
+  }
+}

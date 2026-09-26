@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-26T18:56:15.217Z",
+  "browser": "153.0.8010.54",
+  "sourceCssSha256": "06ebde10600119ba12e625a063d8ec20d78d7c40b88a0078ff078d26562adbb8",
+  "checks": [
+    {
+      "name": "real 1+6 at1280x600",
+      "bottom": 588,
+      "scroll": 131,
+      "overflow": 0
+    },
+    {
+      "name": "long ru and unbroken words",
+      "scroll": 518,
+      "overflow": 0,
+      "textOverflow": 0,
+      "fallbackFont": "\"Onest Local\", \"Segoe UI\", system-ui, sans-serif",
+      "wrap": "break-word"
+    },
+    {
+      "name": "long en and unbroken words",
+      "scroll": 332,
+      "overflow": 0,
+      "textOverflow": 0,
+      "fallbackFont": "\"Onest Local\", \"Segoe UI\", system-ui, sans-serif",
+      "wrap": "break-word"
+    }
+  ],
+  "failures": [],
+  "humanReview": false
+}

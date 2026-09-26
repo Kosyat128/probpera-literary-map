@@ -1,0 +1,86 @@
+
+> literary-map@0.1.0 countries:audit
+> node scripts/audit-country-database.mjs && node scripts/audit-generated-writers.mjs && node scripts/audit-writer-biographies.mjs && node scripts/build-writer-portrait-rights-queue.mjs --check && vitest run src/countryArchive.test.ts src/data/countryDataQuality.test.ts src/data/countries/writerBiographyResearchBatch01.test.ts
+
+{
+  "countryCards": 200,
+  "uniqueCountryIds": 200,
+  "uniqueCountryCodes": 200,
+  "cardsWithWriters": 190,
+  "cardsWithCoordinates": 5,
+  "cardsWithDescription": 5,
+  "cardsWithHistory": 5,
+  "cardsWithCapital": 5,
+  "cardsWithTimeline": 0,
+  "cardsWithFacts": 4,
+  "cardsWithLiteraryPlaces": 0,
+  "writerRecords": 1684,
+  "uniqueWriters": 1672,
+  "workRecords": 4490,
+  "uniqueWorks": 4469,
+  "verifiedWriters": 61,
+  "sourcedWriters": 141,
+  "expandedBiographies": 79,
+  "russianBiographiesReady": 1684,
+  "russianBiographiesVerified": 1684,
+  "russianBiographiesWithheld": 0,
+  "englishBiographiesReady": 20,
+  "englishBiographiesReviewed": 20,
+  "englishBiographiesVerified": 0,
+  "englishBiographiesWithheld": 1664,
+  "portraitedWriters": 1021,
+  "duplicateWriterLinks": 0,
+  "criticalIssues": 0,
+  "cardsInEditorialQueue": 200
+}
+Generated writers: 2356/2356 structurally valid; 2356 held in the editorial queue.
+{
+  "writerRecords": 1684,
+  "russianReady": 1684,
+  "russianWithheld": 0,
+  "englishReady": 20,
+  "englishWithheld": 1664,
+  "legacyRussianTextPresent": 1684,
+  "structuredRussianBiographyPresent": 1684,
+  "missingBiography": 0,
+  "shortBiography": 0,
+  "overlyLongBiography": 0,
+  "genericBiography": 0,
+  "duplicateBiographyRecords": 0,
+  "duplicateBiographyGroups": 0,
+  "unsourcedBiography": 0,
+  "rightsUnproven": 0,
+  "licensedCopyMissingMetadata": 0,
+  "humanTranslationRightsMissing": 0,
+  "researchDrafts": 20,
+  "validResearchDrafts": 20,
+  "researchDraftsWithRussianAndEnglish": 20,
+  "researchDraftsAwaitingIndependentReview": 0,
+  "researchDraftsApprovedForPromotion": 20,
+  "duplicateResearchDraftKeys": 0,
+  "orphanResearchDrafts": 0,
+  "withheldWithoutResearchDraft": 0,
+  "stagingRecords": 2356,
+  "stagingRecordsWithLegacyProse": 2356
+}
+{
+  "queueEntries": 699,
+  "noPortraitWriters": 663,
+  "statuses": {
+    "commons-search": 663,
+    "permission-needed": 0,
+    "permission-received": 0,
+    "licensed": 36
+  },
+  "readyForPublication": 36,
+  "issues": 0,
+  "mode": "check"
+}
+
+ RUN  v4.1.10 D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10
+
+
+ Test Files  3 passed (3)
+      Tests  22 passed (22)
+   Start at  22:05:28
+   Duration  6.58s (transform 6.99s, setup 0ms, import 14.93s, tests 1.51s, environment 0ms)

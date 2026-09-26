@@ -25,11 +25,12 @@ try {
     readNewsSnapshot(values["previous-state"], NEWS_STATE_MAX_BYTES),
     readNewsSnapshot(values["previous-queue"], NEWS_QUEUE_MAX_BYTES),
   ]);
-  service = createNewsService({ readReviewed: () => [] });
+  service = createNewsService({ readReviewed: () => [],maxRequests:12,
+    previousScheduler:previousQueue?.scheduler,previousCandidates:previousQueue?.items || [] });
   await service.refresh();
   const feed = await service.getFeed();
   const result = buildNewsIngestion({
-    feed, candidates: service.getReviewQueue(), previousState, previousQueue,
+    feed, candidates: service.getReviewQueue(), previousState, previousQueue, scheduler:service.getScheduler(),
   });
   const output = resolve(values.output);
   await mkdir(dirname(output), { recursive: true });

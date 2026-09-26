@@ -1,0 +1,52 @@
+{
+  "sourceId": "group-sagepub-com",
+  "name": "Sage Publishing",
+  "entryUrl": "https://group.sagepub.com/",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:27:50.187Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:https://www.sagepub.com",
+  "robots": {
+    "url": "https://group.sagepub.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1508,
+    "sha256": "5bd9832d8b5f14a32a0fb29fe808afbdc4bea87ddaedca4b336ff53aed7eed1c",
+    "accessedAt": "2026-09-26T17:27:50.688Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 import configuredArticleSectionSlugs from "../data/articles/sectionRoutes.json";
 
-const basePath = import.meta.env.BASE_URL.replace(/\/+$/, "");
+// Also used by the existing Next admin preview, which has no Vite environment.
+const basePath = (import.meta.env?.BASE_URL || "/").replace(/\/+$/, "");
 
 const transliteration: Record<string, string> = {
   а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh",

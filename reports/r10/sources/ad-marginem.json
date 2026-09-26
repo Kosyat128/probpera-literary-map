@@ -1,0 +1,639 @@
+{
+  "sourceId": "ad-marginem",
+  "name": "Ad Marginem",
+  "entryUrl": "https://admarginem.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:40.800Z",
+  "requests": [
+    {
+      "url": "https://admarginem.ru/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1371321,
+      "sha256": "a825072cbd4ca34245db26d9834e08727a4519b8faa53e55cc811cc576f64d6d",
+      "accessedAt": "2026-09-26T17:23:46.739Z"
+    },
+    {
+      "url": "https://admarginem.ru/2026/07/31/yazyk-kak-mesto-vstrechi/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 518062,
+      "sha256": "559654c5d3c82befab2464e8fe60d8b6d735ecc85a299f03cf6f5e965f8bb8d9",
+      "accessedAt": "2026-09-26T17:29:41.885Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://admarginem.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 125,
+    "sha256": "c2d15df17bc4e1d4ecfd8c8e827d9031e6353d2c4beba88cc5f2c07c2b0acccd",
+    "accessedAt": "2026-09-26T17:29:41.297Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/stranitsa-oformleniya-zakaza/order-received/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:44.777Z",
+    "sourceDocumentSha256": "a825072cbd4ca34245db26d9834e08727a4519b8faa53e55cc811cc576f64d6d"
+  },
+  "endpoint": {
+    "id": "ad-marginem",
+    "name": "Ad Marginem",
+    "url": "https://admarginem.ru/feed/",
+    "format": "rss",
+    "language": "ru-RU",
+    "region": "europe",
+    "sourceFamilyId": "ad-marginem",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://admarginem.ru"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://admarginem.ru/2026/07/31/yazyk-kak-mesto-vstrechi/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:41.910Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 20,
+  "sample": {
+    "sourceId": "ad-marginem",
+    "source": {
+      "name": "Ad Marginem",
+      "url": "https://admarginem.ru/2026/07/31/yazyk-kak-mesto-vstrechi/",
+      "language": "ru-RU"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Язык как место встречи: переводчики Ёко Тавады о работе над книгой",
+    "publishedAt": "2026-07-31T14:48:49.000Z",
+    "description": "Ёко Тавада пишет о мире, в котором привычные границы постоянно смещаются: язык перестает быть просто способом описания реальности, тело может стать чужим, а путешествие \u2014 превратиться в переход между разными способами восприятия. Именно этим пространствам между языками, культурами и идентичностями посвящен сборник рассказов Ёко Тавады «Где начинается Европа» \u2014 новая книга издательства Ad Marginem…",
+    "discoveredAt": "2026-09-26T17:29:41.379Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://admarginem.ru/2026/07/31/yazyk-kak-mesto-vstrechi/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 518062,
+      "sha256": "559654c5d3c82befab2464e8fe60d8b6d735ecc85a299f03cf6f5e965f8bb8d9",
+      "accessedAt": "2026-09-26T17:29:41.885Z",
+      "headline": "Язык как место встречи: переводчики Ёко Тавады о работе над книгой",
+      "excerpt": "31 Июля / 2026Язык как место встречи: переводчики Ёко Тавады о работе над книгой <img src=\"https://admarginem.ru/wp-content/uploads/2026/07/7.png\" alt=\"alt\" class=\"webpexpress-processed\">Ёко Тавада пишет о мире, в котором привычные границы постоянно смещаются: язык перестает быть просто способом описания реальности, тело может стать чужим, а путешествие \u2014 превратиться в переход между разными спосо",
+      "publishedDates": [
+        {
+          "value": "2026-07-31T14:48:49+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-07-31T14:48:49+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-07-31T14:48:49+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://admarginem.ru/2026/07/31/yazyk-kak-mesto-vstrechi/",
+      "language": "ru-RU",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:41.910Z",
+  "foundItems": [
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/07/31/yazyk-kak-mesto-vstrechi/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Язык как место встречи: переводчики Ёко Тавады о работе над книгой",
+      "publishedAt": "2026-07-31T14:48:49.000Z",
+      "description": "Ёко Тавада пишет о мире, в котором привычные границы постоянно смещаются: язык перестает быть просто способом описания реальности, тело может стать чужим, а путешествие \u2014 превратиться в переход между разными способами восприятия. Именно этим пространствам между языками, культурами и идентичностями посвящен сборник рассказов Ёко Тавады «Где начинается Европа» \u2014 новая книга издательства Ad Marginem…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/09/14/vnutri-moego-tela-zhivet-tanecz-otryvok-iz-knigi-li-czzyuan-moj-altaj/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Внутри моего тела живет танец»: отрывок из книги Ли Цзюань «Мой Алтай»",
+      "publishedAt": "2026-09-14T15:18:19.000Z",
+      "description": "В Ad Marginem выходит «Мой Алтай» Ли Цзюань \u2014 книга о памяти, взрослении и повседневной жизни в отдаленном поселке на Алтае, написанная одной из самых известных современных китайских писательниц. Ли Цзюань рассказывает о работе в семейной лавке, поездках по пустыне Гоби, соседях-казахах, сезонных работах и праздниках, но постепенно бытовые наблюдения складываются в более сложный рассказ о времени…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/08/28/dajdzhest-sobytij-sentyabr-2026/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Дайджест событий. Сентябрь 2026",
+      "publishedAt": "2026-08-28T17:27:27.000Z",
+      "description": "2 сентября 19:00 Бразилия Цвейга: о последней книге легендарного автора Москва, Ибероамериканский культурный центр Библиотеки иностранной литературыСпикеры: Аня Захарова, Дарья АндрееваРегистрация 4\u20136 сентября Cosmoscow Москва, Тимирязев-центр 5 сентября 14:00MINIMUM POP V Москва, клуб DEX 7 сентября 19:00КИНО 21 ВЕКА: ДВА РЕАЛИЗМА. Лекция от Московской школы нового киноМосква, Ad Marginem Wareho…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/07/31/dajdzhest-sobytij/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Дайджест событий. Август 2026",
+      "publishedAt": "2026-07-31T16:32:40.000Z",
+      "description": "31 июля\u20132 августа 12:00\u201320:00Книжный фестиваль «по краям»Казань, парк «Черное озеро»Подробности 1 августа Фестиваль АМ-0Обнинск, ДК ФЭИПодробности 2 августа 18:00«Лето с Гомером»: карманный путеводитель по миру «Одиссеи» и «Илиады»Москва, Лекторий ВДНХРегистрация 5 августа 19:00Где начинается Европа: презентация книги Ёко ТавадыМосква, Ad Marginem WarehouseРегистрация 6 августа 20:00Шахматный тур…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/07/23/kontrfors-i-dinamo-mashina/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Контрфорс и динамо-машина. Фрагмент из предисловия Михаила Майзульса к книге «Мон-Сен-Мишель и Шартр»",
+      "publishedAt": "2026-07-23T11:48:22.000Z",
+      "description": "Недавно в Ad Marginem вышла книга Генри Адамса «Мон-Сен-Мишель и Шартр» \u2014 необычное путешествие по Средневековью, в котором архитектура соборов становится ключом к пониманию целой эпохи. Для Адамса соборы, монастыри, витражи и скульптуры \u2014 не просто выдающиеся памятники искусства, а воплощение тех сил, представлений и идеалов, которые определяли жизнь средневекового человека. Но почему рассказ о …",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/07/14/intervyu-s-srdzhanom-valyarevichem/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Превратить жизнь в литературу: о чём на самом деле говорит «Комо». Интервью с Срджаном Валяревичем",
+      "publishedAt": "2026-07-14T12:03:02.000Z",
+      "description": "Срджан Валяревич \u2014 один из самых заметных современных сербских писателей, но русскому читателю он до сих пор практически неизвестен. Этой весной впервые на русском вышел его роман «Комо» \u2014 история автора, приехавшего на берег итальянского озера, чтобы написать книгу, и обнаружившего, что настоящая литература начинается там, где заканчиваются заранее придуманные планы. В «Комо» жизнь и письмо пост…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/08/20/talisman-odin-rasskaz-iz-sbornika-yoko-tavady/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Талисман»: один рассказ из сборника Ёко Тавады",
+      "publishedAt": "2026-08-20T13:02:21.000Z",
+      "description": "Недавно в издательстве Ad Marginem вышла книга Ёко Тавады «Где начинается Европа» \u2014 сборник рассказов и эссе, исследующих границы языка, памяти и идентичности. Среди этих подчас сюрреалистичных текстов невозможно выбрать наиболее показательный \u2014 однако мы решили опубликовать тот, в котором проблематика культурных и языковых границ составляет главный нерв повествования. «Талисман» В этом городе мн…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/08/11/chelovek-kak-nichto-zachem-segodnya-chitat-kozheva/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Человек как ничто: зачем сегодня читать Кожева",
+      "publishedAt": "2026-08-11T12:14:09.000Z",
+      "description": "Александр Кожев \u2014 один из тех философов, чьи идеи вышли далеко за пределы университетских аудиторий. В 1930-е годы его лекции о Гегеле в Париже слушали будущие классики французской мысли, а разговор о человеке, свободе, желании и истории, который он вел через философию Гегеля, повлиял на несколько поколений интеллектуалов. Сам Кожев при этом не слишком доверял профессиональной философии и считал,…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/08/07/pochemu-arhitektura-ne-iskusstvo-arhitektory-ob-adolfe-loose/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Почему архитектура не искусство? Отвечают архитекторы",
+      "publishedAt": "2026-08-07T12:34:43.000Z",
+      "description": "«Почему архитектура не искусство» \u2014 название сборника, которое и спустя сто лет звучит провокационно. Но что именно имел в виду Адольф Лоос, когда отказывал архитектуре в этом статусе? И действительно ли архитектура не искусство \u2014 или Лоос вкладывал в это утверждение совсем другой смысл? Мы решили разобраться в этом и обратились к современным архитекторам. Евгений Асс, Олег Шапиро, Дмитрий Ликин,…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/07/28/garri-kessler-ishhet-kabare-volter/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Гарри Кесслер ищет «Кабаре Вольтер»",
+      "publishedAt": "2026-07-28T15:01:09.000Z",
+      "description": "Осенью 1916 года немецкий офицер, граф и большой знаток искусства Гарри Кесслер приезжает в Цюрих, чтобы своими глазами увидеть одно из самых провокационных художественных движений своего времени. Именно с этого сюжета начинается июньская новинка издательства Ad Marginem \u2014 книга Мартина Миттельмайера «Век ДАДА». Знаменитое «Кабаре Вольтер» Кесслер \u2014 спойлер! \u2014 так и не нашел, но этот сюжет показа…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/07/20/volfram-ajlenberger-interview/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Вольфрам Айленбергер: Академическая философия воспитывает лишенность мужества",
+      "publishedAt": "2026-07-20T13:26:34.000Z",
+      "description": "Вольфрам Айленбергер \u2014 один из самых известных современных популяризаторов философии, автор трехтомной интеллектуальной биографии важнейших мыслителей XX века \u2014 от Людвига Витгенштейна и Вальтера Беньямина до Сьюзен Сонтаг и Симоны де Бовуар. В своих работах он неизменно возвращается к одному вопросу: что значит философствовать в эпоху исторических разрывов, когда прежние понятия перестают объясн…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/07/08/pohvala-dadagluposti/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Похвала дадаглупости",
+      "publishedAt": "2026-07-08T13:07:17.000Z",
+      "description": "В издательстве Ad Marginem вышла книга Мартина Миттельмайера «Век ДАДА» \u2014 рассказ о движении, возникшем в 1916 году в цюрихском «Кабаре Вольтер» на фоне Первой мировой войны и кризиса европейской культуры. Дадаисты отвечали на распад прежних художественных и смысловых систем не созданием нового канона, а их радикальным пересмотром: превращали случайность, ошибку, фрагмент и бессмыслицу в инструме…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/06/11/nomos-zemli-i-svoboda-morej/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Номос земли и свобода морей",
+      "publishedAt": "2026-06-11T13:41:13.000Z",
+      "description": "Почему море занимает столь важное место в истории европейской мысли? За этим вопросом скрывается другой, более общий: почему человек снова и снова стремится выйти за пределы знакомого мира \u2014 географически, интеллектуально и исторически? Публикуем фрагмент послесловия Виталия Куренного к книге Гунтера Шольца «Философия моря». Обращаясь к Гегелю, Зиммелю и другим мыслителям, Куренной показывает, ка…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/04/28/beseda-figury-mysli-denkbilder-v-passazhah-valtera-benyamina/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Беседа: «Фигуры мысли: Denkbilder в „Пассажах“ Вальтера Беньямина»",
+      "publishedAt": "2026-04-28T09:55:19.000Z",
+      "description": "Не так давно в Ad Marginem вышла «Книга Пассажей» Вальтера Беньямина \u2014 монументальный незаконченный труд о зарождении современности в Париже XIX века. В честь выхода этой важнейшей книги член редколлегии журнала «Логос» Игорь Чубаров и основатель Ad Marginem Александр Иванов погововорили о понимании Беньямином истории и современности, необычном методе «Книги Пассажей», устроенной по принципу монт…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/04/21/intervyu-s-federiko-kampanej/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Сбежать из истории: зачем нам воображать иные миры? Интервью с Федерико Кампаньей",
+      "publishedAt": "2026-04-21T12:53:10.000Z",
+      "description": "Недавно в Ad Marginem вышло художественно-историческое исследование итальянского философа Федерико Кампаньи «Иные миры. Средиземноморские уроки бегства от истории». Книга, где история Средиземноморья предстает не столько географическим регионом, сколько пространством альтернативных реальностей, где люди в периоды катастрофических событий обращались к воображению как форме поиска более свободного …",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/04/09/guide-non-fiction28/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ad Marginem на ярмарке non/fictio№",
+      "publishedAt": "2026-04-09T10:02:07.000Z",
+      "description": "Эксклюзивно на ярмарке Знаковый автобиографический роман сербского писателя Срджана Валяревича, проникнутый духом Венички Ерофеева. Герой книги оказывается среди именитых интеллектуалов со всего мира, но в роскошных залах итальянской виллы и среди чудесной природы его не оставляет тень войны и мысль о маленькой нищей Сербии, переживающей драматические перемены конца 1990-х годов. Новинки Подробна…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/03/17/kak-eto-delalos-v-parizhe/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Как это делалось в Париже: Фредрик Джеймисон и его взгляд на послевоенную французскую теорию",
+      "publishedAt": "2026-03-17T14:50:30.000Z",
+      "description": "Недавно в Ad Marginem вышла книга Фредрика Джеймисона «Годы теории» \u2014 масштабная панорама французской послевоенной мысли от Барта и Фуко до Лакана и Делёза.Еще в 2024 году в журнале «Неприкосновенный запас» вышла статья Константина Митрошенкова, подробно рассказывающая о том, как и для чего масштабное исследование Джеймисона пересобирает традиционный нарратив о французской теории. С разрешения ре…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/03/13/ya-s-druskin-zaumnyj-spasitel/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Я. С. Друскин \u2014 заумный спаситель",
+      "publishedAt": "2026-03-13T14:22:54.000Z",
+      "description": "Яков Друскин, собрание сочинений которого было издано при поддержке Музея ОБЭРИУ, известен как участник круга «чинарей» \u2014 но то, как на протяжении всей своей жизни он продолжал работать с интеллектуальным наследием своих единомышленников, известно в гораздо меньшей степени. Чтобы восполнить эту лакуну, мы попросили искусствоведа, куратора и арт-критика Екатерину Андрееву написать о Друскине \u2014 и п…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/01/29/monadicheskie-sushhnosti-iskusstvovedeniya-riglya/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Монадические сущности искусствоведения Ригля",
+      "publishedAt": "2026-01-29T14:53:25.000Z",
+      "description": "Скоро Ad Marginem выпустит книгу Алоиза Ригля «Возникновение искусства барокко в Риме»: лекции австрийского историка искусства, создателя оригинального типа формализма и теории развития барокко, прочитанные в период с 1898 по 1902 год в Венском университете. Предзаказ на книгу будет открыт 12 февраля, но повод поговорить о Ригле есть уже сейчас: наш книжный тур «по краям» едет во Владимир, и 31 я…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ad-marginem",
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/01/12/kuda-otpravilis-biblioteki-ad-marginem/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "От Никарагуа до Южно-Сахалинска. Куда отправились «Библиотеки Ad Marginem»",
+      "publishedAt": "2026-01-12T08:41:44.000Z",
+      "description": "«Библиотеки Ad Marginem» \u2014 проект, поддерживающий независимые культурные институции России и зарубежья. Книжные магазины, частные библиотеки, кофейни и районные бары, аккумулирующие студенческие сообщества \u2014 мы считаем, что все подобные низовые инициативы невероятно важны. Цель Ad Marginem \u2014 поддержать их и расширить сеть культурных сообществ, где бы они ни находились. Недавно мы подвели итоги оч…",
+      "discoveredAt": "2026-09-26T17:29:41.379Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a825072cbd4ca34245db26d9834e08727a4519b8faa53e55cc811cc576f64d6d"
+}

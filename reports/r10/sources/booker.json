@@ -1,0 +1,20 @@
+{
+  "sourceId": "booker",
+  "name": "The Booker Prizes",
+  "entryUrl": "https://thebookerprizes.com/information-for/media-centre",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:27:25.231Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://thebookerprizes.com/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

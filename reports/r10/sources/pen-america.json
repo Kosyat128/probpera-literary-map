@@ -1,0 +1,357 @@
+{
+  "sourceId": "pen-america",
+  "name": "PEN America",
+  "entryUrl": "https://pen.org/feed/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:27:28.705Z",
+  "requests": [
+    {
+      "url": "https://pen.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 117620,
+      "sha256": "0456559326b835885ca4de3550fe572d75e26a642733e1d45825d20f10d87d0d",
+      "accessedAt": "2026-09-26T17:20:05.120Z"
+    },
+    {
+      "url": "https://pen.org/florida-600-banned-books/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 501148,
+      "sha256": "78d07658ad5bda3f77d6857f8c2045fe15dd1d42cc50174a62ccca64a2c9c26e",
+      "accessedAt": "2026-09-26T17:27:29.182Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://pen.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 165,
+    "sha256": "3611b1026f87e65d8952a36ec9fa71d4fc491c91b06e129bdcc9680b0f28b027",
+    "accessedAt": "2026-09-26T17:27:28.988Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:03.848Z",
+    "sourceDocumentSha256": "0456559326b835885ca4de3550fe572d75e26a642733e1d45825d20f10d87d0d"
+  },
+  "endpoint": {
+    "id": "pen-america",
+    "name": "PEN America",
+    "url": "https://pen.org/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "north-america",
+    "sourceFamilyId": "pen-america",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pen.org"
+    ],
+    "linkPattern": "^/",
+    "keywordPattern": "(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pen.org/florida-600-banned-books/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:29.197Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "pen-america",
+    "source": {
+      "name": "PEN America",
+      "url": "https://pen.org/florida-600-banned-books/",
+      "language": "en"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books",
+    "publishedAt": "2026-09-18T16:39:36.000Z",
+    "description": "More than 600 books were banned from schools in 10 of Florida’s districts during the 2025\u201326 academic year. The post John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books appeared first on PEN America.",
+    "discoveredAt": "2026-09-26T17:27:28.995Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pen.org/florida-600-banned-books/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 501148,
+      "sha256": "78d07658ad5bda3f77d6857f8c2045fe15dd1d42cc50174a62ccca64a2c9c26e",
+      "accessedAt": "2026-09-26T17:27:29.182Z",
+      "headline": "John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books",
+      "excerpt": "John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books Banned BooksFlorida Julia Goldberg September 18, 2026 Share This Share This Share John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books to Facebook FacebookShare John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books to X XShar",
+      "publishedDates": [
+        {
+          "value": "2026-09-18T16:39:36+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-18T16:39:36+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://pen.org/florida-600-banned-books/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:29.197Z",
+  "foundItems": [
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/florida-600-banned-books/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books",
+      "publishedAt": "2026-09-18T16:39:36.000Z",
+      "description": "More than 600 books were banned from schools in 10 of Florida’s districts during the 2025\u201326 academic year. The post John Green, Lois Lowry, Rick Riordan Among Authors on Florida DOE’s List of 600+ Banned Books appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/alim-aliiev-crimean-tatar/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘A Critical Part of Our Code’: Alim Aliiev, PEN Ukraine Member, on Crimean Tatar Language, Literature, and Identity",
+      "publishedAt": "2026-09-22T20:25:25.000Z",
+      "description": "Russia’s illegal occupation in 2014 came with new attempts to dismantle the Crimean Tatar identity in a bid to re-colonize Crimea. The post ‘A Critical Part of Our Code’: Alim Aliiev, PEN Ukraine Member, on Crimean Tatar Language, Literature, and Identity appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/were-coming-for-the-books-texas/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘We’re Coming for the Books’: Texas Lt. Gov. Dan Patrick Calls for Bans on 2,000+ Titles, Including Works by Elie Wiesel, Oscar Wilde, and John Green",
+      "publishedAt": "2026-09-11T19:29:19.000Z",
+      "description": "This call from Lt. Gov. Patrick ratchets up intimidation and fear across Texas public schools, ultimately emptying library shelves of books. The post ‘We’re Coming for the Books’: Texas Lt. Gov. Dan Patrick Calls for Bans on 2,000+ Titles, Including Works by Elie Wiesel, Oscar Wilde, and John Green appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/librarians-facing-slew-of-attacks/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Faced With Book Bans and Verbal Harassment, Public Librarians Are Reaching a Breaking Point",
+      "publishedAt": "2026-09-01T12:25:00.000Z",
+      "description": "Public librarians speak out about how individuals, organized groups, and government officials have questioned and villainized their work. The post Faced With Book Bans and Verbal Harassment, Public Librarians Are Reaching a Breaking Point appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/pen-america-speaks-september-21/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 21",
+      "publishedAt": "2026-09-25T20:10:43.000Z",
+      "description": "PEN America works tirelessly to defend free expression, support persecuted writers, and promote literary culture. Here are some of the latest ways PEN America is speaking out. The post PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 21 appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/pen-america-speaks-how-we-defended-and-celebrated-free-expression-the-week-of-september-14/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 14",
+      "publishedAt": "2026-09-18T17:56:10.000Z",
+      "description": "PEN America works tirelessly to defend free expression, support persecuted writers, and promote literary culture. Here are some of the latest ways PEN America is speaking out. The post PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 14 appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/pen-america-speaks-week-of-september-7/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 7",
+      "publishedAt": "2026-09-15T16:00:09.000Z",
+      "description": "PEN America works tirelessly to defend free expression, support persecuted writers, and promote literary culture. Here are some of the latest ways PEN America is speaking out. The post PEN America Speaks: How We Defended and Celebrated Free Expression the Week of September 7 appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/isabel-j-kim-the-pen-ten-interview/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Isabel J. Kim’s Sci-Fi Debut Cracks the Immigrant Experience Wide Open",
+      "publishedAt": "2026-09-10T13:49:14.000Z",
+      "description": "Isabel J. Kim talks about her novel Sublimation and the sense of “alienated intimacy” she wants to bestow on readers. The post Isabel J. Kim’s Sci-Fi Debut Cracks the Immigrant Experience Wide Open appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-america",
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/pen-america-speaks-week-of-august-31/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America Speaks: How We Defended and Celebrated Free Expression the Week of August 31",
+      "publishedAt": "2026-09-04T17:07:18.000Z",
+      "description": "PEN America works tirelessly to defend free expression, support persecuted writers, and promote literary culture. Here are some of the latest ways PEN America is speaking out. The post PEN America Speaks: How We Defended and Celebrated Free Expression the Week of August 31 appeared first on PEN America.",
+      "discoveredAt": "2026-09-26T17:27:28.995Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0456559326b835885ca4de3550fe572d75e26a642733e1d45825d20f10d87d0d"
+}

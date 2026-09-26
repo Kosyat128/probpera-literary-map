@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-26T18:44:23.220Z",
+  "reviewer": "Codex",
+  "humanReview": false,
+  "status": "passed_with_stale_image_held",
+  "scope": {
+    "targetedRecord": "childrens-detective-reading-conference-2026",
+    "productionSelectorFirst": 20,
+    "additionalSourceRequests": 2,
+    "recordsRemoved": 0,
+    "recordsChanged": 0
+  },
+  "samokatDecision": {
+    "action": "retain_record_hold_image",
+    "eventDate": "2026-10-13",
+    "kind": "announcement",
+    "reason": "Article body explicitly establishes October 13-15, 2026 and links to the 2026 conference. The 2025 artwork is stale; it does not contradict the explicit current event year in the article text.",
+    "sourceUrl": "https://samokatbook.ru/news/onlayn-konferentsiya-detektivy-i-priklyucheniya-dlya-detey-i-podrostkov-professionalnoe-soobshchestv/",
+    "cachedSourceDocumentSha256": "f3d7b3cb695127a332520b43479555eb7addb1afc807490577e1e6a8c07ddf20",
+    "currentSourceDocumentSha256": "ca8a7c96a75e69866f4504f40b09195f9d8bfa0ec47205fa78576a1ac1bd3f69",
+    "currentHttpStatus": 200,
+    "accessedAt": "2026-09-26T18:43:10.036Z",
+    "shortSourceQuote": "пройдёт с 13 по 15 октября 2026 года",
+    "displayedPublicationDate": "25.09.2026",
+    "conferenceLink": "https://bookconf.ru/detective2026",
+    "staleArtworkEvidence": ".tmp/thumbnail-visual-qa/sheet-5.png, item85: poster displays October2025",
+    "imageManifestContainsRecord": false
+  },
+  "first20": [
+    {
+      "id": "jamaica-kincaid-sjojungfrun-presentation-2026",
+      "eventDate": "2026-09-26",
+      "publishedAt": "2026-09-26",
+      "kind": "news",
+      "sourceUrl": "https://bokmassan.se/2026/09/jamaica-kincaid-har-tagit-emot-sjojungfrun-2026/",
+      "sourceDocumentSha256": "68b0922dc9a5441994ca511d86044c4bcda966cd07007dbaf68c5040ef8cde50",
+      "sourceCache": ".tmp/r10-p03-research.json#33",
+      "status": "stage_and_year_supported",
+      "decision": "Source dated 26 September 2026 uses completed presentation and after-ceremony wording. Same-day news is supported."
+    },
+    {
+      "id": "moscow-book-week-2026",
+      "eventDate": "2026-09-26",
+      "publishedAt": "2026-09-25",
+      "kind": "announcement",
+      "sourceUrl": "https://www.culture.ru/news/259347/s-26-sentyabrya-po-4-oktyabrya-proidet-moskovskaya-knizhnaya-nedelya",
+      "sourceDocumentSha256": "5fdb958669182ac82aabf3577add43691cccfef8bd6882b757629c2ada26ecad",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-04/culture-5.json",
+      "status": "stage_and_year_supported",
+      "decision": "Source announces September 26-October 4; current article HTML contains September 25, 2026 timestamps. Same-day announcement remains prospective; no opening or completion asserted."
+    },
+    {
+      "id": "nonna-gruffalo-italian-edition-2026",
+      "eventDate": "2026-09-26",
+      "publishedAt": "2026-09-26T00:34:39.000Z",
+      "kind": "news",
+      "sourceUrl": "https://www.illibraio.it/news/bambini-e-ragazzi/nonna-gruffalo-serie-libri-1509151/",
+      "sourceDocumentSha256": "d6a629a6b9e799610388ad3dc10b027855272727632b2bfdb41464fd02cbd198",
+      "sourceCache": ".tmp/r10-p03-research.json#30",
+      "status": "stage_and_year_supported",
+      "decision": "September 26, 2026 source describes the book as in bookshops. Record uses report date and does not assert an exact first retail day."
+    },
+    {
+      "id": "lithuania-ekultura-digital-heritage-finalist-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25T09:16:43.000Z",
+      "kind": "news",
+      "sourceUrl": "https://www.lnb.lt/naujienos/15177-lietuvos-kultura-atrasti-padedanti-platforma-ekultura-konkurso-skaitmeninis-knygnesys-finale",
+      "sourceDocumentSha256": "b51292dcc1d0e0a205385318ddd6f8f2272c659c218ec7965b5e0a4ca87f6cba",
+      "sourceCache": ".tmp/r10-p07-research.json#2",
+      "status": "stage_and_year_supported",
+      "decision": "Source explicitly names the 2026 competition and September 29 final. Entry into the final is the completed news stage; final victory is not claimed."
+    },
+    {
+      "id": "livres-en-vignes-awards-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25T15:11:00.000Z",
+      "kind": "news",
+      "sourceUrl": "https://actualitte.com/article/134207/prix-litteraires/livres-en-vignes-2026-gautier-battistella-francois-henri-deserable-et-bruno-verjus-recompenses",
+      "sourceDocumentSha256": "00e273b1e1541e96fb0038ec286ed44ec53ece68c7a94258e551ae0a0a88f551",
+      "sourceCache": ".tmp/r10-p05-research.json#14",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 report says the prizes were presented on Friday September 25. Completed award-stage wording is supported."
+    },
+    {
+      "id": "madeline-cash-page-america-award-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25T15:44:00.000Z",
+      "kind": "news",
+      "sourceUrl": "https://actualitte.com/article/134206/prix-litteraires/madeline-cash-remporte-le-prix-du-roman-page-america-2026",
+      "sourceDocumentSha256": "bb32e1ebe1627282c7991ff36506963366e5b9c85ca36f3fa1dbd393ecc3dbf3",
+      "sourceCache": ".tmp/r10-p05-research.json#15",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 report names the winner and same-day presentation; no unsupported future-to-completed conversion."
+    },
+    {
+      "id": "noon-strugatsky-trailer-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://ast.ru/news/vyshel-treyler-seriala-polden-po-povesti-bratev-strugatskikh/",
+      "sourceDocumentSha256": "bced46637b3dd8158b5d073f952e483b3961fda547e813884ae00a6dcc880d1f",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-04/ast-7.json",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 trailer report; October 1 premiere remains future in both locales. News is the released trailer, not the premiere."
+    },
+    {
+      "id": "paulina-borsook-cyberselfish-reissue-announced-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://lithub.com/a-prophetic-classic-about-the-dangers-of-tech-is-back-in-print/",
+      "sourceDocumentSha256": "580233a2bba6eeeb0cfdfddd51bbcf33aa8ff50ff8f160c54b3712600080fd8d",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-06/literary-hub-22.json",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 published introduction is current news; source body explicitly describes the reissue as forthcoming in autumn."
+    },
+    {
+      "id": "rivera-garza-kwon-literary-influences-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101347-writers-talking-writers-cristina-rivera-garza-on-theresa-hak-kyung-cha-and-r-o-kwon-on-mavis-gallant.html",
+      "sourceDocumentSha256": "10984ac2b8df7c49758279d1c1bbb468d8170d36ceb42b180f56e3861ed738ff",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-06/publishers-weekly-21.json",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 original interview feature; no event or book-publication date inferred."
+    },
+    {
+      "id": "rsl-sri-lanka-books-culture-days-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://www.rsl.ru/news/dni-kultury-shri-lanki",
+      "sourceDocumentSha256": "59a1c948c80c776010806cf4bbf549ce90384abf74b8f9667c3c8c8052da947a",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-04/rsl-8.json",
+      "status": "stage_and_year_supported",
+      "decision": "Source dated September 25, 2026 uses opened/completed wording for the cultural programme and book display."
+    },
+    {
+      "id": "sharjah-filbo-guest-honour-announced-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+      "sourceDocumentSha256": "623c7f773e91b573c9d52e6a24d315cd67788012d1fa670877bce62d64f4b772",
+      "sourceCache": ".tmp/r10-editorial-work/p20-r10-02/camlibro-com-co-0.json",
+      "status": "stage_and_year_supported",
+      "decision": "Official September 25, 2026 appointment announcement concerns FILBo 2027. Current appointment news is distinguished from the future April-May fair."
+    },
+    {
+      "id": "stephen-wright-black-moon-making-feature-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101344-how-black-moon-by-stephen-wright-got-made.html",
+      "sourceDocumentSha256": "44f8b9cb043c54a5c60ce10f8218422cdc353efc96a81e719ed4e85e37a05503",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-06/publishers-weekly-18.json",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 making-of feature; no first book-release day inferred."
+    },
+    {
+      "id": "viktor-likhonosov-krasnodar-square-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://godliteratury.ru/articles/2026/09/25/skver-v-centre-krasnodara-poluchit-imia-pisatelia-viktora-lihonosova",
+      "sourceDocumentSha256": "1d59bed5eb9c492c3d5ce4622453fe8fa306a06377e09aad565fb75310dccb8c",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-04/god-literatury-4.json",
+      "status": "stage_and_year_supported",
+      "decision": "Source dated September 25, 2026 reports the city-council naming decision. A completed square or memorial opening is not claimed."
+    },
+    {
+      "id": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://ast.ru/news/premiyu-aleksandra-solzhenitsyna-vruchili-pisatelyu-vladislavu-otroshenko/",
+      "sourceDocumentSha256": "80c37e7c536ea80334cbf4d5e98809a7ba6f3673e7715ed71e697b7f2053f6ba",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-04/ast-5.json",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 report explicitly says the author was awarded the prize. A separate ceremony day is not invented."
+    },
+    {
+      "id": "vromans-book-soup-hoffman-ownership-2026",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "kind": "news",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/101348-socal-s-vroman-s-book-soup-find-new-owner.html",
+      "sourceDocumentSha256": "b2385589874475c81444f94112427a4afbdf200157d2bbc0faf37ca156ec1ee0",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-06/publishers-weekly-11.json",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 report says the new owners were selected. The record does not assert a particular legal-closing day."
+    },
+    {
+      "id": "chooseco-cyoa-unbound-adult-imprint-2026",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24",
+      "kind": "news",
+      "sourceUrl": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101325-choose-your-own-adventure-publisher-launches-adult-imprint.html",
+      "sourceDocumentSha256": "c2cb2badd43b99f5643f5c8a0afa7eab7e8c4beb1be80b56adf783886d689c57",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-06/publishers-weekly-17.json",
+      "status": "stage_and_year_supported",
+      "decision": "September 24, 2026 imprint announcement is current news; July and September 2027 book releases remain prospective."
+    },
+    {
+      "id": "ens-editions-first-alef-prize-2026",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-25T12:55:01.000Z",
+      "kind": "news",
+      "sourceUrl": "https://actualitte.com/article/134185/prix-litteraires/le-prix-alef-de-l-edition-scientifique-2026-distingue-une-publication-d-ens-editions",
+      "sourceDocumentSha256": "0faa4d6212ece664fe8fa68d537865b344eec3a110f09edce49e8bb1aa8e3835",
+      "sourceCache": ".tmp/r10-p05-research.json#18",
+      "status": "stage_and_year_supported",
+      "decision": "September 25, 2026 report explicitly places the completed award ceremony on Thursday September 24 at 18:00; eventDate and publishedAt are distinct."
+    },
+    {
+      "id": "geluck-chat-museum-ixelles-plan-2026",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24T16:01:00.000Z",
+      "kind": "news",
+      "sourceUrl": "https://actualitte.com/article/134178/expos/le-musee-du-chat-de-philippe-geluck-renait-a-bruxelles",
+      "sourceDocumentSha256": "f375d24b2720f0d1ea4fd3eeebdba59c0844a53be63d0247863b85e627251b97",
+      "sourceCache": ".tmp/r10-p05-research.json#34",
+      "status": "stage_and_year_supported",
+      "decision": "September 24, 2026 project announcement; early-2028 museum opening remains a proposal, not a completed event."
+    },
+    {
+      "id": "history-of-a-town-rsl-stage-2026",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24",
+      "kind": "news",
+      "sourceUrl": "https://www.rsl.ru/news/gorod-glupov-na-stsene-leninki",
+      "sourceDocumentSha256": "8cbd3b8b4da7f71b2b5c65bb45200d3d63faa6e3cb0ebaca3796523fede1d060",
+      "sourceCache": ".tmp/r10-editorial-work/p40-r10-04/rsl-9.json",
+      "status": "stage_and_year_supported",
+      "decision": "September 24, 2026 library report uses completed performance wording. The report day is not presented as a separately established performance day."
+    },
+    {
+      "id": "musicians-literary-prize-selection-2026",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24T15:27:00.000Z",
+      "kind": "news",
+      "sourceUrl": "https://actualitte.com/article/134177/prix-litteraires/eric-emmanuel-schmitt-et-erik-orsenna-en-lice-au-prix-litteraire-des-musiciens-2026",
+      "sourceDocumentSha256": "e24ee5e43c7be473c252585a17935c92870f00bd5b118c39092a4f485710a1d2",
+      "sourceCache": ".tmp/r10-p05-research.json#19",
+      "status": "stage_and_year_supported",
+      "decision": "September 24, 2026 shortlist is current news; November 13 award results remain future."
+    }
+  ],
+  "sameDayAnnouncement": {
+    "id": "moscow-book-week-2026",
+    "decision": "retain announcement; do not infer actual opening",
+    "sourceDocumentSha256": "5fdb958669182ac82aabf3577add43691cccfef8bd6882b757629c2ada26ecad",
+    "sourcePageTimestamp": "2026-09-25T10:14:12.945Z",
+    "sourceBodySchedule": "September 26-October 4",
+    "expiry": "Production selector excludes a past announcement without a fresh supported stage."
+  },
+  "counts": {
+    "reviewed": 235,
+    "newReviewed": 202,
+    "newProductionSelectorEligible": 202
+  },
+  "reviewedRecordSha256": "8d59a67be10ad17a0421b3b22fe0d38547e6bb1eef91fdd6cc5551e8ae88db9f",
+  "dataMutation": false
+}

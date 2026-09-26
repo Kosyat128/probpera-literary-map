@@ -1,0 +1,771 @@
+{
+  "sourceId": "bn-org-pl",
+  "name": "National Library of Poland",
+  "entryUrl": "https://www.bn.org.pl/",
+  "countryCodes": [
+    "PL"
+  ],
+  "coverageCountryCodes": [
+    "PL"
+  ],
+  "attemptedAt": "2026-09-26T17:29:13.705Z",
+  "requests": [
+    {
+      "url": "https://www.bn.org.pl/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 71645,
+      "sha256": "3e538d1b0ce63a163be842525ec8ab8361f35dc2a3a533d96b80562c24d172ac",
+      "accessedAt": "2026-09-26T17:23:04.972Z"
+    },
+    {
+      "url": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 51508,
+      "sha256": "6ad7447d49e4536f912cbcd01964340022404e04bbcb25cc14575f4f4460d17f",
+      "accessedAt": "2026-09-26T17:29:14.737Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.bn.org.pl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 203,
+    "sha256": "46be107057bd968519b4507ba545e520a6aa5c1509371e8868dad3240d552992",
+    "accessedAt": "2026-09-26T17:29:14.454Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:04.158Z",
+    "sourceDocumentSha256": "3e538d1b0ce63a163be842525ec8ab8361f35dc2a3a533d96b80562c24d172ac"
+  },
+  "endpoint": {
+    "id": "bn-org-pl",
+    "name": "National Library of Poland",
+    "url": "https://www.bn.org.pl/",
+    "format": "html",
+    "language": "pl",
+    "region": "europe",
+    "sourceFamilyId": "bn-org-pl",
+    "countryCodes": [
+      "PL"
+    ],
+    "coverageCountryCodes": [
+      "PL"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.bn.org.pl"
+    ],
+    "linkPattern": "^/o-nas/[^/]+/?$|^/[^/]{12,}/?$|^/dla-bibliotekarzy/[^/]+/?$|^/aktualnosci/.+",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html"
+    ],
+    "verifiedAt": "2026-09-26T17:29:14.741Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 26,
+  "literaryCandidateCount": 26,
+  "sample": {
+    "sourceId": "bn-org-pl",
+    "source": {
+      "name": "National Library of Poland",
+      "url": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+      "language": "pl"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "czytaj więcej o Pierwsza edycja festiwalu Morze Literatury za nami",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:14.470Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 51508,
+      "sha256": "6ad7447d49e4536f912cbcd01964340022404e04bbcb25cc14575f4f4460d17f",
+      "accessedAt": "2026-09-26T17:29:14.737Z",
+      "headline": "Pierwsza edycja festiwalu Morze Literatury za nami - Aktualności - Biblioteka Narodowa",
+      "excerpt": "22.9.2026 Pierwsza edycja festiwalu Morze Literatury za nami Koncert, debaty, spotkania z twórcami, nocne czytanie poezji, pokaz filmowy, warsztaty dla młodzieży oraz pierwsza Gala Nagrody im. Czesława Miłosza złożyły się na program festiwalu Morze Literatury. Pierwsza edycja wydarzenia, zorganizowana w dniach 18\u201321 września 2026 roku w Darłowie, była poświęcona różnym wymiarom samotności. Powróćm",
+      "publishedDates": [],
+      "canonical": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+      "language": "pl",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:14.741Z",
+  "foundItems": [
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Pierwsza edycja festiwalu Morze Literatury za nami",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6232-transmisje-ze-spotkan-festiwalu-morze-literatury.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Transmisje ze spotkań festiwalu Morze Literatury",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6241-koalicja-unii-europejskiej-na-rzecz-czytelnictwa-oficjalnie-zainaugurowana-w-brukseli.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Koalicja Unii Europejskiej na rzecz Czytelnictwa oficjalnie zainaugurowana w Brukseli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6240-wizyta-przedstawicieli-europejskiej-federacji-bibliotek-teologicznych.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Wizyta przedstawicieli Europejskiej Federacji Bibliotek Teologicznych",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6235-gala-nagrody-im-czeslawa-milosza-w-darlowie-krzysztof-pomian-laureatem.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Gala Nagrody im. Czesława Miłosza w Darłowie. Krzysztof Pomian laureatem",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/aktualnosci/6233-pierwsza-nagroda-im-czeslawa-milosza-dla-krzysztofa-pomiana.html",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "czytaj więcej o Pierwsza Nagroda im. Czesława Miłosza dla Krzysztofa Pomiana",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/pliki-cookies/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Biblioteka Narodowa używa na swojej stronie plików cookies. Brak zmiany ustawień przeglądarki oznacza zgodę na ich użycie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-czytelnikow/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "DLA CZYTELNIKÓW",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/zapytaj-bibliotekarza/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Zapytaj bibliotekarza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "DLA BIBLIOTEKARZY",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/poradnia-biblioteki-narodowej/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Poradnia Biblioteki Narodowej",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/krajowa-rada-biblioteczna/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Krajowa Rada Biblioteczna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/rada-ds.-narodowego-zasobu-bibliotecznego/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Rada ds. Narodowego Zasobu Bibliotecznego",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/zakup-nowosci-wydawniczych-do-bibliotek/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Zakup nowości wydawniczych do bibliotek",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/normy,-formaty,-standardy/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Normy, Formaty, Standardy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/wypozyczenia-miedzybiblioteczne/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Wypożyczenia międzybiblioteczne",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/deskryptory-bn/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Deskryptory Biblioteki Narodowej",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/ukd/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Uniwersalna Klasyfikacja Dziesiętna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/sprawozdanie-bn/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sprawozdanie BN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/mecenasi-i-darczyncy/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Mecenasi i darczyńcy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-wydawcow/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Egzemplarz obowiązkowy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/zakup-i-zdalny-dostep-do-nowosci-wydawniczych/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Zakup i zdalny dostęp do nowości wydawniczych",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/ogolnokrajowa-siec-biblioteczna/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ogólnokrajowa sieć biblioteczna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/dla-bibliotekarzy/punkt-blekitnej-tarczy/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Punkt Błękitnej Tarczy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/polityka-prywatnosci/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "POLITYKA PRYWATNOŚCI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "source": {
+        "name": "National Library of Poland",
+        "url": "https://www.bn.org.pl/o-nas/deklaracja-dostepnosci/",
+        "language": "pl"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "DEKLARACJA DOSTĘPNOŚCI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:14.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "3e538d1b0ce63a163be842525ec8ab8361f35dc2a3a533d96b80562c24d172ac"
+}

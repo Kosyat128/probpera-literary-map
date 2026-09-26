@@ -1,0 +1,67 @@
+{
+  "sourceId": "pik-org-pl",
+  "name": "Polish Chamber of Books (PIK)ul. Oleandrów",
+  "entryUrl": "https://www.pik.org.pl/",
+  "countryCodes": [
+    "PL"
+  ],
+  "coverageCountryCodes": [
+    "PL"
+  ],
+  "attemptedAt": "2026-09-26T17:28:51.816Z",
+  "requests": [
+    {
+      "url": "https://pik.org.pl/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 179428,
+      "sha256": "e86521d5ec6783e8b904c554ea19bab46e673d02789353ddac0d8ad8aeb4cfca",
+      "accessedAt": "2026-09-26T17:28:55.428Z"
+    },
+    {
+      "url": "https://pik.org.pl/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 54980,
+      "sha256": "4141b266dc143e5a54d167aee37c78799d596643029e5949bbf54b11670d7375",
+      "accessedAt": "2026-09-26T17:28:56.463Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/10/stoisko-malych-wydawcow-29-mtk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 152978,
+      "sha256": "5ab2bf89b140e9e6d569861b22560d8439f4be6e51b67dbf832cd3821b5941e5",
+      "accessedAt": "2026-09-26T17:28:57.506Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/22/rola-i-znaczenie-wydawcow-nagranie-debaty/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 152524,
+      "sha256": "2a94b9d588068984e6792560a66611a5778deb042f0ff50cce886a17c3799e1f",
+      "accessedAt": "2026-09-26T17:28:58.975Z"
+    },
+    {
+      "url": "https://pik.org.pl/2026/09/21/ustawa-o-ochronie-rynku-ksiazki-formalnie-w-procedurze-legislaycjnej/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 154186,
+      "sha256": "834cba2af6d463b6ab4957dc7a607c559e478f30ea06587c36bda0cb0cba91b8",
+      "accessedAt": "2026-09-26T17:29:00.011Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://pik.org.pl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 111,
+    "sha256": "5a60c86da41f505bd09303d9155a94aa58953ee1de9ad40b29f8c92d4b171161",
+    "accessedAt": "2026-09-26T17:28:54.079Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 import { projectReviewedReadingDesign } from "../../scripts/lib/reviewed-reading-design.mjs";
 import { projectReviewedHeaderLibrary } from "../../scripts/lib/reviewed-header-library.mjs";
 import { projectReviewedR49nPackage } from "../../scripts/lib/reviewed-r49n-package.mjs";
+import { projectReviewedR10Delta } from "../../scripts/lib/reviewed-r10-delta.mjs";
 
 type ParsedSource = {
   absolutePath: string;
@@ -23,7 +24,7 @@ const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 function parseSource(relativePath: string): ParsedSource {
   const absolutePath = path.join(root, relativePath);
   const text = projectReviewedHeaderLibrary(relativePath,
-    projectReviewedR49nPackage(relativePath, readFileSync(absolutePath, "utf8")));
+    projectReviewedR49nPackage(relativePath, projectReviewedR10Delta(relativePath, readFileSync(absolutePath, "utf8"))));
   return parseSourceText(relativePath, text);
 }
 

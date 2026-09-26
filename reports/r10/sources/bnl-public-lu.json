@@ -1,0 +1,1006 @@
+{
+  "sourceId": "bnl-public-lu",
+  "name": "National Library of Luxembourg",
+  "entryUrl": "https://bnl.public.lu/",
+  "countryCodes": [
+    "LU"
+  ],
+  "coverageCountryCodes": [
+    "LU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:12.015Z",
+  "requests": [
+    {
+      "url": "https://bnl.public.lu/fr.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 172962,
+      "sha256": "98cf9326c0da72dfc59b3cc22061950f7fc3185e9e93b3fe344ee0eaf6555d2a",
+      "accessedAt": "2026-09-26T17:23:02.033Z"
+    },
+    {
+      "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 134418,
+      "sha256": "6cb38e6e0f6db36df4574b058d1e70e68a5cb6ebc93b09cf65fecf65ea5e6936",
+      "accessedAt": "2026-09-26T17:29:13.138Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://bnl.public.lu/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 529,
+    "sha256": "07291afcac02b104c6314f7846fb8052975552b218c8ea963b17dd71f4931b8a",
+    "accessedAt": "2026-09-26T17:29:12.449Z",
+    "disallowed": [
+      "/*?*",
+      "/*?b=*&*",
+      "/*?*&b=*",
+      "/*?*&r=*",
+      "/*?*&q=*",
+      "/*?r=*",
+      "/*?q=*",
+      "/*support/shopping*",
+      "/*support/recherche*"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:00.016Z",
+    "sourceDocumentSha256": "98cf9326c0da72dfc59b3cc22061950f7fc3185e9e93b3fe344ee0eaf6555d2a"
+  },
+  "endpoint": {
+    "id": "bnl-public-lu",
+    "name": "National Library of Luxembourg",
+    "url": "https://bnl.public.lu/fr.html",
+    "format": "html",
+    "language": "fr",
+    "region": "europe",
+    "sourceFamilyId": "bnl-public-lu",
+    "countryCodes": [
+      "LU"
+    ],
+    "coverageCountryCodes": [
+      "LU"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://bnl.public.lu"
+    ],
+    "linkPattern": "^/fr/fonds/[^/]+/?$|^/fr/offres-numeriques/[^/]+/?$|^/fr/infrastructures/[^/]+/?$|^/fr/a-la-une/agenda/2026/[^/]+/?$|^/fr/services/[^/]+/?$|^/fr/support/aide-contact/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html"
+    ],
+    "verifiedAt": "2026-09-26T17:29:13.149Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 36,
+  "literaryCandidateCount": 35,
+  "sample": {
+    "sourceId": "bnl-public-lu",
+    "source": {
+      "name": "National Library of Luxembourg",
+      "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+      "language": "fr"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "En octobre : une nouvelle exposition à découvrir",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:12.493Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 134418,
+      "sha256": "6cb38e6e0f6db36df4574b058d1e70e68a5cb6ebc93b09cf65fecf65ea5e6936",
+      "accessedAt": "2026-09-26T17:29:13.138Z",
+      "headline": "La paix (in)achevée - Bibliothèque nationale (BnL) - Luxembourg",
+      "excerpt": "<img src=\"/fr/a-la-une/agenda/2026/paix-inachevee/_jcr_content/root/root-responsivegrid/content-responsivegrid/sections-responsivegrid/section_404589813/col1/image.coreimg.jpeg/1787143957814/202610-paix-inachevee-banniere.jpeg\" class=\"cmp-image__image \" itemprop=\"contentUrl\" data-cmp-hook-image=\"image\" alt=\"Collection privée Catherine Scheer\"/> Collection privée Catherine Scheer Photo : © Christof",
+      "publishedDates": [],
+      "canonical": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+      "language": "fr",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:13.149Z",
+  "foundItems": [
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "En octobre : une nouvelle exposition à découvrir",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/etat-de-droit.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Le 01.10.2026 de 18:00 jusqu'à 20:00 Conférence Français Le nouveau discours sur « l’État de droit » au Luxembourg : Cartographie & tectonique",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee-v.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Le 03.10.2026 de 11:00 jusqu'à 13:00 Vernissage Français Vernissage de l’exposition « La paix (in)achevée »",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/histoire-bibliotheques-livre.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds de l’histoire des bibliothèques et du livre au Luxembourg",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/luxembourgeois.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds luxembourgeois",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/non-luxembourgeois.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds non luxembourgeois",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/imprimes-rares-precieux.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des imprimés rares et précieux",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/manuscrits.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des manuscrits",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/musicaux.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds musical du Cedom",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/affiches-cartes-postales.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des affiches et des cartes postales illustrées",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/iconographique.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds iconographique",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/cartes-plans-atlas-vues.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des cartes, plans, atlas et vues",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/fonds/documents-ephemeres.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fonds des documents éphémères",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/eluxemburgensia.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "eluxemburgensia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/webarchive.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Archives du web",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/musique-films.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Musique et films",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/presse-loisirs.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Presse de loisirs",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/revues-scientifiques.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Revues scientifiques",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/bases-donnees.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bases de données",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/bibliographie-nationale.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliographie nationale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/offres-numeriques/nouvelles-acquisitions.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nouvelles acquisitions",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/salle-lecture.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Salle de lecture",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/stations-automatiques.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Stations automatiques",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/espaces-travail.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Espaces de travail",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/consultation-specialisee.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Salle de consultation spécialisée",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/infrastructures/espaces-evenements.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Espaces pour vos événements",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/support/aide-contact/horaires-acces.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Horaires et accès",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/support/aide-contact/astuces.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Astuces pour votre première visite",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/support/aide-contact/lanceurs-alerte.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lanceurs d’alerte",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/pret-consultation.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prêt et consultation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/pret-international.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prêt international",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/visites-guidees-offres-educatives.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Visites guidées et offres éducatives",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/issn-isbn-ismn-isni.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ISBN, ISSN, ISMN et ISNI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/identifiants-perennes.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Identifiants pérennes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "source": {
+        "name": "National Library of Luxembourg",
+        "url": "https://bnl.public.lu/fr/services/inscription.html",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Voici comment vous inscrire gratuitement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:12.493Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "98cf9326c0da72dfc59b3cc22061950f7fc3185e9e93b3fe344ee0eaf6555d2a"
+}

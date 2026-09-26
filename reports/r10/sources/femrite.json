@@ -1,0 +1,291 @@
+{
+  "sourceId": "femrite",
+  "name": "FEMRITE",
+  "entryUrl": "https://femrite.org/",
+  "countryCodes": [
+    "UG"
+  ],
+  "coverageCountryCodes": [
+    "UG"
+  ],
+  "attemptedAt": "2026-09-26T17:31:51.194Z",
+  "requests": [
+    {
+      "url": "https://femrite.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91051,
+      "sha256": "e1e939939445694560185da7d136f12e2eb5744612ea050167c26b32610399f8",
+      "accessedAt": "2026-09-26T17:31:52.383Z"
+    },
+    {
+      "url": "https://femrite.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 215485,
+      "sha256": "edd11abfd6dac695875c06ecd512b67e21a969c4be92154d5e1a9d08370d44de",
+      "accessedAt": "2026-09-26T17:31:53.187Z"
+    },
+    {
+      "url": "https://femrite.org/2025/10/24/her-humility-carried-more-power-than-her-authority/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 268387,
+      "sha256": "3a3e33e1b7362214d99f952c0cdc6e85b0296703a4c8241c4fd172f109def5ed",
+      "accessedAt": "2026-09-26T17:31:54.430Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://femrite.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 69,
+    "sha256": "ad856f1bed84a08a8bd6cb4bb4853f1f834d3e0789acf444375262a7864579d0",
+    "accessedAt": "2026-09-26T17:31:51.690Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "femrite",
+    "name": "FEMRITE",
+    "url": "https://femrite.org/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "africa",
+    "sourceFamilyId": "femrite",
+    "countryCodes": [
+      "UG"
+    ],
+    "coverageCountryCodes": [
+      "UG"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://femrite.org"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://femrite.org/2025/10/24/her-humility-carried-more-power-than-her-authority/"
+    ],
+    "verifiedAt": "2026-09-26T17:31:54.454Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "femrite",
+    "source": {
+      "name": "FEMRITE",
+      "url": "https://femrite.org/2025/10/24/her-humility-carried-more-power-than-her-authority/",
+      "language": "en-US"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "“Her humility carried more power than her authority”",
+    "publishedAt": "2025-10-24T08:25:07.000Z",
+    "description": "Celebrating the Life and Works of Mary Karooro Okurut, Founder of FEMRITE \u2013 Uganda Women Writers Association We gather in this digital space to pay…",
+    "discoveredAt": "2026-09-26T17:31:53.190Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://femrite.org/2025/10/24/her-humility-carried-more-power-than-her-authority/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 268387,
+      "sha256": "3a3e33e1b7362214d99f952c0cdc6e85b0296703a4c8241c4fd172f109def5ed",
+      "accessedAt": "2026-09-26T17:31:54.430Z",
+      "headline": "“Her humility carried more power than her authority”",
+      "excerpt": "“Her humility carried more power than her authority” Celebrating the Life and Works of Mary Karooro Okurut, Founder of FEMRITE \u2013 Uganda Women Writers Association We gather in this digital space to pay tribute to a special figure in Uganda’s literary and cultural memory, Hon. Mary Busingye Karooro Okurut. We appreciate everybody who spared their time to write a message for and about this honourable",
+      "publishedDates": [],
+      "canonical": "https://femrite.org/2025/10/24/her-humility-carried-more-power-than-her-authority/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:31:54.454Z",
+  "foundItems": [
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2025/10/24/her-humility-carried-more-power-than-her-authority/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Her humility carried more power than her authority”",
+      "publishedAt": "2025-10-24T08:25:07.000Z",
+      "description": "Celebrating the Life and Works of Mary Karooro Okurut, Founder of FEMRITE \u2013 Uganda Women Writers Association We gather in this digital space to pay…",
+      "discoveredAt": "2026-09-26T17:31:53.190Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2023/11/18/femrite-pawa-and-kyambogo-university-to-host-an-international-conference-in-honour-of-the-life-works-of-nobel-prize-laureate-abdurazak-gurnah/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "FEMRITE, PAWA and Kyambogo University, to host an International Conference in honour of the Life & Works of Nobel Prize Laureate: Abdurazak Gurnah",
+      "publishedAt": "2023-11-18T17:41:12.000Z",
+      "description": "FEMRITE - Uganda Women Writers Association in partnership with PAWA - The Pan-African Writers Association and Kyambogo University and with support of development partners; The Ford Foundation, Aga Khan Foundation, The Swedish Embassy and Fountain Publishers, will host the International Conference in celebration of African Literature and in honour of the Life & Works of the 2021 Nobel Prize Laurea…",
+      "discoveredAt": "2026-09-26T17:31:53.190Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2023/07/07/poetry-poster-project/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "poetry poster project 2023",
+      "publishedAt": "2023-07-07T14:09:25.000Z",
+      "description": "This is a writing collaboration with six universities on the themes: Climate Justice and Mental Health for Youths. It will be accompanied by a book caravan through different regions of the country.",
+      "discoveredAt": "2026-09-26T17:31:53.190Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2023/07/07/celebrating-the-life-and-works-of-abdulrazak-gurnah-for-the-future-of-african-literature-22nd-24th-2023/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "International Literature conference",
+      "publishedAt": "2023-07-07T13:53:17.000Z",
+      "description": "Abdulrazak Gurnah is a novelist and an academic, Emeritus Professor of English and Postcolonial Literatures at the University of Kent. Some of his notable works include Paradise (1994), shortlisted for the Booker Prize and Whitbread Prize, Desertion (2005) and By the Sea (2001) longlisted for the Booker and shortlisted for the Los Angeles Times Book Prize. He is author of many short stories, essa…",
+      "discoveredAt": "2026-09-26T17:31:53.190Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2026/03/11/we-only-live-once/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "We Only Live Once",
+      "publishedAt": "2026-03-11T15:53:59.000Z",
+      "description": "FEMRITE \u2013 Uganda Women Writers Association, with support of the McKnight Foundation, is running a poetry award for Youths on sustainable Agro-ecological Food Systems.",
+      "discoveredAt": "2026-09-26T17:31:53.190Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2025/10/24/a-lunatic-sanity-makes-its-journey-to-kabale-university/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Lunatic Sanity makes its journey to Kabale University",
+      "publishedAt": "2025-10-24T08:08:36.000Z",
+      "description": "Kabale University received copies of A Lunatic Sanity, an anthology of poetry by students from six universities and several guest poets. The books were received…",
+      "discoveredAt": "2026-09-26T17:31:53.190Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "femrite",
+      "source": {
+        "name": "FEMRITE",
+        "url": "https://femrite.org/2024/08/21/support-femrite-writing-and-wellness-centre/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Support FEMRITE Writing and Wellness Centre",
+      "publishedAt": "2024-08-21T08:48:45.000Z",
+      "description": "Having existed for over 2 decades of steadfast mentoring and inspiring both female and male writers, FEMRITE \u2013 Uganda Women Writers Association, has come to…",
+      "discoveredAt": "2026-09-26T17:31:53.190Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "edd11abfd6dac695875c06ecd512b67e21a969c4be92154d5e1a9d08370d44de"
+}

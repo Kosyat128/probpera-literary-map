@@ -1,0 +1,6124 @@
+{
+  "batch": 1,
+  "checkedAt": "2026-09-26T17:37:59.151Z",
+  "sourceCount": 12,
+  "availableSourceCount": 12,
+  "candidateCount": 233,
+  "sources": [
+    {
+      "id": "prh",
+      "name": "Penguin Random House",
+      "url": "https://global.penguinrandomhouse.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "penguin-random-house",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:57.559Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "nobel",
+      "name": "NobelPrize.org",
+      "url": "https://www.nobelprize.org/press-release/",
+      "format": "html",
+      "language": "en-US",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "nobel",
+      "countryCodes": [
+        "SE"
+      ],
+      "coverageCountryCodes": [
+        "SE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:58.123Z",
+      "candidateCount": 20
+    },
+    {
+      "id": "german-book-prize",
+      "name": "Deutscher Buchpreis",
+      "url": "https://www.deutscher-buchpreis.de/news/",
+      "format": "html",
+      "language": "de",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "german-book-prize",
+      "countryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:57.423Z",
+      "candidateCount": 22
+    },
+    {
+      "id": "frankfurt-book-fair",
+      "name": "Frankfurter Buchmesse",
+      "url": "https://www.buchmesse.de/en/press/press-releases",
+      "format": "html",
+      "language": "en",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "frankfurt-book-fair",
+      "countryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:57.476Z",
+      "candidateCount": 29
+    },
+    {
+      "id": "gothenburg-book-fair",
+      "name": "Bokmässan",
+      "url": "https://bokmassan.se/hem/om-bokmassan/nyheter/",
+      "format": "html",
+      "language": "sv-SE",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "gothenburg-book-fair",
+      "countryCodes": [
+        "SE"
+      ],
+      "coverageCountryCodes": [
+        "SE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:57.835Z",
+      "candidateCount": 33
+    },
+    {
+      "id": "british-library",
+      "name": "British Library",
+      "url": "https://www.bl.uk/about/press/releases",
+      "format": "html",
+      "language": "en",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "british-library",
+      "countryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:58.515Z",
+      "candidateCount": 20
+    },
+    {
+      "id": "bnf",
+      "name": "Bibliothèque nationale de France",
+      "url": "https://www.bnf.fr/fr/agenda",
+      "format": "html",
+      "language": "fr",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "bnf",
+      "countryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:58.024Z",
+      "candidateCount": 14
+    },
+    {
+      "id": "goslitmuz",
+      "name": "Гослитмузей / State Literary Museum",
+      "url": "https://goslitmuz.ru/news/",
+      "format": "html",
+      "language": "ru",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "goslitmuz",
+      "countryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:58.210Z",
+      "candidateCount": 12
+    },
+    {
+      "id": "yasnaya-polyana",
+      "name": "Ясная Поляна / Yasnaya Polyana",
+      "url": "https://ypmuseum.ru/events",
+      "format": "html",
+      "language": "ru",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "yasnaya-polyana",
+      "countryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:58.392Z",
+      "candidateCount": 5
+    },
+    {
+      "id": "national-book-foundation",
+      "name": "National Book Foundation",
+      "url": "https://www.nationalbook.org/all-story/",
+      "format": "html",
+      "language": "en-US",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "national-book-foundation",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:58.653Z",
+      "candidateCount": 9
+    },
+    {
+      "id": "brooklyn-book-festival",
+      "name": "Brooklyn Book Festival",
+      "url": "https://brooklynbookfestival.org/event_type/festival-day/",
+      "format": "html",
+      "language": "en-US",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "brooklyn-book-festival",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:58.897Z",
+      "candidateCount": 52
+    },
+    {
+      "id": "prh-library",
+      "name": "Penguin Random House Library",
+      "url": "https://penguinrandomhouselibrary.com/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "penguin-random-house",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:37:59.131Z",
+      "candidateCount": 7
+    }
+  ],
+  "items": [
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/frankfurter-buchmesse/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Der Deutsche Buchpreis auf der Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/sechs-romane-im-finale-2/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Lena Everding",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/nominierten-leseproben-2025/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nominierten-Leseproben 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/das-sind-die-20-nominierten-romane/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Das sind die 20 nominierten Romane",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-nominierten-live-erleben/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-buchpreisbloggerinnen-2026/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die Buchpreisblogger*innen 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/dekopakete-zum-deutschen-buchpreis/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leseproben und Dekopakete zum Deutschen Buchpreis",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/der-deutsche-buchpreis-2026-startet-180-romane-stehen-zur-auswahl/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Anne-Mette Noack",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/blind-date-lesungen-mit-nominierten-gewinnen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Blind-Date-Lesungen mit Nominierten gewinnen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/startschuss-fuer-verlage/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Mo Wüstenhagen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/dorothee-elmiger-erhaelt-den-deutschen-buchpreis-2025-fuer-die-hollaenderinnen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/portraitfilme-das-sind-die-finalistinnen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/einblicke-in-die-shortlist-auf-englisch/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Einblicke in die Shortlist auf Englisch",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/buchpreisbloggen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buchpreisbloggen 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/sechs-romane-im-finale/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-20-nominierten-romane-stehen-fest-1/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die 20 nominierten Romane stehen fest",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/200-romane-von-124-verlagen-eingereicht/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Mo Wüstenhagen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/buchpreis-feiert-20-jubilaeum/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buchpreis feiert 20. Jubiläum",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/martina-hefter-erhaelt-den-deutschen-buchpreis-2024-fuer-hey-guten-morgen-wie-geht-es-dir/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/sechs-romane-im-finale-1/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-20-nominierten-romane-stehen-fest/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die 20 nominierten Romane stehen fest",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/julia-westlake-wird-neue-moderatorin-der-preisverleihung/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Patrick Ludolph / hr, Ben Knabe",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.385Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-well-prepared-2026-frankfurter-buchmesse-app-map-halls-and-tips",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Well Prepared for the 2026 Frankfurter Buchmesse: App, Map of the Halls, and Tips for Visiting the Fair",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Literary Rights to Global Screens: Book-to-Screen Day 2026 at Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-23-public-programme-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Public programme: New worlds for stories and their fans",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-16-trade-programme-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AI, rights trading and the future of the industry \u2013 Frankfurter Buchmesse's trade programme 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-11-major-names-major-issues-78th-frankfurter-buchmesse",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Major names, major issues: 78th Frankfurter Buchmesse will bring international guests to Frankfurt and provide a forum for debate",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-aficionado-award-words-without-borders",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 2026 Aficionado Award goes to the translation project Words Without Borders",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-realm-transformation-hall-41",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In the realm of transformation: Hall 4.1",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-who-narrating-future-frankfurter-buchmesses-audio-programme-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Who is narrating the future? Frankfurter Buchmesse’s audio programme 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-08-27-comics-manga-and-visual-stories-frankfurter-buchmesse-creating-new",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Comics, manga and visual stories: Frankfurter Buchmesse is creating new spaces for the industry and the community",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-07-04-frankfurter-buchmesse-make-its-debut-filgua-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse to make its debut at FILGUA 2026: Germany is Guest of Honour in Guatemala",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-24-frankfurter-buchmesse-tickets-are-sale",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Five days of meetings, expert talks and events: tickets for Frankfurter Buchmesse 2026 are on sale now",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-23-more-space-childrens-and-young-adult-books",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "More space for children’s and young adult books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-11-czechia-guest-honour-frankfurter-buchmesse-2026-presents-its",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Czechia, Guest of Honour at Frankfurter Buchmesse 2026, presents its literary and cultural programme and the pavilion design",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-08-40-years-frankfurt-rights-meeting",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Rights Then. Rights Now”: 40 years Frankfurt Rights Meeting",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-05-12-guest-honour-czechia-authors",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "75 Czech authors will attend the 2026 Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-05-07-masterclasses-and-hof-ai-personal-branding",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Masterclasses and The Hof: From AI to personal branding",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-03-30-call-participation-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Make way for powerful voices and fresh ideas: the Call for Participation for the 78th edition of Frankfurter Buchmesse is now open",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-03-26-new-book-screen-kviff-project-opens-door-literary-adaptations",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New 'Book-to-Screen at KVIFF' project opens the door to literary adaptations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-03-17-jill-lepore-fbm26",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "US historian Jill Lepore to speak at the Opening Press Conference of the 2026 Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-02-25-applications-open-international-grant-programmes",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse 2026: Applications open for international grant programmes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-02-18-romania-guest-honour-2028-book-fair-frankfurt",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Romania to be Guest of Honour at Frankfurter Buchmesse 2028",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-02-19-experience-meets-ai-wildcard-brings-two-tech-partners-frankfurter",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Experience meets AI: Wildcard brings two tech partners to Frankfurter Buchmesse 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-01-27-frankfurter-buchmesse-announces-change-top-organisation-joachim",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse announces change at the top of the organisation: Joachim Kaufmann to succeed Juergen Boos in autumn 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-01-12-20-years-books-berlinale-which-novel-will-make-it-big-screen",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "20 Years of Books at Berlinale: Which novel will make it to the big screen?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-11-19-wildcard-publishing-partners-two-exceptional-exhibitors-will",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wildcard for publishing partners: Two exceptional exhibitors will receive a free stand at Frankfurter Buchmesse 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-11-05-frankfurter-buchmesse-course-expansion-scholz-friends-becomes-new",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse on course for expansion: Scholz & Friends becomes new lead agency",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-10-19-guest-honour-philippines-czechia",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "From the Philippines to Czechia: Guest of Honour Handover Ceremony 2025 at Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-10-19-frankfurter-buchmesse-continues-grow-and-connect-world-literature",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse continues to grow \u2013 and connect the world of literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "frankfurt-book-fair",
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2025-10-17-frankfurter-buchmesse-2025-report-midway-through-fair",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frankfurter Buchmesse 2025: Report from midway through the fair",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.430Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/author-john-green-earns-a-guinness-world-records-achievement-for-the-most-tip-in-sheets-signed-by-an-author/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author John Green Earns a Guinness World Records™ Achievement for the Most Tip-In Sheets Signed by an Author",
+      "publishedAt": "2026-09-25T13:38:09.000Z",
+      "description": "Penguin Random House is pleased to announce that internationally bestselling author John Green is the new GUINNESS WORLD RECORDS title holder for the most tip-in sheets signed by an author with 875,557 tip-in sheets signed. Green was presented with a GUINNESS WORLD RECORDS certificate to celebrate this record-breaking achievement at an event on September 22 […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/theres-a-book-for-that-latine-hispanic-heritage-month-fiction/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "There’s a Book for That: Latine & Hispanic Heritage Month, Fiction",
+      "publishedAt": "2026-09-25T12:40:37.000Z",
+      "description": "This week we continue to honor Latine & Hispanic Heritage Month, which runs from September 15th through October 15th, with an array of remarkable fiction for all ages: NOW I SURRENDER: A NOVEL by Álvaro Enrigue, Natasha Wimmer A women’s desperate flight from an Apache raid unfolds into a sweeping tale of […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/viking-penguin-acquires-u-s-rights-to-bestselling-self-published-series-the-unselected-journals-of-emma-m-lion/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Viking Penguin Acquires U.S. Rights to Bestselling Self-Published Series, THE UNSELECTED JOURNALS OF EMMA M. LION",
+      "publishedAt": "2026-09-18T18:28:28.000Z",
+      "description": "Brian Tart, President & Publisher of Viking Penguin announced the acquisition of U.S. rights to Beth Brower’s THE UNSELECTED JOURNALS OF EMMA M. LION. Allison Dobson, President of the Penguin Publishing Group, acquired print and e-book rights to thirteen novels in the series from Georgina Capel at Georgina Capel Associates LTD. Laura Tisdel, Executive Editor […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/theres-a-book-for-that-latine-hispanic-heritage-month/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "There’s a Book for That: Latine & Hispanic Heritage Month",
+      "publishedAt": "2026-09-18T13:05:47.000Z",
+      "description": "Welcome Latine and Hispanic Heritage Month which runs from September 15th through October 15th, during which time we honor the contributions of Latine and Hispanic Americans to the United States and celebrate their heritage and culture. Enjoy the following array of new and acclaimed nonfiction \u2013 biography, memoir, cooking, history, photography, and poetry \u2013 to […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/bestselling-and-award-winning-author-jason-reynolds-to-publish-the-lamplighters-son-with-kokila/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bestselling and Award-Winning Author Jason Reynolds to Publish THE LAMPLIGHTER’S SON With Kokila",
+      "publishedAt": "2026-09-17T14:26:44.000Z",
+      "description": "It was announced on September 16, 2026, that Kokila, an imprint of Penguin Young Readers, has acquired #1 New York Times bestselling and award-winning author Jason Reynolds’ groundbreaking new novel, THE LAMPLIGHTER’S SON, an absurd, fantastical collection of interconnected short stories set in one location, This Street, as it evolves over the span of decades. […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/celebrating-our-2026-national-book-award-longlisters/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celebrating Our 2026 National Book Award Longlisters",
+      "publishedAt": "2026-09-17T13:55:58.000Z",
+      "description": "The National Book Foundation has announced the longlists for the 77th National Book Awards, with this year’s selections unveiled exclusively in The New Yorker. Since their establishment in 1950, the National Book Awards have celebrated outstanding literature published in the United States and helped connect remarkable books with readers across the country. We’re thrilled to share […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/random-house-to-publish-a-new-memoir-by-tara-westover-1-nyt-bestselling-author-of-educated/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Random House To Publish a New Memoir by Tara Westover, #1 NYT Bestselling Author of EDUCATED",
+      "publishedAt": "2026-09-17T13:50:57.000Z",
+      "description": "Random House, an imprint of the Random House Publishing Group, will publish BROTHERS AND SISTERS, a new memoir by Tara Westover, the #1 New York Times bestselling author of the global phenomenon EDUCATED, on April 13, 2027. U.S. rights were acquired from Deneen Howell at Williams & Connolly, LLP, it was announced today by Andy […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/crown-to-publish-former-president-george-w-bushs-the-call-of-freedom/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Crown to Publish Former President George W. Bush’s THE CALL OF FREEDOM",
+      "publishedAt": "2026-09-17T09:13:03.000Z",
+      "description": "Crown, an imprint of the Crown Publishing Group, announced today that it will publish a new book by George W. Bush, the forty-third president of the United States, entitled THE CALL OF FREEDOM: Portraits of Political Prisoners and Dissidents on March 9, 2027. Furthering the work of the George W. Bush Institute in highlighting the […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/prh-intellectual-freedom-taskforce-shortlisted-for-inaugural-freedom-of-expression-defenders-award/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PRH Intellectual Freedom Taskforce Shortlisted for Inaugural Freedom of Expression Defenders Award",
+      "publishedAt": "2026-09-14T13:59:42.000Z",
+      "description": "We’re thrilled to share that the Penguin Random House Intellectual Freedom Taskforce has been named to the International Publishers Association’s inaugural Freedom of Expression Defenders Award shortlist, which recognizes initiatives defending freedom of expression, freedom to publish, and the freedom to read across publishing, journalism, and archives. Founded in May 2023 with CEO Nihar Malaviya…",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh",
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/our-upcoming-author-events-september-14-20-2026/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our Upcoming Author Events | September 14-20, 2026",
+      "publishedAt": "2026-09-14T13:54:53.000Z",
+      "description": "The Penguin Random House Communications team invites you to discover some of the Penguin Random House Author Events we’re looking forward to this week! Every Monday, a curated selection of literary gatherings highlights authors across divisions and events across the country. Connect with favorite authors and explore exciting new titles! Please note these are just a few of […]",
+      "discoveredAt": "2026-09-26T17:37:57.549Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/jamaica-kincaid-har-tagit-emot-sjojungfrun-2026/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jamaica Kincaid har tagit emot Sjöjungfrun 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/det-har-ska-du-gora-pa-bokmassans-lordag/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Det här ska du göra på Bokmässans lördag",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/har-ar-tipsen-till-bokmassans-fredag/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Här är tipsen till Bokmässans fredag",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/bokmassan-2026-ar-officiellt-invigd/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bokmässan 2026 är officiellt invigd",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/nicolas-lunabba-tilldelas-bokmassans-bildningspris-2026/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nicolas Lunabba tilldelas Bokmässans Bildningspris 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/fantisera-mera-pa-bokmassan-en-lekfull-varld-dar-djur-natur-nyfikenhet-och-fantasi-mots/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fantisera mera på Bokmässan \u2013 en lekfull värld där djur, natur, nyfikenhet och fantasi möts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/har-hort-att-det-kan-bli-valdigt-ursparat-det-hoppas-vi-stammer/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "\"Har hört att det kan bli väldigt urspårat, det hoppas vi stämmer!\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/inbjudan-temakvall-pa-goteborgs-konserthus-med-sara-parkman/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "INBJUDAN: Temakväll på Göteborgs Konserthus med Sara Parkman",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Katarina Wennstam tilldelas Crimetime Award Årets hederspris 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/sveriges-forsta-spelpolitiska-toppmote-arrangeras-pa-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sveriges första spelpolitiska toppmöte arrangeras på Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/ord-for-ord-etapp-tva-nu-ar-det-dags-att-rosta-fram-arets-nyord/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ord för ord etapp två \u2013 nu är det dags att rösta fram årets nyord",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/rekordmanga-scener-pa-bokmassan-idag-slapps-programmen/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rekordmånga scener på Bokmässan \u2013 idag släpps programmen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/08/vi-har-en-tydlig-rost-i-vara-program/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lizzie Scheja: \"Vi har en tydlig röst i våra program\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/08/se-manniskan-priset-2026-tilldelas-religionsprofessor-simon-sorgenfrei/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Se människan-priset 2026 tilldelas religionsprofessor Simon Sorgenfrei",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/08/skamset-och-galet-arligt-under-babels-bokbikt-pa-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Skamset och galet ärligt under Babels bokbikt på Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/08/halla-dar-frida-gustafsson-wenno-och-lovisa-fhager-logothetis/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hallå där Frida Gustafsson Wennö och Lovisa Fhager Logothetis ...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/har-ar-programmet-for-arets-bokmassan-by-night/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Här är programmet för årets Bokmässan by Night",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/vastra-gotalandsregionen-och-bokmassan-i-gemensam-satsning-for-folkbildningen/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Västra Götalandsregionen och Bokmässan i gemensam satsning för folkbildningen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/folkbildning-sveriges-nya-exportvara/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Folkbildning \u2013 Sveriges nya exportvara",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/valkommen-pa-studentlunch-bibliotekariens-framtid-i-en-ai-driven-varld/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Välkommen på studentlunch: Bibliotekariens framtid i en AI-driven värld",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/en-liten-talkshow-ar-tillbaka/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "En liten talkshow är tillbaka!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/bokmassan-flyttar-ut-pa-stan-samtal-for-alla/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bokmässan flyttar ut på stan \u2013 samtal för alla!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/inbjudan-ta-del-av-hostens-viktigaste-bocker/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Inbjudan: Ta del av höstens viktigaste böcker!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/programmet-ar-har-spelberattande-folkbildning-och-varldslitteratur-pa-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programmet är här! Spelberättande, folkbildning och världslitteratur på Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/mot-arets-illustrator-bocker-kan-vara-portar-till-andra-varldar/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Möt årets illustratör \u2013 \"Böcker kan vara portar till andra världar\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/sveriges-storsta-bokcirkel-mots-pa-bokmassan-och-live-i-sveriges-radio/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sveriges största bokcirkel möts på Bokmässan \u2013 och live i Sveriges Radio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/nya-testamentet-2026-lanseras-under-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nya Testamentet 2026 lanseras under Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/ny-scen-existentiella-fragor-och-teologi-i-fokus/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ny scen: Existentiella frågor och teologi i fokus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/internationell-streamer-till-bokmassan-spel-ar-en-fantastisk-form-av-problemlosning/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Internationell YouTube-kreatör till Bokmässan \u2013 \"Spel är en fantastisk form av problemlösning\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/04/biljetterna-till-arets-bokmassan-by-night-ar-slappta/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Biljetterna till årets Bokmässan by Night är släppta",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/04/de-oumbarliga-oversattarna-bryter-mark-infor-bokmassan-2028/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "De oumbärliga översättarna bryter mark inför Bokmässan 2028",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/04/nar-litteraturen-byter-sprak-vagen-fran-quebec-till-sverige/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "När litteraturen byter språk \u2013 vägen från Québec till Sverige",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/04/internationell-deckarstjarna-klar-for-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Internationell deckarstjärna klar för Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.776Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/expositions",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liste des expositions",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/le-bicentenaire-de-la-photographie-la-bnf",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le bicentenaire de la photographie à la BnF",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/photographies-japonaises-de-la-bibliotheque-nationale-de-france",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Photographies japonaises de la Bibliothèque nationale de France",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/les-mercredis-de-loulipo",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les mercredis de l'Oulipo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/underground-la-presse-alternative-des-annees-1970-en-france",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Underground ! La presse alternative des années 1970 en France",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/satyres-serieux-sabstenir-mythes-antiques-dathenes-lezoux",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Satyres, sérieux s'abstenir ! Mythes antiques d’Athènes à Lezoux",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/100-ans-dhistoire-de-la-photographie-dans-les-collections-de-la-bnf-1839-1939",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "100 ans d'histoire de la photographie dans les collections de la BnF. 1839 - 1939",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/visite-guidee-du-musee-histoire-architecture-et-patrimoine",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Visite guidée du musée \u2013 Histoire, architecture et patrimoine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/visite-guidee-du-musee-histoire-architecture-et-patrimoine-septembre",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Visite guidée du musée \u2013 Histoire, architecture et patrimoine \u2013 Septembre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/revolutions-croisees-regards-sur-la-france-et-les-etats-unis-1776-1803",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Révolutions croisées : regards sur la France et les États-Unis, 1776-1803",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/gilbert-du-motier-de-la-fayette",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gilbert du Motier de La Fayette",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/foucault-une-aventure-intellectuelle-au-college-de-france",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Foucault. Une aventure intellectuelle au Collège de France",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/visite-guidee-du-site-francois-mitterrand",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Visite guidée du site François-Mitterrand",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnf",
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/visite-guidee-du-site-francois-mitterrand-septembre",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Visite guidée du site François-Mitterrand \u2013 Septembre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:57.972Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-nobel-prize-is-increased-by-sek-1-million/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Nobel Prize is increased by SEK 1 million",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/new-animation-series-about-nobel-prize-discoveries-launched/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New animation series about Nobel Prize discoveries launched",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/quiz-ai-and-lab-visits-during-nobel-calling-stockholm/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quiz, AI and Lab Visits During Nobel Calling Stockholm",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/nobel-peace-prize-laureates-and-gen-z-leaders-gather-for-democracy-in-oslo/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Peace Prize Laureates and Gen Z Leaders Gather for Democracy in Oslo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/seoul-to-host-nobel-prize-laureates-for-a-discussion-on-ais-impact-on-science/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seoul to host Nobel Prize laureates for a discussion on AI’s impact on science",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/two-new-senior-appointments-to-the-nobel-organization/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Two new senior appointments to the Nobel organization",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/watercolours-jerome-friedman/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Watercolours by Jerome Friedman donated to the Nobel Prize Museum",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/hundreds-of-dresses-raise-awareness-of-sexual-violence/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hundreds of dresses raise awareness of sexual violence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/cells-nerves-genes-new-exhibition-highlights-illustrations-and-artefacts-from-karolinska-institutet/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cells, nerves, genes \u2013 new exhibition highlights illustrations and artefacts from Karolinska Institutet",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/nobel-week-lights-receives-international-award/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Week Lights receives international award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-collide-stockholm-international-residency-award-recipient-is-announced/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Collide Stockholm international residency award recipient is announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/new-board-members-to-the-nobel-foundation/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New board members to the Nobel Foundation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/nobel-prize-laureates-in-madrid-to-discuss-where-science-takes-us/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Prize laureates in Madrid to discuss where science takes us",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/someone-needs-to-speak-up-for-peace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Someone needs to speak up for peace”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-nobel-center-is-granted-a-building-permit/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Nobel Center is granted a building permit",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/donato-chieppa-wins-the-nobel-prize-museums-photo-competition-from-the-popular-light-art-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Donato Chieppa wins photo competition from the light art festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/nobel-prize-laureate-morten-meldal-comes-to-stockholm/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Prize laureate Morten Meldal comes to Stockholm",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/tomas-transtromers-nobel-prize-medal-and-diploma-presented-to-the-nobel-prize-museum/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tranströmer’s medal and diploma presented to the Nobel Prize Museum",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 2026 Nobel Prize announcements",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nobel",
+      "source": {
+        "name": "NobelPrize.org",
+        "url": "https://www.nobelprize.org/press-release/a-book-with-a-dedication-by-hemingway-has-been-handed-over-in-stockholm/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A book with a dedication by Hemingway has been handed over in Stockholm",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.102Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22413/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Дмитрий Бак принял участие в работе XII Санкт-Петербургского международного форума объединенных культур",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22404/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Более 200 рисунков из разных регионов России поступило на конкурс «Бáско»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22401/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Заповедный напев, заповедная даль: российско-белорусская выставка",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22403/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Гослитмузей \u2014 соорганизатор выставки «Лиля Брик: икона стиля и муза авангарда» в МАММ",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22394/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Московском доме Достоевского обсудили ценность партнерства культуры и бизнеса",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22390/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Гослитмузей присоединяется к акции «Московские истории»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22389/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Как прошли «Мандельштамовские дни»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22387/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "На родине Казака Луганского: «Даль-форум» прошел в Луганске и Ростове-на-Дону",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22388/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Как прошла Московская международная книжная ярмарка",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22385/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«ЧехоДаль \u2014 2026»: современная жизнь в одном коротком рассказе",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22384/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Новая выставка в Музее Серебряного века",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22386/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Год единства народов России",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.202Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/2004",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Выставка «\"Взял Таню, перетолок ее с Соней, и вышла Наташа\". К 180-летию Татьяны Кузминской»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.378Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/2002",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Творческая лаборатория проекта «Цилиндр, ичиги, толстовка»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.378Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/1995",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Лев Толстой в Лондоне весной 1861 года»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.378Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/1987",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Яблочная история»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.378Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/2001",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Оценка качества услуг",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.378Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/dr-paul-bate-appointed-as-chief-executive-of-the-british-library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dr Paul Bate appointed as Chief Executive of the British Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/rachel-calderon-appointed-as-senior-director-of-development",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library appoints Senior Director of Development",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-announces-2026-food-season-awards-winners",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library announces 2026 Food Season Awards winners",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-to-open-major-exhibition-on-agatha-christie",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library to open major exhibition on Agatha Christie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/culture-and-cuisine-british-librarys-food-season-returns",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Culture and cuisine: British Library's Food Season returns",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/fairy-tales-opens-at-the-british-library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fairy Tales opens at the British Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/business-and-ip-centre-celebrates-20-years",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library’s Business & IP Centre celebrates 20 years",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-celebrates-fairy-tales-in-a-major-new-exhibition",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library celebrates fairy tales in a major new exhibition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-acquires-archive-of-ronald-blythe",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library acquires archive of writer Ronald Blythe",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/last-chance-to-see-major-exhibition-on-secret-maps-at-the-british-library",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Last chance to see Secret Maps exhibition at the British Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/writers-award-2026-goes-to-jacqueline-crooks-and-vanessa-londono",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writer’s Award 2026 goes to Jacqueline Crooks and Vanessa Londoño",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/kickstart-your-business-at-british-library-start-up-day",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kickstart your business at British Library Start-up Day",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-board-statement",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library Board statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-opens-major-exhibition-on-secret-maps",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library opens major exhibition on secret maps",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-announces-2026-exhibitions",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library announces 2026 exhibitions",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-announces-major-exhibition-on-acclaimed-writer-agatha-christie",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library announces major exhibition on writer Agatha Christie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-symbolically-reinstates-oscar-wildes-pass",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library symbolically reinstates Oscar Wilde’s Reader Pass",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/mustapha-matura-archive",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library acquires archive of playwright Mustapha Matura",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-announces-2025-food-season-awards-winners",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library announces 2025 Food Season Awards winners",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "british-library",
+      "source": {
+        "name": "British Library",
+        "url": "https://www.bl.uk/about/press/releases/british-library-acquires-rare-medieval-manuscripts",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "British Library acquires rare medieval manuscripts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.504Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-fiction/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlist for the 2026 National Book Award for Fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-poetry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlist for the 2026 National Book Award for Poetry",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-nonfiction/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlist for the 2026 National Book Award for Nonfiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/longlist-for-the-2026-national-book-award-for-translated-literature/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlist for the 2026 National Book Award for Translated Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/2026-national-book-awards-longlist-for-young-peoples-literature/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 National Book Awards Longlist for Young People’s Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/77th-national-book-awards/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "77th National Book Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/national-book-foundation-to-present-lifetime-achievement-award-to-salman-rushdie/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Book Foundation to Present Lifetime Achievement Award to Salman Rushdie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/national-book-foundation-to-present-lifetime-achievement-award-to-perri-klass/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Book Foundation to Present Lifetime Achievement Award to Perri Klass",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "national-book-foundation",
+      "source": {
+        "name": "National Book Foundation",
+        "url": "https://www.nationalbook.org/national-book-foundation-announces-2026-fall-season-of-nbf-presents/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Book Foundation Announces 2026 Fall Season of NBF Presents",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.624Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/when-we-gather-on-food-celebration-and-ritual/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "When We Gather: On Food, Celebration, and Ritual",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/reclaiming-the-human-connection-movement-media-and-micro-rituals/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reclaiming the Human Connection: Movement, Media, and Micro-Rituals",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/nostalgia-with-a-twist/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nostalgia With A Twist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/brooklyn-public-librarys-book-prize-winners-panel/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Brooklyn Public Library’s Book Prize Winners’ Panel with Meghan O’Rourke",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/give-us-our-daily-dread-horror-comics/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Give Us Our Daily Dread: Horror Comics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/politics-and-the-responsibility-of-writing-presented-by-new-york-review-books/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Politics and the Responsibility of Writing, presented by New York Review Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/phases-of-the-self/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Phases of the Self",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/branching-out-on-the-future-of-environmental-storytelling-presented-by-orion-magazine-2/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Branching Out: On the Future of Environmental Storytelling, presented by Orion Magazine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/bold-paths-to-reform-presented-by-brooklyn-law-school/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bold Paths to Reform, presented by Brooklyn Law School",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/booked-banned/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Booked & Banned",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/secrets-of-the-stacks-of-new-york-city-2/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Secrets of the Stacks of New York City",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/musical-lives-revisited/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Musical Lives Revisited",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/myths-monsters-and-the-stories-we-tell/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Myths, Monsters, and the Stories We Tell",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/reimagining-america/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reimagining America",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/secrets-lies-and-memory/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Secrets, Lies, and Memory",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/fall-into-fantasy/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fall Into Fantasy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/women-changing-history/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Women Changing History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/nbf-presents-returning-to-the-page/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NBF Presents: Returning to the Page",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/2026-bobi-honoree-amitav-ghosh-in-conversation-with-nathaniel-rich/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 BoBi Honoree Amitav Ghosh in Conversation with Nathaniel Rich",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-price-of-a-good-life/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Price of a Good Life",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-poet-translator/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Poet Translator",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-anti-equality-era/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Anti-Equality Era",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/come-to-my-cottage/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Come to My Cottage",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/worlds-in-transit/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Worlds in Transit",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-many-facets-of-toni-morrison/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Many Facets of Toni Morrison",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-lives-we-fight-for/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Lives We Fight For",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/against-evolution/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mountains, Jungles and Deserts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-trials-of-incessant-proximity/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Too Close For Comfort",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-culinary-life-crafting-narrative-and-memoir-through-food/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Culinary Life: Crafting Narrative and Memoir Through Food",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/nature-from-the-margins/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nature from the Margins",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/can-you-keep-a-secret/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Can You Keep A Secret?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/250-years-of-american-activism/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "250 Years of American Activism",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/motherhood-and-violence/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Motherhood and Violence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-consequences-of-desire/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Consequences of Desire",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/what-we-inherit-what-we-retell/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What We Inherit, What We Retell",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-cost-of-fame/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Cost of Fame",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/breaking-through-navigating-the-journey-from-emerging-writer-to-debut-novelist-presented-by-the-center-for-fiction/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Breaking Through: Navigating the Journey from “Emerging Writer” to Debut Novelist presented by the Center for Fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/250-years-in-search-of-a-more-perfect-union-presented-by-the-nation/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "250 Years in Search of a More Perfect Union, presented by The Nation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/liberation-sounds/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liberation Sounds",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/new-works-a-poetry-reading-5/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New Works: A Poetry Reading",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-places-we-carry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Places We Carry",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/you-then-me-now/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "You Then, Me Now",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/what-the-past-refuses-to-bury/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What the Past Refuses to Bury",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/the-women-who-shape-us/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Women Who Shape Us",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/dissidents-and-movements-being-part-of-the-solution/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dissidents and Movements: Being Part of the Solution",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/survive-salvage-and-protest-comics-and-the-climate/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Survive, Salvage and Protest: Comics and the Climate",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/trans-voices-in-horror-presented-by-bloodletter-magazine-and-lofty-pigeon-books/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Trans Voices in Horror, presented by Bloodletter Magazine and Lofty Pigeon Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/multifaceted-manifestos-a-conversation-with-marlon-james-and-colson-whitehead/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Multifaceted Manifestos: A Conversation with Marlon James and Colson Whitehead",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/when-worlds-collide-how-the-nyc-underground-rewrote-global-culture/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sonic Reducers: The Evolution of New York Noise",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/future-ancestors/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Future Ancestors",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/how-to-build-a-fascist-free-future-lessons-from-the-past-encouragement-for-the-present/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How to Build A Fascist-Free Future: Lessons from the Past, Encouragement for the Present",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brooklyn-book-festival",
+      "source": {
+        "name": "Brooklyn Book Festival",
+        "url": "https://brooklynbookfestival.org/event/re-enacting-revisiting-history/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Re-enacting, Revisiting History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:37:58.830Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/25/simply-read-more-help-patrons-find-their-audiobook-even-more-fall-2026-must-listens/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Simply Read More: Help Patrons Find Their Audiobook (Even More Fall 2026 Must Listens!)",
+      "publishedAt": "2026-09-25T20:38:49.000Z",
+      "description": "More audiobooks sure to be in demand at your library this fall. The post Simply Read More: Help Patrons Find Their Audiobook (<em>Even More</em> Fall 2026 Must Listens!) appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:37:59.126Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/23/dear-librarians-a-letter-from-steven-j-reese-author-of-read-your-color/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dear Librarians: A Letter from Steven J. Reese, Author of Read Your Color",
+      "publishedAt": "2026-09-23T13:51:55.000Z",
+      "description": "\"Long before an algorithm ever recommended anything to anyone, librarians were doing this work by hand. You have always been the great matchmakers. No machine has replicated you, and I don't believe one ever will. The difference between you and the algorithm is simple: the algorithm optimizes for attention. You optimize for delight.\" The post Dear Librarians: A Letter from Steven J. Reese, Author…",
+      "discoveredAt": "2026-09-26T17:37:59.126Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/18/fridayreads-the-bookshop-woman-nanako-hanada/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "#FridayReads: The Bookshop Woman by Nanako Hanada",
+      "publishedAt": "2026-09-18T05:00:08.000Z",
+      "description": "This international bestseller is the true story of a devoted book lover who finds connection in the vast sea of Tokyo by recommending to strangers the book that will change their lives. The post #FridayReads: <em>The Bookshop Woman</em> by Nanako Hanada appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:37:59.126Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/17/listen-now-to-10-minutes-of-library-love-18-authors-share-sweet-sentiments-from-the-audio-studio/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LISTEN NOW to 10 Minutes of Library Love: 18 Authors Share Sweet Sentiments from the Audio Studio",
+      "publishedAt": "2026-09-17T16:33:12.000Z",
+      "description": "Press play on this special podcast episode of PRH Audio's This is the Author---10 minutes sure to make you smile---and share it with fellow library lovers in your life! The post LISTEN NOW to 10 Minutes of Library Love: 18 Authors Share Sweet Sentiments from the Audio Studio appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:37:59.126Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/16/audiobook-picks-what-will-you-listen-to-this-september-2026/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Audiobook Picks: What Will You Listen To This September 2026?",
+      "publishedAt": "2026-09-16T21:28:23.000Z",
+      "description": "Check out 31 September picks for all ages! The post Audiobook Picks: What Will You Listen To This September 2026? appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:37:59.126Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/16/watch-morning-book-buzz-september-2026-future-bestsellers-dazzling-debuts-time-travel-and-more/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WATCH Morning Book Buzz September 2026: Future Bestsellers, Dazzling Debuts, Time Travel, and More!",
+      "publishedAt": "2026-09-16T17:44:54.000Z",
+      "description": "Thank you for tuning in to our Morning Book Buzz: Season 7, Episode 5! This month, Jen C., Elizabeth, and Rachel buzzed about future bestsellers, dazzling debuts, the latest time travel books, and more! We can’t wait to buzz with you again on November 4! REGISTER FOR THE ENTIRE SEASON HERE Watch the full September The post WATCH <em>Morning Book Buzz</em> September 2026: Future Bestsellers, Dazzl…",
+      "discoveredAt": "2026-09-26T17:37:59.126Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/16/september-2026-audiobooks-available-on-cd/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "September 2026 Audiobooks Available on CD",
+      "publishedAt": "2026-09-16T15:34:05.000Z",
+      "description": "From author-read nonfiction to big blockbusters, these audiobooks will serve an even bigger audience at your library thanks to the CD edition! The post September 2026 Audiobooks Available on CD appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:37:59.126Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ]
+}

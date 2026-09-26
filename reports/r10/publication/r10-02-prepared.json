@@ -1,0 +1,126 @@
+{
+  "batchId": "r10-02",
+  "at": "2026-09-26T17:51:02.078Z",
+  "recordSha256": "b059fdef211a76f54107e4028cfd6fda396ac23a28b1325c4e46f41a14ace246",
+  "counts": {
+    "prepared": 20,
+    "productionSelectorEligible": 20,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "sourceIds": [
+    "ikapi-org",
+    "ndl-japan",
+    "taipei-book-fair",
+    "cassava-republic",
+    "bn-chile",
+    "bn-peru",
+    "camlibro-com-co",
+    "cul-com-uy"
+  ],
+  "sourceCountries": [
+    "CL",
+    "CO",
+    "ID",
+    "JP",
+    "NG",
+    "PE",
+    "TW",
+    "UY"
+  ],
+  "coverageCountries": [
+    "ID",
+    "CO",
+    "TR",
+    "KG",
+    "MY",
+    "KR",
+    "PH",
+    "GB",
+    "TH",
+    "SG",
+    "AU",
+    "JP",
+    "PK",
+    "ZW",
+    "VN",
+    "AZ",
+    "NP",
+    "RS",
+    "IN",
+    "TW",
+    "CZ",
+    "NG",
+    "CL",
+    "PE",
+    "AR",
+    "AE",
+    "UY",
+    "DE",
+    "FR"
+  ],
+  "categories": [
+    "awards",
+    "adaptations",
+    "publishing",
+    "heritage",
+    "discoveries",
+    "festivals",
+    "releases"
+  ],
+  "public": false,
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 20,
+      "supportingRequests": 1
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "IDs and primary topic URLs checked against current reviewed records and r10-01; list and stage duplication manually reviewed",
+    "schema": "production selectReviewed20/20",
+    "images": "No source media rights established; text-only delivery"
+  },
+  "held": [
+    {
+      "sourceId": "loatad",
+      "reason": "Latest inspected residency detailApril29; no independently verified current stage."
+    },
+    {
+      "sourceId": "modjaji",
+      "reason": "Selected poetsMay16, no exact forthcoming release date in inspected page."
+    },
+    {
+      "sourceId": "jalada",
+      "reason": "Discovery corpus has no new in-window stage; no recycled old obituary."
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "reason": "Original publicationAugust29 does not establish when current100-design results replaced prior content; result date held."
+    },
+    {
+      "sourceId": "bn-peru",
+      "urls": [
+        "https://www.gob.pe/institucion/bnp/noticias/1437503",
+        "https://www.gob.pe/institucion/bnp/noticias/1447780"
+      ],
+      "reason": "Header/footer chronology conflicts on inspected details; omit affected records."
+    },
+    {
+      "sourceId": "ndl-japan",
+      "reason": "77-book exhibition endedAugust30 but June announcement alone does not confirm completed event."
+    }
+  ],
+  "typographyCheck": {
+    "checkedAt": "2026-09-26T18:24:41.489Z",
+    "normalizer": "scripts/lib/short-hyphens.mjs normalizeShortHyphens",
+    "scope": "New authored title/summary RU/EN only",
+    "changedFields": 14,
+    "recordSha256": "b059fdef211a76f54107e4028cfd6fda396ac23a28b1325c4e46f41a14ace246",
+    "evidenceSemanticSha256": "2c93ff4882ef235351905b57291f6eabcce896067db6875ec6d6aadd5304c3b9",
+    "sourceEvidencePreserved": true,
+    "serialization": "Unicode dash and HTML-entity escapes preserve parsed source values"
+  }
+}

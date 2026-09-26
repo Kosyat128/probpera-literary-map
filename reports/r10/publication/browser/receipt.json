@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-09-26T18:32:19.075Z",
+  "browser": "153.0.8010.54",
+  "origin": "http://127.0.0.1:5173",
+  "production": false,
+  "fixtures": "1001 synthetic records never written into publication data",
+  "realPreparedPublicProjection": 1000,
+  "checks": [
+    "1001 complete records, initial DOM has 3 cards",
+    "bounded continuation 3 -> 25 -> 50",
+    "search reaches item 1001 outside rendered prefix",
+    "explicit withdrawal survives reload and older origin fallback; saved identity is retained"
+  ],
+  "errors": []
+}

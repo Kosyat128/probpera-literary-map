@@ -1,0 +1,44 @@
+{
+  "sourceId": "eepg-org",
+  "name": "European Educational Publishers Group (EEPG)",
+  "entryUrl": "https://www.eepg.org/eepg.html",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-09-26T17:27:55.654Z",
+  "requests": [
+    {
+      "url": "https://www.eepg.org/eepg.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 44402,
+      "sha256": "d0cf5a5dc92aca0e3b78d6551a599efe40db898a29adb491a8ff291785ff5d05",
+      "accessedAt": "2026-09-26T17:27:56.444Z"
+    },
+    {
+      "url": "https://www.eepg.org/News-and-Events.html",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 17799,
+      "sha256": "d05bce1ab3fe042d7da7f43c9527e6ecba97a8af01bbbb703a204d2f1827fcaa",
+      "accessedAt": "2026-09-26T17:27:56.952Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.eepg.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 132,
+    "sha256": "c1cc003bb59b7655a7d93f48b32d18d317d02b178e3c475cd45de1e0978213a1",
+    "accessedAt": "2026-09-26T17:27:55.927Z",
+    "disallowed": [
+      "/admin/",
+      "/media/"
+    ]
+  }
+}

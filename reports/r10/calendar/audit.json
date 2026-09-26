@@ -1,0 +1,557 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-26",
+  "policy": {
+    "asOf": "2026-09-26",
+    "years": [
+      2026,
+      2028
+    ],
+    "timezone": "Europe/Moscow",
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "identity": "reviewed-QID-or-stable-country-writer-key",
+    "leapDay": "actual-anniversary-day-only",
+    "januaryFirst": "value-bound-confirmed-day-evidence"
+  },
+  "inputFingerprint": "d8d01ad1da5a3663397fab02883af563e689137d2e78206d0cb0e52344f88661",
+  "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+  "originalSnapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+  "freshEvidenceSha256": "5f4fa669dc6d437e142e20ad9fd5f0bd3ac2c1a47aaad8682913e67dac696416",
+  "before": {
+    "writerRows": 1684,
+    "uniqueWriters": 1671,
+    "total": 2237,
+    "births": 1213,
+    "deaths": 1024,
+    "years": {
+      "2026": {
+        "total": 2236,
+        "months": [
+          208,
+          187,
+          182,
+          192,
+          191,
+          165,
+          182,
+          170,
+          179,
+          181,
+          199,
+          200
+        ]
+      },
+      "2028": {
+        "total": 2237,
+        "months": [
+          208,
+          188,
+          182,
+          192,
+          191,
+          165,
+          182,
+          170,
+          179,
+          181,
+          199,
+          200
+        ]
+      }
+    }
+  },
+  "after": {
+    "writerRows": 1684,
+    "uniqueWriters": 1671,
+    "total": 2297,
+    "births": 1254,
+    "deaths": 1043,
+    "years": {
+      "2026": {
+        "total": 2295,
+        "months": [
+          223,
+          191,
+          187,
+          200,
+          193,
+          166,
+          185,
+          177,
+          182,
+          186,
+          203,
+          202
+        ]
+      },
+      "2028": {
+        "total": 2297,
+        "months": [
+          223,
+          193,
+          187,
+          200,
+          193,
+          166,
+          185,
+          177,
+          182,
+          186,
+          203,
+          202
+        ]
+      }
+    }
+  },
+  "acceptedPatches": 60,
+  "newDateFields": 51,
+  "restoredJanuaryFirst": 9,
+  "newUniqueEvents": 60,
+  "newlyVisible2026": 59,
+  "newlyVisible2028": 60,
+  "correctedDates": 0,
+  "held": 1049,
+  "heldByReason": {
+    "no-referenced-exact-claim": 468,
+    "existing-precision-needs-source-review": 108,
+    "no-reviewed-qid": 169,
+    "existing-editorial-date-decision": 285,
+    "qualified-date-needs-review": 3,
+    "unsupported-calendar-model": 8,
+    "conflicting-exact-claims-or-calendar-models": 8
+  },
+  "target": {
+    "total2000": true,
+    "additional1000": false,
+    "remainingFromThisVerifiedBaseline": 940,
+    "remainingIfOnlyNewDateFieldsCount": 949,
+    "historicalTaskBaseline": "unknown; earlier accepted batches are not reset or claimed"
+  },
+  "sourceMethod": "batch-refreshed-Wikidata-statements-with-references; automated structural verification, not human review",
+  "effectiveLayer": "reviewed editorial countries -> guarded date patches -> CMS country/writer overrides -> App.countryArchive -> LiteraryCalendar.selectCalendarEvents",
+  "newEvents": [
+    {
+      "identity": "wikidata:Q472164:birth",
+      "countryId": "bosnia",
+      "writerId": "branko_copic",
+      "kind": "birth",
+      "date": "1915-01-01"
+    },
+    {
+      "identity": "wikidata:Q79904:birth",
+      "countryId": "usa",
+      "writerId": "jerome_david_salinger",
+      "kind": "birth",
+      "date": "1919-01-01"
+    },
+    {
+      "identity": "wikidata:Q467490:birth",
+      "countryId": "lithuania",
+      "writerId": "kristijonas_donelaitis",
+      "kind": "birth",
+      "date": "1714-01-01"
+    },
+    {
+      "identity": "wikidata:Q355676:birth",
+      "countryId": "mexico",
+      "writerId": "mariano_azuela",
+      "kind": "birth",
+      "date": "1873-01-01"
+    },
+    {
+      "identity": "wikidata:Q1082044:birth",
+      "countryId": "latvia",
+      "writerId": "rudolfs_blaumanis",
+      "kind": "birth",
+      "date": "1863-01-01"
+    },
+    {
+      "identity": "wikidata:Q105167:memory",
+      "countryId": "usa",
+      "writerId": "tom_clancy",
+      "kind": "memory",
+      "date": "2013-10-01"
+    },
+    {
+      "identity": "wikidata:Q314966:birth",
+      "countryId": "senegal",
+      "writerId": "ousmane_sembene",
+      "kind": "birth",
+      "date": "1923-01-01"
+    },
+    {
+      "identity": "wikidata:Q5814633:birth",
+      "countryId": "bolivia",
+      "writerId": "jesus_lara",
+      "kind": "birth",
+      "date": "1898-01-01"
+    },
+    {
+      "identity": "wikidata:Q45236:birth",
+      "countryId": "tanzania",
+      "writerId": "shaaban_robert",
+      "kind": "birth",
+      "date": "1909-01-01"
+    },
+    {
+      "identity": "wikidata:Q81219:birth",
+      "countryId": "hungary",
+      "writerId": "sandor_petofi",
+      "kind": "birth",
+      "date": "1823-01-01"
+    },
+    {
+      "identity": "wikidata:Q310379:birth",
+      "countryId": "usa",
+      "writerId": "john_irving",
+      "kind": "birth",
+      "date": "1942-03-02"
+    },
+    {
+      "identity": "wikidata:Q4526879:birth",
+      "countryId": "russia",
+      "writerId": "robert_shtilmark",
+      "kind": "birth",
+      "date": "1909-04-03"
+    },
+    {
+      "identity": "wikidata:Q311744:birth",
+      "countryId": "usa",
+      "writerId": "dennis_lehane",
+      "kind": "birth",
+      "date": "1965-08-04"
+    },
+    {
+      "identity": "wikidata:Q315147:memory",
+      "countryId": "russia",
+      "writerId": "andrei_platonov",
+      "kind": "memory",
+      "date": "1951-01-05"
+    },
+    {
+      "identity": "wikidata:Q525713:birth",
+      "countryId": "usa",
+      "writerId": "howard_pyle",
+      "kind": "birth",
+      "date": "1853-03-05"
+    },
+    {
+      "identity": "wikidata:Q214660:memory",
+      "countryId": "england",
+      "writerId": "john_fowles",
+      "kind": "memory",
+      "date": "2005-11-05"
+    },
+    {
+      "identity": "wikidata:Q212632:memory",
+      "countryId": "russia",
+      "writerId": "andrei_bely",
+      "kind": "memory",
+      "date": "1934-01-08"
+    },
+    {
+      "identity": "wikidata:Q437121:birth",
+      "countryId": "australia",
+      "writerId": "terry_hayes",
+      "kind": "birth",
+      "date": "1951-10-08"
+    },
+    {
+      "identity": "wikidata:Q525713:memory",
+      "countryId": "usa",
+      "writerId": "howard_pyle",
+      "kind": "memory",
+      "date": "1911-11-09"
+    },
+    {
+      "identity": "wikidata:Q272076:birth",
+      "countryId": "usa",
+      "writerId": "dean_koontz",
+      "kind": "birth",
+      "date": "1945-07-09"
+    },
+    {
+      "identity": "wikidata:Q228624:birth",
+      "countryId": "usa",
+      "writerId": "suzanne_collins",
+      "kind": "birth",
+      "date": "1962-08-10"
+    },
+    {
+      "identity": "wikidata:Q361623:birth",
+      "countryId": "south_africa",
+      "writerId": "alan_paton",
+      "kind": "birth",
+      "date": "1903-01-11"
+    },
+    {
+      "identity": "wikidata:Q13563026:birth",
+      "countryId": "usa",
+      "writerId": "min_jin_lee",
+      "kind": "birth",
+      "date": "1968-11-11"
+    },
+    {
+      "identity": "wikidata:Q52224:birth",
+      "countryId": "russia",
+      "writerId": "sergey_lukyanenko",
+      "kind": "birth",
+      "date": "1968-04-11"
+    },
+    {
+      "identity": "wikidata:Q313377:birth",
+      "countryId": "usa",
+      "writerId": "thomas_harris",
+      "kind": "birth",
+      "date": "1940-04-11"
+    },
+    {
+      "identity": "wikidata:Q35064:memory",
+      "countryId": "england",
+      "writerId": "agatha_christie",
+      "kind": "memory",
+      "date": "1976-01-12"
+    },
+    {
+      "identity": "wikidata:Q361623:memory",
+      "countryId": "south_africa",
+      "writerId": "alan_paton",
+      "kind": "memory",
+      "date": "1988-04-12"
+    },
+    {
+      "identity": "wikidata:Q224113:memory",
+      "countryId": "usa",
+      "writerId": "robert_ludlum",
+      "kind": "memory",
+      "date": "2001-03-12"
+    },
+    {
+      "identity": "wikidata:Q105167:birth",
+      "countryId": "usa",
+      "writerId": "tom_clancy",
+      "kind": "birth",
+      "date": "1947-04-12"
+    },
+    {
+      "identity": "wikidata:Q345104:memory",
+      "countryId": "england",
+      "writerId": "rafael_sabatini",
+      "kind": "memory",
+      "date": "1950-02-13"
+    },
+    {
+      "identity": "wikidata:Q313767:memory",
+      "countryId": "russia",
+      "writerId": "vasily_grossman",
+      "kind": "memory",
+      "date": "1964-09-14"
+    },
+    {
+      "identity": "wikidata:Q132964:memory",
+      "countryId": "russia",
+      "writerId": "vladimir_mayakovsky",
+      "kind": "memory",
+      "date": "1930-04-14"
+    },
+    {
+      "identity": "wikidata:Q35064:birth",
+      "countryId": "england",
+      "writerId": "agatha_christie",
+      "kind": "birth",
+      "date": "1890-09-15"
+    },
+    {
+      "identity": "wikidata:Q20630583:birth",
+      "countryId": "usa",
+      "writerId": "blake_crouch",
+      "kind": "birth",
+      "date": "1978-10-15"
+    },
+    {
+      "identity": "wikidata:Q779144:birth",
+      "countryId": "france",
+      "writerId": "franck_thilliez",
+      "kind": "birth",
+      "date": "1973-10-15"
+    },
+    {
+      "identity": "wikidata:Q220816:memory",
+      "countryId": "russia",
+      "writerId": "varlam_shalamov",
+      "kind": "memory",
+      "date": "1982-01-17"
+    },
+    {
+      "identity": "wikidata:Q362828:memory",
+      "countryId": "russia",
+      "writerId": "alexander_tvardovsky",
+      "kind": "memory",
+      "date": "1971-12-18"
+    },
+    {
+      "identity": "wikidata:Q984558:birth",
+      "countryId": "south_africa",
+      "writerId": "alex_la_guma",
+      "kind": "birth",
+      "date": "1925-02-20"
+    },
+    {
+      "identity": "wikidata:Q467404:birth",
+      "countryId": "usa",
+      "writerId": "james_rollins",
+      "kind": "birth",
+      "date": "1961-08-20"
+    },
+    {
+      "identity": "wikidata:Q1370495:birth",
+      "countryId": "australia",
+      "writerId": "gregory_david_roberts",
+      "kind": "birth",
+      "date": "1952-06-21"
+    },
+    {
+      "identity": "wikidata:Q313193:birth",
+      "countryId": "usa",
+      "writerId": "michael_connelly",
+      "kind": "birth",
+      "date": "1956-07-21"
+    },
+    {
+      "identity": "wikidata:Q309786:birth",
+      "countryId": "italy",
+      "writerId": "emilio_salgari",
+      "kind": "birth",
+      "date": "1862-08-21"
+    },
+    {
+      "identity": "wikidata:Q2550958:birth",
+      "countryId": "england",
+      "writerId": "diane_setterfield",
+      "kind": "birth",
+      "date": "1964-08-22"
+    },
+    {
+      "identity": "wikidata:Q360507:memory",
+      "countryId": "russia",
+      "writerId": "mikhail_zoshchenko",
+      "kind": "memory",
+      "date": "1958-07-22"
+    },
+    {
+      "identity": "wikidata:Q217619:memory",
+      "countryId": "england",
+      "writerId": "anthony_burgess",
+      "kind": "memory",
+      "date": "1993-11-22"
+    },
+    {
+      "identity": "wikidata:Q255339:birth",
+      "countryId": "usa",
+      "writerId": "donna_tartt",
+      "kind": "birth",
+      "date": "1963-12-23"
+    },
+    {
+      "identity": "wikidata:Q311755:birth",
+      "countryId": "usa",
+      "writerId": "gillian_flynn",
+      "kind": "birth",
+      "date": "1971-02-24"
+    },
+    {
+      "identity": "wikidata:Q271457:memory",
+      "countryId": "russia",
+      "writerId": "alexander_kuprin",
+      "kind": "memory",
+      "date": "1938-08-25"
+    },
+    {
+      "identity": "wikidata:Q224113:birth",
+      "countryId": "usa",
+      "writerId": "robert_ludlum",
+      "kind": "birth",
+      "date": "1927-05-25"
+    },
+    {
+      "identity": "wikidata:Q309786:memory",
+      "countryId": "italy",
+      "writerId": "emilio_salgari",
+      "kind": "memory",
+      "date": "1911-04-25"
+    },
+    {
+      "identity": "wikidata:Q217619:birth",
+      "countryId": "england",
+      "writerId": "anthony_burgess",
+      "kind": "birth",
+      "date": "1917-02-25"
+    },
+    {
+      "identity": "wikidata:Q542634:birth",
+      "countryId": "england",
+      "writerId": "alex_garland",
+      "kind": "birth",
+      "date": "1970-05-26"
+    },
+    {
+      "identity": "wikidata:Q20732317:birth",
+      "countryId": "england",
+      "writerId": "paula_hawkins",
+      "kind": "birth",
+      "date": "1972-08-26"
+    },
+    {
+      "identity": "wikidata:Q1217640:memory",
+      "countryId": "samoa",
+      "writerId": "sia_figiel",
+      "kind": "memory",
+      "date": "2026-01-26"
+    },
+    {
+      "identity": "wikidata:Q333719:birth",
+      "countryId": "england",
+      "writerId": "lee_child",
+      "kind": "birth",
+      "date": "1954-10-29"
+    },
+    {
+      "identity": "wikidata:Q345104:birth",
+      "countryId": "england",
+      "writerId": "rafael_sabatini",
+      "kind": "birth",
+      "date": "1875-04-29"
+    },
+    {
+      "identity": "wikidata:Q363810:birth",
+      "countryId": "usa",
+      "writerId": "tim_powers",
+      "kind": "birth",
+      "date": "1952-02-29"
+    },
+    {
+      "identity": "wikidata:Q3732112:birth",
+      "countryId": "usa",
+      "writerId": "ernest_cline",
+      "kind": "birth",
+      "date": "1972-03-29"
+    },
+    {
+      "identity": "wikidata:Q4526879:memory",
+      "countryId": "russia",
+      "writerId": "robert_shtilmark",
+      "kind": "memory",
+      "date": "1985-09-30"
+    },
+    {
+      "identity": "wikidata:Q214660:birth",
+      "countryId": "england",
+      "writerId": "john_fowles",
+      "kind": "birth",
+      "date": "1926-03-31"
+    }
+  ]
+}

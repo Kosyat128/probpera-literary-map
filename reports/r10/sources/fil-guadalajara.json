@@ -1,0 +1,57 @@
+{
+  "sourceId": "fil-guadalajara",
+  "name": "FIL Guadalajara",
+  "entryUrl": "https://fil.com.mx/prensa/recientes.asp?ids=1",
+  "countryCodes": [
+    "MX"
+  ],
+  "coverageCountryCodes": [
+    "MX"
+  ],
+  "attemptedAt": "2026-09-26T17:27:33.955Z",
+  "requests": [
+    {
+      "url": "https://fil.com.mx/prensa/recientes.asp?ids=1",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 56269,
+      "sha256": "8ad4ffd8281c87b364503677a9de3ef90283cea09120e1e8cd9880b45370ef66",
+      "accessedAt": "2026-09-26T17:20:15.703Z"
+    },
+    {
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 57697,
+      "sha256": "24453a109e2d50298cb1225e3da380a09dbc91d8852a2317ecaca7060b2c3cd3",
+      "accessedAt": "2026-09-26T17:27:39.157Z"
+    },
+    {
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3347&ids=1",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 54381,
+      "sha256": "2c47055188f1e660b19a6f59ed63c45a240f10e14a34161ecb21894fd8d123fe",
+      "accessedAt": "2026-09-26T17:27:40.265Z"
+    },
+    {
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3344&ids=1",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 61567,
+      "sha256": "9beed1289d6b228af0ced36f1813256406864663fe1831881f8bd6545f7dc209",
+      "accessedAt": "2026-09-26T17:27:41.159Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://fil.com.mx/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:13.364Z",
+    "sourceDocumentSha256": "8ad4ffd8281c87b364503677a9de3ef90283cea09120e1e8cd9880b45370ef66"
+  }
+}

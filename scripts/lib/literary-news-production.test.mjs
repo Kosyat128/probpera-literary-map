@@ -6,6 +6,7 @@ import { buildNewsIngestion } from "./literary-news-ingestion.mjs";
 import { selectReviewed } from "./literary-news-reviewed.mjs";
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 import { NEWS_HELD_QUEUE_KEY, NEWS_SOURCE_STATE_KEY, NEWS_STATE_MAX_BYTES, parseNewsSourceState, pendingNewsSourceState } from "./literary-news-state.mjs";
+import { NOBEL_PROFILE_KEY } from "./literary-news-nobel-profile.mjs";
 
 const CURRENT = new Date("2026-09-05T12:00:00Z");
 const EARLIER = "2026-09-05T10:00:00.000Z";
@@ -13,7 +14,7 @@ const SHA = "a".repeat(40);
 const request = (suffix = "", method = "GET") => new Request(`https://news.probpera.ru/api/literary-news/feed${suffix}`, { method });
 const stateStream = (value) => new Response(JSON.stringify(value)).body;
 function environment(value = null) {
-  return { NEWS_RELEASE_SHA: SHA, NEWS_STATE: { get: vi.fn(async () => value === null ? null : stateStream(value)) } };
+  return { NEWS_RELEASE_SHA: SHA, NEWS_STATE: { get: vi.fn(async (key) => key !== NEWS_SOURCE_STATE_KEY || value === null ? null : stateStream(value)) } };
 }
 const SOURCES = [
   { id: "one", name: "Publisher one", url: "https://one.example/news/", language: "en", linkPattern: /^\/news\/[^/]+$/ },
@@ -87,7 +88,7 @@ describe("public literary news Worker", () => {
     ]) expect(selectReviewed([{ ...record, ...overrides }], CURRENT, "UTC")).toEqual([]);
   });
 
-  it("serves reviewed stories, fixed code-owned sources and only reads the status key", async () => {
+  it("serves reviewed stories and reads only the status and code-owned approved profile keys", async () => {
     const state = pendingNewsSourceState();
     state.lastCheckedAt = EARLIER;
     state.pendingCount = 2;
@@ -102,7 +103,7 @@ describe("public literary news Worker", () => {
     expect(response.headers.get("x-probpera-news-release")).toBe(SHA);
     expect(response.headers.get("cache-control")).toBe("no-store");
     expect(response.headers.get("x-content-type-options")).toBe("nosniff");
-    expect(env.NEWS_STATE.get).toHaveBeenCalledExactlyOnceWith(NEWS_SOURCE_STATE_KEY, "stream");
+    expect(env.NEWS_STATE.get.mock.calls).toEqual([[NEWS_SOURCE_STATE_KEY,"stream"],[NOBEL_PROFILE_KEY,"stream"]]);
     expect(feed).toMatchObject({ mode: "reviewed", timeZone: "Asia/Tokyo", lastCheckedAt: EARLIER, pendingCount: 2 });
     expect(feed.items.length).toBeGreaterThan(0);
     expect(feed.items.every((item) => item.verification === "confirmed" && item.title.ru && item.title.en)).toBe(true);

@@ -1,0 +1,95 @@
+{
+  "batchId": "r10-04",
+  "at": "2026-09-26T18:05:24.330Z",
+  "recordSha256": "336ff4ac2172e694aa42ed897099bbd0add6b7fb8214ee0b81601a0c52d38762",
+  "counts": {
+    "prepared": 40,
+    "productionSelectorEligible": 40,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "sourceIds": [
+    "ast",
+    "corpus",
+    "ad-marginem",
+    "samokat",
+    "rsl",
+    "goslitmuz",
+    "bookunion-ru",
+    "culture",
+    "god-literatury"
+  ],
+  "sourceCountries": [
+    "RU"
+  ],
+  "coverageCountries": [
+    "RU",
+    "IN",
+    "PK",
+    "CA",
+    "US",
+    "FR",
+    "CH",
+    "CN",
+    "TR",
+    "JP",
+    "DE",
+    "IR",
+    "LK",
+    "BY",
+    "ES",
+    "GB",
+    "UZ",
+    "NO"
+  ],
+  "categories": [
+    "publishing",
+    "awards",
+    "adaptations",
+    "festivals",
+    "releases",
+    "heritage"
+  ],
+  "public": false,
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 40
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "IDs checked against current reviewed and batches01/02/03; event topics manually reviewed",
+    "schema": "production selectReviewed40/40",
+    "images": "Source image rights not established; text-only"
+  },
+  "held": [
+    {
+      "sourceId": "samokat",
+      "reason": "July festivals and May/June competition results outside the recent window; no past announcement treated as proof of completion."
+    },
+    {
+      "sourceId": "polyandria",
+      "reason": "Discovery corpus mainly discounts and stale fair announcements."
+    },
+    {
+      "sourceId": "corpus",
+      "reason": "No uncorroborated obituary; past scheduled film premiere held; baseline award schedules not duplicated."
+    },
+    {
+      "sourceId": "god-literatury",
+      "reason": "Expired Intonatsiya call, uncorroborated obituary and baseline Booker shortlist omitted."
+    }
+  ],
+  "typographyCheck": {
+    "checkedAt": "2026-09-26T18:24:41.489Z",
+    "normalizer": "scripts/lib/short-hyphens.mjs normalizeShortHyphens",
+    "scope": "New authored title/summary RU/EN only",
+    "changedFields": 14,
+    "recordSha256": "336ff4ac2172e694aa42ed897099bbd0add6b7fb8214ee0b81601a0c52d38762",
+    "evidenceSemanticSha256": "d4decccf93a6a8efbb6accb2334019bdd9820906ae4039908b1213cb6a083c4c",
+    "sourceEvidencePreserved": true,
+    "serialization": "Unicode dash and HTML-entity escapes preserve parsed source values"
+  }
+}

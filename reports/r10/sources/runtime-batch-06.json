@@ -1,0 +1,5631 @@
+{
+  "batch": 6,
+  "checkedAt": "2026-09-26T17:38:28.039Z",
+  "sourceCount": 12,
+  "availableSourceCount": 12,
+  "candidateCount": 222,
+  "sources": [
+    {
+      "id": "kb-se",
+      "name": "National Library of Sweden",
+      "url": "https://www.kb.se/",
+      "format": "html",
+      "language": "sv",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "kb-se",
+      "countryCodes": [
+        "SE"
+      ],
+      "coverageCountryCodes": [
+        "SE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:25.260Z",
+      "candidateCount": 8
+    },
+    {
+      "id": "nbuv-gov-ua",
+      "name": "Vernadsky National Library of Ukraine",
+      "url": "https://nbuv.gov.ua/rss.xml",
+      "format": "rss",
+      "language": "uk",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "sourceFamilyId": "nbuv-gov-ua",
+      "countryCodes": [
+        "UA"
+      ],
+      "coverageCountryCodes": [
+        "UA"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:24.804Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "pen-international-org",
+      "name": "PEN International",
+      "url": "https://www.pen-international.org/",
+      "format": "html",
+      "language": "en-GB",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "pen-international-org",
+      "countryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:25.032Z",
+      "candidateCount": 19
+    },
+    {
+      "id": "penclubedobrasil-org-br",
+      "name": "Pen Clube do Brasil",
+      "url": "https://penclubedobrasil.org.br/feed/",
+      "format": "rss",
+      "language": "pt-BR",
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "penclubedobrasil-org-br",
+      "countryCodes": [
+        "BR"
+      ],
+      "coverageCountryCodes": [
+        "BR"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:25.296Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "penbelarus-org",
+      "name": "Belarusian PEN",
+      "url": "https://penbelarus.org/en/",
+      "format": "html",
+      "language": "en-US",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "penbelarus-org",
+      "countryCodes": [],
+      "coverageCountryCodes": [
+        "BY"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:25.496Z",
+      "candidateCount": 8
+    },
+    {
+      "id": "penbih-ba",
+      "name": "Bosnian PEN",
+      "url": "https://penbih.ba/feed/",
+      "format": "rss",
+      "language": "bs-BA",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "penbih-ba",
+      "countryCodes": [
+        "BA"
+      ],
+      "coverageCountryCodes": [
+        "BA"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:26.207Z",
+      "candidateCount": 9
+    },
+    {
+      "id": "pencatala-cat",
+      "name": "PEN Catalan",
+      "url": "https://www.pencatala.cat/",
+      "format": "html",
+      "language": "ca",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "pencatala-cat",
+      "countryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [
+        "ES"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:27.336Z",
+      "candidateCount": 18
+    },
+    {
+      "id": "pen-dk",
+      "name": "Danish PEN",
+      "url": "https://danskpen.dk/feed/",
+      "format": "rss",
+      "language": "da-DK",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "pen-dk",
+      "countryCodes": [
+        "DK"
+      ],
+      "coverageCountryCodes": [
+        "DK"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:26.869Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "pen-deutschland-de",
+      "name": "PEN Germany",
+      "url": "https://pen-deutschland.de/feed/",
+      "format": "rss",
+      "language": "de",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "pen-deutschland-de",
+      "countryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:25.958Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "irishpen-com",
+      "name": "Irish PEN",
+      "url": "https://irishpen.com/",
+      "format": "html",
+      "language": "en-US",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "irishpen-com",
+      "countryCodes": [
+        "IE"
+      ],
+      "coverageCountryCodes": [
+        "IE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:26.408Z",
+      "candidateCount": 100
+    },
+    {
+      "id": "pen-kurd-org",
+      "name": "Kurdish PEN",
+      "url": "https://pen-kurd.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "pen-kurd-org",
+      "countryCodes": [],
+      "coverageCountryCodes": [
+        "DE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:26.459Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "norskpen-no",
+      "name": "Norwegian PEN",
+      "url": "https://norskpen.no/feed/",
+      "format": "rss",
+      "language": "nb-NO",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "norskpen-no",
+      "countryCodes": [
+        "NO"
+      ],
+      "coverageCountryCodes": [
+        "NO"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T17:38:28.037Z",
+      "candidateCount": 10
+    }
+  ],
+  "items": [
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7320",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Книгознавчі читання і презентація нової цифрової колекції «Історія регіонів»: Дніпро",
+      "publishedAt": "2026-09-23T16:19:38.000Z",
+      "description": "Дата події: 17-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7319",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Затверджено підсумки та визначено перспективи наукових досліджень",
+      "publishedAt": "2026-09-16T15:47:45.000Z",
+      "description": "Дата події: 15-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7318",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Особові колекції українських бібліотекознавців у фондах наукових бібліотек",
+      "publishedAt": "2026-09-10T12:32:39.000Z",
+      "description": "Дата події: 10-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7317",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "«Світова література в перекладі українською мовою»",
+      "publishedAt": "2026-09-10T08:21:11.000Z",
+      "description": "Дата події: 10-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7316",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Книгознавчі читання присвячені представленню цифрової колекції «Історія регіонів : Дніпро \u2013 Дніпропетровськ \u2013 Катеринослав \u2013 Стара Самар».",
+      "publishedAt": "2026-09-10T06:45:11.000Z",
+      "description": "Дата події: 10-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7315",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Профілі науковців в Бібліометриці української науки!",
+      "publishedAt": "2026-09-09T11:01:00.000Z",
+      "description": "Дата події: 7-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7314",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Пам’яті колеги",
+      "publishedAt": "2026-09-08T17:02:59.000Z",
+      "description": "Дата події: 8-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7312",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Вітаємо з ювілеєм невтомну наукову дослідницю Ірину Олегівну Ціборовську-Римарович",
+      "publishedAt": "2026-09-04T19:21:15.000Z",
+      "description": "Дата події: 4-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7311",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Леонардо да Вінчі можна прочитати українською",
+      "publishedAt": "2026-09-04T18:31:20.000Z",
+      "description": "Дата події: 4-09-2026",
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nbuv-gov-ua",
+      "source": {
+        "name": "Vernadsky National Library of Ukraine",
+        "url": "https://nbuv.gov.ua/node/7310",
+        "language": "uk"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Особові колекції українських бібліотекознавців у фондах наукових бібліотек",
+      "publishedAt": "2026-09-04T14:52:02.000Z",
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.801Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/imagine-monthly-giving",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Become a Friend of PEN International",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/publishers-circle",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishers Circle",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/partners-and-sponsors",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Partners and Sponsors",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/603aa3cf-8998-486f-945e-a3321fb4a3a4",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Folder: About Us",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/our-supporters",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Folder: Our Supporters",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/civil-society-programme",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "click to find out more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/georgia-joint-civil-society-letter-to-pace-members-on-georgia",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Georgia: Joint civil society letter to PACE members on Georgia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/colombia-gender-based-violence-against-journalists-and-writers-condemned",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Colombia: Gender-based violence against journalists and writers condemned",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/peru-renewed-judicial-harassment-of-investigative-journalist-paola-ugaz-condemned-by-freedom-of-expression-organisations",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Peru: Renewed judicial harassment of investigative journalist Paola Ugaz condemned by freedom of expression organisations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/optisrael-pen-international-joins-international-press-rights-groups-call-on-israel-to-protect-abraham-and-szors-fundamental-rights",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "OPT/Israel: PEN International joins international press rights groups call on Israel to protect Abraham and Szor’s fundamental rights",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/eritrea-an-open-letter-to-president-isaias-afwerki",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eritrea: An open letter to President Isaias Afwerki",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/vietnam-secretary-rubio-must-make-the-release-of-imprisoned-vietnamese-writers-a-priority-in-the-upcoming-usvietnam-human-rights-dialogue",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vietnam: Secretary Rubio must make the release of imprisoned Vietnamese writers a priority in the upcoming U.S.\u2013Vietnam Human Rights Dialogue",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "China - Hong Kong: Jimmy Lai’s arbitrary detention raised at United Nations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/ecuador-pen-international-and-pen-ecuador-alarmed-by-deteriorating-freedom-of-expression-environment",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ecuador: PEN International and PEN Ecuador alarmed by deteriorating freedom of expression environment",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/pen-international-partners-with-index-to-support-writers-carrying-victoria-amelinas-legacy",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN International partners with INDEX to support writers carrying Victoria Amelina’s legacy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/argentina-conviction-in-rodolfo-walsh-case-proves-that-crimes-against-writers-cannot-be-erased-by-time",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Argentina: Conviction in Rodolfo Walsh case proves that crimes against writers cannot be erased by time",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/ukraine-destruction-of-books-by-russian-strikes-condemned",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ukraine: Destruction of books by Russian strikes condemned",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/malta-no-justice-for-the-killing-of-daphne-caruana-galizia-following-shock-acquittal",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Malta: No justice for the killing of Daphne Caruana Galizia following shock acquittal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/whistleblowing",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Submit Whistleblowing Report",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:24.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Unik samling tidskrifter blir nu allmänt tillgänglig",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-09-nu-lanserar-kb-ett-eget-profiltypsnitt.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nu lanserar KB ett eget profiltypsnitt",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-02-skyddat-material-aterigen-sokbart-i-svenska-tidningar.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Skyddat material återigen sökbart i Svenska tidningar",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-06-25-utstallning-pippi-langstrump-i-humlegarden.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Utställning: Pippi Långstrump i Humlegården",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-09-30-webbinarium-att-skapa-en-patriotisk-historia.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Webbinarium: Att skapa en patriotisk historia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-10-20-svensk-bokkonst-2025.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Svensk bokkonst 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-10-22-introduktion-for-studenter.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Introduktion för studenter",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/for-bibliotekssektorn/biblioteksstatistik.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Biblioteksstatistik",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.251Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/palestra-fantasmas-e-fantasias-de-agosto-a-ser-proferida-pelo-prof-dr-deonisio-da-silva/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Palestra “Fantasmas e Fantasias de Agosto”, a ser proferida pelo Prof. Dr. Deonísio da Silva",
+      "publishedAt": "2026-08-29T22:37:51.000Z",
+      "description": "Dia: 31 de agosto de 2026, 2ª-feira Local: Sede Social do Horário: 17 horas PEN Clube do Brasil Brinde de honra após o evento. [...] O post Palestra “Fantasmas e Fantasias de Agosto”, a ser proferida pelo Prof. Dr. Deonísio da Silva apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/lancamento-do-livro-poema-de-papel-do-socio-titular-jerson-lima-silva-dia-8-de-setembro-as-17h-no-pen-clube/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lançamento do livro “Poema de Papel”, do sócio titular Jerson Lima Silva, dia 8 de setembro, às 17h, no PEN Clube",
+      "publishedAt": "2025-09-03T20:48:03.000Z",
+      "description": "O post Lançamento do livro “Poema de Papel”, do sócio titular Jerson Lima Silva, dia 8 de setembro, às 17h, no PEN Clube apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/brava-gente-brasileira-dia-18-08-2025-segunda-feira-as-17h-na-sede-do-pen-clube-do-brasil/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Brava Gente Brasileira, dia 18/08/2025, segunda-feira, às 17h, na sede do PEN Clube do Brasil",
+      "publishedAt": "2025-08-18T12:08:16.000Z",
+      "description": "PEN Clube convida para a dramatização “Brava Gente Brasileira”. Participação de Samuel Abrantes /Samile Cunha, Miriam Halfim e mais Vinicius Eco, André Severiano e conversa com o jornalista Zevi Ghivelder. Dia 18/08/2025, segunda-feira, às 17h, na sede do PEN Clube. O post Brava Gente Brasileira, dia 18/08/2025, segunda-feira, às 17h, na sede do PEN Clube do Brasil apareceu primeiro em PEN Clube …",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/grande-premio-pen-clube-2024-a-claudio-aguiar/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Grande Prêmio PEN Clube 2024 a Cláudio Aguiar, dia 04/08/2025, segunda-feira, às 17h, na sede do PEN Clube do Brasil",
+      "publishedAt": "2025-07-29T18:12:37.000Z",
+      "description": "Solenidade de entrega do tradicional Grande Prêmio Literário PEN Clube do Brasil 2024 conferido a CLÁUDIO AGUIAR pelo conjunto de sua obra. A saudação oficial pelo PEN Clube será feita pela sócia Lucia Regina de Lucena. Dia 4 de agosto de 2025, segunda-feira, às 17h, na sede do PEN Clube do Brasil. [...] O post Grande Prêmio PEN Clube 2024 a Cláudio Aguiar, dia 04/08/2025, segunda-feira, às 17h, …",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/apresentacao-vinicius-uma-luz-no-coracao/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Apresentação “Vinicius, Uma Luz no Coração”",
+      "publishedAt": "2025-06-26T21:02:17.000Z",
+      "description": "Apresentação “Vinicius, Uma Luz no Coração”, com Lucia Regina de Lucena e convidados, no PEN Clube, dia 30/06/2025, segunda-feira, às 17h. O post Apresentação “Vinicius, Uma Luz no Coração” apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/carlos-vereza-faz-palestra-sobre-stefan-zweig-no-pen-clube/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Carlos Vereza faz palestra sobre Stefan Zweig no PEN Clube, dia 24/03/2025, segunda-feira, às 17h.",
+      "publishedAt": "2025-03-19T15:01:07.000Z",
+      "description": "Carlos Vereza faz palestra sobre Stefan Zweig no PEN Clube, dia 24/03/2025, segunda-feira, às 17h. Assista Carlos Vereza no PEN Clube: O post Carlos Vereza faz palestra sobre Stefan Zweig no PEN Clube, dia 24/03/2025, segunda-feira, às 17h. apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/seminario-sobre-stefan-zweig-reabre-programacao-do-pen-clube-dia-17-03-2025-as-17-horas/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seminário sobre Stefan Zweig reabre programação do Pen Clube dia 17.03.2025, às 17 horas",
+      "publishedAt": "2025-03-10T19:13:56.000Z",
+      "description": "SEMINÁRIO SOBRE STEFAN ZWEIG REÚNE ESCRITORES E INTELECTUAIS NO PEN CLUBE Um seminário sobre Stefan Zweig reúne escritores e intelectuais para a abertura da programação do PEN Clube do Brasil em 2025, dia 17 de março, às 17 horas. Em palestras compartilhadas o embaixador e ex-Ministro da Cultura Jerônimo Moscardo, e o [...] O post Seminário sobre Stefan Zweig reabre programação do Pen Clube dia 1…",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/oscar-de-alencar-araripe-lanca-novo-livro-dia-28-03-2025-na-livraria-da-travessa-ipanema/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oscar de Alencar Araripe lança novo livro dia 28.03.2025, na Livraria da Travessa Ipanema",
+      "publishedAt": "2025-02-27T15:07:04.000Z",
+      "description": "Imaculada: A Amazônia que nos deu a luz Oscar de Alencar Araripe lança seu novo livro \" Imaculada: A Amazônia que nos deu a luz\", dia 28 de marco, na Livraria da Travessa Ipanema. Segundo Arnaldo Niskier, da Academia Brasileira de Letras, \" A Imaculada de Araripe, obra de fôlego e beleza literária, traz [...] O post Oscar de Alencar Araripe lança novo livro dia 28.03.2025, na Livraria da Travessa…",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/edir-meirelles-lanca-o-livro-sarapitanga-uma-historia-secreta/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Edir Meirelles lança o livro “Sarapitanga: uma História Secreta“",
+      "publishedAt": "2025-01-06T14:48:23.000Z",
+      "description": "Em concorrida tarde de autógrafos, Edir Meirelles , membro do Pen Clube e da Academia Carioca de Letras, lançou seu último livro \"Sarapitanga: uma História Secreta\", dia 27 de dezembro de 2024, em Caxias do Sul. O post Edir Meirelles lança o livro “Sarapitanga: uma História Secreta“ apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/marcio-catunda-faz-palestra-no-pen-clube-dia-09-12-2024-as-17-horas/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Márcio Catunda faz palestra no Pen Clube, dia 09.12.2024, às 17 horas",
+      "publishedAt": "2024-12-02T13:32:38.000Z",
+      "description": "MÁRCIO CATUNDA Márcio Catunda faz palestra no Pen Clube sobre “ Lisboa e a Literatura Portuguesa” , dia 09.12.2024, às 17 horas. Nascido em Fortaleza, em 1957, Márcio Catunda é diplomata, poeta, romancista e ensaísta. Publicou 50 livros, alguns dos quais no idioma espanhol. Produziu, também, dez CDs de poemas musicados e cantados por [...] O post Márcio Catunda faz palestra no Pen Clube, dia 09.1…",
+      "discoveredAt": "2026-09-26T17:38:25.293Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "On February 27, 2026, the KGB designated PEN Belarus an “extremist formation”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/padtrymacz-pen.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Support PEN Belarus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/deklaracy-manfesty.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Manifestos & Declarations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/projects_en.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literary awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/07/31/manitoryng-parushennyau-kulturnyh-pravou-i-pravou-chalaveka-u-dachynenni-da-dzeyachau-kultury-belarus-studzen-%e2%80%93-cherven-2026-goda.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Monitoring of violations of cultural rights and human rights of cultural figures. Belarus, January \u2013 June 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/09/17/hronika-parushennyau-pravou-chalaveka-u-sfery-kultury-1-15-verasnya-2026-goda.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chronicle of human rights violations in the sphere of culture (1-15 September 2026)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/03/03/prynty-z-vyyavami-kaczyaryny-andreevaj-vaczlava-areshki-i-dzmitryya-galavacha.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prints featuring Kaciaryna Andrejeva, Vacłaŭ Areška and Dzmitryj Hałavač",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/09/16/troe-lyudzej-slova-na-voli.html",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Three Imprisoned Writers Are Free!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:25.470Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/pen-veranstaltung-mit-friedensnobelpreistraeger-ales-bialatski-auf-der-frankfurter-buchmesse/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN-Veranstaltung mit Friedensnobelpreisträger Aleś Bialatski auf der Frankfurter Buchmesse",
+      "publishedAt": "2026-09-24T12:40:24.000Z",
+      "description": "PEN Deutschland spricht mit Friedensnobelpreisträger Aleś Bialatski auf der Frankfurter Buchmesse über die Lage belarussischer Autoren",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/weil-ich-beschlossen-habe-mich-nie-bezwingen-zu-lassen-2/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Weil ich beschlossen habe, mich nie bezwingen zu lassen“ \u2013 Ausstellung mit Porträts von Writers-in-Exile-Stipendiaten des PEN in Kamen",
+      "publishedAt": "2026-09-21T11:56:02.000Z",
+      "description": "Der Fotokünstler Maximilian Gödecke hat Stipendiaten des Writers-in-Exile-Programms des PEN Deutschland porträtiert. Entstanden sind eindringliche fotografische Arbeiten, die er mit Kostproben aus dem schriftstellerischen Schaffen der Porträtierten verbindet. Ergänzt wird die Ausstellung durch eine Reihe von Filmporträts, darunter drei mit besonderem Bezug zu Kamen.",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/die-wanderjahre/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die Wanderjahre \u2013 Lesung mit Ariel Maceo Téllez und José F. A. Oliver im Literarischen Colloquium Berlin",
+      "publishedAt": "2026-09-17T08:35:49.000Z",
+      "description": "Mit den Autorinnen Dahlia de la Cerda, Luisa Futoransky, Claudia Ulloa Donoso sowie dem Writers-in-Exile-Stipendiaten des PEN Deutschland, Ariel Maceo Téllez Moderation: José F. A. Oliver, ehemaliger Präsident des PEN Deutschland",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/gespraechslesung-mit-maryam-kishawarz/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gesprächslesung mit Maryam Kishawarz im Frauenzentrum Darmstadt",
+      "publishedAt": "2026-09-15T10:51:59.000Z",
+      "description": "Maryam Kishawarz wird aus ihrem Roman „Ein Zug in der Dunkelheit, doch eine Hoffnung auf das Licht“ lesen \u2013 auf Dari mit deutscher Übersetzung. Jutta Schütz, Darmstädter Autorin und Mitglied des PEN Deutschland, wird Maryam im Gespräch vorstellen.",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/offene-erklaerung-des-netzwerks-autorenrechte-zur-neuen-eu-verpackungsverordnung/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Offene Erklärung des Netzwerks Autorenrechte zur neuen EU-Verpackungsverordnung",
+      "publishedAt": "2026-09-04T06:23:43.000Z",
+      "description": "Das Netzwerk Autorenrechte, dem auch PEN Deutschland angehört, fordert eine bürokratiearme und verhältnismäßige Umsetzung der neuen EU-Verpackungsverordnung (PPWR). Gerade Selfpublisher sowie Autoren, die nur gelegentlich Bücher oder Werbematerial versenden, dürften nicht mit denselben Anforderungen konfrontiert werden wie große Versandhändler. Das Netzwerk fordert deshalb unter anderem einfache …",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "José Rubén Zamora Marroquín erhält Hermann Kesten-Preis 2026 des PEN Deutschland",
+      "publishedAt": "2026-09-01T08:01:23.000Z",
+      "description": "Der Hermann Kesten-Preis des PEN Deutschland, gestiftet vom Hessischen Ministerium für Wissenschaft und Forschung, Kunst und Kultur, geht in diesem Jahr an den guatemaltekischen Journalisten und Verleger José Rubén Zamora Marroquín. Der Preis ist mit 20.000 Euro dotiert. Mit dem Hermann Kesten-Förderpreis wird die internationale Menschenrechtsorganisation ARTICLE 19 ausgezeichnet, die sich weltwe…",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/pen-deutschland-auf-der-frankfurter-buchmesse-2/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Deutschland auf der Frankfurter Buchmesse 2026",
+      "publishedAt": "2026-09-01T08:00:54.000Z",
+      "description": "Auch in diesem Jahr ist PEN Deutschland auf der Frankfurter Buchmesse vertreten. Vom 7. bis 11. Oktober 2026 finden Sie uns in Halle 3.0, Stand A71.",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/was-mir-wirklich-wichtig-ist-die-freigeist-tour-von-pen-deutschland-zu-gast-beim-ilb-in-berlin/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Was (mir) wirklich wichtig ist. Die frei&geist-Tour von PEN Deutschland zu Gast beim ILB in Berlin",
+      "publishedAt": "2026-08-25T12:31:20.000Z",
+      "description": "Mit Hasnain Kazim, Anna Schneider, Wolfgang Thierse Es moderiert Matthias Politycki",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/kalmuecken-gibts-die-wirklich/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kalmücken, gibt’s die wirklich?",
+      "publishedAt": "2026-08-25T06:47:46.000Z",
+      "description": "Kaum jemand kennt sie, die westmongolischen Kalmücken, die vor Stalin geflohen und nach dem Zweiten Weltkrieg im westlichen Deutschland gestrandet sind. PEN-Autorin Petra Reategui geht in ihrem Buch „Ohne Flügel ist der Adler im Himmel machtlos. Kalmückische Displaced Persons im Nachkriegsdeutschland“ ihren Spuren nach. Mit der Autorin spricht Roberto Di Bella, Literaturwissenschaftler und Mitgli…",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/geschwisterbeziehungen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Geschwisterbeziehungen",
+      "publishedAt": "2026-08-25T06:24:48.000Z",
+      "description": "Sie mögen sich lieben oder hassen, sich beneiden, bewundern oder übertreffen wollen - Geschwister sind ein Leben lang miteinander verbunden, ob sie es wollen oder nicht. Maren Gottschalk und Petra Reategui stöbern in der Literatur nach ihren Geschichten.",
+      "discoveredAt": "2026-09-26T17:38:25.955Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/knjizevni-korner-54-razgovor-sa-amerom-tikvesom/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Književni korner 54 \u2013 Razgovor sa Amerom Tikvešom",
+      "publishedAt": "2026-09-25T05:48:24.000Z",
+      "description": "Gost narednog, 54. po redu Književnog kornera je Amer Tikveša, pisac, profesor i novinar. The post Književni korner 54 \u2013 Razgovor sa Amerom Tikvešom appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/ljetopis-drugi-dio-goran-saric/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "LJETOPIS, DRUGI DIO \u2013 GORAN SARIĆ",
+      "publishedAt": "2026-09-24T09:08:22.000Z",
+      "description": "LJETOPIS 2026. (2) Put za Novi Sad, Zvotničko Jezero i Frida Kalo Od njihovog preseljenja je prošlo ravno osamnaest godina. Danas im D. i... The post LJETOPIS, DRUGI DIO \u2013 GORAN SARIĆ appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/opsezi-i-oblici-duse-putovanja-dusa-predrag-finci/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Opsezi i oblici duše (Putovanja duša, Predrag Finci)",
+      "publishedAt": "2026-09-24T08:46:04.000Z",
+      "description": "O knjizi eseja Predraga Fincija, Putovanja duša, TIM press, Zagreb, 2026. PIŠE: TATJANA GROMAČA VADNJEL Preživjeti pakao rata znači iskusiti jedno od najtežih, najtragičnijih... The post Opsezi i oblici duše (Putovanja duša, Predrag Finci) appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/opjevana-planina-je-sada-i-opricana-konjuh-istine-sage-i-haberi-o-vilinskoj-gori/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Opjevana planina je sada i opričana \u2013 Konjuh: istine, sage i haberi o vilinskoj gori”",
+      "publishedAt": "2026-09-07T17:21:07.000Z",
+      "description": "INTERVJU S OMEROM Ć. IBRAHIMAGIĆEM Predstavite se našim čitateljima. Ko ste i kako je započelo Vaše književno putovanje? Pišem od konca srednje škole što... The post Opjevana planina je sada i opričana \u2013 Konjuh: istine, sage i haberi o vilinskoj gori” appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/izlozba-adnadina-jasarevica-8-9-2026/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "IZLOŽBA ADNADINA JAŠAREVIĆA 8.9.2026.",
+      "publishedAt": "2026-09-07T17:12:52.000Z",
+      "description": "Pozivamo vas na večer posvećenu bosanskom stripu The post IZLOŽBA ADNADINA JAŠAREVIĆA 8.9.2026. appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/promocija-knjiga-naide-mujkic-25-9-2026/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROMOCIJA KNJIGA NAIDE MUJKIĆ 25.9.2026.",
+      "publishedAt": "2026-09-07T17:09:00.000Z",
+      "description": "PEN Centar Bosne i Hercegovine poziva vas na promociju novih knjiga naše članice, književnice Naide Mujkić, ‘Anatomija ljubavi i prašine’ i ‘Stravaruše’! Promocija će biti održana u... The post PROMOCIJA KNJIGA NAIDE MUJKIĆ 25.9.2026. appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/08/ljetopis-prvi-dio-goran-saric/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "LJETOPIS, PRVI DIO \u2013 GORAN SARIĆ",
+      "publishedAt": "2026-08-31T12:58:11.000Z",
+      "description": "LJETOPIS 2026. (1) “Han”, Dino i ja Jutros idemo malo dalje na kafu, u restoran “Han”. Restoran je smješten blizu kapije fabrike “Igman”, odmah... The post LJETOPIS, PRVI DIO \u2013 GORAN SARIĆ appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/08/natjecaj-za-kratku-pricu-pripovijetkuxiv-bugojnaska-vaza-bugojno-2026/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Natječaj za kratku priču/pripovijetkuXIV Bugojnaska vaza \u2013 Bugojno 2026.",
+      "publishedAt": "2026-08-31T12:56:34.000Z",
+      "description": "Kulturno sportski centar Bugojno, na osnovu potpisanog sporazuma između JU Kulturno sportski centar Bugojno i općine Bugojno 2013. godine o ustanovljenju nagrade „Bugojanska vaza“,... The post Natječaj za kratku priču/pripovijetku<br>XIV Bugojnaska vaza \u2013 Bugojno 2026. appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penbih-ba",
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/08/knjizevni-razgovor-zoran-bognar-27-8-2026/",
+        "language": "bs-BA"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "KNJIŽEVNO VEČE ZORANA BOGNARA, 27.8.2026.",
+      "publishedAt": "2026-08-23T13:49:59.000Z",
+      "description": "PEN Centar u BiH vas srdačno poziva na Književno veče Zorana Bognara. Razgovor će se održati u Historijskom muzeju BiH u četvrtak, 27.8.2026. s... The post KNJIŽEVNO VEČE ZORANA BOGNARA, 27.8.2026. appeared first on P.E.N..",
+      "discoveredAt": "2026-09-26T17:38:26.203Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2020/10/13/coming-soon-irish-pen-pen-na-heireann/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mission Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/international-pen-centres/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "About PEN International",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/become-a-member/the-history-of-irish-pen/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "History of Irish PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2020/06/14/irish-pen-freedom-to-write-merger/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irish PEN/Freedom to Write Merger",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/02/05/introduction-our-first-five-years/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "INTRODUCTION: OUR FIRST FIVE YEARS",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/02/05/members-survey-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "MEMBERS’ SURVEY 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/become-a-member/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Become a Member",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/22/emergency-resource-list-for-writers-and-journalists-at-risk/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Emergency Resource List",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/05/13/more-than-110-nobel-laureates-call-on-iran-to-release-gravely-ill-activist-narges-mohammadi-from-the-guardian-12-may-2026/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Guardian: Narges Mohammadi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/05/04/concern-for-jailed-iranian-nobel-laureate-as-brother-fears-she-is-dying/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Update: Narges Mohammadi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/01/20/iran-authorities-must-end-brutal-crackdown-on-protests-and-internet-shutdowns/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Iran: Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/10/08/thousand-madleens-flotilla-statement/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Thousand Madleens flotilla Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/10/02/global-sumud-flotilla-statement/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Global Sumud Flotilla Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/09/17/statement-on-drone-attacks-against-the-global-sumud-flotilla/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on drone attacks against the Global Sumud Flotilla",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/08/29/statement-on-israeli-attack-on-the-nasser-hospital-gaza/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on Israeli attack on the Nasser Hospital, Gaza.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/08/13/statement-on-arrests-following-palestine-peaceful-protest-in-london/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on arrests following Palestine peaceful protest in London",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/06/05/statement-on-gaza/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on Gaza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/03/14/freealaa-joint-appeal-for-alaa-abd-el-fattah/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "#FreeAlaa \u2013 Joint appeal for Alaa Abd el-Fattah",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/09/30/raids-on-kurdish-language-associations-and-bookstore-condemned/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Raids on Kurdish language associations and bookstore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/calls-for-peace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Calls for Peace",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/ilhan-sami-comak/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ilhan Sami Çomak, Turkey",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/11/26/ilhan-sami-comak-on-books-for-breakfast-podcast/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "İlhan Sami Çomak on Books for Breakfast podcast",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/12/01/kurdish-poet-ilhan-sami-comak-is-free/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kurdish poet İlhan Sami Çomak is FREE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/08/29/free-the-kurdish-poet-ilhan-sami-comak/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Free the Kurdish poet Ilhan Sami Çomak",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/15/day-of-the-imprisoned-writer-ilhan-sami-comak/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Day of the Imprisoned Writer: Ilhan Sami Çomak",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/22/letter-to-irish-pen-members-from-ilhan-sami-comak-translated-by-paula-darwish/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Letter to Irish PEN members from Ilhan Sami Çomak, translated by Paula Darwish.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/07/23/ilhan-sami-comak-to-be-the-first-honorary-member-of-irish-pen-pen-na-heireann/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ilhan Sami Çomak to be the first Honorary Member of Irish PEN/PEN na hÉireann",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/02/10/nedim-turfent-write-back-to-ai-weiwei/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nedim Turfent, Turkey",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/06/18/new-poetry-by-nedim-turfent/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "New poetry by Nedim Türfent",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/09/15/kurdish-pen-member-writer-and-poet-meral-simsek/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meral Şimşek, Turkey",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/09/25/mahvash-sabet-english-pen/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mahvash Sabet/English PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/04/paola-ugaz-and-the-judicial-harassment-of-journalists-in-peru/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Paola Ugaz and the judicial harassment of journalists in Peru",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/01/21/irish-pen-featured-writer-paola-ugaz-peru-at-risk-20-01-22/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irish PEN featured writer Paola Ugaz",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/dr-abduljalil-al-singace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dr Abduljalil Al-Singace, Bahrain",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/10/20/dr-abduljalil-al-singace-winner-of-the-2022-pen-pinter-prize-for-an-international-writer-of-courage/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dr Abduljalil Al-Singace, 2022 PEN Pinter Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/09/09/penwrites-dr-abduljalil-al-singace-bahrain/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PENWrites: Dr Abduljalil Al-Singace (Bahrain)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/05/23/gezi-park-explainer-link-to-a-podcast-from-the-guardian-newspaper/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "GEZI PARK EXPLAINER",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/04/27/pen-turkey-protests-the-gezi-verdict-osman-kavala-co-defendants/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Osman Kavala & Co-Defendants",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/08/12/joint-statement-freedom-for-varavara-rao/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Varavara Rao, India",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/06/21/summary-of-irish-pen-campaigns-and-statements-april-june-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Campaigns and Statements, April-June 2021",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/06/21/penwrites-english-pen/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Galal el Behairy, Egypt",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/irish-pen-pen-na-heireann-statement-on-the-margaret-keane-gravestone-appeal-messagetomargaret/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Margaret Keane gravestone Appeal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/01/08/victoria-amelina-wins-2025-moore-prize-for-human-rights-writing/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina wins 2025 Moore Prize for Human Rights Writing",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/11/28/victoria-amelina-wins-chytomo-special-jury-prize-posthumously/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina wins Chytomo Special Jury prize (posthumously)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/09/25/statement-from-irish-pen-pen-na-heireann-on-the-death-of-victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement from Irish PEN/PEN na hÉireann on the death of Victoria Amelina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/07/03/pen-international-statement-about-the-murder-of-victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN INTERNATIONAL STATEMENT ABOUT THE MURDER OF VICTORIA AMELINA",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/07/03/philippe-sands-remembering-marvellous-victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Philippe Sands: Remembering marvellous Victoria Amelina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/06/30/writer-and-pen-ukraine-member-victoria-amelina-seriously-injured-in-russian-missile-strike-on-kramatorsk/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "WRITER AND PEN UKRAINE MEMBER VICTORIA AMELINA SERIOUSLY INJURED IN RUSSIAN MISSILE STRIKE ON KRAMATORSK",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/07/23/victoria-amelina-in-the-dublin-review-of-books/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina in the Dublin Review of Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/05/19/victoria-amelina-essay-in-todays-irish-times-online/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina essay in today’s Irish Times online",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/05/15/3084/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "“The Russian War on Ukraine Has Always Been a War on Its Language” by Askold Melnyczuk, via LitHub",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/09/10/olha-mukha-address-to-the-pen-international-women-writers-committee-meeting-91st-international-congress-september-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Olha Mukha address to the PEN International Women Writers’ Committee Meeting, 91st International Congress, September 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/courage-justice-and-resistance-lessons-from-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Courage, Justice and Resistance: Lessons from Ukraine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/06/04/ukrainian-culture-under-attack/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ukrainian Culture Under Attack",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/02/23/letters-to-free-crimea-pen-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Letters to Free Crimea",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/chytomo-interviews/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chytomo Interviews",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/08/03/chytomo-natalya-korniyenko-interview-with-victoria-amelina-undated/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chytomo: Natalya Korniyenko Interview with Victoria Amelina (undated)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/22/from-words-to-bullets-ukrainian-writers-and-journalists-on-the-russo-ukrainian-war/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Words to Bullets: Ukrainian Writers and Journalists on the Russo-Ukrainian War",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/writing-from-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writing from Ukraine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/03/02/support-for-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "SUPPORT FOR UKRAINE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/record-of-war/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Record of war”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/04/22/books-for-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Books for Ukraine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/02/27/international-writers-in-solidarity-with-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "International Writers in solidarity with UKRAINE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/09/16/irish-pen-event-at-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irish PEN event at Dublin Book Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festival of Italian and Irish Literature in Ireland: 25 to 26 September 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/11/25/pen-heaney-prize-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Heaney Prize 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/10/14/day-of-the-imprisoned-writer-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Day of the Imprisoned Writer @ Dublin Book Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/08/29/announcing-the-full-programme-for-the-festival-of-italian-irish-literature-fiili-in-ireland-2025-26-27-september/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the full programme for the FIILI in Ireland 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/07/08/looking-at-women-looking-at-war/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Looking at Women, Looking at War (Dublin)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/07/09/looking-at-women-looking-at-war-armagh/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Looking at Women, Looking at War (Armagh)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/01/04/pen-heaney-prize/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN/Heaney Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/10/02/day-of-the-imprisoned-writer-ilhan-sami-comak-3/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Day of the Imprisoned Writer \u2013 İlhan Sami Çomak",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/freedom-to-write/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Freedom To Write",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/09/06/fiili-festival-of-italian-and-irish-literature-in-ireland-2024/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "FIILI \u2013 FESTIVAL OF ITALIAN AND IRISH LITERATURE IN IRELAND 2024",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/09/11/poetry-from-the-edge/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poetry from the Edge",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/07/03/war-identity-and-the-process-of-reconciliation/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "War, Identity, and the Process of Reconciliation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/05/28/belfast-book-festival-writing-to-writers-at-risk-or-in-prison/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Belfast Book Festival: writing to writers at risk or in prison",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/upcoming-events-2/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Upcoming events",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/10/04/human-rights-under-threat-the-arts-respond/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Human Rights Under Threat: The Arts Respond",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/10/09/culture-in-a-time-of-war-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Culture in a Time of War \u2013 Dublin Book Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/10/10/the-light-of-home-ukraine-and-ireland-a-celebration-of-ukrainian-and-irish-culture-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Light of Home: Ukraine and Ireland. A Celebration of Ukrainian and Irish Culture \u2013 Dublin Book Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/09/26/fiili-festival-of-italian-and-irish-literature-in-ireland-2023/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "FIILI \u2013 FESTIVAL OF ITALIAN AND IRISH LITERATURE IN IRELAND",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/10/25/day-of-the-imprisoned-writer-screening-documentary-white-torture-by-narges-mohammadi/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "DUBLIN BOOK FESTIVAL 2022. Screening of the Documentary WHITE TORTURE by Narges Mohammadi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/10/14/3140/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dublin Arts and Human Rights Festival 2022",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/07/07/pen-afghanistan-pen-for-peace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Afghanistan PEN for Peace",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/07/08/iwc-evolution-programme-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "IWC Evolution Programme 2021",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/10/07/nothing-bad-has-ever-happened-stories-and-poems-from-ukraine-reading-and-discussion-with-victoria-amelina-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘Nothing Bad Has Ever Happened: Stories and Poems from Ukraine’: Reading and discussion with Victoria Amelina (Ukraine).",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/12/21/winter-solstice-party-21st-december-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Winter Solstice party 21st December 2021",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/01/18/pen-norway-event-concerning-the-iranian-writer-narges-mohammadi/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Norway Event concerning the Iranian writer Narges Mohammadi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/07/04/wales-pen-cymru-event/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wales PEN Cymru event",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/11/24/pen-friends-letter-writing-event/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Friends letter-writing event",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/06/27/event-cracking-down-on-creative-voices-turkeys-silencing-of-writers-intellectuals-and-artists-five-years-after-the-failed-coup/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America EVENT: Cracking Down on Creative Voices: Turkey’s Silencing of Writers, Intellectuals and Artists Five Years After the Failed Coup",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/09/08/varavara-rao-event-29th-september-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "VARAVARA RAO EVENT, 29th September 2021",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/09/16/historical-novel-society-conference/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Historical Novel Society conference",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/08/04/in-brief-john-hewitt-international-summer-school-freedom-to-write-event-with-caoilfhionn-gallagher-kc-armagh-july-2026/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "In Brief: John Hewitt International Summer School Freedom to Write event with Caoilfhionn Gallagher KC (Armagh, July 2026)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/05/15/urgent-from-the-pen-international-translation-linguistic-rights-committee/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "URGENT (from the PEN International Translation & Linguistic Rights Committee)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/06/17/urgent-statement-on-the-rise-of-anti-migrant-violence-in-england-wales-scotland-and-ireland/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "URGENT: Statement on the rise of anti-migrant violence in England, Wales, Scotland and Ireland",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/12/11/opportunity-for-creative-non-fiction-writers-lviv-ukraine-i-m-victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "OPPORTUNITY for Creative Non-fiction writers (Lviv, Ukraine) i.m Victoria Amelina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/10/08/writer-and-broadcaster-manchan-magan-dies-aged-55/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writer and broadcaster Manchán Magan dies aged 55",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:26.383Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/the-echo-of-silence-an-open-call-to-pen-international-and-the-global-conscience-on-the-verge-of-the-systematic-eradication-of-kurdish-identity/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Echo of Silence: An Open Call to PEN International and the Global Conscience On the Verge of the Systematic Eradication of Kurdish Identity",
+      "publishedAt": "2026-01-14T22:18:23.000Z",
+      "description": "An Official Manifesto from the Kurdish PEN Centre to PEN International and the Global Community of Thinkers, Writers, and Defenders of Liberty. Introduction: The Topography of Agony and the Philosophy of Persistence Beyond History In the metaphysical theatre where “Being” contends with “non-being,” there exists a nation whose history is inscribed in blood and whose […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/pen-international-calls-for-an-end-to-book-bans-on-world-book-day-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN International calls for an end to book bans on World Book Day 2025",
+      "publishedAt": "2025-09-21T09:22:32.000Z",
+      "description": "“Censoring books is not just silencing authors, it is an attempt to suppress society’s ability to question, and to reflect. Authoritarian governments fear the transformative power of words\u2014words that challenge injustice, expose truths, and inspire change. At PEN International, we continue defending the right to write, to read, publish and imagine alternative futures. We believe […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/91st-pen-international-congress-krakow/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "91st PEN International Congress Kraków",
+      "publishedAt": "2025-09-12T10:24:39.000Z",
+      "description": "“At this 91st Congress we affirmed that freedom of expression cannot be atomized \u2014whether in defending peace against authoritarianism, protecting our planet, standing with trans and gender-diverse people, or confronting censorship in the United States and beyond. With these resolutions, PEN International and its writers commit to continue using words as acts of conscience, to […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/twelfth-congress-of-kurdish-pen-2025-in-oldenburg/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kurdish PEN Centre Successfully Holds Its Twelfth Congress",
+      "publishedAt": "2025-09-08T16:11:01.000Z",
+      "description": "On September 5\u20136, 2025, the Kurdish PEN Centre held its twelfth congress at the Yazidi House in Oldenburg, Germany, under the slogan “The National Umbrella.” The gathering brought together more than 120 members and guests, marking an important milestone in the Centre’s evolution. What began as a local initiative has now taken a decisive step […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/dear-ladies-and-gentlemen-honored-guests-dear-friends/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dear Ladies and Gentlemen, Honored Guests, Dear Friends",
+      "publishedAt": "2025-09-07T16:51:23.000Z",
+      "description": "Dear Ladies and Gentlemen, Honored Guests, Dear Friends, On behalf of the Preparatory Committee of the 12th Annual Congress of the Kurdish PEN Centre, it is my great pleasure to welcome you most warmly and to thank you for joining us today. Before we continue in Kurdish, allow me to briefly share with you\u2014in German\u2014some […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/crimes-against-the-kurds/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Crimes Against the Kurds",
+      "publishedAt": "2025-08-12T12:27:34.000Z",
+      "description": "by Miran Abraham Published by Shanidar in collaboration with Kurdistan Chronicle, this series presents a profound and compelling exploration of the suffering and resilience of the Kurdish people. It sheds light on the relentless persecution they have endured for decades, transcending borders and political regimes. Each book serves as a powerful testament to their unwavering […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/the-overlooked-history-of-the-kurds/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Overlooked History of the Kurds",
+      "publishedAt": "2025-07-12T12:39:39.000Z",
+      "description": "The tapestry of Kurdish history and culture is as intricate as it is ancient, a rich and vibrant narrative that spans millennia yet remains overshadowed in global academia. Despite their profound influence on the cultural and political landscapes of the Middle East, the Kurds and their heritage are conspicuously underrepresented in scholarly discourse. This glaring […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/for-the-public-opinion/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "For the public opinion",
+      "publishedAt": "2024-10-24T12:15:43.000Z",
+      "description": "The Kurdish PEN Center condemns the six years and three months prison sentence imposed by the Turkish regime and its politically active courts on Mr. Eyyüp Subaşı, a Kurdish language teacher, and calls for the immediate annulment of this ruling. The right to education and living in one’s mother tongue is one of the most […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/history-of-the-kurdish-centre/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "History of the Kurdish Pen Centre",
+      "publishedAt": "2022-11-02T15:25:05.000Z",
+      "description": "By Bêrîvan Doskî Kurdish PEN (Navenda PEN a Kurd) is one of over 140 Centres that are members of PEN International \u2013 an important and diverse community of writers all over the world. It was vital for the global human heritage of cultures and literatures to include Kurdish literature, language and culture, which have faced […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-kurd-org",
+      "source": {
+        "name": "Kurdish PEN",
+        "url": "https://pen-kurd.com/pen-international-88th-congress-a-message-of-solidarity-with-the-women-and-people-of-kurdistan/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN International 88th Congress: A Message of Solidarity with the Women and People of Kurdistan",
+      "publishedAt": "2022-10-04T12:38:03.000Z",
+      "description": "Zhina (Mahsa) Amini was a 22-year-old Kurdish woman from Saqqez, in Kurdistan (Iran). Her death in custody, following her arrest by Iran’s so-called “morality police,” sparked mass and ongoing protests throughout Iran and Kurdistan. Zhina was arrested in Tehran on September 13 for allegedly not complying with the country’s dress code for women. According to […]",
+      "discoveredAt": "2026-09-26T17:38:26.456Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Åbningsarrangement #forbudtebøger: Er bogens frihed truet?",
+      "publishedAt": "2026-09-24T11:19:44.000Z",
+      "description": "5. oktober kl. 15.00 i Dokk1, Aarhus. Oplev Mads Ananda Lodahl, Kasey Meehan m.fl, når Dansk PEN sammen med Aarhus Bibliotekerne åbner kampagnen #forbudtebøger.",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/koncert-med-den-palaestinensiske-fribykunstner-elsusi/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Koncert med den palæstinensiske fribykunstner Elsusi",
+      "publishedAt": "2026-09-24T11:08:49.000Z",
+      "description": "Lørdag d. 10. oktober kl. 19.30-21.00 i Kulturhuset Union på Nørrebro \u2013 arabisk rap, stærke fortællinger og musikalsk energi.",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/eritrea-25-aar-uden-livstegn-hvor-er-de-12-forsvundne-journalister/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eritrea: 25 år uden livstegn \u2013 hvor er de 12 forsvundne journalister?",
+      "publishedAt": "2026-09-22T06:04:45.000Z",
+      "description": "Hjælp os, sammen med PEN-kolleger verden over, at kræve svar fra den eritreiske regering: Hvor er de 12 forfattere og journalister?",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/biblioteker-og-skoler-i-63-kommuner-deltager-i-forbudteboeger/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Biblioteker og skoler i 63 kommuner deltager i #ForbudteBøger",
+      "publishedAt": "2026-08-18T07:33:58.000Z",
+      "description": "Med kampagnen #ForbudteBøger sætter Dansk PEN censur og ytringsfrihed på dagsordenen i samarbejde med biblioteker, skoler, boghandlere og forlag over hele landet.",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/smugkro-for-forbudt-litteratur-2/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Smugkro for forbudt litteratur",
+      "publishedAt": "2026-05-22T06:32:14.000Z",
+      "description": "Vi læser højt af forbudte bøger og fortæller historierne bag censuren og forbuddene. Oplæsning ved bl.a. Moussa Mchangama, Nina Palesa Bonde og Mille Rode",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/er-gaza-allerede-glemt/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Er Gaza allerede glemt?",
+      "publishedAt": "2026-05-22T06:28:32.000Z",
+      "description": "Samtale mellem forfatter Lone Aburas og Dansk PENs præsident Mads Julius Elf.",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/maksim-znak-the-museum-of-stolen-time/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Maksim Znak: The Museum of Stolen Time",
+      "publishedAt": "2026-05-11T08:47:51.000Z",
+      "description": "Læs Maksim Znaks tekst hos PEN/Opp.",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/pressefriheden-er-historisk-traengt/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pressefriheden er historisk trængt",
+      "publishedAt": "2026-05-07T08:14:56.000Z",
+      "description": "3. maj 2026, Verdensdagen for Pressefrihed, var ikke noget at fejre \u2013 det har ikke stået værre til, siden man begyndte at måle på den.",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/caselister/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Caselister",
+      "publishedAt": "2026-05-04T10:56:04.000Z",
+      "description": "PEN Internationals case liste 2026 dokumenterer et bekymrende globalt mønster: pladsen til udtryk, kultur og uenighed skrumper ind, efterhånden som regeringer intensiverer indsatsen for at bringe kritiske røster til tavshed og målretter deres angreb mod forfattere og andre skribenter, der passer deres arbejde.",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/egypten/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Egypten",
+      "publishedAt": "2026-05-04T08:44:29.000Z",
+      "description": "Den 6. april var det syvende gang på mindre end to år, at den egyptiske digter, menneskerettigheds-, og demokratiforkæmper Ahmed Douma skulle møde op i retten.",
+      "discoveredAt": "2026-09-26T17:38:26.866Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/el-pen-catala/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vull saber-ne més",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/escriptor-acollit/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Escriptor Acollit",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/traduccio/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vull saber-ne més",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/drets-linguistics/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Drets lingüístics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/llibertat-dexpressio/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Llibertat d’expressió",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/sigues-del-pen-2/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fes-te soci del PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/sigues-del-pen/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fes-te amic del PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/traduccio/premi-de-traduccio/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Premi PEN Català Montserrat Franquesa de Traducció",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/traduccio/declaracio-del-quebec/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Declaració del Quebec",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/programes/traduccio/revista-visat-2/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Coneix la revista Visat",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Prova de vida ja!»: Màrius Serra escriu a Temesgen Ghebreyesus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-dotze-postals-sonores-contra-25-anys-de-silenci/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Prova de vida ja!»: dotze postals sonores contra 25 anys de silenci",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/escriure-era-triar-la-vida-les-residents-de-villa-joana-conversen-amb-nuria-cadenes-a-la-llibreria-alibri/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Escriure era triar la vida”, les residents de Vil·la Joana conversen amb Núria Cadenes a la llibreria Alibri",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/el-pen-catala-sadhereix-a-lacord-per-promoure-un-model-de-contracte-per-escriptors-traductors-i-dramaturgs-impulsat-per-laelc/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "El PEN Català s’adhereix a l’acord per promoure un model de contracte per escriptors, traductors i dramaturgs impulsat per l’AELC",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/finalitza-la-convocatoria-del-iii-premi-de-poesia-roissy-en-brie-per-a-persones-refugiades/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Finalitza la convocatòria del III Premi de Poesia Roissy-en-Brie per a Persones Refugiades",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/ali-lmbrabet-detingut-al-marroc/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ali Lmbrabet detingut al Marroc",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/notes-legals/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "política de privacitat",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/politica-de-cookies/",
+        "language": "ca"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Política de cookies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:38:27.318Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/september-opprop-mot-lhbt-forfolgelse/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Over 450 organisasjoner står sammen mot LHBT+-forfølgelse",
+      "publishedAt": "2026-09-22T10:00:15.000Z",
+      "description": "Innlegget Over 450 organisasjoner står sammen mot LHBT+-forfølgelse dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/2026-apent-for-nominasjoner/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Åpent for nominasjoner",
+      "publishedAt": "2026-09-19T19:15:37.000Z",
+      "description": "Innlegget Åpent for nominasjoner dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/over-180-forfattere-krever-svar-pa-eritreas-forsvunne-forfattere-og-journalister/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Over 180 forfattere krever svar på Eritreas forsvunne forfattere og journalister",
+      "publishedAt": "2026-09-18T07:00:01.000Z",
+      "description": "Innlegget Over 180 forfattere krever svar på Eritreas forsvunne forfattere og journalister dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/imaan-mazari-hazir-loslates/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Imaan Mazari-Hazir løslates",
+      "publishedAt": "2026-09-17T14:29:34.000Z",
+      "description": "Innlegget Imaan Mazari-Hazir løslates dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/en-viktig-del-av-meg-selv-ble-tatt-fra-meg/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Freshta Safi: \u2013 En viktig del av meg selv ble tatt fra meg",
+      "publishedAt": "2026-08-31T17:13:41.000Z",
+      "description": "Innlegget Freshta Safi: \u2013 En viktig del av meg selv ble tatt fra meg dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/eides-taushet-er-vanskelig-a-forsta-til/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eides taushet er vanskelig å forstå til",
+      "publishedAt": "2026-08-21T09:14:35.000Z",
+      "description": "Innlegget Eides taushet er vanskelig å forstå til dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/landet-vi-vendte-ryggen-til/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Landet vi vendte ryggen til",
+      "publishedAt": "2026-08-16T16:55:15.000Z",
+      "description": "Innlegget Landet vi vendte ryggen til dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/undertrykkelsen-av-ytrere-fortsetter-i-belarus-seks-ar-etter/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Undertrykkelsen fortsetter seks år etter omstridt presidentvalg",
+      "publishedAt": "2026-08-07T10:23:01.000Z",
+      "description": "Innlegget Undertrykkelsen fortsetter seks år etter omstridt presidentvalg dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/norsk-pen-pa-arendalsuka-2026/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Norsk PEN på Arendalsuka: Fokus på unges ytringsfrihet",
+      "publishedAt": "2026-08-07T07:11:26.000Z",
+      "description": "Innlegget Norsk PEN på Arendalsuka: Fokus på unges ytringsfrihet dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "norskpen-no",
+      "source": {
+        "name": "Norwegian PEN",
+        "url": "https://norskpen.no/nyheter/25-ar-uten-svar-hvor-er-eritreas-forsvunne-forfattere-og-journalister/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hvor er Eritreas forsvunne forfattere og journalister?",
+      "publishedAt": "2026-07-02T09:16:21.000Z",
+      "description": "Innlegget Hvor er Eritreas forsvunne forfattere og journalister? dukket først opp på Norsk PEN.",
+      "discoveredAt": "2026-09-26T17:38:28.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ]
+}

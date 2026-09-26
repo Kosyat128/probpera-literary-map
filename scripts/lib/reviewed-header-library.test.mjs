@@ -7,10 +7,11 @@ import {
 } from "./reviewed-header-library.mjs";
 import { projectReviewedR49nPackage } from "./reviewed-r49n-package.mjs";
 import { projectReviewedHeaderShowcase } from "./reviewed-header-showcase.mjs";
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 
 const sha256 = source => createHash("sha256").update(source).digest("hex");
 const read = relativePath => projectReviewedR49nPackage(
-  relativePath, projectReviewedHeaderShowcase(relativePath, readFileSync(relativePath, "utf8"))
+  relativePath, projectReviewedHeaderShowcase(relativePath, projectReviewedR10Delta(relativePath, readFileSync(relativePath, "utf8")))
 );
 
 describe("September 12 owner-approved header and library governance", () => {

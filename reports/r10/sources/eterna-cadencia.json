@@ -1,0 +1,618 @@
+{
+  "sourceId": "eterna-cadencia",
+  "name": "Eterna Cadencia",
+  "entryUrl": "https://eternacadencia.com.ar/",
+  "countryCodes": [
+    "AR"
+  ],
+  "coverageCountryCodes": [
+    "AR"
+  ],
+  "attemptedAt": "2026-09-26T17:32:10.012Z",
+  "requests": [
+    {
+      "url": "https://eternacadencia.com.ar/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 98986,
+      "sha256": "9b88a7196643a357acdabb13831630f2c787483ebc3d642a8a10acf46b2bd0f8",
+      "accessedAt": "2026-09-26T17:32:11.637Z"
+    },
+    {
+      "url": "https://eternacadencia.com.ar/blog/virginia-woolf-editora",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 47549,
+      "sha256": "9ec1e3596c587a94b9322f4fcc7d93a555f6ef8db0e1f78f11665135f97f4f17",
+      "accessedAt": "2026-09-26T17:32:12.060Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://eternacadencia.com.ar/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 74,
+    "sha256": "683a93006aaf2c69310c6571261afd619a8bb23d31052f0fa148253d844d1f9a",
+    "accessedAt": "2026-09-26T17:32:11.071Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "eterna-cadencia",
+    "name": "Eterna Cadencia",
+    "url": "https://eternacadencia.com.ar/",
+    "format": "html",
+    "language": "es",
+    "region": "latin-america",
+    "sourceFamilyId": "eterna-cadencia",
+    "countryCodes": [
+      "AR"
+    ],
+    "coverageCountryCodes": [
+      "AR"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://eternacadencia.com.ar"
+    ],
+    "linkPattern": "^/blog/.+|^/p/-iquest-por-que-son-tan-lindos-los-caballos-/159178/[^/]+/?$|^/p/al-norte-la-montana-al-sur-el-lago-al-oeste-el-camino-al-este-el-rio/190434/[^/]+/?$|^/p/la-casa-de-las-almas/129933/[^/]+/?$|^/p/modernidad-explosiva/177699/[^/]+/?$|^/p/hacia-donde-se-pone-el-sol/175882/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://eternacadencia.com.ar/blog/virginia-woolf-editora"
+    ],
+    "verifiedAt": "2026-09-26T17:32:12.063Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 20,
+  "sample": {
+    "sourceId": "eterna-cadencia",
+    "source": {
+      "name": "Eterna Cadencia",
+      "url": "https://eternacadencia.com.ar/blog/virginia-woolf-editora",
+      "language": "es"
+    },
+    "region": "latin-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Virginia Woolf, editora",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:32:11.652Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://eternacadencia.com.ar/blog/virginia-woolf-editora",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 47549,
+      "sha256": "9ec1e3596c587a94b9322f4fcc7d93a555f6ef8db0e1f78f11665135f97f4f17",
+      "accessedAt": "2026-09-26T17:32:12.060Z",
+      "headline": "Virginia Woolf, editora",
+      "excerpt": "Virginia Woolf, editora - Eterna Cadencia <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.3.1/css/all.css\" integrity=\"sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU\" crossorigin=\"anonymous\"> <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-KSTJ86K\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> Librería Blog Editorial",
+      "publishedDates": [],
+      "canonical": "https://eternacadencia.com.ar/blog/virginia-woolf-editora",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:12.063Z",
+  "foundItems": [
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/virginia-woolf-editora",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Virginia Woolf, editora",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/guillermo-quijas-quot-una-editorial-se-parece-un-poco-a-una-casa-quot-",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Guillermo Quijas: \"Una editorial se parece un poco a una casa\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/la-medida-de-lo-abierto",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La medida de lo abierto",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/betina-gonzalez-ldquo-enamorarse-es-un-acto-ficcional-rdquo-",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Betina González: “Enamorarse es un acto ficcional”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/view-tag/2724/1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Betina González",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/nueve-preguntas",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nueve preguntas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/nueve-preguntas-a-lalo-barrubia",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nueve preguntas a Lalo Barrubia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/view-tag/1518/1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Guillermo Quijas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/silvana-vogt-ldquo-cada-lengua-te-hace-mirar-el-mundo-de-otra-manera-quot-",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Silvana Vogt: “Cada lengua te hace mirar el mundo de otra manera\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/la-creacion-de-la-obra-segun-mauricio-kartun",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La creación de la obra según Mauricio Kartún",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/view-tag/3641/1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mauricio Kartun",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/tuve-lo-que-a-mi-no-me-toca-recuperan-poemas-de-edna-st-vincent-millay",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tuve lo que a mí no me toca: recuperan poemas de Edna St. Vincent Millay",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/view-tag/265/1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alejandro Crotto",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/view-tag/4881/1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Edna St. Vincent Millay",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/blog/view-tag/362/1",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jorge Consiglio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/p/-iquest-por-que-son-tan-lindos-los-caballos-/159178/172182",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "¿Por qué son tan lindos los caballos?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/p/al-norte-la-montana-al-sur-el-lago-al-oeste-el-camino-al-este-el-rio/190434/206470",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Al norte la montaña, al sur el lago, al oeste el camino, al este el río",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/p/la-casa-de-las-almas/129933/137108",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La casa de las almas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/p/modernidad-explosiva/177699/193287",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Modernidad explosiva",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "source": {
+        "name": "Eterna Cadencia",
+        "url": "https://eternacadencia.com.ar/p/hacia-donde-se-pone-el-sol/175882/191140",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hacia donde se pone el sol",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "9b88a7196643a357acdabb13831630f2c787483ebc3d642a8a10acf46b2bd0f8"
+}

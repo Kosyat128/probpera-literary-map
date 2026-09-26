@@ -1,0 +1,396 @@
+{
+  "sourceId": "publishers-ca",
+  "name": "Association Nationale des Editeurs de Livres",
+  "entryUrl": "https://www.publishers.ca/",
+  "countryCodes": [
+    "CA"
+  ],
+  "coverageCountryCodes": [
+    "CA"
+  ],
+  "attemptedAt": "2026-09-26T17:28:00.687Z",
+  "requests": [
+    {
+      "url": "https://publishers.ca/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 66708,
+      "sha256": "be47b4cf9ed4361e6e9a907de2b8eff0849caf1527a945cdec8576ea31fc3f7f",
+      "accessedAt": "2026-09-26T17:21:43.322Z"
+    },
+    {
+      "url": "https://publishers.ca/acp-awards-notice-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 304559,
+      "sha256": "1dc2a19877ec5bef0195d4c01fd7a0c7e7f125eb95740a716cabe0afdadc3562",
+      "accessedAt": "2026-09-26T17:28:04.987Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.publishers.ca/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 72,
+    "sha256": "66640d5906e8799246994a86b6873e6b0f549fac2c9ef3e4f8221e1dfd439ed8",
+    "accessedAt": "2026-09-26T17:28:01.244Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:35.264Z",
+    "sourceDocumentSha256": "be47b4cf9ed4361e6e9a907de2b8eff0849caf1527a945cdec8576ea31fc3f7f"
+  },
+  "endpoint": {
+    "id": "publishers-ca",
+    "name": "Association Nationale des Editeurs de Livres",
+    "url": "https://publishers.ca/feed/",
+    "format": "rss",
+    "language": "en-CA",
+    "region": "north-america",
+    "sourceFamilyId": "publishers-ca",
+    "countryCodes": [
+      "CA"
+    ],
+    "coverageCountryCodes": [
+      "CA"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://publishers.ca"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://publishers.ca/acp-awards-notice-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:05.007Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "publishers-ca",
+    "source": {
+      "name": "Association Nationale des Editeurs de Livres",
+      "url": "https://publishers.ca/acp-awards-notice-2026/",
+      "language": "en-CA"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "ACP announces 2026 award recipients",
+    "publishedAt": "2026-05-22T14:36:07.000Z",
+    "description": "The post ACP announces 2026 award recipients appeared first on Association of Canadian Publishers.",
+    "discoveredAt": "2026-09-26T17:28:01.252Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://publishers.ca/acp-awards-notice-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 304559,
+      "sha256": "1dc2a19877ec5bef0195d4c01fd7a0c7e7f125eb95740a716cabe0afdadc3562",
+      "accessedAt": "2026-09-26T17:28:04.987Z",
+      "headline": "ACP announces 2026 award recipients",
+      "excerpt": "ACP announces 2026 award recipients - Association of Canadian Publishers May 22, 2026 Awards & Honours | Media Releases | News & Events | Recent Posts ACP announces 2026 award recipients ← Previous post Next post → The Association of Canadian Publishers (ACP) is delighted to announce that Jack David, founder and publisher at ECW Press, is the recipient of the 2026 President’s Award. ACP is also pl",
+      "publishedDates": [
+        {
+          "value": "2026-05-22T14:36:07+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-05-22T10:36:07-04:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        },
+        {
+          "value": "2026-05-22T10:36:07-04:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-05-22T14:36:07+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-05-22T14:36:07+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://publishers.ca/acp-awards-notice-2026/",
+      "language": "en-CA",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:05.007Z",
+  "foundItems": [
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/acp-awards-notice-2026/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ACP announces 2026 award recipients",
+      "publishedAt": "2026-05-22T14:36:07.000Z",
+      "description": "The post ACP announces 2026 award recipients appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/2026-higher-ed-research/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Report: Higher Education Course Materials Landscape Analysis",
+      "publishedAt": "2026-05-01T13:56:17.000Z",
+      "description": "The post Report: Higher Education Course Materials Landscape Analysis appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/call-to-reinstate-funding-nova-scotia/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Canadian Publishers, Authors, and Booksellers Call for Nova Scotia to Reinstate Funding for Publishers",
+      "publishedAt": "2026-03-04T14:02:59.000Z",
+      "description": "The post Canadian Publishers, Authors, and Booksellers Call for Nova Scotia to Reinstate Funding for Publishers appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/nova-scotia-funding-cuts/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Canadian Publishers Condemn Nova Scotia’s Decision to Cut Funding to Book Publishers",
+      "publishedAt": "2026-02-26T20:42:31.000Z",
+      "description": "The post Canadian Publishers Condemn Nova Scotia’s Decision to Cut Funding to Book Publishers appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/building-your-canadian-classroom-bookshelf/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Building Your Canadian Classroom Bookshelf",
+      "publishedAt": "2026-02-20T21:28:17.000Z",
+      "description": "The post Building Your Canadian Classroom Bookshelf appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/alberta-book-ban-implementation/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Canadian Publishing Industry Condemns Implementation of Alberta Book Ban",
+      "publishedAt": "2026-02-06T17:24:27.000Z",
+      "description": "The post Canadian Publishing Industry Condemns Implementation of Alberta Book Ban appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/certified-canadian-publisher-non-members/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Association of Canadian Publishers opens Certified Canadian Publisher program to eligible publishers across Canada",
+      "publishedAt": "2026-08-26T13:15:13.000Z",
+      "description": "The post Association of Canadian Publishers opens Certified Canadian Publisher program to eligible publishers across Canada appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/margaret-bryant-condolence/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement of condolence on the death of Margaret Bryant",
+      "publishedAt": "2026-08-11T17:40:32.000Z",
+      "description": "The post Statement of condolence on the death of Margaret Bryant appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/statement-alberta-public-library-restrictions/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Canadian Publishers Condemn Alberta’s Proposed Restrictions on Public Library Materials",
+      "publishedAt": "2026-04-17T13:30:41.000Z",
+      "description": "The post Canadian Publishers Condemn Alberta’s Proposed Restrictions on Public Library Materials appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://publishers.ca/publishers-oppose-repeal-of-library-mailing-provisions/",
+        "language": "en-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Canadian Publishers Stand with Library Community in Opposing Repeal of Library Mailing Provisions",
+      "publishedAt": "2025-12-15T20:23:38.000Z",
+      "description": "The post Canadian Publishers Stand with Library Community in Opposing Repeal of Library Mailing Provisions appeared first on Association of Canadian Publishers.",
+      "discoveredAt": "2026-09-26T17:28:01.252Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "be47b4cf9ed4361e6e9a907de2b8eff0849caf1527a945cdec8576ea31fc3f7f"
+}

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "editorialTimeZone": "Europe/Moscow",
+  "maxSources": 250,
+  "maxItems": 5000,
+  "maxSourceStateBytes": 524288,
+  "maxHeldItems": 25000,
+  "maxHeldBytes": 20971520,
+  "maxFeedBytes": 20971520,
+  "legacyMaxSources": 50,
+  "legacyMaxItems": 500
+}

@@ -1,0 +1,15 @@
+{
+  "sourceId": "abk-bg",
+  "name": "Bulgarian Book Association",
+  "entryUrl": "https://www.abk.bg/",
+  "countryCodes": [
+    "BG"
+  ],
+  "coverageCountryCodes": [
+    "BG"
+  ],
+  "attemptedAt": "2026-09-26T17:28:08.941Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

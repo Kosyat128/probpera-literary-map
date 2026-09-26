@@ -73,6 +73,12 @@ function publishedInPast(value, current, today) {
   return validTimestamp(value) && Date.parse(value) <= current.getTime();
 }
 
+export function newsAnnouncementEligible(record, today, timeZone) {
+  return record.kind !== "announcement" || validTimestamp(record.verifiedAt) && (
+    record.eventDate > today || record.eventDate === today && todayAt(new Date(record.verifiedAt), timeZone) >= today
+  );
+}
+
 export function selectReviewed(records, current, timeZone) {
   if (!Array.isArray(records)) throw new TypeError("reviewed_data_invalid");
   const today = todayAt(current, timeZone);
@@ -94,14 +100,14 @@ export function selectReviewed(records, current, timeZone) {
       ))
       || !record.source || typeof record.source.name !== "string" || !record.source.name.trim() || record.source.name.length > 160
       || !validLanguage(record.source.language)) return [];
-    if (record.kind === "announcement" && (
-      record.eventDate < today
-      || (record.eventDate === today && todayAt(new Date(record.verifiedAt), timeZone) < today)
-    )) return [];
+    if (!newsAnnouncementEligible(record, today, timeZone)) return [];
     const source = canonicalUrl(record.source.url);
     if (!source || source.href.length > 2048) return [];
-    const eventKeys = [`url:${source.href}|${record.eventDate}|${record.kind}`];
-    if (record.eventKey !== undefined) eventKeys.push(`event:${record.eventKey.trim()}`);
+    // A reviewed semantic identity distinguishes real stages on one source page.
+    // URL/date is a fallback for legacy records, not a second deduplication veto.
+    const eventKeys = [record.eventKey !== undefined
+      ? `event:${record.eventKey.trim()}`
+      : `url:${source.href}|${record.eventDate}|${record.kind}`];
     if (ids.has(record.id) || eventKeys.some((key) => events.has(key))) return [];
     ids.add(record.id);
     for (const key of eventKeys) events.add(key);

@@ -1,0 +1,374 @@
+{
+  "sourceId": "penclubedobrasil-org-br",
+  "name": "Pen Clube do Brasil",
+  "entryUrl": "https://www.penclubedobrasil.org.br/",
+  "countryCodes": [
+    "BR"
+  ],
+  "coverageCountryCodes": [
+    "BR"
+  ],
+  "attemptedAt": "2026-09-26T17:29:20.689Z",
+  "requests": [
+    {
+      "url": "https://penclubedobrasil.org.br/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 45961,
+      "sha256": "dfd4ad97d6dd3b7f72a9c7ec272018df9efbd59b52238b52150eff69c9b982ea",
+      "accessedAt": "2026-09-26T17:23:19.526Z"
+    },
+    {
+      "url": "https://penclubedobrasil.org.br/oscar-de-alencar-araripe-lanca-novo-livro-dia-28-03-2025-na-livraria-da-travessa-ipanema/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1398546,
+      "sha256": "dc0649772719ef16186efffa28e8e334d4fadd5dbaab9e5397ab107e39574257",
+      "accessedAt": "2026-09-26T17:29:24.099Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://penclubedobrasil.org.br/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 181,
+    "sha256": "e1a5d5d629df5ae6944d740b2fabc6383b62bb95fbdfc76e08cef017d481f530",
+    "accessedAt": "2026-09-26T17:29:22.369Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:13.679Z",
+    "sourceDocumentSha256": "dfd4ad97d6dd3b7f72a9c7ec272018df9efbd59b52238b52150eff69c9b982ea"
+  },
+  "endpoint": {
+    "id": "penclubedobrasil-org-br",
+    "name": "Pen Clube do Brasil",
+    "url": "https://penclubedobrasil.org.br/feed/",
+    "format": "rss",
+    "language": "pt-BR",
+    "region": "latin-america",
+    "sourceFamilyId": "penclubedobrasil-org-br",
+    "countryCodes": [
+      "BR"
+    ],
+    "coverageCountryCodes": [
+      "BR"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://penclubedobrasil.org.br"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://penclubedobrasil.org.br/oscar-de-alencar-araripe-lanca-novo-livro-dia-28-03-2025-na-livraria-da-travessa-ipanema/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:24.135Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "penclubedobrasil-org-br",
+    "source": {
+      "name": "Pen Clube do Brasil",
+      "url": "https://penclubedobrasil.org.br/oscar-de-alencar-araripe-lanca-novo-livro-dia-28-03-2025-na-livraria-da-travessa-ipanema/",
+      "language": "pt-BR"
+    },
+    "region": "latin-america",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "Oscar de Alencar Araripe lança novo livro dia 28.03.2025, na Livraria da Travessa Ipanema",
+    "publishedAt": "2025-02-27T15:07:04.000Z",
+    "description": "Imaculada: A Amazônia que nos deu a luz Oscar de Alencar Araripe lança seu novo livro \" Imaculada: A Amazônia que nos deu a luz\", dia 28 de marco, na Livraria da Travessa Ipanema. Segundo Arnaldo Niskier, da Academia Brasileira de Letras, \" A Imaculada de Araripe, obra de fôlego e beleza literária, traz [...] O post Oscar de Alencar Araripe lança novo livro dia 28.03.2025, na Livraria da Travessa…",
+    "discoveredAt": "2026-09-26T17:29:22.371Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://penclubedobrasil.org.br/oscar-de-alencar-araripe-lanca-novo-livro-dia-28-03-2025-na-livraria-da-travessa-ipanema/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1398546,
+      "sha256": "dc0649772719ef16186efffa28e8e334d4fadd5dbaab9e5397ab107e39574257",
+      "accessedAt": "2026-09-26T17:29:24.099Z",
+      "headline": "Oscar de Alencar Araripe lança novo livro dia 28.03.2025, na Livraria da Travessa Ipanema",
+      "excerpt": "View Larger Image Oscar de Alencar Araripe lança novo livro dia 28.03.2025, na Livraria da Travessa Ipanema melhorweb2025-02-27T12:09:10-03:0027/02/2025 12:07|Categories: Notícias|Tags: Amazônia, Livraria da Travessa, Oscar de Alencar Araripe|0 Comentários Imaculada: A Amazônia que nos deu a luz Oscar de Alencar Araripe lança seu novo livro ” Imaculada: A Amazônia que nos deu a luz”, dia 28 de mar",
+      "publishedDates": [
+        {
+          "value": "2025-02-27T15:07:04+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2025-02-27T15:07:04+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2025-02-27T15:07:04+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://penclubedobrasil.org.br/oscar-de-alencar-araripe-lanca-novo-livro-dia-28-03-2025-na-livraria-da-travessa-ipanema/",
+      "language": "pt-BR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:24.135Z",
+  "foundItems": [
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/oscar-de-alencar-araripe-lanca-novo-livro-dia-28-03-2025-na-livraria-da-travessa-ipanema/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oscar de Alencar Araripe lança novo livro dia 28.03.2025, na Livraria da Travessa Ipanema",
+      "publishedAt": "2025-02-27T15:07:04.000Z",
+      "description": "Imaculada: A Amazônia que nos deu a luz Oscar de Alencar Araripe lança seu novo livro \" Imaculada: A Amazônia que nos deu a luz\", dia 28 de marco, na Livraria da Travessa Ipanema. Segundo Arnaldo Niskier, da Academia Brasileira de Letras, \" A Imaculada de Araripe, obra de fôlego e beleza literária, traz [...] O post Oscar de Alencar Araripe lança novo livro dia 28.03.2025, na Livraria da Travessa…",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/brava-gente-brasileira-dia-18-08-2025-segunda-feira-as-17h-na-sede-do-pen-clube-do-brasil/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Brava Gente Brasileira, dia 18/08/2025, segunda-feira, às 17h, na sede do PEN Clube do Brasil",
+      "publishedAt": "2025-08-18T12:08:16.000Z",
+      "description": "PEN Clube convida para a dramatização “Brava Gente Brasileira”. Participação de Samuel Abrantes /Samile Cunha, Miriam Halfim e mais Vinicius Eco, André Severiano e conversa com o jornalista Zevi Ghivelder. Dia 18/08/2025, segunda-feira, às 17h, na sede do PEN Clube. O post Brava Gente Brasileira, dia 18/08/2025, segunda-feira, às 17h, na sede do PEN Clube do Brasil apareceu primeiro em PEN Clube …",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/seminario-sobre-stefan-zweig-reabre-programacao-do-pen-clube-dia-17-03-2025-as-17-horas/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seminário sobre Stefan Zweig reabre programação do Pen Clube dia 17.03.2025, às 17 horas",
+      "publishedAt": "2025-03-10T19:13:56.000Z",
+      "description": "SEMINÁRIO SOBRE STEFAN ZWEIG REÚNE ESCRITORES E INTELECTUAIS NO PEN CLUBE Um seminário sobre Stefan Zweig reúne escritores e intelectuais para a abertura da programação do PEN Clube do Brasil em 2025, dia 17 de março, às 17 horas. Em palestras compartilhadas o embaixador e ex-Ministro da Cultura Jerônimo Moscardo, e o [...] O post Seminário sobre Stefan Zweig reabre programação do Pen Clube dia 1…",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/lancamento-do-livro-poema-de-papel-do-socio-titular-jerson-lima-silva-dia-8-de-setembro-as-17h-no-pen-clube/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lançamento do livro “Poema de Papel”, do sócio titular Jerson Lima Silva, dia 8 de setembro, às 17h, no PEN Clube",
+      "publishedAt": "2025-09-03T20:48:03.000Z",
+      "description": "O post Lançamento do livro “Poema de Papel”, do sócio titular Jerson Lima Silva, dia 8 de setembro, às 17h, no PEN Clube apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/grande-premio-pen-clube-2024-a-claudio-aguiar/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Grande Prêmio PEN Clube 2024 a Cláudio Aguiar, dia 04/08/2025, segunda-feira, às 17h, na sede do PEN Clube do Brasil",
+      "publishedAt": "2025-07-29T18:12:37.000Z",
+      "description": "Solenidade de entrega do tradicional Grande Prêmio Literário PEN Clube do Brasil 2024 conferido a CLÁUDIO AGUIAR pelo conjunto de sua obra. A saudação oficial pelo PEN Clube será feita pela sócia Lucia Regina de Lucena. Dia 4 de agosto de 2025, segunda-feira, às 17h, na sede do PEN Clube do Brasil. [...] O post Grande Prêmio PEN Clube 2024 a Cláudio Aguiar, dia 04/08/2025, segunda-feira, às 17h, …",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/apresentacao-vinicius-uma-luz-no-coracao/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Apresentação “Vinicius, Uma Luz no Coração”",
+      "publishedAt": "2025-06-26T21:02:17.000Z",
+      "description": "Apresentação “Vinicius, Uma Luz no Coração”, com Lucia Regina de Lucena e convidados, no PEN Clube, dia 30/06/2025, segunda-feira, às 17h. O post Apresentação “Vinicius, Uma Luz no Coração” apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/carlos-vereza-faz-palestra-sobre-stefan-zweig-no-pen-clube/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Carlos Vereza faz palestra sobre Stefan Zweig no PEN Clube, dia 24/03/2025, segunda-feira, às 17h.",
+      "publishedAt": "2025-03-19T15:01:07.000Z",
+      "description": "Carlos Vereza faz palestra sobre Stefan Zweig no PEN Clube, dia 24/03/2025, segunda-feira, às 17h. Assista Carlos Vereza no PEN Clube: O post Carlos Vereza faz palestra sobre Stefan Zweig no PEN Clube, dia 24/03/2025, segunda-feira, às 17h. apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/edir-meirelles-lanca-o-livro-sarapitanga-uma-historia-secreta/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Edir Meirelles lança o livro “Sarapitanga: uma História Secreta“",
+      "publishedAt": "2025-01-06T14:48:23.000Z",
+      "description": "Em concorrida tarde de autógrafos, Edir Meirelles , membro do Pen Clube e da Academia Carioca de Letras, lançou seu último livro \"Sarapitanga: uma História Secreta\", dia 27 de dezembro de 2024, em Caxias do Sul. O post Edir Meirelles lança o livro “Sarapitanga: uma História Secreta“ apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/palestra-fantasmas-e-fantasias-de-agosto-a-ser-proferida-pelo-prof-dr-deonisio-da-silva/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Palestra “Fantasmas e Fantasias de Agosto”, a ser proferida pelo Prof. Dr. Deonísio da Silva",
+      "publishedAt": "2026-08-29T22:37:51.000Z",
+      "description": "Dia: 31 de agosto de 2026, 2ª-feira Local: Sede Social do Horário: 17 horas PEN Clube do Brasil Brinde de honra após o evento. [...] O post Palestra “Fantasmas e Fantasias de Agosto”, a ser proferida pelo Prof. Dr. Deonísio da Silva apareceu primeiro em PEN Clube do Brasil.",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penclubedobrasil-org-br",
+      "source": {
+        "name": "Pen Clube do Brasil",
+        "url": "https://penclubedobrasil.org.br/marcio-catunda-faz-palestra-no-pen-clube-dia-09-12-2024-as-17-horas/",
+        "language": "pt-BR"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Márcio Catunda faz palestra no Pen Clube, dia 09.12.2024, às 17 horas",
+      "publishedAt": "2024-12-02T13:32:38.000Z",
+      "description": "MÁRCIO CATUNDA Márcio Catunda faz palestra no Pen Clube sobre “ Lisboa e a Literatura Portuguesa” , dia 09.12.2024, às 17 horas. Nascido em Fortaleza, em 1957, Márcio Catunda é diplomata, poeta, romancista e ensaísta. Publicou 50 livros, alguns dos quais no idioma espanhol. Produziu, também, dez CDs de poemas musicados e cantados por [...] O post Márcio Catunda faz palestra no Pen Clube, dia 09.1…",
+      "discoveredAt": "2026-09-26T17:29:22.371Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "dfd4ad97d6dd3b7f72a9c7ec272018df9efbd59b52238b52150eff69c9b982ea"
+}

@@ -1,0 +1,20 @@
+{
+  "sourceId": "as-editeurs-org",
+  "name": "Association Sénégalaise des Editeurs",
+  "entryUrl": "https://www.as-editeurs.org/",
+  "countryCodes": [
+    "SN"
+  ],
+  "coverageCountryCodes": [
+    "SN"
+  ],
+  "attemptedAt": "2026-09-26T17:28:09.556Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://www.as-editeurs.org/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

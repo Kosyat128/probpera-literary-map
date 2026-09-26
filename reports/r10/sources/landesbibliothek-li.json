@@ -1,0 +1,353 @@
+{
+  "sourceId": "landesbibliothek-li",
+  "name": "National Library of Liechtenstein",
+  "entryUrl": "https://www.landesbibliothek.li/",
+  "countryCodes": [
+    "LI"
+  ],
+  "coverageCountryCodes": [
+    "LI"
+  ],
+  "attemptedAt": "2026-09-26T17:29:10.662Z",
+  "requests": [
+    {
+      "url": "https://www.landesbibliothek.li/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 48867,
+      "sha256": "59f958e0fcd711c95029e2e592b69984eeca1229fa14dcd1a74e37f74925f675",
+      "accessedAt": "2026-09-26T17:23:01.883Z"
+    },
+    {
+      "url": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1638423,
+      "sha256": "1ee7f191045262c62030d4d25309cdc56dbc8a45003fb5327974c6540af2cd38",
+      "accessedAt": "2026-09-26T17:29:11.880Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.landesbibliothek.li/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 124,
+    "sha256": "457203a898bbb0e8978cf8d500512be58639068fa32065052c13b6013bd930c4",
+    "accessedAt": "2026-09-26T17:29:11.116Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:59.397Z",
+    "sourceDocumentSha256": "59f958e0fcd711c95029e2e592b69984eeca1229fa14dcd1a74e37f74925f675"
+  },
+  "endpoint": {
+    "id": "landesbibliothek-li",
+    "name": "National Library of Liechtenstein",
+    "url": "https://www.landesbibliothek.li/feed/",
+    "format": "rss",
+    "language": "de",
+    "region": "europe",
+    "sourceFamilyId": "landesbibliothek-li",
+    "countryCodes": [
+      "LI"
+    ],
+    "coverageCountryCodes": [
+      "LI"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.landesbibliothek.li"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:11.958Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "landesbibliothek-li",
+    "source": {
+      "name": "National Library of Liechtenstein",
+      "url": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+      "language": "de"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Gedichte-Workshop mit Helena Brehm",
+    "publishedAt": "2026-08-10T14:28:25.000Z",
+    "description": "Am Samstag, 3. Oktober, von 18.00 bis 19.30 Uhr gibt Helena Brehm praktische Tipps und Tricks rund um das kreative Schreiben von Gedichten. Im Mittelpunkt stehen einfache Methoden, mit denen auch ohne grosse Vorkenntnisse schnell eigene Texte entstehen können. Der Workshop lädt dazu ein, selbst auszuprobieren, mit Sprache zu spielen und erste eigene Gedichte [...]",
+    "discoveredAt": "2026-09-26T17:29:11.119Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1638423,
+      "sha256": "1ee7f191045262c62030d4d25309cdc56dbc8a45003fb5327974c6540af2cd38",
+      "accessedAt": "2026-09-26T17:29:11.880Z",
+      "headline": "Gedichte-Workshop mit Helena Brehm",
+      "excerpt": "Gedichte-Workshop mit Helena Brehm Am Samstag, 3. Oktober, von 18.00 bis 19.30 Uhr gibt Helena Brehm praktische Tipps und Tricks rund um das kreative Schreiben von Gedichten. Im Mittelpunkt stehen einfache Methoden, mit denen auch ohne grosse Vorkenntnisse schnell eigene Texte entstehen können. Der Workshop lädt dazu ein, selbst auszuprobieren, mit Sprache zu spielen und erste eigene Gedichte zu v",
+      "publishedDates": [
+        {
+          "value": "2026-08-10T14:28:25+02:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+      "language": "de",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:11.958Z",
+  "foundItems": [
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Gedichte-Workshop mit Helena Brehm",
+      "publishedAt": "2026-08-10T14:28:25.000Z",
+      "description": "Am Samstag, 3. Oktober, von 18.00 bis 19.30 Uhr gibt Helena Brehm praktische Tipps und Tricks rund um das kreative Schreiben von Gedichten. Im Mittelpunkt stehen einfache Methoden, mit denen auch ohne grosse Vorkenntnisse schnell eigene Texte entstehen können. Der Workshop lädt dazu ein, selbst auszuprobieren, mit Sprache zu spielen und erste eigene Gedichte [...]",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/die-wahrheit-ueber-eva-die-erfindung-der-ungleichheit-von-frauen-und-maennern-von-carel-van-schaik-kai-michel/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Die Wahrheit über Eva \u2013 die Erfindung der Ungleichheit von Frauen und Männern von Carel van Schaik, Kai Michel",
+      "publishedAt": "2026-09-24T07:00:32.000Z",
+      "description": "Wer hat Angst vor der »Evalution«? Wie konnte es dazu kommen, dass Frauen um Gleichberechtigung kämpfen müssen? Weil Eva eher der Schlange als Gott vertraute, müssen all ihre Nachfahrinnen den Männern untertan sein. Auch die Biologie schob lange den Frauen die Schuld zu: Sie seien nun mal das schwache Geschlecht. Kein Wunder, dass sich [...]",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/bullshit-bingo-was-frauen-nicht-mehr-hoeren-wollen-von-tatjana-kiel-susanne-schloesser-sabine-gruengreiff/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bullshit-Bingo \u2013 was Frauen nicht mehr hören wollen von Tatjana Kiel, Susanne Schlösser, Sabine Grüngreiff",
+      "publishedAt": "2026-09-24T07:00:32.000Z",
+      "description": "\"Du musst nicht gleich hysterisch werden! Lächle doch mal! Hast du deine Tage? Und wer passt auf die Kinder auf?\" Wer kennt sie nicht, die Bullshit-Sätze, die uns sprachlos machen? Das Autorinnen-Team des Ladies Mentoring Netzwerks geht auf Recherchereise und sammelt unfassbare Geschichten, im beruflichen und privaten Kontext, die Frauen wirklich erlebt haben. Momente, [...]",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/ressourcen-eine-herausforderung-fuer-die-menschheit-von-philippe-bihouix-und-vincent-perriot/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ressourcen \u2013 eine Herausforderung für die Menschheit von Philippe Bihouix und Vincent Perriot",
+      "publishedAt": "2026-09-17T07:00:26.000Z",
+      "description": "Ein zu wenig beachteter Aspekt des drohenden Kollapses ist die Verknappung der Ressourcen. Die Erde wird immer stärker ausgebeutet und es wird aufwendiger, an die Rohstoffe zu gelangen. Recycling ist auch keine Lösung. In einem Smartphone finden sich 45 verschiedene Metalle, die jedoch so tief in die Bestandsteile integriert sind, dass sie aus alten [...]",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/faustschlag-von-rechts-von-stefanie-kaluza/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Faustschlag von rechts von Stefanie Kaluza",
+      "publishedAt": "2026-09-01T07:00:44.000Z",
+      "description": "Der 15-jährige Jarik hat genug: Sein Vater ist abgehauen, seine Mutter kritisiert ihn ständig und seine Freunde verstehen ihn nicht mehr. Im Boxclub, wo er seinen Ärger abreagieren kann, fällt er eines Tages Falk auf \u2013 dem Jungen, zu dem alle aufschauen. Er lädt Jarik in ein Zeltlager ein, wo man lernt, ein richtiger [...]",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/nachrichten-aus-dem-inneren-der-katze-von-judith-burger/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nachrichten aus dem Inneren der Katze von Judith Burger",
+      "publishedAt": "2026-09-01T07:00:36.000Z",
+      "description": "Grellrode ist so ein Kaff! Sylvie will raus, am liebsten noch vor dem Abi. Um Geld zu verdienen, jobbt sie im kleinen Kunstmuseum vor Ort. Eines Morgens ist das schönste Bild verschwunden. Da, wo Nachrichten aus dem Inneren der Katze hing, ist nur ein leerer Fleck. Aber wieso zeigt Museumsdirektor Brunse den Diebstahl nicht [...]",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/die-schneegans-und-andere-erzaehlungen-von-paul-gallico-cloned/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Die Tote von Lichtenberg von Armin Öhri",
+      "publishedAt": "2026-08-20T09:11:01.000Z",
+      "description": "Berlin 1869. Aus einem hermetisch abgeriegelten Raum im Museum des Markgrafen von Quednau verschwinden ein altes Totenbuch sowie ein wertvoller Onyx, auf dem ein Fluch liegen soll. Wie konnte der Einbrecher mit seiner Beute entkommen? Tatortzeichner Julius Bentheim und sein Freund Albrecht Krosick machen sich daran, das scheinbar unmögliche Verbrechen zu lösen. Bald führen [...]",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/perfekt-pirschen-von-stefan-mayer/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Perfekt pirschen von Stefan Mayer",
+      "publishedAt": "2026-08-20T07:00:28.000Z",
+      "description": "Aktives Pirschen gilt als die Krone der Jagd und ist äusserst anspruchsvoll. Wer hier Fehler macht, bleibt nicht nur erfolglos, sondern vergrämt sein Wild unter Umständen sogar nachhaltig. Forstmann Stefan Mayer vermittelt in diesem Ratgeber, wie, wann und wo erfolgreiches Pirschen auf unterschiedliche Wildarten funktioniert. (gekürzter Verlagstext) Standort: 639.1 (Ebene 2) Bibliothekskatalog [.…",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "source": {
+        "name": "National Library of Liechtenstein",
+        "url": "https://www.landesbibliothek.li/der-steinbock-von-flurin-filli/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Der Steinbock von Flurin Filli",
+      "publishedAt": "2026-08-20T07:00:26.000Z",
+      "description": "Majestätisch, trittsicher und ein Symboltier der Alpen, der Steinbock fasziniert die Menschen seit jeher. Vermutlich von Natur aus eher selten, wurde die Art im 19. Jahrhundert aufgrund starker Bejagung an den Rand des Aussterbens gebracht. Überlebt hat sie nur dank den Bemühungen der italienischen Könige. Intensive Zucht- und Schutzmassnahmen im 20. Jahrhundert erwiesen sich [...]",
+      "discoveredAt": "2026-09-26T17:29:11.119Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "59f958e0fcd711c95029e2e592b69984eeca1229fa14dcd1a74e37f74925f675"
+}

@@ -1,283 +1,122 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";
-
+import { publicImageAttributes } from "../utils/imageDelivery";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
-import { articleCatalogEntryForLanguage } from "../data/articles/localization";
-import {
-  articlePath,
-  journalPath,
-  navigateToArticle,
-  navigateToJournal,
-  shouldUseClientNavigation,
-} from "../utils/articleRoutes";
-import {
-  selectInterfacePlural,
-  translateInterfaceText,
-  type InterfaceLanguage,
-} from "../i18n/InterfaceLanguage";
+import { selectHeaderArticles } from "../utils/headerArticleSelection";
+import { headerShowcasePins, loadHeaderArticleCatalog } from "../utils/headerArticleLoader";
+import { articlePath, journalPath, navigateToArticle, navigateToJournal, shouldUseClientNavigation } from "../utils/articleRoutes";
+import { selectInterfacePlural, translateInterfaceText, type InterfaceLanguage } from "../i18n/InterfaceLanguage";
+import "../styles/header-showcase-r10.css";
 
-const russianMonths: Record<string, number> = {
-  ЯНВАРЯ: 0,
-  ФЕВРАЛЯ: 1,
-  МАРТА: 2,
-  АПРЕЛЯ: 3,
-  МАЯ: 4,
-  ИЮНЯ: 5,
-  ИЮЛЯ: 6,
-  АВГУСТА: 7,
-  СЕНТЯБРЯ: 8,
-  ОКТЯБРЯ: 9,
-  НОЯБРЯ: 10,
-  ДЕКАБРЯ: 11,
-};
-
-function publishedTime(label: string) {
-  const match = label.toUpperCase().match(/(\d{1,2})\s+([А-ЯЁ]+)\s+(\d{4})/u);
-  if (!match) return 0;
-  const month = russianMonths[match[2]];
-  if (month === undefined) return 0;
-  return new Date(Number(match[3]), month, Number(match[1])).getTime();
-}
-
-function articlePublishedTime(article: ArticleCatalogEntry) {
-  const machineTime = article.publishedAt
-    ? new Date(article.publishedAt).getTime()
-    : Number.NaN;
-  return Number.isFinite(machineTime)
-    ? machineTime
-    : publishedTime(article.publishedLabel);
-}
-
-type Props = {
-  language?: InterfaceLanguage;
-};
-
-export default function HeaderArticlesMenu({ language = "ru" }: Props) {
+export default function HeaderArticlesMenu({ language = "ru" }: { language?: InterfaceLanguage }) {
   const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);
-  const [loaded, setLoaded] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const closeTimer = useRef<number | null>(null);
+  const [status, setStatus] = useState<"idle" | "loading" | "loaded" | "error">("idle");
+  const [selectionTime, setSelectionTime] = useState(() => Date.now());
+  const [failedImage, setFailedImage] = useState<string | null>(null);
   const detailsRef = useRef<HTMLDetailsElement>(null);
-  const t = useCallback(
-    (text: string) => translateInterfaceText(text, language),
-    [language]
-  );
-
-  const cancelScheduledClose = useCallback(() => {
-    if (closeTimer.current !== null) {
-      window.clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
-  }, []);
-
-  useEffect(() => cancelScheduledClose, [cancelScheduledClose]);
-
-  useEffect(() => {
-    const closeFromOutside = (event: PointerEvent) => {
-      const details = detailsRef.current;
-      if (
-        !details?.open ||
-        !(event.target instanceof Node) ||
-        details.contains(event.target)
-      ) {
-        return;
-      }
-      details.removeAttribute("open");
-    };
-    document.addEventListener("pointerdown", closeFromOutside, true);
-    return () => document.removeEventListener("pointerdown", closeFromOutside, true);
-  }, []);
-
+  const loadingRef = useRef(false);
+  const loadedRef = useRef(false);
+  const errorRef = useRef(false);
+  const t = useCallback((text: string) => translateInterfaceText(text, language), [language]);
+  const copy = (ru: string, en: string) => language === "en" ? en : ru;
   const loadArticles = useCallback(() => {
-    if (loaded || loading) return;
-    setLoading(true);
-    import("../data/articles/catalog")
-      .then(({ articleCatalog }) => {
-        setArticles(articleCatalog);
-        setLoaded(true);
-      })
-      .catch(() => setLoaded(false))
-      .finally(() => setLoading(false));
-  }, [loaded, loading]);
-
-  const localizedArticles = useMemo(
-    () =>
-      articles.flatMap((article) => {
-        const localized = articleCatalogEntryForLanguage(article, language);
-        return localized ? [localized] : [];
-      }),
-    [articles, language]
-  );
-
-  const featured = useMemo(() => {
-    const sorted = [...localizedArticles].sort(
-      (first, second) =>
-        articlePublishedTime(second) - articlePublishedTime(first)
-    );
-    const lead = sorted[0];
-    const usedSections = new Set(lead ? [lead.sectionId] : []);
-    const varied = sorted.filter((article) => {
-      if (article.id === lead?.id || usedSections.has(article.sectionId)) return false;
-      usedSections.add(article.sectionId);
-      return true;
-    });
-    const remaining = sorted.filter(
-      (article) =>
-        article.id !== lead?.id &&
-        !varied.some((candidate) => candidate.id === article.id)
-    );
-    return { lead, more: [...varied, ...remaining].slice(0, 6) };
-  }, [localizedArticles]);
-
-  const closeMenu = (target: HTMLElement) => {
-    target.closest("details")?.removeAttribute("open");
-  };
-
+    if (loadedRef.current || loadingRef.current || errorRef.current) return;
+    loadingRef.current = true;
+    errorRef.current = false;
+    setStatus("loading");
+    loadHeaderArticleCatalog().then(catalog => {
+      setArticles(catalog); loadedRef.current = true; setStatus("loaded");
+    }).catch(() => { errorRef.current = true; setStatus("error"); })
+      .finally(() => { loadingRef.current = false; });
+  }, []);
+  const measure = useCallback(() => {
+    const details = detailsRef.current;
+    if (!details?.open) return;
+    const panel = details.querySelector<HTMLElement>(".articles-mega-menu");
+    const header = details.closest(".site-header");
+    if (!panel || !header) return;
+    const viewport = window.visualViewport;
+    const bottom = (viewport?.offsetTop ?? 0) + (viewport?.height ?? window.innerHeight);
+    panel.style.setProperty("--showcase-available-height", `${Math.max(80, bottom - header.getBoundingClientRect().bottom - 12)}px`);
+  }, []);
+  const refreshSelection = useCallback(() => {
+    const now = Date.now();
+    const active = document.activeElement instanceof HTMLElement ? document.activeElement.closest<HTMLAnchorElement>("a[data-article-id]") : null;
+    if (active && detailsRef.current?.contains(active)) {
+      const next = selectHeaderArticles(articles, language, headerShowcasePins, now);
+      if (![next.lead, ...next.more].some(article => article?.id === active.dataset.articleId)) detailsRef.current.querySelector("summary")?.focus();
+    }
+    setSelectionTime(now);
+  }, [articles, language]);
+  useEffect(() => {
+    const details = detailsRef.current;
+    const closeFromOutside = (event: PointerEvent) => {
+      if (details?.open && event.target instanceof Node && !details.contains(event.target)) details.open = false;
+    };
+    const closeForPanel = (event: Event) => {
+      if (details?.open && event.target instanceof HTMLDetailsElement && event.target !== details && event.target.open && event.target.closest(".site-header")) details.open = false;
+    };
+    const onPageShow = () => { refreshSelection(); measure(); };
+    document.addEventListener("pointerdown", closeFromOutside, true);
+    document.addEventListener("toggle", closeForPanel, true);
+    window.addEventListener("pageshow", onPageShow);
+    window.addEventListener("resize", measure);
+    window.visualViewport?.addEventListener("resize", measure);
+    const observer = new ResizeObserver(measure);
+    const header = details?.closest(".site-header");
+    if (header) observer.observe(header);
+    return () => {
+      document.removeEventListener("pointerdown", closeFromOutside, true);
+      document.removeEventListener("toggle", closeForPanel, true);
+      window.removeEventListener("pageshow", onPageShow);
+      window.removeEventListener("resize", measure);
+      window.visualViewport?.removeEventListener("resize", measure);
+      observer.disconnect();
+    };
+  }, [measure, refreshSelection]);
+  const featured = useMemo(() => selectHeaderArticles(articles, language, headerShowcasePins, selectionTime), [articles, language, selectionTime]);
+  const closeMenu = () => { if (detailsRef.current) detailsRef.current.open = false; };
+  const imageUrl = featured.lead?.imageUrl;
   return (
-    <details
-      ref={detailsRef}
-      className="articles-menu"
-      onPointerEnter={() => {
-        cancelScheduledClose();
-        loadArticles();
-      }}
-      onPointerLeave={(event) => {
-        if (event.pointerType !== "mouse") return;
-        const details = event.currentTarget;
-        cancelScheduledClose();
-        closeTimer.current = window.setTimeout(() => {
-          const keyboardFocused = details.contains(document.activeElement) &&
-            document.activeElement?.matches(":focus-visible");
-          if (!details.matches(":hover") && !keyboardFocused) details.removeAttribute("open");
-          closeTimer.current = null;
-        }, 240);
-      }}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) {
-          event.currentTarget.removeAttribute("open");
-        }
-      }}
-      onFocusCapture={loadArticles}
-      onKeyDown={(event) => {
+    <details ref={detailsRef} className="articles-menu"
+      onPointerEnter={() => loadArticles()}
+      onFocusCapture={() => loadArticles()}
+      onBlur={event => { if (event.relatedTarget instanceof Node && !event.currentTarget.contains(event.relatedTarget)) closeMenu(); }}
+      onKeyDown={event => {
         if (event.key !== "Escape" || !event.currentTarget.open) return;
-        event.preventDefault();
-        event.currentTarget.removeAttribute("open");
-        event.currentTarget.querySelector("summary")?.focus();
+        event.preventDefault(); closeMenu(); event.currentTarget.querySelector("summary")?.focus();
       }}
-      onToggle={(event) => {
-        if (event.currentTarget.open) loadArticles();
-      }}
-    >
-      <summary>
-        {t("Статьи")} <span aria-hidden="true">⌄</span>
-      </summary>
-      <div className="articles-mega-menu">
-        <header>
-          <div>
-            <span>{t("Редакционная витрина")}</span>
-            <strong>{t("Свежие публикации")}</strong>
-          </div>
-          <p>
-            {t(
-              "Авторские статьи, рецензии, литературные истории и материалы о языке."
-            )}
-          </p>
-        </header>
-
-        {featured.lead ? (
-          <div className="articles-mega-content">
-            <a
-              className="articles-mega-lead"
-              href={articlePath(
-                featured.lead.id,
-                featured.lead.title,
-                featured.lead.sectionId,
-                featured.lead.slug
-              )}
-              onClick={(event) => {
-                closeMenu(event.currentTarget);
-                if (!shouldUseClientNavigation(event)) return;
-                event.preventDefault();
-                navigateToArticle(featured.lead);
-              }}
-            >
-              {featured.lead.imageUrl && (
-                <span className="articles-mega-lead-media" aria-hidden="true">
-                  <span
-                    style={{
-                      backgroundImage: `url(${publicImageUrl(featured.lead.imageUrl, 640)})`,
-                    }}
-                  />
-                  <img
-                    {...publicImageAttributes(featured.lead.imageUrl, 640, "(max-width: 700px) 100vw, 540px")}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </span>
-              )}
-              <div>
-                <small>{featured.lead.sectionLabel}</small>
-                <strong>{featured.lead.title}</strong>
-                <p>{featured.lead.description}</p>
-                <em>
-                  {featured.lead.readingMinutes} {t("мин. чтения")}
-                </em>
-              </div>
-            </a>
-            <section aria-label={t("Другие свежие статьи")}>
-              {featured.more.map((article) => (
-                <a
-                  href={articlePath(
-                    article.id,
-                    article.title,
-                    article.sectionId,
-                    article.slug
-                  )}
-                  key={article.id}
-                  onClick={(event) => {
-                    closeMenu(event.currentTarget);
-                    if (!shouldUseClientNavigation(event)) return;
-                    event.preventDefault();
-                    navigateToArticle(article);
-                  }}
-                >
-                  <small>{article.sectionLabel}</small>
-                  <strong>{article.title}</strong>
-                  <span>
-                    {article.readingMinutes} {t("мин.")}
-                  </span>
-                </a>
-              ))}
-            </section>
-          </div>
-        ) : (
-          <div className="articles-mega-loading">
-            {loading
-              ? t("Подключаем редакционный архив…")
-              : language === "en" && loaded
-                ? t("Пока нет опубликованных переводов на английский язык")
-                : t("Наведите, чтобы открыть публикации")}
-          </div>
-        )}
-
-        <footer>
-          <span>
-            {loaded
-              ? `${new Intl.NumberFormat(language === "ru" ? "ru-RU" : "en-GB").format(localizedArticles.length)} ${t(selectInterfacePlural(localizedArticles.length, language, ["материал в архиве", "материала в архиве", "материалов в архиве"]))}`
-              : t("Полный архив журнала")}
-          </span>
-          <a
-            href={journalPath()}
-            onClick={(event) => {
-              closeMenu(event.currentTarget);
-              if (!shouldUseClientNavigation(event)) return;
-              event.preventDefault();
-              navigateToJournal();
-            }}
-          >
-            {t("Все публикации")} <b aria-hidden="true">→</b>
+      onToggle={event => {
+        if (!event.currentTarget.open) return;
+        document.querySelectorAll<HTMLDetailsElement>(".site-header details[open]").forEach(other => { if (other !== event.currentTarget) other.open = false; });
+        refreshSelection(); loadArticles(); measure();
+        const panel = event.currentTarget.querySelector(".articles-mega-menu");
+        if (panel) panel.scrollTop = 0;
+      }}>
+      <summary>{t("Статьи")} <span aria-hidden="true">⌄</span></summary>
+      <div className="articles-mega-menu" aria-busy={status === "loading"}>
+        <header><div><span>{t("Редакционная витрина")}</span><strong>{featured.editorialChoice ? copy("Выбор редакции", "Editor's choice") : t("Свежие публикации")}</strong></div>
+          <p>{t("Авторские статьи, рецензии, литературные истории и материалы о языке.")}</p></header>
+        {featured.lead ? <div className="articles-mega-content">
+          <a className="articles-mega-lead" data-article-id={featured.lead.id} href={articlePath(featured.lead.id, featured.lead.title, featured.lead.sectionId, featured.lead.slug)}
+            onClick={event => { if (!shouldUseClientNavigation(event)) return; event.preventDefault(); closeMenu(); navigateToArticle(featured.lead); }}>
+            <span className="articles-mega-lead-media" aria-hidden="true">
+              {imageUrl && failedImage !== imageUrl ? <img key={imageUrl} {...publicImageAttributes(imageUrl, 640, "(max-height: 740px) 300px, 416px")}
+                alt="" loading="lazy" decoding="async" onError={() => setFailedImage(imageUrl)} /> : <span className="articles-mega-image-fallback">{copy("Проба Пера", "Proba Pera")}</span>}
+            </span>
+            <div><small>{featured.lead.sectionLabel}</small><strong>{featured.lead.title}</strong><p>{featured.lead.description}</p>
+              {featured.lead.readingMinutes > 0 && <em>{featured.lead.readingMinutes} {t("мин. чтения")}</em>}</div>
           </a>
+          <section aria-label={t("Другие свежие статьи")}>
+            {featured.more.map(article => <a data-article-id={article.id} href={articlePath(article.id, article.title, article.sectionId, article.slug)} key={article.id}
+              onClick={event => { if (!shouldUseClientNavigation(event)) return; event.preventDefault(); closeMenu(); navigateToArticle(article); }}>
+              <small>{article.sectionLabel}</small><strong>{article.title}</strong>{article.readingMinutes > 0 && <span>{article.readingMinutes} {t("мин.")}</span>}
+            </a>)}
+          </section>
+        </div> : <div className="articles-mega-loading" role="status">
+          {status === "error" ? <><p>{copy("Не удалось загрузить публикации.", "Publications could not be loaded.")}</p><button type="button" onClick={() => window.location.reload()}>{copy("Повторить загрузку страницы", "Reload and retry")}</button></> : status === "loaded" ? copy("Пока нет опубликованных материалов на выбранном языке.", "No publications are available in this language yet.") : t("Подключаем редакционный архив…")}
+        </div>}
+        <footer><span>{status === "loaded" ? `${new Intl.NumberFormat(language === "ru" ? "ru-RU" : "en-GB").format(featured.count)} ${t(selectInterfacePlural(featured.count, language, ["материал в архиве", "материала в архиве", "материалов в архиве"]))}` : t("Полный архив журнала")}</span>
+          <a href={journalPath()} onClick={event => { if (!shouldUseClientNavigation(event)) return; event.preventDefault(); closeMenu(); navigateToJournal(); }}>{t("Все публикации")} <b aria-hidden="true">→</b></a>
         </footer>
       </div>
     </details>
