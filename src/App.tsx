@@ -592,6 +592,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const globeRuntimeActive = platformServices.kind === "web" || platformVisibility === "active";
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
   const [customizationSceneReady, setCustomizationSceneReady] = useState(true);
+  const [globeLoadStatus, setGlobeLoadStatus] = useState<DeferredLoadStatus | null>(null);
   const mascot = useMemo(() => createPlanetMascotController(), []);
   const mascotSnapshot = useSyncExternalStore(mascot.subscribe, mascot.getSnapshot, mascot.getSnapshot);
   const mascotPersistence = useMemo(() => createPlanetMascotPersistence({ controller: mascot,
@@ -2309,7 +2310,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
 
   const globeDisplayUnavailable = !nativeCollectionOpen && planetLaunchComplete && platformVisibility === "active"
     && globeViewSample.revision > 0 && !customizationSceneReady;
-  const canGuideGlobe = !nativeCollectionOpen && globeViewSample.revision > 0 && customizationSceneReady
+  const canGuideGlobe = !nativeCollectionOpen && globeLoadStatus === "ready"
+    && globeViewSample.revision > 0 && customizationSceneReady
     && !atlasSearchOpen && !atlasExperience.state.filtersOpen && composition.snapshot.editor === null
     && inspectionSnapshot.mode === "closed" && standInspectionSnapshot.phase === "closed";
   useLayoutEffect(() => {
@@ -2320,7 +2322,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       screen: nativeCollectionOpen ? "collection" : "globe", selectedCountry: Boolean(selectedCountry),
       selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
       connectivity: platformConnectivity, countryStatus: archiveDataStatus, booksStatus: mascotBookStatus,
-      canDiscoverCountry: filteredCountries.length > 0, canOpenDownloads: Boolean(platformServices.downloads), canGuideGlobe, globeDisplayUnavailable,
+      canDiscoverCountry: filteredCountries.length > 0, canOpenDownloads: Boolean(platformServices.downloads), canGuideGlobe, globeDisplayUnavailable, globeLoadStatus,
       canRecoverAuthorBooks: mascotAuthorView.settled && !mascotAuthorView.hasVisibleBooks
         && mascotAuthorView.authorKey === `${selectedCountry?.id}:${selectedWriter?.id}` && Boolean(mascotAuthorView.recoveryToken),
       locale: language, readerPolicy: readerPolicySnapshot.policy,
@@ -2332,7 +2334,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         : "idle" });
   }, [mascot, isPlanetApplication, planetLaunchComplete, platformVisibility, globalSearchOpen, communityOpen,
     nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
-    platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy, filteredCountries.length, platformServices.downloads, canGuideGlobe, globeDisplayUnavailable]);
+    platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy, filteredCountries.length, platformServices.downloads, canGuideGlobe, globeDisplayUnavailable, globeLoadStatus]);
 
   const navigateJourney = useCallback<BookyJourneyNavigation>((offer, signal, isCurrent) => {
     if (!isCurrent()) return false;
@@ -3123,6 +3125,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 onCountrySelect={selectGlobeCountry}
                 onWriterSelect={selectGlobeWriter}
                 onViewSample={setGlobeViewSample}
+                onLoadStatusChange={isPlanetApplication ? setGlobeLoadStatus : undefined}
                 onCameraViewChange={isPlanetApplication ? setJourneyCameraView : undefined}
                 onHoverCountryChange={setGlobeHoveredCountry}
                 focusRequest={globeFocusRequest}

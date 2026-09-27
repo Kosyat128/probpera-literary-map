@@ -25,6 +25,7 @@ import { useGlobeCompositionScene, type PreparedCompositionSource } from "./useG
 import { useGlobeCompositionFrame } from "./useGlobeCompositionFrame";
 import { usePlatformServices } from "../platform/PlatformServices";
 import { isControlledWebEdition } from "../platform/distribution";
+import type { DeferredLoadStatus } from "../loading/nearViewportActivation";
 
 import type { Country, Writer } from "../data/countries";
 import Button from "../ui/Button";
@@ -172,6 +173,8 @@ interface Props {
   mode?: LiteraryGlobeMode;
   rootRef?: Ref<HTMLDivElement>;
   onViewSample?: (sample: GlobeViewSample) => void;
+  /** Atlas assets only; ready does not claim that a scene frame has rendered. */
+  onLoadStatusChange?: (status: DeferredLoadStatus) => void;
   onCameraViewChange?: (receipt: GlobeCameraViewReceipt) => void;
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
@@ -2007,6 +2010,7 @@ export default function LiteraryGlobe({
   nobelCountryId,
   mode = "embedded",
   rootRef,
+  onLoadStatusChange,
   onViewSample,
   onCameraViewChange,
   onHoverCountryChange,
@@ -2106,6 +2110,11 @@ export default function LiteraryGlobe({
   }, [composition?.snapshot.applied.editionId]);
   const [atlasError, setAtlasError] = useState(false);
   const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
+  // Observe committed ownership separately from the resource-loading effect.
+  // A new observer must never restart or dispose the existing atlas.
+  useLayoutEffect(() => {
+    onLoadStatusChange?.(atlas ? "ready" : atlasError ? "error" : "loading");
+  }, [atlas, atlasError, onLoadStatusChange]);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
   const [hoveredLaureate, setHoveredLaureate] =
     useState<NobelLayerHover | null>(null);

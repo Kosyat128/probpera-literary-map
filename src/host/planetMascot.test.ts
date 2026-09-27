@@ -722,3 +722,31 @@ describe("Booky recovery from live platform and content state", () => {
     controller.dispose();
   });
 });
+
+
+describe("observed globe load context", () => {
+  it("publishes current support without preference intent and retains explicit Search and Collection", () => {
+    const controller = createPlanetMascotController();
+    controller.setContext(ready({ globeLoadStatus: "ready", canGuideGlobe: true }));
+    controller.show();
+    controller.togglePanel();
+    const intent = controller.getPreferenceIntent();
+    let previous = controller.getSnapshot();
+    for (const globeLoadStatus of ["loading", "error", "loading", "ready", null] as const) {
+      // The host supplies the capability from current asset AND rendered-scene state.
+      controller.setContext(ready({ globeLoadStatus, canGuideGlobe: globeLoadStatus === "ready" }));
+      const snapshot = controller.getSnapshot();
+      expect(snapshot.revision).toBeGreaterThan(previous.revision);
+      expect(snapshot.support?.kind ?? null).toBe(globeLoadStatus === "loading" ? "loading"
+        : globeLoadStatus === "error" ? "error" : null);
+      expect(controller.canAct("globe-controls")).toBe(globeLoadStatus === "ready");
+      const callback = vi.fn();
+      expect(controller.act("search", snapshot.revision, callback)).toBe(true);
+      expect(controller.act("books", snapshot.revision, callback)).toBe(true);
+      expect(callback).toHaveBeenCalledTimes(2);
+      expect(controller.getPreferenceIntent()).toBe(intent);
+      expect(controller.getSnapshot()).toBe(snapshot);
+      previous = snapshot;
+    }
+  });
+});

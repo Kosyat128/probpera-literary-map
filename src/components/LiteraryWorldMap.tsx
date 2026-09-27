@@ -61,6 +61,8 @@ interface Props {
   mode?: LiteraryGlobeMode;
   rootRef?: Ref<HTMLElement>;
   onViewSample?: (sample: GlobeViewSample) => void;
+  /** Current module/catalog fallback or the mounted globe's actual atlas state. */
+  onLoadStatusChange?: (status: DeferredLoadStatus) => void;
   onCameraViewChange?: (receipt: GlobeCameraViewReceipt) => void;
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
@@ -91,6 +93,7 @@ export default function LiteraryWorldMap({
   nobelCountryId,
   mode = "embedded",
   rootRef,
+  onLoadStatusChange,
   onViewSample,
   onCameraViewChange,
   onHoverCountryChange,
@@ -176,6 +179,13 @@ export default function LiteraryWorldMap({
   const retainScene = preserveSceneDuringReload && hasRenderedReady && active &&
     component !== null && moduleStatus === "ready" && dataStatus !== "ready";
   const failed = dataStatus === "error" || moduleStatus === "error";
+  useLayoutEffect(() => {
+    // Only the displayed fallback reports here. A mounted LiteraryGlobe owns
+    // its atlas report; module/catalog readiness cannot stand in for it.
+    if (!globeReady && !retainScene) {
+      onLoadStatusChange?.(failed ? "error" : active ? "loading" : "idle");
+    }
+  }, [active, failed, globeReady, retainScene, onLoadStatusChange]);
   const LiteraryGlobe = component;
   const catalogNotice = language === "ru"
     ? dataStatus === "error" ? "Не удалось обновить каталог."
@@ -206,6 +216,7 @@ export default function LiteraryWorldMap({
           nobelCountryId={nobelCountryId}
           mode={mode}
           onViewSample={onViewSample}
+          onLoadStatusChange={onLoadStatusChange}
           onCameraViewChange={onCameraViewChange}
           onHoverCountryChange={onHoverCountryChange}
           focusRequest={focusRequest}

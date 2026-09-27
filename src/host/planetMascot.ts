@@ -32,6 +32,8 @@ export type PlanetMascotContext = Readonly<{
   canGuideGlobe?: boolean;
   /** Known globe display loss only; never inferred from initial catalog loading. */
   globeDisplayUnavailable?: boolean;
+  /** Observed current globe loading state; an absent report is not a failure. */
+  globeLoadStatus?: BookySupportInput["countryStatus"] | null;
   /** An exact settled empty writer view currently offers local filter recovery. */
   canRecoverAuthorBooks?: boolean;
   /** Explicit confirmed local reader settings only; adult access is not an age. */
@@ -96,7 +98,8 @@ export function createPlanetMascotController() {
     const authorBooksStatus = context?.authorBooksStatus ?? "idle";
     const support = available && context ? getBookyGlobeSupport({ screen: context.screen,
       connectivity: context.connectivity ?? "unknown", countryStatus: context.countryStatus ?? "idle",
-      booksStatus: context.booksStatus ?? "idle", globeDisplayUnavailable: context.globeDisplayUnavailable }) : null;
+      booksStatus: context.booksStatus ?? "idle", globeDisplayUnavailable: context.globeDisplayUnavailable,
+      globeLoadStatus: context.globeLoadStatus }) : null;
     const step = state.mode === "tour" ? getPlanetMascotStep(state.route, state.step) : null;
     const onScreen = step !== null && (step.requiredScreen === null || step.requiredScreen === context?.screen);
     const canAdvance = available && state.visibility === "shown" && state.panel === "open" && onScreen
@@ -265,6 +268,8 @@ export function createPlanetMascotController() {
         canDiscoverCountry: value.canDiscoverCountry === true, canOpenDownloads: value.canOpenDownloads === true,
         canRecoverAuthorBooks: value.canRecoverAuthorBooks === true, canGuideGlobe: value.canGuideGlobe === true,
         globeDisplayUnavailable: value.globeDisplayUnavailable === true,
+        globeLoadStatus: value.globeLoadStatus === "idle" || value.globeLoadStatus === "loading"
+          || value.globeLoadStatus === "ready" || value.globeLoadStatus === "error" ? value.globeLoadStatus : null,
         locale: value.locale === "ru" || value.locale === "en" ? value.locale : undefined,
         readerPolicy: parseBookyReaderPolicy(value.readerPolicy) });
       if (context && context.enabled === next.enabled && context.access === next.access && context.active === next.active
@@ -274,7 +279,7 @@ export function createPlanetMascotController() {
         && context.countryStatus === next.countryStatus && context.booksStatus === next.booksStatus
         && context.canDiscoverCountry === next.canDiscoverCountry && context.canOpenDownloads === next.canOpenDownloads
         && context.canRecoverAuthorBooks === next.canRecoverAuthorBooks && context.canGuideGlobe === next.canGuideGlobe
-        && context.globeDisplayUnavailable === next.globeDisplayUnavailable
+        && context.globeDisplayUnavailable === next.globeDisplayUnavailable && context.globeLoadStatus === next.globeLoadStatus
         && context.locale === next.locale && serializeBookyReaderPolicy(context.readerPolicy) === serializeBookyReaderPolicy(next.readerPolicy)) return;
       context = next;
       // Connection/locale/panel changes do not create a new failed load.
