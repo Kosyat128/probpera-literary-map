@@ -2,6 +2,7 @@ import { load } from "cheerio";
 import { dispatchNewsJob, newsPostKey, newsSemanticRevision, newsSocialPayloadDigest,
   prepareNewsPost, reconcileNewsSnapshot } from "./literary-news-social.mjs";
 import { verifyPublishedNewsSnapshot } from "./literary-news-publication.mjs";
+import reviewed from "../../data/news/reviewed.json" with {type:"json"};
 
 export const NEWS_RELEASE_DESTINATIONS = Object.freeze({
   telegram: Object.freeze({ platform: "telegram", id: "-1002791579809", mode: "off", requirePhotoForNewPosts: false }),
@@ -14,7 +15,19 @@ const requireCondition = (condition, reason) => { if (!condition) throw new Erro
 
 export async function newsHistoryCandidates(items) {
   return Promise.all([...items].sort((a,b)=>a.id.localeCompare(b.id))
-    .map(async item=>({newsId:item.id,revision:await newsSemanticRevision(item)})));
+    .map(async item=>{
+      // The public feed deliberately omits the editorial-only source.title
+      // annotation. Restore it only for the reviewed revision hash, and only
+      // when the published source identity is otherwise byte-for-byte exact.
+      // The outgoing post always uses the public item; no text is changed.
+      const reviewedSource=reviewed.find(row=>row.id===item.id)?.source;
+      const samePublicSourceIdentity=reviewedSource && ["name","url","language"]
+        .every(key=>reviewedSource[key]===item.source?.[key]);
+      const candidate=samePublicSourceIdentity && item.source?.title===undefined
+        && typeof reviewedSource.title==="string"
+        ? {...item,source:{...item.source,title:reviewedSource.title}} : item;
+      return {newsId:item.id,revision:await newsSemanticRevision(candidate)};
+    }));
 }
 export async function verifyNewsHistoryApproval(approval, destination, items, expectedDigest, now=new Date()) {
   requireCondition(approval?.status==="approved" && approval.platform===destination.platform
