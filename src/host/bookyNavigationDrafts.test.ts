@@ -14,14 +14,14 @@ const sourceText = (path: string) => readFileSync(resolve(process.cwd(), path), 
 // Fixed per-source declarations; changing a provenance binding requires an explicit versioned rebaseline.
 const expectedSources = {
   "src/host/planetMascotRoutes.ts": {
-    "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
-    "sourceVersion": 1,
-    "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf"
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+    "sourceVersion": 2,
+    "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
   },
   "src/host/PlanetMascotControls.tsx": {
-    "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
-    "sourceVersion": 2,
-    "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+    "sourceVersion": 3,
+    "sourceSha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
   }
 } as const;
 const policy = { canonicalEntityIds: [], approvedReviews: [] } as const;
@@ -80,7 +80,7 @@ describe("fixed unreviewed adult navigation inventory", () => {
     expect(rows.map(record => record.payload.locale).sort()).toEqual(["en", "ru"]);
     for (const { payload } of rows) {
       expect(payload.id).toBe(`navigation.${route}.${step.id}`);
-      expect(payload.version).toBe(PLANET_MASCOT_ROUTES[route].version);
+      expect(payload.version).toBe(expectedSources["src/host/planetMascotRoutes.ts"].sourceVersion);
       // The instruction stays visible while the UI offers navigation to the
       // requiredScreen; that target gates advancement, not copy visibility.
       expect(payload.screens).toEqual(["globe", "collection"]);
@@ -146,11 +146,11 @@ describe("fixed unreviewed adult navigation inventory", () => {
     const changed = [BOOKY_NAVIGATION_DRAFTS[0], context].map(original => ({ ...original,
       payload: { ...original.payload, copy: { ...original.payload.copy, body: "Changed." } } }));
     const stale = [
-      { ...context, payload: { ...context.payload, version: 1 } },
-      { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance, sourceVersion: 1 } } },
+      { ...context, payload: { ...context.payload, version: 2 } },
+      { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance, sourceVersion: 2 } } },
       { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance,
         sourceRef: context.payload.provenance.sourceRef.replace(expectedSources["src/host/PlanetMascotControls.tsx"].sourceCommit,
-          expectedSources["src/host/planetMascotRoutes.ts"].sourceCommit) } } },
+          "c5f8e80ab3b8f6be42e04584a0b174ac427197e7") } } },
     ];
     for (const record of [...changed, ...stale]) {
       const registry = createBookyDialogueRegistry([record], policy);

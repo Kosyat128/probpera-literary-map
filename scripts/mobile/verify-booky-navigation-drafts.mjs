@@ -23,14 +23,14 @@ const check = (ok, code, record = null) => { if (!ok) findings.push({ code, ...(
 // Fixed per-source identities; this validator never authors a new binding.
 const expectedSources = {
   "src/host/planetMascotRoutes.ts": {
-    "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
-    "sourceVersion": 1,
-    "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf"
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+    "sourceVersion": 2,
+    "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
   },
   "src/host/PlanetMascotControls.tsx": {
-    "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
-    "sourceVersion": 2,
-    "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+    "sourceVersion": 3,
+    "sourceSha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
   }
 };
 const expectedPaths = ['src/host/planetMascotRoutes.ts', 'src/host/PlanetMascotControls.tsx'];
@@ -101,7 +101,7 @@ catch { check(false, 'CONTEXTUAL_SOURCE_SHAPE_CHANGED'); }
 const expected = new Map();
 for (const [routeId, route] of Object.entries(api.PLANET_MASCOT_ROUTES)) for (const step of route.steps) {
   const id = `navigation.${routeId}.${step.id}`;
-  expected.set(id, { id, version: route.version, context: `tour:${routeId}:${step.id}`,
+  expected.set(id, { id, version: expectedSources[expectedPaths[0]].sourceVersion, context: `tour:${routeId}:${step.id}`,
     // Copy is visible before its target is reached. requiredScreen gates the
     // existing controller's advancement; it does not gate instruction display.
     screens: ['globe', 'collection'], requiredScreen: step.requiredScreen,
