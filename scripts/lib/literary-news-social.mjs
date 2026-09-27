@@ -3,6 +3,7 @@ import { newsDigest, verifyPublishedNewsSnapshot } from "./literary-news-publica
 import { newsAnnouncementEligible } from "./literary-news-reviewed.mjs";
 import { selectNewsMedia } from "./literary-news-media.mjs";
 import { reserveNewsDeliverySlot } from "./literary-news-pacing.mjs";
+import socialConfiguration from "../../data/news/social-destinations.json" with { type: "json" };
 
 /** JSONB may reorder every object, including objects inside Telegram entities.
  * Canonicalize social payloads only; the public snapshot wire contract is unchanged.
@@ -21,8 +22,22 @@ export const NEWS_SECTION_URL = "https://probpera.ru/#literary-news";
 export function checkedDestination(destination) {
   if (!["telegram", "vk"].includes(destination?.platform)
     || typeof destination.id !== "string" || !/^-[1-9]\d{0,15}$/.test(destination.id) || !Number.isSafeInteger(Number(destination.id))
-    || !["off", "shadow", "canary", "on"].includes(destination.mode)) throw new Error("destination_invalid");
+    || !["off", "shadow", "canary", "on"].includes(destination.mode)
+    || destination.requirePhotoForNewPosts !== undefined && typeof destination.requirePhotoForNewPosts !== "boolean") throw new Error("destination_invalid");
   return destination;
+}
+// Consult code-owned policy too: jobs captured before this policy must not
+// bypass it merely because their durable destination has only platform/id.
+export function newsNewPostRequiresPhoto(destination) {
+  return destination?.requirePhotoForNewPosts === true || socialConfiguration.destinations.some(row =>
+    row.platform === destination?.platform && row.id === destination?.id && row.requirePhotoForNewPosts === true);
+}
+function runtimeDestination(destination) {
+  return { platform: destination.platform, id: destination.id,
+    ...(newsNewPostRequiresPhoto(destination) ? { requirePhotoForNewPosts: true } : {}) };
+}
+function missingRequiredNewPhoto(job) {
+  return !job.remoteId && !job.withdrawal && job.prepared && !job.prepared.media && newsNewPostRequiresPhoto(job.destination);
 }
 export function newsPostKey(newsId, destination) {
   checkedDestination(destination);
@@ -163,7 +178,7 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
       catch {
         result.preparationFailures.push({ newsId: item.id, platform: destination.platform, reason: "post_preparation_invalid" });
         await transition(store, key, (prior) => prior?.status === "explicitly_closed" ? null : ({ ...prior, key, newsId: item.id,
-          destination: { platform: destination.platform, id: destination.id },
+          destination: runtimeDestination(destination),
           originalAdmission: prior?.originalAdmission || now.toISOString(), desiredRevision: revision,
           status: "blocked", lastError: "post_preparation_invalid" }));
         result.expectedThisSnapshot++; result.keys.push(key); continue;
@@ -185,15 +200,16 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
         if (prior?.desiredRevision === prepared.revision) {
           if (prior.status === "blocked" && prior.lastError === "archived_media_requires_source_resolution")
             return {...prior,prepared,status:prior.remoteId?"correction_pending":"pending",nextDueAt:now.toISOString(),lastError:null};
-          if (!prior.remoteId && Boolean(prior.prepared?.mediaPending) !== Boolean(prepared.mediaPending))
-            return { ...prior, prepared };
+          if (!prior.remoteId && (Boolean(prior.prepared?.mediaPending) !== Boolean(prepared.mediaPending)
+            || newsNewPostRequiresPhoto(destination) && prior.destination?.requirePhotoForNewPosts !== true))
+            return { ...prior, destination: runtimeDestination(destination), prepared };
           if (prior.prepared?.temporal?.verifiedAt === item.verifiedAt) return null;
           const renewed = prior.status === "blocked" && prior.lastError === "expired_announcement_requires_source_resolution";
           return { ...prior, prepared, ...(renewed ? {
             status: prior.remoteId ? "correction_pending" : "pending", nextDueAt: now.toISOString(), lastError: null,
           } : {}) };
         }
-        return { ...prior, key, newsId: item.id, destination: { platform: destination.platform, id: destination.id },
+        return { ...prior, key, newsId: item.id, destination: runtimeDestination(destination),
           originalAdmission: prior?.originalAdmission || now.toISOString(), desiredRevision: prepared.revision,
           prepared, status: prior?.status === "ambiguous" || prior?.status === "inflight" ? prior.status
             : prior?.remoteId ? "correction_pending" : "pending", nextDueAt: now.toISOString() };
@@ -225,7 +241,7 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
     try {prepared = await prepareNewsPost(admitted.record,{id:admitted.snapshotId,release:admitted.release},destination.platform,
       {destination,mediaOptions:{...mediaOptions,now}});} catch { /* Retain a blocked expectation. */ }
     const repaired = await store.compareAppend(key,null,{key,newsId:admitted.newsId,
-      destination:{platform:destination.platform,id:destination.id},originalAdmission:admitted.admittedAt,
+      destination:runtimeDestination(destination),originalAdmission:admitted.admittedAt,
       desiredRevision:prepared?.revision || admitted.lastRevision || admitted.originalRevision,prepared,
       status:prepared?"pending":"blocked",nextDueAt:now.toISOString(),
       lastError:prepared?null:"historical_preparation_invalid"});
@@ -261,6 +277,9 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
   if (initial.prepared?.mediaPending && !initial.withdrawal
     && (!initial.prepared.temporal || newsAnnouncementEligible(initial.prepared.temporal,editorialToday,"Europe/Moscow")))
     return { status: "pending", reason: "media_discovery_pending" };
+  if (missingRequiredNewPhoto(initial) && !initial.dispatchStartedAt && initial.status !== "inflight"
+    && (!initial.prepared.temporal || newsAnnouncementEligible(initial.prepared.temporal,editorialToday,"Europe/Moscow")))
+    return { status: "pending", reason: "new_post_requires_photo", mediaReason: initial.prepared.fallbackReason || "media_unavailable" };
   const destinationKey = `destination:${initial.destination.platform}:${initial.destination.id}`;
   let control = (await store.read(destinationKey)).state;
   if (!control || !["on", "canary"].includes(control.mode) || control.paused || control.historyReconciled !== true)
@@ -278,10 +297,14 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Moscow", year: "numeric", month: "2-digit", day: "2-digit" }).format(now());
     if (job.prepared?.temporal && !newsAnnouncementEligible(job.prepared.temporal, today, "Europe/Moscow") && !job.withdrawal)
       return { ...job, status: "blocked", lastError: "expired_announcement_requires_source_resolution" };
+    if (missingRequiredNewPhoto(job)) return { ...job, status: "pending", runnerId: null, leaseUntil: null,
+      lastError: "new_post_requires_photo" };
     return { ...job, status: "inflight", runnerId, attemptId: randomUUID(),
       leaseUntil: new Date(now().getTime() + 120000).toISOString() };
   });
-  if (!claim.applied || claim.state.status !== "inflight" || claim.state.runnerId !== runnerId) return { status: claim.state?.status || "pending" };
+  if (!claim.applied || claim.state.status !== "inflight" || claim.state.runnerId !== runnerId)
+    return { status: claim.state?.status || "pending", ...(claim.state?.lastError === "new_post_requires_photo"
+      ? { reason: "new_post_requires_photo", mediaReason: claim.state.prepared?.fallbackReason || "media_unavailable" } : {}) };
   const job = claim.state;
   let claimId = claim.id;
   let rights;

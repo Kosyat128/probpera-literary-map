@@ -9,6 +9,7 @@ import { prepareNewsPost, reconcileNewsSnapshot, dispatchNewsJob, newsPostKey } 
 import { createNewsSocialTransport } from "./literary-news-social-transport.mjs";
 import { buildPublishedNewsFeed } from "./literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./literary-news-state.mjs";
+import socialConfiguration from "../../data/news/social-destinations.json" with {type:"json"};
 
 const now=new Date("2026-09-26T12:00:00Z");
 const telegram={platform:"telegram",id:"-100123",mode:"on"},vk={platform:"vk",id:"-456",mode:"on"};
@@ -112,6 +113,81 @@ describe("bounded media and destination rights",()=>{
 });
 
 describe("native photo delivery without duplicate creates",()=>{
+  it("enforces code-owned production policy even for historical jobs without a policy field",async()=>{
+    expect(socialConfiguration.destinations).toHaveLength(2);
+    for(const configured of socialConfiguration.destinations){
+      expect(configured.requirePhotoForNewPosts).toBe(true);expect(configured.mode).toBe("off");
+      const legacy={platform:configured.platform,id:configured.id},store=memoryStore(),key=newsPostKey(item.id,{...legacy,mode:"on"});
+      const text=await prepareNewsPost(item,snapshot,legacy.platform);
+      await store.seed(key,{key,newsId:item.id,destination:legacy,prepared:text,desiredRevision:text.revision,status:"pending"});
+      const preflight=vi.fn(),fetchImpl=vi.fn(),native=createNewsSocialTransport({mode:"live",telegramToken:"fixture",vkToken:"fixture",fetchImpl});
+      expect((await dispatchNewsJob({store,key,transport:{...native,preflight},now:()=>now})).reason).toBe("new_post_requires_photo");
+      expect((await native.send({destination:{...legacy,requirePhotoForNewPosts:false},prepared:text,remoteId:null})).code).toBe("new_post_requires_photo");
+      expect(preflight).not.toHaveBeenCalled();expect(fetchImpl).not.toHaveBeenCalled();expect(await store.list("history:pacing:")).toHaveLength(0);
+    }
+  });
+  it.each(["held", "oversized", "revoked", "missing"])("requires a photo for a new opted-in post after %s without consuming a slot",async scenario=>{
+    const f=await fixture(),strict={...telegram,requirePhotoForNewPosts:true},store=memoryStore(),key=newsPostKey(item.id,strict);
+    if(scenario==="oversized")f.asset.credit="Автор "+"длинная атрибуция ".repeat(65);
+    if(scenario==="revoked")f.asset.status="revoked";
+    if(["held","missing"].includes(scenario))f.mediaOptions.registry.assets=[];
+    if(scenario==="held")f.mediaOptions.resolutions={[item.id]:{status:"held",reason:"media_subject_unmatched"}};
+    await reconcileNewsSnapshot(store,await feed(),[strict],now,{mediaOptions:f.mediaOptions});
+    await store.seed("destination:telegram:-100123",{mode:"on",paused:false,historyReconciled:true});
+    const job=(await store.read(key)).state;expect(job.destination.requirePhotoForNewPosts).toBe(true);expect(job.prepared.media).toBeNull();
+    const preflight=vi.fn(),fetchImpl=vi.fn(),native=createNewsSocialTransport({mode:"live",telegramToken:"fixture",fetchImpl});
+    expect(await dispatchNewsJob({store,key,transport:{...native,preflight},now:()=>now})).toMatchObject({status:"pending",reason:"new_post_requires_photo"});
+    expect(preflight).not.toHaveBeenCalled();expect(fetchImpl).not.toHaveBeenCalled();expect(await store.list("history:pacing:")).toHaveLength(0);
+    expect((await store.read(key)).state.status).toBe("pending");
+    expect(await native.send({destination:strict,prepared:job.prepared,remoteId:null})).toEqual({kind:"retry",code:"new_post_requires_photo",retryAfterSeconds:3600});
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
+  it("rechecks the required photo after a competing text revision wins the claim CAS",async()=>{
+    const f=await fixture(),strict={...telegram,requirePhotoForNewPosts:true},store=memoryStore(),key=newsPostKey(item.id,strict);
+    await reconcileNewsSnapshot(store,await feed(),[strict],now,{mediaOptions:f.mediaOptions});
+    await store.seed("destination:telegram:-100123",{mode:"on",paused:false,historyReconciled:true});
+    const text=await prepareNewsPost(item,snapshot,"telegram",{destination:strict,mediaOptions:{registry:{assets:[]}}});
+    const append=store.compareAppend.bind(store);let raced=false;
+    store.compareAppend=async(k,expected,state,guard)=>{
+      if(k===key&&state.status==="inflight"&&!raced){raced=true;const prior=await store.read(k);
+        await append(k,prior.id,{...prior.state,prepared:text,desiredRevision:text.revision});}
+      return append(k,expected,state,guard);
+    };
+    const preflight=vi.fn(),send=vi.fn();
+    expect(await dispatchNewsJob({store,key,transport:{preflight,send},now:()=>now})).toMatchObject({status:"pending",reason:"new_post_requires_photo"});
+    expect(raced).toBe(true);expect(preflight).not.toHaveBeenCalled();expect(send).not.toHaveBeenCalled();
+    expect(await store.list("history:pacing:")).toHaveLength(0);expect((await store.read(key)).state.lastError).toBe("new_post_requires_photo");
+  });
+  it("automatically resumes the same pending identity when a qualified photo becomes available",async()=>{
+    const f=await fixture(),strict={...telegram,requirePhotoForNewPosts:true},store=memoryStore(),key=newsPostKey(item.id,strict);
+    await reconcileNewsSnapshot(store,await feed(),[strict],now,{mediaOptions:{registry:{assets:[]},resolutions:{[item.id]:{status:"held",reason:"media_subject_unmatched"}}}});
+    await store.seed("destination:telegram:-100123",{mode:"on",paused:false,historyReconciled:true});
+    const first=(await store.read(key)).state;expect((await dispatchNewsJob({store,key,transport:{},now:()=>now})).reason).toBe("new_post_requires_photo");
+    await reconcileNewsSnapshot(store,await feed(),[strict],now,{mediaOptions:f.mediaOptions});
+    const restored=(await store.read(key)).state;expect(restored.key).toBe(first.key);expect(restored.originalAdmission).toBe(first.originalAdmission);
+    const fetchImpl=vi.fn(async()=>Response.json({ok:true,result:{message_id:17,chat:{id:-100123},photo:[{file_id:"fixture-photo"}]}}));
+    const native=createNewsSocialTransport({mode:"live",telegramToken:"fixture",fetchImpl,mediaOptions:f.mediaOptions});
+    expect((await dispatchNewsJob({store,key,transport:{...native,preflight:async()=>({ok:true,providerAccountId:"42"})},now:()=>now})).status).toBe("sent_current");
+    expect(fetchImpl).toHaveBeenCalledTimes(1);expect(fetchImpl.mock.calls[0][0]).toContain("/sendPhoto");
+    expect(await store.list("history:pacing:")).toHaveLength(1);
+  });
+  it("required-photo policy preserves known text edits and withdrawals and closes an unsent withdrawal",async()=>{
+    const strict={...telegram,requirePhotoForNewPosts:true},store=memoryStore(),key=newsPostKey(item.id,strict);
+    await reconcileNewsSnapshot(store,await feed(),[strict],now,{mediaOptions:{registry:{assets:[]}}});
+    await store.seed("destination:telegram:-100123",{mode:"on",paused:false,historyReconciled:true});
+    await store.seed(key,{...(await store.read(key)).state,status:"sent_current",remoteId:"17",remoteMediaKind:"text"});
+    await reconcileNewsSnapshot(store,await feed([{...item,summary:{...item.summary,ru:item.summary.ru+" Уточнение источника."}}]),[strict],now,{mediaOptions:{registry:{assets:[]}}});
+    const methods=[],fetchImpl=vi.fn(async url=>{methods.push(url.split("/").at(-1));return Response.json({ok:true,result:{message_id:17,chat:{id:-100123}}});});
+    const native=createNewsSocialTransport({mode:"live",telegramToken:"fixture",fetchImpl}),transport={...native,preflight:async()=>({ok:true,providerAccountId:"42"})};
+    expect((await dispatchNewsJob({store,key,transport,now:()=>now})).status).toBe("sent_current");
+    const withdrawnFeed=await feed([],[{id:item.id,withdrawnAt:now.toISOString(),reason:"Source correction"}]);
+    await reconcileNewsSnapshot(store,withdrawnFeed,[strict],now);
+    expect((await dispatchNewsJob({store,key,transport,now:()=>now})).status).toBe("explicitly_closed");
+    expect(methods).toEqual(["editMessageText","editMessageText"]);expect(await store.list("history:pacing:")).toHaveLength(0);
+    const unsent=memoryStore();await reconcileNewsSnapshot(unsent,await feed(),[strict],now,{mediaOptions:{registry:{assets:[]}}});
+    await reconcileNewsSnapshot(unsent,withdrawnFeed,[strict],now);
+    expect(await dispatchNewsJob({store:unsent,key,transport:{send:vi.fn()},now:()=>now})).toEqual({status:"explicitly_closed"});
+  });
   it("uses one multipart sendPhoto with exact prepared bytes then edits the same message",async()=>{
     const f=await prepared(),calls=[];
     const fetchImpl=vi.fn(async(url,options)=>{calls.push(url.split("/").at(-1));expect(options.body).toBeInstanceOf(FormData);
