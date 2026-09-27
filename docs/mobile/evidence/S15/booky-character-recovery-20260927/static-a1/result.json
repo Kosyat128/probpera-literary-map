@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/source-manifests/b972c8ee0a2d17dd.json",
+    "sha256": "b972c8ee0a2d17dd8005dac30c01cb3bad31ec9f082f0e98eb5e8c352ab85786",
+    "fileCount": 1654
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/check.mjs",
+      "sha256": "14e46d3dc7957b0eec5c5ce8634752bae6bc2efac63b299318d7fd9be7f98fbd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/entry.json",
+      "sha256": "51d9e81f6bedb82ee91de59ee5c7433e5e3ea71b68b860558e838e88c1b5c5aa"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/configure.mjs",
+      "sha256": "157ef2b5c5256acc9353b0296b7403101d5ad8551a954a61953e60217c9fa45e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/scope.json",
+      "sha256": "b3242976d81d7510b30816f620c677e4f3b4b863f7d25c88be0889ed344f215f"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 24263
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyCharacterRecoveryImplemented": true,
+  "journeyCharacterWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

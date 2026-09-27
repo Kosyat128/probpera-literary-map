@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-27T00:19:28.166Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/result.json",
+    "sha256": "82730873cec79e56f97882087202269bc21b7f997b60111577cf751c40cc595c"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/record-diagnostics.mjs",
+    "sha256": "e40eaf5d88e1e8cd42eeeb983cfc61ea072a786de6d9fab3e276dbec3c3d3bd5"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/diagnostic-inputs.json",
+    "sha256": "1ca326401e60f13e3aa5e3dd766667fb80060563743e3bdb7cb568a23a4497e5"
+  },
+  "supersededPreparations": [
+    {
+      "id": "browser-diagnostic-a1",
+      "status": "superseded-before-execution",
+      "executed": false,
+      "browserStarted": false,
+      "nodeExit": null,
+      "tests": null,
+      "interpretation": "Root confirmed that a1 was bound but never executed: its policy coverage was superseded before launch. It is preserved as preparation only and is not a failed or passing test run.",
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/authorized-source.json",
+          "sha256": "3a3d1de36f15b8806527255fb4399a4bba0191bcde8f2ab06d23bd007c65ed5a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/bind.mjs",
+          "sha256": "77b3b328c5fb9e51876021fe6a09dd476383fd4d724a52d2c558e90faa564bb4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/canonical-fixture.mjs",
+          "sha256": "c635031670e3bba11476a71dec68168ec7f99a2a02e30d70a5ee9a08d18804bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/character-recovery.spec.mjs",
+          "sha256": "2c26a2cff5863ef91a2db0344469adcd9e5d01dbbe73aa9890a71e2ca13a2a6e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/dirty.diff",
+          "sha256": "308f0fdd590aac94d1eb36350ddee171dc6562b479c062b7c331fd4c676896e3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/playwright.config.mjs",
+          "sha256": "075091fbb6852f620b447aad1a4c770747a64ba191b8f95d0012b1736b82c372"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/prefix-provenance.json",
+          "sha256": "70f9a4d56673df32aa5309f1ea907d8ec3affa052ff64a87284294e42cb11c9a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/run.mjs",
+          "sha256": "f88e196e7cce048fbbf9db0a0441d1c09d3872a5870444bd40204164bc7e4046"
+        }
+      ],
+      "absentExecutionPaths": [
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/execution-start.json",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/execution.json",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/playwright.json",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/stdout.log",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a1/stderr.log"
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "id": "browser-diagnostic-a2",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/execution.json",
+        "sha256": "af04bc570f8ade29ca12e00c0105519de4b5b859983e95ea89b4e28807680616"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/stdout.log",
+          "sha256": "9d79aef825ab9e369545fe4c21cbd65c7b6e1a6fd8f6979d9cf32f58bd5ea6a9"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/stderr.log",
+          "sha256": "f3c044cab83bc9e29aa7a64dc40f3c3dc2dd09672a2ba653e21ce0b789943714"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/playwright.json",
+        "sha256": "d72f2596d0167ca3651f0d186cf97b2879259b61a6604db26b4c2adfc5c1ff90"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 4,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original executed a2 diagnostic: zero of four cases passed. All four actual failures are retained with raw reports, original source and original driver hashes.",
+      "failures": [
+        {
+          "test": "Booky explicit character recovery touch ru",
+          "message": "Error: Actual rendered geometry, decorative canvas and controls fit without cropping or overlap\n\nActual rendered geometry, decorative canvas and controls fit without cropping or overlap\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  378 |       &&screen.left>=rect.left-.5&&screen.right<=rect.right+.5&&screen.top>=rect.top-.5&&screen.bottom<=rect.bottom+.5\n  379 |       &&screen.minDepth>=-1&&screen.maxDepth<=1;\n> 380 |   },{message:'Actual rendered geometry, decorative canvas and controls fit without cropping or overlap'}).toBe(true);\n      |                                                                                                           ^\n  381 |   expect(observed.triangles).toBeGreaterThan(0);expect(observed.meshes).toContain('booky-magnifier-lens');\n  382 |   expect(observed.independentFromGlobe).toBe(true);\n  383 |   expect(Object.keys(observed.rig)).toEqual(expect.arrayContaining(['body','frontCover','leftArm','rightArm','eyes','pupils','brows','mouth']));\n    at live (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a2\\character-recovery.spec.mjs:380:107)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a2\\character-recovery.spec.mjs:521:101"
+        },
+        {
+          "test": "Booky explicit character recovery touch en",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  488 |   async function restoreControlFonts() {\n  489 |     await page.evaluate(() => { for (const row of window.__recoveryFontStress) if (row.element.isConnected) for (const [name,value,priority] of row.original) { if(value) row.element.style.setProperty(name,value,priority); else row.element.style.removeProperty(name); } });\n> 490 |     await expect.poll(() => page.evaluate(() => window.__recoveryFontStress.filter(row => row.element.isConnected).every(row => Math.abs(parseFloat(getComputedStyle(row.element).fontSize) - row.size) < .01))).toBe(true);\n      |                                                                                                                                                                                                                  ^\n  491 |     await expect.poll(() => page.locator('.planet-mascot-controls').getAttribute('data-booky-expanded-text')).not.toBe('true'); o.restoreFontStress.normalModeRestored = true;\n  492 |   }\n  493 |   async function realFallback(label) {\n    at restoreControlFonts (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a2\\character-recovery.spec.mjs:490:210)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a2\\character-recovery.spec.mjs:521:119"
+        },
+        {
+          "test": "Booky controlled character recovery lifecycle touch ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-pet]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-pet]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  644 |     await tap(selector.retry, 'second attempt held for explicit hide'); await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'loading');\n  645 |     await expect.poll(() => page.evaluate(() => window.__characterVisibilityGate.records.length)).toBe(2); const hiddenPending = await owners(page); expect(hiddenPending.renderers.at(-1).frames).toBe(0);\n> 646 |     await tap('[data-planet-mascot-hide]', 'explicit hide while restoration is pending'); await expect(pet(page)).toHaveCount(0);\n      |                                                                                                                   ^\n  647 |     await expect.poll(() => JSON.parse(fixture.memory.get(BOOKY)).visible).toBe(false);\n  648 |     expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual({ ...originalBooky, visible: false });\n  649 |     const hiddenOwners = await owners(page); expect(hiddenOwners.renderers.every(row => row.disposed && row.disposeCalls === 1)).toBe(true); expect(hiddenOwners.models.every(row => row.disposed && row.disposeCalls === 1)).toBe(true);\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a2\\character-recovery.spec.mjs:646:115"
+        },
+        {
+          "test": "Booky controlled character recovery lifecycle touch en",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-pet]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-pet]')\u001b[22m\n\u001b[2m    14 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  644 |     await tap(selector.retry, 'second attempt held for explicit hide'); await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'loading');\n  645 |     await expect.poll(() => page.evaluate(() => window.__characterVisibilityGate.records.length)).toBe(2); const hiddenPending = await owners(page); expect(hiddenPending.renderers.at(-1).frames).toBe(0);\n> 646 |     await tap('[data-planet-mascot-hide]', 'explicit hide while restoration is pending'); await expect(pet(page)).toHaveCount(0);\n      |                                                                                                                   ^\n  647 |     await expect.poll(() => JSON.parse(fixture.memory.get(BOOKY)).visible).toBe(false);\n  648 |     expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual({ ...originalBooky, visible: false });\n  649 |     const hiddenOwners = await owners(page); expect(hiddenOwners.renderers.every(row => row.disposed && row.disposeCalls === 1)).toBe(true); expect(hiddenOwners.models.every(row => row.disposed && row.disposeCalls === 1)).toBe(true);\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a2\\character-recovery.spec.mjs:646:115"
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/playwright.config.mjs",
+          "sha256": "075091fbb6852f620b447aad1a4c770747a64ba191b8f95d0012b1736b82c372"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/run.mjs",
+          "sha256": "f88e196e7cce048fbbf9db0a0441d1c09d3872a5870444bd40204164bc7e4046"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/bind.mjs",
+          "sha256": "77b3b328c5fb9e51876021fe6a09dd476383fd4d724a52d2c558e90faa564bb4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/canonical-fixture.mjs",
+          "sha256": "c635031670e3bba11476a71dec68168ec7f99a2a02e30d70a5ee9a08d18804bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/character-recovery.spec.mjs",
+          "sha256": "514b5805e58372b5410d57014109d1ca565f21405932b91a46709b441ee6f9b6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/prefix-provenance.json",
+          "sha256": "44500386f0c9dc3e9aa72b8250fc07172588035abdba27ea3ef9560a5c3760d0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/authorized-source.json",
+          "sha256": "25bc61735aa5cf5bf3a6488317b24d82288560c7eea2f78942fca4bd2cd08715"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/execution-start.json",
+          "sha256": "d4a0728d9208d48e7c5c9d370501fc6f63b37e293fbedb01e670aa017e8b15a1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/dirty.diff",
+          "sha256": "308f0fdd590aac94d1eb36350ddee171dc6562b479c062b7c331fd4c676896e3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/preflight-start.json",
+          "sha256": "d78799d3b1033b4674ceee9a28da3eba77619edfa1dec1240f421cb43a538d5c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/preflight-result.json",
+          "sha256": "38ea67826cfd9c7bc62bf84a0d696fa477712fc12b03f7754a71bce813c7f035"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/preflight-stdout.log",
+          "sha256": "a93d75094f10431f09074857f48ebd4e2ada9d6cba996a810b3b80fe636ef188"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/attachments/booky-live-character-source-evidence-e4b45de5a8c36fd02026234d602a1e78cc4b107a.json",
+          "sha256": "0a5c59bf3a30bd65027593acd5dfbc9d4f3a3e9237ff8e82a859c84854b1993e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-live-character.json",
+          "sha256": "0a5c59bf3a30bd65027593acd5dfbc9d4f3a3e9237ff8e82a859c84854b1993e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-character-recovery-ru-fallback-200.png",
+          "sha256": "8f2d35f3b16a479a88375728513a1aa16e3d995b13df4d0f603f0c9badd1e6d0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/error-context.md",
+          "sha256": "84af0aad917246639bc9ac1afd6da891b40e32625e66c2d7c20b1a1a31827cc7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/attachments/booky-live-character-source-evidence-597f1f83ca20fed3d0afb085e3d1a42c3b3d35f0.json",
+          "sha256": "e2d6a4e7fbfdd90b5a6bca74ec186b374ade2910324c3893e7f87346fd1d8bc4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/booky-live-character.json",
+          "sha256": "e2d6a4e7fbfdd90b5a6bca74ec186b374ade2910324c3893e7f87346fd1d8bc4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/booky-character-recovery-en-fallback-200.png",
+          "sha256": "4c3cb1cd83b244e909f6b5cb9164d35ee87129fc18d0b07579332f37b87baa87"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/error-context.md",
+          "sha256": "f11fa0c1ce507ab18be647243a3113b0b2ce03636711c26dbd5b3396ec5cfe46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/attachments/booky-live-character-source-evidence-3cb83304460ce5808494a8c60103f5856c63730b.json",
+          "sha256": "6d84904f5af05a3cadb7252a47ea270609f995370bc4b6b8583bc73fc6bd3706"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/booky-live-character.json",
+          "sha256": "6d84904f5af05a3cadb7252a47ea270609f995370bc4b6b8583bc73fc6bd3706"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/booky-character-recovery-ru-controlled-pending.png",
+          "sha256": "5b2c1ec9dfe19cd6dfb20af400c67c906a3a5c15b42b3ee72d3f68b0058dfcd6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/error-context.md",
+          "sha256": "e0f547d325cb771f9045494a6c0aac29f0271c804b035648b8f790607676a9c6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/attachments/booky-live-character-source-evidence-d50efe00dc43ffe6b96642f7b1e712f1b293f8b5.json",
+          "sha256": "f0a7e9a6879530107d5ce2639f7a92a4ce733ed7f5ea9c13e8bd9f940cbba5c4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/booky-live-character.json",
+          "sha256": "f0a7e9a6879530107d5ce2639f7a92a4ce733ed7f5ea9c13e8bd9f940cbba5c4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/booky-character-recovery-en-controlled-pending.png",
+          "sha256": "25aacf418794f8cbe0c2716c7da74536dff0b6a418d72b832a71d4c26ec68547"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a2/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/error-context.md",
+          "sha256": "6703af986902f0f4e47d23216efb043a0ba5a8e8acf1e2e78adcfdedbc5905c1"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a3",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/execution.json",
+        "sha256": "20c662027ee2dd51563587c26bab95215ca37e5d2b38e29ed9baee6f2b304e9c"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/stdout.log",
+          "sha256": "f7b38d17a6d5b3ee7330ea6e6ba29ea395ae034793642d20505621ebbf7bdc79"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/stderr.log",
+          "sha256": "01c7f1c9f609ff2cd66d39b03a8b956e372fbf7cc5c291a4580e8e8a7b935993"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/playwright.json",
+        "sha256": "c3a91decdd125ed926c74665310e34e5d068c8e4d8a057faba2d616f1b9b7a6b"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original executed a3 diagnostic: both controlled lifecycle cases passed and both core cases failed. RU measured about 12.203px restored character/card overlap at synthetic 200 percent fonts, with Move/Hide glyph labels expanding target height. EN failed before restoration because two closed passport descendants had stale computed 14px values despite 28px inline font styles; this hidden-row observation is distinct from rendered-font coverage.",
+      "failures": [
+        {
+          "test": "Booky explicit character recovery touch ru",
+          "message": "Error: Actual rendered geometry, decorative canvas and controls fit without cropping or overlap\n\nActual rendered geometry, decorative canvas and controls fit without cropping or overlap\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  377 |     await page.evaluate(value=>{const box=element=>{if(!element)return null;const r=element.getBoundingClientRect();return{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};value.heading=box(document.querySelector('.planet-mascot-controls__heading'));value.headingActions=box(document.querySelector('.planet-mascot-controls__heading-actions'));value.tools=[...document.querySelectorAll('.planet-mascot-controls__tools button')].map(element=>({text:element.textContent,move:element.hasAttribute('data-planet-mascot-move'),hide:element.hasAttribute('data-planet-mascot-hide'),rect:box(element),fontSize:getComputedStyle(element).fontSize,lineHeight:getComputedStyle(element).lineHeight}));window.__lastBookyLiveDiagnostic=value;},{predicates,positions,view,character:{model:observed.model,rendererId:observed.rendererId,canvasId:observed.canvasId,rect,screen,renderedFrames:observed.renderedFrames,renderCount:observed.renderCount,contextLost:observed.contextLost}});\n  378 |     return Object.values(predicates).every(Boolean);\n> 379 |   },{message:'Actual rendered geometry, decorative canvas and controls fit without cropping or overlap'}).toBe(true);\n      |                                                                                                           ^\n  380 |   expect(observed.triangles).toBeGreaterThan(0);expect(observed.meshes).toContain('booky-magnifier-lens');\n  381 |   expect(observed.independentFromGlobe).toBe(true);\n  382 |   expect(Object.keys(observed.rig)).toEqual(expect.arrayContaining(['body','frontCover','leftArm','rightArm','eyes','pupils','brows','mouth']));\n    at live (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a3\\character-recovery.spec.mjs:379:107)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a3\\character-recovery.spec.mjs:520:209"
+        },
+        {
+          "test": "Booky explicit character recovery touch en",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  481 |     expect(await page.locator('.planet-mascot-controls').getAttribute('data-booky-expanded-text')).not.toBe('true');\n  482 |     await page.evaluate(async () => { await document.fonts.ready; const root = document.querySelector('.planet-mascot-controls'); const rows = [root, ...root.querySelectorAll('*')].filter(e => e instanceof HTMLElement).map(element => { const style = getComputedStyle(element); return { element, baselineTag: element.tagName, baselineClass: element.className, baselineText: element.textContent?.trim().slice(0,160), size: parseFloat(style.fontSize), line: style.lineHeight, original: ['font-size','line-height'].map(name => [name,element.style.getPropertyValue(name),element.style.getPropertyPriority(name)]) }; }); window.__recoveryFontStress = rows; for (const row of rows) { row.element.style.setProperty('font-size', String(row.size * 2) + 'px','important'); if (row.line !== 'normal') row.element.style.setProperty('line-height', String(parseFloat(row.line) * 2) + 'px','important'); } });\n> 483 |     await expect.poll(() => page.evaluate(() => window.__recoveryFontStress.every(row => row.element.isConnected && Math.abs(parseFloat(getComputedStyle(row.element).fontSize) - row.size * 2) < .01))).toBe(true);\n      |                                                                                                                                                                                                          ^\n  484 |     await expect(page.locator('.planet-mascot-controls')).toHaveAttribute('data-booky-expanded-text','true');\n  485 |     o.restoreFontStress = { syntheticTextStress: true, nativeFontScaleEquivalent: false, factor: 2, baselineBeforeWrites: true, elements: await page.evaluate(() => window.__recoveryFontStress.map(row => ({ baseline: row.size, actual: parseFloat(getComputedStyle(row.element).fontSize), baselineLine: row.line, actualLine: getComputedStyle(row.element).lineHeight }))) };\n  486 |   }\n    at stressRestoreControl (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a3\\character-recovery.spec.mjs:483:202)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-review\\a3\\character-recovery.spec.mjs:519:62"
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/playwright.config.mjs",
+          "sha256": "075091fbb6852f620b447aad1a4c770747a64ba191b8f95d0012b1736b82c372"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/run.mjs",
+          "sha256": "f88e196e7cce048fbbf9db0a0441d1c09d3872a5870444bd40204164bc7e4046"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/bind.mjs",
+          "sha256": "77b3b328c5fb9e51876021fe6a09dd476383fd4d724a52d2c558e90faa564bb4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/canonical-fixture.mjs",
+          "sha256": "c635031670e3bba11476a71dec68168ec7f99a2a02e30d70a5ee9a08d18804bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/character-recovery.spec.mjs",
+          "sha256": "809b7a95111380d941587b400958adebd1f2c550bdfd4d22cb800470ad5071ec"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/prefix-provenance.json",
+          "sha256": "00a7388bc1a02ffb22c53bbbfb4dbb8030e2bb8af720ba8008a17b849661028c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/authorized-source.json",
+          "sha256": "36da4ee8f82610398aa40041f3d3380f2cf3a243c8c4c4780cea6adf9f53304e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/execution-start.json",
+          "sha256": "cb4328596395eafb59060d6c24fd21e064f9b94c2b28ad2aef226d4db6b304df"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/dirty.diff",
+          "sha256": "308f0fdd590aac94d1eb36350ddee171dc6562b479c062b7c331fd4c676896e3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/preflight-start.json",
+          "sha256": "dc7f61790ab9ff65cf4c738f54051518e51e3e617cbee731d96867c6310d041c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/preflight-result.json",
+          "sha256": "996e13d3a531a7adc9d42d347a862959d3076c8c0b0242080ca59f4ba6393633"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/preflight-stdout.log",
+          "sha256": "bb5a3bd6208290113894b3aa96aa435210d4525260966521d0ee7ed9b03522f5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/attachments/booky-live-character-source-evidence-b4d1668e01c0acafad6cba8e1d15aa955685feef.json",
+          "sha256": "b6a92a3df49c9a2c552c9623f8902d9a5b3667a928cb3b4d01ebb9ff85862c84"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-live-character.json",
+          "sha256": "b6a92a3df49c9a2c552c9623f8902d9a5b3667a928cb3b4d01ebb9ff85862c84"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-character-recovery-ru-fallback-200.png",
+          "sha256": "ccd2be2d39c9f4b441a5d49cd1b05cfb8acd45bf09818a80df912e9201ee4051"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-character-recovery-ru-post-restore-stress.png",
+          "sha256": "49a64420d8f5da00ef1d4abaecb3c0491eb2e848d705e57d90f3abff7fec03d7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-character-recovery-ru-diagnostic-failure.png",
+          "sha256": "7f3f1075990a239cd3fbd0d98b48803c3de898fafbeed15d4b92145f6d31e648"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/error-context.md",
+          "sha256": "ec1200d77e317a0146ff70f105a18e34ed0af48c69e81932f9ed1997ea988181"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/attachments/booky-live-character-source-evidence-98ef177c59f966968057f4b6a85ed884570ea5f0.json",
+          "sha256": "f09ef441438782bcb00017e13139688ed1493dce7391a7d3f17a7622b999d723"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/booky-live-character.json",
+          "sha256": "f09ef441438782bcb00017e13139688ed1493dce7391a7d3f17a7622b999d723"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/booky-character-recovery-en-diagnostic-failure.png",
+          "sha256": "25baab58fa29abc32fa5c31ebf2950ef8d11735d5c310ea110663d5e5c714d27"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/error-context.md",
+          "sha256": "23a9d5bb3c84bf9d9cc771ad95846ebf743065c8c46eeede18477dbaad8a5064"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/attachments/booky-live-character-source-evidence-23b68653d351466f1bb52eeb91c4eac52fb21f0f.json",
+          "sha256": "82a4e591323c735d2e0a51e71ef2e84b9c24b07873350118c34fc3ba746ec73a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/booky-live-character.json",
+          "sha256": "82a4e591323c735d2e0a51e71ef2e84b9c24b07873350118c34fc3ba746ec73a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/booky-character-recovery-ru-controlled-pending.png",
+          "sha256": "ee7ed2a579554bcfc7ac49b5cb294fad23d99152b33ae396c7023f24bfb40ef0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/attachments/booky-live-character-source-evidence-93672ba37ee939ac051857f92be3897c52ba531a.json",
+          "sha256": "15d4e2a0664028a695cfef30b12fff0eb358ffeae737915b60853d400d80dba6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/booky-live-character.json",
+          "sha256": "15d4e2a0664028a695cfef30b12fff0eb358ffeae737915b60853d400d80dba6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a3/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/booky-character-recovery-en-controlled-pending.png",
+          "sha256": "e7dccac45207a30075ab352881b5e0508a352dd4e500dabbeff0d3adbf1135d6"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a4",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/execution.json",
+        "sha256": "0eee13085bb1c2d3ccf0409d8f63fdb6064a3663c2e9e8df145b9ab565888d92"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/stdout.log",
+          "sha256": "823753d26710ab17c1328cfcf17f6acfd2b6f9aa444cfe2670bb20a7255fed79"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/stderr.log",
+          "sha256": "920cbb5ce32f431a6e287528043f6bed01f317dfd853bb079823de70044dcd27"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/playwright.json",
+        "sha256": "6524dd5c5087ae114fd8d3bb48820c2bcc0e6941b013b7a827169cbddcb5150e"
+      },
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original a4 diagnostic is recorded with its actual final outcome. Its revised runtime uses fixed 24px SVG Move/Hide icons in centered 44px targets. Font assertions retain two-times inline styles and verify rendered rows; unrendered rows are recorded as unverified. Real-context-loss core cases and controlled timeout/pending-hide cases remain distinct.",
+      "failures": [],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/playwright.config.mjs",
+          "sha256": "075091fbb6852f620b447aad1a4c770747a64ba191b8f95d0012b1736b82c372"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/run.mjs",
+          "sha256": "f88e196e7cce048fbbf9db0a0441d1c09d3872a5870444bd40204164bc7e4046"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/bind.mjs",
+          "sha256": "77b3b328c5fb9e51876021fe6a09dd476383fd4d724a52d2c558e90faa564bb4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/canonical-fixture.mjs",
+          "sha256": "c635031670e3bba11476a71dec68168ec7f99a2a02e30d70a5ee9a08d18804bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/character-recovery.spec.mjs",
+          "sha256": "b8898e44406f67d8d3a9fdfd6027ae1e777966efbf7cf80dc46972b719b795a3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/prefix-provenance.json",
+          "sha256": "e8b7c5070f34903a4274ef575a1214eac818cef6a8ab6b071bfa50fdb994bf4a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/authorized-source.json",
+          "sha256": "6777fe18156fa95a8d25d1805db6342d4f916f9d9fdfd5e4cb00c895060c4b6c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/execution-start.json",
+          "sha256": "bf55f4b89944355f7d13e619d3731cfd74d3e8e6c8f9a84278348b4d77e376b0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/dirty.diff",
+          "sha256": "d1ab6f3e3cdb3516b4311805094e40aae5887df741efa9fd241f0822c96bb3d1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/preflight-start.json",
+          "sha256": "37fe24639a7119a6e76f1cafaec9d85be99710bcf41fce4697e67b53ac6cfd55"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/preflight-result.json",
+          "sha256": "a4916a90339e29e37a92abe471e3a9a38f20416126a1d9d670f1bde326132815"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/preflight-stdout.log",
+          "sha256": "d8496a80732874d8c981963dae3c9c3f842b06f4eda07166ba72e026428cbd11"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/attachments/booky-live-character-source-evidence-7e36fd57d904a2540e9b576c38cc4bb47eaea7be.json",
+          "sha256": "9b68073fc53bc03989c90635935ceedf0f4c9d7e0065afc957c0e9597c4e4b89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-live-character.json",
+          "sha256": "9b68073fc53bc03989c90635935ceedf0f4c9d7e0065afc957c0e9597c4e4b89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-character-recovery-ru-fallback-200.png",
+          "sha256": "4193e19f63c95b420931b5dc4b4666d504225ea049934e639e678248241eba7b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-character-recovery-ru-post-restore-stress.png",
+          "sha256": "26ec13256010d0718490bd331e1a8e7dff25753e21487921f6b8cd8300db713f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-017c9-character-recovery-touch-ru/booky-character-recovery-ru-restored.png",
+          "sha256": "cd0e58b2983e20513affb1da686ba8435d4598c5d17b82111dfc580788c1922b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/attachments/booky-live-character-source-evidence-145d2f659531d7a377faf486c67c91283da2d516.json",
+          "sha256": "f4e3b18a9c10b4aea7ccd51546ada0aeb459697e2983db8aed2029709a166855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/booky-live-character.json",
+          "sha256": "f4e3b18a9c10b4aea7ccd51546ada0aeb459697e2983db8aed2029709a166855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/booky-character-recovery-en-fallback-200.png",
+          "sha256": "aab049099eb2b384d5dbce3738657d0a2cb26cea9353698dbad7cc434a32ce10"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/booky-character-recovery-en-post-restore-stress.png",
+          "sha256": "fa200ef3108c9e8c7024b41c7a8b901f1f52a48c30c34ef763d48fc33f5b1de5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-e-6ed9f-character-recovery-touch-en/booky-character-recovery-en-restored.png",
+          "sha256": "7ef0105fbc641e718496cb0340022a610d3dfd74a939c7db842ce6d38dff9e1b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/attachments/booky-live-character-source-evidence-9acb201240ab851e1d3b04abea1727482360106d.json",
+          "sha256": "4ea2f87dde79a5e2414976f646b93c333a2279513325863f777619546c3cfdf3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/booky-live-character.json",
+          "sha256": "4ea2f87dde79a5e2414976f646b93c333a2279513325863f777619546c3cfdf3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-c-94ab2-recovery-lifecycle-touch-ru/booky-character-recovery-ru-controlled-pending.png",
+          "sha256": "fea2487e954fa5e705642f0149d60552f87bb9f16d0cb5170c1b349e8a5d7b2c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/attachments/booky-live-character-source-evidence-dfb5e0888653a17b457ca5e2a3ebf51def9f9945.json",
+          "sha256": "d51998c0a27930006b5373fa84611faf152cc01c1e0f598e9786c95e0972ac1a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/booky-live-character.json",
+          "sha256": "d51998c0a27930006b5373fa84611faf152cc01c1e0f598e9786c95e0972ac1a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-review/a4/artifacts/character-recovery-Booky-c-37523-recovery-lifecycle-touch-en/booky-character-recovery-en-controlled-pending.png",
+          "sha256": "6b638391d527aed9de23fe6d0c40edf7cb5539487cf5ee99340c5ab015167109"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "a1 was superseded before execution and has no test result, exit code or failure count.",
+    "Only executed D200 attempts are counted; earlier D199 diagnostic chains are not copied.",
+    "Real WebGL context loss and controlled timeout/pending-hide tests have different coverage. Neither proves native GPU faults or broad installed-device recovery.",
+    "Font stress is synthetic. Only rendered descendant rows are verified; hidden/unrendered rows may retain inline two-times styles without current computed-value verification.",
+    "No fresh unit suite or standalone model-photo claim is made. Final formal source validation remains separate."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T00:26:11.728Z",
+  "pass": true,
+  "sourceCommit": "e0f3119b63d645703708fc08407c4931f043b4ca",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/source-manifests/b972c8ee0a2d17dd.json",
+    "sha256": "b972c8ee0a2d17dd8005dac30c01cb3bad31ec9f082f0e98eb5e8c352ab85786",
+    "fileCount": 1654
+  },
+  "inspectedCount": 8,
+  "totalCapturedCount": 18,
+  "scope": "Direct review of the explicitly selected final RU/EN Booky graphics-recovery captures, covering visible fallback/recovery controls, help-card continuity, current character framing and visible localized text. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "limitations": [
+    "This visual review covers 8 of 18 final captures. It does not claim all retained images were inspected again.",
+    "Static images show only selected fallback/recovery and help states. They cannot establish actual context loss, trusted-touch recovery, pending-state behavior, timing, context preservation or native GPU equivalence; those claims depend on separately scoped formal browser assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/final-visual-receipt.json",
+    "sha256": "2b236aa16c16c48bbbc16bfa0f06453dc64854118668d9230acca79f88ad4fcf"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/browser-a1/booky-live-character-Booky-74726-character-recovery-touch-ru/booky-character-recovery-ru-fallback-200.png",
+      "sha256": "9945e458d579160103fcd90e5c8dfcd583fcfb465041de6c1ad17ae6f490f966",
+      "width": 390,
+      "height": 844,
+      "bytes": 277572,
+      "scenario": "booky-explicit-character-recovery-touch-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The enlarged localized Restore character label is fully contained in its button, with the full Booky name and header controls visible.",
+        "The retained fallback artwork sits below the help card, and the compact arrow/cross tools remain visible without enlarged text glyphs."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/browser-a1/booky-live-character-Booky-74726-character-recovery-touch-ru/booky-character-recovery-ru-post-restore-stress.png",
+      "sha256": "98084d4678716b4ed61fc2bf1372db8ed7f4cf5cbbe38d89fa04ac550debdd40",
+      "width": 390,
+      "height": 844,
+      "bytes": 305064,
+      "scenario": "booky-explicit-character-recovery-touch-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The current live Booky character is visible below the enlarged help card without the former RU top-edge overlap.",
+        "The enlarged localized title and header controls fit; body copy is partly outside the scroll viewport, so this image makes no whole-content visibility claim."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/browser-a1/booky-live-character-Booky-74726-character-recovery-touch-ru/booky-character-recovery-ru-restored.png",
+      "sha256": "7cc3ca362f3d612ddaa5caabef3473b2e9434d56544c2926049d16396f5bfd7c",
+      "width": 390,
+      "height": 844,
+      "bytes": 331070,
+      "scenario": "booky-explicit-character-recovery-touch-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The compact localized header and visible tour controls are readable after the synthetic font reset.",
+        "The restored current live character is fully framed below the card, with the arrow/cross controls and disabled walking control visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/browser-a1/booky-live-character-Booky-4740f-character-recovery-touch-en/booky-character-recovery-en-fallback-200.png",
+      "sha256": "aab049099eb2b384d5dbce3738657d0a2cb26cea9353698dbad7cc434a32ce10",
+      "width": 320,
+      "height": 844,
+      "bytes": 213259,
+      "scenario": "booky-explicit-character-recovery-touch-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The enlarged localized Restore character label is fully contained in its button, with the full Booky name and header controls visible.",
+        "The retained fallback artwork sits below the help card, and the compact arrow/cross tools remain visible without enlarged text glyphs."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/browser-a1/booky-live-character-Booky-4740f-character-recovery-touch-en/booky-character-recovery-en-post-restore-stress.png",
+      "sha256": "fa200ef3108c9e8c7024b41c7a8b901f1f52a48c30c34ef763d48fc33f5b1de5",
+      "width": 320,
+      "height": 844,
+      "bytes": 239649,
+      "scenario": "booky-explicit-character-recovery-touch-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The current live Booky character is visible below the enlarged help card without the former RU top-edge overlap.",
+        "The enlarged localized title and header controls fit; body copy is partly outside the scroll viewport, so this image makes no whole-content visibility claim."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/browser-a1/booky-live-character-Booky-4740f-character-recovery-touch-en/booky-character-recovery-en-restored.png",
+      "sha256": "7ef0105fbc641e718496cb0340022a610d3dfd74a939c7db842ce6d38dff9e1b",
+      "width": 320,
+      "height": 844,
+      "bytes": 262553,
+      "scenario": "booky-explicit-character-recovery-touch-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The compact localized header and visible tour controls are readable after the synthetic font reset.",
+        "The restored current live character is fully framed below the card, with the arrow/cross controls and disabled walking control visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/browser-a1/booky-live-character-Booky-0719b-recovery-lifecycle-touch-ru/booky-character-recovery-ru-controlled-pending.png",
+      "sha256": "ca6ea78607df450f6cc53c88933c92448384462787e139009a84b46c0fd85372",
+      "width": 390,
+      "height": 844,
+      "bytes": 330551,
+      "scenario": "booky-controlled-character-recovery-lifecycle-touch-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The localized restoring status and disabled restoring button are visibly contained in the help card; tips remain visible.",
+        "The decorative fallback remains visible during the controlled pending state. This static frame does not establish timeout duration or lifecycle behavior."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/browser-a1/booky-live-character-Booky-3d784-recovery-lifecycle-touch-en/booky-character-recovery-en-controlled-pending.png",
+      "sha256": "9be529bee8201a8a28515fd3ebd9bb8602c8e0fb83c20f1dee943c6b7509b955",
+      "width": 320,
+      "height": 844,
+      "bytes": 262873,
+      "scenario": "booky-controlled-character-recovery-lifecycle-touch-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The localized restoring status and disabled restoring button are visibly contained in the help card; tips remain visible.",
+        "The decorative fallback remains visible during the controlled pending state. This static frame does not establish timeout duration or lifecycle behavior."
+      ]
+    }
+  ],
+  "releaseReady": false
+}

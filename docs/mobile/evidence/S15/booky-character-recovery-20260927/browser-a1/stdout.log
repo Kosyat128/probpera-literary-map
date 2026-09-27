@@ -1,0 +1,12 @@
+
+Running 6 tests using 1 worker
+
+
+
+[1/6] tests\pwa\booky-live-character.spec.mjs:2951:150 › Booky actual App font-only 200 percent stress ru
+[2/6] tests\pwa\booky-live-character.spec.mjs:2951:150 › Booky actual App font-only 200 percent stress en
+[3/6] tests\pwa\booky-live-character.spec.mjs:3044:112 › Booky explicit character recovery touch ru
+[4/6] tests\pwa\booky-live-character.spec.mjs:3044:112 › Booky explicit character recovery touch en
+[5/6] tests\pwa\booky-live-character.spec.mjs:3157:112 › Booky controlled character recovery lifecycle touch ru
+[6/6] tests\pwa\booky-live-character.spec.mjs:3157:112 › Booky controlled character recovery lifecycle touch en
+  6 passed (2.9m)

@@ -1,0 +1,14 @@
+# S15 explicit Booky character recovery
+
+Source: e0f3119b63d645703708fc08407c4931f043b4ca.
+
+Explicit localized Booky graphics recovery after permanent renderer fallback preserves the open help card, context, Calm movements, gestures/progress and canonical globe ownership. Two real WebGL context-loss cases and two separately labeled controlled allocation/visibility/deadline/pending-hide cases are validated with two retained synthetic font-stress cases. Rendered 200-percent font rows and fixed 44px Move/Hide targets are measured; hidden/unrendered rows remain unverified. No native lifecycle/font-scale, full accessibility or standalone model-photo acceptance is claimed. TypeScript and 6 selected actual-App browser cases pass with 18 authenticated captures; 8 selected screenshots are visually reviewed. No unit suite is newly run because the scoped change adds no pure-unit source change; earlier unit evidence retains its original source. PWA 5dd38209 and Android-dev 87e1dd03 are freshly rebuilt and byte-audited. 1649 source inputs remain exact. Actual WebGL context-loss recovery is distinguished from controlled timeout/pending failure coverage. No standalone model-photo, installed-device, full accessibility or stage acceptance is claimed.
+
+- Fresh validation consists of TypeScript and the selected actual-App browser cases. No unit suite is freshly run or counted; earlier pure-unit evidence retains its original source and scope.
+- Real WebGL context-loss recovery and controlled timeout/pending failure coverage are recorded separately. Controlled failures do not prove native GPU faults, broad hardware recovery or installed-device behavior.
+- Recovery claims are limited to the tested companion renderer and selected help, motion and viewport states. The canonical globe remains separately owned. Full device, performance, accessibility, art, stage and release acceptance remain open.
+- Model geometry and animation definitions remain unchanged; renderer lifecycle behavior changes. Older standalone model photos remain historical evidence only, and current-model visual claims use selected actual-App screenshots.
+- Only S15.PLANETKA-002 receives scoped evidence references. All requirement and stage statuses remain unchanged. Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved.
+- This visual review covers 8 of 18 final captures. It does not claim all retained images were inspected again.
+- Static images show only selected fallback/recovery and help states. They cannot establish actual context loss, trusted-touch recovery, pending-state behavior, timing, context preservation or native GPU equivalence; those claims depend on separately scoped formal browser assertions.
+- No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed.

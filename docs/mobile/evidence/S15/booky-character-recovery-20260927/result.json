@@ -1,0 +1,734 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T00:26:18.668Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_CHARACTER_RECOVERY_SCOPED_VALIDATION",
+  "sourceCommit": "e0f3119b63d645703708fc08407c4931f043b4ca",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/entry.json",
+    "sha256": "51d9e81f6bedb82ee91de59ee5c7433e5e3ea71b68b860558e838e88c1b5c5aa"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/checkpoint.mjs",
+    "sha256": "8aa97c8570d424003373e03511e5952bd1c0eb749be26dbb8a849e73daed9ccd"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-large-text-20260927/result.json",
+    "sha256": "82730873cec79e56f97882087202269bc21b7f997b60111577cf751c40cc595c"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/source-manifests/b972c8ee0a2d17dd.json",
+    "sha256": "b972c8ee0a2d17dd8005dac30c01cb3bad31ec9f082f0e98eb5e8c352ab85786",
+    "fileCount": 1654
+  },
+  "sourceCommits": [
+    "e0f3119b63d645703708fc08407c4931f043b4ca"
+  ],
+  "attempts": {
+    "static": "a1",
+    "browser": "a1"
+  },
+  "runs": {
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/static-a1/result.json",
+      "sha256": "dcf5150224f76a3fe2651cf77a50090f1d87dc13222bcb071cb035e9ad76987d",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/static-a1/execution.json",
+        "sha256": "2447589751c08cebb8e603ab25da4e42e7e9aba44e74fd5cea05a75c4dda05e9"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/browser-a1/result.json",
+      "sha256": "0af9d5476a7339b1fabfecd3745de1d99530fa7f1a385b24da46882caacc1abf",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/browser-a1/execution.json",
+        "sha256": "7bcc7242298dd5b1d50d7c125278a489fa55e2b05173799ab9f99d282455e8c7"
+      },
+      "tests": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/browser-a1/playwright.json",
+        "sha256": "ef9ba967a5420a6aeb0de3d89ca8f9b031bcc88029420e7ef1c0e08f537c49b4"
+      }
+    }
+  },
+  "earlierAttempts": [],
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/diagnostic-history.json",
+    "sha256": "a65d0c63297e5b1fabcc8f6190e2863163d7ba9604e8d098f2c93adba0a22e0f"
+  },
+  "unitCount": 0,
+  "unitFiles": [],
+  "unitValidation": "not-run-no-changed-pure-unit-source",
+  "unitSuitesRerun": false,
+  "browserCases": 6,
+  "actualAppCaseCount": 6,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-ad053--only-200-percent-stress-ru\\booky-live-character.json",
+      "sha256": "96d824cf1d3fddb2c44b6a5aec551623951edaf27c850b7f20c1c4a2cee0b717",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-ad053--only-200-percent-stress-ru\\attachments\\booky-live-character-source-evidence-2453030371c15acc1489e9dfb466080ed9f8ae2b.json",
+        "sha256": "96d824cf1d3fddb2c44b6a5aec551623951edaf27c850b7f20c1c4a2cee0b717"
+      },
+      "test": "Booky actual App font-only 200 percent stress ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-35ad3--only-200-percent-stress-en\\booky-live-character.json",
+      "sha256": "48494edf1c488cc139105e6fa9037fff23b066490fbab3bca1635caa726ad154",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-35ad3--only-200-percent-stress-en\\attachments\\booky-live-character-source-evidence-35a7d54c909a4ba65b03cd143a0d3d3692398296.json",
+        "sha256": "48494edf1c488cc139105e6fa9037fff23b066490fbab3bca1635caa726ad154"
+      },
+      "test": "Booky actual App font-only 200 percent stress en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-74726-character-recovery-touch-ru\\booky-live-character.json",
+      "sha256": "2996e0ab20d85e90bb19204a3b86e1ac87920a8d2cbe85ccdd217e80a13be244",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-74726-character-recovery-touch-ru\\attachments\\booky-live-character-source-evidence-1f5767d756c67395b83085901824fe3bbfed3b3c.json",
+        "sha256": "2996e0ab20d85e90bb19204a3b86e1ac87920a8d2cbe85ccdd217e80a13be244"
+      },
+      "test": "Booky explicit character recovery touch ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-4740f-character-recovery-touch-en\\booky-live-character.json",
+      "sha256": "66252db9e08ee4e7a1e430d3304fcf5e3b8113700a6b3946d5e62a99876dbe65",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-4740f-character-recovery-touch-en\\attachments\\booky-live-character-source-evidence-5adceaf26ecbe906b6607048eaf661c3f5cdc749.json",
+        "sha256": "66252db9e08ee4e7a1e430d3304fcf5e3b8113700a6b3946d5e62a99876dbe65"
+      },
+      "test": "Booky explicit character recovery touch en"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-0719b-recovery-lifecycle-touch-ru\\booky-live-character.json",
+      "sha256": "c8171f0c7c74989bba1432e05dc2e2426b3d0fcd02bdb1aa6c9c8c35f5acc97c",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-0719b-recovery-lifecycle-touch-ru\\attachments\\booky-live-character-source-evidence-d44036475e48881e384b7e3409f1761144b37744.json",
+        "sha256": "c8171f0c7c74989bba1432e05dc2e2426b3d0fcd02bdb1aa6c9c8c35f5acc97c"
+      },
+      "test": "Booky controlled character recovery lifecycle touch ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-3d784-recovery-lifecycle-touch-en\\booky-live-character.json",
+      "sha256": "3bff27a1dc74c5d0392c801619a1b507e878451e45a3935a13060948e8bb7fc1",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-recovery-evidence\\browser-a1\\booky-live-character-Booky-3d784-recovery-lifecycle-touch-en\\attachments\\booky-live-character-source-evidence-d2d95f2fe08e9d9650b440094944512165faaacc.json",
+        "sha256": "3bff27a1dc74c5d0392c801619a1b507e878451e45a3935a13060948e8bb7fc1"
+      },
+      "test": "Booky controlled character recovery lifecycle touch en"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "Booky actual App font-only 200 percent stress ru",
+      "scenario": "booky-font-only-200-stress-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "observationsComplete": true,
+        "fontStressExactTwoHundredPercent": true,
+        "fontStressCriticalControlsFitAndRespond": true,
+        "fontStressRecoveryReachableByTouch": true,
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved": true,
+        "fontStressPortraitModelPreserved": true,
+        "fontStressNormalModeRestored": true
+      },
+      "observationChecks": {
+        "observation": "fontStress",
+        "checks": [
+          {
+            "name": "all four font passes reach exactly 200 percent after settling",
+            "pass": true
+          },
+          {
+            "name": "portrait Stop, Close and disabled walking target receive trusted touch",
+            "pass": true
+          },
+          {
+            "name": "short-landscape Stop and Close receive trusted touch",
+            "pass": true
+          },
+          {
+            "name": "Retry and Recover remain reachable under enlarged text",
+            "pass": true
+          },
+          {
+            "name": "critical control text stays within measured button borders",
+            "pass": true
+          },
+          {
+            "name": "font stress preserves legacy preferences and canonical scene",
+            "pass": true
+          },
+          {
+            "name": "portrait scaling preserves the existing Booky model and canvas size",
+            "pass": true
+          },
+          {
+            "name": "expanded text mode returns to compact after font restoration",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky actual App font-only 200 percent stress en",
+      "scenario": "booky-font-only-200-stress-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "observationsComplete": true,
+        "fontStressExactTwoHundredPercent": true,
+        "fontStressCriticalControlsFitAndRespond": true,
+        "fontStressRecoveryReachableByTouch": true,
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved": true,
+        "fontStressPortraitModelPreserved": true,
+        "fontStressNormalModeRestored": true
+      },
+      "observationChecks": {
+        "observation": "fontStress",
+        "checks": [
+          {
+            "name": "all four font passes reach exactly 200 percent after settling",
+            "pass": true
+          },
+          {
+            "name": "portrait Stop, Close and disabled walking target receive trusted touch",
+            "pass": true
+          },
+          {
+            "name": "short-landscape Stop and Close receive trusted touch",
+            "pass": true
+          },
+          {
+            "name": "Retry and Recover remain reachable under enlarged text",
+            "pass": true
+          },
+          {
+            "name": "critical control text stays within measured button borders",
+            "pass": true
+          },
+          {
+            "name": "font stress preserves legacy preferences and canonical scene",
+            "pass": true
+          },
+          {
+            "name": "portrait scaling preserves the existing Booky model and canvas size",
+            "pass": true
+          },
+          {
+            "name": "expanded text mode returns to compact after font restoration",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky explicit character recovery touch ru",
+      "scenario": "booky-explicit-character-recovery-touch-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "characterRecoveryGenuineContextLoss": true,
+        "characterRecoveryFreshOwnersByTrustedTouch": true,
+        "characterRecoveryStillUntilFreshGesture": true,
+        "characterRecoveryMotionPolicyRetained": true,
+        "characterRecoveryControlledFailureRetry": true,
+        "characterRecoveryPreservesScenePreferencesAndHelp": true,
+        "characterRecoveryRestoreFitsAt200Percent": true,
+        "characterRecoveryRestoresNormalFonts": true,
+        "characterRecoveryToolTargetsStay44": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false
+      },
+      "observationChecks": {
+        "observation": "characterRecovery",
+        "checks": [
+          {
+            "name": "real loss first recovers in place and second enters fallback",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted recovery creates one fresh character owner",
+            "pass": true
+          },
+          {
+            "name": "help node and canonical scene survive recovery",
+            "pass": true
+          },
+          {
+            "name": "replacement is still until a fresh trusted gesture",
+            "pass": true
+          },
+          {
+            "name": "controlled model failure allows a later explicit retry",
+            "pass": true
+          },
+          {
+            "name": "recovery preserves all preferences and progress",
+            "pass": true
+          },
+          {
+            "name": "Restore fits and responds to trusted touch at rendered 200 percent fonts",
+            "pass": true
+          },
+          {
+            "name": "font restoration returns the compact header and exact rendered font sizes",
+            "pass": true
+          },
+          {
+            "name": "icon-only Move and Hide keep 44px targets under enlarged text",
+            "pass": true
+          },
+          {
+            "name": "OS motion policy survives replacement and governs a fresh gesture",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky explicit character recovery touch en",
+      "scenario": "booky-explicit-character-recovery-touch-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "characterRecoveryGenuineContextLoss": true,
+        "characterRecoveryFreshOwnersByTrustedTouch": true,
+        "characterRecoveryStillUntilFreshGesture": true,
+        "characterRecoveryMotionPolicyRetained": true,
+        "characterRecoveryControlledFailureRetry": true,
+        "characterRecoveryPreservesScenePreferencesAndHelp": true,
+        "characterRecoveryRestoreFitsAt200Percent": true,
+        "characterRecoveryRestoresNormalFonts": true,
+        "characterRecoveryToolTargetsStay44": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false
+      },
+      "observationChecks": {
+        "observation": "characterRecovery",
+        "checks": [
+          {
+            "name": "real loss first recovers in place and second enters fallback",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted recovery creates one fresh character owner",
+            "pass": true
+          },
+          {
+            "name": "help node and canonical scene survive recovery",
+            "pass": true
+          },
+          {
+            "name": "replacement is still until a fresh trusted gesture",
+            "pass": true
+          },
+          {
+            "name": "controlled model failure allows a later explicit retry",
+            "pass": true
+          },
+          {
+            "name": "recovery preserves all preferences and progress",
+            "pass": true
+          },
+          {
+            "name": "Restore fits and responds to trusted touch at rendered 200 percent fonts",
+            "pass": true
+          },
+          {
+            "name": "font restoration returns the compact header and exact rendered font sizes",
+            "pass": true
+          },
+          {
+            "name": "icon-only Move and Hide keep 44px targets under enlarged text",
+            "pass": true
+          },
+          {
+            "name": "OS motion policy survives replacement and governs a fresh gesture",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky controlled character recovery lifecycle touch ru",
+      "scenario": "booky-controlled-character-recovery-lifecycle-touch-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "characterRecoveryControlledDeadline": true,
+        "characterRecoveryPendingActivationBounded": true,
+        "characterRecoveryLateCallbacksIgnored": true,
+        "characterRecoveryLaterRetryStaysStill": true,
+        "characterRecoveryPendingHideRetiresOwners": true,
+        "characterRecoveryOnlyExplicitVisibilityWrites": true,
+        "characterRecoveryLifecyclePreservesSceneAndProgress": true,
+        "controlledVisibilityFailure": true,
+        "nativeLifecycleEquivalent": false
+      },
+      "observationChecks": {
+        "observation": "characterRecoveryLifecycle",
+        "checks": [
+          {
+            "name": "controlled nonintersecting new canvas reaches the bounded first-frame deadline",
+            "pass": true
+          },
+          {
+            "name": "disabled repeated activation creates no queued owner",
+            "pass": true
+          },
+          {
+            "name": "timeout disposes owners once and ignores the retired observer callback",
+            "pass": true
+          },
+          {
+            "name": "later explicit retry creates a live still character",
+            "pass": true
+          },
+          {
+            "name": "trusted Hide retires the pending attempt and late callback cannot remount it",
+            "pass": true
+          },
+          {
+            "name": "only explicit Hide and Show write visibility while scene and progress remain exact",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    },
+    {
+      "test": "Booky controlled character recovery lifecycle touch en",
+      "scenario": "booky-controlled-character-recovery-lifecycle-touch-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "observationsComplete": true,
+        "characterRecoveryControlledDeadline": true,
+        "characterRecoveryPendingActivationBounded": true,
+        "characterRecoveryLateCallbacksIgnored": true,
+        "characterRecoveryLaterRetryStaysStill": true,
+        "characterRecoveryPendingHideRetiresOwners": true,
+        "characterRecoveryOnlyExplicitVisibilityWrites": true,
+        "characterRecoveryLifecyclePreservesSceneAndProgress": true,
+        "controlledVisibilityFailure": true,
+        "nativeLifecycleEquivalent": false
+      },
+      "observationChecks": {
+        "observation": "characterRecoveryLifecycle",
+        "checks": [
+          {
+            "name": "controlled nonintersecting new canvas reaches the bounded first-frame deadline",
+            "pass": true
+          },
+          {
+            "name": "disabled repeated activation creates no queued owner",
+            "pass": true
+          },
+          {
+            "name": "timeout disposes owners once and ignores the retired observer callback",
+            "pass": true
+          },
+          {
+            "name": "later explicit retry creates a live still character",
+            "pass": true
+          },
+          {
+            "name": "trusted Hide retires the pending attempt and late callback cannot remount it",
+            "pass": true
+          },
+          {
+            "name": "only explicit Hide and Show write visibility while scene and progress remain exact",
+            "pass": true
+          }
+        ],
+        "findings": []
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/visual-review.json",
+    "sha256": "4a00288243eabdc9fcddf9bd7e4ba8f0fed6a1948613cf08b733111d342e0a08"
+  },
+  "newPhotoReview": null,
+  "newModelPhotoCount": 0,
+  "retainedModelPhotoReview": null,
+  "historicalModelPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "inspectedImageCount": 8,
+  "totalCapturedImageCount": 18,
+  "visualReviewScope": "Direct review of the explicitly selected final RU/EN Booky graphics-recovery captures, covering visible fallback/recovery controls, help-card continuity, current character framing and visible localized text. All configured captures are authenticated; only the explicitly selected subset is directly reviewed.",
+  "visualReviewLimitations": [
+    "This visual review covers 8 of 18 final captures. It does not claim all retained images were inspected again.",
+    "Static images show only selected fallback/recovery and help states. They cannot establish actual context loss, trusted-touch recovery, pending-state behavior, timing, context preservation or native GPU equivalence; those claims depend on separately scoped formal browser assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1649,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/PlanetMascotAvatar.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/useBookyRenderer.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "1b4d71e01a024e00ca2f0948a05f4a8beb6725bc",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/pwa-a1/result.json",
+    "sha256": "097292748affea6e20decb07274f6f85f880d81ce1e68c1281da8f59d7a95a79"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/android-a1/result.json",
+    "sha256": "4ee22f7e3e6983191fdf789338b99ef8dddc849596f3ee99a5d2d0d59644008f"
+  },
+  "pwaBuildId": "5dd382090878ebca7eeeb840eb7c13768cb954130e2d351a2bd184fb0dbb2285",
+  "androidBuildId": "87e1dd03380647e924d3f8e8f7779d995c0b4d40ec920c618cb21d07f7014b29",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/android-87e1dd03/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "8e1e0f84531e8e2bf9e4dab17941308819c565c9fac38cf0f1f1e54a4bface59"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/pwa-5dd38209/artifact.json",
+      "sha256": "bebf1e094b34559d14ca67b0827b5dc4bd61c45e2647be4da73402c9d9952496"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/android-87e1dd03/runtime/artifact.json",
+      "sha256": "1ecc4f8de5caab20e8ccc44da9e4d71649b0fc44512829865925e22ce37b8c2e"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/pwa-a1/strict-audit.json",
+      "sha256": "539fb761e5e983e6a3911203e8ff5a12e44160bf59df5dfe83e8abe90a6c6524"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/android-a1/native-artifact-audit.json",
+      "sha256": "7fcf4d8a06966d6cff937aed25d3226077ce226963131cba9377450e729f721f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/android-a1/android-dev-apk-verification.json",
+      "sha256": "7af86f7da4aba77feceda794634ac59d7e6ddf9e78e614b9355bf72e0a8ea5de"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/android-a1/build-run.json",
+      "sha256": "602d7ed2de239e9f1812b8543388cdd59e862640971be9592e26c1776dfa9f03"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/build-baseline.json",
+    "sha256": "e8d643fb83c7beca8071117c86a85d13a761d42292eb885cbe93f71d0a53a254"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/pwa-a1/copy-verification.json",
+    "sha256": "e78411fd85eb379ca1a7206f91491885cfcb98cc81167a5df7870c792228bf66"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/pwa-a1/playwright.json",
+    "sha256": "c2074ab28965ff8103108e90eb61a9d43bd6ec500cb4776dd95a09548e40a869"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "521440d310beed0f5c1f1a9f25ca4597f4485f01",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-large-text-20260927/result.json",
+      "sha256": "82730873cec79e56f97882087202269bc21b7f997b60111577cf751c40cc595c"
+    },
+    "unitCount": 35,
+    "browserCases": 6,
+    "allPriorSelectedCasesRerun": false,
+    "priorSelectedBrowserCaseCount": 6,
+    "currentSelectedBrowserCaseCount": 6,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+      "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+    },
+    "photosHistoricalOnly": true,
+    "photosClaimCurrentRenderer": false
+  },
+  "criteriaUpdated": [
+    "PLANETKA-002"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-002"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD200Recorded": true,
+  "nextAction": "Continue the user-prioritized mobile companion refinement from this verified checkpoint. Preserve explicit localized graphics recovery without hiding help, current context, Calm movements, gestures and progress, truthful recovery availability and canonical globe ownership. Keep actual WebGL context-loss evidence distinct from controlled pending/timeout failure coverage. Full journey integration remains deferred. S03.acceptance remains first unresolved; installed-device, full accessibility and stage/release acceptance remain open.",
+  "limitations": [
+    "Fresh validation consists of TypeScript and the selected actual-App browser cases. No unit suite is freshly run or counted; earlier pure-unit evidence retains its original source and scope.",
+    "Real WebGL context-loss recovery and controlled timeout/pending failure coverage are recorded separately. Controlled failures do not prove native GPU faults, broad hardware recovery or installed-device behavior.",
+    "Recovery claims are limited to the tested companion renderer and selected help, motion and viewport states. The canonical globe remains separately owned. Full device, performance, accessibility, art, stage and release acceptance remain open.",
+    "Model geometry and animation definitions remain unchanged; renderer lifecycle behavior changes. Older standalone model photos remain historical evidence only, and current-model visual claims use selected actual-App screenshots.",
+    "Only S15.PLANETKA-002 receives scoped evidence references. All requirement and stage statuses remain unchanged. Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved.",
+    "This visual review covers 8 of 18 final captures. It does not claim all retained images were inspected again.",
+    "Static images show only selected fallback/recovery and help states. They cannot establish actual context loss, trusted-touch recovery, pending-state behavior, timing, context preservation or native GPU equivalence; those claims depend on separately scoped formal browser assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "bookyCharacterRecoveryImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}
