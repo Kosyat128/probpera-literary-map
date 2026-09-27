@@ -362,6 +362,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   useLayoutEffect(() => { if (walk.reducedMotion) setPageTurn(0); }, [walk.reducedMotion]);
   const walkNeedsSpace = !walk.active && !walk.canStart && !walk.reducedMotion && !open
     && snapshot.available && snapshot.mode === "help";
+  // Use observed space, not the measured pet height: compacting must not
+  // switch its own condition off. The collection keeps its existing dock.
+  const shortSpace = screen === "globe" && view.height < 240;
   const petPosition = walk.position ?? restingPosition;
   const pointEnvironment = useRef({ position: petPosition, size: petSize, view, dock });
   pointEnvironment.current = { position: petPosition, size: petSize, view, dock };
@@ -706,13 +709,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     <div ref={root} className="planet-mascot-controls" data-planet-mascot-pet=""
       data-booky-calm={calmMotion ? "true" : undefined}
       data-booky-expanded-text={expandedText ? "true" : undefined}
+      data-booky-short-space={shortSpace ? "true" : undefined}
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-panel-state={open ? "open" : "closed"}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
       data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={walk.active ? "walking" : gesture}
       data-booky-returning={targetCue?.phase === "returning" ? "true" : undefined}
       data-planet-mascot-closed-notice={!open && persistence.state !== "idle" ? "true" : undefined}
-      style={{ ...petPosition, left: `min(${petPosition.left}px, var(--booky-dock-max-left, ${petPosition.left}px))` }}
+      style={{ ...petPosition, "--booky-available-height": `${view.height}px`,
+        left: `min(${petPosition.left}px, var(--booky-dock-max-left, ${petPosition.left}px))` } as CSSProperties}
       onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
       onPointerMove={event => event.stopPropagation()} onWheel={event => event.stopPropagation()}
       onClick={event => event.stopPropagation()} onKeyDown={event => {
