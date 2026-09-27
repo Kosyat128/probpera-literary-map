@@ -19,9 +19,9 @@ const expectedSources = {
     "sourceSha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
   },
   "src/host/PlanetMascotControls.tsx": {
-    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
-    "sourceVersion": 3,
-    "sourceSha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
+    "sourceCommit": "e23e58109dbe81f181f6440725ad71157b387e69",
+    "sourceVersion": 4,
+    "sourceSha256": "4c2de3c256f178f7ed308d3a30a78be6a2e547af7f6b1b58a4c717f3ffcffe0d"
   }
 } as const;
 const policy = { canonicalEntityIds: [], approvedReviews: [] } as const;
@@ -146,8 +146,8 @@ describe("fixed unreviewed adult navigation inventory", () => {
     const changed = [BOOKY_NAVIGATION_DRAFTS[0], context].map(original => ({ ...original,
       payload: { ...original.payload, copy: { ...original.payload.copy, body: "Changed." } } }));
     const stale = [
-      { ...context, payload: { ...context.payload, version: 2 } },
-      { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance, sourceVersion: 2 } } },
+      { ...context, payload: { ...context.payload, version: 3 } },
+      { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance, sourceVersion: 3 } } },
       { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance,
         sourceRef: context.payload.provenance.sourceRef.replace(expectedSources["src/host/PlanetMascotControls.tsx"].sourceCommit,
           "c5f8e80ab3b8f6be42e04584a0b174ac427197e7") } } },
