@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T01:18:42.412Z",
+  "classification": "checkpoint-helper-diagnostic-schema-guard-failure",
+  "testFailure": false,
+  "sourceCommit": "29531f79627d872c6948150dd02dd8132fcafcbc",
+  "attempt": "checkpoint-a2",
+  "receipt": {
+    "provenance": "Parent /root reported the authentic exec_command tool return; no independently hashed process log exists.",
+    "command": "node docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/checkpoint.mjs 29531f79627d872c6948150dd02dd8132fcafcbc a2 a1 a1",
+    "chunkId": "f9e875",
+    "wallTimeSeconds": 2.3930404,
+    "exitCode": 1,
+    "startedAt": null,
+    "finishedAt": null,
+    "reportedError": "checkpoint.mjs:141: assert.ok(Array.isArray(diagnostics.supersededPreparations)&&diagnostics.supersededPreparations.length>0)",
+    "processLog": null
+  },
+  "failedHelper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/checkpoint-helper-before-diagnostic-schema-adaptation.mjs",
+    "sha256": "a6e898b66a1b01c90d80b954325b8ec599ffecb14a0868a92807867ef7a7f4d0"
+  },
+  "adaptedHelper": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/checkpoint.mjs",
+    "sha256": "03f580a018cc45b05651a8dc10494cf0c94b59a2ee16a1ca3afb8a6e685cadfb"
+  },
+  "schemaAdaptation": "D201 has six executed attempts and no supersededPreparations field. Absence is valid; any supplied preparation entries still receive their original strict validation. All original diagnostic receipts, reports, raw logs, counts and source references remain required. Amendment provenance and separately recorded successful subobservations are authenticated against original captures.",
+  "priorCheckpointGuard": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/checkpoint-guard-a1.json",
+    "sha256": "912f45b58a2b2807e5f0c4cf2a97ee5b980db3b6e6d3ae6f71a4443b78a32fdc"
+  },
+  "globalWritesBeforeRejection": false,
+  "releaseReady": false
+}

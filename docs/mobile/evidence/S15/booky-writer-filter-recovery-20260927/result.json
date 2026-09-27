@@ -1,0 +1,496 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T01:21:55.039Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_WRITER_FILTER_RECOVERY_SCOPED_VALIDATION",
+  "sourceCommit": "29531f79627d872c6948150dd02dd8132fcafcbc",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/entry.json",
+    "sha256": "8ae350ec42080cdf008c74927d6ef6aa94eea2755b3ec02a2f968d0508a2e4ca"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/checkpoint.mjs",
+    "sha256": "03f580a018cc45b05651a8dc10494cf0c94b59a2ee16a1ca3afb8a6e685cadfb"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/result.json",
+    "sha256": "b1cc9570b9fc6e70044f924fa109e769ee9f2882bf7428768d044be96d255e38"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/source-manifests/d359aa1ac857551f.json",
+    "sha256": "d359aa1ac857551f0e5e8f44a215992a661b586a3c0ba04bfc72a92c3ec25709",
+    "fileCount": 1657
+  },
+  "sourceCommits": [
+    "29531f79627d872c6948150dd02dd8132fcafcbc"
+  ],
+  "attempts": {
+    "unit": "a2",
+    "static": "a1",
+    "browser": "a1"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/unit-a2/result.json",
+      "sha256": "b71e0b8a637bfc84c491e2ec470bbad2a758836f16a5245b6f83fbc2f00dcf08",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/unit-a2/execution.json",
+        "sha256": "f2a1db96d40296489610699fe27d720c862f6bdf12a7c88340c5cc329b46ef26"
+      },
+      "tests": {
+        "passed": 49,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/unit-a2/vitest.json",
+        "sha256": "879be58c4ae4ab62c1ae045b7c1c5689fa761d7e8249141cf2cbd8f22b3e1e27"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/static-a1/result.json",
+      "sha256": "199197df14d18492b7d2a9371c6cf371bb73a54b6d046851f062bb4521f3370a",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/static-a1/execution.json",
+        "sha256": "e0ac4582f9e5eba689aac9607fd3bc111c3550983794acef183c06525dd6ad46"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/browser-a1/result.json",
+      "sha256": "84d58ff6e0d764c52a3f373094441929818c86de7b9022b9aff10072e3f0a6a0",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/browser-a1/execution.json",
+        "sha256": "3d5400b446732c948595c1f7661b1ea00ddffdb940c2975173188e705ee5ea5a"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/browser-a1/playwright.json",
+        "sha256": "4367b922a93152182cef9c84f7eecb39493d38e73332ec97e02897b85565a02f"
+      }
+    }
+  },
+  "earlierAttempts": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/unit-a1/result.json",
+        "sha256": "516693f9f1d846806d9564543169160b1d47fd25c7bcb5d2c813a102b94204f5"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/unit-a1/execution.json",
+        "sha256": "494e0d8dedf7e192b70679afdf9ce3ef5e6310dc922c84c91743e46a855b7c23"
+      },
+      "rawReport": null,
+      "pass": false,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/source-manifests/d359aa1ac857551f.json",
+        "sha256": "d359aa1ac857551f0e5e8f44a215992a661b586a3c0ba04bfc72a92c3ec25709",
+        "fileCount": 1657
+      },
+      "retainedOnly": true,
+      "classification": "unit-runner-startup-infrastructure-failure",
+      "testsExecuted": false,
+      "explanation": "esbuild could not read the parent directory while loading the Vitest config. No test report was produced and no unit cases executed.",
+      "missingReport": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/unit-a1/vitest.json"
+    }
+  ],
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/diagnostic-history.json",
+    "sha256": "6c259346c2a1e4ebaf4996d137c0c35d15330abf04d3284edeb68bab56f66334"
+  },
+  "checkpointGuardHistory": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/checkpoint-guard-a1.json",
+      "sha256": "912f45b58a2b2807e5f0c4cf2a97ee5b980db3b6e6d3ae6f71a4443b78a32fdc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/checkpoint-guard-a2.json",
+      "sha256": "5f0f6bc71dbf4bf4e03cd097d7a5461ebcc09edc0ec5e8c7bfb26edc61203b6f"
+    }
+  ],
+  "unitCount": 49,
+  "unitFiles": [
+    "src/books/bookArchiveAuthorRecovery.test.ts",
+    "src/books/bookArchiveAuthorRequest.test.ts",
+    "src/host/planetMascot.test.ts"
+  ],
+  "unitValidation": "focused-author-request-recovery-planner-and-mascot-controller",
+  "unitSuitesRerun": true,
+  "browserCases": 2,
+  "actualAppCaseCount": 2,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-evidence\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\booky-writer-filter-recovery.json",
+      "sha256": "47dc5444540c584307ffc154f3ccfc6d3a041578c8acf2c44fe62d82812caf53",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-evidence\\browser-a1\\booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru\\attachments\\booky-writer-filter-recovery-source-evidence-7ebb0ed00ce95e7d9a3ec0a14e7009ed689a7b9a.json",
+        "sha256": "47dc5444540c584307ffc154f3ccfc6d3a041578c8acf2c44fe62d82812caf53"
+      },
+      "test": "Booky explicit writer filter recovery ru"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-evidence\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\booky-writer-filter-recovery.json",
+      "sha256": "86dd92e5b67f3a4426f5d3684497375945835bc8d5bd3cf5bb7173eaa47f6166",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-evidence\\browser-a1\\booky-writer-filter-recove-51543-t-writer-filter-recovery-en\\attachments\\booky-writer-filter-recovery-source-evidence-904f3c7963f8352cc37df6dc50d3b31235ac44a9.json",
+        "sha256": "86dd92e5b67f3a4426f5d3684497375945835bc8d5bd3cf5bb7173eaa47f6166"
+      },
+      "test": "Booky explicit writer filter recovery en"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "Booky explicit writer filter recovery ru",
+      "scenario": "booky-writer-filter-recovery-ru",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativePickerEquivalent": false,
+        "controlledPickerSetup": true,
+        "pendingAuthorCommitVerified": true,
+        "manualCurrentStatusRepairVerified": true,
+        "ordinaryRestrictionsPreserved": true,
+        "explicitRecoveryTrustedTouch": true,
+        "allBooksSelected": true,
+        "writerAndSortPreserved": true,
+        "renderedResultsAcknowledged": true,
+        "savedContentPreserved": true,
+        "preferencesAndGlobePreserved": true,
+        "readerDeferralExercised": false,
+        "newerUserEditIntegrationExercised": false
+      },
+      "observationChecks": {
+        "observation": "writerFilterRecovery",
+        "checks": [
+          {
+            "name": "ordinary writer requests preserve the conflicting view and nondefault sort",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted recovery opens All books and clears only restrictions",
+            "pass": true
+          },
+          {
+            "name": "current canonical writer and title sort remain selected",
+            "pass": true
+          },
+          {
+            "name": "rendered current-writer results receive visible applied acknowledgement",
+            "pass": true
+          },
+          {
+            "name": "saved shelves favorites history and local storage remain exact",
+            "pass": true
+          },
+          {
+            "name": "Booky route progress preferences and canonical globe remain exact",
+            "pass": true
+          },
+          {
+            "name": "native picker setup is explicitly controlled and Booky activations are trusted touch",
+            "pass": true
+          },
+          {
+            "name": "initial intervening render waits for its own filter batch before applied acknowledgement",
+            "pass": true
+          },
+          {
+            "name": "manual facet repair updates current rendered status without another Booky request",
+            "pass": true
+          }
+        ]
+      }
+    },
+    {
+      "test": "Booky explicit writer filter recovery en",
+      "scenario": "booky-writer-filter-recovery-en",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativePickerEquivalent": false,
+        "controlledPickerSetup": true,
+        "pendingAuthorCommitVerified": true,
+        "ordinaryRestrictionsPreserved": true,
+        "explicitRecoveryTrustedTouch": true,
+        "allBooksSelected": true,
+        "writerAndSortPreserved": true,
+        "renderedResultsAcknowledged": true,
+        "savedContentPreserved": true,
+        "preferencesAndGlobePreserved": true,
+        "readerDeferralExercised": false,
+        "newerUserEditIntegrationExercised": false
+      },
+      "observationChecks": {
+        "observation": "writerFilterRecovery",
+        "checks": [
+          {
+            "name": "ordinary writer requests preserve the conflicting view and nondefault sort",
+            "pass": true
+          },
+          {
+            "name": "explicit trusted recovery opens All books and clears only restrictions",
+            "pass": true
+          },
+          {
+            "name": "current canonical writer and title sort remain selected",
+            "pass": true
+          },
+          {
+            "name": "rendered current-writer results receive visible applied acknowledgement",
+            "pass": true
+          },
+          {
+            "name": "saved shelves favorites history and local storage remain exact",
+            "pass": true
+          },
+          {
+            "name": "Booky route progress preferences and canonical globe remain exact",
+            "pass": true
+          },
+          {
+            "name": "native picker setup is explicitly controlled and Booky activations are trusted touch",
+            "pass": true
+          },
+          {
+            "name": "initial intervening render waits for its own filter batch before applied acknowledgement",
+            "pass": true
+          }
+        ]
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/visual-review.json",
+    "sha256": "2e6dae80905f7053ba05f5706f7c47f8555b2a2906851505a4a003849c625ca1"
+  },
+  "newPhotoReview": null,
+  "newModelPhotoCount": 0,
+  "retainedModelPhotoReview": null,
+  "historicalModelPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "inspectedImageCount": 4,
+  "totalCapturedImageCount": 4,
+  "visualReviewScope": "Direct review of the selected final RU/EN writer-filter recovery captures, showing the empty collection offer and resulting writer collection, localized controls and visible filtering context. Every configured capture is authenticated; only the explicit selected images are claimed as directly reviewed.",
+  "visualReviewLimitations": [
+    "This review directly inspects 4 of 4 final captures.",
+    "Static images cannot establish trusted input, ordinary filter preservation, reader ownership, request cancellation or rendered acknowledgement; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1646,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/App.tsx",
+    "src/books/bookArchiveAuthorRequest.test.ts",
+    "src/books/bookArchiveAuthorRequest.ts",
+    "src/components/BookArchiveSection.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts"
+  ],
+  "newSourcePaths": [
+    "src/books/bookArchiveAuthorRecovery.test.ts",
+    "src/books/bookArchiveAuthorRecovery.ts",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "80efcff2d119e4308cc49b17b3b3d440c0f8c649",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/pwa-a1/result.json",
+    "sha256": "263ea01e7cf47efa06a2a841baddd3d037abfe72836ab80e45a94218832548d5"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/android-a1/result.json",
+    "sha256": "6494afb712c287069c90dd7d71e84b8f257d107b0c14a59bf7151949a2e3f466"
+  },
+  "pwaBuildId": "224c362757258a9162c88d2ae87fc98ac994441fb50e882a4f811172189e6314",
+  "androidBuildId": "3200e4186befb3dbafd54b7e4c801bfbc8f1be4e076288b4405af823982bdfce",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/android-3200e418/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "3bc6defca7e4ccb7edb85ac8fe39a60dd63d4afc6cfbd4e66746616d5a8eac28"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/pwa-224c3627/artifact.json",
+      "sha256": "c953ba4bac64f40311887fd38558d4ee361d9054805d412051c5ae646c88f084"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/android-3200e418/runtime/artifact.json",
+      "sha256": "3a1c4e37fc8324506e14d00398d031ca1f840201286f02aac1f69b2796655020"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/pwa-a1/strict-audit.json",
+      "sha256": "7064bb0b9f0802d5afc9ea07e6e976f1516694bef50bf13ff705a775972b2731"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/android-a1/native-artifact-audit.json",
+      "sha256": "1d27d409806556b3b1e4a5513bc80b49fcf90b45174c2b806e63378a43e74d77"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/android-a1/android-dev-apk-verification.json",
+      "sha256": "226e00b8a7ff03c2713353bdcb84658688e4e11c924817adb37e704b5262de77"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/android-a1/build-run.json",
+      "sha256": "a8081f5bdb7443f5e687c323b14dd8c0caf36ddbf43c0b0341269d8ca5bcde10"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/build-baseline.json",
+    "sha256": "bc5ce4a30f99c1715b5d432a2e7211be8016ed70aed132fe7eb48b98658e8303"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/pwa-a1/copy-verification.json",
+    "sha256": "79ec7274d1cd628eb52a4214aa33973a6ce5741514aefebd53eac287dbfcac94"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/pwa-a1/playwright.json",
+    "sha256": "7223fc398b11fed9a4b0288aa78d829898da649849f7ebc440e610416297a44b"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "e0f3119b63d645703708fc08407c4931f043b4ca",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/result.json",
+      "sha256": "b1cc9570b9fc6e70044f924fa109e769ee9f2882bf7428768d044be96d255e38"
+    },
+    "unitCount": 0,
+    "browserCases": 6,
+    "allPriorSelectedCasesRerun": false,
+    "priorSelectedBrowserCaseCount": 6,
+    "currentSelectedBrowserCaseCount": 2,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+      "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+    },
+    "photosHistoricalOnly": true,
+    "photosClaimCurrentRenderer": false
+  },
+  "criteriaUpdated": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD201Recorded": true,
+  "nextAction": "Continue the user-prioritized mobile companion refinement from this verified checkpoint. Preserve explicit writer-filter recovery, ordinary collection filters, verified writer identity, reader ownership, stale-request safety, saved progress and canonical globe ownership. Full journey integration remains deferred. S03.acceptance remains first unresolved; installed-device, full accessibility and stage/release acceptance remain open.",
+  "limitations": [
+    "Fresh unit evidence covers the selected author-request resolver, recovery planner and mascot-controller files only. Larger prior suites retain their original source attribution.",
+    "Browser evidence is limited to the selected explicit writer-filter recovery cases and their recorded assertions. Reader deferral and newer-user-edit React races remain untested. Own-request filter-batch acknowledgement is a separate reproduced regression, claimed only through passing final assertions.",
+    "Collection recovery changes only the current presentation restrictions and selected shelf; saved shelves, favorites and reading progress are not reset. Ordinary writer-book requests retain their established filter behavior.",
+    "Model geometry, animation definitions, renderer and saved-motion implementation remain unchanged from D200. Earlier standalone photos are historical only; no new or retained-current standalone model-photo claim is made.",
+    "Only S15.PLANETKA-005 and S15.UX-006 receive bounded adult filtered-empty recovery evidence. PLANETKA-005 remains IN_PROGRESS and UX-006 remains OPEN; this is not full loading/empty/error/offline acceptance. All requirement and stage statuses remain unchanged. Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved. Native device, full accessibility, art, stage and release acceptance remain open.",
+    "This review directly inspects 4 of 4 final captures.",
+    "Static images cannot establish trusted input, ordinary filter preservation, reader ownership, request cancellation or rendered acknowledgement; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "bookyWriterFilterRecoveryImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

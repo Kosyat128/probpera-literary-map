@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T01:09:55.906Z",
+  "stage": "S15",
+  "checkpoint": "80efcff2d119e4308cc49b17b3b3d440c0f8c649",
+  "previous": "docs/mobile/evidence/S15/booky-character-recovery-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/result.json",
+    "sha256": "b1cc9570b9fc6e70044f924fa109e769ee9f2882bf7428768d044be96d255e38"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/result.json",
+    "sha256": "b1cc9570b9fc6e70044f924fa109e769ee9f2882bf7428768d044be96d255e38"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/source-manifests/b972c8ee0a2d17dd.json",
+    "sha256": "b972c8ee0a2d17dd8005dac30c01cb3bad31ec9f082f0e98eb5e8c352ab85786",
+    "fileCount": 1654
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/scope.json",
+    "sha256": "a885bb86f2185bdf2505098bee2d2e018dd970bfc7492e271bed5317943a72b2"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ec39ff982aa7b3bcb69f0d51148b545b573c70b70b9c89aef81a3263afff2aa8"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "f16c3b875b1662cc4c301bec2379b25f846836664fee80e255d83f86690778ab"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "3268b0cb2a2e7b204e2f287e341744cad3f7225fcb110a0a27482825ca57b557"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "f92f817216909efd9ad0a26cf63cb6952de06c8b31a1cc75c84eb480eb1af6e1"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "b458c2419ed554a09a16dc6cbb3b594cb66125dab6039dc9a23a7ba6188db1f5"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "c7831301c694d98aed3367dfcc50139fab02bce49ce10bfe559636f2a6e8e042"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "42892dada8e2932f9d46e38006242aa15543901e4e5a7ea080e89f192e5069a8"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "33b980f835384fb36b29292fc10b056e005aeb5c4c8310bf028f5668412426d0"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/books/bookArchiveAuthorRequest.test.ts",
+    "src/books/bookArchiveAuthorRequest.ts",
+    "src/components/BookArchiveSection.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts"
+  ],
+  "newSourcePaths": [
+    "src/books/bookArchiveAuthorRecovery.test.ts",
+    "src/books/bookArchiveAuthorRecovery.ts",
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "newImplementationFiles": [
+    "src/books/bookArchiveAuthorRecovery.ts"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "62536b98653a59498076396c0d56592704ccbec242ad30a28bc5a8c66a598a72"
+    },
+    {
+      "path": "src/books/bookArchiveAuthorRequest.test.ts",
+      "sha256": "56d1a0905d1acbd5bc325f42d1b2c4ef73600ef4247a851a6fd49ed1323f3339"
+    },
+    {
+      "path": "src/books/bookArchiveAuthorRequest.ts",
+      "sha256": "c8e83557e48c53c9f29d8081919e7b2fb3c32d45023674c7f2fad8abc9f7a32b"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "3930b08714051f2dc2f64511b9c0446c49e8ccfe7578e8c6754dc94f6c9163e2"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "4a73ea8d627da4d566c5a611cbdf7c0eb54e5e741af3e87583168e112d18b993"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "29cdd02210a265c21907ba2b52a61f996ad8781e359723bc81fe070fd2a75804"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "eb198525c783f6a6208103f1c9896ea84f53b7e5199dc6c58b28753017b4cebe"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "962292cab3d70c9b1cddc1ee8df44dd43d517623610a3a9f8e7645fcb71dd470"
+    },
+    {
+      "path": "src/books/bookArchiveAuthorRecovery.test.ts",
+      "sha256": "1af77c024f41980aa2d336a424b3c1273c212cf825a155296fabe928787e95cd"
+    },
+    {
+      "path": "src/books/bookArchiveAuthorRecovery.ts",
+      "sha256": "0ce4dd4a6fdb5717dc13a6e9703e7994712a9c0e868e33b59d2a24d8615c1ef1"
+    },
+    {
+      "path": "tests/pwa/booky-writer-filter-recovery.spec.mjs",
+      "sha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494"
+    }
+  ],
+  "sourceInputCount": 1657,
+  "protectedInputCount": 1646,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/books/bookArchiveAuthorRequest.ts",
+    "src/components/BookArchiveSection.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/books/bookArchiveAuthorRecovery.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "80efcff2d119e4308cc49b17b3b3d440c0f8c649",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/books/bookArchiveAuthorRecovery.test.ts",
+    "src/books/bookArchiveAuthorRequest.test.ts",
+    "src/host/planetMascot.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-writer-filter-recovery.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky explicit writer filter recovery ru",
+    "Booky explicit writer filter recovery en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 49,
+  "expectedBrowserTests": 2,
+  "expectedImages": 4,
+  "scope": "Deliberate localized adult filtered-empty writer recovery preserves ordinary request restrictions until explicit consent, canonical writer identity and title sort, saved content, Booky preferences and canonical globe ownership. RU covers a conflicting country facet plus manual current-status repair; EN covers the empty Favorites shelf. Both assert that an intervening render waits for its own request filter batch before applied acknowledgement. Native-picker setup is controlled; reader deferral and newer-user-edit React races remain untested. Evidence targets only S15.PLANETKA-005 and S15.UX-006 with all statuses unchanged; full loading/empty/error/offline acceptance remains open.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

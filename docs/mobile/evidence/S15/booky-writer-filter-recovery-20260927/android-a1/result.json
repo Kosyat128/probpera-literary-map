@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-writer-filter-recovery-dev-apk",
+  "sourceCommit": "29531f79627d872c6948150dd02dd8132fcafcbc",
+  "buildId": "3200e4186befb3dbafd54b7e4c801bfbc8f1be4e076288b4405af823982bdfce",
+  "sourceInputsSha256": "d53763c9626d5854448af7c0058eda873c2a17a7029dbab8b1fff4d23fde5776",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/android-3200e418/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "3bc6defca7e4ccb7edb85ac8fe39a60dd63d4afc6cfbd4e66746616d5a8eac28"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/android-3200e418/runtime",
+    "sha256": "3a1c4e37fc8324506e14d00398d031ca1f840201286f02aac1f69b2796655020",
+    "files": 1408,
+    "bytes": 74878878
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-recovery-evidence/android-87e1dd03/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

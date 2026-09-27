@@ -1,0 +1,1266 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-27T01:09:53.214Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-recovery-20260927/result.json",
+    "sha256": "b1cc9570b9fc6e70044f924fa109e769ee9f2882bf7428768d044be96d255e38"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/record-diagnostics.mjs",
+    "sha256": "00e00f9a09b9ab919d5b34433b3e455cbf3f1e21a80f4505d3e25305c4d5124b"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/diagnostic-inputs.json",
+    "sha256": "f6f5e685acb0ed245df753c0d640bd8836f93f8aa69825e2e09e390a0cb09e67"
+  },
+  "attempts": [
+    {
+      "id": "browser-diagnostic-a1",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/execution.json",
+        "sha256": "d7765756be715e66f2989aa2855a7c18b7c37427574c2a33b27436aecd3c787c"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/stdout.log",
+          "sha256": "70ee162568d9d4e92679530e1b57838fbac2cedb6cfa28cea191a59bc7fa74df"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/stderr.log",
+          "sha256": "dd0dbf4bfb51a6d6a1a77a68b53fcee409d40fc16e606a45ecc25f93ff824dbb"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/playwright.json",
+        "sha256": "f0e65c9ed2e208fd2f7a5d74a84610923cd66d16b9296b60d12271482042d0ad"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original executed a1: both cases failed. RU ordinary writer navigation was invalidated before filter setup; a2 later isolated the own-batch acknowledgement race. EN failed an observer-only half-pixel internal-margin requirement for an exactly flush 44px language control despite all three hit probes passing. Raw evidence remains unchanged.",
+      "failures": [
+        {
+          "test": "Booky explicit writer filter recovery ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-author-books-status]').first()\nExpected: \u001b[32m\"\u001b[7mapp\u001b[27mli\u001b[7me\u001b[27md\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7minva\u001b[27mlid\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-author-books-status]').first()\u001b[22m\n\u001b[2m    - locator resolved to <p role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"planet-mascot-controls__feedback\" data-planet-mascot-author-books-status=\"loading\">Готовим список книг писателя. Если открыта книга,…</p>\u001b[22m\n\u001b[2m    - unexpected value \"loading\"\u001b[22m\n\u001b[2m    12 × locator resolved to <p role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"planet-mascot-controls__feedback\" data-planet-mascot-author-books-status=\"invalid\">Выберите писателя заново, чтобы открыть его книги.</p>\u001b[22m\n\u001b[2m       - unexpected value \"invalid\"\u001b[22m\n\n\n  429 |   const filters=async()=>{await collapse();await input.tap(page.locator('.book-shelf-controls__advanced'),'open collection filters');await expect(drawer()).toBeVisible();};\n  430 |   const closeFilters=async()=>{await input.tap(drawer().locator('.book-shelf-filter-drawer__header button'),'close collection filters');await expect(drawer()).toBeHidden();};\n> 431 |   const status=async value=>{await expect(page.locator('[data-planet-mascot-author-books-status]').first()).toHaveAttribute('data-planet-mascot-author-books-status',value);};\n      |                                                                                                             ^\n  432 |   const nativeSelect=async(locator,value,label)=>{const before=await locator.inputValue();await locator.selectOption(value);await expect(locator).toHaveValue(value);o.pickerSetup.push({label,mechanism:'controlled Playwright selectOption for native picker setup only',before,value});await writerSettle(page);};\n  433 |   try {\n  434 |     await page.setViewportSize({width:language==='ru'?390:320,height:844});await writerSettle(page);\n    at status (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a1\\writer-filter-recovery.spec.mjs:431:109)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a1\\writer-filter-recovery.spec.mjs:436:155"
+        },
+        {
+          "test": "Booky explicit writer filter recovery en",
+          "message": "Error: English interface cannot be exposed: {\"budget\":8,\"attempt\":0,\"state\":{\"box\":{\"left\":219.984375,\"top\":15,\"right\":263.984375,\"bottom\":59,\"width\":44,\"height\":44},\"clip\":{\"left\":174.984375,\"right\":263.984375,\"top\":15,\"bottom\":59},\"scroll\":null,\"center\":{\"x\":241.984375,\"y\":37},\"hits\":[{\"point\":{\"x\":241.984375,\"y\":37},\"inside\":true,\"hit\":{\"tag\":\"BUTTON\",\"className\":\"\",\"text\":\"EN\"}},{\"point\":{\"x\":233.184375,\"y\":37},\"inside\":true,\"hit\":{\"tag\":\"BUTTON\",\"className\":\"\",\"text\":\"EN\"}},{\"point\":{\"x\":250.784375,\"y\":37},\"inside\":true,\"hit\":{\"tag\":\"BUTTON\",\"className\":\"\",\"text\":\"EN\"}}],\"text\":\"EN\",\"disabled\":false,\"visible\":true,\"borderRadius\":\"9px\"}}\n\n  400 |       state=await geometry(locator);const b=state.box,c=state.clip;\n  401 |       if(b.top>=c.top+.5&&b.bottom<=c.bottom-.5&&b.left>=c.left-.5&&b.right<=c.right+.5&&state.hits.every(hit=>hit.inside)) return state;\n> 402 |       if(!state.scroll||attempt===budget)throw Error(label+' cannot be exposed: '+JSON.stringify({budget,attempt,state}));\n      |                                                ^\n  403 |       const s=state.scroll.rect,left=Math.max(2,s.left),right=Math.min(page.viewportSize().width-2,s.right),top=Math.max(2,s.top+3),bottom=Math.min(page.viewportSize().height-2,s.bottom-3);\n  404 |       const x=(left+right)/2,upper=top+(bottom-top)*.2,lower=top+(bottom-top)*.8,down=b.top<c.top;\n  405 |       const start=down?upper:lower,end=down?lower:upper;\n    at expose (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a1\\writer-filter-recovery.spec.mjs:402:48)\n    at Object.tap (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a1\\writer-filter-recovery.spec.mjs:411:5)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a1\\writer-filter-recovery.spec.mjs:435:25"
+        }
+      ],
+      "successfulSubobservations": [],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/playwright.config.mjs",
+          "sha256": "63357dea4ca454e673c0e6dc8850f8fe5e27a55cb382c8ca5f9479e00a49a10e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/run.mjs",
+          "sha256": "9678645e9ad379fe9eb768d8dac6a7753c47a218c68c9f0eb7d9ccc0964a9130"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/bind.mjs",
+          "sha256": "8bc3f820df5093c7f1e7d92e9568b2680de89822418a6087f1ff4883ab0457bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/canonical-fixture.mjs",
+          "sha256": "34626117500dae12353eaaebd893ad8ece24e5b74bf52e77b1b85a3b2aa94bd9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/writer-filter-recovery.spec.mjs",
+          "sha256": "11ee50c3279efa381bd84a5d49ca0adbb2f7d09cfc74ccaaec00c741516ab6a0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/prefix-provenance.json",
+          "sha256": "dc8709586de6c0646daf7657e8b556af6396ad77e5e6c1fa6da323344f72d15d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/authorized-source.json",
+          "sha256": "064ab8aaa97295ee83b5eda67e27ca649c98c9f6f477233793346cc145614ce6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/execution-start.json",
+          "sha256": "f1844a1c58940c3a0f79d6351a5bd22b558116a11c6c3d996d25a7905d042991"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/dirty.diff",
+          "sha256": "3fe1a06674c514accd401ecc070de0c4333e42d1b8d73091d8b4212a91c6e759"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/preflight-start.json",
+          "sha256": "78d59c67e41d322508e49880c9de3f0a3594dfe4bfa8902419bfb43586301c2a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/preflight-result.json",
+          "sha256": "1c6d30e6e8c08ba3fee5cb0cd086d2a940c8acbc1e2affb35dd41f82d69ae006"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/preflight-stdout.log",
+          "sha256": "8cdb7f7a7d13724bc963ed24b03572e8b7cb3d7b21920076f7e3310209dd6208"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-be419ddf0593616e000b66075bb6f2f8e683a9b4.json",
+          "sha256": "93bdf92a2f98f43dfc0c74209a30c122dd704675b5a3e3207c8b203b89f05cef"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+          "sha256": "93bdf92a2f98f43dfc0c74209a30c122dd704675b5a3e3207c8b203b89f05cef"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/error-context.md",
+          "sha256": "f966efaf534f8a851eb5bf1b46ebed5d01fcc297992b03329565eaf281d657a2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-35cd791f5e28134f3d2cb1c646bc3c62e8559f9b.json",
+          "sha256": "d1932f14cb6096617dc69323e8d6ab00b8d6051a85556ec68aeff928b51965c1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+          "sha256": "d1932f14cb6096617dc69323e8d6ab00b8d6051a85556ec68aeff928b51965c1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a1/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/error-context.md",
+          "sha256": "9fc1e8468847f9de2839a3596e9c4b3f51fca661a3ddae2ca66ea3c3fc8ac07d"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a2",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/execution.json",
+        "sha256": "ede3a2d708beecb90e95dc8f76b2cc079da3b26d72fe7e8c0c47a594db77f53a"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/stdout.log",
+          "sha256": "a02effe864bb5b867b59d3c2c4db765a45f43626384266cdf9fa3e74d56c32a4"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/stderr.log",
+          "sha256": "03a07debc0826d5d805c392d94c31df85b5cc1f590ed174b618c95239fb8a814"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/playwright.json",
+        "sha256": "acd7aff2440a589306e4ffb8da34468fecb084cb6be89f2bf5b8ca04a6ca7039"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original executed a2: both cases failed. Bounded read-only branch telemetry showed a canonical ready ordinary request reaching an intervening render with its old null author filter, becoming invalid before the queued matching author view arrived; reader guards were false. This is distinct from newer user-edit races or reader deferral.",
+      "failures": [
+        {
+          "test": "Booky explicit writer filter recovery ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-author-books-status]').first()\nExpected: \u001b[32m\"\u001b[7mapp\u001b[27mli\u001b[7me\u001b[27md\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7minva\u001b[27mlid\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-author-books-status]').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <p role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"planet-mascot-controls__feedback\" data-planet-mascot-author-books-status=\"invalid\">Выберите писателя заново, чтобы открыть его книги.</p>\u001b[22m\n\u001b[2m       - unexpected value \"invalid\"\u001b[22m\n\n\n  448 |   const status=async value=>{\n  449 |     let failure;\n> 450 |     try { await expect(page.locator('[data-planet-mascot-author-books-status]').first()).toHaveAttribute('data-planet-mascot-author-books-status',value); } catch(error) { failure=error; }\n      |                                                                                          ^\n  451 |     const current=await page.evaluate(()=>({authorEffectTrace:window.__bookyAuthorTrace??[],url:location.href,feedback:[...document.querySelectorAll('[data-planet-mascot-author-books-status]')].map(node=>({status:node.dataset.planetMascotAuthorBooksStatus,text:node.textContent})),pet:{...document.querySelector('[data-planet-mascot-pet]')?.dataset},archive:{present:!!document.querySelector('#books'),shelf:document.querySelector('#book-collection-shelf')?.value,authorOptions:[...document.querySelectorAll('[data-book-author-filter] option')].map(option=>({value:option.value,text:option.textContent})),visibleBookKeys:[...document.querySelectorAll('.archive-book-detail[data-book-key]')].slice(0,8).map(node=>node.dataset.bookKey),empty:[...document.querySelectorAll('.book-archive-empty')].map(node=>node.textContent)}}));\n  452 |     (o.statusObservations??=[]).push({expected:value,pass:!failure,...current});if(failure)throw failure;\n  453 |   };\n    at status (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a2\\writer-filter-recovery.spec.mjs:450:90)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a2\\writer-filter-recovery.spec.mjs:458:155"
+        },
+        {
+          "test": "Booky explicit writer filter recovery en",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-author-books-status]').first()\nExpected: \u001b[32m\"\u001b[7mapp\u001b[27mli\u001b[7me\u001b[27md\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7minva\u001b[27mlid\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-author-books-status]').first()\u001b[22m\n\u001b[2m    14 × locator resolved to <p role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"planet-mascot-controls__feedback\" data-planet-mascot-author-books-status=\"invalid\">Select the writer again to open their books.</p>\u001b[22m\n\u001b[2m       - unexpected value \"invalid\"\u001b[22m\n\n\n  448 |   const status=async value=>{\n  449 |     let failure;\n> 450 |     try { await expect(page.locator('[data-planet-mascot-author-books-status]').first()).toHaveAttribute('data-planet-mascot-author-books-status',value); } catch(error) { failure=error; }\n      |                                                                                          ^\n  451 |     const current=await page.evaluate(()=>({authorEffectTrace:window.__bookyAuthorTrace??[],url:location.href,feedback:[...document.querySelectorAll('[data-planet-mascot-author-books-status]')].map(node=>({status:node.dataset.planetMascotAuthorBooksStatus,text:node.textContent})),pet:{...document.querySelector('[data-planet-mascot-pet]')?.dataset},archive:{present:!!document.querySelector('#books'),shelf:document.querySelector('#book-collection-shelf')?.value,authorOptions:[...document.querySelectorAll('[data-book-author-filter] option')].map(option=>({value:option.value,text:option.textContent})),visibleBookKeys:[...document.querySelectorAll('.archive-book-detail[data-book-key]')].slice(0,8).map(node=>node.dataset.bookKey),empty:[...document.querySelectorAll('.book-archive-empty')].map(node=>node.textContent)}}));\n  452 |     (o.statusObservations??=[]).push({expected:value,pass:!failure,...current});if(failure)throw failure;\n  453 |   };\n    at status (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a2\\writer-filter-recovery.spec.mjs:450:90)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a2\\writer-filter-recovery.spec.mjs:458:155"
+        }
+      ],
+      "successfulSubobservations": [],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/playwright.config.mjs",
+          "sha256": "63357dea4ca454e673c0e6dc8850f8fe5e27a55cb382c8ca5f9479e00a49a10e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/run.mjs",
+          "sha256": "c5f591b6a20850034121464374cb981f7f2e3733707873b964ee9877459cd642"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/bind.mjs",
+          "sha256": "8bc3f820df5093c7f1e7d92e9568b2680de89822418a6087f1ff4883ab0457bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/canonical-fixture.mjs",
+          "sha256": "34626117500dae12353eaaebd893ad8ece24e5b74bf52e77b1b85a3b2aa94bd9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/writer-filter-recovery.spec.mjs",
+          "sha256": "c5df2d3b4214b35c38e0d081c4c02c52d14c85441a52fd5967d4f67de527a6ec"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/prefix-provenance.json",
+          "sha256": "e7a6691c57048ae3361c9a32e6c18395732166caf45bdade1612fe6e65916bf4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/observer-amendment.json",
+          "sha256": "c95ce8aba141eaba808d7fdaf63df198c88e18dfbf8acdc54e67566abb392b0c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/authorized-source.json",
+          "sha256": "0748e1c23f4ac7806e163c9d98874c1ae329a794583fbf31ebd0e078b184a4f0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/execution-start.json",
+          "sha256": "d9d13b041b2b4993ea5aae01dca56e13b7b9c6f2d1110e081e84de4c2e321434"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/dirty.diff",
+          "sha256": "3fe1a06674c514accd401ecc070de0c4333e42d1b8d73091d8b4212a91c6e759"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/preflight-start.json",
+          "sha256": "017fe9170fa3d656ab65dee5566a8c8b7d1863e374e4b29839a87d0718b2cd7e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/preflight-result.json",
+          "sha256": "36d92f650f413ebc728d3d5add34d8e5fed65092bfda1bbd20f6439258739dbb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/preflight-stdout.log",
+          "sha256": "e3aab71f05e356a1d27c2eff8a2e244dae4b7545b5e5a11e0bc4703135704fba"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-844172f3cf528bc523a408a49116dbf8c36dac1c.json",
+          "sha256": "717b51f68003e1ff14fa853d37156895a239b75496aa4d100f0e156146078497"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+          "sha256": "717b51f68003e1ff14fa853d37156895a239b75496aa4d100f0e156146078497"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/error-context.md",
+          "sha256": "2106a0a9ff27db1b417350ab45bba22e47bd64cf3a29c81b020319be8b8f738e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-5a4ca79345a04616761bdd28f74c015bfd73e6d1.json",
+          "sha256": "717ea18663297f0fba8399b57e7833ee1b966e4d0cab3372fd744cd3a285346a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+          "sha256": "717ea18663297f0fba8399b57e7833ee1b966e4d0cab3372fd744cd3a285346a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a2/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/error-context.md",
+          "sha256": "ff718fabcaa16317591f741156e20af7655da099617d82bee2cb3e161ec21474"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a3",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/execution.json",
+        "sha256": "de3e80c3f7ec4b7aeb0a2fa5eabc932354b152060557c991763274e914c21dbd"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/stdout.log",
+          "sha256": "6b30c4d4af8bb964b42a2a3e3b619f129a364ca36494f93b449ba2da2b119bf3"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/stderr.log",
+          "sha256": "7ef9e3c77b1abdf1e65f14cc9921d3e8cb87fce7dd156c4b895b6c5b6bb0138e"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/playwright.json",
+        "sha256": "945658d29dc19053b453888d9bd488c5d0b93fe19014fac251afac6abe669af9"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original executed a3: both whole cases failed. In both locales, the initial ordinary request subobservations passed with an unmatched-marker wait followed by matching committed-marker applied acknowledgement. Later first-filter setup failed after the gesture scrolled to the bottom and upward attempts did not move; no product cause had been established at this recording stage. Passing commit-marker subobservations do not make the whole case pass.",
+      "failures": [
+        {
+          "test": "Booky explicit writer filter recovery ru",
+          "message": "Error: open collection filters cannot be exposed: {\"budget\":10,\"attempt\":10,\"state\":{\"box\":{\"left\":131,\"top\":22.125,\"right\":175,\"bottom\":66.125,\"width\":44,\"height\":44},\"clip\":{\"left\":13,\"right\":377,\"top\":75,\"bottom\":819.125},\"scroll\":{\"rect\":{\"left\":0,\"top\":75,\"right\":390,\"bottom\":844,\"width\":390,\"height\":769},\"top\":803,\"height\":769,\"range\":803},\"center\":{\"x\":153,\"y\":44.125},\"hits\":[{\"point\":{\"x\":153,\"y\":44.125},\"inside\":false,\"hit\":{\"tag\":\"HEADER\",\"className\":\"native-planet-panel__header\",\"text\":\"КоллекцияRUEN\"}},{\"point\":{\"x\":144.2,\"y\":44.125},\"inside\":false,\"hit\":{\"tag\":\"HEADER\",\"className\":\"native-planet-panel__header\",\"text\":\"КоллекцияRUEN\"}},{\"point\":{\"x\":161.8,\"y\":44.125},\"inside\":false,\"hit\":{\"tag\":\"HEADER\",\"className\":\"native-planet-panel__header\",\"text\":\"КоллекцияRUEN\"}}],\"text\":\"\",\"disabled\":false,\"visible\":true,\"borderRadius\":\"7px\"}}\n\n  418 |       state=await geometry(locator);const b=state.box,c=state.clip;\n  419 |       if(b.top>=c.top-.5&&b.bottom<=c.bottom+.5&&b.left>=c.left-.5&&b.right<=c.right+.5&&state.hits.every(hit=>hit.inside)) return state;\n> 420 |       if(!state.scroll||attempt===budget)throw Error(label+' cannot be exposed: '+JSON.stringify({budget,attempt,state}));\n      |                                                ^\n  421 |       const s=state.scroll.rect,left=Math.max(2,s.left),right=Math.min(page.viewportSize().width-2,s.right),top=Math.max(2,s.top+3),bottom=Math.min(page.viewportSize().height-2,s.bottom-3);\n  422 |       const x=(left+right)/2,upper=top+(bottom-top)*.2,lower=top+(bottom-top)*.8,down=b.top<c.top;\n  423 |       const start=down?upper:lower,end=down?lower:upper;\n    at expose (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a3\\writer-filter-recovery.spec.mjs:420:48)\n    at Object.tap (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a3\\writer-filter-recovery.spec.mjs:429:5)\n    at filters (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a3\\writer-filter-recovery.spec.mjs:447:44)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a3\\writer-filter-recovery.spec.mjs:467:5"
+        },
+        {
+          "test": "Booky explicit writer filter recovery en",
+          "message": "Error: open collection filters cannot be exposed: {\"budget\":10,\"attempt\":10,\"state\":{\"box\":{\"left\":131,\"top\":21.96875,\"right\":175,\"bottom\":65.96875,\"width\":44,\"height\":44},\"clip\":{\"left\":13,\"right\":307,\"top\":75,\"bottom\":818.96875},\"scroll\":{\"rect\":{\"left\":0,\"top\":75,\"right\":320,\"bottom\":844,\"width\":320,\"height\":769},\"top\":822,\"height\":769,\"range\":822},\"center\":{\"x\":153,\"y\":43.96875},\"hits\":[{\"point\":{\"x\":153,\"y\":43.96875},\"inside\":false,\"hit\":{\"tag\":\"DIV\",\"className\":\"interface-language-control\",\"text\":\"RUEN\"}},{\"point\":{\"x\":144.2,\"y\":43.96875},\"inside\":false,\"hit\":{\"tag\":\"HEADER\",\"className\":\"native-planet-panel__header\",\"text\":\"CollectionRUEN\"}},{\"point\":{\"x\":161.8,\"y\":43.96875},\"inside\":false,\"hit\":{\"tag\":\"BUTTON\",\"className\":\"\",\"text\":\"RU\"}}],\"text\":\"\",\"disabled\":false,\"visible\":true,\"borderRadius\":\"7px\"}}\n\n  418 |       state=await geometry(locator);const b=state.box,c=state.clip;\n  419 |       if(b.top>=c.top-.5&&b.bottom<=c.bottom+.5&&b.left>=c.left-.5&&b.right<=c.right+.5&&state.hits.every(hit=>hit.inside)) return state;\n> 420 |       if(!state.scroll||attempt===budget)throw Error(label+' cannot be exposed: '+JSON.stringify({budget,attempt,state}));\n      |                                                ^\n  421 |       const s=state.scroll.rect,left=Math.max(2,s.left),right=Math.min(page.viewportSize().width-2,s.right),top=Math.max(2,s.top+3),bottom=Math.min(page.viewportSize().height-2,s.bottom-3);\n  422 |       const x=(left+right)/2,upper=top+(bottom-top)*.2,lower=top+(bottom-top)*.8,down=b.top<c.top;\n  423 |       const start=down?upper:lower,end=down?lower:upper;\n    at expose (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a3\\writer-filter-recovery.spec.mjs:420:48)\n    at Object.tap (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a3\\writer-filter-recovery.spec.mjs:429:5)\n    at filters (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a3\\writer-filter-recovery.spec.mjs:447:44)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a3\\writer-filter-recovery.spec.mjs:467:5"
+        }
+      ],
+      "successfulSubobservations": [
+        {
+          "test": "Booky explicit writer filter recovery ru",
+          "kind": "own-request-batch-commit-acknowledgement",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+            "sha256": "445f48174fdb3674ba24a3c24d8a6e7e4520e33f443cf39aabddcb3b3e9c4cee"
+          },
+          "wholeCapturePass": false,
+          "pendingAuthorCommitVerified": true,
+          "initialAuthorCommit": {
+            "waitIndex": 8,
+            "appliedIndex": 14,
+            "wait": {
+              "phase": "pending-wait",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": null,
+              "sameCommittedRequest": false,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": null,
+              "activeShelfId": "all",
+              "sameRender": false,
+              "markerWait": true
+            },
+            "applied": {
+              "phase": "settle",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": 1,
+              "sameCommittedRequest": true,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": "russia:dostoevsky",
+              "activeShelfId": "all",
+              "result": "applied"
+            }
+          }
+        },
+        {
+          "test": "Booky explicit writer filter recovery en",
+          "kind": "own-request-batch-commit-acknowledgement",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+            "sha256": "42a574b3b1f26ff5d622269b7f5849f1771b68b9bdb9f7d45cf9e55374560702"
+          },
+          "wholeCapturePass": false,
+          "pendingAuthorCommitVerified": true,
+          "initialAuthorCommit": {
+            "waitIndex": 8,
+            "appliedIndex": 14,
+            "wait": {
+              "phase": "pending-wait",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": null,
+              "sameCommittedRequest": false,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": null,
+              "activeShelfId": "all",
+              "sameRender": false,
+              "markerWait": true
+            },
+            "applied": {
+              "phase": "settle",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": 1,
+              "sameCommittedRequest": true,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": "russia:dostoevsky",
+              "activeShelfId": "all",
+              "result": "applied"
+            }
+          }
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/playwright.config.mjs",
+          "sha256": "63357dea4ca454e673c0e6dc8850f8fe5e27a55cb382c8ca5f9479e00a49a10e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/run.mjs",
+          "sha256": "89631c44f2677996aceae130909d3c00f8278423af04787e6e993165c8f25428"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/bind.mjs",
+          "sha256": "1b1f702a9c47f766de3a0aaccce4f05dd4f8472efadae4bff657e8b9dd3e57a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/canonical-fixture.mjs",
+          "sha256": "34626117500dae12353eaaebd893ad8ece24e5b74bf52e77b1b85a3b2aa94bd9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/writer-filter-recovery.spec.mjs",
+          "sha256": "4963b06a25e4240448e11b34080610706f3ff5e9b498cc4e69c5d53ff5eadf3d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/prefix-provenance.json",
+          "sha256": "e7a6691c57048ae3361c9a32e6c18395732166caf45bdade1612fe6e65916bf4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/observer-amendment.json",
+          "sha256": "2aab54d8de2f3c34a36fd7f2b578b2e9657c9df0630eed0ed0dfd946c6605867"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/authorized-source.json",
+          "sha256": "c800606c27a6a8fb84c3fb960e7e1be474a7dc891a6ca2611cf5f1c936752454"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/execution-start.json",
+          "sha256": "1000a3deed02a534902c6e354923b0f5f4408d66dc865201b7156efc76f79489"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/dirty.diff",
+          "sha256": "6ec7b90862a048e6affccedb69a2c071c411460fa7591bf3c47174e474bf35d4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/preflight-start.json",
+          "sha256": "a6936d424ccf9aa75b666276081a3accd7a5b37637bcd8be1e7d8d914b15f888"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/preflight-result.json",
+          "sha256": "7a66f92837505bc2a5f8513309d25114766a7f08a512c97013013d41951700aa"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/preflight-stdout.log",
+          "sha256": "a0c1104f1b4691f33c2afa096d172d4695ac8e2e59b3adb1c6cc6b56e2c1c067"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-9839edd3ede61a43a44bd4eeb74a4170ac1b6713.json",
+          "sha256": "445f48174fdb3674ba24a3c24d8a6e7e4520e33f443cf39aabddcb3b3e9c4cee"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+          "sha256": "445f48174fdb3674ba24a3c24d8a6e7e4520e33f443cf39aabddcb3b3e9c4cee"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/error-context.md",
+          "sha256": "df667ae161f613a51dbd8626e9c3fb7f025054481f06bd0bd9ab44a924a8f8c2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-d660bada7bfc40dd0713c6f3ea1dde554e68aea9.json",
+          "sha256": "42a574b3b1f26ff5d622269b7f5849f1771b68b9bdb9f7d45cf9e55374560702"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+          "sha256": "42a574b3b1f26ff5d622269b7f5849f1771b68b9bdb9f7d45cf9e55374560702"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a3/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/error-context.md",
+          "sha256": "6494c6244283f7bede35d3c90e916c9b580e51fc7adc415bc5876a4dca0af46e"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a4",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/execution.json",
+        "sha256": "7d2576e3c3716cf6ad823f339205b4743118d406ad1c1e686ca1144b284151b2"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/stdout.log",
+          "sha256": "2b937ee205effbedeb89abe907866d09c6603330b3b0bacb62d052bb2d5f4aef"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/stderr.log",
+          "sha256": "d0d1b079d9e6f8b6098f20202e2cb4e58345f23eeaecbfce941d40f045642d15"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/playwright.json",
+        "sha256": "f90c46450ae10f1e154bfc472c58b7ec7a807a22649f06f3971841665c7c48a7"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original executed a4: both cases failed before the initial ordinary request because the observer searched for an interactive ancestor beyond the actual help scroller, reaching the outer mascot pet wrapper. The actual scroller was a SECTION with touch-action auto; this observer error does not establish a runtime product failure. Two failure PNG attachments are diagnostic-only and are not successful contract captures.",
+      "failures": [
+        {
+          "test": "Booky explicit writer filter recovery ru",
+          "message": "Error: initial ordinary writer request has no touch-scroll corridor: {\"label\":\"initial ordinary writer request\",\"attempt\":0,\"budget\":16,\"before\":0,\"direction\":\"toward bottom\",\"targetBefore\":{\"left\":210,\"top\":607.6875,\"right\":351,\"bottom\":651.6875,\"width\":141,\"height\":44},\"clipBefore\":{\"left\":39,\"right\":367,\"top\":142,\"bottom\":361},\"distance\":96.95390625,\"start\":300.203515625,\"end\":203.249609375,\"holdBeforeReleaseMs\":180,\"corridor\":{\"candidates\":[{\"x\":46,\"points\":[{\"x\":46,\"y\":300.203515625,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":46,\"y\":251.7265625,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":46,\"y\":203.249609375,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]}]},{\"x\":370,\"points\":[{\"x\":370,\"y\":300.203515625,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":370,\"y\":251.7265625,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":370,\"y\":203.249609375,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]}]},{\"x\":208,\"points\":[{\"x\":208,\"y\":300.203515625,\"hit\":{\"tag\":\"BUTTON\",\"className\":\"planet-mascot-controls__quiet\",\"touchAction\":\"manipulation\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"BUTTON\",\"className\":\"planet-mascot-controls__quiet\",\"touchAction\":\"manipulation\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"DIV\",\"className\":\"planet-mascot-controls__leaf\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":208,\"y\":251.7265625,\"hit\":{\"tag\":\"P\",\"className\":\"planet-mascot-controls__context\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"P\",\"className\":\"planet-mascot-controls__context\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"DIV\",\"className\":\"planet-mascot-controls__leaf\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":208,\"y\":203.249609375,\"hit\":{\"tag\":\"HEADER\",\"className\":\"planet-mascot-controls__heading\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"HEADER\",\"className\":\"planet-mascot-controls__heading\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"DIV\",\"className\":\"planet-mascot-controls__leaf\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]}]}],\"chosen\":null}}\n\n  430 |       },{left,right,start,end});\n  431 |       const record={label,attempt,budget,before:state.scroll.top,direction:down?'toward top':'toward bottom',targetBefore:state.box,clipBefore:state.clip,distance,start,end,holdBeforeReleaseMs:180,corridor};observation.scrolls.push(record);\n> 432 |       if(corridor.chosen===null)throw Error(label+' has no touch-scroll corridor: '+JSON.stringify(record));\n      |                                       ^\n  433 |       const x=corridor.chosen;await touch('touchStart',[{x,y:start}]);for(let step=1;step<=8;step++){await touch('touchMove',[{x,y:start+(end-start)*step/8}]);await page.waitForTimeout(35);}await page.waitForTimeout(180);await touch('touchEnd',[]);await page.waitForTimeout(100);await writerSettle(page);\n  434 |       const after=await geometry(locator);record.after=after.scroll?.top??null;record.targetAfter=after.box;\n  435 |     }\n    at expose (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a4\\writer-filter-recovery.spec.mjs:432:39)\n    at Object.tap (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a4\\writer-filter-recovery.spec.mjs:438:5)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a4\\writer-filter-recovery.spec.mjs:468:18"
+        },
+        {
+          "test": "Booky explicit writer filter recovery en",
+          "message": "Error: initial ordinary writer request has no touch-scroll corridor: {\"label\":\"initial ordinary writer request\",\"attempt\":0,\"budget\":15,\"before\":0,\"direction\":\"toward bottom\",\"targetBefore\":{\"left\":162,\"top\":607.6875,\"right\":281,\"bottom\":665.46875,\"width\":119,\"height\":57.78125},\"clipBefore\":{\"left\":13,\"right\":297,\"top\":142,\"bottom\":385},\"distance\":107.75390625,\"start\":317.603515625,\"end\":209.849609375,\"holdBeforeReleaseMs\":180,\"corridor\":{\"candidates\":[{\"x\":20,\"points\":[{\"x\":20,\"y\":317.603515625,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":20,\"y\":263.7265625,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":20,\"y\":209.849609375,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]}]},{\"x\":300,\"points\":[{\"x\":300,\"y\":317.603515625,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":300,\"y\":263.7265625,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":300,\"y\":209.849609375,\"hit\":{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]}]},{\"x\":160,\"points\":[{\"x\":160,\"y\":317.603515625,\"hit\":{\"tag\":\"DIV\",\"className\":\"planet-mascot-controls__leaf\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"DIV\",\"className\":\"planet-mascot-controls__leaf\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":160,\"y\":263.7265625,\"hit\":{\"tag\":\"DIV\",\"className\":\"planet-mascot-controls__leaf\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"DIV\",\"className\":\"planet-mascot-controls__leaf\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]},{\"x\":160,\"y\":209.849609375,\"hit\":{\"tag\":\"HEADER\",\"className\":\"planet-mascot-controls__heading\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},\"inside\":true,\"interactive\":true,\"ancestors\":[{\"tag\":\"HEADER\",\"className\":\"planet-mascot-controls__heading\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"DIV\",\"className\":\"planet-mascot-controls__leaf\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"visible\"},{\"tag\":\"SECTION\",\"className\":\"planet-mascot-controls__panel\",\"touchAction\":\"auto\",\"pointerEvents\":\"auto\",\"overflowY\":\"auto\"}]}]}],\"chosen\":null}}\n\n  430 |       },{left,right,start,end});\n  431 |       const record={label,attempt,budget,before:state.scroll.top,direction:down?'toward top':'toward bottom',targetBefore:state.box,clipBefore:state.clip,distance,start,end,holdBeforeReleaseMs:180,corridor};observation.scrolls.push(record);\n> 432 |       if(corridor.chosen===null)throw Error(label+' has no touch-scroll corridor: '+JSON.stringify(record));\n      |                                       ^\n  433 |       const x=corridor.chosen;await touch('touchStart',[{x,y:start}]);for(let step=1;step<=8;step++){await touch('touchMove',[{x,y:start+(end-start)*step/8}]);await page.waitForTimeout(35);}await page.waitForTimeout(180);await touch('touchEnd',[]);await page.waitForTimeout(100);await writerSettle(page);\n  434 |       const after=await geometry(locator);record.after=after.scroll?.top??null;record.targetAfter=after.box;\n  435 |     }\n    at expose (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a4\\writer-filter-recovery.spec.mjs:432:39)\n    at Object.tap (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a4\\writer-filter-recovery.spec.mjs:438:5)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a4\\writer-filter-recovery.spec.mjs:468:18"
+        }
+      ],
+      "successfulSubobservations": [],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/playwright.config.mjs",
+          "sha256": "63357dea4ca454e673c0e6dc8850f8fe5e27a55cb382c8ca5f9479e00a49a10e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/run.mjs",
+          "sha256": "89631c44f2677996aceae130909d3c00f8278423af04787e6e993165c8f25428"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/bind.mjs",
+          "sha256": "1b1f702a9c47f766de3a0aaccce4f05dd4f8472efadae4bff657e8b9dd3e57a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/canonical-fixture.mjs",
+          "sha256": "34626117500dae12353eaaebd893ad8ece24e5b74bf52e77b1b85a3b2aa94bd9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/writer-filter-recovery.spec.mjs",
+          "sha256": "1e985b3ed449a7763cd261814f3f5247b6e6f17f88e449332d6d78c2760ff732"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/prefix-provenance.json",
+          "sha256": "e7a6691c57048ae3361c9a32e6c18395732166caf45bdade1612fe6e65916bf4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/observer-amendment.json",
+          "sha256": "cb48f77cd70cbc407c601eccb383eb33dca65468f6d28df4f84cd52804adb321"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/authorized-source.json",
+          "sha256": "3818cce714b3b48cf6382cd903ff321e68fd2d7411ee5062ae4e9ea1075f268e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/execution-start.json",
+          "sha256": "be9466f9da044fdd314f5102b5a871204cc7dbaf924a082cf2d0ef07dc19e16f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/dirty.diff",
+          "sha256": "6ec7b90862a048e6affccedb69a2c071c411460fa7591bf3c47174e474bf35d4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/preflight-start.json",
+          "sha256": "07dec3f58eda6a9392e8dd3ae25bb8a8e515c7798bece35441ae456826469eef"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/preflight-result.json",
+          "sha256": "68de98a64bbf964f2a91df49ca0004ceaa2050bdf9a95130c88ff978be1edc86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/preflight-stdout.log",
+          "sha256": "d6a8ab7a30d3d5800436d975074f766cfa35be9ecb3ffec955b2689a236543c7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/attachments/diagnostic-failure-ru-5c0946f9d62d0203ae0b32cb6aff62d064f18460.png",
+          "sha256": "a48e59d74311027872193bc85e441b955fd005aee610bae8178cb9a1fbd3fd4a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-ac16bc3f8507fe16176dba52b5b774aac325bab2.json",
+          "sha256": "01bca9215e0ce4013cc6557409f289c7503ff33d9fd43a25b0f928f1e263266f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+          "sha256": "01bca9215e0ce4013cc6557409f289c7503ff33d9fd43a25b0f928f1e263266f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/error-context.md",
+          "sha256": "420e92d7e0f5061181a7d9143122ae56192c8725bef627eadba0ab95097c94b5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/attachments/diagnostic-failure-en-c6d49506117a3f58466710a2145f22a984320eb8.png",
+          "sha256": "fb12b7e2cfaad57f6e46e95e5a06ef213571ed816485947513eb7ef6c6544341"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-a1e39623411bee551e00a4a14bd13d150a92c1b1.json",
+          "sha256": "f487454b81e87fecf7234869ef769f57231e07987f2a1a16a0cef7e096293a87"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+          "sha256": "f487454b81e87fecf7234869ef769f57231e07987f2a1a16a0cef7e096293a87"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a4/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/error-context.md",
+          "sha256": "b155bb0f9484d5ced4e83daa20726ba9e9ea66806a39faed13c6ef96e8cf7fd6"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a5",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/execution.json",
+        "sha256": "d946dbd5506b868bb28c006f77c0b95b9f99c04bb9484df690c3226918ba26ad"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/stdout.log",
+          "sha256": "579d222551f61ed2aa4fc01e9c25cb38f30790ff9f42f002a29623b8ea28bbcf"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/stderr.log",
+          "sha256": "eb0087a25e4f40c26db54a18e5835bc77494d8e521de70815e0288e27f7dc45b"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/playwright.json",
+        "sha256": "b22aaa7369242f2fd86a7b172c2d29ef0b879aa5c09befd3edc6497ae181a4a9"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original executed a5: EN passed all case assertions with two contract-named diagnostic captures; RU failed, so the whole two-case attempt remains failed. RU initial own-request commit acknowledgement passed before the nearest-scroller-only observer became blocked at the inner maximum while the France target remained below the outer viewport. A nested-scroll observer correction is separate from runtime source. Failure PNG attachments are diagnostic-only; neither passing subobservations nor the EN diagnostic result replace final formal validation.",
+      "failures": [
+        {
+          "test": "Booky explicit writer filter recovery ru",
+          "message": "Error: conflicting France facet cannot be exposed: {\"budget\":9,\"attempt\":9,\"state\":{\"box\":{\"left\":31,\"top\":872.140625,\"right\":359,\"bottom\":890.140625,\"width\":328,\"height\":18},\"clip\":{\"left\":31,\"right\":359,\"top\":680.140625,\"bottom\":843.921875},\"scroll\":{\"rect\":{\"left\":31,\"top\":680.140625,\"right\":359,\"bottom\":890.140625,\"width\":328,\"height\":210},\"top\":33,\"height\":210,\"range\":33},\"center\":{\"x\":195,\"y\":881.140625},\"hits\":[{\"point\":{\"x\":195,\"y\":881.140625},\"inside\":false,\"hit\":null},{\"point\":{\"x\":129.39999999999998,\"y\":881.140625},\"inside\":false,\"hit\":null},{\"point\":{\"x\":260.6,\"y\":881.140625},\"inside\":false,\"hit\":null}],\"text\":\"Франция\",\"disabled\":false,\"visible\":true,\"borderRadius\":\"0px\"}}\n\n  418 |       state=await geometry(locator);const b=state.box,c=state.clip;\n  419 |       if(b.top>=c.top-.5&&b.bottom<=c.bottom+.5&&b.left>=c.left-.5&&b.right<=c.right+.5&&state.hits.every(hit=>hit.inside)) return state;\n> 420 |       if(!state.scroll||attempt===budget)throw Error(label+' cannot be exposed: '+JSON.stringify({budget,attempt,state}));\n      |                                                ^\n  421 |       const s=state.scroll.rect,left=Math.max(2,s.left),right=Math.min(page.viewportSize().width-2,s.right),top=Math.max(2,s.top+3),bottom=Math.min(page.viewportSize().height-2,s.bottom-3),down=b.top<c.top;\n  422 |       const overflow=down?c.top-b.top:Math.max(0,b.bottom-c.bottom),distance=Math.min(240,(bottom-top)*.45,Math.max(64,overflow+48));\n  423 |       const middle=(top+bottom)/2,start=middle+(down?-distance/2:distance/2),end=middle+(down?distance/2:-distance/2);\n    at expose (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a5\\writer-filter-recovery.spec.mjs:420:48)\n    at Object.tap (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a5\\writer-filter-recovery.spec.mjs:438:5)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-writer-filter-recovery-review\\a5\\writer-filter-recovery.spec.mjs:477:204"
+        }
+      ],
+      "successfulSubobservations": [
+        {
+          "test": "Booky explicit writer filter recovery ru",
+          "kind": "own-request-batch-commit-acknowledgement",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+            "sha256": "560f3d78f01621ebafc4d30dc1d36f878b2e5906571f8f30df68266ba912b639"
+          },
+          "wholeCapturePass": false,
+          "pendingAuthorCommitVerified": true,
+          "initialAuthorCommit": {
+            "waitIndex": 8,
+            "appliedIndex": 14,
+            "wait": {
+              "phase": "pending-wait",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": null,
+              "sameCommittedRequest": false,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": null,
+              "activeShelfId": "all",
+              "sameRender": false,
+              "markerWait": true
+            },
+            "applied": {
+              "phase": "settle",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": 1,
+              "sameCommittedRequest": true,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": "russia:dostoevsky",
+              "activeShelfId": "all",
+              "result": "applied"
+            }
+          }
+        },
+        {
+          "test": "Booky explicit writer filter recovery en",
+          "kind": "own-request-batch-commit-acknowledgement",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+            "sha256": "b20198acca81f3d11bc4418279c0fed49e7a29ccfc29d918fdccb8fac5558ee9"
+          },
+          "wholeCapturePass": true,
+          "pendingAuthorCommitVerified": true,
+          "initialAuthorCommit": {
+            "waitIndex": 8,
+            "appliedIndex": 14,
+            "wait": {
+              "phase": "pending-wait",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": null,
+              "sameCommittedRequest": false,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": null,
+              "activeShelfId": "all",
+              "sameRender": false,
+              "markerWait": true
+            },
+            "applied": {
+              "phase": "settle",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": 1,
+              "sameCommittedRequest": true,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": "russia:dostoevsky",
+              "activeShelfId": "all",
+              "result": "applied"
+            }
+          }
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/playwright.config.mjs",
+          "sha256": "63357dea4ca454e673c0e6dc8850f8fe5e27a55cb382c8ca5f9479e00a49a10e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/run.mjs",
+          "sha256": "89631c44f2677996aceae130909d3c00f8278423af04787e6e993165c8f25428"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/bind.mjs",
+          "sha256": "1b1f702a9c47f766de3a0aaccce4f05dd4f8472efadae4bff657e8b9dd3e57a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/canonical-fixture.mjs",
+          "sha256": "34626117500dae12353eaaebd893ad8ece24e5b74bf52e77b1b85a3b2aa94bd9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/writer-filter-recovery.spec.mjs",
+          "sha256": "6392d51949ae5a4e722aa5fd33b411ede4450e077cbaaf8af43796584af1eac3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/prefix-provenance.json",
+          "sha256": "e7a6691c57048ae3361c9a32e6c18395732166caf45bdade1612fe6e65916bf4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/observer-amendment.json",
+          "sha256": "bc9794de4f0e3ffa7182e784a9e278254c08c1384e1558d5c06aa21ddcbe77f5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/authorized-source.json",
+          "sha256": "08041d0a7aeb2ee4924270aaecc653fb136a2a64882bd90869377454608a518d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/execution-start.json",
+          "sha256": "068949aeb8ed208b7adddd76d3c671f90829e4d3544c3e33c06d2a92812160a8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/dirty.diff",
+          "sha256": "6ec7b90862a048e6affccedb69a2c071c411460fa7591bf3c47174e474bf35d4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/preflight-start.json",
+          "sha256": "108ed6f1fc51248585fe22c7947b80295e90656fa0c0fc06f7e6801f0f3b4b3b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/preflight-result.json",
+          "sha256": "44eb9609dbcb959682d639d7005e488ac31ae361814716792cdef502dacb2d84"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/preflight-stdout.log",
+          "sha256": "d6a8ab7a30d3d5800436d975074f766cfa35be9ecb3ffec955b2689a236543c7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/attachments/diagnostic-failure-ru-16a03a3ed1c67145e20e94aacba412a13b616dc6.png",
+          "sha256": "532ae4f0559be10a6b0dd5015a0c987a851f52f1e3097e472e15a50b79846946"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-d9edd10f508b372e8dc63edac6ccffa92ae88597.json",
+          "sha256": "560f3d78f01621ebafc4d30dc1d36f878b2e5906571f8f30df68266ba912b639"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+          "sha256": "560f3d78f01621ebafc4d30dc1d36f878b2e5906571f8f30df68266ba912b639"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/error-context.md",
+          "sha256": "f0b9649bb5d9a4681bc1debd0a66fcb25d678ab43de65287d131499969bf359e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-a92a5f4f9ea73d943b396f27d38023dc86309161.json",
+          "sha256": "b20198acca81f3d11bc4418279c0fed49e7a29ccfc29d918fdccb8fac5558ee9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+          "sha256": "b20198acca81f3d11bc4418279c0fed49e7a29ccfc29d918fdccb8fac5558ee9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-filtered-empty.png",
+          "sha256": "1e02079461410890647e14dc97ba9289be40acc893449cffed6bfae36a609128"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a5/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-recovered.png",
+          "sha256": "62a26e6ec18a8559a7e6cf125cb764fec529e734fcb86d9dc6301355dda6b7b3"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a6",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/execution.json",
+        "sha256": "2b7057e6a15669b1aec55bcc5ad8406ac14a15ed82967f53a280de416c0605c6"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/stdout.log",
+          "sha256": "041a6456b617fd498a0274c7d0acc5fecedab2f415b89b4495ca955a39cef3ea"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/stderr.log",
+          "sha256": "93769c3d3d3e98bd89c798e1d8df1ee4d3f434c9ac02e2ab42c15bcf45f4e567"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/playwright.json",
+        "sha256": "d6015b94d2f39722ac60c25c0c763f241453c12e4f3449406e29719edd21daf2"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Original later D201 diagnostic, retained with its actual outcome and exact source/driver hashes. The request-batch marker is tested by observing an unmatched-marker wait followed by matching-marker rendered acknowledgement. Claims remain limited to actual recorded assertions.",
+      "failures": [],
+      "successfulSubobservations": [
+        {
+          "test": "Booky explicit writer filter recovery ru",
+          "kind": "own-request-batch-commit-acknowledgement",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+            "sha256": "dc30ef22e8ebaa8b6e805c518dca0613110a578357821faaa08fb59c79d01d65"
+          },
+          "wholeCapturePass": true,
+          "pendingAuthorCommitVerified": true,
+          "initialAuthorCommit": {
+            "waitIndex": 8,
+            "appliedIndex": 14,
+            "wait": {
+              "phase": "pending-wait",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": null,
+              "sameCommittedRequest": false,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": null,
+              "activeShelfId": "all",
+              "sameRender": false,
+              "markerWait": true
+            },
+            "applied": {
+              "phase": "settle",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": 1,
+              "sameCommittedRequest": true,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": "russia:dostoevsky",
+              "activeShelfId": "all",
+              "result": "applied"
+            }
+          }
+        },
+        {
+          "test": "Booky explicit writer filter recovery en",
+          "kind": "own-request-batch-commit-acknowledgement",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+            "sha256": "b4b80f10953abd3d43f931f2a494f01adfc925cc21fc5944fad7d2540e7c3466"
+          },
+          "wholeCapturePass": true,
+          "pendingAuthorCommitVerified": true,
+          "initialAuthorCommit": {
+            "waitIndex": 8,
+            "appliedIndex": 14,
+            "wait": {
+              "phase": "pending-wait",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": null,
+              "sameCommittedRequest": false,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": null,
+              "activeShelfId": "all",
+              "sameRender": false,
+              "markerWait": true
+            },
+            "applied": {
+              "phase": "settle",
+              "id": 1,
+              "countryId": "russia",
+              "writerId": "dostoevsky",
+              "recovery": false,
+              "countriesCount": 200,
+              "matchingCountries": 1,
+              "matchingWriters": 1,
+              "authorIndexCount": 1,
+              "nativePanelActive": true,
+              "requestedBook": false,
+              "selectedBook": false,
+              "selectedBookRef": false,
+              "shelfPhase": "SHELF_IDLE",
+              "pending": true,
+              "samePendingRender": false,
+              "committedAuthorRequestId": 1,
+              "sameCommittedRequest": true,
+              "pendingBookClose": false,
+              "pendingBookSwitch": false,
+              "pendingInspectionBook": false,
+              "skipNextBookPopstate": false,
+              "query": "",
+              "deferredQuery": "",
+              "searchScope": "library",
+              "authorKey": "russia:dostoevsky",
+              "activeShelfId": "all",
+              "result": "applied"
+            }
+          }
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/playwright.config.mjs",
+          "sha256": "63357dea4ca454e673c0e6dc8850f8fe5e27a55cb382c8ca5f9479e00a49a10e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/run.mjs",
+          "sha256": "89631c44f2677996aceae130909d3c00f8278423af04787e6e993165c8f25428"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/bind.mjs",
+          "sha256": "1b1f702a9c47f766de3a0aaccce4f05dd4f8472efadae4bff657e8b9dd3e57a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/canonical-fixture.mjs",
+          "sha256": "34626117500dae12353eaaebd893ad8ece24e5b74bf52e77b1b85a3b2aa94bd9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/writer-filter-recovery.spec.mjs",
+          "sha256": "7557b80e2e9969bde7995be5469b87137d81b335ca817ca57e94b1022d17b50d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/prefix-provenance.json",
+          "sha256": "e7a6691c57048ae3361c9a32e6c18395732166caf45bdade1612fe6e65916bf4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/observer-amendment.json",
+          "sha256": "e4020e4e294d082f357644cb2acf0fbc6c804d4dbb5351788ddaee84dfa3d466"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/authorized-source.json",
+          "sha256": "ffd1cc0cb8337d6fd795fb38ed88338823e7e60c852fb9a818faf68687068b41"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/execution-start.json",
+          "sha256": "1f89beba2f628f903d867f82226881488bb289b47cba05670f52d986d091cbe0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/dirty.diff",
+          "sha256": "6ec7b90862a048e6affccedb69a2c071c411460fa7591bf3c47174e474bf35d4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/preflight-start.json",
+          "sha256": "f7ae56e6255602ed95e03277acc61202a36b0774a02c9c5def375543e430a758"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/preflight-result.json",
+          "sha256": "6323556e57f009d2b10bba6434e76693bd2847943873565fe322a08471d52e90"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/preflight-stdout.log",
+          "sha256": "cd8740bed7776aa9b4ffec84089881459b4d60f726967bca17d1f96512ed8154"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/attachments/booky-writer-filter-recovery-source-evidence-51d441a93afbb1b2ea286ee7ba3d4ccdb23b9d89.json",
+          "sha256": "dc30ef22e8ebaa8b6e805c518dca0613110a578357821faaa08fb59c79d01d65"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery.json",
+          "sha256": "dc30ef22e8ebaa8b6e805c518dca0613110a578357821faaa08fb59c79d01d65"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-filtered-empty.png",
+          "sha256": "9641ac9c8e74530cb549bb94691f3e169703e9f9f97efeea37f2a2cc39aff6b8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-5447f-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-recovered.png",
+          "sha256": "a4c874794c61fbe0095d9106bbe4f48f0fdad717c03190c5a45ac53bf16ff1f5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/attachments/booky-writer-filter-recovery-source-evidence-6b31152cf161afbd2c4300cabb3b58924354db68.json",
+          "sha256": "b4b80f10953abd3d43f931f2a494f01adfc925cc21fc5944fad7d2540e7c3466"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery.json",
+          "sha256": "b4b80f10953abd3d43f931f2a494f01adfc925cc21fc5944fad7d2540e7c3466"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-filtered-empty.png",
+          "sha256": "b976135ad70eee1d19c532763cb7bb88681c9a19298984279c4aa248fcaf6f45"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/a6/artifacts/writer-filter-recovery-Boo-d95ce-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-recovered.png",
+          "sha256": "4e7f7d4ebd4702dd60ceed1f7530fd77c62322bf849b55059b99b7e9361357bb"
+        }
+      ]
+    }
+  ],
+  "amendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/status-amendment.json",
+      "sha256": "8764f80ec2ad86f515e29084becc895d97f6b671d1d584109b9334d2e0409774"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/commit-marker/source-binding.json",
+      "sha256": "9c2471201a374139f5c8534ec520acf7e86adb7901d3f59eede3be2378f9bd81"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-review/commit-marker/author-commit-marker.patch",
+      "sha256": "4e18b2ba56c577e09f2c52dbf5fa4f660c0a4d4dbbefb94fd3c4b9bffb2695c6"
+    }
+  ],
+  "limitations": [
+    "Only executed D201 browser attempts are counted. The pre-copy path-validator rejection was preparation, not a test or diagnostic failure.",
+    "Earlier D200 diagnostic chains are not copied. Each failing attempt retains its original outcome, source and driver.",
+    "Picker setup is controlled and does not prove native picker equivalence. Reader deferral and newer-user-edit React races remain untested. The own-request/intervening-parent-render acknowledgement regression has separate explicit assertions.",
+    "Evidence is bounded to the adult filtered-empty writer recovery; full loading, empty, error, offline, native-device, accessibility and stage acceptance remain open.",
+    "Diagnostic outcomes do not replace final committed-source unit, TypeScript or browser validation."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

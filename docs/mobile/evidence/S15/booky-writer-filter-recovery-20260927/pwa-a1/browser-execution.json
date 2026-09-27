@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 21371,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "080b0df5dbd7f77ef1efec935996ba38df5cf75dbbe9c01d7a1134252233d9c1"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "950589b3596973f5522e219cce99cabfc4b6fd648b30096d4c9bbc178578c8dc"
+  }
+}

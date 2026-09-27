@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T01:16:25.404Z",
+  "classification": "checkpoint-helper-contract-schema-guard-failure",
+  "testFailure": false,
+  "sourceCommit": "29531f79627d872c6948150dd02dd8132fcafcbc",
+  "attempt": "checkpoint-a1",
+  "receipt": {
+    "provenance": "Parent /root reported the authentic exec_command tool return; no independently hashed process log exists.",
+    "command": "node docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/checkpoint.mjs 29531f79627d872c6948150dd02dd8132fcafcbc a2 a1 a1",
+    "chunkId": "186e6d",
+    "wallTimeSeconds": 1.3334976,
+    "exitCode": 1,
+    "startedAt": null,
+    "finishedAt": null,
+    "nodeVersion": "v24.20.0",
+    "reportedError": "AssertionError [ERR_ASSERTION]: booky-writer-filter-recovery-ru complete; actual undefined expected true; checkpoint.mjs:96:10",
+    "processLog": null
+  },
+  "failedHelper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/checkpoint-helper-before-schema-adaptation.mjs",
+    "sha256": "c62ba49cce17d0471b6fb5d5a73c691ef14d52f8e9d571c7ec55423c52406cef"
+  },
+  "adaptedHelper": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/checkpoint.mjs",
+    "sha256": "a6e898b66a1b01c90d80b954325b8ec599ffecb14a0868a92807867ef7a7f4d0"
+  },
+  "schemaAdaptation": "The D201 declared capture contract does not emit observationsComplete or observation.findings. Removed the inherited mandatory observationsComplete assertion; findings are checked as empty and preserved only if present. Exact named checks and pass values, required flags/scalars, capture pass, source bindings, errors, externalRequests and missingResources validation remain unchanged.",
+  "browserResult": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/browser-a1/result.json",
+    "sha256": "84d58ff6e0d764c52a3f373094441929818c86de7b9022b9aff10072e3f0a6a0"
+  },
+  "rawBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/browser-a1/playwright.json",
+    "sha256": "4367b922a93152182cef9c84f7eecb39493d38e73332ec97e02897b85565a02f"
+  },
+  "frozenCheckInputsUnchanged": true,
+  "runtimeSourceChanged": false,
+  "fixtureChanged": false,
+  "globalWritesBeforeRejection": false,
+  "releaseReady": false
+}

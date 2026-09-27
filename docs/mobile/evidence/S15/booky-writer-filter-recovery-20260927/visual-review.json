@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T01:14:33.257Z",
+  "pass": true,
+  "sourceCommit": "29531f79627d872c6948150dd02dd8132fcafcbc",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/source-manifests/d359aa1ac857551f.json",
+    "sha256": "d359aa1ac857551f0e5e8f44a215992a661b586a3c0ba04bfc72a92c3ec25709",
+    "fileCount": 1657
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 4,
+  "scope": "Direct review of the selected final RU/EN writer-filter recovery captures, showing the empty collection offer and resulting writer collection, localized controls and visible filtering context. Every configured capture is authenticated; only the explicit selected images are claimed as directly reviewed.",
+  "limitations": [
+    "This review directly inspects 4 of 4 final captures.",
+    "Static images cannot establish trusted input, ordinary filter preservation, reader ownership, request cancellation or rendered acknowledgement; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/final-visual-receipt.json",
+    "sha256": "2a298eaf6cd77db91046f6ca2564206d66ef7af02fd9cf734c93843082d16c50"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-filtered-empty.png",
+      "sha256": "9641ac9c8e74530cb549bb94691f3e169703e9f9f97efeea37f2a2cc39aff6b8",
+      "width": 390,
+      "height": 844,
+      "bytes": 154220,
+      "scenario": "booky-writer-filter-recovery-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The complete Russian explanation and recovery label fit inside the open help card; the selected Dostoevsky context and title controls are visible.",
+        "The underlying collection is partly covered by help and the companion; this image does not frame the empty result region or establish general toolbar reachability."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/browser-a1/booky-writer-filter-recove-ec959-t-writer-filter-recovery-ru/booky-writer-filter-recovery-ru-recovered.png",
+      "sha256": "a4c874794c61fbe0095d9106bbe4f48f0fdad717c03190c5a45ac53bf16ff1f5",
+      "width": 390,
+      "height": 844,
+      "bytes": 167476,
+      "scenario": "booky-writer-filter-recovery-ru",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The localized applied acknowledgement is readable and the recovery offer has disappeared; the visible tour counts remain zero.",
+        "The book results are outside this image framing; their presence, writer identity and preserved title sort are verified by the formal DOM and state assertions."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-filtered-empty.png",
+      "sha256": "b976135ad70eee1d19c532763cb7bb88681c9a19298984279c4aa248fcaf6f45",
+      "width": 320,
+      "height": 844,
+      "bytes": 138224,
+      "scenario": "booky-writer-filter-recovery-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "At320px the full English recovery label wraps into two contained lines, with the explanation and selected writer context readable.",
+        "The Favorites shelf label is visible beneath the help card, while the companion covers part of the underlying toolbar; no full toolbar visibility claim is made."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-writer-filter-recovery-evidence/browser-a1/booky-writer-filter-recove-51543-t-writer-filter-recovery-en/booky-writer-filter-recovery-en-recovered.png",
+      "sha256": "4e7f7d4ebd4702dd60ceed1f7530fd77c62322bf849b55059b99b7e9361357bb",
+      "width": 320,
+      "height": 844,
+      "bytes": 152186,
+      "scenario": "booky-writer-filter-recovery-en",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The English applied acknowledgement is readable; the recovery offer is gone and the Complete archive shelf label is visible beneath the card.",
+        "The visible tour counts remain zero. Actual book cards are outside the framing and are established by formal assertions, not this static image."
+      ]
+    }
+  ],
+  "releaseReady": false
+}
