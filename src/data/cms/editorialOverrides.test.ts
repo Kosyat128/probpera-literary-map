@@ -50,7 +50,7 @@ describe("CMS editorial overrides", () => {
       writerId: "writer", localId: "work", title: "Work", editorialStatus: "verified" };
     const [mapped] = cmsLiteraryWorkProfilesForWriter("test-country", "writer", { [legacy.legacyId]: legacy });
     const canonicalIds = [{ scheme: "openlibrary", value: "OL52151W", sourceUrl: "https://openlibrary.org/works/OL52151W" }];
-    expect(Object.hasOwn(mapped, "externalIds")).toBe(false);
+    expect(Object.prototype.hasOwnProperty.call(mapped, "externalIds")).toBe(false);
     expect({ externalIds: canonicalIds, ...mapped }.externalIds).toEqual(canonicalIds);
   });
   it("applies country fields and EN translation without allowing an override to replace writers", () => {
