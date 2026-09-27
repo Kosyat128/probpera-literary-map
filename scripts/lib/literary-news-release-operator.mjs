@@ -29,6 +29,9 @@ export async function newsHistoryCandidates(items) {
       return {newsId:item.id,revision:await newsSemanticRevision(candidate)};
     }));
 }
+async function publicNewsRevisions(items) {
+  return new Map(await Promise.all(items.map(async item=>[item.id,await newsSemanticRevision(item)])));
+}
 export async function verifyNewsHistoryApproval(approval, destination, items, expectedDigest, now=new Date()) {
   requireCondition(approval?.status==="approved" && approval.platform===destination.platform
     && approval.destinationId===destination.id, "history_approval_missing");
@@ -56,7 +59,7 @@ export async function verifyNewsHistoryApproval(approval, destination, items, ex
   return candidates;
 }
 
-export function summarizeNewsDeliveryHistory(rows, candidates, destination) {
+export function summarizeNewsDeliveryHistory(rows, candidates, publicRevisions, destination) {
   const reviewedCandidates=new Map((Array.isArray(candidates)?candidates:[])
     .filter(row=>typeof row?.newsId==="string"&&sha(row.revision)).map(row=>[row.newsId,row.revision]));
   const jobs=rows.map(row=>row?.state).filter(job=>job?.destination?.platform===destination.platform
@@ -64,8 +67,10 @@ export function summarizeNewsDeliveryHistory(rows, candidates, destination) {
   const blockers=jobs.flatMap(job=>{
     const reasons=[];
     if(!reviewedCandidates.has(job.newsId))reasons.push("not_in_reviewed_history");
+    if(!publicRevisions.has(job.newsId))reasons.push("not_in_current_public_feed");
     if(!sha(job.prepared?.textRevision))reasons.push("missing_text_revision");
-    else if(reviewedCandidates.get(job.newsId)!==job.prepared.textRevision)reasons.push("text_revision_mismatch");
+    else if(publicRevisions.has(job.newsId) && publicRevisions.get(job.newsId)!==job.prepared.textRevision)
+      reasons.push("text_revision_mismatch");
     if(job.remoteId)reasons.push("has_remote_id");
     if(job.dispatchStartedAt)reasons.push("dispatch_started");
     if(["ambiguous","inflight"].includes(job.status))reasons.push("ambiguous_or_inflight");
@@ -150,11 +155,13 @@ export async function operateNewsRelease({action,platform,expectedControlId=null
     && Math.abs(now().getTime()-Date.parse(feed.generatedAt))<=300000,"public_snapshot_not_current");
   const item=feed.items.find(row=>row.id===canaryNewsId);
   requireCondition(item,"canary_not_public");
+  // The durable post uses the public serializer, not the editorial source-title projection.
+  const publicRevisions=await publicNewsRevisions(feed.items);
   const prepared=await prepareNewsPost(item,feed.snapshot,platform,{destination,mediaOptions:{...mediaOptions,now:now()}});
   const proposedControl={mode:"canary",canaryNewsId,vkProfile:{apiVersion:"5.199",canaryAuthorized:true}};
   if(action==="inspect") {
     const rights=await transport.preflight(destination,{control:proposedControl,requiresMedia:Boolean(prepared.media)});
-    const deliveryHistory=summarizeNewsDeliveryHistory(await store.list("post:"),approval?.history?.candidates,destination);
+    const deliveryHistory=summarizeNewsDeliveryHistory(await store.list("post:"),approval?.history?.candidates,publicRevisions,destination);
     return {action,sendable:false,platform,destinationId:destination.id,controlId:control.id,control:control.state,
       historyDigest:approval?.history?await newsSocialPayloadDigest(approval.history):null,
       candidateFingerprint:await newsSocialPayloadDigest(await newsHistoryCandidates(feed.items)),deliveryHistory,
@@ -173,7 +180,7 @@ export async function operateNewsRelease({action,platform,expectedControlId=null
     await reconcileNewsSnapshot(store,feed,[destination],now(),{mediaOptions});
     for(const {state:job} of await store.list("post:")) if(job.destination?.platform===platform && job.destination.id===destination.id)
       requireCondition(candidates.has(job.newsId) && sha(job.prepared?.textRevision)
-        && candidates.get(job.newsId)===job.prepared.textRevision && !job.remoteId && !job.dispatchStartedAt
+        && publicRevisions.get(job.newsId)===job.prepared.textRevision && !job.remoteId && !job.dispatchStartedAt
         && !["ambiguous","inflight"].includes(job.status),"existing_delivery_history_requires_review");
     // A pause/another initializer during reconciliation causes the null-version CAS to fail.
     await commit({...proposedControl,paused:false,historyReconciled:true,
@@ -215,7 +222,7 @@ export async function operateNewsRelease({action,platform,expectedControlId=null
     && positiveId(job.remoteId) && !job.withdrawal && !job.dispatchStartedAt,"canary_receipt_missing");
   for(const {state:pending} of await store.list("post:")) if(pending.destination?.platform===platform && pending.destination.id===destination.id)
     requireCondition(candidates.has(pending.newsId) && sha(pending.prepared?.textRevision)
-      && candidates.get(pending.newsId)===pending.prepared.textRevision
+      && publicRevisions.get(pending.newsId)===pending.prepared.textRevision
       && (!pending.remoteId || pending.key===key && pending.remoteId===job.remoteId)
       && !pending.dispatchStartedAt && !["ambiguous","inflight"].includes(pending.status),"existing_delivery_history_requires_review");
   const proofUrl=`https://t.me/probbaperra/${job.remoteId}`;

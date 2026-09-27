@@ -5,7 +5,7 @@ import sharp from "sharp";
 import reviewed from "../../data/news/reviewed.json" with {type:"json"};
 import { buildPublishedNewsFeed } from "./literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./literary-news-state.mjs";
-import { newsPostKey,newsSocialPayloadDigest,prepareNewsPost } from "./literary-news-social.mjs";
+import { newsPostKey,newsSemanticRevision,newsSocialPayloadDigest,prepareNewsPost } from "./literary-news-social.mjs";
 import { NEWS_RELEASE_DESTINATIONS,newsHistoryCandidates,operateNewsRelease,recheckNewsPublicHistory,summarizeNewsDeliveryHistory,verifyTelegramCanaryPublicPost } from "./literary-news-release-operator.mjs";
 import { parseNewsReleaseArguments } from "../operate-literary-news-release.mjs";
 import { normalizeNewsMedia, mediaByteHash } from "./literary-news-media.mjs";
@@ -25,8 +25,11 @@ function memoryStore(){
     list:vi.fn(async prefix=>[...rows].filter(([key])=>key.startsWith(prefix)).map(([,row])=>structuredClone(row))),
   };return store;
 }
-async function setup(){
-  const item={...reviewed.find(row=>row.kind==="news"),id:"release-canary-fixture",eventKey:"release-canary-fixture",
+async function setup({withEditorialSourceTitle=false}={}){
+  const base=withEditorialSourceTitle?reviewed.find(row=>row.id==="gioconda-belli-fil-prize-2026")
+    :reviewed.find(row=>row.kind==="news");
+  const item={...base,id:withEditorialSourceTitle?base.id:"release-canary-fixture",
+    eventKey:withEditorialSourceTitle?base.eventKey:"release-canary-fixture",
     eventDate:"2026-09-26",publishedAt:null,verifiedAt:"2026-09-26T12:00:00Z"};
   const feed=await buildPublishedNewsFeed({records:[item],state:pendingNewsSourceState(),current:now,release:"a".repeat(40)});
   const source=await sharp({create:{width:480,height:640,channels:3,background:"#8f7788"}}).png().toBuffer();
@@ -80,8 +83,34 @@ describe("bounded Telegram release operator",()=>{
       newsId:"orphan",destination,prepared:null,status:"blocked"});
     const result=await operateNewsRelease({...options,action:"inspect"});
     expect(result.deliveryHistory).toMatchObject({jobCount:2,blockerCount:1,truncated:false,
-      blockers:[{newsId:"orphan",status:"blocked",reasons:["not_in_reviewed_history","missing_text_revision"]}]});
+      blockers:[{newsId:"orphan",status:"blocked",reasons:["not_in_reviewed_history","not_in_current_public_feed","missing_text_revision"]}]});
     expect(store.compareAppend).not.toHaveBeenCalled();expect(transport.send).not.toHaveBeenCalled();
+  });
+  it("uses the public text revision for pending jobs while checking editorial source-title history",async()=>{
+    const {options,store,key,enable}=await setup({withEditorialSourceTitle:true});
+    const publicRevision=await newsSemanticRevision(options.feed.items[0]);
+    expect(options.feed.items[0].source.title).toBeUndefined();
+    expect(options.approval.history.candidates[0].revision).not.toBe(publicRevision);
+    await store.seed(key,{key,newsId:options.canaryNewsId,destination,prepared:{textRevision:publicRevision},status:"pending"});
+    const inspection=await operateNewsRelease({...options,action:"inspect"});
+    expect(inspection.deliveryHistory).toMatchObject({jobCount:1,blockerCount:0});
+    await enable();
+    await operateNewsRelease({...options,action:"send-canary"});
+    const job=(await store.read(key)).state;
+    options.nativeObservation={viewed:true,remoteId:job.remoteId,url:`https://t.me/probbaperra/${job.remoteId}`};
+    options.verifyNative=vi.fn(async()=>({remoteId:job.remoteId,photoObserved:true,checkedAt:now.toISOString()}));
+    expect((await operateNewsRelease({...options,action:"promote"})).mode).toBe("on");
+  });
+  it("keeps a pending job with a genuinely changed public text revision blocked",async()=>{
+    const {options,store,key,transport}=await setup({withEditorialSourceTitle:true});
+    const prepared=await prepareNewsPost(options.feed.items[0],options.feed.snapshot,"telegram",
+      {destination,mediaOptions:options.mediaOptions});
+    await store.seed(key,{key,newsId:options.canaryNewsId,destination,desiredRevision:prepared.revision,
+      prepared:{...prepared,textRevision:"e".repeat(64)},status:"pending"});
+    const inspection=await operateNewsRelease({...options,action:"inspect"});
+    expect(inspection.deliveryHistory.blockers[0].reasons).toContain("text_revision_mismatch");
+    await expect(operateNewsRelease(options)).rejects.toThrow("existing_delivery_history_requires_review");
+    expect(transport.send).not.toHaveBeenCalled();
   });
   it.each(["approval","digest","candidate","expiry","head","rights"])("blocks %s failure before initialization",async kind=>{
     const {options,store,transport}=await setup();
