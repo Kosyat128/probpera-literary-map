@@ -58,6 +58,14 @@ describe("bounded Telegram release operator",()=>{
   it("allows a full-text fallback for both destinations while VK remains off",()=>{
     expect(Object.values(NEWS_RELEASE_DESTINATIONS).every(d=>d.requirePhotoForNewPosts===false&&d.mode==="off")).toBe(true);
   });
+  it("restores only an omitted editorial source title for history hashing",async()=>{
+    const reviewedItem=reviewed.find(row=>typeof row.source.title==="string");expect(reviewedItem).toBeDefined();
+    const publicProjection={...reviewedItem,source:{name:reviewedItem.source.name,url:reviewedItem.source.url,
+      language:reviewedItem.source.language}};
+    expect(await newsHistoryCandidates([publicProjection])).toEqual(await newsHistoryCandidates([reviewedItem]));
+    const changedIdentity={...publicProjection,source:{...publicProjection.source,url:"https://changed.example/"}};
+    expect(await newsHistoryCandidates([changedIdentity])).not.toEqual(await newsHistoryCandidates([reviewedItem]));
+  });
   it("inspect produces an exact nonsendable preview with no durable/platform writes",async()=>{
     const {options,store,transport}=await setup();const result=await operateNewsRelease({...options,action:"inspect",approval:null});
     expect(result.sendable).toBe(false);expect(result.prepared.payloadSha256).toBe(options.payloadSha256);
