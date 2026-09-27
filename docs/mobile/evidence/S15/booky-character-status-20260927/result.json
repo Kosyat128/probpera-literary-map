@@ -1,0 +1,546 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T05:20:53.130Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_CHARACTER_STATUS_SCOPED_VALIDATION",
+  "sourceCommit": "2fee97b9004200538f5ff46d8f531d0bec0c9353",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/entry.json",
+    "sha256": "00164949bbb1dbe8e24a34c82a2e7ac467e869fec3f88b1dfaec7ded72a318ce"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/checkpoint.mjs",
+    "sha256": "7762b126d0008460e3fba2b1a0039608523ddcd27f0cf2811f81ef8229690f2a"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json",
+    "sha256": "8fb5a1ed8a99b15c3e93d6a2d6e349b49306c648e69caf247c3f6ca534b2214c"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+    "sha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9"
+  },
+  "previousRuntimeSourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/source-manifests/cbad6303aca1251e.json",
+    "sha256": "cbad6303aca1251eed24b714474c24b749eedcc6f862a5b6238b64e42f1ceecd",
+    "fileCount": 1665
+  },
+  "sourceCommits": [
+    "2fee97b9004200538f5ff46d8f531d0bec0c9353"
+  ],
+  "attempts": {
+    "static": "a1",
+    "browser": "a1"
+  },
+  "runs": {
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/static-a1/result.json",
+      "sha256": "7ba9f4f5d68e179432d5844ccfd7ec9f9ce2e636f8c3aed7331440c93b9a8fca",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-status-20260927/static-a1/execution.json",
+        "sha256": "49ca71986ecb92a25b25b48b8eaa1c635d6fb14c5c989e74ed0b389aac4fe464"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/browser-a1/result.json",
+      "sha256": "dbd4af7f20404d232ed6ab4bfe5baa683e1075445c9d285f967b04dbf14e876b",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-status-20260927/browser-a1/execution.json",
+        "sha256": "ae7331ab8fda09f486b1ec7c75b8ea6568eba30c557af29820f3afa8a4f6370f"
+      },
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-status-20260927/browser-a1/playwright.json",
+        "sha256": "1af02f6d3ce65663bc903f8b8f90f7eb6cee1d28cc538c4d2c575c59d4be8bef"
+      }
+    }
+  },
+  "earlierAttempts": [],
+  "diagnosticHistory": null,
+  "checkpointGuardHistory": [],
+  "directSpecificationEvidence": [
+    {
+      "path": "docs/mobile/requirements/v12/12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+      "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+      "section": "5,9",
+      "scope": "Bounded adult character-node composition and semantic acknowledgement only; no literary content approval, StoryWorld, child mode or full journeys acceptance."
+    }
+  ],
+  "historicalDialogueInputs": [
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "10e41f50bc7e2a564c18d13c6afba988fe11508e313a537173e2f3bc73b86eb4"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "76feddfb236ff2486d35c5181847419a9c93b96506b73f4f8a740fcc9467330f"
+    }
+  ],
+  "newUiCopyStatus": {
+    "status": "draft-product-ui-not-reviewed-literary-dialogue",
+    "humanReviewed": false,
+    "childApproved": false,
+    "narrationApproved": false
+  },
+  "unitCount": 0,
+  "unitFiles": [],
+  "unitValidation": "not-rerun-presentation-only",
+  "unitSuitesRerun": false,
+  "browserCases": 3,
+  "actualAppCaseCount": 3,
+  "componentCaseCount": 0,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-status-evidence\\browser-a1\\booky-character-step-actua-e9e7f-preserves-canonical-context\\booky-character-step.json",
+      "sha256": "bcf0212e3f37e5b12390739994ca04f8616d78496c492b8207f8e756c156c6e2",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-status-evidence\\browser-a1\\booky-character-step-actua-e9e7f-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-cffbad7b35b4b6c6460299e9e9bd8eda034d2b26.json",
+        "sha256": "bcf0212e3f37e5b12390739994ca04f8616d78496c492b8207f8e756c156c6e2"
+      },
+      "test": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+      "actualApp": true,
+      "evidenceKind": "source-attachment",
+      "sourceBinding": "emitted-hashes"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-status-evidence\\browser-a1\\booky-character-step-actua-d42a8-preserves-canonical-context\\booky-character-step.json",
+      "sha256": "55c40d4a7fc38ebebbd7820f118233c6b1a7a8178a1092535281df7c47989990",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-status-evidence\\browser-a1\\booky-character-step-actua-d42a8-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-90f9c41ec5aeae5e7b106ac3a1e41960644ffecd.json",
+        "sha256": "55c40d4a7fc38ebebbd7820f118233c6b1a7a8178a1092535281df7c47989990"
+      },
+      "test": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+      "actualApp": true,
+      "evidenceKind": "source-attachment",
+      "sourceBinding": "emitted-hashes"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-status-evidence\\browser-a1\\booky-character-step-actua-9fee8-without-opening-or-progress\\booky-character-step.json",
+      "sha256": "611f371dfb243cb567c650db922714abff8cc8fcf374b9fe9ee690b9edc28bc8",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-status-evidence\\browser-a1\\booky-character-step-actua-9fee8-without-opening-or-progress\\attachments\\booky-character-step-source-evidence-f684009ca738950e88f92abf6eb94ee80996535d.json",
+        "sha256": "611f371dfb243cb567c650db922714abff8cc8fcf374b9fe9ee690b9edc28bc8"
+      },
+      "test": "actual App absent publication capability denies character routes without opening or progress",
+      "actualApp": true,
+      "evidenceKind": "source-attachment",
+      "sourceBinding": "emitted-hashes"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+      "scenario": "character-journey-ru",
+      "scope": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate.",
+      "phaseScopedValues": null,
+      "flags": {
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "syntheticDossierWorkflowOnly": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "characterJourneyPassed": true
+      },
+      "observationChecks": {
+        "observation": "characterStep",
+        "checks": [
+          {
+            "name": "country-first route admission does not require a future open dossier",
+            "pass": true
+          },
+          {
+            "name": "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+            "pass": true
+          },
+          {
+            "name": "Close and fresh Open give no character credit",
+            "pass": true
+          },
+          {
+            "name": "only explicit current modal acknowledgement advances character progress",
+            "pass": true
+          },
+          {
+            "name": "character progress stores static identity without temporary receipt",
+            "pass": true
+          },
+          {
+            "name": "canonical globe and reading storage remain unchanged during character actions",
+            "pass": true
+          }
+        ]
+      }
+    },
+    {
+      "test": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+      "scenario": "character-journey-en",
+      "scope": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate.",
+      "phaseScopedValues": null,
+      "flags": {
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "syntheticDossierWorkflowOnly": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "characterJourneyPassed": true
+      },
+      "observationChecks": {
+        "observation": "characterStep",
+        "checks": [
+          {
+            "name": "country-first route admission does not require a future open dossier",
+            "pass": true
+          },
+          {
+            "name": "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+            "pass": true
+          },
+          {
+            "name": "Close and fresh Open give no character credit",
+            "pass": true
+          },
+          {
+            "name": "only explicit current modal acknowledgement advances character progress",
+            "pass": true
+          },
+          {
+            "name": "character progress stores static identity without temporary receipt",
+            "pass": true
+          },
+          {
+            "name": "canonical globe and reading storage remain unchanged during character actions",
+            "pass": true
+          }
+        ]
+      }
+    },
+    {
+      "test": "actual App absent publication capability denies character routes without opening or progress",
+      "scenario": "character-publication-absent",
+      "scope": "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+      "phaseScopedValues": {
+        "syntheticPublicationCapability": "false only in first absent-capability phase; true in subsequent approved synthetic short-lease phase"
+      },
+      "flags": {
+        "syntheticPublicationCapability": false,
+        "realPublicationServiceClaimed": false,
+        "syntheticDossierWorkflowOnly": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": false,
+        "characterCapabilityDenied": true
+      },
+      "observationChecks": {
+        "observation": "characterStep",
+        "checks": [
+          {
+            "name": "absent publication capability exposes no character route or action",
+            "pass": true
+          },
+          {
+            "name": "unavailable route produces no publication request or progress write",
+            "pass": true
+          },
+          {
+            "name": "canonical globe remains retained",
+            "pass": true
+          },
+          {
+            "name": "real short-lease renewal failure revokes current modal without credit or replay",
+            "pass": true
+          },
+          {
+            "name": "failed renewal shows current unavailable hint and disabled Open without extra publication request or credit",
+            "pass": true
+          }
+        ]
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/visual-review.json",
+    "sha256": "c9741c9624b69de9af408368a437dc92715bbab203e9761c300e55abebfe497b"
+  },
+  "newPhotoReview": null,
+  "newModelPhotoCount": 0,
+  "retainedModelPhotoReview": null,
+  "historicalModelPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "inspectedImageCount": 9,
+  "totalCapturedImageCount": 9,
+  "visualReviewScope": "Direct review of all nine final actual-App images, including RU/EN current, closed and completed states, RU consecutive character, initial absent capability and later unavailable current character. Static captures do not independently prove acknowledgement, lease renewal or progress authority.",
+  "visualReviewLimitations": [
+    "This review directly inspects 9 of 9 final captures.",
+    "Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1662,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/App.tsx",
+    "src/host/BookyJourneyControls.tsx",
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "6c642c40f6e5090d82bc33fc5cecd9f586c1fe38",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/pwa-a1/result.json",
+    "sha256": "d480a152d6e8f0c7609222c5acf1779ea08079803b0a2b0ca33e3c78c329ba63"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/android-a1/result.json",
+    "sha256": "4d3a416d79300a02f7fde651defb96165b9418ecc193148e62318579325edd54"
+  },
+  "pwaBuildId": "249535ddd1324603cf3e6ff9b32af31c0dc0e653951afbbed1d33aa1ed4100f5",
+  "androidBuildId": "a51befd9ecd5877f15b6adc0a94ebd1fa6652e2b313676c88e063fa4496295d9",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/android-a51befd9/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "f0f39503601adb0a58308f8374aa4cfd8d291410b2fe73dc651da9972f83ec96"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/pwa-249535dd/artifact.json",
+      "sha256": "76efc7e1be2890b4010a59ab61fe520559257e4b2b4cc824398831261eaac772"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/android-a51befd9/runtime/artifact.json",
+      "sha256": "4767dd33e62f647b3d6739e1ee14f925ec1b7de7cd403f51c8276676b03617fc"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/pwa-a1/strict-audit.json",
+      "sha256": "e76178026b2ad29867f672881ee79b0206cc5f77d68e105fd2e76412a5b3bb73"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/android-a1/native-artifact-audit.json",
+      "sha256": "f5bbbbe380fe0ca52939930696618c626a90c6b222f8cb8508483ad7a866ff3e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/android-a1/android-dev-apk-verification.json",
+      "sha256": "0e901c3311d88d7bce44b55a623966d5f821b17ee25fc502c334985e2214c75c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/android-a1/build-run.json",
+      "sha256": "40b699665488ad3be076d9dc645ce78765cb0fb9a47db3813f00328bfa8169cf"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/build-baseline.json",
+    "sha256": "eefb37973d99b838488b703bf7982ff571c44b51644e9400919486b52ad329c0"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/pwa-a1/copy-verification.json",
+    "sha256": "ee7ddabcd0eeda1fa84d0f28014a8eeca549d6fbb98fb80d14d0cb47fa206aeb"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/pwa-a1/playwright.json",
+    "sha256": "3d4edd7d41cae9c4d6a469a72f6579959582c4b186afdbf5464716df9d3250be"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedCheckpoint": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json",
+      "sha256": "8fb5a1ed8a99b15c3e93d6a2d6e349b49306c648e69caf247c3f6ca534b2214c"
+    },
+    "sourceCommit": "2a3b8f7564e74231147e3db2b5fc872e87d85fb4",
+    "sourceManifest": {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/source-manifests/bd9c7d4c5f8c55bb.json",
+      "sha256": "926b1ec167bd7fa38bec4615876e509b8405ec56df3e6f661c0afcb7b15cd366",
+      "fileCount": 1665
+    },
+    "unitCount": 17,
+    "inventory": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a2/result.json",
+      "sha256": "af31b1a487f1bd5f22c9d940afea529f1e9708a32b3bc554947755b59af2d3ac",
+      "execution": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a2/execution.json",
+        "sha256": "b50005a65c7ee1b0de40b7556ea0bc21033084295382552ea1b5fad178249c2c"
+      },
+      "rawReport": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a2/inventory.json",
+        "sha256": "53842969d63dbed618b427c95f4a6b61d29c6f2365a5ec4e44378ec9cbfc1a3f"
+      },
+      "tests": null
+    }
+  },
+  "retainedContext": {
+    "sourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+      "sha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9"
+    },
+    "unitCount": 367,
+    "browserCases": 8,
+    "allPriorSelectedCasesRerun": false,
+    "priorSelectedBrowserCaseCount": 8,
+    "currentSelectedBrowserCaseCount": 3,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+      "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+    },
+    "photosHistoricalOnly": true,
+    "photosClaimCurrentRenderer": false
+  },
+  "criteriaUpdated": [
+    "PLANETKA-004"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-004"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD208Recorded": true,
+  "nextAction": "D209: assess and fix explicit current-character resume prerequisites after leaving the book. Preserve the canonical work, live lease and exact current receipt fences; resuming or opening alone grants no character credit. Keep approved production journeys disabled and all stage, child, editorial and release statuses unchanged.",
+  "limitations": [
+    "Presentation-only change: current action presence selects truthful ready-character hints without granting capabilities, opening a card, or advancing progress.",
+    "No unit suite rerun; D206 semantic validation and D207 provenance checks remain bound to their own source.",
+    "The new build source snapshot includes D207 unimported inventory changes; this is not a claim those inventory records are bundled runtime code.",
+    "All 34 historical drafts remain unchanged and unapproved. D207 current contextual provenance remains independently attributable; new status UI copy is outside that historical inventory.",
+    "Controlled synthetic publication is not production delivery, editorial approval or installed-device evidence.",
+    "Only bounded S15.PLANETKA-004 evidence is added; all requirement/stage statuses and acceptance gates remain unchanged.",
+    "Current-character presentation only. Three established actual-App cases, controlled test publication, real existing renewal timer and genuine trusted touch. No production editorial, native-device or release acceptance.",
+    "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate.",
+    "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate.",
+    "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+    "No unit suites or component browser cases are rerun. D206 runtime tests and D207 source-only inventory validation retain their original source references.",
+    "This review directly inspects 9 of 9 final captures.",
+    "Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "bookyCharacterStepImplemented": true,
+  "bookyCharacterStatusImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": true,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

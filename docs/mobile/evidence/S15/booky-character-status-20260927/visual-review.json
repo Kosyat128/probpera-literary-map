@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T05:19:34.055Z",
+  "pass": true,
+  "sourceCommit": "2fee97b9004200538f5ff46d8f531d0bec0c9353",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/source-manifests/cbad6303aca1251e.json",
+    "sha256": "cbad6303aca1251eed24b714474c24b749eedcc6f862a5b6238b64e42f1ceecd",
+    "fileCount": 1665
+  },
+  "inspectedCount": 9,
+  "totalCapturedCount": 9,
+  "scope": "Direct review of all nine final actual-App images, including RU/EN current, closed and completed states, RU consecutive character, initial absent capability and later unavailable current character. Static captures do not independently prove acknowledgement, lease renewal or progress authority.",
+  "limitations": [
+    "This review directly inspects 9 of 9 final captures.",
+    "Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/final-visual-receipt.json",
+    "sha256": "0e1ad58a5a167e3c829648f490bd78c146c5dfdd4a88c0c91d6f7bd8d17f4ef6"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-d42a8-preserves-canonical-context/character-current-en.png",
+      "sha256": "0030ea39f94a02dae5db78a229c61fdc12d20810e11ce45598486956b4e56cef",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "At 320 px the synthetic character C detail, Acknowledge step and Close fit visibly inside the native dialog; the title wraps to two lines without colliding with Close.",
+        "Some group and relationship labels remain Russian in the synthetic test dossier. Earlier graph rows are above the sticky header. This is interface-layout evidence, not bilingual editorial acceptance."
+      ],
+      "bytes": 49296,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-d42a8-preserves-canonical-context/character-complete-en.png",
+      "sha256": "205bb850ca6330af1dc883e97523a1b12ad2106d9e7510c51e51faa359127e72",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The English journey-complete message is fully readable in the help card at 320 px, and the main header and Close fit.",
+        "The retained writer card continues below the help view and is partly covered by Booky controls. No all-content-visible or interaction claim is derived from this static frame."
+      ],
+      "bytes": 185617,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-d42a8-preserves-canonical-context/character-closed-en.png",
+      "sha256": "32182268b8a018fd13552c423b7b78ec5a8d3acd30f336a1f8e8e489488d13f6",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The full English ready-to-open hint and Literary journeys heading fit in the 320 px collection view. Mr. Booky and Close remain readable.",
+        "The help card overlays the middle of the selected book detail, and the route actions lie outside this status-focused framing. This image does not prove enabled Open, absence of requests or preserved progress."
+      ],
+      "bytes": 118544,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-e9e7f-preserves-canonical-context/character-current-ru.png",
+      "sha256": "55fe1aed10d82927d00eb2451192bb3cc09874aa12502c1f929fa0c3a260f901",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The 390 px native dialog shows the synthetic character C detail, separate acknowledgement and Close completely inside the visible card. Their labels are readable.",
+        "The map is scrolled: earlier nodes are above the sticky heading. This frame does not show the complete graph or prove acknowledgement behavior."
+      ],
+      "bytes": 49546,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-e9e7f-preserves-canonical-context/character-consecutive-ru.png",
+      "sha256": "34abde23194cb4cf9d5c50112975232418c396fe34c61173d9258b86dddaad95",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The detail card visibly identifies synthetic character B with its own acknowledgement button; Close remains readable at the top.",
+        "The selected node row is partly behind the sticky heading at this scroll position, while the B detail and its action are fully visible. The image alone does not establish consecutive-step ownership."
+      ],
+      "bytes": 51067,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-e9e7f-preserves-canonical-context/character-complete-ru.png",
+      "sha256": "a0bd059818969337006952e57451ffd1fe95239713c7b788b25fa7f0853294c5",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The Russian completion message is fully readable inside Booky help, with the canonical globe visible behind it.",
+        "The lower retained author panel is only partly framed and Booky controls overlap some author-card content. This capture is a completion-status view, not proof that all underlying content is unobstructed."
+      ],
+      "bytes": 211368,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-e9e7f-preserves-canonical-context/character-closed-ru.png",
+      "sha256": "333133e46f8df61ba181ca56b4126b89d134b17eb47024575c34e777712ab657",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The new Russian ready-to-open hint is fully readable after the character dialog is closed. The native collection header and Close controls are visible.",
+        "The narrow Booky card wraps its name mid-word as Книжу/лик; the journey heading is partly above the sticky scroll boundary. The underlying book view and companion controls are partly overlapped. This is a scoped hint-framing review, not an all-content-visible claim."
+      ],
+      "bytes": 126012,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-9fee8-without-opening-or-progress/character-capability-absent-en.png",
+      "sha256": "36e1091996ff684363e8d91280775e4c2aaf369c76827d2da0edc50217bb8779",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The English unavailable-journey explanation is fully visible and readable; the help card, Booky controls and globe toolbar are framed within the 320 px screenshot.",
+        "This is the absent-capability phase only. The image cannot prove the later lease-expiry revocation, saved-state preservation, native-device behavior or production publication availability."
+      ],
+      "bytes": 220649,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-evidence/browser-a1/booky-character-step-actua-9fee8-without-opening-or-progress/character-unavailable-en.png",
+      "sha256": "9b0fd33910bf8291251e69b25af1903f96e8a6f8b39d8bd25c3af3814deed4e1",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The complete current-unavailability explanation wraps across three readable lines inside the 320 px help card. The title, journey heading and top of the synthetic route title are visible.",
+        "Open is below this status-focused frame; its disabled state and the preceding real renewal failure depend on the bound browser assertions. The underlying book detail is partly occluded by help."
+      ],
+      "bytes": 119450,
+      "width": 320,
+      "height": 844
+    }
+  ],
+  "releaseReady": false
+}

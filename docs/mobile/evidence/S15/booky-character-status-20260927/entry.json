@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T05:14:47.912Z",
+  "stage": "S15",
+  "checkpoint": "6c642c40f6e5090d82bc33fc5cecd9f586c1fe38",
+  "previous": "docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json",
+    "sha256": "8fb5a1ed8a99b15c3e93d6a2d6e349b49306c648e69caf247c3f6ca534b2214c"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+    "sha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9"
+  },
+  "previousRuntimeSourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "priorSourceManifest": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/source-manifests/bd9c7d4c5f8c55bb.json",
+    "sha256": "926b1ec167bd7fa38bec4615876e509b8405ec56df3e6f661c0afcb7b15cd366",
+    "fileCount": 1665
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/scope.json",
+    "sha256": "e99328cfbe5adb61890ab09fc84436e1422408618aea7c5b6773ae4407281a34"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "3e8ae9f78de7b54edaea4237615236a5cf0497ea9d60d92b483d0d3c85641bfc"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "fb69774f97a84286670b3c37dfab45296a4e4c36f76fce73e0637160483b09f6"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "49cfa5d34a457988757bc6add91027f6e08a216fe0f3e293b9ecb66be0916db8"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "34cd557ea983edbfee80ff9bfe666e310d3157d1cee3e9c1fc6041ddbf1cd58b"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "59bcca4f3259bd6b320c3fe0d6079fbab100be982e110cd278d3633844fd9ae0"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "fea8e362756a9e21b085ff81cbca0b2604ac47afd29e389cba9df2301309798e"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "6863e859b2d11ce2d732ae3d6aa20a32fbc8b14fa59ae25c959718c0b0eb4ff0"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "f8916993e21127e4d3b729120e602cc3f1816ab7aefaf78daf666197f29017bf"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/BookyJourneyControls.tsx",
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "320a57abf08bd1cac72f9a85c9c100a4f2a0c3d17e283200b485fe724990125b"
+    },
+    {
+      "path": "src/host/BookyJourneyControls.tsx",
+      "sha256": "f848d8687a5c5a35a8410f792c13ca59696f24a654a9ade32bea95c4a4e63dee"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "7262ae8df1414d89a3e40eb894dc29f8d5bc9f0d4a371c7c914630604b2cddc4"
+    }
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/host/BookyJourneyControls.tsx"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "6c642c40f6e5090d82bc33fc5cecd9f586c1fe38",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [],
+  "browserFiles": [
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 0,
+  "expectedBrowserTests": 3,
+  "expectedImages": 9,
+  "scope": "D208 truthful ready-character status: existing current character-action presence distinguishes an open committed card, an available card requiring explicit Open, and an unavailable current card. Preserve status priority, capabilities, route/progress semantics and canonical scene.",
+  "runtimeWiringImplemented": true,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

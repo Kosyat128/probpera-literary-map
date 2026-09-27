@@ -1,0 +1,76 @@
+{
+  "sourceInputs": 1665,
+  "protectedInputs": 1662,
+  "changed": 3,
+  "added": 0,
+  "unitSuites": 0,
+  "browserCases": 3,
+  "images": 9,
+  "previousCheckpoint": "6c642c40f6e5090d82bc33fc5cecd9f586c1fe38",
+  "previousRuntimeSource": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "globalWrites": false,
+  "testsRun": false,
+  "installedAt": "2026-09-27T05:14:47.222Z",
+  "readyManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/ready.json",
+    "sha256": "818c80855ee13bb052c9664b8a42eb09b3a6ace13fa6fdfe0281d6f4b3e54576"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-status-review\\install.mjs",
+    "sha256": "cdd0fd19fce2baa7f971f0bf8b8c990cbf17931966dccad4d7acc87f1f63d205"
+  },
+  "scope": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/scope.json",
+    "sha256": "e99328cfbe5adb61890ab09fc84436e1422408618aea7c5b6773ae4407281a34"
+  },
+  "helpers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/build-android-a1.ps1",
+      "sha256": "1f9c10b0988bb411a70fc5914f226eabe041edb0385592adff928da063f941eb"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/build-pwa-a1.mjs",
+      "sha256": "60ba46bf38817164a67c23504818ecde3a409d588b4b77bf5b6b9dffbbcef286"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/check.mjs",
+      "sha256": "08e259cbdc46a3a27cf49015688371cf13ccf1efdd7b5cb332824185e296677c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/checkpoint.mjs",
+      "sha256": "7762b126d0008460e3fba2b1a0039608523ddcd27f0cf2811f81ef8229690f2a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/configure.mjs",
+      "sha256": "fada62faa68a5ede6f6c95552991fd26d70d9e07f5b0e01a7c1b3d80492f9508"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/finalize-notes.mjs",
+      "sha256": "73cfab1acf7fd4cd33d4f70f954000198a0551312ebc95c69f190a62b99565b8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/preserve-android-a1.mjs",
+      "sha256": "84356169e8b63fbe1b1d5d47aa811e1e92b5858bc85d7c2abcec3a912497cf11"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/read-case-evidence.mjs",
+      "sha256": "32e982b9d9532b8c12b254d49294e8beada9ae4f165ff565d78f2de367125201"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/record-visual.mjs",
+      "sha256": "ab72469b89a7e9aa5cf0909806e59bcd83cae29758f7932daa23eff0cd447eb7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-status-review/evidence-draft/verify-android-a1.mjs",
+      "sha256": "9c81ac4bb55943933ca2f6b0c81338b9bb106b8aac7e4e973c6720965675a0b4"
+    }
+  ]
+}

@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-character-status-20260927:begin -->
+Latest source 2fee97b9: localized ready-character hints distinguish a committed open card, an available card requiring explicit opening, and a currently unavailable card. Existing current action presence controls presentation only; admission, opening and progress authority remain unchanged. Controlled publication remains test-only. D207 provenance and all 34 unapproved historical drafts retain their original attribution. Only bounded S15.PLANETKA-004 evidence is added; statuses remain unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-character-status-20260927/result.json. D208. TypeScript and 3 actual-App cases; 9 authenticated captures. No new unit or inventory suite. Fresh PWA/Android builds are bound to this source; earlier evidence keeps its original source.
+<!-- s15-booky-character-status-20260927:end -->
+
 <!-- s15-booky-context-provenance-20260927:begin -->
 Latest source 2a3b8f7564e74231147e3db2b5fc872e87d85fb4: only eight contextual draft source revisions advance 3→4, pinned to actual last-changed D205 Controls e23e58109dbe81f181f6440725ad71157b387e69. Fourteen navigation records at revision 2, twelve support records and all 22 texts remain exact. All 34 records remain unapproved and unavailable. Only S15.PLANETKA-003 evidence changes; every stage and criterion status stays unchanged.
 
