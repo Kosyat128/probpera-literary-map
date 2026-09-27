@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isBookyWalkPathClear, planBookyApproach, planBookyDockReturn, planBookyWalk, sampleBookyWalk } from "./bookyWalk";
+import { isBookyWalkPathClear, isBookyWalkTopInsetSafe, planBookyApproach, planBookyDockReturn, planBookyWalk, sampleBookyWalk } from "./bookyWalk";
 
 describe("explicit companion walk", () => {
   it.each([{ left: 0, top: 0, width: 320, height: 844 }, { left: 14, top: 90, width: 1440, height: 760 }])(
@@ -125,5 +125,51 @@ describe("explicit companion walk", () => {
     expect(planBookyDockReturn(current, size, view, { ...dock, width: 250 })).toBeNull();
     expect(planBookyDockReturn(current, size, view, { ...dock, height: Infinity })).toBeNull();
     expect(planBookyDockReturn(current, { ...size, height: 160 }, view, dock)).toBeNull();
+  });
+});
+
+describe("a target approach below an animated header", () => {
+  const size = { width: 112, height: 201.546875 };
+  const previous = { left: 0, top: 54.023338317871094, width: 390, height: 789.9766616821289 };
+  const path = { from: { left: 258, top: 374.453125 }, to: { left: 266, top: 590.36 }, direction: 1 as const };
+
+  it("keeps the measured failed route safe throughout the header's top-inset change", () => {
+    for (const top of [55.00934982299805, 55.01357936859131, 55.00345230102539, 60, 54]) {
+      const current = { ...previous, top, height: 844 - top };
+      expect(isBookyWalkTopInsetSafe(path, size, previous, current)).toBe(true);
+      for (let frame = 0; frame <= 100; frame++) {
+        const point = sampleBookyWalk(path, frame / 100);
+        expect(point.top).toBeGreaterThanOrEqual(current.top + 12);
+        expect(point.top + size.height).toBeLessThanOrEqual(832);
+        expect(point.left).toBeGreaterThanOrEqual(12);
+        expect(point.left + size.width).toBeLessThanOrEqual(378);
+      }
+    }
+  });
+
+  it("stops if the new reservation cuts into either end of the route", () => {
+    const boundary = path.from.top - 12;
+    expect(isBookyWalkTopInsetSafe(path, size, previous, { ...previous, top: boundary, height: 844 - boundary })).toBe(true);
+    for (const route of [path, { ...path, from: path.to, to: path.from }]) {
+      const top = boundary + .001;
+      expect(isBookyWalkTopInsetSafe(route, size, previous, { ...previous, top, height: 844 - top })).toBe(false);
+    }
+    for (const to of [{ ...path.to, top: 632 }, { ...path.to, left: 266.001 }, { ...path.to, left: 11.999 }]) {
+      expect(isBookyWalkTopInsetSafe({ ...path, to }, size, previous, previous)).toBe(false);
+    }
+  });
+
+  it("does not treat side, width or physical bottom changes as a top inset", () => {
+    for (const current of [{ ...previous, left: 1 }, { ...previous, width: 391 },
+      { ...previous, height: previous.height - 1 }, { ...previous, top: previous.top + 1 }]) {
+      expect(isBookyWalkTopInsetSafe(path, size, previous, current)).toBe(false);
+    }
+  });
+
+  it("rejects malformed geometry and insufficient space", () => {
+    expect(isBookyWalkTopInsetSafe({ ...path, from: { ...path.from, left: NaN } }, size, previous, previous)).toBe(false);
+    expect(isBookyWalkTopInsetSafe(path, { ...size, height: 0 }, previous, previous)).toBe(false);
+    expect(isBookyWalkTopInsetSafe(path, size, { ...previous, width: Infinity }, previous)).toBe(false);
+    expect(isBookyWalkTopInsetSafe(path, size, previous, { ...previous, top: 800, height: 44 })).toBe(false);
   });
 });

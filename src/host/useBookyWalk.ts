@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { BOOKY_WALK_MS } from "./bookyAnimation";
-import { isBookyWalkPathClear, planBookyWalk, sampleBookyWalk, type BookyWalkBounds, type BookyWalkPoint, type BookyWalkPath } from "./bookyWalk";
+import { isBookyWalkPathClear, isBookyWalkTopInsetSafe, planBookyWalk, sampleBookyWalk, type BookyWalkBounds, type BookyWalkPoint, type BookyWalkPath } from "./bookyWalk";
 
 export function useBookyWalk(options: {
   available: boolean; revision: number; position: BookyWalkPoint;
@@ -45,10 +45,14 @@ export function useBookyWalk(options: {
       frame.current = 0;
       if (owner !== sequence.current) return;
       const live = latest.current;
-      const boundsChanged = (["width", "height"] as const).some(key => Math.abs(live.size[key] - current.size[key]) > .5)
-        || (["left", "top", "width", "height"] as const).some(key => Math.abs(live.viewport[key] - current.viewport[key]) > .5);
-      // A persistence notice or host toolbar can resize through ResizeObserver
-      // without a window resize. Retire the old path before another moving frame.
+      const sizeChanged = (["width", "height"] as const).some(key => Math.abs(live.size[key] - current.size[key]) > .5);
+      const viewportChanged = (["left", "top", "width", "height"] as const)
+        .some(key => Math.abs(live.viewport[key] - current.viewport[key]) > .5);
+      // A header can animate the reserved top edge while this target and the
+      // complete route remain safely below it. Keep that explicit approach;
+      // real viewport events, resized characters and unsafe routes still stop.
+      const boundsChanged = sizeChanged || viewportChanged
+        && !(planned && targetIsCurrent && isBookyWalkTopInsetSafe(path, live.size, current.viewport, live.viewport));
       const stale = targetIsCurrent ? !targetIsCurrent() : live.revision !== current.revision;
       if (!live.available || live.calmMotion || stale || boundsChanged || document.hidden
         || !planned && !isBookyWalkPathClear(path, live.size, live.viewport, live.controls)) { stop(); return; }

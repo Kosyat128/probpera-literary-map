@@ -2307,6 +2307,11 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
     atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, composition.controller, closeStandControls, sceneInspection, standInspection, mascot]);
 
+  const globeDisplayUnavailable = !nativeCollectionOpen && planetLaunchComplete && platformVisibility === "active"
+    && globeViewSample.revision > 0 && !customizationSceneReady;
+  const canGuideGlobe = !nativeCollectionOpen && globeViewSample.revision > 0 && customizationSceneReady
+    && !atlasSearchOpen && !atlasExperience.state.filtersOpen && composition.snapshot.editor === null
+    && inspectionSnapshot.mode === "closed" && standInspectionSnapshot.phase === "closed";
   useLayoutEffect(() => {
     // The existing shell has no child profile. Its later child adapter must
     // provide its own reviewed routes and access decision, never an age guess.
@@ -2315,7 +2320,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       screen: nativeCollectionOpen ? "collection" : "globe", selectedCountry: Boolean(selectedCountry),
       selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
       connectivity: platformConnectivity, countryStatus: archiveDataStatus, booksStatus: mascotBookStatus,
-      canDiscoverCountry: filteredCountries.length > 0, canOpenDownloads: Boolean(platformServices.downloads),
+      canDiscoverCountry: filteredCountries.length > 0, canOpenDownloads: Boolean(platformServices.downloads), canGuideGlobe, globeDisplayUnavailable,
       canRecoverAuthorBooks: mascotAuthorView.settled && !mascotAuthorView.hasVisibleBooks
         && mascotAuthorView.authorKey === `${selectedCountry?.id}:${selectedWriter?.id}` && Boolean(mascotAuthorView.recoveryToken),
       locale: language, readerPolicy: readerPolicySnapshot.policy,
@@ -2327,7 +2332,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         : "idle" });
   }, [mascot, isPlanetApplication, planetLaunchComplete, platformVisibility, globalSearchOpen, communityOpen,
     nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
-    platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy, filteredCountries.length, platformServices.downloads]);
+    platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy, filteredCountries.length, platformServices.downloads, canGuideGlobe, globeDisplayUnavailable]);
 
   const navigateJourney = useCallback<BookyJourneyNavigation>((offer, signal, isCurrent) => {
     if (!isCurrent()) return false;
@@ -2403,6 +2408,43 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const handleMascotAction = useCallback((action: PlanetMascotAction): boolean => {
     const focusSequence = ++mascotFocusSequence.current;
     if (action === "return-globe") { requestReturnToPlanet(); return true; }
+    if (action === "globe-controls") {
+      if (!mascot.canAct(action) || document.hidden) return false;
+      const globe = nativeGlobeRootRef.current, origin = document.activeElement;
+      const findControl = () => [...(globe?.querySelectorAll<HTMLButtonElement>(
+        '.literary-globe[data-globe-webgl-context="ready"] .globe-controls button[data-globe-control="zoom-in"], '
+        + '.literary-globe[data-globe-webgl-context="ready"] .globe-controls button[data-globe-control="zoom-out"], '
+        + '.literary-globe[data-globe-webgl-context="ready"] .globe-controls button[data-globe-control="reset"]') ?? [])]
+        .find(button => {
+          if (!button.isConnected || button.disabled || button.closest('[hidden], [inert], [aria-hidden="true"]')) return false;
+          const style = getComputedStyle(button), bounds = button.getBoundingClientRect();
+          return style.display !== "none" && style.visibility === "visible" && Number(style.opacity) !== 0
+            && bounds.width > 0 && bounds.height > 0 && bounds.left >= 0 && bounds.top >= 0
+            && bounds.right <= window.innerWidth && bounds.bottom <= window.innerHeight;
+        });
+      const target = findControl();
+      if (!target || !mascot.togglePanel()) return false;
+      const revision = mascot.getSnapshot().revision;
+      let interrupted = false;
+      const interrupt = () => { interrupted = true; };
+      document.addEventListener("pointerdown", interrupt, true);
+      document.addEventListener("keydown", interrupt, true);
+      document.addEventListener("visibilitychange", interrupt);
+      // The companion first returns focus when its card closes. Transfer it
+      // only after that commit, and never over a newer user action or surface.
+      window.requestAnimationFrame(() => {
+        document.removeEventListener("pointerdown", interrupt, true);
+        document.removeEventListener("keydown", interrupt, true);
+        document.removeEventListener("visibilitychange", interrupt);
+        const state = mascot.getSnapshot(), focused = document.activeElement;
+        if (interrupted || document.hidden || focusSequence !== mascotFocusSequence.current || state.revision !== revision
+          || !state.available || state.visibility !== "shown" || state.panel !== "closed" || state.mode !== "help"
+          || findControl() !== target || focused !== origin && focused !== document.body
+            && !focused?.closest("[data-planet-mascot-toggle]")) return;
+        target.focus({ preventScroll: true });
+      });
+      return true;
+    }
     if (action === "random-country") {
       if (archiveDataStatus !== "ready" || !filteredCountries.length || !mascot.canAct(action)) return false;
       if (!mascot.togglePanel()) return false;

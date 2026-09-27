@@ -40,6 +40,21 @@ function walkLimits(size: Readonly<{ width: number; height: number }>, viewport:
   return right < left || bottom < top ? null : { left, right, top, bottom };
 }
 
+/** A moving header can change only the reserved top edge without changing
+ * the physical viewport. An explicit, still-current target route may continue
+ * only when its entire straight path remains inside the new safe area. */
+export function isBookyWalkTopInsetSafe(path: BookyWalkPath, size: Readonly<{ width: number; height: number }>,
+  previous: BookyWalkBounds, current: BookyWalkBounds): boolean {
+  const limits = walkLimits(size, current);
+  if (!limits || !validBounds(previous)
+    || Math.abs(previous.left - current.left) > .5 || Math.abs(previous.width - current.width) > .5
+    || Math.abs(previous.top + previous.height - current.top - current.height) > .5) return false;
+  // sampleBookyWalk interpolates monotonically between these endpoints, so
+  // their containment also proves containment of every intermediate frame.
+  return [path.from, path.to].every(point => Number.isFinite(point.left) && Number.isFinite(point.top)
+    && point.left >= limits.left && point.left <= limits.right && point.top >= limits.top && point.top <= limits.bottom);
+}
+
 /** Validate the whole horizontal row swept by a manual walk, including controls
  * that appeared after planning. This does not govern an explicit target approach. */
 export function isBookyWalkPathClear(path: BookyWalkPath, size: Readonly<{ width: number; height: number }>,

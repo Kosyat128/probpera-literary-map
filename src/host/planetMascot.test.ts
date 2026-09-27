@@ -12,6 +12,74 @@ const savedBooks = { schemaVersion: 1, audience: "adult", visible: true,
 const migratedBooks = { ...savedBooks, schemaVersion: 2,
   resume: { ...savedBooks.resume, routeVersion: 1 }, progress: [] } as const;
 
+describe("explicit globe guidance", () => {
+  function opened(value: Partial<PlanetMascotContext> = {}) {
+    const controller = createPlanetMascotController();
+    controller.setContext(ready({ canGuideGlobe: true, ...value }));
+    controller.restorePreference(migratedBooks, controller.getPreferenceIntent().revision);
+    controller.togglePanel();
+    return controller;
+  }
+
+  it("offers current offline globe controls without changing saved tours or acknowledging a step", () => {
+    const controller = opened({ connectivity: "offline" });
+    const snapshot = controller.getSnapshot(), intent = controller.getPreferenceIntent(), callback = vi.fn();
+    expect(controller.act("globe-controls", snapshot.revision, callback)).toBe(true);
+    expect(callback).toHaveBeenCalledOnce();
+    expect(controller.getSnapshot()).toBe(snapshot);
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    expect(intent.value.resume).toEqual(migratedBooks.resume);
+  });
+
+  it.each([undefined, false])("requires a confirmed ready globe capability (%s)", canGuideGlobe => {
+    const controller = opened({ canGuideGlobe }), callback = vi.fn(), intent = controller.getPreferenceIntent();
+    expect(controller.canAct("globe-controls")).toBe(false);
+    expect(controller.act("globe-controls", controller.getSnapshot().revision, callback)).toBe(false);
+    expect(callback).not.toHaveBeenCalled();
+    expect(controller.getPreferenceIntent()).toBe(intent);
+  });
+
+  it("does not bypass collection or either saved tour", () => {
+    for (const surface of ["collection", "overview", "country-to-book"] as const) {
+      const controller = opened(surface === "collection" ? { screen: "collection" } : {}), callback = vi.fn();
+      if (surface !== "collection") controller.start(surface);
+      const intent = controller.getPreferenceIntent(), snapshot = controller.getSnapshot();
+      expect(controller.act("globe-controls", snapshot.revision, callback)).toBe(false);
+      expect(callback).not.toHaveBeenCalled();
+      expect(controller.getPreferenceIntent()).toBe(intent);
+      expect(controller.getSnapshot()).toBe(snapshot);
+    }
+  });
+
+  it("rejects stale guidance after controls disappear and reappear", () => {
+    const controller = opened(), stale = controller.getSnapshot().revision, callback = vi.fn();
+    controller.setContext(ready({ canGuideGlobe: false }));
+    expect(controller.act("globe-controls", controller.getSnapshot().revision, callback)).toBe(false);
+    controller.setContext(ready({ canGuideGlobe: true }));
+    const intent = controller.getPreferenceIntent();
+    expect(controller.act("globe-controls", stale, callback)).toBe(false);
+    expect(callback).not.toHaveBeenCalled();
+    expect(controller.act("globe-controls", controller.getSnapshot().revision, callback)).toBe(true);
+    expect(callback).toHaveBeenCalledOnce();
+    expect(controller.getPreferenceIntent()).toBe(intent);
+  });
+
+  it("refuses hidden, closed, background and unauthorized guidance without calling the host", () => {
+    for (const state of ["hidden", "closed", "background", "child", "blocked", "disabled"] as const) {
+      const controller = opened(), stale = controller.getSnapshot().revision, callback = vi.fn();
+      if (state === "hidden") controller.hide();
+      else if (state === "closed") controller.togglePanel();
+      else controller.setContext(ready({ canGuideGlobe: true, active: state !== "background", enabled: state !== "disabled",
+        access: state === "child" ? "child" : state === "blocked" ? "blocked" : "adult" }));
+      const intent = controller.getPreferenceIntent();
+      expect(controller.act("globe-controls", stale, callback)).toBe(false);
+      expect(controller.act("globe-controls", controller.getSnapshot().revision, callback)).toBe(false);
+      expect(callback).not.toHaveBeenCalled();
+      expect(controller.getPreferenceIntent()).toBe(intent);
+    }
+  });
+});
+
 describe("explicit companion utility actions", () => {
   const utilities = ["random-country", "recent", "downloads", "graphics"] as const;
   const capabilities = { canDiscoverCountry: true, canOpenDownloads: true };

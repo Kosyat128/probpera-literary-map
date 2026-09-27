@@ -352,7 +352,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     && dockBounds.height >= petSize.height + MARGIN * 2 ? dockBounds : null;
   // Follow the pointer/selected target exactly during an explicit movement;
   // settle beside navigation controls without writing a new saved preference.
-  const floating = gesture === "dragging" || dock && dockDetached.current || targetCue && (!dock || targetCue.floating);
+  const floating = gesture === "dragging" || dock && dockDetached.current || targetCue?.floating;
   const restingPosition = floating ? preferredPosition
     : placeBooky(preferredPosition, petSize, dock ?? view, navigation);
   const walk = useBookyWalk({ available: shown && snapshot.available && !open && !characterRestoring && snapshot.mode === "help",
@@ -374,6 +374,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     const targets: Partial<Record<PlanetMascotAction, string>> = {
       recent: '[data-recent-history][open]', downloads: '[data-planet-downloads][open]',
       graphics: '[data-planet-graphics-settings][open] fieldset',
+      "globe-controls": '.literary-globe[data-globe-webgl-context="ready"] .globe-controls',
     };
     const selector = targets[pointRequest.action];
     if (!selector) { handledPoint.current = pointRequest.id; return; }
@@ -628,6 +629,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     recent: ru ? "Недавно открытое" : "Recently opened",
     downloads: ru ? "Загрузки и память" : "Downloads and storage",
     graphics: ru ? "Настройки графики" : "Graphics settings",
+    "globe-controls": ru ? "Показать кнопки управления" : "Show globe controls",
   })[action];
   const gestureCopy: Record<BookyGesture, { label: string; response: string; symbol: string }> = {
     greeting: { label: ru ? "Помахать" : "Wave", response: ru ? "Рад тебя видеть! Куда отправимся?" : "Lovely to see you! Where shall we go?", symbol: "✦" },
@@ -936,7 +938,22 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             {ru ? `Маршрут «${PLANET_MASCOT_ROUTES[snapshot.completedRoute].title.ru}» завершён. Можно продолжить самостоятельно или выбрать другой.`
               : `The “${PLANET_MASCOT_ROUTES[snapshot.completedRoute].title.en}” tour is complete. Continue exploring or choose another tour.`}
           </p>}
-          <p data-planet-mascot-context-tip={tipKind}>{helpTip}</p>
+          {snapshot.support?.id !== "globe-unavailable" && <p data-planet-mascot-context-tip={tipKind}>{helpTip}</p>}
+          {screen === "globe" && <details className="planet-mascot-controls__extras" data-booky-globe-guidance="">
+            <summary>{ru ? "Как управлять глобусом" : "How to use the globe"}</summary>
+            <p>{ru ? "Проведите одним пальцем по глобусу, чтобы повернуть его. Разведите два пальца, чтобы приблизить, или сведите их, чтобы отдалить."
+              : "Drag one finger across the globe to rotate it. Spread two fingers to zoom in, or pinch them together to zoom out."}</p>
+            <p>{ru ? "Нажмите на страну, чтобы открыть её архив. Страну или писателя также можно найти через поиск."
+              : "Tap a country to open its archive. You can also find a country or writer through search."}</p>
+            <p>{ru ? "Кнопки + и − меняют масштаб. «Сброс» возвращает исходный вид глобуса."
+              : "The + and − buttons change the zoom. Reset restores the globe’s starting view."}</p>
+            <p>{ru ? "Сверну подсказку и покажу кнопки управления."
+              : "I’ll close this tip and show the globe controls."}</p>
+            <button type="button" data-booky-show-globe-controls="" data-planet-mascot-action="globe-controls"
+              disabled={!controller.canAct("globe-controls")} onClick={() => perform("globe-controls")}>
+              {actionLabel("globe-controls")}
+            </button>
+          </details>}
           {authorFeedback && <p className="planet-mascot-controls__feedback" role="status" aria-live="polite" aria-atomic="true"
             data-planet-mascot-author-books-status={snapshot.authorBooksStatus}>{authorFeedback}</p>}
           <div className="planet-mascot-controls__routes">
