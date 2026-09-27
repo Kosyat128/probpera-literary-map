@@ -12,6 +12,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { build } from "esbuild";
 import sharp from "sharp";
+import { assertCoverOverlayPublicationInvariant } from "./lib/cover-overlay-publication-guard.mjs";
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -470,6 +471,7 @@ async function sourceArchive() {
         'import { bookArchiveSourceCountries as bookArchiveCountries } from "./src/data/countries/index.ts";',
         'import { buildBookArchive } from "./src/data/bookArchive.ts";',
         'import { isPublicBook } from "./src/data/bookQuality.ts";',
+        'export { isPublicBook };',
         "export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false, includeR49nCatalog: false });",
         "export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });",
         "export const baselinePublicCount = baseline.filter(isPublicBook).length;",
@@ -528,8 +530,7 @@ async function validateCanonicalArchive(committedManifest) {
   const {
     baseline,
     current,
-    baselinePublicCount,
-    currentPublicCount,
+    isPublicBook,
   } = archiveModule;
   if (baseline.length !== 9_761 || current.length !== 9_761) {
     throw new Error(
@@ -540,15 +541,7 @@ async function validateCanonicalArchive(committedManifest) {
         "."
     );
   }
-  if (baselinePublicCount !== 46 || currentPublicCount !== 46) {
-    throw new Error(
-      "Количество публичных карточек изменилось: " +
-        baselinePublicCount +
-        "/" +
-        currentPublicCount +
-        "."
-    );
-  }
+  assertCoverOverlayPublicationInvariant(baseline, current, isPublicBook);
 
   const baselineByKey = new Map();
   const currentByKey = new Map();

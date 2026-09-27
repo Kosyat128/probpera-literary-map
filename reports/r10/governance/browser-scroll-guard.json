@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-UNOBSTRUCTED-BROWSER-CONTROL-20260927",
+  "reviewedAt": "2026-09-27T05:55:23.930Z",
+  "baselineCommitSha": "1d957d5aa3537b4cf531eb1acbb31b6eaea1392d",
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false,
+  "previousPacketSha256": "0538ab0ed28af63e9256953b260da6e1f681bcc6d0979d42d0516cbbd51d5b3f",
+  "currentPacketSha256": "6ae489dee6f819e24225d6ab15813709701067dee52c3657386bef4dd7ef0c4a",
+  "previousPacketChainVerified": [
+    "0538ab0ed28af63e9256953b260da6e1f681bcc6d0979d42d0516cbbd51d5b3f",
+    "514e345dde1cbbd40bb77831071ffc29363da0f3139d2817d65954efdacba438",
+    "e4a632dc6bfe7427d27edb20b5a2ef6bc77f9288be7accf2630e54979ea39ca9"
+  ],
+  "exactProjection": {
+    "path": "tests/e2e/public-smoke.spec.mjs",
+    "additionalFragments": 1,
+    "previouslyPreservedFragments": 44,
+    "beforeSha256": "7a0e76ed3ab268fcf373fadb970e4838310b9855a225f67256e7bd4686ebac49",
+    "afterSha256": "c85deef43e707a99e72207e9c19a273224eb5c9136d557c015ffb00cbc9168b1",
+    "insertedLines": 13,
+    "removedLines": 0,
+    "additionsRegistryUnchanged": true
+  },
+  "independentReview": {
+    "verdict": "passed",
+    "realClickRetained": {
+      "path": "tests/e2e/public-smoke.spec.mjs",
+      "line": 475,
+      "expression": "await naturalEarthButton.click();",
+      "forceOption": false,
+      "dispatchEvent": false
+    },
+    "nativeFocusHandler": {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "captureLine": 3242,
+      "handlerLine": 2311,
+      "behavior": "Existing focus handler reveals the edition rail and clears its hide timer."
+    },
+    "hitTest": "Positive button bounds and document.elementFromPoint at its center must resolve to the button or its descendant. A sticky header or canvas at this point fails the new assertion.",
+    "changesOnlyBrowserSetup": true,
+    "originalTimeoutMs": 90000,
+    "priorAssertionsAndViewportChecksUnchanged": true,
+    "productionUiUnchanged": true,
+    "rawTraceRead": {
+      "entry": "0-trace.trace",
+      "callId": "call@153",
+      "method": "click",
+      "params": {
+        "selector": "[data-globe-edition-option=\"natural-earth-2026\"]",
+        "strict": true
+      },
+      "forceParameterAbsent": true,
+      "error": null,
+      "durationMs": 138.223,
+      "interceptionMessages": 0,
+      "sha256": "3c264b943851c049edebf9ef30477d5c390b5940e06a4a91f79803d0d1bb6393"
+    }
+  },
+  "focusedGovernance": {
+    "passedFiles": 3,
+    "passedTests": 79,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "testReportSha256": "c8b54dd311c0d9f0d019d6f583a5a8d690fe8742b01c7b11a6affd0b0d86b2cf",
+    "sourcePins": {
+      "scripts/governance/r10-forward-delta-20260926.json": "ca986f3f150e1d1d63b60fcbd2acffb9c554fc0a6668d967218f421f095024a8",
+      "scripts/lib/reviewed-r10-delta.test.mjs": "54b10cfdda580dcad3f5bc52be0f93a798f9512ff724013de43e03762368f58a"
+    }
+  },
+  "browserEvidenceRead": {
+    "path": "work/r10-live-evidence/local-globe-centered-check.json",
+    "sha256": "4280def73517fa554a303d16b0f940d58ad8d7e24c3d2740029a96621ce07830",
+    "runs": 1,
+    "retries": 0,
+    "independentlyRerunInThisReview": false,
+    "existingDist": true,
+    "exactHeadDistProvenanceAsserted": false
+  },
+  "failedCiEvidence": {
+    "path": "work/r10-live-evidence/pr202-webgl1-attempt1-diagnosis.json",
+    "sha256": "4976eed8d71c2d57cc383c22a096dd6557f8570a811c0c771f370dace4056246",
+    "preservedAttempt": 1,
+    "failedHead": "1d957d5aa3537b4cf531eb1acbb31b6eaea1392d"
+  },
+  "limitations": [
+    "The test now explicitly prepares a focused accessible control before its real pointer click; it is not a separate assertion of pure-pointer opening from the collapsed rail.",
+    "The single local browser pass uses an existing build and does not replace new exact-head required CI. No workflow rerun, remote mutation or merge was performed by this review."
+  ]
+}

@@ -459,6 +459,19 @@ test("глобус загружается только после приближ
       new URL(response.url()).pathname.endsWith(`/textures/${russianFilename}`) &&
       response.status() === 200
   );
+  // Resizing can leave the edition rail behind the sticky header. Focus keeps
+  // the accessible rail open; center the option before its real pointer click.
+  await naturalEarthButton.focus();
+  await naturalEarthButton.evaluate((element) => {
+    element.scrollIntoView({ block: "center", inline: "center", behavior: "instant" });
+  });
+  await expect.poll(() => naturalEarthButton.evaluate((element) => {
+    const bounds = element.getBoundingClientRect();
+    const x = bounds.left + bounds.width / 2;
+    const y = bounds.top + bounds.height / 2;
+    return bounds.width > 0 && bounds.height > 0
+      && element.contains(document.elementFromPoint(x, y));
+  }), { message: "The centered edition button must receive the pointer before clicking" }).toBe(true);
   await naturalEarthButton.click();
   const loadedRussianTexture = await russianTextureResponse;
   expect(loadedRussianTexture.ok()).toBe(true);

@@ -13,6 +13,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { build } from "esbuild";
 import sharp from "sharp";
+import { assertCoverOverlayPublicationInvariant } from "./lib/cover-overlay-publication-guard.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const cacheDirectory = path.join(projectRoot, "scripts", ".cache");
@@ -234,6 +235,7 @@ async function sourceArchive() {
           'import { bookArchiveSourceCountries as bookArchiveCountries } from "./src/data/countries/index.ts";',
           'import { buildBookArchive } from "./src/data/bookArchive.ts";',
           'import { isPublicBook } from "./src/data/bookQuality.ts";',
+          'export { isPublicBook };',
           'import { userSuppliedBookWorkBatch20260820Count } from "./src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts";',
           'export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false, includeR49nCatalog: false });',
           'export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });',
@@ -299,13 +301,11 @@ function setsIntersect(left, right) {
 
 async function validateCanonicalArchive(committedManifest) {
   const archiveModule = await sourceArchive();
-  const { baseline, current, baselinePublicCount, currentPublicCount } = archiveModule;
+  const { baseline, current, isPublicBook } = archiveModule;
   if (baseline.length !== 9_761 || current.length !== 9_761) {
     throw new Error(`Unexpected archive size: ${baseline.length}/${current.length}, expected 9761.`);
   }
-  if (baselinePublicCount !== 46 || currentPublicCount !== 46) {
-    throw new Error(`Unexpected public book count: ${baselinePublicCount}/${currentPublicCount}, expected 46.`);
-  }
+  assertCoverOverlayPublicationInvariant(baseline, current, isPublicBook);
   if (archiveModule.userSuppliedBookWorkBatch20260820Count !== 17) {
     throw new Error("Batch must create exactly 17 missing canonical works.");
   }

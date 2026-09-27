@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-COVER-PUBLIC-IDENTITY-GOVERNANCE-20260927",
+  "reviewedAt": "2026-09-27T04:52:33.222Z",
+  "baselineMainCommitSha": "361da051a5ea1d72ad3d44d84a7dd4eee3130a1f",
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false,
+  "ownedChanges": [
+    "scripts/governance/r10-forward-delta-20260926.json",
+    "scripts/lib/reviewed-r10-delta.test.mjs",
+    "reports/r10/governance/cover-publication-guard.json"
+  ],
+  "scope": "Additive governance for exact publication-identity preservation in three cover-only importers. Runtime fixes and their behavior tests were prepared separately.",
+  "previousPacketSha256": "e4a632dc6bfe7427d27edb20b5a2ef6bc77f9288be7accf2630e54979ea39ca9",
+  "currentPacketSha256": "514e345dde1cbbd40bb77831071ffc29363da0f3139d2817d65954efdacba438",
+  "proof": {
+    "previousProjectionCount": 34,
+    "previousProjectionFragmentsByteUnchanged": true,
+    "previousAdditionPinsUnchanged": true,
+    "previousSourcePinsUnchanged": true,
+    "newProjectionCount": 10,
+    "newPaths": [
+      "scripts/import-user-supplied-book-covers.mjs",
+      "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
+      "scripts/import-user-supplied-book-covers-2026-08-20.mjs"
+    ],
+    "newAdditions": [
+      {
+        "path": "scripts/lib/cover-overlay-publication-guard.mjs",
+        "sha256Lf": "31b473d9ad1c17670b799ed3290f1e56afb8c667d557885a3541e19c47dada93"
+      },
+      {
+        "path": "scripts/lib/cover-overlay-publication-guard.test.mjs",
+        "sha256Lf": "b28fb1abceb0acb2169a73fc0fd7cbfcf46ec3fccda1381ea7a92c749a31b835"
+      }
+    ],
+    "allProjectedSourcesEqualOriginalBaseline": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+    "unchangedHistoricalAdapters": true,
+    "newGitHistoryDependencyInTests": false,
+    "rejectsMissingDuplicatedAlteredFragmentsAndPreservesOutsideDrift": true
+  },
+  "focusedValidation": {
+    "command": "node node_modules/vitest/vitest.mjs run --configLoader runner scripts/lib/reviewed-r10-delta.test.mjs scripts/lib/reviewed-r49n-package.test.mjs scripts/lib/stage5-content-data-lock.test.mjs",
+    "passedFiles": 3,
+    "passedTests": 76,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "testReportSha256": "72f54856bbdfb7800d4f469bc86f115a8937f35ba8a85872efe977376fe75d59",
+    "sourcePins": {
+      "scripts/governance/r10-forward-delta-20260926.json": "e02a4b625788bf04a8327b65d57b8a06e1332c05c7b7be762dbf5ea06d6c0a7e",
+      "scripts/lib/reviewed-r10-delta.test.mjs": "18d828a957c082bcdea316b4861bb705a74281952692a9e2f95b752aee6fea26"
+    }
+  },
+  "limitations": [
+    "Local governance validation only; no remote CI or production application in this review.",
+    "The old CMS count is not rebaselined to a new static count. Existing identity, field, asset and rights guards remain the importer responsibility."
+  ]
+}

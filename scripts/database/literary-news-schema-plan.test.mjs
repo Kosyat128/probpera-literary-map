@@ -82,6 +82,22 @@ describe("guarded literary news runtime schema rollout", () => {
     expect(plan).toContain("aclexplode");
     expect(plan).toContain("News exact function ACL invariant failed");
   });
+  it("adds missing Auth compile fixtures only after the isolated identity guard and leaves production SQL pinned",()=>{
+    const {plan,preflight,verification,rehearsal,manifest}=buildLiteraryNewsSchemaPlan({repositorySha:"361da051a5ea1d72ad3d44d84a7dd4eee3130a1f"});
+    // Exact before-fix hashes from the redacted manifest of run 36294952453.
+    expect(manifest.planSha256).toBe("789ef3aa3f27ebe767b8040d416a856a816d397f1ecaafa02b80b9d8f54b2b0f");
+    expect(manifest.preflightSha256).toBe("3f1576d467467f5744e0bc435826754400316a95139b8a8425abeee46cd11381");
+    expect(manifest.verificationSha256).toBe("3e4f9dc952d13e8bb046c31c5c0de995cb1eebdce4997c3ea2afbd67ebae16a9");
+    expect(manifest.rehearsalSha256).not.toBe("b95722ef6157af41ea8f7bdc1be587cbde75b80070985fdfb38e214bb6ffe50b");
+    for(const sql of [plan,preflight,verification])expect(sql).not.toMatch(/create (?:table|function) auth\./i);
+    const guard=rehearsal.indexOf("News rehearsal requires isolated restore");
+    expect(rehearsal.indexOf("create table auth.mfa_factors")).toBeGreaterThan(guard);
+    expect(rehearsal.indexOf("create function auth.jwt()")).toBeGreaterThan(guard);
+    expect(rehearsal).not.toMatch(/create(?: or replace)? function auth\.(?:role|uid)\(/i);
+    expect(manifest.rehearsalPlatform).toEqual({scope:"disposable isolated restore only",
+      missingOnly:["auth.mfa_factors(user_id uuid,status text)","auth.jwt()"],productionAuthDataRestored:false,
+      operatorAuthenticationAccepted:false,mfaBehaviorAccepted:false});
+  });
   it("allows only manual main runs and defaults to a non-applying rehearsal", () => {
     expect(Object.keys(workflow.on)).toEqual(["workflow_dispatch"]);
     expect(workflow.on.workflow_dispatch.inputs.mode.default).toBe("dry-run");
