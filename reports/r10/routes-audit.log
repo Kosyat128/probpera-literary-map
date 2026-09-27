@@ -1,0 +1,14 @@
+{
+  "status": "ready",
+  "legacyArticles": 157,
+  "cmsArticles": 167,
+  "publicArticles": 167,
+  "uniqueIds": 167,
+  "articleDocuments": 167,
+  "canonicalPaths": 167,
+  "redirectSources": 815,
+  "portableSectionAliases": 1503,
+  "metadataWarnings": 0,
+  "errors": [],
+  "warnings": []
+}

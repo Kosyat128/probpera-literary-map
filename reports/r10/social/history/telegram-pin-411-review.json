@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-27T00:04:00.893Z",
+  "reviewer": "Codex independent calendar_dates agent",
+  "humanReview": false,
+  "scope": "Saved native public Telegram HTML and JSON only; no network or state mutation. Review covers new observed ID411 and unchanged19 overlapping head entries against previous363 observations and current239 reviewed NewsItems.",
+  "inputs": {
+    "previousAudit": {
+      "path": "work/r10-social-history/telegram-audit.json",
+      "sha256": "6c0bae458e4019898d785e441f8b2c08f67dd581729401fa3462933b4af70b4b",
+      "checkedAt": "2026-09-26T22:24:21.396Z"
+    },
+    "newHeadJson": {
+      "path": "work/r10-live-evidence/telegram-head-new.json",
+      "sha256": "c0ef17d13dd49fdaaf08cf464c645a093162dee0295f10bce08c0418465f106e",
+      "checkedAt": "2026-09-27T00:01:28.393Z"
+    },
+    "newHeadHtml": {
+      "path": "work/r10-live-evidence/telegram-head-new.html",
+      "sha256": "a9c1dc9f5f2294c3216e5d44db5183a6a465b6c64c00b27ad959f37f54ae6be7",
+      "hashMatchesCapture": true
+    },
+    "reviewedNews": {
+      "path": "work/probpera-r10/data/news/reviewed.json",
+      "sha256": "7a5e9af93eac327913ab465c799877b99348d4d6be3dc406b198b4cc4efc5df9",
+      "count": 239
+    }
+  },
+  "decision": "append_service_pin_observation_no_candidate_duplicate_identified",
+  "nativeEvidence": {
+    "postId": 411,
+    "url": "https://t.me/probbaperra/411",
+    "datetime": "2026-09-26T22:27:46+00:00",
+    "selector": "[data-post=\"probbaperra/411\"]",
+    "serviceMessageClass": true,
+    "action": "pinned",
+    "actor": "Проба Пера",
+    "quotedTarget": "https://probpera.ru/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-dvenadtsat-stulev/",
+    "targetIsPlainServiceStrongSpan": true,
+    "bodyExternalHyperlinkCount": 0,
+    "linkPreviewCount": 0,
+    "photoCount": 0,
+    "interpretation": "Native service action marking an existing article as pinned, not a new literary-news item or independently authored article."
+  },
+  "existingArticle": {
+    "matchingPreviousPostIds": [
+      410
+    ],
+    "post410Date": "2026-09-25T11:05:06+00:00",
+    "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-dvenadtsat-stulev/",
+    "previewTitle": "Книга и экранизация. «Двенадцать стульев»",
+    "matchingMethod": "Exact canonical URL from the service strong-text span equals previous410 body/link and the current410 article preview. The service markup does not expose an explicit underlying target message ID, so410 is a source-URL match, not an invented native cross-reference."
+  },
+  "headDelta": {
+    "previousObservedCount": 363,
+    "previousMaxId": 410,
+    "newObservedIds": [
+      411
+    ],
+    "unchangedOverlappingEntries": 19,
+    "overlapTextOrDateDifferences": [],
+    "unionObservedCount": 364,
+    "newMaxId": 411,
+    "newEditorialArticleItems": 0,
+    "newServiceObservations": 1
+  },
+  "candidateComparison": {
+    "count": 239,
+    "sourceAccessor": "row.source.url (object shape)",
+    "exactCanonicalSourceMatches": [],
+    "exactArticleTitleMatches": [],
+    "ruEnTitleSummarySubjectMatches": [],
+    "screenedSubjects": [
+      "Двенадцать стульев / Twelve Chairs",
+      "Илья Ильф / Ilya Ilf",
+      "Евгений Петров / Yevgeny Petrov",
+      "Остап Бендер / Ostap Bender"
+    ],
+    "semanticConclusion": "The pinned Twelve Chairs book-and-adaptation article was already present as410 in the inspected baseline. No current239 news source/title/subject matches this event; this service notification is not a delivered agenda post."
+  },
+  "recommendedAppendOnlyDelta": {
+    "kind": "telegram-public-service-pin",
+    "destinationId": "-1002791579809",
+    "postId": 411,
+    "observedAt": "2026-09-27T00:01:28.393Z",
+    "serviceOccurredAt": "2026-09-26T22:27:46+00:00",
+    "sourceUrl": "https://probpera.ru/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-dvenadtsat-stulev/",
+    "matchingEarlierPostId": 410,
+    "candidateNewsIds": [],
+    "deliveredNewsIncrement": 0,
+    "retainPreviousAudit": true,
+    "retainExistingHistoryDecisions": true,
+    "action": "Append this independently hashed service observation to the prior bounded history review; do not rewrite the original363-post audit or create a news delivery receipt."
+  },
+  "limits": [
+    "Deleted/private posts, prior post revisions and the47 previously unobserved IDs are not proved absent.",
+    "Only the19 overlapping head entries were reread from this new page; the earlier complete public-history review is retained by hash, not falsely rerun.",
+    "This capture is current only as of2026-09-27T00:01:28.393Z. A later channel-head change needs its own review.",
+    "This report neither sets production historyReconciled nor authorizes or performs a send."
+  ],
+  "externalNetworkCalls": 0,
+  "repoFilesEdited": [],
+  "ledgerWrites": 0,
+  "providerWrites": 0
+}

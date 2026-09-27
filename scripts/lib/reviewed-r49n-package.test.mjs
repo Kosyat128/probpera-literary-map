@@ -8,8 +8,9 @@ import {
 import { projectReviewedReferenceRelease } from "./reviewed-reference-release.mjs";
 import { projectReviewedHeaderShowcase } from "./reviewed-header-showcase.mjs";
 import { projectReviewedNativeArchiveTransport } from "./reviewed-native-archive-transport.mjs";
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 
-const read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, "utf8"));
+const read = path => projectReviewedNativeArchiveTransport(path, projectReviewedR10Delta(path, readFileSync(path, "utf8")));
 const readPublishedBrowserContract = path => path === "tests/e2e/archive-search-calendar.spec.mjs"
   ? projectReviewedReferenceRelease(path, read(path)) : read(path);
 const sha = value => createHash("sha256").update(value).digest("hex");

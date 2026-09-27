@@ -1,0 +1,29 @@
+{
+  "sourceId": "lojagirassolbrasil-com-br",
+  "name": "Grupo Girassol Brazil",
+  "entryUrl": "https://www.lojagirassolbrasil.com.br/",
+  "countryCodes": [
+    "BR"
+  ],
+  "coverageCountryCodes": [
+    "BR"
+  ],
+  "attemptedAt": "2026-09-26T17:27:59.406Z",
+  "requests": [
+    {
+      "url": "https://www.lojagirassolbrasil.com.br/",
+      "status": 200,
+      "contentType": "text/html; charset=ISO-8859-1",
+      "bytes": 253235,
+      "sha256": "cee200b44927de6e1e400b4c43fd2baa4236dff2b6c6271c646f29540327fd9a",
+      "accessedAt": "2026-09-26T17:28:00.612Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.lojagirassolbrasil.com.br/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

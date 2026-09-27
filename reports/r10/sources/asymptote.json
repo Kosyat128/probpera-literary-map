@@ -1,0 +1,371 @@
+{
+  "sourceId": "asymptote",
+  "name": "Asymptote",
+  "entryUrl": "https://www.asymptotejournal.com/blog/news/",
+  "countryCodes": [
+    "SG"
+  ],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-09-26T17:29:47.085Z",
+  "requests": [
+    {
+      "url": "https://www.asymptotejournal.com/blog/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1585591,
+      "sha256": "377c3a7bf3d1548e98d57fc3dd4504011573fda4d228638e5112b2328154b0c6",
+      "accessedAt": "2026-09-26T17:29:48.377Z"
+    },
+    {
+      "url": "https://www.asymptotejournal.com/blog/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 17041,
+      "sha256": "0cff7caca0db0eccadda7acad862c40d072f24c9d8b70b0a60056cfab6649d8e",
+      "accessedAt": "2026-09-26T17:29:48.887Z"
+    },
+    {
+      "url": "https://www.asymptotejournal.com/blog/2026/09/14/whats-new-in-translation-september-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1512091,
+      "sha256": "7576a1250fcc66fd948eb6c6f74c7a3ac11802677ff8a25c30fa2dcf2bd83eed",
+      "accessedAt": "2026-09-26T17:29:49.413Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.asymptotejournal.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 13,
+    "sha256": "d9066d29c1dfed62e1bbde2c102079a5ccc0c1e9f669644fd89fd652cdc156bb",
+    "accessedAt": "2026-09-26T17:29:47.599Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "asymptote",
+    "name": "Asymptote",
+    "url": "https://www.asymptotejournal.com/blog/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "asia",
+    "sourceFamilyId": "asymptote",
+    "countryCodes": [
+      "SG"
+    ],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.asymptotejournal.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.asymptotejournal.com/blog/2026/09/14/whats-new-in-translation-september-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:49.656Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "asymptote",
+    "source": {
+      "name": "Asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/14/whats-new-in-translation-september-2026/",
+      "language": "en"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "What’s New in Translation: September 2026",
+    "publishedAt": "2026-09-14T13:00:38.000Z",
+    "description": "September is a smorgasbord in the publishing industry, and in this edition, our reviewers have selected thirteen titles from the rich buffet. From a dreaming Palestinian fiction that travels along the escapist proportions of sleep; a ruthless, haunting novel that takes us inside the disturbing psychology of a sniper; a posthumous collection that delineates the […]",
+    "discoveredAt": "2026-09-26T17:29:48.887Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.asymptotejournal.com/blog/2026/09/14/whats-new-in-translation-september-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1512091,
+      "sha256": "7576a1250fcc66fd948eb6c6f74c7a3ac11802677ff8a25c30fa2dcf2bd83eed",
+      "accessedAt": "2026-09-26T17:29:49.413Z",
+      "headline": "What’s New in Translation: September 2026",
+      "excerpt": "What’s New in Translation: September 2026 - Asymptote Blog What’s New in Translation: September 2026 September 14, 2026 | in New in Translation, Reviews | by Chimera Singer, Eamon McGrath, Henry Gifford, Regan Mies, Rosalia Ignatova, and Xiao Yue Shan The latest from Italy, China, Germany, Brazil, Dominican Republic, Japan, Palestine, Oman, Taiwan, France, and Bulgaria! September is a smorgasbord ",
+      "publishedDates": [],
+      "canonical": "https://www.asymptotejournal.com/blog/2026/09/14/whats-new-in-translation-september-2026/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:49.656Z",
+  "foundItems": [
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/14/whats-new-in-translation-september-2026/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What’s New in Translation: September 2026",
+      "publishedAt": "2026-09-14T13:00:38.000Z",
+      "description": "September is a smorgasbord in the publishing industry, and in this edition, our reviewers have selected thirteen titles from the rich buffet. From a dreaming Palestinian fiction that travels along the escapist proportions of sleep; a ruthless, haunting novel that takes us inside the disturbing psychology of a sniper; a posthumous collection that delineates the […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/25/weekly-dispatches-from-the-frontlines-of-world-literature-267/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Weekly Dispatches from the Frontlines of World Literature",
+      "publishedAt": "2026-09-25T13:00:46.000Z",
+      "description": "This week, our editors-at-large share remembrances of champions of regional literature, campaigns for the release of imprisoned journalists, and new translations of women’s writing. From award announcements to surrealists in translation, read on to find out more! Mary Noorlander, Editor-at-Large, reporting from the United States On September 16, the CUNY Graduate Center in New York […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/22/translation-tuesday-war-ends-in-the-wrong-place-by-s-asef-hossaini/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Translation Tuesday: “War Ends in the Wrong Place” by S. Asef Hossaini",
+      "publishedAt": "2026-09-22T13:00:32.000Z",
+      "description": "Could it end in the right one? No. In this week’s Translation Tuesday, Afghani author and translator S. Asef Hossaini writes not of the literal violence of war, but of its essential breach of all civilization, all human life. In the image of words broken across lines on a newspaper, in the putrescent ugliness of ants marching like […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/18/weekly-dispatches-from-the-frontlines-of-world-literature-266/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Weekly Dispatches from the Frontlines of World Literature",
+      "publishedAt": "2026-09-18T13:00:24.000Z",
+      "description": "This week, our editors report on a fascinating research project centering the representation of trauma in literature, exciting opportunities for translators of non-fiction in India, and a literature festival (disguised as a poetry festival) in Germany. Sofija Popovska, Editor-at-Large, reporting from North Macedonia The literature, media, and communications scholar Tamara Kjupeva has just introdu…",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/15/translation-tuesday-camilla-by-maria-messina/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Translation Tuesday: “Camilla” by Maria Messina",
+      "publishedAt": "2026-09-15T13:00:13.000Z",
+      "description": "Taken from Maria Messina’s Ragazze siciliane (1921), Camilla traces the emotional life of a young woman navigating the constraints of Sicilian petit-bourgeois society. Moving between outward composure and inner turmoil, the story captures Camilla at a moment of quiet but decisive rupture, as she confronts the expectations that shape her life and begins, tentatively, to […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/24/between-civilizations-languages-and-worlds-an-interview-with-lianbin-ni/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Between Civilizations, Languages, and Worlds: An Interview with Lianbin Ni",
+      "publishedAt": "2026-09-24T13:00:31.000Z",
+      "description": "Lianbin Ni (also known as Edward Ni, and by his pen name Lien Bin) is a poet, translator, and writer, author, whose translations include work from English-, Arabic-, and Latvian-language writers, including Derek Walcott, Seamus Heaney, Mahmoud Darwish, Saadi Youssef, Aleksandrs Čaks, and others. Since 2016, he has lived in Latvia, where his work has […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/23/when-japanese-senryu-learned-to-smile-in-hungarian-on-interlingual-adaptation-irony-and-the-hungarian-haiku-tradition/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "When Japanese Senryū Learned to Smile in Hungarian: On Interlingual Adaptation, Irony, and the Hungarian Haiku Tradition",
+      "publishedAt": "2026-09-23T13:00:33.000Z",
+      "description": "When Japanese short-form poetry found its way into the Hungarian language and poetic tradition, there was a collapsing of distinction, as various short forms all came to be known under the singular label haiku. In this essay, Hungarian poet, writer, and artist Zsolt L. Rakusz traces this blurring of traditional boundaries, while also demonstrating that this shift is […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/21/fear-and-loathing-in-athens-an-interview-with-makis-malafekas/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fear and Loathing in Athens: An Interview with Makis Malafekas",
+      "publishedAt": "2026-09-21T13:00:01.000Z",
+      "description": "Deepfake, the English-language debut of Greek author Makis Malafekas, is an electric, scintillating noir that courses through the illusions and pretensions of our histrionic present. As the narrator, a writer, is implicated in a plot to infiltrate a rising alt-right party, the novel swirls through the glistening streets of Athens and the surreal topographies of contradictory social […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/17/fearlessness-in-various-combinations-an-interview-with-marietou-mbaye-and-julie-huntington/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fearlessness in Various Combinations: An Interview with Mariètou Mbaye and Julie Huntington",
+      "publishedAt": "2026-09-17T13:00:39.000Z",
+      "description": "Felix Faure Street, by Ken Bugul\u2014the penname of Senegalese novelist Mariètou Mbaye\u2014takes the reader straight into the tumult and dazzling music of Dakar, positioning its various hierarchies, architectures, accents, and socialities together on the page. A vivid portrait of urban existence that lyrically depicts how such densities conceal points of intensive conflict, Bugul’s novel exacts the […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "asymptote",
+      "source": {
+        "name": "Asymptote",
+        "url": "https://www.asymptotejournal.com/blog/2026/09/16/a-new-arcana-of-queer-palestinian-love-a-review-of-eden-at-dawn-by-karim-kattan/",
+        "language": "en"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A New Arcana of Queer Palestinian Love: A Review of Eden at Dawn by Karim Kattan",
+      "publishedAt": "2026-09-16T13:00:37.000Z",
+      "description": "Eden at Dawn by Karim Kattan, translated from the French by Jeffrey Zuckerman, Restless Books, 2026 In her short story collection Moral Disorder, Margaret Atwood writes: “In the end, we’ll all become stories.” This statement rings curiously true even when taken out of context, although of course what really matters is the question of which […]",
+      "discoveredAt": "2026-09-26T17:29:48.887Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0cff7caca0db0eccadda7acad862c40d072f24c9d8b70b0a60056cfab6649d8e"
+}

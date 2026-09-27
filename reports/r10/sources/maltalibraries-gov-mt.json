@@ -1,0 +1,61 @@
+{
+  "sourceId": "maltalibraries-gov-mt",
+  "name": "Malta Libraries \u2013 The National Library of Malta",
+  "entryUrl": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
+  "countryCodes": [
+    "MT"
+  ],
+  "coverageCountryCodes": [
+    "MT"
+  ],
+  "attemptedAt": "2026-09-26T17:29:12.040Z",
+  "requests": [
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 19419,
+      "sha256": "bb4dc2da1351c9bbf3bb70f0ac11c8af29eee06a43ba295e11b50cbc42ff06e1",
+      "accessedAt": "2026-09-26T17:23:02.982Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=ee473776-d093-46ed-a682-ed60f6938434",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18823,
+      "sha256": "b2d67afff8cb2253a1dfe5cf1cdff4625fcf98c9ac9bcb3becb3ac866cd8d978",
+      "accessedAt": "2026-09-26T17:29:13.185Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?v=f919856f-0756-4f97-b47d-f061203fb296",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 7683,
+      "sha256": "9fccf1eaa61c253df8e0061a65f3c3ff053b7f3410464c02013adc7290b63328",
+      "accessedAt": "2026-09-26T17:29:13.450Z"
+    },
+    {
+      "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?p=788374c8-8d6d-44d6-bd24-eb7a87b79d2c&v=cfb971ca-7c2c-4bf1-be29-270ebf190834",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18638,
+      "sha256": "a62637f9922ce4e38754d90997fe4bfe2f3a44073c8227381850ab9c11ee6d8f",
+      "accessedAt": "2026-09-26T17:29:13.698Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 19419,
+    "sha256": "9e3130f8f5016bd26ad669eb9be267eebb0e2f0313690fe662587f7fd9222f28",
+    "accessedAt": "2026-09-26T17:29:12.875Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:00.694Z",
+    "sourceDocumentSha256": "bb4dc2da1351c9bbf3bb70f0ac11c8af29eee06a43ba295e11b50cbc42ff06e1"
+  }
+}

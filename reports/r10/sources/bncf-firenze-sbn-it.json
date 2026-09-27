@@ -1,0 +1,20 @@
+{
+  "sourceId": "bncf-firenze-sbn-it",
+  "name": "The Central National Library of Florence",
+  "entryUrl": "https://www.bncf.firenze.sbn.it/",
+  "countryCodes": [
+    "IT"
+  ],
+  "coverageCountryCodes": [
+    "IT"
+  ],
+  "attemptedAt": "2026-09-26T17:29:09.172Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.bncf.firenze.sbn.it/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-26T22:30:46.448Z",
+  "reviewer": "Codex independent agent",
+  "humanReview": false,
+  "platform": "telegram",
+  "handle": "probbaperra",
+  "destinationId": "-1002791579809",
+  "snapshotCheckedAt": "2026-09-26T22:24:21.396Z",
+  "status": "public-snapshot-reviewed-no-duplicate-identified",
+  "observedPublicHistoryReviewed": true,
+  "globalHistoryCompletenessClaim": false,
+  "ledgerUpdated": false,
+  "externalWrites": 0,
+  "delivered": 0,
+  "inputs": {
+    "telegramAuditSha256": "6c0bae458e4019898d785e441f8b2c08f67dd581729401fa3462933b4af70b4b",
+    "reviewedNewsSha256": "01502fd38099af59aaca0b43ba27b42e15b19bcad92adf7653594c0b0b3cde40",
+    "catalogMetadata": {
+      "path": "src/data/articles/catalog.generated.ts",
+      "sha256": "81c215865d2531ba73765e8f1a39e3508f15b67edc94ce5fe86e75e6cdac4b80"
+    },
+    "localAnalysisSha256": "54bc0c9e08a09056b86a4375bcc8beabc61f47a6bdff6b76d51990c74ef54439"
+  },
+  "pagination": {
+    "pages": 19,
+    "posts": 363,
+    "uniquePostIds": 363,
+    "minId": 1,
+    "maxId": 410,
+    "reachedPublicStart": true,
+    "evidence": "Cached page hashes/byte counts and extracted data-post IDs agree with the audit for all 19 pages. Every before parameter equals the preceding page minimum; page ID ranges strictly descend. The last page contains IDs 1,2,3 and ID1 is Channel created.",
+    "observedDateRange": [
+      "2025-06-17T02:32:40+00:00",
+      "2026-09-25T11:05:06+00:00"
+    ],
+    "missingIdCount": 47,
+    "missingIds": [
+      48,
+      49,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      82,
+      88,
+      89,
+      94,
+      124,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      173,
+      212,
+      213,
+      220,
+      246,
+      247,
+      249,
+      251,
+      254,
+      257,
+      260,
+      262,
+      264,
+      269,
+      271,
+      275,
+      277,
+      285,
+      303,
+      304,
+      320,
+      321,
+      322,
+      329,
+      333,
+      343,
+      383,
+      384
+    ],
+    "missingIdInterpretation": "Unobserved IDs are not assigned a cause. They may represent deleted, unavailable, service or other content; no absence-of-post claim is inferred.",
+    "pageChecks": [
+      {
+        "index": 0,
+        "sha256": "8762459b7e0b84f826a9e4ebf565602615cd11b2236a5195023becb5c6515e4f",
+        "ids": 20,
+        "min": 391,
+        "max": 410,
+        "paginationConsistent": true
+      },
+      {
+        "index": 1,
+        "sha256": "3a48186c4b1bf90a9e30d068a4ce036404cc1357c93561bbef813948d51b8658",
+        "ids": 20,
+        "min": 369,
+        "max": 390,
+        "paginationConsistent": true
+      },
+      {
+        "index": 2,
+        "sha256": "47892e620a25e05b069b7566ff81543296361d66543c867bc011ff008e5cc70f",
+        "ids": 20,
+        "min": 349,
+        "max": 368,
+        "paginationConsistent": true
+      },
+      {
+        "index": 3,
+        "sha256": "7e8a20fd6919c5228ca4f3c84321c239ab1e84217d34dba18201c516b6587473",
+        "ids": 20,
+        "min": 326,
+        "max": 348,
+        "paginationConsistent": true
+      },
+      {
+        "index": 4,
+        "sha256": "2725849107f2b0956cedf7f7f063f4a50dbc5c3f45b63497c2a5b719884358c6",
+        "ids": 20,
+        "min": 301,
+        "max": 325,
+        "paginationConsistent": true
+      },
+      {
+        "index": 5,
+        "sha256": "7da220f6d07f52d6fe2ba922f9f247f9494ca363e1aded5e22ad19815956526c",
+        "ids": 20,
+        "min": 280,
+        "max": 300,
+        "paginationConsistent": true
+      },
+      {
+        "index": 6,
+        "sha256": "8a8b596dbac2db9d2c80a291bc4c1279c027f81f718661c4021b3208ec488e57",
+        "ids": 20,
+        "min": 250,
+        "max": 279,
+        "paginationConsistent": true
+      },
+      {
+        "index": 7,
+        "sha256": "d0c330121ae17a68ca764c85d24d78cf8dcb2f48dc999ca609c2319b4dca43fc",
+        "ids": 20,
+        "min": 227,
+        "max": 248,
+        "paginationConsistent": true
+      },
+      {
+        "index": 8,
+        "sha256": "0d288e9430b5f9fea957ebfbac6c5a6086c5e1b320ccb72ada06978f23558a7c",
+        "ids": 20,
+        "min": 204,
+        "max": 226,
+        "paginationConsistent": true
+      },
+      {
+        "index": 9,
+        "sha256": "f59df79e1bd7be65048014f9eac68cab1cd4102efb2e4ad83d3c39005263e454",
+        "ids": 20,
+        "min": 184,
+        "max": 203,
+        "paginationConsistent": true
+      },
+      {
+        "index": 10,
+        "sha256": "98fdeeb6932434cad214b061e3dacca18ca6f14166e1131293087b9a37d4b861",
+        "ids": 20,
+        "min": 163,
+        "max": 183,
+        "paginationConsistent": true
+      },
+      {
+        "index": 11,
+        "sha256": "0776ec41476f01018768b40d95997fa50001ba1b8c83f99afb65ddb24e694250",
+        "ids": 20,
+        "min": 143,
+        "max": 162,
+        "paginationConsistent": true
+      },
+      {
+        "index": 12,
+        "sha256": "5e208efb157fa13f369b3ffaac80a868212ec865312ceb410ddd8b40bad7381e",
+        "ids": 20,
+        "min": 116,
+        "max": 136,
+        "paginationConsistent": true
+      },
+      {
+        "index": 13,
+        "sha256": "f6da79db9ce946aceb796b56ce9df64d0b19657d6e15a1ea71d9800ac873b67a",
+        "ids": 20,
+        "min": 96,
+        "max": 115,
+        "paginationConsistent": true
+      },
+      {
+        "index": 14,
+        "sha256": "3f8d302e72c2bc43a1b6cfafb678bc0ac1c4f244c2f9192c300e0e9bfd719a31",
+        "ids": 20,
+        "min": 72,
+        "max": 95,
+        "paginationConsistent": true
+      },
+      {
+        "index": 15,
+        "sha256": "2303b54272b7cbf38c1a40c5c2699657a7f397c816948a07daf6e27158d327f3",
+        "ids": 20,
+        "min": 44,
+        "max": 71,
+        "paginationConsistent": true
+      },
+      {
+        "index": 16,
+        "sha256": "1ac01cb466b959041edec302fcda7dbb2321006d0c60e9aa9542baceeb6dd31d",
+        "ids": 20,
+        "min": 24,
+        "max": 43,
+        "paginationConsistent": true
+      },
+      {
+        "index": 17,
+        "sha256": "95bb13efeef2fe0f4960f788e5fdafe53aaef9cad77ff07ef4005b3a4846ca3c",
+        "ids": 20,
+        "min": 4,
+        "max": 23,
+        "paginationConsistent": true
+      },
+      {
+        "index": 18,
+        "sha256": "2c8083a667b85c635d82d07b0811f8369585e3a927b80f81fa7f60c7766013ad",
+        "ids": 3,
+        "min": 1,
+        "max": 3,
+        "paginationConsistent": true
+      }
+    ]
+  },
+  "matching": {
+    "reviewedNewsRecords": 235,
+    "postNewsPairsScanned": 85305,
+    "sourceAccessor": "row.source.url",
+    "sourceShape": "235 object-valued source fields with valid absolute HTTP(S) source.url; the source object itself was never compared as a URL.",
+    "sourceUrlPolicy": "URLs entity-decoded, hostname normalized, trailing slash/fragment and known tracking parameters removed; remaining query parameters retained. All available message and link-preview href values checked.",
+    "exactSourceOrFullTitleMatches": [],
+    "exactMatchCount": 0,
+    "confirmedSemanticDuplicateCount": 0,
+    "matchedNewsIds": [],
+    "linkPreviewTitlesIncluded": 267,
+    "linkPreviewDescriptionsIncluded": 263,
+    "selectionMethod": "All observed public text plus cached preview titles/descriptions screened against RU/EN news titles and summaries. Weighted token overlap and rare name-prefix matches selected topical cases; the agent assessed event/work/author/stage distinctions. The screen is heuristic and is not a formal proof of semantic absence.",
+    "detailedSemanticReviewPostCount": 38,
+    "detailedSemanticReviewPostIds": [
+      26,
+      37,
+      38,
+      75,
+      109,
+      112,
+      122,
+      180,
+      181,
+      203,
+      229,
+      238,
+      240,
+      258,
+      286,
+      298,
+      339,
+      350,
+      368,
+      372,
+      387,
+      390,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      410
+    ],
+    "recentNonServicePostCount": 16,
+    "semanticCases": [
+      {
+        "newsIds": [
+          "tolstoy-birthday-2026",
+          "yasnaya-polyana-tolstoy-library-20260912"
+        ],
+        "postIds": [
+          286,
+          122
+        ],
+        "finding": "Tolstoy short-story recommendations and a historical Carducci/Nobel profile mention Tolstoy. Neither describes the 2026 birthday notice or the Yasnaya Polyana library exhibition.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/286",
+          "https://t.me/probbaperra/122"
+        ]
+      },
+      {
+        "newsIds": [
+          "kiki-third-english-edition-announcement"
+        ],
+        "postIds": [
+          229
+        ],
+        "finding": "The post concerns the Slavic folklore character Kikimora; it is not Eiko Kadono or the third Kiki English edition.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/229"
+        ]
+      },
+      {
+        "newsIds": [
+          "british-library-agatha-christie-exhibition-2026"
+        ],
+        "postIds": [
+          26,
+          37,
+          38
+        ],
+        "finding": "The Christie mention is a writer-professions profile; the other matches concern astronaut Chris Hadfield. No British Library exhibition announcement appears in these posts.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/26",
+          "https://t.me/probbaperra/37",
+          "https://t.me/probbaperra/38"
+        ]
+      },
+      {
+        "newsIds": [
+          "john-green-hollywood-ending-us-2026",
+          "john-green-signed-tip-in-record-2026"
+        ],
+        "postIds": [
+          109,
+          258
+        ],
+        "finding": "The John Green reference concerns a film about two terminally ill teenagers; the other prefix match is the Grinch. These are different works/events from the new novel and signature-record news.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/109",
+          "https://t.me/probbaperra/258"
+        ]
+      },
+      {
+        "newsIds": [
+          "wells-brynhild-first-russian-2026"
+        ],
+        "postIds": [
+          401,
+          350,
+          203,
+          180,
+          181
+        ],
+        "finding": "Observed Wells posts are a ten-book list, The War in the Air review, The War of the Worlds adaptation and short-story recommendations. No first Russian Brynhild publication event is described.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/401",
+          "https://t.me/probbaperra/350",
+          "https://t.me/probbaperra/203",
+          "https://t.me/probbaperra/180",
+          "https://t.me/probbaperra/181"
+        ]
+      },
+      {
+        "newsIds": [
+          "yeats-a-vision-digitised-papers-2026"
+        ],
+        "postIds": [
+          387
+        ],
+        "finding": "The public post is a historical profile of Yeats as the 1923 Nobel laureate. It does not report the 2026 A Vision digitisation project.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/387"
+        ]
+      },
+      {
+        "newsIds": [
+          "stevenson-cevennes-illustrated-french-edition-2026",
+          "joel-dicker-prime-video-three-novels-2026"
+        ],
+        "postIds": [
+          75
+        ],
+        "finding": "The post reviews Defoe and lists authors influenced by pirate history, including Stevenson and Dickens. This is neither the new Stevenson edition nor Joel Dicker screen rights.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/75"
+        ]
+      },
+      {
+        "newsIds": [
+          "phillip-lopate-washington-irving-sketch-book-2026"
+        ],
+        "postIds": [
+          298
+        ],
+        "finding": "The matched name is Irwin Shaw in a professions profile, not Washington Irving or Phillip Lopate.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/298"
+        ]
+      },
+      {
+        "newsIds": [
+          "vladimir-dal-manuscripts-exhibition-2026"
+        ],
+        "postIds": [
+          368
+        ],
+        "finding": "The post recommends stories by Roald Dahl, not Vladimir Dal manuscripts.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/368"
+        ]
+      },
+      {
+        "newsIds": [
+          "mandel-exit-party-us-2026"
+        ],
+        "postIds": [
+          372
+        ],
+        "finding": "The post profiles Emily Dickinson, not Emily St. John Mandel or Exit Party.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/372"
+        ]
+      },
+      {
+        "newsIds": [
+          "stephen-wright-black-moon-making-feature-2026"
+        ],
+        "postIds": [
+          240,
+          75
+        ],
+        "finding": "Matches refer to Austin Wright screen adaptation and Stevenson in a Defoe review; neither is Stephen Wright or Black Moon.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/240",
+          "https://t.me/probbaperra/75"
+        ]
+      },
+      {
+        "newsIds": [
+          "german-book-prize-longlist-2026",
+          "german-book-prize-shortlist-2026-announcement"
+        ],
+        "postIds": [
+          339
+        ],
+        "finding": "The post is a general explanation of the US National Book Award. It is a different award and does not report a German 2026 selection stage.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/339"
+        ]
+      },
+      {
+        "newsIds": [
+          "vernadsky-world-literature-ukrainian-exhibition-2026",
+          "nlo-zenkin-scholars-french-literature-20260818"
+        ],
+        "postIds": [
+          390
+        ],
+        "finding": "Shared literary terminology comes from a Fernando Pessoa profile; no exhibition or podcast event matches.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/390"
+        ]
+      },
+      {
+        "newsIds": [],
+        "postIds": [
+          394,
+          395,
+          396,
+          397,
+          398,
+          399,
+          400,
+          401,
+          402,
+          403,
+          404,
+          405,
+          406,
+          407,
+          408,
+          410
+        ],
+        "finding": "All 16 non-service posts from August-September 2026 were inspected with their available link-preview descriptions. They promote site/Dzen reviews, reading lists, film comparisons, folklore and vocabulary articles; no current reviewed agenda news event was identified.",
+        "decision": "not-a-duplicate",
+        "postUrls": [
+          "https://t.me/probbaperra/394",
+          "https://t.me/probbaperra/395",
+          "https://t.me/probbaperra/396",
+          "https://t.me/probbaperra/397",
+          "https://t.me/probbaperra/398",
+          "https://t.me/probbaperra/399",
+          "https://t.me/probbaperra/400",
+          "https://t.me/probbaperra/401",
+          "https://t.me/probbaperra/402",
+          "https://t.me/probbaperra/403",
+          "https://t.me/probbaperra/404",
+          "https://t.me/probbaperra/405",
+          "https://t.me/probbaperra/406",
+          "https://t.me/probbaperra/407",
+          "https://t.me/probbaperra/408",
+          "https://t.me/probbaperra/410"
+        ]
+      }
+    ],
+    "initiallyOpaquePosts": 2,
+    "opaqueResolution": "Exact legacy URL mappings in the retained site article catalog, with matching publication days; linked article bodies were not newly fetched.",
+    "localMappings": [
+      {
+        "postId": 112,
+        "postUrl": "https://t.me/probbaperra/112",
+        "linkedUrl": "https://probpera.ru/read/page-article/page-books/6",
+        "catalogId": "page--article--page--books--6",
+        "catalogTitle": "С.И. Ожегов «Толковый словарь русского языка»",
+        "catalogPublishedDate": "2025-08-11",
+        "finding": "Exact legacy URL and publication day match the retained catalog entry for an Ozhegov dictionary review. No matching event or source exists among the 235 reviewed news records."
+      },
+      {
+        "postId": 238,
+        "postUrl": "https://t.me/probbaperra/238",
+        "linkedUrl": "https://probpera.ru/read/page-article/page-books/14",
+        "catalogId": "page--article--page--books--14",
+        "catalogTitle": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
+        "catalogPublishedDate": "2025-12-12",
+        "finding": "Exact legacy URL and publication day match the retained catalog entry for a Black Swan Green review. This is also the book promoted in post 407; no reviewed agenda event matches. The legacy route is recorded as retired in the CMS withdrawal mapping; no present public-page body was assumed."
+      }
+    ]
+  },
+  "operatorCanary": {
+    "publicSnapshotDuplicateScreen": "PASS_WITH_EXPLICIT_SCOPE",
+    "supportsBoundedOperatorCanary": true,
+    "automaticPublicationEnabled": false,
+    "requirements": [
+      "Bind the canary to the exact reviewed news ID, payload and destination; retain normal approval and dedupe guards.",
+      "Recheck the current channel tail before sending if it changed after the snapshot.",
+      "Do not mark these public posts as sent events for unrelated news IDs or fabricate provider delivery receipts."
+    ],
+    "finding": "No identified public-history duplicate blocks a bounded operator canary. This report does not authorize sending and does not certify unseen/deleted/private history."
+  },
+  "limitations": [
+    "Only the captured publicly accessible Telegram history is reconciled; deleted/private/restricted posts, previous revisions and unobserved IDs are not reconstructed.",
+    "Preview descriptions may be truncated. Linked article full bodies, images, audio and video were not exhaustively compared; two URL-only posts were resolved from retained local catalog metadata.",
+    "No fresh network read was made by this independent review. It validates the captured snapshot and does not cover posts or edits after 2026-09-26T22:24:21.396Z.",
+    "Semantic screening and detailed review found no duplicates but cannot prove that all possible paraphrases or mentions are absent.",
+    "No application code, publication ledger or channel state was changed."
+  ]
+}

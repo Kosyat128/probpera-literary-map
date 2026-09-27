@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-09-26T22:21:41.743Z",
+  "release": "c18f214b029aa026b7e1374bdd142f13d256df40",
+  "readonly": true,
+  "externalWrites": 0,
+  "delivered": 0,
+  "historyReconciled": false,
+  "destinations": [
+    {
+      "platform": "telegram",
+      "requestedHandle": "probbaperra",
+      "status": "identity_and_rights_verified",
+      "destinationId": "-1002791579809",
+      "providerAccountId": "7972811583",
+      "rightsVerified": true,
+      "canaryStillRequired": true,
+      "reason": null
+    },
+    {
+      "platform": "vk",
+      "requestedHandle": "probperaru",
+      "status": "blocked",
+      "destinationId": "-231377018",
+      "providerAccountId": null,
+      "rightsVerified": false,
+      "canaryStillRequired": true,
+      "reason": "vk_user_token_or_permissions_unverified"
+    }
+  ],
+  "vkDiagnostics": [
+    {
+      "method": "groups.getById",
+      "status": 200,
+      "errorCode": null,
+      "groupId": 231377018,
+      "canPost": false,
+      "isAdmin": false,
+      "adminLevel": null
+    },
+    {
+      "method": "groups.getById",
+      "status": 200,
+      "errorCode": null,
+      "groupId": 231377018,
+      "canPost": false,
+      "isAdmin": false,
+      "adminLevel": null
+    },
+    {
+      "method": "users.get",
+      "status": 200,
+      "errorCode": null
+    },
+    {
+      "method": "account.getAppPermissions",
+      "status": 200,
+      "errorCode": 27,
+      "permissionMask": null
+    },
+    {
+      "method": "groups.getTokenPermissions",
+      "status": 200,
+      "errorCode": null,
+      "groupTokenRecognized": true,
+      "permissionMask": 134361093
+    }
+  ]
+}

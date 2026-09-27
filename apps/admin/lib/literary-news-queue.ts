@@ -1,9 +1,11 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { z } from "zod";
+import limits from "../../../data/news/contract.json";
 
 export const NEWS_QUEUE_KEY = "literary-news:v1:held-queue";
 export const NEWS_SOURCE_STATE_KEY = "literary-news:v1:source-state";
-export const NEWS_QUEUE_MAX_BYTES = 5 * 1024 * 1024;
+export const NEWS_GENERATION_KEY = "literary-news:v2:ingestion";
+export const NEWS_QUEUE_MAX_BYTES = limits.maxHeldBytes;
 export const NEWS_QUEUE_PAGE_SIZE = 25;
 
 type NewsNamespace = { get(key: string, type: "text"): Promise<string | null> };
@@ -13,7 +15,7 @@ const identifier = z.string().min(1).max(120).regex(/^[a-z0-9][a-z0-9_-]*$/);
 const language = z.string().min(2).max(40).refine((value) => {
   try { return Intl.getCanonicalLocales(value).length === 1; } catch { return false; }
 });
-const sourceUrl = z.string().min(1).max(2_000).url().refine((value) => {
+const sourceUrl = z.string().min(1).max(2_048).url().refine((value) => {
   const url = new URL(value);
   return url.protocol === "https:" && !url.username && !url.password;
 });
@@ -32,21 +34,24 @@ const queueSchema = z.object({
   generatedAt: timestamp,
   lastCheckedAt: timestamp.nullable(),
   verification: z.literal("held"),
-  items: z.array(candidateSchema).max(5_000),
+  items: z.array(candidateSchema).max(limits.maxHeldItems),
 }).refine((queue) => new Set(queue.items.map((item) => item.source.url)).size === queue.items.length);
 const sourceStateSchema = z.object({
   schemaVersion: z.literal(1),
   lastCheckedAt: timestamp.nullable(),
   refreshIntervalSeconds: z.number().int().min(60).max(86_400),
-  pendingCount: z.number().int().min(0).max(5_000),
+  pendingCount: z.number().int().min(0).max(limits.maxHeldItems),
   sources: z.array(z.object({
     id: identifier,
     name: z.string().trim().min(1).max(200),
     url: sourceUrl,
     status: z.enum(["pending", "ok", "error"]),
     lastSuccessAt: timestamp.nullable(),
-    candidateCount: z.number().int().min(0).max(5_000),
-  })).max(500),
+    candidateCount: z.number().int().min(0).max(limits.maxHeldItems),
+    sourceFamilyId: identifier.optional(),
+    countryCodes: z.array(z.string().regex(/^[A-Z]{2}$/)).max(250).optional(),
+    coverageCountryCodes: z.array(z.string().regex(/^[A-Z]{2}$/)).max(250).optional(),
+  })).max(limits.maxSources),
 }).refine((state) => new Set(state.sources.map((source) => source.id)).size === state.sources.length);
 
 export type HeldNewsCandidate = z.infer<typeof candidateSchema>;
@@ -65,7 +70,7 @@ export function parseHeldNewsQueue(text: string): HeldNewsQueue {
 }
 
 export function parseNewsSourceState(text: string): NewsSourceState {
-  return sourceStateSchema.parse(boundedJson(text, 512 * 1024));
+  return sourceStateSchema.parse(boundedJson(text, limits.maxSourceStateBytes));
 }
 
 function runtimeNamespace(): NewsNamespace | null {
@@ -75,6 +80,22 @@ function runtimeNamespace(): NewsNamespace | null {
 /** Private, read-only snapshots. Call only after checking the editorial session. */
 export async function loadLiteraryNewsQueue(namespace: NewsNamespace | null = runtimeNamespace()) {
   if (!namespace) return { configured: false, queue: null, sources: null, queueError: false, sourcesError: false };
+  try {
+    const generation = await namespace.get(NEWS_GENERATION_KEY, "text");
+    if (generation !== null) {
+      const value = boundedJson(generation, limits.maxHeldBytes + limits.maxSourceStateBytes + 4096) as {
+        schemaVersion: unknown; sha256: unknown; state: unknown; queue: unknown;
+      };
+      const bytes = new TextEncoder().encode(JSON.stringify({state:value.state,queue:value.queue}));
+      const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256",bytes))].map((n) => n.toString(16).padStart(2,"0")).join("");
+      if (value.schemaVersion !== 2 || value.sha256 !== hash) throw new Error("Incomplete news generation");
+      const queue = parseHeldNewsQueue(JSON.stringify(value.queue)), sources = parseNewsSourceState(JSON.stringify(value.state));
+      if (queue.items.length !== sources.pendingCount || queue.lastCheckedAt !== sources.lastCheckedAt) throw new Error("Mismatched news generation");
+      return {configured:true,queue,sources,queueError:false,sourcesError:false};
+    }
+  } catch {
+    return {configured:true,queue:null,sources:null,queueError:true,sourcesError:true};
+  }
   const [queue, sources] = await Promise.allSettled([
     namespace.get(NEWS_QUEUE_KEY, "text").then((value) => value === null ? null : parseHeldNewsQueue(value)),
     namespace.get(NEWS_SOURCE_STATE_KEY, "text").then((value) => value === null ? null : parseNewsSourceState(value)),

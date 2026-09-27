@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-26T23:06:44.889Z",
+  "reviewer": "Codex independent calendar_dates agent",
+  "humanReview": false,
+  "scope": "Independent read-only review of durable30minute create pacing and production dispatcher/CLI integration. Only this report written; no core edits, network, uploads, sends or production DB writes.",
+  "verdict": "PASS_no_P1_P2_findings_in_reviewed_pacing_scope",
+  "findings": [],
+  "policy": {
+    "newCreatesPerDestinationPerWindow": 1,
+    "windowSeconds": 1800,
+    "catchUpCredits": false,
+    "knownRemoteEditsConsumeSlot": false
+  },
+  "sourceHashes": {
+    "scripts/lib/literary-news-pacing.mjs": "14e16259c6ccc9b1d841fb4033bf13b20a7aa24081ee3be04062b31a1c2d20b5",
+    "scripts/lib/literary-news-pacing.test.mjs": "ce482f938a592fbc59f09bde757e4aa29097fb51b9ca80c3ef1cba9e8710d452",
+    "scripts/lib/literary-news-pacing-integration.test.mjs": "b1ea8bb8b48a95907eab751b9a1557aac0a27d3912059f28f432fc5c98af3942",
+    "scripts/lib/literary-news-social.mjs": "2fe5f4411f30729dcea6a7a969d02d7a29dac38f153ddcdc4bd9d868cf708f6e",
+    "scripts/publish-literary-news.mjs": "6f6130e0a5144807462af8c6dff16eb0ce74bea69b93ce7c29906cab9c162252",
+    "scripts/publish-literary-news.test.mjs": "0f3a274eeafad630f478f49c9791970d4779ff49d88d7abe6ed3006f63ef8eec",
+    "supabase/migrations/20260926_literary_news_runtime_cas.sql": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402",
+    ".github/workflows/publish-literary-news.yml": "c918aeb43f7deb7bc0abe259efcacd3b08a2a8235d95150839fa62557bdfa6b1"
+  },
+  "independentTests": {
+    "command": "node node_modules/vitest/vitest.mjs run scripts/lib/literary-news-pacing.test.mjs scripts/lib/literary-news-pacing-integration.test.mjs scripts/publish-literary-news.test.mjs --configLoader runner --cache=false",
+    "startedAt": "2026-09-26T23:05:05Z",
+    "files": 3,
+    "passed": 16,
+    "failed": 0
+  },
+  "independentProductionFunctionProbes": [
+    {
+      "case": "Pause committed after pacing CAS and before dispatch marker",
+      "result": "PASS",
+      "detail": "The existing destination version/paused guard rejects the marker, transport.send calls0; the reserved30minute slot remains consumed."
+    },
+    {
+      "case": "Store failure after reservation, before dispatch marker",
+      "result": "PASS",
+      "detail": "After restart10minutes later, the expired job lease can be reclaimed but pacing denies a create. Transport.send calls0 and durable slot remains consumed."
+    },
+    {
+      "case": "Unknown provider outcome followed by retry after31minutes",
+      "result": "PASS",
+      "detail": "First mocked send throws; job remains ambiguous with dispatch marker. After slot expiry the same job does not call send again; total mocked calls1."
+    }
+  ],
+  "reviewEvidence": {
+    "atomicRace": "Different jobs share history:pacing:<platform>:<numericid>. A single compareAppend CAS winner gets a grant. A loser performs only one reread and does not retry acquisition.",
+    "pause": "Pacing is immediately before the existing dispatch-start CAS, which still passes the exact destination version to SQL. The migration requires this guard for a new dispatchStartedAt and checks pause, mode, history, canary and cooldown under the destination lock.",
+    "retryAndCrash": "Slots are not refunded. Definite failure or a pre-dispatch crash can delay delivery, without accumulating catch-up credits. An ambiguous create remains unresolved independently of slot expiry.",
+    "corrections": "Jobs with a known remoteId skip reservation; correction_pending jobs retain priority. The CLI pacing prefilter also exempts known remote edits.",
+    "fairness": "Discovery and byte preparation retain never-attempted/least-recent ordering. Pacing is a channel-level admission limit, not a change to retained news identity, source facts or image licensing.",
+    "storage": "Existing append-only service-role journal accepts the bounded history:pacing key; no new table or schema bypass. Generic SQL CAS serializes same-key attempts."
+  },
+  "existingRegressionProof": {
+    "before": {
+      "report": "reports/r10/social/pacing-before-tests.json",
+      "sha256": "94ea20c175225b9c0ee3d23b53314b10f1c9184569bbc503209bfcd57e86cbdb",
+      "failed": 3
+    },
+    "after": {
+      "report": "reports/r10/social/pacing-after-tests.json",
+      "sha256": "1236969d9af7367e0762610aab14e0e4f2c271e0979f553be839ea5df68000d1",
+      "passed": 90,
+      "failed": 0
+    },
+    "scope": "Owner-generated red/green receipts read independently; not represented as another independently run full suite."
+  },
+  "limitations": [
+    "No real Telegram/VK post, live schema apply, multi-process remote PostgreSQL race or native-platform visual acceptance performed in this review.",
+    "The policy limits new-create attempts using the trusted runner clock; a failed or paused reserved attempt can leave a quiet interval. No slot refund or burst catch-up is permitted.",
+    "A pause after the atomic dispatch marker cannot cancel an already-started provider request; existing ambiguous-outcome reconciliation remains required."
+  ],
+  "externalNetworkCalls": 0,
+  "productionDatabaseWrites": 0,
+  "realProviderWrites": 0
+}

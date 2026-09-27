@@ -1,0 +1,468 @@
+{
+  "sourceId": "penslovenia-zdruzenje-si",
+  "name": "PEN Slovenia",
+  "entryUrl": "https://www.penslovenia-zdruzenje.si/",
+  "countryCodes": [
+    "SI"
+  ],
+  "coverageCountryCodes": [
+    "SI"
+  ],
+  "attemptedAt": "2026-09-26T17:29:36.446Z",
+  "requests": [
+    {
+      "url": "https://www.penslovenia-zdruzenje.si/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57340,
+      "sha256": "a455d210d304320e0706f28587ec711043e4f88b512f31d07f88d7f09abab572",
+      "accessedAt": "2026-09-26T17:23:39.044Z"
+    },
+    {
+      "url": "https://www.penslovenia-zdruzenje.si/mediji-o-mladem-pen-u",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 40296,
+      "sha256": "e18eabc99b50cb7cc6f06761ecaff01f3bbd7bf167cbabcb9b9fc622bd9e6ae7",
+      "accessedAt": "2026-09-26T17:29:37.209Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.penslovenia-zdruzenje.si/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 284,
+    "sha256": "dd973d756882aedd041ea3f7499d836382496a8dc1fe63d0661b062ec19eec7a",
+    "accessedAt": "2026-09-26T17:29:36.785Z",
+    "disallowed": [
+      "/audio/",
+      "/cgi-bin/",
+      "/cms/",
+      "/component/",
+      "/css/",
+      "/fb/",
+      "/files/",
+      "/img/",
+      "/js/",
+      "/media/",
+      "/mpdf54/",
+      "/vendor/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:37.986Z",
+    "sourceDocumentSha256": "a455d210d304320e0706f28587ec711043e4f88b512f31d07f88d7f09abab572"
+  },
+  "endpoint": {
+    "id": "penslovenia-zdruzenje-si",
+    "name": "PEN Slovenia",
+    "url": "https://www.penslovenia-zdruzenje.si/",
+    "format": "html",
+    "language": "sl",
+    "region": "europe",
+    "sourceFamilyId": "penslovenia-zdruzenje-si",
+    "countryCodes": [
+      "SI"
+    ],
+    "coverageCountryCodes": [
+      "SI"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.penslovenia-zdruzenje.si"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/pen/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.penslovenia-zdruzenje.si/mediji-o-mladem-pen-u"
+    ],
+    "verifiedAt": "2026-09-26T17:29:37.211Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 14,
+  "literaryCandidateCount": 14,
+  "sample": {
+    "sourceId": "penslovenia-zdruzenje-si",
+    "source": {
+      "name": "PEN Slovenia",
+      "url": "https://www.penslovenia-zdruzenje.si/mediji-o-mladem-pen-u",
+      "language": "sl"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "Mediji o Mladem PEN-u",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:36.809Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.penslovenia-zdruzenje.si/mediji-o-mladem-pen-u",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 40296,
+      "sha256": "e18eabc99b50cb7cc6f06761ecaff01f3bbd7bf167cbabcb9b9fc622bd9e6ae7",
+      "accessedAt": "2026-09-26T17:29:37.209Z",
+      "headline": "Mediji o Mladem PEN-u - združenje pisateljev",
+      "excerpt": "Mediji o Mladem PEN-u - združenje pisateljev Tednik Mladi PEN O Mladem PEN-u Dogodki Mediji o Mladem PEN-u Blejska srečanja Srečanja Blejski manifest odbora pisateljev in pisateljic za mir Prijatelji svobodne besede Icorn Povezave Obrazi miru Cankarjeva nagrada Odbor pisateljev za mir Ženski odbor Mira DSP DSKP Evropski socialni skladi Slovenščina Français English 09/01/2025 Selma Skenderović \u2013 pr",
+      "publishedDates": [],
+      "canonical": "https://www.penslovenia-zdruzenje.si/mediji-o-mladem-pen-u",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:37.211Z",
+  "foundItems": [
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/mediji-o-mladem-pen-u",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mediji o Mladem PEN-u",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/blejski-manifest-odbora-pisateljev-in-pisateljic-za-mir",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Blejski manifest odbora pisateljev in pisateljic za mir",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/prijatelji-svobodne-besede",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prijatelji svobodne besede",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/cankarjeva-nagrada-1",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cankarjeva nagrada",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/odbor-pisateljev-za-mir-1",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Odbor pisateljev za mir",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/zenski-odbor-mira",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ženski odbor Mira",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/evropski-socialni-skladi",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Evropski socialni skladi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/pen/temeljna_listina",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Temeljna listina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/pen/podatki",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Osnovni podatki",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/temeljna_listina",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Temeljna listina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/clani-in-clanice-1",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Člani in članice",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/kako-postati-clan-oz-clanica",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kako postati član oz. članica?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/pen/zgodovina",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Slovenski center PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "penslovenia-zdruzenje-si",
+      "source": {
+        "name": "PEN Slovenia",
+        "url": "https://www.penslovenia-zdruzenje.si/blejska-srecanja",
+        "language": "sl"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Blejska srečanja",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:36.809Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a455d210d304320e0706f28587ec711043e4f88b512f31d07f88d7f09abab572"
+}

@@ -1,0 +1,300 @@
+{
+  "sourceId": "kenya-publishers-association",
+  "name": "Kenya Publishers Association",
+  "entryUrl": "https://kenyapublishers.org/category/news/feed/",
+  "countryCodes": [
+    "KE"
+  ],
+  "coverageCountryCodes": [
+    "KE"
+  ],
+  "attemptedAt": "2026-09-26T17:27:33.162Z",
+  "requests": [
+    {
+      "url": "https://kenyapublishers.org/category/news/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 23913,
+      "sha256": "7de29058a756f1023575ecf839857ec199de995938e4806471dc6715d01ae8b1",
+      "accessedAt": "2026-09-26T17:20:17.344Z"
+    },
+    {
+      "url": "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 100859,
+      "sha256": "eeac7407d2ef7d830f9ef1dad3fd8acbb7836a71663ab5aa206853eff01b055f",
+      "accessedAt": "2026-09-26T17:27:39.173Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://kenyapublishers.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 159,
+    "sha256": "0d0296e1d99967bcaf9e06b21b54e95112fcb21ffcd3f7e775c8fe7997af0732",
+    "accessedAt": "2026-09-26T17:27:34.526Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-content/uploads/wpforms/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:11.433Z",
+    "sourceDocumentSha256": "7de29058a756f1023575ecf839857ec199de995938e4806471dc6715d01ae8b1"
+  },
+  "endpoint": {
+    "id": "kenya-publishers-association",
+    "name": "Kenya Publishers Association",
+    "url": "https://kenyapublishers.org/category/news/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "africa",
+    "sourceFamilyId": "kenya-publishers-association",
+    "countryCodes": [
+      "KE"
+    ],
+    "coverageCountryCodes": [
+      "KE"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://kenyapublishers.org"
+    ],
+    "linkPattern": "^/",
+    "keywordPattern": "(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:39.178Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "kenya-publishers-association",
+    "source": {
+      "name": "Kenya Publishers Association",
+      "url": "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/",
+      "language": "en"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "MERU REGIONAL BOOK FAIR 2026",
+    "publishedAt": "2026-05-06T17:40:45.000Z",
+    "description": "MERU REGIONAL BOOK FAIR 2026Theme: Read. Think. Lead.Dates: 27th to 31st May, 2026Venue: KINORU STADIUM The Kenya Publishers Association (KPA) is delighted to invite you to the Meru Regional Book Fair 2026 set to take place in the heart of Meru County, a vibrant educational...",
+    "discoveredAt": "2026-09-26T17:27:34.528Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 100859,
+      "sha256": "eeac7407d2ef7d830f9ef1dad3fd8acbb7836a71663ab5aa206853eff01b055f",
+      "accessedAt": "2026-09-26T17:27:39.173Z",
+      "headline": "Kenya Publishers Association | MERU REGIONAL BOOK FAIR 2026",
+      "excerpt": "06 May MERU REGIONAL BOOK FAIR 2026 Posted at 17:40h in News by publishers 0 Comments 0 Likes MERU REGIONAL BOOK FAIR 2026Theme: Read. Think. Lead.Dates: 27th to 31st May, 2026Venue: KINORU STADIUM The Kenya Publishers Association (KPA) is delighted to invite you to the Meru Regional Book Fair 2026 set to take place in the heart of Meru County, a vibrant educational county and cultural hub in Cent",
+      "publishedDates": [],
+      "canonical": "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:39.178Z",
+  "foundItems": [
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MERU REGIONAL BOOK FAIR 2026",
+      "publishedAt": "2026-05-06T17:40:45.000Z",
+      "description": "MERU REGIONAL BOOK FAIR 2026Theme: Read. Think. Lead.Dates: 27th to 31st May, 2026Venue: KINORU STADIUM The Kenya Publishers Association (KPA) is delighted to invite you to the Meru Regional Book Fair 2026 set to take place in the heart of Meru County, a vibrant educational...",
+      "discoveredAt": "2026-09-26T17:27:34.528Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2025/04/07/26th-nairobi-international-book-fair-2025/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "26th Nairobi International Book Fair \u2013 2025",
+      "publishedAt": "2025-04-07T09:40:50.000Z",
+      "description": "Theme: Inspiring Readers, Shaping FuturesDates: 24th \u2013 28th September 2025Venue: Sarit Center Expo Hall, Westlands, Nairobi, Kenya We are thrilled to announce the 26th edition of the Nairobi International Book Fair (NIBF)\u2014a literary event that continues to champion the transformative power of books, culture, and...",
+      "discoveredAt": "2026-09-26T17:27:34.528Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2025/04/07/invitation-to-exhibit-at-the-kisii-regional-book-fair-2025/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Invitation to Exhibit at the Kisii Regional Book Fair 2025",
+      "publishedAt": "2025-04-07T09:36:36.000Z",
+      "description": "Theme: Inspiring Readers, Shaping FuturesDates: 28th May \u2013 1st June 2025Venue: Quickmart Parking Area, Kisii-Kisumu Road The Kenya Publishers Association (KPA) is delighted to invite you to exhibit at the Kisii Regional Book Fair 2025\u2014a key literary event set to take place in the heart...",
+      "discoveredAt": "2026-09-26T17:27:34.528Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2024/08/16/nairobi-book-fair-2024/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nairobi International Book Fair 2024",
+      "publishedAt": "2024-08-16T01:03:29.000Z",
+      "description": "We are pleased to announce that the 25th Anniversary celebration of the Nairobi International Bookfair will be held from September 25th to 29th, 2024 at the Sarit Center Expo Hall in Westlands, Nairobi, Kenya.This annual event provides a unique opportunity for people to connect with...",
+      "discoveredAt": "2026-09-26T17:27:34.528Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2024/08/16/mombasa-book-fair-a-success/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mombasa Book Fair a Success",
+      "publishedAt": "2024-08-16T00:42:06.000Z",
+      "description": "By Mbugua Ngunjiri The Mombasa Regional Book Fair almost failed to take place despite the Kenya Publishers Association (KPA) having set dates and scouted a venue for the event. The indecision was informed by the rains that were pounding most parts of the country in...",
+      "discoveredAt": "2026-09-26T17:27:34.528Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2024/08/16/kpa-csr-at-the-mombasa-book-fair/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "KPA CSR at the Mombasa Book Fair",
+      "publishedAt": "2024-08-16T00:37:53.000Z",
+      "description": "The beneficiary of Kenya Publishers Association’s CSR, during the Mombasa Regional Book Fair was Wema Center, a home that rescues and rehabilitates street children.Wema Center, situated in Bamburi, offers these reformed street children holistic education up to the highest levels possible.The publishers donated books, sanitary...",
+      "discoveredAt": "2026-09-26T17:27:34.528Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kenya-publishers-association",
+      "source": {
+        "name": "Kenya Publishers Association",
+        "url": "https://kenyapublishers.org/2024/08/08/hello-world/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Abidjan International Book Fair",
+      "publishedAt": "2024-08-08T12:56:27.000Z",
+      "description": "The Kenyan stand at the Abidjan International Book Fair. The Kenyan delegation, which was led by Kiarie Kamau, the chairman of Kenya Publishers Association, was the chief guest of at the Fair.",
+      "discoveredAt": "2026-09-26T17:27:34.528Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "7de29058a756f1023575ecf839857ec199de995938e4806471dc6715d01ae8b1"
+}

@@ -1,0 +1,15 @@
+{
+  "sourceId": "rnb",
+  "name": "Российская национальная библиотека",
+  "entryUrl": "https://nlr.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:31:54.235Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

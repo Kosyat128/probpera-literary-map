@@ -1,0 +1,61 @@
+{
+  "sourceId": "publishingireland-com",
+  "name": "Irish Book Publishers’ Association",
+  "entryUrl": "https://www.publishingireland.com/",
+  "countryCodes": [
+    "IE"
+  ],
+  "coverageCountryCodes": [
+    "IE"
+  ],
+  "attemptedAt": "2026-09-26T17:28:32.734Z",
+  "requests": [
+    {
+      "url": "https://www.publishingireland.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 127370,
+      "sha256": "981fe4c31112c4d31781748d689144df77562e84da16c7a32bdc61f31d88aed2",
+      "accessedAt": "2026-09-26T17:22:15.182Z"
+    },
+    {
+      "url": "https://www.publishingireland.com/publication_category/contemporary-poetry/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79714,
+      "sha256": "36f193f35fec88983547ce6fca913ad85754dd38fe5adf698adb3ee39ffd3fa1",
+      "accessedAt": "2026-09-26T17:28:34.503Z"
+    },
+    {
+      "url": "https://www.publishingireland.com/publication_category/historical-fiction/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79184,
+      "sha256": "0162a572f79be2b27422d5950e7ce7cb8d176d399b5a63dfe979a22ae8106923",
+      "accessedAt": "2026-09-26T17:28:34.722Z"
+    },
+    {
+      "url": "https://www.publishingireland.com/publication_category/literary-journal/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 79766,
+      "sha256": "9fb95db4c79e96ac57b7541930f11cf542011b7a4e5c09afb9b961990aeba564",
+      "accessedAt": "2026-09-26T17:28:34.957Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.publishingireland.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 183,
+    "sha256": "86a1a0c4dadcc75071a6c57ac735f6ff5229fe6d8824c50befe1c1de6b4399b6",
+    "accessedAt": "2026-09-26T17:28:33.761Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:14.484Z",
+    "sourceDocumentSha256": "981fe4c31112c4d31781748d689144df77562e84da16c7a32bdc61f31d88aed2"
+  }
+}

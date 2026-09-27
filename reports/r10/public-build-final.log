@@ -1,0 +1,238 @@
+
+> literary-map@0.1.0 build:domain
+> node scripts/build-domain-release.mjs
+
+{
+  "status": "ready",
+  "counterConfigured": false,
+  "consentRequired": true,
+  "webvisorEnabled": false,
+  "loaderOccurrences": 1,
+  "errors": []
+}
+
+> literary-map@0.1.0 build:from-snapshot
+> npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && npm run assets:images:prepare && npm run assets:images:check && tsc && npm run news:fallback && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs
+
+
+> literary-map@0.1.0 interface:copy:catalog
+> node scripts/export-interface-copy-catalog.mjs
+
+Exported 1454 site-copy fields for the admin.
+
+> literary-map@0.1.0 assets:globe:modern
+> node scripts/build-modern-globe-texture.mjs
+
+Built modern atlas textures from scripts\assets\natural-earth-i-relief-source.webp and src\data\geo\countries.geojson: modern-atlas-2026-ru.webp 4096x2048, 87 country labels (1477124 bytes); modern-atlas-2026-ru-mobile.webp 2048x1024, 70 country labels (395324 bytes); modern-atlas-2026-en.webp 4096x2048, 87 country labels (1461376 bytes); modern-atlas-2026-en-mobile.webp 2048x1024, 69 country labels (390810 bytes).
+
+> literary-map@0.1.0 assets:globe:qa
+> node scripts/qa-globe-alignment.mjs
+
+antique: 4096x2048 (2901792 bytes), mobile 2048x1024 (687972 bytes) -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\scripts\.cache\globe-alignment-qa.png
+earth: 4096x2048 (434610 bytes), mobile 2048x1024 (126246 bytes) -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\scripts\.cache\globe-alignment-qa-earth.png
+modern: 4096x2048 (1477124 bytes), mobile 2048x1024 (395324 bytes) -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\scripts\.cache\globe-alignment-qa-modern-ru.png
+modern: 4096x2048 (1461376 bytes), mobile 2048x1024 (390810 bytes) -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\scripts\.cache\globe-alignment-qa-modern-en.png
+modern: Natural Earth repository v5.1.2 (theme v5.1.1), 177 features; raster surface, procedural fallback, and hit testing share countries.geojson
+
+> literary-map@0.1.0 content:link-books
+> node scripts/build-book-article-mentions.mjs
+
+Связи книг и журнала: 695 связей, 536 книг, 167 статей.
+Рекомендации в статьях: 53 карточек для 35 статей.
+«Морской волк»: 4 связанных материалов.
+
+> literary-map@0.1.0 assets:images:prepare
+> node scripts/prepare-public-images.mjs
+
+{"status":"started","inventory":1750,"selected":1750,"workers":6}
+{"inventoriedSources":1750,"processedSources":20,"ready":20,"failed":0,"uniqueSourceImages":20,"sourceBytes":8739217,"largestRenditionBytes":2422563,"allRenditionBytes":3953915,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":40,"ready":40,"failed":0,"uniqueSourceImages":40,"sourceBytes":19201884,"largestRenditionBytes":5596731,"allRenditionBytes":9231941,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":60,"ready":60,"failed":0,"uniqueSourceImages":60,"sourceBytes":32029650,"largestRenditionBytes":9630733,"allRenditionBytes":16268381,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":80,"ready":80,"failed":0,"uniqueSourceImages":80,"sourceBytes":43702870,"largestRenditionBytes":12225071,"allRenditionBytes":20741035,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":100,"ready":100,"failed":0,"uniqueSourceImages":100,"sourceBytes":53195802,"largestRenditionBytes":14891739,"allRenditionBytes":24634659,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":120,"ready":120,"failed":0,"uniqueSourceImages":119,"sourceBytes":67138765,"largestRenditionBytes":19096349,"allRenditionBytes":32292243,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":140,"ready":140,"failed":0,"uniqueSourceImages":139,"sourceBytes":79213381,"largestRenditionBytes":22050849,"allRenditionBytes":37490047,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":160,"ready":160,"failed":0,"uniqueSourceImages":159,"sourceBytes":90273391,"largestRenditionBytes":25496095,"allRenditionBytes":43652757,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":180,"ready":180,"failed":0,"uniqueSourceImages":179,"sourceBytes":101100212,"largestRenditionBytes":29119949,"allRenditionBytes":50091019,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":200,"ready":200,"failed":0,"uniqueSourceImages":199,"sourceBytes":111798004,"largestRenditionBytes":33522926,"allRenditionBytes":58048282,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":220,"ready":220,"failed":0,"uniqueSourceImages":219,"sourceBytes":124576045,"largestRenditionBytes":38104662,"allRenditionBytes":66424998,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":240,"ready":240,"failed":0,"uniqueSourceImages":239,"sourceBytes":141398770,"largestRenditionBytes":43150583,"allRenditionBytes":75413923,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":260,"ready":260,"failed":0,"uniqueSourceImages":259,"sourceBytes":150452546,"largestRenditionBytes":47672094,"allRenditionBytes":83804522,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":280,"ready":280,"failed":0,"uniqueSourceImages":278,"sourceBytes":164378933,"largestRenditionBytes":51602163,"allRenditionBytes":90845803,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":300,"ready":300,"failed":0,"uniqueSourceImages":298,"sourceBytes":178169745,"largestRenditionBytes":55612109,"allRenditionBytes":97575955,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":320,"ready":320,"failed":0,"uniqueSourceImages":317,"sourceBytes":196076955,"largestRenditionBytes":59869414,"allRenditionBytes":104751620,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":340,"ready":340,"failed":0,"uniqueSourceImages":337,"sourceBytes":208710592,"largestRenditionBytes":62942011,"allRenditionBytes":110096739,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":360,"ready":360,"failed":0,"uniqueSourceImages":356,"sourceBytes":222166198,"largestRenditionBytes":66718039,"allRenditionBytes":116237157,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":380,"ready":380,"failed":0,"uniqueSourceImages":376,"sourceBytes":237392475,"largestRenditionBytes":71757153,"allRenditionBytes":124411665,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":400,"ready":400,"failed":0,"uniqueSourceImages":396,"sourceBytes":251523979,"largestRenditionBytes":75495365,"allRenditionBytes":130888545,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":420,"ready":420,"failed":0,"uniqueSourceImages":416,"sourceBytes":264834271,"largestRenditionBytes":79136117,"allRenditionBytes":137182535,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":440,"ready":440,"failed":0,"uniqueSourceImages":436,"sourceBytes":278070177,"largestRenditionBytes":84183600,"allRenditionBytes":146172964,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":460,"ready":460,"failed":0,"uniqueSourceImages":456,"sourceBytes":291028320,"largestRenditionBytes":87475002,"allRenditionBytes":151436744,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":480,"ready":480,"failed":0,"uniqueSourceImages":476,"sourceBytes":305780500,"largestRenditionBytes":91613524,"allRenditionBytes":158544764,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":500,"ready":500,"failed":0,"uniqueSourceImages":496,"sourceBytes":323797162,"largestRenditionBytes":95031966,"allRenditionBytes":165106346,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":520,"ready":520,"failed":0,"uniqueSourceImages":516,"sourceBytes":338110585,"largestRenditionBytes":98917367,"allRenditionBytes":171803945,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":540,"ready":540,"failed":0,"uniqueSourceImages":536,"sourceBytes":354047376,"largestRenditionBytes":103108893,"allRenditionBytes":179652299,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":560,"ready":560,"failed":0,"uniqueSourceImages":556,"sourceBytes":367220264,"largestRenditionBytes":106036544,"allRenditionBytes":184762406,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":580,"ready":580,"failed":0,"uniqueSourceImages":576,"sourceBytes":382281179,"largestRenditionBytes":110014046,"allRenditionBytes":191942230,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":600,"ready":600,"failed":0,"uniqueSourceImages":596,"sourceBytes":402018497,"largestRenditionBytes":114785563,"allRenditionBytes":200396647,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":620,"ready":620,"failed":0,"uniqueSourceImages":616,"sourceBytes":417571742,"largestRenditionBytes":118054328,"allRenditionBytes":206415870,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":640,"ready":640,"failed":0,"uniqueSourceImages":636,"sourceBytes":440206879,"largestRenditionBytes":121652282,"allRenditionBytes":212909832,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":660,"ready":660,"failed":0,"uniqueSourceImages":656,"sourceBytes":460668418,"largestRenditionBytes":125378527,"allRenditionBytes":219215959,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":680,"ready":680,"failed":0,"uniqueSourceImages":676,"sourceBytes":474411060,"largestRenditionBytes":127830384,"allRenditionBytes":223225388,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":700,"ready":700,"failed":0,"uniqueSourceImages":696,"sourceBytes":488784972,"largestRenditionBytes":130530412,"allRenditionBytes":228149830,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":720,"ready":720,"failed":0,"uniqueSourceImages":716,"sourceBytes":505307839,"largestRenditionBytes":135367540,"allRenditionBytes":237307128,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":740,"ready":740,"failed":0,"uniqueSourceImages":736,"sourceBytes":522731442,"largestRenditionBytes":140145203,"allRenditionBytes":245774625,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":760,"ready":760,"failed":0,"uniqueSourceImages":756,"sourceBytes":540264790,"largestRenditionBytes":143746656,"allRenditionBytes":252309646,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":780,"ready":780,"failed":0,"uniqueSourceImages":776,"sourceBytes":558505140,"largestRenditionBytes":147791781,"allRenditionBytes":259765433,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":800,"ready":800,"failed":0,"uniqueSourceImages":795,"sourceBytes":576409512,"largestRenditionBytes":151787374,"allRenditionBytes":267114512,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":820,"ready":820,"failed":0,"uniqueSourceImages":814,"sourceBytes":592545961,"largestRenditionBytes":154693537,"allRenditionBytes":271860393,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":840,"ready":840,"failed":0,"uniqueSourceImages":834,"sourceBytes":615464301,"largestRenditionBytes":158988199,"allRenditionBytes":279622705,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":860,"ready":860,"failed":0,"uniqueSourceImages":854,"sourceBytes":631808412,"largestRenditionBytes":161865029,"allRenditionBytes":284514889,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":880,"ready":880,"failed":0,"uniqueSourceImages":874,"sourceBytes":643949421,"largestRenditionBytes":164616671,"allRenditionBytes":289667883,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":900,"ready":900,"failed":0,"uniqueSourceImages":894,"sourceBytes":662530936,"largestRenditionBytes":168589207,"allRenditionBytes":297071141,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":920,"ready":920,"failed":0,"uniqueSourceImages":914,"sourceBytes":674102721,"largestRenditionBytes":170855847,"allRenditionBytes":301279791,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":940,"ready":940,"failed":0,"uniqueSourceImages":934,"sourceBytes":690029196,"largestRenditionBytes":174466200,"allRenditionBytes":307862712,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":960,"ready":960,"failed":0,"uniqueSourceImages":954,"sourceBytes":711510698,"largestRenditionBytes":178411606,"allRenditionBytes":315125516,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":980,"ready":980,"failed":0,"uniqueSourceImages":973,"sourceBytes":724201663,"largestRenditionBytes":180821618,"allRenditionBytes":319401608,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1000,"ready":1000,"failed":0,"uniqueSourceImages":993,"sourceBytes":743729237,"largestRenditionBytes":183840798,"allRenditionBytes":324960200,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1020,"ready":1020,"failed":0,"uniqueSourceImages":1013,"sourceBytes":770514181,"largestRenditionBytes":187880299,"allRenditionBytes":332267091,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1040,"ready":1040,"failed":0,"uniqueSourceImages":1033,"sourceBytes":786588496,"largestRenditionBytes":191187621,"allRenditionBytes":337945671,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1060,"ready":1060,"failed":0,"uniqueSourceImages":1053,"sourceBytes":800305351,"largestRenditionBytes":194098050,"allRenditionBytes":342920178,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1080,"ready":1080,"failed":0,"uniqueSourceImages":1073,"sourceBytes":822873450,"largestRenditionBytes":198937212,"allRenditionBytes":351645886,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1100,"ready":1100,"failed":0,"uniqueSourceImages":1092,"sourceBytes":835244324,"largestRenditionBytes":201452287,"allRenditionBytes":355995869,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1120,"ready":1120,"failed":0,"uniqueSourceImages":1112,"sourceBytes":846597221,"largestRenditionBytes":203671652,"allRenditionBytes":359941082,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1140,"ready":1140,"failed":0,"uniqueSourceImages":1131,"sourceBytes":866664984,"largestRenditionBytes":206924000,"allRenditionBytes":365980228,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1160,"ready":1160,"failed":0,"uniqueSourceImages":1150,"sourceBytes":882031968,"largestRenditionBytes":209522439,"allRenditionBytes":370545009,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1180,"ready":1180,"failed":0,"uniqueSourceImages":1169,"sourceBytes":906081011,"largestRenditionBytes":213703991,"allRenditionBytes":378341711,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1200,"ready":1200,"failed":0,"uniqueSourceImages":1188,"sourceBytes":918915117,"largestRenditionBytes":216380754,"allRenditionBytes":383412006,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1220,"ready":1220,"failed":0,"uniqueSourceImages":1207,"sourceBytes":932727187,"largestRenditionBytes":219268153,"allRenditionBytes":387832101,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1240,"ready":1240,"failed":0,"uniqueSourceImages":1227,"sourceBytes":950704680,"largestRenditionBytes":222372929,"allRenditionBytes":393517269,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1260,"ready":1260,"failed":0,"uniqueSourceImages":1244,"sourceBytes":968084038,"largestRenditionBytes":226427187,"allRenditionBytes":401080693,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1280,"ready":1280,"failed":0,"uniqueSourceImages":1264,"sourceBytes":983867477,"largestRenditionBytes":230185807,"allRenditionBytes":407753483,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1300,"ready":1300,"failed":0,"uniqueSourceImages":1284,"sourceBytes":1003925373,"largestRenditionBytes":234736382,"allRenditionBytes":416405188,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1320,"ready":1320,"failed":0,"uniqueSourceImages":1304,"sourceBytes":1033330120,"largestRenditionBytes":238525640,"allRenditionBytes":423047020,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1340,"ready":1340,"failed":0,"uniqueSourceImages":1323,"sourceBytes":1065734944,"largestRenditionBytes":242612836,"allRenditionBytes":430375824,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1360,"ready":1360,"failed":0,"uniqueSourceImages":1343,"sourceBytes":1094919823,"largestRenditionBytes":246839802,"allRenditionBytes":437680928,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1380,"ready":1380,"failed":0,"uniqueSourceImages":1362,"sourceBytes":1127096653,"largestRenditionBytes":252421325,"allRenditionBytes":447906659,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1400,"ready":1400,"failed":0,"uniqueSourceImages":1381,"sourceBytes":1160221397,"largestRenditionBytes":257699254,"allRenditionBytes":457625988,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1420,"ready":1420,"failed":0,"uniqueSourceImages":1400,"sourceBytes":1195731272,"largestRenditionBytes":263308221,"allRenditionBytes":468108239,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1440,"ready":1440,"failed":0,"uniqueSourceImages":1418,"sourceBytes":1223591874,"largestRenditionBytes":267857382,"allRenditionBytes":476440878,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1460,"ready":1460,"failed":0,"uniqueSourceImages":1438,"sourceBytes":1245364766,"largestRenditionBytes":271947040,"allRenditionBytes":483900586,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1480,"ready":1480,"failed":0,"uniqueSourceImages":1457,"sourceBytes":1270255570,"largestRenditionBytes":276309686,"allRenditionBytes":491648010,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1500,"ready":1500,"failed":0,"uniqueSourceImages":1475,"sourceBytes":1296570906,"largestRenditionBytes":280571176,"allRenditionBytes":498476878,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1520,"ready":1520,"failed":0,"uniqueSourceImages":1494,"sourceBytes":1327672159,"largestRenditionBytes":284545298,"allRenditionBytes":505360728,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1540,"ready":1540,"failed":0,"uniqueSourceImages":1514,"sourceBytes":1352873565,"largestRenditionBytes":289048902,"allRenditionBytes":513460326,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1560,"ready":1560,"failed":0,"uniqueSourceImages":1534,"sourceBytes":1381673470,"largestRenditionBytes":292791856,"allRenditionBytes":519830626,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1580,"ready":1580,"failed":0,"uniqueSourceImages":1554,"sourceBytes":1415907211,"largestRenditionBytes":297706238,"allRenditionBytes":528356000,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1600,"ready":1600,"failed":0,"uniqueSourceImages":1571,"sourceBytes":1443550170,"largestRenditionBytes":302588998,"allRenditionBytes":537287968,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1620,"ready":1620,"failed":0,"uniqueSourceImages":1588,"sourceBytes":1466537844,"largestRenditionBytes":305781656,"allRenditionBytes":543034580,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1640,"ready":1640,"failed":0,"uniqueSourceImages":1608,"sourceBytes":1500639167,"largestRenditionBytes":311568573,"allRenditionBytes":553808865,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1660,"ready":1660,"failed":0,"uniqueSourceImages":1628,"sourceBytes":1534744729,"largestRenditionBytes":317590603,"allRenditionBytes":565418681,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1680,"ready":1680,"failed":0,"uniqueSourceImages":1648,"sourceBytes":1567438055,"largestRenditionBytes":322904065,"allRenditionBytes":574956649,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1700,"ready":1700,"failed":0,"uniqueSourceImages":1668,"sourceBytes":1595843197,"largestRenditionBytes":328376643,"allRenditionBytes":584767253,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1720,"ready":1720,"failed":0,"uniqueSourceImages":1688,"sourceBytes":1620622601,"largestRenditionBytes":333343290,"allRenditionBytes":593654496,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1740,"ready":1740,"failed":0,"uniqueSourceImages":1707,"sourceBytes":1647486409,"largestRenditionBytes":337404873,"allRenditionBytes":600573301,"elapsedSeconds":1}
+{"inventoriedSources":1750,"processedSources":1750,"ready":1750,"failed":0,"uniqueSourceImages":1715,"sourceBytes":1657945101,"largestRenditionBytes":339413587,"allRenditionBytes":604304529,"elapsedSeconds":2}
+
+> literary-map@0.1.0 assets:images:check
+> node scripts/prepare-public-images.mjs --check
+
+{"status":"passed","sources":1750,"outputs":3892,"unavailable":0}
+
+> literary-map@0.1.0 news:fallback
+> node scripts/export-literary-news-fallback.mjs
+
+Literary-news fallback: 222 records; release 63ce3112846e3e49f4b15d1cb64b3c29cb98af70; captured 2026-09-26T18:59:47.289Z.
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1225 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                       4.12 kB │ gzip:   1.44 kB
+dist/assets/editorial-paper-DwbOovh5.webp            37.27 kB
+dist/assets/brush-orange-stage-B2wkl8IX.webp         46.57 kB
+dist/assets/brush-paper-split-zfVJ2vHM.webp          62.35 kB
+dist/assets/brush-violet-stage-WEaHRUQQ.webp         67.86 kB
+dist/assets/brush-paper-east-Dhu-9hco.webp           68.43 kB
+dist/assets/brush-paper-corners-ChpKv6VW.webp        75.40 kB
+dist/assets/countries-B1fL43Dn.geojson              305.05 kB
+dist/assets/section-prizes-DXUciBB7.webp            349.28 kB
+dist/assets/ArticleReader-DH1RNugl.css                1.73 kB │ gzip:   0.69 kB
+dist/assets/ArticleBookReader-C3U9oGqS.css            6.31 kB │ gzip:   1.67 kB
+dist/assets/BookArchiveSection-CdOKAbrW.css          15.68 kB │ gzip:   3.17 kB
+dist/assets/LiteraryNewsPanel-D64sBdP7.css           25.76 kB │ gzip:   4.45 kB
+dist/assets/index-UDfffoVu.css                      633.57 kB │ gzip: 106.71 kB
+dist/assets/BrandPlusIcon-C9vhMPJd.js                 0.22 kB │ gzip:   0.20 kB
+dist/assets/nobelArticles-fcuWdV2E.js                 0.48 kB │ gzip:   0.34 kB
+dist/assets/supabase-CspOoRgp.js                      1.06 kB │ gzip:   0.58 kB
+dist/assets/vite-preload-helper-BXl3LOEh.js           1.11 kB │ gzip:   0.65 kB
+dist/assets/bookArchiveQueue-C-Z2HKdM.js              2.00 kB │ gzip:   1.03 kB
+dist/assets/useSubscriptions-CATF3DgV.js              2.15 kB │ gzip:   1.04 kB
+dist/assets/articleSeries-bfsT0q_2.js                 2.62 kB │ gzip:   1.20 kB
+dist/assets/NobelArchiveStrip-BuZJ1Oa6.js             3.86 kB │ gzip:   1.86 kB
+dist/assets/SectionsDirectory-Bq0vIXQR.js             4.96 kB │ gzip:   2.30 kB
+dist/assets/BrandHeartIcon-vS6mNc3W.js                5.95 kB │ gzip:   2.28 kB
+dist/assets/CmsHomepageContent-CXp_xQYl.js            8.18 kB │ gzip:   2.37 kB
+dist/assets/globalSearchRuntime-CuZBP2-_.js           8.33 kB │ gzip:   2.93 kB
+dist/assets/GlobalSearch-DGnalOFP.js                  8.35 kB │ gzip:   3.16 kB
+dist/assets/LiteraryCalendar-DLrOm3tB.js              9.66 kB │ gzip:   3.69 kB
+dist/assets/BookShelfSceneCanvas-C6kBnQko.js         10.51 kB │ gzip:   3.91 kB
+dist/assets/BookShelfSceneCanvas-RF5g65V6.js         10.51 kB │ gzip:   3.91 kB
+dist/assets/ArticleLibrarySection-BTxX5OiA.js        13.45 kB │ gzip:   5.41 kB
+dist/assets/BookShelfScene-BMCf_xRb.js               21.72 kB │ gzip:   8.26 kB
+dist/assets/bookArchiveLocation-Baw3BCJR.js          24.76 kB │ gzip:   8.96 kB
+dist/assets/WriterPanel-BNgYOuJi.js                  27.93 kB │ gzip:   8.50 kB
+dist/assets/LiteraryNewsPanel-c4xG0y2E.js            35.41 kB │ gzip:  11.52 kB
+dist/assets/editorialOverrides-StGXJP3e.js           50.56 kB │ gzip:   9.67 kB
+dist/assets/CommunityHub-DIH7-A5j.js                 54.41 kB │ gzip:  16.66 kB
+dist/assets/completeShelfRenderer-C2mmQBHN.js        57.76 kB │ gzip:  19.92 kB
+dist/assets/LiteraryGlobe-CQDM_ipT.js               127.87 kB │ gzip:  41.64 kB
+dist/assets/ArticleBookReader-CQAkKX_Q.js           143.06 kB │ gzip:  48.09 kB
+dist/assets/react-vendor-BtloPIQe.js                146.08 kB │ gzip:  47.23 kB
+dist/assets/supabase-vendor-C0Z0FS3K.js             216.82 kB │ gzip:  57.10 kB
+dist/assets/ArticleReader-TxjNlXPE.js               237.13 kB │ gzip:  71.94 kB
+dist/assets/BookArchiveSection-C9b2fwIU.js          276.52 kB │ gzip:  83.12 kB
+dist/assets/writerDates-COzTfX51.js                 320.24 kB │ gzip:  54.52 kB
+dist/assets/index-DO8pCjBO.js                       456.68 kB │ gzip: 141.08 kB
+dist/assets/book-retained-drafts-03-Awleh9Lt.js     480.68 kB │ gzip: 145.61 kB
+dist/assets/writer-portraits-data-ZDd9rYw-.js       500.03 kB │ gzip:  76.33 kB
+dist/assets/country-data-n-z-B6kBB-fK.js            508.63 kB │ gzip: 105.27 kB
+dist/assets/book-retained-drafts-01-DScFhpxV.js     561.42 kB │ gzip: 175.80 kB
+dist/assets/book-retained-drafts-02-XYJo-Lyt.js     595.43 kB │ gzip: 183.07 kB
+dist/assets/catalog-DxDbxsFZ.js                     607.08 kB │ gzip:  83.99 kB
+dist/assets/country-data-a-m-C_afZbhK.js            789.51 kB │ gzip: 159.38 kB
+dist/assets/countries-BxJD-TA1.js                   837.94 kB │ gzip: 236.03 kB
+dist/assets/bookArchive-D1yU0T_v.js                 902.22 kB │ gzip: 170.67 kB
+dist/assets/three-vendor-Cxx1MbK0.js              1,094.83 kB │ gzip: 330.37 kB
+dist/assets/writer-biography-reviews-BMVRO21A.js  1,227.68 kB │ gzip: 393.63 kB
+dist/assets/book-catalog-CUS-317M.js              2,053.99 kB │ gzip: 187.59 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 17.23s
+Built 167 article pages, 0 CMS pages, 2330 redirects (1503 portable section aliases), sitemap and RSS for https://probpera.ru.
+{"checked":663,"issues":[]}
+Release code head written: 63ce3112846e3e49f4b15d1cb64b3c29cb98af70 -> D:\Codex-задачи\2026-09-26\new-chat\work\probpera-r10\dist\.well-known\probpera-release-head.json
+{
+  "status": "ready",
+  "checks": 12876,
+  "passed": 12876,
+  "failed": 0,
+  "articles": 167,
+  "sitemapUrls": 180,
+  "redirects": 2330,
+  "serverRedirects": 827,
+  "portableSectionAliases": 1503,
+  "errors": []
+}
+{
+  "status": "ready",
+  "checks": 5513,
+  "pages": 180,
+  "uniqueLastmodDates": 13,
+  "warnings": [],
+  "errors": []
+}
+Доменный пакет готов в dist. DNS и настройки GitHub Pages этим действием не изменены.

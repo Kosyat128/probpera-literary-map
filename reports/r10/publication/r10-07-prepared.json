@@ -1,0 +1,322 @@
+{
+  "batchId": "r10-07",
+  "at": "2026-09-26T18:12:35.131Z",
+  "recordSha256": "b52bd1c89162c39d648214b200f185f8d3a4f708541071f682b1777fa82df174",
+  "counts": {
+    "prepared": 21,
+    "productionSelectorEligible": 21,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "sourceIds": [
+    "adeb-be",
+    "asymptote",
+    "bn-org-pl",
+    "dosdoce",
+    "il-libraio",
+    "landesbibliothek-li",
+    "lnb-lt",
+    "nobel",
+    "salone-libro-torino",
+    "sne-fr",
+    "snk-sk"
+  ],
+  "sourceCountries": [
+    "BE",
+    "ES",
+    "FR",
+    "IT",
+    "LI",
+    "LT",
+    "PL",
+    "SE",
+    "SG",
+    "SK"
+  ],
+  "coverageCountries": [
+    "BE",
+    "ES",
+    "FR",
+    "GB",
+    "IT",
+    "LI",
+    "LT",
+    "PL",
+    "SE",
+    "SK",
+    "SN"
+  ],
+  "categories": [
+    "anniversaries",
+    "awards",
+    "festivals",
+    "heritage",
+    "publishing",
+    "releases"
+  ],
+  "public": false,
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 21
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "no id/eventKey/canonical URL match in reviewed.json or other prepared batches; semantic review against existing events; single combined Liber professional-programme card; separate Poland festival report and inaugural award ceremony",
+    "schema": "production selectReviewed 21/21",
+    "dateScope": "news event/announcement dates within 60 days; precise future event dates explicitly sourced; report dates kept distinct from source-described event dates; late reports of old editions not labelled new book releases"
+  },
+  "held": [
+    {
+      "researchIndex": 10,
+      "reason": "June29 event, outside60days",
+      "sourceId": "adeb-be",
+      "url": "https://www.adeb.be/fr/infos/presse/les-nouveautes-de-l-edition-belge-a-l-honneur"
+    },
+    {
+      "researchIndex": 11,
+      "reason": "report release date not established",
+      "sourceId": "adeb-be",
+      "url": "https://www.adeb.be/fr/infos/presse/un-marche-en-recul-une-production-qui-resiste-grace-au-numerique"
+    },
+    {
+      "researchIndex": 13,
+      "reason": "February5 project, outside60days",
+      "sourceId": "anel-qc-ca",
+      "url": "https://www.anel.qc.ca/inspirantes-50-ans-dedition-feministe-et-demergence-des-femmes-en-edition-au-quebec/"
+    },
+    {
+      "researchIndex": 14,
+      "reason": "June29 report update, outside60days",
+      "sourceId": "sne-fr",
+      "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/"
+    },
+    {
+      "researchIndex": 17,
+      "reason": "application call already closed; merged relevant tour into one independent event",
+      "sourceId": "salone-libro-torino",
+      "url": "https://www.salonelibro.it/news/tutte-news/call-hangar-del-libro-2025.html"
+    },
+    {
+      "researchIndex": 20,
+      "reason": "merged into single Liber professional programme card; not a second card",
+      "sourceId": "dosdoce",
+      "url": "https://www.dosdoce.com/2026/09/22/jornadas-liber-audio-2026/"
+    },
+    {
+      "researchIndex": 23,
+      "reason": "general free-expression commentary, no specific new literary event",
+      "sourceId": "commonwealth-foundation",
+      "url": "https://commonwealthfoundation.com/freedom-of-expression-is-at-risk/"
+    },
+    {
+      "researchIndex": 26,
+      "reason": "Commonwealth2027 opening postponed to January2027, no exact day and no dated announcement; cannot invent deadline",
+      "sourceId": "commonwealth-foundation",
+      "url": "https://commonwealthfoundation.com/short-story-prize/"
+    }
+  ],
+  "verifiedRequests": [
+    {
+      "id": "liechtenstein-helena-brehm-poetry-workshop-2026",
+      "sourceId": "landesbibliothek-li",
+      "url": "https://www.landesbibliothek.li/die-bibliothek-kennenlernen-spontan-kurz-und-knackig-2/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.990Z",
+      "responseSha256": "7c70a51a940cfaadf23e79f4bcbdab973400cde9466183f4d44028cff1b3d55d",
+      "responseBytes": 1638375
+    },
+    {
+      "id": "lithuania-winnie-pooh-centenary-programme-2026",
+      "sourceId": "lnb-lt",
+      "url": "https://www.lnb.lt/naujienos/15156-valio-pukuotukui-winnie-the-p-1-o-o-h",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.647Z",
+      "responseSha256": "027697233d2dbd9acc2821d241cf45f5b1d9fcaa9842b1b3b386cf3463715573",
+      "responseBytes": 68359
+    },
+    {
+      "id": "lithuania-ekultura-digital-heritage-finalist-2026",
+      "sourceId": "lnb-lt",
+      "url": "https://www.lnb.lt/naujienos/15177-lietuvos-kultura-atrasti-padedanti-platforma-ekultura-konkurso-skaitmeninis-knygnesys-finale",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.694Z",
+      "responseSha256": "b51292dcc1d0e0a205385318ddd6f8f2272c659c218ec7965b5e0a4ca87f6cba",
+      "responseBytes": 66535
+    },
+    {
+      "id": "lithuania-italian-literature-reading-lists-2026",
+      "sourceId": "lnb-lt",
+      "url": "https://www.lnb.lt/naujienos/15104-atrinkta-jums-italu-literatura",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.693Z",
+      "responseSha256": "4626b1f73b6ef13d09bb692bc28e7c646be6b96cc8427c5a03e39c1a04f45090",
+      "responseBytes": 66143
+    },
+    {
+      "id": "slovakia-bibliography-days-seminars-2026",
+      "sourceId": "snk-sk",
+      "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.152Z",
+      "responseSha256": "44596d35f06e54b6b0405dbe88d4f5f4158bac2759a0a0e28fcf0f5a7710b8d8",
+      "responseBytes": 37063
+    },
+    {
+      "id": "slovak-literary-fund-incunabula-publications-award-2026",
+      "sourceId": "snk-sk",
+      "url": "https://snk.sk/en/novinky/literarny-fond-ocenil-nasu-publikaciu",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.209Z",
+      "responseSha256": "661272e78667db2047e4885019cae47533c0cec4c3cda37d8eebf13bd15f083f",
+      "responseBytes": 54504
+    },
+    {
+      "id": "slovakia-power-story-library-webinar-2026",
+      "sourceId": "snk-sk",
+      "url": "https://snk.sk/en/novinky/webinar-sila-pribehu-v-kniznici",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.215Z",
+      "responseSha256": "cbe367a6c3ded52c1ae18623e7ebe6e8eb94b50d3b2932b3cff223f83d3ef89a",
+      "responseBytes": 37003
+    },
+    {
+      "id": "darlowo-morze-literatury-first-festival-report-2026",
+      "sourceId": "bn-org-pl",
+      "url": "https://www.bn.org.pl/aktualnosci/6238-pierwsza-edycja-festiwalu-morze-literatury-za-nami.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.984Z",
+      "responseSha256": "6ad7447d49e4536f912cbcd01964340022404e04bbcb25cc14575f4f4460d17f",
+      "responseBytes": 51508
+    },
+    {
+      "id": "european-literacy-coalition-brussels-launch-2026",
+      "sourceId": "bn-org-pl",
+      "url": "https://www.bn.org.pl/aktualnosci/6241-koalicja-unii-europejskiej-na-rzecz-czytelnictwa-oficjalnie-zainaugurowana-w-brukseli.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.321Z",
+      "responseSha256": "c4e3e7b64762d6eea6bebc9e238ecccf3b1d7e8667babacd4ebce90544cd9b74",
+      "responseBytes": 35099
+    },
+    {
+      "id": "krzysztof-pomian-first-czeslaw-milosz-prize-2026",
+      "sourceId": "bn-org-pl",
+      "url": "https://www.bn.org.pl/aktualnosci/6235-gala-nagrody-im-czeslawa-milosza-w-darlowie-krzysztof-pomian-laureatem.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.083Z",
+      "responseSha256": "3b63de1c26f3e46a9d4cb43bd924a40afc7f8a17642d60ad2aac527334237ebb",
+      "responseBytes": 36185
+    },
+    {
+      "id": "adeb-namur-publishing-future-colloquium-2026",
+      "sourceId": "adeb-be",
+      "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.577Z",
+      "responseSha256": "efcb3cd54cab8c1983547c984e54a31dea8fb95bc28c8255df5f5a47b8445855",
+      "responseBytes": 91260
+    },
+    {
+      "id": "pantin-comics-publishing-conference-2026",
+      "sourceId": "sne-fr",
+      "url": "https://www.sne.fr/evenement_sne/creer-et-lire-demain-comprendre-le-nouveau-paysage-de-la-bd/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.949Z",
+      "responseSha256": "27aeb4a0007daf7a750d47025746d6bf768721ab53a7e1560ceec1378f0caf29",
+      "responseBytes": 136645
+    },
+    {
+      "id": "turin-italiano-al-mondo-translators-conference-2026",
+      "sourceId": "salone-libro-torino",
+      "url": "https://www.salonelibro.it/news/tutte-news/italiano-al-mondo-2026.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.422Z",
+      "responseSha256": "1b57a1d0f2f3f63bd0c701156c886b133fcbdf8e46fdb326be828803e19b1c3f",
+      "responseBytes": 42535
+    },
+    {
+      "id": "saluzzo-medieval-book-festival-2026",
+      "sourceId": "salone-libro-torino",
+      "url": "https://www.salonelibro.it/news/tutte-news/2026/festa-libro-medievale-saluzzo-2026.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.438Z",
+      "responseSha256": "065dcc0799059812dc7b223eff2353eb6d0fcf85386c23556dc0e9e69efc3486",
+      "responseBytes": 42337
+    },
+    {
+      "id": "gianni-mura-fuoriclasse-winner-announcement-2026",
+      "sourceId": "salone-libro-torino",
+      "url": "https://www.salonelibro.it/news/tutte-news/Premio-Gianni-Mura-2026.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.577Z",
+      "responseSha256": "ccf4befc9b8babfc632489b85d02b2158002b9e85c99769e3d214c07e4eda8dd",
+      "responseBytes": 41055
+    },
+    {
+      "id": "liber-innovation-audio-programme-2026",
+      "sourceId": "dosdoce",
+      "url": "https://www.dosdoce.com/2026/09/22/jornadas-liber-innovacion-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:58.828Z",
+      "responseSha256": "67eb98491f4560d1e892b9718e74a704de5ba24937c1afd2cab0307843f6e57b",
+      "responseBytes": 91389
+    },
+    {
+      "id": "pistoia-deans-rag-books-exhibition-closing-2026",
+      "sourceId": "il-libraio",
+      "url": "https://www.illibraio.it/news/bambini-e-ragazzi/libri-di-pezza-per-linfanzia-1508827/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:58.065Z",
+      "responseSha256": "c75953f9721ed475a0fac6e04ac6784506c12bc6879542e171de95bb3d3dc436",
+      "responseBytes": 88737
+    },
+    {
+      "id": "nobel-literature-announcement-schedule-2026",
+      "sourceId": "nobel",
+      "url": "https://www.nobelprize.org/press-release/the-2026-nobel-prize-announcements/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:08:18.661Z",
+      "responseSha256": "0bcbb9db30b9b0ad841114881e2a22c2349a11291066461c3ca1587d4bc128dc",
+      "responseBytes": 167468
+    },
+    {
+      "id": "piedmont-independent-book-tour-2026",
+      "sourceId": "salone-libro-torino",
+      "url": "https://www.salonelibro.it/news/tutte-news/independent-book-tour-2026.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:08:19.468Z",
+      "responseSha256": "a0f64bb06b0226f4aac6437770f5e8989555f6f13c2cd5edc9d62cba4a866314",
+      "responseBytes": 41490
+    },
+    {
+      "id": "asymptote-maria-messina-camilla-translation-2026",
+      "sourceId": "asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/15/translation-tuesday-camilla-by-maria-messina/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:09:14.631Z",
+      "responseSha256": "264ac6bf0452630ec297176a2106eff347029867da517f0f683303f0e86defd4",
+      "responseBytes": 1465032
+    },
+    {
+      "id": "ken-bugul-julie-huntington-asymptote-interview-2026",
+      "sourceId": "asymptote",
+      "url": "https://www.asymptotejournal.com/blog/2026/09/17/fearlessness-in-various-combinations-an-interview-with-marietou-mbaye-and-julie-huntington/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:09:15.385Z",
+      "responseSha256": "119ff00a908e87013b5969209b82ca5e225993e5378f055e2213640fee56b1e4",
+      "responseBytes": 1467157
+    }
+  ],
+  "typographyCheck": {
+    "checkedAt": "2026-09-26T18:24:41.489Z",
+    "normalizer": "scripts/lib/short-hyphens.mjs normalizeShortHyphens",
+    "scope": "New authored title/summary RU/EN only",
+    "changedFields": 15,
+    "recordSha256": "b52bd1c89162c39d648214b200f185f8d3a4f708541071f682b1777fa82df174",
+    "evidenceSemanticSha256": "e669a02eff868169cfb63d62bb7419c164724ec4991a7f82a61c19643ac2618e",
+    "sourceEvidencePreserved": true,
+    "serialization": "Unicode dash and HTML-entity escapes preserve parsed source values"
+  }
+}

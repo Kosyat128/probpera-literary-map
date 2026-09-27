@@ -1,0 +1,348 @@
+{
+  "sourceId": "apnetafrica-org",
+  "name": "African Publishers Network (APNET)",
+  "entryUrl": "https://apnetafrica.org/",
+  "countryCodes": [
+    "GH"
+  ],
+  "coverageCountryCodes": [
+    "GH"
+  ],
+  "attemptedAt": "2026-09-26T17:27:53.466Z",
+  "requests": [
+    {
+      "url": "https://apnetafrica.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 35033,
+      "sha256": "94b6319f99921cda77f121b6f4412f548d8f66e32b589c4a8f27c8b690ee77af",
+      "accessedAt": "2026-09-26T17:21:27.871Z"
+    },
+    {
+      "url": "https://apnetafrica.org/jill-says-mattis-nailed-it-in-his-resignation-letter/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91816,
+      "sha256": "09c0f4a9cd9d9ec4d0bc86a119d5760aaf7b11c3ade88a16373c221ffe1c993c",
+      "accessedAt": "2026-09-26T17:27:54.624Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://apnetafrica.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 116,
+    "sha256": "4c72eb7461f6a42f7f293afe980a057f44f8734e929323e0a719902e4a30a91d",
+    "accessedAt": "2026-09-26T17:27:54.163Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:26.374Z",
+    "sourceDocumentSha256": "94b6319f99921cda77f121b6f4412f548d8f66e32b589c4a8f27c8b690ee77af"
+  },
+  "endpoint": {
+    "id": "apnetafrica-org",
+    "name": "African Publishers Network (APNET)",
+    "url": "https://apnetafrica.org/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "africa",
+    "sourceFamilyId": "apnetafrica-org",
+    "countryCodes": [
+      "GH"
+    ],
+    "coverageCountryCodes": [
+      "GH"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://apnetafrica.org"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://apnetafrica.org/jill-says-mattis-nailed-it-in-his-resignation-letter/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:54.628Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "apnetafrica-org",
+    "source": {
+      "name": "African Publishers Network (APNET)",
+      "url": "https://apnetafrica.org/jill-says-mattis-nailed-it-in-his-resignation-letter/",
+      "language": "en-US"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "APNET Participates in Abu Dhabi International Book Fair, 2026",
+    "publishedAt": "2023-07-24T11:32:39.000Z",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+    "discoveredAt": "2026-09-26T17:27:54.166Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://apnetafrica.org/jill-says-mattis-nailed-it-in-his-resignation-letter/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91816,
+      "sha256": "09c0f4a9cd9d9ec4d0bc86a119d5760aaf7b11c3ade88a16373c221ffe1c993c",
+      "accessedAt": "2026-09-26T17:27:54.624Z",
+      "headline": "APNET Participates in Abu Dhabi International Book Fair, 2026",
+      "excerpt": "July 24, 2023 News APNET Participates in Abu Dhabi International Book Fair, 2026 The 35th edition of the Abu Dhabi International Book Fair (ADIBF) would be held from 13\u201318 September 2026 at the Abu Dhabi National Exhibition Centre (ADNEC). African Publishers Network (APNET) with the support of the Abu Dhabi International Book Fair has secured an exhibition stand to do a collective exhibition of Af",
+      "publishedDates": [],
+      "canonical": "https://apnetafrica.org/jill-says-mattis-nailed-it-in-his-resignation-letter/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:54.628Z",
+  "foundItems": [
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/jill-says-mattis-nailed-it-in-his-resignation-letter/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APNET Participates in Abu Dhabi International Book Fair, 2026",
+      "publishedAt": "2023-07-24T11:32:39.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/african-publishers-conference-organized/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 4th African Publishers Conference to be Organized in 2027",
+      "publishedAt": "2025-08-27T10:44:52.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/leadership/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APNET elects a new leadership",
+      "publishedAt": "2025-05-01T10:57:27.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/24th-nairobi-international-book-fair-introduces-rights-trading/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "24th Nairobi International Book Fair Introduces Rights Trading",
+      "publishedAt": "2023-10-16T20:08:04.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/canex-and-afreximbank-to-organise-publishers-roundtable-in-association-with-apnet/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CANEX AND AFREXIMBANK TO ORGANISE PUBLISHERS ROUNDTABLE IN ASSOCIATION WITH APNET",
+      "publishedAt": "2025-08-28T11:39:16.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/the-3rd-african-publishers-conference-to-be-held-in-morocco/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 3rd African Publishers Conference to be held in Morocco",
+      "publishedAt": "2025-05-01T16:03:05.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/apnet-ifrro-webinars/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APNET-IFRRO Webinars: Collective Management of Text and Image-based Works",
+      "publishedAt": "2024-10-08T16:23:58.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/the-2nd-african-publishers-conference-to-be-held-in-zimbabwe/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 2nd African Publishers Conference to be held in Zimbabwe from 3rd to 4th June, 2024 (2 days)",
+      "publishedAt": "2024-05-18T23:11:01.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/apnet-training-for-trainers-in-tanzania/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APNET Training for Trainers in Tanzania",
+      "publishedAt": "2021-09-15T11:12:17.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T17:27:54.166Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "94b6319f99921cda77f121b6f4412f548d8f66e32b589c4a8f27c8b690ee77af"
+}

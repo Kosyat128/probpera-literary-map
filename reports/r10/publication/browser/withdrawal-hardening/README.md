@@ -1,0 +1,11 @@
+# Withdrawal-history durability regression
+
+The browser now stores compact version-2 ID/time tuples, without long editorial reasons. Valid legacy history with 4,000 reasons of 500 characters is read beyond the former two-million-character cutoff and compacted without losing identities. The independent accumulated-history bound is 25,000 identities / 2,000,000 UTF-8 bytes, rather than one public snapshot's 5,000 items. Exceeding either bound disables stale fallback instead of silently resetting history.
+
+Before a live request, a small fail-closed marker must be durably written and read back. If this is impossible, the request does not start, so it cannot learn new withdrawals while leaving an older trusted checkpoint behind. A successful complete checkpoint stores the full known history and re-enables fallback. A failed request that introduced no accepted new facts can checkpoint the retained complete history unchanged. A fresh browser can establish an empty durable checkpoint; corrupt, interrupted or capacity-lost history cannot automatically claim completeness after reload. Fallback withdrawals themselves are checkpointed before the fallback is displayed.
+
+Validation: 16 unit tests passed across withdrawals and updates; public TypeScript and diff checks passed. Actual Chrome 153 browser fixture passed all six groups in `receipt.json`, including two offline reloads following a quota error. The stale snapshot was not even fetched in that case. The prior successful-history case retains withdrawals through reload and filters the older snapshot while preserving the saved identity. Real local prepared news was also checked in RU, EN and at 390px width, with no page errors.
+
+`dirty-history-blocked.png` was opened and visually inspected: it honestly shows the unavailable state instead of old cards. Older baseline screenshots were preserved because overwriting those files returned EPERM; this fresh evidence lives in its own directory. The checks use isolated browser fixtures and no production writes.
+
+Scope: `src/news/withdrawals.ts`, its focused tests, narrow state/fetch integration in `src/components/LiteraryNewsPanel.tsx`, and `scripts/check-r10-news-browser.mjs`. Thumbnail markup and historical governance files were not changed by this fix.

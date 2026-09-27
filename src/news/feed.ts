@@ -1,4 +1,5 @@
 import { NEWS_CATEGORIES, NEWS_REGIONS, type NewsFeed } from "./types";
+import limits from "../../data/news/contract.json";
 
 const record = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
@@ -33,6 +34,15 @@ function sourceLanguage(value: unknown) {
   try { return Boolean(new Intl.Locale(value).language); } catch { return false; }
 }
 
+function articleThumbnail(value: unknown, sourceUrl: unknown) {
+  if (value === undefined) return true;
+  if (!record(value) || value.displayOnly !== true || value.sourceUrl !== sourceUrl
+    || !safeUrl(value.url) || !bilingual(value.alt)) return false;
+  const url = new URL(String(value.url));
+  return !url.port && /^[a-z0-9-]+(?:\.[a-z0-9-]+)*\.[a-z]{2,63}$/i.test(url.hostname)
+    && !/(?:^|\.)(?:localhost|local|internal|invalid|test)$/i.test(url.hostname);
+}
+
 export function isNewsTimeZone(value: unknown): value is string {
   if (!text(value, 100) || !/^[A-Za-z][A-Za-z0-9_+./-]*$/.test(value)) return false;
   try {
@@ -48,19 +58,38 @@ export function parseNewsFeed(value: unknown): NewsFeed {
     || !(value.lastCheckedAt === null || timestamp(value.lastCheckedAt))
     || !count(value.refreshIntervalSeconds) || Number(value.refreshIntervalSeconds) < 60
     || !isNewsTimeZone(value.timeZone) || !count(value.pendingCount)
-    || !Array.isArray(value.sources) || value.sources.length > 50
-    || !Array.isArray(value.items) || value.items.length > 500) {
+    || !Array.isArray(value.sources) || value.sources.length > limits.maxSources
+    || !Array.isArray(value.items) || value.items.length > limits.maxItems) {
     throw new Error("Invalid literary news feed");
   }
+  if (value.contractVersion !== undefined && (value.contractVersion !== limits.version
+    || !record(value.snapshot) || value.snapshot.complete !== true
+    || value.snapshot.count !== value.items.length
+    || !text(value.snapshot.id, 64) || !/^[a-f0-9]{64}$/.test(String(value.snapshot.id))
+    || !text(value.snapshot.release, 40)
+    || !timestamp(value.snapshot.evaluatedAt)
+    || !text(value.snapshot.policy, 120)
+    || value.snapshot.timeZone !== value.timeZone)) throw new Error("Incomplete literary news snapshot");
   const ids = new Set<string>();
+  if (value.withdrawals !== undefined && (!Array.isArray(value.withdrawals)
+    || value.withdrawals.length > limits.maxItems
+    || value.withdrawals.some((row) => !record(row) || !text(row.id, 120)
+      || !timestamp(row.withdrawnAt) || !text(row.reason, 1000)))) throw new Error("Invalid news withdrawals");
+  if (value.contractVersion === 2 && !Array.isArray(value.withdrawals)) throw new Error("Missing news withdrawals");
+  const sourceIds = new Set<string>();
   for (const source of value.sources) {
-    if (!record(source) || !text(source.id, 120) || !text(source.name, 160)
+    if (!record(source) || !text(source.id, 120) || sourceIds.has(source.id) || !text(source.name, 160)
       || !safeUrl(source.url) || !["pending", "ok", "error"].includes(String(source.status))
       || !(source.lastSuccessAt === null || timestamp(source.lastSuccessAt))
       || !count(source.candidateCount)
       || !(source.language === undefined || sourceLanguage(source.language))
       || !(source.region === undefined || NEWS_REGIONS.includes(source.region as never))
-      || !(source.topics === undefined || Array.isArray(source.topics) && source.topics.every((topic) => NEWS_CATEGORIES.includes(topic as never)))) throw new Error("Invalid literary news source");
+      || !(source.topics === undefined || Array.isArray(source.topics) && source.topics.every((topic) => NEWS_CATEGORIES.includes(topic as never)))
+      || !(source.sourceFamilyId === undefined || text(source.sourceFamilyId, 120))
+      || ![source.countryCodes, source.coverageCountryCodes].every((codes) => codes === undefined
+        || Array.isArray(codes) && codes.length <= 250 && new Set(codes).size === codes.length
+        && codes.every((code) => typeof code === "string" && /^[A-Z]{2}$/.test(code)))) throw new Error("Invalid literary news source");
+    sourceIds.add(source.id);
   }
   for (const item of value.items) {
     if (!record(item) || !text(item.id, 120) || ids.has(item.id)
@@ -73,6 +102,7 @@ export function parseNewsFeed(value: unknown): NewsFeed {
       || !bilingual(item.title) || !bilingual(item.summary)
       || !record(item.source) || !text(item.source.name, 160) || !safeUrl(item.source.url)
       || !sourceLanguage(item.source.language)
+      || !articleThumbnail(item.thumbnail, item.source.url)
       || item.verification !== "confirmed") throw new Error("Invalid literary news item");
     ids.add(item.id);
   }

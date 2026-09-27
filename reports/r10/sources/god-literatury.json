@@ -1,0 +1,1777 @@
+{
+  "sourceId": "god-literatury",
+  "name": "Год литературы",
+  "entryUrl": "https://godliteratury.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:37.788Z",
+  "requests": [
+    {
+      "url": "https://godliteratury.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 277477,
+      "sha256": "44745cfec4579f38193e4d2751c09dfa833505814bfe915e5e9db410aa0b35b6",
+      "accessedAt": "2026-09-26T17:23:41.616Z"
+    },
+    {
+      "url": "https://godliteratury.ru/articles/2026/09/23/opublikovan-korotkij-spisok-bukerovskoj-premii-2026-goda",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 116563,
+      "sha256": "35d3fcc589d99676c8e9f8b5d69d83b0ad2a294dc36afee6e3ee0832de01877e",
+      "accessedAt": "2026-09-26T17:29:38.373Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://godliteratury.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 34,
+    "sha256": "8155dd039b75c65bd0b212bdfdefe69fea2ff4995275fecf01d342b04c111eb4",
+    "accessedAt": "2026-09-26T17:29:38.023Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:40.581Z",
+    "sourceDocumentSha256": "44745cfec4579f38193e4d2751c09dfa833505814bfe915e5e9db410aa0b35b6"
+  },
+  "endpoint": {
+    "id": "god-literatury",
+    "name": "Год литературы",
+    "url": "https://godliteratury.ru/",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "god-literatury",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://godliteratury.ru"
+    ],
+    "linkPattern": "^/gl-projects/[^/]+/?$|^/articles/.+",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://godliteratury.ru/articles/2026/09/23/opublikovan-korotkij-spisok-bukerovskoj-premii-2026-goda"
+    ],
+    "verifiedAt": "2026-09-26T17:29:38.382Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 66,
+  "literaryCandidateCount": 66,
+  "sample": {
+    "sourceId": "god-literatury",
+    "source": {
+      "name": "Год литературы",
+      "url": "https://godliteratury.ru/articles/2026/09/23/opublikovan-korotkij-spisok-bukerovskoj-premii-2026-goda",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Какие книги вошли в короткий список Букеровской премии 2026 годаВ списке \u2014 шесть книг авторов из Англии, Шотландии, США и Ямайки",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:38.057Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://godliteratury.ru/articles/2026/09/23/opublikovan-korotkij-spisok-bukerovskoj-premii-2026-goda",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 116563,
+      "sha256": "35d3fcc589d99676c8e9f8b5d69d83b0ad2a294dc36afee6e3ee0832de01877e",
+      "accessedAt": "2026-09-26T17:29:38.373Z",
+      "headline": "Какие книги вошли в короткий список Букеровской премии 2026 года",
+      "excerpt": "Опубликован короткий список Букеровской премии 2026 года - Год Литературы23.09.2026102Литературные премииКакие книги вошли в короткий список Букеровской премии 2026 годаВ списке \u2014 шесть книг авторов из Англии, Шотландии, США и ЯмайкиФото: https://thebookerprizes.com/the-booker-library/prize-years/2026Текст: ГодЛитературы.РФЖюри Букеровской премии обнародовало короткий список 2026 года. В него шест",
+      "publishedDates": [
+        {
+          "value": "2026-09-23T12:25:00",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://godliteratury.ru/articles/2026/09/23/opublikovan-korotkij-spisok-bukerovskoj-premii-2026-goda",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:38.382Z",
+  "foundItems": [
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/23/opublikovan-korotkij-spisok-bukerovskoj-premii-2026-goda",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Какие книги вошли в короткий список Букеровской премии 2026 годаВ списке \u2014 шесть книг авторов из Англии, Шотландии, США и Ямайки",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/23/premiia-intonaciia-predlagaet-skazat-spasibo-uchiteliam-literatury",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Премия «Интонация» предлагает сказать «спасибо» учителям литературыЗавершается прием заявок на национальную премию для учителей литературы «Интонация»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/23/leonid-iakubovich-poluchil-bilet-soiuza-pisatelej-rossii",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Леонид Якубович получил билет Союза писателей РоссииПисательские билеты нового образца вручал помощник президента и первый секретарь Союза писателей Владимир Мединский",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/premiia-daniila-granina-otkryla-priem-zaiavok-vo-vtorom-sezone",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Премия Даниила Гранина открыла прием заявок во втором сезонеПремия присуждается авторам, чьи произведения продолжают традиции русской литературы и формируют современные гуманистические смыслы",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/25/skver-v-centre-krasnodara-poluchit-imia-pisatelia-viktora-lihonosova",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Сквер в центре Краснодара получит имя писателя Виктора Лихоносова25.09.2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/25/minkultury-svyshe-135-mln-knig-zakupleno-dlia-bibliotek-strany-s-2019-goda",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Минкультуры: «Свыше 13,5 млн книг закуплено для библиотек РФ с 2019 года»25.09.2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/prolivu-v-vostochno-sibirskom-more-prisvoili-imia-pisatelia-viktora-koneckogo",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Проливу в Восточно-Сибирском море присвоили имя писателя Виктора Конецкого24.09.2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/v-peterburge-projdut-predstaviat-bolshoe-literaturnoe-kolco",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Петербурге представят «Большое литературное кольцо»24.09.2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/10/muzyka-i-dogmy-kniga-fejshesa-zhaume-kabre",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Книга звезды каталонской литературы Жауме Кабре впервые вышла на русском языке. Предлагаем отправиться в монастырь Ла‑Рапита, где строгие уставы вступают в борьбу с музыкой, красотой и самой жизнью",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/07/interviu-s-liu-cysinem-po-sluchaiu-20-letiia-izdaniia-zadachi-treh-tel",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Лю Цысинь: «Я \u2014 рациональный оптимист, полагаю, что у человечества есть возможность обрести светлое будущее, но на пути к такому будущему потребуются огромные, продолжительные усилия, которые, вполне возможно, дадутся нам страшной ценой». Роман китайского писателя в жанре научной фантастики: действие начинается в КНР, в эпоху разгара Культурной революции.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/23/20-knig-o-privykanii-vsem-krizisam-nazlo",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "20 книг о привыкании. Всем кризисам назло Как психика адаптируется к катастрофам и почему мы больше не паникуем. Главные книги о границах человеческих возможностей, экстремальных испытаниях и выживании вопреки всему",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/festival-knizhniki-peredvizhniki-edet-v-sankt-peterburg",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Книжники-передвижники» едут в Санкт-ПетербургЧитателей ждут книги по издательским ценам, встречи с писательницами Юлией Ивановой и Анной Игнатовой, мастер-классы и настольные игры",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/otroshenko-nagrazhdyon-premiej-solzhenicyna-ia-by-hotel-chtoby-moia-literatura-dala-mne-pokoj",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Я бы хотел, чтобы моя литература дала мне покой»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/brungilda-ili-obraz-bez-prikras-pozdnij-roman-gerberta-uellsa-vpervye-vyshel-na-russkom-iazyke",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Брунгильда, или Образ без прикрас». Поздний роман Герберта Уэллса впервые вышел на русском языке",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/21/tajnoe-ubezhishche-solzhenicyna-v-moskve-otkrylas-vystavka-o-druzhbe-pisatelia-s-velikimi-muzykantami",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Тайное убежище Солженицына: в Москве открылась выставка о дружбе писателя с великими музыкантами",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/15/osen-vecher-goda-stihi-pro-osen-russkih-poetov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Цветная осень \u2014 вечер года». Стихи про осень русских поэтов",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/umerla-marina-vladi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Умерла Марина Влади24.09.2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/08/25/bolshaia-kniga-2026-golos-krovi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Шорт-лист БК. Герой романа «Закрепщик» считает, что обделен судьбой и достоин в жизни большего, чем имеет. Подпав под обаяние этой мысли, он начинает воровать на ювелирном заводе, где работает закрепщиком драгоценных камней, самоцветы и золото, убеждая себя, что красть у богатых не грех, и мечтая скопить деньги на то, чтобы вместе с любимой девушкой переехать из своего провинциального города в Петербург.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/08/23/melknula-bolshaia-ten-uhodivshego-v-rossiiu-tilia-ulenshpigelia",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Сборник рассказов Алексея Варламова о людях, чьи судьбы оказываются на переломах российской истории. От дореволюционной России и революционных потрясений до советской эпохи и девяностых \u2014 герои книги проходят через войны, ссылки, странствия, потери и неожиданные встречи.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/priglushennoe-siianie-paradoksalnyj-sekret-poezii-hochesh-byt-uslyshannym-stremis-k-molchaniiu",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Приглушенное сияние: Парадоксальный секрет поэзии \u2014 хочешь быть услышанным, стремись к молчанию",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/03/24/perechen-knig-soderzhashchih-upominaniia-narkoticheskih-sredstv-opublikovannyj-na-sajte-rossijskogo-knizhnogo-soiuza-rks",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Перечень книг, содержащих упоминания наркотических средств опубликован на сайте Российского книжного союза (РКС)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2025/07/25/narkotiki-chajldfri-reklama-na-zapreshchennyh-resursah-chto-meniaetsia-dlia-izdatelej-1-sentiabria-2025-goda",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Наркотики, чайлдфри, реклама на запрещенных ресурсах... Что меняется для издателей 1 сентября 2025 года?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2025/07/02/ekspertnyj-centr-rks-podgotovil-pamiatku-o-rabote-s-knigami-avtorov-nahodiashchihsia-pod-inostrannym-vliianiem",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Экспертный центр РКС подготовил памятку «О работе с книгами авторов, находящихся под иностранным влиянием»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2023/02/20/spisok-pisatelej-inoagentov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Список писателей-иноагентов",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/23/opublikovana-polnaia-programma-vserossijskogo-eseninskogo-prazdnika-poezii",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Опубликована полная программа Всероссийского есенинского праздника поэзии3 октября село Константиново станет центром празднования 131-летия со дня рождения Сергея Есенина",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/23/k-90-letiiu-edvarda-radzinskogo-vyhodit-18-tomnoe-sobranie-ego-sochinenij",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "К 90-летию Эдварда Радзинского выходит 18-томное собрание его сочиненийВладимир Григорьев отметил, что произведения Радзинского \u2014 это «нравственный камертон для нескольких поколений читателей»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/21/itogovoe-sochinenie-v-20262027-uchebnom-godu-vsyo-chto-nuzhno-znat-vypuskniku",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Итоговое сочинение в 2026\u20132027 учебном году: всё, что нужно знать выпускникуРазбираем базовые правила для одиннадцатиклассников: официальные даты, новые темы закрытого банка ФИПИ, структуру разделов и критерии оценивания",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/simfoniia-ego-zhizni-dmitrij-shostakovich",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Симфония его жизни. Дмитрий Шостакович",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/26/mihail-piotrovskij-o-forume-obedinennyh-kultur-iskusstvennom-intellekte-i-blokade-ermitazha",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Михаил Пиотровский \u2014 о форуме объединенных культур, искусственном интеллекте и блокаде Эрмитажа",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/25/popovich-sergeia-shargunova-rasti-bolshoj-moj-telemak",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Попович» Сергея Шаргунова: расти большой, мой Телемак",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/26/a-bogat-ia-skazochno-semen-kirsanov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«А богат я сказочно…» Семен Кирсанов",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/liubliu-tebia-sejchas-stihi-vysockogo-posviashchennye-marine-vladi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Я верю в нашу общую звезду...». Стихи Высоцкого, посвященные Марине Влади",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/rgali-k-120-letiiu-so-dnia-rozhdeniia-sergeia-nikolaevicha-markova",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "РГАЛИ. К 120-летию со дня рождения Сергея Николаевича Маркова",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/liubit-rossiiu-v-nepogodu",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Любить Россию в непогоду",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/26/chto-putin-predlozhil-drugim-stranam-na-forume-obedinennyh-kultur-v-peterburge",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Что Путин предложил другим странам на Форуме объединенных культур в Петербурге 10:43",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/26/300-let-puteshestviiu-gullivera-dzhonatana-svifta-test",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "300 лет «Путешествию Гулливера» Джонатана Свифта. Тест",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/08/20/chto-poluchilos-kogda-zapad-i-vostok-vsyo-taki-soshlis",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Запад есть Запад, Восток есть Восток \u2014 им не сойтись никогда». Но история демонстрирует обратное: Запад и Восток \u2014 в лице Китая \u2014 начали двустороннюю торговлю по крайней мере 2000 лет назад. Автор в захватывающем исследовании показывает, как складывались и к чему привели эти контакты.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/08/31/bolshaia-kniga-2026-chelovek-pered-chudom",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Шорт-лист БК, Автор определяет замысел как «мемуар коллективной памяти» \u2014 и это точная формула. Плахов, один из самых авторитетных российских кинокритиков, пишет историю своей жизни и жизни своего поколения, в которой Андрей Тарковский присутствует не как объект исследования, а как система координат.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/08/trolli-magiia-i-severnyj-folklor-norvezhskie-narodnye-skazki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Сборник, собранный «норвежскими братьями Гримм» \u2014 фольклористами П. К. Асбьёрнсеном и Й. Му., объединил сокровища фольклора: от сказок до быличек о троллях и хюльдрах, включая истории о находчивом Аскеладде",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/putin-nazval-kulturu-osnovoj-vzaimoponimaniia-narodov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Путин назвал культуру основой взаимопонимания народов",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/03/20/smozhet-li-zakonoproekt-o-regulirovanii-ii-zashchitit-avtorskie-prava-tvorcov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Сможет ли законопроект о регулировании ИИ защитить авторские права творцов?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2025/01/31/obiavlena-tema-pushkinskogo-konkursa-2025-goda-pobeda-chto-eto-znachit-dlia-vas-i-vashih-uchenikov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Положение XXV Международного конкурса для педагогов-русистов",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2024/12/17/zakony-20222024-godov-kasaiushchiesia-avtorov-i-izdatelej-propaganda-lgbtk-upominaniia-ekstremistskih-organizacij-narkotiki-chajldfri-kontent-sozdannyj-nejrosetiami-i-dr",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Законы 2022\u201324 годов, касающиеся авторов и издателей: пропаганда ЛГБТК+; упоминания экстремистских организаций; наркотики; чайлдфри; контент, созданный нейросетями",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2023/01/19/paket-popravok-o-zaprete-propagandy-lgbt-v-rossii-chto-izmenilos-i-chto-nas-zhdet",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Пакет поправок о запрете пропаганды ЛГБТ в России: что изменилось и что нас ждет",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2021/08/05/kak-otlichit-propagandu-fashizma-ot-ego-razoblacheniia",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Как отличить пропаганду фашизма от его разоблачения?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2021/08/19/zapretnyj-plod-kak-berezhno-sorvat-i-pravilno-upakovat",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Запретный плод: как бережно сорвать и правильно упаковать?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/vladimir-grigorev-v-evrope-pod-davleniem-perestali-izdavat-russkih-klassikov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Владимир Григорьев: «В Европе под давлением перестали издавать русских классиков»В Санкт-Петербурге начался XII Международный форум объединенных культур, собравший более двух тысяч участников",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/mihail-shvydkoj-kulturnoe-zastole",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Михаил Швыдкой: Культурное застолье Историческая встреча министров культуры России с 1992 года по сей день. В неформальной обстановке руководители разных лет собрались вместе, чтобы поделиться воспоминаниями и уникальным опытом",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/v-vestminsterskom-abbatstve-ustanoviat-memorial-dzhonu-tolkinu",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Вестминстерском аббатстве установят мемориал Джону Толкину Его разместят рядом с мемориальной плитой Клайва Стейплза Льюиса, друга Толкина",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/v-moskve-nachal-rabotu-knizhnyj-klub-dlia-veteranov-svo-i-ih-blizkih",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Москве начал работу книжный клуб для ветеранов СВО и их близкихВ ближайшее время участники обсудят «Дуэль» и другие рассказы Антона Чехова",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/vmeste-my-mozhem-gorazdo-bolshe-kak-sdelat-chtenie-modnym-rasskazali-v-novosibirske",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Вместе мы можем гораздо больше». Как сделать чтение модным рассказали в НовосибирскеПодведены итоги семинара «Лучшие практики продвижения больших книжных проектов»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/nedorosl-kak-poluchali-obrazovanie-v-rossijskoj-imperii",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Недоросль»: как получали образование в Российской империи В XVIII веке шестнадцатилетний подросток, читающий по слогам и не умеющий считать, был скорее правилом, чем исключением. Разбираемся, как так получилось",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/21/hit-sezona-na-kotoryj-ne-dostat-biletov-stoit-li-idti-na-operu-nishchih-v-teatr-pushkina",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Хит сезона: стоит ли идти на «Оперу нищих» в Театр Пушкина? «Эффект Триггера»: Масштабная драма по «Трехгрошовой опере» Брехта стала главным событием театральной Москвы благодаря возвращению Максима Матвеева на сцену после шестилетнего перерыва и масштабной режиссуре Евгения Писарева",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/literaturnye-premii-detskie-konkurs",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литературные премии",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/literatura-i-muzyka",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литература и музыка",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/literaturnuye_gnezda",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литературные музеи",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/recenzii-na-knigi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Рецензии на книги",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/moi-lyubimy-poyety",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Мои любимые поэты",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/bolshaya-knigaa",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Большая книга»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/literatura-i-teatr",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Литература и театр",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/den_rojdeniya_pisateley-i-poyetov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В этот день родились",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/knizhnye-novinki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Книжные новинки",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/god-edinstva-narodov-rossii",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Год единства народов России",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/itogovoe_sochinenie",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Итоговое сочинение. В помощь школьнику",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/viktorina",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Тесты, викторины",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "god-literatury",
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/gl-projects/institut-pushkina",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "институт Пушкина",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.057Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "44745cfec4579f38193e4d2751c09dfa833505814bfe915e5e9db410aa0b35b6"
+}

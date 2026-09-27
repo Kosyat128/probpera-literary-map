@@ -1,0 +1,996 @@
+{
+  "sourceId": "word-christchurch",
+  "name": "WORD Christchurch",
+  "entryUrl": "https://wordchristchurch.co.nz/news",
+  "countryCodes": [
+    "NZ"
+  ],
+  "coverageCountryCodes": [
+    "NZ"
+  ],
+  "attemptedAt": "2026-09-26T17:27:40.217Z",
+  "requests": [
+    {
+      "url": "https://wordchristchurch.co.nz/news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 115760,
+      "sha256": "a33d918878aaa828fbd9eeb650e83951cb4833385eaaa4479c06200d22497e01",
+      "accessedAt": "2026-09-26T17:20:19.497Z"
+    },
+    {
+      "url": "https://wordchristchurch.co.nz/news/2026-launch-gallery",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 71078,
+      "sha256": "9d8891b6850e2726d75f5309b8fab5dc1e53080a8fe5b211c3c5c03385191bfb",
+      "accessedAt": "2026-09-26T17:27:42.323Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://wordchristchurch.co.nz/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-09-26T17:27:41.817Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:17.214Z",
+    "sourceDocumentSha256": "a33d918878aaa828fbd9eeb650e83951cb4833385eaaa4479c06200d22497e01"
+  },
+  "endpoint": {
+    "id": "word-christchurch",
+    "name": "WORD Christchurch",
+    "url": "https://wordchristchurch.co.nz/news",
+    "format": "html",
+    "language": "en",
+    "region": "oceania",
+    "sourceFamilyId": "word-christchurch",
+    "countryCodes": [
+      "NZ"
+    ],
+    "coverageCountryCodes": [
+      "NZ"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://wordchristchurch.co.nz"
+    ],
+    "linkPattern": "^\\/news\\/[^/?#]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://wordchristchurch.co.nz/news/2026-launch-gallery"
+    ],
+    "verifiedAt": "2026-09-26T17:27:42.327Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 35,
+  "literaryCandidateCount": 35,
+  "sample": {
+    "sourceId": "word-christchurch",
+    "source": {
+      "name": "WORD Christchurch",
+      "url": "https://wordchristchurch.co.nz/news/2026-launch-gallery",
+      "language": "en"
+    },
+    "region": "oceania",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Hot pics from the WORD Christchurch Festival 2026 Programme Launch",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:41.832Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://wordchristchurch.co.nz/news/2026-launch-gallery",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 71078,
+      "sha256": "9d8891b6850e2726d75f5309b8fab5dc1e53080a8fe5b211c3c5c03385191bfb",
+      "accessedAt": "2026-09-26T17:27:42.323Z",
+      "headline": "Hot pics from the WORD Christchurch Festival 2026 Programme Launch",
+      "excerpt": "Back to news Hot pics from the WORD Christchurch Festival 2026 Programme Launch 20 July 2026 Last Wednesday we gathered together in celebration of our 2026 WORD Christchurch Festival Programme.Ngā mihi nui to Ariana Tikao for her words, waiata and taonga pūoro. Another huge mihi to our contributors and speakers, Deputy Mayor Victoria Henstock, WORD Board Chair Vicki Blyth and Kate De Goldi, Te Awh",
+      "publishedDates": [],
+      "canonical": "https://wordchristchurch.co.nz/news/2026-launch-gallery",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:42.327Z",
+  "foundItems": [
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2026-launch-gallery",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hot pics from the WORD Christchurch Festival 2026 Programme Launch",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2026-festival-dates-announced",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Festival dates announced",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2023-word-christchurch-festival-in-the-media",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WORD Christchurch Festival in the media",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/flying-nun-book-launches-at-lyttelton-coffee-company",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Flying Nun book launches at Lyttelton Coffee Company",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2022-ngaio-marsh-award-winner-goes-global",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ngaio Marsh Award winner goes global",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2021-ngaio-marsh-awards-winners-revealed",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2021 Ngaio Marsh Awards winners revealed",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2024-word-in-the-media",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2024 - WORD in the media!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2024-festival-passes-available-now",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2024 Festival passes available now!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/the-ockhams-shortlist-is-out",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Ockhams shortlist is out!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2022-festival-done",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WORD 2022 FESTIVAL - DONE!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/word-christchurch-festival-postponed",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WORD CHRISTCHURCH FESTIVAL RESCHEDULED",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/word-writers-scoop-awards",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WORD WRITERS SCOOP AWARDS",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/matariki-reading-list",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mānawatia a Matariki! Enjoy this whetū-aligned reading list",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/winter-warmers-word-y-events-in-otautahi-this-june",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Winter Warmers - WORD-y events in Ōtautahi this June",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/24-25-summer-reading-stacks",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Summer Reading Stacks",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/o-a-spooky-reading-list",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": ":-o A Spooky Reading List",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/2024-te-wiki-o-te-reo-maori-how-can-we-learn-more",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2024 Te Wiki o te reo Māori - how can we learn more?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/our-2024-programmers-at-large",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our 2024 Programmers-at-Large",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/summer-read-watch-listen-tips",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Summer Read/Watch/Listen tips",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/watch-on-demand-until-17-sep-2023",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MISSED OUT? GET WORD ON-DEMAND AT HOME!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/programmer-at-large-hot-picks-catarina-de-peters-leitao",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programmer at Large Hot Picks: Catarina de Peters Leitão",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/programmer-at-large-hot-picks-melanie-dixon",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programmer at Large Hot Picks: Melanie Dixon",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/programmer-at-large-hot-picks-audrey-baldwin",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programmer at Large Hot Picks: Audrey Baldwin",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/our-programmers-at-large",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our Programmers-at-Large!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/a-change-for-word-in-2023",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Changes for WORD in 2023",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/a-word-about-keeping-us-all-safe",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A WORD ABOUT KEEPING US ALL SAFE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/ngaio-marsh-finalists-announced",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NGAIO MARSH FINALISTS ANNOUNCED",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/lockdown-listening",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LOCKDOWN LISTENING",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/nz-writers-at-cheltenham",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NZ WRITERS AT CHELTENHAM",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/partner-spotlight-university-of-canterbury",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PARTNER SPOTLIGHT: UNIVERSITY OF CANTERBURY",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/covid-19-update",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "COVID-19 UPDATE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/are-you-a-writer-here-are-the-amazing-hands-on-events-and-workshops-word-has-created-for-you-in-2021",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Are you a writer? Here are the amazing hands-on events and workshops WORD has created for you in 2021.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/4853-2",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Te Papa Tupu \u2013 Welcome",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/guest-curators-aj-fitzwater-daisy-speaks",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "GUEST CURATORS: AJ FITZWATER & DAISY SPEAKS",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "word-christchurch",
+      "source": {
+        "name": "WORD Christchurch",
+        "url": "https://wordchristchurch.co.nz/news/introducing-the-faraway-near",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "INTRODUCING THE FARAWAY NEAR",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.832Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a33d918878aaa828fbd9eeb650e83951cb4833385eaaa4479c06200d22497e01"
+}

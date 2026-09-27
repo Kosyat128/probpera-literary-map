@@ -1,0 +1,94 @@
+{
+  "sourceId": "nlo",
+  "name": "Новое литературное обозрение / НЛО Медиа",
+  "entryUrl": "https://nlobooks.ru/nlomedia/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:40.808Z",
+  "requests": [
+    {
+      "url": "https://nlobooks.ru/nlomedia/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 166580,
+      "sha256": "805beec7117f3436a3de8a3c29c7a35f9a02cfc78ffbcfa35085a96284534840",
+      "accessedAt": "2026-09-26T17:23:46.230Z"
+    },
+    {
+      "url": "https://nlobooks.ru/magazines/novoe_literaturnoe_obozrenie/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 175218,
+      "sha256": "a6c8dec9cb09bd7ba96348dacd5d2b5d8d032b7a5e6ec803a02b0e45362d233e",
+      "accessedAt": "2026-09-26T17:29:41.848Z"
+    },
+    {
+      "url": "https://nlobooks.ru/themes/filologiya/istoriya-i-sotsiologiya-literatury/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 241498,
+      "sha256": "2fdf6d7c2deefd784f8dd018a08e09a06c2904a2389bb2c2d9b8577084a26003",
+      "accessedAt": "2026-09-26T17:29:42.436Z"
+    },
+    {
+      "url": "https://nlobooks.ru/themes/filologiya/literaturovedenie/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 257889,
+      "sha256": "9bd6316b1e614331cb7ab409bb9d63f1bfc948509921ed50cedb16cd217389a9",
+      "accessedAt": "2026-09-26T17:29:43.327Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://nlobooks.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1007,
+    "sha256": "7bef59a7b1bf897342c752183a3ab7a5700e510106f3891a52ddd1c7de244798",
+    "accessedAt": "2026-09-26T17:29:41.428Z",
+    "disallowed": [
+      "*/index.php",
+      "/bitrix/",
+      "/*show_include_exec_time=",
+      "/*show_page_exec_time=",
+      "/*show_sql_stat=",
+      "/*bitrix_include_areas=",
+      "/*clear_cache=",
+      "/*clear_cache_session=",
+      "/*ADD_TO_COMPARE_LIST",
+      "/*ORDER_BY",
+      "/*PAGEN",
+      "/*?print=",
+      "/*&print=",
+      "/*print_course=",
+      "/*?action=",
+      "/*&action=",
+      "/*register=",
+      "/*forgot_password=",
+      "/*change_password=",
+      "/*login=",
+      "/*logout=",
+      "/*auth=",
+      "/*backurl=",
+      "/*back_url=",
+      "/*BACKURL=",
+      "/*BACK_URL=",
+      "/*back_url_admin=",
+      "/*?utm_source=",
+      "/*?bxajaxid=",
+      "/*&bxajaxid=",
+      "/*?view_result=",
+      "/*&view_result="
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:45.529Z",
+    "sourceDocumentSha256": "805beec7117f3436a3de8a3c29c7a35f9a02cfc78ffbcfa35085a96284534840"
+  }
+}

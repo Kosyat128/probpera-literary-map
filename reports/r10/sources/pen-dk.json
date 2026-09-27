@@ -1,0 +1,380 @@
+{
+  "sourceId": "pen-dk",
+  "name": "Danish PEN",
+  "entryUrl": "https://danskpen.dk/",
+  "countryCodes": [
+    "DK"
+  ],
+  "coverageCountryCodes": [
+    "DK"
+  ],
+  "attemptedAt": "2026-09-26T17:29:28.672Z",
+  "requests": [
+    {
+      "url": "https://danskpen.dk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 161443,
+      "sha256": "80452d0f6e914a6aa57c3177b09f4f14ed989c57de0f0a6051ba5b0853575bbc",
+      "accessedAt": "2026-09-26T17:29:29.618Z"
+    },
+    {
+      "url": "https://danskpen.dk/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 53198,
+      "sha256": "c87971b86a78903e38838c91f121934b382a3729aeaf5ebe933b4652ee8e0511",
+      "accessedAt": "2026-09-26T17:29:29.926Z"
+    },
+    {
+      "url": "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 129821,
+      "sha256": "199f24e0904250ff35f203e2cd8085015a33a77353ccd5d262aad33272d597d6",
+      "accessedAt": "2026-09-26T17:29:30.321Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://danskpen.dk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 115,
+    "sha256": "6577afb85eeb3d7d7b2687ea4564959514bd4cda05a404f1f85d506b580d3dc0",
+    "accessedAt": "2026-09-26T17:29:29.243Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "pen-dk",
+    "name": "Danish PEN",
+    "url": "https://danskpen.dk/feed/",
+    "format": "rss",
+    "language": "da-DK",
+    "region": "europe",
+    "sourceFamilyId": "pen-dk",
+    "countryCodes": [
+      "DK"
+    ],
+    "coverageCountryCodes": [
+      "DK"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://danskpen.dk"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:30.327Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "pen-dk",
+    "source": {
+      "name": "Danish PEN",
+      "url": "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/",
+      "language": "da-DK"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "Åbningsarrangement #forbudtebøger: Er bogens frihed truet?",
+    "publishedAt": "2026-09-24T11:19:44.000Z",
+    "description": "5. oktober kl. 15.00 i Dokk1, Aarhus. Oplev Mads Ananda Lodahl, Kasey Meehan m.fl, når Dansk PEN sammen med Aarhus Bibliotekerne åbner kampagnen #forbudtebøger.",
+    "discoveredAt": "2026-09-26T17:29:29.927Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 129821,
+      "sha256": "199f24e0904250ff35f203e2cd8085015a33a77353ccd5d262aad33272d597d6",
+      "accessedAt": "2026-09-26T17:29:30.321Z",
+      "headline": "Åbningsarrangement #forbudtebøger: Er bogens frihed truet? - Dansk PEN",
+      "excerpt": "5. oktober kl. 15.00 i Dokk1, Aarhus Vi skyder kampagnen #ForbudteBøger 2026 i gang med et åbningsarrangement på Dokk1. Er bogens frihed truet? Oplev Mads Ananda Lodahl, Kasey Meehan m.fl, når Dansk PEN sammen med Aarhus Bibliotekerne åbner kampagnen #ForbudteBøger med udblik til USA, oplæsninger fra forbudt litteratur og panelsamtale om situationen i Danmark lige nu. Den nationale kampagne #Forbu",
+      "publishedDates": [
+        {
+          "value": "2026-09-24T13:19:44+02:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-24T13:19:44+02:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-09-24T13:19:44+02:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "canonical": "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/",
+      "language": "da-DK",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:30.327Z",
+  "foundItems": [
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/aabningsarrangement-forbudteboeger-er-bogens-frihed-truet/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Åbningsarrangement #forbudtebøger: Er bogens frihed truet?",
+      "publishedAt": "2026-09-24T11:19:44.000Z",
+      "description": "5. oktober kl. 15.00 i Dokk1, Aarhus. Oplev Mads Ananda Lodahl, Kasey Meehan m.fl, når Dansk PEN sammen med Aarhus Bibliotekerne åbner kampagnen #forbudtebøger.",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/koncert-med-den-palaestinensiske-fribykunstner-elsusi/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Koncert med den palæstinensiske fribykunstner Elsusi",
+      "publishedAt": "2026-09-24T11:08:49.000Z",
+      "description": "Lørdag d. 10. oktober kl. 19.30-21.00 i Kulturhuset Union på Nørrebro \u2013 arabisk rap, stærke fortællinger og musikalsk energi.",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/eritrea-25-aar-uden-livstegn-hvor-er-de-12-forsvundne-journalister/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eritrea: 25 år uden livstegn \u2013 hvor er de 12 forsvundne journalister?",
+      "publishedAt": "2026-09-22T06:04:45.000Z",
+      "description": "Hjælp os, sammen med PEN-kolleger verden over, at kræve svar fra den eritreiske regering: Hvor er de 12 forfattere og journalister?",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/biblioteker-og-skoler-i-63-kommuner-deltager-i-forbudteboeger/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Biblioteker og skoler i 63 kommuner deltager i #ForbudteBøger",
+      "publishedAt": "2026-08-18T07:33:58.000Z",
+      "description": "Med kampagnen #ForbudteBøger sætter Dansk PEN censur og ytringsfrihed på dagsordenen i samarbejde med biblioteker, skoler, boghandlere og forlag over hele landet.",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/smugkro-for-forbudt-litteratur-2/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Smugkro for forbudt litteratur",
+      "publishedAt": "2026-05-22T06:32:14.000Z",
+      "description": "Vi læser højt af forbudte bøger og fortæller historierne bag censuren og forbuddene. Oplæsning ved bl.a. Moussa Mchangama, Nina Palesa Bonde og Mille Rode",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/er-gaza-allerede-glemt/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Er Gaza allerede glemt?",
+      "publishedAt": "2026-05-22T06:28:32.000Z",
+      "description": "Samtale mellem forfatter Lone Aburas og Dansk PENs præsident Mads Julius Elf.",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/maksim-znak-the-museum-of-stolen-time/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Maksim Znak: The Museum of Stolen Time",
+      "publishedAt": "2026-05-11T08:47:51.000Z",
+      "description": "Læs Maksim Znaks tekst hos PEN/Opp.",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/pressefriheden-er-historisk-traengt/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pressefriheden er historisk trængt",
+      "publishedAt": "2026-05-07T08:14:56.000Z",
+      "description": "3. maj 2026, Verdensdagen for Pressefrihed, var ikke noget at fejre \u2013 det har ikke stået værre til, siden man begyndte at måle på den.",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/caselister/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Caselister",
+      "publishedAt": "2026-05-04T10:56:04.000Z",
+      "description": "PEN Internationals case liste 2026 dokumenterer et bekymrende globalt mønster: pladsen til udtryk, kultur og uenighed skrumper ind, efterhånden som regeringer intensiverer indsatsen for at bringe kritiske røster til tavshed og målretter deres angreb mod forfattere og andre skribenter, der passer deres arbejde.",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-dk",
+      "source": {
+        "name": "Danish PEN",
+        "url": "https://danskpen.dk/egypten/",
+        "language": "da-DK"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Egypten",
+      "publishedAt": "2026-05-04T08:44:29.000Z",
+      "description": "Den 6. april var det syvende gang på mindre end to år, at den egyptiske digter, menneskerettigheds-, og demokratiforkæmper Ahmed Douma skulle møde op i retten.",
+      "discoveredAt": "2026-09-26T17:29:29.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "c87971b86a78903e38838c91f121934b382a3729aeaf5ebe933b4652ee8e0511"
+}

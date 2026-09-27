@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "sourceHead": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+  "method": "Before-edit esbuild bundle of production countries/index.ts and LiteraryCalendar.tsx; original inline selector reproduced for inventory before extraction to shared selector",
+  "at": "2026-09-26T17:12:42.170Z",
+  "writers": 1684,
+  "uniqueLegacy": 1671,
+  "qidWriters": 1410,
+  "events": 2235,
+  "months": [
+    {
+      "month": 1,
+      "total": 208
+    },
+    {
+      "month": 2,
+      "total": 188
+    },
+    {
+      "month": 3,
+      "total": 181
+    },
+    {
+      "month": 4,
+      "total": 192
+    },
+    {
+      "month": 5,
+      "total": 191
+    },
+    {
+      "month": 6,
+      "total": 165
+    },
+    {
+      "month": 7,
+      "total": 182
+    },
+    {
+      "month": 8,
+      "total": 169
+    },
+    {
+      "month": 9,
+      "total": 179
+    },
+    {
+      "month": 10,
+      "total": 181
+    },
+    {
+      "month": 11,
+      "total": 199
+    },
+    {
+      "month": 12,
+      "total": 200
+    }
+  ],
+  "missing": 1110,
+  "jan1": 21,
+  "conflicts": 68,
+  "meaningOf179": "September 2026 month count, not all-year corpus",
+  "historicalTaskBaseline": "unknown"
+}

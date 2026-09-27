@@ -1,0 +1,20 @@
+{
+  "sourceId": "penguinrandomhousegrupoeditorial-com",
+  "name": "Penguin Random House Grupo Editorial, Mexico",
+  "entryUrl": "https://www.penguinrandomhousegrupoeditorial.com/",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [
+    "ES"
+  ],
+  "attemptedAt": "2026-09-26T17:27:43.869Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://www.penguinrandomhousegrupoeditorial.com/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

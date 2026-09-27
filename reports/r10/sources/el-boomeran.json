@@ -1,0 +1,398 @@
+{
+  "sourceId": "el-boomeran",
+  "name": "El Boomeran(g)",
+  "entryUrl": "https://www.elboomeran.com/",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [
+    "ES"
+  ],
+  "attemptedAt": "2026-09-26T17:32:03.146Z",
+  "requests": [
+    {
+      "url": "https://www.elboomeran.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 133037,
+      "sha256": "f4be1cbb5dbcf2c6750190a00ca4353ce3960cccb3b697f4fa17c1a80c1c2d26",
+      "accessedAt": "2026-09-26T17:32:06.177Z"
+    },
+    {
+      "url": "https://www.elboomeran.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 68773,
+      "sha256": "ee21e8132c3c4327e1ed561cb7b8ec450b7cc0cbbb027337aaebba6188b8594e",
+      "accessedAt": "2026-09-26T17:32:06.865Z"
+    },
+    {
+      "url": "https://www.elboomeran.com/el-lado-salvaje-del-deseo-i/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 130785,
+      "sha256": "d2cad04ba5d367b798387355efe90614ecf1e51dedb0efb5402693d3762d6ea0",
+      "accessedAt": "2026-09-26T17:32:07.462Z"
+    },
+    {
+      "url": "https://www.elboomeran.com/pisa-contra-aristoteles/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 124750,
+      "sha256": "f63786ac48852ec5a73dfc1071260488f61edc4eb09743b84f4f1bd70589f0d7",
+      "accessedAt": "2026-09-26T17:32:08.042Z"
+    },
+    {
+      "url": "https://www.elboomeran.com/neruda-y-asturias-manteles-largos/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 128979,
+      "sha256": "faac245647771f2c2b09b9d0d982e470844c9a0e1db35cce514e058a9b587668",
+      "accessedAt": "2026-09-26T17:32:08.617Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.elboomeran.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 119,
+    "sha256": "a3254a6d579d11c1bc169e7edc7f6e0616ab46b20cbf13e375b055b92f6327e0",
+    "accessedAt": "2026-09-26T17:32:04.820Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "el-boomeran",
+    "name": "El Boomeran(g)",
+    "url": "https://www.elboomeran.com/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "europe",
+    "sourceFamilyId": "el-boomeran",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [
+      "ES"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.elboomeran.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.elboomeran.com/neruda-y-asturias-manteles-largos/"
+    ],
+    "verifiedAt": "2026-09-26T17:32:08.622Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "el-boomeran",
+    "source": {
+      "name": "El Boomeran(g)",
+      "url": "https://www.elboomeran.com/neruda-y-asturias-manteles-largos/",
+      "language": "es"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Neruda y Asturias, manteles largos",
+    "publishedAt": "2026-09-21T10:49:27.000Z",
+    "description": "A veces, con afán un tanto deportivo, repaso la nómina de los premios Nobel de todos los tiempos. A quienes […]",
+    "discoveredAt": "2026-09-26T17:32:06.867Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.elboomeran.com/neruda-y-asturias-manteles-largos/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 128979,
+      "sha256": "faac245647771f2c2b09b9d0d982e470844c9a0e1db35cce514e058a9b587668",
+      "accessedAt": "2026-09-26T17:32:08.617Z",
+      "headline": "Neruda y Asturias, manteles largos",
+      "excerpt": "A veces, con afán un tanto deportivo, repaso la nómina de los premios Nobel de todos los tiempos. A quienes entre ellos he leído, cuáles no leería nunca, cuales otros no volverían a leer, y aquellos cuyos nombres no me dicen nada. Sus nombres están inscritos en las lápidas de un vasto cementerio, algunas de ellas sobresalientes, otras perdidas entre la hierba. Rubén Darío se arrepentía de haber fi",
+      "publishedDates": [
+        {
+          "value": "2026-09-21T10:49:27+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.elboomeran.com/neruda-y-asturias-manteles-largos/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:08.622Z",
+  "foundItems": [
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/el-lado-salvaje-del-deseo-i/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El lado salvaje del deseo l",
+      "publishedAt": "2026-09-25T10:59:08.000Z",
+      "description": "El 12 de junio de 1892, durante un paseo por los Campos Elíseos, a Frank Wedekind, de 28 años, se […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/pisa-contra-aristoteles/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PISA contra Aristóteles",
+      "publishedAt": "2026-09-24T07:53:25.000Z",
+      "description": "Millones de jóvenes en todo el mundo jamás leerán a Dostoyevski o a Kafka, y mucho menos la Poética de […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/neruda-y-asturias-manteles-largos/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Neruda y Asturias, manteles largos",
+      "publishedAt": "2026-09-21T10:49:27.000Z",
+      "description": "A veces, con afán un tanto deportivo, repaso la nómina de los premios Nobel de todos los tiempos. A quienes […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/refectorios/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Refectorios",
+      "publishedAt": "2026-09-21T09:21:50.000Z",
+      "description": "Una vida aventurera pero bien financiada obliga o permite frecuentar mesones, cantinas, restaurantes y, en general, lugares pensados para […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/once-miradas-para-explorar-la-irracionalidad-con-los-ojos-de-peter-stamm/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Once miradas para explorar la irracionalidad con los ojos de Peter Stamm",
+      "publishedAt": "2026-09-20T14:31:25.000Z",
+      "description": "Un aprendiz de imaginación desbordada planea atracar una sucursal bancaria con una máscara de ardilla, obsequio de su madre. Durante […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/hamilberdi/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hamilberdi",
+      "publishedAt": "2026-09-17T09:17:41.000Z",
+      "description": "Fue un niño precoz y brillante, nacido lejos de las ciudades donde se tramaba la liberación de las colonias americanas. […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/lectura-cuesta-abajo-la-rodada/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lectura, cuesta abajo… la rodada",
+      "publishedAt": "2026-09-15T08:48:04.000Z",
+      "description": "Apocalipsis pedagógico en Europa tras el último informe PISA que elabora la OCDE, cuyo embajador español es valenciano, Ximo Puig, […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/la-filosofia-ante-dos-retos-iii/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La filosofía ante dos retos (III)",
+      "publishedAt": "2026-09-10T09:20:56.000Z",
+      "description": "Empezaré recordando algo de lo que ya traté aquí en varias ocasiones. En junio de 2022 en una entrevista al […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/roger-bartra-viajero-de-la-consciencia/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Roger Bartra, viajero de la consciencia",
+      "publishedAt": "2026-09-09T16:06:57.000Z",
+      "description": "La pareja de intelectuales catalanes formada por el poeta Agustí Bartra y la escritora y periodista Anna Murià, viajó a […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "el-boomeran",
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/el-excremento-del-diablo/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El excremento del diablo",
+      "publishedAt": "2026-09-08T07:10:35.000Z",
+      "description": "Un meme que circula en las redes sociales interpreta con trágico humor, muy latinoamericano, el acuerdo petrolero entre el gobierno […]",
+      "discoveredAt": "2026-09-26T17:32:06.867Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ee21e8132c3c4327e1ed561cb7b8ec450b7cc0cbbb027337aaebba6188b8594e"
+}

@@ -1,0 +1,367 @@
+{
+  "sourceId": "pen-deutschland-de",
+  "name": "PEN Germany",
+  "entryUrl": "https://www.pen-deutschland.de/",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:30.329Z",
+  "requests": [
+    {
+      "url": "https://pen-deutschland.de/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 9582,
+      "sha256": "d94c3d9ae619de358786245d1a4d8319dd49917b0e34a82dc42b7f8e330a647e",
+      "accessedAt": "2026-09-26T17:23:31.923Z"
+    },
+    {
+      "url": "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 220624,
+      "sha256": "d1d561ee67ac15e827c43f40bdcc84749f9c77daaf01e0df186abdad2ca8335a",
+      "accessedAt": "2026-09-26T17:29:33.116Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://pen-deutschland.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 119,
+    "sha256": "0964dcc2ceef52d692d56888a6c8770bcbbe3cf9d3a3c318917b0e3aff97643a",
+    "accessedAt": "2026-09-26T17:29:32.035Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:28.790Z",
+    "sourceDocumentSha256": "d94c3d9ae619de358786245d1a4d8319dd49917b0e34a82dc42b7f8e330a647e"
+  },
+  "endpoint": {
+    "id": "pen-deutschland-de",
+    "name": "PEN Germany",
+    "url": "https://pen-deutschland.de/feed/",
+    "format": "rss",
+    "language": "de",
+    "region": "europe",
+    "sourceFamilyId": "pen-deutschland-de",
+    "countryCodes": [
+      "DE"
+    ],
+    "coverageCountryCodes": [
+      "DE"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pen-deutschland.de"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:33.133Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "pen-deutschland-de",
+    "source": {
+      "name": "PEN Germany",
+      "url": "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/",
+      "language": "de"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "José Rubén Zamora Marroquín erhält Hermann Kesten-Preis 2026 des PEN Deutschland",
+    "publishedAt": "2026-09-01T08:01:23.000Z",
+    "description": "Der Hermann Kesten-Preis des PEN Deutschland, gestiftet vom Hessischen Ministerium für Wissenschaft und Forschung, Kunst und Kultur, geht in diesem Jahr an den guatemaltekischen Journalisten und Verleger José Rubén Zamora Marroquín. Der Preis ist mit 20.000 Euro dotiert. Mit dem Hermann Kesten-Förderpreis wird die internationale Menschenrechtsorganisation ARTICLE 19 ausgezeichnet, die sich weltwe…",
+    "discoveredAt": "2026-09-26T17:29:32.036Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 220624,
+      "sha256": "d1d561ee67ac15e827c43f40bdcc84749f9c77daaf01e0df186abdad2ca8335a",
+      "accessedAt": "2026-09-26T17:29:33.116Z",
+      "headline": "José Rubén Zamora Marroquín erhält Hermann Kesten-Preis 2026 des PEN Deutschland \u2013 PEN DEUTSCHLAND",
+      "excerpt": "José Rubén Zamora Marroquín Foto: Anne DemmerJosé Rubén Zamora Marroquín erhält Hermann Kesten-Preis 2026 des PEN Deutschland01.09.2026Hermann Kesten-Förderpreis geht an ARTICLE 19 Pressemitteilung, Darmstadt, 1.9.2026. Der Hermann Kesten-Preis des PEN Deutschland, gestiftet vom Hessischen Ministerium für Wissenschaft und Forschung, Kunst und Kultur, geht in diesem Jahr an den guatemaltekischen Jo",
+      "publishedDates": [
+        {
+          "value": "2026-09-01T08:01:23+02:00",
+          "method": "jsonld.datePublished",
+          "type": "event"
+        }
+      ],
+      "canonical": "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/",
+      "language": "de",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:33.133Z",
+  "foundItems": [
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/jose-ruben-zamora-marroquin-erhaelt-hermann-kesten-preis-2026-des-pen-deutschland/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "José Rubén Zamora Marroquín erhält Hermann Kesten-Preis 2026 des PEN Deutschland",
+      "publishedAt": "2026-09-01T08:01:23.000Z",
+      "description": "Der Hermann Kesten-Preis des PEN Deutschland, gestiftet vom Hessischen Ministerium für Wissenschaft und Forschung, Kunst und Kultur, geht in diesem Jahr an den guatemaltekischen Journalisten und Verleger José Rubén Zamora Marroquín. Der Preis ist mit 20.000 Euro dotiert. Mit dem Hermann Kesten-Förderpreis wird die internationale Menschenrechtsorganisation ARTICLE 19 ausgezeichnet, die sich weltwe…",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/pen-deutschland-auf-der-frankfurter-buchmesse-2/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Deutschland auf der Frankfurter Buchmesse 2026",
+      "publishedAt": "2026-09-01T08:00:54.000Z",
+      "description": "Auch in diesem Jahr ist PEN Deutschland auf der Frankfurter Buchmesse vertreten. Vom 7. bis 11. Oktober 2026 finden Sie uns in Halle 3.0, Stand A71.",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/pen-veranstaltung-mit-friedensnobelpreistraeger-ales-bialatski-auf-der-frankfurter-buchmesse/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN-Veranstaltung mit Friedensnobelpreisträger Aleś Bialatski auf der Frankfurter Buchmesse",
+      "publishedAt": "2026-09-24T12:40:24.000Z",
+      "description": "PEN Deutschland spricht mit Friedensnobelpreisträger Aleś Bialatski auf der Frankfurter Buchmesse über die Lage belarussischer Autoren",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/die-wanderjahre/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die Wanderjahre \u2013 Lesung mit Ariel Maceo Téllez und José F. A. Oliver im Literarischen Colloquium Berlin",
+      "publishedAt": "2026-09-17T08:35:49.000Z",
+      "description": "Mit den Autorinnen Dahlia de la Cerda, Luisa Futoransky, Claudia Ulloa Donoso sowie dem Writers-in-Exile-Stipendiaten des PEN Deutschland, Ariel Maceo Téllez Moderation: José F. A. Oliver, ehemaliger Präsident des PEN Deutschland",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/weil-ich-beschlossen-habe-mich-nie-bezwingen-zu-lassen-2/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Weil ich beschlossen habe, mich nie bezwingen zu lassen“ \u2013 Ausstellung mit Porträts von Writers-in-Exile-Stipendiaten des PEN in Kamen",
+      "publishedAt": "2026-09-21T11:56:02.000Z",
+      "description": "Der Fotokünstler Maximilian Gödecke hat Stipendiaten des Writers-in-Exile-Programms des PEN Deutschland porträtiert. Entstanden sind eindringliche fotografische Arbeiten, die er mit Kostproben aus dem schriftstellerischen Schaffen der Porträtierten verbindet. Ergänzt wird die Ausstellung durch eine Reihe von Filmporträts, darunter drei mit besonderem Bezug zu Kamen.",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/gespraechslesung-mit-maryam-kishawarz/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gesprächslesung mit Maryam Kishawarz im Frauenzentrum Darmstadt",
+      "publishedAt": "2026-09-15T10:51:59.000Z",
+      "description": "Maryam Kishawarz wird aus ihrem Roman „Ein Zug in der Dunkelheit, doch eine Hoffnung auf das Licht“ lesen \u2013 auf Dari mit deutscher Übersetzung. Jutta Schütz, Darmstädter Autorin und Mitglied des PEN Deutschland, wird Maryam im Gespräch vorstellen.",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/offene-erklaerung-des-netzwerks-autorenrechte-zur-neuen-eu-verpackungsverordnung/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Offene Erklärung des Netzwerks Autorenrechte zur neuen EU-Verpackungsverordnung",
+      "publishedAt": "2026-09-04T06:23:43.000Z",
+      "description": "Das Netzwerk Autorenrechte, dem auch PEN Deutschland angehört, fordert eine bürokratiearme und verhältnismäßige Umsetzung der neuen EU-Verpackungsverordnung (PPWR). Gerade Selfpublisher sowie Autoren, die nur gelegentlich Bücher oder Werbematerial versenden, dürften nicht mit denselben Anforderungen konfrontiert werden wie große Versandhändler. Das Netzwerk fordert deshalb unter anderem einfache …",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/was-mir-wirklich-wichtig-ist-die-freigeist-tour-von-pen-deutschland-zu-gast-beim-ilb-in-berlin/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Was (mir) wirklich wichtig ist. Die frei&geist-Tour von PEN Deutschland zu Gast beim ILB in Berlin",
+      "publishedAt": "2026-08-25T12:31:20.000Z",
+      "description": "Mit Hasnain Kazim, Anna Schneider, Wolfgang Thierse Es moderiert Matthias Politycki",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/kalmuecken-gibts-die-wirklich/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kalmücken, gibt’s die wirklich?",
+      "publishedAt": "2026-08-25T06:47:46.000Z",
+      "description": "Kaum jemand kennt sie, die westmongolischen Kalmücken, die vor Stalin geflohen und nach dem Zweiten Weltkrieg im westlichen Deutschland gestrandet sind. PEN-Autorin Petra Reategui geht in ihrem Buch „Ohne Flügel ist der Adler im Himmel machtlos. Kalmückische Displaced Persons im Nachkriegsdeutschland“ ihren Spuren nach. Mit der Autorin spricht Roberto Di Bella, Literaturwissenschaftler und Mitgli…",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-deutschland-de",
+      "source": {
+        "name": "PEN Germany",
+        "url": "https://pen-deutschland.de/geschwisterbeziehungen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Geschwisterbeziehungen",
+      "publishedAt": "2026-08-25T06:24:48.000Z",
+      "description": "Sie mögen sich lieben oder hassen, sich beneiden, bewundern oder übertreffen wollen - Geschwister sind ein Leben lang miteinander verbunden, ob sie es wollen oder nicht. Maren Gottschalk und Petra Reategui stöbern in der Literatur nach ihren Geschichten.",
+      "discoveredAt": "2026-09-26T17:29:32.036Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d94c3d9ae619de358786245d1a4d8319dd49917b0e34a82dc42b7f8e330a647e"
+}

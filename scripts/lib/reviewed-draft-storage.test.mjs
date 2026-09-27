@@ -1,3 +1,4 @@
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
@@ -10,7 +11,7 @@ import {
   projectPublishedNativeArchiveTransport,
 } from "./reviewed-native-archive-transport.mjs";
 
-const read = path => projectReviewedNativeArchiveRead(path, readFileSync(path, "utf8"));
+const read = path => projectReviewedNativeArchiveRead(path, projectReviewedR10Delta(path, readFileSync(path, "utf8")));
 const projectReviewedNativeArchiveTransport = (path, source) =>
   projectPublishedNativeArchiveTransport(path, projectReviewedDraftStorage(path, source));
 const sha = text => createHash("sha256").update(text).digest("hex");

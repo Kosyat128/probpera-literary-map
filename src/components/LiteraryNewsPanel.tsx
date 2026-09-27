@@ -1,11 +1,14 @@
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import newsLimits from "../../data/news/contract.json";
 
 import { useInterfaceLanguage, type InterfaceLanguage } from "../i18n/InterfaceLanguage";
-import { parseNewsFeed } from "../news/feed";
+import { readNewsFeedResponse } from "../news/transport";
 import { NEWS_CATEGORIES, NEWS_REGIONS, type NewsItem, type NewsRegion } from "../news/types";
 import { applyPendingNews, initialNewsUpdatesState, receiveNewsFeed } from "../news/updates";
+import { beginNewsWithdrawalUpdate, readKnownNewsWithdrawals, saveKnownNewsWithdrawals } from "../news/withdrawals";
 import { calendarDay, eventDateHint, formatNewsDate, getVisitorTimeZone, timeZoneLabel } from "../news/dates";
 import BrandExternalLinkIcon from "./BrandExternalLinkIcon";
+import NewsArticleThumbnail from "./NewsArticleThumbnail";
 import "../styles/literary-news.css";
 
 type NewsFilter = "all" | "today" | "upcoming";
@@ -17,7 +20,7 @@ const READ_NEWS_STORAGE_KEY = "probpera-literary-news-read-v1";
 function readStoredNewsIds(key: string): string[] {
   try {
     const value: unknown = JSON.parse(window.localStorage.getItem(key) ?? "[]");
-    if (!Array.isArray(value) || value.length > 500 || value.some((id) => typeof id !== "string" || !id.trim() || id.length > 120)) return [];
+    if (!Array.isArray(value) || value.length > newsLimits.maxItems || value.some((id) => typeof id !== "string" || !id.trim() || id.length > 120)) return [];
     return [...new Set(value as string[])];
   } catch {
     return [];
@@ -104,6 +107,8 @@ const copy = {
     upcomingEmptyTitle: "Подтверждённых анонсов пока нет",
     upcomingEmptyDescription: "Здесь появятся события с известной будущей датой.",
     coverage: "Подборка из доступных источников",
+    countries: "Страны источников",
+    more: "Показать ещё",
   },
   en: {
     eyebrow: "Proba Pera · News",
@@ -179,6 +184,8 @@ const copy = {
     upcomingEmptyTitle: "No confirmed upcoming events yet",
     upcomingEmptyDescription: "Events with a confirmed future date will appear here.",
     coverage: "A selection from available sources",
+    countries: "Source countries",
+    more: "Show more",
   },
 } satisfies Record<InterfaceLanguage, Record<string, string>>;
 
@@ -239,7 +246,9 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   const sidebar = variant === "sidebar";
   const titleId = useId();
   const listId = useId();
-  const [updates, setUpdates] = useState(initialNewsUpdatesState);
+  const [initialWithdrawals] = useState(readKnownNewsWithdrawals);
+  const withdrawalHistory = useRef(initialWithdrawals);
+  const [updates, setUpdates] = useState(() => initialNewsUpdatesState(initialWithdrawals.rows));
   const { feed, pendingItems } = updates;
   const [timeZone, setTimeZone] = useState(getVisitorTimeZone);
   const [failed, setFailed] = useState(false);
@@ -258,6 +267,7 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   const [persistentRead, setPersistentRead] = useState(true);
   const [openStoryIds, setOpenStoryIds] = useState<string[]>([]);
   const [expanded, setExpanded] = useState(false);
+  const [visibleLimit, setVisibleLimit] = useState(25);
   const [now, setNow] = useState(Date.now);
 
   function displayDate(value: string, locale: InterfaceLanguage, withTime = false) {
@@ -289,11 +299,11 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
 
   function toggleSaved(id: string) {
     if (savedOnly && savedIds.includes(id)) focusStoryFilter(id, "saved");
-    setSavedIds((current) => current.includes(id) ? current.filter((value) => value !== id) : [id, ...current].slice(0, 500));
+    setSavedIds((current) => current.includes(id) ? current.filter((value) => value !== id) : [id, ...current].slice(0, newsLimits.maxItems));
   }
 
   function markRead(id: string) {
-    setReadIds((current) => current.includes(id) ? current : [id, ...current].slice(0, 500));
+    setReadIds((current) => current.includes(id) ? current : [id, ...current].slice(0, newsLimits.maxItems));
   }
 
   function focusStoryFilter(id: string, filter: "saved" | "unread" = "unread") {
@@ -304,7 +314,7 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
 
   function toggleRead(id: string) {
     const wasRead = readIds.includes(id);
-    setReadIds((current) => current.includes(id) ? current.filter((value) => value !== id) : [id, ...current].slice(0, 500));
+    setReadIds((current) => current.includes(id) ? current.filter((value) => value !== id) : [id, ...current].slice(0, newsLimits.maxItems));
     if (!wasRead && unreadOnly && !openStoryIds.includes(id)) focusStoryFilter(id);
   }
 
@@ -335,7 +345,7 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   }
 
   useEffect(() => {
-    setUpdates(initialNewsUpdatesState());
+    setUpdates((current) => initialNewsUpdatesState(current.knownWithdrawals));
     setFailed(false);
   }, [endpoint]);
 
@@ -352,23 +362,47 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
       const timeout = window.setTimeout(() => activeController.abort(), 20_000);
       setRefreshing(true);
       try {
+        if (!beginNewsWithdrawalUpdate()) {
+          withdrawalHistory.current = { ...withdrawalHistory.current, reliable: false };
+          throw new Error("Withdrawal history is not writable");
+        }
         const url = new URL(endpoint, window.location.href);
         url.searchParams.set("timeZone", timeZone);
+        url.searchParams.set("contract", "2");
         const response = await fetch(url, {
           cache: "no-store",
           headers: { Accept: "application/json" },
           signal: activeController.signal,
         });
         if (!response.ok) throw new Error(`News feed returned ${response.status}`);
-        const nextFeed = parseNewsFeed(await response.json());
+        const nextFeed = await readNewsFeedResponse(response);
         if (!disposed) {
+          withdrawalHistory.current = saveKnownNewsWithdrawals(nextFeed.withdrawals ?? [], withdrawalHistory.current);
           setUpdates((current) => receiveNewsFeed(current, nextFeed));
           setOpenStoryIds((current) => current.filter((id) => nextFeed.items.some((item) => item.id === id)));
           setFailed(false);
           setNow(Date.now());
         }
       } catch {
-        if (!disposed) setFailed(true);
+        if (!disposed) {
+          setFailed(true);
+          // A stale release artifact is safe only with complete retained withdrawal history.
+          // It keeps its capture time and can never be a social publication proof.
+          try {
+            // A failed request introduced no accepted new facts; checkpoint the retained history.
+            withdrawalHistory.current = saveKnownNewsWithdrawals([], withdrawalHistory.current);
+            if (!withdrawalHistory.current.reliable) throw new Error("Withdrawal history is incomplete");
+            const fallback = await readNewsFeedResponse(await fetch(`${import.meta.env.BASE_URL}literary-news-snapshot.json`, {
+              cache: "no-store", signal: AbortSignal.timeout(8000), headers: { Accept: "application/json" },
+            }));
+            if (!disposed) {
+              withdrawalHistory.current = saveKnownNewsWithdrawals(fallback.withdrawals ?? [], withdrawalHistory.current);
+              if (!withdrawalHistory.current.reliable) throw new Error("Withdrawal history is incomplete");
+              setUpdates((current) => current.feed ? current : receiveNewsFeed(current,
+                { ...fallback, fallbackCapturedAt: fallback.generatedAt }));
+            }
+          } catch { /* Keep the honest unavailable state. */ }
+        }
       } finally {
         window.clearTimeout(timeout);
         inFlight = false;
@@ -401,10 +435,13 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   }, [endpoint, refreshVersion, timeZone]);
 
   const today = calendarDay(now, timeZone);
+  useEffect(() => { setVisibleLimit(25); }, [query, filter, topic, region, savedOnly, unreadOnly]);
   const filteredItems = useMemo(() => {
     const terms = searchable(query).trim().split(/\s+/).filter(Boolean);
     return (feed?.items ?? []).filter((item) =>
-      (filter !== "today" || item.eventDate === today)
+      (item.kind !== "announcement" || item.eventDate > today
+        || item.eventDate === today && calendarDay(Date.parse(item.verifiedAt),timeZone) >= today)
+      && (filter !== "today" || item.eventDate === today)
       && (filter !== "upcoming" || item.eventDate > today)
       && (topic === "all" || item.category === topic)
       && (region === "all" || (item.region ?? "global") === region)
@@ -413,10 +450,14 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
       && (!unreadOnly || !readIds.includes(item.id) || openStoryIds.includes(item.id))
     );
   }, [feed, filter, today, topic, region, query, savedOnly, savedIds, unreadOnly, readIds, openStoryIds]);
-  const visibleItems = expanded ? filteredItems : filteredItems.slice(0, 3);
+  const visibleItems = filteredItems.slice(0, expanded ? visibleLimit : 3);
+  const sourceCountries = new Set(feed?.sources.flatMap((source) => source.countryCodes ?? []) ?? []);
+  const countryNames = new Intl.DisplayNames([language], { type: "region" });
   const sourceErrors = feed?.sources.some((source) => source.status === "error") ?? false;
   const stale = Boolean(feed?.lastCheckedAt && now - Date.parse(feed.lastCheckedAt) > feed.refreshIntervalSeconds * 2_000);
-  const warning = failed && feed ? text.failed : sourceErrors ? text.partial : stale ? text.stale : null;
+  const warning = failed && feed ? `${text.failed}${feed.fallbackCapturedAt
+    ? ` ${language === "ru" ? "Снимок от" : "Snapshot from"} ${displayDate(feed.fallbackCapturedAt, language, true)}.` : ""}`
+    : sourceErrors ? text.partial : stale ? text.stale : null;
   const loading = !feed && refreshing && !failed;
   const unavailable = !feed && failed;
   const emptyTitle = unavailable ? text.unavailableTitle : savedOnly && !savedIds.length ? text.savedEmptyTitle : query.trim() || region !== "all" ? text.noMatches : unreadOnly ? savedOnly || topic !== "all" || filter !== "all" ? text.unreadFilteredEmptyTitle : text.unreadEmptyTitle : savedOnly ? text.savedFilteredEmptyTitle : topic !== "all" ? text.topicEmptyTitle : filter === "today" ? text.todayEmptyTitle : filter === "upcoming" ? text.upcomingEmptyTitle : text.emptyTitle;
@@ -424,7 +465,7 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   const hasActiveFilters = savedOnly || unreadOnly || topic !== "all" || region !== "all" || query.trim().length > 0 || filter !== "all";
   const regionCount = new Set((feed?.items ?? []).map((item) => item.region).filter((value) => value && value !== "global")).size;
   const expandButton = expanded || filteredItems.length > 3 ? (
-    <button type="button" className="literary-news__expand" aria-expanded={expanded} aria-controls={listId} onClick={() => { if (expanded) setOpenStoryIds([]); setExpanded((value) => !value); }}>
+    <button type="button" className="literary-news__expand" aria-expanded={expanded} aria-controls={listId} onClick={() => { if (expanded) setOpenStoryIds([]); setVisibleLimit(25); setExpanded((value) => !value); }}>
       {expanded ? text.collapse : `${text.showAll} (${filteredItems.length})`}<span aria-hidden="true">{expanded ? "↑" : "↓"}</span>
     </button>
   ) : null;
@@ -438,11 +479,12 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
   );
   const sourceDetails = feed && feed.sources.length > 0 ? (
     <details className="literary-news__sources">
-      <summary>{text.sources} <span>{feed.sources.length}</span><small>{text.coverage}</small></summary>
+      <summary>{text.sources} <span>{feed.sources.length}</span><small>{text.coverage}{sourceCountries.size > 0 && <> · {text.countries}: {sourceCountries.size}</>}</small></summary>
       <ul>
         {feed.sources.map((source) => (
           <li key={source.id}>
             <a href={source.url} target="_blank" rel="noopener noreferrer">{source.name}<BrandExternalLinkIcon /></a>
+            {!!source.countryCodes?.length && <small>{source.countryCodes.map((code) => countryNames.of(code) ?? code).join(", ")}</small>}
             <span className={`literary-news__source-status literary-news__source-status--${source.status}`}>
               {source.status === "ok" ? text.sourceOk : source.status === "error" ? text.sourceError : text.sourcePending}
               {source.lastSuccessAt && <> · <time dateTime={source.lastSuccessAt}>{displayDate(source.lastSuccessAt, language, true)}</time></>}
@@ -552,7 +594,10 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
                     <span className="literary-news__kind">{item.kind === "calendar" ? text.calendar : text.announcement}</span>
                   )}
                   {item.region && <span className="literary-news__item-region">{regionCopy[item.region][language]}</span>}
-                  <h3>{sidebar ? <button type="button" className="literary-news__headline" aria-expanded={openStoryIds.includes(item.id)} aria-controls={`${listId}-story-${encodeURIComponent(item.id)}`} onClick={() => setStoryOpen(item.id, !openStoryIds.includes(item.id))}>{item.title[language]}</button> : item.title[language]}</h3>
+                  <div className="literary-news__story-heading">
+                    <h3>{sidebar ? <button type="button" className="literary-news__headline" aria-expanded={openStoryIds.includes(item.id)} aria-controls={`${listId}-story-${encodeURIComponent(item.id)}`} onClick={() => setStoryOpen(item.id, !openStoryIds.includes(item.id))}>{item.title[language]}</button> : item.title[language]}</h3>
+                    <NewsArticleThumbnail item={item} language={language} onRead={() => readFromSource(item.id)} />
+                  </div>
                   {sidebar ? (
                     <details id={`${listId}-story-${encodeURIComponent(item.id)}`} className="literary-news__story-details" open={openStoryIds.includes(item.id)} onToggle={(event) => setStoryOpen(item.id, event.currentTarget.open)}>
                       <summary aria-label={`${text.details}: ${item.title[language]}`}>{text.details}</summary>
@@ -584,6 +629,13 @@ export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru
           </div>
         )}
       </div>
+
+      {expanded && visibleItems.length < filteredItems.length && (
+        <button type="button" className="literary-news__expand" aria-controls={listId}
+          onClick={() => setVisibleLimit((count) => count + 25)}>
+          {text.more} ({visibleItems.length}/{filteredItems.length})
+        </button>
+      )}
 
       {sidebar ? (
         <footer className="literary-news__sidebar-footer">

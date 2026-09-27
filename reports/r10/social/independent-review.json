@@ -1,0 +1,39 @@
+{
+  "recordedAt": "2026-09-26T19:33:01.952Z",
+  "reviewedAt": "2026-09-26T19:30:07Z",
+  "reviewer": "independent agent /root/article_showcase",
+  "humanReview": false,
+  "scope": "Read-only media/transport/dispatcher review plus actual-code isolated reproductions; not native platform or production acceptance",
+  "sourceHashes": {
+    "scripts/lib/literary-news-media.mjs": "11cc34428c7e145c984ffbfe14db487aa227acd243dd7eb1101b1bd722a58f76",
+    "scripts/lib/literary-news-media-upload.mjs": "15f9432e25c0c8ef037b56e1d7b7a94fa272b6cb006449bb906cb49ce98504a8",
+    "scripts/lib/literary-news-social.mjs": "8eb07adab515bd4418ae297e996e916ca5de856741feb39dac1f904673794d50",
+    "scripts/lib/literary-news-social-transport.mjs": "a6ecee947250f226c501329177b55f04df0339b23de7a0c599f7ad9a268dc1ba"
+  },
+  "tests": {
+    "media": 20,
+    "social": 29,
+    "restore": 5,
+    "total": 54,
+    "failed": 0
+  },
+  "fixedFindings": [
+    "Substring fail-open in untyped newsIds/downloadHosts replaced by bounded exact arrays; rejected host performs zero fetches.",
+    "VK upload rate limits preserve Retry-After and set destination-wide cooldown.",
+    "CC-BY captions carry creator, license URL and transformation notice.",
+    "Existing-job media cache binds verified provider account, numeric destination and exact derivative SHA; VK receipt is committed before wall dispatch; Telegram file_id saved only with accepted message."
+  ],
+  "confirmed": [
+    "Persisted JSON VK receipt reuses attachment with zero provider upload calls.",
+    "Changing provider account invalidates reuse; revoked rights block before provider calls.",
+    "Pause, revision, withdrawals and current rights are checked after upload with a fresh atomic destination guard.",
+    "Ambiguous photo send cannot fall back to a second create.",
+    "Profile-only changes preserve previously sent post presentation."
+  ],
+  "unresolvedHighSeverityInReviewedScope": [],
+  "limitations": [
+    "No real remote writes, canary or production database.",
+    "Permission-bearing runtime media registry and destination configuration remain empty.",
+    "A review of this bounded change is not an assurance against all future external API changes."
+  ]
+}

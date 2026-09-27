@@ -6,6 +6,8 @@ import { cmsCoreFieldMarker } from "../cms/directEditBridge";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import BrandArrowIcon from "./BrandArrowIcon";
 import CountryFlagIcon from "./CountryFlagIcon";
+import curatedWriterQids from "../data/countries/generated/curatedWriterQids.generated.json";
+import { parseWriterDate, type WriterDatePrecision } from "../utils/writerDates";
 
 type Props = {
   countries: Country[];
@@ -34,29 +36,15 @@ function pluralRu(count: number, forms: [string, string, string]) {
   return forms[2];
 }
 
-export function dateParts(value?: string) {
-  if (!value) return null;
-  const match = /^\+?(\d{4})-(\d{2})-(\d{2})$/.exec(value);
-  if (!match) return null;
-  const year = Number(match[1]);
-  const month = Number(match[2]);
-  const day = Number(match[3]);
-  if (
-    year < 100 ||
-    month < 1 ||
-    month > 12 ||
-    day < 1 ||
-    day > new Date(Math.max(year, 1900), month, 0).getDate()
-  ) {
-    return null;
-  }
-
-  // В импортированных справочниках 1 января часто означает «известен
-  // только год», а не реальную календарную дату. Такие записи нельзя
-  // превращать в десятки ложных событий 01.01.
-  if (month === 1 && day === 1) return null;
-
-  return { year, month: month - 1, day };
+export function dateParts(value?: string, precision?: WriterDatePrecision) {
+  if (!value || !/^\+?\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+  const parsed = parseWriterDate(value);
+  if (!parsed || parsed.precision !== "day" || parsed.year < 100) return null;
+  if (precision && precision !== "day") return null;
+  // Legacy 01.01 needs explicit, value-bound day evidence; a year-only import
+  // must never silently become a birthday.
+  if (parsed.month === 1 && parsed.day === 1 && precision !== "day") return null;
+  return { year: parsed.year, month: parsed.month! - 1, day: parsed.day! };
 }
 
 function writerName(
@@ -67,19 +55,52 @@ function writerName(
   return selectWriterDisplayName(writer, language, fallback);
 }
 
-export function calendarWriterIdentity(writer: Writer) {
-  const nameParts = writerName(writer)
-    .normalize("NFKC")
-    .toLocaleLowerCase("ru")
-    .replace(/[^\p{L}\p{N}\s-]+/gu, " ")
-    .split(/\s+/u)
-    .filter(Boolean);
-  const surname = nameParts[nameParts.length - 1] || writer.id;
-  const birthDate = writer.birthDate?.replace(/^\+/, "");
-  const deathDate = writer.deathDate?.replace(/^\+/, "");
-  if (birthDate) return `${surname}|${birthDate}`;
-  if (deathDate) return `${surname}|memory|${deathDate}`;
-  return "";
+export function calendarWriterIdentity(writer: Writer, countryId = "") {
+  const registry = curatedWriterQids.writers as Record<string, { wikidataId: string }>;
+  const qid = registry[`${countryId}:${writer.id}`]?.wikidataId;
+  return qid ? `wikidata:${qid}` : `writer:${countryId}:${writer.id}`;
+}
+
+export function selectCalendarEvents(
+  countries: Country[],
+  language: "ru" | "en" = "ru",
+  translate: (value: string) => string = value => value
+): CalendarEvent[] {
+  const groups = new Map<string, CalendarEvent[]>();
+  for (const country of countries) for (const writer of country.writers) {
+    for (const [field, kind, label] of [
+      ["birthDate", "birth", "День рождения"],
+      ["deathDate", "memory", "День памяти"],
+    ] as const) {
+      const evidence = writer.dateEvidence?.[field];
+      const precision = evidence?.value === writer[field] ? evidence?.precision : undefined;
+      const parts = dateParts(writer[field], precision);
+      if (!parts) continue;
+      const key = `${calendarWriterIdentity(writer, country.id)}:${kind}`;
+      groups.set(key, [...(groups.get(key) || []), {
+        day: parts.day, month: parts.month,
+        title: writerName(writer, language, translate("Автор")),
+        detail: `${translate(label)} · ${parts.year}`,
+        kind, country, writer,
+      }]);
+    }
+  }
+  const result: CalendarEvent[] = [];
+  for (const group of groups.values()) {
+    const values = new Set(group.map(event =>
+      event.writer[event.kind === "birth" ? "birthDate" : "deathDate"]!.replace(/^\+/, "")
+    ));
+    // An exact QID deduplicates language/country aliases, but never resolves
+    // contradictory facts by picking the longest name or the first country.
+    if (values.size !== 1) continue;
+    result.push(group.reduce((best, event) => writerName(event.writer).length > writerName(best.writer).length ? event : best));
+  }
+  return result.sort((a, b) => a.day - b.day || a.title.localeCompare(b.title, language));
+}
+
+export function calendarEventsForMonth(events: CalendarEvent[], year: number, month: number) {
+  const days = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+  return events.filter(event => event.month === month && event.day <= days);
 }
 
 export function visibleCalendarAgendaDays<T>(
@@ -119,56 +140,10 @@ export default function LiteraryCalendar({
     }
   }, [month, year, selectedDay, showFullAgenda]);
 
-  const events = useMemo(() => {
-    const result: CalendarEvent[] = [];
-    const uniqueWriters = new Map<
-      string,
-      { country: Country; writer: Writer; score: number }
-    >();
-
-    countries.forEach((country) => {
-      country.writers.forEach((writer) => {
-        const identity =
-          calendarWriterIdentity(writer) || `${country.id}:${writer.id}`;
-        const score = writerName(writer).length;
-        const existing = uniqueWriters.get(identity);
-        if (!existing || score > existing.score) {
-          uniqueWriters.set(identity, { country, writer, score });
-        }
-      });
-    });
-
-    uniqueWriters.forEach(({ country, writer }) => {
-        const birth = dateParts(writer.birthDate);
-        const death = dateParts(writer.deathDate);
-
-        if (birth) {
-          result.push({
-            day: birth.day,
-            month: birth.month,
-            title: writerName(writer, language, t("Автор")),
-            detail: `${t("День рождения")} · ${birth.year}`,
-            kind: "birth",
-            country,
-            writer,
-          });
-        }
-
-        if (death) {
-          result.push({
-            day: death.day,
-            month: death.month,
-            title: writerName(writer, language, t("Автор")),
-            detail: `${t("День памяти")} · ${death.year}`,
-            kind: "memory",
-            country,
-            writer,
-          });
-        }
-    });
-
-    return result.sort((first, second) => first.day - second.day || first.title.localeCompare(second.title, "ru"));
-  }, [countries, language, t]);
+  const events = useMemo(
+    () => selectCalendarEvents(countries, language, t),
+    [countries, language, t]
+  );
 
   const monthLabel = useMemo(
     () =>
@@ -191,7 +166,7 @@ export default function LiteraryCalendar({
       ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
       : ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
-  const monthEvents = useMemo(() => events.filter((event) => event.month === month), [events, month]);
+  const monthEvents = useMemo(() => calendarEventsForMonth(events, year, month), [events, year, month]);
   const eventsByDay = useMemo(() => {
     const grouped = new Map<number, CalendarEvent[]>();
     monthEvents.forEach((event) => {

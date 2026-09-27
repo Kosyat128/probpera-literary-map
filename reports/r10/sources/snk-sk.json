@@ -1,0 +1,417 @@
+{
+  "sourceId": "snk-sk",
+  "name": "Slovak National Library",
+  "entryUrl": "https://www.snk.sk/en/",
+  "countryCodes": [
+    "SK"
+  ],
+  "coverageCountryCodes": [
+    "SK"
+  ],
+  "attemptedAt": "2026-09-26T17:29:14.744Z",
+  "requests": [
+    {
+      "url": "https://snk.sk/en/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 35839,
+      "sha256": "200fb41b3f6c9bc03c168d93e108e4c818cca092b11ee0b92a4db094f818882c",
+      "accessedAt": "2026-09-26T17:23:07.796Z"
+    },
+    {
+      "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 37063,
+      "sha256": "44596d35f06e54b6b0405dbe88d4f5f4158bac2759a0a0e28fcf0f5a7710b8d8",
+      "accessedAt": "2026-09-26T17:29:17.135Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.snk.sk/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:06.307Z",
+    "sourceDocumentSha256": "200fb41b3f6c9bc03c168d93e108e4c818cca092b11ee0b92a4db094f818882c"
+  },
+  "endpoint": {
+    "id": "snk-sk",
+    "name": "Slovak National Library",
+    "url": "https://snk.sk/en/",
+    "format": "html",
+    "language": "en-US",
+    "region": "europe",
+    "sourceFamilyId": "snk-sk",
+    "countryCodes": [
+      "SK"
+    ],
+    "coverageCountryCodes": [
+      "SK"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://snk.sk"
+    ],
+    "linkPattern": "^/en/[^/]+/?$|^/en/novinky/.+",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://snk.sk/en/novinky/bibliograficke-dni-2026"
+    ],
+    "verifiedAt": "2026-09-26T17:29:17.137Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 12,
+  "literaryCandidateCount": 12,
+  "sample": {
+    "sourceId": "snk-sk",
+    "source": {
+      "name": "Slovak National Library",
+      "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+      "language": "en-US"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Seminár Bibliografické dni 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:16.268Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 37063,
+      "sha256": "44596d35f06e54b6b0405dbe88d4f5f4158bac2759a0a0e28fcf0f5a7710b8d8",
+      "accessedAt": "2026-09-26T17:29:17.135Z",
+      "headline": "Seminár Bibliografické dni 2026",
+      "excerpt": "Novinky DIKDA Online katalóg SNK Spýtajte sa knižnice Projekty a spolupráca Pre knihovníkov a vydavateľov Podcast SNK e-konferencie Cenník poplatkov Otváracie hodiny Pre médiá O nás Seminár Bibliografické dni 2026 2. október 2026 Vážené kolegyne, vážení kolegovia, odbor Národná bibliografia Slovenskej národnej knižnice Vás srdečne pozýva na odborný seminár Bibliografické dni 2026, ktorý sa uskutoč",
+      "publishedDates": [],
+      "canonical": "/en/novinky/bibliograficke-dni-2026",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:17.137Z",
+  "foundItems": [
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Seminár Bibliografické dni 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/literarny-fond-ocenil-nasu-publikaciu",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Literárny fond ocenil našu publikáciu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/webinar-sila-pribehu-v-kniznici",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Webinár Sila príbehu v knižnici",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/online-seminar-verejna-kniznica-40",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Online seminár Verejná knižnica 4.0",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/online-seminar-benchmarking-verejnych-kniznic",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Online seminár Benchmarking verejných knižníc",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/novinky/workshop-akvizicia-katalogizacia-a-legislativa-v-kniznicnej-praxi",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Workshop Akvizícia, katalogizácia a legislatíva v knižničnej praxi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/pre-knihovnikov-a-vydavatelov",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Pre knihovníkov a vydavateľov",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/cennik-poplatkov",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Cenník poplatkov",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/prehlasenie-o-cookies",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prehlásenie o cookies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/vyhlasenie-o-pristupnosti",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Vyhlásenie o prístupnosti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/ochrana-osobnych-udajov",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ochrana osobných údajov",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "snk-sk",
+      "source": {
+        "name": "Slovak National Library",
+        "url": "https://snk.sk/en/slobodny-pristup-k-informaciam",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Slobodný prístup k informáciám",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:16.268Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "200fb41b3f6c9bc03c168d93e108e4c818cca092b11ee0b92a4db094f818882c"
+}

@@ -1,0 +1,747 @@
+{
+  "sourceId": "bn-peru",
+  "name": "Biblioteca Nacional del Perú",
+  "entryUrl": "https://www.gob.pe/institucion/bnp/noticias",
+  "countryCodes": [
+    "PE"
+  ],
+  "coverageCountryCodes": [
+    "PE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:45.240Z",
+  "requests": [
+    {
+      "url": "https://www.gob.pe/institucion/bnp/noticias",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 192412,
+      "sha256": "73358c0cdb484c3b760b9e54adc5d2178b45bf336c045c575697c3d332f165d1",
+      "accessedAt": "2026-09-26T17:29:47.494Z"
+    },
+    {
+      "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 40034,
+      "sha256": "9edb74c125276f1214dc6aafccadd48f896d051017965a488d9d1199b28ace9a",
+      "accessedAt": "2026-09-26T17:29:47.997Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.gob.pe/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 525,
+    "sha256": "16a80ba175a8e46f6900e8ea6cdb17e661ea119105fbb5415fcab0db73f43a99",
+    "accessedAt": "2026-09-26T17:29:46.581Z",
+    "disallowed": [
+      "/admin/",
+      "/*?sheet=",
+      "/*&sheet="
+    ]
+  },
+  "endpoint": {
+    "id": "bn-peru",
+    "name": "Biblioteca Nacional del Perú",
+    "url": "https://www.gob.pe/institucion/bnp/noticias",
+    "format": "html",
+    "language": "es-PE",
+    "region": "latin-america",
+    "sourceFamilyId": "bn-peru",
+    "countryCodes": [
+      "PE"
+    ],
+    "coverageCountryCodes": [
+      "PE"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.gob.pe"
+    ],
+    "linkPattern": "^/institucion/bnp/tema/[^/]+/?$|^/institucion/bnp/pages/[^/]+/?$|^/institucion/bnp/colecciones/[^/]+/?$|^/[^/]{12,}/?$|^/institucion/bnp/noticias/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas"
+    ],
+    "verifiedAt": "2026-09-26T17:29:48.003Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 25,
+  "literaryCandidateCount": 25,
+  "sample": {
+    "sourceId": "bn-peru",
+    "source": {
+      "name": "Biblioteca Nacional del Perú",
+      "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+      "language": "es-PE"
+    },
+    "region": "latin-america",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "“Reconocimiento Jorge Basadre Grohmann” 2026: La BNP distinguió a quienes transforman sus comunidades a través de las bibliotecas",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:47.570Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 40034,
+      "sha256": "9edb74c125276f1214dc6aafccadd48f896d051017965a488d9d1199b28ace9a",
+      "accessedAt": "2026-09-26T17:29:47.997Z",
+      "headline": "“Reconocimiento Jorge Basadre Grohmann” 2026: La BNP distinguió a quienes transforman sus comunidades a través de las bibliotecas",
+      "excerpt": "Biblioteca Nacional del Perú“Reconocimiento Jorge Basadre Grohmann” 2026: La BNP distinguió a quienes transforman sus comunidades a través de las bibliotecasNota de prensaEn el marco de sus 205 años, la Biblioteca Nacional del Perú entregó estos premios a 10 experiencias ganadoras y otorgó cinco menciones honrosas por su aporte a la lectura y el acceso a la información29 de agosto de 2026 - 3:19 p",
+      "publishedDates": [],
+      "canonical": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+      "language": "es-pe",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:48.003Z",
+  "foundItems": [
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "“Reconocimiento Jorge Basadre Grohmann” 2026: La BNP distinguió a quienes transforman sus comunidades a través de las bibliotecas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437503-la-biblioteca-nacional-celebro-205-anos-de-historia-mirando-al-futuro-y-presento-el-libro-la-bnp-en-205-imagenes",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional celebró 205 años de historia mirando al futuro y presentó el libro La BNP en 205 imágenes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447724-ninos-y-jovenes-escritores-de-piura-descubrieron-en-la-biblioteca-nacional-como-una-idea-se-convierte-en-un-libro",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Niños y jóvenes escritores de Piura descubrieron en la Biblioteca Nacional cómo una idea se convierte en un libro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447691-ninos-del-callao-convierten-sus-historias-en-un-libro-y-reciben-el-respaldo-de-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Niños del Callao convierten sus historias en un libro y reciben el respaldo de la Biblioteca Nacional del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437517-la-biblioteca-nacional-cerro-la-celebracion-de-sus-205-anos-llevando-libros-y-lectura-a-comunidades-de-ayacucho-y-huanta",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional cerró la celebración de sus 205 años llevando libros y lectura a comunidades de Ayacucho y Huanta",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437375-la-biblioteca-nacional-del-peru-completa-la-red-nacional-de-deposito-legal-con-la-acreditacion-de-su-centro-de-acopio-numero-23-en-tacna",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional del Perú completa la red nacional de Depósito Legal con la acreditación de su Centro de Acopio número 23 en Tacna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437223-dia-del-nino-biblioteca-nacional-organiza-fiesta-cultural-y-entrega-libros-a-ninos-de-comedores-populares-y-ollas-comunes-de-vmt",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Día del Niño: Biblioteca Nacional organiza fiesta cultural y entrega libros a niños de comedores populares y ollas comunes de VMT",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447781-una-noche-magica-se-vivio-en-la-biblioteca-nacional-con-la-celebracion-de-los-20-anos-de-chimoc",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Una noche mágica se vivió en la Biblioteca Nacional con la celebración de los 20 años de Chimoc",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447780-la-biblioteca-nacional-del-peru-fortalece-la-inclusion-digital-de-personas-con-discapacidad-visual-en-la-gran-biblioteca-publica-de-lima",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional del Perú fortalece la inclusión digital de personas con discapacidad visual en la Gran Biblioteca Pública de Lima",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447778-la-gran-biblioteca-publica-de-lima-abre-espacio-de-dialogo-sobre-el-patrimonio-peruano-con-conversatorio-pasaporte-cultural-junin",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Gran Biblioteca Pública de Lima abre espacio de diálogo sobre el patrimonio peruano con conversatorio “Pasaporte Cultural Junín\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447776-la-biblioteca-nacional-imprimira-1000-ejemplares-del-pasaporte-cultural-de-junin-en-su-nueva-imprenta-digital",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional imprimirá 1000 ejemplares del Pasaporte Cultural de Junín en su nueva imprenta digital",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447718-la-biblioteca-nacional-llevo-sus-rutas-lectoras-a-las-aulas-y-compartio-historias-en-la-maraton-de-la-lectura",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional llevó sus “Rutas lectoras” a las aulas y compartió historias en la Maratón de la Lectura",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447706-la-biblioteca-nacional-logra-la-declaratoria-de-13-documentos-de-la-coleccion-felipe-cossio-del-pomar-como-patrimonio-cultural-de-la-nacion",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional logra la declaratoria de 13 documentos de la colección Felipe Cossío del Pomar como Patrimonio Cultural de la Nación",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447688-la-voz-de-chabuca-volvio-a-la-gran-biblioteca-publica-de-lima-en-homenaje-por-su-natalicio",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La voz de Chabuca volvió a la Gran Biblioteca Pública de Lima en homenaje por su natalicio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447684-la-fotografia-como-memoria-e-identidad-la-bnp-acerca-la-obra-de-martin-chambi-a-estudiantes-de-secundaria",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La fotografía como memoria e identidad: La BNP acerca la obra de Martín Chambi a estudiantes de secundaria",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447676-la-biblioteca-nacional-y-san-marcos-unen-esfuerzos-para-fortalecer-la-formacion-de-futuros-profesionales-de-la-bibliotecologia",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional y San Marcos unen esfuerzos para fortalecer la formación de futuros profesionales de la bibliotecología",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437521-declaran-patrimonio-cultural-de-la-nacion-ocho-obras-de-franklin-pease-que-custodia-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Declaran Patrimonio Cultural de la Nación ocho obras de Franklin Pease que custodia la Biblioteca Nacional del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437498-la-biblioteca-nacional-del-peru-inicio-la-celebracion-de-sus-205-anos-con-una-serenata-y-el-encendido-de-luces-en-su-sede-historica",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional del Perú inició la celebración de sus 205 años con una serenata y el encendido de luces en su sede histórica",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437491-casi-500-personas-vibraron-con-una-noche-de-rock-argentino-en-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Casi 500 personas vibraron con una noche de rock argentino en la Biblioteca Nacional del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437388-la-bnp-promovio-una-lectura-sin-limites-en-la-gran-biblioteca-publica-de-lima-con-estudiantes-del-ceba-luis-braille",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La BNP promovió una lectura sin límites en la Gran Biblioteca Pública de Lima con estudiantes del CEBA Luis Braille",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437366-la-biblioteca-nacional-reunio-a-especialistas-para-fortalecer-la-proteccion-del-patrimonio-bibliografico-y-documental-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Biblioteca Nacional reunió a especialistas para fortalecer la protección del patrimonio bibliográfico y documental del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437361-ministro-de-cultura-inaugura-moderna-imprenta-digital-en-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ministro de Cultura inaugura moderna imprenta digital en la Biblioteca Nacional del Perú",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437349-la-gran-biblioteca-publica-de-lima-cerro-exposicion-coleccion-ancash-chavin-sechin-con-un-dialogo-entre-la-arqueologia-y-la-fotografia",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "La Gran Biblioteca Pública de Lima cerró exposición “Colección Áncash: Chavín\u2013Sechín” con un diálogo entre la arqueología y la fotografía",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437337-el-canal-de-huatica-la-historia-del-agua-que-todavia-permanece-bajo-las-calles-de-lima",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "El canal de Huatica: la historia del agua que todavía permanece bajo las calles de Lima",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bn-peru",
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437297-mas-de-12-400-visitas-recibio-la-sala-alfredo-bryce-echenique-de-la-biblioteca-nacional-en-sus-primeros-tres-meses-de-funcionamiento",
+        "language": "es-PE"
+      },
+      "region": "latin-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Más de 12 400 visitas recibió la Sala Alfredo Bryce Echenique de la Biblioteca Nacional en sus primeros tres meses de funcionamiento",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:47.570Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "73358c0cdb484c3b760b9e54adc5d2178b45bf336c045c575697c3d332f165d1"
+}

@@ -1,0 +1,25 @@
+{
+  "before": 2237,
+  "after": 2297,
+  "acceptedPatches": 60,
+  "newDateFields": 51,
+  "newUniqueEvents": 60,
+  "newlyVisible2026": 59,
+  "newlyVisible2028": 60,
+  "heldByReason": {
+    "no-referenced-exact-claim": 468,
+    "existing-precision-needs-source-review": 108,
+    "no-reviewed-qid": 169,
+    "existing-editorial-date-decision": 285,
+    "qualified-date-needs-review": 3,
+    "unsupported-calendar-model": 8,
+    "conflicting-exact-claims-or-calendar-models": 8
+  },
+  "target": {
+    "total2000": true,
+    "additional1000": false,
+    "remainingFromThisVerifiedBaseline": 940,
+    "remainingIfOnlyNewDateFieldsCount": 949,
+    "historicalTaskBaseline": "unknown; earlier accepted batches are not reset or claimed"
+  }
+}

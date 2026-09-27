@@ -1,0 +1,367 @@
+{
+  "sourceId": "bnrm-md",
+  "name": "National Library of the Republic of Moldova",
+  "entryUrl": "https://www.bnrm.md/",
+  "countryCodes": [
+    "MD"
+  ],
+  "coverageCountryCodes": [
+    "MD"
+  ],
+  "attemptedAt": "2026-09-26T17:29:12.594Z",
+  "requests": [
+    {
+      "url": "https://www.bnrm.md/?feed=rss2",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 36668,
+      "sha256": "7f4ed3670635970cdb53209e3a87ecda0bffd9dbc242d42e5bdbad6203770a11",
+      "accessedAt": "2026-09-26T17:23:04.369Z"
+    },
+    {
+      "url": "https://www.bnrm.md/?p=7522",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 194885,
+      "sha256": "c5fbab73692d9f6407294b74512789900f4b7e59ac25678bb30da5a0c92e555d",
+      "accessedAt": "2026-09-26T17:29:13.748Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.bnrm.md/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:02.306Z",
+    "sourceDocumentSha256": "7f4ed3670635970cdb53209e3a87ecda0bffd9dbc242d42e5bdbad6203770a11"
+  },
+  "endpoint": {
+    "id": "bnrm-md",
+    "name": "National Library of the Republic of Moldova",
+    "url": "https://www.bnrm.md/?feed=rss2",
+    "format": "rss",
+    "language": "ro-RO",
+    "region": "europe",
+    "sourceFamilyId": "bnrm-md",
+    "countryCodes": [
+      "MD"
+    ],
+    "coverageCountryCodes": [
+      "MD"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.bnrm.md"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.bnrm.md/?p=7522"
+    ],
+    "verifiedAt": "2026-09-26T17:29:13.765Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "bnrm-md",
+    "source": {
+      "name": "National Library of the Republic of Moldova",
+      "url": "https://www.bnrm.md/?p=7522",
+      "language": "ro-RO"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "ExpozițiE aniversară „Destine literare ale neamului românesc: Coșbuc și Bacovia”",
+    "publishedAt": "2026-09-16T08:53:44.000Z",
+    "description": "Biblioteca Națională a Republicii Moldova invită publicul să descopere expoziția aniversară „Destine literare ale neamului românesc: Coșbuc și Bacovia”, dedicată împlinirii a 160 de ani de la nașterea lui George Coșbuc și a 145 de ani de la nașterea lui George Bacovia. Expoziția propune o întâlnire peste timp între două sensibilități poetice și oferă publicului prilejul de a redescoperi opera...",
+    "discoveredAt": "2026-09-26T17:29:13.070Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.bnrm.md/?p=7522",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 194885,
+      "sha256": "c5fbab73692d9f6407294b74512789900f4b7e59ac25678bb30da5a0c92e555d",
+      "accessedAt": "2026-09-26T17:29:13.748Z",
+      "headline": "ExpozițiE aniversară „Destine literare ale neamului românesc: Coșbuc și Bacovia” \u2013 Biblioteca Națională a Republicii MoldovaToggle Menu CloseToggle Menu CloseScroll to topScroll to topLuminaÎntunericToggle Menu CloseSearch",
+      "excerpt": "Biblioteca Națională a Republicii Moldova invită publicul să descopere expoziția aniversară „Destine literare ale neamului românesc: Coșbuc și Bacovia”, dedicată împlinirii a 160 de ani de la nașterea lui George Coșbuc și a 145 de ani de la nașterea lui George Bacovia. Expoziția propune o întâlnire peste timp între două sensibilități poetice și oferă publicului prilejul de a redescoperi opera și p",
+      "publishedDates": [],
+      "canonical": "https://www.bnrm.md/?p=7522",
+      "language": "ro-RO",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:13.765Z",
+  "foundItems": [
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7522",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "ExpozițiE aniversară „Destine literare ale neamului românesc: Coșbuc și Bacovia”",
+      "publishedAt": "2026-09-16T08:53:44.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova invită publicul să descopere expoziția aniversară „Destine literare ale neamului românesc: Coșbuc și Bacovia”, dedicată împlinirii a 160 de ani de la nașterea lui George Coșbuc și a 145 de ani de la nașterea lui George Bacovia. Expoziția propune o întâlnire peste timp între două sensibilități poetice și oferă publicului prilejul de a redescoperi opera...",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7513",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "CONFERINȚA INTERNAȚIONALĂ „LECTURA CA BAZĂ PENTRU CULTURĂ, CUNOAȘTERE ȘI DEZVOLTARE”, EDIȚIA A VIII-A, 2026",
+      "publishedAt": "2026-09-10T07:36:54.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova, în parteneriat cu Ministerul Culturii al Republicii Moldova, organizează în cadrul Programului Național LecturaCentral, cea de-a VIII-a ediție a Conferinței internaționale „Lectura ca bază pentru cultură, cunoaștere și dezvoltare”. Conferința reprezintă unul dintre cele mai importante forumuri profesionale dedicate promovării lecturii, reunind biblioteca…",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7488",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Campania Națională „Septembrie \u2013 nicio zi fără lectură”, ediţia 2026",
+      "publishedAt": "2026-08-26T11:47:23.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova, sub egida Ministerului Culturii, anunță lansarea Campaniei Naționale „Septembrie \u2013 nicio zi fără lectură”, ediţia 2026, un eveniment cultural de amploare centrat pe promovarea cărții și a lecturii, care se desfășoară anual, din cadrul Programului Naţional LecturaCentral. Pe parcursul campaniei, vor fi organizate evenimente culturale, întâlniri cu scriito…",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7536",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ziua Europeană a Limbilor la BNRM",
+      "publishedAt": "2026-09-23T06:16:56.000Z",
+      "description": "În contextul Zilei Europene a Limbilor, Ministerul Culturii al Republicii Moldova, Biblioteca Națională a Republicii Moldova în parteneriat cu Asociația Profesorilor de Limba Engleză din Moldova (META Moldova) și Oficiul Consiliului Europei la Chișinău organizează un concurs intelectual interactiv Brain Ring „Limbile ne unesc!”. Evenimentul se adresează elevilor din diferite instituții de învățăm…",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7532",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Masă rotunda: „Artistul care a îmblânzit culoarea \u2013 Ion Daghi”",
+      "publishedAt": "2026-09-21T10:32:03.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova organizează în cadrul Salonului de Artă, masa rotundă cu genericul „Artistul care a îmblânzit culoarea \u2013 Ion Daghi”, consacrată celor 90 de ani de la nașterea lui Ion Daghi, personalitate marcantă a culturii naționale, pedagog, artist plastic, filosof și eminescolog, a cărui creație și activitate au depășit, prin profunzime și amploare, hotarele spațiului…",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7528",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lansare de cărți „Năframa Moldovei” și ”Năframa Scumpiei” de Maria ROMANCIUC",
+      "publishedAt": "2026-09-21T07:09:44.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova invită publicul interesat la lansarea volumelor „Năframa Moldovei” și „Năframa Scumpiei”, semnate de Maria Romanciuc. Cele două lucrări urmăresc drumul și soarta năframei, dezvăluind multiplele sale roluri în viața cotidiană și în gospodăriile neamului nostru. Dincolo de statutul de simplu accesoriu vestimentar al femeilor de altădată, năframa devine un e…",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7518",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Expoziție temaică „Un secol de învățământ superior în spațiul pruto-nistrean”",
+      "publishedAt": "2026-09-10T07:45:47.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova invită publicul să viziteze expoziția tematică „Un secol de învățământ superior în spațiul pruto-nistrean”, dedicată împlinirii a 100 de ani de la deschiderea la Chișinău a Facultății de Teologie a Universității din Iași, prima instituție de învățământ superior românesc din spațiul pruto-nistrean. Expoziția oferă publicului posibilitatea de a descoperi, p…",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7506",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prezentare de carte „Anastasia DICESCU- o mare personalitate de cultură din interbelic”",
+      "publishedAt": "2026-09-03T06:57:18.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova invită publicul interesat la prezentarea romanului jurnal „Uitasem să vă spun…”, semnat de poetul, publicistul și publicistul Ion ANTON. Lucrarea este consacrată vieții și activității Anastasiei Dicescu, întemeietoarea și directorul Conservatorului „Unirea” din Chișinău (1919-1940), soprană care a făcut studii de canto la Conservatorul din Odesa și la Aca…",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7500",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lansare de cărti Colecțiile „Moștenire” și „Memoriile Basarabiei”",
+      "publishedAt": "2026-09-02T11:00:23.000Z",
+      "description": "În cadrul Salonului Internațional de carte Bookfest 2026, la Biblioteca Națională a Republicii Moldova vor fi lansate mai multe volume editate de Editura „Știința”, reunite sub genericul „Cultură și ortodoxie”. Evenimentul valorifică patrimoniul cultural și spiritual românesc prin lucrări incluse în colecțiile „Moștenire” și „Memoriile Basarabiei”: Volumele readuc în atenția publicului personalit…",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bnrm-md",
+      "source": {
+        "name": "National Library of the Republic of Moldova",
+        "url": "https://www.bnrm.md/?p=7494",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Lansare de carte “Malum” autor Yulia Max (Iulia Max)",
+      "publishedAt": "2026-09-02T07:10:04.000Z",
+      "description": "Biblioteca Națională a Republicii Moldova în parteneriat cu rețeaua de librării Librarius organizează lansarea volumului “Malum” autor Yulia Max (Iulia Max). Autoarea este cunoscută pentru romanele sale în genurile thriller mistic, urban fantasy și fantasy de aventură. În prezent, cărțile sale nu sunt traduse oficial în limba română, dar unele ediții în limba rusă sunt disponibile în...",
+      "discoveredAt": "2026-09-26T17:29:13.070Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "7f4ed3670635970cdb53209e3a87ecda0bffd9dbc242d42e5bdbad6203770a11"
+}

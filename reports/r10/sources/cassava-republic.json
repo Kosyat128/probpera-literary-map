@@ -1,0 +1,399 @@
+{
+  "sourceId": "cassava-republic",
+  "name": "Cassava Republic Press",
+  "entryUrl": "https://cassavarepublic.biz/blog-2/",
+  "countryCodes": [
+    "NG"
+  ],
+  "coverageCountryCodes": [
+    "NG",
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:29:50.623Z",
+  "requests": [
+    {
+      "url": "https://cassavarepublic.biz/blog-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 125637,
+      "sha256": "663cd269cf70cca174c7117255141927d48c28bbca8e395e9a90a5015221e7bf",
+      "accessedAt": "2026-09-26T17:29:54.909Z"
+    },
+    {
+      "url": "https://cassavarepublic.biz/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 77901,
+      "sha256": "64003255761aaa06c8ef80cf1c5b2298d7cb4fd8817372df69c6c3ba6a24cd2a",
+      "accessedAt": "2026-09-26T17:29:59.033Z"
+    },
+    {
+      "url": "https://cassavarepublic.biz/the-mercy-step-is-shortlisted-for-the-womens-prize-for-fiction/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 116020,
+      "sha256": "a1f892a87be49b728677dde608f8e24f432c0e93e33b508addd0b9fd3476f294",
+      "accessedAt": "2026-09-26T17:30:00.089Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://cassavarepublic.biz/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 325,
+    "sha256": "134417c4413aa81731a62d3989ee4325e140050ff08758d6f0ef60c56051488b",
+    "accessedAt": "2026-09-26T17:29:53.862Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "cassava-republic",
+    "name": "Cassava Republic Press",
+    "url": "https://cassavarepublic.biz/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "africa",
+    "sourceFamilyId": "cassava-republic",
+    "countryCodes": [
+      "NG"
+    ],
+    "coverageCountryCodes": [
+      "NG",
+      "GB"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://cassavarepublic.biz"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://cassavarepublic.biz/the-mercy-step-is-shortlisted-for-the-womens-prize-for-fiction/"
+    ],
+    "verifiedAt": "2026-09-26T17:30:00.094Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "cassava-republic",
+    "source": {
+      "name": "Cassava Republic Press",
+      "url": "https://cassavarepublic.biz/the-mercy-step-is-shortlisted-for-the-womens-prize-for-fiction/",
+      "language": "en-US"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "The Mercy Step is Shortlisted for the Women’s Prize for Fiction",
+    "publishedAt": "2026-04-22T14:15:00.000Z",
+    "description": "Today is a day we will never forget. The Mercy Step by Marcia Hutchinson has been shortlisted for the 2026 Women’s Prize for Fiction and in doing so, Cassava Republic Press has become the first Black-owned African independent publisher to reach the shortlist in the prize’s 30-year history. This news is coming in the same [...] The post The Mercy Step is Shortlisted for the Women’s Prize for Ficti…",
+    "discoveredAt": "2026-09-26T17:29:59.034Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://cassavarepublic.biz/the-mercy-step-is-shortlisted-for-the-womens-prize-for-fiction/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 116020,
+      "sha256": "a1f892a87be49b728677dde608f8e24f432c0e93e33b508addd0b9fd3476f294",
+      "accessedAt": "2026-09-26T17:30:00.089Z",
+      "headline": "The Mercy Step is Shortlisted for the Women’s Prize for Fiction",
+      "excerpt": "Today is a day we will never forget. The Mercy Step by Marcia Hutchinson has been shortlisted for the 2026 Women’s Prize for Fiction and in doing so, Cassava Republic Press has become the first Black-owned African independent publisher to reach the shortlist in the prize’s 30-year history. This news is coming in the same month we turn twenty years old. We started in Abuja in 2006 with no capital, ",
+      "publishedDates": [
+        {
+          "value": "2026-04-22T14:15:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-04-22T14:15:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-04-22T14:15:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "canonical": "https://cassavarepublic.biz/the-mercy-step-is-shortlisted-for-the-womens-prize-for-fiction/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:30:00.094Z",
+  "foundItems": [
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/the-mercy-step-is-shortlisted-for-the-womens-prize-for-fiction/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mercy Step is Shortlisted for the Women’s Prize for Fiction",
+      "publishedAt": "2026-04-22T14:15:00.000Z",
+      "description": "Today is a day we will never forget. The Mercy Step by Marcia Hutchinson has been shortlisted for the 2026 Women’s Prize for Fiction and in doing so, Cassava Republic Press has become the first Black-owned African independent publisher to reach the shortlist in the prize’s 30-year history. This news is coming in the same [...] The post The Mercy Step is Shortlisted for the Women’s Prize for Ficti…",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/women-in-translation-month-with-maren-baudet-lackner/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Women in Translation Month with Maren Baudet-Lackner",
+      "publishedAt": "2026-08-20T11:03:31.000Z",
+      "description": "For Women in Translation Month, we’re celebrating the women who help stories cross borders. Translators are not simply carrying words from one language to another; they are literary collaborators whose choices and craft help shape how a story is experienced by new readers. Maren Baudet-Lackner, translator of Osvalde Lewat’s The Aquatics, shares her thoughts on [...] The post Women in Translation …",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/historic-first-a-nigerian-publisher-just-made-the-womens-prize-shortlist-and-its-their-20th-birthday/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "HISTORIC FIRST: A NIGERIAN PUBLISHER JUST MADE THE WOMEN’S PRIZE SHORTLIST \u2014 AND IT’S THEIR 20TH BIRTHDAY",
+      "publishedAt": "2026-04-22T09:33:00.000Z",
+      "description": "The Mercy Step by Marcia Hutchinson, published by Cassava Republic Press, shortlisted for the 2026 Women’s Prize for Fiction. Nigerian founded publishing house, Cassava Republic Press makes the Women’s Prize for Fiction shortlist for the first time in the prize’s history. This marks a significant moment not only for the author, but for independent African [...] The post HISTORIC FIRST: A NIGERIAN…",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/qa-with-degol-hailu/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A with Degol Hailu",
+      "publishedAt": "2026-09-16T11:05:38.000Z",
+      "description": "What happens when books become dangerous? In Pillaging the Dead, Degol Hailu takes us into a world where books are banned, political cartoons are dangerous, and a young bookseller finds himself caught up in a struggle far bigger than he expected. Darkly comic, sharp and deeply concerned with the relationship between power and ideas, the [...] The post Q&A with Degol Hailu appeared first on Cassav…",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/qa-illustrating-the-shikipisha-club-by-funmike-ogaosun/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A: Illustrating The Shikipisha Club by Funmike Ogaosun",
+      "publishedAt": "2026-09-10T14:18:59.000Z",
+      "description": "Illustrations do more than accompany a story. They shape a reader’s first impression, breathe life into characters and invite readers into the world of a book before they’ve even turned the first page. For The Shikipisha Club, illustrator, Funmike Ogaosun created artwork that captures the story at the heart of Mubanga Kalimamukwento’s story. We caught [...] The post Q&A: Illustrating The Shikipis…",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/cassava-republic-acquires-debut-childrens-alphabetical-guide-to-africas-minerals/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CASSAVA REPUBLIC ACQUIRES DEBUT CHILDREN’S ALPHABETICAL GUIDE TO AFRICA’S MINERALS",
+      "publishedAt": "2026-07-09T10:03:00.000Z",
+      "description": "Cassava Republic Press is delighted to announce the world rights acquisition of The A\u2013Z of Rocks and Minerals of Africa, a debut, fully-illustrated middle-grade non-fiction title by author and mining specialist, Allison George, publishing in Autumn 2027. Critical minerals touch every aspect of our lives, from the technology and games we love, to the medicine [...] The post CASSAVA REPUBLIC ACQUIR…",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/on-friendship-as-resistance/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ON FRIENDSHIP AS RESISTANCE",
+      "publishedAt": "2026-06-15T13:03:59.000Z",
+      "description": "At the heart of The Aquatics is a friendship that refuses to remain private. As political oppression closes in, the bond between Katmé and Samy becomes more than a source of comfort, it becomes a test of loyalty, courage, and moral conviction. In this reflection, author, Osvalde Lewat explores friendship not simply as an emotional [...] The post ON FRIENDSHIP AS RESISTANCE appeared first on Cassa…",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/character-reflection-samy/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Character Reflection \u2013 Samy",
+      "publishedAt": "2026-06-15T12:58:38.000Z",
+      "description": "Samy, the protagonist in The Aquatics is unforgettable. Brilliant, infuriating, passionate, and deeply loyal, he is the emotional and moral catalyst at the centre of the novel. Through his friendships, ambitions, and refusal to conform, Samy challenges the social order around him and forces those closest to him to confront difficult truths. In this character [...] The post Character Reflection \u2013 …",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/qa-with-osvalde-lewat/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A with Osvalde Lewat",
+      "publishedAt": "2026-06-15T12:45:05.000Z",
+      "description": "Cameroonian writer, filmmaker, and photographer Osvalde Lewat makes her fiction debut with The Aquatics, a novel that explores friendship, loyalty, identity, and the quiet violences embedded within social norms. In this conversation, she reflects on the friendship that inspired The Aquatics, the influence of documentary filmmaking on her writing process, the creation of Zambuena, and [...] The po…",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cassava-republic",
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/behind-the-story-the-aquatics-by-osvalde-lewat/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Behind the Story: The Aquatics by Osvalde Lewat",
+      "publishedAt": "2026-06-11T10:39:22.000Z",
+      "description": "Award-winning photographer and writer Osvalde Lewat shares the winding path that led her to write her novel in this edition of Behind the Story. What began as a long-postponed dream became an unexpected lesson in patience, and perseverance. From bargaining with herself to confronting the realities of the creative process, her story is a candid [...] The post Behind the Story: The Aquatics by Osva…",
+      "discoveredAt": "2026-09-26T17:29:59.034Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "64003255761aaa06c8ef80cf1c5b2298d7cb4fd8817372df69c6c3ba6a24cd2a"
+}

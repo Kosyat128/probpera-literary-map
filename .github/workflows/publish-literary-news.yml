@@ -1,0 +1,40 @@
+name: Literary agenda delivery
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "3,13,23,33,43,53 * * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: literary-agenda-delivery
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    if: github.ref == 'refs/heads/main' && vars.LITERARY_NEWS_RUNTIME_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Record complete public admissions
+        run: node scripts/publish-literary-news.mjs --capture
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+      - name: Deliver only enabled destinations with reconciled history
+        if: vars.LITERARY_NEWS_SEND_ENABLED == 'true'
+        run: node scripts/publish-literary-news.mjs --send
+        env:
+          NEWS_SEND_ENABLED: "true"
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          VK_ACCESS_TOKEN: ${{ secrets.VK_ACCESS_TOKEN }}

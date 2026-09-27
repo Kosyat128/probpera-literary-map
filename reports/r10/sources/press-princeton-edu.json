@@ -1,0 +1,806 @@
+{
+  "sourceId": "press-princeton-edu",
+  "name": "Princeton University Press",
+  "entryUrl": "https://press.princeton.edu/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:27:49.150Z",
+  "requests": [
+    {
+      "url": "https://press.princeton.edu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 149855,
+      "sha256": "014aa14ca8b2867cc60686359995002a32d314bd0718247c7715683a385a37a0",
+      "accessedAt": "2026-09-26T17:21:23.596Z"
+    },
+    {
+      "url": "https://press.princeton.edu/news/bartz-v-anthropic",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 121360,
+      "sha256": "96ff43abbefc2fa9e4976b9deed94826e0b0f575a39a2c4150e333ca107ba7c5",
+      "accessedAt": "2026-09-26T17:27:49.778Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://press.princeton.edu/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 3080,
+    "sha256": "96e8c8a00bc8581673e1a9a472cc5dd7f595f820bccab10a56d851b2ea30bc0d",
+    "accessedAt": "2026-09-26T17:27:49.467Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:23.057Z",
+    "sourceDocumentSha256": "014aa14ca8b2867cc60686359995002a32d314bd0718247c7715683a385a37a0"
+  },
+  "endpoint": {
+    "id": "press-princeton-edu",
+    "name": "Princeton University Press",
+    "url": "https://press.princeton.edu/",
+    "format": "html",
+    "language": "en",
+    "region": "north-america",
+    "sourceFamilyId": "press-princeton-edu",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://press.princeton.edu"
+    ],
+    "linkPattern": "^/books/hardcover/9780691284439/[^/]+/?$|^/imprints/[^/]+/?$|^/ideas/[^/]+/?$|^/our-authors/[^/]+/?$|^/[^/]{12,}/?$|^/news/.+",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://press.princeton.edu/news/bartz-v-anthropic"
+    ],
+    "verifiedAt": "2026-09-26T17:27:49.783Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 26,
+  "literaryCandidateCount": 26,
+  "sample": {
+    "sourceId": "press-princeton-edu",
+    "source": {
+      "name": "Princeton University Press",
+      "url": "https://press.princeton.edu/news/bartz-v-anthropic",
+      "language": "en"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Princeton University Press statement on the proposed Bartz v. Anthropic class action suit settlement September 01, 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:49.484Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://press.princeton.edu/news/bartz-v-anthropic",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 121360,
+      "sha256": "96ff43abbefc2fa9e4976b9deed94826e0b0f575a39a2c4150e333ca107ba7c5",
+      "accessedAt": "2026-09-26T17:27:49.778Z",
+      "headline": "Bartz v. Anthropic",
+      "excerpt": "Share September, 2026 update:Effective September 2026, as part of the claims process, settlement administrators have been contacting authors and publishers to confirm settlement details. We recognize this may prompt questions from authors and other rights holders, many of which can be answered via the FAQs on the claims website. Princeton University Press is fully aligned with the Settlement’s def",
+      "publishedDates": [],
+      "canonical": "https://press.princeton.edu/news/bartz-v-anthropic",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:49.783Z",
+  "foundItems": [
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/news/bartz-v-anthropic",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Princeton University Press statement on the proposed Bartz v. Anthropic class action suit settlement September 01, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/news/cashmere",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing a partnership with Cashmere for copyright-compliant AI platform licensing August 03, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/news/responsible-ai",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Collective action for responsible AI use: a note to our publishing partners July 24, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/what-kind-of-monstrous-bitch-are-you",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What kind of Monstrous Bitch are you? September 22, 2026 Through history and through story, women have been demonized and transformed into a plethora of mythical and monstrous creatures, from demons to vampires, and called everything from goddess to crazy and\u2014of course\u2014bitches. As you explore Johnson’s book, we encourage you to take our quiz to discover what you might have been labelled in past civilizations, and reclaim the admirable qualities of each archetype, previously obscured by the term…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/jim-al-khalili-what-is-now",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Video Jim Al-Khalili:What is “now”? September 23, 2026 The Smiths famously issued the melancholic refrain, “how soon is now,\" capturing the urgency of the present moment. But what exactly does “now” mean? Here Jim Al-Khalili, author of On Time tackles the curious question: What is Now? Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/biting-down-on-a-stick",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Essay Biting down on a stick September 02, 2026 Kate Clancy is the author of Pregnancy Interrupted: The Science and Stories of How Pregnancies Really End, a compassionate, evidence-based look at pregnancy loss\u2014how and why it happens, and why the assurances of the medical industry don’t reflect the reality. Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/imprints/island-press",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "See More Island Press Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/science-needs-failure",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Essay Science needs failure September 15, 2026 Perhaps “failure” is even too strong a term. Research takes different and unexpected paths, but when something goes fundamentally wrong, it can feel like a punch in the gut. Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/housing-affordability-and-our-fraying-social-fabric",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Essay Housing affordability and our fraying social fabric September 15, 2026 The average American is worried about the cost of living, particularly housing. The average pundit is worried about the state of our social fabric. These are parallel conversations, but they are closely entwined. Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/inside-junghaus-the-making-of-the-critical-edition-of-c-g-jung",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Video Inside Junghaus: The making of the Critical Edition of C. G. Jung September 22, 2026 To mark the forthcoming publication of the first volume in the new Critical Edition of C. G. Jung available from Princeton University Press, series editors Sonu Shamdasani and Gaia Domencici visited the historic Junghaus in Zurich to introduce the project and showcase some of the treasures found there. Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/kanakia-naomi",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Naomi Kanakia Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/pinsky-robert",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Robert Pinsky Poetry",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/fletcher-catherine",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Catherine Fletcher History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/gordon-reed-annette",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Annette Gordon-Reed History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/ramirez-steve",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Steve Ramirez Neuroscience",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/al-khalili-jim",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jim Al-Khalili Physics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/knoll-andrew-h",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Andrew H. Knoll Earth and Planetary Science",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/pearson-helen",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Helen Pearson History of Science and Knowledge",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/field-laura-k",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Laura K. Field Politics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/eichengreen-barry",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Barry Eichengreen Economics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/miller-idriss-cynthia",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cynthia Miller-Idriss Sociology",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/pei-minxin",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Minxin Pei Government and China Studies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/exam-desk-copies",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Exam & Desk Copies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/collected-works",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Collected Works",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/distributed-presses",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Distributed Presses",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/books/hardcover/9780691284439/a-washington-irving-sketch-book",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Washington Irving Sketch Book",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:49.484Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "014aa14ca8b2867cc60686359995002a32d314bd0718247c7715683a385a37a0"
+}

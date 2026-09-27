@@ -1,0 +1,17 @@
+{
+  "sourceId": "netflix-book-adaptations",
+  "name": "Netflix Tudum - Book adaptations",
+  "entryUrl": "https://www.netflix.com/tudum/articles/new-book-adaptations",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:27:30.803Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed",
+  "discoveryEnabled": false,
+  "disabledReason": "robots_disallowed"
+}

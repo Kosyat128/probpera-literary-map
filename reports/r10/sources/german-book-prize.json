@@ -1,0 +1,673 @@
+{
+  "sourceId": "german-book-prize",
+  "name": "Deutscher Buchpreis",
+  "entryUrl": "https://www.deutscher-buchpreis.de/news/",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-09-26T17:27:25.232Z",
+  "requests": [
+    {
+      "url": "https://www.deutscher-buchpreis.de/news/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 45351,
+      "sha256": "963d1e14c32324abb9c330afe2cbfb30b9f844e2190f10d8060d5f0a075ca7d5",
+      "accessedAt": "2026-09-26T17:19:59.273Z"
+    },
+    {
+      "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-buchpreisbloggerinnen-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 25070,
+      "sha256": "e2aed8421887c9afc8f002cb81a60c74b451b2397d6d62d3866198abd9147487",
+      "accessedAt": "2026-09-26T17:27:27.060Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.deutscher-buchpreis.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 56,
+    "sha256": "7e7a66d2e745162416b69d2d8866e8ea8b85db24179211b5b745b03dd041dbd4",
+    "accessedAt": "2026-09-26T17:27:25.691Z",
+    "disallowed": [
+      "/fileadmin/user_upload/aktionen"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:19:58.360Z",
+    "sourceDocumentSha256": "963d1e14c32324abb9c330afe2cbfb30b9f844e2190f10d8060d5f0a075ca7d5"
+  },
+  "endpoint": {
+    "id": "german-book-prize",
+    "name": "Deutscher Buchpreis",
+    "url": "https://www.deutscher-buchpreis.de/news/",
+    "format": "html",
+    "language": "de",
+    "region": "europe",
+    "sourceFamilyId": "german-book-prize",
+    "countryCodes": [
+      "DE"
+    ],
+    "coverageCountryCodes": [
+      "DE"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.deutscher-buchpreis.de"
+    ],
+    "linkPattern": "^\\/news\\/eintrag\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.deutscher-buchpreis.de/news/eintrag/die-buchpreisbloggerinnen-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:27.062Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 22,
+  "literaryCandidateCount": 22,
+  "sample": {
+    "sourceId": "german-book-prize",
+    "source": {
+      "name": "Deutscher Buchpreis",
+      "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-buchpreisbloggerinnen-2026/",
+      "language": "de"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Die Buchpreisblogger*innen 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:25.712Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-buchpreisbloggerinnen-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 25070,
+      "sha256": "e2aed8421887c9afc8f002cb81a60c74b451b2397d6d62d3866198abd9147487",
+      "accessedAt": "2026-09-26T17:27:27.060Z",
+      "headline": "Die Buchpreisblogger*innen 2026",
+      "excerpt": "Deutscher Buchpreis: Die Buchpreisblogger*innen 2026 Zurück zur Übersicht 25.06.2026 Die Buchpreisblogger*innen 2026 Literatur im Gespräch: Ab dem 11. August, mit Bekanntgabe der Nominierten, stellen 20 Buchblogger*innen die 20 nominierten Titel des Deutschen Buchpreises vor. Sie lesen und diskutieren dabei je einen der 20 nominierten Romane, bieten Hintergrundinformationen sowie kritische Debatte",
+      "publishedDates": [],
+      "canonical": "https://www.deutscher-buchpreis.de/news/eintrag/die-buchpreisbloggerinnen-2026/",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:27.062Z",
+  "foundItems": [
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-buchpreisbloggerinnen-2026/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die Buchpreisblogger*innen 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/nominierten-leseproben-2025/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nominierten-Leseproben 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/der-deutsche-buchpreis-2026-startet-180-romane-stehen-zur-auswahl/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Anne-Mette Noack",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/dorothee-elmiger-erhaelt-den-deutschen-buchpreis-2025-fuer-die-hollaenderinnen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/frankfurter-buchmesse/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Der Deutsche Buchpreis auf der Frankfurter Buchmesse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/buchpreisbloggen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buchpreisbloggen 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/dekopakete-zum-deutschen-buchpreis/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leseproben und Dekopakete zum Deutschen Buchpreis",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/buchpreis-feiert-20-jubilaeum/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buchpreis feiert 20. Jubiläum",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/sechs-romane-im-finale-2/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Lena Everding",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/das-sind-die-20-nominierten-romane/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Das sind die 20 nominierten Romane",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-nominierten-live-erleben/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/blind-date-lesungen-mit-nominierten-gewinnen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Blind-Date-Lesungen mit Nominierten gewinnen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/startschuss-fuer-verlage/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Mo Wüstenhagen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/portraitfilme-das-sind-die-finalistinnen/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/einblicke-in-die-shortlist-auf-englisch/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Einblicke in die Shortlist auf Englisch",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/sechs-romane-im-finale/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-20-nominierten-romane-stehen-fest-1/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die 20 nominierten Romane stehen fest",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/200-romane-von-124-verlagen-eingereicht/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Mo Wüstenhagen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/martina-hefter-erhaelt-den-deutschen-buchpreis-2024-fuer-hey-guten-morgen-wie-geht-es-dir/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/sechs-romane-im-finale-1/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Christof Jakob",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/die-20-nominierten-romane-stehen-fest/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die 20 nominierten Romane stehen fest",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "german-book-prize",
+      "source": {
+        "name": "Deutscher Buchpreis",
+        "url": "https://www.deutscher-buchpreis.de/news/eintrag/julia-westlake-wird-neue-moderatorin-der-preisverleihung/",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "© Patrick Ludolph / hr, Ben Knabe",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:25.712Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "963d1e14c32324abb9c330afe2cbfb30b9f844e2190f10d8060d5f0a075ca7d5"
+}

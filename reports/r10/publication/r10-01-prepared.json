@@ -1,0 +1,72 @@
+{
+  "batchId": "r10-01",
+  "at": "2026-09-26T17:39:50.582Z",
+  "recordSha256": "5fef9da1b6feb6db49af9cf0afe796fb411ad415865dc6dcc9b914e250f6ced7",
+  "counts": {
+    "prepared": 20,
+    "productionSelectorEligible": 20,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "sourceIds": [
+    "prh",
+    "frankfurt-book-fair",
+    "fil-guadalajara",
+    "pen-international-org",
+    "nlo"
+  ],
+  "sourceCountries": [
+    "DE",
+    "GB",
+    "MX",
+    "RU",
+    "US"
+  ],
+  "coverageCountries": [
+    "US",
+    "DE",
+    "FR",
+    "BE",
+    "LV",
+    "ES",
+    "CZ",
+    "MX",
+    "VE",
+    "GT",
+    "GB",
+    "UA",
+    "RU"
+  ],
+  "categories": [
+    "publishing",
+    "releases",
+    "adaptations",
+    "awards",
+    "festivals",
+    "heritage",
+    "discoveries"
+  ],
+  "public": false,
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 20
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "stable IDs and existing33-event topics reviewed",
+    "schema": "production selectReviewed 20/20"
+  },
+  "typographyCheck": {
+    "checkedAt": "2026-09-26T18:24:41.489Z",
+    "normalizer": "scripts/lib/short-hyphens.mjs normalizeShortHyphens",
+    "scope": "New authored title/summary RU/EN only",
+    "changedFields": 11,
+    "recordSha256": "5fef9da1b6feb6db49af9cf0afe796fb411ad415865dc6dcc9b914e250f6ced7",
+    "evidenceSemanticSha256": "73dd85b3950377d1b26b19def5556bf50b5652dd61df0b8dcc9eb7efa31dc232",
+    "sourceEvidencePreserved": true,
+    "serialization": "Unicode dash and HTML-entity escapes preserve parsed source values"
+  }
+}

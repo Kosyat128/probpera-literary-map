@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-09-26T18:05:38.072Z",
+  "capture": {
+    "endpoint": "https://api.nobelprize.org/2.1/nobelPrizes?nobelPrizeCategory=lit&limit=2&sort=desc",
+    "httpStatus": 200,
+    "sha256": "30f8c46540666e85318dd751f2f256d7b6a5fd7735fd25091ff32c6a19f783c9",
+    "capturedAt": "2026-09-26T17:59:40.028Z"
+  },
+  "payload": {
+    "schemaVersion": 1,
+    "profile": "nobel-literature-single-winner",
+    "profileVersion": 1,
+    "endpoint": "https://api.nobelprize.org/2.1/nobelPrizes?nobelPrizeCategory=lit&limit=2&sort=desc",
+    "fetchedAt": "2026-09-26T18:05:38.072Z",
+    "sourceDocumentSha256": "30f8c46540666e85318dd751f2f256d7b6a5fd7735fd25091ff32c6a19f783c9",
+    "records": []
+  },
+  "held": [
+    {
+      "awardYear": "2025",
+      "reason": "outside_initial_admission_window"
+    },
+    {
+      "awardYear": "2024",
+      "reason": "outside_initial_admission_window"
+    }
+  ],
+  "externalWrites": false,
+  "deployment": "not_deployed",
+  "tests": {
+    "files": 2,
+    "passed": 30
+  }
+}

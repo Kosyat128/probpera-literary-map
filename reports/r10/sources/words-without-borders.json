@@ -1,0 +1,383 @@
+{
+  "sourceId": "words-without-borders",
+  "name": "Words Without Borders",
+  "entryUrl": "https://wordswithoutborders.org/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:32:12.708Z",
+  "requests": [
+    {
+      "url": "https://wordswithoutborders.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 185627,
+      "sha256": "8cb706ce539a0b787512ff02c8b1ace19415d875b6956c30d15ac7db13a93ac6",
+      "accessedAt": "2026-09-26T17:32:13.423Z"
+    },
+    {
+      "url": "https://wordswithoutborders.org/read/article/2026-09/world-kid-lit-month-2026-9-new-books-to-read-now/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 222685,
+      "sha256": "6691f1bde20671472675a1889920ee93551c658e57d51e121415003cffc27f15",
+      "accessedAt": "2026-09-26T17:32:13.729Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://wordswithoutborders.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 526,
+    "sha256": "3016ffe72290dc8567885269d45c51aee5f9b7eaff26246773b3178938c0b133",
+    "accessedAt": "2026-09-26T17:32:13.164Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "words-without-borders",
+    "name": "Words Without Borders",
+    "url": "https://wordswithoutborders.org/",
+    "format": "html",
+    "language": "en",
+    "region": "north-america",
+    "sourceFamilyId": "words-without-borders",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://wordswithoutborders.org"
+    ],
+    "linkPattern": "^/read/type/[^/]+/?$|^/events/.+|^/read/article/2026-09/[^/]+/?$|^/read/article/2019-11/[^/]+/?$|^/read/article/2004-11/[^/]+/?$|^/read/collection/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://wordswithoutborders.org/read/article/2026-09/world-kid-lit-month-2026-9-new-books-to-read-now/"
+    ],
+    "verifiedAt": "2026-09-26T17:32:13.738Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "words-without-borders",
+    "source": {
+      "name": "Words Without Borders",
+      "url": "https://wordswithoutborders.org/read/article/2026-09/world-kid-lit-month-2026-9-new-books-to-read-now/",
+      "language": "en"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "World Kid Lit Month 2026: 9 New Books to Read Now By Ruth Ahmedzai Kemp, Ruth Donnelly, Charisma Lee, Nanette McGuinness, Lori Sieling & Gemma Ware Celebrate World Kid Lit Month with nine new children's and YA books exploring themes as diverse as Hmong history, the intersection of art and exile, and our food supply chain.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:32:13.453Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://wordswithoutborders.org/read/article/2026-09/world-kid-lit-month-2026-9-new-books-to-read-now/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 222685,
+      "sha256": "6691f1bde20671472675a1889920ee93551c658e57d51e121415003cffc27f15",
+      "accessedAt": "2026-09-26T17:32:13.729Z",
+      "headline": "World Kid Lit Month 2026: 9 New Books to Read Now",
+      "excerpt": "Reading Lists World Kid Lit Month 2026: 9 New Books to Read Now By Ruth Ahmedzai Kemp, Ruth Donnelly, Charisma Lee, Nanette McGuinness, Lori Sieling & Gemma Ware Celebrate World Kid Lit Month with nine new children's and YA books exploring themes as diverse as Hmong history, the intersection of art and exile, and our food supply chain. September 21, 2026 Afghanistan Chile China France Germany Ital",
+      "publishedDates": [
+        {
+          "value": "2026-09-21T13:00:26+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-21T13:00:26+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-21T13:00:26+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://wordswithoutborders.org/read/article/2026-09/world-kid-lit-month-2026-9-new-books-to-read-now/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:13.738Z",
+  "foundItems": [
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/article/2026-09/world-kid-lit-month-2026-9-new-books-to-read-now/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "World Kid Lit Month 2026: 9 New Books to Read Now By Ruth Ahmedzai Kemp, Ruth Donnelly, Charisma Lee, Nanette McGuinness, Lori Sieling & Gemma Ware Celebrate World Kid Lit Month with nine new children's and YA books exploring themes as diverse as Hmong history, the intersection of art and exile, and our food supply chain.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/article/2026-09/introducing-wwbs-finance-and-operations-manager-alicia-lim/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Introducing WWB’s Finance and Operations Manager, Alicia Lim By Words Without Borders WWB's finance and operations manager, Alicia Lim, talks with us about her past work at Feminist Press, her love of horror books and films, and her visual art practice (photos included!).",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/article/2019-11/november-2019-philippines-water-voltaire-oyzon-merlie-m-alunan/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Water By Voltaire Oyzon An unwelcome visitor becomes a coveted houseguest in this poem by Voltaire Oyzon. Translated from Waray by Merlie M. Alunan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/article/2004-11/please-leave-a-message/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Please Leave a Message By Nira Harel Nina Harel tells an Israeli tale of a child's first time taking a phone message. Translated from Hebrew by Miriam Shlesinger",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/type/graphic-literature/?src=carousel",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Graphic Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/collection/october-2022-the-national-book-award-interviews/?src=carousel",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Book Award Interviews",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/collection/october-2022-nobel-laureates/?src=carousel",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nobel Prize Winners",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/collection/revolutionary-literature-from-the-philippines/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Browse the Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/collection/the-ottaway-award-for-the-promotion-of-international-literature/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Browse the Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "words-without-borders",
+      "source": {
+        "name": "Words Without Borders",
+        "url": "https://wordswithoutborders.org/read/collection/every-stone-a-seed-writing-from-asturias/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Browse the Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:13.453Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8cb706ce539a0b787512ff02c8b1ace19415d875b6956c30d15ac7db13a93ac6"
+}

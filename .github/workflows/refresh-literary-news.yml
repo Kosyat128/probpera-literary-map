@@ -46,6 +46,8 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: literary-news-source-health
-          path: .tmp/literary-news-sync/source-health.json
+          path: |
+            .tmp/literary-news-sync/source-health.json
+            .tmp/literary-news-sync/nobel-profile-check.json
           if-no-files-found: ignore
           retention-days: 14

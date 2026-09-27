@@ -1,0 +1,858 @@
+{
+  "sourceId": "nli-ie",
+  "name": "National Library of Ireland",
+  "entryUrl": "https://www.nli.ie/",
+  "countryCodes": [
+    "IE"
+  ],
+  "coverageCountryCodes": [
+    "IE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:08.912Z",
+  "requests": [
+    {
+      "url": "https://www.nli.ie/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 110058,
+      "sha256": "0077012b4d632fd2941ac94d8321677196d48d8a94b1f07a09ce8778701a4ed4",
+      "accessedAt": "2026-09-26T17:22:59.208Z"
+    },
+    {
+      "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 100830,
+      "sha256": "a83c222be0f54fdc3a273d2734ed324f99fd0c04962322ed16ad8d39317ef52b",
+      "accessedAt": "2026-09-26T17:29:10.652Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.nli.ie/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2243,
+    "sha256": "4e9365177d00fae391612dc8ed4920d5ffcc6f27af8b56cf58c59abefeccf3d8",
+    "accessedAt": "2026-09-26T17:29:09.628Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/search?",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/search?",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed",
+      "/themes/custom/weatherlab"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:58.286Z",
+    "sourceDocumentSha256": "0077012b4d632fd2941ac94d8321677196d48d8a94b1f07a09ce8778701a4ed4"
+  },
+  "endpoint": {
+    "id": "nli-ie",
+    "name": "National Library of Ireland",
+    "url": "https://www.nli.ie/",
+    "format": "html",
+    "language": "en",
+    "region": "europe",
+    "sourceFamilyId": "nli-ie",
+    "countryCodes": [
+      "IE"
+    ],
+    "coverageCountryCodes": [
+      "IE"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.nli.ie"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/learn/[^/]+/?$|^/collections/our-collections/[^/]+/?$|^/collections/using-our-collections/[^/]+/?$|^/news-stories/news/[^/]+/?$|^/exhibitions-events/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins"
+    ],
+    "verifiedAt": "2026-09-26T17:29:10.658Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 28,
+  "literaryCandidateCount": 28,
+  "sample": {
+    "sourceId": "nli-ie",
+    "source": {
+      "name": "National Library of Ireland",
+      "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+      "language": "en"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "The next chapter in ‘Reimagining the National Library’ begins",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:09.652Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 100830,
+      "sha256": "a83c222be0f54fdc3a273d2734ed324f99fd0c04962322ed16ad8d39317ef52b",
+      "accessedAt": "2026-09-26T17:29:10.652Z",
+      "headline": "The next chapter in ‘Reimagining the National Library’ begins",
+      "excerpt": "The next chapter in ‘Reimagining the National Library’ begins Tuesday, 8 September 2026 Minister for Culture, Communications and Sport, Patrick O’Donovan, TD confirmed today that the NLI can proceed to tender for a contractor for the redevelopment of our West Wing and Reading Room gallery. This redevelopment will be the most significant change in the public experience of the National Library of Ir",
+      "publishedDates": [],
+      "canonical": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:10.658Z",
+  "foundItems": [
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "The next chapter in ‘Reimagining the National Library’ begins",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/news-stories/news/celebrating-century-vision",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Celebrating A Century of A Vision",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/irish-presidency-eu-2026",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Irish Presidency of the EU 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Exhibitions & Events",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/exhibition-seamus-heaney-listen-now-again",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Seamus Heaney: Listen Now Again",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/photographer-in-residence",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Photographer-In-Residence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/podcaster-in-residence",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Podcaster in Residence",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/learn/borrow-banner-exhibition",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Borrow a Banner Exhibition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/online-talk-irish-and-european-empires",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Online Talk | The Irish and the European Empires",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/where-murdering-cannons-roar",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "‘Where the murdering cannons roar’",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events?end_date=&start_date=",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "See more exhibitions and events",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/news-stories",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Show more News & Stories",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/accessibility-statement",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Accessibility Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/filming-and-recording",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Filming & Recording",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/corporate-information",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Corporate Information",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/office-chief-herald",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Office of the Chief Herald",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/site-usage-policy",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Site Usage Notice",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/data-privacy-statement",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Data Privacy Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/copying-services",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Copying Services",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/our-collections/official-publications",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Official Publications",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/our-collections/prints-and-drawings",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Prints and Drawings",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/our-collections/born-digital-archives",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Born Digital Archives",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/our-collections/irish-queer-archive",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Irish Queer Archive",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/ordering-materials",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ordering Materials",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/ask-librarian",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ask a Librarian",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/permission-re-use",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Permission to re-use",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/loan-materials-nli",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Loan of materials from NLI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nli-ie",
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/collections/using-our-collections/safe-handling-guidelines",
+        "language": "en"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Safe handling guidelines",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:09.652Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0077012b4d632fd2941ac94d8321677196d48d8a94b1f07a09ce8778701a4ed4"
+}

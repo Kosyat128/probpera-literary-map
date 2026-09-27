@@ -1,0 +1,61 @@
+{
+  "sourceId": "nub-ba",
+  "name": "National and University Library of Bosnia and Herzegovina",
+  "entryUrl": "https://www.nub.ba/",
+  "countryCodes": [
+    "BA"
+  ],
+  "coverageCountryCodes": [
+    "BA"
+  ],
+  "attemptedAt": "2026-09-26T17:29:01.461Z",
+  "requests": [
+    {
+      "url": "https://nub.ba/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57221,
+      "sha256": "b170647b11ef764b177450c8ab053c8be62103cb7ef09c64d6ef34f8c6cec7c9",
+      "accessedAt": "2026-09-26T17:22:51.387Z"
+    },
+    {
+      "url": "https://nub.ba/pravilnik-o-koristenju-gradje",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 19263,
+      "sha256": "afe5cca43676916b12bcee5a8e1112b1c747aef83de03c6b389cc4eb0986fde0",
+      "accessedAt": "2026-09-26T17:29:02.748Z"
+    },
+    {
+      "url": "https://nub.ba/sektor-za-usluzivanje-korisnika",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 21960,
+      "sha256": "20142d376923e37ae965e3a66a9142b455ea3fbf466b0b44eb52f7f700a68492",
+      "accessedAt": "2026-09-26T17:29:02.894Z"
+    },
+    {
+      "url": "https://nub.ba/za-bibliotekare",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 19795,
+      "sha256": "7ecbe11455b02408778ffff7024a3bccb39f1a1b856f8b9e98b2e084257411b0",
+      "accessedAt": "2026-09-26T17:29:03.040Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://nub.ba/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 22,
+    "sha256": "44f3f8eafdf064cf69acb05f23ee4dfc9ab5b3d67d81c64246bc29f7e438789a",
+    "accessedAt": "2026-09-26T17:29:02.209Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:49.730Z",
+    "sourceDocumentSha256": "b170647b11ef764b177450c8ab053c8be62103cb7ef09c64d6ef34f8c6cec7c9"
+  }
+}

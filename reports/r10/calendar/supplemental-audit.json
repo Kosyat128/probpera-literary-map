@@ -1,0 +1,432 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-09-27",
+  "sourceReviewSha256": "bfb614350ee7cb6ee941fed04a4243338b3b1c621a13ce80fc02e9d2ef431ea1",
+  "original60Sha256": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080",
+  "supplementalSha256": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217",
+  "cachedSnapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+  "cachedSnapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+  "freshPrimarySourcesInspectedAt": "2026-09-26/27",
+  "humanReview": false,
+  "before": {
+    "writerRows": 1684,
+    "uniqueWriters": 1671,
+    "total": 2297,
+    "births": 1254,
+    "deaths": 1043,
+    "visible": {
+      "2026": 2295,
+      "2028": 2297
+    }
+  },
+  "after": {
+    "writerRows": 1684,
+    "uniqueWriters": 1671,
+    "total": 2314,
+    "births": 1267,
+    "deaths": 1047,
+    "visible": {
+      "2026": 2312,
+      "2028": 2314
+    }
+  },
+  "acceptedSupplementalFields": 17,
+  "cumulativeAcceptedFields": 77,
+  "newUniqueEvents": 17,
+  "newVisible": {
+    "2026": 17,
+    "2028": 17
+  },
+  "noNonDateChanges": true,
+  "checks": {
+    "expectedOld": "PASS",
+    "chronology": "PASS",
+    "replay": "PASS",
+    "rollback": "PASS",
+    "cmsWins": "PASS",
+    "productionSelector": "PASS",
+    "ruEnIdentityParity": "PASS",
+    "original60BytesPreserved": "PASS"
+  },
+  "held": [
+    {
+      "writerKey": "south_africa:sindiwe_magona",
+      "wikidataId": "Q3961617",
+      "field": "birthDate",
+      "status": "held",
+      "expectedOld": "1943",
+      "proposedValue": null,
+      "reason": "conflicting-exact-days-across-sources",
+      "observedAlternatives": [
+        {
+          "value": "1943-08-23",
+          "sourceUrl": "https://sahistory.org.za/people/sindiwe-magona",
+          "sourceDocumentSha256": "32733ffb231f9cd85643f15125f1eadd57d1893b4c342f687fbc83f45db83fc1",
+          "finding": "Directly inspected SAHO body and vital record state 23 August 1943."
+        },
+        {
+          "value": "1943-08-27",
+          "sourceUrl": "https://www.wikidata.org/wiki/Q3961617",
+          "finding": "Existing referenced day claim in repository snapshot states 27 August 1943; no authority obtained to resolve this contradiction."
+        }
+      ],
+      "action": "Retain year 1943; no new date event.",
+      "applied": false
+    },
+    {
+      "writerKey": "rwanda:scholastique_mukasonga",
+      "wikidataId": "Q3475485",
+      "field": "birthDate",
+      "expectedOld": "1956",
+      "status": "held",
+      "candidateValue": "1956-12-20",
+      "reason": "primary-source-lacks-day-precision",
+      "previousHeldReason": "existing-precision-needs-source-review",
+      "checkedAt": "2026-09-26T21:49:29.443Z",
+      "sources": [
+        {
+          "url": "https://scholastiquemukasonga.net/en/biography/",
+          "title": "Biography \u2014 Scholastique Mukasonga official website",
+          "kind": "author-official-site",
+          "inspected": true,
+          "method": "web.open/read",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The official biography and About Me both give 1956, with Rwanda/Gikongoro identity and matching books. They do not state a month or day. Candidate 20 December was not independently confirmed.",
+          "quote": "Born in Rwanda in 1956",
+          "locator": "Biography opening and About Me"
+        }
+      ]
+    },
+    {
+      "writerKey": "cote_d_ivoire:tanella_boni",
+      "wikidataId": "Q637396",
+      "field": "birthDate",
+      "expectedOld": "1954",
+      "status": "held",
+      "candidateValue": null,
+      "reason": "primary-source-lacks-day-precision",
+      "previousHeldReason": "existing-precision-needs-source-review",
+      "checkedAt": "2026-09-26T21:49:29.443Z",
+      "sources": [
+        {
+          "url": "https://www.editions-brunodoucey.com/pages/auteurs/tanella-boni",
+          "title": "Tanella Boni \u2014 Éditions Bruno Doucey",
+          "kind": "publisher-author-profile",
+          "inspected": true,
+          "method": "web.open/read",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "Her publisher identifies the Ivorian poet/philosopher and explicitly gives birth in Abidjan in 1954 only. Exact day not supported; no guessed anniversary admitted.",
+          "quote": "Tanella Boni est née à Abidjan, en Côte d’Ivoire, en 1954.",
+          "locator": "Author profile opening"
+        }
+      ]
+    },
+    {
+      "writerKey": "burkina_faso:jean_pierre_guingane",
+      "wikidataId": "Q1685215",
+      "field": "deathDate",
+      "expectedOld": "2011",
+      "status": "held",
+      "candidateValue": "2011-01-23",
+      "reason": "conflicting-institutional-exact-dates",
+      "previousHeldReason": "existing-precision-needs-source-review",
+      "checkedAt": "2026-09-26T21:49:29.443Z",
+      "sources": [
+        {
+          "url": "https://iti-worldwide.org/ru/pdfs/publications/Jean-Pierre_Guingane_L_homme_et_son_oeuvre_Vol2_T%C3%A9moignages.pdf",
+          "title": "Daogo Jean-Pierre Guingané \u2014 L’homme et son œuvre, vol. 2",
+          "kind": "professional-institution-memorial",
+          "inspected": true,
+          "method": "web.open/read",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "Contributions by Mamadou Dia and Hermas Gbaguidi explicitly identify death on 23 January 2011. The record remains held because the national-library authority states a different day.",
+          "quote": "23 janvier 2011",
+          "locator": "PDF pages 65 and 67 (zero-based 64 and 66), printed pp. 72 and 74"
+        },
+        {
+          "url": "https://catalogue.bnf.fr/ark:/12148/cb120545344",
+          "title": "Guingané, Jean-Pierre (1947-2011) \u2014 BnF authority",
+          "kind": "national-library-authority",
+          "inspected": true,
+          "method": "web.open/read",
+          "checkedAt": "2026-09-26T21:49:29.443Z",
+          "finding": "The BnF authority explicitly gives 24 January 2011. This conflicts with the ITI memorial; no automatic reconciliation or calendar entry.",
+          "quote": "Mort : 2011-01-24, Ouagadougou (Burkina Faso)",
+          "locator": "Mort field"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The cached normalized Wikidata snapshot does not preserve qualifiers; this batch does not claim to recheck qualifier absence. Independently inspected institutional sources establish exact-day precision.",
+    "Wikidata retrieval remains the original 2026-08-31 cache timestamp, not the new source-review date.",
+    "No new identities or biography/book/photo changes are authorized."
+  ],
+  "target": {
+    "observedCorrectedBaseline": 2237,
+    "total2000": true,
+    "cumulativeNewUniqueEvents": 77,
+    "additional1000": false,
+    "remainingFromObservedCorrectedBaseline": 923,
+    "historicalOperationBaseline": "unknown"
+  },
+  "newEvents": [
+    {
+      "identity": "wikidata:Q380664:memory",
+      "countryId": "south_africa",
+      "writerId": "andre_brink",
+      "kind": "memory",
+      "date": "2015-02-06"
+    },
+    {
+      "identity": "wikidata:Q144653:birth",
+      "countryId": "south_africa",
+      "writerId": "zakes_mda",
+      "kind": "birth",
+      "date": "1948-10-06"
+    },
+    {
+      "identity": "wikidata:Q151806:birth",
+      "countryId": "equatorial_guinea",
+      "writerId": "juan_tomas_avila_laurel",
+      "kind": "birth",
+      "date": "1966-11-06"
+    },
+    {
+      "identity": "wikidata:Q43293:birth",
+      "countryId": "south_africa",
+      "writerId": "jm_coetzee",
+      "kind": "birth",
+      "date": "1940-02-09"
+    },
+    {
+      "identity": "wikidata:Q2143151:birth",
+      "countryId": "south_africa",
+      "writerId": "sol_plaatje",
+      "kind": "birth",
+      "date": "1876-10-09"
+    },
+    {
+      "identity": "wikidata:Q1685215:birth",
+      "countryId": "burkina_faso",
+      "writerId": "jean_pierre_guingane",
+      "kind": "birth",
+      "date": "1947-07-11"
+    },
+    {
+      "identity": "wikidata:Q379125:birth",
+      "countryId": "democratic_republic_of_congo",
+      "writerId": "kama_sywor_kamanda",
+      "kind": "birth",
+      "date": "1952-11-11"
+    },
+    {
+      "identity": "wikidata:Q510119:birth",
+      "countryId": "south_africa",
+      "writerId": "damon_galgut",
+      "kind": "birth",
+      "date": "1963-11-12"
+    },
+    {
+      "identity": "wikidata:Q47619:memory",
+      "countryId": "south_africa",
+      "writerId": "nadine_gordimer",
+      "kind": "memory",
+      "date": "2014-07-13"
+    },
+    {
+      "identity": "wikidata:Q364207:birth",
+      "countryId": "south_africa",
+      "writerId": "breyten_breytenbach",
+      "kind": "birth",
+      "date": "1939-09-16"
+    },
+    {
+      "identity": "wikidata:Q1372674:birth",
+      "countryId": "south_africa",
+      "writerId": "eskia_mphahlele",
+      "kind": "birth",
+      "date": "1919-12-17"
+    },
+    {
+      "identity": "wikidata:Q47619:birth",
+      "countryId": "south_africa",
+      "writerId": "nadine_gordimer",
+      "kind": "birth",
+      "date": "1923-11-20"
+    },
+    {
+      "identity": "wikidata:Q2845313:birth",
+      "countryId": "mauritius",
+      "writerId": "ananda_devi",
+      "kind": "birth",
+      "date": "1957-03-23"
+    },
+    {
+      "identity": "wikidata:Q364207:memory",
+      "countryId": "south_africa",
+      "writerId": "breyten_breytenbach",
+      "kind": "memory",
+      "date": "2024-11-24"
+    },
+    {
+      "identity": "wikidata:Q467796:birth",
+      "countryId": "mauritius",
+      "writerId": "nathacha_appanah",
+      "kind": "birth",
+      "date": "1973-05-24"
+    },
+    {
+      "identity": "wikidata:Q1372674:memory",
+      "countryId": "south_africa",
+      "writerId": "eskia_mphahlele",
+      "kind": "memory",
+      "date": "2008-10-27"
+    },
+    {
+      "identity": "wikidata:Q380664:birth",
+      "countryId": "south_africa",
+      "writerId": "andre_brink",
+      "kind": "birth",
+      "date": "1935-05-29"
+    }
+  ],
+  "rollback": [
+    {
+      "patchId": "r10-supplemental:south_africa:nadine_gordimer:birthDate:0853d76068e3",
+      "writerKey": "south_africa:nadine_gordimer",
+      "field": "birthDate",
+      "expectedNew": "1923-11-20",
+      "restoreValue": "1923",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:nadine_gordimer:deathDate:ef1319835644",
+      "writerKey": "south_africa:nadine_gordimer",
+      "field": "deathDate",
+      "expectedNew": "2014-07-13",
+      "restoreValue": "2014",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:jm_coetzee:birthDate:c4662b69b459",
+      "writerKey": "south_africa:jm_coetzee",
+      "field": "birthDate",
+      "expectedNew": "1940-02-09",
+      "restoreValue": "1940",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:andre_brink:birthDate:f6774bbaf466",
+      "writerKey": "south_africa:andre_brink",
+      "field": "birthDate",
+      "expectedNew": "1935-05-29",
+      "restoreValue": "1935",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:andre_brink:deathDate:bdfbc9a1a7ec",
+      "writerKey": "south_africa:andre_brink",
+      "field": "deathDate",
+      "expectedNew": "2015-02-06",
+      "restoreValue": "2015",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:breyten_breytenbach:birthDate:91139b815035",
+      "writerKey": "south_africa:breyten_breytenbach",
+      "field": "birthDate",
+      "expectedNew": "1939-09-16",
+      "restoreValue": "1939",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:breyten_breytenbach:deathDate:fe6f6d724345",
+      "writerKey": "south_africa:breyten_breytenbach",
+      "field": "deathDate",
+      "expectedNew": "2024-11-24",
+      "restoreValue": "2024",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:sol_plaatje:birthDate:feeab249718c",
+      "writerKey": "south_africa:sol_plaatje",
+      "field": "birthDate",
+      "expectedNew": "1876-10-09",
+      "restoreValue": "1876",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:eskia_mphahlele:birthDate:c66b5aff9354",
+      "writerKey": "south_africa:eskia_mphahlele",
+      "field": "birthDate",
+      "expectedNew": "1919-12-17",
+      "restoreValue": "1919",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:eskia_mphahlele:deathDate:c3686d91b1e2",
+      "writerKey": "south_africa:eskia_mphahlele",
+      "field": "deathDate",
+      "expectedNew": "2008-10-27",
+      "restoreValue": "2008",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:zakes_mda:birthDate:857304d01c09",
+      "writerKey": "south_africa:zakes_mda",
+      "field": "birthDate",
+      "expectedNew": "1948-10-06",
+      "restoreValue": "1948",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:south_africa:damon_galgut:birthDate:6c720c120e93",
+      "writerKey": "south_africa:damon_galgut",
+      "field": "birthDate",
+      "expectedNew": "1963-11-12",
+      "restoreValue": "1963",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:burkina_faso:jean_pierre_guingane:birthDate:842e49a42285",
+      "writerKey": "burkina_faso:jean_pierre_guingane",
+      "field": "birthDate",
+      "expectedNew": "1947-07-11",
+      "restoreValue": "1947",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:mauritius:nathacha_appanah:birthDate:ff8320b16a3e",
+      "writerKey": "mauritius:nathacha_appanah",
+      "field": "birthDate",
+      "expectedNew": "1973-05-24",
+      "restoreValue": "1973",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:democratic_republic_of_congo:kama_sywor_kamanda:birthDate:43b5685586a0",
+      "writerKey": "democratic_republic_of_congo:kama_sywor_kamanda",
+      "field": "birthDate",
+      "expectedNew": "1952-11-11",
+      "restoreValue": "1952",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:equatorial_guinea:juan_tomas_avila_laurel:birthDate:a06016742790",
+      "writerKey": "equatorial_guinea:juan_tomas_avila_laurel",
+      "field": "birthDate",
+      "expectedNew": "1966-11-06",
+      "restoreValue": "1966",
+      "restoreEvidence": null
+    },
+    {
+      "patchId": "r10-supplemental:mauritius:ananda_devi:birthDate:7d82bb6651a3",
+      "writerKey": "mauritius:ananda_devi",
+      "field": "birthDate",
+      "expectedNew": "1957-03-23",
+      "restoreValue": "1957",
+      "restoreEvidence": null
+    }
+  ]
+}

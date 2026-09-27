@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-27T00:01:28.393Z",
+  "scope": "public_observed_only",
+  "decision": "no_identified_duplicate",
+  "records": 239,
+  "observedEntries": 364,
+  "servicePinDelta": 1,
+  "humanReview": false,
+  "base": {
+    "path": "reports/r10/social/history/telegram-combined-review.json",
+    "sha256": "725f21b8501acceafa2c23e54c09a7cabed89423749922deb75af475190abdb8",
+    "auditSha256": "6c0bae458e4019898d785e441f8b2c08f67dd581729401fa3462933b4af70b4b"
+  },
+  "extension": {
+    "post": {
+      "id": 411,
+      "url": "https://t.me/probbaperra/411",
+      "date": "2026-09-26T22:27:46+00:00",
+      "text": "Проба Пера pinned «https://probpera.ru/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-dvenadtsat-stulev/»",
+      "links": [
+        "https://t.me/probbaperra"
+      ],
+      "kind": "service_pin",
+      "matchingExistingPostId": 410,
+      "matchBasis": "exact_url"
+    },
+    "headUrl": "https://t.me/s/probbaperra",
+    "headSha256": "a9c1dc9f5f2294c3216e5d44db5183a6a465b6c64c00b27ad959f37f54ae6be7",
+    "unchangedOverlappingTexts": 19
+  },
+  "independentReview": {
+    "path": "reports/r10/social/history/telegram-pin-411-review.json",
+    "sha256": "522e9a0d836d463092cf51b58ca0d03403cf81e68b0315dae367a46f36b72135"
+  },
+  "extendedAuditSha256": "4a67af5294f7136484825c00d3a961e3737ed153f1b22a8af409ad113f194832",
+  "limitations": [
+    "Deleted/private/unobserved posts are not inferred",
+    "Approval covers the reviewed candidate revisions and public snapshot only",
+    "Recheck public head before each canary action"
+  ]
+}

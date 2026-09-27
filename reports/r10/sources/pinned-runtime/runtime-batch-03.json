@@ -1,0 +1,3525 @@
+{
+  "batch": 3,
+  "checkedAt": "2026-09-26T18:52:12.034Z",
+  "sourceCount": 12,
+  "availableSourceCount": 11,
+  "candidateCount": 129,
+  "sources": [
+    {
+      "id": "aseanbookpublishers-org",
+      "name": "ASEAN Book Publishers Association (ABPA)",
+      "url": "https://aseanbookpublishers.org/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "aseanbookpublishers-org",
+      "countryCodes": [
+        "MY"
+      ],
+      "coverageCountryCodes": [
+        "MY"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:59.442Z",
+      "candidateCount": 3
+    },
+    {
+      "id": "anel-qc-ca",
+      "name": "ANEL",
+      "url": "https://www.anel.qc.ca/",
+      "format": "html",
+      "language": "fr-CA",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "anel-qc-ca",
+      "countryCodes": [
+        "CA"
+      ],
+      "coverageCountryCodes": [
+        "CA"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:58.941Z",
+      "candidateCount": 14
+    },
+    {
+      "id": "kiwi-verlag-de",
+      "name": "Kiepenheuer & Witsch",
+      "url": "https://www.kiwi-verlag.de/",
+      "format": "html",
+      "language": "de",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "kiwi-verlag-de",
+      "countryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:58.730Z",
+      "candidateCount": 7
+    },
+    {
+      "id": "press-princeton-edu",
+      "name": "Princeton University Press",
+      "url": "https://press.princeton.edu/",
+      "format": "html",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "press-princeton-edu",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:58.594Z",
+      "candidateCount": 26
+    },
+    {
+      "id": "turkyaybir-org-tr",
+      "name": "Turkish Publishers Association",
+      "url": "https://turkyaybir.org.tr/feed/",
+      "format": "rss",
+      "language": "tr-TR",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "turkyaybir-org-tr",
+      "countryCodes": [
+        "TR"
+      ],
+      "coverageCountryCodes": [
+        "TR"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:00.228Z",
+      "candidateCount": 11
+    },
+    {
+      "id": "sne-fr",
+      "name": "Syndicat National de l’Edition",
+      "url": "https://www.sne.fr/",
+      "format": "html",
+      "language": "fr-FR",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "sne-fr",
+      "countryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:59.130Z",
+      "candidateCount": 23
+    },
+    {
+      "id": "publishers-org",
+      "name": "Association of American Publishers",
+      "url": "https://publishers.org/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "publishers-org",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:51:59.326Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "publishers-org-uk",
+      "name": "Publishers Association",
+      "url": "https://www.publishers.org.uk/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "publishers-org-uk",
+      "countryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:00.006Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "apnetafrica-org",
+      "name": "African Publishers Network (APNET)",
+      "url": "https://apnetafrica.org/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "apnetafrica-org",
+      "countryCodes": [
+        "GH"
+      ],
+      "coverageCountryCodes": [
+        "GH"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:00.021Z",
+      "candidateCount": 9
+    },
+    {
+      "id": "bolognachildrensbookfair-com",
+      "name": "Bologna Children’s Book Fair",
+      "url": "https://www.bolognachildrensbookfair.com/home/878.html",
+      "format": "html",
+      "language": "it",
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "bolognachildrensbookfair-com",
+      "countryCodes": [
+        "IT"
+      ],
+      "coverageCountryCodes": [
+        "IT"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:00.223Z",
+      "candidateCount": 6
+    },
+    {
+      "id": "universitypressplc-com",
+      "name": "University Press Plc, Ibadan",
+      "url": "https://universitypressplc.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "universitypressplc-com",
+      "countryCodes": [
+        "NG"
+      ],
+      "coverageCountryCodes": [
+        "NG"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-26T18:52:00.771Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "publishers-ca",
+      "name": "Association Nationale des Editeurs de Livres",
+      "url": "https://publishers.ca/feed/",
+      "format": "rss",
+      "language": "en-CA",
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "sourceFamilyId": "publishers-ca",
+      "countryCodes": [
+        "CA"
+      ],
+      "coverageCountryCodes": [
+        "CA"
+      ],
+      "status": "error",
+      "lastSuccessAt": null,
+      "candidateCount": 0,
+      "error": "fetch_failed"
+    }
+  ],
+  "items": [
+    {
+      "sourceId": "aseanbookpublishers-org",
+      "source": {
+        "name": "ASEAN Book Publishers Association (ABPA)",
+        "url": "https://aseanbookpublishers.org/singapore-book-bazaar/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Singapore Book Bazaar",
+      "publishedAt": "2020-12-08T04:01:04.000Z",
+      "description": "The Singapore Book Bazaar 2020 would be officially launched on Friday 27 November at 12:00pm with the event streamed live on SBPA’s Facebook page (https://www.facebook.com/sbpa.sg), with an opening speech by Mr Max Phua, SBPA President and Managing Director of World Scientific. During the launch event, there will be a joint book launch by two publishers: […]",
+      "discoveredAt": "2026-09-26T18:51:59.440Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aseanbookpublishers-org",
+      "source": {
+        "name": "ASEAN Book Publishers Association (ABPA)",
+        "url": "https://aseanbookpublishers.org/e-book-piracy-becoming-a-menace/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "E-book Piracy Becoming a Menace",
+      "publishedAt": "2020-08-08T03:26:54.000Z",
+      "description": "KUALA LUMPUR: Malaysian publishers have come out strongly against e-book piracy, which they say is becoming very widespread on e-commerce platforms. The Malaysian Book Publishers Association said it had received many reports from publishers that their books, magazines and comics were being pirated and sold online. “This is very damaging to authors and publishers. We […]",
+      "discoveredAt": "2026-09-26T18:51:59.440Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aseanbookpublishers-org",
+      "source": {
+        "name": "ASEAN Book Publishers Association (ABPA)",
+        "url": "https://aseanbookpublishers.org/hello-world/",
+        "language": "en-US"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ASEAN publishing during the COVID-19 Pandemic",
+      "publishedAt": "2020-06-22T12:11:00.000Z",
+      "description": "International Publishers Association (IPA) President, Hugo Setzer, talks to Trasvin Jittidecharak, Secretary General of the ASEAN Book Publishers Association, and founder of Silkworm Books in Thailand, about how the COVID-19 pandemic has affected publishers in the region and what the future may hold. Trasvin talks to Hugo about the extremely diverse nature of the 10-country […]",
+      "discoveredAt": "2026-09-26T18:51:59.440Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/projets/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Promotion du livre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/secrets-dedition/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Secrets d’édition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/inspirantes-50-ans-dedition-feministe-et-demergence-des-femmes-en-edition-au-quebec/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Inspirantes! 50 ans d’édition féministe et d’émergence des femmes en édition au Québec",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/projets/strongprix-litteraires-des-enseignant-e-s-de-francais-2024-strong/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prix littéraires des enseignant·e·s de français",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/projets/strongprix-litteraires-des-enseignant-e-s-de-francais-2024-strong/les-titres-finalistes-des-prix-litteraires-des-enseignant%c2%b7e%c2%b7s-de-francais-2026/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les titres finalistes des Prix littéraires des enseignant·e·s de français 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/innovation-technologie/accessibilite/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Livre accessible",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/innovation-technologie/commercialiser-des-livres-numeriques-accessibles-en-europe-en-2025/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La commercialisation des livres numériques accessibles en Europe depuis 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/ressources-accessibilite/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ressources \u2013 Livre accessible",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/droit-dauteur/examen-de-la-loi-sur-le-droit-dauteur/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pour un renforcement de la Loi sur le droit d’auteur",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/droit-dauteur/piratage-et-partage-illegal-de-livres-numeriques/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Piratage et partage illégal de livres numériques",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/edition-scolaire/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Édition scolaire",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/ecologie-du-livre/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Écologie du livre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/milieu-de-ledition-sain-et-prevention-du-harcelement/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Milieu de l’édition sain et prévention du harcèlement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anel-qc-ca",
+      "source": {
+        "name": "ANEL",
+        "url": "https://www.anel.qc.ca/etre-editeur-trice/",
+        "language": "fr-CA"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Être éditeur·trice",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.924Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kiwi-verlag-de",
+      "source": {
+        "name": "Kiepenheuer & Witsch",
+        "url": "https://www.kiwi-verlag.de/buch/literatur-unterhaltung",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Literatur & Unterhaltung",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kiwi-verlag-de",
+      "source": {
+        "name": "Kiepenheuer & Witsch",
+        "url": "https://www.kiwi-verlag.de/buch/literatur-unterhaltung/gegenwartsliteratur",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gegenwartsliteratur",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kiwi-verlag-de",
+      "source": {
+        "name": "Kiepenheuer & Witsch",
+        "url": "https://www.kiwi-verlag.de/buch/e-book-preisaktionen",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "E-Book Preisaktionen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kiwi-verlag-de",
+      "source": {
+        "name": "Kiepenheuer & Witsch",
+        "url": "https://www.kiwi-verlag.de/verlag/verlagsgeschichte",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Verlagsgeschichte",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kiwi-verlag-de",
+      "source": {
+        "name": "Kiepenheuer & Witsch",
+        "url": "https://www.kiwi-verlag.de/deutschland-liest-ein-buch",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Deutschland liest ein Buch",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kiwi-verlag-de",
+      "source": {
+        "name": "Kiepenheuer & Witsch",
+        "url": "https://www.kiwi-verlag.de/buch/gil-ribeiro-das-lost-in-fuseta-kochbuch-9783462048049",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Das Lost in Fuseta Kochbuch",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kiwi-verlag-de",
+      "source": {
+        "name": "Kiepenheuer & Witsch",
+        "url": "https://www.kiwi-verlag.de/magazin/ausgezeichnet/shida-bazyar-erhaelt-den-wilhelm-raabe-literaturpreis-2026",
+        "language": "de"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Shida Bazyar erhält den Wilhelm Raabe-Literaturpreis 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.691Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/books/hardcover/9780691284439/a-washington-irving-sketch-book",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Washington Irving Sketch Book",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/imprints/island-press",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "See More Island Press Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/science-needs-failure",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Essay Science needs failure September 15, 2026 Perhaps “failure” is even too strong a term. Research takes different and unexpected paths, but when something goes fundamentally wrong, it can feel like a punch in the gut. Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/what-kind-of-monstrous-bitch-are-you",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What kind of Monstrous Bitch are you? September 22, 2026 Through history and through story, women have been demonized and transformed into a plethora of mythical and monstrous creatures, from demons to vampires, and called everything from goddess to crazy and\u2014of course\u2014bitches. As you explore Johnson’s book, we encourage you to take our quiz to discover what you might have been labelled in past civilizations, and reclaim the admirable qualities of each archetype, previously obscured by the term…",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/housing-affordability-and-our-fraying-social-fabric",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Essay Housing affordability and our fraying social fabric September 15, 2026 The average American is worried about the cost of living, particularly housing. The average pundit is worried about the state of our social fabric. These are parallel conversations, but they are closely entwined. Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/jim-al-khalili-what-is-now",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Video Jim Al-Khalili:What is “now”? September 23, 2026 The Smiths famously issued the melancholic refrain, “how soon is now,\" capturing the urgency of the present moment. But what exactly does “now” mean? Here Jim Al-Khalili, author of On Time tackles the curious question: What is Now? Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/inside-junghaus-the-making-of-the-critical-edition-of-c-g-jung",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Video Inside Junghaus: The making of the Critical Edition of C. G. Jung September 22, 2026 To mark the forthcoming publication of the first volume in the new Critical Edition of C. G. Jung available from Princeton University Press, series editors Sonu Shamdasani and Gaia Domencici visited the historic Junghaus in Zurich to introduce the project and showcase some of the treasures found there. Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/biting-down-on-a-stick",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Essay Biting down on a stick September 02, 2026 Kate Clancy is the author of Pregnancy Interrupted: The Science and Stories of How Pregnancies Really End, a compassionate, evidence-based look at pregnancy loss\u2014how and why it happens, and why the assurances of the medical industry don’t reflect the reality. Read More",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/kanakia-naomi",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Naomi Kanakia Literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/fletcher-catherine",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Catherine Fletcher History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/gordon-reed-annette",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Annette Gordon-Reed History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/pinsky-robert",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Robert Pinsky Poetry",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/ramirez-steve",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Steve Ramirez Neuroscience",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/al-khalili-jim",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jim Al-Khalili Physics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/knoll-andrew-h",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Andrew H. Knoll Earth and Planetary Science",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/pearson-helen",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Helen Pearson History of Science and Knowledge",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/field-laura-k",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Laura K. Field Politics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/eichengreen-barry",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Barry Eichengreen Economics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/miller-idriss-cynthia",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cynthia Miller-Idriss Sociology",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/our-authors/pei-minxin",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Minxin Pei Government and China Studies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/news/bartz-v-anthropic",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Princeton University Press statement on the proposed Bartz v. Anthropic class action suit settlement September 01, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/news/cashmere",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing a partnership with Cashmere for copyright-compliant AI platform licensing August 03, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/news/responsible-ai",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Collective action for responsible AI use: a note to our publishing partners July 24, 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/exam-desk-copies",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Exam & Desk Copies",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/collected-works",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Collected Works",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/distributed-presses",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Distributed Presses",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:58.577Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler-atolyesi-kayitlari-basladi/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi Kayıtları Başladı!",
+      "publishedAt": "2026-09-21T08:58:45.000Z",
+      "description": "Çocuk kitaplarının dünyasına adım atmak isteyenler için özel olarak tasarlanan “Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi”nde sektörün tüm yönleriyle tanışın. Editörlüğün pratik süreçlerinden kurumsal ve kültürel bağlama uzanan farklı başlıkların ele alınacağı bu atölyede, çocuk kitabının ilk taslağından okura ulaşmasına kadar geçen tüm süreci yakından takip edeceksiniz. Karar…",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/online-editorluk-atolyesi-kayitlari-basladi-10/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Online Editörlük Atölyesi Kayıtları Başladı!",
+      "publishedAt": "2026-08-25T08:30:56.000Z",
+      "description": "10 Eylül \u2013 15 Ekim 2026 tarihlerinde gerçekleştirilecek18 saatlikOnline Editörlük Atölyesi’nde editörlük tüm yönleriyle mercek altına alınacak. Bir metnin dosyadan kitaba dönüşüm serüveninde editörün işlevi, editörün bu süreçteki iş adımları, yayınevinin diğer bölümlerindeki yetkililerle ve yayınevi dışında çalışan profesyonellerle kurduğu iletişim, kitabı okura sunmadan önceki zihin jimnastiği, …",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/12-turkiye-yayincilik-kurultayi-2026-sonuc-bildirisi/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "12. Türkiye Yayıncılık Kurultayı 2026 Sonuç Bildirisi",
+      "publishedAt": "2026-06-17T07:49:14.000Z",
+      "description": "XII. Türkiye Yayıncılık Kurultayı10-11 Haziran 2026, İstanbul Türkiye Yayıncılar Birliği’nin iki yılda bir düzenlediği Türkiye Yayıncılık Kurultayı’nın on ikincisi, “Kitabın Geleceği: Algoritma, Toplum ve Pazar” temasıyla 10-11 Haziran 2026 tarihlerinde Trendyol’un ve Step Dijital’in destekleriyle İstanbul’da Yapı Kredi Kültür Merkezi’nde gerçekleşti. Kurultay, yayıncılığımızın duayenlerinden Dr.…",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/2025-yili-turkiye-kitap-pazari-raporu/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2025 Yılı Türkiye Kitap Pazarı Raporu",
+      "publishedAt": "2026-04-16T14:41:30.000Z",
+      "description": "Ülkemiz yayıncılık sektörünün nabzını tutan yıllık detaylı araştırmamız “Türkiye Kitap Pazarı Raporu 2025” yayımlanmıştır.Raporumuza ulaşmak için lütfen tıklayınız.",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/online-editorluk-atolyesi-yeniden/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Online Editörlük Atölyesi Yeniden…",
+      "publishedAt": "2026-03-05T07:56:55.000Z",
+      "description": "25 Mart \u2013 29 Nisan 2026 tarihlerinde gerçekleştirilecek18 saatlik Online Editörlük Atölyesi’nde editörlük tüm yönleriyle mercek altına alınacak. Bir metnin dosyadan kitaba dönüşüm serüveninde editörün işlevi, editörün bu süreçteki iş adımları, yayınevinin diğer bölümlerindeki yetkililerle ve yayınevi dışında çalışan profesyonellerle kurduğu iletişim, kitabı okura sunmadan önceki zihin jimnastiği,…",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler-atolyesi-yeniden/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi Yeniden…",
+      "publishedAt": "2026-03-04T12:54:38.000Z",
+      "description": "Çocuk kitapları dünyasına adım atmak ve bu alanı yayıncılık çerçevesinden görmek isteyenler için özel olarak tasarlanan “Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi”nde sektörün farklı yönleriyle tanışın. Deneyim aktarımını, sektörel gözlemleri ve teorik yaklaşımları içeren bu atölyede, çocuk kitabının ilk taslağından okuyucuya ulaşmasına kadar geçen tüm süreci, bu sürece etki e…",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler-kayitlari-basladi/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Kayıtları Başladı!",
+      "publishedAt": "2026-01-13T12:26:29.000Z",
+      "description": "Çocuk kitapları dünyasına adım atmak ve bu alanı yayıncılık çerçevesinden görmek isteyenler için özel olarak tasarlanan “Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi”nde sektörün farklı yönleriyle tanışın. Deneyim aktarımını, sektörel gözlemleri ve teorik yaklaşımları içeren bu atölyede, çocuk kitabının ilk taslağından okuyucuya ulaşmasına kadar geçen tüm süreci, bu sürece etki e…",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/online-editorluk-atolyesi-kayitlari-basladi-9/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Online Editörlük Atölyesi Kayıtları Başladı!",
+      "publishedAt": "2026-01-06T07:47:17.000Z",
+      "description": "15 Ocak-19 Şubat 2026 tarihlerinde gerçekleştirilecek18 saatlik Online Editörlük Atölyesi’nde editörlük tüm yönleriyle mercek altına alınacak. Bir metnin dosyadan kitaba dönüşüm serüveninde editörün işlevi, editörün bu süreçteki iş adımları, yayınevinin diğer bölümlerindeki yetkililerle ve yayınevi dışında çalışan profesyonellerle kurduğu iletişim, kitabı okura sunmadan önceki zihin jimnastiği, t…",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler",
+      "publishedAt": "2025-11-11T08:31:44.000Z",
+      "description": "Çocuk kitaplarının dünyasına adım atmak isteyenler için özel olarak tasarlanan “Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi” ile sektörün tüm yönleriyle tanışın. Hem teorik bilgileri hem de pratik uygulamaları içeren bu atölyede, çocuk kitabının ilk taslağından okuyucuya ulaşmasına kadar geçen tüm süreci yakından takip edeceksiniz. Sektördeki başarılı örnekler ve uygulama ödevle…",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/birinci-sinif-ogrencilerine-dagitilacak-okuma-kitaplari-hakkinda-basin-aciklamasi/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Birinci Sınıf Öğrencilerine Dağıtılacak Okuma Kitapları Hakkında Basın Açıklaması",
+      "publishedAt": "2025-09-09T08:58:38.000Z",
+      "description": "Birinci Sınıf Öğrencilerine Dağıtılacak Okuma Kitapları Hakkında Basın Açıklaması",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/online-editorluk-atolyesi-kayitlari-basladi-8/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Online Editörlük Atölyesi Kayıtları Başladı!",
+      "publishedAt": "2025-09-08T08:04:59.000Z",
+      "description": "18 Eylül \u2013 23 Ekim 2025 tarihlerinde gerçekleştirilecek 18 saatlik Online Editörlük Atölyesi’nde editörlük tüm yönleriyle mercek altına alınacak. Bir metnin dosyadan kitaba dönüşüm serüveninde editörün işlevi, editörün bu süreçteki iş adımları, yayınevinin diğer bölümlerindeki yetkililerle ve yayınevi dışında çalışan profesyonellerle kurduğu iletişim, kitabı okura sunmadan önceki zihin jimnastiği…",
+      "discoveredAt": "2026-09-26T18:52:00.225Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/editeur-et-auteur/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Éditeur et auteur",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/realiser-un-livre/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Réaliser un livre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/vendre-un-livre/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Commercialiser un livre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/metiers-et-formations/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Métiers et formations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/annuaire-des-editeurs-adherents/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Annuaire des adhérents",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/faq-de-ledition/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FAQ de l'édition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/liberte-de-publier/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liberté de publier",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/promotion-de-la-lecture/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Promotion de la lecture",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/diversite-culturelle/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diversité culturelle",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/prix-unique-du-livre/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prix unique du livre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/ressources-documentaires/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ressources documentaires",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/publications-du-sne/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publications du SNE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/le-festival-du-livre-de-paris/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Festival du Livre de Paris",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/nouveaux-adherents/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nouveaux adhérents",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/actu/de-nouvelles-fiches-metiers-disponibles/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "De nouvelles fiches métiers disponibles",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/evenement_sne/creer-et-lire-demain-comprendre-le-nouveau-paysage-de-la-bd/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Créer et lire demain : comprendre le nouveau paysage de la BD",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/actu/45217/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interview de Valérie Barthez, directrice générale de la SCELF",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’édition en perspective : le rapport d’activité du Syndicat national de l’édition 2025-2026 est disponible",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/environnement/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Consulter le dossier",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/droit-dauteur/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Consulter le dossier",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/espace-presse/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Communiqués de presse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/mentions-legales/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mentions légales & Conditions d’utilisation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/donnees-personnelles/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Données personnelles",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:51:59.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/aap-submits-comments-in-response-to-nih-request-for-information-on-maximizing-research-funds-by-limiting-allowable-publishing-costs/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AAP Submits Comments in Response to NIH Request for Information on Maximizing Research Funds by Limiting Allowable Publishing Costs",
+      "publishedAt": "2025-09-23T22:54:54.000Z",
+      "description": "On September 15, 2025, AAP submitted comments in response to a Request for Information on Maximizing Research Funds by Limiting Allowable Publishing Costs by the National Institutes of Health. AAP continues to advocate that the best method for addressing issues of cost in publication is through a vibrant, competitive, and dynamic publishing marketplace with maximum author choice. Publishers […] T…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/prose-award-editors-series-anne-savarese/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROSE Award Editors Series: Anne Savarese",
+      "publishedAt": "2024-11-20T17:30:39.000Z",
+      "description": "In our third installment of the PROSE Award Editors Series, we talked with Princeton University Press’ Anne Savarese, editor of The Chapter: A Segmented History from Antiquity to the Twenty-First Century, winner of the 2024 PROSE Award in the category of Literature. In this installment, Savarese takes us on a journey through the editorial process, […] The post PROSE Award Editors Series: Anne Sav…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/prose-award-editors-series-joseph-pomp/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROSE Award Editors Series: Joseph Pomp",
+      "publishedAt": "2024-11-08T18:17:14.000Z",
+      "description": "For the second installment of our PROSE Award Editors Series, we speak with Harvard University Press’ Joseph Pomp, editor of A Myriad of Tongues: How Languages Reveal Differences in How We Think by Caleb Everett, winner of the 2024 PROSE Award in the category Language and Linguistics, and Sovereign Funds: How the Communist Party of […] The post PROSE Award Editors Series: Joseph Pomp first appear…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/prose-award-editors-series-ruth-lane/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROSE Award Editors Series: Ruth Lane",
+      "publishedAt": "2024-10-25T17:16:20.000Z",
+      "description": "As entries for the 2025 PROSE Awards continue to pour in, we begin our first piece in a series of conversations with editors of PROSE Award-winning works, who give us insight into the process behind editing professional and scholarly books and the value that the PROSE Awards bring to the scholarly publishing community. This week, […] The post PROSE Award Editors Series: Ruth Lane first appeared o…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/a-conversation-with-kimberly-kay-hoang-author-of-the-2023-prose-awards-r-r-hawkins-award-winner-spiderweb-capitalism-how-global-elites-exploit-frontier-markets/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Conversation With Kimberly Kay Hoang, Author of the 2023 PROSE Awards R.R. Hawkins Award Winner, “Spiderweb Capitalism: How Global Elites Exploit Frontier Markets”",
+      "publishedAt": "2023-10-12T18:12:47.000Z",
+      "description": "Kimberly Kay Hoang is an award-winning scholar, author, teacher, current Professor of Sociology and the College and the Director of Global Studies at the University of Chicago, and the author of two books. Spiderweb Capitalism: How Global Elites Exploit Frontier Markets (Princeton University Press, 2022) and Dealing in Desire: Asian Ascendancy, Western Decline, and the […] The post A Conversation…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/reflections-from-the-association-of-american-publishers-on-hachette-book-group-v-internet-archive-an-affirmation-of-publishing/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reflections from the Association of American Publishers on Hachette Book Group v. Internet Archive: An Affirmation of Publishing",
+      "publishedAt": "2023-03-31T20:56:46.000Z",
+      "description": "Following three years of litigation in the critical copyright case Hachette Book Group, et al, v. Internet Archive, we now have a strong and favorable result. In granting summary judgement for the publisher plaintiffs, Judge Koeltl resolved all four fair use factors in the Copyright Act against the Internet Archive (IA). The opinion, issued a […] The post Reflections from the Association of Ameri…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/american-publishers-working-to-improve-access-affordability-and-outcomes-for-college-students/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "American Publishers Working to Improve Access, Affordability and Outcomes for College Students",
+      "publishedAt": "2023-02-16T14:02:00.000Z",
+      "description": "Working with colleges and universities across the country, American publishers are helping to ensure that students have access to affordable course materials on the first day of class through an innovation in course material delivery called Inclusive Access. Inclusive Access really began to gain momentum in 2015 when the U.S. Department of Education issued federal […] The post American Publishers…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/judge-daniel-mack-on-what-judges-look-for-in-prose-awards-entries/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Judge Daniel Mack on What Judges Look for in PROSE Awards Entries",
+      "publishedAt": "2022-11-09T19:24:34.000Z",
+      "description": "Interviews With 2023 PROSE Judges As we approach the end of the 2023 PROSE Awards entry period, we have our final piece in our PROSE Judges Spotlight series, in which we ask veteran judge Daniel Mack for his thoughts on what makes for a winning PROSE entry. Judge Daniel Mack is an Associate Dean of […] The post Judge Daniel Mack on What Judges Look for in PROSE Awards Entries first appeared on AA…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/prose-judge-deborah-logan-on-what-judges-look-for-in-a-prose-awards-entry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROSE Judge Deborah Logan on What Judges Look for in a PROSE Awards Entry",
+      "publishedAt": "2022-10-26T15:16:07.000Z",
+      "description": "Interviews with 2023 PROSE Judges In the second installment of the 2023 PROSE Spotlight series, judge Deborah Logan provides insight into not only the judging process, but also the importance of gender-balance in awards committees and scholarly editorial teams. Judge Deborah Logan is Publishing Director for Elsevier’s Energy & Earth journals’ program which is the […] The post PROSE Judge Deborah …",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/what-do-judges-look-for-in-a-prose-awards-entry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What Do Judges Look for in a PROSE Awards Entry?",
+      "publishedAt": "2022-10-11T18:17:43.000Z",
+      "description": "Interviews with 2023 PROSE Judges As submissions start to roll in for the 2023 PROSE Awards, our own Syreeta Swann, Chief Operating Officer here at the Association of American Publishers, asked veteran judge Peter Berkery for some insights into what makes a PROSE entry stand out. Peter is the Executive Director of the Association of […] The post What Do Judges Look for in a PROSE Awards Entry? fi…",
+      "discoveredAt": "2026-09-26T18:51:59.322Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/national-year-of-reading-celebrated-at-publishers-associations-parliamentary-reception/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Year of Reading celebrated at Publishers Association’s Parliamentary Reception",
+      "publishedAt": "2026-09-08T17:02:35.000Z",
+      "description": "Parliamentarians, publishers, authors, academics and other leading figures in the creative industries celebrated the National Year of Reading and the importance of UK publishing at the Publishers Association’s Annual Reception in Parliament on Tuesday 8 September 2026. Guests heard speeches from the CEO of Pan Macmillan and Chair of the National Literacy Trust, Joanna Prior… The post National Yea…",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/parliamentarians-share-their-recommended-summer-reads/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Parliamentarians share their recommended summer reads",
+      "publishedAt": "2026-07-15T08:31:50.000Z",
+      "description": "Parliamentarians have shared the books they recommend to their colleagues in the Publishers Association’s Summer Reading List for Parliamentarians. The annual list, contributed to by 38 MPs and Members of the House of Lords, including Sir Chris Bryant MP, Minister of State for Trade Policy; Rt Hon Jonathan Reynolds MP, Chief Whip; Dame Caroline Dinenage MP Chair of the Culture, Media and Sport Co…",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/publishers-association-industry-insights-publishing-in-2025/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishers Association Industry Insights: Publishing in 2025",
+      "publishedAt": "2026-06-17T11:18:07.000Z",
+      "description": "On Tuesday 16 June, Our Head of Research delivered an overview of our 2025 industry stats and a tutorial of our Industry Insights dashboard The post Publishers Association Industry Insights: Publishing in 2025 appeared first on Publishers Association.",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/publishing-reaches-highest-ever-revenue-in-2025/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishing reaches highest ever revenue in 2025",
+      "publishedAt": "2026-06-03T21:45:39.000Z",
+      "description": "UK publishing’s income was up, hitting £7.4 billion last year. This new record revenue shows that publishing is one of the UK’s strongest performing creative industries. While the UK market was up overall, the new figures emphasise the importance of international trade for the publishing industry. The export market was up 4% in 2025 with the US, Australia and Germany… The post Publishing reaches …",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/cma-conduct-requirements-for-google-search-publishers-association-statement/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CMA conduct requirements for Google search: Publishers Association statement",
+      "publishedAt": "2026-06-03T12:52:00.000Z",
+      "description": "Today (3 June) the Competition and Markets Authority (CMA) announced a new conduct requirement for Google search, which aims to provide publishers with control, transparency and attribution in respect to how their content is used in services such as AI Overviews. This is welcome news for UK publishers and follows constructive engagement by the Publishers Association and other publishing trade bod…",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/publishers-association-president-rebecca-sinclair-appears-at-reading-for-pleasure-select-committee/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishers Association President Rebecca Sinclair appears at reading for pleasure select committee",
+      "publishedAt": "2026-05-19T11:44:13.000Z",
+      "description": "How do we make reading synonymous with joy, something fun, something which speaks to our experiences and interests, something we want to share with others? Those questions were at the heart of the penultimate session of the Education Select Committee’s inquiry into reading for pleasure. President of the Publishers Association, Rebecca Sinclair, was among today’s witnesses, joining Frank Cottrell-…",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/rebecca-sinclair-becomes-publishers-association-president/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rebecca Sinclair becomes Publishers Association President",
+      "publishedAt": "2026-05-06T19:18:40.000Z",
+      "description": "Rebecca Sinclair, Chief Brand Officer at Penguin Random House UK, has taken up the position of President of the Publishers Association. The Presidency transferred at the Publishers Association’s Annual General Meeting, which was held today (Wednesday 6 May) at the British Library. Rebecca succeeds Mandy Hill, Managing Director of Academic at Cambridge University Press & Assessment, who remains an…",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/president-rebecca-sinclairs-speech-to-the-publishers-association-agm/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "President Rebecca Sinclair’s speech to the Publishers Association AGM",
+      "publishedAt": "2026-05-06T19:17:15.000Z",
+      "description": "Thanks so much Dan, and good afternoon everyone. I’d like to start by thanking Mandy who has chaired the Publishers Association during such an intense period of change and campaigning. She’s led with a lightness of touch and a wry sense of humour, qualities I always appreciate. On a personal level, I want to thank her for her guidance, encouragement and example. I’ve learnt a lot from her. It… Th…",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/driving-retail-sales-through-better-metadata/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Driving retail sales through better metadata",
+      "publishedAt": "2026-05-01T16:47:13.000Z",
+      "description": "On Thursday 30 April, the Publishers Association Insight Series explored how timely and accurate metadata supports efficient operations for booksellers, online retailers and wholesalers. The post Driving retail sales through better metadata appeared first on Publishers Association.",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/statement-on-ukri-update-on-hybrid-journals/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on UKRI update on hybrid journals",
+      "publishedAt": "2026-04-27T12:30:05.000Z",
+      "description": "The Publishers Association has responded to the news that UKRI will no longer fund hybrid journals from 2028/29. The announcement was made as part of a wider update on the implementation of UKRI’s Open Access policy in 2026 \u2013 30. Publishers Association CEO, Dan Conway, said: “The UK is a world leader in the open… The post Statement on UKRI update on hybrid journals appeared first on Publishers As…",
+      "discoveredAt": "2026-09-26T18:52:00.002Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/canex-and-afreximbank-to-organise-publishers-roundtable-in-association-with-apnet/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CANEX AND AFREXIMBANK TO ORGANISE PUBLISHERS ROUNDTABLE IN ASSOCIATION WITH APNET",
+      "publishedAt": "2025-08-28T11:39:16.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/african-publishers-conference-organized/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 4th African Publishers Conference to be Organized in 2027",
+      "publishedAt": "2025-08-27T10:44:52.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/the-3rd-african-publishers-conference-to-be-held-in-morocco/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 3rd African Publishers Conference to be held in Morocco",
+      "publishedAt": "2025-05-01T16:03:05.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/leadership/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APNET elects a new leadership",
+      "publishedAt": "2025-05-01T10:57:27.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/apnet-ifrro-webinars/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APNET-IFRRO Webinars: Collective Management of Text and Image-based Works",
+      "publishedAt": "2024-10-08T16:23:58.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/the-2nd-african-publishers-conference-to-be-held-in-zimbabwe/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 2nd African Publishers Conference to be held in Zimbabwe from 3rd to 4th June, 2024 (2 days)",
+      "publishedAt": "2024-05-18T23:11:01.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/24th-nairobi-international-book-fair-introduces-rights-trading/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "24th Nairobi International Book Fair Introduces Rights Trading",
+      "publishedAt": "2023-10-16T20:08:04.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/jill-says-mattis-nailed-it-in-his-resignation-letter/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APNET Participates in Abu Dhabi International Book Fair, 2026",
+      "publishedAt": "2023-07-24T11:32:39.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apnetafrica-org",
+      "source": {
+        "name": "African Publishers Network (APNET)",
+        "url": "https://apnetafrica.org/apnet-training-for-trainers-in-tanzania/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APNET Training for Trainers in Tanzania",
+      "publishedAt": "2021-09-15T11:12:17.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa q…",
+      "discoveredAt": "2026-09-26T18:52:00.019Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/focus-on/centro-traduttori/world-directory-of-childrens-book-translators/1077.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "World Directory of Children’s Book Translators",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:00.205Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/eventi/eventi-bolognabookplus/13302.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eventi BolognaBookPlus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:00.205Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/mostre/illustrations-and-books-on-the-move/9681.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Illustrations and Books on the Move",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:00.205Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/mostre/the-braw-amazing-bookshelf/11656.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The BRAW Amazing Bookshelf",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:00.205Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-awards/8382.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BolognaRagazzi Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:00.205Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bolognachildrensbookfair-com",
+      "source": {
+        "name": "Bologna Children’s Book Fair",
+        "url": "https://www.bolognachildrensbookfair.com/premi/bolognaragazzi-crossmedia-awards/10693.html",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BolognaRagazzi CrossMedia Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T18:52:00.205Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2026/08/28/the-passing-of-alhaji-waheed-akin-olajide-immediate-past-md-university-press-plc/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Passing of Alhaji Waheed Akin Olajide \u2013 Immediate Past MD University Press Plc",
+      "publishedAt": "2026-08-28T05:34:54.000Z",
+      "description": "UNIVERSITY PRESS PLC ANNOUNCEMENT OF PASSING With total submission to the will of God, we announce the passing of Alhaji Waheed Akin Olajide, which occurred on Tuesday, 25th August, at the age of 76. Alhaji Olajide was the immediate past […] The post The Passing of Alhaji Waheed Akin Olajide \u2013 Immediate Past MD University Press Plc first appeared on University Press PLC | The foremost publishers.",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2026/05/20/university-press-plc-welcomes-ms-olusayo-adeleye-as-company-secretary-legal-adviser/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press PLC Welcomes Ms. Olusayo ADELEYE as Company Secretary/Legal Adviser",
+      "publishedAt": "2026-05-20T08:30:04.000Z",
+      "description": "University Press PLC is pleased to announce the appointment of Ms. Olusayo ADELEYE as the Company Secretary/Legal Adviser of the Company. Her appointment marks another significant step in the organisation’s continued commitment to corporate excellence, sound governance, regulatory compliance, and […] The post University Press PLC Welcomes Ms. Olusayo ADELEYE as Company Secretary/Legal Adviser fir…",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2026/05/19/5731/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press PLC Receives NBFT Golden Legacy Award at the 25th Nigeria International Book Fair",
+      "publishedAt": "2026-05-19T12:59:56.000Z",
+      "description": "University Press PLC has been honoured with the prestigious NBFT Golden Legacy Award at the recently concluded 25th Nigeria International Book Fair held in Lagos, Nigeria. The award recognizes the company’s outstanding contributions to the growth and development of […] The post University Press PLC Receives NBFT Golden Legacy Award at the 25th Nigeria International Book Fair first appeared on Uni…",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2026/01/23/advancing-education-through-strategic-partnership-university-press-plc-donates-educational-books-to-ondo-state-government/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Advancing Education Through Strategic Partnership: University Press PLC Donates Educational Books to Ondo State Government",
+      "publishedAt": "2026-01-23T08:05:04.000Z",
+      "description": "University Press PLC has once again demonstrated its unwavering commitment to educational development and national progress with a significant book donation to the Ondo State Government. The initiative, carried out as part of the company’s Corporate Social Responsibility (CSR), underscores […] The post Advancing Education Through Strategic Partnership: University Press PLC Donates Educational Boo…",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2025/12/12/university-press-plc-wins-prestigious-sectoral-leadership-award-at-the-pearl-2025-awards/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press PLC Wins Prestigious Sectoral Leadership Award at the PEARL 2025 Awards",
+      "publishedAt": "2025-12-12T09:14:08.000Z",
+      "description": "University Press PLC is proud to announce its remarkable achievement at the PEARL 2025 Awards, where the company emerged winner of the 2025 Sectoral Leadership Award \u2013 Services (Printing and Publishing) category. The PEARL Awards Nigeria stands as the nation’s premier recognition platform […] The post University Press PLC Wins Prestigious Sectoral Leadership Award at the PEARL 2025 Awards first a…",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2025/11/12/honouring-dedication-and-excellence-university-press-plc-celebrates-long-service-awardees-2025-2026/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Honouring Dedication and Excellence: University Press Plc Celebrates Long Service Awardees 2025/2026",
+      "publishedAt": "2025-11-12T08:14:48.000Z",
+      "description": "University Press Plc, a leading force in educational publishing and knowledge dissemination in Nigeria, proudly celebrated its 2025/2026 Long Service Awardees, recognizing and appreciating members of staff whose commitment, loyalty, and excellence have significantly contributed to the company’s enduring success. […] The post Honouring Dedication and Excellence: University Press Plc Celebrates Lon…",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2025/09/18/university-press-plc-holds-47th-annual-general-meeting-reports-strong-return-to-profitability-and-approves-15-kobo-dividend/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UNIVERSITY PRESS PLC HOLDS 47TH ANNUAL GENERAL MEETING, REPORTS STRONG RETURN TO PROFITABILITY AND APPROVES 15 KOBO DIVIDEND",
+      "publishedAt": "2025-09-18T08:31:18.000Z",
+      "description": "Ibadan, Nigeria \u2013 September 18, 2025. University Press PLC successfully held its 47th Annual General Meeting (AGM) on Thursday, September 18, 2025, at the Kakanfo Conference Centre, Ring Road, Ibadan, bringing together shareholders, members of the Board of Directors, corporate […] The post UNIVERSITY PRESS PLC HOLDS 47TH ANNUAL GENERAL MEETING, REPORTS STRONG RETURN TO PROFITABILITY AND APPROVES …",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2025/02/12/annual-general-meeting-agm-2024/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Annual General Meeting (AGM) 2024",
+      "publishedAt": "2025-02-12T10:34:10.000Z",
+      "description": "Celebrating another chapter of achievement as we turn the pages of success at our 2024 Annual General Meeting. #2024UPPLCAGM#2024AGMHighlights#UniversityPressPlc Digital publishing Unit The post Annual General Meeting (AGM) 2024 first appeared on University Press PLC | The foremost publishers.",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2025/02/10/university-press-plc-2/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press Plc Achieves Remarkable 45.45% Stock Surge in January 2025",
+      "publishedAt": "2025-02-10T11:26:41.000Z",
+      "description": "According to a report by Naira Metrics, a leading Nigerian business news platform, University Press PLC (UPPLC), Nigeria’s foremost publishers, has been listed among the top-performing stocks in Nigeria for January 2025. The report highlights that UPPLC recorded an impressive […] The post University Press Plc Achieves Remarkable 45.45% Stock Surge in January 2025 first appeared on University Pres…",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2022/10/04/university-press/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press Plc Successfully Holds 44th AGM. All Resolutions Passed",
+      "publishedAt": "2022-10-04T14:29:14.000Z",
+      "description": "On Thursday, September 29, 2022, University Press Plc successfully held its 44th Annual General Meeting at the Conference Room of its head office in Ibadan, Oyo State, Nigeria. In accordance with COVID-19 safety protocols, the meeting was hybrid. According to the […] The post University Press Plc Successfully Holds 44th AGM. All Resolutions Passed first appeared on University Press PLC | The fore…",
+      "discoveredAt": "2026-09-26T18:52:00.768Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ]
+}

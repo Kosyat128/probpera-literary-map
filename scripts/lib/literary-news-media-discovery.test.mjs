@@ -1,0 +1,124 @@
+import { describe, expect, it, vi } from "vitest";
+import { createHash } from "node:crypto";
+import sharp from "sharp";
+import { resolveNewsMediaBatch } from "./literary-news-media-discovery.mjs";
+import { prepareNewsPost, dispatchNewsJob } from "./literary-news-social.mjs";
+import { readNewsMediaBytes, selectNewsMedia, validatePreparedNewsMedia } from "./literary-news-media.mjs";
+const now=new Date("2026-09-27T00:00:00Z"),destination={platform:"telegram",id:"-100123",mode:"off"};
+const item={id:"virginia-news",category:"anniversaries",kind:"news",eventDate:"2026-09-26",verification:"confirmed",
+  title:{ru:"Вирджиния Вулф: документальная публикация",en:"Virginia Woolf: a documented publication"},
+  summary:{ru:"Опубликовано сообщение об архиве писательницы.",en:"A statement about the writer’s archive was published."},
+  source:{name:"Archive",url:"https://archive.example/virginia-woolf"}};
+const registry={assets:[],downloadHosts:[]},subject={qid:"Q40909",name:"Virginia Woolf",matchedField:"title.en",evidence:{method:"exact-reviewed-writer-name"}};
+function storeFixture(){const rows=new Map();let sequence=0;return{rows,async list(){return [...rows.values()];},
+  async compareAppend(key,expected,state){const previous=rows.get(key);if((previous?.id||null)!==expected)return{applied:false};const row={id:++sequence,state};rows.set(key,row);return{applied:true,...row};}};}
+async function fixture(overrides={},fileName="Fixture.png"){
+  const bytes=await sharp({create:{width:480,height:640,channels:3,background:"#a29285"}}).png().toBuffer();
+  const metadata={Artist:{value:"<a>Fixture Author</a>"},LicenseShortName:{value:"CC BY 4.0"},
+    LicenseUrl:{value:"https://creativecommons.org/licenses/by/4.0/"},UsageTerms:{value:"Creative Commons Attribution 4.0"},Copyrighted:{value:"True"},...overrides};
+  const info={url:"https://upload.wikimedia.org/wikipedia/commons/a/ab/Fixture.png",mime:"image/png",size:bytes.length,
+    sha1:createHash("sha1").update(bytes).digest("hex"),extmetadata:metadata};
+  const fetchImpl=vi.fn(async(input,options)=>{expect(options.redirect).toBe("error");const url=new URL(input);
+    if(url.hostname==="www.wikidata.org")return Response.json({entities:{Q40909:{id:"Q40909",claims:{
+      P31:[{mainsnak:{datavalue:{value:{id:"Q5"}}}}],P18:[{rank:"normal",mainsnak:{snaktype:"value",datavalue:{value:fileName}}}]}}}});
+    if(url.hostname==="commons.wikimedia.org")return Response.json({query:{pages:[{title:`File:${fileName}`,imageinfo:[info]}]}});
+    if(url.hostname==="upload.wikimedia.org")return new Response(bytes,{headers:{"content-type":"image/png"}});
+    throw Error("unexpected URL");});
+  return{bytes,info,fetchImpl,options:{registry,now,fetchImpl,matchSubjects:()=>[subject],searchCandidates:()=>[]}};
+}
+describe("bounded actual-portrait discovery, no provider uploads",()=>{
+  it("keeps all dynamic Commons filename delimiters encoded after the literal File namespace",async()=>{
+    const fileName="Portrait:series:100% /Русский?#.png",f=await fixture({},fileName);
+    const result=await resolveNewsMediaBatch([item],[destination],f.options);
+    expect(result.report.approved).toBe(1);
+    const evidence=result.mediaOptions.registry.assets[0].licenseEvidenceUrl,url=new URL(evidence);
+    expect(evidence).toBe("https://commons.wikimedia.org/wiki/File:Portrait%3Aseries%3A100%25%20%2F%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9%3F%23.png");
+    expect(url.search).toBe("");expect(url.hash).toBe("");
+    expect(decodeURIComponent(url.pathname.slice("/wiki/File:".length))).toBe(fileName);
+    expect(result.mediaOptions.registry.assets[0].permissions[0].evidenceUrl).toBe(evidence);
+  });
+  it("pins one exact human/P18/Commons license and bytes, persists metadata, and replays without a network request",async()=>{
+    const f=await fixture(),store=storeFixture();
+    const result=await resolveNewsMediaBatch([item],[destination],{...f.options,store});
+    expect(result.report.approved).toBe(1);expect(result.report.requests).toBe(3);expect(store.rows.size).toBe(1);
+    const asset=result.mediaOptions.registry.assets[0];expect(asset.subject).toBe("portrait");expect(asset.newsIds).toEqual([item.id]);
+    expect(await readNewsMediaBytes(asset.derivative)).toBeInstanceOf(Buffer);
+    const p=await prepareNewsPost(item,{id:"test",release:"a".repeat(40)},"telegram",{destination,mediaOptions:result.mediaOptions});
+    expect(p.media).not.toBeNull();expect(p.payload.caption).toContain("Fixture Author");await validatePreparedNewsMedia(p,destination,result.mediaOptions);
+    const replay=await resolveNewsMediaBatch([item],[destination],{...f.options,store,fetchImpl:vi.fn(()=>{throw Error("must not fetch");})});
+    expect(replay.report.cached).toBe(1);expect(replay.report.requests).toBe(0);
+    const changed=await resolveNewsMediaBatch([{...item,title:{...item.title,ru:item.title.ru+" - уточнение"}}],[destination],{...f.options,store,maxNews:0});
+    expect(changed.mediaOptions.resolutions[item.id].status).toBe("pending");expect(changed.mediaOptions.registry.assets).toHaveLength(0);
+  });
+  it.each(["CC BY-SA 4.0","CC BY-NC 4.0","CC BY-ND 4.0"])("holds unsupported %s without downloading the image",async license=>{
+    const f=await fixture({LicenseShortName:{value:license}}),r=await resolveNewsMediaBatch([item],[destination],f.options);
+    expect(r.report.held).toBe(1);expect(r.report.requests).toBe(2);expect(r.mediaOptions.registry.assets).toHaveLength(0);
+  });
+  it("rejects a cross-host image URL and metadata/image hash drift",async()=>{
+    for(const bad of ["host","hash"]){const f=await fixture();if(bad==="host")f.info.url="https://private.example/photo.png";else f.info.sha1="0".repeat(40);
+      const r=await resolveNewsMediaBatch([item],[destination],f.options);expect(r.report.held).toBe(1);expect(r.report.approved).toBe(0);
+      expect(r.report.requests).toBe(bad==="host"?2:3);}
+  });
+  it("keeps unmatched/ambiguous identities negative-cached and rolls the bounded budget beyond the first eight",async()=>{
+    const store=storeFixture(),fetchImpl=vi.fn(),rows=Array.from({length:12},(_,i)=>({...item,id:`news-${i}`}));
+    const options={registry,now,store,fetchImpl,matchSubjects:()=>[],searchCandidates:()=>[]};
+    const first=await resolveNewsMediaBatch(rows,[destination],options);expect(first.report.inspected).toBe(8);expect(first.report.pending).toBe(4);
+    const second=await resolveNewsMediaBatch(rows,[destination],options);expect(second.report.cached).toBe(8);expect(second.report.inspected).toBe(4);
+    expect(fetchImpl).not.toHaveBeenCalled();expect(store.rows.size).toBe(12);
+    const ambiguous=await resolveNewsMediaBatch([item],[destination],{...options,store:null,matchSubjects:()=>[subject,{...subject,qid:"Q1"}]});
+    expect(ambiguous.report.outcomes[0].reason).toBe("media_subject_ambiguous");
+  });
+  it("does not discard approved photo metadata on a fresh runner, and pending search cannot dispatch text",async()=>{
+    const f=await fixture(),r=await resolveNewsMediaBatch([item],[destination],f.options);
+    const missing=async()=>{throw Error("no JPEG on this runner");};
+    expect((await selectNewsMedia(item.id,destination,{...r.mediaOptions,readBytes:missing})).media).not.toBeNull();
+    const pending=await resolveNewsMediaBatch([item],[destination],{...f.options,maxNews:0});
+    const p=await prepareNewsPost(item,{id:"s",release:"a".repeat(40)},"telegram",{destination,mediaOptions:pending.mediaOptions});
+    expect(p.mediaPending).toBe(true);const send=vi.fn();
+    expect(await dispatchNewsJob({key:"fixture",store:{read:async()=>({state:{prepared:p}})},transport:{send}}))
+      .toEqual({status:"pending",reason:"media_discovery_pending"});expect(send).not.toHaveBeenCalled();
+  });
+  it("manual exact-rights registry has priority and a cache CAS race stays pending",async()=>{
+    const f=await fixture(),r=await resolveNewsMediaBatch([item],[destination],f.options);
+    const fetchImpl=vi.fn();const manual=await resolveNewsMediaBatch([item],[destination],{...f.options,registry:r.mediaOptions.registry,fetchImpl});
+    expect(manual.mediaOptions.resolutions[item.id].reason).toBe("manual_registry");expect(fetchImpl).not.toHaveBeenCalled();
+    const conflict=await resolveNewsMediaBatch([item],[destination],{...f.options,store:{list:async()=>[],compareAppend:async()=>({applied:false})}});
+    expect(conflict.mediaOptions.registry.assets).toHaveLength(0);expect(conflict.mediaOptions.resolutions[item.id].status).toBe("pending");
+  });
+  it("fresh lookup requires an exact full label plus human and literary occupation; homonyms stay held",async()=>{
+    for(const kind of ["writer","nonliterary","homonyms"]){
+      const f=await fixture(),base=f.fetchImpl;
+      const fetchImpl=vi.fn(async(url,options)=>{const u=new URL(url);
+        if(u.searchParams.get("action")==="wbsearchentities")return Response.json({search:[{id:"Q40909",label:"Virginia Woolf"}]});
+        if(u.searchParams.get("props")==="claims|labels|aliases"){
+          const response=await base(url,options),body=await response.json(),e=body.entities.Q40909;
+          e.labels={en:{value:"Virginia Woolf"}};e.claims.P106=[{mainsnak:{datavalue:{value:{id:kind==="nonliterary"?"Q1":"Q36180"}}}}];
+          return Response.json(body);
+        }
+        return base(url,options);
+      });
+      const guarded=kind==="homonyms"?async(url,options)=>new URL(url).searchParams.get("action")==="wbsearchentities"
+        ?Response.json({search:[{id:"Q40909",label:"Virginia Woolf"}],"search-continue":5}):fetchImpl(url,options):fetchImpl;
+      const r=await resolveNewsMediaBatch([item],[destination],{...f.options,fetchImpl:guarded,matchSubjects:()=>[],
+        searchCandidates:()=>[{query:"Virginia Woolf",matchedField:"title.en"}]});
+      expect(r.report.approved).toBe(kind==="writer"?1:0);expect(r.report.held).toBe(kind==="writer"?0:1);
+      if(kind==="writer")expect(r.report.requests).toBe(4);
+    }
+  });
+  it("never-checked identities progress despite an hour of transient failures at the start of a large feed",async()=>{
+    const store=storeFixture(),rows=Array.from({length:60},(_,i)=>({...item,id:`retry-${i}`})),seen=new Set();
+    for(let tick=0;tick<18;tick++){
+      const result=await resolveNewsMediaBatch(rows,[destination],{registry,store,now:new Date(now.getTime()+tick*600000),
+        matchSubjects:row=>{seen.add(row.id);return[subject];},searchCandidates:()=>[],fetchImpl:async()=>{throw Error("temporary offline");}});
+      expect(result.report.inspected).toBeLessThanOrEqual(8);
+    }
+    expect(seen.size).toBe(60);
+  });
+  it("a known name cannot hide another headline person or replace the headline speaker with a secondary summary portrait",async()=>{
+    const f=await fixture();
+    const result=await resolveNewsMediaBatch([item],[destination],{...f.options,
+      searchCandidates:()=>[{query:"Virginia Woolf",matchedField:"title.en"},{query:"Another Writer",matchedField:"title.en"}]});
+    expect(result.report.approved).toBe(0);expect(result.report.outcomes[0].reason).toBe("media_subject_ambiguous");
+    expect(result.report.requests).toBe(1);
+  });
+});

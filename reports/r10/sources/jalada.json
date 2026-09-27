@@ -1,0 +1,382 @@
+{
+  "sourceId": "jalada",
+  "name": "Jalada Africa",
+  "entryUrl": "https://jaladaafrica.org/",
+  "countryCodes": [
+    "KE"
+  ],
+  "coverageCountryCodes": [
+    "KE"
+  ],
+  "attemptedAt": "2026-09-26T17:31:53.676Z",
+  "requests": [
+    {
+      "url": "https://jaladaafrica.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 148189,
+      "sha256": "de4ad97330ea4711cae6b08189e4c50f1f458ad9e676eec722453904dbbe7cad",
+      "accessedAt": "2026-09-26T17:31:55.671Z"
+    },
+    {
+      "url": "https://jaladaafrica.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 71982,
+      "sha256": "724604721d4792793953c429ba4d2f845ef2501dfcbc6aed8465a61dd65dda14",
+      "accessedAt": "2026-09-26T17:31:56.598Z"
+    },
+    {
+      "url": "https://jaladaafrica.org/2025/05/29/jalada-africa-joins-the-world-to-mourn-ngugi-wa-thiongo-1938-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 156545,
+      "sha256": "c68d02123af0f6ba9a0fc2fe2e84624ca50e1945fe37a3cfe4d7b6890712e862",
+      "accessedAt": "2026-09-26T17:31:57.601Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://jaladaafrica.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 164,
+    "sha256": "cdc38bf79fa3d816da40f225dfaab643da6a10f4154fb5dace3a614a25804253",
+    "accessedAt": "2026-09-26T17:31:54.588Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "jalada",
+    "name": "Jalada Africa",
+    "url": "https://jaladaafrica.org/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "africa",
+    "sourceFamilyId": "jalada",
+    "countryCodes": [
+      "KE"
+    ],
+    "coverageCountryCodes": [
+      "KE"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://jaladaafrica.org"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://jaladaafrica.org/2025/05/29/jalada-africa-joins-the-world-to-mourn-ngugi-wa-thiongo-1938-2025/"
+    ],
+    "verifiedAt": "2026-09-26T17:31:57.611Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "jalada",
+    "source": {
+      "name": "Jalada Africa",
+      "url": "https://jaladaafrica.org/2025/05/29/jalada-africa-joins-the-world-to-mourn-ngugi-wa-thiongo-1938-2025/",
+      "language": "en-US"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Jalada Africa Joins the World to Mourn Ngũgĩ wa Thiong’o (1938 \u2013 2025)",
+    "publishedAt": "2025-05-29T11:48:46.000Z",
+    "description": "All of us at Jalada are deeply saddened to mark the passing of Professor Ngũgĩ wa Thiong’o (1938\u20142025). Ngũgĩ was not only a pioneering figure in African literature; his work also transformed the field of Africana studies and spoke strongly for Africanist historiography on equal terms within the larger corpus of global ideas. A fierce…",
+    "discoveredAt": "2026-09-26T17:31:56.600Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://jaladaafrica.org/2025/05/29/jalada-africa-joins-the-world-to-mourn-ngugi-wa-thiongo-1938-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 156545,
+      "sha256": "c68d02123af0f6ba9a0fc2fe2e84624ca50e1945fe37a3cfe4d7b6890712e862",
+      "accessedAt": "2026-09-26T17:31:57.601Z",
+      "headline": "Jalada Africa Joins the World to Mourn Ngũgĩ wa Thiong’o (1938 \u2013 2025)",
+      "excerpt": "Announcements & Press by Jalada May 29, 2025 All of us at Jalada are deeply saddened to mark the passing of Professor Ngũgĩ wa Thiong’o (1938\u20142025). Ngũgĩ was not only a pioneering figure in African literature; his work also transformed the field of Africana studies and spoke strongly for Africanist historiography on equal terms within the larger corpus of global ideas. A fierce advocate for lingu",
+      "publishedDates": [
+        {
+          "value": "2025-05-29T11:48:46+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://jaladaafrica.org/2025/05/29/jalada-africa-joins-the-world-to-mourn-ngugi-wa-thiongo-1938-2025/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:31:57.611Z",
+  "foundItems": [
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2025/05/29/jalada-africa-joins-the-world-to-mourn-ngugi-wa-thiongo-1938-2025/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jalada Africa Joins the World to Mourn Ngũgĩ wa Thiong’o (1938 \u2013 2025)",
+      "publishedAt": "2025-05-29T11:48:46.000Z",
+      "description": "All of us at Jalada are deeply saddened to mark the passing of Professor Ngũgĩ wa Thiong’o (1938\u20142025). Ngũgĩ was not only a pioneering figure in African literature; his work also transformed the field of Africana studies and spoke strongly for Africanist historiography on equal terms within the larger corpus of global ideas. A fierce…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/jalada-translation-issue-02-wole-%e1%b9%a3oyinka/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jalada Translation Issue 02: Wọlé Ṣóyínká",
+      "publishedAt": "2023-10-01T15:36:52.000Z",
+      "description": "Introduction Original poem in English by Prof. Wọlé Ṣóyínká Translations Available in 49 Languages » ・“Yorùbá” by Kọ́lá Túbọ̀sún ・“Kiswahili” by Hassan Kassim Hassan・“Persian” by Babak Mazloumi ・“Shetlandic” by Christine De Luca ・ “Igbo” by Nzube Ifechukwu ・“IsiZulu” by Mamodiehi Gwala ・“Ekegusii” by Jane Obuchi ・“French” by Sem Beasnael ・“Lubukusu” by Alexander Opicho ・“Arabic” by Ala Younis…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/credits-2/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Credits",
+      "publishedAt": "2023-10-01T15:35:47.000Z",
+      "description": "Project Lead, Issue 02: Wanjeri GakuruProject Conceptor & Issue 01 Lead: Moses Kilolo, Original Text in English by Prof. Wọlé ṢóyínkáCover Design and Images: Marziya Mohammedali First published in October 2023 Copyright © 2023 by Jalada Africa. P.O. Box 45140Nairobi 00100Kenya.jaladatranslations@gmail.com We encourage writers and translators who do not find their languages featured in this issue …",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2024/03/21/mandela-se-leah/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela sẹ Leah",
+      "publishedAt": "2024-03-21T08:46:04.000Z",
+      "description": "Esan Ansel Ahabue « Eye », ọle wẹ, « E i sabo zẹ obho rie umiẹnfan »Ele mu fi bhi ighan nọnsi Robben Island, ọne eyokulo ọmaen« Eye », ọle wẹ, « Ilẹnmin bha ji ọria ri obọ ghae agbọn »Iyaman ọle mọnlen, sokpan ofẹn i mun ọle, ẹlolo nọnsi ọmanmen nọnsi Pakistan.« Eye »,…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/introduction/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Introduction by Wanjeri Gakuru",
+      "publishedAt": "2023-10-01T14:35:31.000Z",
+      "description": "The second anthology in Jalada Africa’s Translation Series was launched on October 1st 2023, the same day Nigeria marked 53 years since the proclamation of independence from British rule. We selected this special day in honour of our Featured Author, Prof. Wole Soyinka who hails from the nation. He has been a lifelong political activist…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/mandela-w%c9%99-s%c9%94-bi-leah-2/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela wə́ sɔ́’ bí Leah",
+      "publishedAt": "2023-10-01T14:15:28.000Z",
+      "description": "Ghomala Nelson Kamkuimo E lə ghɔ̌m gaə́ “Gɛ̌ŋ, pə́ cə́ â hə́ŋ ywə́ tə́ nə̀ há lə̀pʉə̀ ɔ̀” Pə́ nə́ŋ sʉm mtǿ nə́ bú yú tâmbɛŋ Robɛn Ayland. E lə ghɔ̌m gaə́ “Gɛ̌ŋ, zhyə̌nwə̀ cə̂ pá’ bíŋ ŋkyə ɔ́” \u2013 Yú Môgò Pakistan, pó mtø̀pféŋ nə́ sə́ ě, da’gaə́ pə́ cə̀ pwɔ̀k. E lə ghɔ̌m…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/mandela-anakujia-leah/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela anakujia Leah",
+      "publishedAt": "2023-10-01T13:57:44.000Z",
+      "description": "Sheng Mwangi Wa Mahugu ‘Zii,’ msee alidai,’Freedom si yaku-chongwa kwa brain ’ba ma-shengerere kwa miguu ya veteranmzito wa Robben Island.‘Zii’, ngeus alidai, ufahamu hai-achi room ya mpenyo’-Kuingizia lakini si kuingiza njeve, face ya ngeus wa Pakistan.Zii’ m-she alisema, ’imani si ya kulazimishwa’-Voice imeshikwa, imetulia but imechorea design ya Dapchi.Light ya torch haiko dim kwa marima…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/leah-kiel-mandela/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leah kvazaŭ Mandela",
+      "publishedAt": "2023-10-01T13:39:12.000Z",
+      "description": "Esperanto Riccio Antonio “Ne” li diris, “La libero estas neniam kondiĉita” Kaj katenitis la veterano de Robben Island. “Ne” ŝi diris, “La kono permesas neniun ekskludon” Ĉagrena, sed fiera, la mieno de la Pakistana knabino. “Ne” ŝi diris, “La kredo ne estas altrudo” Humila, sed firma, la voĉo kaptita en Dapchi, Viva torĉo en la…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/dagaare/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela wa la Leaa zie",
+      "publishedAt": "2023-10-01T13:20:47.000Z",
+      "description": "Dagaare Mark Ali, Adams Bodomo & Faustina Tantie “Ai”, dɔɔ nang da yeli, “Mengɛ soobo ba taa yelesɛre zaa” Kyɛ ka Rubin kɔngsogɔ tuu nengbeenee gbɛɛ nang eng gbɛbɔnne. “Ai”, pɔgelee nang da yeli, bɔmmo ba taa neɛ kanga zaa iri baroo \u2013 Pa ne felpɛmpɛlɛ, kyɛ ba zoro dabeɛ, Pakesetane deme pɔgyalee la lɛ.…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "jalada",
+      "source": {
+        "name": "Jalada Africa",
+        "url": "https://jaladaafrica.org/2023/10/01/mandela-okwiija-owa-leeya/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mandela okwiija owa Leeya",
+      "publishedAt": "2023-10-01T13:00:00.000Z",
+      "description": "Rukiga Clare D. Kyasiimire Omwoojo yagiira ati ‘Ingaaha’, Obusingye tibukayongyerwaho amateeka” Ninga empiingo zikasibwa emponoka y’ekirwa kya Robbeni Omuhara yagira ati ‘Ingaaha”, “Okumanya tikurikwiiriza kujogoora’ Enkojo, koonka batiine bwooba, kureeba busimba amaisho g’o mwirukazi wa Pakistaani ‘Ingaaha! ’Okwikiriza tibugyemwa’- Iraka ry’obukwatwa, ryebundarize koonka ry’obujeemu omuri Dapchi…",
+      "discoveredAt": "2026-09-26T17:31:56.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "724604721d4792793953c429ba4d2f845ef2501dfcbc6aed8465a61dd65dda14"
+}

@@ -1,0 +1,51 @@
+{
+  "batchId": "r10-08",
+  "at": "2026-09-26T22:50:52.754Z",
+  "recordSha256": "13bb5deb49cef4e8a46b55c27d1f34c726ba9600839ca7b9881ea7ee88cf680b",
+  "counts": {
+    "prepared": 4,
+    "productionSelectorEligible": 4,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "sourceIds": [
+    "universitypressplc-com",
+    "publishers-org-nz",
+    "asymptote",
+    "lnb-lt"
+  ],
+  "sourceCountries": [
+    "LT",
+    "NG",
+    "NZ",
+    "SG"
+  ],
+  "coverageCountries": [
+    "CA",
+    "CN",
+    "GL",
+    "LT",
+    "LV",
+    "NG",
+    "NZ"
+  ],
+  "categories": [
+    "obituaries",
+    "publishing",
+    "releases"
+  ],
+  "public": false,
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 4
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "No ID, eventKey, canonical URL or identified semantic event overlap with existing235 records; all4 are independent events.",
+    "schema": "production selectReviewed4/4 at current Moscowdate",
+    "dateScope": "All kind news; dated within60days; actualevent/report dates distinguished; no expiredannouncement relabelled."
+  }
+}

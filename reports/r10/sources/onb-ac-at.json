@@ -1,0 +1,775 @@
+{
+  "sourceId": "onb-ac-at",
+  "name": "Austrian National Library",
+  "entryUrl": "https://www.onb.ac.at/",
+  "countryCodes": [
+    "AT"
+  ],
+  "coverageCountryCodes": [
+    "AT"
+  ],
+  "attemptedAt": "2026-09-26T17:28:57.704Z",
+  "requests": [
+    {
+      "url": "https://www.onb.ac.at/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1473924,
+      "sha256": "92c1d252f308873af8d3f7544939328bee34505474b610f95d47f689c5203758",
+      "accessedAt": "2026-09-26T17:22:48.347Z"
+    },
+    {
+      "url": "https://www.onb.ac.at/bibliothek/cim",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1450593,
+      "sha256": "081d8c314701d58869a84ba5e74abbb5dd2eb8bf490c0943965637da74517a75",
+      "accessedAt": "2026-09-26T17:28:59.658Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is a service/education centre landing page, not a demonstrated literary news item.",
+  "robots": {
+    "url": "https://www.onb.ac.at/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 333,
+    "sha256": "0a6bc867863185aef82df0d82bcdfe4f23be2c673a18c5d774b5423b0151a9b8",
+    "accessedAt": "2026-09-26T17:28:58.067Z",
+    "disallowed": [
+      "/mehr/blogs/",
+      "/en/more/blogs/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:46.630Z",
+    "sourceDocumentSha256": "92c1d252f308873af8d3f7544939328bee34505474b610f95d47f689c5203758"
+  },
+  "endpoint": {
+    "id": "onb-ac-at",
+    "name": "Austrian National Library",
+    "url": "https://www.onb.ac.at/",
+    "format": "html",
+    "language": "de-AT",
+    "region": "europe",
+    "sourceFamilyId": "onb-ac-at",
+    "countryCodes": [
+      "AT"
+    ],
+    "coverageCountryCodes": [
+      "AT"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.onb.ac.at"
+    ],
+    "linkPattern": "^/digitale-angebote/[^/]+/?$|^/bibliothek/[^/]+/?$|^/sammlungen/[^/]+/?$|^/museen/[^/]+/?$|^/mehr/[^/]+/?$|^/[^/]{12,}/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.onb.ac.at/bibliothek/cim"
+    ],
+    "verifiedAt": "2026-09-26T17:28:59.734Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 27,
+  "literaryCandidateCount": 26,
+  "sample": {
+    "sourceId": "onb-ac-at",
+    "source": {
+      "name": "Austrian National Library",
+      "url": "https://www.onb.ac.at/bibliothek/cim",
+      "language": "de-AT"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Center für Informations- und Medienkompetenz (CIM)",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:28:58.563Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.onb.ac.at/bibliothek/cim",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1450593,
+      "sha256": "081d8c314701d58869a84ba5e74abbb5dd2eb8bf490c0943965637da74517a75",
+      "accessedAt": "2026-09-26T17:28:59.658Z",
+      "headline": "Center für Informations- und Medienkompetenz (CIM)",
+      "excerpt": "Bibliothek Center für Informations- und Medienkompetenz (CIM) Center für Informations- und Medienkompetenz (CIM) Lesen Center für Informations- und Medienkompetenz (CIM) Center für Informations- und Medienkompetenz (CIM) Wissen finden - Wissen anwenden! Als die österreichische Wissensinstitution vermittelt die Österreichische Nationalbibliothek ihren Leser*innen Informationskompetenz aus der Praxi",
+      "publishedDates": [],
+      "canonical": "https://www.onb.ac.at/bibliothek/cim",
+      "language": "de-AT",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:59.734Z",
+  "foundItems": [
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/bibliothek/cim",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Center für Informations- und Medienkompetenz (CIM)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/sammlungen/sammlung-von-handschriften-und-alten-drucken",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sammlung von Handschriften und alten Drucken",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/sammlungen/literaturarchiv",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Literaturarchiv",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/museen/literaturmuseum",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Literaturmuseum",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/digitale-angebote/digitale-themenschwerpunkte",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Digitale Themenschwerpunkte",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/museen/online-ausstellungen",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Online-Ausstellungen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/digitale-angebote/online-trainings",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Online-Trainings",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/bibliothek/bibliotheksbenuetzung-leicht-verstaendlich-video",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliotheksbenützung leicht verständlich (Video)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/bibliothek/recherche-und-suchtipps",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Recherche, Suchtipps, Datenbanken",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/bibliothek/bibliothekarische-aus-und-weiterbildung",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bibliothekarische Aus- und Weiterbildung",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/bibliothek/pflichtablieferung",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Pflichtablieferung",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/bibliothek/leihgaben-fuer-ausstellungen",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Leihgaben für Ausstellungen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/bibliothek/repros-und-jubilaeumszeitungen",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Repros und Jubiläumszeitungen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/bibliothek/green-door-bistro",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Green Door Bistro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/sammlungen/bildarchiv-und-grafiksammlung",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Bildarchiv und Grafiksammlung",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/sammlungen/papyrussammlung",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Papyrussammlung",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/sammlungen/sammlung-fuer-plansprachen",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Sammlung für Plansprachen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/sammlungen/archiv-des-oesterreichischen-volksliedwerkes",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Archiv des Österreichischen Volksliedwerkes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/museen/esperantomuseum",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Esperantomuseum",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/mehr/ariadne-frauen-und-genderspezifisches-wissensportal",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ariadne \u2013 frauen- und genderspezifisches Wissensportal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/mehr/institut-fuer-restaurierung",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Institut für Restaurierung",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/mehr/gesellschaft-der-freunde-der-oesterreichischen-nationalbibliothek",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Gesellschaft der Freunde der Österreichischen Nationalbibliothek",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/mehr/raumvermietungen",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Raumvermietungen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/oeffnungszeiten",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Alle Öffnungszeiten",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/digitale-angebote/podcasts",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Schatzkammer des Wissens",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "onb-ac-at",
+      "source": {
+        "name": "Austrian National Library",
+        "url": "https://www.onb.ac.at/barrierefreiheitserklaerung",
+        "language": "de-AT"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Barrierefreiheitserklärung",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:58.563Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "92c1d252f308873af8d3f7544939328bee34505474b610f95d47f689c5203758",
+  "technicalProbeStatus": "runtime_verified"
+}

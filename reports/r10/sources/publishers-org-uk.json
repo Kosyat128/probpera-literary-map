@@ -1,0 +1,386 @@
+{
+  "sourceId": "publishers-org-uk",
+  "name": "Publishers Association",
+  "entryUrl": "https://www.publishers.org.uk/",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:27:53.465Z",
+  "requests": [
+    {
+      "url": "https://www.publishers.org.uk/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 65941,
+      "sha256": "ed570eb7881809a2a7c383c6e26b8ebc54dea62187ab80b2ecc87b851d762e97",
+      "accessedAt": "2026-09-26T17:21:28.369Z"
+    },
+    {
+      "url": "https://www.publishers.org.uk/publishers-association-industry-insights-publishing-in-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 74022,
+      "sha256": "55d29daa1ed1557715f8d61f6e4ff4be232149303e9c89b2b13bc719e12f8cbd",
+      "accessedAt": "2026-09-26T17:27:54.247Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.publishers.org.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 229,
+    "sha256": "083395f90488f86139dd9646142cb8972aff709ffb40126a5a32a2c6711c086c",
+    "accessedAt": "2026-09-26T17:27:53.867Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:26.249Z",
+    "sourceDocumentSha256": "ed570eb7881809a2a7c383c6e26b8ebc54dea62187ab80b2ecc87b851d762e97"
+  },
+  "endpoint": {
+    "id": "publishers-org-uk",
+    "name": "Publishers Association",
+    "url": "https://www.publishers.org.uk/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "europe",
+    "sourceFamilyId": "publishers-org-uk",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [
+      "GB"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.publishers.org.uk"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.publishers.org.uk/publishers-association-industry-insights-publishing-in-2025/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:54.250Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "publishers-org-uk",
+    "source": {
+      "name": "Publishers Association",
+      "url": "https://www.publishers.org.uk/publishers-association-industry-insights-publishing-in-2025/",
+      "language": "en-GB"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Publishers Association Industry Insights: Publishing in 2025",
+    "publishedAt": "2026-06-17T11:18:07.000Z",
+    "description": "On Tuesday 16 June, Our Head of Research delivered an overview of our 2025 industry stats and a tutorial of our Industry Insights dashboard The post Publishers Association Industry Insights: Publishing in 2025 appeared first on Publishers Association.",
+    "discoveredAt": "2026-09-26T17:27:53.870Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.publishers.org.uk/publishers-association-industry-insights-publishing-in-2025/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 74022,
+      "sha256": "55d29daa1ed1557715f8d61f6e4ff4be232149303e9c89b2b13bc719e12f8cbd",
+      "accessedAt": "2026-09-26T17:27:54.247Z",
+      "headline": "Publishers Association Industry Insights: Publishing in 2025",
+      "excerpt": "On Tuesday 16 June, Our Head of Research delivered an overview of our 2025 industry stats and a tutorial of our Industry Insights dashboard Login to view content",
+      "publishedDates": [
+        {
+          "value": "2026-06-17T11:18:07+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-06-17T11:18:07+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-06-17T11:18:07+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.publishers.org.uk/publishers-association-industry-insights-publishing-in-2025/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:54.250Z",
+  "foundItems": [
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/publishers-association-industry-insights-publishing-in-2025/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishers Association Industry Insights: Publishing in 2025",
+      "publishedAt": "2026-06-17T11:18:07.000Z",
+      "description": "On Tuesday 16 June, Our Head of Research delivered an overview of our 2025 industry stats and a tutorial of our Industry Insights dashboard The post Publishers Association Industry Insights: Publishing in 2025 appeared first on Publishers Association.",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/publishing-reaches-highest-ever-revenue-in-2025/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishing reaches highest ever revenue in 2025",
+      "publishedAt": "2026-06-03T21:45:39.000Z",
+      "description": "UK publishing’s income was up, hitting £7.4 billion last year. This new record revenue shows that publishing is one of the UK’s strongest performing creative industries. While the UK market was up overall, the new figures emphasise the importance of international trade for the publishing industry. The export market was up 4% in 2025 with the US, Australia and Germany… The post Publishing reaches …",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/national-year-of-reading-celebrated-at-publishers-associations-parliamentary-reception/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "National Year of Reading celebrated at Publishers Association’s Parliamentary Reception",
+      "publishedAt": "2026-09-08T17:02:35.000Z",
+      "description": "Parliamentarians, publishers, authors, academics and other leading figures in the creative industries celebrated the National Year of Reading and the importance of UK publishing at the Publishers Association’s Annual Reception in Parliament on Tuesday 8 September 2026. Guests heard speeches from the CEO of Pan Macmillan and Chair of the National Literacy Trust, Joanna Prior… The post National Yea…",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/parliamentarians-share-their-recommended-summer-reads/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Parliamentarians share their recommended summer reads",
+      "publishedAt": "2026-07-15T08:31:50.000Z",
+      "description": "Parliamentarians have shared the books they recommend to their colleagues in the Publishers Association’s Summer Reading List for Parliamentarians. The annual list, contributed to by 38 MPs and Members of the House of Lords, including Sir Chris Bryant MP, Minister of State for Trade Policy; Rt Hon Jonathan Reynolds MP, Chief Whip; Dame Caroline Dinenage MP Chair of the Culture, Media and Sport Co…",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/cma-conduct-requirements-for-google-search-publishers-association-statement/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CMA conduct requirements for Google search: Publishers Association statement",
+      "publishedAt": "2026-06-03T12:52:00.000Z",
+      "description": "Today (3 June) the Competition and Markets Authority (CMA) announced a new conduct requirement for Google search, which aims to provide publishers with control, transparency and attribution in respect to how their content is used in services such as AI Overviews. This is welcome news for UK publishers and follows constructive engagement by the Publishers Association and other publishing trade bod…",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/publishers-association-president-rebecca-sinclair-appears-at-reading-for-pleasure-select-committee/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishers Association President Rebecca Sinclair appears at reading for pleasure select committee",
+      "publishedAt": "2026-05-19T11:44:13.000Z",
+      "description": "How do we make reading synonymous with joy, something fun, something which speaks to our experiences and interests, something we want to share with others? Those questions were at the heart of the penultimate session of the Education Select Committee’s inquiry into reading for pleasure. President of the Publishers Association, Rebecca Sinclair, was among today’s witnesses, joining Frank Cottrell-…",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/rebecca-sinclair-becomes-publishers-association-president/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rebecca Sinclair becomes Publishers Association President",
+      "publishedAt": "2026-05-06T19:18:40.000Z",
+      "description": "Rebecca Sinclair, Chief Brand Officer at Penguin Random House UK, has taken up the position of President of the Publishers Association. The Presidency transferred at the Publishers Association’s Annual General Meeting, which was held today (Wednesday 6 May) at the British Library. Rebecca succeeds Mandy Hill, Managing Director of Academic at Cambridge University Press & Assessment, who remains an…",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/president-rebecca-sinclairs-speech-to-the-publishers-association-agm/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "President Rebecca Sinclair’s speech to the Publishers Association AGM",
+      "publishedAt": "2026-05-06T19:17:15.000Z",
+      "description": "Thanks so much Dan, and good afternoon everyone. I’d like to start by thanking Mandy who has chaired the Publishers Association during such an intense period of change and campaigning. She’s led with a lightness of touch and a wry sense of humour, qualities I always appreciate. On a personal level, I want to thank her for her guidance, encouragement and example. I’ve learnt a lot from her. It… Th…",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/driving-retail-sales-through-better-metadata/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Driving retail sales through better metadata",
+      "publishedAt": "2026-05-01T16:47:13.000Z",
+      "description": "On Thursday 30 April, the Publishers Association Insight Series explored how timely and accurate metadata supports efficient operations for booksellers, online retailers and wholesalers. The post Driving retail sales through better metadata appeared first on Publishers Association.",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-uk",
+      "source": {
+        "name": "Publishers Association",
+        "url": "https://www.publishers.org.uk/statement-on-ukri-update-on-hybrid-journals/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on UKRI update on hybrid journals",
+      "publishedAt": "2026-04-27T12:30:05.000Z",
+      "description": "The Publishers Association has responded to the news that UKRI will no longer fund hybrid journals from 2028/29. The announcement was made as part of a wider update on the implementation of UKRI’s Open Access policy in 2026 \u2013 30. Publishers Association CEO, Dan Conway, said: “The UK is a world leader in the open… The post Statement on UKRI update on hybrid journals appeared first on Publishers As…",
+      "discoveredAt": "2026-09-26T17:27:53.870Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ed570eb7881809a2a7c383c6e26b8ebc54dea62187ab80b2ecc87b851d762e97"
+}

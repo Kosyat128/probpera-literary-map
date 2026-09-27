@@ -1,0 +1,65 @@
+{
+  "sourceId": "cpl-org-pe",
+  "name": "Càmara Peruana del LibroAv. Cuba",
+  "entryUrl": "https://www.cpl.org.pe/",
+  "countryCodes": [
+    "PE"
+  ],
+  "coverageCountryCodes": [
+    "PE"
+  ],
+  "attemptedAt": "2026-09-26T17:28:05.012Z",
+  "requests": [
+    {
+      "url": "https://cpl.org.pe/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 288734,
+      "sha256": "eb42f422c0ccf30f6161133b9305f152f50414b72eac2aa0d4077c0feee65eac",
+      "accessedAt": "2026-09-26T17:28:07.029Z"
+    },
+    {
+      "url": "https://cpl.org.pe/category/noticias/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 275130,
+      "sha256": "bd929d69f6fcf5a72e5920a655bf62c2636d3cf7a45e9729a1fe4fbcf71badc5",
+      "accessedAt": "2026-09-26T17:28:07.610Z"
+    },
+    {
+      "url": "https://cpl.org.pe/la-comision-de-editoriales-independientes-de-la-camara-peruana-del-libro-organiza-irrumpe-2026-la-feria-que-reescribe-la-cultura-editorial-del-pais/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 276682,
+      "sha256": "9da65dee2a6f46c77590722476752805bdd566aa510a33c245e821c856bac08e",
+      "accessedAt": "2026-09-26T17:28:07.838Z"
+    },
+    {
+      "url": "https://cpl.org.pe/la-camara-peruana-del-libro-invita-al-encuentro-de-jovenes-lectores-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 271486,
+      "sha256": "f16eb86ff313fbda3489359d4f8b8e96f129710ceb4892858268cedd78644bcd",
+      "accessedAt": "2026-09-26T17:28:08.033Z"
+    },
+    {
+      "url": "https://cpl.org.pe/la-camara-peruana-del-libro-presenta-a-su-nuevo-consejo-directivo-para-el-periodo-2026-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 273394,
+      "sha256": "1c4c6131219be6a226ba627d9a8e33d9699654e1309476c46b67cd49451736c2",
+      "accessedAt": "2026-09-26T17:28:09.045Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.cpl.org.pe/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 23,
+    "sha256": "eaeaa8d3511d1622227d89707d995b8b1f0902f5b86fdbe58882d1cef260d4d7",
+    "accessedAt": "2026-09-26T17:28:05.485Z",
+    "disallowed": []
+  }
+}

@@ -37,17 +37,24 @@ function readPreviousQueue(value, configured, current) {
     throw new Error("previous_queue_invalid");
   }
   return value.items.flatMap((item) => {
-    // A reviewed registry change can remove a source; obsolete entries disappear.
-    if (!configured.has(item?.sourceId)) return [];
+    if (!configured.has(item?.sourceId)) {
+      // Retired sources retain bounded evidence and decisions; they are never
+      // fetched or admitted through this archived record.
+      const url = canonicalUrl(item?.source?.url);
+      if (!url || !plain(item?.sourceId,120) || !plain(item?.title,500)
+        || item.verification !== "held" || !validTimestamp(item.discoveredAt)) throw new Error("previous_candidate_invalid");
+      return [{...item,archived:true,reasons:[...new Set([...(item.reasons || []),"source_inactive"])]}];
+    }
     const candidate = candidateRecord(item, configured, current);
     if (!candidate) throw new Error("previous_candidate_invalid");
-    return [candidate];
+    return [{...candidate, ...(item.decision && typeof item.decision === "object"
+      && Buffer.byteLength(JSON.stringify(item.decision)) <= 2048 ? {decision:item.decision} : {})}];
   });
 }
 
 /** Merge an entire completed attempt; a failed source never erases its last result. */
 export function buildNewsIngestion({ feed, candidates, previousState = null, previousQueue = null,
-  sources = LITERARY_NEWS_SOURCES, current = new Date() }) {
+  sources = LITERARY_NEWS_SOURCES, current = new Date(), scheduler = null }) {
   if ((previousState === null) !== (previousQueue === null)) throw new Error("previous_snapshot_incomplete");
   const before = previousState === null ? null : parseNewsSourceState(previousState, current, sources);
   if (previousState !== null && !before) throw new Error("previous_state_invalid");
@@ -62,29 +69,34 @@ export function buildNewsIngestion({ feed, candidates, previousState = null, pre
   const merged = [];
   const states = sources.map((source) => {
     const attempt = attempts.get(source.id);
-    if (!attempt || !["ok", "error"].includes(attempt.status)) throw new Error("collection_incomplete");
+    if (!attempt || !["ok", "error", "pending"].includes(attempt.status)) throw new Error("collection_incomplete");
     const previous = before?.sources.find((entry) => entry.id === source.id);
     const fromSource = attempt.status === "ok"
       ? [...fresh.filter((item) => item.sourceId === source.id), ...prior.filter((item) => item.sourceId === source.id)]
       : prior.filter((item) => item.sourceId === source.id);
     let count = 0;
     for (const candidate of fromSource) {
-      if (count >= 100 || seen.has(candidate.source.url)) continue;
+      if (seen.has(candidate.source.url)) continue;
       seen.add(candidate.source.url);
       const old = priorByUrl.get(candidate.source.url);
-      merged.push({ ...candidate, discoveredAt: old?.discoveredAt || candidate.discoveredAt });
+      merged.push({ ...candidate, discoveredAt: old?.discoveredAt || candidate.discoveredAt,
+        ...(old?.decision ? {decision:old.decision} : {}) });
       count += 1;
     }
     return {
-      ...sourceMetadata(source), status: attempt.status,
+      ...sourceMetadata(source), status: attempt.status === "pending" ? previous?.status || "pending" : attempt.status,
       lastSuccessAt: attempt.status === "ok" ? attempt.lastSuccessAt : previous?.lastSuccessAt || null,
       candidateCount: count,
-      ...(attempt.status === "error" ? { error: attempt.error } : {}),
+      ...(attempt.status === "error" ? { error: attempt.error }
+        : attempt.status === "pending" && previous?.error ? {error:previous.error} : {}),
     };
   });
+  for (const item of prior.filter((candidate) => !configured.has(candidate.sourceId))) {
+    if (!seen.has(item.source.url)) { merged.push(item); seen.add(item.source.url); }
+  }
   const queue = {
     schemaVersion: 1, generatedAt: current.toISOString(), lastCheckedAt: feed.lastCheckedAt,
-    verification: "held", items: merged,
+    verification: "held", items: merged, ...(scheduler ? {scheduler} : {}),
   };
   // Stop before upload instead of silently discarding evidence to fit a KV value.
   if (merged.length > NEWS_QUEUE_MAX_ITEMS || Buffer.byteLength(JSON.stringify(queue)) > NEWS_QUEUE_MAX_BYTES) {

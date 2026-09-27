@@ -1,0 +1,296 @@
+{
+  "checkedAt": "2026-09-26T18:49:59.003Z",
+  "status": "passed",
+  "humanReview": false,
+  "browser": "Chrome via Playwright",
+  "sourceCssSha256": "06ebde10600119ba12e625a063d8ec20d78d7c40b88a0078ff078d26562adbb8",
+  "headerSourceSha256": "bcdc72a78cc76c09d82a499e84f8f94b0d993a2e24e1edf03256e6ea76648857",
+  "scope": "Showcase lead image geometry only; authored media and delivery variants preserved",
+  "diagnosis": "The selected source and rendition were complete. A forced 16:9 wrapper and short-screen width constraint produced side bands. Intrinsic full-width geometry removes the frame without cropping or stretching.",
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "currentSrc": "http://127.0.0.1:5173/media/optimized/c902c3296c4ca55e625fa1a1-640w.webp",
+      "natural": [
+        416,
+        258
+      ],
+      "attributes": {
+        "width": "1155",
+        "height": "719"
+      },
+      "image": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 415.1875,
+        "height": 258.1875,
+        "top": 237.390625,
+        "right": 616.1875,
+        "bottom": 495.578125,
+        "left": 201
+      },
+      "frame": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 415.1875,
+        "height": 258.1875,
+        "top": 237.390625,
+        "right": 616.1875,
+        "bottom": 495.578125,
+        "left": 201
+      },
+      "fit": "contain",
+      "position": "static",
+      "transform": "none",
+      "cssHeight": "258.188px",
+      "aspectRatio": "auto",
+      "panel": {
+        "x": 200,
+        "y": 152,
+        "width": 1040,
+        "height": 649.5625,
+        "top": 152,
+        "right": 1240,
+        "bottom": 801.5625,
+        "left": 200
+      },
+      "scroll": 0,
+      "documentOverflow": 0,
+      "links": 7,
+      "titleFont": "24px",
+      "footerReachable": true,
+      "hoverTransform": "none"
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 600
+      },
+      "currentSrc": "http://127.0.0.1:5173/media/optimized/c902c3296c4ca55e625fa1a1-640w.webp",
+      "natural": [
+        299,
+        186
+      ],
+      "attributes": {
+        "width": "1155",
+        "height": "719"
+      },
+      "image": {
+        "x": 121,
+        "y": 213.390625,
+        "width": 415.1875,
+        "height": 258.1875,
+        "top": 213.390625,
+        "right": 536.1875,
+        "bottom": 471.578125,
+        "left": 121
+      },
+      "frame": {
+        "x": 121,
+        "y": 213.390625,
+        "width": 415.1875,
+        "height": 258.1875,
+        "top": 213.390625,
+        "right": 536.1875,
+        "bottom": 471.578125,
+        "left": 121
+      },
+      "fit": "contain",
+      "position": "static",
+      "transform": "none",
+      "cssHeight": "258.188px",
+      "aspectRatio": "auto",
+      "panel": {
+        "x": 120,
+        "y": 152,
+        "width": 1040,
+        "height": 436,
+        "top": 152,
+        "right": 1160,
+        "bottom": 588,
+        "left": 120
+      },
+      "scroll": 131,
+      "documentOverflow": 0,
+      "links": 7,
+      "titleFont": "20px",
+      "footerReachable": true,
+      "hoverTransform": "none"
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "portrait",
+      "currentSrc": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22180%22%20height%3D%22360%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23faf1d8%22%2F%3E%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%22178%22%20height%3D%22358%22%20stroke%3D%22%23572673%22%20stroke-width%3D%222%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M0%200L180%20360M180%200L0%20360%22%20stroke%3D%22%23ef7d00%22%20stroke-width%3D%223%22%2F%3E%3C%2Fsvg%3E",
+      "natural": [
+        180,
+        360
+      ],
+      "attributes": {
+        "width": null,
+        "height": null
+      },
+      "image": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 747.34375,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 984.734375,
+        "left": 201
+      },
+      "frame": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 747.34375,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 984.734375,
+        "left": 201
+      },
+      "fit": "contain",
+      "position": "static",
+      "transform": "none",
+      "cssHeight": "747.344px",
+      "aspectRatio": "auto",
+      "panel": {
+        "x": 200,
+        "y": 152,
+        "width": 1040,
+        "height": 836,
+        "top": 152,
+        "right": 1240,
+        "bottom": 988,
+        "left": 200
+      },
+      "scroll": 55,
+      "documentOverflow": 0,
+      "links": 1,
+      "titleFont": "24px"
+    },
+    {
+      "name": "square",
+      "currentSrc": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22240%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23faf1d8%22%2F%3E%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%22238%22%20height%3D%22238%22%20stroke%3D%22%23572673%22%20stroke-width%3D%222%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M0%200L240%20240M240%200L0%20240%22%20stroke%3D%22%23ef7d00%22%20stroke-width%3D%223%22%2F%3E%3C%2Fsvg%3E",
+      "natural": [
+        240,
+        240
+      ],
+      "attributes": {
+        "width": null,
+        "height": null
+      },
+      "image": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 373.671875,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 611.0625,
+        "left": 201
+      },
+      "frame": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 373.671875,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 611.0625,
+        "left": 201
+      },
+      "fit": "contain",
+      "position": "static",
+      "transform": "none",
+      "cssHeight": "373.672px",
+      "aspectRatio": "auto",
+      "panel": {
+        "x": 200,
+        "y": 152,
+        "width": 1040,
+        "height": 517.0625,
+        "top": 152,
+        "right": 1240,
+        "bottom": 669.0625,
+        "left": 200
+      },
+      "scroll": 0,
+      "documentOverflow": 0,
+      "links": 1,
+      "titleFont": "24px"
+    },
+    {
+      "name": "wide",
+      "currentSrc": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22480%22%20height%3D%22180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23faf1d8%22%2F%3E%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%22478%22%20height%3D%22178%22%20stroke%3D%22%23572673%22%20stroke-width%3D%222%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M0%200L480%20180M480%200L0%20180%22%20stroke%3D%22%23ef7d00%22%20stroke-width%3D%223%22%2F%3E%3C%2Fsvg%3E",
+      "natural": [
+        480,
+        180
+      ],
+      "attributes": {
+        "width": null,
+        "height": null
+      },
+      "image": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 140.125,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 377.515625,
+        "left": 201
+      },
+      "frame": {
+        "x": 201,
+        "y": 237.390625,
+        "width": 373.671875,
+        "height": 140.125,
+        "top": 237.390625,
+        "right": 574.671875,
+        "bottom": 377.515625,
+        "left": 201
+      },
+      "fit": "contain",
+      "position": "static",
+      "transform": "none",
+      "cssHeight": "140.125px",
+      "aspectRatio": "auto",
+      "panel": {
+        "x": 200,
+        "y": 152,
+        "width": 1040,
+        "height": 283.515625,
+        "top": 152,
+        "right": 1240,
+        "bottom": 435.515625,
+        "left": 200
+      },
+      "scroll": 0,
+      "documentOverflow": 0,
+      "links": 1,
+      "titleFont": "24px"
+    }
+  ],
+  "sourceAssetsChanged": false,
+  "neighborLayoutsEdited": false,
+  "finalScopeCheck": {
+    "checkedAt": "2026-09-26T18:53:26.330Z",
+    "real": {
+      "width": 415.1875,
+      "height": 258.1875,
+      "aspect": "auto"
+    },
+    "fallback": {
+      "width": 224,
+      "height": 126,
+      "aspect": "16 / 9"
+    },
+    "status": "passed",
+    "scope": "Intrinsic aspect applies only when a real image is present; legacy fallback dimensions preserved."
+  }
+}

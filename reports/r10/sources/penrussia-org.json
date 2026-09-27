@@ -1,0 +1,37 @@
+{
+  "sourceId": "penrussia-org",
+  "name": "PEN Russia",
+  "entryUrl": "https://www.penrussia.org/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:35.335Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "unsafe_destination",
+  "robots": {
+    "url": "https://www.penrussia.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 732,
+    "sha256": "eff20da0d3621af6ab969529a5f7affa0072feaa65c47e9a4031f3f724a1babe",
+    "accessedAt": "2026-09-26T17:29:35.947Z",
+    "disallowed": [
+      "/wp-admin",
+      "/wp-includes",
+      "/wp-comments",
+      "/wp-content/plugins",
+      "/wp-content/themes",
+      "/wp-login.php",
+      "/wp-register.php",
+      "/xmlrpc.php",
+      "*/trackback",
+      "*/feed",
+      "/cgi-bin",
+      "*?s="
+    ]
+  }
+}

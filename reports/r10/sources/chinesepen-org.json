@@ -1,0 +1,367 @@
+{
+  "sourceId": "chinesepen-org",
+  "name": "PEN China",
+  "entryUrl": "https://www.chinesepen.org/",
+  "countryCodes": [
+    "CN"
+  ],
+  "coverageCountryCodes": [
+    "CN"
+  ],
+  "attemptedAt": "2026-09-26T17:29:28.067Z",
+  "requests": [
+    {
+      "url": "https://www.chinesepen.org/feed",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 8890,
+      "sha256": "b6a7523e38a134fee037fdcee6dfc284e1e888121f86002e6050c6861597d544",
+      "accessedAt": "2026-09-26T17:23:34.732Z"
+    },
+    {
+      "url": "https://www.chinesepen.org/blog/archives/209921",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 186019,
+      "sha256": "eb3f41587238af06baa01261165b358b46d84f5e3975fad441f7d0b4ceac2e91",
+      "accessedAt": "2026-09-26T17:29:28.798Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is a general political essay; literary news relevance not demonstrated.",
+  "robots": {
+    "url": "https://www.chinesepen.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 119,
+    "sha256": "01203c7d8a96575bdfa9c8bc28265a2708c94ee6883697f85c06076da1813782",
+    "accessedAt": "2026-09-26T17:29:28.336Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:25.707Z",
+    "sourceDocumentSha256": "b6a7523e38a134fee037fdcee6dfc284e1e888121f86002e6050c6861597d544"
+  },
+  "endpoint": {
+    "id": "chinesepen-org",
+    "name": "PEN China",
+    "url": "https://www.chinesepen.org/feed",
+    "format": "rss",
+    "language": "zh-Hans",
+    "region": "asia",
+    "sourceFamilyId": "chinesepen-org",
+    "countryCodes": [
+      "CN"
+    ],
+    "coverageCountryCodes": [
+      "CN"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.chinesepen.org"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.chinesepen.org/blog/archives/209921"
+    ],
+    "verifiedAt": "2026-09-26T17:29:28.805Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "chinesepen-org",
+    "source": {
+      "name": "PEN China",
+      "url": "https://www.chinesepen.org/blog/archives/209921",
+      "language": "zh-Hans"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "严家祺：「文化大革命」对中国未来的影响",
+    "publishedAt": "2026-09-25T23:17:30.000Z",
+    "description": "二0二六年是 […]",
+    "discoveredAt": "2026-09-26T17:29:28.337Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.chinesepen.org/blog/archives/209921",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 186019,
+      "sha256": "eb3f41587238af06baa01261165b358b46d84f5e3975fad441f7d0b4ceac2e91",
+      "accessedAt": "2026-09-26T17:29:28.798Z",
+      "headline": "严家祺：「文化大革命」对中国未来的影响",
+      "excerpt": "六四 文革 严家祺：「文化大革命」对中国未来的影响 作者editor30 9 月 26, 2026 二0二六年是中国文化大革命爆发六十年、文革结束五十年，也是《文化大革命十年史》出版四十年。这本书也出版了英文版和日文版。二0二六年再版的这个版本，没有修改以前版本的观点和内容，保留原有的文字和写作风格，只对文革中一些事件的情况做了增补。为此，本书作者四十年来对「文化大革命」的新认识，在作再版增补的同时，在这一〈前言〉中加以分析和陈述。 「自然力量」和「人为力量」 二十一世纪人类的目光经常越出地球，在浩瀚的宇宙中，现在只知道地球上有生命。人类是自然界的的一部分，人类行为从根本上说，也是自然行为的一部分。在地球上，除了有「自然力量」，还有「人为力量」在起作用。核裂变链式反应释放巨大能量，是一种「自然力量」，利用核能发电，是「人为力量」起作用。机器人是一种信使体，机器人行为也可以有目的，但这种目的",
+      "publishedDates": [
+        {
+          "value": "2026-09-26T07:17:30+08:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.chinesepen.org/blog/archives/209921",
+      "language": "zh-Hans",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:28.805Z",
+  "foundItems": [
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209921",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "严家祺：「文化大革命」对中国未来的影响",
+      "publishedAt": "2026-09-25T23:17:30.000Z",
+      "description": "二0二六年是 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209918",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "任铭：远东历史的时间轨迹与中日战争陷阱的形成",
+      "publishedAt": "2026-09-25T04:12:56.000Z",
+      "description": "1、1904年-1905年的日俄战争，日本阵亡10万人，以弱胜强，全歼俄国两支庞大的远洋舰队。导致沙皇殖民满洲 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209910",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "习近平“大内总管”女儿成爆料目标",
+      "publishedAt": "2026-09-23T23:05:44.000Z",
+      "description": "一篇有关习近平的左膀右臂\u2014\u2014栗战书家人在香港拥有巨额资产的文章悄然无声的登上了马云控股的《南华早报》，本来文章 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209906",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "史沫特莱：从苏联间谍到加盟中共隐蔽战线",
+      "publishedAt": "2026-09-22T22:08:56.000Z",
+      "description": "艾格尼丝·史沫特莱（Agnes Smedley；1892年2月－1950年5月），出生于美国矿工家庭，其在成长 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209903",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "安乐业：手撕鬼子到手撕富豪\u2014\u2014中国百亿爽剧背后的百年政治秘密",
+      "publishedAt": "2026-09-22T01:46:06.000Z",
+      "description": "从2025至2026年间，中华人民共和国（以下简称“中国”）大众文化消费领域发生了一次微妙而显着的偏航：长期占 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209895",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "王希哲：沁园春·恨",
+      "publishedAt": "2026-09-20T21:17:49.000Z",
+      "description": "愤飞香江，为君正义，“投案”法门。 忆青春当年，民主法制；少年知己，友我火薪。 “人民共和”，“人民民主”，竟 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209901",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "于东海：民族贼子等等（东海微言集）",
+      "publishedAt": "2026-09-19T22:56:09.000Z",
+      "description": "《民族贼子》或说，冠鲁迅以民族贼子这顶帽子，有点过了。东海答:恰如其分。反儒是认父作贼，崇苏是认贼作父，非贼子 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209884",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "任铭：九一三事件之迷",
+      "publishedAt": "2026-09-18T22:30:51.000Z",
+      "description": "1971年9月13日零点32分，林彪的座机从山海关机场起飞后，朝西南方向飞行，这是去广州的方向。 飞机在天上慢 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/160745",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "284：黄雪琴",
+      "publishedAt": "2026-09-18T13:42:56.000Z",
+      "description": "姓名 黄雪琴 笔名 性别 女 出生日期 1988年8月10日 出生地点 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "chinesepen-org",
+      "source": {
+        "name": "PEN China",
+        "url": "https://www.chinesepen.org/blog/archives/209887",
+        "language": "zh-Hans"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "申有连：《资本论》名不副实",
+      "publishedAt": "2026-09-17T23:07:41.000Z",
+      "description": "资本在人们的通常认识中，是指成就某一事项的前提条件。在政治经济学中，资本是指用于再创造财富的财富。经济学在表述 […]",
+      "discoveredAt": "2026-09-26T17:29:28.337Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b6a7523e38a134fee037fdcee6dfc284e1e888121f86002e6050c6861597d544",
+  "technicalProbeStatus": "runtime_verified"
+}

@@ -1,0 +1,20 @@
+{
+  "sourceId": "upba-org-ua",
+  "name": "Ukrainian Publishers &. Booksellers Association",
+  "entryUrl": "https://www.upba.org.ua/",
+  "countryCodes": [
+    "UA"
+  ],
+  "coverageCountryCodes": [
+    "UA"
+  ],
+  "attemptedAt": "2026-09-26T17:28:28.931Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_500",
+  "robots": {
+    "url": "https://www.upba.org.ua/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

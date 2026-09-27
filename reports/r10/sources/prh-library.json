@@ -1,0 +1,314 @@
+{
+  "sourceId": "prh-library",
+  "name": "Penguin Random House Library",
+  "entryUrl": "https://penguinrandomhouselibrary.com/feed/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:27:27.866Z",
+  "requests": [
+    {
+      "url": "https://penguinrandomhouselibrary.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 43143,
+      "sha256": "dabdc34deb980a203b1bb2216c06c39da045de938d11a3b7e2f530f578df5dd3",
+      "accessedAt": "2026-09-26T17:20:03.471Z"
+    },
+    {
+      "url": "https://penguinrandomhouselibrary.com/2026/09/25/simply-read-more-help-patrons-find-their-audiobook-even-more-fall-2026-must-listens/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 308872,
+      "sha256": "71e360bc8bfc3f27190b31d7d6f184888dabfe893ce3fffce4014009fca76f58",
+      "accessedAt": "2026-09-26T17:27:29.858Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://penguinrandomhouselibrary.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 261,
+    "sha256": "e8088f12be7316e8f5f952c5adb6bf14c982e0d632348169fefd4f1213e56c0f",
+    "accessedAt": "2026-09-26T17:27:28.408Z",
+    "disallowed": [
+      "/wp/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:02.069Z",
+    "sourceDocumentSha256": "dabdc34deb980a203b1bb2216c06c39da045de938d11a3b7e2f530f578df5dd3"
+  },
+  "endpoint": {
+    "id": "prh-library",
+    "name": "Penguin Random House Library",
+    "url": "https://penguinrandomhouselibrary.com/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "north-america",
+    "sourceFamilyId": "prh-library",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://penguinrandomhouselibrary.com"
+    ],
+    "linkPattern": "^/",
+    "keywordPattern": "(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://penguinrandomhouselibrary.com/2026/09/25/simply-read-more-help-patrons-find-their-audiobook-even-more-fall-2026-must-listens/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:29.872Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "prh-library",
+    "source": {
+      "name": "Penguin Random House Library",
+      "url": "https://penguinrandomhouselibrary.com/2026/09/25/simply-read-more-help-patrons-find-their-audiobook-even-more-fall-2026-must-listens/",
+      "language": "en"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Simply Read More: Help Patrons Find Their Audiobook (Even More Fall 2026 Must Listens!)",
+    "publishedAt": "2026-09-25T20:38:49.000Z",
+    "description": "More audiobooks sure to be in demand at your library this fall. The post Simply Read More: Help Patrons Find Their Audiobook (<em>Even More</em> Fall 2026 Must Listens!) appeared first on Penguin Random House Library Marketing.",
+    "discoveredAt": "2026-09-26T17:27:28.411Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://penguinrandomhouselibrary.com/2026/09/25/simply-read-more-help-patrons-find-their-audiobook-even-more-fall-2026-must-listens/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 308872,
+      "sha256": "71e360bc8bfc3f27190b31d7d6f184888dabfe893ce3fffce4014009fca76f58",
+      "accessedAt": "2026-09-26T17:27:29.858Z",
+      "headline": "Simply Read More: Help Patrons Find Their Audiobook (Even More Fall 2026 Must Listens!)",
+      "excerpt": "Simply Read More: Help Patrons Find Their Audiobook (Even More Fall 2026 Must Listens!) | Penguin Random House Library Marketing 0 Hide Modal Hide Modal Got It! NOW AVAILABLE Your Order Starts with a Wish List Click to add titles to your Wish List, sign-in and submit your order to PRH Self-Service! Learn More Got It NOW AVAILABLE Sign in and order your Wish List! Librarians, sign in here with your",
+      "publishedDates": [
+        {
+          "value": "2026-09-25T20:38:49+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-25T20:38:49+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T20:38:49+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://penguinrandomhouselibrary.com/2026/09/25/simply-read-more-help-patrons-find-their-audiobook-even-more-fall-2026-must-listens/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:29.872Z",
+  "foundItems": [
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/25/simply-read-more-help-patrons-find-their-audiobook-even-more-fall-2026-must-listens/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Simply Read More: Help Patrons Find Their Audiobook (Even More Fall 2026 Must Listens!)",
+      "publishedAt": "2026-09-25T20:38:49.000Z",
+      "description": "More audiobooks sure to be in demand at your library this fall. The post Simply Read More: Help Patrons Find Their Audiobook (<em>Even More</em> Fall 2026 Must Listens!) appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:27:28.411Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/16/audiobook-picks-what-will-you-listen-to-this-september-2026/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Audiobook Picks: What Will You Listen To This September 2026?",
+      "publishedAt": "2026-09-16T21:28:23.000Z",
+      "description": "Check out 31 September picks for all ages! The post Audiobook Picks: What Will You Listen To This September 2026? appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:27:28.411Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/16/watch-morning-book-buzz-september-2026-future-bestsellers-dazzling-debuts-time-travel-and-more/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "WATCH Morning Book Buzz September 2026: Future Bestsellers, Dazzling Debuts, Time Travel, and More!",
+      "publishedAt": "2026-09-16T17:44:54.000Z",
+      "description": "Thank you for tuning in to our Morning Book Buzz: Season 7, Episode 5! This month, Jen C., Elizabeth, and Rachel buzzed about future bestsellers, dazzling debuts, the latest time travel books, and more! We can’t wait to buzz with you again on November 4! REGISTER FOR THE ENTIRE SEASON HERE Watch the full September The post WATCH <em>Morning Book Buzz</em> September 2026: Future Bestsellers, Dazzl…",
+      "discoveredAt": "2026-09-26T17:27:28.411Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/16/september-2026-audiobooks-available-on-cd/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "September 2026 Audiobooks Available on CD",
+      "publishedAt": "2026-09-16T15:34:05.000Z",
+      "description": "From author-read nonfiction to big blockbusters, these audiobooks will serve an even bigger audience at your library thanks to the CD edition! The post September 2026 Audiobooks Available on CD appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:27:28.411Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/23/dear-librarians-a-letter-from-steven-j-reese-author-of-read-your-color/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dear Librarians: A Letter from Steven J. Reese, Author of Read Your Color",
+      "publishedAt": "2026-09-23T13:51:55.000Z",
+      "description": "\"Long before an algorithm ever recommended anything to anyone, librarians were doing this work by hand. You have always been the great matchmakers. No machine has replicated you, and I don't believe one ever will. The difference between you and the algorithm is simple: the algorithm optimizes for attention. You optimize for delight.\" The post Dear Librarians: A Letter from Steven J. Reese, Author…",
+      "discoveredAt": "2026-09-26T17:27:28.411Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/18/fridayreads-the-bookshop-woman-nanako-hanada/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "#FridayReads: The Bookshop Woman by Nanako Hanada",
+      "publishedAt": "2026-09-18T05:00:08.000Z",
+      "description": "This international bestseller is the true story of a devoted book lover who finds connection in the vast sea of Tokyo by recommending to strangers the book that will change their lives. The post #FridayReads: <em>The Bookshop Woman</em> by Nanako Hanada appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:27:28.411Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prh-library",
+      "source": {
+        "name": "Penguin Random House Library",
+        "url": "https://penguinrandomhouselibrary.com/2026/09/17/listen-now-to-10-minutes-of-library-love-18-authors-share-sweet-sentiments-from-the-audio-studio/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LISTEN NOW to 10 Minutes of Library Love: 18 Authors Share Sweet Sentiments from the Audio Studio",
+      "publishedAt": "2026-09-17T16:33:12.000Z",
+      "description": "Press play on this special podcast episode of PRH Audio's This is the Author---10 minutes sure to make you smile---and share it with fellow library lovers in your life! The post LISTEN NOW to 10 Minutes of Library Love: 18 Authors Share Sweet Sentiments from the Audio Studio appeared first on Penguin Random House Library Marketing.",
+      "discoveredAt": "2026-09-26T17:27:28.411Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "dabdc34deb980a203b1bb2216c06c39da045de938d11a3b7e2f530f578df5dd3"
+}

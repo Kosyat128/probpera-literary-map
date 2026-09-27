@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "editorialTimeZone": "Europe/Moscow",
+  "destinations": [
+    {
+      "platform": "telegram",
+      "id": "-1002791579809",
+      "mode": "off"
+    },
+    {
+      "platform": "vk",
+      "id": "-231377018",
+      "mode": "off"
+    }
+  ],
+  "connectionStatus": "telegram_rights_verified_vk_deferred_by_owner",
+  "hints": {
+    "telegram": "@probbaperra",
+    "vk": "probperaru"
+  },
+  "note": "Telegram identity and rights are verified; delivery still requires its reviewed history and native canary. The owner explicitly deferred all VK setup and activation. VK remains off and does not block Telegram or the website release."
+}

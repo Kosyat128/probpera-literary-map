@@ -1,0 +1,386 @@
+{
+  "sourceId": "publishers-org-nz",
+  "name": "Publishers Association of New ZealandPO Box",
+  "entryUrl": "https://www.publishers.org.nz/",
+  "countryCodes": [
+    "NZ"
+  ],
+  "coverageCountryCodes": [
+    "NZ"
+  ],
+  "attemptedAt": "2026-09-26T17:28:12.818Z",
+  "requests": [
+    {
+      "url": "https://publishers.org.nz/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 107567,
+      "sha256": "8c22300f13731db5c15a5cb303085e4e307f19b2dee0087ff9489fe9b4cfcef4",
+      "accessedAt": "2026-09-26T17:22:00.680Z"
+    },
+    {
+      "url": "https://publishers.org.nz/poetry-community-powers-national-poetry-day-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 84693,
+      "sha256": "59e88c6968feb0fbe4464d056bf4d5c15a2c992d19e5e62dd4c4805890a93c2e",
+      "accessedAt": "2026-09-26T17:28:18.446Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://publishers.org.nz/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 405,
+    "sha256": "835d33a874a7c1ebeda786c28a3b75f89993765efea1b3e4d093935e2822d165",
+    "accessedAt": "2026-09-26T17:28:16.891Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:53.920Z",
+    "sourceDocumentSha256": "8c22300f13731db5c15a5cb303085e4e307f19b2dee0087ff9489fe9b4cfcef4"
+  },
+  "endpoint": {
+    "id": "publishers-org-nz",
+    "name": "Publishers Association of New ZealandPO Box",
+    "url": "https://publishers.org.nz/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "oceania",
+    "sourceFamilyId": "publishers-org-nz",
+    "countryCodes": [
+      "NZ"
+    ],
+    "coverageCountryCodes": [
+      "NZ"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://publishers.org.nz"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://publishers.org.nz/poetry-community-powers-national-poetry-day-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:18.450Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "publishers-org-nz",
+    "source": {
+      "name": "Publishers Association of New ZealandPO Box",
+      "url": "https://publishers.org.nz/poetry-community-powers-national-poetry-day-2026/",
+      "language": "en-US"
+    },
+    "region": "oceania",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Poetry Community Powers National Poetry Day 2026",
+    "publishedAt": "2026-07-30T01:09:03.000Z",
+    "description": "The National Poetry Day 2026 Calendar of Events is officially live today, with poets, publishers, librarians, and community organisers across Aotearoa answering the call to celebrate poetry and keep this... The post Poetry Community Powers National Poetry Day 2026 appeared first on Publishers Association of New Zealand Inc.",
+    "discoveredAt": "2026-09-26T17:28:16.898Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://publishers.org.nz/poetry-community-powers-national-poetry-day-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 84693,
+      "sha256": "59e88c6968feb0fbe4464d056bf4d5c15a2c992d19e5e62dd4c4805890a93c2e",
+      "accessedAt": "2026-09-26T17:28:18.446Z",
+      "headline": "Poetry Community Powers National Poetry Day 2026",
+      "excerpt": "The National Poetry Day 2026 Calendar of Events is officially live today, with poets, publishers, librarians, and community organisers across Aotearoa answering the call to celebrate poetry and keep this annual celebration thriving. Now in its 29th year, National Poetry Day will light up Friday 28 August with readings, performances, workshops and competitions, taking poetry into libraries, schools",
+      "publishedDates": [
+        {
+          "value": "2026-07-30T01:09:03+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-07-30T01:09:03+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-07-30T01:09:03+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://publishers.org.nz/poetry-community-powers-national-poetry-day-2026/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:18.450Z",
+  "foundItems": [
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/poetry-community-powers-national-poetry-day-2026/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poetry Community Powers National Poetry Day 2026",
+      "publishedAt": "2026-07-30T01:09:03.000Z",
+      "description": "The National Poetry Day 2026 Calendar of Events is officially live today, with poets, publishers, librarians, and community organisers across Aotearoa answering the call to celebrate poetry and keep this... The post Poetry Community Powers National Poetry Day 2026 appeared first on Publishers Association of New Zealand Inc.",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/aotearoa-new-zealand-book-industry-awards-2026-winners-announcement/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aotearoa New Zealand Book Industry Awards 2026 Winners’ Announcement",
+      "publishedAt": "2026-07-28T02:32:31.000Z",
+      "description": "Schrödinger’s Books in Petone has won the NielsenIQ BookData Bookshop of the Year at the 2026 Aotearoa New Zealand Book Industry Awards for its skilful curation of... The post Aotearoa New Zealand Book Industry Awards 2026 Winners’ Announcement appeared first on Publishers Association of New Zealand Inc.",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/surprising-delightful-and-completely-refreshing-winner-of-2026-margaret-mahy-illustration-prize-announced/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Surprising, delightful, and completely refreshing” winner of 2026 Margaret Mahy Illustration Prize announced",
+      "publishedAt": "2026-08-27T00:00:55.000Z",
+      "description": "“Surprising, delightful, and completely refreshing” winner of 2026 Margaret Mahy Illustration Prize announced Hachette Aotearoa New Zealand, Little Moa, and the Margaret Mahy Estate are thrilled to announce Scarlett Robinson-Kean... The post “Surprising, delightful, and completely refreshing” winner of 2026 Margaret Mahy Illustration Prize announced appeared first on Publishers Association of New…",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/picture-book-duo-claim-top-prize-at-childrens-book-awards-for-second-time/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Picture Book duo claim top prize at Children’s Book Awards for second time",
+      "publishedAt": "2026-08-19T21:00:31.000Z",
+      "description": "Picture Book duo claim top prize at Children’s Book Awards for second time Popular picture book author and illustrator team Sacha Cotter and Josh Morgan (Te Aitanga-a-Māhaki, Rongowhakaata) have claimed... The post Picture Book duo claim top prize at Children’s Book Awards for second time appeared first on Publishers Association of New Zealand Inc.",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/votes-surge-for-local-authors-and-new-books-in-top-100-list/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Votes surge for local authors and new books in Top 100 List",
+      "publishedAt": "2026-07-23T00:46:47.000Z",
+      "description": "Whitcoulls announce their most voted for Top 100 Books List today (Thursday, July 23, 2026, 5:00am) and are delighted to reveal that 26 writers are from Aotearoa... The post Votes surge for local authors and new books in Top 100 List appeared first on Publishers Association of New Zealand Inc.",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/major-international-recognition-announced-for-maori-childrens-authors-and-illustrators/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Major international recognition announced for Māori children’s authors and illustrators",
+      "publishedAt": "2026-08-06T20:00:18.000Z",
+      "description": "IBBY-UNESCO collection honours bilingual picture books written in te reo Māori and published by Oratia Books . Two picture books written in te reo Māori have been honoured by inclusion... The post Major international recognition announced for Māori children’s authors and illustrators appeared first on Publishers Association of New Zealand Inc.",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/book-for-bird-lovers-judges-best-designed-in-aotearoa/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book For Bird Lovers Judges Best Designed In Aotearoa",
+      "publishedAt": "2026-09-24T08:30:13.000Z",
+      "description": "Book For Bird Lovers Judges Best Designed In Aotearoa A book created to encourage a love of ornithology in children has been judged the best designed in Aotearoa at the... The post Book For Bird Lovers Judges Best Designed In Aotearoa appeared first on Publishers Association of New Zealand Inc.",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/media-release-book-sector-says-the-next-3-years-will-define-the-future/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book sector says the next 3 years will define the future",
+      "publishedAt": "2026-09-17T00:34:10.000Z",
+      "description": "The Aotearoa New Zealand book sector says the next government has a defining opportunity: to lift literacy, grow local readership, and back a thriving literature ecosystem that produces New Zealand... The post Book sector says the next 3 years will define the future appeared first on Publishers Association of New Zealand Inc.",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/shortlist-celebrates-the-most-beautifully-designed-books-in-aotearoa/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Shortlist celebrates the most beautifully designed books in Aotearoa",
+      "publishedAt": "2026-07-28T18:00:32.000Z",
+      "description": "The most beautifully designed books in Aotearoa are recognised today with the announcement of the finalists for the 2026 PANZ Book Design Awards. The most beautifully designed books in Aotearoa are... The post Shortlist celebrates the most beautifully designed books in Aotearoa appeared first on Publishers Association of New Zealand Inc.",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org-nz",
+      "source": {
+        "name": "Publishers Association of New ZealandPO Box",
+        "url": "https://publishers.org.nz/global-recognition-for-maori-storytelling-six-huia-titles-join-the-inaugural-ibby-unesco-collection/",
+        "language": "en-US"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Global Recognition for Māori Storytelling: Six Huia Titles Join the Inaugural IBBY-UNESCO Collection",
+      "publishedAt": "2026-08-06T20:05:09.000Z",
+      "description": "Global Recognition for Māori Storytelling: Six Huia Titles Join the Inaugural IBBY-UNESCO Collection Six Māori-language children’s books from Huia Publishers have been selected for the inaugural IBBY\u2013UNESCO Collection of Remarkable... The post Global Recognition for Māori Storytelling: Six Huia Titles Join the Inaugural IBBY-UNESCO Collection appeared first on Publishers Association of New Zealan…",
+      "discoveredAt": "2026-09-26T17:28:16.898Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8c22300f13731db5c15a5cb303085e4e307f19b2dee0087ff9489fe9b4cfcef4"
+}

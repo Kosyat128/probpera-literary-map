@@ -1,0 +1,268 @@
+{
+  "package": "R10_FINAL",
+  "status": "pre_release_current_data_and_local_checks_verified_release_pending",
+  "operation_scope_id": null,
+  "original_baseline": null,
+  "baseline_status": "Previous R9.1 operation checkpoint not found in scoped local worktrees or current main; do not reset or invent cumulative counts.",
+  "this_run": {
+    "startedAt": "2026-09-26",
+    "baseHead": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+    "branch": "codex/r10-literary-agenda-20260926",
+    "initialTrackedReviewedRecords": 33,
+    "initialConfiguredEndpoints": 29,
+    "newPublic": 0,
+    "delivered": 0,
+    "newPrepared": 206,
+    "reviewedTotal": 239,
+    "eligibleLocal": 222,
+    "sourceCandidates": 250,
+    "researchVerifiedEndpoints": 108,
+    "verifiedOrganisationCountries": 54,
+    "currentAvailableEndpoints": 101,
+    "currentAvailableCountries": 53,
+    "onsiteThumbnails": 101,
+    "calendarNewOrRefinedDates": 68,
+    "calendarConfirmedExistingPrecision": 9,
+    "calendarAddedVisibleEvents": 77,
+    "newEligibleLocal": 203,
+    "eligibilityCheckedAt": "2026-09-26T23:00:24.738Z",
+    "editorialDate": "2026-09-27"
+  },
+  "user_addition": "Maximize verified country diversity of literary-news sources; count country of organization separately from event coverage, language, and endpoint families.",
+  "decisions": [
+    {
+      "reason": "The historical news checkout is older than current protected main.",
+      "choice": "Isolated branch from the verified current main; preserve existing working copies.",
+      "check": "Remote refs/heads/main equals baseHead; starting status clean.",
+      "rollback": "Discard this isolated branch only; no production changes have been made."
+    }
+  ],
+  "exact_next_step": "Freeze the final code, pass required remote CI for its exact commit, perform the authorized main integration and release, then verify live release/counts. Back up runtime/config, apply and verify the existing schema, run Telegram shadow, recheck the fresh public channel head and reconcile the bounded observed history, then execute one agreed Telegram canary and inspect its remote receipt/native rendering. Keep VK off as explicitly deferred. Preserve held calendar cases and all accepted UI/content; do not reset historical baselines or repeat prior research.",
+  "updatedAt": "2026-09-26T23:11:23.813Z",
+  "acceptedBatches": [
+    {
+      "id": "r10-01",
+      "records": 20,
+      "recordSha256": "5fef9da1b6feb6db49af9cf0afe796fb411ad415865dc6dcc9b914e250f6ced7",
+      "status": "prepared-release-pending"
+    },
+    {
+      "id": "r10-02",
+      "records": 20,
+      "recordSha256": "b059fdef211a76f54107e4028cfd6fda396ac23a28b1325c4e46f41a14ace246",
+      "status": "prepared-release-pending"
+    },
+    {
+      "id": "r10-03",
+      "records": 30,
+      "recordSha256": "885b3e89628e12a75c4a057d582fe806b0f19cc2f6aee138d670ead5fc8fd0f0",
+      "status": "prepared-release-pending"
+    },
+    {
+      "id": "r10-04",
+      "records": 40,
+      "recordSha256": "336ff4ac2172e694aa42ed897099bbd0add6b7fb8214ee0b81601a0c52d38762",
+      "status": "prepared-release-pending"
+    },
+    {
+      "id": "r10-05",
+      "records": 31,
+      "recordSha256": "8496790affd7c1771e3954ae392fd9cbf7e3938fcee53ba2580538a9f57c4c0c",
+      "status": "prepared-release-pending"
+    },
+    {
+      "id": "r10-06",
+      "records": 40,
+      "recordSha256": "0f9466d964d67c588e16a1564dea8c137b0b147dc051cea02ae1b7210871fdb8",
+      "status": "prepared-release-pending"
+    },
+    {
+      "id": "r10-07",
+      "records": 21,
+      "recordSha256": "b52bd1c89162c39d648214b200f185f8d3a4f708541071f682b1777fa82df174",
+      "status": "prepared-release-pending"
+    },
+    {
+      "id": "r10-08",
+      "records": 4,
+      "recordSha256": "13bb5deb49cef4e8a46b55c27d1f34c726ba9600839ca7b9881ea7ee88cf680b",
+      "status": "prepared-release-pending"
+    }
+  ],
+  "cumulative": {
+    "originalBaseline": null,
+    "newPublic": null,
+    "calendarGrowth": null,
+    "reason": "Previous R9.1 operation checkpoint not found in scoped local worktrees or current main; do not reset or invent cumulative counts."
+  },
+  "blockers": [
+    {
+      "id": "release",
+      "kind": "operational-gate",
+      "detail": "Main integration is user-authorized. Exact final-commit remote CI, deployment, live release/count verification and runtime schema are pending; earlier local PASS is historical."
+    },
+    {
+      "id": "telegram-canary",
+      "kind": "operational-gate",
+      "detail": "Telegram numeric identity and rights are verified; 235+4 records screened against 363 accessible public posts. Fresh-head review, durable runtime history approval, shadow and one native canary remain pending. No sends claimed."
+    },
+    {
+      "id": "historical-baseline",
+      "kind": "evidence-limit",
+      "detail": "Original operation_scope_id/baseline, deleted/private social posts and prior post revisions remain unknown; accessible public history does not prove their absence."
+    },
+    {
+      "id": "calendar-growth",
+      "kind": "documented-data-remainder",
+      "detail": "77 added visible events (68 new/refined values +9 confirmed January-1 precision). Remainder923 events or932 new/refined values; >2000 total met. Original60 bytes preserved; supplemental4 held cases remain unapplied."
+    },
+    {
+      "id": "social-media-native-acceptance",
+      "kind": "operational-validation",
+      "detail": "Three approved manual assets have6 destination permissions. Auto exact-identity/P18/Commons resolver and bytes pipeline have local focused evidence; live native image acceptance remains pending. Onsite previews confer no social rights."
+    },
+    {
+      "id": "identity-migrations",
+      "kind": "conditional-not-exercised",
+      "detail": "No identity merge/split operation occurred in206 new prepared records. P36 remains conditional; universal lineage is not claimed."
+    },
+    {
+      "id": "restore",
+      "kind": "operational-validation",
+      "detail": "External stop, pause/shadow and receipt/history reconciliation procedure and local guards exist; live restore was not performed. No automatic stale-backup detector is claimed."
+    }
+  ],
+  "acceptedUserDecisions": [
+    {
+      "scope": "news miniature UI",
+      "decision": "Accepted by user: Да повестка пойдет нормально",
+      "confirmedReference": "User supplied the same final news-panel screenshot and repeated: Изображение на уровне главного текста без белых полос.",
+      "constraints": "Compact square at the headline level; image fills the square without white bands on any side.",
+      "referenceAndDeliveredScreenshotPixelsIdentical": true,
+      "referenceDimensions": [
+        509,
+        862
+      ],
+      "referenceRgbaSha256": "106f266904355b474c422b02aacc1b9ad17b0914f1e6eb06656ce02eb2c9147d",
+      "date": "2026-09-26"
+    },
+    {
+      "scope": "showcase lead image sizing and shown local preview",
+      "decision": "User clarified automatic full-width image without side bands; confirmed intrinsic-height interpretation and shown local result: Вот так да. This is visual-scope acceptance, not production release or social activation authorization.",
+      "date": "2026-09-26"
+    },
+    {
+      "scope": "VK activation",
+      "decision": "VK setup and activation explicitly deferred by user; remain off without blocking Telegram or website release.",
+      "date": "2026-09-27"
+    }
+  ],
+  "implementedUserRequirements": [
+    {
+      "scope": "showcase image",
+      "requirement": "Automatically fill the entire lead-media width without side bands; preserve the full image and original proportions by adapting height. Short viewport may use existing internal scroll.",
+      "date": "2026-09-26",
+      "separateUserAcceptance": true
+    }
+  ],
+  "ciFollowup": {
+    "reason": "The accepted full-width showcase changes an old browser contract; historical checks must retain the prior test bytes.",
+    "solution": "One exact bounded R10 reversal for the showcase test; all prior manifests, hashes and adapters unchanged.",
+    "validation": {
+      "fullSuite": "reports/r10/tests-ci-final.json",
+      "passed": 3755,
+      "failed": 0,
+      "pending": 11,
+      "headerBrowserTests": 14,
+      "independentReview": "passed",
+      "status": "historical_local_evidence",
+      "checkedAt": "2026-09-26T20:37:48.891Z"
+    },
+    "release": "Historical3755PASS does not validate the latest uncommitted supplemental calendar/content/media changes; exact final commit remote verify pending."
+  },
+  "historicalWorkingTreeFingerprint": {
+    "checkedAt": "2026-09-26T20:40:31.587Z",
+    "value": "0df152411f1fa5ddec6ba4398e942f3b0681b790ddd56db492e12f724c68e6cc"
+  },
+  "observedHeadBeforeFinalCommit": "e2548578022cc99d81aca221216fa7ea239249ed",
+  "currentCounts": {
+    "stored": 239,
+    "newPrepared": 206,
+    "current": 222,
+    "newCurrent": 203,
+    "editorialDate": "2026-09-27",
+    "timeZone": "Europe/Moscow",
+    "checkedAt": "2026-09-26T23:00:24.738Z"
+  },
+  "calendar": {
+    "addedVisibleEvents": 77,
+    "newOrRefinedDateValues": 68,
+    "confirmedExistingPrecision": 9,
+    "observedCorrectedBaseline": 2237,
+    "total": 2314,
+    "visibleByYear": {
+      "2026": 2312,
+      "2028": 2314
+    },
+    "remainingVisibleEventTarget": 923,
+    "remainingNewOrRefinedValueTarget": 932,
+    "historicalOperationBaseline": null,
+    "supplementalFields": 17,
+    "supplementalHeld": 4,
+    "original60BytesPreserved": true
+  },
+  "social": {
+    "configuredDestinations": 2,
+    "enabledDestinations": 0,
+    "telegram": {
+      "handle": "probbaperra",
+      "destinationId": "-1002791579809",
+      "rights": "verified_readonly",
+      "mode": "off",
+      "historyReviewedRecords": 239,
+      "observedPublicPosts": 363,
+      "pages": 19,
+      "observedPostIdRange": [
+        1,
+        410
+      ],
+      "decision": "no_identified_duplicate_in_accessible_snapshot",
+      "historyApprovalInProduction": "pending_fresh_head_and_runtime_reconciliation",
+      "canary": "pending"
+    },
+    "vk": {
+      "handle": "probperaru",
+      "destinationId": "-231377018",
+      "mode": "off",
+      "status": "deferred_by_user",
+      "blocksTelegramOrSite": false
+    },
+    "manualApprovedAssets": 3,
+    "manualDestinationPermissions": 6,
+    "automaticImages": "implemented_focused_verified_release_pending",
+    "deletedPrivateAndPriorPostVersionsVerified": false,
+    "delivered": 0,
+    "pacing": {
+      "newPostsPerWindow": 1,
+      "windowMinutes": 30,
+      "catchUpBursts": false,
+      "knownRemoteCorrectionsUnchanged": true,
+      "requestedByUser": true,
+      "implementation": "implemented_independently_reviewed",
+      "evidence": "reports/r10/social/pacing-independent-review.json"
+    }
+  },
+  "release": {
+    "authorizedMainIntegration": true,
+    "exactCommitRemoteCI": "pending",
+    "mainMerge": "pending",
+    "deployment": "pending",
+    "runtimeSchema": "pending",
+    "telegramShadow": "pending",
+    "telegramCanary": "pending",
+    "telegramNativeVisualAcceptance": "pending",
+    "vk": "deferred_by_user",
+    "delivered": 0
+  },
+  "premergeValidation": "reports/r10/premerge-validation.json"
+}

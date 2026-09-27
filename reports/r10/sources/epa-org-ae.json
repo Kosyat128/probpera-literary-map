@@ -1,0 +1,37 @@
+{
+  "sourceId": "epa-org-ae",
+  "name": "Emirates Publishers AssociationPO Box",
+  "entryUrl": "https://www.epa.org.ae/",
+  "countryCodes": [
+    "AE"
+  ],
+  "coverageCountryCodes": [
+    "AE"
+  ],
+  "attemptedAt": "2026-09-26T17:28:32.112Z",
+  "requests": [
+    {
+      "url": "https://www.epa.org.ae/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 92736,
+      "sha256": "d2e11d91806be8725649d864d38bdd7878168032d2a57d8dec5da96baa2e3c63",
+      "accessedAt": "2026-09-26T17:22:15.091Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.epa.org.ae/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 109,
+    "sha256": "64ac59198b3225437b4c7f23b9ca334a1ec7c3dc8efd05b0ed60e7592d897c6b",
+    "accessedAt": "2026-09-26T17:28:33.018Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:13.445Z",
+    "sourceDocumentSha256": "d2e11d91806be8725649d864d38bdd7878168032d2a57d8dec5da96baa2e3c63"
+  }
+}

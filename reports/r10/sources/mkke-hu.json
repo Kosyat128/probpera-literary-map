@@ -1,0 +1,57 @@
+{
+  "sourceId": "mkke-hu",
+  "name": "Hungarian Publishers and Booksellers AssociationKertész u.",
+  "entryUrl": "https://www.mkke.hu/",
+  "countryCodes": [
+    "HU"
+  ],
+  "coverageCountryCodes": [
+    "HU"
+  ],
+  "attemptedAt": "2026-09-26T17:28:37.590Z",
+  "requests": [
+    {
+      "url": "https://mkke.hu/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31157,
+      "sha256": "e15e53016b8f7dc1a2cca41f3ba093f55938f621ae6bf8e8ffce5a44aee29e0b",
+      "accessedAt": "2026-09-26T17:22:21.587Z"
+    },
+    {
+      "url": "https://mkke.hu/hirek_esemenyek/szep_magyar_konyv_2025_palyazati_felhivas",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23223,
+      "sha256": "75ab2eca4f1cd09824359290570b3902cd4843d2870483a088f821e2345d0430",
+      "accessedAt": "2026-09-26T17:28:39.549Z"
+    },
+    {
+      "url": "https://mkke.hu/hirek_esemenyek/david_szalay_booker_dijas_iro_nyitja_meg_a_97_unnepi_konyvhetet",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 20462,
+      "sha256": "ec50398c51b7becff760fabb514c4381bca552a74208915e178fd660a50e6081",
+      "accessedAt": "2026-09-26T17:28:40.195Z"
+    },
+    {
+      "url": "https://mkke.hu/hirek_esemenyek/jelentkezesi_felhivas_a_31_budapesti_nemzetkozi_konyvfesztivalra",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 24140,
+      "sha256": "f8ecbca03e5e2a7e1dbe261268f86a820d40d591828a974fd4d0cc8623b2fb95",
+      "accessedAt": "2026-09-26T17:28:40.704Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.mkke.hu/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:18.658Z",
+    "sourceDocumentSha256": "e15e53016b8f7dc1a2cca41f3ba093f55938f621ae6bf8e8ffce5a44aee29e0b"
+  }
+}

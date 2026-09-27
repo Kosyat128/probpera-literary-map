@@ -1,0 +1,176 @@
+{
+  "checkedAt": "2026-09-26T19:38:07.363Z",
+  "scope": "CRLF to LF, trailing horizontal spaces and redundant EOF blank lines only; JSON parsed values unchanged. No logic, source evidence value, image, CSS or visible content change.",
+  "changes": [
+    {
+      "path": "apps/admin/app/(dashboard)/literary-news/actions.ts",
+      "beforeSha256": "82da1c9e27e2040907f57195075284214e0229ab31984cfe777ddc23dc0b836c",
+      "afterSha256": "e63419c69fa536c0e308e6b4862da3f83f7c6d96e586830e572b4610d8dc7d70"
+    },
+    {
+      "path": "apps/admin/components/LiteraryNewsDeliveryOverview.tsx",
+      "beforeSha256": "71e646060b0777f270590379f8f4c5fb5d12128972e9dd45687ee1cbc28b1e24",
+      "afterSha256": "bb861005bf678a775ce7c45626a6d1f1e8a8f3ee6ed03d82524856f88693fa11"
+    },
+    {
+      "path": "apps/admin/components/LiteraryNewsRuntimeControls.tsx",
+      "beforeSha256": "b45a7680814421d00b2645eafcace8acb4193351392f250d2565f284184f781d",
+      "afterSha256": "43fdf7c1aac8edd7e5fda6420804ba6179623524710f3a75fc065313ffbf16c3"
+    },
+    {
+      "path": "apps/admin/lib/literary-news-operator-input.ts",
+      "beforeSha256": "60a65bdb315989fc9c411ab13e195e876de1ce8de42de96349efebbe8de4df6f",
+      "afterSha256": "3ebbc8dba793176f0619c75593adb4391c5e578c98cf7db69c8cf6c7e5061127"
+    },
+    {
+      "path": "apps/admin/lib/literary-news-runtime-overview.test.ts",
+      "beforeSha256": "fe1b09cfee564540b0afe618647d927d53cf6981cd269e45b98ef0d6cbb9ebc5",
+      "afterSha256": "91f77484c2c5078aa80fef9c8cfd2da142d4478ba9cd7b8f1a4e5e75d56853e4"
+    },
+    {
+      "path": "reports/r10/additional-audits.json",
+      "beforeSha256": "a2ef432a7c03749a27ee53c891db2f3f862b649ce89f7e4251859acc0d436278",
+      "afterSha256": "57b2164b43715b4b4de14cc3fa89fba1cc3a603ebebc39fd667f02614a007e00"
+    },
+    {
+      "path": "reports/r10/admin-build-final.log",
+      "beforeSha256": "97b05472b463cad6cbbcd2c837e67a39064683e27eb33c998da1ff1a6d4c6a85",
+      "afterSha256": "ba8ce30ae3ad16886a544d967faf979f9fc9e1049075a5baaf3b28e100903b63"
+    },
+    {
+      "path": "reports/r10/admin-build.log",
+      "beforeSha256": "dc26ee9ee5a725d01553350665775916bf8bf8ea702326f77d856dc52c9ca838",
+      "afterSha256": "766ff2bba62618f41bbdf85dcc338e73de5ef08a4469ce104a4bdec871cd0d4b"
+    },
+    {
+      "path": "reports/r10/calendar/README.md",
+      "beforeSha256": "a6a4dfc226574b936ffef2f6b1c0db0c0f7af7aef9b9609b6addcd7db3d90e67",
+      "afterSha256": "a51b2a3d8d8ec5d43875a8b7b63867430273d1387dce975f17831f78bac249b9"
+    },
+    {
+      "path": "reports/r10/calendar/final-check.log",
+      "beforeSha256": "c06cb27ce11e4811d71a954976d692dc056d3ac026b65a2d1c23f775b443930b",
+      "afterSha256": "02998cecc0f35b7924195cec725572bfe2fefe80b795abc730285571662a04fc"
+    },
+    {
+      "path": "reports/r10/content-audit.log",
+      "beforeSha256": "09bdcee38b4616effbc42b0d4518e0960b6a4cb7aa7d2365b5f4832e22b95c18",
+      "afterSha256": "51200bdbf47e8f9fe3640e4d0f7458abdd60f9adaed718bd43fd880203fe2d63"
+    },
+    {
+      "path": "reports/r10/dependency-audit.json",
+      "beforeSha256": "a0199334ad2d8184f87d9b09de196e91e31a74b01edbb1458fe56601b96dd423",
+      "afterSha256": "797fb8ac258cd5fe553896514f22bf5ad4878d403e300bc73f7d40100ff83cca"
+    },
+    {
+      "path": "reports/r10/lint-final.log",
+      "beforeSha256": "6b13a5050f39177fb017d40732249dcb4ca78efd4b76307d8e78820be8c3ce70",
+      "afterSha256": "f4e03e6ce205db7f2a00c72aaba6a264e43977c2e8242e6106eecc09d544f94d"
+    },
+    {
+      "path": "reports/r10/lint.log",
+      "beforeSha256": "714bb60115f8ca73d5c39adbd60830368973076647954ccc32f02dcaa94c19b7",
+      "afterSha256": "308bf5429b1cc9624e80f6d23c89b2406405fc0882be74a8bce1af53493862c7"
+    },
+    {
+      "path": "reports/r10/performance-audit.log",
+      "beforeSha256": "fa61767cc6dd43fd58316589e0e48bfbc9257a616f9d55d276f377a3e3f55a7f",
+      "afterSha256": "7d0e3f5ee57ceb0df26764e3e4dd8df7c534e0695a2d0e049dde09fb562f132f"
+    },
+    {
+      "path": "reports/r10/public-build-final.log",
+      "beforeSha256": "a65ee71d04a460a9524d0ce5a26c2b1585ebdaefc3e648fad4a9b5bbb0ee2eeb",
+      "afterSha256": "ed5cb44541ebbb1d4fed9e52ae98f06d0d20abceecda52f5f96ebeca301a7b29"
+    },
+    {
+      "path": "reports/r10/public-build.log",
+      "beforeSha256": "040016d2e1a82eb793556c7b6fbeb038ad3c4cc5ebedec71744d178206571319",
+      "afterSha256": "a7bfaa8e8032cb7e2a95bcaa0cdbd3611f6425b7ccb93527686fc0d009fdc7ee"
+    },
+    {
+      "path": "reports/r10/quality-assets-globe-qa.log",
+      "beforeSha256": "9a7d67d86f1b8f32f35c0ea1bd77c905b16e7eed527123cf775a7f1aa5a112e1",
+      "afterSha256": "b9ae308cfcaeb066451e9671bce41fade333f3cc0405bcde72acd5a93f455180"
+    },
+    {
+      "path": "reports/r10/quality-books-audit.log",
+      "beforeSha256": "0332dc361a942bedf46b2e98da6e78b35fba825d7c48949d9b2a3e7766c7dd46",
+      "afterSha256": "98d4c0f6b9a1b03bd8c0d6796048121732a2358cc9d425e0763a8dea7440b21c"
+    },
+    {
+      "path": "reports/r10/quality-countries-audit.log",
+      "beforeSha256": "4880d4f8a52cc3a6bcb6b87c431c4708d07a12dd3c95588574fef47badb3b88f",
+      "afterSha256": "e7dfe4086210bc4ae04c57159e8a683ff146af5848bb9d31fd84dfa72aef1395"
+    },
+    {
+      "path": "reports/r10/quality-covers-audit.log",
+      "beforeSha256": "44b16b4e36735afa38a840a08965bd1fa463eb7a422da790956484ffe84e1e3f",
+      "afterSha256": "e4de61b7c6f78a6a76bbfb38737b8df4f97d19cba4f0490df137909f419e80ea"
+    },
+    {
+      "path": "reports/r10/quality-media-audit.log",
+      "beforeSha256": "d51c9283feb26d4c36d154c1565e2092122cc99655f007ff2eb52e7afbb13929",
+      "afterSha256": "b707def742a0cc310110f3af816ee335617ac1fb679e8dd2a54e05a41fdf0e7c"
+    },
+    {
+      "path": "reports/r10/routes-audit.log",
+      "beforeSha256": "6d4f8eb0536c5a7e24c8fa0c8dd2f0ba0a11e0cc5ca79dbb450027b2bc658526",
+      "afterSha256": "0524db7974b65ef1cfb0991b24cefb2493753533289f00b8cd0d36619782f5ef"
+    },
+    {
+      "path": "reports/r10/tests-complete.log",
+      "beforeSha256": "379187436f47a9508168628e9f3e2a767db5e2d0ceae275d191f38685e29db63",
+      "afterSha256": "9070048ba7af7167007cea1f47702a0a9b973576db34cccf9fc71493f90e62df"
+    },
+    {
+      "path": "reports/r10/worker-bundle.log",
+      "beforeSha256": "2d084cedfada37cd9f8fadc4d23faad52c5048b69606c25c4c5446c498b6ae36",
+      "afterSha256": "55a21a13a1d83db81d1837257c4ed0377c9da8f04686f2a3147fad921c594bb0"
+    },
+    {
+      "path": "scripts/enrich-calendar-dates-r10.mjs",
+      "beforeSha256": "0ae639e539e4b992e057462db6f67bacc3891e8bccdfd8ac1e95371b640a1354",
+      "afterSha256": "697ca6162bb1bc24eb02fc8d2e2630a8368cbf84962f576e34f4608c37611926"
+    },
+    {
+      "path": "scripts/r10-showcase-before.mjs",
+      "beforeSha256": "d0a083949b0f81fe8d07c6274fa1c8ea786c025993753f6bf7b451f9808aa2ae",
+      "afterSha256": "7cc28f4e9735f4e5240ec24367f3f966c8bfaeb3598e18b0edfb484778efb208"
+    },
+    {
+      "path": "scripts/r10-showcase-css-policy.mjs",
+      "beforeSha256": "d972649e0508b026cfbdc0ada43ed58b1f04cb4e067ecaedfbea5326ae43773a",
+      "afterSha256": "3ffa3e5812902225debeb8fd50ccb818554db981d6307943dc2005dbe10dae8a"
+    },
+    {
+      "path": "scripts/r10-showcase-error-check.mjs",
+      "beforeSha256": "a475c9bc5f86af803624a8c12dac8cc8c7f2d0ceedf066c6c658354d7c47f742",
+      "afterSha256": "9a8dc348f25813d8fae70eb799c06b6cc0acfc0740cdff4341b9942f70b05692"
+    },
+    {
+      "path": "scripts/r10-showcase-image-contain-check.mjs",
+      "beforeSha256": "a0b79d5871d7e86f92484978dc73b500579a64e36c3e8e10beb2cf695b3e595b",
+      "afterSha256": "3e578c6369243f83ace6d0ed213ace66266d11e4cbacc98f9ef8a363caa2af13"
+    },
+    {
+      "path": "scripts/r10-showcase-media-pins.mjs",
+      "beforeSha256": "d9f2bdbe3e16e2c7933bf82b64d5028b7d269fa75a70a5935d7620a5141f6003",
+      "afterSha256": "0a104f5270d10238096028d32a95459642442c46e1345518131bd4f7b45e9a78"
+    },
+    {
+      "path": "scripts/r10-showcase-runtime.mjs",
+      "beforeSha256": "acde206e6b7099e0e53ea21ccd824813d2adbfdd42ebc2a1dd3f9ea9d4fc5621",
+      "afterSha256": "920d83d7d9ecdd32a7f50fc1afa592d465e3dfaf769f189c847dce31b334bdc7"
+    },
+    {
+      "path": "src/data/countries/writerDatePatches.test.ts",
+      "beforeSha256": "12da5d87c780407d13a67ee6cb8d956377885392d3496c0ebfa81fa6787e16be",
+      "afterSha256": "3302a2caabde003a04c40990509bfea14b534f69768617ebba957f5b7ccb3216"
+    },
+    {
+      "path": "supabase/migrations/20260926_literary_news_runtime_cas.sql",
+      "beforeSha256": "1c654cce6f0910528ed8284645aaeaa13dbe3ab953a75fca47d52fef6b7f8f1d",
+      "afterSha256": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402"
+    }
+  ]
+}

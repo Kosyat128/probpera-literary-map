@@ -1,0 +1,748 @@
+
+ RUN  v4.1.10 D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10
+
+ ✓ scripts/lib/book-evidence-release-gate.test.mjs (2 tests) 354ms
+     ✓ keeps UI-only changes outside automatic database writes while covering every catalog dependency  349ms
+ ✓ scripts/lib/reviewed-premium-title-evidence.test.mjs (9 tests) 502ms
+ ✓ scripts/lib/article-reading-editorial-fixes-20260914.test.mjs (11 tests) 430ms
+ ✓ scripts/lib/book-enrichment-generator.test.mjs (1 test) 6759ms
+     ✓ is idempotent when a reviewed promotion output is loaded again  6757ms
+ ✓ src/i18n/InterfaceLanguage.test.ts (7 tests) 7952ms
+     ✓ registers every statically translated interface phrase used in src  2720ms
+     ✓ passes the raw Cyrillic visitor-interface AST audit  5224ms
+ ✓ src/data/countries/bookArticleSynopsisBatch01.test.ts (7 tests) 1122ms
+     ✓ recomputes every immutable article, revision, heading, and selected-excerpt hash  596ms
+     ✓ keeps the nine retained replacements pending and separates the three later independently reviewed profiles  420ms
+ ✓ src/data/bookArchive.test.ts (30 tests) 280ms
+ ✓ src/data/bookR49nPackageReviewed20260912.test.ts (4 tests) 304ms
+ ✓ src/data/countries/bookR49nDickensReviewed20260912.test.ts (16 tests) 501ms
+     ✓ preserves protected fields of the original ten targets within the separately audited common package  388ms
+ ✓ src/data/countries/bookR49nRetainedDrafts20260912.test.ts (5 tests) 1027ms
+     ✓ copies all 2988 selected pending texts exactly, with no inherited review for a replaced synopsis  430ms
+     ✓ leaves every record outside the exact pending set unchanged  520ms
+ ✓ scripts/lib/quality-browser-matrix.test.mjs (5 tests) 3507ms
+     ✓ runs all 22 premium and 6 WebGL shards exactly once with their original flags  575ms
+     ✓ fails the real runner command on a test error, unknown suite or empty shard list  363ms
+     ✓ retains verify and rejects every failed, cancelled, skipped or missing dependency result  2466ms
+ ✓ scripts/lib/literary-archive-reference-catalog.test.mjs (15 tests) 2064ms
+     ✓ reproduces the fixed identity projection from the current checked-in full catalogue  1809ms
+ ✓ scripts/audit-performance-budget.test.mjs (29 tests) 8013ms
+     ✓ resolves a root deployment only through its pinned domain marker  337ms
+ ✓ scripts/audit-stage5-baseline.test.mjs (4 tests) 21272ms
+     ✓ builds all required inventories from the pinned main commit  21263ms
+ ✓ src/data/countries/writerPortraitIntegrity.test.ts (8 tests) 9572ms
+     ✓ fully decodes every referenced portrait as a 384x480 WebP  9227ms
+ ✓ scripts/audit-stage5d6-certification.test.mjs (2 tests) 2393ms
+     ✓ certifies required source contracts and bounded helper datasets  2361ms
+ ✓ scripts/lib/stage5-content-data-lock.test.mjs (22 tests) 13119ms
+     ✓ keeps authorial article documents semantically unchanged  385ms
+     ✓ keeps canonical country, book and writer records semantically unchanged  3271ms
+     ✓ projects only the exact owner-reviewed reading and image delivery deltas  1751ms
+     ✓ bounds the owner-requested bookshelf UI and private progress refinement  437ms
+     ✓ keeps STAGE4-PRODUCTION-SURFACE immutable projection unchanged  402ms
+     ✓ keeps PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE immutable projection unchanged  696ms
+     ✓ keeps Header/Hero owner CSS rules unchanged  4973ms
+ ✓ scripts/lib/reviewed-r10-delta.test.mjs (21 tests) 2451ms
+     ✓ keeps old attestations and projection implementations byte-for-byte unchanged  855ms
+ ✓ scripts/audit-tilda-dependencies.test.mjs (10 tests) 641ms
+     ✓ keeps the current repository below the reviewed dependency ceilings  539ms
+ ✓ scripts/lib/book-scene-theme-manifest.test.mjs (1 test) 5253ms
+     ✓ is deterministic, local-only and SHA-bound to rights-approved covers  5251ms
+ ✓ scripts/lib/cms-exact-source-punctuation.test.mjs (6 tests) 1943ms
+     ✓ runs the real check and --write CLI while preserving each approved raw literal byte  1893ms
+ ✓ scripts/lib/article-static-localization.test.mjs (1 test) 1158ms
+     ✓ writes an approved English slug and marks it as an English route  1156ms
+ ✓ scripts/lib/writer-biography-structured-ru-runtime.test.mjs (5 tests) 2490ms
+     ✓ publishes all 1684 writers through the strict provenance gate  2453ms
+ ✓ scripts/export-published-content-article-metadata.source.test.mjs (2 tests) 2502ms
+     ✓ resolves every exporter free name and detects a missing extracted cover-helper import  2499ms
+ ✓ scripts/lib/literary-news-snapshot.test.mjs (9 tests) 283ms
+ ✓ scripts/lib/historical-globe-proof.test.mjs (1 test) 1098ms
+     ✓ maps configurable multi-sheet gores and polar caps without mirroring and emits byte-identical output  1094ms
+ ✓ scripts/export-published-content.fixture.test.mjs (1 test) 999ms
+     ✓ executes both real exporters with bounded public sources and preserves RU/EN articles and every book source  996ms
+ ✓ src/data/countryDataQuality.test.ts (9 tests) 2116ms
+     ✓ не содержит повторяющихся подробных карточек книг  731ms
+     ✓ не публикует карточку с отсутствующей локальной обложкой  630ms
+     ✓ не помечает проверенной книгу без библиографического источника  392ms
+ ✓ scripts/lib/compact-image-delivery.test.mjs (6 tests) 1408ms
+     ✓ keeps every committed image URL and responsive/full-resolution lookup identical  1385ms
+ ✓ scripts/lib/literary-news-media.test.mjs (20 tests) 1245ms
+ ✓ scripts/lib/book-canon-duplicate-resolutions.test.mjs (13 tests) 805ms
+ ✓ scripts/lib/book-canon-loc-held-review.test.mjs (7 tests) 1189ms
+     ✓ passes the pinned registry, official-source and complete raw-archive contract  340ms
+     ✓ fails closed on registry drift, batch tampering or a newly matching archive card  823ms
+ ✓ src/data/bookCanonResearchCatalog.test.ts (10 tests) 930ms
+     ✓ does not change the ordinary archive, visitor archive or searchable corpus  892ms
+ ✓ scripts/lib/reviewed-r49n-package.test.mjs (29 tests) 1070ms
+ ✓ scripts/verify-literary-news-live.test.mjs (8 tests) 1058ms
+     ✓ accepts all 5000 permitted records and rejects 5001 instead of truncating  703ms
+ ✓ src/components/globeGeography.test.ts (12 tests) 1247ms
+     ✓ keeps the latitude broad phase exactly equivalent to full polygon picking  1057ms
+ ✓ apps/admin/lib/admin-catalog-assets.test.ts (9 tests) 1199ms
+     ✓ accepts only the exact two minimal book-author identities without biographies  537ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch05.test.ts (6 tests) 1029ms
+     ✓ keeps the source and both reports valid strict UTF-8  803ms
+ ✓ scripts/lib/reviewed-dependency-security.test.mjs (9 tests) 919ms
+     ✓ restores exact prior bytes and rejects changed or duplicated fragments in package-lock.json  825ms
+ ✓ src/data/countries/writerBiographyLegacyCorrections.test.ts (13 tests) 1174ms
+     ✓ keeps the canonical book queue consistent while risky writers stay hidden  1024ms
+ ✓ src/data/bookArchiveLegacyVerifiedReaudit.test.ts (2 tests) 1170ms
+     ✓ runs after archive overlays and downgrades exactly the five audited records  588ms
+     ✓ keeps all five fail-closed records out of the visitor-facing archive  580ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch11.test.ts (6 tests) 928ms
+     ✓ keeps the source and both reports valid strict UTF-8  707ms
+ ✓ scripts/lib/literary-news-source-profiles.test.mjs (3 tests) 371ms
+   ✓ all promoted profiles parse their actual observed item URL with the production parser  356ms
+ ✓ scripts/lib/playwright-suite-classification.test.mjs (1 test) 747ms
+     ✓ runs the real Canvas typography matrix exactly once per platform in the serial GPU suite  745ms
+ ✓ src/components/stage5Governance.test.ts (7 tests) 900ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch08.test.ts (6 tests) 849ms
+     ✓ keeps the source and both reports valid strict UTF-8  661ms
+ ✓ scripts/lib/literary-news-social.test.mjs (29 tests) 497ms
+ ✓ scripts/database/literary-work-evidence-v2-migration.test.mjs (15 tests) 834ms
+     ✓ keeps every real Evidence V2 attestation strictly JSON-canonicalizable  807ms
+ ✓ src/components/globeSpatialIndex.test.ts (4 tests) 1001ms
+     ✓ matches the legacy full scan across the production world geometry  993ms
+ ✓ src/books/bookShelfPhysicalLayout.test.ts (3 tests) 736ms
+     ✓ reserves the whole cover/page footprint for first, middle and last books and returns exactly  443ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch15.test.ts (6 tests) 666ms
+     ✓ keeps the four isolated files valid strict UTF-8  548ms
+ ✓ scripts/lib/book-dossier-graph-fixture.test.ts (2 tests) 88ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch14.test.ts (6 tests) 607ms
+     ✓ keeps the four isolated files valid strict UTF-8  505ms
+ ✓ src/books/bookDossierDiagram.test.ts (3 tests) 109ms
+ ✓ src/books/bookDossier.test.ts (18 tests) 290ms
+ ✓ scripts/lib/literary-news-pagination.test.mjs (19 tests) 675ms
+     ✓ the 25000 guard retains all good evidence and does not advance the page on overflow  521ms
+ ✓ src/data/bookLocalization.test.ts (7 tests) 553ms
+     ✓ даёт каждой видимой книге профессиональное имя автора на английском  547ms
+ ✓ src/data/countries/writerBiographyFactReviews.test.ts (14 tests) 688ms
+     ✓ reconstructs every public Russian profile and source from the full audited overlay  306ms
+ ✓ scripts/lib/literary-news-publication.test.mjs (15 tests) 512ms
+ ✓ src/books/bookOwnerSpineIdentity.test.ts (4 tests) 674ms
+     ✓ resolves every pinned identity in the current canonical archive  663ms
+ ✓ apps/admin/lib/literary-news-queue.test.ts (17 tests) 567ms
+     ✓ rejects duplicated candidates, excessive cardinality and oversized input before rendering  500ms
+ ✓ scripts/lib/literary-news-feed.test.mjs (1 test) 1064ms
+   ✓ literary news collector passes its isolated Node regression suite  1061ms
+ ✓ scripts/lib/stage5d1-library-frame.test.mjs (7 tests) 596ms
+ ✓ scripts/lib/reviewed-header-library.test.mjs (25 tests) 300ms
+ ✓ src/data/verifiedBookSupplements.test.ts (47 tests) 390ms
+     ✓ не отдаёт посетителю legacy и ручные черновики  364ms
+ ✓ src/data/userSuppliedBookCovers.test.ts (8 tests) 271ms
+ ✓ src/data/siteAutomation.test.ts (3 tests) 361ms
+     ✓ derives all encyclopedia totals from countries  357ms
+ ✓ scripts/lib/book-canon-additions-batch01.test.mjs (8 tests) 164ms
+ ✓ scripts/lib/cassini-runtime-textures.test.mjs (3 tests) 141ms
+ ✓ scripts/database/staff-editorial-read-migration.test.mjs (2 tests) 224ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch01.test.ts (8 tests) 236ms
+ ✓ src/news/withdrawals.test.ts (11 tests) 311ms
+ ✓ src/books/completeShelfTextures.test.ts (16 tests) 306ms
+ ✓ src/data/userSuppliedBookCoversBatch20260813.test.ts (4 tests) 143ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch17.test.ts (4 tests) 345ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch48.test.ts (4 tests) 319ms
+ ✓ scripts/lib/short-hyphen-exact-source.test.mjs (13 tests) 632ms
+     ✓ retains exact reviewed punctuation and rejects changed bytes in reports/book-r49n-retained-drafts-20260912.json  473ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch47.test.ts (4 tests) 246ms
+ ✓ scripts/lib/literary-news-production.test.mjs (21 tests) 293ms
+ ✓ src/i18n/stage5d1InterfaceCoverage.test.ts (1 test) 227ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch25.test.ts (4 tests) 181ms
+ ✓ src/utils/rasterImageMetadata.test.ts (16 tests) 167ms
+ ✓ scripts/database/article-rls-hotfix.test.mjs (3 tests) 268ms
+ ✓ scripts/database/repair-wells-editorial-evidence-20260913.test.mjs (10 tests) 156ms
+ ✓ scripts/lib/literary-archive-native-postflight.test.mjs (7 tests) 53ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch30.test.ts (4 tests) 228ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch52.test.ts (4 tests) 238ms
+ ✓ src/data/userSuppliedBookCoversBatch20260820.test.ts (6 tests) 135ms
+ ✓ apps/admin/app/api/media/upload/route.test.ts (8 tests) 150ms
+ ✓ scripts/lib/book-external-collision-adjudication.test.mjs (2 tests) 147ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch49.test.ts (4 tests) 221ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch51.test.ts (4 tests) 231ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch56.test.ts (4 tests) 237ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch50.test.ts (4 tests) 247ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch55.test.ts (4 tests) 251ms
+ ✓ scripts/writer-biography-review-source.test.ts (1 test) 276ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch13.test.ts (4 tests) 222ms
+ ✓ scripts/database/production-migration-plan.test.mjs (12 tests) 307ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch54.test.ts (4 tests) 243ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch29.test.ts (4 tests) 250ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch20.test.ts (4 tests) 219ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch02.test.ts (4 tests) 227ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch46.test.ts (4 tests) 215ms
+ ✓ src/articles/articleBookPages.test.ts (17 tests) 328ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch07.test.ts (4 tests) 179ms
+ ✓ src/data/countries/bookEvidenceV2PublicBatch04.test.ts (7 tests) 379ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch53.test.ts (4 tests) 231ms
+ ✓ scripts/lib/literary-news-nobel-profile.test.mjs (9 tests) 147ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch31.test.ts (5 tests) 252ms
+ ✓ apps/admin/lib/site-copy-runtime-coverage.test.ts (2 tests) 242ms
+ ✓ scripts/lib/admin-client-secret-boundary.test.mjs (3 tests) 183ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch19.test.ts (4 tests) 179ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch23.test.ts (4 tests) 200ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch28.test.ts (4 tests) 219ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch41.test.ts (4 tests) 147ms
+ ✓ scripts/lib/atomic-json-write.test.mjs (8 tests) 69ms
+ ✓ src/data/bookArchiveQueue.test.ts (7 tests) 187ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch45.test.ts (4 tests) 190ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch44.test.ts (4 tests) 176ms
+ ✓ scripts/lib/literary-news-restore-scope.test.mjs (5 tests) 89ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch18.test.ts (4 tests) 181ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch22.test.ts (4 tests) 196ms
+ ✓ src/utils/imageUploadOptimization.test.ts (3 tests) 71ms
+ ✓ src/data/countries/bookEvidenceV2PublicBatch02.test.ts (8 tests) 176ms
+ ✓ scripts/lib/reviewed-native-archive-read.test.mjs (12 tests) 152ms
+ ✓ scripts/lib/article-book-synopsis-manifest.test.mjs (6 tests) 54ms
+ ✓ scripts/prepare-public-images.test.mjs (7 tests) 155ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch42.test.ts (4 tests) 149ms
+ ✓ src/data/countries/bookEvidenceV2PublicHolds01.test.ts (11 tests) 129ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch40.test.ts (4 tests) 147ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch43.test.ts (4 tests) 170ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch34.test.ts (4 tests) 168ms
+ ✓ src/data/countries/writerBiographyEnglishTranslations.test.ts (2 tests) 168ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch24.test.ts (4 tests) 244ms
+ ✓ src/data/countries/bookEvidenceV2PublicBatch05.test.ts (8 tests) 192ms
+ ✓ src/data/countries/bookEvidenceV2PublicBatch06.test.ts (8 tests) 141ms
+stdout | scripts/check-deployed-release-head.test.mjs > durable deployed code head > makes the next schedule recover after an immediate dispatch failure
+Code release is pending (release-head-behind); expected aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, live bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.
+
+stdout | scripts/check-deployed-release-head.test.mjs > durable deployed code head > writes the exact build SHA into the deployable hidden marker
+Release code head written: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -> D:\CodexData\Temp\release-head-dist-mkUVlb\.well-known\probpera-release-head.json
+
+ ✓ scripts/check-deployed-release-head.test.mjs (4 tests) 73ms
+ ✓ scripts/lib/reviewed-native-archive-transport.test.mjs (19 tests) 134ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch57.test.ts (4 tests) 228ms
+ ✓ src/data/countries/bookCanonLocHeldResearchBatch01.test.ts (8 tests) 28ms
+stderr | src/components/countryCatalogCounts.test.tsx > country work metric uses the full canonical catalog > counts actual pending Greek books in ru without extending writer biographies
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: React does not recognize the `fetchPriority` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `fetchpriority` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+    at img
+    at CountryFlagIcon (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/CountryFlagIcon.tsx:18:3)
+    at header
+    at aside
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+
+stderr | src/components/countryCatalogCounts.test.tsx > country work metric uses the full canonical catalog > counts actual pending Greek books in en without extending writer biographies
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+
+ ✓ scripts/lib/reviewed-reference-release.test.mjs (10 tests) 198ms
+ ✓ src/components/countryCatalogCounts.test.tsx (3 tests) 155ms
+stderr | src/components/countryCatalogCounts.test.tsx > country work metric uses the full canonical catalog > distinguishes pending loading, unavailable counts, and a confirmed zero
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+Warning: useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.
+    at WriterPanel (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/WriterPanel.tsx:118:3)
+
+ ✓ src/data/countries/bookEvidenceV2PublicBatch03.test.ts (8 tests) 173ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch39.test.ts (4 tests) 170ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch32.test.ts (4 tests) 189ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch38.test.ts (4 tests) 169ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch09.test.ts (4 tests) 108ms
+ ✓ scripts/lib/atomic-file-set.test.mjs (3 tests) 44ms
+ ✓ scripts/lib/literary-news-safe-fetch.test.mjs (22 tests) 124ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch27.test.ts (4 tests) 155ms
+ ✓ scripts/lib/reviewed-draft-storage.test.mjs (9 tests) 119ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch33.test.ts (4 tests) 164ms
+ ✓ src/data/countries/bookEvidenceV2PublicBatch07.test.ts (6 tests) 114ms
+ ✓ apps/admin/lib/auto-translate-article-premium.test.ts (5 tests) 138ms
+ ✓ src/data/countries/writerDatePatches.test.ts (6 tests) 158ms
+ ✓ src/countryArchive.test.ts (5 tests) 123ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch10.test.ts (4 tests) 125ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch35.test.ts (4 tests) 136ms
+ ✓ scripts/lib/literary-news-kv-sync.test.mjs (9 tests) 69ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch16.test.ts (4 tests) 119ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch37.test.ts (4 tests) 151ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch06.test.ts (4 tests) 100ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch03.test.ts (4 tests) 130ms
+ ✓ scripts/database/literary-archive-atomic-sync.test.mjs (14 tests) 140ms
+ ✓ src/data/writerBiographyDisplay.test.ts (6 tests) 104ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch21.test.ts (4 tests) 118ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch36.test.ts (4 tests) 143ms
+ ✓ scripts/cloudflare/configure-edge-security.test.mjs (16 tests) 117ms
+ ✓ scripts/lib/reviewed-cms-source-punctuation.test.mjs (7 tests) 87ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch26.test.ts (4 tests) 139ms
+ ✓ scripts/lib/literary-news-thumbnails.test.mjs (3 tests) 45ms
+ ✓ apps/admin/lib/auto-translate-article.test.ts (3 tests) 112ms
+ ✓ src/components/globeAtlasRuntime.test.ts (2 tests) 93ms
+ ✓ src/editorial/ShareLinks.test.tsx (2 tests) 66ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch04.test.ts (4 tests) 99ms
+ ✓ scripts/writer-portrait-rights-release-gate.source.test.mjs (3 tests) 48ms
+stderr | src/components/LiteraryCalendar.test.ts > литературный календарь > показывает SVG-флаг вместо повторяющейся подписи и сохраняет доступное название страны
+Warning: React does not recognize the `fetchPriority` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `fetchpriority` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+    at img
+    at CountryFlagIcon (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/CountryFlagIcon.tsx:18:3)
+    at button
+    at div
+    at div
+    at article
+    at div
+    at div
+    at div
+    at section
+    at LiteraryCalendar (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/components/LiteraryCalendar.tsx:90:3)
+    at InterfaceLanguageProvider (D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/src/i18n/InterfaceLanguage.tsx:1318:38)
+
+ ✓ src/articles/articleBookPosition.test.ts (3 tests) 115ms
+ ✓ src/components/LiteraryCalendar.test.ts (13 tests) 121ms
+ ✓ scripts/lib/reviewed-header-showcase.test.mjs (9 tests) 82ms
+ ✓ src/data/countries/bookR49nExistingReviewed20260912.test.ts (16 tests) 123ms
+ ✓ src/books/bookArchiveFacets.test.ts (16 tests) 63ms
+ ✓ scripts/writer-portrait-editorial-governance.source.test.mjs (3 tests) 78ms
+ ✓ scripts/database/restore-black-swan-article-publication.test.mjs (8 tests) 71ms
+ ✓ src/data/countries/writerFactCorrections.test.ts (120 tests) 27ms
+ ✓ scripts/workers/writer-biography-english-translation-worker.test.ts (4 tests) 80ms
+ ✓ scripts/audit-public-direct-origin.test.mjs (4 tests) 53ms
+ ✓ src/search/globalSearchIndex.test.ts (9 tests) 98ms
+ ✓ scripts/lib/cms-publication-head.test.mjs (14 tests) 64ms
+ ✓ scripts/database/literary-archive-atomic-release-migration.test.mjs (16 tests) 89ms
+ ✓ src/data/countries/writerBiographyResearchBatch01.test.ts (8 tests) 62ms
+ ✓ scripts/lib/literary-news-r10-durability.test.mjs (8 tests) 76ms
+ ✓ scripts/coalesce-publication-followup.test.mjs (13 tests) 60ms
+ ✓ scripts/cloudflare/verify-edge-applicability.test.mjs (8 tests) 65ms
+ ✓ scripts/site-copy-overrides.test.mjs (3 tests) 34ms
+ ✓ apps/admin/lib/premium-english-translation.test.ts (13 tests) 69ms
+ ✓ scripts/database/fix-bible-article-metadata.test.mjs (7 tests) 75ms
+ ✓ src/data/writerBiography.test.ts (13 tests) 18ms
+ ✓ scripts/audit-live-security.test.mjs (4 tests) 57ms
+ ✓ src/data/bookCmsWellsPriority20260913.test.ts (5 tests) 47ms
+ ✓ src/data/countries/editorialAudit.test.ts (1 test) 60ms
+ ✓ scripts/database/verify-book-cover-batch-20260820.test.mjs (6 tests) 49ms
+ ✓ src/data/nobel.test.ts (9 tests) 59ms
+ ✓ scripts/lib/writer-biography-fact-qa.test.mjs (12 tests) 68ms
+ ✓ scripts/lib/writer-biography-structured-ru.test.mjs (23 tests) 32ms
+ ✓ src/components/articlePublicationCounts.test.tsx (6 tests) 72ms
+ ✓ apps/admin/lib/site-copy-storage.test.ts (5 tests) 34ms
+ ✓ src/data/bookEvidence.test.ts (14 tests) 55ms
+stdout | scripts/verify-publication-deploy-head.test.mjs > publication deploy head guard > reads both authoritative heads with private credentials kept in headers
+Publication head verified: main aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, CMS outbox:165, 165 articles, snapshot bbbbbbbbbbbb.
+
+stdout | scripts/verify-publication-deploy-head.test.mjs > publication deploy head guard > verifies a legacy-only production schema without issuing an outbox write
+Publication head verified: main aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa, CMS legacy-audit:91, 165 articles, snapshot bbbbbbbbbbbb.
+
+ ✓ scripts/verify-publication-deploy-head.test.mjs (6 tests) 51ms
+ ✓ scripts/lib/cassini-adapted-master.test.mjs (1 test) 28ms
+ ✓ src/utils/articleImageDelivery.test.ts (1 test) 91ms
+ ✓ scripts/audit-typography.test.mjs (16 tests) 57ms
+ ✓ scripts/lib/magazine-hero-assets.test.mjs (6 tests) 43ms
+ ✓ src/data/countries/bookBibliographicOverlays.test.ts (7 tests) 38ms
+ ✓ src/components/WriterPortrait.test.tsx (6 tests) 47ms
+ ✓ scripts/lib/stage5c-layout-community.test.mjs (6 tests) 36ms
+ ✓ src/data/bookQuality.test.ts (10 tests) 16ms
+ ✓ src/components/globeEditions.test.ts (7 tests) 49ms
+ ✓ scripts/purge-operational-data.test.mjs (6 tests) 55ms
+ ✓ apps/admin/lib/short-hyphens.test.ts (3 tests) 44ms
+ ✓ scripts/lib/writer-portrait-license-policy.test.mjs (14 tests) 14ms
+ ✓ apps/admin/lib/site-studio-form.test.ts (4 tests) 42ms
+ ✓ scripts/editorial-publication-fixes.test.mjs (12 tests) 47ms
+ ✓ scripts/lib/writer-biography-public-profile.test.mjs (18 tests) 56ms
+ ✓ scripts/verify-supabase-storage-backup.test.mjs (2 tests) 27ms
+ ✓ apps/admin/lib/writer-biography-edit.test.ts (34 tests) 62ms
+ ✓ apps/admin/app/resilience-boundaries.source.test.ts (3 tests) 44ms
+ ✓ scripts/lib/writer-biography-english-qa.test.mjs (15 tests) 57ms
+ ✓ scripts/lib/book-evidence-v2-registry-rotation.test.mjs (10 tests) 54ms
+ ✓ src/news/dates.test.ts (10 tests) 52ms
+ ✓ src/utils/articleTextTonePolicy.test.ts (3 tests) 46ms
+ ✓ scripts/release-hardening.source.test.mjs (10 tests) 29ms
+ ✓ src/utils/writerDates.test.ts (4 tests) 42ms
+ ✓ apps/admin/lib/literary-news-operator-input.test.ts (12 tests) 57ms
+ ✓ scripts/lib/modern-globe-site-copy.test.mjs (3 tests) 26ms
+ ✓ scripts/lib/writer-biography-work-titles.test.mjs (27 tests) 39ms
+ ✓ apps/admin/lib/site-typography.test.ts (8 tests) 49ms
+ ✓ scripts/lib/book-enrichment-curated-batch-01.test.mjs (7 tests) 39ms
+ ✓ src/data/countries/writerBiographyFactReviewBatch12.test.ts (4 tests) 47ms
+ ✓ src/news/feed.test.ts (4 tests) 45ms
+ ✓ apps/admin/app/(dashboard)/articles/save-article-publication-action.test.ts (2 tests) 41ms
+ ✓ apps/admin/lib/translation-backfill-cursor.test.ts (5 tests) 41ms
+ ✓ scripts/lib/book-enrichment-policy.test.mjs (10 tests) 25ms
+ ✓ scripts/lib/writer-biography-russian-editorial-contract.test.mjs (5 tests) 22ms
+ ✓ scripts/lib/book-canon-registry.test.mjs (33 tests) 62ms
+ ✓ src/books/bookInspectionPageLayout.test.ts (10 tests) 43ms
+ ✓ src/components/BookCollectionManagerSheet.test.tsx (1 test) 48ms
+ ✓ src/books/bookEditorialPages.test.ts (6 tests) 29ms
+ ✓ apps/admin/lib/article-publication-intent.test.ts (5 tests) 47ms
+ ✓ src/data/countries/bookR49nStoweRecovered20260912.test.ts (4 tests) 35ms
+ ✓ scripts/lib/cms-publication-state.test.mjs (9 tests) 20ms
+ ✓ src/books/bookInspectionPageGeometry.test.ts (5 tests) 38ms
+ ✓ src/books/bookCollections.test.ts (10 tests) 35ms
+ ✓ apps/admin/components/EditorialImage.test.ts (3 tests) 9ms
+ ✓ scripts/cleanup-site-font-orphans.test.mjs (9 tests) 34ms
+ ✓ src/data/countries/bookEvidenceV2PublicQuarantine01.test.ts (4 tests) 38ms
+ ✓ scripts/lib/article-derived-text.test.mjs (2 tests) 42ms
+ ✓ scripts/lib/writer-portrait-rights-workflow.test.mjs (21 tests) 45ms
+ ✓ src/components/globeKeyboardNavigation.test.ts (5 tests) 31ms
+ ✓ scripts/database/literary-archive-editorial-references.integration.test.mjs (3 tests | 1 skipped) 26ms
+ ✓ src/components/writerPanelAccessibility.test.ts (11 tests) 12ms
+ ✓ scripts/lib/article-book-coverage-policy.test.mjs (8 tests) 26ms
+ ✓ src/books/bookTypography.test.ts (11 tests) 39ms
+ ✓ apps/admin/lib/article-translations.test.ts (8 tests) 28ms
+ ✓ apps/admin/lib/editorial-gallery.test.ts (8 tests) 18ms
+ ✓ src/data/articles/articleBookMentions.test.ts (4 tests) 38ms
+ ✓ scripts/resolve-curated-writer-qids.test.mjs (15 tests) 26ms
+ ✓ src/components/bookShelfApprovedPresentation.test.ts (15 tests) 26ms
+ ✓ apps/admin/lib/editorial-media-identity.test.ts (6 tests) 25ms
+ ✓ apps/admin/lib/literary-news-runtime-overview.test.ts (11 tests) 33ms
+ ✓ apps/admin/lib/editorial-concurrency.source.test.ts (9 tests) 36ms
+ ✓ src/books/bookArchiveDiscovery.test.ts (7 tests) 31ms
+ ✓ src/books/bookCollectionStorage.test.ts (7 tests) 29ms
+ ✓ src/data/editorialBookCovers.test.ts (11 tests) 29ms
+ ✓ src/books/bookInspectionShaderWarmup.test.ts (5 tests) 34ms
+ ✓ src/data/countries/bookEvidenceV2ExpansionBatch01.test.ts (3 tests) 32ms
+ ✓ src/books/bookCollectionShelfSelector.test.ts (5 tests) 32ms
+ ✓ src/data/bookPublicSurfaceGate.test.ts (1 test) 14ms
+ ✓ src/components/nobelMarkerPolicy.test.ts (10 tests) 33ms
+ ✓ src/books/bookSceneThemes.test.ts (5 tests) 30ms
+ ✓ scripts/lib/article-publication-images.test.mjs (5 tests) 29ms
+ ✓ apps/admin/lib/font-upload.test.ts (15 tests) 22ms
+ ✓ scripts/database/media-studio-lifecycle-migration.test.mjs (7 tests) 35ms
+ ✓ scripts/lib/public-image-delivery.test.mjs (3 tests) 28ms
+ ✓ apps/admin/app/(dashboard)/articles/article-working-draft.test.ts (6 tests) 22ms
+ ✓ src/data/countries/bookEvidenceV2LegacyVerifiedReaudit01.test.ts (6 tests) 27ms
+ ✓ src/books/bookInspectionCamera.test.ts (10 tests) 19ms
+ ✓ src/components/globeFocusMath.test.ts (7 tests) 21ms
+ ✓ scripts/lib/reviewed-r49n-dickens.test.mjs (4 tests) 21ms
+ ✓ src/components/globeModernLabelCoverage.test.ts (5 tests) 17ms
+ ✓ src/articles/articleBookImages.test.ts (6 tests) 24ms
+ ✓ scripts/database/site-studio-engine-migration.test.mjs (9 tests) 23ms
+ ✓ src/utils/articleRoutes.test.ts (10 tests) 16ms
+ ✓ src/components/globeProjection.test.ts (5 tests) 21ms
+ ✓ src/components/globeFilterStability.test.ts (10 tests) 26ms
+ ✓ src/data/countries/russianWriterExpansion.test.ts (3 tests) 19ms
+ ✓ src/components/BookCollectionShelfSwitcher.test.tsx (8 tests) 21ms
+ ✓ apps/admin/components/article-editor/ArticleEditorPanels.test.tsx (3 tests) 19ms
+ ✓ apps/admin/lib/article-translation-machine-ownership.test.ts (8 tests) 20ms
+ ✓ src/utils/mediaFocus.test.ts (2 tests) 6ms
+ ✓ scripts/database/book-dossier-migration-plan.test.mjs (4 tests) 18ms
+ ✓ scripts/lib/public-work-source-fetch.test.mjs (4 tests) 15ms
+ ✓ apps/admin/components/ArticleWorkspaceTools.source.test.ts (4 tests) 9ms
+ ✓ src/cms/editorialPersistence.test.ts (4 tests) 9ms
+ ✓ src/components/BookShelfControls.test.tsx (3 tests) 21ms
+ ✓ src/data/cms/siteDesign.test.ts (3 tests) 23ms
+ ✓ apps/admin/lib/editor-template-html.test.ts (3 tests) 13ms
+ ✓ apps/admin/components/article-editor/ArticleEditorShell.test.tsx (2 tests) 17ms
+ ✓ src/styles/stage5fResponsiveAccessibility.test.ts (6 tests) 10ms
+ ✓ src/data/bookR49nCmsRetainedGuard20260913.test.ts (4 tests) 19ms
+ ✓ src/search/globalSearchRuntime.test.ts (7 tests) 14ms
+ ✓ scripts/database/editorial-rls-contract.test.mjs (7 tests) 23ms
+ ✓ src/books/completeShelfModel.test.ts (11 tests) 28ms
+ ✓ src/components/globeDiscovery.test.ts (5 tests) 24ms
+ ✓ apps/admin/app/(dashboard)/articles/atomic-auto-publish.source.test.ts (7 tests) 10ms
+ ✓ src/books/bookShelfState.test.ts (11 tests) 19ms
+ ✓ apps/admin/lib/operator-data-error.test.ts (3 tests) 21ms
+ ✓ src/loading/stage5LoadingGraph.test.ts (5 tests) 15ms
+ ✓ src/components/writerPanelPresentation.test.ts (13 tests) 20ms
+ ✓ scripts/database/article-working-drafts-migration.test.mjs (9 tests) 14ms
+ ✓ scripts/lib/stage5b-art-direction.test.mjs (6 tests) 27ms
+ ✓ src/data/cms/siteTypography.test.ts (9 tests) 14ms
+ ✓ apps/admin/components/article-editor/useArticleValidation.test.ts (8 tests) 22ms
+ ✓ apps/admin/lib/admin-module-coverage.test.ts (4 tests) 15ms
+ ✓ apps/admin/app/(dashboard)/articles/article-bundle-rpc.test.ts (5 tests) 22ms
+ ✓ scripts/lib/literary-archive-database-commit.test.mjs (14 tests) 21ms
+ ✓ src/books/bookShelfQualityController.test.ts (6 tests) 11ms
+ ✓ scripts/lib/site-studio-publication.test.mjs (3 tests) 9ms
+ ✓ apps/admin/lib/book-dossier-integration.source.test.ts (3 tests) 11ms
+ ✓ src/cms/siteChromeRuntime.test.ts (9 tests) 11ms
+ ✓ apps/admin/lib/article-leading-illustration.test.ts (3 tests) 18ms
+ ✓ src/books/completeShelfCanvas.source.test.ts (6 tests) 18ms
+ ✓ scripts/repository-governance.source.test.mjs (3 tests) 6ms
+ ✓ scripts/database/site-typography-engine-migration.test.mjs (7 tests) 14ms
+ ✓ src/components/stage5fMediaOwnership.test.ts (3 tests) 7ms
+ ✓ src/data/cms/editorialOverrides.test.ts (5 tests) 11ms
+ ✓ scripts/lib/site-typography-publication.test.mjs (5 tests) 12ms
+ ✓ src/components/globeAccessibility.test.ts (11 tests) 12ms
+ ✓ src/components/globeAssetCache.test.ts (10 tests) 23ms
+ ✓ apps/admin/components/article-editor/EditorCore.source.test.ts (3 tests) 9ms
+ ✓ scripts/database/staff-owner-invariant-migration.test.mjs (4 tests) 8ms
+ ✓ scripts/database/literary-translation-draft-storage.integration.test.mjs (2 tests | 1 skipped) 17ms
+ ✓ apps/admin/app/(dashboard)/library/library-catalog.source.test.ts (4 tests) 10ms
+ ✓ scripts/database/data-studio-integrity-migration.test.mjs (6 tests) 12ms
+ ✓ apps/admin/lib/article-composer.test.ts (11 tests) 19ms
+ ✓ src/books/bookArchiveLocation.test.ts (10 tests) 15ms
+ ✓ src/components/AtlasSearchCombobox.test.tsx (5 tests) 17ms
+ ✓ src/components/GlobeCameraRig.test.tsx (9 tests) 15ms
+ ✓ scripts/lib/book-import-policy.test.mjs (8 tests) 15ms
+ ✓ apps/admin/components/EditorialBlock.test.ts (4 tests) 19ms
+ ✓ apps/admin/lib/book-edition-edit.test.ts (5 tests) 14ms
+ ✓ src/components/GlobalSearch.test.ts (6 tests) 12ms
+ ✓ scripts/lib/book-enrichment-promotion.test.mjs (4 tests) 13ms
+ ✓ scripts/service-worker-cache.source.test.mjs (6 tests) 13ms
+ ✓ apps/admin/lib/media-bulk-operations.test.ts (6 tests) 14ms
+ ✓ src/components/globeCountryCoverage.test.ts (9 tests) 15ms
+ ✓ scripts/lib/cms-article-snapshot-files.test.mjs (2 tests) 6ms
+ ✓ scripts/database/homepage-editorial-copy-migration.test.mjs (2 tests) 7ms
+ ✓ src/utils/headerArticleSelection.test.ts (10 tests) 13ms
+ ✓ scripts/database/reader-book-collections-migration.test.mjs (4 tests) 12ms
+ ✓ apps/admin/components/MediaFocalEditor.source.test.ts (3 tests) 7ms
+ ✓ src/utils/editorialGalleryPolicy.test.ts (3 tests) 8ms
+ ✓ src/lib/supabaseTurnstile.test.ts (4 tests) 11ms
+ ✓ src/ui/uiMotion.test.ts (4 tests) 13ms
+ ✓ src/components/atlasBackgroundLayering.test.ts (4 tests) 11ms
+ ✓ scripts/database/admin-mutation-guards.test.mjs (4 tests) 12ms
+ ✓ scripts/historical-source-acquisition-policy.source.test.mjs (5 tests) 14ms
+ ✓ apps/admin/lib/site-studio-contract.test.ts (8 tests) 13ms
+ ✓ src/components/useGlobeStyleState.test.ts (8 tests) 13ms
+ ✓ src/components/globePerformance.test.ts (12 tests) 19ms
+ ✓ apps/admin/components/ArticleEditor.source.test.ts (4 tests) 9ms
+ ✓ apps/admin/lib/visual-entity-edit.test.ts (8 tests) 15ms
+ ✓ src/utils/editorialImagePresentation.test.ts (9 tests) 19ms
+ ✓ scripts/admin-deploy-workflow.source.test.mjs (2 tests) 11ms
+ ✓ scripts/lib/postgrest-pagination.test.mjs (4 tests) 13ms
+ ✓ src/utils/literarySearch.test.ts (7 tests) 15ms
+ ✓ apps/admin/components/AdminCommandPalette.source.test.ts (2 tests) 9ms
+ ✓ scripts/lib/writer-identity-audit.test.mjs (6 tests) 19ms
+ ✓ src/ui/uiFoundation.test.tsx (3 tests) 11ms
+ ✓ scripts/lib/writer-biography-english-source-contract.test.mjs (2 tests) 13ms
+ ✓ scripts/lib/book-authorship-roundtrip.test.mjs (4 tests) 12ms
+ ✓ src/data/articles/localization.test.ts (9 tests) 13ms
+ ✓ scripts/lib/writer-biography-russian-publication-titles.test.mjs (5 tests) 11ms
+ ✓ apps/admin/lib/editor-link.test.ts (16 tests) 13ms
+ ✓ src/components/BookShelfProgressRail.test.tsx (2 tests) 12ms
+ ✓ apps/admin/components/article-editor/ArticleEditorChrome.source.test.ts (2 tests) 13ms
+ ✓ apps/admin/lib/translation-runtime-gate.test.ts (3 tests) 10ms
+ ✓ apps/admin/lib/literary-work-workspace.test.ts (6 tests) 14ms
+ ✓ apps/admin/lib/book-edition-primary.test.ts (4 tests) 16ms
+ ✓ apps/admin/lib/editorial-profile-edit.test.ts (7 tests) 13ms
+ ✓ scripts/admin-windows-smoke.source.test.mjs (4 tests) 17ms
+ ✓ src/components/BookShelfFrame.test.tsx (2 tests) 10ms
+ ✓ src/data/countries/writerIdentityRegistry.test.ts (17 tests) 21ms
+ ✓ src/books/bookInspectionTextures.test.ts (5 tests) 17ms
+ ✓ apps/admin/lib/article-workspace-utils.test.ts (6 tests) 12ms
+ ✓ src/community/articleEngagementSecurity.source.test.ts (3 tests) 7ms
+ ✓ apps/admin/components/article-editor/ArticleEditorPanels.source.test.ts (3 tests) 13ms
+ ✓ src/components/globeTouchActivation.test.ts (8 tests) 13ms
+ ✓ scripts/admin-globals-css-split.source.test.mjs (2 tests) 13ms
+ ✓ apps/admin/components/editor-dialog-focus.source.test.ts (2 tests) 7ms
+ ✓ apps/admin/app/(dashboard)/articles/article-working-draft-flow.source.test.ts (8 tests) 12ms
+ ✓ src/cms/directEditBridge.test.ts (15 tests) 16ms
+ ✓ src/components/CountryFlagPresentation.test.ts (5 tests) 15ms
+ ✓ apps/admin/lib/library-catalog-query.test.ts (5 tests) 13ms
+ ✓ scripts/social-publication-policy.test.mjs (4 tests) 6ms
+ ✓ src/books/bookShelfExtractionMotion.test.ts (6 tests) 9ms
+ ✓ apps/admin/app/(dashboard)/site-studio/fonts/site-typography-admin.source.test.ts (6 tests) 11ms
+ ✓ scripts/database/book-evidence-v2-registry-rotation.integration.test.mjs (4 tests | 1 skipped) 10ms
+ ✓ apps/admin/lib/homepage-visual-settings.test.ts (6 tests) 10ms
+ ✓ src/analytics/yandexMetrika.test.ts (4 tests) 9ms
+ ✓ scripts/database/article-working-drafts-health-migration.test.mjs (7 tests) 13ms
+ ✓ apps/admin/lib/book-archive-scene-settings.test.ts (4 tests) 11ms
+ ✓ apps/admin/components/HomepageVisualPreview.source.test.ts (3 tests) 8ms
+ ✓ apps/admin/lib/visual-content-edit.test.ts (5 tests) 14ms
+ ✓ src/data/countries/generated/generatedBooks.types.test.ts (1 test) 6ms
+ ✓ src/books/bookShelfMobileDetail.test.ts (6 tests) 10ms
+ ✓ apps/admin/lib/editorial-schema-health.test.ts (7 tests) 11ms
+ ✓ apps/admin/lib/media-catalog-query.test.ts (6 tests) 11ms
+ ✓ apps/admin/app/(dashboard)/library/work-workspace.source.test.ts (4 tests) 10ms
+ ✓ scripts/lib/cms-legacy-withdrawals.test.mjs (5 tests) 10ms
+ ✓ scripts/literary-work-editorial-artwork.test.mjs (5 tests) 10ms
+ ✓ scripts/safe-browser-storage.source.test.mjs (9 tests) 14ms
+ ✓ src/community/diagnosticsReporter.test.ts (4 tests) 12ms
+ ✓ src/books/bookInspectionSession.test.ts (9 tests) 16ms
+ ✓ apps/admin/lib/editorial-media-content.test.ts (5 tests) 11ms
+ ✓ src/news/updates.test.ts (5 tests) 9ms
+ ✓ src/atlas/atlasExperienceState.test.ts (9 tests) 13ms
+ ✓ apps/admin/app/(dashboard)/history/history-restore-concurrency.source.test.ts (4 tests) 9ms
+ ✓ src/components/ArticleReader.sources.test.ts (4 tests) 9ms
+ ✓ scripts/lib/book-canon-transcription.test.mjs (4 tests) 12ms
+ ✓ apps/admin/app/(dashboard)/menus/menus-concurrency-publication.source.test.ts (4 tests) 5ms
+ ✓ src/components/stage5eScrollOwnership.test.ts (3 tests) 7ms
+ ✓ scripts/lib/wikidata-writer-facts.test.mjs (3 tests) 9ms
+ ✓ src/components/globeAtlasPerformance.test.ts (7 tests) 10ms
+ ✓ src/data/countries/editorialCatalogCorpus.test.ts (3 tests) 9ms
+ ✓ src/components/globeCoordinates.test.ts (6 tests) 9ms
+ ✓ src/hooks/useBookCollections.test.ts (5 tests) 9ms
+ ✓ src/books/bookShelfNavigation.test.ts (7 tests) 13ms
+ ✓ apps/admin/app/(dashboard)/translations/translation-operations.source.test.ts (6 tests) 8ms
+ ✓ src/components/globeStarfieldPresentation.test.ts (4 tests) 10ms
+ ✓ apps/admin/app/(dashboard)/categories/taxonomy-catalog.source.test.ts (4 tests) 8ms
+ ✓ scripts/database/editor-autosaves-migration.test.mjs (3 tests) 10ms
+ ✓ src/components/headerHeroPresentation.test.ts (4 tests) 10ms
+ ✓ apps/admin/lib/taxonomy-catalog-query.test.ts (3 tests) 9ms
+ ✓ src/data/countryLocalization.test.ts (7 tests) 11ms
+ ✓ src/books/bookShelfViewportInsets.test.ts (8 tests) 9ms
+ ✓ apps/admin/components/article-editor/ArticleEditorShell.source.test.ts (2 tests) 9ms
+ ✓ apps/admin/lib/translation-run-record.test.ts (2 tests) 10ms
+ ✓ src/cms-security.test.ts (6 tests) 9ms
+ ✓ src/books/bookCollectionManager.test.ts (4 tests) 8ms
+ ✓ apps/admin/components/editor-media-parity.source.test.ts (9 tests) 13ms
+ ✓ apps/admin/app/(dashboard)/seo/seo-catalog.source.test.ts (4 tests) 8ms
+ ✓ scripts/database/literary-work-authorship-migration.test.mjs (6 tests) 9ms
+ ✓ src/utils/articleMediaPolicy.test.ts (4 tests) 13ms
+ ✓ src/books/bookArchiveSceneSettings.test.ts (4 tests) 9ms
+ ✓ src/cms/siteTypographyRuntime.source.test.ts (2 tests) 14ms
+ ✓ apps/admin/lib/editor-image-naming.test.ts (9 tests) 11ms
+ ✓ src/components/globeHighlightUpdate.test.ts (2 tests) 15ms
+ ✓ scripts/database/wells-editorial-evidence-repair.integration.test.mjs (3 tests | 1 skipped) 11ms
+ ✓ apps/admin/lib/literary-work-cover-artwork.test.ts (3 tests) 11ms
+ ✓ scripts/resolve-curated-writer-qids.source.test.mjs (4 tests) 8ms
+ ✓ apps/admin/lib/editor-autosave.test.ts (3 tests) 10ms
+ ✓ apps/admin/lib/analytics-report.test.ts (2 tests) 8ms
+ ✓ scripts/export-premium-translations.source.test.mjs (8 tests) 11ms
+ ✓ scripts/lib/trusted-server-url.test.mjs (6 tests) 8ms
+ ✓ src/utils/atlasUrlState.test.ts (7 tests) 10ms
+ ✓ src/utils/safeWebStorage.test.ts (7 tests) 12ms
+ ✓ src/books/sharedAsyncLru.test.ts (2 tests) 10ms
+ ✓ src/components/globeAtlasStyle.test.ts (7 tests) 8ms
+ ✓ apps/admin/lib/article-recovery.test.ts (9 tests) 11ms
+ ✓ apps/admin/app/(dashboard)/editorial-database/writer-biography-editor.source.test.ts (6 tests) 9ms
+ ✓ apps/admin/app/(dashboard)/articles/article-actions-facade.source.test.ts (3 tests) 10ms
+ ✓ src/components/globeInteraction.test.ts (5 tests) 10ms
+ ✓ src/data/articles/nobelArticles.test.ts (4 tests) 10ms
+ ✓ scripts/lib/vite-chunking.test.mjs (2 tests) 10ms
+ ✓ scripts/audit-analytics-config.test.mjs (3 tests) 9ms
+ ✓ apps/admin/lib/article-content-presentation.test.ts (4 tests) 12ms
+ ✓ apps/admin/lib/history-catalog-query.test.ts (4 tests) 8ms
+ ✓ src/components/writerBiographyViews.test.ts (5 tests) 10ms
+ ✓ scripts/lib/article-route-policy.test.mjs (2 tests) 8ms
+ ✓ src/components/bookShelfSpatialEnvironment.test.ts (2 tests) 6ms
+stdout | scripts/database/atomic-article-bundle.test.mjs > atomic article bundle migration > prints the reviewed checksum for the guarded production allowlist
+atomic_article_bundle_sha256=5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc
+
+ ✓ scripts/database/atomic-article-bundle.test.mjs (4 tests) 7ms
+ ✓ scripts/lib/curated-writer-identity.test.mjs (5 tests) 10ms
+ ✓ apps/admin/lib/trusted-server-url.test.ts (7 tests) 9ms
+ ✓ apps/admin/app/(dashboard)/site-copy/site-copy.source.test.ts (3 tests) 8ms
+ ✓ apps/admin/app/(dashboard)/health/page.source.test.ts (4 tests) 7ms
+ ✓ src/utils/deferredHashNavigation.test.ts (2 tests) 11ms
+ ✓ apps/admin/components/useEditorDialogFocus.test.ts (4 tests) 11ms
+ ✓ src/books/bookSmartShelves.test.ts (4 tests) 7ms
+ ✓ scripts/lib/article-catalog-merge.test.mjs (2 tests) 7ms
+ ✓ apps/admin/lib/page-catalog-query.test.ts (3 tests) 8ms
+ ✓ apps/admin/lib/content-security-policy.test.ts (4 tests) 8ms
+ ✓ scripts/database/visual-direct-edit-v2-migration.test.mjs (4 tests) 9ms
+ ✓ apps/admin/lib/admin-mfa.source.test.ts (6 tests) 11ms
+ ✓ apps/admin/lib/translation-errors.test.ts (3 tests) 6ms
+ ✓ apps/admin/lib/health-status.test.ts (3 tests) 9ms
+ ✓ apps/admin/app/api/site-fonts/upload/route.source.test.ts (4 tests) 7ms
+ ✓ src/books/bookShelfPresentationProfiles.test.ts (3 tests) 8ms
+ ✓ apps/admin/app/(dashboard)/articles/social-publication-policy.source.test.ts (3 tests) 8ms
+ ✓ apps/admin/lib/homepage-settings.test.ts (3 tests) 10ms
+ ✓ apps/admin/app/(dashboard)/publication/publication-dashboard.source.test.ts (2 tests) 6ms
+ ✓ apps/admin/lib/seo-catalog-query.test.ts (3 tests) 8ms
+ ✓ apps/admin/app/(dashboard)/library/book-edition-actions.source.test.ts (5 tests) 8ms
+ ✓ src/writerImportSafety.test.ts (2 tests) 4ms
+ ✓ src/data/articles/catalog.test.ts (4 tests) 11ms
+ ✓ src/cms/visualContentPersistence.test.ts (5 tests) 12ms
+ ✓ scripts/lib/book-dossier-delivery.test.mjs (6 tests) 8ms
+ ✓ apps/admin/lib/article-copy-search.test.ts (2 tests) 7ms
+ ✓ src/utils/imageDelivery.test.ts (4 tests) 8ms
+ ✓ scripts/lib/literary-work-publication-roundtrip.test.mjs (3 tests) 10ms
+ ✓ scripts/database/literary-archive-native-commit.integration.test.mjs (2 tests | 1 skipped) 7ms
+ ✓ apps/admin/lib/book-archive-homepage-cms.source.test.ts (6 tests) 11ms
+ ✓ apps/admin/app/(dashboard)/media/media-catalog.source.test.ts (7 tests) 13ms
+ ✓ src/analytics/activityConsentPolicy.test.ts (3 tests) 8ms
+ ✓ apps/admin/lib/revision-restore.test.ts (3 tests) 8ms
+ ✓ scripts/d-transfer-wrapper.source.test.mjs (4 tests) 8ms
+ ✓ apps/admin/lib/publication-catalog-query.test.ts (2 tests) 7ms
+ ✓ apps/admin/lib/public-href.test.ts (2 tests) 6ms
+ ✓ scripts/database/admin-completion-health-migration.test.mjs (3 tests) 9ms
+ ✓ apps/admin/lib/isbn.test.ts (8 tests) 8ms
+ ✓ src/data/bookArchiveKey.test.ts (3 tests) 6ms
+ ✓ apps/admin/components/EditorialImagePresentation.source.test.ts (3 tests) 7ms
+ ✓ apps/admin/lib/comments-catalog-query.test.ts (3 tests) 7ms
+ ✓ src/books/bookCollectionMembershipDialog.test.ts (3 tests) 9ms
+ ✓ apps/admin/lib/client-image-upload.test.ts (12 tests) 7ms
+ ✓ apps/admin/app/(dashboard)/library/library-artworks.source.test.ts (3 tests) 7ms
+ ✓ scripts/lib/writer-biography-public-overrides.test.mjs (3 tests) 5ms
+ ✓ scripts/database/literary-work-evidence-v2-postgres.integration.test.mjs (2 tests | 1 skipped) 5ms
+ ✓ apps/admin/lib/premium-translation-runtime.test.ts (4 tests) 9ms
+ ✓ apps/admin/lib/admin-link-boundary.source.test.ts (3 tests) 10ms
+ ✓ scripts/home-prepaint-shell.source.test.mjs (3 tests) 7ms
+ ✓ apps/admin/components/MediaUploader.source.test.ts (1 test) 9ms
+ ✓ apps/admin/lib/editorial-attribute-security.test.ts (2 tests) 7ms
+ ✓ src/components/bootstrapBoundary.source.test.ts (2 tests) 6ms
+ ✓ src/lib/supabaseLazyBoundary.source.test.ts (2 tests) 8ms
+ ✓ apps/admin/lib/publication-durability.source.test.ts (2 tests) 7ms
+ ✓ apps/admin/components/page-editor-parity.source.test.ts (4 tests) 8ms
+ ✓ scripts/database/translation-operations-migration.test.mjs (5 tests) 8ms
+ ✓ src/components/CmsPageReader.test.ts (4 tests) 6ms
+ ✓ apps/admin/app/(dashboard)/pages/pages-concurrency-catalog.source.test.ts (4 tests) 8ms
+ ✓ apps/admin/app/(dashboard)/site-studio/site-studio-actions.source.test.ts (1 test) 7ms
+ ✓ apps/admin/app/(dashboard)/editor-links/actions.source.test.ts (2 tests) 6ms
+ ✓ src/books/bookDossierProgress.test.ts (3 tests) 8ms
+ ✓ scripts/lib/book-publication-sql.test.mjs (1 test) 5ms
+ ✓ src/community/authTurnstile.source.test.ts (5 tests) 8ms
+ ✓ src/utils/editorialLightbox.test.ts (7 tests) 8ms
+ ✓ src/data/articles/bookMentions.test.ts (2 tests) 7ms
+ ✓ src/books/bookShelfPointer.test.ts (2 tests) 8ms
+ ✓ apps/admin/components/EditorLinkDialog.source.test.ts (3 tests) 7ms
+ ✓ src/components/bookContextNavigation.test.ts (4 tests) 7ms
+ ✓ src/data/cms/homepageVisualSettings.test.ts (3 tests) 6ms
+ ✓ apps/admin/app/(dashboard)/articles/article-bundle-rpc.source.test.ts (5 tests) 6ms
+ ✓ src/components/SectionsDirectory.test.ts (4 tests) 6ms
+ ✓ apps/admin/lib/public-link-boundary.test.ts (6 tests) 8ms
+ ✓ scripts/lib/cms-export-keys.test.mjs (2 tests) 7ms
+ ✓ apps/admin/middleware.source.test.ts (3 tests) 8ms
+ ✓ apps/admin/app/(dashboard)/history/history-catalog.source.test.ts (4 tests) 7ms
+ ✓ src/community/sessionIdentity.test.ts (1 test) 9ms
+ ✓ apps/admin/app/(dashboard)/history/site-chrome-history.source.test.ts (4 tests) 6ms
+ ✓ apps/admin/lib/view-path.test.ts (2 tests) 7ms
+ ✓ src/utils/monthlySelection.test.ts (3 tests) 7ms
+ ✓ apps/admin/components/rich-editor/rich-editor-foundation.source.test.ts (2 tests) 8ms
+ ✓ apps/admin/components/editor/RecoveryController.source.test.ts (4 tests) 8ms
+ ✓ apps/admin/app/(dashboard)/comments/comments-catalog.source.test.ts (3 tests) 7ms
+ ✓ src/data/cms/homepage.test.ts (4 tests) 6ms
+ ✓ scripts/export-published-content-withdrawals.source.test.mjs (1 test) 6ms
+ ✓ apps/admin/lib/editor-image-upload.test.ts (3 tests) 5ms
+ ✓ apps/admin/lib/visual-edit-concurrency.source.test.ts (3 tests) 8ms
+ ✓ scripts/database/admin-ops-observability-migration.test.mjs (2 tests) 5ms
+ ✓ src/utils/publicHref.test.ts (3 tests) 6ms
+ ✓ src/components/visualEntityMarkers.test.ts (3 tests) 5ms
+ ✓ apps/admin/lib/publication-outbox.source.test.ts (3 tests) 6ms
+ ✓ apps/admin/components/rich-editor/rich-editor-lazy-loading.source.test.ts (2 tests) 6ms
+ ✓ apps/admin/app/(dashboard)/translations/backfill-cursor.source.test.ts (1 test) 6ms
+ ✓ src/data/cms/siteCopy.test.ts (3 tests) 8ms
+ ✓ src/cms/directEditRevision.test.ts (1 test) 5ms
+ ✓ scripts/article-lastmod-source.test.mjs (2 tests) 7ms
+ ✓ scripts/database/translation-operations-runtime-migration.test.mjs (4 tests) 7ms
+ ✓ apps/admin/lib/env.test.ts (4 tests) 5ms
+ ✓ scripts/lib/book-article-mention-policy.test.mjs (3 tests) 4ms
+ ✓ src/components/brandTaglinePresentation.test.ts (2 tests) 6ms
+ ✓ apps/admin/lib/admin-mfa-policy.test.ts (3 tests) 5ms
+ ✓ scripts/run-historical-globe-builder.source.test.mjs (2 tests) 6ms
+ ✓ src/utils/shortHyphens.test.ts (1 test) 5ms
+ ✓ apps/admin/app/(dashboard)/data-studio/data-studio.source.test.ts (2 tests) 8ms
+ ✓ apps/admin/components/EditorialImageView.source.test.ts (2 tests) 6ms
+ ✓ src/utils/articleSeries.test.ts (2 tests) 5ms
+ ✓ scripts/lib/colour-difference.test.mjs (2 tests) 6ms
+ ✓ apps/admin/lib/media-focus.test.ts (2 tests) 6ms
+ ✓ apps/admin/lib/book-archive-media-policy.test.ts (2 tests) 4ms
+ ✓ src/components/GlobeViewObserver.test.ts (3 tests) 7ms
+ ✓ scripts/database/admin-analytics-reporting-migration.test.mjs (2 tests) 6ms
+ ✓ apps/admin/app/layout-security.source.test.ts (2 tests) 6ms
+ ✓ apps/admin/components/article-copy-workflow.test.ts (2 tests) 8ms
+ ✓ apps/admin/lib/analytics-geography.source.test.ts (2 tests) 5ms
+ ✓ src/utils/articleMetadata.test.ts (1 test) 6ms
+ ↓ scripts/database/article-publication-permissions.integration.test.mjs (1 test | 1 skipped)
+ ↓ scripts/database/article-rls-integration.test.mjs (1 test | 1 skipped)
+ ↓ scripts/database/atomic-article-bundle.integration.test.mjs (1 test | 1 skipped)
+ ↓ scripts/database/book-evidence-v2-registry-transport.integration.test.mjs (1 test | 1 skipped)
+ ↓ scripts/database/literary-archive-native-postflight.integration.test.mjs (1 test | 1 skipped)
+
+ Test Files  595 passed | 5 skipped (600)
+      Tests  3755 passed | 11 skipped (3766)
+   Start at  23:37:49
+   Duration  154.44s (transform 25.11s, setup 0ms, import 226.03s, tests 157.34s, environment 108ms)
+
+JSON report written to D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10/reports/r10/tests-ci-final.json

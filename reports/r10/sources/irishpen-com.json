@@ -1,0 +1,2534 @@
+{
+  "sourceId": "irishpen-com",
+  "name": "Irish PEN",
+  "entryUrl": "https://www.irishpen.com/",
+  "countryCodes": [
+    "IE"
+  ],
+  "coverageCountryCodes": [
+    "IE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:30.592Z",
+  "requests": [
+    {
+      "url": "https://irishpen.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 112287,
+      "sha256": "0b832d869118aceebe6ab2d2cff98b5e94d6f3a4e0607efaa5cbae4c9e564fb3",
+      "accessedAt": "2026-09-26T17:23:30.944Z"
+    },
+    {
+      "url": "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91862,
+      "sha256": "c23e0a782753417274448d93197de27a8a81807c5ea2868db66c7fe2fb12ea14",
+      "accessedAt": "2026-09-26T17:29:33.346Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://irishpen.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 170,
+    "sha256": "14c91158c3753049e4b06de86a8bba6a125e5edcf76f42140456955a322ef3c3",
+    "accessedAt": "2026-09-26T17:29:32.972Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:29.413Z",
+    "sourceDocumentSha256": "0b832d869118aceebe6ab2d2cff98b5e94d6f3a4e0607efaa5cbae4c9e564fb3"
+  },
+  "endpoint": {
+    "id": "irishpen-com",
+    "name": "Irish PEN",
+    "url": "https://irishpen.com/",
+    "format": "html",
+    "language": "en-US",
+    "region": "europe",
+    "sourceFamilyId": "irishpen-com",
+    "countryCodes": [
+      "IE"
+    ],
+    "coverageCountryCodes": [
+      "IE"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://irishpen.com"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/become-a-member/[^/]+/?$|^/\\d{4}/\\d{2}/(?:\\d{2}/)?[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:33.351Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 100,
+  "literaryCandidateCount": 100,
+  "sample": {
+    "sourceId": "irishpen-com",
+    "source": {
+      "name": "Irish PEN",
+      "url": "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/",
+      "language": "en-US"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "Festival of Italian and Irish Literature in Ireland: 25 to 26 September 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:32.994Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91862,
+      "sha256": "c23e0a782753417274448d93197de27a8a81807c5ea2868db66c7fe2fb12ea14",
+      "accessedAt": "2026-09-26T17:29:33.346Z",
+      "headline": "Festival of Italian and Irish Literature in Ireland: 25 to 26 September 2026 - Irish PEN/PEN na hÉireann",
+      "excerpt": "This September sees the fourth edition of FIILI, dedicated to the theme Literature as Resistance.Co-organised by Michela Linda Magri, Director of the Italian Institute of Culture, and authors & co-curators Catherine Dunne and Enrica Ferrara, the festival will highlight the work of Italian poets and writers Laura Pugno, Daria Bignardi, Giuseppe Catozzella, Viviana Fiorentino, Antonella Lattanzi, To",
+      "publishedDates": [
+        {
+          "value": "2026-09-16T11:26:56+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-16T11:26:56+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-16T11:26:56+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:33.351Z",
+  "foundItems": [
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festival of Italian and Irish Literature in Ireland: 25 to 26 September 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/06/18/new-poetry-by-nedim-turfent/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "New poetry by Nedim Türfent",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/01/08/victoria-amelina-wins-2025-moore-prize-for-human-rights-writing/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina wins 2025 Moore Prize for Human Rights Writing",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/09/16/irish-pen-event-at-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irish PEN event at Dublin Book Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/11/25/pen-heaney-prize-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Heaney Prize 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/10/14/day-of-the-imprisoned-writer-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Day of the Imprisoned Writer @ Dublin Book Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/09/06/fiili-festival-of-italian-and-irish-literature-in-ireland-2024/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "FIILI \u2013 FESTIVAL OF ITALIAN AND IRISH LITERATURE IN IRELAND 2024",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/05/28/belfast-book-festival-writing-to-writers-at-risk-or-in-prison/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Belfast Book Festival: writing to writers at risk or in prison",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/10/09/culture-in-a-time-of-war-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Culture in a Time of War \u2013 Dublin Book Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/10/10/the-light-of-home-ukraine-and-ireland-a-celebration-of-ukrainian-and-irish-culture-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Light of Home: Ukraine and Ireland. A Celebration of Ukrainian and Irish Culture \u2013 Dublin Book Festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/09/26/fiili-festival-of-italian-and-irish-literature-in-ireland-2023/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "FIILI \u2013 FESTIVAL OF ITALIAN AND IRISH LITERATURE IN IRELAND",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/10/25/day-of-the-imprisoned-writer-screening-documentary-white-torture-by-narges-mohammadi/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "DUBLIN BOOK FESTIVAL 2022. Screening of the Documentary WHITE TORTURE by Narges Mohammadi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/02/05/members-survey-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "MEMBERS’ SURVEY 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/09/30/raids-on-kurdish-language-associations-and-bookstore-condemned/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Raids on Kurdish language associations and bookstore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/11/26/ilhan-sami-comak-on-books-for-breakfast-podcast/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "İlhan Sami Çomak on Books for Breakfast podcast",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/12/01/kurdish-poet-ilhan-sami-comak-is-free/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kurdish poet İlhan Sami Çomak is FREE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/08/29/free-the-kurdish-poet-ilhan-sami-comak/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Free the Kurdish poet Ilhan Sami Çomak",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/22/letter-to-irish-pen-members-from-ilhan-sami-comak-translated-by-paula-darwish/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Letter to Irish PEN members from Ilhan Sami Çomak, translated by Paula Darwish.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/02/10/nedim-turfent-write-back-to-ai-weiwei/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nedim Turfent, Turkey",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/10/20/dr-abduljalil-al-singace-winner-of-the-2022-pen-pinter-prize-for-an-international-writer-of-courage/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dr Abduljalil Al-Singace, 2022 PEN Pinter Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/11/28/victoria-amelina-wins-chytomo-special-jury-prize-posthumously/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina wins Chytomo Special Jury prize (posthumously)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/07/23/victoria-amelina-in-the-dublin-review-of-books/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina in the Dublin Review of Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/09/10/olha-mukha-address-to-the-pen-international-women-writers-committee-meeting-91st-international-congress-september-2025/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Olha Mukha address to the PEN International Women Writers’ Committee Meeting, 91st International Congress, September 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/04/22/books-for-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Books for Ukraine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/08/29/announcing-the-full-programme-for-the-festival-of-italian-irish-literature-fiili-in-ireland-2025-26-27-september/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing the full programme for the FIILI in Ireland 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/01/04/pen-heaney-prize/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN/Heaney Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/09/11/poetry-from-the-edge/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poetry from the Edge",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/10/14/3140/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dublin Arts and Human Rights Festival 2022",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/09/16/historical-novel-society-conference/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Historical Novel Society conference",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/08/04/in-brief-john-hewitt-international-summer-school-freedom-to-write-event-with-caoilfhionn-gallagher-kc-armagh-july-2026/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "In Brief: John Hewitt International Summer School Freedom to Write event with Caoilfhionn Gallagher KC (Armagh, July 2026)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/05/15/urgent-from-the-pen-international-translation-linguistic-rights-committee/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "URGENT (from the PEN International Translation & Linguistic Rights Committee)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/12/11/opportunity-for-creative-non-fiction-writers-lviv-ukraine-i-m-victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "OPPORTUNITY for Creative Non-fiction writers (Lviv, Ukraine) i.m Victoria Amelina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2020/10/13/coming-soon-irish-pen-pen-na-heireann/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mission Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2020/06/14/irish-pen-freedom-to-write-merger/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irish PEN/Freedom to Write Merger",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/02/05/introduction-our-first-five-years/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "INTRODUCTION: OUR FIRST FIVE YEARS",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/22/emergency-resource-list-for-writers-and-journalists-at-risk/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Emergency Resource List",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/05/13/more-than-110-nobel-laureates-call-on-iran-to-release-gravely-ill-activist-narges-mohammadi-from-the-guardian-12-may-2026/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Guardian: Narges Mohammadi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/05/04/concern-for-jailed-iranian-nobel-laureate-as-brother-fears-she-is-dying/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Update: Narges Mohammadi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/01/20/iran-authorities-must-end-brutal-crackdown-on-protests-and-internet-shutdowns/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Iran: Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/10/08/thousand-madleens-flotilla-statement/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Thousand Madleens flotilla Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/10/02/global-sumud-flotilla-statement/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Global Sumud Flotilla Statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/09/17/statement-on-drone-attacks-against-the-global-sumud-flotilla/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on drone attacks against the Global Sumud Flotilla",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/08/29/statement-on-israeli-attack-on-the-nasser-hospital-gaza/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on Israeli attack on the Nasser Hospital, Gaza.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/08/13/statement-on-arrests-following-palestine-peaceful-protest-in-london/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on arrests following Palestine peaceful protest in London",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/06/05/statement-on-gaza/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement on Gaza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/03/14/freealaa-joint-appeal-for-alaa-abd-el-fattah/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "#FreeAlaa \u2013 Joint appeal for Alaa Abd el-Fattah",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/15/day-of-the-imprisoned-writer-ilhan-sami-comak/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Day of the Imprisoned Writer: Ilhan Sami Çomak",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/07/23/ilhan-sami-comak-to-be-the-first-honorary-member-of-irish-pen-pen-na-heireann/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ilhan Sami Çomak to be the first Honorary Member of Irish PEN/PEN na hÉireann",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/09/15/kurdish-pen-member-writer-and-poet-meral-simsek/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meral Şimşek, Turkey",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/09/25/mahvash-sabet-english-pen/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mahvash Sabet/English PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/04/paola-ugaz-and-the-judicial-harassment-of-journalists-in-peru/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Paola Ugaz and the judicial harassment of journalists in Peru",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/01/21/irish-pen-featured-writer-paola-ugaz-peru-at-risk-20-01-22/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Irish PEN featured writer Paola Ugaz",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/09/09/penwrites-dr-abduljalil-al-singace-bahrain/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PENWrites: Dr Abduljalil Al-Singace (Bahrain)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/05/23/gezi-park-explainer-link-to-a-podcast-from-the-guardian-newspaper/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "GEZI PARK EXPLAINER",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/04/27/pen-turkey-protests-the-gezi-verdict-osman-kavala-co-defendants/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Osman Kavala & Co-Defendants",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/08/12/joint-statement-freedom-for-varavara-rao/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Varavara Rao, India",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/06/21/summary-of-irish-pen-campaigns-and-statements-april-june-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Campaigns and Statements, April-June 2021",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/06/21/penwrites-english-pen/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Galal el Behairy, Egypt",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/09/25/statement-from-irish-pen-pen-na-heireann-on-the-death-of-victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement from Irish PEN/PEN na hÉireann on the death of Victoria Amelina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/07/03/pen-international-statement-about-the-murder-of-victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN INTERNATIONAL STATEMENT ABOUT THE MURDER OF VICTORIA AMELINA",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/07/03/philippe-sands-remembering-marvellous-victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Philippe Sands: Remembering marvellous Victoria Amelina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/06/30/writer-and-pen-ukraine-member-victoria-amelina-seriously-injured-in-russian-missile-strike-on-kramatorsk/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "WRITER AND PEN UKRAINE MEMBER VICTORIA AMELINA SERIOUSLY INJURED IN RUSSIAN MISSILE STRIKE ON KRAMATORSK",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/05/19/victoria-amelina-essay-in-todays-irish-times-online/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina essay in today’s Irish Times online",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/05/15/3084/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "“The Russian War on Ukraine Has Always Been a War on Its Language” by Askold Melnyczuk, via LitHub",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/06/04/ukrainian-culture-under-attack/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ukrainian Culture Under Attack",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/02/23/letters-to-free-crimea-pen-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Letters to Free Crimea",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/08/03/chytomo-natalya-korniyenko-interview-with-victoria-amelina-undated/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chytomo: Natalya Korniyenko Interview with Victoria Amelina (undated)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/11/22/from-words-to-bullets-ukrainian-writers-and-journalists-on-the-russo-ukrainian-war/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "From Words to Bullets: Ukrainian Writers and Journalists on the Russo-Ukrainian War",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/03/02/support-for-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "SUPPORT FOR UKRAINE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/02/27/international-writers-in-solidarity-with-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "International Writers in solidarity with UKRAINE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/07/08/looking-at-women-looking-at-war/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Looking at Women, Looking at War (Dublin)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/07/09/looking-at-women-looking-at-war-armagh/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Looking at Women, Looking at War (Armagh)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/10/02/day-of-the-imprisoned-writer-ilhan-sami-comak-3/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Day of the Imprisoned Writer \u2013 İlhan Sami Çomak",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2024/07/03/war-identity-and-the-process-of-reconciliation/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "War, Identity, and the Process of Reconciliation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2023/10/04/human-rights-under-threat-the-arts-respond/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Human Rights Under Threat: The Arts Respond",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/07/07/pen-afghanistan-pen-for-peace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Afghanistan PEN for Peace",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/07/08/iwc-evolution-programme-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "IWC Evolution Programme 2021",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/10/07/nothing-bad-has-ever-happened-stories-and-poems-from-ukraine-reading-and-discussion-with-victoria-amelina-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘Nothing Bad Has Ever Happened: Stories and Poems from Ukraine’: Reading and discussion with Victoria Amelina (Ukraine).",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/12/21/winter-solstice-party-21st-december-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Winter Solstice party 21st December 2021",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2022/01/18/pen-norway-event-concerning-the-iranian-writer-narges-mohammadi/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Norway Event concerning the Iranian writer Narges Mohammadi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/07/04/wales-pen-cymru-event/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wales PEN Cymru event",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/11/24/pen-friends-letter-writing-event/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN Friends letter-writing event",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/06/27/event-cracking-down-on-creative-voices-turkeys-silencing-of-writers-intellectuals-and-artists-five-years-after-the-failed-coup/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN America EVENT: Cracking Down on Creative Voices: Turkey’s Silencing of Writers, Intellectuals and Artists Five Years After the Failed Coup",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2021/09/08/varavara-rao-event-29th-september-2021/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "VARAVARA RAO EVENT, 29th September 2021",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/06/17/urgent-statement-on-the-rise-of-anti-migrant-violence-in-england-wales-scotland-and-ireland/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "URGENT: Statement on the rise of anti-migrant violence in England, Wales, Scotland and Ireland",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2025/10/08/writer-and-broadcaster-manchan-magan-dies-aged-55/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writer and broadcaster Manchán Magan dies aged 55",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/international-pen-centres/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "About PEN International",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/become-a-member/the-history-of-irish-pen/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "History of Irish PEN",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/become-a-member/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Become a Member",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/calls-for-peace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Calls for Peace",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/ilhan-sami-comak/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ilhan Sami Çomak, Turkey",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/dr-abduljalil-al-singace/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dr Abduljalil Al-Singace, Bahrain",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/irish-pen-pen-na-heireann-statement-on-the-margaret-keane-gravestone-appeal-messagetomargaret/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Margaret Keane gravestone Appeal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/victoria-amelina/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Victoria Amelina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/courage-justice-and-resistance-lessons-from-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Courage, Justice and Resistance: Lessons from Ukraine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/chytomo-interviews/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chytomo Interviews",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/writing-from-ukraine/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writing from Ukraine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/record-of-war/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Record of war”",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/freedom-to-write/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Freedom To Write",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "irishpen-com",
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/upcoming-events-2/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Upcoming events",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:32.994Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0b832d869118aceebe6ab2d2cff98b5e94d6f3a4e0607efaa5cbae4c9e564fb3"
+}

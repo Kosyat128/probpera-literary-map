@@ -1,0 +1,279 @@
+
+> literary-map@0.1.0 books:audit
+> node scripts/audit-book-database.mjs && node scripts/audit-article-book-coverage.mjs && node scripts/audit-book-evidence-v2.mjs --strict && node scripts/extract-article-book-synopsis-manifest.mjs --check && node scripts/build-book-collision-triage.mjs --check && npm run books:canon:snapshots:check && node scripts/audit-book-canon-registry.mjs && npm run books:enrichment:check
+
+{
+  "records": 9763,
+  "rawSourceRecords": 10057,
+  "canonicalRecords": 9763,
+  "removedBySafeActions": 294,
+  "publicRecords": 69,
+  "uniqueLinks": 9763,
+  "detailedRecords": 6602,
+  "legacyRecords": 3161,
+  "statuses": {
+    "verified": 44,
+    "reviewed": 74,
+    "draft": 9645
+  },
+  "withFirstPublished": 6308,
+  "withOriginalLanguage": 116,
+  "withGenres": 6567,
+  "withDescription": 1618,
+  "withSource": 6567,
+  "withCoverArtwork": 201,
+  "bilingualReady": 69,
+  "reviewedWithTranslationIssues": 49,
+  "globalExternalIdDuplicates": 97,
+  "publishableExternalIdDuplicates": 0,
+  "quarantinedExternalIdDuplicates": 97,
+  "coverStatuses": {
+    "editorial-original": 200,
+    "external-preview": 1
+  },
+  "reviewQueue": 9730,
+  "duplicateLinks": 0,
+  "criticalIssues": 0
+}
+{
+  "sourceOccurrences": 267,
+  "candidates": 258,
+  "covered": 258,
+  "missing": 0,
+  "ambiguous": 0,
+  "matchedWriter": 258,
+  "unmatchedWriter": 0,
+  "ambiguousWriter": 0,
+  "titleCollisionCandidates": 5,
+  "wrongAuthorTitleCollisions": 0
+}
+{
+  "canonicalRecords": 9763,
+  "currentlyPublic": 69,
+  "evidenceV2Ready": 69,
+  "evidenceV2AttestationCandidates": 69,
+  "evidenceV2CanonicalizationFailures": 0,
+  "currentlyPublicEvidenceV2Ready": 69,
+  "currentlyPublicReauditRequired": 0,
+  "canonClaims": 0,
+  "canonClaimsRequiringReview": 0
+}
+{
+  "sourceOccurrences": 267,
+  "pairs": 258,
+  "uniquelyResolved": 258,
+  "missingCards": 0,
+  "ambiguousCards": 0,
+  "unmatchedWriters": 0,
+  "usableSynopsisPairs": 248,
+  "quarantinedPairs": 10
+}
+{
+  "decisions": 97,
+  "productionActions": 0,
+  "checked": true
+}
+
+> literary-map@0.1.0 books:canon:snapshots:check
+> node scripts/acquire-loc-book-canon-source.mjs && node scripts/acquire-bnf-education-book-canon-source.mjs
+
+{
+  "sourceId": "loc-books-that-shaped-america-2012",
+  "capturedAt": "2026-09-02",
+  "contentSha256": "06a902ab97ad5b8f057a6c6ece8e88dfd7f87ffc1e46a669d94e9a46a5d99e4a",
+  "bytes": 41830,
+  "items": 96,
+  "preservedAdjudications": 96,
+  "mode": "checked"
+}
+{
+  "sourceId": "bnf-dne-education-epub-selection-2018",
+  "capturedAt": "2026-09-02",
+  "contentSha256": "2ddf392e54a604335ee9290b07ea37326fc5e56df902b34cc67213f78500db08",
+  "bytes": 125579,
+  "items": 149,
+  "preservedAdjudications": 149,
+  "mode": "checked"
+}
+{
+  "archiveWorks": 9763,
+  "archiveCountries": 191,
+  "controlledAuthorities": 79,
+  "authorityJurisdictions": 13,
+  "sourceLists": 3,
+  "researchSourceLists": 0,
+  "transcribedSourceLists": 3,
+  "adjudicatedSourceLists": 0,
+  "verifiedContentSnapshotSourceLists": 2,
+  "unverifiedContentHashSourceLists": 1,
+  "sourcesNotCompletionVerified": 3,
+  "inventoriedItems": 292,
+  "candidateIdentityReviewItems": 0,
+  "recordedReviewOutcomeItems": 292,
+  "heldAdjudicationItems": 138,
+  "blockingCoverageItems": 138,
+  "confirmedWorkSpecificSignals": 39,
+  "worksWithTwoIndependentSignals": 2,
+  "completionClaimed": false,
+  "completionEligible": false,
+  "completionClaimValid": true,
+  "inventoryStatusCounts": {
+    "transcribed": 3
+  },
+  "coverageStatusCounts": {
+    "in-progress": 3
+  },
+  "snapshotStatusCounts": {
+    "unverified-content-hash": 1,
+    "verified-content-hash": 2
+  },
+  "adjudicationStatusCounts": {
+    "accepted": 39,
+    "held": 138,
+    "rejected": 115
+  },
+  "sourceReviewOutcomeCounts": {
+    "neb-svet-important-classics-2026-09-02": {
+      "accepted": 25,
+      "rejected": 17,
+      "held": 5,
+      "pending-review": 0
+    },
+    "loc-books-that-shaped-america-2012": {
+      "accepted": 11,
+      "rejected": 13,
+      "held": 72,
+      "pending-review": 0
+    },
+    "bnf-dne-education-epub-selection-2018": {
+      "accepted": 3,
+      "rejected": 85,
+      "held": 61,
+      "pending-review": 0
+    }
+  },
+  "sourceCandidateKindCounts": {
+    "neb-svet-important-classics-2026-09-02": {
+      "ambiguous-multiwork-edition": 1,
+      "coauthored-work": 1,
+      "edition-aggregate": 16,
+      "work": 28,
+      "work-cycle": 1
+    },
+    "loc-books-that-shaped-america-2012": {
+      "ambiguous-multiwork-edition": 2,
+      "anonymous-work": 1,
+      "coauthored-work": 5,
+      "collective-work": 3,
+      "edition-manifestation-artifact": 4,
+      "editorial-aggregate": 3,
+      "exhibit-companion": 4,
+      "work": 66,
+      "work-cycle": 8
+    },
+    "bnf-dne-education-epub-selection-2018": {
+      "ambiguous-multiwork-edition": 2,
+      "anonymous-work": 1,
+      "coauthored-work": 2,
+      "edition-aggregate": 13,
+      "edition-manifestation-artifact": 61,
+      "editorial-aggregate": 11,
+      "work": 44,
+      "work-cycle": 15
+    }
+  },
+  "statusCounts": {
+    "blocking-adjudication-hold": 138,
+    "confirmed-work-specific-signal": 39,
+    "reviewed-not-work-specific-signal": 115
+  }
+}
+
+> literary-map@0.1.0 books:enrichment:check
+> node scripts/build-book-enrichment-manifest.mjs --check && vitest run scripts/lib/book-enrichment-policy.test.mjs scripts/lib/book-enrichment-promotion.test.mjs scripts/lib/book-enrichment-generator.test.mjs scripts/lib/book-enrichment-curated-batch-01.test.mjs scripts/lib/book-canon-duplicate-resolutions.test.mjs scripts/lib/book-publication-sql.test.mjs src/data/bookArchive.test.ts src/data/countries/generated/generatedBooks.types.test.ts
+
+{
+  "archiveRecords": 10057,
+  "archiveDraftCards": 9788,
+  "archiveNonPublicEditorialCards": 227,
+  "archiveNonPublicCards": 10015,
+  "rawDraftIds": 9791,
+  "rawNonPublicEditorialIds": 227,
+  "rawTargetIds": 10018,
+  "shadowRawIds": 3,
+  "statuses": {
+    "merge": 57,
+    "reject": 242,
+    "research": 9719,
+    "ready": 0
+  },
+  "archiveStatuses": {
+    "merge": 54,
+    "reject": 242,
+    "research": 9719,
+    "ready": 0
+  },
+  "remainingCanonicalResearch": 9719,
+  "remainingArchiveResearch": 9719,
+  "safeProcessedTargetIds": 299,
+  "sourceKinds": {
+    "curated-draft": 58,
+    "editorial-nonpublic": 227,
+    "generated-openlibrary": 6564,
+    "generated-shadow": 3,
+    "legacy-title-only": 3166
+  },
+  "archiveTargetSourceKinds": {
+    "curated-draft": 58,
+    "editorial-nonpublic": 227,
+    "generated-openlibrary": 6564,
+    "legacy-title-only": 3166
+  },
+  "archiveDraftSourceKinds": {
+    "curated-draft": 58,
+    "generated-openlibrary": 6564,
+    "legacy-title-only": 3166
+  },
+  "fields": {
+    "firstPublished": 6545,
+    "originalLanguage": 50,
+    "genres": 6810,
+    "description": 249,
+    "usableDescription": 0,
+    "sourceUrl": 6810,
+    "structuredProvenance": 21,
+    "translations": 15,
+    "coverArtwork": 52
+  },
+  "invalidOpenLibraryWorkIds": 28,
+  "rawExternalDuplicateGroups": 119,
+  "rawExternalDuplicateMembers": 618,
+  "unresolvedExternalDuplicateGroups": 97,
+  "unresolvedExternalDuplicateMembers": 385,
+  "externalMergeActions": 0,
+  "crossWriterAuthorshipConflictGroups": 97,
+  "crossWriterAuthorshipConflictMembers": 385,
+  "verifiedAliasMerges": 19,
+  "editorialCanonicalAliasMerges": 16,
+  "curatedReviewedAliasMerges": 4,
+  "curatedReviewedIdentityMerges": 4,
+  "curatedCrossWriterCorrections": 1,
+  "canonReviewedIdentityMerges": 10,
+  "canonReviewedTitleAliases": 1,
+  "canonReviewedHeldManifestations": 1,
+  "curatedUndeclaredCrossWriterConflicts": 0,
+  "shadowMerges": 3,
+  "curatedBatches": [
+    "book-enrichment-curated-batch-01.json"
+  ],
+  "curatedBaselineRecords": 20,
+  "curatedBaselineDigest": "6a98a51d7bc2d5d80c249333bbb72630d72495e7176e29b7fc0e15bc67b07745"
+}
+
+ RUN  v4.1.10 D:/Codex-задачи/2026-09-26/new-chat/work/probpera-r10
+
+
+ Test Files  8 passed (8)
+      Tests  67 passed (67)
+   Start at  22:07:30
+   Duration  7.38s (transform 5.94s, setup 0ms, import 13.95s, tests 6.53s, environment 1ms)

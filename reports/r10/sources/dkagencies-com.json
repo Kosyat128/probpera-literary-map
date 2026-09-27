@@ -1,0 +1,20 @@
+{
+  "sourceId": "dkagencies-com",
+  "name": "DK Agencies",
+  "entryUrl": "https://www.dkagencies.com/",
+  "countryCodes": [
+    "IN"
+  ],
+  "coverageCountryCodes": [
+    "IN"
+  ],
+  "attemptedAt": "2026-09-26T17:27:59.096Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "This operation was aborted",
+  "robots": {
+    "url": "https://www.dkagencies.com/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  }
+}

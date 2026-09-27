@@ -1,0 +1,517 @@
+{
+  "sourceId": "brisbane-writers-festival",
+  "name": "Brisbane Writers Festival",
+  "entryUrl": "https://bwf.org.au/news/articles",
+  "countryCodes": [
+    "AU"
+  ],
+  "coverageCountryCodes": [
+    "AU"
+  ],
+  "attemptedAt": "2026-09-26T17:27:38.703Z",
+  "requests": [
+    {
+      "url": "https://bwf.org.au/news/articles",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 64554,
+      "sha256": "5307a1b43715957edac27a3023c584c76e35ac6b6f7a082a25c8939dedf2fcb6",
+      "accessedAt": "2026-09-26T17:20:16.781Z"
+    },
+    {
+      "url": "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2025-microfiction-competition",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 50320,
+      "sha256": "7bd957d1ee3f465bc697bb94d8ad527d05ddfd88bc82f354273fc61da714b072",
+      "accessedAt": "2026-09-26T17:27:40.211Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://bwf.org.au/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:15.163Z",
+    "sourceDocumentSha256": "5307a1b43715957edac27a3023c584c76e35ac6b6f7a082a25c8939dedf2fcb6"
+  },
+  "endpoint": {
+    "id": "brisbane-writers-festival",
+    "name": "Brisbane Writers Festival",
+    "url": "https://bwf.org.au/news/articles",
+    "format": "html",
+    "language": "en",
+    "region": "oceania",
+    "sourceFamilyId": "brisbane-writers-festival",
+    "countryCodes": [
+      "AU"
+    ],
+    "coverageCountryCodes": [
+      "AU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://bwf.org.au"
+    ],
+    "linkPattern": "^\\/news\\/articles\\/[^/?#]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2025-microfiction-competition"
+    ],
+    "verifiedAt": "2026-09-26T17:27:40.214Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 16,
+  "literaryCandidateCount": 16,
+  "sample": {
+    "sourceId": "brisbane-writers-festival",
+    "source": {
+      "name": "Brisbane Writers Festival",
+      "url": "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2025-microfiction-competition",
+      "language": "en"
+    },
+    "region": "oceania",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Read the winning entries of the 2025 Microfiction Competition!",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:39.791Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2025-microfiction-competition",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 50320,
+      "sha256": "7bd957d1ee3f465bc697bb94d8ad527d05ddfd88bc82f354273fc61da714b072",
+      "accessedAt": "2026-09-26T17:27:40.211Z",
+      "headline": "Read the winning entries of the 2025 Microfiction Competition!",
+      "excerpt": "Read the winning entries of the 2025 Microfiction Competition!Sun 12 Oct 2025Competition <img src=\"/generated/1280w-2-1/day1-20251009-byjadeellis-highres-07022-jpg.jpg?1760251605\" class=\"lazy\" alt=\"\"/> The 2025 Microfiction Competition, presented in partnership with The University of Queensland, called young writers from Queensland-based schools to respond to the prompt Determination. Entrants wer",
+      "publishedDates": [],
+      "canonical": "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2025-microfiction-competition",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:40.214Z",
+  "foundItems": [
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2025-microfiction-competition",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read the winning entries of the 2025 Microfiction Competition!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/were-moving-2025-dates-and-venue-announcement",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "We're moving! 2025 dates and venue announcement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/brisbane-writers-festival-to-administer-the-queensland-literary-awards",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Brisbane Writers Festival to Administer the Queensland Literary Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/our-featured-authors-share-their-top-picks-for-the-festival",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our featured authors share their top picks for the festival",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/win-your-book-club-a-vip-big-day-out-at-brisbane-writers-festival",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Win your book club a VIP Big Day Out at Brisbane Writers Festival!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/this_book_that_book",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "If you liked that book, you'll love this book!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/signed-edition-of-quicksilver-by-callie-hart",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Signed edition of Quicksilver by Callie Hart",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/read-the-winning-entries-of-the-2024-microfiction-competition",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Read the winning entries of the 2024 Microfiction Competition!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/lets-never-speak-of-this-again-book-review",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "\"Let's Never Speak of This Again\" Book Review",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/completely-normal-book-review",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "'Completely Normal (and other lies)' Book Review",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/author-interview-sydney-khoo-chats-to-youth-ambassador-alex",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author Interview: sydney khoo chats to Youth Ambassador, Alex",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/book-review-the-roots-of-chaos-series-by-samantha-shannon",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Review: The Roots of Chaos series by Samantha Shannon",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/author-interview-biffy-james-chats-to-youth-ambassador-celine",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author Interview: Biffy James chats to Youth Ambassador, Celine",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/celines-bwf-2024-wrap-up",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celine's BWF 2024 Wrap Up",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/a-love-letter-to-australian-ya",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Love Letter to Australian YA",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "brisbane-writers-festival",
+      "source": {
+        "name": "Brisbane Writers Festival",
+        "url": "https://bwf.org.au/news/articles/character-perspectives-in-amie-kaufmans-the-isles-of-the-gods",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Character Perspectives in Amie Kaufman's 'The Isles of the Gods'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:39.791Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5307a1b43715957edac27a3023c584c76e35ac6b6f7a082a25c8939dedf2fcb6"
+}

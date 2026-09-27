@@ -1,0 +1,2231 @@
+{
+  "version": 1,
+  "batchId": "r10-06",
+  "status": "prepared-not-published",
+  "createdAt": "2026-09-26T18:19:57.752Z",
+  "editorialTimeZone": "Europe/Moscow",
+  "observedCheckoutBaseline": {
+    "note": "Observed checkout snapshot is used only for duplicate checking; historical operation baseline remains unknown.",
+    "checkedCount": 195
+  },
+  "counts": {
+    "prepared": 40,
+    "productionSelectorEligible": 40,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "records": [
+    {
+      "id": "bnf-oulipo-season-2026",
+      "eventKey": "bnf-oulipo-season-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-09-30",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "В BnF начинается новый сезон встреч «Среды Улипо»",
+        "en": "BnF opens a new season of Oulipo Wednesdays"
+      },
+      "summary": {
+        "ru": "Сезон литературных встреч начнётся 30 сентября в 18:30 на площадке François-Mitterrand. Первые два вечера организаторы связывают с Раймоном Кено и Жоржем Переком.",
+        "en": "The literary series begins on September 30 at 18:30 at François-Mitterrand. The organisers dedicate the first two evenings to Raymond Queneau and Georges Perec."
+      },
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/les-mercredis-de-loulipo",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "foucault-college-france-exhibition-2026",
+      "eventKey": "foucault-college-france-exhibition-2026",
+      "category": "heritage",
+      "kind": "announcement",
+      "eventDate": "2026-09-30",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "BnF и Коллеж де Франс откроют выставку о Мишеле Фуко",
+        "en": "BnF and Collège de France announce a Michel Foucault exhibition"
+      },
+      "summary": {
+        "ru": "Выставка о работе Фуко в Коллеж де Франс заявлена с 30 сентября по 15 января 2027 года. Неопубликованные рукописи, архивы и аудиовизуальные материалы покажут развитие его мысли в годы преподавания.",
+        "en": "The exhibition on Foucault’s work at Collège de France is scheduled from September 30 to January 15, 2027. Unpublished manuscripts, archives and audiovisual materials trace his thinking during his teaching years."
+      },
+      "source": {
+        "name": "Bibliothèque nationale de France",
+        "url": "https://www.bnf.fr/fr/agenda/foucault-une-aventure-intellectuelle-au-college-de-france",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "nli-redevelopment-tender-approved-2026",
+      "eventKey": "nli-redevelopment-tender-approved-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-08",
+      "publishedAt": "2026-09-08",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Ирландская национальная библиотека переходит к следующему этапу реконструкции",
+        "en": "National Library of Ireland advances its redevelopment"
+      },
+      "summary": {
+        "ru": "Национальная библиотека Ирландии получила разрешение начать поиск подрядчика для реконструкции западного крыла и галереи читального зала. Проект предусматривает новые выставочные пространства и образовательный центр; завершение работ в сообщении не объявлено.",
+        "en": "The National Library of Ireland has received approval to tender for redevelopment of its West Wing and Reading Room gallery. The project includes new exhibition spaces and a learning hub; the announcement does not report completed construction."
+      },
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "yeats-a-vision-digitised-papers-2026",
+      "eventKey": "yeats-a-vision-digitised-papers-2026",
+      "category": "discoveries",
+      "kind": "news",
+      "eventDate": "2026-09-08",
+      "publishedAt": "2026-09-08",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Ирландская библиотека оцифровала материалы к A Vision Йейтса",
+        "en": "Irish library digitises papers relating to Yeats’s A Vision"
+      },
+      "summary": {
+        "ru": "К столетию A Vision Национальная библиотека Ирландии оцифровала связанные с книгой материалы из Yeats Occult Papers, включая рукописный черновик. Библиотека сообщила, что цифровые материалы открывают новые возможности для исследования текста.",
+        "en": "For the centenary of A Vision, the National Library of Ireland has digitised relevant items from the Yeats Occult Papers, including a manuscript draft. The library says the digital materials create new opportunities for researching the work."
+      },
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/news-stories/news/celebrating-century-vision",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "mcmonagle-letters-stephen-rea-reading-2026",
+      "eventKey": "mcmonagle-letters-stephen-rea-reading-2026",
+      "category": "heritage",
+      "kind": "announcement",
+      "eventDate": "2026-09-29",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Стивен Ри прочитает письма семьи Макмонагл в Дублине",
+        "en": "Stephen Rea to read McMonagle family letters in Dublin"
+      },
+      "summary": {
+        "ru": "29 сентября в 19:00 Национальная библиотека Ирландии проведёт обсуждение переписки семьи Макмонагл времён Гражданской войны в США. В программе - разговор историков и чтение писем актёром Стивеном Ри.",
+        "en": "On September 29 at 19:00, the National Library of Ireland will host a discussion of the McMonagle family’s American Civil War correspondence. Historians will discuss the collection, with readings by actor Stephen Rea."
+      },
+      "source": {
+        "name": "National Library of Ireland",
+        "url": "https://www.nli.ie/exhibitions-events/where-murdering-cannons-roar",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "richard-oram-wind-water-cleave-talk-2026",
+      "eventKey": "richard-oram-wind-water-cleave-talk-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-01",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Ричард Орам представит книгу об экологической истории Шотландии",
+        "en": "Richard Oram to discuss Scotland’s environmental history"
+      },
+      "summary": {
+        "ru": "1 октября в 17:30 Ричард Орам выступит в Национальной библиотеке Шотландии с лекцией по книге Where Wind and Water Cleave. Место проведения - George IV Bridge в Эдинбурге; на проверенной странице все места уже забронированы.",
+        "en": "Richard Oram will discuss Where Wind and Water Cleave at the National Library of Scotland on October 1 at 17:30. The talk takes place at George IV Bridge, Edinburgh; the checked event page lists it as fully booked."
+      },
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/where-wind-and-water-cleave/",
+        "language": "en-GB"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "lynne-campbell-fungi-language-song-2026",
+      "eventKey": "lynne-campbell-fungi-language-song-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-15",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Линн Кэмпбелл расскажет о грибах в шотландском языке и фольклоре",
+        "en": "Lynne Campbell explores fungi in Scottish language and song"
+      },
+      "summary": {
+        "ru": "15 октября в 17:30 в Национальной библиотеке Шотландии состоится встреча с рассказчицей и певицей Линн Кэмпбелл. Она обсудит связи грибов с литературой, языком и песенной традицией; предусмотрены вопросы аудитории.",
+        "en": "Storyteller and singer Lynne Campbell will speak at the National Library of Scotland on October 15 at 17:30. She will explore connections between fungi, literature, language and song, followed by audience questions."
+      },
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/a-foray-into-fungi-in-language-and-song/",
+        "language": "en-GB"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "steven-veerapen-witches-talk-2026",
+      "eventKey": "steven-veerapen-witches-talk-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-29",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Стивен Вирапен представит новое издание Witches: A King’s Obsession",
+        "en": "Steven Veerapen discusses a new edition of Witches: A King’s Obsession"
+      },
+      "summary": {
+        "ru": "29 октября в 17:30 историк Стивен Вирапен выступит в Национальной библиотеке Шотландии. Разговор о новом издании его книги будет посвящён охоте на ведьм и тому, как её история повлияла на современные образы ведьм.",
+        "en": "Historian Steven Veerapen will speak at the National Library of Scotland on October 29 at 17:30. Discussing his book’s new edition, he will explore witch-hunting and how its history shaped modern images of witches."
+      },
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/witch-obsession-with-steven-veerapen/",
+        "language": "en-GB"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "macdiarmid-thistle-centenary-talk-2026",
+      "eventKey": "macdiarmid-thistle-centenary-talk-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-11-19",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "В Эдинбурге обсудят столетие A Drunk Man Looks at the Thistle",
+        "en": "Edinburgh event marks a century of A Drunk Man Looks at the Thistle"
+      },
+      "summary": {
+        "ru": "19 ноября Алан Риах, Джеймс Робертсон и Джим Макинтош обсудят поэму Хью Макдиармида в Национальной библиотеке Шотландии. Прозвучат фрагменты оригинала и нового сборника откликов Ayont the Thistle.",
+        "en": "On November 19, Alan Riach, James Robertson and Jim Mackintosh will discuss Hugh MacDiarmid’s poem at the National Library of Scotland. Readings will include the original and their new response collection Ayont the Thistle."
+      },
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/a-drunk-man-looks-at-the-thistle/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "erin-farley-lighthouse-lives-talk-2026",
+      "eventKey": "erin-farley-lighthouse-lives-talk-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-11-12",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Эрин Фарли представит истории шотландских смотрителей маяков",
+        "en": "Erin Farley presents stories of Scotland’s lighthouse keepers"
+      },
+      "summary": {
+        "ru": "12 ноября в 17:30 редактор Lighthouse Lives Эрин Фарли выступит в Национальной библиотеке Шотландии. Она расскажет о проекте устной истории, сохраняющем воспоминания смотрителей маяков и их семей.",
+        "en": "Lighthouse Lives editor Erin Farley will speak at the National Library of Scotland on November 12 at 17:30. She will discuss the oral-history project preserving the memories of lighthouse keepers and their families."
+      },
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/lighthouse-lives/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "weather-spirits-international-storytelling-2026",
+      "eventKey": "weather-spirits-international-storytelling-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-21",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Рассказчики объединят шотландские, японские и южноамериканские предания",
+        "en": "Storytellers bring together Scottish, Japanese and South American traditions"
+      },
+      "summary": {
+        "ru": "21 октября в 14:00 Дональд Смит, Мио Сюдо и Сандра Кодд-Макдональд выступят в Национальной библиотеке Шотландии. Сказки о природе и погоде прозвучат в рамках Scottish International Storytelling Festival.",
+        "en": "Donald Smith, Mio Shudo and Sandra Codd-MacDonald will perform at the National Library of Scotland on October 21 at 14:00. Their tales of nature and weather form part of the Scottish International Storytelling Festival."
+      },
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/weather-spirits-and-rain-lore/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "kvinnsam-periodicals-svenska-tidningar-2026",
+      "eventKey": "kvinnsam-periodicals-svenska-tidningar-2026",
+      "category": "discoveries",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Шведская библиотека включила женские журналы KvinnSam в общий поиск",
+        "en": "Swedish library adds KvinnSam women’s periodicals to its search service"
+      },
+      "summary": {
+        "ru": "Оцифрованные исторические женские журналы KvinnSam стали доступны через Svenska tidningar. Коллекция, включая Idun, Hertha и Tidevarvet, ранее уже находилась онлайн на сайте Гётеборгского университета; новость касается объединения поиска.",
+        "en": "Digitised historical women’s periodicals from KvinnSam are now searchable through Svenska tidningar. Including Idun, Hertha and Tidevarvet, the collection was already online at Gothenburg University; the update adds integrated discovery."
+      },
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+        "language": "sv"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "svenska-tidningar-remote-search-restored-2026",
+      "eventKey": "svenska-tidningar-remote-search-restored-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-02",
+      "publishedAt": "2026-09-02",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Svenska tidningar восстановила удалённый поиск по защищённым материалам",
+        "en": "Svenska tidningar restores remote searching of protected material"
+      },
+      "summary": {
+        "ru": "Национальная библиотека Швеции восстановила поиск по материалам моложе ста лет после временного ограничения. Удалённо видны совпадения и частота поисковых слов, но окружающий их текст остаётся скрытым.",
+        "en": "Sweden’s national library has restored searching of material less than a century old after a temporary restriction. Remote users can see matches and keyword frequency, while surrounding text remains hidden."
+      },
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-02-skyddat-material-aterigen-sokbart-i-svenska-tidningar.html",
+        "language": "sv"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "svensk-bokkonst-awards-ceremony-2026",
+      "eventKey": "svensk-bokkonst-awards-ceremony-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-10-20",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Svensk Bokkonst вручит дипломы двадцати пяти книгам",
+        "en": "Svensk Bokkonst to honour twenty-five books"
+      },
+      "summary": {
+        "ru": "20 октября в Moderna Museet состоится вручение дипломов Svensk Bokkonst за книжное оформление. Двадцать пять отобранных книг затем покажут в Национальной библиотеке Швеции с 21 октября по 21 ноября.",
+        "en": "Svensk Bokkonst will present its book-design diplomas at Moderna Museet on October 20. The twenty-five selected books will then be displayed at Sweden’s national library from October 21 to November 21."
+      },
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-10-20-svensk-bokkonst-2025.html",
+        "language": "sv"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "romania-erasmus-libraries-meeting-2026",
+      "eventKey": "romania-erasmus-libraries-meeting-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-09-28",
+      "publishedAt": "2026-09-16",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Библиотеки Румынии обсудят культурные проекты Erasmus+",
+        "en": "Romanian libraries discuss Erasmus+ cultural projects"
+      },
+      "summary": {
+        "ru": "28 сентября в 14:00 Национальная библиотека Румынии проведёт встречу о библиотечных проектах Erasmus+. В программе - опыт библиотек, оценка результатов и развитие сообществ; предусмотрено очное и дистанционное участие.",
+        "en": "On September 28 at 14:00, Romania’s national library will host a meeting on Erasmus+ library projects. The programme covers libraries’ experience, evaluating results and building communities, with in-person and remote participation."
+      },
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/comunicat-de-presa-erasmus-plus-in-biblioteci-cultura-educatie-si-dezvoltare-comunitara/",
+        "language": "ro-RO"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "bulgaria-chaika-periodical-restored-exhibition-2026",
+      "eventKey": "bulgaria-chaika-periodical-restored-exhibition-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "В Созополе показали отреставрированный литературный журнал «Чайка»",
+        "en": "Sozopol exhibition displays a restored literary magazine"
+      },
+      "summary": {
+        "ru": "Национальная библиотека Болгарии сообщила об участии в выставке «Иван Милев. Как чайка». Посетителям представили подлинный отреставрированный журнал «Чайка»; в библиотеке хранятся номера 1917 года с ранними литературными работами Милева.",
+        "en": "Bulgaria’s national library reported its participation in Ivan Milev: Like a Seagull. The exhibition displays a restored original of the literary-art magazine Chayka; the library holds 1917 issues featuring Milev’s early literary work."
+      },
+      "source": {
+        "name": "St.St. Cyril and Methodius National Library",
+        "url": "https://www.nationallibrary.bg/www/2026/09/04/%d0%b8%d0%b7%d0%bb%d0%be%d0%b6%d0%b1%d0%b0%d1%82%d0%b0-%d0%b8%d0%b2%d0%b0%d0%bd-%d0%bc%d0%b8%d0%bb%d0%b5%d0%b2-%d0%ba%d0%b0%d1%82%d0%be-%d1%87%d0%b0%d0%b9%d0%ba%d0%b0-%d0%bd%d0%b0/",
+        "language": "bg-BG"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "lom-gaza-two-books-presentation-2026",
+      "eventKey": "lom-gaza-two-books-presentation-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-08-27",
+      "publishedAt": "2026-08-27",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "LOM представило две книги о палестинском опыте",
+        "en": "LOM presents two books on Palestinian experience"
+      },
+      "summary": {
+        "ru": "LOM опубликовало выступление Алехандры Боттинелли о двух изданиях 2026 года: антологии студентов Газы под редакцией Захида Пранджола и Джейкоба Норриса и книге Мохаммеда эль-Курда Víctimas perfectas y la política del encanto.",
+        "en": "LOM published Alejandra Bottinelli’s presentation of two 2026 editions: a Gaza student anthology edited by Zahid Pranjol and Jacob Norris, and Mohammed El-Kurd’s Víctimas perfectas y la política del encanto."
+      },
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "lom-juan-guzman-memory-book-2026",
+      "eventKey": "lom-juan-guzman-memory-book-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-10",
+      "publishedAt": "2026-09-10",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "LOM представило сборник воспоминаний о судье Хуане Гусмане",
+        "en": "LOM introduces a volume remembering Judge Juan Guzmán"
+      },
+      "summary": {
+        "ru": "Издательство опубликовало выступление Нэнси Николлс о Juan sin miedo, подготовленном Хулией Гусман. Книга объединяет двадцать три воспоминания и семь статей о Хуане Гусмане Тапии и его работе.",
+        "en": "LOM published Nancy Nicholls’s presentation of Juan sin miedo, compiled by Julia Guzmán. The volume brings together twenty-three recollections and seven articles about Juan Guzmán Tapia and his work."
+      },
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/juan-guzman-una-vida-frente-al-deber-de-la-justicia",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "lom-plan-condor-illustrated-book-2026",
+      "eventKey": "lom-plan-condor-illustrated-book-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-03",
+      "publishedAt": "2026-09-03",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "LOM опубликовало презентацию книги Plan Cóndor",
+        "en": "LOM publishes a presentation of Plan Cóndor"
+      },
+      "summary": {
+        "ru": "В выступлении, опубликованном LOM, исследователь Уго Рохас представил Plan Cóndor: Viejos secretos y nuevos hallazgos Франчески Лессы и Себастьяна Сантаны. Он рассматривает сочетание исторического исследования и чёрно-белых иллюстраций в книге.",
+        "en": "In a presentation published by LOM, researcher Hugo Rojas introduces Plan Cóndor: Viejos secretos y nuevos hallazgos by Francesca Lessa and Sebastián Santana. He discusses the book’s combination of historical research and black-and-white illustrations."
+      },
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/intervencion-en-el-lanzamiento-del-libro-plan-condor-viejos-secretos-y-nuevos-hallazgos-de-francesca-lessa-y-sebastian-santana",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "bruno-montane-efimera-critical-feature-2026",
+      "eventKey": "bruno-montane-efimera-critical-feature-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "LOM представило критический разбор Efímera Бруно Монтане",
+        "en": "LOM presents a critical reading of Bruno Montané’s Efímera"
+      },
+      "summary": {
+        "ru": "LOM опубликовало рецензию Пабло Фанте на повесть Efímera. Автор разбора исследует, как Монтане переосмысляет биографию Рубена Дарио и его пребывание в Чили; публикация не устанавливает точный день выхода самой книги.",
+        "en": "LOM published Pablo Fante’s review of the novella Efímera. The critic examines how Montané reworks Rubén Darío’s biography and time in Chile; the feature does not establish the book’s exact publication date."
+      },
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/efimera-el-sutil-juego-de-ficciones-con-que-bruno-montane-subvierte-la-biografia",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "peter-stamm-cuando-oscurece-rebon-review-2026",
+      "eventKey": "peter-stamm-cuando-oscurece-rebon-review-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-20",
+      "publishedAt": "2026-09-20",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Марта Ребон рассмотрела новый испанский сборник Петера Штамма",
+        "en": "Marta Rebón examines Peter Stamm’s Spanish story collection"
+      },
+      "summary": {
+        "ru": "El Boomeran(g) опубликовал рецензию Марты Ребон на Cuando oscurece, издание Acantilado 2026 года. Разбор одиннадцати рассказов посвящён границе между обыденностью, воображением и абсурдом.",
+        "en": "El Boomeran(g) published Marta Rebón’s review of Cuando oscurece, an Acantilado edition from 2026. Her discussion of the eleven stories explores the boundary between daily life, imagination and the absurd."
+      },
+      "source": {
+        "name": "El Boomeran(g)",
+        "url": "https://www.elboomeran.com/once-miradas-para-explorar-la-irracionalidad-con-los-ojos-de-peter-stamm/",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "princeton-cashmere-licensing-partnership-2026",
+      "eventKey": "princeton-cashmere-licensing-partnership-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-08-03",
+      "publishedAt": "2026-08-03",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Princeton University Press объявило о лицензировании через Cashmere",
+        "en": "Princeton University Press announces Cashmere licensing partnership"
+      },
+      "summary": {
+        "ru": "Princeton University Press заключило соглашение с Cashmere для разрешённого использования книг в приложениях поиска и генерации ответов. По заявлению издательства, договор исключает обучение языковых моделей, а условия доступа определяет правообладатель.",
+        "en": "Princeton University Press has partnered with Cashmere for authorised use of books in retrieval and answer-generation applications. The publisher says the agreement excludes language-model training and leaves licensing terms under its control."
+      },
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/news/cashmere",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "jung-critical-edition-video-introduction-2026",
+      "eventKey": "jung-critical-edition-video-introduction-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Редакторы представили новое критическое издание Юнга",
+        "en": "Editors introduce a new critical edition of Jung"
+      },
+      "summary": {
+        "ru": "Princeton University Press опубликовало видеовведение редакторов проекта в новое критическое издание трудов Карла Густава Юнга. Первый том посвящён 1896-1900 годам; на странице он обозначен как готовящийся к выходу.",
+        "en": "Princeton University Press published a video introduction by the series editors to its new critical edition of C. G. Jung. The first volume covers 1896-1900 and is described on the page as forthcoming."
+      },
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/ideas/inside-junghaus-the-making-of-the-critical-edition-of-c-g-jung",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "phillip-lopate-washington-irving-sketch-book-2026",
+      "eventKey": "phillip-lopate-washington-irving-sketch-book-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-08-18",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "В США вышла книга Филлипа Лопейта о Вашингтоне Ирвинге",
+        "en": "Phillip Lopate’s A Washington Irving Sketch Book published in the US"
+      },
+      "summary": {
+        "ru": "Каталог Princeton University Press подтверждает американский выход A Washington Irving Sketch Book 18 августа. В книге Филлип Лопейт рассматривает литературную жизнь Ирвинга; британская публикация отдельно назначена на 13 октября.",
+        "en": "Princeton University Press’s catalogue confirms the US publication of A Washington Irving Sketch Book on August 18. Phillip Lopate examines Irving’s literary life; the UK publication is separately scheduled for October 13."
+      },
+      "source": {
+        "name": "Princeton University Press",
+        "url": "https://press.princeton.edu/books/hardcover/9780691284439/a-washington-irving-sketch-book",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "small-piece-night-student-anthology-2026",
+      "eventKey": "small-piece-night-student-anthology-2026",
+      "category": "releases",
+      "kind": "announcement",
+      "eventDate": "2026-11-07",
+      "publishedAt": "2026-09-03",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Literary Arts представит школьную антологию A Small Piece of Night",
+        "en": "Literary Arts to launch A Small Piece of Night"
+      },
+      "summary": {
+        "ru": "Антология работ участников Writers in the Schools и Verselandia! будет представлена 7 ноября на Portland Book Festival. Заглавие A Small Piece of Night взято из стихотворения Новы Чен Lily’s Concert.",
+        "en": "The anthology of work from Writers in the Schools and Verselandia! will launch on November 7 at the Portland Book Festival. Its title, A Small Piece of Night, comes from Nova Chen’s poem Lily’s Concert."
+      },
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/wits-student-anthology-2026-a-small-piece-of-night/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "louise-erdrich-everybody-reads-selection-2026",
+      "eventKey": "louise-erdrich-everybody-reads-selection-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-01",
+      "publishedAt": "2026-09-01",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "The Mighty Red Луизы Эрдрич выбрана для Everybody Reads 2027",
+        "en": "Louise Erdrich’s The Mighty Red selected for Everybody Reads 2027"
+      },
+      "summary": {
+        "ru": "Библиотека округа Малтнома выбрала роман Луизы Эрдрич для общей читательской программы. С января планируется распространить девять тысяч экземпляров через библиотеки и школы; встреча с автором в Портленде назначена на 18 марта 2027 года.",
+        "en": "Multnomah County Library has selected Erdrich’s novel for its community reading programme. Starting in January, it plans to distribute 9,000 copies through libraries and schools; her Portland author event is scheduled for March 18, 2027."
+      },
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/09/multnomah-county-library-selects-louise-erdrichs-the-mighty-red-for-everybody-reads-2027/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "ayad-akhtar-portland-lecture-2026",
+      "eventKey": "ayad-akhtar-portland-lecture-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-21",
+      "publishedAt": "2026-04-24",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Аяд Ахтар выступит в Portland Arts & Lectures",
+        "en": "Ayad Akhtar to speak at Portland Arts & Lectures"
+      },
+      "summary": {
+        "ru": "21 октября писатель и драматург Аяд Ахтар выступит в Arlene Schnitzer Concert Hall. Встреча входит в сорок второй сезон Portland Arts & Lectures; в программе автор представлен книгами American Dervish и Homeland Elegies.",
+        "en": "Novelist and playwright Ayad Akhtar will appear at Arlene Schnitzer Concert Hall on October 21. Part of the forty-second Portland Arts & Lectures season, the event introduces him through American Dervish and Homeland Elegies."
+      },
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/2627pal/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "isabel-wilkerson-portland-lecture-2027",
+      "eventKey": "isabel-wilkerson-portland-lecture-2027",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2027-01-21",
+      "publishedAt": "2026-04-24",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Изабель Уилкерсон выступит в Портленде в январе",
+        "en": "Isabel Wilkerson to speak in Portland in January"
+      },
+      "summary": {
+        "ru": "21 января 2027 года Portland Arts & Lectures проведёт встречу с Изабель Уилкерсон. Автор The Warmth of Other Suns и Caste заявлена в программе Arlene Schnitzer Concert Hall.",
+        "en": "Portland Arts & Lectures will host Isabel Wilkerson on January 21, 2027. The author of The Warmth of Other Suns and Caste is scheduled to appear at Arlene Schnitzer Concert Hall."
+      },
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/2627pal/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "ben-rhodes-portland-lecture-2027",
+      "eventKey": "ben-rhodes-portland-lecture-2027",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2027-02-17",
+      "publishedAt": "2026-04-24",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Бен Родс заявлен в февральской программе Portland Arts & Lectures",
+        "en": "Ben Rhodes joins February’s Portland Arts & Lectures programme"
+      },
+      "summary": {
+        "ru": "17 февраля 2027 года в Arlene Schnitzer Concert Hall выступит Бен Родс. Литературная программа представляет его как автора After the Fall и The World as It Is.",
+        "en": "Ben Rhodes will appear at Arlene Schnitzer Concert Hall on February 17, 2027. The literary series introduces him as the author of After the Fall and The World as It Is."
+      },
+      "source": {
+        "name": "Literary Arts",
+        "url": "https://literary-arts.org/2026/04/2627pal/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "libro-fm-ebook-beta-announcement-2026",
+      "eventKey": "libro-fm-ebook-beta-announcement-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-08-07",
+      "publishedAt": "2026-08-07",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Libro.fm объявил о расширении на электронные книги",
+        "en": "Libro.fm announces expansion into e-books"
+      },
+      "summary": {
+        "ru": "По сообщению Publishers Weekly, Libro.fm готовит осеннее бета-тестирование электронных книг для пяти тысяч независимых книжных магазинов-партнёров. Потребительский запуск запланирован на 2027 год; книготорговцам также предложат цифровые экземпляры для предварительного чтения.",
+        "en": "Publishers Weekly reports that Libro.fm plans an autumn e-book beta for its 5,000 independent bookstore partners. The consumer launch is scheduled for 2027, with digital advance reading copies also planned for booksellers."
+      },
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101015-libro-fm-to-offer-digital-arcs-and-e-books.html",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "vromans-book-soup-hoffman-ownership-2026",
+      "eventKey": "vromans-book-soup-hoffman-ownership-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Для Vroman’s и Book Soup выбран новый владелец",
+        "en": "New owner selected for Vroman’s and Book Soup"
+      },
+      "summary": {
+        "ru": "Publishers Weekly сообщил, что Роберт Хоффман и его семья выбраны для продолжения работы книжных магазинов Vroman’s в Пасадине и Book Soup в Западном Голливуде. Решению предшествовал двухлетний поиск преемника владельцем Джоэлом Шелдоном.",
+        "en": "Publishers Weekly reports that Robert Hoffman and his family have been selected to take over Vroman’s in Pasadena and Book Soup in West Hollywood. The decision follows owner Joel Sheldon’s two-year search for a successor."
+      },
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/101348-socal-s-vroman-s-book-soup-find-new-owner.html",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "podium-entertainment-acquisition-2026",
+      "eventKey": "podium-entertainment-acquisition-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Podium Entertainment приобретена новыми инвесторами",
+        "en": "Podium Entertainment acquired by new investors"
+      },
+      "summary": {
+        "ru": "Publishers Weekly сообщил о приобретении Podium Entertainment компаниями Flexpoint Ford и Shamrock Capital у Presidio Investors. Издатель аудиокниг и электронных книг также объявил о программе участия сотрудников в собственности совместно с Ownership Works.",
+        "en": "Publishers Weekly reports that Flexpoint Ford and Shamrock Capital have acquired Podium Entertainment from Presidio Investors. The audiobook and e-book publisher also announced an employee-ownership programme with Ownership Works."
+      },
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/financial-reporting/article/101308-podium-entertainment-acquired-by-private-equity-firms.html",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "chooseco-cyoa-unbound-adult-imprint-2026",
+      "eventKey": "chooseco-cyoa-unbound-adult-imprint-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Chooseco открывает импринт интерактивных книг для взрослых",
+        "en": "Chooseco launches an interactive-book imprint for adults"
+      },
+      "summary": {
+        "ru": "Chooseco объявило об импринте CYOA Unbound для взрослых читателей книг с выбором сюжетных путей. По сообщению Publishers Weekly, первые издания - интерактивная версия «Гордости и предубеждения» К. Дэвитта Белла и Culty Фэнси Фист - запланированы на июль и сентябрь 2027 года.",
+        "en": "Chooseco has announced CYOA Unbound, an imprint of branching-path books for adult readers. Publishers Weekly reports that its first titles, C. Davitt Bell’s interactive Pride and Prejudice and Fancy Feast’s Culty, are planned for July and September 2027."
+      },
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101325-choose-your-own-adventure-publisher-launches-adult-imprint.html",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "stephen-wright-black-moon-making-feature-2026",
+      "eventKey": "stephen-wright-black-moon-making-feature-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Publishers Weekly рассказал о создании Black Moon Стивена Райта",
+        "en": "Publishers Weekly explores the making of Stephen Wright’s Black Moon"
+      },
+      "summary": {
+        "ru": "В рубрике Endnotes вышел материал о работе над романом Black Moon. Стивен Райт, его агент Мелани Джексон и участники издательской команды рассказали о книге, вдохновлённой историями пираток Энн Бонни и Мэри Рид.",
+        "en": "An Endnotes feature examines the making of Black Moon. Stephen Wright, his agent Melanie Jackson and members of the publishing team discuss a novel inspired by the stories of pirates Anne Bonny and Mary Read."
+      },
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101344-how-black-moon-by-stephen-wright-got-made.html",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "rivera-garza-kwon-literary-influences-2026",
+      "eventKey": "rivera-garza-kwon-literary-influences-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Кристина Ривера Гарса и Р. О. Квон рассказали о литературных ориентирах",
+        "en": "Cristina Rivera Garza and R. O. Kwon discuss literary influences"
+      },
+      "summary": {
+        "ru": "В Writers Talking Writers Кристина Ривера Гарса обсудила творчество Терезы Хак Кён Ча, многоязычие и Dictee. Во второй беседе того же материала Р. О. Квон рассказала о прозе Мэвис Галлант и её работе с метафорами.",
+        "en": "In Writers Talking Writers, Cristina Rivera Garza discusses Theresa Hak Kyung Cha, multilingual writing and Dictee. A second interview in the same feature has R. O. Kwon reflecting on Mavis Gallant’s prose and use of metaphor."
+      },
+      "source": {
+        "name": "Publishers Weekly",
+        "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101347-writers-talking-writers-cristina-rivera-garza-on-theresa-hak-kyung-cha-and-r-o-kwon-on-mavis-gallant.html",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "dayton-literary-peace-prize-winners-2026",
+      "eventKey": "dayton-literary-peace-prize-winners-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Объявлены лауреаты Dayton Literary Peace Prize",
+        "en": "Dayton Literary Peace Prize winners announced"
+      },
+      "summary": {
+        "ru": "По сообщению Literary Hub, премию за художественную прозу получил Сэм Вахман за The Sunflower Boys, а за документальную - Кевин Сак за Mother Emanuel. Вторые места заняли Шарлотта Макконахи с Wild Dark Shore и Ив Л. Юинг с Original Sins.",
+        "en": "Literary Hub reports that Sam Wachman’s The Sunflower Boys won the fiction prize and Kevin Sack’s Mother Emanuel won nonfiction. The runners-up are Charlotte McConaghy’s Wild Dark Shore and Eve L. Ewing’s Original Sins."
+      },
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/here-are-the-winners-of-the-2026-dayton-literary-peace-prize/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "heather-cox-richardson-gitlin-auster-award-2026",
+      "eventKey": "heather-cox-richardson-gitlin-auster-award-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-19",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Хизер Кокс Ричардсон получила первую премию Гитлина - Остера",
+        "en": "Heather Cox Richardson receives inaugural Gitlin-Auster award"
+      },
+      "summary": {
+        "ru": "Writers for Democratic Action вручила историку и писательнице Хизер Кокс Ричардсон первую Gitlin-Auster Defender of Democracy Award. Literary Hub сообщил, что онлайн-церемония состоялась 19 сентября и включала беседу с Сири Хустведт.",
+        "en": "Writers for Democratic Action presented historian and writer Heather Cox Richardson with the inaugural Gitlin-Auster Defender of Democracy Award. Literary Hub reports that the online ceremony took place on September 19 and included a conversation with Siri Hustvedt."
+      },
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/heather-cox-richardson-has-been-awarded-the-inaugural-gitlin-auster-defender-of-democracy-award/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "paulina-borsook-cyberselfish-reissue-announced-2026",
+      "eventKey": "paulina-borsook-cyberselfish-reissue-announced-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Полина Борсук представила готовящееся переиздание Cyberselfish",
+        "en": "Paulina Borsook introduces a forthcoming Cyberselfish reissue"
+      },
+      "summary": {
+        "ru": "Literary Hub опубликовал авторское вступление к новому изданию Cyberselfish Полины Борсук. Книга впервые вышла в 2000 году; в тексте указано, что переиздание готовится к выпуску этой осенью.",
+        "en": "Literary Hub published Paulina Borsook’s introduction to a new edition of Cyberselfish. First published in 2000, the book is described in the text as scheduled for reissue this autumn."
+      },
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/a-prophetic-classic-about-the-dangers-of-tech-is-back-in-print/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "sam-a-miller-still-lost-interview-2026",
+      "eventKey": "sam-a-miller-still-lost-interview-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Сэм А. Миллер рассказал о Still Lost и научной фантастике",
+        "en": "Sam A. Miller discusses Still Lost and science fiction"
+      },
+      "summary": {
+        "ru": "В Fiction/Non/Fiction опубликована беседа с Сэмом А. Миллером о сборнике Still Lost: Tales from the Year 2080. Автор обсуждает, как опыт рассказчика на YouTube повлиял на его фантастику, а также путь от самостоятельного выпуска книги к традиционному издателю.",
+        "en": "Fiction/Non/Fiction published a conversation with Sam A. Miller about Still Lost: Tales from the Year 2080. He discusses how his YouTube storytelling shaped his science fiction and his path from self-publishing to a traditional publisher."
+      },
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/sam-a-miller-on-youtube-storytelling-and-choosing-science-fiction/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "sanna-wani-lantern-daughterhood-essay-2026",
+      "eventKey": "sanna-wani-lantern-daughterhood-essay-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24",
+      "verifiedAt": "2026-09-26T18:19:57.752Z",
+      "title": {
+        "ru": "Санна Вани написала о семье и поэтическом сборнике Lantern",
+        "en": "Sanna Wani reflects on family and her poetry collection Lantern"
+      },
+      "summary": {
+        "ru": "Literary Hub опубликовал эссе Санны Вани о поэтике дочернего опыта. В авторском тексте, предоставленном House of Anansi, она связывает работу над Lantern с семейной памятью и отношениями между поколениями.",
+        "en": "Literary Hub published Sanna Wani’s essay on a poetics of daughterhood. In the piece, provided by House of Anansi, she connects her work on Lantern with family memory and relationships across generations."
+      },
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/sanna-wani-on-crafting-a-poetics-of-daughterhood/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "bnf-oulipo-season-2026",
+      "sourceId": "bnf",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://www.bnf.fr/fr/agenda/les-mercredis-de-loulipo",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:46.633Z",
+      "responseSha256": "27e46805f9e8256988ccfff4a963ba340ce23e7e2f0eb196dfaeb34f8bad4ea3",
+      "responseBytes": 221333,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-09-30",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Mainpage: seasonSep30,2026\u2013May19,2027; firstsession18:30\u201320; Queneau/Perec."
+      ],
+      "stage": "scheduled-literary-series",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "foucault-college-france-exhibition-2026",
+      "sourceId": "bnf",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://www.bnf.fr/fr/agenda/foucault-une-aventure-intellectuelle-au-college-de-france",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:46.895Z",
+      "responseSha256": "ec7aef1cd8e1f84d189f47189f4faa1c072b19eebe28b2d3d83fe760c440c5e0",
+      "responseBytes": 227427,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-09-30",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "MainpageSep30\u2013Jan15; manuscripts and1970\u20131984teachingcareer."
+      ],
+      "stage": "scheduled-philosopher-archive-exhibition",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.bnf.fr/sites/default/files/2026-08/michel-foucault-photo.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "nli-redevelopment-tender-approved-2026",
+      "sourceId": "nli-ie",
+      "sourceCountryCodes": [
+        "IE"
+      ],
+      "coverageCountryCodes": [
+        "IE"
+      ],
+      "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:47.550Z",
+      "responseSha256": "75cc92d3c0dbc36f397e63a1bedabf069c1cac1cd5abbf76eea93f4a16231266",
+      "responseBytes": 100827,
+      "sourcePublishedAt": "2026-09-08",
+      "eventDate": "2026-09-08",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Sep8 tenderapproval; WestWing/ReadingRoomgallery; futurepublicspaces."
+      ],
+      "stage": "archive-access-redevelopment-approval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.nli.ie/sites/default/files/styles/event_large_large/public/2026-09/img_1244.jpeg?h=9c4c0580&itok=YEgW62Gu",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "yeats-a-vision-digitised-papers-2026",
+      "sourceId": "nli-ie",
+      "sourceCountryCodes": [
+        "IE"
+      ],
+      "coverageCountryCodes": [
+        "IE"
+      ],
+      "url": "https://www.nli.ie/news-stories/news/celebrating-century-vision",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:47.706Z",
+      "responseSha256": "1437394e8a49476304b01c42203b1c9631036f8e35bab67ea54d19f723b74e5d",
+      "responseBytes": 91212,
+      "sourcePublishedAt": "2026-09-08",
+      "eventDate": "2026-09-08",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Sep8 explicitdigitisationcompleted; draftmanuscript; launchmeetingsnotseparatecards."
+      ],
+      "stage": "literary-manuscript-digitisation",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.nli.ie/sites/default/files/styles/event_large_large/public/2026-09/nli-a-vision-event-overall.png?h=3181f0b6&itok=zeCa6-Me",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "mcmonagle-letters-stephen-rea-reading-2026",
+      "sourceId": "nli-ie",
+      "sourceCountryCodes": [
+        "IE"
+      ],
+      "coverageCountryCodes": [
+        "IE",
+        "US"
+      ],
+      "url": "https://www.nli.ie/exhibitions-events/where-murdering-cannons-roar",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:48.180Z",
+      "responseSha256": "dfe0d5c446b18f672a5d96a5d4dd179eaf227911f7a6c12e86761a70f280e23d",
+      "responseBytes": 94694,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-09-29",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Sep29,19\u201320; DublinFestivalofHistory; StephenRea readings."
+      ],
+      "stage": "scheduled-archive-reading",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.nli.ie/sites/default/files/styles/event_large_large/public/2026-08/image.png?h=a96e430e&itok=uCVDW5Md",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "IE",
+        "US"
+      ]
+    },
+    {
+      "id": "richard-oram-wind-water-cleave-talk-2026",
+      "sourceId": "nls-uk",
+      "sourceCountryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB"
+      ],
+      "url": "https://www.nls.uk/whats-on/where-wind-and-water-cleave/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:48.582Z",
+      "responseSha256": "3c256a08ebadc4401f1b905eab7f1794ab1dd220af07c11111f9bf056d6ab59c",
+      "responseBytes": 57368,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-01",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "MainheaderOct1,17:30\u201318:30; fullybooked; bookbyRichardOram."
+      ],
+      "stage": "scheduled-author-talk",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.nls.uk/media/wffjgmie/where-wind-and-water-cleave.jpg?width=1200&height=630&format=webp&v=1dcf98dd9209b50",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "lynne-campbell-fungi-language-song-2026",
+      "sourceId": "nls-uk",
+      "sourceCountryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB"
+      ],
+      "url": "https://www.nls.uk/whats-on/a-foray-into-fungi-in-language-and-song/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:48.692Z",
+      "responseSha256": "b24425cd94a40ec2ec395b8761f9d7ca5992a51993ebda3f4b938d7ff0304e27",
+      "responseBytes": 57267,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-15",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Oct15,17:30\u201318:30; LynneCampbell; literaryandlinguisticfolklore."
+      ],
+      "stage": "scheduled-literary-folklore-talk",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.nls.uk/media/2ycbphvd/mushroom-day-talk.jpg?width=1200&height=630&format=webp&v=1dd24ca40b43ad0",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "steven-veerapen-witches-talk-2026",
+      "sourceId": "nls-uk",
+      "sourceCountryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB"
+      ],
+      "url": "https://www.nls.uk/whats-on/witch-obsession-with-steven-veerapen/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:48.752Z",
+      "responseSha256": "9a472020285e219d211f975920959d2c908195bb671401d1f1c0bce072f72121",
+      "responseBytes": 57579,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-29",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Oct29,17:30\u201318:30; neweditionnamed; authorpresent."
+      ],
+      "stage": "scheduled-book-talk",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.nls.uk/media/r1fhksuf/stevenveerapen-witches.jpg?width=1200&height=630&format=webp&v=1dd24256dfa6820",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "macdiarmid-thistle-centenary-talk-2026",
+      "sourceId": "nls-uk",
+      "sourceCountryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB"
+      ],
+      "url": "https://www.nls.uk/whats-on/a-drunk-man-looks-at-the-thistle/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:09:39.328Z",
+      "responseSha256": "471b04f8f2a1ec556cf4d82f9b677d953747e8b40956aa1e14b5cb14970e40b8",
+      "responseBytes": 57681,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-11-19",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Nov19,17:30\u201318:30; threeeditors;1926poemcentenary."
+      ],
+      "stage": "scheduled-poetry-book-talk",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "erin-farley-lighthouse-lives-talk-2026",
+      "sourceId": "nls-uk",
+      "sourceCountryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB"
+      ],
+      "url": "https://www.nls.uk/whats-on/lighthouse-lives/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:09:39.473Z",
+      "responseSha256": "52b06b930d26fd709275302ee521b45fe80fba845ab4bf3c24e0b1f1708d1ee6",
+      "responseBytes": 57570,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-11-12",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Nov12; editorErinFarley; oralhistoryprojectNorthernLighthouseBoardHeritageTrust."
+      ],
+      "stage": "scheduled-oral-history-book-talk",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "weather-spirits-international-storytelling-2026",
+      "sourceId": "nls-uk",
+      "sourceCountryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB",
+        "JP",
+        "CL"
+      ],
+      "url": "https://www.nls.uk/whats-on/weather-spirits-and-rain-lore/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:09:39.628Z",
+      "responseSha256": "48786c89eaa7a34074b28e4d6290953e0c56437e6136a6351cda53a088aca7dd",
+      "responseBytes": 58250,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-21",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Oct21,14\u201315; Scotland/Japan/SouthAmericatraditions; SandraChileanborn."
+      ],
+      "stage": "scheduled-international-storytelling",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "GB",
+        "JP",
+        "CL"
+      ]
+    },
+    {
+      "id": "kvinnsam-periodicals-svenska-tidningar-2026",
+      "sourceId": "kb-se",
+      "sourceCountryCodes": [
+        "SE"
+      ],
+      "coverageCountryCodes": [
+        "SE"
+      ],
+      "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:49.499Z",
+      "responseSha256": "fc87922e4f813a2aeb7c465a8814be900a20aa46cdcb2797f30de55a1bfe8499",
+      "responseBytes": 74155,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2026-09-17",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Sep17 serviceintegration; alreadydigitisednotnewdigitisation."
+      ],
+      "stage": "digital-literary-periodicals-access",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.kb.se/images/200.46f08a0d1a08b7d116a34/1789111638461/KvinnSamm-nyhet.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "svenska-tidningar-remote-search-restored-2026",
+      "sourceId": "kb-se",
+      "sourceCountryCodes": [
+        "SE"
+      ],
+      "coverageCountryCodes": [
+        "SE"
+      ],
+      "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-02-skyddat-material-aterigen-sokbart-i-svenska-tidningar.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:49.425Z",
+      "responseSha256": "4023a32f5b6cf6fa5f857646f31330086e29aebb0f9bc67ba0e75d21177ba1d3",
+      "responseBytes": 71375,
+      "sourcePublishedAt": "2026-09-02",
+      "eventDate": "2026-09-02",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Sep2 accessupdate; protected snippets withheld; no unrestrictedfulltextclaim."
+      ],
+      "stage": "newspaper-research-service-restored",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.kb.se/images/200.44166cc219758175f414dd6/1756709741180/Svenska_dagstidningar.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "svensk-bokkonst-awards-ceremony-2026",
+      "sourceId": "kb-se",
+      "sourceCountryCodes": [
+        "SE"
+      ],
+      "coverageCountryCodes": [
+        "SE"
+      ],
+      "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-10-20-svensk-bokkonst-2025.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:49.419Z",
+      "responseSha256": "d08b1556dbd4c92f94952dff307cdc0cab023165a80d36330545e2538d7864f7",
+      "responseBytes": 71094,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-20",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "CeremonyOct20,17\u201318:30;2025selectionedition;25booksoneevent."
+      ],
+      "stage": "scheduled-book-design-awards",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.kb.se/images/200.5c4746ff197581d1a74b574/1757579270973/Svensk-bokkonst.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "romania-erasmus-libraries-meeting-2026",
+      "sourceId": "bibnat-ro",
+      "sourceCountryCodes": [
+        "RO"
+      ],
+      "coverageCountryCodes": [
+        "RO"
+      ],
+      "url": "https://bibnat.ro/comunicat-de-presa-erasmus-plus-in-biblioteci-cultura-educatie-si-dezvoltare-comunitara/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:07:04.083Z",
+      "responseSha256": "7642d82e28d8b10db142399a194b08293933eea6b0925214af640af707e14b82",
+      "responseBytes": 236599,
+      "sourcePublishedAt": "2026-09-16",
+      "eventDate": "2026-09-28",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Sep16 announcement; Sep28,14:00; hybridfreeevent; DoinaCornearoom."
+      ],
+      "stage": "scheduled-library-professionals-meeting",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://bibnat.ro/wp-content/uploads/2026/09/erasmus.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "bulgaria-chaika-periodical-restored-exhibition-2026",
+      "sourceId": "nationallibrary-bg",
+      "sourceCountryCodes": [
+        "BG"
+      ],
+      "coverageCountryCodes": [
+        "BG"
+      ],
+      "url": "https://www.nationallibrary.bg/www/2026/09/04/%d0%b8%d0%b7%d0%bb%d0%be%d0%b6%d0%b1%d0%b0%d1%82%d0%b0-%d0%b8%d0%b2%d0%b0%d0%bd-%d0%bc%d0%b8%d0%bb%d0%b5%d0%b2-%d0%ba%d0%b0%d1%82%d0%be-%d1%87%d0%b0%d0%b9%d0%ba%d0%b0-%d0%bd%d0%b0/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:59.115Z",
+      "responseSha256": "6d73143c2a8330feca1fc08a28f8f7a35573e7287505cf8978786f2401f65604",
+      "responseBytes": 200593,
+      "sourcePublishedAt": "2026-09-04",
+      "eventDate": "2026-09-04",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Sep4 report; issues2and3of1917; restoredoriginaldisplayed; notnewacquisition."
+      ],
+      "stage": "restored-literary-periodical-exhibition",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.nationallibrary.bg/www/wp-content/uploads/2026/09/01.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "lom-gaza-two-books-presentation-2026",
+      "sourceId": "lom",
+      "sourceCountryCodes": [
+        "CL"
+      ],
+      "coverageCountryCodes": [
+        "CL",
+        "PS"
+      ],
+      "url": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:50.975Z",
+      "responseSha256": "62eb014855d2402004aebb4dbbdba4aff3c0bc66c0f18c323b40e7f0b4877d6f",
+      "responseBytes": 156397,
+      "sourcePublishedAt": "2026-08-27",
+      "eventDate": "2026-08-27",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "PublisherpresentationAug27; bothLOM2026editions; groupedonepresentation."
+      ],
+      "stage": "published-book-presentation",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "http://cdn.shopify.com/s/files/1/0275/1568/2868/files/Nos_rehusamos_a_ser_borrados.jpg?v=1785264385",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "CL",
+        "PS"
+      ],
+      "dateBoundary": "Publication date of presentation text, not an invented launch day."
+    },
+    {
+      "id": "lom-juan-guzman-memory-book-2026",
+      "sourceId": "lom",
+      "sourceCountryCodes": [
+        "CL"
+      ],
+      "coverageCountryCodes": [
+        "CL"
+      ],
+      "url": "https://lom.cl/blogs/blog/juan-guzman-una-vida-frente-al-deber-de-la-justicia",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:51.440Z",
+      "responseSha256": "aca1b9b7a07cdeeb401e04aadb0620f7106cabf10d7a8049d499d1048704852c",
+      "responseBytes": 158262,
+      "sourcePublishedAt": "2026-09-10",
+      "eventDate": "2026-09-10",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "PresentationSep10; bookLOM2026;23recollections/7articles; compilerJuliaGuzman."
+      ],
+      "stage": "published-book-presentation",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "http://cdn.shopify.com/s/files/1/0275/1568/2868/files/Juansinmiedo_480x480.jpg?v=1775009787",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated presentation text; first retail day unspecified."
+    },
+    {
+      "id": "lom-plan-condor-illustrated-book-2026",
+      "sourceId": "lom",
+      "sourceCountryCodes": [
+        "CL"
+      ],
+      "coverageCountryCodes": [
+        "CL"
+      ],
+      "url": "https://lom.cl/blogs/blog/intervencion-en-el-lanzamiento-del-libro-plan-condor-viejos-secretos-y-nuevos-hallazgos-de-francesca-lessa-y-sebastian-santana",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:51.335Z",
+      "responseSha256": "be1a95c9b6cc9e2110a14ee88adbe76e24220db3bf443dabbe1793436428e4ae",
+      "responseBytes": 153182,
+      "sourcePublishedAt": "2026-09-03",
+      "eventDate": "2026-09-03",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "SourceSep3 identifies launchspeech; authorsLessa/Santana; noquotedprose."
+      ],
+      "stage": "published-book-presentation",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "http://cdn.shopify.com/s/files/1/0275/1568/2868/files/Plan_C_ndor_Imprenta_03-10-25__page-00167_600x600.jpg?v=1786026778",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Publication date of launch speech; ceremony day unspecified."
+    },
+    {
+      "id": "bruno-montane-efimera-critical-feature-2026",
+      "sourceId": "lom",
+      "sourceCountryCodes": [
+        "CL"
+      ],
+      "coverageCountryCodes": [
+        "CL",
+        "NI"
+      ],
+      "url": "https://lom.cl/blogs/blog/efimera-el-sutil-juego-de-ficciones-con-que-bruno-montane-subvierte-la-biografia",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:51.433Z",
+      "responseSha256": "f5773bc611289abe3a54a563e344e4906a658da076049426b3fe69c1d2c0021c",
+      "responseBytes": 149199,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2026-09-17",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Sep17 republishedreview creditedBarbarie; BrunoMontane/RubenDario; nofirstreleasedateclaim."
+      ],
+      "stage": "literary-critical-feature",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "http://cdn.shopify.com/s/files/1/0275/1568/2868/files/images_bd6ee7a5-f7dd-462a-9b82-58bdd0a5095e.jpg?v=1787331335",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "CL",
+        "NI"
+      ]
+    },
+    {
+      "id": "peter-stamm-cuando-oscurece-rebon-review-2026",
+      "sourceId": "el-boomeran",
+      "sourceCountryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [
+        "ES",
+        "CH"
+      ],
+      "url": "https://www.elboomeran.com/once-miradas-para-explorar-la-irracionalidad-con-los-ojos-de-peter-stamm/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:52.821Z",
+      "responseSha256": "d265179601bc865ae1ad196eec3c132a5af619a68a115c8bc179bf3d26eac311",
+      "responseBytes": 126343,
+      "sourcePublishedAt": "2026-09-20",
+      "eventDate": "2026-09-20",
+      "method": "direct-credited-literary-review; factual bibliographic summary",
+      "facts": [
+        "ReviewSep20; Acantilado2026;11stories; publisherdate notinferred."
+      ],
+      "stage": "literary-critical-feature",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.elboomeran.com/wp-content/uploads/2026/09/Captura-de-pantalla-2026-09-14-163026.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "ES",
+        "CH"
+      ]
+    },
+    {
+      "id": "princeton-cashmere-licensing-partnership-2026",
+      "sourceId": "press-princeton-edu",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://press.princeton.edu/news/cashmere",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.590Z",
+      "responseSha256": "3b77bdb8114ff7b375cbb52bbb6f49166a15eb5144e86297a9d065b74eea19a6",
+      "responseBytes": 112317,
+      "sourcePublishedAt": "2026-08-03",
+      "eventDate": "2026-08-03",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "OfficialannouncementAug3; authorisedRAGlicensing; noLLMtraining; publishercontrol."
+      ],
+      "stage": "publisher-licensing-agreement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://press.princeton.edu/themes/custom/themekit/logo-social.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "jung-critical-edition-video-introduction-2026",
+      "sourceId": "press-princeton-edu",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US",
+        "CH"
+      ],
+      "url": "https://press.princeton.edu/ideas/inside-junghaus-the-making-of-the-critical-edition-of-c-g-jung",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.879Z",
+      "responseSha256": "7cdbb1afd8d7cf499f3aeaf19ef6f6c8cd7b0627c55749f07b2c3239ccd62d01",
+      "responseBytes": 114457,
+      "sourcePublishedAt": "2026-09-22",
+      "eventDate": "2026-09-22",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "VideoSep22; firstvolume1896\u20131900; forthcoming,notreleased; pageprintsGaiaDomencici."
+      ],
+      "stage": "critical-edition-introduction",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://press.princeton.edu/sites/default/files/styles/facebook/public/image/2026-09/Junghaus_Still.png?h=b8c23d6f&itok=h98-vPSi",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "US",
+        "CH"
+      ],
+      "contentBoundary": "Page introduction verified; video itself not transcribed."
+    },
+    {
+      "id": "phillip-lopate-washington-irving-sketch-book-2026",
+      "sourceId": "press-princeton-edu",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US",
+        "GB"
+      ],
+      "url": "https://press.princeton.edu/books/hardcover/9780691284439/a-washington-irving-sketch-book",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.092Z",
+      "responseSha256": "94acc74e8d24b61ed31e4542a1eb26ef7cb1859528aff79e600f82ec1c7ef293",
+      "responseBytes": 157924,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-08-18",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "USpublishedAug18; UKOct13;288pages; ISBN9780691284439; cataloguepagepubdateunknown."
+      ],
+      "stage": "us-book-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://pup-assets.imgix.net/onix/images/9780691284439.jpg?fit=fill&fill=solid&fill-color=ffffff&w=1200&h=630",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "US",
+        "GB"
+      ]
+    },
+    {
+      "id": "small-piece-night-student-anthology-2026",
+      "sourceId": "literary-arts",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://literary-arts.org/2026/09/wits-student-anthology-2026-a-small-piece-of-night/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.113Z",
+      "responseSha256": "9bacce6697af5ace31432d4507d915ebd154e2d8c66d91db5a2c42b2e4ebe520",
+      "responseBytes": 160364,
+      "sourcePublishedAt": "2026-09-03",
+      "eventDate": "2026-11-07",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "AnnouncementSep3; launchNov7; titlefromNovaChenpoem; noversecopied."
+      ],
+      "stage": "scheduled-student-anthology-launch",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://literary-arts.org/wp-content/uploads/2026/09/WITS-Cover-Reveal_600x900.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "louise-erdrich-everybody-reads-selection-2026",
+      "sourceId": "literary-arts",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://literary-arts.org/2026/09/multnomah-county-library-selects-louise-erdrichs-the-mighty-red-for-everybody-reads-2027/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:55.661Z",
+      "responseSha256": "1faaa58a55151ea6bf7ffea688010f94e176cbdaea7f75e0e891c651196951da",
+      "responseBytes": 160515,
+      "sourcePublishedAt": "2026-09-01",
+      "eventDate": "2026-09-01",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "SelectionSep1;9000copiesplanned; authorMar18,2027; noeventcompletionclaim."
+      ],
+      "stage": "community-reading-book-selection",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://literary-arts.org/wp-content/uploads/2026/08/Blog-600x900-1.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "ayad-akhtar-portland-lecture-2026",
+      "sourceId": "literary-arts",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://literary-arts.org/2026/04/2627pal/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.575Z",
+      "responseSha256": "7268b59a34b072afbe1bd7ec80a04157eb160dafaa83be8afde631ae9474761a",
+      "responseBytes": 177378,
+      "sourcePublishedAt": "2026-04-24",
+      "eventDate": "2026-10-21",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Oct21 standaloneauthorlecture; announcementApr24; futureverifiedSep26."
+      ],
+      "stage": "scheduled-author-lecture",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://literary-arts.org/wp-content/uploads/2026/04/PAL2627_600x900_V2_series.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "distinctEvent": "Independent October author appearance; not a single-day fair session."
+    },
+    {
+      "id": "isabel-wilkerson-portland-lecture-2027",
+      "sourceId": "literary-arts",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://literary-arts.org/2026/04/2627pal/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.575Z",
+      "responseSha256": "7268b59a34b072afbe1bd7ec80a04157eb160dafaa83be8afde631ae9474761a",
+      "responseBytes": 177378,
+      "sourcePublishedAt": "2026-04-24",
+      "eventDate": "2027-01-21",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Jan21,2027 standalonelecture; April24programme; futureverifiedSep26."
+      ],
+      "stage": "scheduled-author-lecture",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://literary-arts.org/wp-content/uploads/2026/04/PAL2627_600x900_V2_series.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "distinctEvent": "Independent January author appearance on another date."
+    },
+    {
+      "id": "ben-rhodes-portland-lecture-2027",
+      "sourceId": "literary-arts",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://literary-arts.org/2026/04/2627pal/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:54.575Z",
+      "responseSha256": "7268b59a34b072afbe1bd7ec80a04157eb160dafaa83be8afde631ae9474761a",
+      "responseBytes": 177378,
+      "sourcePublishedAt": "2026-04-24",
+      "eventDate": "2027-02-17",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Feb17,2027 standaloneauthorlecture; namedbooks; within180days."
+      ],
+      "stage": "scheduled-author-lecture",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://literary-arts.org/wp-content/uploads/2026/04/PAL2627_600x900_V2_series.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "distinctEvent": "Independent February author appearance on another date."
+    },
+    {
+      "id": "libro-fm-ebook-beta-announcement-2026",
+      "sourceId": "publishers-weekly",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101015-libro-fm-to-offer-digital-arcs-and-e-books.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.948Z",
+      "responseSha256": "ef1c36a8c27cc247104f0a80dc07e071608cbb8427cbf4ff9aba7c0427a3689b",
+      "responseBytes": 45307,
+      "sourcePublishedAt": "2026-08-07",
+      "eventDate": "2026-08-07",
+      "method": "direct-publishing-trade-report; attributed reporting and bilingual drafting",
+      "facts": [
+        "Report Aug 7; bookstore beta autumn 2026; consumer service planned 2027; no completed launch claim."
+      ],
+      "stage": "ebook-service-announcement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/130/130798-2.JPG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "vromans-book-soup-hoffman-ownership-2026",
+      "sourceId": "publishers-weekly",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/bookselling/article/101348-socal-s-vroman-s-book-soup-find-new-owner.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:56.927Z",
+      "responseSha256": "b2385589874475c81444f94112427a4afbdf200157d2bbc0faf37ca156ec1ee0",
+      "responseBytes": 44682,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-publishing-trade-report; attributed reporting and bilingual drafting",
+      "facts": [
+        "Report Sep 25; Hoffman family selected; both bookstores one transaction; legal closing day not asserted."
+      ],
+      "stage": "bookstore-ownership-agreement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131706-1.JPG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "podium-entertainment-acquisition-2026",
+      "sourceId": "publishers-weekly",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/financial-reporting/article/101308-podium-entertainment-acquired-by-private-equity-firms.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.126Z",
+      "responseSha256": "e69448452becb01858bea19880888247639b727603a460d5f99327ce3565db8a",
+      "responseBytes": 46473,
+      "sourcePublishedAt": "2026-09-22",
+      "eventDate": "2026-09-22",
+      "method": "direct-publishing-trade-report; attributed reporting and bilingual drafting",
+      "facts": [
+        "Report Sep 22; completed acquisition reported; employee ownership announced; no unconfirmed valuation included."
+      ],
+      "stage": "publisher-acquisition-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131596-2.PNG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "chooseco-cyoa-unbound-adult-imprint-2026",
+      "sourceId": "publishers-weekly",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101325-choose-your-own-adventure-publisher-launches-adult-imprint.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.111Z",
+      "responseSha256": "c2cb2badd43b99f5643f5c8a0afa7eab7e8c4beb1be80b56adf783886d689c57",
+      "responseBytes": 44441,
+      "sourcePublishedAt": "2026-09-24",
+      "eventDate": "2026-09-24",
+      "method": "direct-publishing-trade-report; attributed reporting and bilingual drafting",
+      "facts": [
+        "Report Sep 24; imprint announcement; first titles July and September 2027; one imprint card."
+      ],
+      "stage": "adult-interactive-imprint-announcement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131635-1.PNG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "stephen-wright-black-moon-making-feature-2026",
+      "sourceId": "publishers-weekly",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101344-how-black-moon-by-stephen-wright-got-made.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.130Z",
+      "responseSha256": "44f8b9cb043c54a5c60ce10f8218422cdc353efc96a81e719ed4e85e37a05503",
+      "responseBytes": 45484,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-original-publishing-interviews; factual extraction and bilingual drafting",
+      "facts": [
+        "Feature Sep 25; author and publishing-team interviews; inspiration Bonny and Read; feature date does not establish book release."
+      ],
+      "stage": "author-and-editor-making-of-feature",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131699-1.PNG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "rivera-garza-kwon-literary-influences-2026",
+      "sourceId": "publishers-weekly",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/tip-sheet/article/101347-writers-talking-writers-cristina-rivera-garza-on-theresa-hak-kyung-cha-and-r-o-kwon-on-mavis-gallant.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:06:57.313Z",
+      "responseSha256": "10984ac2b8df7c49758279d1c1bbb468d8170d36ceb42b180f56e3861ed738ff",
+      "responseBytes": 56787,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-original-author-interviews; factual extraction and bilingual drafting",
+      "facts": [
+        "Nick Hilden feature Sep 25; two interviews grouped as one article; no new book publication claim."
+      ],
+      "stage": "writers-on-writers-interviews",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.publishersweekly.com/images/data/ARTICLE_PHOTO/photo/000/131/131703-1.JPG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "dayton-literary-peace-prize-winners-2026",
+      "sourceId": "literary-hub",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://lithub.com/here-are-the-winners-of-the-2026-dayton-literary-peace-prize/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:07:55.969Z",
+      "responseSha256": "1632079d3a619f1e8971e445c2894492329e7d4b4bcc691dc054ff308777bf06",
+      "responseBytes": 71777,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2026-09-17",
+      "method": "direct-literary-award-report; attributed results and bilingual drafting",
+      "facts": [
+        "Winner report Sep 17; fiction Wachman, nonfiction Sack; runners-up McConaghy and Ewing; one award-cycle card."
+      ],
+      "stage": "award-winners-announced",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://s26162.pcdn.co/wp-content/uploads/2021/08/daytonliterary.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "heather-cox-richardson-gitlin-auster-award-2026",
+      "sourceId": "literary-hub",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://lithub.com/heather-cox-richardson-has-been-awarded-the-inaugural-gitlin-auster-defender-of-democracy-award/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:07:55.942Z",
+      "responseSha256": "b12b648018e73729ccac12ac4ee175be49273c41175059b43db5a81273a6ab39",
+      "responseBytes": 71855,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-09-19",
+      "method": "direct-literary-award-report; attributed reporting and bilingual drafting",
+      "facts": [
+        "Sep 21 report explicitly says Saturday Sep 19 presentation; inaugural award; online conversation with Hustvedt."
+      ],
+      "stage": "award-presented",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://s26162.pcdn.co/wp-content/uploads/2026/09/HCRWDA.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "paulina-borsook-cyberselfish-reissue-announced-2026",
+      "sourceId": "literary-hub",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://lithub.com/a-prophetic-classic-about-the-dangers-of-tech-is-back-in-print/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:07:56.557Z",
+      "responseSha256": "580233a2bba6eeeb0cfdfddd51bbcf33aa8ff50ff8f160c54b3712600080fd8d",
+      "responseBytes": 93787,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-author-introduction via Tin House; forthcoming status taken from body text",
+      "facts": [
+        "Feature Sep 25; body says will be reissued this fall despite headline back in print; exact release date absent."
+      ],
+      "stage": "reissue-introduction-published",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://s26162.pcdn.co/wp-content/uploads/2026/09/right-sidebar-banner-images-7.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "sam-a-miller-still-lost-interview-2026",
+      "sourceId": "literary-hub",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://lithub.com/sam-a-miller-on-youtube-storytelling-and-choosing-science-fiction/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:07:56.250Z",
+      "responseSha256": "bff88834f72ec8a1d115b401b6287289d0d73df6ca359ea54c2c800e8e45b70d",
+      "responseBytes": 80582,
+      "sourcePublishedAt": "2026-09-24",
+      "eventDate": "2026-09-24",
+      "method": "direct-original-interview-page and transcript; bilingual factual drafting",
+      "facts": [
+        "Interview Sep 24; page introduction and transcript checked; host names omitted because header and body differ; no audio-listening claim."
+      ],
+      "stage": "author-interview-published",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://s26162.pcdn.co/wp-content/uploads/2026/09/banner-FNF26.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "sanna-wani-lantern-daughterhood-essay-2026",
+      "sourceId": "literary-hub",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://lithub.com/sanna-wani-on-crafting-a-poetics-of-daughterhood/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T18:07:56.342Z",
+      "responseSha256": "cf9f9f585636ebe9a125095de3be19f531d6bb2a067296b7b862aaa48fabd3ea",
+      "responseBytes": 89315,
+      "sourcePublishedAt": "2026-09-24",
+      "eventDate": "2026-09-24",
+      "method": "direct-original-author-essay; short factual paraphrase without poetry quotations",
+      "facts": [
+        "Essay Sep 24; original first-person author prose via House of Anansi; poetry not reproduced; no exact release date asserted."
+      ],
+      "stage": "poet-essay-published",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://s26162.pcdn.co/wp-content/uploads/2026/09/light.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    }
+  ],
+  "recordSha256": "0f9466d964d67c588e16a1564dea8c137b0b147dc051cea02ae1b7210871fdb8",
+  "receipt": {
+    "publication": "not-run",
+    "socialDelivery": "not-run"
+  },
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 40
+    },
+    "factExtraction": "complete-for-every-record from saved source pages; no repeated network requests",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "IDs/event keys checked against current reviewed and batches01\u201305/07; event topics manually checked",
+    "schema": "production selectReviewed 40/40",
+    "images": "Source image rights not established; text-only",
+    "stageBoundaries": "Future scheduled events remain announcements; publication reports do not invent first-release days; award report and ceremony dates separated"
+  },
+  "held": [
+    {
+      "sourceId": "bl",
+      "reason": "Inspected acquisitions and prizes were outside the recent window; no stale announcements promoted."
+    },
+    {
+      "sourceId": "nls-uk",
+      "reason": "Older exhibition starts and undated Heaney coverage excluded; selected events have explicit new dates."
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "reason": "Past September workshop announcement excluded without a completion report."
+    },
+    {
+      "sourceId": "lom",
+      "reason": "Image-only agenda not used to infer dates or completion."
+    },
+    {
+      "sourceId": "publishers-weekly",
+      "reason": "Baseline award lists not duplicated; future imprints and releases described as plans."
+    },
+    {
+      "sourceId": "literary-hub",
+      "reason": "Past telethon announcement held; future reissue stage taken from body rather than ambiguous headline."
+    }
+  ],
+  "nextStep": "Root additive review and integration; prepared content is not public growth."
+}

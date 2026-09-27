@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { parseShowcasePins } from "../../../../../src/utils/headerArticleSelection";
 import { redirect } from "@/lib/navigation";
 
 import { requireStaff } from "@/lib/auth";
@@ -421,6 +422,13 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
     coreSectionKey === "book-archive" &&
     formData.get("reset_book_scene_settings") === "1";
   let nextSettings = mergedSettingsFromForm(existingSettings, formData);
+  if (coreSectionKey === "featured-journal" && formData.has("header_showcase_pins")) {
+    try {
+      nextSettings = { ...nextSettings, headerShowcasePins: parseShowcasePins(JSON.parse(String(formData.get("header_showcase_pins") || "[]"))) };
+    } catch (error) {
+      redirect(`/homepage?error=${encodeURIComponent(error instanceof Error ? error.message : "Проверьте закрепления витрины")}`);
+    }
+  }
   if (resetBookScene) {
     nextSettings = resetHomepageImageVisualSettings(nextSettings);
   }

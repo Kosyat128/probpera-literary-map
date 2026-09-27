@@ -1,0 +1,390 @@
+{
+  "sourceId": "commonwealth-foundation",
+  "name": "Commonwealth Foundation",
+  "entryUrl": "https://commonwealthfoundation.com/",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:32:13.749Z",
+  "requests": [
+    {
+      "url": "https://commonwealthfoundation.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 49929,
+      "sha256": "10aa2ecc1e55f8ac74f10d2e77e37e006ed984311b1f8f7c7ef20bca43753a3c",
+      "accessedAt": "2026-09-26T17:32:14.389Z"
+    },
+    {
+      "url": "https://commonwealthfoundation.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 117990,
+      "sha256": "d1509b1ada75d839dd7a39664e7f364dcd94ed77b8b65ad39eaf34089cef1476",
+      "accessedAt": "2026-09-26T17:32:14.599Z"
+    },
+    {
+      "url": "https://commonwealthfoundation.com/cwprize-longlist-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 68064,
+      "sha256": "989204dd7596658529b3dc4c728b1192070b1436170f4e689b4c85f721dd66b3",
+      "accessedAt": "2026-09-26T17:32:14.716Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://commonwealthfoundation.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 185,
+    "sha256": "b9cfc9f80c2ee93b3137be2ff0becd84aa48d099550688392e0f1c99735cf1c7",
+    "accessedAt": "2026-09-26T17:32:14.170Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "commonwealth-foundation",
+    "name": "Commonwealth Foundation",
+    "url": "https://commonwealthfoundation.com/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "europe",
+    "sourceFamilyId": "commonwealth-foundation",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [
+      "GB"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://commonwealthfoundation.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://commonwealthfoundation.com/cwprize-longlist-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:32:14.719Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "commonwealth-foundation",
+    "source": {
+      "name": "Commonwealth Foundation",
+      "url": "https://commonwealthfoundation.com/cwprize-longlist-2026/",
+      "language": "en-GB"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Longlisted stories for the 2026 Commonwealth Short Story Prize",
+    "publishedAt": "2026-04-14T08:32:24.000Z",
+    "description": "On 14 April, we announced the 25 writers selected for the 2026 Commonwealth Short Story Prize shortlist. With 7,806 entries this year, the prize remains […] The post Longlisted stories for the 2026 Commonwealth Short Story Prize appeared first on Commonwealth Foundation.",
+    "discoveredAt": "2026-09-26T17:32:14.600Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://commonwealthfoundation.com/cwprize-longlist-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 68064,
+      "sha256": "989204dd7596658529b3dc4c728b1192070b1436170f4e689b4c85f721dd66b3",
+      "accessedAt": "2026-09-26T17:32:14.716Z",
+      "headline": "Longlisted stories for the 2026 Commonwealth Short Story Prize",
+      "excerpt": "Longlisted stories for the 2026 Commonwealth Short Story Prize Writers to watch from across the Commonwealth. Posted on 14/04/2026 By Commonwealth Foundation On 14 April, we announced the 25 writers selected for the 2026 Commonwealth Short Story Prize shortlist. With 7,806 entries this year, the prize remains highly competitive. Alongside the shortlisted writers, many other stories impressed the j",
+      "publishedDates": [
+        {
+          "value": "2026-04-14T08:32:24+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-04-14T08:32:24+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-04-14T08:32:24+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://commonwealthfoundation.com/cwprize-longlist-2026/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:14.719Z",
+  "foundItems": [
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/cwprize-longlist-2026/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longlisted stories for the 2026 Commonwealth Short Story Prize",
+      "publishedAt": "2026-04-14T08:32:24.000Z",
+      "description": "On 14 April, we announced the 25 writers selected for the 2026 Commonwealth Short Story Prize shortlist. With 7,806 entries this year, the prize remains […] The post Longlisted stories for the 2026 Commonwealth Short Story Prize appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/poetlaureate2025/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Selina Tusitala Marsh appointed the inaugural Commonwealth Poet Laureate",
+      "publishedAt": "2025-06-30T18:46:54.000Z",
+      "description": "For the first time in its 75-year history, the Commonwealth of Nations has a Poet Laureate. The post Selina Tusitala Marsh appointed the inaugural Commonwealth Poet Laureate appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/razmi-farook-seasonal-message-2025/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Seasonal message from the Director-General",
+      "publishedAt": "2025-12-19T15:49:34.000Z",
+      "description": "As this year ends, I want to share my warmest wishes with the people across the Commonwealth, and with our valued member countries, for a […] The post Seasonal message from the Director-General appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/how-to-stop-worrying-and-start-loving-the-translation-of-your-story/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How to Stop Worrying and Start Loving the Translation of Your Story",
+      "publishedAt": "2025-09-23T15:57:47.000Z",
+      "description": "Dear writer, you’ve just written a story in a language of your choice. Probably the one you live in. And now it’s going to be […] The post How to Stop Worrying and Start Loving the Translation of Your Story appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/turning-dialogue-into-transformative-action/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Turning dialogue into transformative action",
+      "publishedAt": "2026-09-25T14:45:57.000Z",
+      "description": "It has been a privilege to hear from three passionate, inspiring voices, working from different corners of the Commonwealth on a wide range of issues. […] The post Turning dialogue into transformative action appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/building-a-future-free-from-climate-injustice/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Building a future free from climate injustice",
+      "publishedAt": "2026-09-15T13:42:43.000Z",
+      "description": "For the Pacific, climate change is not a distant threat. It is already reshaping the lives of our communities. It is taking homes and livelihoods, […] The post Building a future free from climate injustice appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/socioeconomic-inequality-in-communities-true-impact-is-built-from-within/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Socioeconomic inequality in communities: true impact is built from within",
+      "publishedAt": "2026-08-13T13:38:32.000Z",
+      "description": "Global wealth gaps are deepening at an alarming pace. These are felt by communities across the world, not least in the Caribbean, my home region. Over […] The post Socioeconomic inequality in communities: true impact is built from within appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/freedom-of-expression-is-at-risk/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "We all have a role to play in protecting freedom of expression",
+      "publishedAt": "2026-08-04T08:49:45.000Z",
+      "description": "Threats to freedom of expression are changing. The familiar dangers are still here: journalists and activists being jailed, publications shut down, and books banned. Many […] The post We all have a role to play in protecting freedom of expression appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/the-serpent-in-the-grove/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Serpent in the Grove",
+      "publishedAt": "2026-06-30T13:23:37.000Z",
+      "description": "They say the grove still hums at noon. Not the bees’ neat industry or the clean rasp of cutlass on vine, but a belly sound […] The post The Serpent in the Grove appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "commonwealth-foundation",
+      "source": {
+        "name": "Commonwealth Foundation",
+        "url": "https://commonwealthfoundation.com/four-steps-to-writing-your-best-short-story/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Four steps to writing your best short story",
+      "publishedAt": "2026-03-26T16:24:28.000Z",
+      "description": "For over a decade, the Commonwealth Short Story Prize has celebrated the best unpublished short fiction from across the Commonwealth. Each year, thousands of writers take […] The post Four steps to writing your best short story appeared first on Commonwealth Foundation.",
+      "discoveredAt": "2026-09-26T17:32:14.600Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d1509b1ada75d839dd7a39664e7f364dcd94ed77b8b65ad39eaf34089cef1476"
+}

@@ -1,0 +1,374 @@
+{
+  "sourceId": "pen-org-au",
+  "name": "Sydney PEN",
+  "entryUrl": "https://pen.org.au/",
+  "countryCodes": [
+    "AU"
+  ],
+  "coverageCountryCodes": [
+    "AU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:37.214Z",
+  "requests": [
+    {
+      "url": "https://pen.org.au/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 69198,
+      "sha256": "b370d0691aab0477d4ce3174c974e1014142537ed385515b4d3c5ebe4c72aca2",
+      "accessedAt": "2026-09-26T17:23:40.574Z"
+    },
+    {
+      "url": "https://pen.org.au/poet-ali-asadollahi-arrested-in-iran-during-protests/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 248661,
+      "sha256": "575cf07b1f0c39053ab2cda8faec2df0ebec4a5b9df004ae4e5db53530b08f69",
+      "accessedAt": "2026-09-26T17:29:37.746Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://pen.org.au/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 184,
+    "sha256": "045c76a3efed2fb32531f92beff2fe89480595625df948379e5776f2ed254e17",
+    "accessedAt": "2026-09-26T17:29:37.628Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:39.218Z",
+    "sourceDocumentSha256": "b370d0691aab0477d4ce3174c974e1014142537ed385515b4d3c5ebe4c72aca2"
+  },
+  "endpoint": {
+    "id": "pen-org-au",
+    "name": "Sydney PEN",
+    "url": "https://pen.org.au/feed/",
+    "format": "rss",
+    "language": "en-AU",
+    "region": "oceania",
+    "sourceFamilyId": "pen-org-au",
+    "countryCodes": [
+      "AU"
+    ],
+    "coverageCountryCodes": [
+      "AU"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pen.org.au"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pen.org.au/poet-ali-asadollahi-arrested-in-iran-during-protests/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:37.759Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "pen-org-au",
+    "source": {
+      "name": "Sydney PEN",
+      "url": "https://pen.org.au/poet-ali-asadollahi-arrested-in-iran-during-protests/",
+      "language": "en-AU"
+    },
+    "region": "oceania",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "Iranian poet arrested",
+    "publishedAt": "2026-02-08T07:09:27.000Z",
+    "description": "\"Writers and artists have become collateral damage during the ongoing protests, with reported casualties in the thousands..\" The post Iranian poet arrested appeared first on Pen Sydney.",
+    "discoveredAt": "2026-09-26T17:29:37.635Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pen.org.au/poet-ali-asadollahi-arrested-in-iran-during-protests/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 248661,
+      "sha256": "575cf07b1f0c39053ab2cda8faec2df0ebec4a5b9df004ae4e5db53530b08f69",
+      "accessedAt": "2026-09-26T17:29:37.746Z",
+      "headline": "Iranian poet arrested",
+      "excerpt": "Iranian poet arrested - Pen Sydney Iranian poet arrestedFeb 8, 2026 PEN Sydney joins PEN America in condemning the detention of Iranian poet Ali Asadollahi. His arrest comes in the context of mass civil protests in Iran. PEN America and PEN Sydney are gravely concerned for the safety of writers, as well as journalists, scholars, activists, and other political prisoners held in Iranian prisons amid",
+      "publishedDates": [
+        {
+          "value": "2026-02-08T07:09:27+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-02-08T07:09:27+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-02-08T07:09:27+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://pen.org.au/poet-ali-asadollahi-arrested-in-iran-during-protests/",
+      "language": "en-AU",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:37.759Z",
+  "foundItems": [
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/poet-ali-asadollahi-arrested-in-iran-during-protests/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Iranian poet arrested",
+      "publishedAt": "2026-02-08T07:09:27.000Z",
+      "description": "\"Writers and artists have become collateral damage during the ongoing protests, with reported casualties in the thousands..\" The post Iranian poet arrested appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/cartoonist-cathy-wilcox-leaves-smh/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "cartoonist cathy wilcox leaves smh",
+      "publishedAt": "2026-08-28T07:27:54.000Z",
+      "description": "\"Wilcox was attacked in the media and subjected to a torrent of abusive correspondence over her cartoon criticising Israeli Prime Minister Benjamin Netanyahu, Rupert Murdoch, as well as senior politicians for attempting to stoke division in Australian society in the wake of the Bondi massacre. \" The post cartoonist cathy wilcox leaves smh appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/pen-americas-president-resigns/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "pen america’s president resigns",
+      "publishedAt": "2026-08-02T03:28:43.000Z",
+      "description": "\"Mengetsu charged PEN America with conducting “pseudo-advocacy” by selectively defending writers from political retaliation.\" The post pen america’s president resigns appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/pen-sydney-condemns-war-in-middle-east/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "war in the middle east",
+      "publishedAt": "2026-03-30T10:37:39.000Z",
+      "description": "\"PEN Sydney expresses its concern regarding the safety of prisoners, especially writers, political prisoners, journalists and activists, and calls on all actors in this war to fulfil their obligations to protect the lives of prisoners, and respect the right of journalists to report freely, fairly and accurately in the public interest.\" The post war in the middle east appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/murray-hunter-cleared/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "murray hunter cleared",
+      "publishedAt": "2026-03-07T21:17:46.000Z",
+      "description": "\"Exploitation of civil and criminal defamation laws is a common tool used by governments seeking to quell dissent and restrict free expression. Hunter’s case illustrates the danger of transnational SLAPP legislation.\" The post murray hunter cleared appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/jimmy-lai-sentence/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "jimmy lai sentenced",
+      "publishedAt": "2026-03-07T21:07:03.000Z",
+      "description": "\"The chilling effect of this law cannot be viewed in isolation. It is a product of the steady erosion of media freedom by the Chinese government as it continues to encroach on Hong Kong’s autonomy..\" The post jimmy lai sentenced appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/iran-writers-censorship-poetry-iranian-writers-association/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Three Iranian Writers face imprisonment",
+      "publishedAt": "2026-02-02T11:31:55.000Z",
+      "description": "\"If the authorities were tipped off that a gathering was organised for me to read my poems or to screen my films, they would shoot the place down and, they do not allow the program to go ahead.\" The post Three Iranian Writers face imprisonment appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/hate-speech-laws-will-do-real-harm/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "hate speech laws will do real harm",
+      "publishedAt": "2026-01-22T04:31:06.000Z",
+      "description": "\"Freedom of expression, including the right to challenge, critique and debate ideas, especially difficult or contested ones, is a cornerstone of democracy and a fundamental human right. PEN organisations have long opposed censorship and legal frameworks that suppress dissenting or uncomfortable voices under the guise of protection..\" The post hate speech laws will do real harm appeared first on P…",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/amanda-echanis-writer-philippines-acquitted/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "amanda echanis freed",
+      "publishedAt": "2026-01-17T11:09:45.000Z",
+      "description": "\"The cancelling of the festival after the majority of scheduled writers withdrew is unprecedented and deeply troubling.\" The post amanda echanis freed appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-org-au",
+      "source": {
+        "name": "Sydney PEN",
+        "url": "https://pen.org.au/adelaide-writers-week-cancelled/",
+        "language": "en-AU"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "adelaide writers’ week cancelled",
+      "publishedAt": "2026-01-13T07:01:24.000Z",
+      "description": "\"The cancelling of the festival after the majority of scheduled writers withdrew is unprecedented and deeply troubling.\" The post adelaide writers’ week cancelled appeared first on Pen Sydney.",
+      "discoveredAt": "2026-09-26T17:29:37.635Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b370d0691aab0477d4ce3174c974e1014142537ed385515b4d3c5ebe4c72aca2"
+}

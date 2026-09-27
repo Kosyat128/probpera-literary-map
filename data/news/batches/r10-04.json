@@ -1,0 +1,2274 @@
+{
+  "version": 1,
+  "batchId": "r10-04",
+  "status": "prepared-not-published",
+  "createdAt": "2026-09-26T18:05:24.330Z",
+  "editorialTimeZone": "Europe/Moscow",
+  "counts": {
+    "prepared": 40,
+    "productionSelectorEligible": 40,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "records": [
+    {
+      "id": "scariest-book-2027-preorder-2026",
+      "eventKey": "scariest-book-2027-preorder-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Открыт предзаказ на «Самую страшную книгу 2027»",
+        "en": "Preorders open for The Scariest Book 2027"
+      },
+      "summary": {
+        "ru": "«Астрель-СПб» представило четырнадцатый выпуск хоррор-антологии «Самая страшная книга». В сборник войдут двадцать рассказов девятнадцати авторов; продажи запланированы на октябрь, точный день издательство не назвало.",
+        "en": "Astrel-SPb has announced the fourteenth volume of its Russian horror anthology The Scariest Book. It contains twenty stories by nineteen writers, with publication planned for October; no exact day has been announced."
+      },
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/otkrylsya-predzakaz-na-sbornik-samaya-strashnaya-kniga-2027/",
+        "language": "ru-RU"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+      "eventKey": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Владислав Отрошенко получил премию Александра Солженицына",
+        "en": "Vladislav Otroshenko receives the Alexander Solzhenitsyn Prize"
+      },
+      "summary": {
+        "ru": "АСТ сообщило о вручении Владиславу Отрошенко Литературной премии Александра Солженицына в московском Доме русского зарубежья. Жюри отметило его прозу о донском казачестве и исследования творчества Николая Гоголя.",
+        "en": "AST reported that Vladislav Otroshenko received the Alexander Solzhenitsyn Literary Prize at Moscow’s House of the Russian Abroad. The jury recognised his fiction about the Don Cossacks and his essays exploring Nikolai Gogol’s work."
+      },
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/premiyu-aleksandra-solzhenitsyna-vruchili-pisatelyu-vladislavu-otroshenko/",
+        "language": "ru-RU"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "noon-strugatsky-trailer-2026",
+      "eventKey": "noon-strugatsky-trailer-2026",
+      "category": "adaptations",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Вышел трейлер «Полдня» по повести Стругацких",
+        "en": "Trailer released for Strugatsky adaptation Noon"
+      },
+      "summary": {
+        "ru": "АСТ сообщило о появлении трейлера шестисерийного «Полдня», снятого по мотивам «Жука в муравейнике» Аркадия и Бориса Стругацких. Премьера запланирована на 1 октября; в актёрском составе заявлены Юрий Колокольников, Максим Матвеев, Юлия Снигирь и Леонид Ярмольник.",
+        "en": "AST reported a trailer for the six-part series Noon, based on Arkady and Boris Strugatsky’s The Beetle in the Anthill. Its premiere is scheduled for October 1, with Yuri Kolokolnikov, Maxim Matveyev, Yuliya Snigir and Leonid Yarmolnik among the cast."
+      },
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/vyshel-treyler-seriala-polden-po-povesti-bratev-strugatskikh/",
+        "language": "ru-RU"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "nizhny-novgorod-book-fair-2026",
+      "eventKey": "nizhny-novgorod-book-fair-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-02",
+      "publishedAt": "2026-09-24",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Вторая Нижегородская книжная ярмарка пройдёт 2-4 октября",
+        "en": "Nizhny Novgorod’s second book fair runs October 2-4"
+      },
+      "summary": {
+        "ru": "Более ста издательств из шестнадцати регионов России заявлены на Вторую Нижегородскую книжную ярмарку. Она пройдёт в Главном ярмарочном доме; программа объединит свыше девяноста встреч, презентаций, дискуссий и мастерских.",
+        "en": "More than 100 publishers from sixteen Russian regions are announced for Nizhny Novgorod’s second book fair. Held in the Main Fair House, its programme will include over ninety meetings, presentations, discussions and workshops."
+      },
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/avtory-izdatelskoy-gruppy-eksmo-ast-primut-uchastie-v-nizhegorodskoy-knizhnoy-yarmarke/",
+        "language": "ru-RU"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+      "eventKey": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-21",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "«Свобода приходит в полночь» вошла в финал «Просветителя. Перевод»",
+        "en": "Freedom at Midnight shortlisted for Prosvetitel Translation"
+      },
+      "summary": {
+        "ru": "Книга Ларри Коллинза и Доминика Лапьера в переводе Ольги Гринкруг вошла в гуманитарный шорт-лист премии «Просветитель. Перевод». Corpus выпустило русское издание в 2026 году; объявление лауреатов назначено на 19 ноября.",
+        "en": "Larry Collins and Dominique Lapierre’s Freedom at Midnight, translated by Olga Grinkrug, has reached the humanities shortlist of the Prosvetitel Translation Prize. Corpus published the Russian edition in 2026; winners are due on November 19."
+      },
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/svoboda-prihodit-v-polnoch-voshla-v-short-list-premii-prosvetitel-perevod.htm",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "parfenov-nabokov-namedni-tour-announced-2026",
+      "eventKey": "parfenov-nabokov-namedni-tour-announced-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-15",
+      "publishedAt": "2026-09-15",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Леонид Парфёнов анонсировал тур с фильмом о Набокове и новым «Намедни»",
+        "en": "Leonid Parfyonov announces Nabokov film and Namedni book tour"
+      },
+      "summary": {
+        "ru": "Corpus сообщило о туре Леонида Парфёнова в октябре - декабре 2026 года. Автор представит документальный фильм «Набоков, хороший русский» и том «Намедни 2021-2025», включающий 242 феномена и 580 иллюстраций.",
+        "en": "Corpus announced Leonid Parfyonov’s tour for October-December 2026. He will present the documentary Nabokov, a Good Russian and Namedni 2021-2025, a new volume containing 242 entries and 580 illustrations."
+      },
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/leonid-parfyonov-predstavit-dokumentalnyj-film-nabokove-novyj-tom-namedni.htm",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "patrick-dewitt-dodge-city-russian-edition-2026",
+      "eventKey": "patrick-dewitt-dodge-city-russian-edition-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-09",
+      "publishedAt": "2026-09-09",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Corpus анонсировало русский перевод нового романа Патрика де Витта",
+        "en": "Corpus announces a Russian edition of Patrick deWitt’s Dodge City"
+      },
+      "summary": {
+        "ru": "Corpus сообщило, что роман «Додж-Сити» Патрика де Витта выйдет на русском весной 2027 года в переводе Иры Филипповой. Действие книги о молодом американце, пытающемся избежать отправки во Вьетнам, начинается в 1967 году.",
+        "en": "Corpus has announced a Russian edition of Patrick deWitt’s Dodge City for spring 2027, translated by Ira Filippova. The novel begins in 1967 and follows a young American trying to avoid being drafted for the Vietnam War."
+      },
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/novyj-roman-patrika-de-vitta-dodzh-citi-nominirovan-na-premiyu-giller.htm",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "fred-vargas-unique-lueur-corpus-rights-2026",
+      "eventKey": "fred-vargas-unique-lueur-corpus-rights-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-08-24",
+      "publishedAt": "2026-08-24",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Corpus приобрело права на новый роман Фред Варгас",
+        "en": "Corpus acquires Fred Vargas’s Une unique lueur"
+      },
+      "summary": {
+        "ru": "Corpus объявило о приобретении прав на Une unique lueur - одиннадцатый роман Фред Варгас о комиссаре Адамберге. Русское издание в переводе Елены Тарусиной запланировано на 2027 год; «Один-единственный проблеск» пока названо рабочим заглавием.",
+        "en": "Corpus has acquired rights to Une unique lueur, Fred Vargas’s eleventh Commissaire Adamsberg novel. A Russian edition translated by Elena Tarusina is planned for 2027; its announced Russian title remains provisional."
+      },
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/novyj-roman-fred-vargas-o-komissare-adamberge-vyjdet-v-izdatelstve-corpus.htm",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "joel-dicker-prime-video-three-novels-2026",
+      "eventKey": "joel-dicker-prime-video-three-novels-2026",
+      "category": "adaptations",
+      "kind": "news",
+      "eventDate": "2026-08-03",
+      "publishedAt": "2026-08-03",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Prime Video готовит сериалы по трём романам Жоэля Диккера",
+        "en": "Prime Video plans series based on three Joël Dicker novels"
+      },
+      "summary": {
+        "ru": "Corpus сообщило о соглашении французского подразделения Prime Video с Жоэлем Диккером. Оно охватывает «Дикого зверя», «Загадку номера 622» и «Книгу Балтиморов». Первой заявлена шестисерийная версия «Дикого зверя» с премьерой в 2027 году.",
+        "en": "Corpus reported an agreement between Prime Video’s French division and Joël Dicker covering A Wild Animal, The Enigma of Room 622 and The Baltimore Boys. A six-part A Wild Animal is the first announced project, with a premiere planned for 2027."
+      },
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/tri-romana-zhoehlya-dikkera-stanut-serialami-prime-video.htm",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "li-juan-my-altay-russian-announcement-2026",
+      "eventKey": "li-juan-my-altay-russian-announcement-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-14",
+      "publishedAt": "2026-09-14",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Ad Marginem представило русское издание «Моего Алтая» Ли Цзюань",
+        "en": "Ad Marginem announces Li Juan’s My Altay in Russian"
+      },
+      "summary": {
+        "ru": "Ad Marginem представило книгу Ли Цзюань «Мой Алтай. В памяти и закоулках воспоминаний» и опубликовало фрагмент. Сборник обращается к сельскому быту, взрослению и памяти; точный день выхода на странице не указан.",
+        "en": "Ad Marginem has introduced the Russian edition of Li Juan’s My Altay and published an excerpt. The collection explores rural daily life, growing up and memory; the page does not specify an exact publication day."
+      },
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/09/14/vnutri-moego-tela-zhivet-tanecz-otryvok-iz-knigi-li-czzyuan-moj-altaj/",
+        "language": "ru-RU"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "avrutina-ozlu-tanpinar-books-meeting-2026",
+      "eventKey": "avrutina-ozlu-tanpinar-books-meeting-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-08-28",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Аполлинария Аврутина представит книги Тезер Озлю и Танпынара",
+        "en": "Apollinaria Avrutina to present books by Özlü and Tanpınar"
+      },
+      "summary": {
+        "ru": "29 сентября в 19:00 в петербургской Книжной лавке писателей пройдёт презентация книг Тезер Озлю и Ахмеда Хамди Танпынара. Спикером встречи в сентябрьской программе Ad Marginem заявлена Аполлинария Аврутина.",
+        "en": "A presentation of books by Tezer Özlü and Ahmet Hamdi Tanpınar is scheduled for September 29 at 19:00 at St Petersburg’s Writers’ Bookshop. Ad Marginem’s September programme names Apollinaria Avrutina as the speaker."
+      },
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/08/28/dajdzhest-sobytij-sentyabr-2026/",
+        "language": "ru-RU"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "tawada-where-europe-begins-russian-2026",
+      "eventKey": "tawada-where-europe-begins-russian-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-08-20",
+      "publishedAt": "2026-08-20",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Ad Marginem выпустило «Где начинается Европа» Ёко Тавады",
+        "en": "Ad Marginem publishes Yoko Tawada’s Where Europe Begins"
+      },
+      "summary": {
+        "ru": "В сообщении от 20 августа Ad Marginem подтвердило выход сборника рассказов и эссе Ёко Тавады «Где начинается Европа». Издательство представило рассказ «Талисман», связанный с темами языка, культурных границ и восприятия чужой среды.",
+        "en": "In an August 20 post, Ad Marginem confirmed the publication of Yoko Tawada’s story and essay collection Where Europe Begins. The publisher introduced Talisman, a story exploring language, cultural boundaries and perceptions of unfamiliar surroundings."
+      },
+      "source": {
+        "name": "Ad Marginem",
+        "url": "https://admarginem.ru/2026/08/20/talisman-odin-rasskaz-iz-sbornika-yoko-tavady/",
+        "language": "ru-RU"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "childrens-detective-reading-conference-2026",
+      "eventKey": "childrens-detective-reading-conference-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-10-13",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Онлайн-конференция обсудит детские детективы и приключения",
+        "en": "Online conference explores detective and adventure books for children"
+      },
+      "summary": {
+        "ru": "13-15 октября пройдёт всероссийская онлайн-конференция «Детективы и приключения для детей и подростков». Она адресована библиотекарям, педагогам, авторам, издателям и организаторам книжных клубов; «Самокат» заявлен среди участников.",
+        "en": "A Russian online conference on detective and adventure books for children and teenagers runs October 13-15. It brings together librarians, teachers, writers, publishers and reading-group organisers, with Samokat among the participants."
+      },
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/onlayn-konferentsiya-detektivy-i-priklyucheniya-dlya-detey-i-podrostkov-professionalnoe-soobshchestv/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "lenfilm-samokat-family-film-reading-2026",
+      "eventKey": "lenfilm-samokat-family-film-reading-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-09-27",
+      "publishedAt": "2026-09-22",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "«Ленфильм» и «Самокат» запускают «Семейные киночтения»",
+        "en": "Lenfilm and Samokat launch Family Film Readings"
+      },
+      "summary": {
+        "ru": "Первая встреча нового проекта состоится 27 сентября в 16:00 в кинотеатре «Ленфильма». Программа объединит анимационный фильм «Твой цвет» и встречу с Ниной Дашевской, которая представит книгу «Ветер вернётся».",
+        "en": "The new project’s first meeting is scheduled for September 27 at 16:00 at Lenfilm’s cinema. Alongside the animated film The Colors Within, the event features Nina Dashevskaya presenting her book The Wind Will Return."
+      },
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/news/kinostudiya-lenfilm-i-samokat-zapuskayut-proekt-semeynye-kinochteniya/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "kruzhkov-mukha-pukha-reading-theatre-2026",
+      "eventKey": "kruzhkov-mukha-pukha-reading-theatre-2026",
+      "category": "adaptations",
+      "kind": "announcement",
+      "eventDate": "2026-10-24",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Стихи Григория Кружкова станут семейным спектаклем в «Самокате»",
+        "en": "Samokat hosts a family performance of Grigory Kruzhkov’s poems"
+      },
+      "summary": {
+        "ru": "24 октября в 15:00 семейный театр «Муха-Пуха» представит в московском «Самокате» программу по сборнику Григория Кружкова «Далеко не заплывай». Встреча на Малой Ордынке рассчитана на зрителей от пяти лет и продлится час.",
+        "en": "On October 24 at 15:00, the Mukha-Pukha family theatre will perform a programme based on Grigory Kruzhkov’s Don’t Swim Too Far at Samokat in Moscow. The one-hour event on Malaya Ordynka is intended for ages five and above."
+      },
+      "source": {
+        "name": "Самокат",
+        "url": "https://samokatbook.ru/meropriyatiya/v-moskve/teatr-na-samokate-daleko-ne-zaplyvay-edim-gryushi-nakhodim-ritm-i-vklyuchaem-fantaziyu-s-semeynym-te/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "mama-read-draw-family-awards-2026",
+      "eventKey": "mama-read-draw-family-awards-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-12",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В РГБ наградили участников семейного конкурса чтения и рисунка",
+        "en": "Russian State Library honours families in reading-and-drawing contest"
+      },
+      "summary": {
+        "ru": "12 сентября в Российской государственной библиотеке вручили награды участникам восемнадцатого тематического этапа конкурса «Мама, почитай мне, а я нарисую». Церемонию дополнил мастер-класс по средневековым рисункам на полях рукописей.",
+        "en": "On September 12, the Russian State Library presented awards for the eighteenth thematic round of Mum, Read to Me and I’ll Draw. The family contest’s ceremony included a workshop on medieval marginal illustrations."
+      },
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/mama-pochitay-mne-nagrazhdenie-2026",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "rsl-multilingual-literary-evening-2026",
+      "eventKey": "rsl-multilingual-literary-evening-2026",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В Ленинке прозвучали произведения разных литературных традиций",
+        "en": "Russian State Library hosts a multilingual literary evening"
+      },
+      "summary": {
+        "ru": "РГБ сообщила о вечере, подготовленном вместе с кафедрой сценической речи Щукинского института. Молодые артисты исполнили тексты на языках народов России и в русских переводах; программа включала произведения Косты Хетагурова, Чингиза Айтматова и других авторов.",
+        "en": "The Russian State Library reported an evening prepared with the Shchukin Theatre Institute’s stage-speech department. Young performers read works in the languages of Russia’s peoples and in Russian translation, including texts by Kosta Khetagurov and Chingiz Aitmatov."
+      },
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/mnogoobrazit-yazykov-i-literatury-narodov-rossii",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "hafiz-alontsev-rsl-presentation-2026",
+      "eventKey": "hafiz-alontsev-rsl-presentation-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-01",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В Ленинке представят переиздание газелей Хафиза",
+        "en": "Russian State Library presents a new edition of Hafez’s ghazals"
+      },
+      "summary": {
+        "ru": "1 октября в 18:30 Максим Алонцев выступит в Центре восточной литературы РГБ. Встреча посвящена переизданию «Газели Хафиза. Тексты, переводы, комментарии» и особенностям перевода персидской поэзии на русский; требуется предварительная регистрация.",
+        "en": "On October 1 at 18:30, Maxim Alontsev will speak at the RSL’s Oriental Literature Centre. The event introduces a new edition of Hafez’s Ghazals: Texts, Translations, Commentaries and explores translating Persian poetry into Russian. Advance registration is required."
+      },
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/hafiz-chitateli-i-perevodchiki",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "rsl-sri-lanka-books-culture-days-2026",
+      "eventKey": "rsl-sri-lanka-books-culture-days-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В РГБ открылись Дни культуры Шри-Ланки с книжной экспозицией",
+        "en": "Sri Lankan Culture Days open with a book display at the RSL"
+      },
+      "summary": {
+        "ru": "РГБ сообщила об открытии Дней культуры Шри-Ланки в Центре восточной литературы. Книжная часть знакомит с сингальскими и тамильскими изданиями, включая грамматику 1708 года и Библию 1714 года, а также переводами русских классиков.",
+        "en": "The Russian State Library reported the opening of Sri Lankan Culture Days at its Oriental Literature Centre. The book display presents Sinhala and Tamil publications, including a 1708 grammar and a 1714 Bible, alongside translations of Russian classics."
+      },
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/dni-kultury-shri-lanki",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "history-of-a-town-rsl-stage-2026",
+      "eventKey": "history-of-a-town-rsl-stage-2026",
+      "category": "adaptations",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В Ленинке показали сценическую композицию по «Истории одного города»",
+        "en": "A History of a Town receives a staged reading at the RSL"
+      },
+      "summary": {
+        "ru": "Студенты третьего курса Щукинского института выступили в РГБ с композицией по произведению Салтыкова-Щедрина. Вечер также включал лекцию сотрудницы музея писателя Анны Комлевой и разговор о сохранении его наследия.",
+        "en": "Third-year Shchukin Theatre Institute students performed a composition based on Saltykov-Shchedrin’s A History of a Town at the RSL. The evening also included a lecture by museum researcher Anna Komleva and a discussion of preserving the writer’s legacy."
+      },
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/gorod-glupov-na-stsene-leninki",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "chebatkov-dovlatov-foreigner-reading-2026",
+      "eventKey": "chebatkov-dovlatov-foreigner-reading-2026",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-22",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Евгений Чебатков прочитал «Иностранку» Довлатова в РГБ",
+        "en": "Yevgeny Chebatkov reads Dovlatov’s A Foreign Woman at the RSL"
+      },
+      "summary": {
+        "ru": "17 сентября Евгений Чебатков представил избранные фрагменты повести Сергея Довлатова «Иностранка». Это была восьмая встреча нового сезона совместного читательского проекта артиста и Российской государственной библиотеки.",
+        "en": "On September 17, Yevgeny Chebatkov read selected passages from Sergei Dovlatov’s A Foreign Woman. It was the eighth meeting in the new season of the performer’s joint reading project with the Russian State Library."
+      },
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/chebatkov-dovlatov",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "natalya-balayan-russian-fairy-tale-book-2026",
+      "eventKey": "natalya-balayan-russian-fairy-tale-book-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-21",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Наталья Балаян представила книгу о русской сказке",
+        "en": "Natalya Balayan presents her book on Russian fairy tales"
+      },
+      "summary": {
+        "ru": "На творческом вечере в РГБ Наталья Балаян представила «Русскую сказку из древних времён и до наших дней». Автор рассказала об исследовании сказочных сюжетов и о том, как менялись их образы и толкования на протяжении веков.",
+        "en": "At an event at the RSL, Natalya Balayan presented Russian Fairy Tales from Ancient Times to the Present. She discussed her research into fairy-tale plots and how their images and interpretations have changed over the centuries."
+      },
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/balayan",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "vladimir-dal-manuscripts-exhibition-2026",
+      "eventKey": "vladimir-dal-manuscripts-exhibition-2026",
+      "category": "heritage",
+      "kind": "calendar",
+      "eventDate": "2026-09-03",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Рукописи Владимира Даля представлены на выставке в Доме Пашкова",
+        "en": "Vladimir Dal’s manuscripts feature in Pashkov House exhibition"
+      },
+      "summary": {
+        "ru": "Выставка отдела рукописей РГБ заявлена с 3 сентября по 14 ноября. В экспозицию включены автографы рассказов Владимира Даля, письма и материалы к его словарю; библиотека также описывает своё собрание из 24 212 рукописных словарных карточек.",
+        "en": "The RSL manuscripts exhibition is scheduled from September 3 to November 14. It includes Vladimir Dal’s story manuscripts, letters and dictionary materials; the library also describes its holding of 24,212 handwritten dictionary cards."
+      },
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/yazyk-naroda-rodnik-nash",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "chekhodal-short-fiction-call-2026",
+      "eventKey": "chekhodal-short-fiction-call-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-11-02",
+      "publishedAt": "2026-09-08",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "«ЧехоДаль» принимает короткую прозу до 2 ноября",
+        "en": "ChekhoDal short-fiction contest accepts entries until November 2"
+      },
+      "summary": {
+        "ru": "Конкурс «ЧехоДаль» открыт для авторов от четырнадцати лет независимо от гражданства и места проживания. Требуется рассказ на русском языке объёмом до двух тысяч знаков без пробелов с использованием пословицы или поговорки из предложенного списка по трудам Даля.",
+        "en": "ChekhoDal is open to writers aged fourteen and above, regardless of citizenship or residence. Entries must be Russian-language stories of no more than 2,000 characters excluding spaces, incorporating a proverb or saying from the organisers’ list drawn from Dal’s work."
+      },
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22385/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "pesnyary-minsk-moscow-exhibition-2026",
+      "eventKey": "pesnyary-minsk-moscow-exhibition-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-21",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В Московском доме Достоевского открылась выставка о «Песнярах»",
+        "en": "Moscow’s Dostoevsky House opens a Pesnyary exhibition"
+      },
+      "summary": {
+        "ru": "Гослитмузей сообщил об открытии выставки «Легенда о Песнярах. Минск - Москва», созданной с Государственным музеем истории белорусской литературы. Проект связывает историю ансамбля с белорусской песенной и литературной традицией.",
+        "en": "The State Literary Museum reported the opening of The Legend of Pesnyary: Minsk-Moscow, created with the State Museum of the History of Belarusian Literature. The exhibition connects the ensemble’s history with Belarusian song and literary traditions."
+      },
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22401/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "lilya-brik-mamm-literary-museum-loans-2026",
+      "eventKey": "lilya-brik-mamm-literary-museum-loans-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-21",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Гослитмузей передал материалы для выставки о Лиле Брик",
+        "en": "Literary museum supplies materials for Lilya Brik exhibition"
+      },
+      "summary": {
+        "ru": "Гослитмузей сообщил об участии в выставке МАММ «Лиля Брик: икона стиля и муза авангарда». Среди предоставленных материалов - фотографии, рисунки и записки Маяковского, а также личные предметы Брик. Открытие в сообщении было назначено на 23 сентября.",
+        "en": "The State Literary Museum announced its participation in MAMM’s Lilya Brik: Style Icon and Muse of the Avant-Garde. Its loans include photographs, Mayakovsky’s drawings and notes, and Brik’s personal objects. The announcement scheduled the opening for September 23."
+      },
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22403/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "shershenevich-drozdov-collection-exhibition-2026",
+      "eventKey": "shershenevich-drozdov-collection-exhibition-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-07",
+      "publishedAt": "2026-09-07",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Музей Серебряного века показал рукописи Вадима Шершеневича",
+        "en": "Silver Age Museum displays Vadim Shershenevich manuscripts"
+      },
+      "summary": {
+        "ru": "В Доме Брюсова открылась выставка «Кабинет имажиниста» из собрания Владимира Дроздкова, переданного его семьёй в музей. В неё вошли рукописи, стихотворения и книги Вадима Шершеневича. Выставка продлится до 21 декабря.",
+        "en": "Bryusov House has opened The Imaginist’s Study, drawn from Vladimir Drozdkov’s collection donated by his family. It presents manuscripts, poems and books by Vadim Shershenevich. The exhibition runs until December 21."
+      },
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22384/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "russian-book-market-conference-2026",
+      "eventKey": "russian-book-market-conference-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-03",
+      "publishedAt": "2026-09-04",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Книжная отрасль обсудила рынок печатных и цифровых изданий",
+        "en": "Russian publishing conference examines print and digital markets"
+      },
+      "summary": {
+        "ru": "3 сентября Российский книжный союз провёл в Гостином Дворе восемнадцатую конференцию «Книжный рынок России». Издатели, книготорговцы и цифровые сервисы обсудили итоги полугодия, изменение читательского спроса и распространение книг.",
+        "en": "On September 3, the Russian Book Union held its eighteenth Russian Book Market conference at Gostiny Dvor. Publishers, booksellers and digital services discussed first-half results, changes in reader demand and book distribution."
+      },
+      "source": {
+        "name": "Российский книжный союз",
+        "url": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "daniil-granin-prize-second-season-2026",
+      "eventKey": "daniil-granin-prize-second-season-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-11-21",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Второй сезон премии Даниила Гранина принимает заявки до 21 ноября",
+        "en": "Daniil Granin Prize opens its second season"
+      },
+      "summary": {
+        "ru": "Национальная литературная премия имени Даниила Гранина открыла второй сезон. Приём заявок продлится до 21 ноября; предусмотрены номинации «Большая проза», «Малая проза» и «Мой лейтенант». Общий призовой фонд заявлен в размере трёх миллионов рублей.",
+        "en": "The Daniil Granin National Literary Prize has opened its second season, with entries accepted until November 21. Its categories are Long Prose, Short Prose and My Lieutenant, with a total announced prize fund of three million rubles."
+      },
+      "source": {
+        "name": "Российский книжный союз",
+        "url": "https://bookunion.ru/news/otkryt-priem-zaiavok-na-vtoroi-sezon-natsionalnoi-literaturnoi-premii-imeni-daniila-granina/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "litres-yasnaya-polyana-free-reading-2026",
+      "eventKey": "litres-yasnaya-polyana-free-reading-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-10-16",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Литрес предлагает бесплатное чтение финалистов «Ясной Поляны» для голосующих",
+        "en": "Litres offers free reading of Yasnaya Polyana finalists to voters"
+      },
+      "summary": {
+        "ru": "Для участников интернет-голосования Литрес объявил бесплатный доступ к пяти книгам финалистов в номинации «Современная русская проза». Период доступа - с 18 сентября по 16 октября 2026 года; среди авторов Сергей Носов, Мария Ныркова и Роман Сенчин.",
+        "en": "Litres has announced free access for online voters to the five Contemporary Russian Prose finalists of the Yasnaya Polyana Prize. The access period is September 18-October 16, 2026; authors include Sergei Nosov, Maria Nyrkova and Roman Senchin."
+      },
+      "source": {
+        "name": "Российский книжный союз",
+        "url": "https://bookunion.ru/news/litres-otkryvaet-besplatnyi-dostup-k-knigam-finalistov-24-sezona-premii-iasnaia-poliana/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "novosibirsk-book-projects-seminar-2026",
+      "eventKey": "novosibirsk-book-projects-seminar-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В Новосибирске обсудили новые способы продвижения чтения",
+        "en": "Novosibirsk seminar explores ways to promote reading"
+      },
+      "summary": {
+        "ru": "17 сентября в ГПНТБ СО РАН прошёл семинар «Лучшие практики продвижения больших книжных проектов». Библиотеки, книжная торговля, медиа и культурные площадки обсуждали совместные программы и выход книжных событий за пределы привычных залов.",
+        "en": "On September 17, the State Public Scientific and Technological Library in Novosibirsk hosted a seminar on promoting large book projects. Libraries, booksellers, media and cultural venues discussed joint programmes and taking reading events beyond their usual spaces."
+      },
+      "source": {
+        "name": "Российский книжный союз",
+        "url": "https://bookunion.ru/news/kniga-za-predelami-knizhnoi-polki-luchshie-praktiki-prodvizheniia-bolshikh-knizhnykh-proektov-obsudili-v-novosibirske/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "moscow-book-week-2026",
+      "eventKey": "moscow-book-week-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-09-26",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Московская книжная неделя объединит более 150 событий",
+        "en": "Moscow Book Week announces more than 150 events"
+      },
+      "summary": {
+        "ru": "Третья Московская книжная неделя заявлена с 26 сентября по 4 октября. Более шестидесяти участников подготовили презентации, читательские встречи, экскурсии и открытые дни в издательствах; программа включает свыше пятидесяти презентаций книжных новинок.",
+        "en": "The third Moscow Book Week is scheduled for September 26-October 4. More than sixty organisations have prepared presentations, reading events, tours and publisher open days, including over fifty new-book presentations."
+      },
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259347/s-26-sentyabrya-po-4-oktyabrya-proidet-moskovskaya-knizhnaya-nedelya",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "viktor-likhonosov-krasnodar-square-2026",
+      "eventKey": "viktor-likhonosov-krasnodar-square-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В Краснодаре решили назвать сквер в честь Виктора Лихоносова",
+        "en": "Krasnodar plans a square named after Viktor Likhonosov"
+      },
+      "summary": {
+        "ru": "«Год литературы» сообщил о решении городской думы назвать сквер на пересечении улиц Красной и Гаврилова в честь Виктора Лихоносова. Писатель связан с городом романом «Ненаписанные воспоминания. Наш маленький Париж» и многолетней работой в журнале «Родная Кубань».",
+        "en": "God Literatury reported a city-council decision to name the square at Krasnaya and Gavrilova streets after Viktor Likhonosov. His connection with Krasnodar includes Our Little Paris and his long editorship of the literary-historical journal Rodnaya Kuban."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/25/skver-v-centre-krasnodara-poluchit-imia-pisatelia-viktora-lihonosova",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "jaume-cabre-feixes-first-russian-2026",
+      "eventKey": "jaume-cabre-feixes-first-russian-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-11",
+      "publishedAt": "2026-09-11",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "«Книга Фейшеса» Жауме Кабре впервые вышла на русском",
+        "en": "Jaume Cabré’s Book of Feixes receives its first Russian edition"
+      },
+      "summary": {
+        "ru": "«Азбука» выпустила «Книгу Фейшеса» Жауме Кабре в переводе с каталанского Александры Гребенниковой. «Год литературы» сообщает, что это первое русское издание; том объёмом 512 страниц вышел в серии «Большой роман».",
+        "en": "Azbuka has published Jaume Cabré’s Book of Feixes, translated from Catalan by Alexandra Grebennikova. God Literatury identifies it as the first Russian edition; the 512-page volume appears in the publisher’s Big Novel series."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/10/muzyka-i-dogmy-kniga-fejshesa-zhaume-kabre",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "liu-cixin-direct-russian-translation-interview-2026",
+      "eventKey": "liu-cixin-direct-russian-translation-interview-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-08",
+      "publishedAt": "2026-09-08",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Лю Цысинь рассказал о «Задаче трёх тел» перед новым русским переводом",
+        "en": "Liu Cixin discusses The Three-Body Problem ahead of a new Russian translation"
+      },
+      "summary": {
+        "ru": "«Год литературы» опубликовал беседу с Лю Цысинем, подготовленную и переведённую Кириллом Батыгиным по читательским вопросам. Интервью приурочено к готовящемуся в Fanzon изданию «Задачи трёх тел» в прямом переводе с китайского на русский.",
+        "en": "God Literatury published an interview with Liu Cixin assembled and translated by Kirill Batygin from readers’ questions. It accompanies Fanzon’s forthcoming edition of The Three-Body Problem translated directly from Chinese into Russian."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/07/interviu-s-liu-cysinem-po-sluchaiu-20-letiia-izdaniia-zadachi-treh-tel",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "wells-brynhild-first-russian-2026",
+      "eventKey": "wells-brynhild-first-russian-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "Поздний роман Уэллса «Брунгильда» впервые издан на русском",
+        "en": "H. G. Wells’s Brynhild appears in Russian for the first time"
+      },
+      "summary": {
+        "ru": "Роман Герберта Уэллса «Брунгильда, или Образ без прикрас» вышел в Яндекс Книгах в переводе Г. Шокина. По сообщению «Года литературы», бумажную версию подготовили совместно с «Подписными изданиями», а аудиоверсию прочитал Илья Барабанов.",
+        "en": "H. G. Wells’s Brynhild has appeared in Russian through Yandex Books, translated by G. Shokin. God Literatury reports a print edition produced with Podpisnye Izdaniya and an audiobook narrated by Ilya Barabanov."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/22/brungilda-ili-obraz-bez-prikras-pozdnij-roman-gerberta-uellsa-vpervye-vyshel-na-russkom-iazyke",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "yesenin-konstantinovo-poetry-festival-2026",
+      "eventKey": "yesenin-konstantinovo-poetry-festival-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-03",
+      "publishedAt": "2026-09-23",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "В Константинове объявили программу Есенинского праздника поэзии",
+        "en": "Konstantinovo announces its Yesenin poetry festival programme"
+      },
+      "summary": {
+        "ru": "3 октября в Константинове пройдёт Всероссийский есенинский праздник поэзии. Программа включает литературную гостиную, встречи с музейными исследователями и открытый микрофон на площадке, посвящённой поездке Есенина в Узбекистан.",
+        "en": "The All-Russian Yesenin Poetry Festival takes place in Konstantinovo on October 3. Its programme includes poetry readings, meetings with museum researchers and an open microphone in an area dedicated to Yesenin’s journey to Uzbekistan."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/23/opublikovana-polnaia-programma-vserossijskogo-eseninskogo-prazdnika-poezii",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "radzinsky-eighteen-volume-collected-works-2026",
+      "eventKey": "radzinsky-eighteen-volume-collected-works-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-23",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "АСТ представило восемнадцатитомное собрание Эдварда Радзинского",
+        "en": "AST announces Edvard Radzinsky’s eighteen-volume collected works"
+      },
+      "summary": {
+        "ru": "К девяностолетию Эдварда Радзинского «АСТ нонфикшн» представило собрание сочинений в восемнадцати томах. В заявленный состав входят исторические книги и пьесы автора; сообщение не устанавливает точные дни выхода каждого тома.",
+        "en": "AST Nonfiction has announced an eighteen-volume collected edition for Edvard Radzinsky’s ninetieth birthday. The planned set includes his historical books and plays; the report does not specify publication dates for individual volumes."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/23/k-90-letiiu-edvarda-radzinskogo-vyhodit-18-tomnoe-sobranie-ego-sochinenij",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "rgali-sergei-markov-archive-feature-2026",
+      "eventKey": "rgali-sergei-markov-archive-feature-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "РГАЛИ представил материалы архива писателя Сергея Маркова",
+        "en": "RGALI introduces writer Sergei Markov’s archive"
+      },
+      "summary": {
+        "ru": "Сотрудница РГАЛИ Мария Шуплецова подготовила для «Года литературы» обзор наследия Сергея Маркова. В центре публикации - фонд №2884: рукописи, письма и другие материалы. Архив хранится в РГАЛИ с 1982 года; речь идёт о новой публикации, а не о новом поступлении.",
+        "en": "RGALI archivist Maria Shupletsova has written a feature for God Literatury on Sergei Markov’s papers. It introduces fonds 2884, including manuscripts, letters and other materials. The archive has been held at RGALI since 1982; this is a new feature, not a new acquisition."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/24/rgali-k-120-letiiu-so-dnia-rozhdeniia-sergeia-nikolaevicha-markova",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "gorodets-norwegian-folk-tales-2026",
+      "eventKey": "gorodets-norwegian-folk-tales-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-08",
+      "publishedAt": "2026-09-08",
+      "verifiedAt": "2026-09-26T18:05:24.330Z",
+      "title": {
+        "ru": "«Городец» выпустил новый сборник норвежских народных сказок",
+        "en": "Gorodets publishes a new Russian collection of Norwegian folk tales"
+      },
+      "summary": {
+        "ru": "«Год литературы» сообщает о выходе «Норвежских народных сказок», подготовленных исследовательницей Еленой Рачинской. Сборник по материалам Асбьёрнсена и Му включает полный русский перевод «Оленьей охоты в Рондских горах», впервые публикуемый в таком объёме.",
+        "en": "God Literatury reports the publication of Norwegian Folk Tales, prepared by researcher Elena Rachinskaya for Gorodets. Drawing on Asbjørnsen and Moe’s collections, it includes the first complete Russian translation of Reindeer Hunting in the Rondane Mountains."
+      },
+      "source": {
+        "name": "Год литературы",
+        "url": "https://godliteratury.ru/articles/2026/09/08/trolli-magiia-i-severnyj-folklor-norvezhskie-narodnye-skazki",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "scariest-book-2027-preorder-2026",
+      "sourceId": "ast",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://ast.ru/news/otkrylsya-predzakaz-na-sbornik-samaya-strashnaya-kniga-2027/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:31.122Z",
+      "responseSha256": "9694c752f06f9e4fb256cb76892e67ad959ce140704d45b568ece1404c8a191f",
+      "responseBytes": 135523,
+      "sourcePublishedAt": "2026-09-24",
+      "eventDate": "2026-09-24",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September24 preorder announcement;20 stories,19 authors; October release month only."
+      ],
+      "stage": "preorders-opened",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://ast.ru/upload/resize_cache/iblock/bc6/nw4bzumzqfkw52qa1131sgi5urlbq9mf/600_315_2/ssk_1200.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "vladislav-otroshenko-solzhenitsyn-prize-2026",
+      "sourceId": "ast",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://ast.ru/news/premiyu-aleksandra-solzhenitsyna-vruchili-pisatelyu-vladislavu-otroshenko/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:30.885Z",
+      "responseSha256": "80c37e7c536ea80334cbf4d5e98809a7ba6f3673e7715ed71e697b7f2053f6ba",
+      "responseBytes": 138508,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September25 completed-award report; exact ceremony day not separately stated."
+      ],
+      "stage": "award-result-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://ast.ru/upload/resize_cache/iblock/089/70xfchr029bvaxrlt95to3vkub611fjy/600_315_2/sokjj_1200.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "noon-strugatsky-trailer-2026",
+      "sourceId": "ast",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://ast.ru/news/vyshel-treyler-seriala-polden-po-povesti-bratev-strugatskikh/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:30.826Z",
+      "responseSha256": "bced46637b3dd8158b5d073f952e483b3961fda547e813884ae00a6dcc880d1f",
+      "responseBytes": 134564,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Trailer report September25; six episodes; planned premiere October1."
+      ],
+      "stage": "trailer-release",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://ast.ru/upload/resize_cache/iblock/b4a/1152vasq1767lrocjf2tdnu95r7w3g6y/600_315_2/polden_1200.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "nizhny-novgorod-book-fair-2026",
+      "sourceId": "ast",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://ast.ru/news/avtory-izdatelskoy-gruppy-eksmo-ast-primut-uchastie-v-nizhegorodskoy-knizhnoy-yarmarke/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:31.195Z",
+      "responseSha256": "ba615790c761b0fd803dd47695f4cb76456a3b3fd8e6e2774c963b9860b5edfb",
+      "responseBytes": 261993,
+      "sourcePublishedAt": "2026-09-24",
+      "eventDate": "2026-10-02",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "October2\u20134; MainFairHouse;100+publishers/16regions/90+events."
+      ],
+      "stage": "scheduled-book-fair",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://ast.ru/upload/resize_cache/iblock/872/jynp7d3d4rpq90vcmdcf2l9xwadd6fvr/600_315_2/nka_1200.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "freedom-at-midnight-prosvetitel-translation-shortlist-2026",
+      "sourceId": "corpus",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "IN",
+        "PK"
+      ],
+      "url": "https://www.corpus.ru/news/svoboda-prihodit-v-polnoch-voshla-v-short-list-premii-prosvetitel-perevod.htm",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:31.851Z",
+      "responseSha256": "ffd05e90052e31f5d801470c1d4146ab14dc3cd844c752d92d4c4b0c28c0f8d2",
+      "responseBytes": 43749,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-09-21",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Shortlist September21; translation OlgaGrinkrug; winners November19."
+      ],
+      "stage": "translation-prize-shortlist",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.corpus.ru/img/og.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "IN",
+        "PK"
+      ]
+    },
+    {
+      "id": "parfenov-nabokov-namedni-tour-announced-2026",
+      "sourceId": "corpus",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://www.corpus.ru/news/leonid-parfyonov-predstavit-dokumentalnyj-film-nabokove-novyj-tom-namedni.htm",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:31.864Z",
+      "responseSha256": "95ad512c8dfaf516e69379fb6512f8f4fb6dabb00a988fc20c2451c6915b9f8f",
+      "responseBytes": 44055,
+      "sourcePublishedAt": "2026-09-15",
+      "eventDate": "2026-09-15",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Tour announcement September15; months only; no invented start day."
+      ],
+      "stage": "author-tour-announcement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.corpus.ru/img/og.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "patrick-dewitt-dodge-city-russian-edition-2026",
+      "sourceId": "corpus",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "CA",
+        "US"
+      ],
+      "url": "https://www.corpus.ru/news/novyj-roman-patrika-de-vitta-dodzh-citi-nominirovan-na-premiyu-giller.htm",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:31.844Z",
+      "responseSha256": "400c1e82027334059d9af820cf62742bc61302be25dbad03f111a67b5afb48f6",
+      "responseBytes": 44606,
+      "sourcePublishedAt": "2026-09-09",
+      "eventDate": "2026-09-09",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Russian-edition announcement September9; spring2027; translator IraFilippova."
+      ],
+      "stage": "translation-edition-announcement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.corpus.ru/img/og.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "CA",
+        "US"
+      ],
+      "distinctFromBaseline": "Russian edition announcement, not another Giller schedule record."
+    },
+    {
+      "id": "fred-vargas-unique-lueur-corpus-rights-2026",
+      "sourceId": "corpus",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "FR"
+      ],
+      "url": "https://www.corpus.ru/news/novyj-roman-fred-vargas-o-komissare-adamberge-vyjdet-v-izdatelstve-corpus.htm",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:32.029Z",
+      "responseSha256": "daac5de32e8c38b5bd8821a065611820a122aae4592f605ea2037ab0566e6fe0",
+      "responseBytes": 45212,
+      "sourcePublishedAt": "2026-08-24",
+      "eventDate": "2026-08-24",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Rights acquired; source August24; translator ElenaTarusina; publication2027."
+      ],
+      "stage": "rights-acquisition",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.corpus.ru/img/og.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "FR"
+      ]
+    },
+    {
+      "id": "joel-dicker-prime-video-three-novels-2026",
+      "sourceId": "corpus",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "FR",
+        "CH"
+      ],
+      "url": "https://www.corpus.ru/news/tri-romana-zhoehlya-dikkera-stanut-serialami-prime-video.htm",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:32.017Z",
+      "responseSha256": "816baaddab2c8a7ea701475be8e745a76556baa0554b9ff7511ab95bde1599c9",
+      "responseBytes": 43926,
+      "sourcePublishedAt": "2026-08-03",
+      "eventDate": "2026-08-03",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "One three-book agreement, not three cards; report August3; firstproject6episodes."
+      ],
+      "stage": "adaptation-agreement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.corpus.ru/img/og.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "FR",
+        "CH"
+      ]
+    },
+    {
+      "id": "li-juan-my-altay-russian-announcement-2026",
+      "sourceId": "ad-marginem",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "CN"
+      ],
+      "url": "https://admarginem.ru/2026/09/14/vnutri-moego-tela-zhivet-tanecz-otryvok-iz-knigi-li-czzyuan-moj-altaj/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:32.478Z",
+      "responseSha256": "c81b07b0f7d36214d9ad147276719a60b7c0bd0cf17999a8a7dd28a1130f69a1",
+      "responseBytes": 519660,
+      "sourcePublishedAt": "2026-09-14",
+      "eventDate": "2026-09-14",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September14 publisher introduction; no precise retail day inferred."
+      ],
+      "stage": "edition-introduction",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://admarginem.ru/wp-content/uploads/2026/09/oblozhka-stati-copy2.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "CN"
+      ]
+    },
+    {
+      "id": "avrutina-ozlu-tanpinar-books-meeting-2026",
+      "sourceId": "ad-marginem",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "TR"
+      ],
+      "url": "https://admarginem.ru/2026/08/28/dajdzhest-sobytij-sentyabr-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:32.515Z",
+      "responseSha256": "d021a2d980af94bbceda36160c8ea73cd7a3394dfed7bc906c1ba0b0a1c0665e",
+      "responseBytes": 475529,
+      "sourcePublishedAt": "2026-08-28",
+      "eventDate": "2026-09-29",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September29,19:00; WritersBookshop StPetersburg; one meeting from digest."
+      ],
+      "stage": "scheduled-translator-meeting",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://admarginem.ru/wp-content/uploads/2026/08/dajdzhest-oblozhka-scaled.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "TR"
+      ]
+    },
+    {
+      "id": "tawada-where-europe-begins-russian-2026",
+      "sourceId": "ad-marginem",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "JP",
+        "DE"
+      ],
+      "url": "https://admarginem.ru/2026/08/20/talisman-odin-rasskaz-iz-sbornika-yoko-tavady/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:32.663Z",
+      "responseSha256": "fa4eb1c28a1321b8b1c8639867c16c56d77f8144e192144fa5eef76769fc7cf1",
+      "responseBytes": 512352,
+      "sourcePublishedAt": "2026-08-20",
+      "eventDate": "2026-08-20",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Publisher says recently published August20; actualretaildayunknown; no excerpt copied."
+      ],
+      "stage": "edition-publication-confirmation",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://admarginem.ru/wp-content/uploads/2026/08/oblozhka-stati-copy.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "JP",
+        "DE"
+      ]
+    },
+    {
+      "id": "childrens-detective-reading-conference-2026",
+      "sourceId": "samokat",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://samokatbook.ru/news/onlayn-konferentsiya-detektivy-i-priklyucheniya-dlya-detey-i-podrostkov-professionalnoe-soobshchestv/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:33.052Z",
+      "responseSha256": "f3d7b3cb695127a332520b43479555eb7addb1afc807490577e1e6a8c07ddf20",
+      "responseBytes": 158401,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-10-13",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September25 announcement; October13\u201315; readingprofessionals."
+      ],
+      "stage": "scheduled-reading-professionals-conference",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://samokatbook.ru/upload/iblock/286/1jqyxpkxswfqwl9imlsxh6kqi7hoy06c.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "lenfilm-samokat-family-film-reading-2026",
+      "sourceId": "samokat",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://samokatbook.ru/news/kinostudiya-lenfilm-i-samokat-zapuskayut-proekt-semeynye-kinochteniya/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:33.064Z",
+      "responseSha256": "c47eff1369cfc5e1a15d44d03c8c92bf4d39aa3328d3dc9c32302672a88e46bf",
+      "responseBytes": 150478,
+      "sourcePublishedAt": "2026-09-22",
+      "eventDate": "2026-09-27",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September22 announcement; September27 at16:00; author/booknamed."
+      ],
+      "stage": "scheduled-author-and-film-meeting",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://samokatbook.ru/upload/resize_cache/iblock/ee6/1024_1024_1/hvtlx8tr4yh05nxsh9l253n531v3aoty.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "kruzhkov-mukha-pukha-reading-theatre-2026",
+      "sourceId": "samokat",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://samokatbook.ru/meropriyatiya/v-moskve/teatr-na-samokate-daleko-ne-zaplyvay-edim-gryushi-nakhodim-ritm-i-vklyuchaem-fantaziyu-s-semeynym-te/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:33.473Z",
+      "responseSha256": "b4ccb54c0447da19487d496e1658ba64444a6b79f13422f0e477da28f7ff0a7d",
+      "responseBytes": 164777,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-24",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Event October24,15\u201316; ages5+; publicationdateunknown."
+      ],
+      "stage": "scheduled-poetry-performance",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://samokatbook.ru/upload/resize_cache/iblock/e5c/1024_1024_1/79yr12r5ocsqzg83dd4fn0twih4r16zd.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "mama-read-draw-family-awards-2026",
+      "sourceId": "rsl",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://www.rsl.ru/news/mama-pochitay-mne-nagrazhdenie-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:34.409Z",
+      "responseSha256": "8999211e869d7fec9428e7fd8c79e146361eb360d23c001f9191770ecf815474",
+      "responseBytes": 108783,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2026-09-12",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Ceremony September12; report September17; eighteenth thematicround."
+      ],
+      "stage": "award-ceremony-completed",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.rsl.ru/files/rsl/a4200dff-bc70-4d63-a1a1-a7ec20a1fd77.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "rsl-multilingual-literary-evening-2026",
+      "sourceId": "rsl",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://www.rsl.ru/news/mnogoobrazit-yazykov-i-literatury-narodov-rossii",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:34.379Z",
+      "responseSha256": "e5783d476b53c8b6e024c6faeae28ff3a25f7e207e70f4cc1cfc8a2376269c89",
+      "responseBytes": 99869,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2026-09-17",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Completed-event report September17; performance date not separatelygiven."
+      ],
+      "stage": "literary-evening-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.rsl.ru/files/rsl/ab14e8d9-9d2e-4812-beaf-1095c2f1178e.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "hafiz-alontsev-rsl-presentation-2026",
+      "sourceId": "rsl",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "IR"
+      ],
+      "url": "https://www.rsl.ru/events/hafiz-chitateli-i-perevodchiki",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:34.274Z",
+      "responseSha256": "5721710fbcc81dc10582032471cf05aa03386dd297af7f2f7fe0af73f20fa018",
+      "responseBytes": 73434,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-01",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "October1,18:30\u201320; MaximAlontsev; HSEPublishing/RSL."
+      ],
+      "stage": "scheduled-book-presentation",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.rsl.ru/files/rsl/48bc60c0-9bb9-486d-baba-770bc77ef5e2.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "IR"
+      ]
+    },
+    {
+      "id": "rsl-sri-lanka-books-culture-days-2026",
+      "sourceId": "rsl",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "LK"
+      ],
+      "url": "https://www.rsl.ru/news/dni-kultury-shri-lanki",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:34.455Z",
+      "responseSha256": "59a1c948c80c776010806cf4bbf549ce90384abf74b8f9667c3c8c8052da947a",
+      "responseBytes": 109426,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Opening report September25; SinhalaGrammar1708,TamilBible1714."
+      ],
+      "stage": "book-exhibition-opening-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.rsl.ru/files/rsl/7188bc78-f26e-41c8-ab15-2f06d4642d7d.jpeg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "LK"
+      ],
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "history-of-a-town-rsl-stage-2026",
+      "sourceId": "rsl",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://www.rsl.ru/news/gorod-glupov-na-stsene-leninki",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:34.604Z",
+      "responseSha256": "8cbd3b8b4da7f71b2b5c65bb45200d3d63faa6e3cb0ebaca3796523fede1d060",
+      "responseBytes": 132048,
+      "sourcePublishedAt": "2026-09-24",
+      "eventDate": "2026-09-24",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Completed-stage report September24; performance day not separatelygiven."
+      ],
+      "stage": "stage-adaptation-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.rsl.ru/files/rsl/a19fe06b-e6ad-4932-8968-26580738ce9d.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "chebatkov-dovlatov-foreigner-reading-2026",
+      "sourceId": "rsl",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://www.rsl.ru/news/chebatkov-dovlatov",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:34.536Z",
+      "responseSha256": "25b829ad29d7b2ce4271f1e454d174a5411c05175f64e321c3f468b6ce63f49a",
+      "responseBytes": 74268,
+      "sourcePublishedAt": "2026-09-22",
+      "eventDate": "2026-09-17",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Event September17; report September22; eighth meeting."
+      ],
+      "stage": "literary-reading-completed",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.rsl.ru/files/rsl/c1888897-ec4c-4ec0-bec1-19b899ac1993.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "natalya-balayan-russian-fairy-tale-book-2026",
+      "sourceId": "rsl",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://www.rsl.ru/news/balayan",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:34.841Z",
+      "responseSha256": "ef89d1b7a93712950f768afc4f0bdb9c334219cf67f884ba4e5736fa2c2ffe3d",
+      "responseBytes": 102995,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-09-21",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Completed presentation report September21; firstretaildate notasserted."
+      ],
+      "stage": "book-presentation-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.rsl.ru/files/rsl/fb89b560-6f4b-45a5-850e-a04161d63834.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "vladimir-dal-manuscripts-exhibition-2026",
+      "sourceId": "rsl",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://www.rsl.ru/events/yazyk-naroda-rodnik-nash",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:34.799Z",
+      "responseSha256": "4cd663cf800a360b2b436dd80a90355b34a0c4860c279648eeb5849126b78a6d",
+      "responseBytes": 123769,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-09-03",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Official periodSep3\u2013Nov14; current gallery;24212cards in holding, not allclaimed exhibited."
+      ],
+      "stage": "current-scheduled-exhibition",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.rsl.ru/files/rsl/8cc94649-cc84-4031-b0ce-b1dc34c41f79.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Calendar entry for stated interval; no separately verified opening ceremony."
+    },
+    {
+      "id": "chekhodal-short-fiction-call-2026",
+      "sourceId": "goslitmuz",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://goslitmuz.ru/news/gmirli/22385/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:35.255Z",
+      "responseSha256": "a3eb39749da083e90ddcec5843715b9432e58e23fb2db9840cb23d1aa7f634c7",
+      "responseBytes": 46806,
+      "sourcePublishedAt": "2026-09-08",
+      "eventDate": "2026-11-02",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "SubmissionSep8\u2013Nov2;14+;2000characters excluding spaces; originalstories."
+      ],
+      "stage": "short-fiction-call-deadline",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://goslitmuz.ru/upload/iblock/f77/yw6xazm3oq2vo25xjujdhgxq7j100gua/kmsHwlWo5fc6XxnbW1UCwHwwitUzAep9UzeleHF0DUTKyV62nXF_WMzda74BfV0hBmbRYGGKRU59wAZvYZ18AAT_.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "pesnyary-minsk-moscow-exhibition-2026",
+      "sourceId": "goslitmuz",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "BY"
+      ],
+      "url": "https://goslitmuz.ru/news/gmirli/22401/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:35.252Z",
+      "responseSha256": "a2aa20d7b9b27c404ec61d23c6cd55cdeb5678a3657de659bb57e96fd3d808c3",
+      "responseBytes": 50631,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-09-21",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Opening report September21; joint Russian/Belarusian literarymuseums."
+      ],
+      "stage": "exhibition-opening-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://goslitmuz.ru/upload/iblock/299/43wdpk3bblu9uqxbapkbmelc8jnb4x80/2026_09_11-Pesnyary-_27_.JPG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "BY"
+      ],
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "lilya-brik-mamm-literary-museum-loans-2026",
+      "sourceId": "goslitmuz",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://goslitmuz.ru/news/gmirli/22403/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:35.201Z",
+      "responseSha256": "06a8e90381d374e3bd929a27efcf5bbe4a9766772394bfd718899738c43a5b45",
+      "responseBytes": 39678,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-09-21",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September21 says materialsprovided; Sep23 opening onlyscheduled."
+      ],
+      "stage": "literary-archive-loans-announced",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://goslitmuz.ru/upload/iblock/189/l7wpplpfgkvwugueif8vjznmzfigt0uq/1-_9_.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "No completed opening claimed from advance announcement."
+    },
+    {
+      "id": "shershenevich-drozdov-collection-exhibition-2026",
+      "sourceId": "goslitmuz",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://goslitmuz.ru/news/gmirli/22384/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:35.309Z",
+      "responseSha256": "10843d684072224b4d5a3385fae3ab47b0275718d514e1d5e0343a18c9ce99e2",
+      "responseBytes": 43581,
+      "sourcePublishedAt": "2026-09-07",
+      "eventDate": "2026-09-07",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September7 confirmsvernissage; endDecember21; collectorVladimirDrozdKov."
+      ],
+      "stage": "collection-exhibition-opening-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://goslitmuz.ru/upload/iblock/4ad/jj3n30x90iyuhvaw43wkie5ry2rkigpz/2026_09_01-Imazhinisty.-Prevyu-_21_.JPG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "russian-book-market-conference-2026",
+      "sourceId": "bookunion-ru",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:35.829Z",
+      "responseSha256": "174297c34106605c467f11f04e2c11241211965368215db13257ae2245a9e450",
+      "responseBytes": 110772,
+      "sourcePublishedAt": "2026-09-04",
+      "eventDate": "2026-09-03",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "ConferenceSep3; reportSep4; eighteenth edition."
+      ],
+      "stage": "publishing-conference-completed",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "\n    \n        https://bookunion.ru/media/post_images/mmkaya26.jpg\n    \n",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "daniil-granin-prize-second-season-2026",
+      "sourceId": "bookunion-ru",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://bookunion.ru/news/otkryt-priem-zaiavok-na-vtoroi-sezon-natsionalnoi-literaturnoi-premii-imeni-daniila-granina/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:35.792Z",
+      "responseSha256": "73517a4533d96059221ea73dbaa79a409526cbffaa4122b43e04f07743fe5613",
+      "responseBytes": 88746,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-11-21",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "CallSep21\u2013Nov21; threecategories; totalRUB3million."
+      ],
+      "stage": "prize-submission-deadline",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "\n    \n        https://bookunion.ru/media/post_images/26-21-09-01.jpg\n    \n",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "litres-yasnaya-polyana-free-reading-2026",
+      "sourceId": "bookunion-ru",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://bookunion.ru/news/litres-otkryvaet-besplatnyi-dostup-k-knigam-finalistov-24-sezona-premii-iasnaia-poliana/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:35.816Z",
+      "responseSha256": "61d05fa9562bba4bd6b42ee31cc3f6cab3ba16e4a7e8bc31a4dab9cb4362dd9f",
+      "responseBytes": 87643,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2026-10-16",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "SourceSep17; accessSep18\u2013Oct16; conditionalonlinevoters."
+      ],
+      "stage": "free-reading-access-deadline",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "\n    \n        https://bookunion.ru/media/post_images/05-03_3ejYFBb.2.jpg\n    \n",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "novosibirsk-book-projects-seminar-2026",
+      "sourceId": "bookunion-ru",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://bookunion.ru/news/kniga-za-predelami-knizhnoi-polki-luchshie-praktiki-prodvizheniia-bolshikh-knizhnykh-proektov-obsudili-v-novosibirske/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:35.952Z",
+      "responseSha256": "8321c65b73c30a6cc29bdddab0d4dfd0c73c1f08fd485e6ce6b352c54e6118b8",
+      "responseBytes": 98429,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-09-17",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "SeminarSeptember17; sourceSeptember21; SPSTLvenue."
+      ],
+      "stage": "reading-promotion-seminar-completed",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "\n    \n        https://bookunion.ru/media/post_images/26-21-09-02.jpg\n    \n",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "moscow-book-week-2026",
+      "sourceId": "culture",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://www.culture.ru/news/259347/s-26-sentyabrya-po-4-oktyabrya-proidet-moskovskaya-knizhnaya-nedelya",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:37.223Z",
+      "responseSha256": "5fdb958669182ac82aabf3577add43691cccfef8bd6882b757629c2ada26ecad",
+      "responseBytes": 416945,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-26",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "NewsSep25; festivalSep26\u2013Oct4;60+participants,150+events,50+bookpresentations."
+      ],
+      "stage": "scheduled-city-reading-festival",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://cdn.culture.ru/images/55b0255d-97d5-5205-a554-64bb252a4e14",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "viktor-likhonosov-krasnodar-square-2026",
+      "sourceId": "god-literatury",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://godliteratury.ru/articles/2026/09/25/skver-v-centre-krasnodara-poluchit-imia-pisatelia-viktora-lihonosova",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:36.336Z",
+      "responseSha256": "1d59bed5eb9c492c3d5ce4622453fe8fa306a06377e09aad565fb75310dccb8c",
+      "responseBytes": 103408,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-literary-news-detail-page; attributed reporting and bilingual drafting",
+      "facts": [
+        "ReportSep25; namingdecision, not completedmemorialopening."
+      ],
+      "stage": "writer-commemoration-decision",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://glstatic.rg.ru/uploads/images/2026/09/25/viktor-lihonosov-v-yasnoy-polyane-sentyabr-2008-goda-foto-dshevarova_b83_b6b.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "jaume-cabre-feixes-first-russian-2026",
+      "sourceId": "god-literatury",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "ES"
+      ],
+      "url": "https://godliteratury.ru/articles/2026/09/10/muzyka-i-dogmy-kniga-fejshesa-zhaume-kabre",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:36.616Z",
+      "responseSha256": "39b0e0c7c7d72b4db749361d18f6ac922e36d39959bbe72f7a386f96e978006b",
+      "responseBytes": 198097,
+      "sourcePublishedAt": "2026-09-11",
+      "eventDate": "2026-09-11",
+      "method": "direct-literary-news-detail-page with publisher bibliographic citation",
+      "facts": [
+        "DisplayeddateSep11 overridesURLSep10; translatorAlexandraGrebennikova;512pages;2026bibliography."
+      ],
+      "stage": "translation-publication-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://glstatic.rg.ru/uploads/images/2026/09/10/afisha---2026-09-10t144302154_003.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "ES"
+      ],
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "liu-cixin-direct-russian-translation-interview-2026",
+      "sourceId": "god-literatury",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "CN"
+      ],
+      "url": "https://godliteratury.ru/articles/2026/09/07/interviu-s-liu-cysinem-po-sluchaiu-20-letiia-izdaniia-zadachi-treh-tel",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:36.758Z",
+      "responseSha256": "204855df170ff3a4d717be47a967c61d2aeb9d810409d0d72bd28c55b8d8fbb3",
+      "responseBytes": 198150,
+      "sourcePublishedAt": "2026-09-08",
+      "eventDate": "2026-09-08",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "DisplayeddateSep8 versusURLSep7; compilerKirillBatygin; bookdateabsent."
+      ],
+      "stage": "author-interview-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://glstatic.rg.ru/uploads/images/2026/09/07/bez-nazvaniya-94_202609071643_24420_db5.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "CN"
+      ]
+    },
+    {
+      "id": "wells-brynhild-first-russian-2026",
+      "sourceId": "god-literatury",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "GB"
+      ],
+      "url": "https://godliteratury.ru/articles/2026/09/22/brungilda-ili-obraz-bez-prikras-pozdnij-roman-gerberta-uellsa-vpervye-vyshel-na-russkom-iazyke",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:36.913Z",
+      "responseSha256": "ef579f24c42ecb5d37763b6394bb0efc3fac8f801eda016bfcb2a46686310d11",
+      "responseBytes": 150775,
+      "sourcePublishedAt": "2026-09-22",
+      "eventDate": "2026-09-22",
+      "method": "direct-literary-news-detail-page; factual bibliography and attributed reporting",
+      "facts": [
+        "ReportSep22; firstRussiantranslation; G.Shokin; printandaudioformats."
+      ],
+      "stage": "translation-publication-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://glstatic.rg.ru/uploads/images/2026/09/21/afisha---2026-09-21t124934054_f84.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "GB"
+      ],
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    },
+    {
+      "id": "yesenin-konstantinovo-poetry-festival-2026",
+      "sourceId": "god-literatury",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "UZ"
+      ],
+      "url": "https://godliteratury.ru/articles/2026/09/23/opublikovana-polnaia-programma-vserossijskogo-eseninskogo-prazdnika-poezii",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:37.129Z",
+      "responseSha256": "15c97e3d42988a4069680eb6da1b41b79d316cb575bc796bf3f88a7c412ad4cb",
+      "responseBytes": 115685,
+      "sourcePublishedAt": "2026-09-23",
+      "eventDate": "2026-10-03",
+      "method": "direct-literary-news-detail-page; attributed programme review",
+      "facts": [
+        "ProgrammeSep23; festivalOct3; allsessionsoneevent."
+      ],
+      "stage": "scheduled-poetry-festival",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://glstatic.rg.ru/uploads/images/2026/09/23/afisha-9_579_3fe.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "UZ"
+      ]
+    },
+    {
+      "id": "radzinsky-eighteen-volume-collected-works-2026",
+      "sourceId": "god-literatury",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://godliteratury.ru/articles/2026/09/23/k-90-letiiu-edvarda-radzinskogo-vyhodit-18-tomnoe-sobranie-ego-sochinenij",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:37.318Z",
+      "responseSha256": "876df30f5a5efb5cbf004d0a68e1384b163ee6b4408e0c4cdfa74ba09d669344",
+      "responseBytes": 116369,
+      "sourcePublishedAt": "2026-09-23",
+      "eventDate": "2026-09-23",
+      "method": "direct-literary-news-detail-page; attributed publisher announcement",
+      "facts": [
+        "ReportSep23;18volumes; editionannouncement,not18cards."
+      ],
+      "stage": "collected-edition-announcement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://glstatic.rg.ru/uploads/images/2026/09/23/ria_5900452mr900_7b9.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "rgali-sergei-markov-archive-feature-2026",
+      "sourceId": "god-literatury",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://godliteratury.ru/articles/2026/09/24/rgali-k-120-letiiu-so-dnia-rozhdeniia-sergeia-nikolaevicha-markova",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:37.763Z",
+      "responseSha256": "ebe2f23ad6f7726abf2869f842d00b60bead97da91952fe3a8e20b6dd1c8caab",
+      "responseBytes": 153134,
+      "sourcePublishedAt": "2026-09-24",
+      "eventDate": "2026-09-24",
+      "method": "direct-feature authored by RGALI archivist; factual extraction and bilingual drafting",
+      "facts": [
+        "FeatureSep24; RGALIarchivist; fonds2884heldsince1982;613units."
+      ],
+      "stage": "archival-research-feature",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://glstatic.rg.ru/uploads/images/2026/09/23/rgali_c1d.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "gorodets-norwegian-folk-tales-2026",
+      "sourceId": "god-literatury",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "NO"
+      ],
+      "url": "https://godliteratury.ru/articles/2026/09/08/trolli-magiia-i-severnyj-folklor-norvezhskie-narodnye-skazki",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:52:38.285Z",
+      "responseSha256": "2ca441b9b4981a638d1d658da75d90b0750a11bc2a3537b97a68ee2f6136af46",
+      "responseBytes": 207565,
+      "sourcePublishedAt": "2026-09-08",
+      "eventDate": "2026-09-08",
+      "method": "direct-literary-news-detail-page; bibliographic and editorial introduction",
+      "facts": [
+        "ReportSep8; Gorodets; ElenaRachinskaya; completeRussiantranslationfirstpublicationexplicit."
+      ],
+      "stage": "folklore-collection-publication-report",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://glstatic.rg.ru/uploads/images/2026/09/05/bez-imeni-2_e14.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "RU",
+        "NO"
+      ],
+      "dateBoundary": "Dated completed-event or publication report; no separate first-release or ceremony date asserted."
+    }
+  ],
+  "recordSha256": "336ff4ac2172e694aa42ed897099bbd0add6b7fb8214ee0b81601a0c52d38762",
+  "receipt": {
+    "publication": "not-run",
+    "socialDelivery": "not-run"
+  },
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 40
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "IDs checked against current reviewed and batches01/02/03; event topics manually reviewed",
+    "schema": "production selectReviewed40/40",
+    "images": "Source image rights not established; text-only"
+  },
+  "held": [
+    {
+      "sourceId": "samokat",
+      "reason": "July festivals and May/June competition results outside the recent window; no past announcement treated as proof of completion."
+    },
+    {
+      "sourceId": "polyandria",
+      "reason": "Discovery corpus mainly discounts and stale fair announcements."
+    },
+    {
+      "sourceId": "corpus",
+      "reason": "No uncorroborated obituary; past scheduled film premiere held; baseline award schedules not duplicated."
+    },
+    {
+      "sourceId": "god-literatury",
+      "reason": "Expired Intonatsiya call, uncorroborated obituary and baseline Booker shortlist omitted."
+    }
+  ],
+  "nextStep": "Root additive review and integration; prepared content is not public growth.",
+  "observedCheckoutBaseline": {
+    "note": "Observed checkout snapshot; historical operation baseline is unknown. This snapshot is not an original operation baseline.",
+    "checkedCount": 103
+  }
+}

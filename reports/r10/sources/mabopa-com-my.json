@@ -1,0 +1,349 @@
+{
+  "sourceId": "mabopa-com-my",
+  "name": "Malaysian Book Publishers Association (MABOPA)",
+  "entryUrl": "https://www.mabopa.com.my/",
+  "countryCodes": [
+    "MY"
+  ],
+  "coverageCountryCodes": [
+    "MY"
+  ],
+  "attemptedAt": "2026-09-26T17:27:44.809Z",
+  "requests": [
+    {
+      "url": "https://www.mabopa.com.my/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 52471,
+      "sha256": "54c87a15cf5fdc1914aedc0b2497528ff85d851e65517118091098f08aa0e220",
+      "accessedAt": "2026-09-26T17:20:23.965Z"
+    },
+    {
+      "url": "https://www.mabopa.com.my/2020/05/03/world_book_day_-_international_publishers_authors_and_booksellers_statement/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 46757,
+      "sha256": "4787953090bfad3170f0279ffaa6486a3c42651e350803f582955602d486c91a",
+      "accessedAt": "2026-09-26T17:27:47.982Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.mabopa.com.my/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 118,
+    "sha256": "d788e45a77e89e118c17b7115cd638a4cbbbedc58f91ff49a1c23cdaa6e3dc84",
+    "accessedAt": "2026-09-26T17:27:45.795Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:21.315Z",
+    "sourceDocumentSha256": "54c87a15cf5fdc1914aedc0b2497528ff85d851e65517118091098f08aa0e220"
+  },
+  "endpoint": {
+    "id": "mabopa-com-my",
+    "name": "Malaysian Book Publishers Association (MABOPA)",
+    "url": "https://www.mabopa.com.my/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "asia",
+    "sourceFamilyId": "mabopa-com-my",
+    "countryCodes": [
+      "MY"
+    ],
+    "coverageCountryCodes": [
+      "MY"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.mabopa.com.my"
+    ],
+    "linkPattern": "^/",
+    "keywordPattern": "(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.mabopa.com.my/2020/05/03/world_book_day_-_international_publishers_authors_and_booksellers_statement/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:47.985Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "mabopa-com-my",
+    "source": {
+      "name": "Malaysian Book Publishers Association (MABOPA)",
+      "url": "https://www.mabopa.com.my/2020/05/03/world_book_day_-_international_publishers_authors_and_booksellers_statement/",
+      "language": "en-GB"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "World Book Day \u2013 International Publishers, Authors and Booksellers Statement",
+    "publishedAt": "2020-05-03T04:13:55.000Z",
+    "description": "International Publishers Association (IPA) publishing a joint statement about the importance of books and calling on governments around the world to support our industry alongside the International Authors Forum, the European Publishers and Booksellers Federation, IFRRO and STM in conjunction with the celebration of The World Book Day last 23 April 2020.",
+    "discoveredAt": "2026-09-26T17:27:45.799Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.mabopa.com.my/2020/05/03/world_book_day_-_international_publishers_authors_and_booksellers_statement/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 46757,
+      "sha256": "4787953090bfad3170f0279ffaa6486a3c42651e350803f582955602d486c91a",
+      "accessedAt": "2026-09-26T17:27:47.982Z",
+      "headline": "World Book Day \u2013 International Publishers, Authors and Booksellers Statement \u2013 Malaysian Book Publishers Association",
+      "excerpt": "International Publishers Association (IPA) publishing a joint statement about the importance of books and calling on governments around the world to support our industry alongside the International Authors Forum, the European Publishers and Booksellers Federation, IFRRO and STM in conjunction with the celebration of The World Book Day last 23 April 2020. WORLD BOOK DAY \u2013 AUTHORS, PUBLISHERS AND BO",
+      "publishedDates": [],
+      "canonical": "https://www.mabopa.com.my/2020/05/03/world_book_day_-_international_publishers_authors_and_booksellers_statement/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:47.985Z",
+  "foundItems": [
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2020/05/03/world_book_day_-_international_publishers_authors_and_booksellers_statement/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "World Book Day \u2013 International Publishers, Authors and Booksellers Statement",
+      "publishedAt": "2020-05-03T04:13:55.000Z",
+      "description": "International Publishers Association (IPA) publishing a joint statement about the importance of books and calling on governments around the world to support our industry alongside the International Authors Forum, the European Publishers and Booksellers Federation, IFRRO and STM in conjunction with the celebration of The World Book Day last 23 April 2020.",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2024/06/01/appreciation-from-the-malaysian-book-publishers-association/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Appreciation from the Malaysian Book Publishers Association",
+      "publishedAt": "2024-06-01T01:39:00.000Z",
+      "description": "The Malaysian Book Publishers Association (MABOPA) would like to express its gratitude to the Prime Minister, YAB Dato’ Seri Anwar bin Ibrahim for announcing the awarding of vouchers to all Year 4, Year 5 and Year 6 students in primary schools, all secondary school students and all higher education institution students, in his opening speech […]",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2023/10/16/statement-from-the-malaysian-book-publishers-association-mabopa/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement from the Malaysian Book Publishers Association (MABOPA)",
+      "publishedAt": "2023-10-16T12:25:00.000Z",
+      "description": "The Malaysian Book Publishers Association (MABOPA) expresses its deepest disappointment with the recent statement by the organizers of the Frankfurt Book Fair, who have taken sides in a war that has caused countless civilian casualties for many years. Frankfurt Book Fair’s statement has resulted in discomfort and dismay among publishers from Malaysia at this time. […]",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2021/02/02/mabopa_mba_and_shopee_to_address_textbook_issue/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mabopa, MBA and Shopee to address textbook issue",
+      "publishedAt": "2021-02-02T14:00:35.000Z",
+      "description": "The Malaysian Book Publishers Association (Mabopa) and Malaysian Booksellers Association (MBA) have urged their members with official distribution rights of school textbooks and workbooks to increase stock allocations on their Shopee stores to address the nationwide distribution issue.",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2024/10/25/mabopa-and-higher-education-press-china-forge-new-publishing-partnership/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MABOPA and Higher Education Press China Forge New Publishing Partnership",
+      "publishedAt": "2024-10-25T13:37:00.000Z",
+      "description": "Kuala Lumpur, October 23, 2024 \u2013 MABOPA (the Malaysian Book Publishers Association) hosted a highly successful meeting today with a delegation from the Higher Education Press (HEP), China, led by President Liu Chao. The event, hosted by Sunway University, marked a significant milestone in fostering international collaboration between Malaysian and Chinese publishing industries. The meeting […]",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2023/11/01/mabopa-joins-the-sdg-publishers-compact-to-advance-sustainable-development-goals-through-publishing/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MABOPA Joins the SDG Publishers Compact to Advance Sustainable Development Goals through Publishing",
+      "publishedAt": "2023-11-01T04:35:43.000Z",
+      "description": "The Malaysian Book Publishers Association (MABOPA) is pleased to announce our commitment as a signatory to the SDG Publishers Compact, a global initiative aimed at harnessing the power of the publishing industry to promote and contribute to the United Nations Sustainable Development Goals (SDGs). By aligning our efforts with the SDG Publishers Compact, MABOPA underscores […]",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2022/06/08/majlis-penyerahan-anugerah-dan-piala-pusingan-anugerah-buku-malaysia-2020/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Majlis Penyerahan Anugerah dan Piala Pusingan Anugerah Buku Malaysia 2020",
+      "publishedAt": "2022-06-08T04:39:00.000Z",
+      "description": "Majlis Penyerahan Anugerah dan Piala Pusingan Anugerah Buku Malaysia 2020. Piala pusingan dan plak telah disampaikan oleh YBrs. Tuan Mohd Khair Ngadiron.",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2022/02/08/anugerah-buku-malaysia-ke-2/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anugerah Buku Malaysia Ke-2",
+      "publishedAt": "2022-02-08T06:41:00.000Z",
+      "description": "Salam sejahtera. Insya-Allah, MABOPA sekali lagi menganjurkan Anugerah Buku Malaysia untuk tahun ke-2, mulai 7hb Februari hingga 4 Jun 2022. Dijemput semua penerbit mencalonkan buku masing-masing untuk anugerah ini. Buat kali kedua juga, e-Sentral menjadi rakan teknologi anugerah, di mana semua buku yang dicalonkan perlu dimuat naik “softcopy”nya ke platform yang disediakan khusus oleh e-Sentral.…",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "mabopa-com-my",
+      "source": {
+        "name": "Malaysian Book Publishers Association (MABOPA)",
+        "url": "https://www.mabopa.com.my/2019/10/23/kenyataan-media-belanjawan-2020-tiada-berita-gembira-untuk-industri-buku-en/",
+        "language": "en-GB"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "KENYATAAN MEDIA: Belanjawan 2020 Tiada Berita Gembira Untuk Industri Buku.",
+      "publishedAt": "2019-10-23T10:39:54.000Z",
+      "description": "MABOPA menggesa supaya kerajaan memberikan perhatian khusus kepada kejatuhan industri buku tempatan. Industri kreatif, budaya dan intelektual ini sedang berdepan dengan pelbagai cabaran; disrupsi digital, kejatuhan jualan retail, kejatuhan pembelian perpustakaan, dan kelemahan tabiat membaca buku.",
+      "discoveredAt": "2026-09-26T17:27:45.799Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "54c87a15cf5fdc1914aedc0b2497528ff85d851e65517118091098f08aa0e220"
+}

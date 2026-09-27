@@ -1,3 +1,4 @@
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
@@ -5,7 +6,7 @@ import { cmsSourcePunctuationAttestation, projectPublishedCmsSourcePunctuation a
 import { projectReviewedPremiumTitleEvidence } from "./reviewed-premium-title-evidence.mjs";
 import { nativeArchiveReadAttestation, projectPublishedNativeArchiveRead, projectReviewedNativeArchiveRead } from "./reviewed-native-archive-read.mjs";
 
-const read = path => projectReviewedPremiumTitleEvidence(path, readFileSync(path, "utf8"));
+const read = path => projectReviewedPremiumTitleEvidence(path, projectReviewedR10Delta(path, readFileSync(path, "utf8")));
 const sha = text => createHash("sha256").update(text).digest("hex");
 const paths = ["scripts/lib/reviewed-native-archive-read.mjs",
   "scripts/lib/reviewed-native-archive-read.test.mjs", "scripts/normalize-short-hyphens.mjs"];
@@ -27,7 +28,7 @@ describe("CMS source punctuation additive governance", () => {
 
   it.each(paths)("restores exact historical bytes and rejects missing, duplicate or changed deltas in %s", path => {
     const source = read(path), previous = projectReviewedCmsSourcePunctuation(path, source);
-    const currentSource = readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+    const currentSource = projectReviewedR10Delta(path, readFileSync(path, "utf8")).replace(/\r\n?/gu, "\n");
     expect(sha(source)).toBe(cmsSourcePunctuationAttestation.reviewedSourceSha256[path]);
     expect(sha(previous)).toBe(cmsSourcePunctuationAttestation.sourceBaselines[path]);
     expect(projectReviewedCmsSourcePunctuation(path, source.replaceAll("\n", "\r\n"))).toBe(previous);

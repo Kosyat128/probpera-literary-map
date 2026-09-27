@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-09-26T20:16:50.942Z",
+  "runtimeCommit": "23a65ee652e5d90c4f20362b6b05b68e418add86",
+  "productionCodeChanged": false,
+  "acceptedVisualDesignChanged": false,
+  "originalCI": {
+    "run": 36266950424,
+    "job": 108474636279,
+    "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/36266950424/job/108474636279",
+    "result": "failure",
+    "reason": "The pre-R10 test prohibited the accepted short-screen outer scroll and required a fixed 16:9 image box."
+  },
+  "before": {
+    "command": "PLAYWRIGHT_SUITE=regression playwright test tests/e2e/header-hero-polish.spec.mjs --grep 'publication showcase' --project=desktop-chromium --workers=1",
+    "stats": {
+      "startTime": "2026-09-26T20:07:07.068Z",
+      "duration": 4587.629,
+      "expected": 0,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "observedOuterOverflowPx": 131,
+    "obsoleteMaximumPx": 1
+  },
+  "intermediateTestRevision": {
+    "stats": {
+      "startTime": "2026-09-26T20:09:16.011Z",
+      "duration": 97783.792,
+      "expected": 12,
+      "skipped": 0,
+      "unexpected": 2,
+      "flaky": 0
+    },
+    "issues": [
+      "The EN catalog has one published article; six additional cards cannot be required.",
+      "Responsive-rendition integer dimensions differ from the original aspect ratio by about one displayed pixel."
+    ]
+  },
+  "after": {
+    "command": "PLAYWRIGHT_SUITE=regression playwright test tests/e2e/header-hero-polish.spec.mjs --workers=1",
+    "stats": {
+      "startTime": "2026-09-26T20:15:05.597Z",
+      "duration": 87459.719,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "testFile": "tests/e2e/header-hero-polish.spec.mjs",
+  "testSha256": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda",
+  "lint": {
+    "command": "npm run lint",
+    "exitCode": 0,
+    "limitation": "Wrangler could not write its optional profile log inside the sandbox; type generation and all checks completed successfully."
+  },
+  "remoteCI": "A new commit requires its own complete required verify run; the failed initial run is not relabelled as successful."
+}

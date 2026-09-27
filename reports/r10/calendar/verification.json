@@ -1,0 +1,38 @@
+{
+  "at": "2026-09-26T17:30:31.369Z",
+  "status": "local-pass-with-volume-target-incomplete",
+  "commands": [
+    {
+      "command": "node scripts/enrich-calendar-dates-r10.mjs --check",
+      "result": "pass"
+    },
+    {
+      "command": "node node_modules/vitest/vitest.mjs run src/components/LiteraryCalendar.test.ts src/data/countries/writerDatePatches.test.ts src/data/countries/writerFactCorrections.test.ts src/data/countries/writerIdentityRegistry.test.ts src/utils/writerDates.test.ts --configLoader runner --cache=false",
+      "result": "pass",
+      "files": 5,
+      "tests": 160
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "result": "pass"
+    },
+    {
+      "command": "node work/calendar-r10/browser-check.mjs",
+      "result": "pass",
+      "evidence": "browser-check.json"
+    }
+  ],
+  "visual": {
+    "inspected": true,
+    "images": [
+      "january-2026.png",
+      "september-2026.png",
+      "english-2026.png"
+    ]
+  },
+  "notProven": [
+    "historical +1000 cumulative baseline",
+    "production release",
+    "live CMS delivery"
+  ]
+}

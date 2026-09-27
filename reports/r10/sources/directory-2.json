@@ -1,0 +1,342 @@
+{
+  "url": "https://www.citiesoflit.com/cities-of-literature",
+  "status": 200,
+  "accessedAt": "2026-09-26T17:13:12.646Z",
+  "links": [
+    {
+      "label": "CITIES OF LITERATURE",
+      "url": "https://www.citiesoflit.com/",
+      "context": ""
+    },
+    {
+      "label": "Home",
+      "url": "https://www.citiesoflit.com/",
+      "context": "Home"
+    },
+    {
+      "label": "News",
+      "url": "https://www.citiesoflit.com/news",
+      "context": "News"
+    },
+    {
+      "label": "Who We Are",
+      "url": "https://www.citiesoflit.com/whoweare",
+      "context": "Who We Are"
+    },
+    {
+      "label": "Shared Projects",
+      "url": "https://www.citiesoflit.com/sharedprojects",
+      "context": "Shared Projects"
+    },
+    {
+      "label": "Angoulême",
+      "url": "https://www.citiesoflit.com/angoul%C3%AAme",
+      "context": "Angoulême"
+    },
+    {
+      "label": "Baghdad",
+      "url": "https://www.citiesoflit.com/baghdad",
+      "context": "Baghdad"
+    },
+    {
+      "label": "Barcelona",
+      "url": "https://www.citiesoflit.com/barcelona",
+      "context": "Barcelona"
+    },
+    {
+      "label": "Beirut",
+      "url": "https://www.citiesoflit.com/beirut",
+      "context": "Beirut"
+    },
+    {
+      "label": "Bucheon",
+      "url": "https://www.citiesoflit.com/bucheon",
+      "context": "Bucheon"
+    },
+    {
+      "label": "Bremen",
+      "url": "https://www.citiesoflit.com/bremen",
+      "context": "Bremen"
+    },
+    {
+      "label": "Dublin",
+      "url": "https://www.citiesoflit.com/dublin",
+      "context": "Dublin"
+    },
+    {
+      "label": "Dunedin",
+      "url": "https://www.citiesoflit.com/dunedin",
+      "context": "Dunedin"
+    },
+    {
+      "label": "Durban",
+      "url": "https://www.citiesoflit.com/durban",
+      "context": "Durban"
+    },
+    {
+      "label": "Edinburgh",
+      "url": "https://www.citiesoflit.com/edinburgh",
+      "context": "Edinburgh"
+    },
+    {
+      "label": "Exeter",
+      "url": "https://www.citiesoflit.com/exeter",
+      "context": "Exeter"
+    },
+    {
+      "label": "Gothenburg",
+      "url": "https://www.citiesoflit.com/gothenburg",
+      "context": "Gothenburg"
+    },
+    {
+      "label": "Granada",
+      "url": "https://www.citiesoflit.com/granada",
+      "context": "Granada"
+    },
+    {
+      "label": "Heidelberg",
+      "url": "https://www.citiesoflit.com/heidelberg",
+      "context": "Heidelberg"
+    },
+    {
+      "label": "Hobart",
+      "url": "https://www.citiesoflit.com/hobart",
+      "context": "Hobart"
+    },
+    {
+      "label": "Iasi",
+      "url": "https://www.citiesoflit.com/iasi",
+      "context": "Iasi"
+    },
+    {
+      "label": "Iowa City",
+      "url": "https://www.citiesoflit.com/iowa-city",
+      "context": "Iowa City"
+    },
+    {
+      "label": "Jakarta",
+      "url": "https://www.citiesoflit.com/jakarta",
+      "context": "Jakarta"
+    },
+    {
+      "label": "Kozhikode",
+      "url": "https://www.citiesoflit.com/kozhikode",
+      "context": "Kozhikode"
+    },
+    {
+      "label": "Krakow",
+      "url": "https://www.citiesoflit.com/krakow",
+      "context": "Krakow"
+    },
+    {
+      "label": "Kuhmo",
+      "url": "https://www.citiesoflit.com/kuhmo",
+      "context": "Kuhmo"
+    },
+    {
+      "label": "Kutaisi",
+      "url": "https://www.citiesoflit.com/kutaisi",
+      "context": "Kutaisi"
+    },
+    {
+      "label": "Lahore",
+      "url": "https://www.citiesoflit.com/lahore",
+      "context": "Lahore"
+    },
+    {
+      "label": "Leeuwarden",
+      "url": "https://www.citiesoflit.com/leeuwarden",
+      "context": "Leeuwarden"
+    },
+    {
+      "label": "Lillehammer",
+      "url": "https://www.citiesoflit.com/lillehammer",
+      "context": "Lillehammer"
+    },
+    {
+      "label": "Ljubljana",
+      "url": "https://www.citiesoflit.com/ljubljana",
+      "context": "Ljubljana"
+    },
+    {
+      "label": "Lviv",
+      "url": "https://www.citiesoflit.com/lviv",
+      "context": "Lviv"
+    },
+    {
+      "label": "Lyon",
+      "url": "https://www.citiesoflit.com/lyon",
+      "context": "Lyon"
+    },
+    {
+      "label": "Manchester",
+      "url": "https://www.citiesoflit.com/manchester",
+      "context": "Manchester"
+    },
+    {
+      "label": "Melbourne",
+      "url": "https://www.citiesoflit.com/melbourne",
+      "context": "Melbourne"
+    },
+    {
+      "label": "Milan",
+      "url": "https://www.citiesoflit.com/milan",
+      "context": "Milan"
+    },
+    {
+      "label": "Montevideo",
+      "url": "https://www.citiesoflit.com/montevideo",
+      "context": "Montevideo"
+    },
+    {
+      "label": "Nanjing",
+      "url": "https://www.citiesoflit.com/nanjing",
+      "context": "Nanjing"
+    },
+    {
+      "label": "Norwich",
+      "url": "https://www.citiesoflit.com/norwich",
+      "context": "Norwich"
+    },
+    {
+      "label": "Nottingham",
+      "url": "https://www.citiesoflit.com/nottingham",
+      "context": "Nottingham"
+    },
+    {
+      "label": "Óbidos",
+      "url": "https://www.citiesoflit.com/obidos",
+      "context": "Óbidos"
+    },
+    {
+      "label": "Odessa",
+      "url": "https://www.citiesoflit.com/odessa",
+      "context": "Odessa"
+    },
+    {
+      "label": "Okayama",
+      "url": "https://www.citiesoflit.com/okayama",
+      "context": "Okayama"
+    },
+    {
+      "label": "Prague",
+      "url": "https://www.citiesoflit.com/prague",
+      "context": "Prague"
+    },
+    {
+      "label": "Québec City",
+      "url": "https://www.citiesoflit.com/quebec-city",
+      "context": "Québec City"
+    },
+    {
+      "label": "Reykjavik",
+      "url": "https://www.citiesoflit.com/reykjavik",
+      "context": "Reykjavik"
+    },
+    {
+      "label": "Rio de Janeiro",
+      "url": "https://www.citiesoflit.com/rio-de-janeiro",
+      "context": "Rio de Janeiro"
+    },
+    {
+      "label": "Seattle",
+      "url": "https://www.citiesoflit.com/seattle",
+      "context": "Seattle"
+    },
+    {
+      "label": "Slemani",
+      "url": "https://www.citiesoflit.com/slemani",
+      "context": "Slemani"
+    },
+    {
+      "label": "Taif",
+      "url": "https://www.citiesoflit.com/taif",
+      "context": "Taif"
+    },
+    {
+      "label": "Tartu",
+      "url": "https://www.citiesoflit.com/tartu",
+      "context": "Tartu"
+    },
+    {
+      "label": "Tukums",
+      "url": "https://www.citiesoflit.com/tukums",
+      "context": "Tukums"
+    },
+    {
+      "label": "Utrecht",
+      "url": "https://www.citiesoflit.com/utrecht",
+      "context": "Utrecht"
+    },
+    {
+      "label": "Vilnius",
+      "url": "https://www.citiesoflit.com/vilnius",
+      "context": "Vilnius"
+    },
+    {
+      "label": "Wonju",
+      "url": "https://www.citiesoflit.com/wonju",
+      "context": "Wonju"
+    },
+    {
+      "label": "Wrocław",
+      "url": "https://www.citiesoflit.com/wroc%C5%82aw",
+      "context": "Wrocław"
+    },
+    {
+      "label": "For Media",
+      "url": "https://www.citiesoflit.com/for-the-media",
+      "context": "For Media"
+    },
+    {
+      "label": "For Prospective Cities",
+      "url": "https://www.citiesoflit.com/prospectivecities",
+      "context": "For Prospective Cities"
+    },
+    {
+      "label": "Residencies",
+      "url": "https://www.citiesoflit.com/residencies",
+      "context": "Residencies"
+    },
+    {
+      "label": "Contact Us",
+      "url": "https://www.citiesoflit.com/contact-us",
+      "context": "Contact Us"
+    },
+    {
+      "label": "",
+      "url": "https://www.citiesoflit.com/cities-of-literature/angoul%C3%AAme",
+      "context": ""
+    },
+    {
+      "label": "",
+      "url": "https://www.citiesoflit.com/cities-of-literature/barcelona",
+      "context": ""
+    },
+    {
+      "label": "",
+      "url": "https://www.citiesoflit.com/cities-of-literature/bremen",
+      "context": ""
+    },
+    {
+      "label": "",
+      "url": "https://www.citiesoflit.com/cities-of-literature/dublin",
+      "context": ""
+    },
+    {
+      "label": "",
+      "url": "https://www.citiesoflit.com/cities-of-literature/baghdad",
+      "context": ""
+    },
+    {
+      "label": "",
+      "url": "https://www.citiesoflit.com/cities-of-literature/beirut",
+      "context": ""
+    },
+    {
+      "label": "",
+      "url": "https://www.citiesoflit.com/cities-of-literature/bucheon",
+      "context": ""
+    }
+  ]
+}

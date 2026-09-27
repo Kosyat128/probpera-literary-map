@@ -337,6 +337,19 @@ export type WorkProfile = {
   };
 };
 
+export type WriterDateEvidence = {
+  value: string;
+  precision: "day";
+  calendarModel: "http://www.wikidata.org/entity/Q1985727";
+  wikidataId: string;
+  claimIds: string[];
+  sourceUrl: string;
+  retrievedAt: string;
+  snapshotSha256: string;
+  method: "referenced-wikidata-statement";
+  supportingSources?: Array<{ sourceUrl: string; checkedAt: string; finding: string }>;
+};
+
 export type WriterProfile = {
   id: string;
 
@@ -349,6 +362,7 @@ export type WriterProfile = {
 
   birthDate?: string;
   deathDate?: string;
+  dateEvidence?: Partial<Record<"birthDate" | "deathDate", WriterDateEvidence>>;
   birthPlace?: string;
   deathPlace?: string;
 

@@ -1,0 +1,346 @@
+{
+  "sourceId": "adeb-be",
+  "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+  "entryUrl": "https://adeb.be/",
+  "countryCodes": [
+    "BE"
+  ],
+  "coverageCountryCodes": [
+    "BE"
+  ],
+  "attemptedAt": "2026-09-26T17:28:48.248Z",
+  "requests": [
+    {
+      "url": "https://www.adeb.be/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 164935,
+      "sha256": "81aaa1bfb2dfbaf034cb764c53e7a5c5217fc5f6e38aa9ff44a160a74d96cbed",
+      "accessedAt": "2026-09-26T17:22:39.722Z"
+    },
+    {
+      "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91260,
+      "sha256": "1088e2005176292c4d4c82101c4290fd2c34e1e594c5813e5e245367993ced0a",
+      "accessedAt": "2026-09-26T17:28:49.406Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.adeb.be/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 23,
+    "sha256": "3a125e84a637dc3f5442bb6949fa200056f37db4627b4c2a3addc55bbb89b703",
+    "accessedAt": "2026-09-26T17:28:48.848Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:36.820Z",
+    "sourceDocumentSha256": "81aaa1bfb2dfbaf034cb764c53e7a5c5217fc5f6e38aa9ff44a160a74d96cbed"
+  },
+  "endpoint": {
+    "id": "adeb-be",
+    "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+    "url": "https://www.adeb.be/",
+    "format": "html",
+    "language": "fr",
+    "region": "europe",
+    "sourceFamilyId": "adeb-be",
+    "countryCodes": [
+      "BE"
+    ],
+    "coverageCountryCodes": [
+      "BE"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.adeb.be"
+    ],
+    "linkPattern": "^/fr/adeb/[^/]+/?$|^/fr/[^/]+/?$|^/fr/infos/presse/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre"
+    ],
+    "verifiedAt": "2026-09-26T17:28:49.412Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "adeb-be",
+    "source": {
+      "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+      "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+      "language": "fr"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Turbulences dans l'écosystème du livre ?",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:28:48.945Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 91260,
+      "sha256": "1088e2005176292c4d4c82101c4290fd2c34e1e594c5813e5e245367993ced0a",
+      "accessedAt": "2026-09-26T17:28:49.406Z",
+      "headline": "Turbulences dans l'écosystème du livre ?",
+      "excerpt": "Turbulences dans l'écosystème du livre ? Rendez-vous le 16 novembre 2026, à Namur, pour la deuxième édition du colloque L'édition au futur : Turbulences majeures dans l'écosystème du livre ? Après un premier colloque consacrée aux technologies et aux nouvelles pratiques, cette seconde journée de réflexion réunira des professionnels du livre, des experts et des acteurs du secteur autour des grands ",
+      "publishedDates": [],
+      "canonical": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+      "language": "fr",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:49.412Z",
+  "foundItems": [
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Turbulences dans l'écosystème du livre ?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/infos/presse/les-nouveautes-de-l-edition-belge-a-l-honneur",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les nouveautés de l'édition belge à l'honneur",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/infos/presse/un-marche-en-recul-une-production-qui-resiste-grace-au-numerique",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un marché en recul, une production qui résiste grâce au numérique",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/infos/presse/christel-hoolans-reelue-au-ca-de-l-adeb",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Christel Hoolans réélue au CA de l'ADEB",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/editeur",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Éditeur & éditrice",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/auteur",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Auteur & autrice",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/adeb/qui-sommes-nous",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Qui sommes-nous ?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/adeb/formations-emplois",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Formations & emplois",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adeb-be",
+      "source": {
+        "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+        "url": "https://www.adeb.be/fr/adeb/actualites",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Toute l'actualité",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:28:48.945Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "81aaa1bfb2dfbaf034cb764c53e7a5c5217fc5f6e38aa9ff44a160a74d96cbed"
+}

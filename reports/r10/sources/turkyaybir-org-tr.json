@@ -1,0 +1,414 @@
+{
+  "sourceId": "turkyaybir-org-tr",
+  "name": "Turkish Publishers Association",
+  "entryUrl": "https://turkyaybir.org.tr/",
+  "countryCodes": [
+    "TR"
+  ],
+  "coverageCountryCodes": [
+    "TR"
+  ],
+  "attemptedAt": "2026-09-26T17:27:49.329Z",
+  "requests": [
+    {
+      "url": "https://turkyaybir.org.tr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 705896,
+      "sha256": "9d6fbae7408a77e526e6e31e758dae265e17860326c7668c78b364823886a835",
+      "accessedAt": "2026-09-26T17:27:52.395Z"
+    },
+    {
+      "url": "https://turkyaybir.org.tr/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 51787,
+      "sha256": "d4b853747e0c7eb358e8f54bd9641482320ee28cbae7888352cf00fcc27ed9a7",
+      "accessedAt": "2026-09-26T17:27:53.685Z"
+    },
+    {
+      "url": "https://turkyaybir.org.tr/12-turkiye-yayincilik-kurultayi-2026-sonuc-bildirisi/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 113433,
+      "sha256": "0924fc0ff5b92e5c671f9b069d77cd80a35b437dc411c251b47a26c74eec313e",
+      "accessedAt": "2026-09-26T17:27:54.810Z"
+    },
+    {
+      "url": "https://turkyaybir.org.tr/2025-yili-turkiye-kitap-pazari-raporu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103702,
+      "sha256": "d8b735ad7fc3d771a845bd952940b884ebca77165c5eb074c1a699c8d8953768",
+      "accessedAt": "2026-09-26T17:27:55.919Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://turkyaybir.org.tr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accessedAt": "2026-09-26T17:27:49.777Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "turkyaybir-org-tr",
+    "name": "Turkish Publishers Association",
+    "url": "https://turkyaybir.org.tr/feed/",
+    "format": "rss",
+    "language": "tr-TR",
+    "region": "europe",
+    "sourceFamilyId": "turkyaybir-org-tr",
+    "countryCodes": [
+      "TR"
+    ],
+    "coverageCountryCodes": [
+      "TR"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://turkyaybir.org.tr"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://turkyaybir.org.tr/2025-yili-turkiye-kitap-pazari-raporu/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:55.924Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 11,
+  "literaryCandidateCount": 11,
+  "sample": {
+    "sourceId": "turkyaybir-org-tr",
+    "source": {
+      "name": "Turkish Publishers Association",
+      "url": "https://turkyaybir.org.tr/2025-yili-turkiye-kitap-pazari-raporu/",
+      "language": "tr-TR"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "2025 Yılı Türkiye Kitap Pazarı Raporu",
+    "publishedAt": "2026-04-16T14:41:30.000Z",
+    "description": "Ülkemiz yayıncılık sektörünün nabzını tutan yıllık detaylı araştırmamız “Türkiye Kitap Pazarı Raporu 2025” yayımlanmıştır.Raporumuza ulaşmak için lütfen tıklayınız.",
+    "discoveredAt": "2026-09-26T17:27:53.686Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://turkyaybir.org.tr/2025-yili-turkiye-kitap-pazari-raporu/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103702,
+      "sha256": "d8b735ad7fc3d771a845bd952940b884ebca77165c5eb074c1a699c8d8953768",
+      "accessedAt": "2026-09-26T17:27:55.919Z",
+      "headline": "2025 Yılı Türkiye Kitap Pazarı Raporu \u2013 Türkiye Yayıncılar Birliği",
+      "excerpt": "Ülkemiz yayıncılık sektörünün nabzını tutan yıllık detaylı araştırmamız “Türkiye Kitap Pazarı Raporu 2025” yayımlanmıştır.Raporumuza ulaşmak için lütfen tıklayınız. Previous 12. Türkiye Yayıncılık Kurultayı 2026 Sonuç Bildirisi Next Online Editörlük Atölyesi Yeniden...",
+      "publishedDates": [
+        {
+          "value": "2026-04-16T17:41:30+03:00",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://turkyaybir.org.tr/2025-yili-turkiye-kitap-pazari-raporu/",
+      "language": "tr-TR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:55.924Z",
+  "foundItems": [
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/12-turkiye-yayincilik-kurultayi-2026-sonuc-bildirisi/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "12. Türkiye Yayıncılık Kurultayı 2026 Sonuç Bildirisi",
+      "publishedAt": "2026-06-17T07:49:14.000Z",
+      "description": "XII. Türkiye Yayıncılık Kurultayı10-11 Haziran 2026, İstanbul Türkiye Yayıncılar Birliği’nin iki yılda bir düzenlediği Türkiye Yayıncılık Kurultayı’nın on ikincisi, “Kitabın Geleceği: Algoritma, Toplum ve Pazar” temasıyla 10-11 Haziran 2026 tarihlerinde Trendyol’un ve Step Dijital’in destekleriyle İstanbul’da Yapı Kredi Kültür Merkezi’nde gerçekleşti. Kurultay, yayıncılığımızın duayenlerinden Dr.…",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/2025-yili-turkiye-kitap-pazari-raporu/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2025 Yılı Türkiye Kitap Pazarı Raporu",
+      "publishedAt": "2026-04-16T14:41:30.000Z",
+      "description": "Ülkemiz yayıncılık sektörünün nabzını tutan yıllık detaylı araştırmamız “Türkiye Kitap Pazarı Raporu 2025” yayımlanmıştır.Raporumuza ulaşmak için lütfen tıklayınız.",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler-atolyesi-kayitlari-basladi/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi Kayıtları Başladı!",
+      "publishedAt": "2026-09-21T08:58:45.000Z",
+      "description": "Çocuk kitaplarının dünyasına adım atmak isteyenler için özel olarak tasarlanan “Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi”nde sektörün tüm yönleriyle tanışın. Editörlüğün pratik süreçlerinden kurumsal ve kültürel bağlama uzanan farklı başlıkların ele alınacağı bu atölyede, çocuk kitabının ilk taslağından okura ulaşmasına kadar geçen tüm süreci yakından takip edeceksiniz. Karar…",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/online-editorluk-atolyesi-kayitlari-basladi-10/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Online Editörlük Atölyesi Kayıtları Başladı!",
+      "publishedAt": "2026-08-25T08:30:56.000Z",
+      "description": "10 Eylül \u2013 15 Ekim 2026 tarihlerinde gerçekleştirilecek18 saatlikOnline Editörlük Atölyesi’nde editörlük tüm yönleriyle mercek altına alınacak. Bir metnin dosyadan kitaba dönüşüm serüveninde editörün işlevi, editörün bu süreçteki iş adımları, yayınevinin diğer bölümlerindeki yetkililerle ve yayınevi dışında çalışan profesyonellerle kurduğu iletişim, kitabı okura sunmadan önceki zihin jimnastiği, …",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/online-editorluk-atolyesi-yeniden/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Online Editörlük Atölyesi Yeniden…",
+      "publishedAt": "2026-03-05T07:56:55.000Z",
+      "description": "25 Mart \u2013 29 Nisan 2026 tarihlerinde gerçekleştirilecek18 saatlik Online Editörlük Atölyesi’nde editörlük tüm yönleriyle mercek altına alınacak. Bir metnin dosyadan kitaba dönüşüm serüveninde editörün işlevi, editörün bu süreçteki iş adımları, yayınevinin diğer bölümlerindeki yetkililerle ve yayınevi dışında çalışan profesyonellerle kurduğu iletişim, kitabı okura sunmadan önceki zihin jimnastiği,…",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler-atolyesi-yeniden/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi Yeniden…",
+      "publishedAt": "2026-03-04T12:54:38.000Z",
+      "description": "Çocuk kitapları dünyasına adım atmak ve bu alanı yayıncılık çerçevesinden görmek isteyenler için özel olarak tasarlanan “Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi”nde sektörün farklı yönleriyle tanışın. Deneyim aktarımını, sektörel gözlemleri ve teorik yaklaşımları içeren bu atölyede, çocuk kitabının ilk taslağından okuyucuya ulaşmasına kadar geçen tüm süreci, bu sürece etki e…",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler-kayitlari-basladi/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Kayıtları Başladı!",
+      "publishedAt": "2026-01-13T12:26:29.000Z",
+      "description": "Çocuk kitapları dünyasına adım atmak ve bu alanı yayıncılık çerçevesinden görmek isteyenler için özel olarak tasarlanan “Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi”nde sektörün farklı yönleriyle tanışın. Deneyim aktarımını, sektörel gözlemleri ve teorik yaklaşımları içeren bu atölyede, çocuk kitabının ilk taslağından okuyucuya ulaşmasına kadar geçen tüm süreci, bu sürece etki e…",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/online-editorluk-atolyesi-kayitlari-basladi-9/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Online Editörlük Atölyesi Kayıtları Başladı!",
+      "publishedAt": "2026-01-06T07:47:17.000Z",
+      "description": "15 Ocak-19 Şubat 2026 tarihlerinde gerçekleştirilecek18 saatlik Online Editörlük Atölyesi’nde editörlük tüm yönleriyle mercek altına alınacak. Bir metnin dosyadan kitaba dönüşüm serüveninde editörün işlevi, editörün bu süreçteki iş adımları, yayınevinin diğer bölümlerindeki yetkililerle ve yayınevi dışında çalışan profesyonellerle kurduğu iletişim, kitabı okura sunmadan önceki zihin jimnastiği, t…",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/cocuk-edebiyatinda-editorluk-yontemler-ve-pratikler/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler",
+      "publishedAt": "2025-11-11T08:31:44.000Z",
+      "description": "Çocuk kitaplarının dünyasına adım atmak isteyenler için özel olarak tasarlanan “Çocuk Edebiyatında Editörlük: Yöntemler ve Pratikler Atölyesi” ile sektörün tüm yönleriyle tanışın. Hem teorik bilgileri hem de pratik uygulamaları içeren bu atölyede, çocuk kitabının ilk taslağından okuyucuya ulaşmasına kadar geçen tüm süreci yakından takip edeceksiniz. Sektördeki başarılı örnekler ve uygulama ödevle…",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/birinci-sinif-ogrencilerine-dagitilacak-okuma-kitaplari-hakkinda-basin-aciklamasi/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Birinci Sınıf Öğrencilerine Dağıtılacak Okuma Kitapları Hakkında Basın Açıklaması",
+      "publishedAt": "2025-09-09T08:58:38.000Z",
+      "description": "Birinci Sınıf Öğrencilerine Dağıtılacak Okuma Kitapları Hakkında Basın Açıklaması",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "turkyaybir-org-tr",
+      "source": {
+        "name": "Turkish Publishers Association",
+        "url": "https://turkyaybir.org.tr/online-editorluk-atolyesi-kayitlari-basladi-8/",
+        "language": "tr-TR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Online Editörlük Atölyesi Kayıtları Başladı!",
+      "publishedAt": "2025-09-08T08:04:59.000Z",
+      "description": "18 Eylül \u2013 23 Ekim 2025 tarihlerinde gerçekleştirilecek 18 saatlik Online Editörlük Atölyesi’nde editörlük tüm yönleriyle mercek altına alınacak. Bir metnin dosyadan kitaba dönüşüm serüveninde editörün işlevi, editörün bu süreçteki iş adımları, yayınevinin diğer bölümlerindeki yetkililerle ve yayınevi dışında çalışan profesyonellerle kurduğu iletişim, kitabı okura sunmadan önceki zihin jimnastiği…",
+      "discoveredAt": "2026-09-26T17:27:53.686Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d4b853747e0c7eb358e8f54bd9641482320ee28cbae7888352cf00fcc27ed9a7"
+}

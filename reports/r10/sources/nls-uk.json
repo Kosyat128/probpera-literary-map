@@ -1,0 +1,575 @@
+{
+  "sourceId": "nls-uk",
+  "name": "National Library of Scotland",
+  "entryUrl": "https://www.nls.uk/",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:29:18.936Z",
+  "requests": [
+    {
+      "url": "https://www.nls.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 89760,
+      "sha256": "f51d9875a66f7f078446a8cf7523fdc0a55f31221dc2a6eeef0fc48297e7c9d4",
+      "accessedAt": "2026-09-26T17:23:12.333Z"
+    },
+    {
+      "url": "https://www.nls.uk/visit/george-iv-bridge/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 81958,
+      "sha256": "fba00414274e7b059fa55c36c0ba27e89d092c63ce3c4d00d1906d3fd0503675",
+      "accessedAt": "2026-09-26T17:29:19.941Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is a library location page; excluded from literary agenda.",
+  "robots": {
+    "url": "https://www.nls.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 98,
+    "sha256": "9de334d2b696a4c046aecd44155afe9be5eed15f418758579dfb97c9879c7670",
+    "accessedAt": "2026-09-26T17:29:19.718Z",
+    "disallowed": [
+      "/umbraco/",
+      "/umbraco/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:11.309Z",
+    "sourceDocumentSha256": "f51d9875a66f7f078446a8cf7523fdc0a55f31221dc2a6eeef0fc48297e7c9d4"
+  },
+  "endpoint": {
+    "id": "nls-uk",
+    "name": "National Library of Scotland",
+    "url": "https://www.nls.uk/",
+    "format": "html",
+    "language": "en-GB",
+    "region": "europe",
+    "sourceFamilyId": "nls-uk",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [
+      "GB"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.nls.uk"
+    ],
+    "linkPattern": "^/collections/stories/printing-and-publishing/[^/]+/?$|^/[^/]{12,}/?$|^/whats-on/[^/]+/?$|^/visit/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.nls.uk/visit/george-iv-bridge/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:19.949Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 18,
+  "literaryCandidateCount": 18,
+  "sample": {
+    "sourceId": "nls-uk",
+    "source": {
+      "name": "National Library of Scotland",
+      "url": "https://www.nls.uk/visit/george-iv-bridge/",
+      "language": "en-GB"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "George IV Bridge",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:19.728Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nls.uk/visit/george-iv-bridge/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 81958,
+      "sha256": "fba00414274e7b059fa55c36c0ba27e89d092c63ce3c4d00d1906d3fd0503675",
+      "accessedAt": "2026-09-26T17:29:19.941Z",
+      "headline": "Visit George IV Bridge, Edinburgh | National Library of Scotland",
+      "excerpt": "Overview Visit George IV Bridge in Edinburgh to join the Library (it's free!) and access our extensive collections in the reading rooms.We have a range of spaces to work or study in. Find a quiet seat in the General Reading Room, or use our Discovery Room to chat and collaborate.You can find inspiration through our events and exhibitions. Get up close to the stories, ideas, and treasures that shap",
+      "publishedDates": [],
+      "canonical": "https://www.nls.uk/visit/george-iv-bridge/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:19.949Z",
+  "foundItems": [
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/visit/george-iv-bridge/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "George IV Bridge",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/visit/accessibility-at-george-iv-bridge/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Accessibility at George IV Bridge",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/visit/accessibility-at-causewayside/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Accessibility at Causewayside",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/visit/accessibility-at-kelvin-hall/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Accessibility at Kelvin Hall",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/tools-for-research/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Tools for research",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/treasures-of-the-national-library-of-scotland/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Treasures of the National Library of Scotland",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/paperback-revolutions/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Paperback Revolutions",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/where-wind-and-water-cleave/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "'Where Wind and Water Cleave: An Environmental History of Scotland'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/a-foray-into-fungi-in-language-and-song/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "A foray into fungi in language and song",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/witch-obsession-with-steven-veerapen/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Witch obsession with Steven Veerapen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/from-scotland-with-love/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "From Scotland with love: 50 years of Scotland's film archive",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/everybody-to-kenmure-street/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "'Everybody to Kenmure Street'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/whats-on/living-proof/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "'Living proof, a climate story': 50 years of Scotland's film archive",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/visit/causewayside/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Maps at Causewayside, Edinburgh",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/visit/kelvin-hall/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Kelvin Hall, Glasgow",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/web-accessibility-statement/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Accessibility statement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/collections/stories/printing-and-publishing/description-de-legypte/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "'Description de l'Égypte': The book that tried to capture a civilisation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nls-uk",
+      "source": {
+        "name": "National Library of Scotland",
+        "url": "https://www.nls.uk/collections/stories/printing-and-publishing/reading-by-touch/",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Reading by touch: Scotland's early tactile reading systems",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:19.728Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f51d9875a66f7f078446a8cf7523fdc0a55f31221dc2a6eeef0fc48297e7c9d4",
+  "technicalProbeStatus": "runtime_verified"
+}

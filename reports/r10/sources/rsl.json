@@ -1,0 +1,1057 @@
+{
+  "sourceId": "rsl",
+  "name": "Российская государственная библиотека",
+  "entryUrl": "https://www.rsl.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:38.268Z",
+  "requests": [
+    {
+      "url": "https://www.rsl.ru/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 737639,
+      "sha256": "e5b44d29d8f37fc6b7d560bac6c349af7271d83d15f5ec72ee2b7344ad2b020d",
+      "accessedAt": "2026-09-26T17:23:41.817Z"
+    },
+    {
+      "url": "https://www.rsl.ru/news/drama-golovkova-vremya-geroev-2026",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 99342,
+      "sha256": "97314268b1d26972b75915b1e2201d544d2c218adf0a035ce3874de95b175153",
+      "accessedAt": "2026-09-26T17:29:39.099Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Selected sample is a film-club discussion without an evidenced book relation; profile needs narrower selection.",
+  "robots": {
+    "url": "https://www.rsl.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 515,
+    "sha256": "274027881f7b55d76478eca2bda427f394fb6004bba50c94a8e9d6120cca384f",
+    "accessedAt": "2026-09-26T17:29:38.560Z",
+    "disallowed": [
+      "/cgi-bin/",
+      "/search/",
+      "/auth/",
+      "/*?*",
+      "/*?utm_",
+      "/*?sid=",
+      "/*?_openstat",
+      "/*?from=",
+      "/*?print="
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:40.582Z",
+    "sourceDocumentSha256": "e5b44d29d8f37fc6b7d560bac6c349af7271d83d15f5ec72ee2b7344ad2b020d"
+  },
+  "endpoint": {
+    "id": "rsl",
+    "name": "Российская государственная библиотека",
+    "url": "https://www.rsl.ru/",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "rsl",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.rsl.ru"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/vizit-v-biblioteku/[^/]+/?$|^/news/.+|^/visit-to-rsl/ploshadki-rgb/[^/]+/?$|^/ploshadki-rgb/[^/]+/?$|^/events/.+",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.rsl.ru/news/drama-golovkova-vremya-geroev-2026"
+    ],
+    "verifiedAt": "2026-09-26T17:29:39.108Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 37,
+  "literaryCandidateCount": 37,
+  "sample": {
+    "sourceId": "rsl",
+    "source": {
+      "name": "Российская государственная библиотека",
+      "url": "https://www.rsl.ru/news/drama-golovkova-vremya-geroev-2026",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "#киноклуб24.09.2026Драму Андрея Головкова обсудили в киноклубе «Время героев»",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:38.614Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.rsl.ru/news/drama-golovkova-vremya-geroev-2026",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 99342,
+      "sha256": "97314268b1d26972b75915b1e2201d544d2c218adf0a035ce3874de95b175153",
+      "accessedAt": "2026-09-26T17:29:39.099Z",
+      "headline": "Драму Андрея Головкова обсудили в киноклубе «Время героев»",
+      "excerpt": "НазадГлавнаяНовостиДраму Андрея Головкова обсудили в киноклубе «Время героев»24 сентября 2026 годаДраму Андрея Головкова обсудили в киноклубе «Время героев»Киноклуб «Время героев» в Российской государственной библиотеке продолжил свой цикл 23 сентября показом и обсуждением военной драмы Андрея Головкова «10 историй о любви и смерти». Можно ли сохранить любовь там, где смерть стала фоном? Фильм ста",
+      "publishedDates": [],
+      "canonical": "https://www.rsl.ru/news/drama-golovkova-vremya-geroev-2026",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:39.108Z",
+  "foundItems": [
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/drama-golovkova-vremya-geroev-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#киноклуб24.09.2026Драму Андрея Головкова обсудили в киноклубе «Время героев»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/atomnyy-diktant-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#культурная акция23.09.2026«Атомный диктант \u2014 2026» завершится масштабным финалом в Ленинке в День атомщика",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/postupleniya-cpf-310819092026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#поступление18.09.2026Новые поступления в библиотеку с 31 августа по 19 сентября",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/mama-pochitay-mne-nagrazhdenie-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#награждение17.09.2026«Мама, почитай мне, а я нарисую»: в РГБ наградили лауреатов семейного конкурса",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/vremya-geroev-2026-18",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#киноклубКиноклуб «Время героев»: фильм «Человек Божий»7 октября 2026 • 19:00\u201421:00",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/atomnyy-diktant-2026",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#культурная_акцияАтомный диктант \u2014 202628 сентября 2026 • 15:30\u201417:00",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/mnogoobrazit-yazykov-i-literatury-narodov-rossii",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#встреча17.09.2026В Ленинке состоялся вечер, посвящённый многообразию языков и литературы народов России",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/hafiz-chitateli-i-perevodchiki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#лекцияЛекция «Язык сокровенного: Хафиз, его читатели и переводчики»1 октября 2026 • 18:30\u201420:00",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/dni-kultury-shri-lanki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#международное сотрудничество25.09.2026В Ленинке открылись Дни культуры Шри‑Ланки",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/gorod-glupov-na-stsene-leninki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#Салтыков-Щедрин24.09.2026Город Глупов на сцене Ленинки: студенты Щукинского института сыграли «Историю одного города»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/konferentsiya-bibliotechnogo-obshestva-kitaya-26",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#международное сотрудничество22.09.2026Генеральный директор РГБ Вадим Дуда стал почётным гостем XXVI Ежегодной конференции Библиотечного общества Китая",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/chebatkov-dovlatov",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#Чебатков22.09.2026Евгений Чебатков прочитал «Иностранку» Сергея Довлатова в Ленинке",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/zhenshiny-kompozitory-finisazh",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#концерт22.09.2026«Надежду» спели всем залом: торжественное закрытие выставки о женщинах‑композиторах",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/balayan",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#презентация21.09.2026Древние смыслы русской сказки: вечер Натальи Балаян в Ленинке",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/bibliotex-test",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#электронные ресурсы18.09.2026Открыт тестовый доступ к коллекциям BiblioteX в сентябре и октябре",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/lichnye-kollektsii",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#фоторепортаж18.09.2026Личные коллекции в Ленинке",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/chepurchenko",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#встреча17.09.2026Вячеслав Чепурченко рассказал гостям РГБ, как актёр ищет интонацию",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/news/ministr-kultury-gramota-samarinu",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#награждение16.09.2026Министр культуры Российской Федерации Ольга Любимова вручила Почётную грамоту Президента РФ Александру Самарину",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/kinolektoriy-5-2",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#кинолекторийКинолекторий в Ленинке: документальный фильм «24 снега»15 октября 2026 • 19:00\u201421:00",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/kinolektoriy-5-1",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#кинолекторийКинолекторий в Ленинке: киноальманах «Многоголосие»1 октября 2026 • 19:00\u201421:00",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/kinolektoriy-5",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#кинолекторийМосковский научный кинолекторий: пятый сезонс 1 октября по 10 декабря 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/pozyvnoy-passazhir",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#кинопоказПоказ и обсуждение фильма «Позывной „Пассажир“»30 сентября 2026 • 18:30\u201420:30",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/tayna-not",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#мастер-классМастер‑класс «Музыкальная грамота: тайна нот»29 сентября 2026 • 19:00\u201420:00",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/kinomuzyka-shostakovicha",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#выставкаВыставка «Киномузыка в творчестве Дмитрия Шостаковича»с 25 сентября по 25 декабря 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/dni-kultury-respubliki-shri-lanka",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#культурная_акцияДни культуры Республики Шри‑Ланка в РГБс 24 по 30 сентября 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/215-let-tsarskoselskomu-litseyu",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#выставкаВыставка «Императорский Царскосельский лицей. 215 лет»с 21 сентября по 23 октября 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/ty-dlya-menya-tselyy-mir-ismailit-cikl",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#лекцияЦикл лекций «„Ты для меня \u2014 целый мир“: исмаилитская концепция микро- и макрокосма»с 17 сентября по 17 декабря 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/prestuplenie-i-chtenie",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#лекцияЦикл «Преступление и чтение»с 3 сентября по 30 декабря 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/yazyk-naroda-rodnik-nash",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#выставкаВыставка «Язык народа, бесспорно, главнейший и неисчерпаемый родник наш»с 3 сентября по 14 ноября 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/events/drugaya-rossiya-vystavka-csbf",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "#выставкаВыставка «Другая Россия. Русское зарубежье в изданиях Центрального справочно‑библиографического фонда»с 1 сентября по 30 декабря 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/fondy-i-katalogi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Фонды и каталоги",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/vizit-v-biblioteku",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Визит в библиотеку",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/elektronnye-resursy",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Электронные ресурсы",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/vizit-v-biblioteku/stat-chitatelem",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Стать читателем",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/visit-to-rsl/ploshadki-rgb/prostranstva-dlya-raboty",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Компьютерные места и коворкинговые зоны",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/ploshadki-rgb/ploshadki-dlya-meropriyatiy",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Площадки для выставок, лекций и творческих встреч",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rsl",
+      "source": {
+        "name": "Российская государственная библиотека",
+        "url": "https://www.rsl.ru/svedeniya-ob-organizatsii-osushestvlyayushey-obrazovatelnuyu-deyatelnost",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Сведения об организации, осуществляющей образовательную деятельность",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:38.614Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "e5b44d29d8f37fc6b7d560bac6c349af7271d83d15f5ec72ee2b7344ad2b020d",
+  "technicalProbeStatus": "runtime_verified"
+}

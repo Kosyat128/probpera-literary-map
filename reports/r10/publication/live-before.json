@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-09-26T17:28:54.464Z",
+  "status": 200,
+  "release": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+  "contractVersion": 1,
+  "count": 20,
+  "sources": 29,
+  "ids": [
+    "brooklyn-book-festival-2026-main-day",
+    "frankfurt-book-fair-2026-announcement",
+    "brisbane-writers-festival-2026",
+    "ubud-writers-readers-festival-2026",
+    "british-library-agatha-christie-exhibition-2026",
+    "shanghai-childrens-book-fair-2026",
+    "ake-arts-book-festival-2026",
+    "guadalajara-international-book-fair-2026",
+    "kiki-third-english-edition-announcement",
+    "tolstoy-birthday-2026",
+    "marlon-james-disappearers-us-catalog-2026",
+    "gioconda-belli-fil-prize-2026",
+    "whisper-man-netflix-release-20260828",
+    "nbf-presents-fall-2026-announced",
+    "goslitmuz-people-of-december-publication-2026",
+    "guernsey-medieval-fragments-research-2026",
+    "new-zealand-childrens-book-awards-2026",
+    "german-book-prize-longlist-2026",
+    "booker-longlist-2026",
+    "international-booker-funding-20260702"
+  ],
+  "generatedAt": "2026-09-26T17:29:00.589Z",
+  "lastCheckedAt": "2026-09-26T16:44:29.302Z"
+}

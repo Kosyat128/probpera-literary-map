@@ -1,22 +1,27 @@
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 import { validTimestamp } from "./literary-news-reviewed.mjs";
+import limits from "../../data/news/contract.json" with { type: "json" };
 
 export const NEWS_SOURCE_STATE_KEY = "literary-news:v1:source-state";
 export const NEWS_HELD_QUEUE_KEY = "literary-news:v1:held-queue";
 export const NEWS_REFRESH_SECONDS = 1800;
-export const NEWS_QUEUE_MAX_BYTES = 4 * 1024 * 1024;
-export const NEWS_STATE_MAX_BYTES = 128 * 1024;
-export const NEWS_QUEUE_MAX_ITEMS = 5000;
+export const NEWS_QUEUE_MAX_BYTES = limits.maxHeldBytes;
+export const NEWS_STATE_MAX_BYTES = limits.maxSourceStateBytes;
+export const NEWS_QUEUE_MAX_ITEMS = limits.maxHeldItems;
 
 const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const count = (value) => Number.isSafeInteger(value) && value >= 0 && value <= NEWS_QUEUE_MAX_ITEMS;
 const pastTimestamp = (value, now) => validTimestamp(value) && Date.parse(value) <= now.getTime();
-const errorCode = (value) => typeof value === "string" && /^(?:http_[1-5]\d\d|redirect_not_allowed|unexpected_response_origin|response_too_large|unsupported_content_type|empty_response|no_article_links|unexpected_feed_format|request_timeout|request_aborted|fetch_failed)$/.test(value);
+const errorCode = (value) => typeof value === "string" && /^(?:http_[1-5]\d\d|source_disabled|redirect_not_allowed|unexpected_response_origin|response_too_large|unsupported_content_type|empty_response|no_article_links|unexpected_feed_format|request_timeout|request_aborted|fetch_failed)$/.test(value);
 
 export function sourceMetadata(source) {
   return {
     id: source.id, name: source.name, url: source.url, format: source.format || "html",
     language: source.language, region: source.region || "global", topics: [...(source.topics || [])],
+    ...(source.sourceFamilyId ? { sourceFamilyId: source.sourceFamilyId } : {}),
+    ...(source.countryCodes ? { countryCodes: [...source.countryCodes] } : {}),
+    ...(source.coverageCountryCodes ? { coverageCountryCodes: [...source.coverageCountryCodes] } : {}),
+    ...(source.disabledReason ? { disabledReason: source.disabledReason } : {}),
   };
 }
 
@@ -35,7 +40,7 @@ export function parseNewsSourceState(value, now = new Date(), sources = LITERARY
   if (!object(value) || value.schemaVersion !== 1
     || !(value.lastCheckedAt === null || pastTimestamp(value.lastCheckedAt, now))
     || value.refreshIntervalSeconds !== NEWS_REFRESH_SECONDS || !count(value.pendingCount)
-    || !Array.isArray(value.sources) || value.sources.length > 50) return null;
+    || !Array.isArray(value.sources) || value.sources.length > limits.maxSources) return null;
   const byId = new Map();
   for (const source of value.sources) {
     if (!object(source) || typeof source.id !== "string" || byId.has(source.id)

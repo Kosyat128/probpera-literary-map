@@ -1,0 +1,61 @@
+{
+  "sourceId": "nsk-hr",
+  "name": "National and University Library in Zagreb",
+  "entryUrl": "https://www.nsk.hr/",
+  "countryCodes": [
+    "HR"
+  ],
+  "coverageCountryCodes": [
+    "HR"
+  ],
+  "attemptedAt": "2026-09-26T17:29:03.047Z",
+  "requests": [
+    {
+      "url": "https://nsk.hr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 120926,
+      "sha256": "32432ae6d69e27ba3777fe78659bacb076b8b823d39254cb90bd6cd57f0479ce",
+      "accessedAt": "2026-09-26T17:22:54.139Z"
+    },
+    {
+      "url": "https://nsk.hr/javne-informacije/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 72769,
+      "sha256": "c90c4dc07d3e4d580f660bce9c7ce9814d5291a63dfbdc878c21d9239e553306",
+      "accessedAt": "2026-09-26T17:29:05.223Z"
+    },
+    {
+      "url": "https://nsk.hr/posao-i-karijera/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 90053,
+      "sha256": "22c9339505fb291952506aefd675771d00f86d87fd920d5eee34e199f4de7da2",
+      "accessedAt": "2026-09-26T17:29:05.769Z"
+    },
+    {
+      "url": "https://nsk.hr/vodeni-obilasci/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 85923,
+      "sha256": "c01aa83afef39c73e5af268696afffdaf615ba869d5bfb17073fa912756a48ad",
+      "accessedAt": "2026-09-26T17:29:06.312Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://nsk.hr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 164,
+    "sha256": "4d261b0c8f4a8fc195dbc57d20a4ecb03f142a626dd9c88749506310d0f00b32",
+    "accessedAt": "2026-09-26T17:29:04.269Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:51.750Z",
+    "sourceDocumentSha256": "32432ae6d69e27ba3777fe78659bacb076b8b823d39254cb90bd6cd57f0479ce"
+  }
+}

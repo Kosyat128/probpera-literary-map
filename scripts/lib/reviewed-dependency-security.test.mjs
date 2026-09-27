@@ -1,13 +1,14 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 import {
   dependencySecurityAttestation,
   projectReviewedDependencySecurity,
 } from "./reviewed-dependency-security.mjs";
 
 const sha256 = source => createHash("sha256").update(source).digest("hex");
-const read = relativePath => readFileSync(relativePath, "utf8").replace(/\r\n?/gu, "\n");
+const read = relativePath => projectReviewedR10Delta(relativePath, readFileSync(relativePath, "utf8"));
 const before = relativePath => projectReviewedDependencySecurity(relativePath, read(relativePath));
 const allowedPaths = [
   ".github/workflows/quality.yml",

@@ -1,6 +1,9 @@
 import reviewed from "../../data/news/reviewed.json" with { type: "json" };
-import { resolveNewsTimeZone, selectReviewed } from "../lib/literary-news-reviewed.mjs";
+import withdrawals from "../../data/news/withdrawals.json" with { type: "json" };
+import { resolveNewsTimeZone } from "../lib/literary-news-reviewed.mjs";
+import { buildPublishedNewsFeed } from "../lib/literary-news-publication.mjs";
 import { NEWS_SOURCE_STATE_KEY, NEWS_STATE_MAX_BYTES, parseNewsSourceState, pendingNewsSourceState } from "../lib/literary-news-state.mjs";
+import { NOBEL_PROFILE_KEY, nobelPublishedRecords, readNobelProfileText } from "../lib/literary-news-nobel-profile.mjs";
 
 const FEED_PATH = "/api/literary-news/feed";
 // The canonical site reads this public feed from news.probpera.ru without
@@ -52,7 +55,7 @@ async function readSourceState(namespace) {
   }
 }
 
-/** No discovery, queue reads, secrets or remote URLs are accepted by this API. */
+/** Fixed reviewed data and one code-owned profile; no discovery or private queue reads. */
 export async function handleNewsRequest(request, env, current = new Date()) {
   const headers = headersFor(env.NEWS_RELEASE_SHA);
   const url = new URL(request.url);
@@ -68,13 +71,26 @@ export async function handleNewsRequest(request, env, current = new Date()) {
     // Reviewed stories remain available; null checked-at never invents freshness.
     console.warn(JSON.stringify({ event: "literary_news_state_unavailable" }));
   }
+  let approvedProfile = [];
+  try {
+    const stream = await env.NEWS_STATE.get(NOBEL_PROFILE_KEY,"stream");
+    if (stream !== null) approvedProfile = await nobelPublishedRecords(JSON.parse(await readNobelProfileText(new Response(stream))),current);
+  } catch {
+    console.warn(JSON.stringify({event:"literary_news_nobel_profile_unavailable"}));
+  }
   const timeZone = resolveNewsTimeZone(url.searchParams.get("timeZone"));
-  return Response.json({
-    mode: "reviewed", generatedAt: current.toISOString(), timeZone,
-    lastCheckedAt: state.lastCheckedAt, refreshIntervalSeconds: state.refreshIntervalSeconds,
-    pendingCount: state.pendingCount, sources: state.sources,
-    items: selectReviewed(reviewed, current, timeZone).slice(0, 500).map(publicItem),
-  }, { headers });
+  try {
+    // Human-reviewed records take precedence on either stable ID or semantic event key.
+    const authoredIds = new Set(reviewed.map(item=>item.id)), authoredEvents = new Set(reviewed.map(item=>item.eventKey).filter(Boolean));
+    const records = [...reviewed,...approvedProfile.filter(item=>!authoredIds.has(item.id) && !authoredEvents.has(item.eventKey)
+      && !reviewed.some(authored=>authored.kind===item.kind && authored.category===item.category
+        && authored.eventDate===item.eventDate && authored.source?.url===item.source.url))];
+    const feed = await buildPublishedNewsFeed({ records, withdrawals, state, current, timeZone,
+      release: env.NEWS_RELEASE_SHA, contractVersion: url.searchParams.get("contract") === "2" ? 2 : 1 });
+    return Response.json(feed, { headers });
+  } catch {
+    return Response.json({ error: "snapshot_unavailable" }, { status: 503, headers });
+  }
 }
 
 /** @type {ExportedHandler<Env>} */

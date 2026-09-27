@@ -1,0 +1,293 @@
+{
+  "sourceId": "taipei-book-fair",
+  "name": "Taipei International Book Exhibition",
+  "entryUrl": "https://www.tibe.org.tw/",
+  "countryCodes": [
+    "TW"
+  ],
+  "coverageCountryCodes": [
+    "TW"
+  ],
+  "attemptedAt": "2026-09-26T17:31:43.326Z",
+  "requests": [
+    {
+      "url": "https://www.tibe.org.tw/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 36865,
+      "sha256": "62958192b0d021abdb9f57dc086ad123599597bbc0e319cdc2cf0379a2e895a8",
+      "accessedAt": "2026-09-26T17:31:44.815Z"
+    },
+    {
+      "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28341,
+      "sha256": "bf9fa535af77a093afefb8a164776145b22d64464c98d221f78510ad1e0d679f",
+      "accessedAt": "2026-09-26T17:31:45.199Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.tibe.org.tw/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 95,
+    "sha256": "3c74f7d6822ac112cb7c9902199733070db05d17c6cdf4daefa462aaf2b8216a",
+    "accessedAt": "2026-09-26T17:31:44.394Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "taipei-book-fair",
+    "name": "Taipei International Book Exhibition",
+    "url": "https://www.tibe.org.tw/",
+    "format": "html",
+    "language": "zh-Hant",
+    "region": "asia",
+    "sourceFamilyId": "taipei-book-fair",
+    "countryCodes": [
+      "TW"
+    ],
+    "coverageCountryCodes": [
+      "TW"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.tibe.org.tw"
+    ],
+    "linkPattern": "^/tw/download/[^/]+/?$|^/tw/news_detail/19/[^/]+/?$|^/tw/news_detail/6/[^/]+/?$|^/tw/news_detail/7/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.tibe.org.tw/tw/news_detail/19/1919"
+    ],
+    "verifiedAt": "2026-09-26T17:31:45.202Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "taipei-book-fair",
+    "source": {
+      "name": "Taipei International Book Exhibition",
+      "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+      "language": "zh-Hant"
+    },
+    "region": "asia",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "2027台北國際書展 徵展起跑 主題國捷克 揮灑「閱讀自由捷」活力",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:31:44.836Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 28341,
+      "sha256": "bf9fa535af77a093afefb8a164776145b22d64464c98d221f78510ad1e0d679f",
+      "accessedAt": "2026-09-26T17:31:45.199Z",
+      "headline": "2027台北國際書展 徵展起跑 主題國捷克 揮灑「閱讀自由捷」活力",
+      "excerpt": "最新消息 2027TiBE台北國際書展 2026TiBE台北國際書展 書展亮點 出版動態 國際書展臺灣館 近期文章 2027台北國際書展 徵展起跑 主題國捷克 揮灑「閱讀自由捷」活力 敬邀參加：2027年第35屆台北國際書展－徵展說明會 文化部繪本及圖文書創作及出版行銷獎勵要點 文化黑潮之拓展臺流文本外譯Books from Taiwan 2.0 開始徵件 文化部國家級第2屆金繪獎9/18報名 總獎金327萬元 首頁 最新消息2027TiBE台北國際書展 2027TiBE台北國際書展 2027台北國際書展 徵展起跑 主題國捷克 揮灑「閱讀自由捷」活力 2026/09/18 圖說：2027台北國際書展徵展起跑，台北書展基金會董事長郝明義（右起）、文化部人文及出版司專門委員陳泓全、捷克中心臺北主任馬凱棠與台北書展基金會涂文貞合影。 由文化部主辦，台北書展基金會承辦2027年第35屆台北國際書展",
+      "publishedDates": [],
+      "canonical": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+      "language": "zh-Hant",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:31:45.202Z",
+  "foundItems": [
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2027台北國際書展 徵展起跑 主題國捷克 揮灑「閱讀自由捷」活力",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:44.836Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/19/1918",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "敬邀參加：2027年第35屆台北國際書展－徵展說明會",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:44.836Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/6/1917",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "文化部繪本及圖文書創作及出版行銷獎勵要點",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:44.836Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/7/1895",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "台中新秘境：歡迎光臨綠美圖「驚奇市場」！",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:44.836Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/7/1761",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "台北國際書展城市在閱讀- -前進高雄",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:44.836Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/7/1827",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "數位主題館 ( 2樓 第二會議室)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:44.836Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/7/1828",
+        "language": "zh-Hant"
+      },
+      "region": "asia",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "書展大賞館 ( 2樓 第二會議室)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:44.836Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "62958192b0d021abdb9f57dc086ad123599597bbc0e319cdc2cf0379a2e895a8"
+}

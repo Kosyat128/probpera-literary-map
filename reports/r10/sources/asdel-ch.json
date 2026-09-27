@@ -1,0 +1,41 @@
+{
+  "sourceId": "asdel-ch",
+  "name": "Association Suisse des Diffuseurs, Editeurs et Libraires",
+  "entryUrl": "https://www.asdel.ch/",
+  "countryCodes": [
+    "CH"
+  ],
+  "coverageCountryCodes": [
+    "CH"
+  ],
+  "attemptedAt": "2026-09-26T17:28:34.963Z",
+  "requests": [
+    {
+      "url": "https://asdel.ch/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 81411,
+      "sha256": "687e4f659480b592709d7044cfb28d20f98efae01c27255891b5490825a9b4fe",
+      "accessedAt": "2026-09-26T17:28:37.400Z"
+    },
+    {
+      "url": "https://asdel.ch/ausland-casinos/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 77600,
+      "sha256": "744742c6ab6ddc096c6586e33cae80b355286b29daad62b9bc8c40461f0d1264",
+      "accessedAt": "2026-09-26T17:28:37.809Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://asdel.ch/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 60,
+    "sha256": "69d1eba2a83168b0a42e4a7fc9cfe9f60845ec37527e43f996e6e8a9c9c94621",
+    "accessedAt": "2026-09-26T17:28:35.889Z",
+    "disallowed": []
+  }
+}

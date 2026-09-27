@@ -225,7 +225,7 @@ test("protected header bands, Hero art direction and reduced motion remain deter
   expect(motion.socialAnimation === "none" || motion.socialIterations === "1").toBe(true);
 });
 
-test("publication showcase fits complete previews without nested or panel scrolling", async ({ page }) => {
+test("publication showcase preserves complete previews with one viewport-bounded scroll area", async ({ page }) => {
   for (const locale of ["ru", "en"]) {
     await openHomepage(page, 1547, 900, locale);
     for (const [width, height] of [[1280, 600], [1280, 720], [1366, 768], [1547, 900], [1920, 1080]]) {
@@ -235,7 +235,15 @@ test("publication showcase fits complete previews without nested or panel scroll
       await summary.focus();
       await page.keyboard.press("Enter");
       await expect(panel).toBeVisible();
-      await expect(panel.locator(".articles-mega-lead")).toBeVisible();
+      await expect(panel.locator(".articles-mega-lead")).toHaveCount(1);
+      const archiveCount = Number((await panel.locator("footer > span").innerText()).replace(/\D/gu, ""));
+      expect(archiveCount).toBeGreaterThan(0);
+      const expectedMore = Math.min(6, archiveCount - 1);
+      if (locale === "ru") expect(expectedMore).toBe(6);
+      await expect(panel.locator(".articles-mega-content > section > a")).toHaveCount(expectedMore);
+      const image = panel.locator(".articles-mega-lead img");
+      await expect(image).toBeVisible();
+      await expect.poll(() => image.evaluate(node => node.complete && node.naturalWidth > 0 && node.naturalHeight > 0)).toBe(true);
       const geometry = await panel.evaluate(element => {
         const box = node => node.getBoundingClientRect().toJSON();
         const content = element.querySelector(".articles-mega-content");
@@ -246,10 +254,14 @@ test("publication showcase fits complete previews without nested or panel scroll
           panel: box(element),
           image: box(lead.querySelector("img")),
           imageFit: getComputedStyle(lead.querySelector("img")).objectFit,
+          imageRatio: lead.querySelector("img").naturalWidth / lead.querySelector("img").naturalHeight,
+          leadInnerWidth: lead.clientWidth - parseFloat(getComputedStyle(lead).paddingLeft) - parseFloat(getComputedStyle(lead).paddingRight),
           cards: cards.map(box),
           cardCount: list.querySelectorAll("a").length,
           footer: box(element.querySelector("footer")),
-          scroll: [element, content, list].map(node => node.scrollHeight - node.clientHeight),
+          scroll: [element, content, list, lead, ...cards].map(node => node.scrollHeight - node.clientHeight),
+          overflowY: getComputedStyle(element).overflowY,
+          horizontalOverflow: [element, content, list, lead, ...cards].map(node => node.scrollWidth - node.clientWidth),
           text: [lead, ...cards].flatMap(card => [...card.querySelectorAll("strong, p, small, em, section span")].flatMap(copy => {
             const range = document.createRange();
             range.selectNodeContents(copy);
@@ -261,12 +273,20 @@ test("publication showcase fits complete previews without nested or panel scroll
         };
       });
       expect(geometry.panel.left, `${locale}/${width}/${height}`).toBeGreaterThanOrEqual(0);
+      expect(geometry.panel.top).toBeGreaterThanOrEqual(0);
       expect(geometry.panel.right).toBeLessThanOrEqual(width);
       expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);
-      for (const overflow of geometry.scroll) expect(overflow).toBeLessThanOrEqual(1);
-      expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);
+      // R10 keeps full copy and the image's intrinsic ratio. Only the outer
+      // viewport-bounded panel may scroll when the available height is short.
+      for (const overflow of geometry.scroll.slice(1)) expect(overflow).toBeLessThanOrEqual(1);
+      for (const overflow of geometry.horizontalOverflow) expect(overflow).toBeLessThanOrEqual(1);
+      expect(geometry.overflowY).toBe("auto");
+      if (expectedMore > 0) expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);
+      else expect(geometry.image.width).toBeLessThanOrEqual(geometry.leadInnerWidth + 1);
       expect(geometry.imageFit).toBe("contain");
-      expect(geometry.image.width / geometry.image.height).toBeCloseTo(16 / 9, 2);
+      // Responsive renditions round dimensions to whole pixels; density-corrected
+      // natural sizes can differ from the original ratio by about one CSS pixel.
+      expect(Math.abs(geometry.image.height - geometry.image.width / geometry.imageRatio)).toBeLessThanOrEqual(2);
       expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, 6));
       for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);
       for (const text of geometry.text) {
@@ -275,9 +295,31 @@ test("publication showcase fits complete previews without nested or panel scroll
         expect(text.top).toBeGreaterThanOrEqual(text.bounds.top - 1);
         expect(text.bottom).toBeLessThanOrEqual(text.bounds.bottom + 1);
       }
-      await expect(panel.locator("footer a")).toBeVisible();
-      await expect(panel.locator("footer a")).toHaveAttribute("href", /\/stati\/$/u);
+      const footerLink = panel.locator("footer a");
+      await expect(footerLink).toHaveAttribute("href", /\/stati\/$/u);
+      const links = panel.locator("a");
+      const expectedLinks = expectedMore + 2;
+      await expect(links).toHaveCount(expectedLinks);
+      for (let index = 0; index < expectedLinks; index++) {
+        await page.keyboard.press("Tab");
+        await expect(links.nth(index)).toBeFocused();
+      }
+      await expect(footerLink).toBeInViewport({ ratio: 1 });
+      const reached = await panel.evaluate(element => ({
+        scrollTop: element.scrollTop,
+        panel: element.getBoundingClientRect().toJSON(),
+        footer: element.querySelector("footer a").getBoundingClientRect().toJSON(),
+      }));
+      expect(reached.footer.top).toBeGreaterThanOrEqual(reached.panel.top);
+      expect(reached.footer.bottom).toBeLessThanOrEqual(reached.panel.bottom);
+      if (geometry.scroll[0] > 1) expect(reached.scrollTop).toBeGreaterThan(0);
       await page.keyboard.press("Escape");
+      await expect(panel).not.toBeVisible();
+      await expect(summary).toBeFocused();
+      await summary.click();
+      await page.mouse.move(0, height - 1);
+      await expect(panel).toBeVisible();
+      await summary.click();
       await expect(panel).not.toBeVisible();
     }
     await page.setViewportSize({ width: 1260, height: 600 });

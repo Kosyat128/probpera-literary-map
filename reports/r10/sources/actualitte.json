@@ -1,0 +1,2631 @@
+{
+  "sourceId": "actualitte",
+  "name": "ActuaLitté",
+  "entryUrl": "https://actualitte.com/",
+  "countryCodes": [
+    "FR"
+  ],
+  "coverageCountryCodes": [
+    "FR"
+  ],
+  "attemptedAt": "2026-09-26T17:31:58.262Z",
+  "requests": [
+    {
+      "url": "https://actualitte.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 502019,
+      "sha256": "afcda1b75b42ab5322bd73e403af5dbcc9c690b967aa4765e4ff150ce3f91b61",
+      "accessedAt": "2026-09-26T17:32:01.182Z"
+    },
+    {
+      "url": "https://actualitte.com/rss-main.rss",
+      "status": 200,
+      "contentType": "application/rss+xml",
+      "bytes": 981483,
+      "sha256": "664385e0651e6d637ee67a5506e152a9d69e7ad30ecc90a0e6014509c40d090e",
+      "accessedAt": "2026-09-26T17:32:07.822Z"
+    },
+    {
+      "url": "https://actualitte.com/article/134130/prix-litteraires/booker-prize-2026-ils-ne-sont-plus-que-6-en-lice",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 147703,
+      "sha256": "09a054830dad31b5287747dfa00a05c9e0bb2afa31448865957fe97a99ffdd22",
+      "accessedAt": "2026-09-26T17:32:08.355Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://actualitte.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 107,
+    "sha256": "6413cd41a61883eba86d31204d716c901f2c3c54a422d0f6324de45a1358056e",
+    "accessedAt": "2026-09-26T17:32:00.462Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "actualitte",
+    "name": "ActuaLitté",
+    "url": "https://actualitte.com/rss-main.rss",
+    "format": "rss",
+    "language": "fr",
+    "region": "europe",
+    "sourceFamilyId": "actualitte",
+    "countryCodes": [
+      "FR"
+    ],
+    "coverageCountryCodes": [
+      "FR"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://actualitte.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://actualitte.com/article/134130/prix-litteraires/booker-prize-2026-ils-ne-sont-plus-que-6-en-lice"
+    ],
+    "verifiedAt": "2026-09-26T17:32:08.365Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 100,
+  "literaryCandidateCount": 100,
+  "sample": {
+    "sourceId": "actualitte",
+    "source": {
+      "name": "ActuaLitté",
+      "url": "https://actualitte.com/article/134130/prix-litteraires/booker-prize-2026-ils-ne-sont-plus-que-6-en-lice",
+      "language": "fr"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Booker Prize 2026 : ils ne sont plus que 6 en lice",
+    "publishedAt": "2026-09-23T13:11:39.000Z",
+    "description": "Quelques semaines après une première sélection de 13 ouvrages, le jury du Booker Prize a revu sa copie, pour réduire le nombre de concurrents de moitié. 6 livres sont encore en lice, dont ceux de Marlon James et Douglas Stuart, déjà honorés par le Prix Booker par le passé.",
+    "discoveredAt": "2026-09-26T17:32:07.838Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://actualitte.com/article/134130/prix-litteraires/booker-prize-2026-ils-ne-sont-plus-que-6-en-lice",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 147703,
+      "sha256": "09a054830dad31b5287747dfa00a05c9e0bb2afa31448865957fe97a99ffdd22",
+      "accessedAt": "2026-09-26T17:32:08.355Z",
+      "headline": "Booker Prize 2026 : ils ne sont plus que 6 en lice",
+      "excerpt": "Booker Prize 2026 : ils ne sont plus que 6 en lice InscriptionNewsletter En ce moment : Thélyson Orélien, la déflagration Quels grands livres ? Pierre Perret débouté Prix littéraires #International Booker Prize 2026 : ils ne sont plus que 6 en lice Quelques semaines après une première sélection de 13 ouvrages, le jury du Booker Prize a revu sa copie, pour réduire le nombre de concurrents de moitié",
+      "publishedDates": [
+        {
+          "value": "2026-09-23T15:11",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://actualitte.com/article/134130/prix-litteraires/booker-prize-2026-ils-ne-sont-plus-que-6-en-lice",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:08.365Z",
+  "foundItems": [
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134130/prix-litteraires/booker-prize-2026-ils-ne-sont-plus-que-6-en-lice",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Booker Prize 2026 : ils ne sont plus que 6 en lice",
+      "publishedAt": "2026-09-23T13:11:39.000Z",
+      "description": "Quelques semaines après une première sélection de 13 ouvrages, le jury du Booker Prize a revu sa copie, pour réduire le nombre de concurrents de moitié. 6 livres sont encore en lice, dont ceux de Marlon James et Douglas Stuart, déjà honorés par le Prix Booker par le passé.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134207/prix-litteraires/livres-en-vignes-2026-gautier-battistella-francois-henri-deserable-et-bruno-verjus-recompenses",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Livres en Vignes 2026 : Gautier Battistella, François-Henri Désérable et Bruno Verjus récompensés",
+      "publishedAt": "2026-09-25T15:11:00.000Z",
+      "description": "Gautier Battistella remporte le Prix du Clos de Vougeot 2026 pour Bocuse (Grasset), principale récompense de Livres en Vignes. Le palmarès distingue également François-Henri Désérable et Bruno Verjus.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134138/prix-litteraires/9-livres-selectionnes-pour-le-prix-litteraire-vanity-fair-2026",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "9 livres sélectionnés pour le Prix littéraire Vanity Fair 2026",
+      "publishedAt": "2026-09-23T13:11:22.000Z",
+      "description": "Neuf œuvres forment la sélection du deuxième Prix littéraire Vanity Fair, qui s'est donné pour ambition de « repérer les récits qui débordent de la page et portent en eux la promesse d'une autre vie à l'écran ». Romans, essais et bandes dessinées seront départagés par un jury réunissant 11 membres.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134125/prix-litteraires/marie-dorleans-remporte-le-prix-du-livre-grand-est-2026",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Marie Dorléans remporte le Prix du Livre Grand Est 2026",
+      "publishedAt": "2026-09-22T15:47:00.000Z",
+      "description": "Marie Dorléans reçoit le Prix du Livre Grand Est 2026 pour Une histoire de rien du tout, publié au Seuil Jeunesse. Pour cette sixième édition, entièrement consacrée aux albums jeunesse, le jury présidé par Agnès Ledig a également décerné son coup de cœur à Pauline Morel pour Pluie, paru aux éditions Panthera.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134206/prix-litteraires/madeline-cash-remporte-le-prix-du-roman-page-america-2026",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Madeline Cash remporte le Prix du roman PAGE/AMERICA 2026",
+      "publishedAt": "2026-09-25T15:44:00.000Z",
+      "description": "L’autrice américaine Madeline Cash remporte le Prix du roman PAGE/AMERICA 2026 pour Les Brebis égarées, son premier roman, publié en France chez Denoël dans une traduction d’Alexandre Civico et Barbara Tajan. La récompense lui est remise ce vendredi 25 septembre à 13h30, au Café des libraires du Festival AMERICA, sous le Magic Mirrors, cours Marigny à Vincennes.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134185/prix-litteraires/le-prix-alef-de-l-edition-scientifique-2026-distingue-une-publication-d-ens-editions",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Prix ALEF de l’édition scientifique 2026 distingue une publication d'ENS Éditions",
+      "publishedAt": "2026-09-25T12:55:01.000Z",
+      "description": "L’Alliance des éditeurs scientifiques publics français (ALEF) a décerné son premier Prix ALEF de l’édition scientifique à ENS Éditions, pour la publication d’Antonin Plarier, Des bandits face au pouvoir colonial. Algérie, 1871-1920.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134177/prix-litteraires/eric-emmanuel-schmitt-et-erik-orsenna-en-lice-au-prix-litteraire-des-musiciens-2026",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Éric-Emmanuel Schmitt et Erik Orsenna en lice au Prix Littéraire des Musiciens 2026",
+      "publishedAt": "2026-09-24T15:27:00.000Z",
+      "description": "Le Prix Littéraire des Musiciens dévoile sa sélection 2026 : neuf ouvrages concourent dans les catégories Roman, Essai-Document et Jeunesse. Un quatrième prix sera décerné par le public. Les lauréats seront annoncés le 13 novembre au Pavillon de la Sirène, à Paris.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134174/prix-litteraires/prix-utopiales-bd-2026-six-albums-pour-succeder-aux-navigateurs",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prix Utopiales BD 2026 : six albums pour succéder aux Navigateurs",
+      "publishedAt": "2026-09-24T14:35:42.000Z",
+      "description": "Après avoir dévoilé les sélections des prix roman et jeunesse, les Utopiales 2026 présentent à leur tour les six albums en lice pour le Prix Utopiales BD. Le lauréat succédera aux Navigateurs, de Serge Lehman et Stéphane De Caneva, récompensé l’an dernier. Le prix sera remis le 31 octobre à la Cité des congrès de Nantes, pendant la 27e édition du festival, organisée du 29 octobre au 1er novembre …",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134166/prix-litteraires/prix-ouest-france-quai-des-bulles-les-cinq-finalistes-de-l-edition-2026",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prix Ouest-France/Quai des Bulles : les cinq finalistes de l'édition 2026",
+      "publishedAt": "2026-09-24T12:58:39.000Z",
+      "description": "Le Prix Ouest-France/Quai des Bulles a dévoilé ses cinq finalistes pour l'édition 2026. Parmi les dix albums retenus au préalable, les neuf membres du jury ont effectué une première sélection à Rennes, le 12 septembre. Ils se retrouveront le 10 octobre, pendant le festival Quai des Bulles, pour désigner le lauréat.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134165/prix-litteraires/7-albums-selectionnes-pour-le-prix-du-recit-dessine-2026",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "7 albums sélectionnés pour le Prix du Récit dessiné 2026",
+      "publishedAt": "2026-09-24T12:35:09.000Z",
+      "description": "Le Prix du Récit dessiné, décerné par la Société civile des auteurs multimédia (Scam), se situe « à la croisée du texte et de l’image », et récompense un récit dessiné interrogeant le réel, écrit et illustré par un seul auteur ou autrice. Il est doté à hauteur de 5000 €.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134153/prix-litteraires/fuck-circus-esther-teillard-remporte-le-prix-litteraire-de-la-vocation-2026",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fuck Circus : Esther Teillard remporte le Prix Littéraire de la Vocation 2026",
+      "publishedAt": "2026-09-23T18:00:00.000Z",
+      "description": "Pour ses 50 ans, le Prix Littéraire de la Vocation distingue Esther Teillard pour Fuck Circus, son deuxième roman, publié aux éditions Grasset à la rentrée. Dotée de 10.000 €, la récompense accompagne depuis 1976 de jeunes écrivains d’expression française âgés de moins de 30 ans.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134120/prix-litteraires/florent-oiseau-recoit-le-prix-francoise-sagan-2026-pour-ma-gloire",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Florent Oiseau reçoit le Prix Françoise Sagan 2026 pour Ma gloire",
+      "publishedAt": "2026-09-22T18:00:00.000Z",
+      "description": "Le Prix Françoise Sagan 2026 a été attribué à Florent Oiseau pour Ma gloire, publié aux éditions Gallimard. Le lauréat a été annoncé ce mardi 22 septembre, lors d'une soirée organisée au Grand Hôtel Cayré, à Paris.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134216/international/pour-aider-les-editeurs-locaux-cordoba-commande-50-000-livres",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pour aider les éditeurs locaux, Córdoba commande 50.000 livres",
+      "publishedAt": "2026-09-26T13:30:00.000Z",
+      "description": "En Argentine, la province de Córdoba remet la commande publique au service du livre. Son gouvernement a investi 550 millions de pesos dans des ouvrages publiés localement, auprès de 27 petites et moyennes maisons. L'opération accompagne la mise à disposition de 50.000 exemplaires dans les établissements secondaires, les instituts de formation des enseignants et différents espaces éducatifs. De qu…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134183/rencontres-dedicaces/une-nouvelle-edition-de-la-journee-des-auteurs-europeens",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Une nouvelle édition de la Journée des auteurs européens",
+      "publishedAt": "2026-09-25T10:41:45.000Z",
+      "description": "La Journée des auteurs européens se tiendra à nouveau du 11 novembre au 12 décembre 2026. En France, Ciclic coordonne la participation des structures souhaitant organiser des rencontres, ateliers ou actions autour du livre et de la lecture.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134169/humeurs/affaire-thelyson-orelien-reinventons-le-pacte-entre-l-auteur-l-editeur-et-le-lecteur",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Affaire Thélyson Orélien : “Réinventons le pacte entre l’auteur, l’éditeur et le lecteur”",
+      "publishedAt": "2026-09-24T14:32:00.000Z",
+      "description": "Thomas Perroud, normalien, est animateur de l’émission Anachroniques consacrée notamment aux premiers romans sur Fréquence protestante. Il revient sur les soupçons d’usage de l’intelligence artificielle au sujet du premier roman de Thélyson Orélien, C’était ça ou mourir (Grasset).",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134151/television/un-pays-un-livre-augustin-trapenard-rejoint-tv5monde-pour-une-nouvelle-emission",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un pays, un livre : Augustin Trapenard rejoint TV5MONDE pour une nouvelle émission",
+      "publishedAt": "2026-09-23T15:39:23.000Z",
+      "description": "TV5MONDE renforce ses programmes d'incitation à la lecture avec Un pays, un livre : un tour du monde des littératures francophones contemporaines diffusé chaque jour en novembre, à l'occasion du XXe Sommet de la Francophonie.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134116/avant-parutions/dune-n-a-pas-livre-tous-ses-secrets-quatres-nouvelles-inedites",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dune n’a pas livré tous ses secrets : quatres nouvelles inédites",
+      "publishedAt": "2026-09-23T06:00:00.000Z",
+      "description": "Avec Les Sables de Dune, Brian Herbert et Kevin J. Anderson prolongent l’univers imaginé par Frank Herbert à travers quatre nouvelles inédites. D’Arrakis à Kaitain, ces récits explorent les zones les plus sombres de la saga et reviennent notamment sur les parcours de Gurney Halleck, d’un Sardaukar et de celle qui deviendra Shadout Mapes. Traduit de l’anglais par Fabian Leroy.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134217/international/mexique-cinq-reformes-du-livre-reclamees-a-la-presidente-claudia-sheinbaum",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mexique : cinq réformes du livre réclamées à la présidente Claudia Sheinbaum",
+      "publishedAt": "2026-09-26T14:00:00.000Z",
+      "description": "Partie d’une maison patrimoniale contrainte de réduire ses activités, l’alerte gagne désormais toute la chaîne du livre. La Cámara Nacional de la Industria Editorial Mexicana (CANIEM) demande à Claudia Sheinbaum une réunion et avance cinq mesures : prix unique réellement appliqué, dialogue direct avec la profession, TVA à taux zéro pour libraires et distributeurs, reprise des acquisitions en bibl…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134213/insolite/il-avait-emmure-sa-bibliotheque-en-syrie-15-ans-plus-tard-il-exhume-les-livres",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il avait emmuré sa bibliothèque en Syrie : 15 ans plus tard, il exhume les livres",
+      "publishedAt": "2026-09-26T13:00:00.000Z",
+      "description": "En Syrie, une bibliothèque a passé quinze ans derrière un mur. À Homs, Mustafa Khaled Alwan, 72 ans, a retrouvé plusieurs centaines d’ouvrages qu’il avait fait dissimuler fin 2011, au moment où la répression du soulèvement s’intensifiait. Derrière la maçonnerie, plus de 90 % de la collection avait résisté, selon son témoignage recueilli par l’AFP. Une cache de papier qui raconte aussi ce que poss…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134215/economie/cet-editeur-seduit-l-autoedition-en-offrant-50-des-revenus",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cet éditeur séduit l’autoédition en offrant 50 % des revenus",
+      "publishedAt": "2026-09-26T12:13:00.000Z",
+      "description": "À peine deux mois après son lancement, Simon Stream commence à remplir ses rayons. La structure numérique de Simon & Schuster UK and International accueille Allie Moffatt et Joy Wood aux côtés de Jack Gatland, déjà annoncé en juillet. Le profil des recrues éclaire la stratégie : des écrivains rompus à l’édition indépendante, des genres très lus en ligne et, pour les convaincre de changer d’échell…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134208/chroniques/perez-reverte-fukuyama-cinq-livres-pour-regarder-notre-epoque",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pérez-Reverte, Fukuyama : cinq livres pour regarder notre époque",
+      "publishedAt": "2026-09-26T11:23:16.000Z",
+      "description": "La Booksletter revient cette semaine avec cinq lectures pour regarder le monde autrement : les souvenirs de guerre d’Arturo Pérez-Reverte, l’érosion de la lecture à l’ère du smartphone, le retour de Francis Fukuyama sur « la fin de l’Histoire », les habitants précaires de la baie de San Francisco et le gothique écologique de Giovanna Rivero. Cinq livres, cinq manières de déplacer le regard sur no…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134203/enquetes/journee-de-l-acces-a-l-information-5-livres-qu-on-n-aurait-jamais-du-ouvrir",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Journée de l'accès à l'information : 5 livres qu’on n'aurait jamais dû ouvrir",
+      "publishedAt": "2026-09-26T07:30:00.000Z",
+      "description": "Le 28 septembre célèbre la Journée internationale de l’accès universel à l’information. Excellente initiative. À un détail près : depuis des siècles, la littérature s’échine à démontrer que certains renseignements se porteraient beaucoup mieux sous clé. Lettres compromettantes, manuscrits impossibles, confessions judiciaires, dossiers de surveillance : cinq lectures où ouvrir le mauvais document …",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134162/enquetes/demarchage-telephonique-sept-livres-ou-un-appel-a-tout-fait-basculer",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Démarchage téléphonique : sept livres où un appel a tout fait basculer",
+      "publishedAt": "2026-09-26T06:00:00.000Z",
+      "description": "Le téléphone avait été inventé pour permettre à deux personnes éloignées de se parler. Puis quelqu’un a compris qu’il pouvait également servir à vendre des fenêtres, proposer une mutuelle, annoncer un décès ou rappeler à quelqu’un que son passé savait toujours composer son numéro.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134110/librairie/romance-la-librairie-lilloise-aya-books-s-exporte-a-marseille",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Romance : la librairie lilloise Aya Books s'exporte à Marseille",
+      "publishedAt": "2026-09-25T16:30:00.000Z",
+      "description": "Exclusif - Inaugurée en juin 2025, la librairie lilloise Aya Books, spécialisée dans la romance, de la dark romance à la romantasy, déclinera son enseigne à Marseille d'ici la fin de l'année. La boutique reprendra le modèle librairie-salon de thé, mais sur une surface bien plus importante qu'à Lille.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134204/prix-litteraires/thelyson-orelien-perd-un-nouveau-prix-amandine-agic-lucky-loser",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Thélyson Orélien perd un nouveau prix, Amandine Agić “lucky loser”",
+      "publishedAt": "2026-09-25T15:24:00.000Z",
+      "description": "Nouvelle conséquence de l’affaire Thélyson Orélien : le jury des nouveaux Prix Strasbourg a décidé, ce 25 septembre, de lui retirer le Prix Strasbourg Espoir CIC, attribué un mois plus tôt à C’était ça ou mourir (Grasset). La récompense, assortie de 5000 €, revient finalement à Amandine Agić, arrivée deuxième lors du vote initial.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134188/economie/trois-polars-rares-de-sergio-toppi-reunis-dans-une-edition-limitee",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Trois polars rares de Sergio Toppi réunis dans une édition limitée",
+      "publishedAt": "2026-09-25T13:01:42.000Z",
+      "description": "L'éternel retour est le troisième et dernier titre de la trilogie policière dessinée par le maître Sergio Toppi, après Traces de sang et Sans respiration. Les tirages sont limités et ne seront pas réédités. Un coffret a été réalisé à cette occasion et regroupe les 3 polars, accompagné d'un ex-libris collector. Projet porté par Salvatore Biddau.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134179/bande-annonce/devenir-un-monstre-le-livre-de-jean-barbe-devient-un-film",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Devenir un monstre : le livre de Jean Barbe devient un film",
+      "publishedAt": "2026-09-25T11:30:00.000Z",
+      "description": "Paru en France chez Babel en 2007, Comment devenir un monstre, de Jean Barbe, connaitra une nouvelle vie sur les écrans de cinéma, 20 ans plus tard. De premières images de cette production québécoise ont été diffusées.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134182/international/conseil-de-l-ue-xenia-fedorova-sanctionnee-un-editeur-russe-blanchi",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Conseil de l'UE : Xenia Fedorova sanctionnée, un éditeur russe blanchi",
+      "publishedAt": "2026-09-25T08:55:49.000Z",
+      "description": "Deux personnalités ont été visées par des décisions de l'Union européenne, dans un contexte similaire : celui de l'agression de l'Ukraine par la Russie. Le Conseil de l'Union européenne a ainsi gelé les avoirs de l'autrice et chroniqueuse pro-russe Xenia Fedorova, tandis que la Cour de justice de l'Union européenne annulait une de ses décisions précédentes, relative à un éditeur russe, Oleg Polik…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134106/insolite/les-deux-magots-ont-tout-vu-ce-que-racontent-les-quatre-livres-finalistes",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les Deux Magots ont tout vu : ce que racontent les quatre livres finalistes",
+      "publishedAt": "2026-09-25T07:19:49.000Z",
+      "description": "Depuis 1884, elles sont là, perchées sur leur pilier, au-dessus du ballet des serveurs et des conversations de Saint-Germain-des-Prés. Les deux statues auxquelles l’établissement doit son nom n’ont évidemment jamais soufflé mot sur un prix littéraire. Alors que se tenait la réunion des jurés définissant la sélection des quatre finalistes de l’édition 2026, les deux gardiens de ce temple ont obser…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134171/auteurs/apres-thelyson-orelien-faudra-t-il-prouver-qu-on-a-ecrit-son-livre",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Après Thélyson Orélien, faudra-t-il prouver qu’on a écrit son livre ?",
+      "publishedAt": "2026-09-25T06:30:00.000Z",
+      "description": "Personne ne prouvera qu’une machine a écrit le roman de Thélyson Orélien, ni l’inverse. Que garantit alors le nom d’un écrivain sur une couverture ?",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134080/avant-parutions/le-voyage-de-robert-louis-stevenson-dans-les-cevennes-s-offre-une-nouvelle-edition-illustree",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le voyage de Robert Louis Stevenson dans les Cévennes s’offre une nouvelle édition illustrée",
+      "publishedAt": "2026-09-25T06:00:00.000Z",
+      "description": "Voyage avec un âne dans les Cévennes, de Robert Louis Stevenson, illustré par Guillaume Guilpart, préfacé par Clara Arnaud et traduit par Léon Bocquet, paraîtra le 15 octobre 2026 aux éditions Marchialy. Cette nouvelle édition illustrée revient sur le périple de douze jours entrepris par l’écrivain écossais dans les Cévennes en 1878, accompagné de l’ânesse Modestine.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134172/economie/livre-au-quebec-derriere-la-croissance-les-librairies-se-fracturent",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Livre au Québec : derrière la croissance, les librairies se fracturent",
+      "publishedAt": "2026-09-24T14:31:55.000Z",
+      "description": "Au Québec, le marché du livre poursuit sa progression, mais toutes les librairies n’en profitent manifestement pas de la même manière. Les données complètes publiées ce 24 septembre par l’Institut de la statistique du Québec révèlent un écart saisissant : les ventes des librairies agréées reculent de 2,9 % en 2025, tandis que celles des non agréées bondissent de 10 %. Derrière un marché revenu à …",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134158/bande-annonce/kill-jackie-une-mini-serie-tiree-d-un-livre-d-aidan-truhen",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kill Jackie, une mini-série tirée d'un livre d'Aidan Truhen",
+      "publishedAt": "2026-09-24T11:15:00.000Z",
+      "description": "Annoncée sur HBO Max pour le 8 octobre prochain, la mini-série Kill Jackie, menée par Catherine Zeta-Jones, promet une impitoyable cavale pour échapper à des assassins retors. La production s'inspire d'un roman d'Aidan Truhen, pseudonyme de l'écrivain britannique Nick Harkaway.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134160/technologie/openai-savait-que-pirater-les-livres-de-libgen-etait-foutrement-louche",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "OpenAI savait que pirater les livres de LibGen était “foutrement louche”",
+      "publishedAt": "2026-09-24T10:32:26.000Z",
+      "description": "Des ouvrages piratés pour entraîner des intelligences artificielles : le soupçon pesait depuis longtemps sur OpenAI. Des pièces judiciaires désormais publiques apportent cependant un éclairage nouveau. En interne, plusieurs salariés s’interrogeaient ouvertement sur LibGen, sur la manière d’en présenter la provenance et sur ce qu’aurait coûté l’acquisition licite de grandes quantités de livres.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134137/edition/dangles-fete-ses-100-ans-l-incroyable-parcours-d-une-maison-d-edition-nee-dans-une-librairie",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dangles fête ses 100 ans : l’incroyable parcours d’une maison d'édition née dans une librairie",
+      "publishedAt": "2026-09-24T09:56:08.000Z",
+      "description": "Fondées en 1926 dans l’arrière-boutique d’une librairie parisienne, les Éditions Dangles célèbrent leur centenaire. Spécialisée de longue date dans la santé naturelle et le mieux-être, la maison a connu une croissance spectaculaire à partir des années 1970, avant plusieurs changements de direction. Désormais adossée au Groupe Éditorial Piktos, elle aborde son deuxième siècle en renouvelant auteur…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134154/prix-litteraires/3e-edition-du-prix-litteraire-du-nouvel-obs-le-jury-est-pret",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "3e édition du Prix littéraire du Nouvel Obs : le jury est prêt",
+      "publishedAt": "2026-09-24T07:01:10.000Z",
+      "description": "La troisième édition du Prix littéraire du Nouvel Obs se profile, toujours soutenue par la Maison Chanel, ce qui permet de doter la récompense à hauteur de 20.000 €. Il saluera à nouveau une écrivaine pour un premier livre écrit en français, publié entre août 2026 et février 2027, afin d'accompagner la lauréate dans la conception de son deuxième roman.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134139/inclassables/edition-medias-culture-comment-recruter-a-distance-sans-perdre-le-lien",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Édition, médias, culture : comment recruter à distance sans perdre le lien ?",
+      "publishedAt": "2026-09-24T05:50:58.000Z",
+      "description": "Correcteurs, graphistes, développeurs, chargés de communication, responsables marketing, journalistes, spécialistes du numérique : dans les métiers du livre et des contenus, les équipes ne travaillent plus nécessairement sous le même toit.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134150/humeurs/l-horreur-est-le-meilleur-genre-de-l-histoire-de-la-fiction",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“L’horreur est le meilleur genre de l’histoire de la fiction”",
+      "publishedAt": "2026-09-23T15:36:00.000Z",
+      "description": "Cyril Camus publiera Grand-Guignol aux éditions Anacharsis, ce 16 octobre. L'écrivain revendique une passion pour l’horreur née dans les livres, nourrie par le cinéma. De Guillermo del Toro à Stephen King, l’écrivain revient sur les monstres qui ont façonné son imaginaire et défend une conviction paradoxale : l’épouvante peut nous rassurer. Les démons de fiction ont sur les terreurs du réel un av…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134134/librairie/charte-de-pluralite-chez-relay-lagardere-promet-une-regle-identique-a-tous-les-editeurs",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Charte de pluralité chez Relay : Lagardère promet “une règle identique à tous les éditeurs”",
+      "publishedAt": "2026-09-23T12:52:58.000Z",
+      "description": "L'enseigne Relay s'est dotée, depuis cet été, d'une « charte de pluralité et de non-discrimination » qui vise à préciser les règles et pratiques « en matière de référencement et de mise en avant des produits d’édition », mais aussi à désamorcer des critiques récurrentes sur l'offre de ces boutiques, propriétés de Louis Hachette Group. Le document reste toutefois confidentiel et réservé aux concéd…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134132/economie/un-editeur-bresilien-majeur-decide-de-retirer-ses-ouvrages-d-amazon",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un éditeur brésilien majeur décide de retirer ses ouvrages d'Amazon",
+      "publishedAt": "2026-09-23T09:34:10.000Z",
+      "description": "Au Brésil, la bataille des rabais vient de passer du discours aux bons de commande. WMF Martins Fontes cessera, dans les prochains mois, de fournir Amazon, une décision annoncée le 2 septembre par Alexandre Martins Fontes, éditeur, libraire et président de l’Associação Nacional de Livrarias (ANL). Dans un entretien publié le 18 septembre par Folha de S.Paulo, il détaille aussi son retrait des foi…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134133/economie/etats-unis-les-revenus-de-l-edition-bondissent-de-14",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "États-Unis : les revenus de l’édition bondissent de 14 %",
+      "publishedAt": "2026-09-23T09:31:24.000Z",
+      "description": "Les revenus nets déclarés par les éditeurs participant au StatShot de l’Association of American Publishers (AAP) ont atteint 1 milliard $ en juillet 2026, soit une hausse de 14 % sur un an. Les livres grand public tirent la progression, portés par le broché et l’audio numérique, tandis que l’ebook recule. Depuis janvier, les recettes cumulées atteignent 6,7 milliards $, en hausse de 5,4 %. Un moi…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134129/edition/une-nouvelle-grille-de-salaires-etendue-a-l-ensemble-de-l-edition",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Une nouvelle grille de salaires étendue à l'ensemble de l'édition",
+      "publishedAt": "2026-09-23T08:50:50.000Z",
+      "description": "Relatif aux minima conventionnels, le 18e avenant à la convention collective de la branche de l'édition de livres a été étendu à tous les employeurs et tous les salariés, par un arrêté du 7 septembre. La grille de salaires prend désormais en compte deux augmentations du SMIC, survenues en janvier et juin derniers.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134219/michroniques/la-neige-de-l-amiral-alvaro-mutis-alvaro-mutis-9791038704459",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Neige de l'Amiral",
+      "publishedAt": "2026-09-26T15:00:00.000Z",
+      "description": "...",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134218/chroniques/jean-clavreul-quand-la-medecine-soigne-la-maladie-mais-oublie-le-sujet",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jean Clavreul : quand la médecine soigne la maladie, mais oublie le sujet",
+      "publishedAt": "2026-09-26T15:00:00.000Z",
+      "description": "Publié en 1978 aux Éditions du Seuil, dans la collection « Le Champ freudien », L’Ordre médical de Jean Clavreul interroge la médecine comme discours, ses rapports au savoir, au désir, à la maladie et à la relation entre médecin et patient. Près d’un demi-siècle après sa parution, l’ouvrage continue d’alimenter la réflexion sur les liens entre pratique médicale et psychanalyse. Le psychanalyste J…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134212/economie/ecosse-200-pour-les-jeunes-de-18-ans-les-libraires-veulent-leur-part",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Écosse : 200 £ pour les jeunes de 18 ans, les libraires veulent leur part",
+      "publishedAt": "2026-09-26T12:30:00.000Z",
+      "description": "Le cadeau d'anniversaire avait d'abord tout d'une promesse électorale, bien connue : 200 £ à dépenser dans la culture pour chaque Écossais atteignant 18 ans. Réélu au printemps, le SNP de John Swinney a désormais inscrit le Youth Culture Pass dans son programme de gouvernement pour 2026-2031. Reste un détail qui n'en est pas tout à fait un : si les librairies figuraient bien parmi les bénéficiair…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134214/humeurs/thelyson-orelien-pourquoi-tant-d-acharnement-sur-un-ecrivain",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Thélyson Orélien : “Pourquoi tant d’acharnement sur un écrivain ?”",
+      "publishedAt": "2026-09-26T12:00:00.000Z",
+      "description": "L’affaire Thélyson Orélien s’est imposée en quelques jours au cœur de la rentrée littéraire. Soupçonné d’avoir eu recours à l’intelligence artificielle pour écrire C’était ça ou mourir, puis rattrapé par plusieurs cas de plagiat concernant des textes anciens, l’auteur québécois conteste les accusations visant son roman. Le retrait du livre de la sélection du Goncourt a encore amplifié une controv…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134211/bibliotheque/russie-jusqu-a-70-des-fonds-municipaux-pourraient-sortir-de-l-acces-general",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Russie : jusqu’à 70 % des fonds municipaux pourraient sortir de l’accès général",
+      "publishedAt": "2026-09-26T12:00:00.000Z",
+      "description": "Le chiffre vient du ministère russe du Numérique : si une pratique récente de contrôle était généralisée, les bibliothèques municipales pourraient devoir soustraire 50 à 70 % de leurs collections à l’accès général. En cause, des livres édités avec le soutien d’organisations devenues depuis « indésirables ». Moscou cherche désormais comment éviter qu’un statut attribué des années plus tard ne ratt…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134210/bibliophilie/200-ans-qu-on-cherchait-cette-traduction-elle-etait-dans-la-bibliotheque-de-goethe",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "200 ans qu'on cherchait cette traduction : elle était dans la bibliothèque de Goethe",
+      "publishedAt": "2026-09-26T11:37:41.000Z",
+      "description": "Il arrive que les bibliothèques cachent des trésors. Et puis il arrive qu’elles les cataloguent soigneusement, leur attribuent une cote, les conservent pendant des décennies \u2014 tout en ignorant précisément ce qu’elles ont sous les yeux. À Weimar, une version italienne d’Iphigénie en Tauride de Goethe, considérée comme perdue depuis près de deux siècles, vient ainsi d’être identifiée. Le détail qui…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134209/international/les-archeologues-trouvent-la-classe-ou-aristote-enseigna-a-alexandre",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les archéologues trouvent la “classe” où Aristote enseigna à Alexandre",
+      "publishedAt": "2026-09-26T11:31:00.000Z",
+      "description": "Il y avait les textes. Restait à retrouver les murs. À Miéza, dans le nord de la Grèce, les fouilles d’un vaste gymnase royal du IVe siècle avant notre ère révèlent espaces d’étude, bancs de pierre, stylets et mosaïques. Pour le ministère grec de la Culture, ces découvertes renforcent une hypothèse assez vertigineuse : Aristote aurait enseigné ici au jeune Alexandre le Grand et à d’autres fils de…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134198/deraisons/on-n-emmerde-pas-biquette-meme-quand-les-elements-s-y-mettent",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“On n’emmerde pas Biquette. Même quand les éléments s’y mettent”",
+      "publishedAt": "2026-09-26T07:00:00.000Z",
+      "description": "À 18 mois, ma fille maîtrise déjà parfaitement deux notions : le refus et la répétition. « Non » constitue l’essentiel de son programme politique, tandis que « encore » en assure le financement. Il était donc fatal qu’elle rencontre Biquette, animal dont toute l’existence consiste précisément à ne pas faire ce qu’on lui demande. Et ce, dans un environnement où chacun répète la même chose jusqu’à …",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134140/avant-parutions/les-glaces-quand-le-passe-refait-surface",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les glaces : quand le passé refait surface",
+      "publishedAt": "2026-09-26T05:30:00.000Z",
+      "description": "Avec Les glaces, Rébecca Déraspe et Yoakim Bélanger racontent le retour brutal d’un traumatisme enfoui. Lorsqu’une mère apprend que son fils est accusé d’agression sexuelle, elle se retrouve contrainte de regarder en face une violence qu’elle pensait avoir laissée derrière elle.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134145/avant-parutions/un-pilleur-de-tombes-seme-le-chaos-au-cimetiere-montparnasse",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un pilleur de tombes sème le chaos au cimetière Montparnasse",
+      "publishedAt": "2026-09-26T05:00:00.000Z",
+      "description": "Avec Le collectionneur du cimetière Montparnasse, Ernestine Garnier transforme l’un des lieux de mémoire les plus célèbres de Paris en scène de mystère. Lorsqu’un pilleur de tombes s’en prend aux sépultures de personnalités disparues, les morts eux-mêmes décident de réagir.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134033/avant-parutions/corinne-luchaire-ses-rayons-et-ses-ombres-le-destin-brise-d-une-jeune-actrice",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Corinne Luchaire, ses rayons et ses ombres : le destin brisé d’une jeune actrice",
+      "publishedAt": "2026-09-26T04:00:00.000Z",
+      "description": "Dans Corinne Luchaire, ses rayons et ses ombres, Cédric Meletta revient sur le parcours fulgurant d’une actrice devenue une figure oubliée du cinéma français. Fille de Jean Luchaire, jeune vedette déchue, Corinne Luchaire meurt de la tuberculose avant ses 30 ans. L’auteur entend revisiter son histoire en revenant sur les zones restées dans l’ombre de son destin.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134205/adaptation/quelles-sont-les-meilleures-series-du-xxie-siecle-une-francaise-dans-le-top-100",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quelles sont les meilleures séries du XXIe siècle ? Une française dans le top 100",
+      "publishedAt": "2026-09-25T16:18:00.000Z",
+      "description": "Le New York Times vient de dévoiler son classement des 100 meilleures séries télévisées du XXIe siècle. Breaking Bad prend la première place, devant The Wire et Mad Men, mais pour les lecteurs, un autre classement se dessine derrière celui-ci : au moins treize des séries retenues sont directement issues d’un roman, d’un cycle littéraire ou d’un ouvrage de non-fiction. La mieux placée est...",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134202/librairie/a-la-rochelle-la-premiere-librairie-francaise-specialisee-dans-la-romance-anglophone",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "À La Rochelle, “la première librairie française spécialisée dans la romance anglophone”",
+      "publishedAt": "2026-09-25T15:30:00.000Z",
+      "description": "Une librairie-café presque entièrement consacrée à la romance en langue anglaise doit ouvrir ses portes à La Rochelle cet automne. Derrière Books’ Apothecary, Angela Ieffi et Floriane, amies et anciennes collègues, préparent un lieu mêlant livres, café, rencontres et clubs de lecture.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134192/economie/le-prix-del-duca-pour-la-jeunesse-et-50-000-eur-pour-l-association-dulala",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Prix Del Duca pour la jeunesse et 50 000 € pour l'association Dulala",
+      "publishedAt": "2026-09-25T13:34:00.000Z",
+      "description": "Le Prix Del Duca pour la jeunesse, attribué chaque année afin de soutenir des initiatives porteuses de valeurs de transmission et de solidarité, a été décerné à l'association Dulala pour son projet de concours Kamishibaï plurilingue. Il s'accompagne d'une dotation de 50.000 €.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134187/avant-critiques/alaska-cancel-culture-congelation-chamanique-et-velo-d-appartement",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alaska : cancel culture, congélation chamanique et vélo d’appartement",
+      "publishedAt": "2026-09-25T13:01:28.000Z",
+      "description": "« Quand je suis entré dans le garage, j’ai eu la vision d’un vélo d’appartement flambant neuf qui allait bientôt trôner là et s’ajouter à l'amoncellement d'objets inutiles. Un vélo qu’il faudrait dépoussiérer plusieurs fois par an en gage d’utilisation aussi rassurant que mensonger [...] ». Émilien Borie, quinquagénaire, auteur. La vie n’est pas évidente pour lui, en ce moment. Sa femme l’a quitt…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134189/television/edouard-philippe-en-conversation-avec-olivier-norek-sur-lcp",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Édouard Philippe en conversation avec Olivier Norek, sur LCP",
+      "publishedAt": "2026-09-25T13:01:00.000Z",
+      "description": "Le premier rendez-vous d'une nouvelle émission de LCP, Conversation française [auparavant nommée La République des Lettres, NdR], sera disponible dès ce vendredi 25 septembre sur YouTube. Le candidat à la présidentielle Édouard Philippe (Horizons) y dialoguera avec l'écrivain Olivier Norek. Des diffusions sur la TNT sont prévues la semaine prochaine.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134195/avant-critiques/michel-winock-les-ecrivains-au-coeur-du-debat-public",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Michel Winock : les écrivains au cœur du débat public",
+      "publishedAt": "2026-09-25T12:56:00.000Z",
+      "description": "Réunis sous un même titre, trois ouvrages de Michel Winock, publiés séparément entre 1997 et 2017, retrouvent leur cohérence d’ensemble. Les écrivains dans la mêlée. De la Révolution française aux années Sartre n’est pas une simple somme : c’est une fresque qui redonne son ampleur à des interrogations poursuivies de longue date par l’historien. Que peuvent les écrivains dans la cité ? Et que devi…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134194/prix-litteraires/le-prix-goncourt-exclut-le-roman-de-thelyson-orelien",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le prix Goncourt exclut le roman de Thélyson Orélien",
+      "publishedAt": "2026-09-25T11:11:00.000Z",
+      "description": "La polémique autour de Thélyson Orélien franchit un nouveau cap : l’Académie Goncourt a retiré C’était ça ou mourir de sa première sélection 2026, invoquant les plagiats révélés dans des textes plus anciens de l’auteur et des analyses qu’elle juge convergentes, selon lesquelles le roman serait « très largement le produit d’une Intelligence Artificielle ». Au Québec, les conséquences se multiplien…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134186/chroniques/l-homme-d-en-dessous-dans-les-entrailles-d-une-conscience-en-ruine",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’homme d’en dessous : Dans les entrailles d’une conscience en \"ruine\"",
+      "publishedAt": "2026-09-25T10:22:00.000Z",
+      "description": "Paul Leroux a tué ses voisins. De sa cellule, il entreprend de raconter comment il en est arrivé là. Mais très vite, le récit déborde. Les souvenirs se contaminent, les visages se brouillent, les certitudes s'effondrent.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134181/chroniques/cette-bd-transforme-une-maison-hantee-en-machine-de-guerre-punk",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cette BD transforme une maison hantée en machine de guerre punk",
+      "publishedAt": "2026-09-25T10:17:00.000Z",
+      "description": "Il faut une poignée de pages à Home Sick Pilots pour faire comprendre qu’il n’a aucune intention de rester sagement dans sa case. Californie, été 1994 : Ami, Buzz et Rip forment un groupe punk lycéen, bricolé avec de la colère, quelques amplis et cette certitude adolescente que le monde entier joue faux. Puis Ami entre dans une demeure abandonnée. Et celle-ci, manifestement, n’a pas davantage env…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134184/meilleures-ventes/sarah-knafo-tient-elle-la-recette-secrete-d-un-casse-du-siecle",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sarah Knafo tient-elle la recette secrète d’un Casse du siècle ?",
+      "publishedAt": "2026-09-25T09:47:30.000Z",
+      "description": "Troisième semaine en tête pour Sarah Knafo, qui cumule près de 160.000 ventes en seulement trois semaines avec Le Casse du siècle (Fayard). Une légère baisse est tout de même à relever : 43.038 exemplaires écoulés, contre 55.929 la semaine précédente. Un score qui lui permet de prendre le large sans trop de crainte.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134180/revue-du-web/ia-exils-et-thelyson-orelien-une-semaine-litteraire-sous-tension",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "IA, exils et Thélyson Orélien : une semaine littéraire sous tension",
+      "publishedAt": "2026-09-25T09:07:00.000Z",
+      "description": "Entre le 18 et le 24 septembre 2026, la revue du web littéraire s’appuie sur 243 contributions recensées par Bibliosurf : 201 avis, 14 podcasts et 28 vidéos. Romans de rentrée, controverses, exils, mémoire, violences et récits noirs composent une semaine où Thélyson Orélien domine très largement les discussions, devant Chuck Wendig, Philippe Jaenada, Franck Thilliez et Abdellah Taïa, au fil d’une…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134114/avant-parutions/fille-des-corbeaux-la-vengeance-est-un-plat-qui-se-mange-froid",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fille des corbeaux : La vengeance est un plat qui se mange froid...",
+      "publishedAt": "2026-09-25T05:00:00.000Z",
+      "description": "Avec Fille des corbeaux, Mark Lawrence ouvre une nouvelle saga de Fantasy sombre, entre mythologie, vengeance et survie. Au cœur du récit, des jeunes filles sont formées pour devenir des « émissaires de vengeance », avant de découvrir le prix à payer pour rendre justice. Roman traduit de l’anglais par Claire Kreutzberge.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134112/avant-parutions/sarah-marquis-les-lecons-d-une-exploratrice-aventuriere",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sarah Marquis : les leçons d’une exploratrice-aventurière",
+      "publishedAt": "2026-09-25T04:00:00.000Z",
+      "description": "Dans L’art de boire le thé avec les crocodiles, Sarah Marquis transforme ses expéditions aux confins du monde en un guide consacré à la connaissance de soi. Face à la faim, à la peur et à l’épuisement, l’exploratrice raconte comment la nature sauvage lui a appris à dépasser ses limites et à faire confiance à son instinct.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134178/expos/le-musee-du-chat-de-philippe-geluck-renait-a-bruxelles",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le musée du Chat de Philippe Geluck renaît à Bruxelles",
+      "publishedAt": "2026-09-24T16:01:00.000Z",
+      "description": "Après avoir abandonné un projet devenu trop coûteux, Philippe Geluck a trouvé une nouvelle maison pour son Chat. Le Musée du Chat et de l’Art rigolo doit ouvrir début 2028 à Ixelles, dans l’ancienne manufacture de porcelaine Demeuldre-Coché. Plus petit que le projet initial et entièrement financé par des fonds privés, le nouvel établissement marque un changement complet de modèle.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134176/auteurs/marvel-en-deuil-le-dessinateur-joshua-cassara-est-mort-a-46-ans",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Marvel en deuil : le dessinateur Joshua Cassara est mort à 46 ans",
+      "publishedAt": "2026-09-24T15:47:00.000Z",
+      "description": "Joshua Cassara, dessinateur américain notamment connu pour son travail sur X-Force, X-Men et Deadpool/Wolverine chez Marvel, est mort le 22 septembre 2026 à l’âge de 46 ans. Son épouse, Martha Cassara, a annoncé son décès le lendemain sur les réseaux sociaux, évoquant des complications cardiaques.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134175/chroniques/enfin-oser-raconter-notre-histoire-a-voix-haute",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Enfin oser raconter notre histoire À voix haute",
+      "publishedAt": "2026-09-24T15:35:25.000Z",
+      "description": "Elle a grandi en France, mais ses racines sont en Russie. À vingt ans, elle prend une décision : elle sera actrice, coûte que coûte. Elle cherche donc à intégrer l'École du Théâtre National de Moscou, établissement prestigieux et exigeant qui devrait lui permettre de réaliser son rêve. En parallèle, la Russie est secouée par la réélection d’un certain Vladimir Poutine, qui mène à de nombreuses ma…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134168/avant-critiques/on-est-cernes-par-les-cons-jean-gabin-loin-du-mythe",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“On est cernés par les cons” : Jean Gabin, loin du mythe",
+      "publishedAt": "2026-09-24T15:20:00.000Z",
+      "description": "Il y avait Jean Gabin. Et puis Jean Moncorgé. Le premier appartient aux affiches, aux répliques passées dans la langue et au patrimoine national. Le second se levait pour aller voir ses chevaux, surveillait les récoltes, pestait contre les imbéciles et tenait sa famille à portée de regard. C’est précisément là que Mathias Moncorgé et Patrick Glâtre vont chercher leur homme. Pas dans le monument :…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134173/politique-publique/ia-la-cour-des-comptes-presse-la-culture-de-passer-a-l-acte",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "IA : la Cour des comptes presse la Culture de passer à l’acte",
+      "publishedAt": "2026-09-24T14:41:40.000Z",
+      "description": "Des chartes, des groupes de travail, 62 actions et désormais un directeur de projet : le ministère de la Culture ne découvre plus l’intelligence artificielle. Mais la Cour des comptes lui demande maintenant de transformer l’essai. Dans le livre, elle relève qu’au moment de son contrôle, le CNL n’avait ni budget spécifique ni personnel affecté à l’IA, quand la BnF avait déjà engagé plusieurs milli…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134164/edito/violences-sexistes-et-sexuelles-50-ans-pour-passer-de-l-intime-a-la-loi",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Violences sexistes et sexuelles : 50 ans pour passer de l'intime à la loi",
+      "publishedAt": "2026-09-24T14:10:27.000Z",
+      "description": "Après des décennies de mobilisations, de recherches et de récits, les violences sexistes et sexuelles ne sont plus seulement appréhendées comme une succession de drames privés. Elles constituent un objet politique, juridique et culturel. La proposition de « loi intégrale » actuellement examinée à l’Assemblée nationale en offre une nouvelle traduction \u2014 et invite à regarder l’histoire des mots qui…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134059/rencontres-dedicaces/imaginaire-cancer-du-sein-en-octobre-contester-ce-qui-serait-ecrit-d-avance",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Imaginaire, cancer du sein : en octobre, contester ce qui serait écrit d’avance",
+      "publishedAt": "2026-09-24T14:08:53.000Z",
+      "description": "Chaque automne, deux rendez-vous que tout semble séparer occupent le même mois. Octobre Rose rappelle la réalité intime, médicale et sociale du cancer du sein. Le Mois de l’Imaginaire célèbre des littératures qui déplacent les frontières du réel. Leur rencontre repose pourtant sur un même geste : ne pas se résoudre, ne pas se résigner.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134115/interviews/pour-encadrer-l-ia-la-france-insoumise-convoque-isaac-asimov",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pour encadrer l'IA, La France insoumise convoque Isaac Asimov",
+      "publishedAt": "2026-09-24T13:58:00.000Z",
+      "description": "Exclusif \u2014 Une figure de la science-fiction s'invite à l'Assemblée nationale, à la faveur d'une proposition de loi déposée par René Pilato, député La France insoumise \u2014 Nouveau Front Populaire de Charente. Les fameuses « lois de la robotique », conçues par l'écrivain américain, y sont citées, afin de motiver et nourrir un encadrement des intelligences artificielles mises à la disposition du grand…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134167/economie/edition-juridique-le-groupe-allemand-c-h-beck-veut-s-offrir-lextenso",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Édition juridique : le groupe allemand C.H.Beck veut s'offrir Lextenso",
+      "publishedAt": "2026-09-24T13:55:23.000Z",
+      "description": "Lextenso, acteur français de l'édition et de l'information juridique, doit être acquis par le groupe allemand C.H.Beck. L'opération, annoncée le 24 septembre, devrait être finalisée d'ici la fin de l'année.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134159/prix-litteraires/mathieu-persan-laureat-du-prix-roman-graphique-news",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mathieu Persan, lauréat du Prix Roman Graphique News",
+      "publishedAt": "2026-09-24T12:21:00.000Z",
+      "description": "La semaine passée, le jury des Prix Roman News et Roman Graphique News Publicisdrugstore Les Échos WE n'a pas seulement distingué Thélyson Orélien pour son roman C'était ça ou mourir (Grasset). Mathieu Persan reçoit ainsi une récompense pour sa BD Le Passage (Hachette Pratique), tandis qu'une mention spéciale a été décernée...",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134143/enquetes/thelyson-orelien-a-t-il-oublie-un-prompt-chatgpt-sur-son-site-internet",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Thélyson Orélien a-t-il oublié un prompt ChatGPT sur son site internet ?",
+      "publishedAt": "2026-09-24T11:34:00.000Z",
+      "description": "ActuaLitté a retrouvé, dans un article publié en 2023 sur un site alors animé par Thélyson Orélien, une phrase qui ressemble à une consigne de rédaction laissée par erreur. Un indice concret, distinct des détecteurs d’IA, qui vient désormais s’ajouter à une série d’éléments exhumés ces derniers jours par plusieurs médias et internautes autour des textes de l’auteur. Au-delà de son cas, l’affaire …",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134157/avant-critiques/l-echelle-de-judith-la-nuit-tient-encore-mais-quelqu-un-veille",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L'échelle de Judith : la nuit tient encore, mais quelqu’un veille",
+      "publishedAt": "2026-09-24T10:26:00.000Z",
+      "description": "Une route droite, le chauffage, du jazz en sourdine. Rien qui menace, sinon cette phrase, tombée avant le choc : « Même si je l’ignore, je vais bientôt mourir. » Galien Sarde ouvre L’échelle de Judith par une conscience qui raconte sa propre extinction. Simon rentre du cinéma, il n’arrivera pas chez lui. Déjà, le récit déborde le présent, sait ce que ses personnages ignorent. Le trajet paraît tra…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134126/inclassables/comment-les-jeux-d-argent-ont-cree-leur-propre-genre-litteraire",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Comment les jeux d'argent ont créé leur propre genre littéraire ?",
+      "publishedAt": "2026-09-24T10:04:26.000Z",
+      "description": "Du roman du dix-neuvième siècle aux mémoires de parieurs professionnels et aux manuels de stratégie, les jeux d'argent ont généré un corpus écrit qui éclaire la façon dont on parie aujourd'hui",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134156/humeurs/l-ia-est-arrivee-et-le-mot-aide-s-est-completement-decousu",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“L’IA est arrivée, et le mot “aide” s’est complètement décousu”",
+      "publishedAt": "2026-09-24T09:53:52.000Z",
+      "description": "Entre correction, réécriture et création, où commence véritablement « l’aide » à un auteur ? Écrivain, poète et correcteur, Adnan Algın plonge dans ses propres archives éditoriales pour interroger les interdictions visant l’intelligence artificielle. De ses interventions sur des romans aux cas célèbres de Raymond Carver ou T. S. Eliot, il questionne une frontière que l’IA n’a peut-être pas invent…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134161/economie/la-revue-presk-ile-le-patrimoine-et-les-histoires-uniques-de-la-presqu-ile-de-rhuys",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La revue Presk’île : le patrimoine et les histoires uniques de la presqu’île de Rhuys",
+      "publishedAt": "2026-09-24T08:59:19.000Z",
+      "description": "La revue Presk’île, c’est notre déclaration d’amour à cette langue de terre de 25 kilomètres de long, nichée entre le calme du golfe du Morbihan et l’impétuosité de l’océan Atlantique. À travers plus de 150 pages de beaux textes et de belles images, nous nous sommes attachés à dresser le portrait de personnalités, d’artisanes, de restaurateurs, d’associations, de productrices et d’entrepreneurs i…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134155/prix-litteraires/prix-bravo-marine-zulu-15-titres-selectionnes-dans-3-categories",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prix Bravo Marine Zulu : 15 titres sélectionnés, dans 3 catégories",
+      "publishedAt": "2026-09-24T07:30:41.000Z",
+      "description": "Le Prix Marine Bravo Zulu célèbre chaque année les œuvres qui traduisent la passion et la culture maritime sous toutes leurs formes : sa sélection réduite, pour la saison 2025-2026, a été établie. Le jury, présidé par le capitaine de frégate Jean-Pascal Dannaud, se réunira début octobre et devrait se prononcer en décembre prochain...",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134111/avant-parutions/demba-les-dernieres-amazones-face-a-l-histoire-coloniale",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Demba : les dernières Amazones face à l’histoire coloniale",
+      "publishedAt": "2026-09-24T06:00:00.000Z",
+      "description": "Avec Demba, Daniel Picouly plonge en 1906, à Marseille, dans les coulisses de la première Exposition coloniale. Rescapée de la guerre contre les troupes françaises, une ancienne Amazone doit affronter l’esclavage, l’exhibition dans les zoos humains et les fantômes d’un passé qui ne cesse de la rattraper.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134109/avant-parutions/la-chute-d-eddie-blanket-une-histoire-de-famille-sur-deux-siecles",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Chute d’Eddie Blanket : Une histoire de famille sur deux siècles",
+      "publishedAt": "2026-09-24T05:00:00.000Z",
+      "description": "Avec La Chute d’Eddie Blanket, Melissa Lucashenko fait dialoguer deux histoires séparées par cinq générations. Entre une vieille femme propulsée malgré elle sous les projecteurs et un ancêtre confronté à l’arrivée des colons, le roman mêle mémoire familiale, colonisation et combats contemporains. Traduit de l’anglais par Mireille Vignol.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134135/avant-critiques/ian-manook-plonge-deux-familles-dans-la-glaise-et-le-feu-de-l-histoire",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ian Manook plonge deux familles dans la glaise et le feu de l’Histoire",
+      "publishedAt": "2026-09-24T04:00:00.000Z",
+      "description": "La terre colle aux doigts, aux bottes, aux souvenirs. Chez Ian Manook, elle colle aussi aux hommes. La Glaise et le Feu part de là : d’une matière pauvre, lourde, ordinaire, que certains savent reconnaître, creuser, vendre et transformer. « Les argiles sont l’usure du monde. La poussière de la terre. » Deux phrases et tout le roman est posé : ce qui s’effrite, ce qui demeure, ce que les génératio…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134108/avant-parutions/a-la-table-des-ecrivaines-30-autrices-et-un-monde-par-la-cuisine",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "À la table des écrivaines : 30 autrices et un monde par la cuisine",
+      "publishedAt": "2026-09-24T04:00:00.000Z",
+      "description": "Avec À la table des écrivaines, les autrices du Parlement des écrivaines francophones mêlent recettes et récits intimes. De la soupe au pistou au tajine aux pruneaux, chaque plat devient le point de départ d’un souvenir, d’un héritage ou d’une rencontre.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134148/prix-litteraires/camille-pascal-recoit-le-premier-prix-histoire-histoires-de-fontainebleau",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Camille Pascal reçoit le premier prix Histoire, histoires de Fontainebleau",
+      "publishedAt": "2026-09-23T15:52:00.000Z",
+      "description": "Pour sa première édition, le prix littéraire « Histoire, histoires » de Fontainebleau a été attribué à Camille Pascal pour Le Bal des foudroyés, paru aux éditions Robert Laffont en août 2026. Le prix est présidé par la romancière et biographe Alexandra Lapierre.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134147/avant-parutions/a-montmartre-l-horreur-sort-de-scene-dans-grand-guignol",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "À Montmartre, l’horreur sort de scène dans “Grand-Guignol”",
+      "publishedAt": "2026-09-23T15:30:00.000Z",
+      "description": "Avec ce roman, Anacharsis continue ses vagabondages dans les recoins de la littérature populaire et de genre, initiés avec les ouvrages d’Alberto Ongaro, notamment, mais on peut également invoquer l’ouvrage lauréat du Trophée 813 Maurice Renault en 2015 : Krimi. Une anthologie du roman policier sous le IIIe Reich, de Vincent Platini.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134149/politique-publique/frederic-desfeuillet-passeur-de-jules-verne-a-amiens-est-mort-a-54-ans",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Frédéric Desfeuillet, passeur de Jules Verne à Amiens, est mort à 54 ans",
+      "publishedAt": "2026-09-23T15:15:00.000Z",
+      "description": "Frédéric Desfeuillet, responsable du développement, de la communication et du mécénat des Musées d'Amiens, est décédé le 21 septembre 2026, à l'âge de 54 ans. Très lié à la Maison de Jules Verne et à la vie culturelle amiénoise, il avait notamment porté la création du parcours Aronnax consacré à l'écrivain.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134146/chroniques/un-chien-un-visage-et-toutes-les-contradictions-humaines",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un chien, un visage, et toutes les contradictions humaines",
+      "publishedAt": "2026-09-23T14:54:41.000Z",
+      "description": "C’est un roman rare : audacieux, incarné, détonnant, aux multiples messages. Il raconte Yoda, un chien errant au visage devenu humain qui regarde autrement ce qui fait notre humanité.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134144/auteurs/rodolphe-scenariste-de-kenya-et-trent-est-mort-a-78-ans",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rodolphe, scénariste de Kenya et Trent, est mort à 78 ans",
+      "publishedAt": "2026-09-23T13:56:00.000Z",
+      "description": "Glénat nous apprend la disparition de Rodolphe, figure majeure du scénario de bande dessinée, décédé le 22 septembre 2026 à l’âge de 78 ans. En un demi-siècle de carrière et plus de 200 albums, il aura multiplié les univers et les collaborations, de Trent à Kenya, en passant par Cliff Burton, Commissaire Raffini ou Robert Sax.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134136/economie/sauvons-la-virevolte-librairie-lyonnaise-en-peril",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sauvons La Virevolte, librairie lyonnaise en péril",
+      "publishedAt": "2026-09-23T12:25:00.000Z",
+      "description": "Librairie généraliste et engagée, La Virevolte (société A.S Librairie) est située au cœur du quartier St Paul à Lyon. Petite devanture bleue au milieu des quelques bars qui mènent à la gare St Paul, la librairie fait à présent partie de la carte postale. À l’intérieur, des libraires acharnés s’activent pour proposer des événements, des clubs lectures ou d’autres projets sortant de l’ordinaire. L’…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134128/bande-annonce/ecrire-la-vie-les-textes-d-annie-ernaux-lus-et-relus-par-la-jeunesse",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Écrire la vie : les textes d'Annie Ernaux lus et relus par la jeunesse",
+      "publishedAt": "2026-09-23T08:25:14.000Z",
+      "description": "Quelques mois après sa diffusion télévisée sur France 5, le documentaire de Claire Simon, Écrire la vie, désormais sous-titré Annie Ernaux racontée par des lycéennes et des lycéens, se retrouve au cinéma. Plusieurs séances sont proposées, à partir de ce 23 septembre.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134131/edition/editis-nomme-valentin-bouvet-directeur-des-operations",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Editis nomme Valentin Bouvet directeur des opérations",
+      "publishedAt": "2026-09-23T08:12:35.000Z",
+      "description": "Valentin Bouvet prend, à compter du 23 septembre 2026, la direction des opérations du groupe d’édition Editis, selon nos informations. Revenu au sein du groupe en mai après avoir dirigé Lelivrescolaire.fr chez Hachette Livre, il supervisera notamment la distribution, la fabrication, les achats industriels ainsi que plusieurs services destinés aux éditeurs. Ces activités sont désormais regroupées …",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134127/television/france-3-diffuse-monsieur-adaptation-de-petite-sale-de-louise-mey",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "France 3 diffuse Monsieur, adaptation de Petite sale, de Louise Mey",
+      "publishedAt": "2026-09-23T07:51:21.000Z",
+      "description": "Dès le jeudi 1er octobre, sur la plateforme france.tv, et le mardi 13 octobre, à 21h10, sur France 3, sera diffusée l'adaptation du roman Petite sale, de Louise Mey. Jean-Pierre Darroussin et Jeremy Lewin mènent la distribution de cette production LM les Films.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134121/avant-parutions/paradisier-superbe-un-premier-roman-pour-retrouver-le-sens-de-sa-vie",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Paradisier superbe : un premier roman pour retrouver le sens de sa vie",
+      "publishedAt": "2026-09-23T07:00:00.000Z",
+      "description": "Avec Paradisier superbe, Vincent Sarthou-Lajus signe un premier roman intime et poétique. Un homme séparé, père de deux adolescents et sans emploi fixe, pousse la porte d’un psychiatre pour tenter de mettre des mots sur ses désirs, ses croyances, ses amours et une existence qui lui échappe.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134079/avant-parutions/le-moyen-age-etait-vraiment-si-terrible",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Moyen Âge était vraiment si terrible ?",
+      "publishedAt": "2026-09-23T05:00:00.000Z",
+      "description": "« Le Moyen Âge était froid et pluvieux », « tout le monde mourait de faim », « Charles Martel a arrêté les Arabes à Poitiers »… Dans En finir avec les idées fausses sur le Moyen Âge, l’historien et vulgarisateur Guilhem Jean revient sur plus de quarante clichés attachés à cette longue période de l’histoire.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134083/avant-parutions/mistinguett-ressuscite-sa-voix-dans-toute-ma-vie",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mistinguett ressuscite sa voix dans Toute ma vie",
+      "publishedAt": "2026-09-23T04:00:00.000Z",
+      "description": "Figure du music-hall et incarnation internationale de la Parisienne, Mistinguett revient en librairie avec Toute ma vie, son autobiographie publiée en 1954 et aujourd’hui rééditée avec un appareil critique de Bruno Fuligni. Un récit où la chanteuse raconte, avec gouaille et humour, une vie passée de la banlieue à la célébrité.",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134124/edition/ia-pas-ia-thelyson-orelien-et-grasset-repondent-a-droite-on-jubile",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "IA pas IA ? Thélyson Orélien et Grasset répondent, à droite on jubile",
+      "publishedAt": "2026-09-22T16:44:00.000Z",
+      "description": "Depuis lundi, C’était ça ou mourir, l’un des romans les plus en vue de la rentrée, est au centre d’une polémique sur l’usage de l’intelligence artificielle. Auprès de Libération, Thélyson Orélien dément catégoriquement. Grasset lui apporte désormais sa « confiance absolue ». Dans le même temps, franceinfo a multiplié les tests et les comparaisons, et les résultats ne plaident pas vraiment en fave…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "actualitte",
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134123/edition/chez-editis-fo-exige-une-aide-face-a-la-flambee-du-carburant",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chez Editis, FO exige une aide face à la flambée du carburant",
+      "publishedAt": "2026-09-22T16:18:00.000Z",
+      "description": "Force ouvrière interpelle la direction d’Editis et son actionnaire sur le coût des trajets domicile-travail des salariés de Malesherbes et Tigery. Le syndicat réclame une aide spécifique pour ceux qui doivent utiliser leur voiture, allant jusqu’à proposer des cartes carburant TotalEnergies. Une demande qui intervient en pleine hausse des prix à la pompe, alors que plusieurs dispositifs publics ex…",
+      "discoveredAt": "2026-09-26T17:32:07.838Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "664385e0651e6d637ee67a5506e152a9d69e7ad30ecc90a0e6014509c40d090e"
+}

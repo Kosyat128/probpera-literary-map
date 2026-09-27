@@ -1,0 +1,2674 @@
+{
+  "checkedAt": "2026-09-26T17:38:39.076Z",
+  "method": "createNewsService production collector with native fetch; approved code-owned registry subset; 12-source batches and 4 concurrent requests",
+  "sourceCount": 108,
+  "availableSourceCount": 108,
+  "failedSources": [],
+  "heldCandidateCount": 1870,
+  "publicCount": 0,
+  "batches": [
+    {
+      "batch": 1,
+      "checkedAt": "2026-09-26T17:37:59.151Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 233,
+      "sources": [
+        {
+          "id": "prh",
+          "name": "Penguin Random House",
+          "url": "https://global.penguinrandomhouse.com/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "penguin-random-house",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:57.559Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "nobel",
+          "name": "NobelPrize.org",
+          "url": "https://www.nobelprize.org/press-release/",
+          "format": "html",
+          "language": "en-US",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "nobel",
+          "countryCodes": [
+            "SE"
+          ],
+          "coverageCountryCodes": [
+            "SE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:58.123Z",
+          "candidateCount": 20
+        },
+        {
+          "id": "german-book-prize",
+          "name": "Deutscher Buchpreis",
+          "url": "https://www.deutscher-buchpreis.de/news/",
+          "format": "html",
+          "language": "de",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "german-book-prize",
+          "countryCodes": [
+            "DE"
+          ],
+          "coverageCountryCodes": [
+            "DE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:57.423Z",
+          "candidateCount": 22
+        },
+        {
+          "id": "frankfurt-book-fair",
+          "name": "Frankfurter Buchmesse",
+          "url": "https://www.buchmesse.de/en/press/press-releases",
+          "format": "html",
+          "language": "en",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "frankfurt-book-fair",
+          "countryCodes": [
+            "DE"
+          ],
+          "coverageCountryCodes": [
+            "DE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:57.476Z",
+          "candidateCount": 29
+        },
+        {
+          "id": "gothenburg-book-fair",
+          "name": "Bokmässan",
+          "url": "https://bokmassan.se/hem/om-bokmassan/nyheter/",
+          "format": "html",
+          "language": "sv-SE",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "gothenburg-book-fair",
+          "countryCodes": [
+            "SE"
+          ],
+          "coverageCountryCodes": [
+            "SE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:57.835Z",
+          "candidateCount": 33
+        },
+        {
+          "id": "british-library",
+          "name": "British Library",
+          "url": "https://www.bl.uk/about/press/releases",
+          "format": "html",
+          "language": "en",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "british-library",
+          "countryCodes": [
+            "GB"
+          ],
+          "coverageCountryCodes": [
+            "GB"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:58.515Z",
+          "candidateCount": 20
+        },
+        {
+          "id": "bnf",
+          "name": "Bibliothèque nationale de France",
+          "url": "https://www.bnf.fr/fr/agenda",
+          "format": "html",
+          "language": "fr",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "bnf",
+          "countryCodes": [
+            "FR"
+          ],
+          "coverageCountryCodes": [
+            "FR"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:58.024Z",
+          "candidateCount": 14
+        },
+        {
+          "id": "goslitmuz",
+          "name": "Гослитмузей / State Literary Museum",
+          "url": "https://goslitmuz.ru/news/",
+          "format": "html",
+          "language": "ru",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "goslitmuz",
+          "countryCodes": [
+            "RU"
+          ],
+          "coverageCountryCodes": [
+            "RU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:58.210Z",
+          "candidateCount": 12
+        },
+        {
+          "id": "yasnaya-polyana",
+          "name": "Ясная Поляна / Yasnaya Polyana",
+          "url": "https://ypmuseum.ru/events",
+          "format": "html",
+          "language": "ru",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "yasnaya-polyana",
+          "countryCodes": [
+            "RU"
+          ],
+          "coverageCountryCodes": [
+            "RU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:58.392Z",
+          "candidateCount": 5
+        },
+        {
+          "id": "national-book-foundation",
+          "name": "National Book Foundation",
+          "url": "https://www.nationalbook.org/all-story/",
+          "format": "html",
+          "language": "en-US",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "national-book-foundation",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:58.653Z",
+          "candidateCount": 9
+        },
+        {
+          "id": "brooklyn-book-festival",
+          "name": "Brooklyn Book Festival",
+          "url": "https://brooklynbookfestival.org/event_type/festival-day/",
+          "format": "html",
+          "language": "en-US",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "brooklyn-book-festival",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:58.897Z",
+          "candidateCount": 52
+        },
+        {
+          "id": "prh-library",
+          "name": "Penguin Random House Library",
+          "url": "https://penguinrandomhouselibrary.com/feed/",
+          "format": "rss",
+          "language": "en",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "penguin-random-house",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:59.131Z",
+          "candidateCount": 7
+        }
+      ]
+    },
+    {
+      "batch": 2,
+      "checkedAt": "2026-09-26T17:38:04.168Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 227,
+      "sources": [
+        {
+          "id": "pen-america",
+          "name": "PEN America",
+          "url": "https://pen.org/feed/",
+          "format": "rss",
+          "language": "en",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pen-america",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:59.539Z",
+          "candidateCount": 9
+        },
+        {
+          "id": "literary-arts",
+          "name": "Literary Arts",
+          "url": "https://literary-arts.org/feed/",
+          "format": "rss",
+          "language": "en",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "literary-arts",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:37:59.723Z",
+          "candidateCount": 38
+        },
+        {
+          "id": "aaww",
+          "name": "Asian American Writers’ Workshop",
+          "url": "https://aaww.org/feed/",
+          "format": "rss",
+          "language": "en",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "aaww",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:00.829Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "ubud-writers-readers-festival",
+          "name": "Ubud Writers & Readers Festival",
+          "url": "https://ubudwritersfestival.com/news",
+          "format": "html",
+          "language": "en",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "ubud-writers-readers-festival",
+          "countryCodes": [
+            "ID"
+          ],
+          "coverageCountryCodes": [
+            "ID"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:01.071Z",
+          "candidateCount": 40
+        },
+        {
+          "id": "shanghai-childrens-book-fair",
+          "name": "Shanghai International Children’s Book Fair",
+          "url": "https://www.ccbookfair.com/en/index/news-center/news",
+          "format": "html",
+          "language": "en",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "shanghai-childrens-book-fair",
+          "countryCodes": [
+            "CN"
+          ],
+          "coverageCountryCodes": [
+            "CN"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:00.888Z",
+          "candidateCount": 4
+        },
+        {
+          "id": "ake-arts-book-festival",
+          "name": "Aké Arts & Book Festival",
+          "url": "https://akefestival.org/feed/",
+          "format": "rss",
+          "language": "en",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "ake-arts-book-festival",
+          "countryCodes": [
+            "NG"
+          ],
+          "coverageCountryCodes": [
+            "NG"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:03.278Z",
+          "candidateCount": 7
+        },
+        {
+          "id": "kenya-publishers-association",
+          "name": "Kenya Publishers Association",
+          "url": "https://kenyapublishers.org/category/news/feed/",
+          "format": "rss",
+          "language": "en",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "kenya-publishers-association",
+          "countryCodes": [
+            "KE"
+          ],
+          "coverageCountryCodes": [
+            "KE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:02.010Z",
+          "candidateCount": 7
+        },
+        {
+          "id": "brisbane-writers-festival",
+          "name": "Brisbane Writers Festival",
+          "url": "https://bwf.org.au/news/articles",
+          "format": "html",
+          "language": "en",
+          "region": "oceania",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "brisbane-writers-festival",
+          "countryCodes": [
+            "AU"
+          ],
+          "coverageCountryCodes": [
+            "AU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:01.995Z",
+          "candidateCount": 16
+        },
+        {
+          "id": "nz-children-young-adults-book-awards",
+          "name": "New Zealand Book Awards Trust - Children and Young Adults",
+          "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/",
+          "format": "html",
+          "language": "en",
+          "region": "oceania",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "nz-children-young-adults-book-awards",
+          "countryCodes": [
+            "NZ"
+          ],
+          "coverageCountryCodes": [
+            "NZ"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:02.999Z",
+          "candidateCount": 5
+        },
+        {
+          "id": "word-christchurch",
+          "name": "WORD Christchurch",
+          "url": "https://wordchristchurch.co.nz/news",
+          "format": "html",
+          "language": "en",
+          "region": "oceania",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "word-christchurch",
+          "countryCodes": [
+            "NZ"
+          ],
+          "coverageCountryCodes": [
+            "NZ"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:03.417Z",
+          "candidateCount": 35
+        },
+        {
+          "id": "federacioneditores-org",
+          "name": "FGEE",
+          "url": "https://federacioneditores.org/feed/",
+          "format": "rss",
+          "language": "es",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "federacioneditores-org",
+          "countryCodes": [
+            "ES"
+          ],
+          "coverageCountryCodes": [
+            "ES"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:03.221Z",
+          "candidateCount": 47
+        },
+        {
+          "id": "mabopa-com-my",
+          "name": "Malaysian Book Publishers Association (MABOPA)",
+          "url": "https://www.mabopa.com.my/feed/",
+          "format": "rss",
+          "language": "en-GB",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "mabopa-com-my",
+          "countryCodes": [
+            "MY"
+          ],
+          "coverageCountryCodes": [
+            "MY"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:04.166Z",
+          "candidateCount": 9
+        }
+      ]
+    },
+    {
+      "batch": 3,
+      "checkedAt": "2026-09-26T17:38:12.153Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 139,
+      "sources": [
+        {
+          "id": "aseanbookpublishers-org",
+          "name": "ASEAN Book Publishers Association (ABPA)",
+          "url": "https://aseanbookpublishers.org/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "aseanbookpublishers-org",
+          "countryCodes": [
+            "MY"
+          ],
+          "coverageCountryCodes": [
+            "MY"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:05.811Z",
+          "candidateCount": 3
+        },
+        {
+          "id": "anel-qc-ca",
+          "name": "ANEL",
+          "url": "https://www.anel.qc.ca/",
+          "format": "html",
+          "language": "fr-CA",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "anel-qc-ca",
+          "countryCodes": [
+            "CA"
+          ],
+          "coverageCountryCodes": [
+            "CA"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:04.896Z",
+          "candidateCount": 14
+        },
+        {
+          "id": "kiwi-verlag-de",
+          "name": "Kiepenheuer & Witsch",
+          "url": "https://www.kiwi-verlag.de/",
+          "format": "html",
+          "language": "de",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "kiwi-verlag-de",
+          "countryCodes": [
+            "DE"
+          ],
+          "coverageCountryCodes": [
+            "DE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:04.606Z",
+          "candidateCount": 7
+        },
+        {
+          "id": "press-princeton-edu",
+          "name": "Princeton University Press",
+          "url": "https://press.princeton.edu/",
+          "format": "html",
+          "language": "en",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "press-princeton-edu",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:04.468Z",
+          "candidateCount": 26
+        },
+        {
+          "id": "turkyaybir-org-tr",
+          "name": "Turkish Publishers Association",
+          "url": "https://turkyaybir.org.tr/feed/",
+          "format": "rss",
+          "language": "tr-TR",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "turkyaybir-org-tr",
+          "countryCodes": [
+            "TR"
+          ],
+          "coverageCountryCodes": [
+            "TR"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:06.140Z",
+          "candidateCount": 11
+        },
+        {
+          "id": "sne-fr",
+          "name": "Syndicat National de l’Edition",
+          "url": "https://www.sne.fr/",
+          "format": "html",
+          "language": "fr-FR",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "sne-fr",
+          "countryCodes": [
+            "FR"
+          ],
+          "coverageCountryCodes": [
+            "FR"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:05.102Z",
+          "candidateCount": 23
+        },
+        {
+          "id": "publishers-org",
+          "name": "Association of American Publishers",
+          "url": "https://publishers.org/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "publishers-org",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:05.136Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "publishers-org-uk",
+          "name": "Publishers Association",
+          "url": "https://www.publishers.org.uk/feed/",
+          "format": "rss",
+          "language": "en-GB",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "publishers-org-uk",
+          "countryCodes": [
+            "GB"
+          ],
+          "coverageCountryCodes": [
+            "GB"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:05.723Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "apnetafrica-org",
+          "name": "African Publishers Network (APNET)",
+          "url": "https://apnetafrica.org/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "apnetafrica-org",
+          "countryCodes": [
+            "GH"
+          ],
+          "coverageCountryCodes": [
+            "GH"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:05.832Z",
+          "candidateCount": 9
+        },
+        {
+          "id": "bolognachildrensbookfair-com",
+          "name": "Bologna Children’s Book Fair",
+          "url": "https://www.bolognachildrensbookfair.com/home/878.html",
+          "format": "html",
+          "language": "it",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "bolognachildrensbookfair-com",
+          "countryCodes": [
+            "IT"
+          ],
+          "coverageCountryCodes": [
+            "IT"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:06.423Z",
+          "candidateCount": 6
+        },
+        {
+          "id": "universitypressplc-com",
+          "name": "University Press Plc, Ibadan",
+          "url": "https://universitypressplc.com/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "universitypressplc-com",
+          "countryCodes": [
+            "NG"
+          ],
+          "coverageCountryCodes": [
+            "NG"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:06.515Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "publishers-ca",
+          "name": "Association Nationale des Editeurs de Livres",
+          "url": "https://publishers.ca/feed/",
+          "format": "rss",
+          "language": "en-CA",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "publishers-ca",
+          "countryCodes": [
+            "CA"
+          ],
+          "coverageCountryCodes": [
+            "CA"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:12.152Z",
+          "candidateCount": 10
+        }
+      ]
+    },
+    {
+      "batch": 4,
+      "checkedAt": "2026-09-26T17:38:17.774Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 133,
+      "sources": [
+        {
+          "id": "pubcouncil-ca",
+          "name": "Association Nationale des Editeurs de Livres",
+          "url": "https://pubcouncil.ca/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pubcouncil-ca",
+          "countryCodes": [
+            "CA"
+          ],
+          "coverageCountryCodes": [
+            "CA"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:12.950Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "camlibro-com-co",
+          "name": "Cámara Colombiana del LibroCalle",
+          "url": "https://camlibro.com.co/feed/",
+          "format": "rss",
+          "language": "es-CO",
+          "region": "latin-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "camlibro-com-co",
+          "countryCodes": [
+            "CO"
+          ],
+          "coverageCountryCodes": [
+            "CO"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:13.497Z",
+          "candidateCount": 5
+        },
+        {
+          "id": "shbsh-al",
+          "name": "Association of Albanian Publishers",
+          "url": "https://shbsh.al/wp2/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "shbsh-al",
+          "countryCodes": [
+            "AL"
+          ],
+          "coverageCountryCodes": [
+            "AL"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:13.516Z",
+          "candidateCount": 7
+        },
+        {
+          "id": "publishers-org-nz",
+          "name": "Publishers Association of New ZealandPO Box",
+          "url": "https://publishers.org.nz/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "oceania",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "publishers-org-nz",
+          "countryCodes": [
+            "NZ"
+          ],
+          "coverageCountryCodes": [
+            "NZ"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:14.255Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "ikapi-org",
+          "name": "Ikatan Penerbit IndonesiaJL Kalipasir",
+          "url": "https://www.ikapi.org/feed/",
+          "format": "rss",
+          "language": "id-ID",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "ikapi-org",
+          "countryCodes": [
+            "ID"
+          ],
+          "coverageCountryCodes": [
+            "ID"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:14.245Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "pubat-or-th",
+          "name": "Publishers &. Booksellers Association of Thailand",
+          "url": "https://pubat.or.th/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pubat-or-th",
+          "countryCodes": [
+            "TH"
+          ],
+          "coverageCountryCodes": [
+            "TH"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:15.594Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "pac-org-cn",
+          "name": "Publishers Association of ChinaNo.",
+          "url": "https://www.pac.org.cn/",
+          "format": "html",
+          "language": "zh",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pac-org-cn",
+          "countryCodes": [
+            "CN"
+          ],
+          "coverageCountryCodes": [
+            "CN"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:14.984Z",
+          "candidateCount": 29
+        },
+        {
+          "id": "bookunion-ru",
+          "name": "bookunion.ru/",
+          "url": "https://bookunion.ru/",
+          "format": "html",
+          "language": "ru",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "bookunion-ru",
+          "countryCodes": [
+            "RU"
+          ],
+          "coverageCountryCodes": [
+            "RU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:14.954Z",
+          "candidateCount": 19
+        },
+        {
+          "id": "publishers-fi",
+          "name": "Finnish Book Publishers AssociationUnioninkatu",
+          "url": "https://kustantajat.fi/feed",
+          "format": "rss",
+          "language": "fi",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "publishers-fi",
+          "countryCodes": [
+            "FI"
+          ],
+          "coverageCountryCodes": [
+            "FI"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:15.477Z",
+          "candidateCount": 7
+        },
+        {
+          "id": "apel-pt",
+          "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+          "url": "https://apel.pt/feed/",
+          "format": "rss",
+          "language": "pt-PT",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "apel-pt",
+          "countryCodes": [
+            "PT"
+          ],
+          "coverageCountryCodes": [
+            "PT"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:17.773Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "egyptianpublishers-org",
+          "name": "Egyptian Publishers Association",
+          "url": "https://www.egyptianpublishers.org/feed/",
+          "format": "rss",
+          "language": "ar",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "egyptianpublishers-org",
+          "countryCodes": [
+            "EG"
+          ],
+          "coverageCountryCodes": [
+            "EG"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:16.524Z",
+          "candidateCount": 6
+        },
+        {
+          "id": "adeb-be",
+          "name": "Association des Editeurs Belges (ADEB)Avenue. R. Vandendriessche",
+          "url": "https://www.adeb.be/",
+          "format": "html",
+          "language": "fr",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "adeb-be",
+          "countryCodes": [
+            "BE"
+          ],
+          "coverageCountryCodes": [
+            "BE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:16.493Z",
+          "candidateCount": 10
+        }
+      ]
+    },
+    {
+      "batch": 5,
+      "checkedAt": "2026-09-26T17:38:24.342Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 238,
+      "sources": [
+        {
+          "id": "cul-com-uy",
+          "name": "cul.com.uy/",
+          "url": "https://cul.com.uy/feed/",
+          "format": "rss",
+          "language": "es",
+          "region": "latin-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "cul-com-uy",
+          "countryCodes": [
+            "UY"
+          ],
+          "coverageCountryCodes": [
+            "UY"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:24.340Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "nkp-cz",
+          "name": "National Library of the Czech Republic",
+          "url": "https://www.nkp.cz/",
+          "format": "html",
+          "language": "cs",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "nkp-cz",
+          "countryCodes": [
+            "CZ"
+          ],
+          "coverageCountryCodes": [
+            "CZ"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:18.691Z",
+          "candidateCount": 39
+        },
+        {
+          "id": "oszk-hu",
+          "name": "National Library of Hungary",
+          "url": "https://oszk.hu/en",
+          "format": "html",
+          "language": "en",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "oszk-hu",
+          "countryCodes": [
+            "HU"
+          ],
+          "coverageCountryCodes": [
+            "HU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:18.345Z",
+          "candidateCount": 15
+        },
+        {
+          "id": "nli-ie",
+          "name": "National Library of Ireland",
+          "url": "https://www.nli.ie/",
+          "format": "html",
+          "language": "en",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "nli-ie",
+          "countryCodes": [
+            "IE"
+          ],
+          "coverageCountryCodes": [
+            "IE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:18.612Z",
+          "candidateCount": 28
+        },
+        {
+          "id": "landesbibliothek-li",
+          "name": "National Library of Liechtenstein",
+          "url": "https://www.landesbibliothek.li/feed/",
+          "format": "rss",
+          "language": "de",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "landesbibliothek-li",
+          "countryCodes": [
+            "LI"
+          ],
+          "coverageCountryCodes": [
+            "LI"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:18.853Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "lnb-lt",
+          "name": "Martynas Mazvydas National Library of Lithuania",
+          "url": "https://www.lnb.lt/?format=feed&type=rss",
+          "format": "rss",
+          "language": "lt",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "lnb-lt",
+          "countryCodes": [
+            "LT"
+          ],
+          "coverageCountryCodes": [
+            "LT"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:19.511Z",
+          "candidateCount": 20
+        },
+        {
+          "id": "bnl-public-lu",
+          "name": "National Library of Luxembourg",
+          "url": "https://bnl.public.lu/fr.html",
+          "format": "html",
+          "language": "fr",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "bnl-public-lu",
+          "countryCodes": [
+            "LU"
+          ],
+          "coverageCountryCodes": [
+            "LU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:19.353Z",
+          "candidateCount": 36
+        },
+        {
+          "id": "bnrm-md",
+          "name": "National Library of the Republic of Moldova",
+          "url": "https://www.bnrm.md/?feed=rss2",
+          "format": "rss",
+          "language": "ro-RO",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "bnrm-md",
+          "countryCodes": [
+            "MD"
+          ],
+          "coverageCountryCodes": [
+            "MD"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:19.428Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "nb-cg-me",
+          "name": "National Library of Montenegro “Djurdje Crnojevic”",
+          "url": "https://www.nb-cg.me/en",
+          "format": "html",
+          "language": "en",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "nb-cg-me",
+          "countryCodes": [
+            "ME"
+          ],
+          "coverageCountryCodes": [
+            "ME"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:19.938Z",
+          "candidateCount": 22
+        },
+        {
+          "id": "bn-org-pl",
+          "name": "National Library of Poland",
+          "url": "https://www.bn.org.pl/",
+          "format": "html",
+          "language": "pl",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "bn-org-pl",
+          "countryCodes": [
+            "PL"
+          ],
+          "coverageCountryCodes": [
+            "PL"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:19.924Z",
+          "candidateCount": 26
+        },
+        {
+          "id": "nb-rs",
+          "name": "National Library of Serbia",
+          "url": "https://nb.rs/feed/",
+          "format": "rss",
+          "language": "sr-RS",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "nb-rs",
+          "countryCodes": [
+            "RS"
+          ],
+          "coverageCountryCodes": [
+            "RS"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:20.731Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "snk-sk",
+          "name": "Slovak National Library",
+          "url": "https://snk.sk/en/",
+          "format": "html",
+          "language": "en-US",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "snk-sk",
+          "countryCodes": [
+            "SK"
+          ],
+          "coverageCountryCodes": [
+            "SK"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:20.416Z",
+          "candidateCount": 12
+        }
+      ]
+    },
+    {
+      "batch": 6,
+      "checkedAt": "2026-09-26T17:38:28.039Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 222,
+      "sources": [
+        {
+          "id": "kb-se",
+          "name": "National Library of Sweden",
+          "url": "https://www.kb.se/",
+          "format": "html",
+          "language": "sv",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "kb-se",
+          "countryCodes": [
+            "SE"
+          ],
+          "coverageCountryCodes": [
+            "SE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:25.260Z",
+          "candidateCount": 8
+        },
+        {
+          "id": "nbuv-gov-ua",
+          "name": "Vernadsky National Library of Ukraine",
+          "url": "https://nbuv.gov.ua/rss.xml",
+          "format": "rss",
+          "language": "uk",
+          "region": "europe",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "nbuv-gov-ua",
+          "countryCodes": [
+            "UA"
+          ],
+          "coverageCountryCodes": [
+            "UA"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:24.804Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "pen-international-org",
+          "name": "PEN International",
+          "url": "https://www.pen-international.org/",
+          "format": "html",
+          "language": "en-GB",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pen-international-org",
+          "countryCodes": [
+            "GB"
+          ],
+          "coverageCountryCodes": [
+            "GB"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:25.032Z",
+          "candidateCount": 19
+        },
+        {
+          "id": "penclubedobrasil-org-br",
+          "name": "Pen Clube do Brasil",
+          "url": "https://penclubedobrasil.org.br/feed/",
+          "format": "rss",
+          "language": "pt-BR",
+          "region": "latin-america",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "penclubedobrasil-org-br",
+          "countryCodes": [
+            "BR"
+          ],
+          "coverageCountryCodes": [
+            "BR"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:25.296Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "penbelarus-org",
+          "name": "Belarusian PEN",
+          "url": "https://penbelarus.org/en/",
+          "format": "html",
+          "language": "en-US",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "penbelarus-org",
+          "countryCodes": [],
+          "coverageCountryCodes": [
+            "BY"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:25.496Z",
+          "candidateCount": 8
+        },
+        {
+          "id": "penbih-ba",
+          "name": "Bosnian PEN",
+          "url": "https://penbih.ba/feed/",
+          "format": "rss",
+          "language": "bs-BA",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "penbih-ba",
+          "countryCodes": [
+            "BA"
+          ],
+          "coverageCountryCodes": [
+            "BA"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:26.207Z",
+          "candidateCount": 9
+        },
+        {
+          "id": "pencatala-cat",
+          "name": "PEN Catalan",
+          "url": "https://www.pencatala.cat/",
+          "format": "html",
+          "language": "ca",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pencatala-cat",
+          "countryCodes": [
+            "ES"
+          ],
+          "coverageCountryCodes": [
+            "ES"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:27.336Z",
+          "candidateCount": 18
+        },
+        {
+          "id": "pen-dk",
+          "name": "Danish PEN",
+          "url": "https://danskpen.dk/feed/",
+          "format": "rss",
+          "language": "da-DK",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pen-dk",
+          "countryCodes": [
+            "DK"
+          ],
+          "coverageCountryCodes": [
+            "DK"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:26.869Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "pen-deutschland-de",
+          "name": "PEN Germany",
+          "url": "https://pen-deutschland.de/feed/",
+          "format": "rss",
+          "language": "de",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pen-deutschland-de",
+          "countryCodes": [
+            "DE"
+          ],
+          "coverageCountryCodes": [
+            "DE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:25.958Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "irishpen-com",
+          "name": "Irish PEN",
+          "url": "https://irishpen.com/",
+          "format": "html",
+          "language": "en-US",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "irishpen-com",
+          "countryCodes": [
+            "IE"
+          ],
+          "coverageCountryCodes": [
+            "IE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:26.408Z",
+          "candidateCount": 100
+        },
+        {
+          "id": "pen-kurd-org",
+          "name": "Kurdish PEN",
+          "url": "https://pen-kurd.com/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pen-kurd-org",
+          "countryCodes": [],
+          "coverageCountryCodes": [
+            "DE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:26.459Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "norskpen-no",
+          "name": "Norwegian PEN",
+          "url": "https://norskpen.no/feed/",
+          "format": "rss",
+          "language": "nb-NO",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "norskpen-no",
+          "countryCodes": [
+            "NO"
+          ],
+          "coverageCountryCodes": [
+            "NO"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:28.037Z",
+          "candidateCount": 10
+        }
+      ]
+    },
+    {
+      "batch": 7,
+      "checkedAt": "2026-09-26T17:38:31.940Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 297,
+      "sources": [
+        {
+          "id": "penclub-com-pl",
+          "name": "Polish PEN",
+          "url": "https://penclub.com.pl/feed/",
+          "format": "rss",
+          "language": "pl-PL",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "penclub-com-pl",
+          "countryCodes": [
+            "PL"
+          ],
+          "coverageCountryCodes": [
+            "PL"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:28.967Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "scottishpen-org",
+          "name": "PEN Scotland",
+          "url": "https://scottishpen.org/",
+          "format": "html",
+          "language": "en-US",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "scottishpen-org",
+          "countryCodes": [
+            "GB"
+          ],
+          "coverageCountryCodes": [
+            "GB"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:28.430Z",
+          "candidateCount": 14
+        },
+        {
+          "id": "penslovenia-zdruzenje-si",
+          "name": "PEN Slovenia",
+          "url": "https://www.penslovenia-zdruzenje.si/",
+          "format": "html",
+          "language": "sl",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "penslovenia-zdruzenje-si",
+          "countryCodes": [
+            "SI"
+          ],
+          "coverageCountryCodes": [
+            "SI"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:28.597Z",
+          "candidateCount": 14
+        },
+        {
+          "id": "pen-org-au",
+          "name": "Sydney PEN",
+          "url": "https://pen.org.au/feed/",
+          "format": "rss",
+          "language": "en-AU",
+          "region": "oceania",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "pen-org-au",
+          "countryCodes": [
+            "AU"
+          ],
+          "coverageCountryCodes": [
+            "AU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:28.728Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "god-literatury",
+          "name": "Год литературы",
+          "url": "https://godliteratury.ru/",
+          "format": "html",
+          "language": "ru",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "god-literatury",
+          "countryCodes": [
+            "RU"
+          ],
+          "coverageCountryCodes": [
+            "RU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:29.116Z",
+          "candidateCount": 66
+        },
+        {
+          "id": "publishers-weekly",
+          "name": "Publishers Weekly",
+          "url": "https://www.publishersweekly.com/pw/by-topic/industry-news/index.html",
+          "format": "html",
+          "language": "en",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "publishers-weekly",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:29.792Z",
+          "candidateCount": 27
+        },
+        {
+          "id": "publishing-perspectives",
+          "name": "Publishing Perspectives",
+          "url": "https://publishingperspectives.com/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "publishing-perspectives",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:29.660Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "ast",
+          "name": "АСТ",
+          "url": "https://ast.ru/news/",
+          "format": "html",
+          "language": "ru-RU",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "eksmo-ast",
+          "countryCodes": [
+            "RU"
+          ],
+          "coverageCountryCodes": [
+            "RU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:30.031Z",
+          "candidateCount": 14
+        },
+        {
+          "id": "ad-marginem",
+          "name": "Ad Marginem",
+          "url": "https://admarginem.ru/feed/",
+          "format": "rss",
+          "language": "ru-RU",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "ad-marginem",
+          "countryCodes": [
+            "RU"
+          ],
+          "coverageCountryCodes": [
+            "RU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:29.920Z",
+          "candidateCount": 20
+        },
+        {
+          "id": "samokat",
+          "name": "Самокат",
+          "url": "https://samokatbook.ru/",
+          "format": "html",
+          "language": "ru",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "samokat",
+          "countryCodes": [
+            "RU"
+          ],
+          "coverageCountryCodes": [
+            "RU"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:30.251Z",
+          "candidateCount": 32
+        },
+        {
+          "id": "ndl-japan",
+          "name": "National Diet Library",
+          "url": "https://www.ndl.go.jp/en/news/news_index",
+          "format": "html",
+          "language": "en",
+          "region": "asia",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "ndl-japan",
+          "countryCodes": [
+            "JP"
+          ],
+          "coverageCountryCodes": [
+            "JP"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:31.937Z",
+          "candidateCount": 70
+        },
+        {
+          "id": "bn-chile",
+          "name": "Biblioteca Nacional de Chile",
+          "url": "https://www.bibliotecanacional.gob.cl/noticias",
+          "format": "html",
+          "language": "es",
+          "region": "latin-america",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "bn-chile",
+          "countryCodes": [
+            "CL"
+          ],
+          "coverageCountryCodes": [
+            "CL"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:31.622Z",
+          "candidateCount": 10
+        }
+      ]
+    },
+    {
+      "batch": 8,
+      "checkedAt": "2026-09-26T17:38:36.032Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 138,
+      "sources": [
+        {
+          "id": "bn-peru",
+          "name": "Biblioteca Nacional del Perú",
+          "url": "https://www.gob.pe/institucion/bnp/noticias",
+          "format": "html",
+          "language": "es-PE",
+          "region": "latin-america",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "bn-peru",
+          "countryCodes": [
+            "PE"
+          ],
+          "coverageCountryCodes": [
+            "PE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:33.763Z",
+          "candidateCount": 25
+        },
+        {
+          "id": "brittle-paper",
+          "name": "Brittle Paper",
+          "url": "https://brittlepaper.com/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "brittle-paper",
+          "countryCodes": [],
+          "coverageCountryCodes": [
+            "NG",
+            "ZA",
+            "KE",
+            "GH"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:32.796Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "asymptote",
+          "name": "Asymptote",
+          "url": "https://www.asymptotejournal.com/blog/feed/",
+          "format": "rss",
+          "language": "en",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "asymptote",
+          "countryCodes": [
+            "SG"
+          ],
+          "coverageCountryCodes": [],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:32.775Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "bakwa-magazine",
+          "name": "Bakwa Magazine",
+          "url": "https://bakwamagazine.com/feed/",
+          "format": "rss",
+          "language": "en-GB",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "bakwa-magazine",
+          "countryCodes": [
+            "CM"
+          ],
+          "coverageCountryCodes": [
+            "CM"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:32.988Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "cassava-republic",
+          "name": "Cassava Republic Press",
+          "url": "https://cassavarepublic.biz/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "cassava-republic",
+          "countryCodes": [
+            "NG"
+          ],
+          "coverageCountryCodes": [
+            "NG",
+            "GB"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:36.031Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "modjaji",
+          "name": "Modjaji Books",
+          "url": "https://modjajibooks.co.za/feed/",
+          "format": "rss",
+          "language": "en-GB",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "modjaji",
+          "countryCodes": [
+            "ZA"
+          ],
+          "coverageCountryCodes": [
+            "ZA"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:34.904Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "taipei-book-fair",
+          "name": "Taipei International Book Exhibition",
+          "url": "https://www.tibe.org.tw/",
+          "format": "html",
+          "language": "zh-Hant",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "taipei-book-fair",
+          "countryCodes": [
+            "TW"
+          ],
+          "coverageCountryCodes": [
+            "TW"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:33.792Z",
+          "candidateCount": 7
+        },
+        {
+          "id": "seoul-book-fair",
+          "name": "Seoul International Book Fair",
+          "url": "https://sibf.or.kr/en/",
+          "format": "html",
+          "language": "ko",
+          "region": "asia",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "seoul-book-fair",
+          "countryCodes": [
+            "KR"
+          ],
+          "coverageCountryCodes": [
+            "KR"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:35.441Z",
+          "candidateCount": 4
+        },
+        {
+          "id": "femrite",
+          "name": "FEMRITE",
+          "url": "https://femrite.org/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "femrite",
+          "countryCodes": [
+            "UG"
+          ],
+          "coverageCountryCodes": [
+            "UG"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:35.133Z",
+          "candidateCount": 7
+        },
+        {
+          "id": "amabooks",
+          "name": "amaBooks",
+          "url": "https://amabooksbyo.blogspot.com/feeds/posts/default",
+          "format": "atom",
+          "language": "en",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "amabooks",
+          "countryCodes": [
+            "ZW"
+          ],
+          "coverageCountryCodes": [
+            "ZW"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:35.802Z",
+          "candidateCount": 25
+        },
+        {
+          "id": "loatad",
+          "name": "Library of Africa and the African Diaspora",
+          "url": "https://loatad.org/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "africa",
+          "topics": [
+            "heritage",
+            "discoveries",
+            "festivals",
+            "releases"
+          ],
+          "sourceFamilyId": "loatad",
+          "countryCodes": [
+            "GH"
+          ],
+          "coverageCountryCodes": [
+            "GH"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:35.465Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "jalada",
+          "name": "Jalada Africa",
+          "url": "https://jaladaafrica.org/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "africa",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "jalada",
+          "countryCodes": [
+            "KE"
+          ],
+          "coverageCountryCodes": [
+            "KE"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:35.730Z",
+          "candidateCount": 10
+        }
+      ]
+    },
+    {
+      "batch": 9,
+      "checkedAt": "2026-09-26T17:38:39.073Z",
+      "sourceCount": 12,
+      "availableSourceCount": 12,
+      "candidateCount": 243,
+      "sources": [
+        {
+          "id": "actualitte",
+          "name": "ActuaLitté",
+          "url": "https://actualitte.com/rss-main.rss",
+          "format": "rss",
+          "language": "fr",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "actualitte",
+          "countryCodes": [
+            "FR"
+          ],
+          "coverageCountryCodes": [
+            "FR"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:39.023Z",
+          "candidateCount": 100
+        },
+        {
+          "id": "livres-hebdo",
+          "name": "Livres Hebdo",
+          "url": "https://www.livreshebdo.fr/prix-litteraires",
+          "format": "html",
+          "language": "fr",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "livres-hebdo",
+          "countryCodes": [
+            "FR"
+          ],
+          "coverageCountryCodes": [
+            "FR"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:37.259Z",
+          "candidateCount": 3
+        },
+        {
+          "id": "dosdoce",
+          "name": "Dosdoce",
+          "url": "https://www.dosdoce.com/feed/",
+          "format": "rss",
+          "language": "es",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "dosdoce",
+          "countryCodes": [
+            "ES"
+          ],
+          "coverageCountryCodes": [
+            "ES"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:37.337Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "el-boomeran",
+          "name": "El Boomeran(g)",
+          "url": "https://www.elboomeran.com/feed/",
+          "format": "rss",
+          "language": "es",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "el-boomeran",
+          "countryCodes": [
+            "ES"
+          ],
+          "coverageCountryCodes": [
+            "ES"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:37.329Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "il-libraio",
+          "name": "Il Libraio",
+          "url": "https://www.illibraio.it/feed/",
+          "format": "rss",
+          "language": "it",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "il-libraio",
+          "countryCodes": [
+            "IT"
+          ],
+          "coverageCountryCodes": [
+            "IT"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:37.646Z",
+          "candidateCount": 9
+        },
+        {
+          "id": "salone-libro-torino",
+          "name": "Salone Internazionale del Libro di Torino",
+          "url": "https://www.salonelibro.it/news/tutte-news.html",
+          "format": "html",
+          "language": "it",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "salone-libro-torino",
+          "countryCodes": [
+            "IT"
+          ],
+          "coverageCountryCodes": [
+            "IT"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:38.112Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "eterna-cadencia",
+          "name": "Eterna Cadencia",
+          "url": "https://eternacadencia.com.ar/",
+          "format": "html",
+          "language": "es",
+          "region": "latin-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "eterna-cadencia",
+          "countryCodes": [
+            "AR"
+          ],
+          "coverageCountryCodes": [
+            "AR"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:38.450Z",
+          "candidateCount": 20
+        },
+        {
+          "id": "lom",
+          "name": "LOM Ediciones",
+          "url": "https://lom.cl/",
+          "format": "html",
+          "language": "es",
+          "region": "latin-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "lom",
+          "countryCodes": [
+            "CL"
+          ],
+          "coverageCountryCodes": [
+            "CL"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:38.194Z",
+          "candidateCount": 9
+        },
+        {
+          "id": "literary-hub",
+          "name": "Literary Hub",
+          "url": "https://lithub.com/",
+          "format": "html",
+          "language": "en",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "literary-hub",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:38.861Z",
+          "candidateCount": 42
+        },
+        {
+          "id": "electric-literature",
+          "name": "Electric Literature",
+          "url": "https://electricliterature.com/feed/",
+          "format": "rss",
+          "language": "en-US",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "electric-literature",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:38.597Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "words-without-borders",
+          "name": "Words Without Borders",
+          "url": "https://wordswithoutborders.org/",
+          "format": "html",
+          "language": "en",
+          "region": "north-america",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "words-without-borders",
+          "countryCodes": [
+            "US"
+          ],
+          "coverageCountryCodes": [
+            "US"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:38.798Z",
+          "candidateCount": 10
+        },
+        {
+          "id": "commonwealth-foundation",
+          "name": "Commonwealth Foundation",
+          "url": "https://commonwealthfoundation.com/feed/",
+          "format": "rss",
+          "language": "en-GB",
+          "region": "europe",
+          "topics": [
+            "publishing",
+            "releases",
+            "awards",
+            "festivals"
+          ],
+          "sourceFamilyId": "commonwealth-foundation",
+          "countryCodes": [
+            "GB"
+          ],
+          "coverageCountryCodes": [
+            "GB"
+          ],
+          "status": "ok",
+          "lastSuccessAt": "2026-09-26T17:38:39.071Z",
+          "candidateCount": 10
+        }
+      ]
+    }
+  ],
+  "observedFindMetrics": {
+    "rawFindCount": 1870,
+    "uniqueCanonicalUrlCount": 1870,
+    "duplicateCrossBatchUrlCount": 0,
+    "withSourcePublicationDate": 712,
+    "sourcePublishedWithinLast60Days": 356,
+    "undatedFindCount": 1158,
+    "interpretation": "Publication dates observed in this run; not 60 days of collection history. URLs count finds, not deduplicated literary events. All items are held."
+  }
+}

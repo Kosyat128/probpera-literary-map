@@ -31,8 +31,8 @@ function service(t, options = {}) {
 }
 
 test("production sources are immutable approved endpoints with compiled patterns", () => {
-  assert.equal(LITERARY_NEWS_SOURCES.length, 29);
-  assert.equal(new Set(LITERARY_NEWS_SOURCES.map((source) => source.id)).size, 29);
+  assert.ok(LITERARY_NEWS_SOURCES.length >= 100 && LITERARY_NEWS_SOURCES.length <= 250);
+  assert.equal(new Set(LITERARY_NEWS_SOURCES.map((source) => source.id)).size, LITERARY_NEWS_SOURCES.length);
   assert.ok(Object.isFrozen(LITERARY_NEWS_SOURCES));
   for (const source of LITERARY_NEWS_SOURCES) {
     assert.ok(Object.isFrozen(source));
@@ -263,7 +263,7 @@ test("source failure preserves candidates and last success without claiming a fr
     },
   });
   await instance.refresh();
-  current = new Date("2026-09-05T12:10:00.000Z");
+  current = new Date("2026-09-05T19:10:00.000Z");
   fail = true;
   await instance.refresh();
   const feed = await instance.getFeed();
@@ -284,11 +284,11 @@ test("an empty page is an error and cannot advance source success", async (t) =>
   assert.equal(feed.sources[0].lastSuccessAt, null);
 });
 
-test("discovery queue is bounded to 100 articles per source", async (t) => {
+test("the 101st discovery is retained instead of silently truncated", async (t) => {
   const html = Array.from({ length: 120 }, (_, i) => `<a href="/news/article-${i}">A detailed headline for article ${i}</a>`).join("");
   const instance = service(t, { fetchImpl: async () => response(html) });
   await instance.refresh();
-  assert.equal((await instance.getFeed()).pendingCount, 100);
+  assert.equal((await instance.getFeed()).pendingCount, 120);
 });
 
 test("timeouts complete refresh and abort a hanging fetch", async (t) => {

@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "downloadHosts": [
+    "upload.wikimedia.org"
+  ],
+  "assets": [
+    {
+      "id": "jason-reynolds-loc-2020",
+      "status": "approved",
+      "newsIds": [
+        "kokila-jason-reynolds-lamplighters-son-acquisition-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/20200116SM679.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "4268b6612e80fcf764e6c7bdb53574030dfc55069b45ed5dc2ab1860461dbb56",
+      "subject": "portrait",
+      "entityEvidence": "Jason Reynolds; archival image dated 2020-01-16; the exact author named in 'Kokila acquires Jason Reynolds’s The Lamplighter’s Son'. Editorial portrait of the named author, not an image of the 2026 acquisition event or the book cover. Commons notes possible personality rights; do not imply endorsement.",
+      "author": "Shawn Miller",
+      "rightsholder": "Library of Congress (CC0 public-domain dedication)",
+      "credit": "Джейсон Рейнольдс, архивный портрет, 2020. Фото: Shawn Miller / Library of Congress. CC0. Wikimedia Commons.",
+      "license": "CC0",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg",
+      "licenseEvidenceSha256": "6e5453a822b15b0f990728bc37c4da083b8a6c4e121b5ce2ea66e85466c4248b",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "d00296d95546d7043fee07ce968b540a5b21367781f0b4f6aea7803e6ab704a4",
+        "byteLength": 295307,
+        "mime": "image/jpeg",
+        "width": 1071,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "millay-genthe-1914",
+      "status": "approved",
+      "newsIds": [
+        "serapis-millay-anthology-presented-2026"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "36d407dd450a34282dcdb5356c8209224292d1494e9c878e84b9f4943270539c",
+      "subject": "portrait",
+      "entityEvidence": "Edna St. Vincent Millay; archival image dated 1914; the exact author named in 'Eterna Cadencia presents a Spanish-language Edna St. Vincent Millay anthology'. Portrait of the anthology's poet, not the new Spanish edition's cover. No crop, colorization or invented book-art reconstruction.",
+      "author": "Arnold Genthe (1869-1942)",
+      "rightsholder": "Public domain: Arnold Genthe photograph; Library of Congress Genthe Collection",
+      "credit": "Эдна Сент-Винсент Миллей, архивный портрет, 1914. Фото: Arnold Genthe / Library of Congress, agc.7a10216. Public domain. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg",
+      "licenseEvidenceSha256": "3e56bd066feaf93ce2432713951299186e9f2497975498dd702264e3d3361662",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg"
+        }
+      ],
+      "derivative": {
+        "sha256": "59a05207b3f99f31b26fc81c75abb50b0dcbc118d9009f89398655dc22265d0b",
+        "byteLength": 231578,
+        "mime": "image/jpeg",
+        "width": 1348,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    },
+    {
+      "id": "george-w-bush-official-2003",
+      "status": "approved",
+      "newsIds": [
+        "george-w-bush-call-of-freedom-us-2027"
+      ],
+      "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/George-W-Bush.jpeg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "sourceSha256": "59207a3f480eb56547b4e38c6e82ecb6871a3a37c5dcce6c682207fa8c8a75b4",
+      "subject": "portrait",
+      "entityEvidence": "George W. Bush; archival image dated 2003-01-14; the exact author named in 'Crown announces George W. Bush’s The Call of Freedom'. Portrait of the named book author, not the new cover or a 2027 event photo. Editorial use only; no government endorsement or official-service claim.",
+      "author": "Eric Draper",
+      "rightsholder": "Public domain: official Executive Office of the President photograph",
+      "credit": "Джордж У. Буш, официальный архивный портрет, 2003. Фото: Eric Draper / White House. Public domain. Wikimedia Commons.",
+      "license": "public-domain",
+      "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg",
+      "licenseEvidenceSha256": "13109f119ee6d9638d65926283e50f507a95f282d5a50e2f79bd1f471bb893fd",
+      "checkMethod": "license-page",
+      "checkedAt": "2026-09-26T19:12:42.243Z",
+      "validUntil": "2026-10-26T19:12:42.243Z",
+      "transformations": {
+        "resize": true,
+        "metadataRemoval": true,
+        "reencode": true,
+        "crop": false
+      },
+      "permissions": [
+        {
+          "platform": "telegram",
+          "destinationId": "-1002791579809",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg"
+        },
+        {
+          "platform": "vk",
+          "destinationId": "-231377018",
+          "publish": true,
+          "providerProcessing": true,
+          "evidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg"
+        }
+      ],
+      "derivative": {
+        "sha256": "c289e7e096c6a5405bba500f0105c603f308c5668c51a92470c76f14743c93e3",
+        "byteLength": 234800,
+        "mime": "image/jpeg",
+        "width": 1209,
+        "height": 1600,
+        "profile": "literary-news-photo-v1"
+      }
+    }
+  ],
+  "policy": "Exact reviewed public-domain/CC0 portraits for the named news and verified destination IDs. Rights approval does not enable delivery; runtime history, credentials and canary gates remain mandatory."
+}

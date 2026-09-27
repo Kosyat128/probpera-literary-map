@@ -1,0 +1,480 @@
+{
+  "sourceId": "goslitmuz",
+  "name": "Гослитмузей / State Literary Museum",
+  "entryUrl": "https://goslitmuz.ru/news/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:33:23.746Z",
+  "requests": [
+    {
+      "url": "https://goslitmuz.ru/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 47857,
+      "sha256": "bda90493e5b3bfd0ed517e9b7c94baa9c02cb2cd8f22fe7cb0954b23343f3b3f",
+      "accessedAt": "2026-09-26T17:33:24.189Z"
+    },
+    {
+      "url": "https://goslitmuz.ru/news/gmirli/22385/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 46806,
+      "sha256": "8029e7c6120b7f09ea4f8eacf72d8d958c8e96b420d40569a0d188d481ca9515",
+      "accessedAt": "2026-09-26T17:33:24.397Z"
+    },
+    {
+      "url": "https://goslitmuz.ru/news/gmirli/22413/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 40069,
+      "sha256": "b73990175786974dc6ca2ba226a67bced51736ad6e55948991c8a1082f0e28d9",
+      "accessedAt": "2026-09-26T17:33:24.521Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://goslitmuz.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 1697,
+    "sha256": "ea758cfa07bf4348a4fe6d1a41bbc24b64bda8cc8136a422473513e5d16abe1e",
+    "accessedAt": "2026-09-26T17:33:24.065Z",
+    "disallowed": [
+      "/bitrix/",
+      "/upload/",
+      "/search/",
+      "/club/search/",
+      "/club/group/search/",
+      "/club/forum/search/",
+      "/communication/forum/search/",
+      "/communication/blog/search.php",
+      "/club/gallery/tags/",
+      "/examples/my-components/",
+      "/examples/download/download_private/",
+      "/auth/",
+      "/auth.php",
+      "/personal/",
+      "/communication/forum/user/",
+      "/e-store/paid/detail.php",
+      "/e-store/affiliates/",
+      "/club/$",
+      "/club/messages/",
+      "/club/log/",
+      "/content/board/my/",
+      "/content/links/my/",
+      "/*/search/",
+      "/*PAGE_NAME=search",
+      "/*PAGE_NAME=user_post",
+      "/*PAGE_NAME=detail_slide_show",
+      "/*/slide_show/",
+      "/*/gallery/*order=*",
+      "/*?print=",
+      "/*&print=",
+      "/*register=yes",
+      "/*forgot_password=yes",
+      "/*change_password=yes",
+      "/*login=yes",
+      "/*logout=yes",
+      "/*auth=yes",
+      "/*action=ADD_TO_COMPARE_LIST",
+      "/*action=DELETE_FROM_COMPARE_LIST",
+      "/*action=ADD2BASKET",
+      "/*action=BUY",
+      "/*print_course=Y",
+      "/*bitrix_*=",
+      "/*backurl=*",
+      "/*BACKURL=*",
+      "/*back_url=*",
+      "/*BACK_URL=*",
+      "/*back_url_admin=*",
+      "/*index.php$",
+      "/visitors/education_and_leisure/students_DISABLED",
+      "/museums_",
+      "/feedback",
+      "/visitors/reduced_admission DISABLED",
+      "/test.php",
+      "/museums/dom-muzey-b-sh-okudzhavy"
+    ]
+  },
+  "endpoint": {
+    "id": "goslitmuz",
+    "name": "Гослитмузей / State Literary Museum",
+    "url": "https://goslitmuz.ru/news/",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "goslitmuz",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://goslitmuz.ru"
+    ],
+    "linkPattern": "^\\/news\\/[^/]+\\/\\d+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://goslitmuz.ru/news/gmirli/22413/"
+    ],
+    "verifiedAt": "2026-09-26T17:33:24.525Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 12,
+  "literaryCandidateCount": 12,
+  "sample": {
+    "sourceId": "goslitmuz",
+    "source": {
+      "name": "Гослитмузей / State Literary Museum",
+      "url": "https://goslitmuz.ru/news/gmirli/22413/",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Дмитрий Бак принял участие в работе XII Санкт-Петербургского международного форума объединенных культур",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:33:24.236Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://goslitmuz.ru/news/gmirli/22413/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 40069,
+      "sha256": "b73990175786974dc6ca2ba226a67bced51736ad6e55948991c8a1082f0e28d9",
+      "accessedAt": "2026-09-26T17:33:24.521Z",
+      "headline": "Дмитрий Бак принял участие в работе XII Санкт-Петербургского международного форума объединенных культур",
+      "excerpt": "Новости Дмитрий Бак принял участие в работе XII Санкт-Петербургского международного форума объединенных культур 25 сентября 2026 Директор Государственного музея истории российской литературы имени В.И. Даля, сопредседатель правления Ассоциации литературных музеев России Дмитрий Бак принял участие в XII Санкт-Петербургском международном форуме объединенных культур. В рамках деловой программы форума",
+      "publishedDates": [],
+      "canonical": "https://goslitmuz.ru/news/gmirli/22413/",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:33:24.525Z",
+  "foundItems": [
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22385/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«ЧехоДаль \u2014 2026»: современная жизнь в одном коротком рассказе",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22413/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Дмитрий Бак принял участие в работе XII Санкт-Петербургского международного форума объединенных культур",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22404/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Более 200 рисунков из разных регионов России поступило на конкурс «Бáско»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22401/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Заповедный напев, заповедная даль: российско-белорусская выставка",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22403/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Гослитмузей \u2014 соорганизатор выставки «Лиля Брик: икона стиля и муза авангарда» в МАММ",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22394/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "В Московском доме Достоевского обсудили ценность партнерства культуры и бизнеса",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22390/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Гослитмузей присоединяется к акции «Московские истории»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22389/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Как прошли «Мандельштамовские дни»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22387/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "На родине Казака Луганского: «Даль-форум» прошел в Луганске и Ростове-на-Дону",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22388/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Как прошла Московская международная книжная ярмарка",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22384/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Новая выставка в Музее Серебряного века",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "goslitmuz",
+      "source": {
+        "name": "Гослитмузей / State Literary Museum",
+        "url": "https://goslitmuz.ru/news/gmirli/22386/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Год единства народов России",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.236Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "bda90493e5b3bfd0ed517e9b7c94baa9c02cb2cd8f22fe7cb0954b23343f3b3f"
+}

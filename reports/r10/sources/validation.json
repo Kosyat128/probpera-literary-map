@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-09-26T17:41:45.670Z",
+  "sourceNodeTests": {
+    "command": "node --test scripts/lib/literary-news-source-profiles.test.mjs",
+    "tests": 3,
+    "passed": 3
+  },
+  "consumerTests": {
+    "command": "npx vitest run --configLoader runner scripts/lib/literary-news-publication.test.mjs scripts/lib/literary-news-production.test.mjs scripts/lib/literary-news-kv-sync.test.mjs",
+    "testFiles": 3,
+    "tests": 45,
+    "passed": 45
+  },
+  "nativeRuntimeEvidence": "reports/r10/sources/runtime-verification.json",
+  "sourceFiles": [
+    {
+      "path": "scripts/lib/literary-news-sources.mjs",
+      "sha256": "356fb25be088cbcd5a2012a829fe761f0d96f573371be1b81a54a8ed513ef259"
+    },
+    {
+      "path": "scripts/lib/literary-news-source-profiles.mjs",
+      "sha256": "4463f0640d04e60d3a989c9c94591133146ad8f3431552ae0e5ec1bc1082ba75"
+    },
+    {
+      "path": "data/news/r10-source-candidates.json",
+      "sha256": "3a1848262c3583378b0802e183271bde58c880cd1da03111d395ad5448a2667a"
+    }
+  ],
+  "notClaimed": [
+    "deployment",
+    "public news growth",
+    "30-day source yield",
+    "complete N01-N27 acceptance outside source-registry scope"
+  ]
+}

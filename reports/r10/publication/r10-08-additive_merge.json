@@ -1,0 +1,38 @@
+{
+  "batchId": "r10-08",
+  "checkedAt": "2026-09-26T22:50:52.895Z",
+  "action": "additive_merge",
+  "written": true,
+  "beforeCount": 235,
+  "afterCount": 239,
+  "beforeSha256": "01502fd38099af59aaca0b43ba27b42e15b19bcad92adf7653594c0b0b3cde40",
+  "afterRecordSha256": "4a165c978d8d92c1b607e176ba71d9b6d9ce5e9c40319259a86af6a2bae0b04c",
+  "addedOrRemoved": [
+    "university-press-waheed-akin-olajide-obituary-2026",
+    "oratia-maori-picture-books-ibby-unesco-collection-2026",
+    "asymptote-lianbin-ni-translation-interview-2026",
+    "lithuania-elizabeth-buchanan-greenland-translation-2026"
+  ],
+  "unchanged": [],
+  "held": [],
+  "firstPublicationCount": 0,
+  "currentlyPublicNew": 0,
+  "publication": "not_deployed",
+  "typographyCorrection": {
+    "checkedAt": "2026-09-26T23:00:48.417Z",
+    "previousBatchRecordSha256": "446e342bb110df6d0b0c9cfc63d900d2cb4e25550ac8de5ae9af9c7b9ba229bc",
+    "recordSha256": "13bb5deb49cef4e8a46b55c27d1f34c726ba9600839ca7b9881ea7ee88cf680b",
+    "unchangedBaselineRecords": 235,
+    "changedFields": [
+      {
+        "id": "asymptote-lianbin-ni-translation-interview-2026",
+        "field": "summary.ru"
+      },
+      {
+        "id": "lithuania-elizabeth-buchanan-greenland-translation-2026",
+        "field": "summary.ru"
+      }
+    ],
+    "change": "Two new RU summary em dashes replaced with ASCII hyphens; facts and all previous235 records unchanged."
+  }
+}

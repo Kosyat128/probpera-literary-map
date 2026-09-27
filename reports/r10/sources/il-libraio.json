@@ -1,0 +1,367 @@
+{
+  "sourceId": "il-libraio",
+  "name": "Il Libraio",
+  "entryUrl": "https://www.illibraio.it/",
+  "countryCodes": [
+    "IT"
+  ],
+  "coverageCountryCodes": [
+    "IT"
+  ],
+  "attemptedAt": "2026-09-26T17:32:04.055Z",
+  "requests": [
+    {
+      "url": "https://www.illibraio.it/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 171356,
+      "sha256": "f538c5ec5d6505db64afa8e673f1808cd6c074528ef5a54fe802e7aa29260fee",
+      "accessedAt": "2026-09-26T17:32:05.857Z"
+    },
+    {
+      "url": "https://www.illibraio.it/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 22521,
+      "sha256": "96f4cd57f036f5e27d27f75496f60a0ed3b68653ab8f0cda38dbf12105ae96ef",
+      "accessedAt": "2026-09-26T17:32:06.007Z"
+    },
+    {
+      "url": "https://www.illibraio.it/news/editoria/festival-letterari-2026-1484967/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 276796,
+      "sha256": "3ec5fe052ac813f3ae46f5fa6d74e71f58bdd6d812dc26c7be1863cde9a63fac",
+      "accessedAt": "2026-09-26T17:32:06.201Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.illibraio.it/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 322,
+    "sha256": "deb272ac41294c221ab84f6c4626d4163579d4869ab9993d840f79570cbf715b",
+    "accessedAt": "2026-09-26T17:32:05.594Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/profilo/",
+      "/?s",
+      "/?type",
+      "/news/?category=&s=*",
+      "/news/?s=*"
+    ]
+  },
+  "endpoint": {
+    "id": "il-libraio",
+    "name": "Il Libraio",
+    "url": "https://www.illibraio.it/feed/",
+    "format": "rss",
+    "language": "it",
+    "region": "europe",
+    "sourceFamilyId": "il-libraio",
+    "countryCodes": [
+      "IT"
+    ],
+    "coverageCountryCodes": [
+      "IT"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.illibraio.it"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.illibraio.it/news/editoria/festival-letterari-2026-1484967/"
+    ],
+    "verifiedAt": "2026-09-26T17:32:06.224Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "il-libraio",
+    "source": {
+      "name": "Il Libraio",
+      "url": "https://www.illibraio.it/news/editoria/festival-letterari-2026-1484967/",
+      "language": "it"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Festival letterari, premi e fiere del libro 2026: il calendario",
+    "publishedAt": "2026-09-24T09:50:50.000Z",
+    "description": "Una guida speciale, un calendario aggiornato settimanalmente, dedicato ai festival letterari del 2026, alle fiere del libro in giro per l’Italia e ai premi assegnati a scrittrici e scrittori Leggi l'articolo completo Festival letterari, premi e fiere del libro 2026: il calendario.",
+    "discoveredAt": "2026-09-26T17:32:06.008Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.illibraio.it/news/editoria/festival-letterari-2026-1484967/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 276796,
+      "sha256": "3ec5fe052ac813f3ae46f5fa6d74e71f58bdd6d812dc26c7be1863cde9a63fac",
+      "accessedAt": "2026-09-26T17:32:06.201Z",
+      "headline": "Festival letterari, premi e fiere del libro 2026: il calendario",
+      "excerpt": "Una guida speciale, un calendario aggiornato settimanalmente, dedicato ai festival letterari del 2026, alle fiere del libro in giro per l’Italia e ai premi assegnati a scrittrici e scrittori Nei mesi scorsi, in occasione di BookCity Milano, è stata presentata l’edizione 2025 di EffettoFestival, un’ampia indagine dedicata agli impatti economici, occupazionali, turistici e sociali dei festival di ap",
+      "publishedDates": [
+        {
+          "value": "2026-09-24T09:50:50+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-24 11:50:50",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://www.illibraio.it/news/editoria/festival-letterari-2026-1484967/",
+      "language": "it",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:06.224Z",
+  "foundItems": [
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/editoria/festival-letterari-2026-1484967/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festival letterari, premi e fiere del libro 2026: il calendario",
+      "publishedAt": "2026-09-24T09:50:50.000Z",
+      "description": "Una guida speciale, un calendario aggiornato settimanalmente, dedicato ai festival letterari del 2026, alle fiere del libro in giro per l’Italia e ai premi assegnati a scrittrici e scrittori Leggi l'articolo completo Festival letterari, premi e fiere del libro 2026: il calendario.",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/narrativa/libri-ultime-uscite-settembre-2026-1501161/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Libri, le ultime uscite da non perdere: oltre 290 novità consigliate a settembre 2026",
+      "publishedAt": "2026-09-25T08:06:17.000Z",
+      "description": "Quali sono le più interessanti novità in arrivo in libreria tra la fine dell'estate e l'inizio dell'autunno? Quali le ultime uscite da non perdere a settembre 2026? Nel nostro speciale, spazio a un'ampia selezione di romanzi (tra opere letterarie da non mancare, saghe, gialli, thriller, romance e fantasy), memoir, saggi, poesie e fumetti, oltre a molti nuovi testi per bambini e bambine, ragazze e…",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/varia/murdoku-bestseller-2026-1505460/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Murdoku” è il bestseller del 2026 finora (e il 13 ottobre arriva il secondo capitolo)",
+      "publishedAt": "2026-09-24T10:30:07.000Z",
+      "description": "\"Sono libri di nuova generazione che mescolano gioco, narrazione e logica\". È stata senza dubbio l’estate di \"Murdoku \u2013 80 omicidi misteriosi da risolvere con la logica\", bestseller che tiene insieme crime, ingegno e sudoku. Con 160mila copie vendute, è stato il libro più venduto in Italia finora nel 2026. E il 13 ottobre sarà in libreria \"Murdoku 2 - Killer a spasso nel tempo\", il secondo volume…",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/bambini-e-ragazzi/libri-di-pezza-per-linfanzia-1508827/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I primi libri di pezza per l’infanzia in mostra: tutto il fascino dei “Dean’s Rag Books”",
+      "publishedAt": "2026-09-26T00:49:24.000Z",
+      "description": "Nacquero a inizio '900 con una missione \"pionieristica\": resistere alle mani dei bambini... Unire il mondo della parola a quello del gioco ha permesso a questi oggetti di essere \"manipolati, lavati, abbracciati e persino sgranocchiati, inaugurando una nuova stagione\". Fino al 3 ottobre, presso la Biblioteca San Giorgio di Pistoia, sarà visitabile la mostra \"Libri da abbracciare - Dean's Rag Books…",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/bambini-e-ragazzi/nonna-gruffalo-serie-libri-1509151/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Nonna Gruffalò”: 20 anni dopo, il nuovo capitolo dell’amata serie di libri",
+      "publishedAt": "2026-09-26T00:34:39.000Z",
+      "description": "Dopo il successo di “Il ladro di zucche”, il periodo positivo per Emme Edizioni prosegue con l'uscita (attesissima) di \"Nonna Gruffalò\", il terzo capitolo della serie creata da Julia Donaldson e illustrata da Axel Scheffler (che con i primi due volumi ha venduto 18 milioni di copie, tradotte in oltre 100 lingue) Leggi l'articolo completo “Nonna Gruffalò”: 20 anni dopo, il nuovo capitolo dell’amat…",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/dautore/angel-down-daniel-kraus-1507567/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Angel Down” di Daniel Kraus: un angelo caduto nell’inferno della Grande Guerra",
+      "publishedAt": "2026-09-25T01:35:23.000Z",
+      "description": "Vincitore del Premio Pulitzer per la narrativa 2026, \"Angel Down\" unisce il racconto crudo e brutale degli orrori della Prima guerra mondiale alla speculative fiction, scrivendo dell'incontro tra il soldato semplice Cyril Bagger e un angelo caduto nella Terra di Nessuno, sul fronte occidentale. Attraverso una sola frase senza punti, Daniel Kraus rivela i pensieri del protagonista e il suo cammino…",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/dautore/persempre-sophie-mackintosh-1507179/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Persempre” di Sophie Mackintosh, o delle fuorvianti promesse del desiderio",
+      "publishedAt": "2026-09-25T01:35:19.000Z",
+      "description": "Con il suo nuovo romanzo, intitolato \"Persempre\", la scrittrice gallese Sophie Mackintosh trasforma una storia d’amore clandestina in un'inquietante favola moderna sugli abbagli del desiderio. Ambientato in una città uto-distopica che sembra conoscere fin troppo bene i suoi abitanti, il testo dialoga infatti da un'interessante prospettiva allegorica con l'immaginario più o meno recente del tradim…",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/dautore/erri-de-luca-sotto-processo-1506786/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Erri De Luca, processo a un “vecchio scrittore”",
+      "publishedAt": "2026-09-25T00:53:55.000Z",
+      "description": "Dopo le polemiche della primavera scorsa a seguito di alcune sue dichiarazione su Israele e Palestina, Erri De Luca torna con \"Sotto processo\", che raccoglie più testi, compresi alcuni \"scritti civili\". Nella prima parte del libro l'autore, 76enne, immagina uno scrittore giudicato da un tribunale di giovani (\"Mi posso dimettere da scrittore, smettere di aggiungere pagine o almeno, visto che è un …",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "il-libraio",
+      "source": {
+        "name": "Il Libraio",
+        "url": "https://www.illibraio.it/news/dautore/liberi-tutti-chiara-gamberale-1507130/",
+        "language": "it"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Liberi tutti”: con Chiara Gamberale una maestra che vede anche quello che le famiglie vorrebbero nascondere",
+      "publishedAt": "2026-09-24T09:11:58.000Z",
+      "description": "Una classe è un microcosmo: entrare nelle dinamiche tra i bambini-piccoli e i bambini-grandi, ovvero i loro genitori, è ciò che fa giornalmente la maestra Titti. Ed è lei ad accompagnare la narrazione alla scoperta di un dramma che è accaduto cinque giorni prima. Una giornata piena di sangue. Con il consueto talento nell'indagare l'interiorità dei suoi personaggi, Chiara Gamberale in \"Liberi tutt…",
+      "discoveredAt": "2026-09-26T17:32:06.008Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "96f4cd57f036f5e27d27f75496f60a0ed3b68653ab8f0cda38dbf12105ae96ef"
+}

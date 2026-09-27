@@ -1,0 +1,515 @@
+{
+  "sourceId": "ast",
+  "name": "АСТ",
+  "entryUrl": "https://ast.ru/news/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:40.378Z",
+  "requests": [
+    {
+      "url": "https://ast.ru/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 137190,
+      "sha256": "926843a3e1081d1bc84a04a85ce20a094b88b8153f5c205ad0cc2b439eefda36",
+      "accessedAt": "2026-09-26T17:23:44.930Z"
+    },
+    {
+      "url": "https://ast.ru/news/evropeyskiy-den-yazykov-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 152862,
+      "sha256": "054ce80dc695942233df61e17a92e3829bcf0fc2b9d95d5c6ba3163463b85be3",
+      "accessedAt": "2026-09-26T17:29:41.519Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://ast.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 3043,
+    "sha256": "f9055c5b36d01416be8ab2c23140133e178fc15654d992d8ce6839de41dc8226",
+    "accessedAt": "2026-09-26T17:29:40.819Z",
+    "disallowed": [
+      "/*?CODE2=",
+      "/*?erid=",
+      "/bitrix/*",
+      "/noindex/*",
+      "/news/noindex/*",
+      "/news/editing/*",
+      "/onews/",
+      "/novosti/",
+      "/item/",
+      "/bitrix/",
+      "/auth/*",
+      "/auth.php",
+      "/*register=yes",
+      "/*print_course=Y",
+      "/*logout=yes",
+      "/*login=yes",
+      "/*index.php$",
+      "/*forgot_password=yes",
+      "/*change_password=yes",
+      "/*bitrix_*=",
+      "/*backurl=*",
+      "/*BACKURL=*",
+      "/*back_url=*",
+      "/*BACK_URL=*",
+      "/*back_url_admin=*",
+      "/*auth=yes",
+      "/*?sphrase_id=*",
+      "/*?hl=*",
+      "/*?queryLetter=*",
+      "/*/slide_show/",
+      "/*/gallery/*order=*",
+      "/onews/",
+      "/authors.aspx",
+      "/lp/darim-knigi/",
+      "/local/*",
+      "/ymarket/*",
+      "/bitrix/rk.php?*"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:43.736Z",
+    "sourceDocumentSha256": "926843a3e1081d1bc84a04a85ce20a094b88b8153f5c205ad0cc2b439eefda36"
+  },
+  "endpoint": {
+    "id": "ast",
+    "name": "АСТ",
+    "url": "https://ast.ru/news/",
+    "format": "html",
+    "language": "ru-RU",
+    "region": "europe",
+    "sourceFamilyId": "ast",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://ast.ru"
+    ],
+    "linkPattern": "^/news/.+|^/authors/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://ast.ru/news/evropeyskiy-den-yazykov-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:41.539Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 14,
+  "literaryCandidateCount": 14,
+  "sample": {
+    "sourceId": "ast",
+    "source": {
+      "name": "АСТ",
+      "url": "https://ast.ru/news/evropeyskiy-den-yazykov-2026/",
+      "language": "ru-RU"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "26.09.2026 г. Книги Европейский день языков 2026 Книги на иностранных языках.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:40.865Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://ast.ru/news/evropeyskiy-den-yazykov-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 152862,
+      "sha256": "054ce80dc695942233df61e17a92e3829bcf0fc2b9d95d5c6ba3163463b85be3",
+      "accessedAt": "2026-09-26T17:29:41.519Z",
+      "headline": "Европейский день языков 2026",
+      "excerpt": "Европейский день языков 2026 | Издательство АСТ <div> <img src=\"//top-fwz1.mail.ru/counter?id=514055;js=na\" style=\"border:0;position:absolute;left:-9999px;\" alt=\"Top.Mail.Ru\"/> </div> <div> <img src=\"https://mc.yandex.ru/watch/21885226\" style=\"position:absolute; left:-9999px;\" alt=\"\" /> </div> Европейский день языков 2026 26.09.2026 26 сентября отмечается Европейский день языков. Этот праздник сущ",
+      "publishedDates": [
+        {
+          "value": "2026-09-26T09:00:00+0300",
+          "method": "jsonld.datePublished",
+          "type": "NewsArticle"
+        }
+      ],
+      "canonical": "https://ast.ru/news/evropeyskiy-den-yazykov-2026/",
+      "language": "ru-RU",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:41.539Z",
+  "foundItems": [
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/evropeyskiy-den-yazykov-2026/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "26.09.2026 г. Книги Европейский день языков 2026 Книги на иностранных языках.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/10-detskikh-knig-bestsellerov-sentyabrya-2026-goda/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "25.09.2026 г. Книги 10 детских книг‑бестселлеров сентября 2026 года Представляем свежие детективы, приключения, научпоп и энциклопедии, которые чаще всего выбирали ребята и их родители.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/otkrylsya-predzakaz-na-sbornik-samaya-strashnaya-kniga-2027/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "24.09.2026 г. Книги Открылся предзаказ на сборник «Самая страшная книга 2027» Ждем 20 отборных хорроров, вдохновленных мифами, историей России и узнаваемой повседневностью.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/snachala-prochitay-7-ekranizatsiy-oktyabrya-2026-goda/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "24.09.2026 г. Книги Сначала прочитай: 7 экранизаций октября 2026 года Сериалы «К востоку от Эдема», «Кэрри», «Полдень» по повести братьев Стругацких и полнометражное аниме «Созданный в Бездне: Тайна пробуждения».",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/uilyam-folkner-knigi-nobelevskaya-premiya/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "25.09.2026 г. Авторы Уильям Фолкнер: книги, Нобелевская премия К 129-летию со дня рождения автора романов «Шум и ярость», «Когда я умирала», «Свет в августе», «Сойди, Моисей», «Авессалом, Авессалом!», «Сарторис».",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/premiyu-aleksandra-solzhenitsyna-vruchili-pisatelyu-vladislavu-otroshenko/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "25.09.2026 г. Авторы Премию Александра Солженицына вручили писателю Владиславу Отрошенко Автора наградили за многомерное изображение жизни донского казачества и исследования загадочного гения русской литературы \u2014 Николая Гоголя.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/kem-rabotali-pisateli/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "25.09.2026 г. Книги Кем работали писатели Кем были писатели: почтальоны, моряки, врачи и клерки.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/vyshel-treyler-seriala-polden-po-povesti-bratev-strugatskikh/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "25.09.2026 г. Книги Вышел трейлер сериала «Полдень» по повести братьев Стругацких Максим Каммерер разыскивает сбежавшего коллегу и выходит на след загадочной цивилизации, которая уничтожает планеты.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/avtory-izdatelskoy-gruppy-eksmo-ast-primut-uchastie-v-nizhegorodskoy-knizhnoy-yarmarke/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "24.09.2026 г. Книги Авторы издательской группы «Эксмо-АСТ» примут участие в Нижегородской книжной ярмарке Более 90 событий, 100+ издательств и звёздный состав авторов: как пройдёт Вторая Нижегородская книжная ярмарка.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/news/poyavilis-novye-kadry-iz-filma-vlastelin-kolets-okhota-za-gollumom/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "24.09.2026 г. Книги Появились новые кадры из фильма «Властелин колец: охота за Голлумом» На фото видно идиллический Шир и Элайджу Вуда в образе Фродо.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/authors/lenin-vladimir-ilich-000008703/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ленин Владимир Ильич",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/authors/shcherbakova-galina-nikolaevna-000017641/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Щербакова Галина Николаевна",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/authors/krasnakhorkai-laslo-itd031221/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Краснахоркаи Ласло",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ast",
+      "source": {
+        "name": "АСТ",
+        "url": "https://ast.ru/authors/anderson-dzhodi-linn-itd029968/",
+        "language": "ru-RU"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Андерсон Джоди Линн",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:40.865Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "926843a3e1081d1bc84a04a85ce20a094b88b8153f5c205ad0cc2b439eefda36"
+}

@@ -1,0 +1,1267 @@
+{
+  "version": 1,
+  "batchId": "r10-01",
+  "status": "prepared-not-published",
+  "createdAt": "2026-09-26T17:39:50.582Z",
+  "editorialTimeZone": "Europe/Moscow",
+  "counts": {
+    "prepared": 20,
+    "productionSelectorEligible": 20,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "records": [
+    {
+      "id": "john-green-signed-tip-in-record-2026",
+      "eventKey": "john-green-signed-tip-in-record-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Джон Грин установил рекорд по числу подписанных вклеек для книг",
+        "en": "John Green sets record for signed book tip-in sheets"
+      },
+      "summary": {
+        "ru": "Penguin Random House сообщило о рекорде Guinness World Records: Джон Грин подписал 875 557 вклеек для книг. Сертификат ему вручили 22 сентября в Kings Theatre в Бруклине во время тура в поддержку романа Hollywood, Ending.",
+        "en": "Penguin Random House announced that John Green set a Guinness World Records title by signing 875,557 book tip-in sheets. He received the certificate on September 22 at Brooklyn’s Kings Theatre during his tour for Hollywood, Ending."
+      },
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/author-john-green-earns-a-guinness-world-records-achievement-for-the-most-tip-in-sheets-signed-by-an-author/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "kokila-jason-reynolds-lamplighters-son-acquisition-2026",
+      "eventKey": "kokila-jason-reynolds-lamplighters-son-acquisition-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Kokila приобрело права на новую книгу Джейсона Рейнольдса",
+        "en": "Kokila acquires Jason Reynolds’s The Lamplighter’s Son"
+      },
+      "summary": {
+        "ru": "16 сентября Kokila, импринт Penguin Young Readers, объявило о приобретении прав на The Lamplighter’s Son Джейсона Рейнольдса для Северной Америки и открытых рынков. Книга состоит из связанных историй о жителях одной улицы, меняющейся на протяжении десятилетий; дата выхода в сообщении не указана.",
+        "en": "On September 16, Penguin Young Readers imprint Kokila announced the acquisition of North American and open-market rights to Jason Reynolds’s The Lamplighter’s Son. The book brings together linked stories set on one street over several decades; the announcement does not specify a publication date."
+      },
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/bestselling-and-award-winning-author-jason-reynolds-to-publish-the-lamplighters-son-with-kokila/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "tara-westover-brothers-and-sisters-us-2027",
+      "eventKey": "tara-westover-brothers-and-sisters-us-2027",
+      "category": "releases",
+      "kind": "announcement",
+      "eventDate": "2027-04-13",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Random House выпустит новые мемуары Тары Вестовер 13 апреля 2027 года",
+        "en": "Random House schedules Tara Westover’s new memoir for April 13, 2027"
+      },
+      "summary": {
+        "ru": "Random House анонсировало Brothers and Sisters - новую мемуарную книгу автора Educated. Американское издание о семейной памяти и отношениях между братьями и сёстрами запланировано на 13 апреля 2027 года; одновременно заявлены печатная, электронная и аудиоверсии.",
+        "en": "Random House has announced Brothers and Sisters, a new memoir by the author of Educated. The US publication, about family memory and relationships between siblings, is scheduled for April 13, 2027, with hardcover, ebook and audiobook editions announced for the same date."
+      },
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/random-house-to-publish-a-new-memoir-by-tara-westover-1-nyt-bestselling-author-of-educated/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "viking-beth-brower-emma-lion-rights-2026",
+      "eventKey": "viking-beth-brower-emma-lion-rights-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-18",
+      "publishedAt": "2026-09-18",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Viking Penguin приобрело американские права на серию Бет Брауэр",
+        "en": "Viking Penguin acquires US rights to Beth Brower’s Emma M. Lion series"
+      },
+      "summary": {
+        "ru": "Viking Penguin объявило о приобретении прав на печатные и электронные издания тринадцати романов The Unselected Journals of Emma M. Lion Бет Брауэр. Первые восемь томов издатель планирует выпустить в мягкой обложке 24 ноября 2026 года, девятый - 23 февраля 2027 года.",
+        "en": "Viking Penguin announced the acquisition of US print and ebook rights to thirteen novels in Beth Brower’s The Unselected Journals of Emma M. Lion series. The publisher plans paperback editions of the first eight volumes for November 24, 2026, followed by volume nine on February 23, 2027."
+      },
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/viking-penguin-acquires-u-s-rights-to-bestselling-self-published-series-the-unselected-journals-of-emma-m-lion/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "george-w-bush-call-of-freedom-us-2027",
+      "eventKey": "george-w-bush-call-of-freedom-us-2027",
+      "category": "releases",
+      "kind": "announcement",
+      "eventDate": "2027-03-09",
+      "publishedAt": "2026-09-17",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Crown анонсировало The Call of Freedom Джорджа Буша",
+        "en": "Crown announces George W. Bush’s The Call of Freedom"
+      },
+      "summary": {
+        "ru": "Crown назначило выход The Call of Freedom: Portraits of Political Prisoners and Dissidents на 9 марта 2027 года. Книга Джорджа Буша объединяет рассказы о героях издания и 44 их портрета; предисловие написал Натан Щаранский. Издатель также объявил об аудиоверсии.",
+        "en": "Crown has scheduled The Call of Freedom: Portraits of Political Prisoners and Dissidents for March 9, 2027. George W. Bush’s book combines accounts of its subjects with 44 portraits and a foreword by Natan Sharansky. The publisher has also announced an audiobook edition."
+      },
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/crown-to-publish-former-president-george-w-bushs-the-call-of-freedom/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "frankfurt-book-to-screen-day-2026",
+      "eventKey": "frankfurt-book-to-screen-day-2026",
+      "category": "adaptations",
+      "kind": "announcement",
+      "eventDate": "2026-10-09",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Book-to-Screen Day во Франкфурте назначен на 9 октября",
+        "en": "Frankfurt’s Book-to-Screen Day is scheduled for October 9"
+      },
+      "summary": {
+        "ru": "Франкфуртская книжная ярмарка проведёт Book-to-Screen Day 9 октября. В программе - обсуждение европейского рынка экранизаций и встречи издателей, литературных агентов, продюсеров и скаутов; для отдельной сессии подбора партнёров заявлены около 50 участников.",
+        "en": "Frankfurter Buchmesse will hold Book-to-Screen Day on October 9. The programme includes a discussion of Europe’s adaptation market and meetings for publishers, literary agents, producers and scouts, with around 50 participants announced for a curated matchmaking session."
+      },
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "aficionado-award-words-without-borders-2026",
+      "eventKey": "aficionado-award-words-without-borders-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-10-08",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Words Without Borders получит Aficionado Award во Франкфурте",
+        "en": "Words Without Borders to receive the Aficionado Award in Frankfurt"
+      },
+      "summary": {
+        "ru": "Лауреатом Aficionado Award 2026 стал переводческий проект Words Without Borders. Церемония состоится 8 октября на Франкфуртской книжной ярмарке; награду от имени команды примет исполнительный директор Элизабет Жакетт. Журнал публикует мировую литературу в переводах на английский язык.",
+        "en": "Translation project Words Without Borders has been selected for the 2026 Aficionado Award. Executive director Elisabeth Jaquette will accept the award for the team at Frankfurter Buchmesse on October 8. The magazine publishes literature from around the world in English translation."
+      },
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-aficionado-award-words-without-borders",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "frankfurt-audio-business-centre-2026",
+      "eventKey": "frankfurt-audio-business-centre-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-10-07",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "На Франкфуртской ярмарке откроется новый Audio Business Centre",
+        "en": "Frankfurt Book Fair adds an Audio Business Centre"
+      },
+      "summary": {
+        "ru": "Франкфуртская книжная ярмарка представила аудиопрограмму на 7-11 октября. Новый Audio Business Centre разместится в зале 4.1, а в зале 4.0 посетителям покажут аудиокниги и подкасты. Профессиональные дискуссии будут посвящены технологиям, рынкам и развитию аудиоиздания.",
+        "en": "Frankfurter Buchmesse has outlined its audio programme for October 7-11. A new Audio Business Centre will occupy Hall 4.1, while Hall 4.0 will introduce visitors to audiobooks and podcasts. Professional discussions will address technology, markets and developments in audio publishing."
+      },
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-who-narrating-future-frankfurter-buchmesses-audio-programme-2026",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "frankfurt-comic-business-centre-2026",
+      "eventKey": "frankfurt-comic-business-centre-2026",
+      "category": "publishing",
+      "kind": "announcement",
+      "eventDate": "2026-10-07",
+      "publishedAt": null,
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Comic Business Centre соберёт во Франкфурте участников из десяти стран",
+        "en": "Frankfurt’s Comic Business Centre will host exhibitors from ten countries"
+      },
+      "summary": {
+        "ru": "Франкфуртская книжная ярмарка расширяет программу комиксов, манги и графических историй на 7-11 октября. В Comic Business Centre в зале 3.1 заявлен 31 экспонент из десяти стран; программа объединит торговлю правами, профессиональные обсуждения и встречи с читателями.",
+        "en": "Frankfurter Buchmesse is expanding its comics, manga and graphic storytelling programme for October 7-11. The Comic Business Centre in Hall 3.1 lists 31 exhibitors from ten countries, bringing together rights trading, professional discussions and meetings with readers."
+      },
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-08-27-comics-manga-and-visual-stories-frankfurter-buchmesse-creating-new",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "frankfurt-rights-meeting-40-reception-2026",
+      "eventKey": "frankfurt-rights-meeting-40-reception-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-06",
+      "publishedAt": "2026-06-08",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Frankfurt Rights Meeting отметит 40-й выпуск встречей 6 октября",
+        "en": "Frankfurt Rights Meeting marks its 40th edition with an October 6 reception"
+      },
+      "summary": {
+        "ru": "В юбилейной программе Frankfurt Rights Meeting пройдут онлайн-сессии о торговле правами, переводах и детском книгоиздании. Очная встреча международного сообщества специалистов по правам назначена на 6 октября; её тема - Rights Then. Rights Now.",
+        "en": "The anniversary programme of Frankfurt Rights Meeting includes online sessions on rights trading, translation and children’s publishing. An in-person reception for the international rights community is scheduled for October 6 under the theme Rights Then. Rights Now."
+      },
+      "source": {
+        "name": "Frankfurter Buchmesse",
+        "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-08-40-years-frankfurt-rights-meeting",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "tiktok-book-awards-mexico-ceremony-2026",
+      "eventKey": "tiktok-book-awards-mexico-ceremony-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-12-03",
+      "publishedAt": "2026-09-10",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Первые TikTok Book Awards México вручат 3 декабря в Гвадалахаре",
+        "en": "First TikTok Book Awards México ceremony set for December 3 in Guadalajara"
+      },
+      "summary": {
+        "ru": "TikTok и Международная книжная ярмарка в Гвадалахаре анонсировали первую мексиканскую церемонию Book Awards на 3 декабря. Премия включает категории независимого книжного магазина или издательства, автора литературного контента и книги в жанре графической прозы.",
+        "en": "TikTok and the Guadalajara International Book Fair have announced the first Mexican Book Awards ceremony for December 3. Categories recognise an independent bookshop or publisher, a literary content creator and a graphic narrative book."
+      },
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3347&ids=1",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "fil-editorial-merit-ekare-2026",
+      "eventKey": "fil-editorial-merit-ekare-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-11-30",
+      "publishedAt": "2026-09-08",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Ediciones Ekaré получит награду FIL за издательскую деятельность",
+        "en": "Ediciones Ekaré to receive FIL’s editorial merit tribute"
+      },
+      "summary": {
+        "ru": "Международная книжная ярмарка в Гвадалахаре выбрала Ediciones Ekaré для Homenaje al Mérito Editorial 2026. Вручение назначено на 30 ноября. Основанное в Венесуэле в 1978 году издательство работает с детской литературой и книгами-картинками; награду примет Пабло Ларрагуибель.",
+        "en": "The Guadalajara International Book Fair has selected Ediciones Ekaré for its 2026 Homenaje al Mérito Editorial, to be presented on November 30. Founded in Venezuela in 1978, the publisher specialises in children’s literature and picture books. Pablo Larraguibel will accept the tribute."
+      },
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3345&ids=1",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "wingston-gonzalez-plia-2026",
+      "eventKey": "wingston-gonzalez-plia-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-08-25",
+      "publishedAt": "2026-08-25",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Вингстон Гонсалес получил Премию литератур коренных народов Америки",
+        "en": "Wingston González wins the Indigenous Literatures of America Prize"
+      },
+      "summary": {
+        "ru": "Гватемальский поэт Вингстон Гонсалес стал лауреатом Premio de Literaturas Indígenas de América 2026 за Un poquito más allá. Написанная на языке гарифуна книга обращается к духовной и культурной традиции этого народа; решение опубликовано организаторами 25 августа.",
+        "en": "Guatemalan poet Wingston González has won the 2026 Premio de Literaturas Indígenas de América for Un poquito más allá. Written in Garifuna, the work explores the community’s spiritual and cultural traditions. The organisers published the decision on August 25."
+      },
+      "source": {
+        "name": "FIL Guadalajara",
+        "url": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "pen-index-victoria-amelina-fellowship-2026",
+      "eventKey": "pen-index-victoria-amelina-fellowship-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-10",
+      "publishedAt": "2026-09-10",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "PEN International поддержит программу имени Виктории Амелиной",
+        "en": "PEN International joins the Victoria Amelina Fellowship Programme"
+      },
+      "summary": {
+        "ru": "PEN International объявил о партнёрстве с INDEX в программе имени Виктории Амелиной. Программа поддерживает писателей, документирующих войну в Украине. В работе международного отборочного комитета участвует вице-президент PEN International Карлес Торнер.",
+        "en": "PEN International has announced a partnership with INDEX in the Victoria Amelina Fellowship Programme. The programme supports writers documenting the war in Ukraine. PEN International vice-president Carles Torner is participating in its international selection committee."
+      },
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/pen-international-partners-with-index-to-support-writers-carrying-victoria-amelinas-legacy",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "nlo-venediktova-literary-haptics-podcast-20260912",
+      "eventKey": "nlo-venediktova-literary-haptics-podcast-20260912",
+      "category": "discoveries",
+      "kind": "news",
+      "eventDate": "2026-09-12",
+      "publishedAt": "2026-09-12",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "НЛО Медиа выпустило беседу с Татьяной Венедиктовой о литературной гаптике",
+        "en": "NLO Media publishes a conversation on literary haptics with Tatyana Venediktova"
+      },
+      "summary": {
+        "ru": "12 сентября НЛО Медиа опубликовало выпуск «Татьяна Венедиктова: о литературной гаптике». Беседу ведут Денис Ларионов и Денис Маслаков; на странице указана продолжительность 23 минуты.",
+        "en": "On September 12, NLO Media published a conversation with Tatyana Venediktova on literary haptics. Denis Larionov and Denis Maslakov host the episode, which is listed as 23 minutes long."
+      },
+      "source": {
+        "name": "Новое литературное обозрение / НЛО Медиа",
+        "url": "https://nlobooks.ru/nlomedia/catalog/slovesnost/tatyana-venediktova-o-literaturnoy-gaptike/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "nlo-tsyganov-stalin-era-philology-20260901",
+      "eventKey": "nlo-tsyganov-stalin-era-philology-20260901",
+      "category": "discoveries",
+      "kind": "news",
+      "eventDate": "2026-09-01",
+      "publishedAt": "2026-09-01",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "НЛО Медиа опубликовало выпуск Дмитрия Цыганова о филологии сталинской эпохи",
+        "en": "NLO Media publishes Dmitry Tsyganov’s episode on Stalin-era philology"
+      },
+      "summary": {
+        "ru": "1 сентября НЛО Медиа разместило выпуск Дмитрия Цыганова «„Свобода - это умение вовремя подчиниться партии“: Филология в сталинскую эпоху». Продолжительность записи - 49 минут; ведущим на странице указан Дмитрий Цыганов.",
+        "en": "On September 1, NLO Media published Dmitry Tsyganov’s episode on philology in the Stalin era. The page lists Tsyganov as the presenter and gives a running time of 49 minutes."
+      },
+      "source": {
+        "name": "Новое литературное обозрение / НЛО Медиа",
+        "url": "https://nlobooks.ru/nlomedia/catalog/khronika-nauchnoy-zhizni/dmitriy-tsyganov-svoboda-eto-umenie-vovremya-podchinitsya-partii-filologiya-v-stalinskuyu-epokhu/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "nlo-zenkin-scholars-french-literature-20260818",
+      "eventKey": "nlo-zenkin-scholars-french-literature-20260818",
+      "category": "discoveries",
+      "kind": "news",
+      "eventDate": "2026-08-18",
+      "publishedAt": "2026-08-18",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Сергей Зенкин представил выпуск об образах учёного во французской литературе",
+        "en": "Sergey Zenkin presents an episode on scholars in French literature"
+      },
+      "summary": {
+        "ru": "НЛО Медиа опубликовало запись Сергея Зенкина «Свидетели, толкователи, соблазнители: Фигуры ученого во французской литературе XIX века». Выпуск датирован 18 августа 2026 года и длится 44 минуты.",
+        "en": "NLO Media has published Sergey Zenkin’s episode on figures of the scholar in nineteenth-century French literature. The recording, titled Witnesses, Interpreters, Seducers in translation, is dated August 18, 2026, and runs for 44 minutes."
+      },
+      "source": {
+        "name": "Новое литературное обозрение / НЛО Медиа",
+        "url": "https://nlobooks.ru/nlomedia/catalog/khronika-nauchnoy-zhizni/sergey-zenkin-svideteli-tolkovateli-soblazniteli-figury-uchenogo-vo-frantsuzskoy-literature-xix-veka/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "nlo-anya-fyodorova-conversation-20260813",
+      "eventKey": "nlo-anya-fyodorova-conversation-20260813",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-08-13",
+      "publishedAt": "2026-08-13",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "НЛО Медиа опубликовало беседу с Аней Фёдоровой",
+        "en": "NLO Media publishes a conversation with Anya Fyodorova"
+      },
+      "summary": {
+        "ru": "13 августа НЛО Медиа выпустило разговор с Аней Фёдоровой под заголовком «35 июля; Но это не точно». Ведущие - Денис Ларионов и Денис Маслаков. Продолжительность записи на странице - 23 минуты.",
+        "en": "On August 13, NLO Media published a conversation with Anya Fyodorova under the Russian title «35 июля; Но это не точно». The episode is hosted by Denis Larionov and Denis Maslakov and is listed as 23 minutes long."
+      },
+      "source": {
+        "name": "Новое литературное обозрение / НЛО Медиа",
+        "url": "https://nlobooks.ru/nlomedia/catalog/slovesnost/anya-fyedorova-35-iyulya-no-eto-ne-tochno/",
+        "language": "ru"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "charles-spencer-swan-song-us-announcement-2026",
+      "eventKey": "charles-spencer-swan-song-us-announcement-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-08-20",
+      "publishedAt": "2026-08-20",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Penguin Press анонсировало мемуары Чарльза Спенсера о Диане",
+        "en": "Penguin Press announces Charles Spencer’s memoir about Diana"
+      },
+      "summary": {
+        "ru": "Penguin Press объявило об американском издании Swan Song: Diana, My Sister Чарльза Спенсера. В книге автор рассказывает о сестре с позиции брата. В сообщении от 20 августа издательство подтвердило приобретение североамериканских прав у Penguin UK.",
+        "en": "Penguin Press announced a US edition of Charles Spencer’s Swan Song: Diana, My Sister, which tells Diana’s story from her brother’s perspective. In its August 20 announcement, the publisher confirmed that it had acquired North American rights from Penguin UK."
+      },
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/penguin-press-to-publish-charles-spencers-swan-song-the-story-of-his-sister-diana-princess-of-wales/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "our-strange-duet-audiobook-cast-2026",
+      "eventKey": "our-strange-duet-audiobook-cast-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-08-04",
+      "publishedAt": "2026-08-04",
+      "verifiedAt": "2026-09-26T17:39:50.582Z",
+      "title": {
+        "ru": "Объявлен актёрский состав аудиокниги Our Strange Duet Эрин А. Крейг",
+        "en": "Cast announced for Erin A. Craig’s Our Strange Duet audiobook"
+      },
+      "summary": {
+        "ru": "Listening Library и LW Entertainment объявили состав исполнителей аудиокниги Our Strange Duet, действие которой связано с миром мюзикла Эндрю Ллойда Уэббера «Призрак оперы». Кристину Даэ озвучит Беатрис Пенни-Туре, Призрака - Джордан Доника, Рауля - Джордан Фишер. В проекте заявлены музыка и драматизированные сцены.",
+        "en": "Listening Library and LW Entertainment have announced the cast of Erin A. Craig’s Our Strange Duet audiobook, set in the world of Andrew Lloyd Webber’s The Phantom of the Opera. Beatrice Penny-Touré voices Christine Daaé, Jordan Donica the Phantom and Jordan Fisher Raoul. The production includes music and dramatised scenes."
+      },
+      "source": {
+        "name": "Penguin Random House",
+        "url": "https://global.penguinrandomhouse.com/announcements/listening-library-announces-star-cast-of-audiobook-our-strange-duet-by-erin-a-craig/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "john-green-signed-tip-in-record-2026",
+      "sourceId": "prh",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://global.penguinrandomhouse.com/announcements/author-john-green-earns-a-guinness-world-records-achievement-for-the-most-tip-in-sheets-signed-by-an-author/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:05.709Z",
+      "responseSha256": "327401df74bae5eaf21cee24e489e1aa3ed3c7306bf6164e3f97e4e37711ba22",
+      "responseBytes": 102659,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-22",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Guinness title: most tip-in sheets signed by an author; total 875557.",
+        "Certificate presentation: 22 September 2026, Kings Theatre, Brooklyn.",
+        "Source announcement posted 25 September 2026."
+      ],
+      "stage": "record-confirmation",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      }
+    },
+    {
+      "id": "kokila-jason-reynolds-lamplighters-son-acquisition-2026",
+      "sourceId": "prh",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://global.penguinrandomhouse.com/announcements/bestselling-and-award-winning-author-jason-reynolds-to-publish-the-lamplighters-son-with-kokila/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:05.668Z",
+      "responseSha256": "aae54a7dd01d69f3c58f667c6928a79e91c0cca2e947f9cf942a7c640e77313f",
+      "responseBytes": 101596,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2026-09-16",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Acquisition announced 16 September 2026; article posted 17 September.",
+        "Kokila acquired North America and Open Market rights.",
+        "Interconnected stories set on This Street over decades; publication date unspecified."
+      ],
+      "stage": "rights-acquisition",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      }
+    },
+    {
+      "id": "tara-westover-brothers-and-sisters-us-2027",
+      "sourceId": "prh",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://global.penguinrandomhouse.com/announcements/random-house-to-publish-a-new-memoir-by-tara-westover-1-nyt-bestselling-author-of-educated/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:05.687Z",
+      "responseSha256": "c2eaabcd0f1aa31c845587ed966396b7d58b618fb4a022786f308d970f049e02",
+      "responseBytes": 101550,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2027-04-13",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Random House US publication date 13 April 2027.",
+        "Title Brothers and Sisters; author Tara Westover.",
+        "Hardcover, ebook and simultaneous Penguin Random House Audio edition."
+      ],
+      "stage": "scheduled-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "freshnessException": "Significant new memoir announcement beyond the approximate 180-day discovery horizon."
+    },
+    {
+      "id": "viking-beth-brower-emma-lion-rights-2026",
+      "sourceId": "prh",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://global.penguinrandomhouse.com/announcements/viking-penguin-acquires-u-s-rights-to-bestselling-self-published-series-the-unselected-journals-of-emma-m-lion/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:06.189Z",
+      "responseSha256": "7a9904aae2d116dbab277cd0bc2ae183c48d2460bcb1ee05035278368ccfb2a1",
+      "responseBytes": 101365,
+      "sourcePublishedAt": "2026-09-18",
+      "eventDate": "2026-09-18",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "US print and ebook rights to thirteen novels acquired.",
+        "Volumes 1-8 Penguin trade paperbacks scheduled 24 November 2026.",
+        "Volume 9 scheduled 23 February 2027."
+      ],
+      "stage": "rights-acquisition",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      }
+    },
+    {
+      "id": "george-w-bush-call-of-freedom-us-2027",
+      "sourceId": "prh",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US"
+      ],
+      "url": "https://global.penguinrandomhouse.com/announcements/crown-to-publish-former-president-george-w-bushs-the-call-of-freedom/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:06.143Z",
+      "responseSha256": "d04a8fc968401abb5f467666f7e9a2371ba5bc65f13ab532a7592fc35ff8c3de",
+      "responseBytes": 107409,
+      "sourcePublishedAt": "2026-09-17",
+      "eventDate": "2027-03-09",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Crown publication scheduled 9 March 2027.",
+        "Forty-four portraits; foreword by Natan Sharansky.",
+        "Simultaneous digital audio announced."
+      ],
+      "stage": "scheduled-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      }
+    },
+    {
+      "id": "frankfurt-book-to-screen-day-2026",
+      "sourceId": "frankfurt-book-fair",
+      "sourceCountryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE"
+      ],
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-24-book-screen-day-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:06.171Z",
+      "responseSha256": "c2af86fefbe701b3df5092cb9bf5189c3b8c1ee99c60b10a9a9ddb294bc27e05",
+      "responseBytes": 97966,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-09",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Book-to-Screen Day 9 October 2026.",
+        "European adaptation trends discussion and curated matchmaking.",
+        "Around 50 selected publishers, agents, production companies and scouts."
+      ],
+      "stage": "scheduled-adaptation-industry-event",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "distinctFromBaseline": "A named adaptation programme, separate from the general fair announcement."
+    },
+    {
+      "id": "aficionado-award-words-without-borders-2026",
+      "sourceId": "frankfurt-book-fair",
+      "sourceCountryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE",
+        "US"
+      ],
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-aficionado-award-words-without-borders",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:06.330Z",
+      "responseSha256": "0f20742f66f64394759286a354d079897bebfd89a2f5459d9a9f894da36f9800",
+      "responseBytes": 93530,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-08",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Words Without Borders selected for Aficionado Award 2026.",
+        "Award ceremony 8 October 2026, 11:00, Global Stage.",
+        "Elisabeth Jaquette to accept for the team."
+      ],
+      "stage": "recipient-confirmed-ceremony-scheduled",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "countries": [
+        "DE",
+        "US"
+      ]
+    },
+    {
+      "id": "frankfurt-audio-business-centre-2026",
+      "sourceId": "frankfurt-book-fair",
+      "sourceCountryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE"
+      ],
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-09-09-who-narrating-future-frankfurter-buchmesses-audio-programme-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:06.666Z",
+      "responseSha256": "8399399f35c5e30933843c1e9e4b225f68b58805ffe5883aeec18abe113e0bc1",
+      "responseBytes": 99345,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-07",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Fair dates 7-11 October 2026.",
+        "New Audio Business Centre Hall 4.1; audience programme Hall 4.0.",
+        "Professional audio programme covers markets, technology and strategy."
+      ],
+      "stage": "new-industry-facility-announced",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "distinctFromBaseline": "New audio business facility and specialist programme, not another daily fair listing."
+    },
+    {
+      "id": "frankfurt-comic-business-centre-2026",
+      "sourceId": "frankfurt-book-fair",
+      "sourceCountryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE",
+        "FR",
+        "BE",
+        "LV",
+        "ES",
+        "CZ"
+      ],
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-08-27-comics-manga-and-visual-stories-frankfurter-buchmesse-creating-new",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:06.813Z",
+      "responseSha256": "ef54b32c40fa3b964177c55d42073d3e67b9392ff78482c23a7468303de09b6f",
+      "responseBytes": 95321,
+      "sourcePublishedAt": null,
+      "eventDate": "2026-10-07",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Programme dates 7-11 October 2026.",
+        "Comic Business Centre Hall 3.1 has 31 exhibitors from ten countries.",
+        "Professional exchange and public comics/manga programme."
+      ],
+      "stage": "specialist-comics-programme-announced",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "countries": [
+        "DE",
+        "FR",
+        "BE",
+        "LV",
+        "ES",
+        "CZ"
+      ],
+      "distinctFromBaseline": "Specific comics rights programme and exhibitor group, separate from generic fair dates."
+    },
+    {
+      "id": "frankfurt-rights-meeting-40-reception-2026",
+      "sourceId": "frankfurt-book-fair",
+      "sourceCountryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [
+        "DE"
+      ],
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-08-40-years-frankfurt-rights-meeting",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:34:34.139Z",
+      "responseSha256": "4a7caa75b3d1eff979c3a8a2788e17ae61962a6809e338eed62c0c42f8c4a005",
+      "responseBytes": 96717,
+      "sourcePublishedAt": "2026-06-08",
+      "eventDate": "2026-10-06",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "40th year of Frankfurt Rights Meeting, first held in 1987.",
+        "Four online sessions from 1 September; reception 6 October 2026.",
+        "Themes include AI, French- and English-language rights markets, children and YA."
+      ],
+      "stage": "scheduled-professional-meeting",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "distinctFromBaseline": "Named rights conference reception before the public fair begins."
+    },
+    {
+      "id": "tiktok-book-awards-mexico-ceremony-2026",
+      "sourceId": "fil-guadalajara",
+      "sourceCountryCodes": [
+        "MX"
+      ],
+      "coverageCountryCodes": [
+        "MX"
+      ],
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3347&ids=1",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:13.492Z",
+      "responseSha256": "2c47055188f1e660b19a6f59ed63c45a240f10e14a34161ecb21894fd8d123fe",
+      "responseBytes": 54381,
+      "sourcePublishedAt": "2026-09-10",
+      "eventDate": "2026-12-03",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "First Mexico TikTok Book Awards ceremony on 3 December 2026.",
+        "Three categories: independent bookshop/publisher, literary content creator, graphic narrative book.",
+        "Nominations 10-15 September are already closed; not presented as open."
+      ],
+      "stage": "scheduled-award-ceremony",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.fil.com.mx/images/redes/FIL.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      }
+    },
+    {
+      "id": "fil-editorial-merit-ekare-2026",
+      "sourceId": "fil-guadalajara",
+      "sourceCountryCodes": [
+        "MX"
+      ],
+      "coverageCountryCodes": [
+        "MX",
+        "VE"
+      ],
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3345&ids=1",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:13.026Z",
+      "responseSha256": "fa8555caf623ba6b8a2fe48ce0a0c5856c95137b529080c5e6ce6c883c2a76ea",
+      "responseBytes": 56239,
+      "sourcePublishedAt": "2026-09-08",
+      "eventDate": "2026-11-30",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Editorial merit tribute recipient Ediciones Ekaré; ceremony 30 November 2026.",
+        "Founded 1978 in Venezuela.",
+        "Pablo Larraguibel, Ekaré Europa director, to accept on behalf of the founders."
+      ],
+      "stage": "recipient-confirmed-ceremony-scheduled",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.fil.com.mx/images/redes/FIL.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "countries": [
+        "MX",
+        "VE"
+      ]
+    },
+    {
+      "id": "wingston-gonzalez-plia-2026",
+      "sourceId": "fil-guadalajara",
+      "sourceCountryCodes": [
+        "MX"
+      ],
+      "coverageCountryCodes": [
+        "MX",
+        "GT"
+      ],
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3342&ids=1",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:15.090Z",
+      "responseSha256": "24453a109e2d50298cb1225e3da380a09dbc91d8852a2317ecaca7060b2c3cd3",
+      "responseBytes": 57697,
+      "sourcePublishedAt": "2026-08-25",
+      "eventDate": "2026-08-25",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "2026 PLIA winner Wingston González, Guatemalan Garifuna poet.",
+        "Winning work Un poquito más allá written in Garifuna.",
+        "Official communiqué dated 25 August 2026."
+      ],
+      "stage": "winner-confirmed",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.fil.com.mx/images/redes/FIL.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "countries": [
+        "MX",
+        "GT"
+      ]
+    },
+    {
+      "id": "pen-index-victoria-amelina-fellowship-2026",
+      "sourceId": "pen-international-org",
+      "sourceCountryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [
+        "GB",
+        "UA"
+      ],
+      "url": "https://www.pen-international.org/news/pen-international-partners-with-index-to-support-writers-carrying-victoria-amelinas-legacy",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:09.627Z",
+      "responseSha256": "69bf3327a4c1e2b0416c473bc01cacab7496efc06278e61eeaaffb00462f8ec8",
+      "responseBytes": 629765,
+      "sourcePublishedAt": "2026-09-10",
+      "eventDate": "2026-09-10",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Partnership announced 10 September 2026.",
+        "PEN International partners with INDEX: Institute for Documentation and Exchange.",
+        "Support for writers documenting the war in Ukraine; Carles Torner participates in selection committee."
+      ],
+      "stage": "literary-fellowship-partnership",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "http://static1.squarespace.com/static/628f9ae10b12c8255bd8814d/6298db625ac70e646e1763c6/6aa276fcb999b8027c5a6782/1789037725576/Screenshot+2026-09-10+at+10.29.12.png?format=1500w",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "countries": [
+        "GB",
+        "UA"
+      ]
+    },
+    {
+      "id": "nlo-venediktova-literary-haptics-podcast-20260912",
+      "sourceId": "nlo",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://nlobooks.ru/nlomedia/catalog/slovesnost/tatyana-venediktova-o-literaturnoy-gaptike/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:14.066Z",
+      "responseSha256": "6e16c9f0606e649ac8e5a42bdcee9745515867b8fdf4ff2ee52ef06bf068c9a4",
+      "responseBytes": 142309,
+      "sourcePublishedAt": "2026-09-12",
+      "eventDate": "2026-09-12",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Source date 12.09.2026, duration 23 minutes.",
+        "Guest Tatyana Venediktova; hosts Denis Larionov and Denis Maslakov.",
+        "Subject is the source title, not an inferred account of the audio."
+      ],
+      "stage": "scholarly-audio-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "contentBoundary": "Page metadata verified; audio not transcribed or independently summarised."
+    },
+    {
+      "id": "nlo-tsyganov-stalin-era-philology-20260901",
+      "sourceId": "nlo",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://nlobooks.ru/nlomedia/catalog/khronika-nauchnoy-zhizni/dmitriy-tsyganov-svoboda-eto-umenie-vovremya-podchinitsya-partii-filologiya-v-stalinskuyu-epokhu/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:14.076Z",
+      "responseSha256": "cd70ffc0c503c901e1bdb1fe7e8d10c387fde90f39b009bf7434507b787d0858",
+      "responseBytes": 145211,
+      "sourcePublishedAt": "2026-09-01",
+      "eventDate": "2026-09-01",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Source date 01.09.2026, duration 49 minutes.",
+        "Presenter Dmitry Tsyganov.",
+        "Topic: philology in the Stalin era, as stated in the title."
+      ],
+      "stage": "scholarly-audio-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "contentBoundary": "Page metadata verified; no claims made about unreviewed audio arguments."
+    },
+    {
+      "id": "nlo-zenkin-scholars-french-literature-20260818",
+      "sourceId": "nlo",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU",
+        "FR"
+      ],
+      "url": "https://nlobooks.ru/nlomedia/catalog/khronika-nauchnoy-zhizni/sergey-zenkin-svideteli-tolkovateli-soblazniteli-figury-uchenogo-vo-frantsuzskoy-literature-xix-veka/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:15.555Z",
+      "responseSha256": "56b5ceabb2486d7abebbfadbe2e218ad7222a48477e931b1dfbac8ce89a42734",
+      "responseBytes": 145664,
+      "sourcePublishedAt": "2026-08-18",
+      "eventDate": "2026-08-18",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Exact Russian title identifies scholars in 19th-century French literature.",
+        "Presenter Sergey Zenkin; source date 18.08.2026; duration 44 minutes.",
+        "English title wording is a descriptive translation, not a published English book title."
+      ],
+      "stage": "scholarly-audio-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "countries": [
+        "RU",
+        "FR"
+      ],
+      "contentBoundary": "Page metadata verified; no claims about unreviewed audio conclusions."
+    },
+    {
+      "id": "nlo-anya-fyodorova-conversation-20260813",
+      "sourceId": "nlo",
+      "sourceCountryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [
+        "RU"
+      ],
+      "url": "https://nlobooks.ru/nlomedia/catalog/slovesnost/anya-fyedorova-35-iyulya-no-eto-ne-tochno/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:33:15.544Z",
+      "responseSha256": "3f90bdc83501037881a57756a315b798711683413677659381e7600fa32bcac5",
+      "responseBytes": 142446,
+      "sourcePublishedAt": "2026-08-13",
+      "eventDate": "2026-08-13",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Source date 13.08.2026, duration 23 minutes.",
+        "Guest Anya Fyodorova; hosts Denis Larionov and Denis Maslakov.",
+        "Title preserved without guessing whether it names one or several works."
+      ],
+      "stage": "literary-audio-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "contentBoundary": "Page metadata verified; no unverified book-release claim."
+    },
+    {
+      "id": "charles-spencer-swan-song-us-announcement-2026",
+      "sourceId": "prh",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US",
+        "GB"
+      ],
+      "url": "https://global.penguinrandomhouse.com/announcements/penguin-press-to-publish-charles-spencers-swan-song-the-story-of-his-sister-diana-princess-of-wales/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:34:32.410Z",
+      "responseSha256": "7d044212077a74a0a200815b690790b74609b0aed317586cb1e376ef334a2dbe",
+      "responseBytes": 105257,
+      "sourcePublishedAt": "2026-08-20",
+      "eventDate": "2026-08-20",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Publisher announcement 20 August 2026.",
+        "Penguin Press acquired North American rights from Penguin UK.",
+        "Work Swan Song: Diana, My Sister, by Charles Spencer; source schedules US release 22 September but no later release proof inspected."
+      ],
+      "stage": "rights-and-publication-announcement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "countries": [
+        "US",
+        "GB"
+      ],
+      "dateBoundary": "Past scheduled release is not promoted to a completed release."
+    },
+    {
+      "id": "our-strange-duet-audiobook-cast-2026",
+      "sourceId": "prh",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US",
+        "GB"
+      ],
+      "url": "https://global.penguinrandomhouse.com/announcements/listening-library-announces-star-cast-of-audiobook-our-strange-duet-by-erin-a-craig/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:34:32.831Z",
+      "responseSha256": "0f8b2d68aa92aa1b1fe480a717347237a74d6da37658d6c30ec2a971162db179",
+      "responseBytes": 109322,
+      "sourcePublishedAt": "2026-08-04",
+      "eventDate": "2026-08-04",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Cast announcement posted 4 August 2026.",
+        "Christine: Beatrice Penny-Touré; Phantom/Erik: Jordan Donica; Raoul: Jordan Fisher.",
+        "Listening Library and LW Entertainment; full cast, dramatised scenes and official musical elements."
+      ],
+      "stage": "audiobook-cast-announced",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "No external source-image download or upload permission is established by page accessibility."
+      },
+      "countries": [
+        "US",
+        "GB"
+      ]
+    }
+  ],
+  "recordSha256": "5fef9da1b6feb6db49af9cf0afe796fb411ad415865dc6dcc9b914e250f6ced7",
+  "receipt": {
+    "publication": "not-run",
+    "socialDelivery": "not-run"
+  },
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 20
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "stable IDs and existing33-event topics reviewed",
+    "schema": "production selectReviewed 20/20"
+  },
+  "held": [
+    {
+      "sourceId": "ubud-writers-readers-festival",
+      "reason": "Existing baseline festival; no new independent event verified."
+    },
+    {
+      "sourceId": "german-book-prize",
+      "reason": "Existing baseline longlist and shortlist announcement; result stage requires correction, not a duplicated new event."
+    },
+    {
+      "sourceId": "word-christchurch",
+      "reason": "Past scheduled festival cannot be declared completed from January announcement; July gallery outside desired discovery range."
+    }
+  ],
+  "nextStep": "Root additive integration, canonical duplicate review, runtime tests and publication proof. Prepared records are not public growth.",
+  "observedCheckoutBaseline": {
+    "count": 33,
+    "ids": [
+      "tolstoy-birthday-2026",
+      "booker-shortlist-2026-announcement",
+      "love-hypothesis-2026-release-announcement",
+      "kiki-third-english-edition-announcement",
+      "booker-longlist-2026",
+      "german-book-prize-longlist-2026",
+      "german-book-prize-shortlist-2026-announcement",
+      "frankfurt-book-fair-2026-announcement",
+      "gothenburg-book-fair-2026-announcement",
+      "british-library-agatha-christie-exhibition-2026",
+      "bnf-richelieu-heritage-days-2026",
+      "yasnaya-polyana-tolstoy-library-20260912",
+      "goslitmuz-people-of-december-publication-2026",
+      "mandelstam-days-2026-announcement",
+      "giller-longlist-2026-schedule",
+      "national-book-awards-longlists-2026",
+      "nbf-presents-fall-2026-announced",
+      "brooklyn-book-festival-2026-main-day",
+      "mandel-exit-party-us-2026",
+      "john-green-hollywood-ending-us-2026",
+      "marlon-james-disappearers-us-catalog-2026",
+      "guernsey-medieval-fragments-research-2026",
+      "whisper-man-netflix-release-20260828",
+      "international-booker-funding-20260702",
+      "ubud-writers-readers-festival-2026",
+      "shanghai-childrens-book-fair-2026",
+      "ake-arts-book-festival-2026",
+      "nairobi-international-book-fair-2026",
+      "gioconda-belli-fil-prize-2026",
+      "guadalajara-international-book-fair-2026",
+      "hay-queretaro-emiliano-monge-2026",
+      "brisbane-writers-festival-2026",
+      "new-zealand-childrens-book-awards-2026"
+    ],
+    "sha256": "73022c08ab8b1b18ebfda3ced9046d5e619e6d7a70e609af0903680e57e931af",
+    "note": "Observed checkout snapshot; historical operation baseline is unknown. This snapshot is not an original operation baseline."
+  }
+}

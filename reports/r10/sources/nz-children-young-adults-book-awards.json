@@ -1,0 +1,242 @@
+{
+  "sourceId": "nz-children-young-adults-book-awards",
+  "name": "New Zealand Book Awards Trust - Children and Young Adults",
+  "entryUrl": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/",
+  "countryCodes": [
+    "NZ"
+  ],
+  "coverageCountryCodes": [
+    "NZ"
+  ],
+  "attemptedAt": "2026-09-26T17:27:39.181Z",
+  "requests": [
+    {
+      "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 28033,
+      "sha256": "ff7398203343e55dd932a5d2b8bee2e2028d72631fc78c421b818afcf67e0e9e",
+      "accessedAt": "2026-09-26T17:20:20.039Z"
+    },
+    {
+      "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/emerging-voices-recognised-alongside-established-writers-in-2026-childrens-book-awards-shortlist/53438?pageNum=1",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 32860,
+      "sha256": "863ef4ee4e4179fb68ac31624b8e0ef140a50941c26baacbe7a7bc9000b0495c",
+      "accessedAt": "2026-09-26T17:27:42.105Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.nzbookawards.nz/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:16.184Z",
+    "sourceDocumentSha256": "ff7398203343e55dd932a5d2b8bee2e2028d72631fc78c421b818afcf67e0e9e"
+  },
+  "endpoint": {
+    "id": "nz-children-young-adults-book-awards",
+    "name": "New Zealand Book Awards Trust - Children and Young Adults",
+    "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/",
+    "format": "html",
+    "language": "en",
+    "region": "oceania",
+    "sourceFamilyId": "nz-children-young-adults-book-awards",
+    "countryCodes": [
+      "NZ"
+    ],
+    "coverageCountryCodes": [
+      "NZ"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.nzbookawards.nz"
+    ],
+    "linkPattern": "^\\/new-zealand-book-awards-for-children-and-young-adults\\/news\\/[^/?#]+\\/[0-9]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/emerging-voices-recognised-alongside-established-writers-in-2026-childrens-book-awards-shortlist/53438?pageNum=1"
+    ],
+    "verifiedAt": "2026-09-26T17:27:42.108Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 5,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "nz-children-young-adults-book-awards",
+    "source": {
+      "name": "New Zealand Book Awards Trust - Children and Young Adults",
+      "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/emerging-voices-recognised-alongside-established-writers-in-2026-childrens-book-awards-shortlist/53438?pageNum=1",
+      "language": "en"
+    },
+    "region": "oceania",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "10 Jun 26 Emerging voices recognised alongside established writers in 2026 Children’s Book Awards shortlist",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:41.450Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/emerging-voices-recognised-alongside-established-writers-in-2026-childrens-book-awards-shortlist/53438?pageNum=1",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 32860,
+      "sha256": "863ef4ee4e4179fb68ac31624b8e0ef140a50941c26baacbe7a7bc9000b0495c",
+      "accessedAt": "2026-09-26T17:27:42.105Z",
+      "headline": "News | New Zealand Book Awards Trust",
+      "excerpt": "The shortlist for the 2026 New Zealand Book Awards for Children and Young Adults, announced today, recognises a generation of writers who are drawing confidently on culture, language and identity to tell stories and create books that feel unmistakably of current-day Aotearoa. That’s evident in distinct ways across the shortlist, from a Tokelau teen’s diary steeped in hiva and 90s R&B to a time-tra",
+      "publishedDates": [],
+      "canonical": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/emerging-voices-recognised-alongside-established-writers-in-2026-childrens-book-awards-shortlist/53438?pageNum=1",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:42.108Z",
+  "foundItems": [
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/emerging-voices-recognised-alongside-established-writers-in-2026-childrens-book-awards-shortlist/53438?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 Jun 26 Emerging voices recognised alongside established writers in 2026 Children’s Book Awards shortlist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.450Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/judges-announced-for-2026-new-zealand-book-awards-for-children-and-young-adults/51974?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "11 Dec 25 Judges announced for 2026 New Zealand Book Awards for Children and Young Adults",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.450Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/entries-open-for-2026-new-zealand-book-awards-for-children-and-young-adults/51619?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "27 Nov 25 Entries open for 2026 New Zealand Book Awards for Children and Young Adults",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.450Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/call-for-judges-of-the-2026-new-zealand-book-awards-for-children-and-young-adults/51433?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "30 Sep 25 Call for judges of the 2026 New Zealand Book Awards for Children and Young Adults",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.450Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nz-children-young-adults-book-awards",
+      "source": {
+        "name": "New Zealand Book Awards Trust - Children and Young Adults",
+        "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/picture-book-duo-claim-top-prize-at-childrens-book-awards-for-second-time/53690?pageNum=1",
+        "language": "en"
+      },
+      "region": "oceania",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "19 Aug 26 Picture Book Duo Claim Top Prize at Children’s Book Awards for Second Time",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:41.450Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ff7398203343e55dd932a5d2b8bee2e2028d72631fc78c421b818afcf67e0e9e"
+}

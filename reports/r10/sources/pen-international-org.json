@@ -1,0 +1,609 @@
+{
+  "sourceId": "pen-international-org",
+  "name": "PEN International",
+  "entryUrl": "https://www.pen-international.org/",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [
+    "GB"
+  ],
+  "attemptedAt": "2026-09-26T17:29:20.671Z",
+  "requests": [
+    {
+      "url": "https://www.pen-international.org/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 409552,
+      "sha256": "c8a6e6a6dd27fe4bb5f81497733b4c20a25b332e50e99f8e5e43709ebb3c5372",
+      "accessedAt": "2026-09-26T17:23:14.303Z"
+    },
+    {
+      "url": "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 343212,
+      "sha256": "4f34660adb6686521380e781ba0f040d59102648fa195c0bfd3ce6dd1f4ebd9f",
+      "accessedAt": "2026-09-26T17:29:21.782Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.pen-international.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1516,
+    "sha256": "ba7bd852ff23f1c332ad3b55bb3e8015a2238b622b541fbf817622cb906aabb5",
+    "accessedAt": "2026-09-26T17:29:21.115Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:13.264Z",
+    "sourceDocumentSha256": "c8a6e6a6dd27fe4bb5f81497733b4c20a25b332e50e99f8e5e43709ebb3c5372"
+  },
+  "endpoint": {
+    "id": "pen-international-org",
+    "name": "PEN International",
+    "url": "https://www.pen-international.org/",
+    "format": "html",
+    "language": "en-GB",
+    "region": "europe",
+    "sourceFamilyId": "pen-international-org",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [
+      "GB"
+    ],
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.pen-international.org"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/news/.+",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026"
+    ],
+    "verifiedAt": "2026-09-26T17:29:21.792Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 19,
+  "literaryCandidateCount": 19,
+  "sample": {
+    "sourceId": "pen-international-org",
+    "source": {
+      "name": "PEN International",
+      "url": "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026",
+      "language": "en-GB"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "awards",
+      "festivals"
+    ],
+    "title": "China - Hong Kong: Jimmy Lai’s arbitrary detention raised at United Nations",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:21.149Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 343212,
+      "sha256": "4f34660adb6686521380e781ba0f040d59102648fa195c0bfd3ce6dd1f4ebd9f",
+      "accessedAt": "2026-09-26T17:29:21.782Z",
+      "headline": "China - Hong Kong: Jimmy Lai’s arbitrary detention raised at United Nations",
+      "excerpt": "China - Hong Kong: Jimmy Lai’s arbitrary detention raised at United Nations 16 Sept Written By PEN International 16 September 2026: Yesterday at the United Nations Human Rights Council, Tatyana Eatwell, a member of Jimmy Lai’s international legal team, delivered a statement on behalf of PEN International calling for Lai’s immediate release, along with all those arbitrarily detained for their peace",
+      "publishedDates": [
+        {
+          "value": "2026-09-16T15:42:00+0100",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:21.792Z",
+  "foundItems": [
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "China - Hong Kong: Jimmy Lai’s arbitrary detention raised at United Nations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/vietnam-secretary-rubio-must-make-the-release-of-imprisoned-vietnamese-writers-a-priority-in-the-upcoming-usvietnam-human-rights-dialogue",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vietnam: Secretary Rubio must make the release of imprisoned Vietnamese writers a priority in the upcoming U.S.\u2013Vietnam Human Rights Dialogue",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/ukraine-destruction-of-books-by-russian-strikes-condemned",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ukraine: Destruction of books by Russian strikes condemned",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/georgia-joint-civil-society-letter-to-pace-members-on-georgia",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Georgia: Joint civil society letter to PACE members on Georgia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/colombia-gender-based-violence-against-journalists-and-writers-condemned",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Colombia: Gender-based violence against journalists and writers condemned",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/peru-renewed-judicial-harassment-of-investigative-journalist-paola-ugaz-condemned-by-freedom-of-expression-organisations",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Peru: Renewed judicial harassment of investigative journalist Paola Ugaz condemned by freedom of expression organisations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/optisrael-pen-international-joins-international-press-rights-groups-call-on-israel-to-protect-abraham-and-szors-fundamental-rights",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "OPT/Israel: PEN International joins international press rights groups call on Israel to protect Abraham and Szor’s fundamental rights",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/eritrea-an-open-letter-to-president-isaias-afwerki",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Eritrea: An open letter to President Isaias Afwerki",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/ecuador-pen-international-and-pen-ecuador-alarmed-by-deteriorating-freedom-of-expression-environment",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ecuador: PEN International and PEN Ecuador alarmed by deteriorating freedom of expression environment",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/pen-international-partners-with-index-to-support-writers-carrying-victoria-amelinas-legacy",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "PEN International partners with INDEX to support writers carrying Victoria Amelina’s legacy",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/argentina-conviction-in-rodolfo-walsh-case-proves-that-crimes-against-writers-cannot-be-erased-by-time",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Argentina: Conviction in Rodolfo Walsh case proves that crimes against writers cannot be erased by time",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/news/malta-no-justice-for-the-killing-of-daphne-caruana-galizia-following-shock-acquittal",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Malta: No justice for the killing of Daphne Caruana Galizia following shock acquittal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/imagine-monthly-giving",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Become a Friend of PEN International",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/publishers-circle",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishers Circle",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/partners-and-sponsors",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Partners and Sponsors",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/603aa3cf-8998-486f-945e-a3321fb4a3a4",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Folder: About Us",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/our-supporters",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Folder: Our Supporters",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/civil-society-programme",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "click to find out more",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pen-international-org",
+      "source": {
+        "name": "PEN International",
+        "url": "https://www.pen-international.org/whistleblowing",
+        "language": "en-GB"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "awards",
+        "festivals"
+      ],
+      "title": "Submit Whistleblowing Report",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:21.149Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "c8a6e6a6dd27fe4bb5f81497733b4c20a25b332e50e99f8e5e43709ebb3c5372"
+}

@@ -1,0 +1,46 @@
+{
+  "at": "2026-09-26T18:20:34.665Z",
+  "review": "Codex self-review of RU/EN equivalence and announced/completed stages, not human editorial attestation",
+  "batchResults": [
+    {
+      "batchId": "r10-01",
+      "records": 20,
+      "eligibleAtPreparation": 20,
+      "recordSha256": "12d5cba6e0dcad4940ea996ee975d1242c82358304e895ae9c27d375ad3e7872",
+      "recordContentUnchanged": true,
+      "baselineField": "observedCheckoutBaseline",
+      "futureCompletedClaims": "editorially reviewed: planned releases and scheduled events remain prospective"
+    },
+    {
+      "batchId": "r10-02",
+      "records": 20,
+      "eligibleAtPreparation": 20,
+      "recordSha256": "09cc0229762511e89ad6b81934e83e8cde2462f6a26d4644d765f7cbce25a1e9",
+      "recordContentUnchanged": true,
+      "baselineField": "observedCheckoutBaseline",
+      "futureCompletedClaims": "editorially reviewed: planned releases and scheduled events remain prospective"
+    },
+    {
+      "batchId": "r10-04",
+      "records": 40,
+      "eligibleAtPreparation": 40,
+      "recordSha256": "e49f9544e9f80843e15b5cf11298c10d416d6b53ec83995d70518bcb08c8afd5",
+      "recordContentUnchanged": true,
+      "baselineField": "observedCheckoutBaseline",
+      "futureCompletedClaims": "editorially reviewed: planned releases and scheduled events remain prospective"
+    },
+    {
+      "batchId": "r10-06",
+      "records": 40,
+      "eligibleAtPreparation": 40,
+      "recordSha256": "e0a86f20bfe6fe98d428cd292bd17e27e3662bd87c9a704064dac866df6a85a6",
+      "recordContentUnchanged": true,
+      "baselineField": "observedCheckoutBaseline",
+      "futureCompletedClaims": "editorially reviewed: planned releases and scheduled events remain prospective"
+    }
+  ],
+  "limitations": [
+    "Historical operation baseline unavailable; observed checkout counts retained only as snapshots.",
+    "No public publication or social delivery performed."
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "sourceId": "publishers-fi",
+  "name": "Finnish Book Publishers AssociationUnioninkatu",
+  "entryUrl": "https://kustantajat.fi/",
+  "countryCodes": [
+    "FI"
+  ],
+  "coverageCountryCodes": [
+    "FI"
+  ],
+  "attemptedAt": "2026-09-26T17:28:26.406Z",
+  "requests": [
+    {
+      "url": "https://kustantajat.fi/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 106908,
+      "sha256": "c19537b10d785b1dc94f11ed69858d754d8a8b7c9801ae1eebcdce3edc95a3c1",
+      "accessedAt": "2026-09-26T17:28:28.210Z"
+    },
+    {
+      "url": "https://kustantajat.fi/feed",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 48623,
+      "sha256": "7ff0b1e0bf002601a44d06b35de9297b97dbb6b0a405fe57a0c563eaad149575",
+      "accessedAt": "2026-09-26T17:28:29.220Z"
+    },
+    {
+      "url": "https://kustantajat.fi/pisa-tulokset-korostavat-toimet-lukutaidon-edistamiseksi-ovat-elintarkeita",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 94423,
+      "sha256": "e7b997586391b3a73a9771a797a6f2080d727bf303bed3b6cae3aa5a6f71ee2a",
+      "accessedAt": "2026-09-26T17:28:30.203Z"
+    },
+    {
+      "url": "https://kustantajat.fi/kuntien-oppimateriaalipanostukset-nousseet-hieman-erot-edelleen-suuria",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 100591,
+      "sha256": "19c39622a0ac88702e902c432e515b41bf017edfc59f96b76d9e0f6b84f399b9",
+      "accessedAt": "2026-09-26T17:28:31.171Z"
+    },
+    {
+      "url": "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102730,
+      "sha256": "24dd85219f9dcb1e622dbbd67dbfd9fac2942a7cd4d1aeb5b6c3f5368b57391f",
+      "accessedAt": "2026-09-26T17:28:32.095Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://kustantajat.fi/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 345,
+    "sha256": "e4769372f633a79aaf38e51210f94707ef6ced9d09d80a08b22efc0b36949cac",
+    "accessedAt": "2026-09-26T17:28:27.325Z",
+    "disallowed": [
+      "/wp/gf-entries-in-excel/",
+      "/wp/gravityexport-lite/",
+      "/wp/gravityexport/",
+      "/wp/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "publishers-fi",
+    "name": "Finnish Book Publishers AssociationUnioninkatu",
+    "url": "https://kustantajat.fi/feed",
+    "format": "rss",
+    "language": "fi",
+    "region": "europe",
+    "sourceFamilyId": "publishers-fi",
+    "countryCodes": [
+      "FI"
+    ],
+    "coverageCountryCodes": [
+      "FI"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://kustantajat.fi"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua"
+    ],
+    "verifiedAt": "2026-09-26T17:28:32.099Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "publishers-fi",
+    "source": {
+      "name": "Finnish Book Publishers AssociationUnioninkatu",
+      "url": "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua",
+      "language": "fi"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Kustantajien neljännesvuositilasto: Painetun kirjan myynti hienoisessa laskussa, digissä selvää kasvua",
+    "publishedAt": "2026-08-25T07:28:35.000Z",
+    "description": "Kustantajien myyntitilasto näytti vuoden ensimmäisten 6 kuukauden osalta 1,7 % kasvua edellisvuoteen verrattuna. Painetun kirjan myynti laski prosentin, sähköisten formaattien myynti kasvoi noin neljä prosenttia. Pirteästi vuoden alussa käynnistynyt painetun tietokirjallisuuden myynti ei vetänyt kakkoskvartaalissa. Pudotusta edellisvuoden tilanteeseen on noin viisi prosenttia. Digitaalisissa form…",
+    "discoveredAt": "2026-09-26T17:28:29.221Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102730,
+      "sha256": "24dd85219f9dcb1e622dbbd67dbfd9fac2942a7cd4d1aeb5b6c3f5368b57391f",
+      "accessedAt": "2026-09-26T17:28:32.095Z",
+      "headline": "Kustantajien neljännesvuositilasto: Painetun kirjan myynti hienoisessa laskussa, digissä selvää kasvua",
+      "excerpt": "Kustantajien neljännesvuositilasto: Painetun kirjan myynti hienoisessa laskussa, digissä selvää kasvua Tiedotteet\u2014 25.8.2026 Kustantajien myyntitilasto näytti vuoden ensimmäisten 6 kuukauden osalta 1,7 % kasvua edellisvuoteen verrattuna. Painetun kirjan myynti laski prosentin, sähköisten formaattien myynti kasvoi noin neljä prosenttia. Pirteästi vuoden alussa käynnistynyt painetun tietokirjallisuu",
+      "publishedDates": [
+        {
+          "value": "2026-08-25T07:28:35+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-08-25T07:28:35+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-08-25T07:28:35+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua",
+      "language": "fi",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:32.099Z",
+  "foundItems": [
+    {
+      "sourceId": "publishers-fi",
+      "source": {
+        "name": "Finnish Book Publishers AssociationUnioninkatu",
+        "url": "https://kustantajat.fi/pisa-tulokset-korostavat-toimet-lukutaidon-edistamiseksi-ovat-elintarkeita",
+        "language": "fi"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PISA-tulokset korostavat: toimet lukutaidon edistämiseksi ovat elintärkeitä",
+      "publishedAt": "2026-09-11T10:04:24.000Z",
+      "description": "Ensitiedot vuoden 2025 PISA-kierroksesta osoittavat, että suomalaisten nuorten lukutaidon taso laskee edelleen hätkähdyttävää tahtia. Jo 26 % suomalaisnuorista lukee niin heikosti, ettei lukutaito riitä yhteiskunnassa toimimiseen. Harvempi kuin joka toinen saavuttaa peruskoulun aikana tyydyttävän lukutaitotason, joka PISA-määritelmän mukaan tarvitaan jatko-opinnoissa ja työelämässä. ”Tulokset all…",
+      "discoveredAt": "2026-09-26T17:28:29.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-fi",
+      "source": {
+        "name": "Finnish Book Publishers AssociationUnioninkatu",
+        "url": "https://kustantajat.fi/kuntien-oppimateriaalipanostukset-nousseet-hieman-erot-edelleen-suuria",
+        "language": "fi"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kuntien oppimateriaalipanostukset nousseet hieman \u2013 erot edelleen suuria",
+      "publishedAt": "2026-09-14T08:15:46.000Z",
+      "description": "Suomalainen peruskoululainen sai vuonna 2025 oppimateriaaleja keskimäärin 150 eurolla. Keskimääräinen summa on noussut viisi euroa oppilasta kohti edellisvuodesta. Panostus oppimateriaaliin vaihtelee edelleen merkittävästi kuntien välillä, mikä asettaa eri kuntien oppilaat keskenään eriarvoiseen asemaan. Tiedot selviävät Suomen Kustannusyhdistyksen kartoituksesta, joka tehtiin nyt kolmatta kertaa…",
+      "discoveredAt": "2026-09-26T17:28:29.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-fi",
+      "source": {
+        "name": "Finnish Book Publishers AssociationUnioninkatu",
+        "url": "https://kustantajat.fi/kustantajien-neljannesvuositilasto-painetun-kirjan-myynti-hienoisessa-laskussa-digissa-selvaa-kasvua",
+        "language": "fi"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kustantajien neljännesvuositilasto: Painetun kirjan myynti hienoisessa laskussa, digissä selvää kasvua",
+      "publishedAt": "2026-08-25T07:28:35.000Z",
+      "description": "Kustantajien myyntitilasto näytti vuoden ensimmäisten 6 kuukauden osalta 1,7 % kasvua edellisvuoteen verrattuna. Painetun kirjan myynti laski prosentin, sähköisten formaattien myynti kasvoi noin neljä prosenttia. Pirteästi vuoden alussa käynnistynyt painetun tietokirjallisuuden myynti ei vetänyt kakkoskvartaalissa. Pudotusta edellisvuoden tilanteeseen on noin viisi prosenttia. Digitaalisissa form…",
+      "discoveredAt": "2026-09-26T17:28:29.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-fi",
+      "source": {
+        "name": "Finnish Book Publishers AssociationUnioninkatu",
+        "url": "https://kustantajat.fi/keskusjarjestot-vetoavat-paattajiin-lukutaidon-pelastamiseksi",
+        "language": "fi"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Keskusjärjestöt vetoavat päättäjiin lukutaidon pelastamiseksi",
+      "publishedAt": "2026-05-19T07:05:21.000Z",
+      "description": "Elinkeinoelämän ja palkansaajien keskusjärjestöt vetoavat poliittisiin päättäjiin, jotta suomalaisten lukutaidon parantamiseksi ryhdytään konkreettisiin ja vaikuttaviin toimiin. Järjestöjen yhteisen julkilausuman mukaan lukutaidon kriisi on yhteiskunnan kestävyyskyvyn kannalta valtava ongelma, johon on pikaisesti haettava korjaustoimia. Järjestöt ovat huolissaan suomalaisten lukutaidon hälyttäväs…",
+      "discoveredAt": "2026-09-26T17:28:29.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-fi",
+      "source": {
+        "name": "Finnish Book Publishers AssociationUnioninkatu",
+        "url": "https://kustantajat.fi/kirja-alan-selvitys-alan-ekosysteemi-toimii-paaosin-hyvin",
+        "language": "fi"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kirja-alan selvitys: Alan ekosysteemi toimii pääosin hyvin",
+      "publishedAt": "2026-05-11T09:49:22.000Z",
+      "description": "Markus Leikolan opetus- ja kulttuuriministeriölle laatima selvitys kirja-alasta julkaistiin 23.4. Suomen Kustannusyhdistys kiittää Leikolaa selvityksen eteen tehdystä mittavasta työstä. Selvitys luo kokonaiskuvaa kirja-alan nykytilasta, ja se on osa vuonna 2024 valmistuneen kulttuuripoliittisen selonteon jatkotoimia. Kyse on ainutlaatuisesta tietokoosteesta: Vastaavaa laajaa selvitystä kirja-alas…",
+      "discoveredAt": "2026-09-26T17:28:29.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-fi",
+      "source": {
+        "name": "Finnish Book Publishers AssociationUnioninkatu",
+        "url": "https://kustantajat.fi/kustantajien-tilasto-painettujen-tietokirjojen-myynti-kaantyi-nousuun-viime-vuonna",
+        "language": "fi"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kustantajien tilasto: Painettujen tietokirjojen myynti kääntyi nousuun viime vuonna",
+      "publishedAt": "2026-04-16T09:09:32.000Z",
+      "description": "Kirja- ja oppimateriaalikustantajien kokonaismyynti oli vuonna 2025 yhteensä 291,4 miljoonaa euroa. Digitaalisen myynnin osuus oli 41,9 % kokonaismarkkinasta. Myynti kasvoi 1,4 prosenttia edellisvuodesta. Vuoden 2026 myynti on painetun kirjan osalta käynnistynyt viimevuotiseen tahtiin, digitaalisessa myynnissä on jääty edellisvuoden vauhdista. Tiedot käyvät ilmi tänään julkaistuista Suomen Kustan…",
+      "discoveredAt": "2026-09-26T17:28:29.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-fi",
+      "source": {
+        "name": "Finnish Book Publishers AssociationUnioninkatu",
+        "url": "https://kustantajat.fi/kirjamyynti-pysyi-viime-vuoden-tasolla-painetun-tietokirjallisuuden-myynti-kasvoi",
+        "language": "fi"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kirjamyynti pysyi viime vuoden tasolla \u2013 painetun tietokirjallisuuden myynti kasvoi",
+      "publishedAt": "2026-01-29T10:45:00.000Z",
+      "description": "Kirjakauppaliitto ja Suomen Kustannusyhdistys ovat julkistaneet vuoden 2025 kirjamyynnin pikatilastot. Kokonaisuutena kirjamyynti pysyi edellisvuoden tasolla, mutta eri formaattien ja kirjallisuuslajien välillä näkyy merkittäviä eroja. Kustantajien yleisen kirjallisuuden myynti jälleenmyyjille kasvoi yhteensä 2 prosenttia. Painettujen kirjojen myynti jälleenmyyjille nousi 1,7 prosenttia ja sähköi…",
+      "discoveredAt": "2026-09-26T17:28:29.221Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "7ff0b1e0bf002601a44d06b35de9297b97dbb6b0a405fe57a0c563eaad149575"
+}

@@ -1,0 +1,292 @@
+{
+  "sourceId": "shbsh-al",
+  "name": "Association of Albanian Publishers",
+  "entryUrl": "https://www.shbsh.al/",
+  "countryCodes": [
+    "AL"
+  ],
+  "coverageCountryCodes": [
+    "AL"
+  ],
+  "attemptedAt": "2026-09-26T17:28:09.058Z",
+  "requests": [
+    {
+      "url": "https://shbsh.al/wp2/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 28715,
+      "sha256": "e04db29774d67e5106d1b73c692fa362b6b88c143fe5f2ab21c7d5d999abc2b1",
+      "accessedAt": "2026-09-26T17:21:49.698Z"
+    },
+    {
+      "url": "https://shbsh.al/wp2/2020/11/03/ne-vigjilje-te-panairit-te-23-te-librit/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 48871,
+      "sha256": "b752f6b7cc6bba593f8bae6d071d0c6d2c0fb34c5668343715381a4b0da5ffcc",
+      "accessedAt": "2026-09-26T17:28:13.284Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.shbsh.al/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:44.521Z",
+    "sourceDocumentSha256": "e04db29774d67e5106d1b73c692fa362b6b88c143fe5f2ab21c7d5d999abc2b1"
+  },
+  "endpoint": {
+    "id": "shbsh-al",
+    "name": "Association of Albanian Publishers",
+    "url": "https://shbsh.al/wp2/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "europe",
+    "sourceFamilyId": "shbsh-al",
+    "countryCodes": [
+      "AL"
+    ],
+    "coverageCountryCodes": [
+      "AL"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://shbsh.al"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://shbsh.al/wp2/2020/11/03/ne-vigjilje-te-panairit-te-23-te-librit/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:13.287Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "shbsh-al",
+    "source": {
+      "name": "Association of Albanian Publishers",
+      "url": "https://shbsh.al/wp2/2020/11/03/ne-vigjilje-te-panairit-te-23-te-librit/",
+      "language": "en-US"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Në vigjilje të Panairit të 23-të Librit",
+    "publishedAt": "2020-11-03T14:19:08.000Z",
+    "description": "Shoqata e Botuesve Shqiptarë organizon debatin \"Arti i përkthimit dhe kontributi i letërsisë së përkthyer në kultivimin e shijeve të lexuesit\". Debati do të zhvillohet në Bibliotekën Kombëtare, salla \"American Corner\", ditën e premte, dt. 13 nëntor, në orën 10.00. Jeni të ftuar të merrni pjesë, fizikisht dhe online. Aktiviteti do të transmetohet me zoom, live stream. #PanairiILibritTirana2020 #Li…",
+    "discoveredAt": "2026-09-26T17:28:10.597Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://shbsh.al/wp2/2020/11/03/ne-vigjilje-te-panairit-te-23-te-librit/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 48871,
+      "sha256": "b752f6b7cc6bba593f8bae6d071d0c6d2c0fb34c5668343715381a4b0da5ffcc",
+      "accessedAt": "2026-09-26T17:28:13.284Z",
+      "headline": "Në vigjilje të Panairit të 23-të Librit",
+      "excerpt": "Shoqata e Botuesve Shqiptarë organizon debatin \"Arti i përkthimit dhe kontributi i letërsisë së përkthyer në kultivimin e shijeve të lexuesit\". Debati do të zhvillohet në Bibliotekën Kombëtare, salla \"American Corner\", ditën e premte, dt. 13 nëntor, në orën 10.00. Jeni të ftuar të merrni pjesë, fizikisht dhe online. Aktiviteti do të transmetohet me zoom, live stream.#PanairiILibritTirana2020 #Libr",
+      "publishedDates": [],
+      "canonical": "https://shbsh.al/wp2/2020/11/03/ne-vigjilje-te-panairit-te-23-te-librit/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:13.287Z",
+  "foundItems": [
+    {
+      "sourceId": "shbsh-al",
+      "source": {
+        "name": "Association of Albanian Publishers",
+        "url": "https://shbsh.al/wp2/2020/11/03/ne-vigjilje-te-panairit-te-23-te-librit/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Në vigjilje të Panairit të 23-të Librit",
+      "publishedAt": "2020-11-03T14:19:08.000Z",
+      "description": "Shoqata e Botuesve Shqiptarë organizon debatin \"Arti i përkthimit dhe kontributi i letërsisë së përkthyer në kultivimin e shijeve të lexuesit\". Debati do të zhvillohet në Bibliotekën Kombëtare, salla \"American Corner\", ditën e premte, dt. 13 nëntor, në orën 10.00. Jeni të ftuar të merrni pjesë, fizikisht dhe online. Aktiviteti do të transmetohet me zoom, live stream. #PanairiILibritTirana2020 #Li…",
+      "discoveredAt": "2026-09-26T17:28:10.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shbsh-al",
+      "source": {
+        "name": "Association of Albanian Publishers",
+        "url": "https://shbsh.al/wp2/2020/11/03/ne-vigjilje-te-panairit-te-23-te-te-librit/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Në vigjilje të Panairit të 23-të të Librit",
+      "publishedAt": "2020-11-03T14:01:34.000Z",
+      "description": "Në vigjilje të Panairit të 23-të të Librit Tirana 2020 Shoqata e Botuesve Shqiptarë organizon debatin \"Letërsia shqipe, zhvillimet dhe e ardhmja e saj në kohën e globalizmit\". Debati do të zhvillohet në Muzeun Kombëtar, ditën e shtunë, dt. 14 nëntor, në orën 10.00. Jeni të ftuar të merrni pjesë, fizikisht dhe online. Aktiviteti do të transmetohet në platformen zoom, live stream. #PanairiILibritTi…",
+      "discoveredAt": "2026-09-26T17:28:10.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shbsh-al",
+      "source": {
+        "name": "Association of Albanian Publishers",
+        "url": "https://shbsh.al/wp2/2020/11/01/ne-vigjilje-te-panairit-te-23-te/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Në vigjilje të Panairit të 23-të",
+      "publishedAt": "2020-11-01T13:54:23.000Z",
+      "description": "Në vigjilje të Panairit të 23-të të Librit Tirana 2020: \"Të gjithë së bashku\" Ne pune e siper per te zgjedhur midis autoreve, perkthyesve, veprave me te mire te vitit 2020, tradite e përvitshme e Panairit te Librit.",
+      "discoveredAt": "2026-09-26T17:28:10.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shbsh-al",
+      "source": {
+        "name": "Association of Albanian Publishers",
+        "url": "https://shbsh.al/wp2/2020/11/01/anetaret-e-jurise/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anëtarët e Jurisë",
+      "publishedAt": "2020-11-01T13:49:02.000Z",
+      "description": "Tashmë është krijuar edhe tradita e përzgjedhjes së përkthimit më të mirë në shqip të një vepre nga gjuha frënge, në kuadrin e panairit të Librit, mbështetur nga Ambasada franceze dhe ShBSh. Në jurinë e këtij viti bëjnë pjesë përkthyesit e mirënjohur: Mirela Kumbaro, Saverina Pasho dhe Xhimi Lazri. Vitin e kaluar këtë çmim e fitoi përkthyesja Saverina Pasho, për përkthimin e librit të Milan Kunde…",
+      "discoveredAt": "2026-09-26T17:28:10.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shbsh-al",
+      "source": {
+        "name": "Association of Albanian Publishers",
+        "url": "https://shbsh.al/wp2/2020/11/01/panairi-23-i-librit-tirana-2020/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Panairi 23 i Librit, Tirana 2020",
+      "publishedAt": "2020-11-01T12:39:03.000Z",
+      "description": "Të gjithë së bashku! Shënojeni datën 12-15 nëntor: Panairi i 23-të i Librit, Tirana 2020! Edicion online! Promovime, biseda me autorë, workshope, seminare, diskutime, dhënie çmimesh e shumë të tjera!",
+      "discoveredAt": "2026-09-26T17:28:10.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shbsh-al",
+      "source": {
+        "name": "Association of Albanian Publishers",
+        "url": "https://shbsh.al/wp2/2020/10/26/raundi-i-trete-i-takimeve-konsultative-te-bizneseve-me-delegacionin-e-bashkimit-europian-ne-tirane-mbi-ceshtje-te-se-drejtes-se-pronesise-intelektuale/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Raundi i tretë i Takimeve Konsultative të Bizneseve me Delegacionin e Bashkimit Europian në Tiranë mbi çështje të së Drejtës së Pronësisë Intelektuale",
+      "publishedAt": "2020-10-26T18:37:54.000Z",
+      "description": "Raundi i tretë i Takimeve Konsultative të Bizneseve me Delegacionin e Bashkimit Europian në Tiranë mbi çështje të së Drejtës së Pronësisë Intelektuale Në vazhdën e fushatës së ndërgjegjësimit për çështjen e piraterisë dhe informalitetit në fushën e librave, të intensifikuar sidomos muajt e fundit, Shoqata e Botuesve Shqiptarë ishte e ftuar ditën e enjte, […]",
+      "discoveredAt": "2026-09-26T17:28:10.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "shbsh-al",
+      "source": {
+        "name": "Association of Albanian Publishers",
+        "url": "https://shbsh.al/wp2/2020/10/25/hello-world/",
+        "language": "en-US"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Njoftim \u2013 Çmimet e Panairit të 21 të Librit “Tirana 2018″",
+      "publishedAt": "2020-10-25T20:25:34.000Z",
+      "description": "NJOFTIM Panairi i 21 i Librit “Tirana 2018″ (14-18 nëntor) Të nderuar kolegë, botues, autorë e përkthyes.Ju vëmë në dijeni se ka filluar nga puna juria e çmimeve të Panairit të Librit 2018. Shoqata e Botuesve Shqiptarë ka vendosur të jepen këto çmime: - Autori i vitit 2018- Përkthyesi i vitit 2018- Libri më i […]",
+      "discoveredAt": "2026-09-26T17:28:10.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "e04db29774d67e5106d1b73c692fa362b6b88c143fe5f2ab21c7d5d999abc2b1"
+}

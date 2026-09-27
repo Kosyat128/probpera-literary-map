@@ -1,0 +1,961 @@
+{
+  "sourceId": "gothenburg-book-fair",
+  "name": "Bokmässan",
+  "entryUrl": "https://bokmassan.se/hem/om-bokmassan/nyheter/",
+  "countryCodes": [
+    "SE"
+  ],
+  "coverageCountryCodes": [
+    "SE"
+  ],
+  "attemptedAt": "2026-09-26T17:27:26.155Z",
+  "requests": [
+    {
+      "url": "https://bokmassan.se/hem/om-bokmassan/nyheter/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 302604,
+      "sha256": "7f7d4c15d1a3f73d651d201219aa90db4357b43044f8f923b43b1ecce7cf13b5",
+      "accessedAt": "2026-09-26T17:20:00.051Z"
+    },
+    {
+      "url": "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 214428,
+      "sha256": "d8655156afbbb4533ca5dd0e49457491b7159625c3dc61eb03d857a336ab5207",
+      "accessedAt": "2026-09-26T17:27:26.654Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://bokmassan.se/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 77,
+    "sha256": "398216b135c53adcde19a5755aa3b8e90b502cc3e4043bdbe8c65a0ebe761c6b",
+    "accessedAt": "2026-09-26T17:27:26.463Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:19:59.549Z",
+    "sourceDocumentSha256": "7f7d4c15d1a3f73d651d201219aa90db4357b43044f8f923b43b1ecce7cf13b5"
+  },
+  "endpoint": {
+    "id": "gothenburg-book-fair",
+    "name": "Bokmässan",
+    "url": "https://bokmassan.se/hem/om-bokmassan/nyheter/",
+    "format": "html",
+    "language": "sv-SE",
+    "region": "europe",
+    "sourceFamilyId": "gothenburg-book-fair",
+    "countryCodes": [
+      "SE"
+    ],
+    "coverageCountryCodes": [
+      "SE"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://bokmassan.se"
+    ],
+    "linkPattern": "^\\/\\d{4}\\/\\d{2}\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:26.662Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 33,
+  "literaryCandidateCount": 33,
+  "sample": {
+    "sourceId": "gothenburg-book-fair",
+    "source": {
+      "name": "Bokmässan",
+      "url": "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/",
+      "language": "sv-SE"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Katarina Wennstam tilldelas Crimetime Award Årets hederspris 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:26.510Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 214428,
+      "sha256": "d8655156afbbb4533ca5dd0e49457491b7159625c3dc61eb03d857a336ab5207",
+      "accessedAt": "2026-09-26T17:27:26.654Z",
+      "headline": "Katarina Wennstam tilldelas Crimetime Award Årets hederspris 2026",
+      "excerpt": "Katarina Wennstam tilldelas Crimetime Award Årets hederspris 2026 10 September / 2026 FOTO: KAJSA GÖRANSSON Crimetime Award Årets hederspris instiftades 2016 och delas ut till en författare eller annan person som varit banbrytande för den svenska kriminallitteraturen och bidragit till att sätta Sverige på deckarkartan. Vinnaren utses av en jury med representanter från några av landets största förl",
+      "publishedDates": [
+        {
+          "value": "2026-09-10T08:08:41+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-10T08:08:41+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-10T08:08:41+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/",
+      "language": "sv-SE",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:26.662Z",
+  "foundItems": [
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/katarina-wennstam-tilldelas-crimetime-award-arets-hederspris-2026/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Katarina Wennstam tilldelas Crimetime Award Årets hederspris 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/jamaica-kincaid-har-tagit-emot-sjojungfrun-2026/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jamaica Kincaid har tagit emot Sjöjungfrun 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/bokmassan-2026-ar-officiellt-invigd/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bokmässan 2026 är officiellt invigd",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/nicolas-lunabba-tilldelas-bokmassans-bildningspris-2026/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nicolas Lunabba tilldelas Bokmässans Bildningspris 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/08/se-manniskan-priset-2026-tilldelas-religionsprofessor-simon-sorgenfrei/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Se människan-priset 2026 tilldelas religionsprofessor Simon Sorgenfrei",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/nya-testamentet-2026-lanseras-under-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nya Testamentet 2026 lanseras under Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/04/de-oumbarliga-oversattarna-bryter-mark-infor-bokmassan-2028/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "De oumbärliga översättarna bryter mark inför Bokmässan 2028",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/det-har-ska-du-gora-pa-bokmassans-lordag/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Det här ska du göra på Bokmässans lördag",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/har-ar-tipsen-till-bokmassans-fredag/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Här är tipsen till Bokmässans fredag",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/fantisera-mera-pa-bokmassan-en-lekfull-varld-dar-djur-natur-nyfikenhet-och-fantasi-mots/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fantisera mera på Bokmässan \u2013 en lekfull värld där djur, natur, nyfikenhet och fantasi möts",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/har-hort-att-det-kan-bli-valdigt-ursparat-det-hoppas-vi-stammer/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "\"Har hört att det kan bli väldigt urspårat, det hoppas vi stämmer!\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/inbjudan-temakvall-pa-goteborgs-konserthus-med-sara-parkman/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "INBJUDAN: Temakväll på Göteborgs Konserthus med Sara Parkman",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/sveriges-forsta-spelpolitiska-toppmote-arrangeras-pa-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sveriges första spelpolitiska toppmöte arrangeras på Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/ord-for-ord-etapp-tva-nu-ar-det-dags-att-rosta-fram-arets-nyord/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ord för ord etapp två \u2013 nu är det dags att rösta fram årets nyord",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/09/rekordmanga-scener-pa-bokmassan-idag-slapps-programmen/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rekordmånga scener på Bokmässan \u2013 idag släpps programmen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/08/vi-har-en-tydlig-rost-i-vara-program/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lizzie Scheja: \"Vi har en tydlig röst i våra program\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/08/skamset-och-galet-arligt-under-babels-bokbikt-pa-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Skamset och galet ärligt under Babels bokbikt på Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/08/halla-dar-frida-gustafsson-wenno-och-lovisa-fhager-logothetis/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hallå där Frida Gustafsson Wennö och Lovisa Fhager Logothetis ...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/har-ar-programmet-for-arets-bokmassan-by-night/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Här är programmet för årets Bokmässan by Night",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/vastra-gotalandsregionen-och-bokmassan-i-gemensam-satsning-for-folkbildningen/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Västra Götalandsregionen och Bokmässan i gemensam satsning för folkbildningen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/folkbildning-sveriges-nya-exportvara/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Folkbildning \u2013 Sveriges nya exportvara",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/valkommen-pa-studentlunch-bibliotekariens-framtid-i-en-ai-driven-varld/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Välkommen på studentlunch: Bibliotekariens framtid i en AI-driven värld",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/en-liten-talkshow-ar-tillbaka/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "En liten talkshow är tillbaka!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/06/bokmassan-flyttar-ut-pa-stan-samtal-for-alla/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bokmässan flyttar ut på stan \u2013 samtal för alla!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/inbjudan-ta-del-av-hostens-viktigaste-bocker/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Inbjudan: Ta del av höstens viktigaste böcker!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/programmet-ar-har-spelberattande-folkbildning-och-varldslitteratur-pa-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programmet är här! Spelberättande, folkbildning och världslitteratur på Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/mot-arets-illustrator-bocker-kan-vara-portar-till-andra-varldar/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Möt årets illustratör \u2013 \"Böcker kan vara portar till andra världar\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/sveriges-storsta-bokcirkel-mots-pa-bokmassan-och-live-i-sveriges-radio/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sveriges största bokcirkel möts på Bokmässan \u2013 och live i Sveriges Radio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/ny-scen-existentiella-fragor-och-teologi-i-fokus/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ny scen: Existentiella frågor och teologi i fokus",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/05/internationell-streamer-till-bokmassan-spel-ar-en-fantastisk-form-av-problemlosning/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Internationell YouTube-kreatör till Bokmässan \u2013 \"Spel är en fantastisk form av problemlösning\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/04/biljetterna-till-arets-bokmassan-by-night-ar-slappta/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Biljetterna till årets Bokmässan by Night är släppta",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/04/nar-litteraturen-byter-sprak-vagen-fran-quebec-till-sverige/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "När litteraturen byter språk \u2013 vägen från Québec till Sverige",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "gothenburg-book-fair",
+      "source": {
+        "name": "Bokmässan",
+        "url": "https://bokmassan.se/2026/04/internationell-deckarstjarna-klar-for-bokmassan/",
+        "language": "sv-SE"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Internationell deckarstjärna klar för Bokmässan",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:26.510Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "7f7d4c15d1a3f73d651d201219aa90db4357b43044f8f923b43b1ecce7cf13b5"
+}

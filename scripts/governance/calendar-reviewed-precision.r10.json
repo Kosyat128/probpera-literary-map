@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "decisions": [
+    {
+      "writerKey": "south_africa:alan_paton",
+      "field": "birthDate",
+      "value": "1903-01-11",
+      "sourceUrl": "https://paton.ukzn.ac.za/internal-links/alan-patons-biography/",
+      "checkedAt": "2026-09-26",
+      "finding": "University archive timeline explicitly gives 11 January 1903."
+    },
+    {
+      "writerKey": "south_africa:alan_paton",
+      "field": "deathDate",
+      "value": "1988-04-12",
+      "sourceUrl": "https://paton.ukzn.ac.za/internal-links/alan-patons-biography/",
+      "checkedAt": "2026-09-26",
+      "finding": "University archive timeline explicitly gives 12 April 1988."
+    },
+    {
+      "writerKey": "south_africa:alex_la_guma",
+      "field": "birthDate",
+      "value": "1925-02-20",
+      "sourceUrl": "https://sahistory.org.za/dated-event/justin-alexander-alex-la-guma-sa-novelist-short-story-writer-and-political-activist",
+      "checkedAt": "2026-09-26",
+      "finding": "Historical event record E-0094871 explicitly gives 20 February 1925."
+    }
+  ]
+}

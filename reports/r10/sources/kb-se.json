@@ -1,0 +1,337 @@
+{
+  "sourceId": "kb-se",
+  "name": "National Library of Sweden",
+  "entryUrl": "https://www.kb.se/",
+  "countryCodes": [
+    "SE"
+  ],
+  "coverageCountryCodes": [
+    "SE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:17.140Z",
+  "requests": [
+    {
+      "url": "https://www.kb.se/",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 128784,
+      "sha256": "7b3d837e835804c691eb0466f21660663a669ebc1ab51fb4dd114fbd190482a2",
+      "accessedAt": "2026-09-26T17:23:08.951Z"
+    },
+    {
+      "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 74155,
+      "sha256": "4a1889d1b2a530cb287e018d046a033a50363b276fc6a99d55545adeb6692276",
+      "accessedAt": "2026-09-26T17:29:18.022Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.kb.se/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=UTF-8",
+    "bytes": 508,
+    "sha256": "87ce73f107beb2641fc6351937828b459722b7443f6eb3448c51ba8a73a720c1",
+    "accessedAt": "2026-09-26T17:29:17.763Z",
+    "disallowed": [
+      "/imagedescription.action2",
+      "/checkoutimages.action2",
+      "/mybookmarks/addbookmark.action2",
+      "/mybookmarks/removebookmark.action2",
+      "/*.html.printable",
+      "/*?contactPage=*",
+      "/*?contactUserId=*",
+      "/*?sv.state=*",
+      "/*?state=keepAlive",
+      "/*&state=keepAlive",
+      "/*?profiling=*",
+      "/*.pdf?properties=*",
+      "/*?addToCart=true",
+      "/*;jsessionid=*",
+      "/Sok*"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:07.997Z",
+    "sourceDocumentSha256": "7b3d837e835804c691eb0466f21660663a669ebc1ab51fb4dd114fbd190482a2"
+  },
+  "endpoint": {
+    "id": "kb-se",
+    "name": "National Library of Sweden",
+    "url": "https://www.kb.se/",
+    "format": "html",
+    "language": "sv",
+    "region": "europe",
+    "sourceFamilyId": "kb-se",
+    "countryCodes": [
+      "SE"
+    ],
+    "coverageCountryCodes": [
+      "SE"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.kb.se"
+    ],
+    "linkPattern": "^//[^/]+/?$|^/om-oss/nyheter/nyhetsarkiv/[^/]+/?$|^/om-oss/evenemang/evenemang/[^/]+/?$|^/for-bibliotekssektorn/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html"
+    ],
+    "verifiedAt": "2026-09-26T17:29:18.026Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 8,
+  "literaryCandidateCount": 8,
+  "sample": {
+    "sourceId": "kb-se",
+    "source": {
+      "name": "National Library of Sweden",
+      "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+      "language": "sv"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Unik samling tidskrifter blir nu allmänt tillgänglig",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:17.777Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 74155,
+      "sha256": "4a1889d1b2a530cb287e018d046a033a50363b276fc6a99d55545adeb6692276",
+      "accessedAt": "2026-09-26T17:29:18.022Z",
+      "headline": "Unik samling tidskrifter blir nu allmänt tillgänglig",
+      "excerpt": "17 september 2026 Unik samling tidskrifter blir nu allmänt tillgänglig Tack vare ett samarbete mellan KB och KvinnSam går det nu att söka i hela KvinnSams samling av digitiserade äldre kvinnotidskrifter via KB:s webbtjänst Svenska tidningar. Äldre nu tillgängliga tidskrifter. KvinnSam är ett nationellt bibliotek för genusforskning och universitetsgemensam forskningsinfrastruktur vid Göteborgs univ",
+      "publishedDates": [],
+      "canonical": "/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+      "language": "sv",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:18.026Z",
+  "foundItems": [
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Unik samling tidskrifter blir nu allmänt tillgänglig",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:17.777Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-09-nu-lanserar-kb-ett-eget-profiltypsnitt.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nu lanserar KB ett eget profiltypsnitt",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:17.777Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-02-skyddat-material-aterigen-sokbart-i-svenska-tidningar.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Skyddat material återigen sökbart i Svenska tidningar",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:17.777Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-10-20-svensk-bokkonst-2025.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Svensk bokkonst 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:17.777Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-06-25-utstallning-pippi-langstrump-i-humlegarden.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Utställning: Pippi Långstrump i Humlegården",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:17.777Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-09-30-webbinarium-att-skapa-en-patriotisk-historia.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Webbinarium: Att skapa en patriotisk historia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:17.777Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/om-oss/evenemang/evenemang/2026-10-22-introduktion-for-studenter.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Introduktion för studenter",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:17.777Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "kb-se",
+      "source": {
+        "name": "National Library of Sweden",
+        "url": "https://www.kb.se/for-bibliotekssektorn/biblioteksstatistik.html",
+        "language": "sv"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Biblioteksstatistik",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:17.777Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "7b3d837e835804c691eb0466f21660663a669ebc1ab51fb4dd114fbd190482a2"
+}

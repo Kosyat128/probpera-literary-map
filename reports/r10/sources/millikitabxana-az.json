@@ -1,0 +1,61 @@
+{
+  "sourceId": "millikitabxana-az",
+  "name": "National Library of Azerbaijan",
+  "entryUrl": "https://www.millikitabxana.az/en/",
+  "countryCodes": [
+    "AZ"
+  ],
+  "coverageCountryCodes": [
+    "AZ"
+  ],
+  "attemptedAt": "2026-09-26T17:28:59.791Z",
+  "requests": [
+    {
+      "url": "https://www.millikitabxana.az/en/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 56855,
+      "sha256": "78b0ccd220d0e12c5a7c49cffe1bd9cc9f64c8ee991ba5d3484617bbb897889c",
+      "accessedAt": "2026-09-26T17:22:49.080Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/milli-kitabxananin-nezdinde-fealiyyet-gosteren-achiq-kitabxanada-1-iyun---ushaqlarin-beynelxalq-mudafiesi-gunune-hesr-edilmish-tedbir-kechirilib",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 61707,
+      "sha256": "4b1fab107461b41ebfc95a2fe0752dd70919135edd6610c7e1e7dc7344f971e6",
+      "accessedAt": "2026-09-26T17:29:00.840Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/28-may--musteqillik-gunu-elektron-layiheler",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 53691,
+      "sha256": "32a8a6c1716af93ed679b28b4d8dc823149a87937d1b10446bccd536513ef626",
+      "accessedAt": "2026-09-26T17:29:01.185Z"
+    },
+    {
+      "url": "https://www.millikitabxana.az/en/news/tagiyev-neft-bedii-filminin-numayishi",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 54974,
+      "sha256": "5ae32f324e91942ee95ac363fe806a537230a7e04e37e9464e81f294d147769c",
+      "accessedAt": "2026-09-26T17:29:01.514Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.millikitabxana.az/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 23,
+    "sha256": "3a125e84a637dc3f5442bb6949fa200056f37db4627b4c2a3addc55bbb89b703",
+    "accessedAt": "2026-09-26T17:29:00.397Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:47.799Z",
+    "sourceDocumentSha256": "78b0ccd220d0e12c5a7c49cffe1bd9cc9f64c8ee991ba5d3484617bbb897889c"
+  }
+}

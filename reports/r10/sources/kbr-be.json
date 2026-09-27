@@ -1,0 +1,64 @@
+{
+  "sourceId": "kbr-be",
+  "name": "Royal Library of Belgium",
+  "entryUrl": "https://www.kbr.be/",
+  "countryCodes": [
+    "BE"
+  ],
+  "coverageCountryCodes": [
+    "BE"
+  ],
+  "attemptedAt": "2026-09-26T17:29:00.030Z",
+  "requests": [
+    {
+      "url": "https://www.kbr.be/en/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 219833,
+      "sha256": "76b0c4a8a5c4ae7fe0bc317c92093b586bf8f42dead4d42ce83f8db0541f816a",
+      "accessedAt": "2026-09-26T17:22:51.654Z"
+    },
+    {
+      "url": "https://www.kbr.be/en/agenda/self-guided-workshop-writing-with-a-quill-painting-with-pigments-7/2026-09-26/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 196710,
+      "sha256": "fa87852192ecd5eadcf84b742117dd5fbd70d531993404cd1acb8f58f587c61a",
+      "accessedAt": "2026-09-26T17:29:01.084Z"
+    },
+    {
+      "url": "https://www.kbr.be/en/agenda/in-the-footsteps-of-bart-van-loo-in-the-kbr-museum/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 194005,
+      "sha256": "8c30202513af0c07c52517372443770288c0d04d79aee11a458d2ca59bea381c",
+      "accessedAt": "2026-09-26T17:29:01.261Z"
+    },
+    {
+      "url": "https://www.kbr.be/en/agenda/yoga-sound-in-the-nassau-chapel/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 190814,
+      "sha256": "d1dedacaf770ff0fba620ff17387f6054a7d4699fe9f8c0347cf0d553c7e36d7",
+      "accessedAt": "2026-09-26T17:29:01.436Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.kbr.be/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 205,
+    "sha256": "895a1f4f7be716897bfc3ce11fa3e582977d02f5c678ba16c12e4fbddc01bbfd",
+    "accessedAt": "2026-09-26T17:29:00.584Z",
+    "disallowed": [
+      "/wp-json/",
+      "/?rest_route="
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:49.458Z",
+    "sourceDocumentSha256": "76b0c4a8a5c4ae7fe0bc317c92093b586bf8f42dead4d42ce83f8db0541f816a"
+  }
+}

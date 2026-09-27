@@ -1,0 +1,1299 @@
+{
+  "sourceId": "federacioneditores-org",
+  "name": "FGEE",
+  "entryUrl": "https://www.federacioneditores.org/",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [
+    "ES"
+  ],
+  "attemptedAt": "2026-09-26T17:27:44.716Z",
+  "requests": [
+    {
+      "url": "https://federacioneditores.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 320538,
+      "sha256": "f81865098f15e6949303953106a13a6b407e8940e9a00afea90df10ca03e2631",
+      "accessedAt": "2026-09-26T17:20:25.534Z"
+    },
+    {
+      "url": "https://federacioneditores.org/liber-2025-debate-la-sostenibilidad-del-sector-del-libro-en-un-contexto-de-innovacion-tecnologica/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102541,
+      "sha256": "2f1f1188ebb9a5d76352edc029f4d2845b0c04707cdd3c47743f3090a4888647",
+      "accessedAt": "2026-09-26T17:27:48.387Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://federacioneditores.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 123,
+    "sha256": "4290fe1726b9680771d39b3090bd0afae0cec5befbc38eaa6d379a1618f54139",
+    "accessedAt": "2026-09-26T17:27:46.978Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:21.268Z",
+    "sourceDocumentSha256": "f81865098f15e6949303953106a13a6b407e8940e9a00afea90df10ca03e2631"
+  },
+  "endpoint": {
+    "id": "federacioneditores-org",
+    "name": "FGEE",
+    "url": "https://federacioneditores.org/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "europe",
+    "sourceFamilyId": "federacioneditores-org",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [
+      "ES"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://federacioneditores.org"
+    ],
+    "linkPattern": "^/",
+    "keywordPattern": "(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://federacioneditores.org/liber-2025-debate-la-sostenibilidad-del-sector-del-libro-en-un-contexto-de-innovacion-tecnologica/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:48.392Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 47,
+  "literaryCandidateCount": 47,
+  "sample": {
+    "sourceId": "federacioneditores-org",
+    "source": {
+      "name": "FGEE",
+      "url": "https://federacioneditores.org/liber-2025-debate-la-sostenibilidad-del-sector-del-libro-en-un-contexto-de-innovacion-tecnologica/",
+      "language": "es"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "LIBER 2025 debate la sostenibilidad del sector del libro en un contexto de innovación tecnológica",
+    "publishedAt": "2025-10-08T16:58:10.000Z",
+    "description": "Madrid, 8 de octubre de 2025.- Cómo conseguir que el sector del libro siga siendo sostenible en un contexto de innovación tecnológica ha centrado los debates en el segundo día de las Jornadas Profesionales de LIBER. Con una facturación que superó los 3.000 millones de euros en 2024 y un creciente número de lectores, según […]",
+    "discoveredAt": "2026-09-26T17:27:46.998Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://federacioneditores.org/liber-2025-debate-la-sostenibilidad-del-sector-del-libro-en-un-contexto-de-innovacion-tecnologica/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102541,
+      "sha256": "2f1f1188ebb9a5d76352edc029f4d2845b0c04707cdd3c47743f3090a4888647",
+      "accessedAt": "2026-09-26T17:27:48.387Z",
+      "headline": "LIBER 2025 debate la sostenibilidad del sector del libro en un contexto de innovación tecnológica",
+      "excerpt": "Actualidad, Notas de prensa LIBER 2025 debate la sostenibilidad del sector del libro en un contexto de innovación tecnológica octubre 8, 2025 Sostenibilidad, inteligencia artificial e innovación han sido los temas centrales de la segunda jornada de LIBER La feria muestra un sector sólido, en crecimiento y en plena transformación, que en 2024 superó los 3.000 millones de euros de facturación y cont",
+      "publishedDates": [],
+      "canonical": "https://federacioneditores.org/liber-2025-debate-la-sostenibilidad-del-sector-del-libro-en-un-contexto-de-innovacion-tecnologica/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:48.392Z",
+  "foundItems": [
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-2025-debate-la-sostenibilidad-del-sector-del-libro-en-un-contexto-de-innovacion-tecnologica/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LIBER 2025 debate la sostenibilidad del sector del libro en un contexto de innovación tecnológica",
+      "publishedAt": "2025-10-08T16:58:10.000Z",
+      "description": "Madrid, 8 de octubre de 2025.- Cómo conseguir que el sector del libro siga siendo sostenible en un contexto de innovación tecnológica ha centrado los debates en el segundo día de las Jornadas Profesionales de LIBER. Con una facturación que superó los 3.000 millones de euros en 2024 y un creciente número de lectores, según […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-2025-pone-la-comercializacion-y-las-nuevas-competencias-profesionales-en-el-centro-del-debate-del-sector-del-libro/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LIBER 2025 pone la comercialización y las nuevas competencias profesionales en el centro del debate del sector del libro",
+      "publishedAt": "2025-10-07T15:08:11.000Z",
+      "description": "Madrid, 7 de octubre de 2025.- El secretario de estado de Cultura, Jordi Martí, ha sido el encargado de inaugurar hoy laFeria LIBER 2025.Martí ha estado acompañado de la secretaria de Estado de Cooperación Internacional del Ministerio de Asuntos Interiores, Eva Granados; la delegada del área de gobierno de Cultura, Turismo y Deporte del Ayuntamiento de Madrid, Marta Rivera de […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-2025-vuelve-a-madrid-para-dar-impulso-a-la-internacionalizacion-del-libro-espanol/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LIBER 2025 vuelve a Madrid para dar impulso a la internacionalización del libro español",
+      "publishedAt": "2025-09-30T12:58:55.000Z",
+      "description": "Madrid, 30 de septiembre de 2025.- La industria editorial afronta un escenario marcado por la internacionalización, la innovación tecnológica y los nuevos hábitos de lectura. En este contexto, LIBER 2025, Feria Internacional del Libro, promovida por la Federación de Gremios de Editores de España (FGEE) y organizada por IFEMA MADRID, celebrará su 43ª edición del 7 al 9 de octubre en el pabellón 14…",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-2025-redobla-su-apuesta-por-la-compraventa-de-derechos-incorporando-a-editores-internacionales-y-agentes-literarios-a-su-programa-de-compradores-y-prescriptores-invitados/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LIBER 2025 redobla su apuesta por la compraventa de derechos incorporando a editores internacionales y agentes literarios a su programa de compradores y prescriptores invitados",
+      "publishedAt": "2025-05-28T08:10:48.000Z",
+      "description": "La 43ª edición de la Feria Internacional del Libro, que se celebrará del 7 al 9 de octubre en IFEMA MADRID, amplía su proyección internacional con la incorporación de un nuevo programa invitados dirigido a la compraventa de derechos literarios. Madrid, 28 de mayo de 2025.- Un año más, LIBER se consolida como el principal punto de encuentro […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-2025-regresa-a-madrid-para-reencontrarse-con-el-sector-del-libro/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LIBER 2025 regresa a Madrid para reencontrarse con el sector del libro",
+      "publishedAt": "2025-03-25T11:04:21.000Z",
+      "description": "Promovida por la Federación de Gremios de Editores de España y organizada por IFEMA MADRID, la 43ª edición de la Feria Internacional del Libro se perfila como la mayor plataforma de negocio de nuestro país dedicada a la edición en español. Descargar nota de prensa",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/leonardo-padura-premio-liber-2026-al-autor-hispanoamericano-mas-destacado/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leonardo Padura, Premio Liber 2026 al autor hispanoamericano más destacado",
+      "publishedAt": "2026-08-28T09:56:28.000Z",
+      "description": "El autor cubano es una de las grandes voces de la literatura en español La Federación de Gremios de Editores de España ha concedido el Premio Liber 2026 al autor hispanoamericano más destacado al escritor cubano Leonardo Padura, una de las grandes voces de la literatura contemporánea en español. El jurado ha destacado su capacidad […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-serie-anatomia-de-un-instante-y-abc-cultural-premios-liber-2026/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La serie ‘Anatomía de un instante’ y ‘ABC Cultural’, Premios Liber 2026",
+      "publishedAt": "2026-07-14T09:04:00.000Z",
+      "description": "A la Mejor adaptación audiovisual y al Fomento de la lectura en medios de comunicación La serie Anatomía de un instante y el suplemento ABC Cultural han sido distinguidos con los Premios Liber 2026 a la Mejor adaptación audiovisual de una obra literaria y al Fomento de la lectura en medios de comunicación, respectivamente. La […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-biblioteca-regional-de-murcia-recibe-el-premio-liber-2026/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Biblioteca regional de Murcia recibe el Premio Liber 2026",
+      "publishedAt": "2026-06-23T10:04:48.000Z",
+      "description": "La Biblioteca Regional de Murcia recibe el Premio Liber 2026 La Junta Directiva de la Federación de Gremios de Editores de España (FGEE) ha otorgado el Premio Liber 2026 a la mejor iniciativa de fomento de la lectura en bibliotecas abiertas al público a la Biblioteca Regional de Murcia. Con esta distinción se reconoce su […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-2026-sera-en-septiembre-epicentro-del-negocio-editorial-en-fira-de-barcelona/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liber 2026 será, en septiembre, epicentro del negocio editorial en Fira de Barcelona",
+      "publishedAt": "2026-02-23T11:43:42.000Z",
+      "description": "Este año Fira de Barcelona y la Federación de Gremios de Editores de España (FGEE) organizan la 44ª edición de Liber, que situará de nuevo a la capital catalana como centro estratégico para la proyección exterior del libro español. El salón, que tendrá lugar del 29 de septiembre al 1 de octubre en el recinto […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/chile-pais-invitado-de-honor-de-liber-2025-conmemorara-el-legado-de-gabriela-mistral-y-proyectara-su-industriaeditorial/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chile, País Invitado de Honor de LIBER 2025, conmemorará el legado de Gabriela Mistral y proyectará su industria editorial",
+      "publishedAt": "2025-11-04T13:38:03.000Z",
+      "description": "Madrid, 25 de septiembre de 2025.- Chile será protagonista en LIBER 2025 como País Invitado de Honor. Organizada por IFEMA MADRID junto a la Federación de Gremios de Editores de España (FGEE), la 43ª edición de la Feria Internacional del Libro ofrecerá del 7 al 9 de octubre un espacio privilegiado para difundir y promover la riqueza literaria y editorial chilena. La presencia de Chile en esta […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-federacion-de-gremios-de-editores-de-espana-entrega-los-premios-liber-2025/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Federación de Gremios de Editores de España entrega los premios LIBER 2025",
+      "publishedAt": "2025-10-09T09:10:28.000Z",
+      "description": "Madrid, 9 de octubre de 2025.\u2013 Los ministros de Cultura, Ernest Urtasun, e Interior, Fernando Grande-Marlaska y el secretario de estado de Educación, Abelardo de la Rosa, participaron ayer noche en la Gala de entrega de los premios LIBER 2025. La Federación de Gremios de Editores de España (FGEE) ha galardonado en esta edición a la biblioteca ‘Jaume Fuster’ de […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/chile-pais-invitado-de-honor-de-liber-2025-conmemorara-el-legado-de-gabriela-mistral-y-proyectara-su-industria-editorial/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chile, País Invitado de Honor de LIBER 2025, conmemorará el legado de Gabriela Mistral y proyectará su industria editorial",
+      "publishedAt": "2025-09-25T11:47:40.000Z",
+      "description": "Madrid, 25 de septiembre de 2025.- Chile será protagonista en LIBER 2025 como País Invitado de Honor. Organizada por IFEMA MADRID junto a la Federación de Gremios de Editores de España (FGEE), la 43ª edición de la Feria Internacional del Libro ofrecerá del 7 al 9 de octubre un espacio privilegiado para difundir y promover la riqueza literaria y editorial chilena. La presencia de Chile en esta […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-2025-rendira-homenaje-a-africa-ramirez-por-su-compromiso-con-el-sector-editorial-valenciano/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LIBER 2025 rendirá homenaje a África Ramírez por su compromiso con el sector editorial valenciano",
+      "publishedAt": "2025-09-04T11:19:52.000Z",
+      "description": "Madrid, 4 de septiembre de 2025.- La Junta Directiva de la Federación de Gremios de Editores de España (FGEE) ha decidido que LIBER 2025 rendirá homenaje a África Ramírez Olmos, directora editorial de Balandra Edicions y expresidenta de la Associació d’Editorials del País Valencià (AEPV). El Homenaje de LIBER se celebrará el próximo 8 de octubre, en el Centro Cultural Conde Duque de […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/rosa-montero-premio-liber-2025-a-la-autora-hispanoamericana-mas-destacada/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rosa Montero, Premio Liber 2025 a la autora hispanoamericana más destacada",
+      "publishedAt": "2025-08-28T10:04:32.000Z",
+      "description": "Madrid, 28 de agosto de 2025.- La autora Rosa Montero ha sido galardonada con el Premio LIBER 2025, concedido por la Federación de Gremios de Editores de España (FGEE) en reconocimiento a su trayectoria profesional y a su compromiso cultural. El premio se entregará el próximo 8 de octubre en el Centro Cultural Conde Duque […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-biblioteca-jaume-fuster-de-barcelona-premio-liber-2025-al-fomento-de-la-lectura-en-bibliotecas-abiertas-al-publico/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La biblioteca ‘Jaume Fuster’ de Barcelona, Premio LIBER 2025 al fomento de la lectura en bibliotecas abiertas al público",
+      "publishedAt": "2025-07-23T09:07:31.000Z",
+      "description": "Madrid, 23 de julio 2025- Inaugurada en noviembre de 2005, coincidiendo con el Año del Libro y la Lectura, la biblioteca ‘Jaume Fuster’ se convirtió en la 29ª biblioteca pública de Barcelona y en un hito urbano tras la renovación del entorno de la Plaza Lesseps mediante un proceso participativo vecinal. Desde sus inicios, ha […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-pelicula-pedro-paramo-y-antonio-martinez-asensio-de-la-cadena-ser-premios-liber-2025/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La película ‘Pedro Páramo’ y Antonio Martínez Asensio, de la Cadena SER, premios LIBER 2025",
+      "publishedAt": "2025-07-08T10:00:07.000Z",
+      "description": "Madrid, 8 de julio de 2025.- La Junta Directiva de la Federación de Gremios de Editores de España ha dado a conocer los primeros nombres de los galardonados de este año en los Premios LIBER, que serán entregados el próximo 9 de octubre en un evento que se celebrará en el Centro Cultural Conde Duque […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/readmagine2025/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Encuentro Internacional sobre Innovación en el Libro y la Lectura, Readmagine",
+      "publishedAt": "2025-05-14T16:25:36.000Z",
+      "description": "Los próximos 27 a 29 de mayo tendrá lugar en Casa del Lector (Matadero Madrid), la 12º edición del Encuentro Internacional sobre Innovación en el Libro y la Lectura, Readmagine, que organizan la Fundación GSR, FANDE-IPDA y la FGEE. Puede accederse al programa completo en www.readmagine.org Inscripción gratuita",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-feria-del-libro-de-buenos-aires-vuelve-a-acoger-al-sector-del-libro-espanol/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LA FERIA DEL LIBRO DE BUENOS AIRES VUELVE A ACOGER AL SECTOR DEL LIBRO ESPAÑOL",
+      "publishedAt": "2026-04-21T09:53:59.000Z",
+      "description": "Madrid, 21 de abril de 2026.- Una delegación de cerca de sesenta editoriales y sellos españoles, encabezada por la Federación de Gremios de Editores de España (FGEE), participará en la 50ª edición de la Feria Internacional del Libro de Buenos Aires 2025. Este evento, uno de los más relevantes de Latinoamérica, se celebrará del 21 de […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-libro-espanol-vuelve-a-tener-presencia-en-la-38a-feria-del-libro-de-bogota/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EL LIBRO ESPAÑOL VUELVE A TENER PRESENCIA EN LA 38ª FERIA DEL LIBRO DE BOGOTÁ",
+      "publishedAt": "2026-04-20T14:34:07.000Z",
+      "description": "La Federación de Gremios de Editores de España (FGEE) coordina la participación española con un stand que reunirá a 30 editoriales e instituciones. La 38ª Feria Internacional del Libro de Bogotá (FILBo), que se celebrará del 21 de abril al 4 de mayo en Corferias, volverá a contar con una destacada representación del sector del […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/representantes-de-las-administraciones-publicas-y-del-sector-del-libro-debatiran-en-jerez-sobre-las-politicas-de-fomento-de-la-lectura/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Representantes de las Administraciones Públicas y del sector del libro debatirán en Jerez sobre las políticas de fomento de la lectura",
+      "publishedAt": "2025-06-26T09:20:28.000Z",
+      "description": "Madrid, 26 de junio de 2025.\u2013 Representantes de los Ministerios de Cultura y de Exteriores, de la Junta de Andalucía, de la Generalitat de Cataluña, de la Comunidad de Madrid y del ICEX debatirán con editores y demás actores del mundo del libro sobre las políticas y programas de fomento de la lectura y sobre […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/espana-sera-la-gran-protagonista-de-la-37a-edicion-de-la-feria-internacional-del-libro-de-bogota/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "España será la gran protagonista de la 37ª edición de la Feria Internacional del Libro de Bogotá",
+      "publishedAt": "2025-04-25T10:31:31.000Z",
+      "description": "El libro español será el gran protagonista en la 37º edición de la Feria Internacional del Libro de Bogotá (FILBo), que se celebrará del 25 de abril al 11 de mayo en el recinto ferial Corferias, de la capital colombiana. Con España como país Invitado de Honor, esta cita cultural se convierte en un puente […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-sector-del-libro-espanol-acude-a-la-49a-edicion-de-la-feria-de-buenos-aires/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El sector del libro español acude a la 49ª edición de la Feria de Buenos Aires",
+      "publishedAt": "2025-04-24T00:10:00.000Z",
+      "description": "Una delegación de cerca de cuarenta editoriales y sellos españoles, encabezada por la Federación de Gremios de Editores de España (FGEE), participará en la 49ª Feria Internacional del Libro de Buenos Aires 2025. Este evento, uno de los más relevantes de Latinoamérica, se celebrará del 24 de abril al 12 de mayo en el Predio […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-sector-del-libro-espanol-participa-en-la-54o-edicion-de-la-feria-de-londres/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El sector del libro español participa en la 54º edición de la Feria de Londres",
+      "publishedAt": "2025-03-10T12:35:17.000Z",
+      "description": "La 54ª edición de la Feria del Libro de Londres (The London Book Fair), que se celebra entre el 11 y el 13 de marzo en el Olympia London, volverá a contar con la presencia del sector editorial español. La Federación de Gremios de Editores de España (FGEE) encabezará la delegación española en este evento […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-cadena-del-libro-reivindica-la-colaboracion-para-afrontar-los-retos-que-les-presenta-el-futuro/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LA CADENA DEL LIBRO REIVINDICA LA COLABORACIÓN PARA AFRONTAR LOS RETOS QUE LES PRESENTA EL FUTURO",
+      "publishedAt": "2026-07-02T10:16:02.000Z",
+      "description": "En el Encuentro de la Edición 2026 que se celebra en Santiago de Compostela Santiago de Compostela, 2 de julio de 2026.- Representantes de asociaciones y empresas que forman los diferentes eslabones de la cadena del libro (editores, industria gráfica, distribuidores y libreros) han reivindicado, durante el Encuentro de la Edición 2026 que se ha celebrado en Santiago, la necesidad de mantener […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-mundo-del-libro-debate-en-santiago-de-compostela-sobre-los-retos-del-sector/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El MUNDO DEL LIBRO DEBATE EN SANTIAGO DE COMPOSTELA SOBRE LOS RETOS DEL SECTOR",
+      "publishedAt": "2026-06-25T09:55:58.000Z",
+      "description": "El Encuentro de la Edición 2026 se celebrará del 30 de junio al 2 de julio Madrid, 25 de junio de 2026.- Santiago de Compostela acogerá, entre los días 30 de junio y 2 de julio, el Encuentro de la Edición 2026, una cita organizada por la Federación de Gremios de Editores de España (FGEE), […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-sector-editorial-espanol-acude-a-la-feria-del-libro-de-bolonia-con-una-representacion-de-cerca-de-cien-empresas/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EL SECTOR EDITORIAL ESPAÑOL ACUDE A LA FERIA DEL LIBRO DE BOLONIA CON UNA REPRESENTACIÓN DE CERCA DE CIEN EMPRESAS",
+      "publishedAt": "2026-04-10T08:43:41.000Z",
+      "description": "Madrid, 10 de abril de 2026- La 63ª edición de la Feria del Libro de Bolonia, la Bologna Children´s Book Fair, que se celebra del 13 al 16 de abril en el Bologna Exhibition Centre, volverá a contar con una amplia representación del sector editorial español. Un año más la Federación de Gremios de Editores […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-lectura-por-ocio-sigue-creciendo-en-espana-el-662-de-la-poblacion-lee-libros-en-su-tiempo/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La lectura por ocio sigue creciendo en España: el 66,2 % de la población lee libros en su tiempo",
+      "publishedAt": "2026-01-22T17:46:30.000Z",
+      "description": "Madrid, 22 de enero de 2026.- La lectura continua su crecimiento como actividad de ocio en España. El 66,2 % de la población española lee libros en su tiempo libre, lo que representa un incremento de 0,7 puntos porcentuales en comparación con el registrado en 2024 (65,5 %). Si analizamos la evolución desde 2017, se […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-convoca-el-certamen-de-ilustracion-para-crear-el-cartel-de-su-proxima-edicion/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liber convoca el Certamen de Ilustración para crear el cartel de su próxima edición",
+      "publishedAt": "2025-12-12T12:12:32.000Z",
+      "description": "Creada en 2021, esta iniciativa quiere subrayar la importancia que concede el sector editorial a la ilustración como disciplina que enriquece la experiencia lectora y potencia el valor de las publicaciones, facilitando la comunicación visual de ideas y emociones. El certamen está dirigido a ilustradores mayores de edad y residentes en España. Se valorarán propuestas […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-feria-de-francfort-volvera-a-tener-una-importante-representacion-editorial-espanola/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La feria de Fráncfort volverá a tener una importante representación editorial española",
+      "publishedAt": "2025-10-14T15:47:58.000Z",
+      "description": "Madrid, 14 de octubre de 2025.- La Feria Internacional del Libro de Fráncfort (Frankfurter Buchmesse), cuya 77ª edición se celebra entre el 15 y el 19 de octubre, volverá a contar con una importante representación del sector editorial y del libro español. Un total de 228 sellos editoriales y agentes literarios tendrán presencia en este encuentro […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-sector-editorial-finaliza-la-43-edicion-de-liber-marcada-por-la-internacionalizacion-y-el-dinamismo-del-negocio/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El sector editorial finaliza la 43 edición de LIBER, marcada por la internacionalización y el dinamismo del negocio",
+      "publishedAt": "2025-10-10T11:44:40.000Z",
+      "description": "Madrid, 9 de septiembre de 2025.- LIBER 2025, la Feria Internacional del Libro organizada por IFEMA MADRID y la Federación de Gremios de Editores de España (FGEE), ha cerrado hoy las puertas de su 43ª edición con un balance muy positivo y la satisfacción general del sector por los resultados comerciales y profesionales alcanzados. Durante las tres jornadas profesionales, el pabellón […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-gobierno-autores-editores-y-cedro-se-comprometen-a-impulsar-una-inteligencia-artificial-espanola-respetuosa-con-los-derechos-de-autor/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El Gobierno, autores, editores y CEDRO se comprometen a impulsar una inteligencia artificial española respetuosa con los derechos de autor",
+      "publishedAt": "2025-10-09T09:05:29.000Z",
+      "description": "Madrid, 08/10/2025. CEDRO ha organizado hoy en la Feria Internacional del Libro, Liber2025, la mesa redonda «IA y Propiedad Intelectual: hacia un modelo español que proteja aautores y editores», en la que los Ministerios de Cultura y Transformación Digital se hancomprometido a trabajar conjuntamente con autores y editores y con CEDRO, con elobjetivo de avanzar […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/liber-abordara-como-aprovechar-la-tecnologia-y-la-innovacion-en-la-comercializacion-del-libro-espanol/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LIBER abordará cómo aprovechar la tecnología y la innovación en la comercialización del libro español",
+      "publishedAt": "2025-09-23T15:10:35.000Z",
+      "description": "Madrid, 23 de septiembre de 2025.- La irrupción de las nuevas tecnologías y la innovación puede suponer un riesgo, pero también una oportunidad que el sector del libro puede aprovechar. Las Jornadas Profesionales de LIBER 2025 abordarán esta y otras cuestiones en más de 70 conferencias y mesas redondas en el que se analizarán tanto los principales desafíos a los […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-libreria-serendipia-de-ciudad-real-galardonada-con-el-premio-boixareu-ginesta-a-la-libreria-del-ano/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Librería Serendipia de Ciudad Real galardonada con el premio ‘Boixareu Ginesta’ a la librería del año",
+      "publishedAt": "2025-07-17T09:38:35.000Z",
+      "description": "Madrid, 17 de julio de 2025.- La Librería Serendipia de Ciudad Real ha sido elegida por la Junta Directiva de la FGEE premio ‘Boixareu Ginesta’ a la librería del año’ en su edición de 2025. Este premio distingue, desde 1995, la labor de aquellos libreros y librerías que juegan un importante papel en el desarrollo y […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-espanol-ofrece-oportunidades-para-avanzar-en-la-internacionalizacion-de-la-actividad-del-sector-editorial/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El español ofrece oportunidades para avanzar en la internacionalización de la actividad del sector editorial",
+      "publishedAt": "2025-07-03T14:12:40.000Z",
+      "description": "Jerez de la Frontera, 3 de julio de 2025.- El español, lengua que hablan alrededor de 600 millones de personas en el mundo, ofrece grandes posibilidades para la internacionalización del negocio editorial español. En el año 2024, las exportaciones de las editoriales de nuestro país ascendieron a 361,31 millones de euros, cifras que no recogen […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/el-sector-editorial-recupera-los-3-000-millones-de-facturacion-previos-a-la-crisis-de-2008/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El sector editorial recupera los 3.000 millones de facturación previos a la crisis de 2008",
+      "publishedAt": "2025-06-11T12:09:40.000Z",
+      "description": "Madrid, 11 de junio de 2025.- El sector editorial recuperó los 3.000 millones de euros de facturación que registraba antes de la crisis de 2008 y acumula once años de crecimiento continuado. En 2024, el conjunto de las editoriales obtuvo unas ventas conjuntas en el mercado interior de 3.037,51 millones de euros, lo que representa […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/mas-de-60-editoriales-espanolas-participal-en-la-62o-edicion-de-la-feria-de-bolonia/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Más de 60 editoriales españolas participal en la 62º edición de la Feria de Bolonia",
+      "publishedAt": "2025-03-28T12:31:05.000Z",
+      "description": "La 62º edición de la Feria del Libro de Bolonia (Bologna Children’s Book Fair), que se celebra entre el 31 de marzo y el 3 de abril en Bologna Exhibition Centre, volverá a contar con la presencia del sector editorial español. La Federación de Gremios de Editores de España (FGEE) encabezará la delegación española en […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-federacion-de-gremios-de-editores-de-espana-y-la-fundacion-german-sanchez-ruiperez-firman-un-convenio-para-impulsar-la-lectura-y-la-innovacion-en-la-industria-editorial/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Federación de Gremios de Editores de España y la Fundación Germán Sánchez Ruipérez firman un convenio para impulsar la lectura y la innovación en la industria editorial",
+      "publishedAt": "2025-02-11T07:51:51.000Z",
+      "description": "La firma de este convenio supone un compromiso compartido entre la Federación de Gremios de Editores de España y la Fundación Germán Sánchez Ruipérez para fortalecer el fomento de la lectura y el papel del libro en la sociedad. Descargar nota de prensa",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/abierta-la-convocatoria-de-ayudas-para-la-edicion-de-libros/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Abierta la convocatoria de Ayudas para la Edición de Libros",
+      "publishedAt": "2025-01-12T07:12:45.000Z",
+      "description": "El pasado 3 de enero se publicó en el Boletín Oficial del Estado (BOE) el extracto de la Resolución de 27 de diciembre de 2024, de la Secretaría de Estado de Cultura por la que se convocan subvenciones, en régimen de concurrencia competitiva, para la edición de libros correspondientes a 2025. El objetivo de estas ayudas […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-libreria-casa-anita-de-barcelona-premio-boixareu-ginesta-al-librero-del-ano/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La librería Casa Anita de Barcelona, Premio Boixareu Ginesta al librero del año",
+      "publishedAt": "2026-07-21T09:03:35.000Z",
+      "description": "Reconocimiento a más de dos décadas de impulso a la lectura infantil La Junta Directiva de la Federación de Gremios de Editores de España (FGEE) ha otorgado el Premio Boixareu Ginesta al librero del año a la librería barcelonesa Casa Anita. Con esta distinción se reconoce su trayectoria de más de dos décadas como espacio […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-aventura-del-saber-22-04-26-entrevista-a-manuel-gonzalez-presidente-de-la-federacion-de-gremios-de-editores-de-espana/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La aventura del saber \u2013 22/04/26. Entrevista a Manuel González, presidente de la Federación de Gremios de Editores de España",
+      "publishedAt": "2026-04-23T09:50:52.000Z",
+      "description": "En la víspera del Día del Libro, Mara Peterssen y Manuel González, presidente de la Federación de Gremios de Editores de España, comentan las cifras del Barómetro de hábitos de lectura y compra de libros en España en 2025. El Quijote de Las Canteras. Estudiantes y docentes del Instituto Las Canteras, en Collado Villalba, celebran estos días la culminación […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/manuel-gonzalez-moreno-nuevo-presidente-de-la-federacion-de-gremios-de-editores-de-espana/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Manuel González Moreno, nuevo presidente de la Federación de Gremios de Editores de España",
+      "publishedAt": "2026-03-19T09:13:15.000Z",
+      "description": "El nuevo presidente se ha marcado como principal objetivo trabajar para abordar, junto al resto de la cadena del libro y las Administraciones Públicas los desafíos actuales a los que se enfrenta el sector. Madrid, 19 de marzo de 2026.- Manuel González Moreno ha sido elegido por unanimidad presidente de la Federación de Gremios de […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/feriasinternacionales/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FERIAS INTERNACIONALES",
+      "publishedAt": "2026-01-21T14:50:33.000Z",
+      "description": "Abierta la participación de las editoriales en las ferias de: Leer aquí",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/espana-estara-presente-en-una-nueva-edicion-de-la-feria-de-guadalajara-con-protagonismo-de-barcelona/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ESPAÑA ESTARÁ PRESENTE EN UNA NUEVA EDICIÓN DE LA FERIA DE GUADALAJARA CON PROTAGONISMO DE BARCELONA",
+      "publishedAt": "2025-11-28T12:14:50.000Z",
+      "description": "Madrid, 28 de noviembre de 2025.- Un total de 227 sellos editoriales españoles, liderados por la Federación de Gremios de Editores de España (FGEE), participarán en la 39ª edición de la Feria Internacional del Libro (FIL) de Guadalajara, México, que tendrá lugar en su parte profesional del 1 al 3 de diciembre. Tras la edición del […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-femp-y-la-fgee-acuerdan-avanzar-en-un-convenio-para-el-fomento-de-la-lectura-en-los-municipios-espanoles/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La FEMP y la FGEE acuerdan avanzar en un convenio para el fomento de la lectura en los municipios españoles",
+      "publishedAt": "2025-07-02T14:51:30.000Z",
+      "description": "Jerez de la Frontera (Cádiz), 2 de julio de 2025.- La alcaldesa de Jerez de la Frontera y presidenta de la Federación Española de Municipios y Provincias (FEMP), María José García-Pelayo, y el presidente de la Federación de Gremios de Editores de España (FGEE), Daniel Fernández han acordado trabajar juntos en el desarrollo de un […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/declaracion-conjunta-de-una-coalicion-de-autores-artistas-interpretes-o-ejecutantes-y-otros-titulares-de-derechos-activos-en-los-sectores-cultural-y-creativo-de-la-ue-en-relacion-con-el-tercer-borrad/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Declaración conjunta de una coalición de autores, artistas intérpretes o ejecutantes y otros titulares de derechos activos en los sectores cultural y creativo de la UE en relación con el tercer borrador del Código de buenas prácticas del PAMI de la Ley de AI de la UE",
+      "publishedAt": "2025-05-23T12:01:24.000Z",
+      "description": "Leer documento",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-lectura-continua-creciendo-como-actividad-de-ocio-en-espana/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La lectura continúa creciendo como actividad de ocio en España",
+      "publishedAt": "2025-02-12T07:08:34.000Z",
+      "description": "La Federación de Gremios de Editores de España (FGEE) ha presentado hoy los datos del Barómetro de Hábitos de Lectura y Compra de Libros en España 2024. El acto se ha celebrado en el Auditorio del Ministerio de Cultura y ha contado con la participación del ministro de Cultura, Ernest Urtasun; el presidente de la FGEE, Daniel […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "federacioneditores-org",
+      "source": {
+        "name": "FGEE",
+        "url": "https://federacioneditores.org/la-fil-guadalajara-otorga-el-premio-al-mejor-stand-internacional-al-stand-colectivo-de-la-fgee/",
+        "language": "es"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La FIL Guadalajara otorga el Premio al Mejor Stand Internacional al stand colectivo de la FGEE",
+      "publishedAt": "2024-12-12T07:15:03.000Z",
+      "description": "El stand de la FGEE ha recibido hoy el Premio al mejor Stand Internacional de la FIL Guadalajara “por su diseño y escala, por su funcionalidad, por la gran capacidad de espacios que se generan a través de todo el mobiliario para atender diferentes grupos y por el color, que identifica claramente a España”. La directora de la FIL, […]",
+      "discoveredAt": "2026-09-26T17:27:46.998Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f81865098f15e6949303953106a13a6b407e8940e9a00afea90df10ca03e2631"
+}

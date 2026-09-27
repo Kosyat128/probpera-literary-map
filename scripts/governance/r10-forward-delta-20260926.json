@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-FORWARD-DELTA-20260926",
+  "baselineSourceCommitSha": "63ce3112846e3e49f4b15d1cb64b3c29cb98af70",
+  "authorization": {
+    "source": "Current user request to complete the R10 archive and maximize country diversity",
+    "date": "2026-09-26",
+    "scope": [
+      "V showcase behaviour and pin editor",
+      "C evidence-backed writer date overlay",
+      "P generated news fallback build hook",
+      "historical governance adapters"
+    ],
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "reviewStatus": "agent-implementation-reviewed-local-tests",
+  "historicalPinsChanged": false,
+  "allowedProjectionPaths": [
+    "src/components/HeaderArticlesMenu.tsx",
+    "apps/admin/app/(dashboard)/homepage/page.tsx",
+    "src/data/countries/index.ts",
+    "src/data/countries/types.ts",
+    "package.json",
+    "scripts/lib/reviewed-header-library.test.mjs",
+    "scripts/lib/reviewed-r49n-package.test.mjs",
+    "scripts/lib/reviewed-dependency-security.test.mjs",
+    "scripts/lib/reviewed-header-showcase.test.mjs",
+    "src/components/stage5Governance.test.ts",
+    "scripts/lib/stage5-content-data-lock.test.mjs",
+    "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+    "scripts/lib/reviewed-draft-storage.test.mjs",
+    "scripts/lib/reviewed-native-archive-read.test.mjs",
+    "scripts/lib/reviewed-native-archive-transport.test.mjs",
+    "scripts/lib/reviewed-premium-title-evidence.test.mjs",
+    "scripts/lib/reviewed-reference-release.test.mjs",
+    "tests/e2e/header-hero-polish.spec.mjs"
+  ],
+  "sourceBaselines": {
+    "src/components/HeaderArticlesMenu.tsx": "6fc7093e3dbc0a3a1f3b199e599f3223c9050ab521bded83b1edbfc6788bcb19",
+    "apps/admin/app/(dashboard)/homepage/page.tsx": "f8f0d6f304c9e1faf3c873b3546419bbba9c678d1d048b479737253ce3e7d630",
+    "src/data/countries/index.ts": "981178294c635b4439bde9202cb023feddeef973dd0e868fbe7549068632e7a1",
+    "src/data/countries/types.ts": "45d598abccc7f0b59a3d0d25aebbee04d2ec511385a9c24136d519e641c06ca1",
+    "package.json": "248a4a424bbe00c4967d4d0e9cad16ec700c7fcf88368f099399cab80ff06793",
+    "scripts/lib/reviewed-header-library.test.mjs": "aa6de35778197c1420793f872887d7379d4d957a8268361abd549a7000e11980",
+    "scripts/lib/reviewed-r49n-package.test.mjs": "7129eac1c61e577f2f4dfe95a085460464643dac80e5fe33afc37d14b54a96fc",
+    "scripts/lib/reviewed-dependency-security.test.mjs": "1271eb29350a6e106457f6a49d5acfb31cc336ceb11679eafbadd0786be21f01",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "3e270cd8dbc9bfec4540bf716e7cf31696aaec12374927567a5563f2b424a227",
+    "src/components/stage5Governance.test.ts": "965e34c02b036defc301a23c3c41f95110e4f655aea606f6ea7e59327131089c",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "2072075e9e57deeaef5652d789606421647b08e717d53bf3171ced800ef69624",
+    "scripts/lib/reviewed-cms-source-punctuation.test.mjs": "aa9bf771b4bc335b0b5dd97a39c052e3530b7f79907e87faa43bf31feb0ea120",
+    "scripts/lib/reviewed-draft-storage.test.mjs": "1354a7971b852eec9cea3a6119a05966c7b3a9cccc8270ddfc6ba5e00a2d1bcd",
+    "scripts/lib/reviewed-native-archive-read.test.mjs": "f3a4a8bc63eed0e7677160bbc804abb6ece32cc6eb990377b273cce73fc95733",
+    "scripts/lib/reviewed-native-archive-transport.test.mjs": "2197aeaac791006165230f978b12710ed5f5bcdd9a8ae4c3846329dd12b63a45",
+    "scripts/lib/reviewed-premium-title-evidence.test.mjs": "17e5e94d9259a288251592c190df2363e01ab87b16871e3e82557c835d392ae2",
+    "scripts/lib/reviewed-reference-release.test.mjs": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6",
+    "tests/e2e/header-hero-polish.spec.mjs": "2d5d8511b546aa47ce35453664659cf6ffa0cbe6b5628379c6e941a4455a2b92"
+  },
+  "reviewedSources": {
+    "src/components/HeaderArticlesMenu.tsx": "bcdc72a78cc76c09d82a499e84f8f94b0d993a2e24e1edf03256e6ea76648857",
+    "apps/admin/app/(dashboard)/homepage/page.tsx": "54c6ac81ba42fcb76d4d82908c82e6a868a3d225094b47434569f0a6e6849d25",
+    "src/data/countries/index.ts": "adb63c38e8cdb560e9db0d453b9d7b753ee930fd9702ee2bf05815587e31c6e7",
+    "src/data/countries/types.ts": "3cd59605923f2a55e96ab41d6b7e6ded93684508e2993471e0e8004677284a8e",
+    "package.json": "3a9c90308c7ae354730b1dcbb678e0445ce6e76f4d014ddd07b1326dc6550fd2",
+    "scripts/lib/reviewed-header-library.test.mjs": "9b06f0798d8fb0d2581c3ffa8be33483977d03068760045a8abf631f9adf1f57",
+    "scripts/lib/reviewed-r49n-package.test.mjs": "ed189d31cfe31694f2e174883667de72b71ac44dd1c3a324e03b6fda5b87f133",
+    "scripts/lib/reviewed-dependency-security.test.mjs": "7d08bf49c95ac74ee65c5e021714cf059f27f496666173855f478f4d42235fe0",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "bccd677ea51a3633b8ecea10258faada163fcdc1e4a66bb218f92b85496d6f0a",
+    "src/components/stage5Governance.test.ts": "103fa58d706e42d20db47eb22586033ba32ec7fd6b99b7dd0dd5729a773fde0e",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "bb4f119a8e6d8d1aece5e30b8e5a5809019ae500caf681b94b8bdc0d3904460a",
+    "scripts/lib/reviewed-cms-source-punctuation.test.mjs": "8683822b51f6edfda64b7070e92deab307edb244b4bfa326218b39c57bcad14c",
+    "scripts/lib/reviewed-draft-storage.test.mjs": "3e138dfd5cb644bdc821ddea66852dc42bdac04ee5414beca5c3f08edfc3ffcb",
+    "scripts/lib/reviewed-native-archive-read.test.mjs": "e3571d567d31dcc0a55b6ec57bc3703bdad67c9c0821a27b14bada201b9d4cbb",
+    "scripts/lib/reviewed-native-archive-transport.test.mjs": "e8fd217a17c430fff08e4adfbce4295ca35e500976b2a33b802fe907ac82bfe9",
+    "scripts/lib/reviewed-premium-title-evidence.test.mjs": "ea902b9d092b38330261019c714affd28ff7408a50a1a278a3ae5f9dd092004f",
+    "scripts/lib/reviewed-reference-release.test.mjs": "7647cec118083dc002a5609a141c85ffdc5ba65f88941641a86299b5de8df451",
+    "tests/e2e/header-hero-polish.spec.mjs": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda"
+  },
+  "additions": [
+    {
+      "path": "src/data/countries/writerDatePatches.ts",
+      "sha256Lf": "3119c1ebf63cff9f285580bdca015f2ed5cacc253d9bc88e025afa83fed427d5"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10.json",
+      "sha256Lf": "797adf786ca86fb80bac52e7e40a091af95ccb8689e8d6cb824878c1d55c4080"
+    },
+    {
+      "path": "src/data/countries/generated/writerDatePatches.r10-supplemental.json",
+      "sha256Lf": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217"
+    }
+  ],
+  "projections": [
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx:1",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "before": "import { useCallback, useEffect, useMemo, useRef, useState } from \"react\";\nimport { publicImageAttributes, publicImageUrl } from \"../utils/imageDelivery\";\n\nimport type { ArticleCatalogEntry } from \"../data/articles/catalog\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport {\n  articlePath,\n  journalPath,\n  navigateToArticle,\n  navigateToJournal,\n  shouldUseClientNavigation,\n} from \"../utils/articleRoutes\";\nimport {\n  selectInterfacePlural,\n  translateInterfaceText,\n  type InterfaceLanguage,\n} from \"../i18n/InterfaceLanguage\";\n\nconst russianMonths: Record<string, number> = {\n  ЯНВАРЯ: 0,\n  ФЕВРАЛЯ: 1,\n  МАРТА: 2,\n  АПРЕЛЯ: 3,\n  МАЯ: 4,\n  ИЮНЯ: 5,\n  ИЮЛЯ: 6,\n  АВГУСТА: 7,\n  СЕНТЯБРЯ: 8,\n  ОКТЯБРЯ: 9,\n  НОЯБРЯ: 10,\n  ДЕКАБРЯ: 11,\n};\n\nfunction publishedTime(label: string) {\n  const match = label.toUpperCase().match(/(\\d{1,2})\\s+([А-ЯЁ]+)\\s+(\\d{4})/u);\n  if (!match) return 0;\n  const month = russianMonths[match[2]];\n  if (month === undefined) return 0;\n  return new Date(Number(match[3]), month, Number(match[1])).getTime();\n}\n\nfunction articlePublishedTime(article: ArticleCatalogEntry) {\n  const machineTime = article.publishedAt\n    ? new Date(article.publishedAt).getTime()\n    : Number.NaN;\n  return Number.isFinite(machineTime)\n    ? machineTime\n    : publishedTime(article.publishedLabel);\n}\n\ntype Props = {\n  language?: InterfaceLanguage;\n};\n\nexport default function HeaderArticlesMenu({ language = \"ru\" }: Props) {\n  const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);\n  const [loaded, setLoaded] = useState(false);\n  const [loading, setLoading] = useState(false);\n  const closeTimer = useRef<number | null>(null);\n  const detailsRef = useRef<HTMLDetailsElement>(null);\n  const t = useCallback(\n    (text: string) => translateInterfaceText(text, language),\n    [language]\n  );\n\n  const cancelScheduledClose = useCallback(() => {\n    if (closeTimer.current !== null) {\n      window.clearTimeout(closeTimer.current);\n      closeTimer.current = null;\n    }\n  }, []);\n\n  useEffect(() => cancelScheduledClose, [cancelScheduledClose]);\n\n  useEffect(() => {\n    const closeFromOutside = (event: PointerEvent) => {\n      const details = detailsRef.current;\n      if (\n        !details?.open ||\n        !(event.target instanceof Node) ||\n        details.contains(event.target)\n      ) {\n        return;\n      }\n      details.removeAttribute(\"open\");\n    };\n    document.addEventListener(\"pointerdown\", closeFromOutside, true);\n    return () => document.removeEventListener(\"pointerdown\", closeFromOutside, true);\n  }, []);\n\n  const loadArticles = useCallback(() => {\n    if (loaded || loading) return;\n    setLoading(true);\n    import(\"../data/articles/catalog\")\n      .then(({ articleCatalog }) => {\n        setArticles(articleCatalog);\n        setLoaded(true);\n      })\n      .catch(() => setLoaded(false))\n      .finally(() => setLoading(false));\n  }, [loaded, loading]);\n\n  const localizedArticles = useMemo(\n    () =>\n      articles.flatMap((article) => {\n        const localized = articleCatalogEntryForLanguage(article, language);\n        return localized ? [localized] : [];\n      }),\n    [articles, language]\n  );\n\n  const featured = useMemo(() => {\n    const sorted = [...localizedArticles].sort(\n      (first, second) =>\n        articlePublishedTime(second) - articlePublishedTime(first)\n    );\n    const lead = sorted[0];\n    const usedSections = new Set(lead ? [lead.sectionId] : []);\n    const varied = sorted.filter((article) => {\n      if (article.id === lead?.id || usedSections.has(article.sectionId)) return false;\n      usedSections.add(article.sectionId);\n      return true;\n    });\n    const remaining = sorted.filter(\n      (article) =>\n        article.id !== lead?.id &&\n        !varied.some((candidate) => candidate.id === article.id)\n    );\n    return { lead, more: [...varied, ...remaining].slice(0, 6) };\n  }, [localizedArticles]);\n\n  const closeMenu = (target: HTMLElement) => {\n    target.closest(\"details\")?.removeAttribute(\"open\");\n  };\n\n  return (\n    <details\n      ref={detailsRef}\n      className=\"articles-menu\"\n      onPointerEnter={() => {\n        cancelScheduledClose();\n        loadArticles();\n      }}\n      onPointerLeave={(event) => {\n        if (event.pointerType !== \"mouse\") return;\n        const details = event.currentTarget;\n        cancelScheduledClose();\n        closeTimer.current = window.setTimeout(() => {\n          const keyboardFocused = details.contains(document.activeElement) &&\n            document.activeElement?.matches(\":focus-visible\");\n          if (!details.matches(\":hover\") && !keyboardFocused) details.removeAttribute(\"open\");\n          closeTimer.current = null;\n        }, 240);\n      }}\n      onBlur={(event) => {\n        if (!event.currentTarget.contains(event.relatedTarget)) {\n          event.currentTarget.removeAttribute(\"open\");\n        }\n      }}\n      onFocusCapture={loadArticles}\n      onKeyDown={(event) => {\n        if (event.key !== \"Escape\" || !event.currentTarget.open) return;\n        event.preventDefault();\n        event.currentTarget.removeAttribute(\"open\");\n        event.currentTarget.querySelector(\"summary\")?.focus();\n      }}\n      onToggle={(event) => {\n        if (event.currentTarget.open) loadArticles();\n      }}\n    >\n      <summary>\n        {t(\"Статьи\")} <span aria-hidden=\"true\">⌄</span>\n      </summary>\n      <div className=\"articles-mega-menu\">\n        <header>\n          <div>\n            <span>{t(\"Редакционная витрина\")}</span>\n            <strong>{t(\"Свежие публикации\")}</strong>\n          </div>\n          <p>\n            {t(\n              \"Авторские статьи, рецензии, литературные истории и материалы о языке.\"\n            )}\n          </p>\n        </header>\n\n        {featured.lead ? (\n          <div className=\"articles-mega-content\">\n            <a\n              className=\"articles-mega-lead\"\n              href={articlePath(\n                featured.lead.id,\n                featured.lead.title,\n                featured.lead.sectionId,\n                featured.lead.slug\n              )}\n              onClick={(event) => {\n                closeMenu(event.currentTarget);\n                if (!shouldUseClientNavigation(event)) return;\n                event.preventDefault();\n                navigateToArticle(featured.lead);\n              }}\n            >\n              {featured.lead.imageUrl && (\n                <span className=\"articles-mega-lead-media\" aria-hidden=\"true\">\n                  <span\n                    style={{\n                      backgroundImage: `url(${publicImageUrl(featured.lead.imageUrl, 640)})`,\n                    }}\n                  />\n                  <img\n                    {...publicImageAttributes(featured.lead.imageUrl, 640, \"(max-width: 700px) 100vw, 540px\")}\n                    alt=\"\"\n                    loading=\"lazy\"\n                    decoding=\"async\"\n                  />\n                </span>\n              )}\n              <div>\n                <small>{featured.lead.sectionLabel}</small>\n                <strong>{featured.lead.title}</strong>\n                <p>{featured.lead.description}</p>\n                <em>\n                  {featured.lead.readingMinutes} {t(\"мин. чтения\")}\n                </em>\n              </div>\n            </a>\n            <section aria-label={t(\"Другие свежие статьи\")}>\n              {featured.more.map((article) => (\n                <a\n                  href={articlePath(\n                    article.id,\n                    article.title,\n                    article.sectionId,\n                    article.slug\n                  )}\n                  key={article.id}\n                  onClick={(event) => {\n                    closeMenu(event.currentTarget);\n                    if (!shouldUseClientNavigation(event)) return;\n                    event.preventDefault();\n                    navigateToArticle(article);\n                  }}\n                >\n                  <small>{article.sectionLabel}</small>\n                  <strong>{article.title}</strong>\n                  <span>\n                    {article.readingMinutes} {t(\"мин.\")}\n                  </span>\n                </a>\n              ))}\n            </section>\n          </div>\n        ) : (\n          <div className=\"articles-mega-loading\">\n            {loading\n              ? t(\"Подключаем редакционный архив…\")\n              : language === \"en\" && loaded\n                ? t(\"Пока нет опубликованных переводов на английский язык\")\n                : t(\"Наведите, чтобы открыть публикации\")}\n          </div>\n        )}\n\n        <footer>\n          <span>\n            {loaded\n              ? `${new Intl.NumberFormat(language === \"ru\" ? \"ru-RU\" : \"en-GB\").format(localizedArticles.length)} ${t(selectInterfacePlural(localizedArticles.length, language, [\"материал в архиве\", \"материала в архиве\", \"материалов в архиве\"]))}`\n              : t(\"Полный архив журнала\")}\n          </span>\n          <a\n            href={journalPath()}\n            onClick={(event) => {\n              closeMenu(event.currentTarget);\n              if (!shouldUseClientNavigation(event)) return;\n              event.preventDefault();\n              navigateToJournal();\n            }}\n          >\n            {t(\"Все публикации\")} <b aria-hidden=\"true\">→</b>\n          </a>\n        </footer>\n      </div>\n    </details>\n",
+      "after": "import { useCallback, useEffect, useMemo, useRef, useState } from \"react\";\nimport { publicImageAttributes } from \"../utils/imageDelivery\";\nimport type { ArticleCatalogEntry } from \"../data/articles/catalog\";\nimport { selectHeaderArticles } from \"../utils/headerArticleSelection\";\nimport { headerShowcasePins, loadHeaderArticleCatalog } from \"../utils/headerArticleLoader\";\nimport { articlePath, journalPath, navigateToArticle, navigateToJournal, shouldUseClientNavigation } from \"../utils/articleRoutes\";\nimport { selectInterfacePlural, translateInterfaceText, type InterfaceLanguage } from \"../i18n/InterfaceLanguage\";\nimport \"../styles/header-showcase-r10.css\";\n\nexport default function HeaderArticlesMenu({ language = \"ru\" }: { language?: InterfaceLanguage }) {\n  const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);\n  const [status, setStatus] = useState<\"idle\" | \"loading\" | \"loaded\" | \"error\">(\"idle\");\n  const [selectionTime, setSelectionTime] = useState(() => Date.now());\n  const [failedImage, setFailedImage] = useState<string | null>(null);\n  const detailsRef = useRef<HTMLDetailsElement>(null);\n  const loadingRef = useRef(false);\n  const loadedRef = useRef(false);\n  const errorRef = useRef(false);\n  const t = useCallback((text: string) => translateInterfaceText(text, language), [language]);\n  const copy = (ru: string, en: string) => language === \"en\" ? en : ru;\n  const loadArticles = useCallback(() => {\n    if (loadedRef.current || loadingRef.current || errorRef.current) return;\n    loadingRef.current = true;\n    errorRef.current = false;\n    setStatus(\"loading\");\n    loadHeaderArticleCatalog().then(catalog => {\n      setArticles(catalog); loadedRef.current = true; setStatus(\"loaded\");\n    }).catch(() => { errorRef.current = true; setStatus(\"error\"); })\n      .finally(() => { loadingRef.current = false; });\n  }, []);\n  const measure = useCallback(() => {\n    const details = detailsRef.current;\n    if (!details?.open) return;\n    const panel = details.querySelector<HTMLElement>(\".articles-mega-menu\");\n    const header = details.closest(\".site-header\");\n    if (!panel || !header) return;\n    const viewport = window.visualViewport;\n    const bottom = (viewport?.offsetTop ?? 0) + (viewport?.height ?? window.innerHeight);\n    panel.style.setProperty(\"--showcase-available-height\", `${Math.max(80, bottom - header.getBoundingClientRect().bottom - 12)}px`);\n  }, []);\n  const refreshSelection = useCallback(() => {\n    const now = Date.now();\n    const active = document.activeElement instanceof HTMLElement ? document.activeElement.closest<HTMLAnchorElement>(\"a[data-article-id]\") : null;\n    if (active && detailsRef.current?.contains(active)) {\n      const next = selectHeaderArticles(articles, language, headerShowcasePins, now);\n      if (![next.lead, ...next.more].some(article => article?.id === active.dataset.articleId)) detailsRef.current.querySelector(\"summary\")?.focus();\n    }\n    setSelectionTime(now);\n  }, [articles, language]);\n  useEffect(() => {\n    const details = detailsRef.current;\n    const closeFromOutside = (event: PointerEvent) => {\n      if (details?.open && event.target instanceof Node && !details.contains(event.target)) details.open = false;\n    };\n    const closeForPanel = (event: Event) => {\n      if (details?.open && event.target instanceof HTMLDetailsElement && event.target !== details && event.target.open && event.target.closest(\".site-header\")) details.open = false;\n    };\n    const onPageShow = () => { refreshSelection(); measure(); };\n    document.addEventListener(\"pointerdown\", closeFromOutside, true);\n    document.addEventListener(\"toggle\", closeForPanel, true);\n    window.addEventListener(\"pageshow\", onPageShow);\n    window.addEventListener(\"resize\", measure);\n    window.visualViewport?.addEventListener(\"resize\", measure);\n    const observer = new ResizeObserver(measure);\n    const header = details?.closest(\".site-header\");\n    if (header) observer.observe(header);\n    return () => {\n      document.removeEventListener(\"pointerdown\", closeFromOutside, true);\n      document.removeEventListener(\"toggle\", closeForPanel, true);\n      window.removeEventListener(\"pageshow\", onPageShow);\n      window.removeEventListener(\"resize\", measure);\n      window.visualViewport?.removeEventListener(\"resize\", measure);\n      observer.disconnect();\n    };\n  }, [measure, refreshSelection]);\n  const featured = useMemo(() => selectHeaderArticles(articles, language, headerShowcasePins, selectionTime), [articles, language, selectionTime]);\n  const closeMenu = () => { if (detailsRef.current) detailsRef.current.open = false; };\n  const imageUrl = featured.lead?.imageUrl;\n  return (\n    <details ref={detailsRef} className=\"articles-menu\"\n      onPointerEnter={() => loadArticles()}\n      onFocusCapture={() => loadArticles()}\n      onBlur={event => { if (event.relatedTarget instanceof Node && !event.currentTarget.contains(event.relatedTarget)) closeMenu(); }}\n      onKeyDown={event => {\n        if (event.key !== \"Escape\" || !event.currentTarget.open) return;\n        event.preventDefault(); closeMenu(); event.currentTarget.querySelector(\"summary\")?.focus();\n      }}\n      onToggle={event => {\n        if (!event.currentTarget.open) return;\n        document.querySelectorAll<HTMLDetailsElement>(\".site-header details[open]\").forEach(other => { if (other !== event.currentTarget) other.open = false; });\n        refreshSelection(); loadArticles(); measure();\n        const panel = event.currentTarget.querySelector(\".articles-mega-menu\");\n        if (panel) panel.scrollTop = 0;\n      }}>\n      <summary>{t(\"Статьи\")} <span aria-hidden=\"true\">⌄</span></summary>\n      <div className=\"articles-mega-menu\" aria-busy={status === \"loading\"}>\n        <header><div><span>{t(\"Редакционная витрина\")}</span><strong>{featured.editorialChoice ? copy(\"Выбор редакции\", \"Editor's choice\") : t(\"Свежие публикации\")}</strong></div>\n          <p>{t(\"Авторские статьи, рецензии, литературные истории и материалы о языке.\")}</p></header>\n        {featured.lead ? <div className=\"articles-mega-content\">\n          <a className=\"articles-mega-lead\" data-article-id={featured.lead.id} href={articlePath(featured.lead.id, featured.lead.title, featured.lead.sectionId, featured.lead.slug)}\n            onClick={event => { if (!shouldUseClientNavigation(event)) return; event.preventDefault(); closeMenu(); navigateToArticle(featured.lead); }}>\n            <span className=\"articles-mega-lead-media\" aria-hidden=\"true\">\n              {imageUrl && failedImage !== imageUrl ? <img key={imageUrl} {...publicImageAttributes(imageUrl, 640, \"(max-height: 740px) 300px, 416px\")}\n                alt=\"\" loading=\"lazy\" decoding=\"async\" onError={() => setFailedImage(imageUrl)} /> : <span className=\"articles-mega-image-fallback\">{copy(\"Проба Пера\", \"Proba Pera\")}</span>}\n            </span>\n            <div><small>{featured.lead.sectionLabel}</small><strong>{featured.lead.title}</strong><p>{featured.lead.description}</p>\n              {featured.lead.readingMinutes > 0 && <em>{featured.lead.readingMinutes} {t(\"мин. чтения\")}</em>}</div>\n          </a>\n          <section aria-label={t(\"Другие свежие статьи\")}>\n            {featured.more.map(article => <a data-article-id={article.id} href={articlePath(article.id, article.title, article.sectionId, article.slug)} key={article.id}\n              onClick={event => { if (!shouldUseClientNavigation(event)) return; event.preventDefault(); closeMenu(); navigateToArticle(article); }}>\n              <small>{article.sectionLabel}</small><strong>{article.title}</strong>{article.readingMinutes > 0 && <span>{article.readingMinutes} {t(\"мин.\")}</span>}\n            </a>)}\n          </section>\n        </div> : <div className=\"articles-mega-loading\" role=\"status\">\n          {status === \"error\" ? <><p>{copy(\"Не удалось загрузить публикации.\", \"Publications could not be loaded.\")}</p><button type=\"button\" onClick={() => window.location.reload()}>{copy(\"Повторить загрузку страницы\", \"Reload and retry\")}</button></> : status === \"loaded\" ? copy(\"Пока нет опубликованных материалов на выбранном языке.\", \"No publications are available in this language yet.\") : t(\"Подключаем редакционный архив…\")}\n        </div>}\n        <footer><span>{status === \"loaded\" ? `${new Intl.NumberFormat(language === \"ru\" ? \"ru-RU\" : \"en-GB\").format(featured.count)} ${t(selectInterfacePlural(featured.count, language, [\"материал в архиве\", \"материала в архиве\", \"материалов в архиве\"]))}` : t(\"Полный архив журнала\")}</span>\n          <a href={journalPath()} onClick={event => { if (!shouldUseClientNavigation(event)) return; event.preventDefault(); closeMenu(); navigateToJournal(); }}>{t(\"Все публикации\")} <b aria-hidden=\"true\">→</b></a>\n        </footer>\n      </div>\n    </details>\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/homepage/page.tsx:1",
+      "path": "apps/admin/app/(dashboard)/homepage/page.tsx",
+      "before": "import Link from \"next/link\";\n\nimport HomepageMediaField, {\n  type HomepageMediaOption,\n",
+      "after": "import Link from \"next/link\";\nimport HeaderShowcaseEditor from \"@/components/HeaderShowcaseEditor\";\nimport { articleCatalog } from \"../../../../../src/data/articles/catalog\";\n\nimport HomepageMediaField, {\n  type HomepageMediaOption,\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/homepage/page.tsx:2",
+      "path": "apps/admin/app/(dashboard)/homepage/page.tsx",
+      "before": "                        }\n                        allowUpload={section.key !== \"book-archive\"}\n                      />\n                      {section.key === \"book-archive\" && (\n                        <small>\n                          Для сцены доступны только растровые изображения с\n                          заполненными автором, лицензией и HTTPS-источниками.\n",
+      "after": "                        }\n                        allowUpload={section.key !== \"book-archive\"}\n                      />\n                  {section.key === \"book-archive\" && (\n                        <small>\n                          Для сцены доступны только растровые изображения с\n                          заполненными автором, лицензией и HTTPS-источниками.\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/homepage/page.tsx:3",
+      "path": "apps/admin/app/(dashboard)/homepage/page.tsx",
+      "before": "                      )}\n                    </div>\n                  </div>\n                  {section.key === \"book-archive\" && (\n                    <BookArchiveSceneControls\n                      settings={readBookArchiveSceneSettings(settings)}\n",
+      "after": "                      )}\n                    </div>\n                  </div>\n                  {section.key === \"featured-journal\" && <HeaderShowcaseEditor articles={articleCatalog} value={settings.headerShowcasePins} now={Date.now()} />}\n                  {section.key === \"book-archive\" && (\n                    <BookArchiveSceneControls\n                      settings={readBookArchiveSceneSettings(settings)}\n"
+    },
+    {
+      "id": "src/data/countries/index.ts:1",
+      "path": "src/data/countries/index.ts",
+      "before": "import type { Country } from \"./types\";\nimport { generatedWriterDraftCount, mergeGeneratedWriters } from \"./generated\";\nimport { mergeWriterPortraits } from \"./generated/writerPortraits\";\nimport { mergeNobelLaureates } from \"./nobelLaureatesSupplement\";\n",
+      "after": "import type { Country } from \"./types\";\nimport { applyWriterDatePatches } from \"./writerDatePatches\";\nimport { generatedWriterDraftCount, mergeGeneratedWriters } from \"./generated\";\nimport { mergeWriterPortraits } from \"./generated/writerPortraits\";\nimport { mergeNobelLaureates } from \"./nobelLaureatesSupplement\";\n"
+    },
+    {
+      "id": "src/data/countries/index.ts:2",
+      "path": "src/data/countries/index.ts",
+      "before": "/** Public globe/writer corpus after writer-only corrections and fact review. */\nexport const countries: Country[] = applyCmsWriterProfileOverrides(\n  applyCmsCountryProfileOverrides(\n    editorialCatalogCountries\n  )\n);\nexport { generatedWriterDraftCount };\n",
+      "after": "/** Public globe/writer corpus after writer-only corrections and fact review. */\nexport const countries: Country[] = applyCmsWriterProfileOverrides(\n  applyCmsCountryProfileOverrides(\n    applyWriterDatePatches(editorialCatalogCountries).countries\n  )\n);\nexport { generatedWriterDraftCount };\n"
+    },
+    {
+      "id": "src/data/countries/types.ts:1",
+      "path": "src/data/countries/types.ts",
+      "before": "  };\n};\n\nexport type WriterProfile = {\n  id: string;\n\n",
+      "after": "  };\n};\n\nexport type WriterDateEvidence = {\n  value: string;\n  precision: \"day\";\n  calendarModel: \"http://www.wikidata.org/entity/Q1985727\";\n  wikidataId: string;\n  claimIds: string[];\n  sourceUrl: string;\n  retrievedAt: string;\n  snapshotSha256: string;\n  method: \"referenced-wikidata-statement\";\n  supportingSources?: Array<{ sourceUrl: string; checkedAt: string; finding: string }>;\n};\n\nexport type WriterProfile = {\n  id: string;\n\n"
+    },
+    {
+      "id": "src/data/countries/types.ts:2",
+      "path": "src/data/countries/types.ts",
+      "before": "\n  birthDate?: string;\n  deathDate?: string;\n  birthPlace?: string;\n  deathPlace?: string;\n\n",
+      "after": "\n  birthDate?: string;\n  deathDate?: string;\n  dateEvidence?: Partial<Record<\"birthDate\" | \"deathDate\", WriterDateEvidence>>;\n  birthPlace?: string;\n  deathPlace?: string;\n\n"
+    },
+    {
+      "id": "package.json:1",
+      "path": "package.json",
+      "before": "  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"npm run content:export:cms && npm run build:from-snapshot\",\n    \"build:from-snapshot\": \"npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && npm run assets:images:prepare && npm run assets:images:check && tsc && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs\",\n    \"build:all\": \"npm run build && npm run admin:build\",\n    \"build:domain\": \"node scripts/build-domain-release.mjs\",\n    \"domain:audit\": \"node scripts/audit-domain-release.mjs\",\n",
+      "after": "  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"npm run content:export:cms && npm run build:from-snapshot\",\n    \"build:from-snapshot\": \"npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && npm run assets:images:prepare && npm run assets:images:check && tsc && npm run news:fallback && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs\",\n    \"build:all\": \"npm run build && npm run admin:build\",\n    \"build:domain\": \"node scripts/build-domain-release.mjs\",\n    \"domain:audit\": \"node scripts/audit-domain-release.mjs\",\n"
+    },
+    {
+      "id": "package.json:2",
+      "path": "package.json",
+      "before": "    \"assets:globe:cassini:sources\": \"node scripts/acquire-globe-production-sources.mjs --config scripts/globe-editions/cassini-1790-production-sources.json\",\n    \"assets:globe:cassini:runtime:check\": \"node scripts/export-cassini-runtime-textures.mjs --check\",\n    \"assets:globe:scherer:source:check\": \"node scripts/check-scherer-preservation-source.mjs\",\n    \"assets:globe:evidence:check\": \"npm run assets:globe:historical:check && npm run assets:globe:historical:registration:check && npm run assets:globe:cassini:runtime:check && npm run assets:globe:scherer:source:check\"\n  },\n  \"dependencies\": {\n    \"@react-three/drei\": \"9.122.0\",\n",
+      "after": "    \"assets:globe:cassini:sources\": \"node scripts/acquire-globe-production-sources.mjs --config scripts/globe-editions/cassini-1790-production-sources.json\",\n    \"assets:globe:cassini:runtime:check\": \"node scripts/export-cassini-runtime-textures.mjs --check\",\n    \"assets:globe:scherer:source:check\": \"node scripts/check-scherer-preservation-source.mjs\",\n    \"assets:globe:evidence:check\": \"npm run assets:globe:historical:check && npm run assets:globe:historical:registration:check && npm run assets:globe:cassini:runtime:check && npm run assets:globe:scherer:source:check\",\n    \"news:fallback\": \"node scripts/export-literary-news-fallback.mjs\"\n  },\n  \"dependencies\": {\n    \"@react-three/drei\": \"9.122.0\",\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-header-library.test.mjs:1",
+      "path": "scripts/lib/reviewed-header-library.test.mjs",
+      "before": "} from \"./reviewed-header-library.mjs\";\nimport { projectReviewedR49nPackage } from \"./reviewed-r49n-package.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\n\nconst sha256 = source => createHash(\"sha256\").update(source).digest(\"hex\");\nconst read = relativePath => projectReviewedR49nPackage(\n  relativePath, projectReviewedHeaderShowcase(relativePath, readFileSync(relativePath, \"utf8\"))\n);\n\ndescribe(\"September 12 owner-approved header and library governance\", () => {\n",
+      "after": "} from \"./reviewed-header-library.mjs\";\nimport { projectReviewedR49nPackage } from \"./reviewed-r49n-package.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n\nconst sha256 = source => createHash(\"sha256\").update(source).digest(\"hex\");\nconst read = relativePath => projectReviewedR49nPackage(\n  relativePath, projectReviewedHeaderShowcase(relativePath, projectReviewedR10Delta(relativePath, readFileSync(relativePath, \"utf8\")))\n);\n\ndescribe(\"September 12 owner-approved header and library governance\", () => {\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-r49n-package.test.mjs:1",
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "before": "import { projectReviewedReferenceRelease } from \"./reviewed-reference-release.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\nconst readPublishedBrowserContract = path => path === \"tests/e2e/archive-search-calendar.spec.mjs\"\n  ? projectReviewedReferenceRelease(path, read(path)) : read(path);\nconst sha = value => createHash(\"sha256\").update(value).digest(\"hex\");\n",
+      "after": "import { projectReviewedReferenceRelease } from \"./reviewed-reference-release.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\nimport { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, projectReviewedR10Delta(path, readFileSync(path, \"utf8\")));\nconst readPublishedBrowserContract = path => path === \"tests/e2e/archive-search-calendar.spec.mjs\"\n  ? projectReviewedReferenceRelease(path, read(path)) : read(path);\nconst sha = value => createHash(\"sha256\").update(value).digest(\"hex\");\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-dependency-security.test.mjs:1",
+      "path": "scripts/lib/reviewed-dependency-security.test.mjs",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport {\n  dependencySecurityAttestation,\n  projectReviewedDependencySecurity,\n} from \"./reviewed-dependency-security.mjs\";\n\nconst sha256 = source => createHash(\"sha256\").update(source).digest(\"hex\");\nconst read = relativePath => readFileSync(relativePath, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst before = relativePath => projectReviewedDependencySecurity(relativePath, read(relativePath));\nconst allowedPaths = [\n  \".github/workflows/quality.yml\",\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\nimport {\n  dependencySecurityAttestation,\n  projectReviewedDependencySecurity,\n} from \"./reviewed-dependency-security.mjs\";\n\nconst sha256 = source => createHash(\"sha256\").update(source).digest(\"hex\");\nconst read = relativePath => projectReviewedR10Delta(relativePath, readFileSync(relativePath, \"utf8\"));\nconst before = relativePath => projectReviewedDependencySecurity(relativePath, read(relativePath));\nconst allowedPaths = [\n  \".github/workflows/quality.yml\",\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-header-showcase.test.mjs:1",
+      "path": "scripts/lib/reviewed-header-showcase.test.mjs",
+      "before": "import { headerShowcaseAttestation, projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { headerLibraryAttestation, projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst paths = [\n  \"scripts/lib/reviewed-r49n-package.test.mjs\",\n",
+      "after": "import { headerShowcaseAttestation, projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { headerLibraryAttestation, projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\nimport { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, projectReviewedR10Delta(path, readFileSync(path, \"utf8\")));\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst paths = [\n  \"scripts/lib/reviewed-r49n-package.test.mjs\",\n"
+    },
+    {
+      "id": "src/components/stage5Governance.test.ts:1",
+      "path": "src/components/stage5Governance.test.ts",
+      "before": "import { projectReviewedReadingDesign } from \"../../scripts/lib/reviewed-reading-design.mjs\";\nimport { projectReviewedHeaderLibrary } from \"../../scripts/lib/reviewed-header-library.mjs\";\nimport { projectReviewedR49nPackage } from \"../../scripts/lib/reviewed-r49n-package.mjs\";\n\ntype ParsedSource = {\n  absolutePath: string;\n",
+      "after": "import { projectReviewedReadingDesign } from \"../../scripts/lib/reviewed-reading-design.mjs\";\nimport { projectReviewedHeaderLibrary } from \"../../scripts/lib/reviewed-header-library.mjs\";\nimport { projectReviewedR49nPackage } from \"../../scripts/lib/reviewed-r49n-package.mjs\";\nimport { projectReviewedR10Delta } from \"../../scripts/lib/reviewed-r10-delta.mjs\";\n\ntype ParsedSource = {\n  absolutePath: string;\n"
+    },
+    {
+      "id": "src/components/stage5Governance.test.ts:2",
+      "path": "src/components/stage5Governance.test.ts",
+      "before": "function parseSource(relativePath: string): ParsedSource {\n  const absolutePath = path.join(root, relativePath);\n  const text = projectReviewedHeaderLibrary(relativePath,\n    projectReviewedR49nPackage(relativePath, readFileSync(absolutePath, \"utf8\")));\n  return parseSourceText(relativePath, text);\n}\n\n",
+      "after": "function parseSource(relativePath: string): ParsedSource {\n  const absolutePath = path.join(root, relativePath);\n  const text = projectReviewedHeaderLibrary(relativePath,\n    projectReviewedR49nPackage(relativePath, projectReviewedR10Delta(relativePath, readFileSync(absolutePath, \"utf8\"))));\n  return parseSourceText(relativePath, text);\n}\n\n"
+    },
+    {
+      "id": "scripts/lib/stage5-content-data-lock.test.mjs:1",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "import { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\nimport { projectReviewedDependencySecurity } from \"./reviewed-dependency-security.mjs\";\nimport {\n  isReviewedR49nDickensAddition,\n  projectReviewedR49nDickens,\n",
+      "after": "import { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\nimport { projectReviewedDependencySecurity } from \"./reviewed-dependency-security.mjs\";\nimport { projectReviewedR10Delta, reviewedR10AdditionPaths, isReviewedR10Addition } from \"./reviewed-r10-delta.mjs\";\nimport {\n  isReviewedR49nDickensAddition,\n  projectReviewedR49nDickens,\n"
+    },
+    {
+      "id": "scripts/lib/stage5-content-data-lock.test.mjs:2",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "      projectReviewedR49nPackage(relativePath,\n        projectReviewedDependencySecurity(relativePath,\n          projectReviewedHeaderShowcase(relativePath,\n            projectReviewedNativeArchiveTransport(relativePath, readFileSync(absolutePath, encoding))))))\n  );\n}\n\n",
+      "after": "      projectReviewedR49nPackage(relativePath,\n        projectReviewedDependencySecurity(relativePath,\n          projectReviewedHeaderShowcase(relativePath,\n            projectReviewedNativeArchiveTransport(relativePath, projectReviewedR10Delta(relativePath, readFileSync(absolutePath, encoding)))))))\n  );\n}\n\n"
+    },
+    {
+      "id": "scripts/lib/stage5-content-data-lock.test.mjs:3",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "        .filter((absolutePath) => {\n          const relativePath = repositoryPath(absolutePath);\n          if (!include(relativePath)) return false;\n          if (reviewedR49nPackageAdditionPaths.has(relativePath) &&\n            isReviewedR49nPackageAddition(relativePath, readFileSync(absolutePath, \"utf8\"))) {\n            return false;\n",
+      "after": "        .filter((absolutePath) => {\n          const relativePath = repositoryPath(absolutePath);\n          if (!include(relativePath)) return false;\n          if (reviewedR10AdditionPaths.has(relativePath) &&\n            isReviewedR10Addition(relativePath, readFileSync(absolutePath, \"utf8\"))) return false;\n          if (reviewedR49nPackageAdditionPaths.has(relativePath) &&\n            isReviewedR49nPackageAddition(relativePath, readFileSync(absolutePath, \"utf8\"))) {\n            return false;\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-cms-source-punctuation.test.mjs:1",
+      "path": "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+      "before": "",
+      "after": "import { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-cms-source-punctuation.test.mjs:2",
+      "path": "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+      "before": "const read = path => projectReviewedPremiumTitleEvidence(path, readFileSync(path, \"utf8\"));\n",
+      "after": "const read = path => projectReviewedPremiumTitleEvidence(path, projectReviewedR10Delta(path, readFileSync(path, \"utf8\")));\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-cms-source-punctuation.test.mjs:3",
+      "path": "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+      "before": "    const currentSource = readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\n",
+      "after": "    const currentSource = projectReviewedR10Delta(path, readFileSync(path, \"utf8\")).replace(/\\r\\n?/gu, \"\\n\");\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-draft-storage.test.mjs:1",
+      "path": "scripts/lib/reviewed-draft-storage.test.mjs",
+      "before": "",
+      "after": "import { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-draft-storage.test.mjs:2",
+      "path": "scripts/lib/reviewed-draft-storage.test.mjs",
+      "before": "const read = path => projectReviewedNativeArchiveRead(path, readFileSync(path, \"utf8\"));\n",
+      "after": "const read = path => projectReviewedNativeArchiveRead(path, projectReviewedR10Delta(path, readFileSync(path, \"utf8\")));\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-native-archive-read.test.mjs:1",
+      "path": "scripts/lib/reviewed-native-archive-read.test.mjs",
+      "before": "",
+      "after": "import { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-native-archive-read.test.mjs:2",
+      "path": "scripts/lib/reviewed-native-archive-read.test.mjs",
+      "before": "const read = path => projectReviewedCmsSourcePunctuation(path, readFileSync(path, \"utf8\"));\n",
+      "after": "const read = path => projectReviewedCmsSourcePunctuation(path, projectReviewedR10Delta(path, readFileSync(path, \"utf8\")));\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-native-archive-read.test.mjs:3",
+      "path": "scripts/lib/reviewed-native-archive-read.test.mjs",
+      "before": "    const currentSource = readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\n",
+      "after": "    const currentSource = projectReviewedR10Delta(path, readFileSync(path, \"utf8\")).replace(/\\r\\n?/gu, \"\\n\");\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-native-archive-transport.test.mjs:1",
+      "path": "scripts/lib/reviewed-native-archive-transport.test.mjs",
+      "before": "",
+      "after": "import { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-native-archive-transport.test.mjs:2",
+      "path": "scripts/lib/reviewed-native-archive-transport.test.mjs",
+      "before": "const read = path => projectReviewedDraftStorage(path, readFileSync(path, \"utf8\"));\n",
+      "after": "const read = path => projectReviewedDraftStorage(path, projectReviewedR10Delta(path, readFileSync(path, \"utf8\")));\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-premium-title-evidence.test.mjs:1",
+      "path": "scripts/lib/reviewed-premium-title-evidence.test.mjs",
+      "before": "",
+      "after": "import { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-premium-title-evidence.test.mjs:2",
+      "path": "scripts/lib/reviewed-premium-title-evidence.test.mjs",
+      "before": "const read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\n",
+      "after": "const read = path => projectReviewedR10Delta(path, readFileSync(path, \"utf8\")).replace(/\\r\\n?/gu, \"\\n\");\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-reference-release.test.mjs:1",
+      "path": "scripts/lib/reviewed-reference-release.test.mjs",
+      "before": "",
+      "after": "import { projectReviewedR10Delta } from \"./reviewed-r10-delta.mjs\";\n"
+    },
+    {
+      "id": "scripts/lib/reviewed-reference-release.test.mjs:2",
+      "path": "scripts/lib/reviewed-reference-release.test.mjs",
+      "before": "const read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\n",
+      "after": "const read = path => projectReviewedNativeArchiveTransport(path, projectReviewedR10Delta(path, readFileSync(path, \"utf8\")));\n"
+    },
+    {
+      "id": "tests/e2e/header-hero-polish.spec.mjs:1",
+      "path": "tests/e2e/header-hero-polish.spec.mjs",
+      "before": "test(\"publication showcase fits complete previews without nested or panel scrolling\", async ({ page }) => {\n  for (const locale of [\"ru\", \"en\"]) {\n    await openHomepage(page, 1547, 900, locale);\n    for (const [width, height] of [[1280, 600], [1280, 720], [1366, 768], [1547, 900], [1920, 1080]]) {\n      await page.setViewportSize({ width, height });\n      const summary = page.locator(\".articles-menu > summary\");\n      const panel = page.locator(\".articles-mega-menu\");\n      await summary.focus();\n      await page.keyboard.press(\"Enter\");\n      await expect(panel).toBeVisible();\n      await expect(panel.locator(\".articles-mega-lead\")).toBeVisible();\n      const geometry = await panel.evaluate(element => {\n        const box = node => node.getBoundingClientRect().toJSON();\n        const content = element.querySelector(\".articles-mega-content\");\n        const list = content.querySelector(\"section\");\n        const lead = content.querySelector(\".articles-mega-lead\");\n        const cards = [...list.querySelectorAll(\"a\")].filter(card => card.getClientRects().length);\n        return {\n          panel: box(element),\n          image: box(lead.querySelector(\"img\")),\n          imageFit: getComputedStyle(lead.querySelector(\"img\")).objectFit,\n          cards: cards.map(box),\n          cardCount: list.querySelectorAll(\"a\").length,\n          footer: box(element.querySelector(\"footer\")),\n          scroll: [element, content, list].map(node => node.scrollHeight - node.clientHeight),\n          text: [lead, ...cards].flatMap(card => [...card.querySelectorAll(\"strong, p, small, em, section span\")].flatMap(copy => {\n            const range = document.createRange();\n            range.selectNodeContents(copy);\n            return [...range.getClientRects()].filter(rect => rect.width > 0).map(rect => ({\n              bounds: box(card),\n              left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom,\n            }));\n          })),\n        };\n      });\n      expect(geometry.panel.left, `${locale}/${width}/${height}`).toBeGreaterThanOrEqual(0);\n      expect(geometry.panel.right).toBeLessThanOrEqual(width);\n      expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);\n      for (const overflow of geometry.scroll) expect(overflow).toBeLessThanOrEqual(1);\n      expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);\n      expect(geometry.imageFit).toBe(\"contain\");\n      expect(geometry.image.width / geometry.image.height).toBeCloseTo(16 / 9, 2);\n      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, 6));\n      for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);\n      for (const text of geometry.text) {\n        expect(text.left).toBeGreaterThanOrEqual(text.bounds.left - 1);\n        expect(text.right).toBeLessThanOrEqual(text.bounds.right + 1);\n        expect(text.top).toBeGreaterThanOrEqual(text.bounds.top - 1);\n        expect(text.bottom).toBeLessThanOrEqual(text.bounds.bottom + 1);\n      }\n      await expect(panel.locator(\"footer a\")).toBeVisible();\n      await expect(panel.locator(\"footer a\")).toHaveAttribute(\"href\", /\\/stati\\/$/u);\n      await page.keyboard.press(\"Escape\");\n      await expect(panel).not.toBeVisible();\n    }\n    await page.setViewportSize({ width: 1260, height: 600 });\n    await expect(page.locator(\".articles-menu > summary\")).not.toBeVisible();\n    await expect(page.locator('.mobile-nav a[href*=\"journal\"]')).toBeVisible();\n  }\n});\n\n",
+      "after": "test(\"publication showcase preserves complete previews with one viewport-bounded scroll area\", async ({ page }) => {\n  for (const locale of [\"ru\", \"en\"]) {\n    await openHomepage(page, 1547, 900, locale);\n    for (const [width, height] of [[1280, 600], [1280, 720], [1366, 768], [1547, 900], [1920, 1080]]) {\n      await page.setViewportSize({ width, height });\n      const summary = page.locator(\".articles-menu > summary\");\n      const panel = page.locator(\".articles-mega-menu\");\n      await summary.focus();\n      await page.keyboard.press(\"Enter\");\n      await expect(panel).toBeVisible();\n      await expect(panel.locator(\".articles-mega-lead\")).toHaveCount(1);\n      const archiveCount = Number((await panel.locator(\"footer > span\").innerText()).replace(/\\D/gu, \"\"));\n      expect(archiveCount).toBeGreaterThan(0);\n      const expectedMore = Math.min(6, archiveCount - 1);\n      if (locale === \"ru\") expect(expectedMore).toBe(6);\n      await expect(panel.locator(\".articles-mega-content > section > a\")).toHaveCount(expectedMore);\n      const image = panel.locator(\".articles-mega-lead img\");\n      await expect(image).toBeVisible();\n      await expect.poll(() => image.evaluate(node => node.complete && node.naturalWidth > 0 && node.naturalHeight > 0)).toBe(true);\n      const geometry = await panel.evaluate(element => {\n        const box = node => node.getBoundingClientRect().toJSON();\n        const content = element.querySelector(\".articles-mega-content\");\n        const list = content.querySelector(\"section\");\n        const lead = content.querySelector(\".articles-mega-lead\");\n        const cards = [...list.querySelectorAll(\"a\")].filter(card => card.getClientRects().length);\n        return {\n          panel: box(element),\n          image: box(lead.querySelector(\"img\")),\n          imageFit: getComputedStyle(lead.querySelector(\"img\")).objectFit,\n          imageRatio: lead.querySelector(\"img\").naturalWidth / lead.querySelector(\"img\").naturalHeight,\n          leadInnerWidth: lead.clientWidth - parseFloat(getComputedStyle(lead).paddingLeft) - parseFloat(getComputedStyle(lead).paddingRight),\n          cards: cards.map(box),\n          cardCount: list.querySelectorAll(\"a\").length,\n          footer: box(element.querySelector(\"footer\")),\n          scroll: [element, content, list, lead, ...cards].map(node => node.scrollHeight - node.clientHeight),\n          overflowY: getComputedStyle(element).overflowY,\n          horizontalOverflow: [element, content, list, lead, ...cards].map(node => node.scrollWidth - node.clientWidth),\n          text: [lead, ...cards].flatMap(card => [...card.querySelectorAll(\"strong, p, small, em, section span\")].flatMap(copy => {\n            const range = document.createRange();\n            range.selectNodeContents(copy);\n            return [...range.getClientRects()].filter(rect => rect.width > 0).map(rect => ({\n              bounds: box(card),\n              left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom,\n            }));\n          })),\n        };\n      });\n      expect(geometry.panel.left, `${locale}/${width}/${height}`).toBeGreaterThanOrEqual(0);\n      expect(geometry.panel.top).toBeGreaterThanOrEqual(0);\n      expect(geometry.panel.right).toBeLessThanOrEqual(width);\n      expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);\n      // R10 keeps full copy and the image's intrinsic ratio. Only the outer\n      // viewport-bounded panel may scroll when the available height is short.\n      for (const overflow of geometry.scroll.slice(1)) expect(overflow).toBeLessThanOrEqual(1);\n      for (const overflow of geometry.horizontalOverflow) expect(overflow).toBeLessThanOrEqual(1);\n      expect(geometry.overflowY).toBe(\"auto\");\n      if (expectedMore > 0) expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);\n      else expect(geometry.image.width).toBeLessThanOrEqual(geometry.leadInnerWidth + 1);\n      expect(geometry.imageFit).toBe(\"contain\");\n      // Responsive renditions round dimensions to whole pixels; density-corrected\n      // natural sizes can differ from the original ratio by about one CSS pixel.\n      expect(Math.abs(geometry.image.height - geometry.image.width / geometry.imageRatio)).toBeLessThanOrEqual(2);\n      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, 6));\n      for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);\n      for (const text of geometry.text) {\n        expect(text.left).toBeGreaterThanOrEqual(text.bounds.left - 1);\n        expect(text.right).toBeLessThanOrEqual(text.bounds.right + 1);\n        expect(text.top).toBeGreaterThanOrEqual(text.bounds.top - 1);\n        expect(text.bottom).toBeLessThanOrEqual(text.bounds.bottom + 1);\n      }\n      const footerLink = panel.locator(\"footer a\");\n      await expect(footerLink).toHaveAttribute(\"href\", /\\/stati\\/$/u);\n      const links = panel.locator(\"a\");\n      const expectedLinks = expectedMore + 2;\n      await expect(links).toHaveCount(expectedLinks);\n      for (let index = 0; index < expectedLinks; index++) {\n        await page.keyboard.press(\"Tab\");\n        await expect(links.nth(index)).toBeFocused();\n      }\n      await expect(footerLink).toBeInViewport({ ratio: 1 });\n      const reached = await panel.evaluate(element => ({\n        scrollTop: element.scrollTop,\n        panel: element.getBoundingClientRect().toJSON(),\n        footer: element.querySelector(\"footer a\").getBoundingClientRect().toJSON(),\n      }));\n      expect(reached.footer.top).toBeGreaterThanOrEqual(reached.panel.top);\n      expect(reached.footer.bottom).toBeLessThanOrEqual(reached.panel.bottom);\n      if (geometry.scroll[0] > 1) expect(reached.scrollTop).toBeGreaterThan(0);\n      await page.keyboard.press(\"Escape\");\n      await expect(panel).not.toBeVisible();\n      await expect(summary).toBeFocused();\n      await summary.click();\n      await page.mouse.move(0, height - 1);\n      await expect(panel).toBeVisible();\n      await summary.click();\n      await expect(panel).not.toBeVisible();\n    }\n    await page.setViewportSize({ width: 1260, height: 600 });\n    await expect(page.locator(\".articles-menu > summary\")).not.toBeVisible();\n    await expect(page.locator('.mobile-nav a[href*=\"journal\"]')).toBeVisible();\n  }\n});\n\n"
+    }
+  ]
+}

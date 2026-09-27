@@ -1,0 +1,1256 @@
+{
+  "version": 1,
+  "batchId": "r10-02",
+  "status": "prepared-not-published",
+  "createdAt": "2026-09-26T17:51:02.078Z",
+  "editorialTimeZone": "Europe/Moscow",
+  "counts": {
+    "prepared": 20,
+    "productionSelectorEligible": 20,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "records": [
+    {
+      "id": "ikapi-awards-ceremony-2026",
+      "eventKey": "ikapi-awards-ceremony-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-09-30",
+      "publishedAt": "2026-08-15",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "IKAPI вручит литературные награды 30 сентября",
+        "en": "IKAPI schedules its awards ceremony for September 30"
+      },
+      "summary": {
+        "ru": "Индонезийская ассоциация издателей проведёт церемонию IKAPI Awards на открытии международной книжной ярмарки в Джакарте. К пяти прежним номинациям добавлена Local Content Book of the Year - для книг о культуре, традициях и местном наследии Индонезии.",
+        "en": "The Indonesian Publishers Association will present the IKAPI Awards at the opening of the international book fair in Jakarta. A new Local Content Book of the Year category joins five existing categories, recognising books about Indonesia’s regional culture, traditions and heritage."
+      },
+      "source": {
+        "name": "Ikatan Penerbit IndonesiaJL Kalipasir",
+        "url": "https://www.ikapi.org/2026/08/15/usulan-penerima-ikapi-awards-2026-telah-dibuka/",
+        "language": "id-ID"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "lit-connect-jakarta-2026",
+      "eventKey": "lit-connect-jakarta-2026",
+      "category": "adaptations",
+      "kind": "announcement",
+      "eventDate": "2026-10-03",
+      "publishedAt": "2026-09-23",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Lit Connect в Джакарте объединит литературу, кино и издательские проекты",
+        "en": "Jakarta’s Lit Connect brings together books, film and publishing"
+      },
+      "summary": {
+        "ru": "Форум Lit Connect пройдёт 3-4 октября в рамках Indonesia International Book Fair. В программу включены встречи с авторами, обсуждения экранизаций, презентации литературных прав и показы короткометражных фильмов по книгам. Организаторы опубликовали расписание двух дней.",
+        "en": "Lit Connect will run on October 3-4 during the Indonesia International Book Fair. Its programme includes author conversations, discussions of adaptations, literary rights pitches and screenings of short films based on books. The organisers have published a two-day schedule."
+      },
+      "source": {
+        "name": "Ikatan Penerbit IndonesiaJL Kalipasir",
+        "url": "https://www.ikapi.org/2026/09/23/lit-connect-an-ikapi-forum-kembali-hadir-di-iibf-2026-dengan-lebih-banyak-sesi/",
+        "language": "id-ID"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "indonesia-rights-fellowship-recipients-2026",
+      "eventKey": "indonesia-rights-fellowship-recipients-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-08-22",
+      "publishedAt": "2026-08-22",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Объявлены участники Indonesia Rights Fair Fellowship 2026",
+        "en": "Indonesia Rights Fair announces its 2026 fellows"
+      },
+      "summary": {
+        "ru": "IKAPI опубликовала список участников программы Indonesia Rights Fair Fellowship, поддержанной Министерством культуры Индонезии. Среди приглашённых - издательства и литературные агентства из Колумбии, Кыргызстана, Зимбабве, Непала и других стран. Программа в Джакарте запланирована на 30 сентября - 2 октября.",
+        "en": "IKAPI has announced the participants in the Indonesia Rights Fair Fellowship, supported by Indonesia’s Ministry of Culture. Publishers and literary agencies from Colombia, Kyrgyzstan, Zimbabwe, Nepal and other countries are among those selected. The Jakarta programme is scheduled for September 30-October 2."
+      },
+      "source": {
+        "name": "Ikatan Penerbit IndonesiaJL Kalipasir",
+        "url": "https://www.ikapi.org/2026/08/22/announcement-of-the-2026-indonesia-rights-fair-fellowship-program-recipients/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "ilcl-limited-colour-picture-books-2026",
+      "eventKey": "ilcl-limited-colour-picture-books-2026",
+      "category": "heritage",
+      "kind": "announcement",
+      "eventDate": "2026-10-06",
+      "publishedAt": "2026-08-25",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "В Токио откроется выставка книжек-картинок с ограниченной палитрой",
+        "en": "Tokyo exhibition explores picture books with limited colour"
+      },
+      "summary": {
+        "ru": "Международная библиотека детской литературы представит монохромные книжки-картинки и издания с небольшим числом цветов из своего собрания. Первая часть выставки продлится с 6 октября по 20 декабря 2026 года; с 19 января по 18 апреля 2027 года её полностью обновят.",
+        "en": "The International Library of Children’s Literature will exhibit monochrome picture books and books using a small range of colours from its collection. The first display runs from October 6 to December 20, 2026; a completely different selection follows from January 19 to April 18, 2027."
+      },
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260825_01",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "ndl-rare-books-fulltext-75000-2026",
+      "eventKey": "ndl-rare-books-fulltext-75000-2026",
+      "category": "discoveries",
+      "kind": "news",
+      "eventDate": "2026-09-01",
+      "publishedAt": "2026-09-01",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Национальная парламентская библиотека Японии расширила поиск по редким книгам",
+        "en": "Japan’s National Diet Library expands rare-book full-text search"
+      },
+      "summary": {
+        "ru": "Национальная парламентская библиотека Японии сообщила, что в её цифровых коллекциях стал доступен полнотекстовый поиск примерно по 75 тысячам редких книг и старинных материалов. Библиотека планирует продолжать расширять число оцифрованных документов с такой возможностью.",
+        "en": "Japan’s National Diet Library announced that full-text searching is now available for approximately 75,000 rare books and old materials in its Digital Collections. The library says it will continue increasing the number of digitised materials that can be searched in this way."
+      },
+      "source": {
+        "name": "National Diet Library",
+        "url": "https://www.ndl.go.jp/en/news/fy2026/260901_02",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "taipei-book-exhibition-czech-guest-2027",
+      "eventKey": "taipei-book-exhibition-czech-guest-2027",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2027-02-16",
+      "publishedAt": "2026-09-18",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Чехия станет почётным гостем Тайбэйской книжной выставки 2027 года",
+        "en": "Czechia named guest of honour at Taipei’s 2027 book exhibition"
+      },
+      "summary": {
+        "ru": "35-я Тайбэйская международная книжная выставка запланирована на 16-21 февраля 2027 года в первом павильоне Taipei World Trade Center. Тема - Reading is Freedom, почётный гость - Чехия. Организаторы планируют пригласить двенадцать чешских авторов.",
+        "en": "The 35th Taipei International Book Exhibition is scheduled for February 16-21, 2027, at Taipei World Trade Center Hall 1. Its theme is Reading is Freedom, with Czechia as guest of honour. The organisers plan to invite twelve Czech authors."
+      },
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+        "language": "zh-Hant"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "taiwan-picture-book-creation-support-2026",
+      "eventKey": "taiwan-picture-book-creation-support-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-08",
+      "publishedAt": "2026-09-08",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "В Тайване представили программу поддержки книжек-картинок",
+        "en": "Taiwan outlines support for picture-book creation and publishing"
+      },
+      "summary": {
+        "ru": "Тайбэйская книжная выставка опубликовала сведения о программе Министерства культуры для создания и продвижения книжек-картинок и иллюстрированных книг. Предусмотрены индивидуальные и коллективные заявки, а также поддержка следующей книги авторов, отмеченных определёнными литературными и иллюстраторскими наградами.",
+        "en": "Taipei’s book exhibition has published details of a Ministry of Culture programme supporting the creation and promotion of picture books and illustrated books. It includes individual and organisational applications, plus support for a subsequent book by creators who have received specified literary or illustration awards."
+      },
+      "source": {
+        "name": "Taipei International Book Exhibition",
+        "url": "https://www.tibe.org.tw/tw/news_detail/6/1917",
+        "language": "zh-Hant"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "degol-hailu-pillaging-the-dead-2026",
+      "eventKey": "degol-hailu-pillaging-the-dead-2026",
+      "category": "releases",
+      "kind": "announcement",
+      "eventDate": "2026-11-05",
+      "publishedAt": "2026-09-16",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Cassava Republic выпустит дебютный роман Дегола Хайлу 5 ноября",
+        "en": "Cassava Republic schedules Degol Hailu’s debut novel for November 5"
+      },
+      "summary": {
+        "ru": "Cassava Republic назначило выход Pillaging the Dead на 5 ноября 2026 года. В центре сатирического романа Дегола Хайлу - молодой книготорговец и общество, где книги запрещают. В опубликованном издательством интервью автор рассказал, как опыт общения с уличными продавцами книг повлиял на замысел.",
+        "en": "Cassava Republic has scheduled Pillaging the Dead for November 5, 2026. Degol Hailu’s satirical debut follows a young bookseller in a society where books are banned. In an interview published by the press, Hailu explains how encounters with street booksellers helped inspire the novel."
+      },
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/qa-with-degol-hailu/",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "africa"
+    },
+    {
+      "id": "maren-baudet-lackner-aquatics-translation-2026",
+      "eventKey": "maren-baudet-lackner-aquatics-translation-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-08-20",
+      "publishedAt": "2026-08-20",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Марен Боде-Лакнер рассказала о переводе романа Освальд Леват",
+        "en": "Maren Baudet-Lackner discusses translating Osvalde Lewat"
+      },
+      "summary": {
+        "ru": "Cassava Republic опубликовало интервью с Марен Боде-Лакнер, переводчицей романа The Aquatics Освальд Леват. В беседе к месяцу женщин в переводной литературе она обсуждает передачу социальной сатиры на английский язык и необходимость заново перечитывать готовый перевод после перерыва.",
+        "en": "Cassava Republic has published an interview with Maren Baudet-Lackner, translator of Osvalde Lewat’s The Aquatics. Speaking for Women in Translation Month, she discusses recreating the novel’s social satire in English and returning to a completed translation after time away from it."
+      },
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/women-in-translation-month-with-maren-baudet-lackner/",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "africa"
+    },
+    {
+      "id": "funmike-ogaosun-shipikisha-cover-2026",
+      "eventKey": "funmike-ogaosun-shipikisha-cover-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-10",
+      "publishedAt": "2026-09-10",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Как создавалась обложка The Shipikisha Club: интервью с Фунмике Огаосун",
+        "en": "Funmike Ogaosun discusses the cover of The Shipikisha Club"
+      },
+      "summary": {
+        "ru": "Cassava Republic опубликовало интервью с Фунмике Огаосун о работе над обложкой романа Мубанги Калимамуквенто The Shipikisha Club. Одна из деталей замысла - силуэты бабушки, матери и дочери, связывающие оформление книги с темой опыта нескольких поколений.",
+        "en": "In a Cassava Republic interview, illustrator Funmike Ogaosun discusses the cover of Mubanga Kalimamukwento’s The Shipikisha Club. One design detail is a portrait of grandmother, mother and daughter, connecting the artwork with the experience of several generations."
+      },
+      "source": {
+        "name": "Cassava Republic Press",
+        "url": "https://cassavarepublic.biz/qa-illustrating-the-shikipisha-club-by-funmike-ogaosun/",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "africa"
+    },
+    {
+      "id": "san-martin-digital-repository-agreement-2026",
+      "eventKey": "san-martin-digital-repository-agreement-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-16",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Библиотеки Чили, Перу и Аргентины договорились о цифровом архиве Сан-Мартина",
+        "en": "Chile, Peru and Argentina agree to create a San Martín digital archive"
+      },
+      "summary": {
+        "ru": "Национальные библиотеки трёх стран подписали соглашение о совместном цифровом собрании документов, связанных с Хосе де Сан-Мартином. Планируется объединить письма, дневники, рукописи и другие материалы. Предварительное исследование чилийского фонда выявило 73 документа; запуск готового портала пока не объявлен.",
+        "en": "The three national libraries have signed an agreement to create a shared digital collection relating to José de San Martín. It will bring together letters, diaries, manuscripts and other materials. A preliminary survey of Chile’s holdings identified 73 documents; the announcement does not give a launch date for the completed portal."
+      },
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "chile-library-140-words-contest-2026",
+      "eventKey": "chile-library-140-words-contest-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-10-04",
+      "publishedAt": "2026-09-15",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Библиотека Чили принимает рассказы для конкурса «140 лет, 140 слов»",
+        "en": "Chile’s national library invites entries for a 140-word story contest"
+      },
+      "summary": {
+        "ru": "Конкурс «140 лет, 140 слов» посвящён чтению и библиотекам. Пользователи домашнего абонемента Национальной библиотеки Чили, включая новых участников, могут подать оригинальные рассказы объёмом от 14 до 140 слов до 4 октября. Награждение запланировано на 17 октября.",
+        "en": "The 140 Years, 140 Words contest invites original stories about reading and libraries. Members of the National Library of Chile’s lending service, including new members, can submit 14-140 words by October 4. The awards ceremony is scheduled for October 17."
+      },
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/con-seminario-concurso-literario-y-actividades-para-la-comunidad-la-bn-celebrara-los-140",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "nuestra-tierra-radio-animation-season2-2026",
+      "eventKey": "nuestra-tierra-radio-animation-season2-2026",
+      "category": "adaptations",
+      "kind": "news",
+      "eventDate": "2026-09-11",
+      "publishedAt": "2026-09-11",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "В Чили представили новый сезон аудио- и анимационных версий сельских рассказов",
+        "en": "Chile launches a new season of rural stories in audio and animation"
+      },
+      "summary": {
+        "ru": "FUCOA представила второй сезон Radioteatros y Relatos Animados de Nuestra Tierra. Пять радиопостановок и пять анимационных видео созданы по произведениям лауреатов конкурса Historias de Nuestra Tierra. Национальная библиотека Чили сообщает, что материалы уже доступны онлайн бесплатно.",
+        "en": "FUCOA has launched the second season of Radioteatros y Relatos Animados de Nuestra Tierra. Five radio plays and five animated videos adapt winning entries from the Historias de Nuestra Tierra contest. Chile’s national library reports that the productions are already available online free of charge."
+      },
+      "source": {
+        "name": "Biblioteca Nacional de Chile",
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/lanzan-segunda-temporada-de-radioteatros-y-relatos-animados-de-nuestra-tierra-para",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "jorge-basadre-library-awards-2026",
+      "eventKey": "jorge-basadre-library-awards-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-08-29",
+      "publishedAt": "2026-08-29",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Национальная библиотека Перу назвала лауреатов премии Хорхе Басадре",
+        "en": "Peru’s national library recognises community library projects"
+      },
+      "summary": {
+        "ru": "В сообщении от 29 августа Национальная библиотека Перу объявила о вручении Reconocimiento Jorge Basadre Grohmann 2026. Отмечены десять библиотечных инициатив и пять проектов получили почётные упоминания. Среди направлений работы - чтение в местных сообществах, языковое разнообразие и доступность библиотек.",
+        "en": "In an August 29 announcement, Peru’s national library reported presenting the 2026 Reconocimiento Jorge Basadre Grohmann. Ten library initiatives received awards and five received honourable mentions, recognising work in community reading, linguistic diversity and accessible library services."
+      },
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+        "language": "es-PE"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "callao-colibri-childrens-book-2026",
+      "eventKey": "callao-colibri-childrens-book-2026",
+      "category": "releases",
+      "kind": "news",
+      "eventDate": "2026-09-05",
+      "publishedAt": "2026-09-05",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "В Кальяо представили книгу, созданную шестнадцатью детьми",
+        "en": "Sixteen young writers present their book in Callao"
+      },
+      "summary": {
+        "ru": "Национальная библиотека Перу сообщила о презентации книги Sembrando lectores y escritores guardianes de la naturaleza, созданной шестнадцатью детьми читательского сообщества Colibrí. Самодельное издание в картонной обложке посвящено связи человека с природой. Библиотека пообещала подготовить и напечатать их следующую совместную книгу.",
+        "en": "Peru’s national library reported the presentation of Sembrando lectores y escritores guardianes de la naturaleza, created by sixteen children from the Colibrí reading community. The handmade cardboard-bound book explores people’s relationship with nature. The library pledged to edit and print the group’s next collaborative book."
+      },
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1447691-ninos-del-callao-convierten-sus-historias-en-un-libro-y-reciben-el-respaldo-de-la-biblioteca-nacional-del-peru",
+        "language": "es-PE"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "tacna-national-legal-deposit-centre-2026",
+      "eventKey": "tacna-national-legal-deposit-centre-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-08-25",
+      "publishedAt": "2026-08-25",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "В Такне открыли региональный пункт приёма обязательных экземпляров",
+        "en": "Tacna joins Peru’s regional legal-deposit network"
+      },
+      "summary": {
+        "ru": "Национальная библиотека Перу сообщила об аккредитации своего 23-го регионального центра приёма обязательных экземпляров в Такне. По данным библиотеки, это завершает охват 23 регионов её сетью. Центр поможет местным авторам и издателям передавать публикации для сохранения в национальном собрании.",
+        "en": "Peru’s national library announced the accreditation of its 23rd regional legal-deposit collection centre, in Tacna. The library says this completes its network across 23 regions. The centre will help local authors and publishers submit publications for preservation in the national collection."
+      },
+      "source": {
+        "name": "Biblioteca Nacional del Perú",
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437375-la-biblioteca-nacional-del-peru-completa-la-red-nacional-de-deposito-legal-con-la-acreditacion-de-su-centro-de-acopio-numero-23-en-tacna",
+        "language": "es-PE"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "sharjah-filbo-guest-honour-announced-2026",
+      "eventKey": "sharjah-filbo-guest-honour-announced-2026",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Шарджа объявлена почётным гостем FILBo 2027",
+        "en": "Sharjah announced as guest of honour at FILBo 2027"
+      },
+      "summary": {
+        "ru": "Колумбийская книжная палата, Corferias и Sharjah Book Authority объявили, что Шарджа впервые станет почётным гостем Боготской международной книжной ярмарки. 39-я FILBo запланирована на 20 апреля - 3 мая 2027 года. Участие эмирата должно познакомить посетителей с литературой и книгоизданием ОАЭ.",
+        "en": "The Colombian Book Chamber, Corferias and Sharjah Book Authority announced that Sharjah will be guest of honour at the Bogotá International Book Fair for the first time. The 39th FILBo is scheduled for April 20-May 3, 2027, with a programme introducing literature and publishing from the UAE."
+      },
+      "source": {
+        "name": "Cámara Colombiana del LibroCalle",
+        "url": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+        "language": "es-CO"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "bogota-children-book-festival-bookshop-call-2026",
+      "eventKey": "bogota-children-book-festival-bookshop-call-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-02",
+      "publishedAt": "2026-09-22",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Книжные магазины Боготы приглашают в программу детского литературного фестиваля",
+        "en": "Bogotá bookshops invited to join children’s book festival"
+      },
+      "summary": {
+        "ru": "До 2 октября книжные магазины Боготы могут подать заявки на участие в 20-м Festival de Libros para Niños y Jóvenes. Тема этого года - «Где рождаются вопросы». Заявленная программа включает встречи с авторами, мастерские и занятия для детей, подростков и семей.",
+        "en": "Bogotá bookshops can apply until October 2 to participate in the 20th Festival de Libros para Niños y Jóvenes. This year’s theme is Where Questions Are Born. Planned activities include author meetings, workshops and events for children, teenagers and families."
+      },
+      "source": {
+        "name": "Cámara Colombiana del LibroCalle",
+        "url": "https://camlibro.com.co/convocatoria-librerias-festival-lij/",
+        "language": "es-CO"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "montevideo-international-book-fair-2026",
+      "eventKey": "montevideo-international-book-fair-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-02",
+      "publishedAt": "2026-09-21",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Книжная ярмарка Монтевидео пройдёт со 2 по 18 октября",
+        "en": "Montevideo’s book fair runs from October 2 to 18"
+      },
+      "summary": {
+        "ru": "48-я Международная книжная ярмарка Монтевидео пройдёт в здании и на площади муниципалитета со 2 по 18 октября. Почётным гостем станет Германия. Организаторы объявили свободный вход, издательские стенды и программу с уругвайскими и зарубежными авторами.",
+        "en": "The 48th Montevideo International Book Fair will take place in and around the municipal building from October 2 to 18. Germany is guest of honour. The organisers have announced free admission, publisher stands and a programme featuring Uruguayan and international authors."
+      },
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/programa-de-actividades-48-a-feria-internacional-del-libro-de-montevideo/",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "emmanuel-carrere-montevideo-kolkhoz-2026",
+      "eventKey": "emmanuel-carrere-montevideo-kolkhoz-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-09-29",
+      "publishedAt": "2026-07-31",
+      "verifiedAt": "2026-09-26T17:51:02.078Z",
+      "title": {
+        "ru": "Эмманюэль Каррер представит Koljós в Монтевидео",
+        "en": "Emmanuel Carrère to present Koljós in Montevideo"
+      },
+      "summary": {
+        "ru": "Эмманюэль Каррер приедет в Уругвай 29 сентября для презентации Koljós. Встреча организована при участии посольства Франции, Gussi Libros и Уругвайской книжной палаты. В отдельном сообщении от 21 сентября палата подтвердила, что выступление пройдёт в Teatro Solís.",
+        "en": "Emmanuel Carrère will visit Uruguay on September 29 to present Koljós. The visit is organised with the French embassy, Gussi Libros and the Uruguayan Book Chamber. A separate September 21 update from the chamber confirms Teatro Solís as the venue."
+      },
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/emmanuel-carrere-visitara-uruguay/",
+        "language": "es"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ikapi-awards-ceremony-2026",
+      "sourceId": "ikapi-org",
+      "sourceCountryCodes": [
+        "ID"
+      ],
+      "coverageCountryCodes": [
+        "ID"
+      ],
+      "url": "https://www.ikapi.org/2026/08/15/usulan-penerima-ikapi-awards-2026-telah-dibuka/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:29.783Z",
+      "responseSha256": "fdf7d0f19b79d7cb5b21c602363e88d291d943e65cd353c3810ebffc4620044d",
+      "responseBytes": 177536,
+      "sourcePublishedAt": "2026-08-15",
+      "eventDate": "2026-09-30",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Ceremony September30 at Assembly Hall, Jakarta International Convention Center.",
+        "Six categories, including new Local Content Book of the Year.",
+        "Nominations closed August25; this record does not suggest the call remains open."
+      ],
+      "stage": "scheduled-award-ceremony",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "lit-connect-jakarta-2026",
+      "sourceId": "ikapi-org",
+      "sourceCountryCodes": [
+        "ID"
+      ],
+      "coverageCountryCodes": [
+        "ID"
+      ],
+      "url": "https://www.ikapi.org/2026/09/23/lit-connect-an-ikapi-forum-kembali-hadir-di-iibf-2026-dengan-lebih-banyak-sesi/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:29.766Z",
+      "responseSha256": "f99e70bd7444159568085b7c2aadf55d384921f81131183945c42f6a8140be4c",
+      "responseBytes": 189567,
+      "sourcePublishedAt": "2026-09-23",
+      "eventDate": "2026-10-03",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Schedule labels Saturday October3 and Sunday October4.",
+        "Named book-to-film programme; multiple sessions kept as a single forum card.",
+        "Venue Jakarta International Convention Center."
+      ],
+      "stage": "scheduled-adaptation-forum",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "indonesia-rights-fellowship-recipients-2026",
+      "sourceId": "ikapi-org",
+      "sourceCountryCodes": [
+        "ID"
+      ],
+      "coverageCountryCodes": [
+        "ID",
+        "CO",
+        "TR",
+        "KG",
+        "MY",
+        "KR",
+        "PH",
+        "GB",
+        "TH",
+        "SG",
+        "AU",
+        "JP",
+        "PK",
+        "ZW",
+        "VN",
+        "AZ",
+        "NP",
+        "RS",
+        "IN"
+      ],
+      "url": "https://www.ikapi.org/2026/08/22/announcement-of-the-2026-indonesia-rights-fair-fellowship-program-recipients/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:30.781Z",
+      "responseSha256": "1180153b880dbbd9680743ec7fa454a3e2b933e58c205d8b15bea75674f68e3b",
+      "responseBytes": 184888,
+      "sourcePublishedAt": "2026-08-22",
+      "eventDate": "2026-08-22",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Recipient announcement August22.",
+        "Gold/silver/bronze recipient lists published as one selection event.",
+        "Programme September30\u2013October2, Jakarta International Convention Center."
+      ],
+      "stage": "fellowship-selection",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "language": "en",
+      "countries": [
+        "ID",
+        "CO",
+        "TR",
+        "KG",
+        "MY",
+        "KR",
+        "PH",
+        "GB",
+        "TH",
+        "SG",
+        "AU",
+        "JP",
+        "PK",
+        "ZW",
+        "VN",
+        "AZ",
+        "NP",
+        "RS",
+        "IN"
+      ]
+    },
+    {
+      "id": "ilcl-limited-colour-picture-books-2026",
+      "sourceId": "ndl-japan",
+      "sourceCountryCodes": [
+        "JP"
+      ],
+      "coverageCountryCodes": [
+        "JP"
+      ],
+      "url": "https://www.ndl.go.jp/en/news/fy2026/260825_01",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:31.908Z",
+      "responseSha256": "b1a32ac50969808669bf245a9a9e7f1f4d55a466d07607475e9112714f708ac9",
+      "responseBytes": 159209,
+      "sourcePublishedAt": "2026-08-25",
+      "eventDate": "2026-10-06",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Exhibition starts October6,2026.",
+        "Two periods, all books changed between them.",
+        "Collection exhibition, not a new book-release claim."
+      ],
+      "stage": "scheduled-library-exhibition",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.ndl.go.jp/assets/hp/og.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "ndl-rare-books-fulltext-75000-2026",
+      "sourceId": "ndl-japan",
+      "sourceCountryCodes": [
+        "JP"
+      ],
+      "coverageCountryCodes": [
+        "JP"
+      ],
+      "url": "https://www.ndl.go.jp/en/news/fy2026/260901_02",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:32.723Z",
+      "responseSha256": "8b15cb85e8cd774462d1bbee71160b11c72ae6b16c50475a916288b70a4602ad",
+      "responseBytes": 160828,
+      "sourcePublishedAt": "2026-09-01",
+      "eventDate": "2026-09-01",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September1 announcement.",
+        "About75000 full-text datasets added in Rare Books and Old Materials.",
+        "No claim that every item is newly digitised or wholly unrestricted."
+      ],
+      "stage": "digital-search-collection-update",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.ndl.go.jp/assets/hp/og.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "taipei-book-exhibition-czech-guest-2027",
+      "sourceId": "taipei-book-fair",
+      "sourceCountryCodes": [
+        "TW"
+      ],
+      "coverageCountryCodes": [
+        "TW",
+        "CZ"
+      ],
+      "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:32.761Z",
+      "responseSha256": "bcf703bf82ddcf4213d91c05437c2c523122b5ecc5d2b5495b2a138bf8d2d651",
+      "responseBytes": 27980,
+      "sourcePublishedAt": "2026-09-18",
+      "eventDate": "2027-02-16",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Source September18,2026.",
+        "February16\u201321,2027, Hall1.",
+        "Twelve Czech authors planned; invitations are not presented as completed attendance."
+      ],
+      "stage": "scheduled-festival",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.tibe.org.tw/upload_files/fonlego-rwd/website/20260918首圖.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "TW",
+        "CZ"
+      ]
+    },
+    {
+      "id": "taiwan-picture-book-creation-support-2026",
+      "sourceId": "taipei-book-fair",
+      "sourceCountryCodes": [
+        "TW"
+      ],
+      "coverageCountryCodes": [
+        "TW"
+      ],
+      "url": "https://www.tibe.org.tw/tw/news_detail/6/1917",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:33.248Z",
+      "responseSha256": "d2f1367d08631de0a3a8a07081afc7824858f21e1d1140b9a58237e0d897c708",
+      "responseBytes": 22707,
+      "sourcePublishedAt": "2026-09-08",
+      "eventDate": "2026-09-08",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Programme information dated September8.",
+        "Supports domestic original picture-book and illustrated-book creation and publishing.",
+        "No invented funding amounts or application deadline."
+      ],
+      "stage": "publishing-support-programme-information",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.tibe.org.tw/upload_files/fonlego-rwd/website/出版動態_首圖_1000x563.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "degol-hailu-pillaging-the-dead-2026",
+      "sourceId": "cassava-republic",
+      "sourceCountryCodes": [
+        "NG"
+      ],
+      "coverageCountryCodes": [
+        "NG"
+      ],
+      "url": "https://cassavarepublic.biz/qa-with-degol-hailu/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:34.331Z",
+      "responseSha256": "f662d16e05f14b7ddf9d2f710940c1526fca1545780b3f82109fd6fcf6eb2927",
+      "responseBytes": 132756,
+      "sourcePublishedAt": "2026-09-16",
+      "eventDate": "2026-11-05",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Explicit publication November5,2026.",
+        "Interview posted September16.",
+        "Debut novel; bookseller Tarik, censorship and repression."
+      ],
+      "stage": "scheduled-publication",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://mlcohovbxf2x.i.optimole.com/cb:qKbK.478/w:940/h:788/q:mauto/f:best/https://cassavarepublic.biz/wp-content/uploads/2026/09/CRP-Blog-Headers-15.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "maren-baudet-lackner-aquatics-translation-2026",
+      "sourceId": "cassava-republic",
+      "sourceCountryCodes": [
+        "NG"
+      ],
+      "coverageCountryCodes": [
+        "NG"
+      ],
+      "url": "https://cassavarepublic.biz/women-in-translation-month-with-maren-baudet-lackner/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:33.996Z",
+      "responseSha256": "23dcf472562bd8a7ed983b71866de92eeef894b9ae4b00829b02b0ad151217dd",
+      "responseBytes": 120218,
+      "sourcePublishedAt": "2026-08-20",
+      "eventDate": "2026-08-20",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Interview published August20.",
+        "Translator of The Aquatics, by Osvalde Lewat.",
+        "Paraphrase of explicitly stated translation practices; no book-release date inferred."
+      ],
+      "stage": "literary-translator-interview",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://mlcohovbxf2x.i.optimole.com/cb:qKbK.478/w:940/h:788/q:mauto/f:best/https://cassavarepublic.biz/wp-content/uploads/2026/08/CRP-Blog-Headers-14.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "funmike-ogaosun-shipikisha-cover-2026",
+      "sourceId": "cassava-republic",
+      "sourceCountryCodes": [
+        "NG"
+      ],
+      "coverageCountryCodes": [
+        "NG"
+      ],
+      "url": "https://cassavarepublic.biz/qa-illustrating-the-shikipisha-club-by-funmike-ogaosun/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:34.457Z",
+      "responseSha256": "54fb01d76eec274076d88e41420fd8af091f185dc82426cd4270ab6c73e2af68",
+      "responseBytes": 129878,
+      "sourcePublishedAt": "2026-09-10",
+      "eventDate": "2026-09-10",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September10 interview, first cover commission according to illustrator.",
+        "Author Mubanga Kalimamukwento.",
+        "Title spelling Shipikisha appears in body and shop link; headline has Shikipisha transposition."
+      ],
+      "stage": "book-design-interview",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://mlcohovbxf2x.i.optimole.com/cb:qKbK.478/w:940/h:788/q:mauto/f:best/https://cassavarepublic.biz/wp-content/uploads/2026/07/CRP-Blog-Headers-12.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "san-martin-digital-repository-agreement-2026",
+      "sourceId": "bn-chile",
+      "sourceCountryCodes": [
+        "CL"
+      ],
+      "coverageCountryCodes": [
+        "CL",
+        "PE",
+        "AR"
+      ],
+      "url": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:37.201Z",
+      "responseSha256": "2ff863c97405c79261918af67e4293f45414bdb530e9b7661c4baddba5790983",
+      "responseBytes": 43261,
+      "sourcePublishedAt": "2026-09-16",
+      "eventDate": "2026-09-16",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Published September16; signing day not separately specified.",
+        "Agreement for a future repository, not evidence of an operational portal.",
+        "Chile preliminary survey73 documents."
+      ],
+      "stage": "archive-cooperation-announcement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.bibliotecanacional.gob.cl/sites/www.bibliotecanacional.gob.cl/files/2026-09/descarga%20%286%29.jpeg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "CL",
+        "PE",
+        "AR"
+      ],
+      "dateBoundary": "eventDate is the dated public announcement; signing date is not invented."
+    },
+    {
+      "id": "chile-library-140-words-contest-2026",
+      "sourceId": "bn-chile",
+      "sourceCountryCodes": [
+        "CL"
+      ],
+      "coverageCountryCodes": [
+        "CL"
+      ],
+      "url": "https://www.bibliotecanacional.gob.cl/noticias/con-seminario-concurso-literario-y-actividades-para-la-comunidad-la-bn-celebrara-los-140",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:39.296Z",
+      "responseSha256": "e7eb61c40c1329eae9e1951b5a924ca46bbb2660e8bd6b5d08b4e5fda2eb51b9",
+      "responseBytes": 51493,
+      "sourcePublishedAt": "2026-09-15",
+      "eventDate": "2026-10-04",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Submission deadline October4; awards October17.",
+        "Eligible lending-service members; original stories14\u2013140words.",
+        "One contest record; surrounding anniversary activities not split."
+      ],
+      "stage": "story-contest-submission-deadline",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.bibliotecanacional.gob.cl/sites/www.bibliotecanacional.gob.cl/files/2026-09/prestamodomicilio-30-09-26-JQ-3.JPG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "nuestra-tierra-radio-animation-season2-2026",
+      "sourceId": "bn-chile",
+      "sourceCountryCodes": [
+        "CL"
+      ],
+      "coverageCountryCodes": [
+        "CL"
+      ],
+      "url": "https://www.bibliotecanacional.gob.cl/noticias/lanzan-segunda-temporada-de-radioteatros-y-relatos-animados-de-nuestra-tierra-para",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:37.861Z",
+      "responseSha256": "fabdf605c4b35b6843125a4fb07265291da22a416195dfe0185e165803872dc4",
+      "responseBytes": 56329,
+      "sourcePublishedAt": "2026-09-11",
+      "eventDate": "2026-09-11",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September11 report confirms season available.",
+        "Five radio plays and five animated videos.",
+        "Adaptations of winning rural story-contest entries, not ten separate cards."
+      ],
+      "stage": "adaptation-season-release",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.bibliotecanacional.gob.cl/sites/www.bibliotecanacional.gob.cl/files/2026-09/344A2992.JPG",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated release report, ceremony date unspecified."
+    },
+    {
+      "id": "jorge-basadre-library-awards-2026",
+      "sourceId": "bn-peru",
+      "sourceCountryCodes": [
+        "PE"
+      ],
+      "coverageCountryCodes": [
+        "PE"
+      ],
+      "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:39.417Z",
+      "responseSha256": "f3043e86aa9d443e286a59a79d7de9bed1adc017c5fcc7712f83525c67053ee7",
+      "responseBytes": 40034,
+      "sourcePublishedAt": "2026-08-29",
+      "eventDate": "2026-08-29",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Dated completed-award report August29.",
+        "Ten winners and five honourable mentions.",
+        "All award outcomes kept as one event."
+      ],
+      "stage": "award-results",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://cdn.www.gob.pe/uploads/document/file/10544466/standard_1437512-foto-para-gob-pe-2026-09-01t152208-880.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated results announcement, ceremony date not separately asserted."
+    },
+    {
+      "id": "callao-colibri-childrens-book-2026",
+      "sourceId": "bn-peru",
+      "sourceCountryCodes": [
+        "PE"
+      ],
+      "coverageCountryCodes": [
+        "PE"
+      ],
+      "url": "https://www.gob.pe/institucion/bnp/noticias/1447691-ninos-del-callao-convierten-sus-historias-en-un-libro-y-reciben-el-respaldo-de-la-biblioteca-nacional-del-peru",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:40.215Z",
+      "responseSha256": "9559b35d8d86e018f0f3638735fa6b88dfabf97263133d54c3163857d0a90db8",
+      "responseBytes": 38738,
+      "sourcePublishedAt": "2026-09-05",
+      "eventDate": "2026-09-05",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "September5 completed-publication report.",
+        "Sixteen child writers; Parque Tres Generaciones, Callao.",
+        "Next book promised, not already published."
+      ],
+      "stage": "community-book-presentation",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://cdn.www.gob.pe/uploads/document/file/10675077/standard_1447691-foto-para-gob-pe-50.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "dateBoundary": "Dated event report, separate ceremony day not supplied."
+    },
+    {
+      "id": "tacna-national-legal-deposit-centre-2026",
+      "sourceId": "bn-peru",
+      "sourceCountryCodes": [
+        "PE"
+      ],
+      "coverageCountryCodes": [
+        "PE"
+      ],
+      "url": "https://www.gob.pe/institucion/bnp/noticias/1437375-la-biblioteca-nacional-del-peru-completa-la-red-nacional-de-deposito-legal-con-la-acreditacion-de-su-centro-de-acopio-numero-23-en-tacna",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:39.831Z",
+      "responseSha256": "72fd64646c82f508486e548e353ba47ae5a10a61a1c31ab81b25097278d0244d",
+      "responseBytes": 33749,
+      "sourcePublishedAt": "2026-08-25",
+      "eventDate": "2026-08-25",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "August25 announcement.",
+        "23rd collection centre, Tacna, with provincial municipality.",
+        "Describes library service announcement; no legal compliance advice."
+      ],
+      "stage": "bibliographic-preservation-service",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://cdn.www.gob.pe/uploads/document/file/10543268/standard_1437375-foto-para-gob-pe-2026-09-01t124727-731.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "sharjah-filbo-guest-honour-announced-2026",
+      "sourceId": "camlibro-com-co",
+      "sourceCountryCodes": [
+        "CO"
+      ],
+      "coverageCountryCodes": [
+        "CO",
+        "AE"
+      ],
+      "url": "https://camlibro.com.co/sharjah-emirato-de-los-emiratos-arabes-unidos-sera-invitado-de-honor-de-la-filbo-2027/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:42.282Z",
+      "responseSha256": "623c7f773e91b573c9d52e6a24d315cd67788012d1fa670877bce62d64f4b772",
+      "responseBytes": 181397,
+      "sourcePublishedAt": "2026-09-25",
+      "eventDate": "2026-09-25",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Official announcement September25,2026.",
+        "Fair April20\u2013May3,2027;39th edition.",
+        "Current appointment news, not a completed or within180-day fair."
+      ],
+      "stage": "guest-of-honour-announcement",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://camlibro.com.co/wp-content/uploads/2026/09/Lanzamiento-102-scaled.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "CO",
+        "AE"
+      ]
+    },
+    {
+      "id": "bogota-children-book-festival-bookshop-call-2026",
+      "sourceId": "camlibro-com-co",
+      "sourceCountryCodes": [
+        "CO"
+      ],
+      "coverageCountryCodes": [
+        "CO"
+      ],
+      "url": "https://camlibro.com.co/convocatoria-librerias-festival-lij/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:41.993Z",
+      "responseSha256": "c051b84b2e2a646bba7d30c9adba3a27f1ce431d4369feab9d96c1d34cd8d959",
+      "responseBytes": 164945,
+      "sourcePublishedAt": "2026-09-22",
+      "eventDate": "2026-10-02",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Call published September22; deadlineOctober2.",
+        "Bogotá bookshops;20th festival.",
+        "Festival dates not supplied on this detail page and not invented."
+      ],
+      "stage": "festival-bookshop-call-deadline",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://camlibro.com.co/wp-content/uploads/2026/09/0922_bannerWebCCL-convocatoriaLIJ226-1.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      }
+    },
+    {
+      "id": "montevideo-international-book-fair-2026",
+      "sourceId": "cul-com-uy",
+      "sourceCountryCodes": [
+        "UY"
+      ],
+      "coverageCountryCodes": [
+        "UY",
+        "DE"
+      ],
+      "url": "https://cul.com.uy/programa-de-actividades-48-a-feria-internacional-del-libro-de-montevideo/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:45:48.730Z",
+      "responseSha256": "0e4da763cf420f560b90163ac5533b3f0d40cc5d8f06774955b23cb355d07a15",
+      "responseBytes": 167084,
+      "sourcePublishedAt": "2026-09-21",
+      "eventDate": "2026-10-02",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "October2\u201318,48th edition.",
+        "Guest of honourGermany; admission free.",
+        "PublishedAt source feed timestampSeptember21; detail provides dates and status."
+      ],
+      "stage": "scheduled-festival",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "UY",
+        "DE"
+      ]
+    },
+    {
+      "id": "emmanuel-carrere-montevideo-kolkhoz-2026",
+      "sourceId": "cul-com-uy",
+      "sourceCountryCodes": [
+        "UY"
+      ],
+      "coverageCountryCodes": [
+        "UY",
+        "FR"
+      ],
+      "url": "https://cul.com.uy/emmanuel-carrere-visitara-uruguay/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:46:53.439Z",
+      "responseSha256": "f2d64078558728b44925deef740abfd344c42f283ba916598b4a047a783bc4ff",
+      "responseBytes": 170694,
+      "sourcePublishedAt": "2026-07-31",
+      "eventDate": "2026-09-29",
+      "method": "direct-primary-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Original announcementJuly31 namesSeptember29 visit and bookKoljós.",
+        "September21 follow-up confirmsTeatroSolís and finalticketdistributionSeptember28.",
+        "Independent author event before fair starts; not a split item from fair programme."
+      ],
+      "stage": "scheduled-author-meeting",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only"
+      },
+      "countries": [
+        "UY",
+        "FR"
+      ],
+      "supportingSources": [
+        {
+          "url": "https://cul.com.uy/ultimas-localidades-disponibles-para-la-presentacion-de-emmanuel-carrere/",
+          "httpStatus": 200,
+          "accessedAt": "2026-09-26T17:45:46.549Z",
+          "responseSha256": "0fdc16817e37403330eb1f52a171b0fd5eb98c3ff56d350cc17fc2136a0b47d9",
+          "responseBytes": 160944,
+          "facts": [
+            "TeatroSolís venue; last tickets available fromSeptember28,15:00."
+          ],
+          "sourcePublishedAt": "2026-09-21"
+        }
+      ]
+    }
+  ],
+  "recordSha256": "b059fdef211a76f54107e4028cfd6fda396ac23a28b1325c4e46f41a14ace246",
+  "receipt": {
+    "publication": "not-run",
+    "socialDelivery": "not-run"
+  },
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 20,
+      "supportingRequests": 1
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "IDs and primary topic URLs checked against current reviewed records and r10-01; list and stage duplication manually reviewed",
+    "schema": "production selectReviewed20/20",
+    "images": "No source media rights established; text-only delivery"
+  },
+  "held": [
+    {
+      "sourceId": "loatad",
+      "reason": "Latest inspected residency detailApril29; no independently verified current stage."
+    },
+    {
+      "sourceId": "modjaji",
+      "reason": "Selected poetsMay16, no exact forthcoming release date in inspected page."
+    },
+    {
+      "sourceId": "jalada",
+      "reason": "Discovery corpus has no new in-window stage; no recycled old obituary."
+    },
+    {
+      "sourceId": "pubat-or-th",
+      "reason": "Original publicationAugust29 does not establish when current100-design results replaced prior content; result date held."
+    },
+    {
+      "sourceId": "bn-peru",
+      "urls": [
+        "https://www.gob.pe/institucion/bnp/noticias/1437503",
+        "https://www.gob.pe/institucion/bnp/noticias/1447780"
+      ],
+      "reason": "Header/footer chronology conflicts on inspected details; omit affected records."
+    },
+    {
+      "sourceId": "ndl-japan",
+      "reason": "77-book exhibition endedAugust30 but June announcement alone does not confirm completed event."
+    }
+  ],
+  "nextStep": "Root additive integration and canonical duplicate review. Prepared records are not public growth.",
+  "observedCheckoutBaseline": {
+    "note": "Observed checkout snapshot; historical operation baseline is unknown. This snapshot is not an original operation baseline.",
+    "checkedCount": 33,
+    "sha256": "73022c08ab8b1b18ebfda3ced9046d5e619e6d7a70e609af0903680e57e931af"
+  }
+}

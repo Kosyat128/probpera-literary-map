@@ -1,0 +1,1182 @@
+{
+  "sourceId": "literary-hub",
+  "name": "Literary Hub",
+  "entryUrl": "https://lithub.com/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:32:11.566Z",
+  "requests": [
+    {
+      "url": "https://lithub.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 98679,
+      "sha256": "cc0cac116c30bec8a52917c3666a30f19fd5727ba12bbd4cb9adafcfeb22e5c0",
+      "accessedAt": "2026-09-26T17:32:12.373Z"
+    },
+    {
+      "url": "https://lithub.com/heres-the-longlist-for-the-2026-national-book-award-for-fiction/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 72902,
+      "sha256": "e6e0f198d6aed95b0d7be088146fafc9172d64a26f3d5ee9c9067909a8a60e77",
+      "accessedAt": "2026-09-26T17:32:12.702Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://lithub.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 379,
+    "sha256": "27930c021fd97916ac3ab628b02031890a53f920a603ad104d841a4236cd34ee",
+    "accessedAt": "2026-09-26T17:32:12.059Z",
+    "disallowed": [
+      "/wp-includes/",
+      "/wp-login.php",
+      "/wp-admin/*",
+      "/wp-register.php",
+      "/book-widget/*",
+      "*/tag/*",
+      "*?s=*",
+      "/search/*"
+    ]
+  },
+  "endpoint": {
+    "id": "literary-hub",
+    "name": "Literary Hub",
+    "url": "https://lithub.com/",
+    "format": "html",
+    "language": "en",
+    "region": "north-america",
+    "sourceFamilyId": "literary-hub",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://lithub.com"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://lithub.com/heres-the-longlist-for-the-2026-national-book-award-for-fiction/"
+    ],
+    "verifiedAt": "2026-09-26T17:32:12.706Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 42,
+  "literaryCandidateCount": 42,
+  "sample": {
+    "sourceId": "literary-hub",
+    "source": {
+      "name": "Literary Hub",
+      "url": "https://lithub.com/heres-the-longlist-for-the-2026-national-book-award-for-fiction/",
+      "language": "en"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Here’s the longlist for the 2026 National Book Award for Fiction.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:32:12.386Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://lithub.com/heres-the-longlist-for-the-2026-national-book-award-for-fiction/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 72902,
+      "sha256": "e6e0f198d6aed95b0d7be088146fafc9172d64a26f3d5ee9c9067909a8a60e77",
+      "accessedAt": "2026-09-26T17:32:12.702Z",
+      "headline": "Here’s the longlist for the 2026 National Book Award for Fiction.",
+      "excerpt": "Literary Hub » Here’s the longlist for the 2026 National Book Award for Fiction. Literary Hub Craft and Criticism Literary Criticism Craft and Advice In Conversation On Translation Fiction and Poetry Short Story From the Novel Poem News and Culture History Science Politics Biography Memoir Food Technology Bookstores and Libraries Film and TV Travel Music Art and Photography The Hub Style Design Sp",
+      "publishedDates": [
+        {
+          "value": "2026-09-17T14:00:04+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://lithub.com/heres-the-longlist-for-the-2026-national-book-award-for-fiction/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:12.706Z",
+  "foundItems": [
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/heres-the-longlist-for-the-2026-national-book-award-for-fiction/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Here’s the longlist for the 2026 National Book Award for Fiction.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/heres-the-shortlist-for-the-2026-booker-prize/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Here’s the shortlist for the 2026 Booker Prize.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/here-are-the-winners-of-the-2026-dayton-literary-peace-prize/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Here are the winners of the 2026 Dayton Literary Peace Prize.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/5-book-reviews-you-need-to-read-this-week-9-24-2026/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "5 Book Reviews You Need to Read This Week",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/librarians-won-big-at-the-2026-emmys/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Librarians won big at the 2026 Emmys.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/gloria-steinem-john-green-lucy-foley-and-more-20-new-books-out-today/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gloria Steinem, John Green, Lucy Foley, and more: 20 new books out today!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/heather-cox-richardson-has-been-awarded-the-inaugural-gitlin-auster-defender-of-democracy-award/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Heather Cox Richardson has been awarded the inaugural Gitlin-Auster Defender of Democracy Award.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/which-big-fall-book-should-you-read-6/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Which Big Fall Book Should You Read?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/10-essential-ukrainian-reads-from-memoir-to-novel/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 Essential Ukrainian Reads, From Memoir to Novel",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/have-they-ruined-our-beloved-scholastic-book-fair/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Have They Ruined Our Beloved Scholastic Book Fair?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/what-should-you-read-next-here-are-the-best-reviewed-books-of-the-week-13/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What Should You Read Next? Here Are the Best Reviewed Books of the Week",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/booksellers-are-sounding-the-alarm-over-trumps-anti-antifascist-presidential-memo/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Booksellers are sounding the alarm over Trump’s anti-antifascist presidential memo.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/how-harry-styles-drove-a-bookseller-to-jail/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How Harry Styles drove a bookseller to jail.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/remembering-grazia-deledda-the-sardinian-nobel-prize-winner-we-should-all-be-reading/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Remembering Grazia Deledda, the Sardinian Nobel Prize-Winner We Should All Be Reading",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/im-having-a-hard-time-saying-no-how-can-i-be-more-of-a-literary-asshole/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I’m Having a Hard Time Saying No: How Can I Be More of a Literary Asshole?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/the-independent-press-top-40-bestsellers-fiction-36/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Independent Press Top 40 Bestsellers: Fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/the-independent-press-top-40-bestsellers-nonfiction-36/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Independent Press Top 40 Bestsellers: Nonfiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/sam-a-miller-on-youtube-storytelling-and-choosing-science-fiction/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sam A. Miller on YouTube Storytelling and Choosing Science Fiction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/sanna-wani-on-crafting-a-poetics-of-daughterhood/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sanna Wani on Crafting a Poetics of Daughterhood",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/the-archive-talks-back-eight-books-that-wrest-humanity-from-the-record/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Archive Talks Back: Eight Books That Wrest Humanity From the Record",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/how-romance-novels-filled-in-the-gaps-left-by-sex-ed/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How Romance Novels Filled in the Gaps Left by Sex Ed",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/attention-lbj-nerds-robert-caro-is-posting-book-updates-on-instagram/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Attention LBJ nerds: Robert Caro is posting book updates on Instagram.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/a-prophetic-classic-about-the-dangers-of-tech-is-back-in-print/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Prophetic Classic About the Dangers of Tech is Back in Print",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/john-green-gives-himself-permission-to-suck/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Green Gives Himself Permission to Suck",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/got-writers-block-go-to-the-theater/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Got Writer’s Block? Go to the Theater!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/judy-blume-and-ann-patchett-are-headlining-a-freedom-to-read-telethon/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Judy Blume and Ann Patchett are headlining a freedom to read telethon.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/two-great-works-of-art-to-ease-your-transition-into-autumn/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Two great works of art to ease your transition into autumn.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/singapore-is-paying-its-citizens-to-read-but-will-it-work/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Singapore is paying its citizens to read. (But will it work?)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/heres-whats-making-us-happy-this-week-sep1826/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Here’s what’s making us happy this week.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/sally-rooney-just-defeated-a-data-center/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sally Rooney just defeated a data center.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/ode-to-a-leaf-blower-a-poem-by-jill-bialosky/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Ode to a Leaf Blower,” a Poem by Jill Bialosky",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/regular-rigorous-and-reliable-how-to-keep-fighting-for-a-better-world/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Regular, rigorous, and Reliable.” How to Keep Fighting for a Better World",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/elizabeth-alexander-on-finding-life-in-the-second-spring-of-middle-age/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Elizabeth Alexander on Finding Life in the Second Spring of Middle Age",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/what-doireann-ni-ghriofa-is-reading-now-and-next/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What Doireann Ní Ghríofa is Reading Now, and Next",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/the-artists-room-is-not-a-neutral-space/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Artist’s Room Is Not a Neutral Space",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/whereof-one-cannot-speak-on-the-limits-of-language-to-describe-pain/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Whereof One Cannot Speak: On the Limits of Language to Describe Pain",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/does-evil-exist-and-how-do-we-recognize-it/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Does Evil Exist (and How Do We Recognize It?)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/the-true-story-of-the-actual-first-shot-fired-in-the-civil-war/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The True Story of the Actual First Shot Fired in the Civil War",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/meet-hyman-judah-schachtel-the-anti-zionist-rabbi-of-houston/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meet Hyman Judah Schachtel, the Anti-Zionist Rabbi of Houston",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/on-finding-the-beauty-in-a-block-of-stone/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On Finding the Beauty in a Block of Stone",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/email-preference-center/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sign Up For Our Newsletters",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "literary-hub",
+      "source": {
+        "name": "Literary Hub",
+        "url": "https://lithub.com/how-to-pitch-lit-hub",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How to Pitch Lit Hub",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:12.386Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "cc0cac116c30bec8a52917c3666a30f19fd5727ba12bbd4cb9adafcfeb22e5c0"
+}

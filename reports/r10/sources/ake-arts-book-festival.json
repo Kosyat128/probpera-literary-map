@@ -1,0 +1,312 @@
+{
+  "sourceId": "ake-arts-book-festival",
+  "name": "Aké Arts & Book Festival",
+  "entryUrl": "https://akefestival.org/feed/",
+  "countryCodes": [
+    "NG"
+  ],
+  "coverageCountryCodes": [
+    "NG"
+  ],
+  "attemptedAt": "2026-09-26T17:27:32.556Z",
+  "requests": [
+    {
+      "url": "https://akefestival.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 71829,
+      "sha256": "5cb3a9284067668fc34e64935feffa0a8f9b502025b166785b1799c062466af7",
+      "accessedAt": "2026-09-26T17:20:12.846Z"
+    },
+    {
+      "url": "https://akefestival.org/ake-festivals-book-chats-are-second-to-none/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 184727,
+      "sha256": "05c3e06cecbda6c2d7e5de5d701e583acf69eb892145af0ee1617d08741d9ca5",
+      "accessedAt": "2026-09-26T17:27:37.426Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://akefestival.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 173,
+    "sha256": "d8270924a36ed8add4073a34e12f3bb27c360ecb75e694a33c53b8ea52484c8e",
+    "accessedAt": "2026-09-26T17:27:34.741Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:20:09.036Z",
+    "sourceDocumentSha256": "5cb3a9284067668fc34e64935feffa0a8f9b502025b166785b1799c062466af7"
+  },
+  "endpoint": {
+    "id": "ake-arts-book-festival",
+    "name": "Aké Arts & Book Festival",
+    "url": "https://akefestival.org/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "africa",
+    "sourceFamilyId": "ake-arts-book-festival",
+    "countryCodes": [
+      "NG"
+    ],
+    "coverageCountryCodes": [
+      "NG"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://akefestival.org"
+    ],
+    "linkPattern": "^/",
+    "keywordPattern": "(?:book|author|writ(?:er|ing)|literar|literat|poet|poes|novel|fiction|publish|translat|library|librar|archive|heritage|manuscript|exhibition|award|prize|festival|reading|pen |p[eé]n|книг|литерат|поэт|писател|изда(?:т|н)|перевод|библиот|преми|фестивал|чтен|наслед|рукопис|выстав|автор|роман|читател|livr[eo]|auteur|litt[eé]r|biblioth|[eé]di(?:t|c)|libro|autor|letr|bibliot|premio|feria|lectur|buch|b[üu]cher|schrift|verlag|lesung|buchpreis|boek|schrijver|uitgev|b[oö]cker|litter|f[oö]rfatt|forlag|kirj|raamat|knih|knji[žz]|knjig|libri|βιβλ|كتاب|مكتب|شعر|نشر|图书|圖書|文学|文學|書|本|출판|도서|문학|buku|penerbit)",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://akefestival.org/ake-festivals-book-chats-are-second-to-none/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:37.434Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "ake-arts-book-festival",
+    "source": {
+      "name": "Aké Arts & Book Festival",
+      "url": "https://akefestival.org/ake-festivals-book-chats-are-second-to-none/",
+      "language": "en"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Ake Festival’s Book Chats Are Second to None",
+    "publishedAt": "2024-11-22T19:33:01.000Z",
+    "description": "If there’s one thing, out of the many things, Ake Festival knows how to do, it’s curating unforgettable book chats. Day 2’s book chats took attendees on a journey through diverse genres, from feminist writing to historical fiction, African Gothic literature, and queer literature. Here’s a quick recap: Feminist Writing Moderated by Sharon Adeoye Ajanlekoko,... The post Ake Festival’s Book Chats Ar…",
+    "discoveredAt": "2026-09-26T17:27:34.746Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://akefestival.org/ake-festivals-book-chats-are-second-to-none/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 184727,
+      "sha256": "05c3e06cecbda6c2d7e5de5d701e583acf69eb892145af0ee1617d08741d9ca5",
+      "accessedAt": "2026-09-26T17:27:37.426Z",
+      "headline": "Ake Festival’s Book Chats Are Second to None - Ake Arts and Books Festival",
+      "excerpt": "November 22, 2024 If there’s one thing, out of the many things, Ake Festival knows how to do, it’s curating unforgettable book chats. Day 2’s book chats took attendees on a journey through diverse genres, from feminist writing to historical fiction, African Gothic literature, and queer literature. Here’s a quick recap: Feminist Writing Moderated by Sharon Adeoye Ajanlekoko, this session brought to",
+      "publishedDates": [
+        {
+          "value": "2024-11-22T19:33:01+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2024-11-22T19:33:01+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2024-11-22T19:33:01+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://akefestival.org/ake-festivals-book-chats-are-second-to-none/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:37.434Z",
+  "foundItems": [
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/ake-festivals-book-chats-are-second-to-none/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ake Festival’s Book Chats Are Second to None",
+      "publishedAt": "2024-11-22T19:33:01.000Z",
+      "description": "If there’s one thing, out of the many things, Ake Festival knows how to do, it’s curating unforgettable book chats. Day 2’s book chats took attendees on a journey through diverse genres, from feminist writing to historical fiction, African Gothic literature, and queer literature. Here’s a quick recap: Feminist Writing Moderated by Sharon Adeoye Ajanlekoko,... The post Ake Festival’s Book Chats Ar…",
+      "discoveredAt": "2026-09-26T17:27:34.746Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/panel-discussions-day-1-ake-festival-is-more-than-books/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Panel Discussions, Day 1: Ake Festival is More Than Books",
+      "publishedAt": "2024-11-21T21:20:04.000Z",
+      "description": "Think Ake Festival is all about books? Think again! Day 1 wasn’t just about books\u2014it was also a deep exploration into thought-provoking and educating conversations. Let’s talk about the panel discussions that kicked off the festival. Panel Recap 1: Demystifying Cancer First up, a session that peeled back the layers of stigma and misconceptions around... The post Panel Discussions, Day 1: Ake Fest…",
+      "discoveredAt": "2026-09-26T17:27:34.746Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/ake-festival-vibes-book-chat/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ake Festival Vibes: Book Chat!",
+      "publishedAt": "2024-11-21T20:18:11.000Z",
+      "description": "Vibes were high at the Ake Festival’s first book chat, and we’re spilling all the tea! I mean, what’s an Arts and Book festival without a book chat? Book Chat 1: Nnamdi Ehirim and Shani Akilah We kicked off this session with the amazing Omotoke Solarin-Sodara at the helm, hosting talented authors Ehirim Nnamdi and... The post Ake Festival Vibes: Book Chat! appeared first on Ake Arts and Books Fes…",
+      "discoveredAt": "2026-09-26T17:27:34.746Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/ake-festival-2024-the-coolest-arts-and-book-party-in-town/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ake Festival 2024: The Coolest Arts and Book Party in Town",
+      "publishedAt": "2024-11-21T19:09:15.000Z",
+      "description": "The story is told of a little dove that travelled the seven seas with a slightly tattered scroll clutched in its beak. This daring bird landed on the shoulder of a young girl engrossed in a book (nope, it’s not Merlin). Dropping the scroll, it fluttered away, leaving her curious. She unfolded it and the... The post Ake Festival 2024: The Coolest Arts and Book Party in Town appeared first on Ake A…",
+      "discoveredAt": "2026-09-26T17:27:34.746Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/pre-festival-press-conference-recap/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pre-Festival Press Conference Recap",
+      "publishedAt": "2025-11-19T15:23:13.000Z",
+      "description": "We are in the art season and Ouida Lagos, the premier cultural hub of Lagos is once again taking charge with what one journalist called “the most unique literary festival in Africa.” The post Pre-Festival Press Conference Recap appeared first on Ake Arts and Books Festival.",
+      "discoveredAt": "2026-09-26T17:27:34.746Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/the-ake-festival-just-got-a-whole-lot-funnier/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Ake Festival Just Got a Whole Lot Funnier!",
+      "publishedAt": "2024-11-22T20:33:58.000Z",
+      "description": "For the very first time in the history of Ake Festival, we had a comedy show that left us in stitches! Aditi Mittal took the stage and gave us a serious bellyache \u2013 the good kind, of course! Her jokes were on point, and we couldn't get enough. But the night was just getting started!... The post The Ake Festival Just Got a Whole Lot Funnier! appeared first on Ake Arts and Books Festival.",
+      "discoveredAt": "2026-09-26T17:27:34.746Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ake-arts-book-festival",
+      "source": {
+        "name": "Aké Arts & Book Festival",
+        "url": "https://akefestival.org/democracy-new-voices-and-literary-insights/",
+        "language": "en"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Democracy, New Voices, and Literary Insights",
+      "publishedAt": "2024-11-22T20:28:22.000Z",
+      "description": "Day 2 Panel Discussions: Democracy, New Voices, and Literary Insights The sparks from our panel discussion two days ago were still flying, and we couldn't wait to jump into another day of thought-provoking conversations. Day 2 of the Ake festival picked up right where we left off, delivering a fresh lineup of discussions that left... The post Democracy, New Voices, and Literary Insights appeared …",
+      "discoveredAt": "2026-09-26T17:27:34.746Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5cb3a9284067668fc34e64935feffa0a8f9b502025b166785b1799c062466af7"
+}

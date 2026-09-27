@@ -1,0 +1,384 @@
+{
+  "sourceId": "lom",
+  "name": "LOM Ediciones",
+  "entryUrl": "https://lom.cl/",
+  "countryCodes": [
+    "CL"
+  ],
+  "coverageCountryCodes": [
+    "CL"
+  ],
+  "attemptedAt": "2026-09-26T17:32:10.013Z",
+  "requests": [
+    {
+      "url": "https://lom.cl/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 230274,
+      "sha256": "5bdf09e1b37737f5057ab4197ee150e5d815480ab2e4523419b878d8206c2717",
+      "accessedAt": "2026-09-26T17:32:11.162Z"
+    },
+    {
+      "url": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 156397,
+      "sha256": "a28caf4693c11e2bfb7f9b9b6e078659a3359a35c5096471845b228c551e5fed",
+      "accessedAt": "2026-09-26T17:32:11.556Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://lom.cl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 3592,
+    "sha256": "1e0f750914ea7e96c603df41cb333599b69ad1b9e29d7c7301414085d65461b7",
+    "accessedAt": "2026-09-26T17:32:10.763Z",
+    "disallowed": [
+      "/admin",
+      "/cart/",
+      "/*/cart/",
+      "/checkout",
+      "/*/checkout",
+      "/checkouts/",
+      "/*/checkouts/",
+      "/orders",
+      "/*/orders",
+      "/account",
+      "/*/account",
+      "/27515682868",
+      "/cdn/wpm/*.js",
+      "/services",
+      "/sf_*",
+      "/cart.js",
+      "/*/cart.js",
+      "/recommendations/products",
+      "/*/recommendations/products",
+      "/collections/*sort_by*",
+      "/*/collections/*sort_by*",
+      "/collections/*+*",
+      "/collections/*%2B*",
+      "/collections/*%2b*",
+      "/*/collections/*+*",
+      "/*/collections/*%2B*",
+      "/*/collections/*%2b*",
+      "/collections/*filter*&*filter*",
+      "/*/collections/*filter*&*filter*",
+      "/blogs/*+*",
+      "/blogs/*%2B*",
+      "/blogs/*%2b*",
+      "/*/blogs/*+*",
+      "/*/blogs/*%2B*",
+      "/*/blogs/*%2b*",
+      "/*?*ls=*&ls=*",
+      "/*?*ls%3*ls%3*",
+      "/*?*oseid=*",
+      "/*?*preview_theme_id=*",
+      "/*?*preview_script_id=*"
+    ]
+  },
+  "endpoint": {
+    "id": "lom",
+    "name": "LOM Ediciones",
+    "url": "https://lom.cl/",
+    "format": "html",
+    "language": "es",
+    "region": "latin-america",
+    "sourceFamilyId": "lom",
+    "countryCodes": [
+      "CL"
+    ],
+    "coverageCountryCodes": [
+      "CL"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://lom.cl"
+    ],
+    "linkPattern": "^/blogs/agenda/[^/]+/?$|^/blogs/blog/[^/]+/?$|^/pages/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado"
+    ],
+    "verifiedAt": "2026-09-26T17:32:11.562Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "lom",
+    "source": {
+      "name": "LOM Ediciones",
+      "url": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+      "language": "es"
+    },
+    "region": "latin-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Palabras contra el borramiento: Dos libros para nombrar Gaza",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:32:11.185Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 156397,
+      "sha256": "a28caf4693c11e2bfb7f9b9b6e078659a3359a35c5096471845b228c551e5fed",
+      "accessedAt": "2026-09-26T17:32:11.556Z",
+      "headline": "Palabras contra el borramiento: Dos libros para nombrar Gaza",
+      "excerpt": "Palabras contra el borramiento: Dos libros para nombrar Gaza 27/08/2026 Texto de presentación de los libros de Zahid Pranjol y Jacob Norris (editores). Nos rehusamos a ser borrados. Una antología de resiliencia, duelo e inquebrantable esperanza de estudiantes universitarios de Gaza (Lom, 2026); y de Mohamed el-Kurd. Víctimas perfectas y la política del encanto. (Lom, 2026). Por Alejandra Bottinell",
+      "publishedDates": [],
+      "canonical": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:11.562Z",
+  "foundItems": [
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Palabras contra el borramiento: Dos libros para nombrar Gaza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/la-manipulacion",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La manipulación",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/efimera-el-sutil-juego-de-ficciones-con-que-bruno-montane-subvierte-la-biografia",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Efímera: el sutil juego de ficciones con que Bruno Montané subvierte la biografía",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/juan-guzman-una-vida-frente-al-deber-de-la-justicia",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Juan Guzmán: una vida frente al deber de la justicia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/intervencion-en-el-lanzamiento-del-libro-plan-condor-viejos-secretos-y-nuevos-hallazgos-de-francesca-lessa-y-sebastian-santana",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nombrar lo silenciado",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/blog/america-for-the-americans",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“America for the Americans\": Una mirada histórica al expansionismo estadounidense en América Latina y a la renovada vigencia de la Doctrina Monroe bajo Donald Trump",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/agenda/la-primavera-del-libro-lanzamiento-de-perkin-de-gonzalo-hernandez-suarez",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Primavera del Libro: lanzamiento de \"Perkin\" de Gonzalo Hernández Suárez,",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/agenda/lanzamiento-de-funeral-en-el-bunker-y-otros-cuentos-de-rodrigo-costas",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lanzamiento de \"Funeral en el Búnker y otros cuentos\" de Rodrigo Costas",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "lom",
+      "source": {
+        "name": "LOM Ediciones",
+        "url": "https://lom.cl/blogs/agenda/conversatorio-en-libreria-lom-judaismo-y-sionismo-como-habitar-una-identidad-en-crisis",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Conversatorio en Librería LOM: \"Judaísmo y sionismo: ¿Cómo habitar una identidad en crisis?\"",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:11.185Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5bdf09e1b37737f5057ab4197ee150e5d815480ab2e4523419b878d8206c2717"
+}

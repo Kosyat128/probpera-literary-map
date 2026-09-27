@@ -1,0 +1,260 @@
+{
+  "checkedAt": "2026-09-26T22:57:25.791Z",
+  "liveProviderWrites": false,
+  "runtimeDatabaseWrites": false,
+  "selected": [
+    "tolstoy-birthday-2026",
+    "gioconda-belli-fil-prize-2026",
+    "stevenson-cevennes-illustrated-french-edition-2026"
+  ],
+  "requests": [
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7243&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+      "status": 200,
+      "elapsedMs": 899
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AL.N.Tolstoy+Prokudin-Gorsky.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+      "status": 200,
+      "elapsedMs": 652
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": 200,
+      "elapsedMs": 306
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q290491&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+      "status": 200,
+      "elapsedMs": 545
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AGioconda+Belli+announces+the+release+of+her+novel+El+intenso+calor+de+la+luna+%2815598872740%29.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+      "status": 200,
+      "elapsedMs": 357
+    },
+    {
+      "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1512&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+      "status": 200,
+      "elapsedMs": 509
+    },
+    {
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3ARobert+Louis+Stevenson+by+Henry+Walter+Barnett+bw.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+      "status": 200,
+      "elapsedMs": 334
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "status": 200,
+      "elapsedMs": 204
+    }
+  ],
+  "report": {
+    "inspected": 3,
+    "requests": 8,
+    "cached": 0,
+    "approved": 2,
+    "held": 1,
+    "pending": 0,
+    "outcomes": [
+      {
+        "newsId": "tolstoy-birthday-2026",
+        "status": "approved",
+        "reason": "exact_reviewed_writer_p18"
+      },
+      {
+        "newsId": "gioconda-belli-fil-prize-2026",
+        "status": "held",
+        "reason": "media_discovery_license_unsupported"
+      },
+      {
+        "newsId": "stevenson-cevennes-illustrated-french-edition-2026",
+        "status": "approved",
+        "reason": "exact_reviewed_writer_p18"
+      }
+    ]
+  },
+  "metadata": [
+    {
+      "schemaVersion": 1,
+      "newsId": "tolstoy-birthday-2026",
+      "semanticRevision": "9398d30e893aabd401cb6ddc8e74b4a8d7dcc726d281a7567449bd8d14a9718d",
+      "status": "approved",
+      "checkedAt": "2026-09-26T22:57:19.949Z",
+      "nextCheckAt": "2026-10-26T22:57:19.949Z",
+      "reason": "exact_reviewed_writer_p18",
+      "asset": {
+        "id": "auto-9398d30e893aabd401cb6ddc8e74b4a8",
+        "status": "approved",
+        "newsIds": [
+          "tolstoy-birthday-2026"
+        ],
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/L.N.Tolstoy_Prokudin-Gorsky.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourceSha256": "6f8d1d8df13c20e0c2ffe1f993e922b4d6ec7ecbb9255b4d73043e8b7497fb1b",
+        "subject": "portrait",
+        "entityEvidence": "Portrait of Leo Tolstoy (Q7243), exact reviewed name in title.en; Wikidata P18 File:L.N.Tolstoy Prokudin-Gorsky.jpg. This is a portrait, not a photograph of the news event.",
+        "author": "Sergei Prokudin-Gorskii",
+        "rightsholder": "Sergei Prokudin-Gorskii",
+        "credit": "Портрет: Leo Tolstoy. Sergei Prokudin-Gorskii. Wikimedia Commons.",
+        "license": "public-domain",
+        "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg",
+        "licenseEvidenceSha256": "1b12300ba74118ee61e80d4e3bba95fe099d68a3213b5dd231d48e1570b837ff",
+        "checkMethod": "license-page",
+        "checkedAt": "2026-09-26T22:57:19.949Z",
+        "validUntil": "2026-10-26T22:57:19.949Z",
+        "transformations": {
+          "resize": true,
+          "metadataRemoval": true,
+          "reencode": true,
+          "crop": false
+        },
+        "permissions": [
+          {
+            "platform": "telegram",
+            "destinationId": "-1002791579809",
+            "publish": true,
+            "providerProcessing": true,
+            "evidenceUrl": "https://commons.wikimedia.org/wiki/File:L.N.Tolstoy%20Prokudin-Gorsky.jpg"
+          }
+        ],
+        "derivative": {
+          "sha256": "388d84042592ca289414a8e569c494ed45c0c53ede202afa8da9f7b2b7f5571c",
+          "byteLength": 398840,
+          "mime": "image/jpeg",
+          "width": 1156,
+          "height": 1600,
+          "profile": "literary-news-photo-v1"
+        }
+      },
+      "evidence": {
+        "subject": {
+          "qid": "Q7243",
+          "name": "Leo Tolstoy",
+          "matchedField": "title.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Leo Tolstoy",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "russia:tolstoy"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q7243&oldid=2536542491",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        },
+        "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7243&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+        "entitySha256": "3f2f40949055907dafecc61d488d7d50122de822c5dd3bf142cd44a7e32803b3",
+        "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3AL.N.Tolstoy+Prokudin-Gorsky.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+        "commonsSha256": "1b12300ba74118ee61e80d4e3bba95fe099d68a3213b5dd231d48e1570b837ff",
+        "fileTitle": "File:L.N.Tolstoy Prokudin-Gorsky.jpg",
+        "metadata": {
+          "Artist": "Sergei Prokudin-Gorskii",
+          "LicenseShortName": "Public domain",
+          "UsageTerms": "Public domain",
+          "Copyrighted": "False",
+          "LicenseUrl": ""
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "newsId": "gioconda-belli-fil-prize-2026",
+      "semanticRevision": "51bf1fbdbf9074288794b57106d78e0bbc322680c68c106a9519041fe25e11c4",
+      "status": "held",
+      "checkedAt": "2026-09-26T22:57:19.949Z",
+      "nextCheckAt": "2026-10-10T22:57:19.949Z",
+      "reason": "media_discovery_license_unsupported"
+    },
+    {
+      "schemaVersion": 1,
+      "newsId": "stevenson-cevennes-illustrated-french-edition-2026",
+      "semanticRevision": "fee7574dd6fb66d66d931099fa2e6bb59658bb569caf82e64c2680133d6a7f86",
+      "status": "approved",
+      "checkedAt": "2026-09-26T22:57:19.949Z",
+      "nextCheckAt": "2026-10-26T22:57:19.949Z",
+      "reason": "exact_reviewed_writer_p18",
+      "asset": {
+        "id": "auto-fee7574dd6fb66d66d931099fa2e6bb5",
+        "status": "approved",
+        "newsIds": [
+          "stevenson-cevennes-illustrated-french-edition-2026"
+        ],
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "sourceSha256": "04f39254c322cf498d206b4146696e4c8e113d2b5e90fada2b5bcf2c72994d7e",
+        "subject": "portrait",
+        "entityEvidence": "Portrait of Robert Louis Stevenson (Q1512), exact reviewed name in summary.en; Wikidata P18 File:Robert Louis Stevenson by Henry Walter Barnett bw.jpg. This is a portrait, not a photograph of the news event.",
+        "author": "Henry Walter Barnett",
+        "rightsholder": "Henry Walter Barnett",
+        "credit": "Портрет: Robert Louis Stevenson. Henry Walter Barnett. Wikimedia Commons.",
+        "license": "public-domain",
+        "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Robert%20Louis%20Stevenson%20by%20Henry%20Walter%20Barnett%20bw.jpg",
+        "licenseEvidenceSha256": "6cc286438e8ca7c328fe5842732fc436430497598dab0a42d4c690bb3e5b9e34",
+        "checkMethod": "license-page",
+        "checkedAt": "2026-09-26T22:57:19.949Z",
+        "validUntil": "2026-10-26T22:57:19.949Z",
+        "transformations": {
+          "resize": true,
+          "metadataRemoval": true,
+          "reencode": true,
+          "crop": false
+        },
+        "permissions": [
+          {
+            "platform": "telegram",
+            "destinationId": "-1002791579809",
+            "publish": true,
+            "providerProcessing": true,
+            "evidenceUrl": "https://commons.wikimedia.org/wiki/File:Robert%20Louis%20Stevenson%20by%20Henry%20Walter%20Barnett%20bw.jpg"
+          }
+        ],
+        "derivative": {
+          "sha256": "adfff79a1b57dbccbc690dd7eab79b93ce9efbcfa54ddc5da76db7e027e3c9cd",
+          "byteLength": 73245,
+          "mime": "image/jpeg",
+          "width": 1066,
+          "height": 1422,
+          "profile": "literary-news-photo-v1"
+        }
+      },
+      "evidence": {
+        "subject": {
+          "qid": "Q1512",
+          "name": "Robert Louis Stevenson",
+          "matchedField": "summary.en",
+          "evidence": {
+            "method": "exact-reviewed-writer-name",
+            "matchedName": "Robert Louis Stevenson",
+            "nameLocale": "en",
+            "nameKind": "canonical-label",
+            "registryKeys": [
+              "england:robert_louis_stevenson"
+            ],
+            "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q1512&oldid=2536735698",
+            "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+            "snapshotRetrievedAt": "2026-08-31T21:18:08.951Z",
+            "registrySha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61",
+            "headlineAnchored": true,
+            "scope": "Exact identity mention only; does not assert authorship of a named work, portrait suitability or image rights."
+          }
+        },
+        "entityUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1512&props=claims%7Clabels%7Caliases&languages=en%7Cru&format=json",
+        "entitySha256": "96ff5878c93e57c5dfea55c8e8cc0106daf7643c21872e91a97f89e759e418c3",
+        "commonsApiUrl": "https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&titles=File%3ARobert+Louis+Stevenson+by+Henry+Walter+Barnett+bw.jpg&iiprop=url%7Cextmetadata%7Cmime%7Csize%7Csha1&formatversion=2&format=json",
+        "commonsSha256": "6cc286438e8ca7c328fe5842732fc436430497598dab0a42d4c690bb3e5b9e34",
+        "fileTitle": "File:Robert Louis Stevenson by Henry Walter Barnett bw.jpg",
+        "metadata": {
+          "Artist": "Henry Walter Barnett",
+          "LicenseShortName": "Public domain",
+          "UsageTerms": "Public domain",
+          "Copyrighted": "False",
+          "LicenseUrl": ""
+        }
+      }
+    }
+  ]
+}

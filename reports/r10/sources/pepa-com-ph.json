@@ -1,0 +1,65 @@
+{
+  "sourceId": "pepa-com-ph",
+  "name": "Philippine Educational Publishers’ Association",
+  "entryUrl": "https://www.pepa.com.ph/",
+  "countryCodes": [
+    "PH"
+  ],
+  "coverageCountryCodes": [
+    "PH"
+  ],
+  "attemptedAt": "2026-09-26T17:28:15.262Z",
+  "requests": [
+    {
+      "url": "https://pepa.com.ph/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 212727,
+      "sha256": "762e402a3c5061406823c075c3abfa0045364af6223e6a09b85482d306b3e49d",
+      "accessedAt": "2026-09-26T17:28:18.579Z"
+    },
+    {
+      "url": "https://pepa.com.ph/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 13716,
+      "sha256": "cacf5ebd2c8015b20c65d0e6c84fc417f28bf8102cf8843079586d3b03e80806",
+      "accessedAt": "2026-09-26T17:28:19.874Z"
+    },
+    {
+      "url": "https://pepa.com.ph/2021/08/25/imported-birds-from-j-d-poortvliet/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 61559,
+      "sha256": "7c1326d4ef7bbe3e5eb84c080e72c5179fae091896613164fe52a6edd069af54",
+      "accessedAt": "2026-09-26T17:28:20.600Z"
+    },
+    {
+      "url": "https://pepa.com.ph/2021/01/05/henry-tan/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 64821,
+      "sha256": "f518a1e45a1e08eb9709f554be3e32cdea888c2c72ab0c2ff9264999e0899408",
+      "accessedAt": "2026-09-26T17:28:21.365Z"
+    },
+    {
+      "url": "https://pepa.com.ph/2020/11/09/upcoming-auction-original-pipa-birds-and-direct-child-from-imported-birds-of-kerby-chua-and-christopher-chua-ching/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 65799,
+      "sha256": "1859c746d862551354f45a209f673315b1f243eaaf14414cc5e89cef77a7e730",
+      "accessedAt": "2026-09-26T17:28:22.085Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.pepa.com.ph/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 31,
+    "sha256": "cde34ae71325970b29ea4797b3be208e696b21a7e46b45de094ea1b5867dbab4",
+    "accessedAt": "2026-09-26T17:28:15.504Z",
+    "disallowed": []
+  }
+}

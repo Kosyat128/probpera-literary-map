@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-26T19:12:42.243Z",
+  "purpose": "Proposed rights metadata for three real R10 news items; not a runtime approval registry",
+  "runtimeAssetsChanged": false,
+  "onsiteThumbnailsChanged": false,
+  "externalUploads": 0,
+  "destinationsInvented": false,
+  "proposed": [
+    {
+      "asset": {
+        "id": "jason-reynolds-loc-2020",
+        "status": "held",
+        "newsIds": [
+          "kokila-jason-reynolds-lamplighters-son-acquisition-2026"
+        ],
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/20200116SM679.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "sourceSha256": "4268b6612e80fcf764e6c7bdb53574030dfc55069b45ed5dc2ab1860461dbb56",
+        "subject": "portrait",
+        "entityEvidence": "Jason Reynolds; archival image dated 2020-01-16; the exact author named in 'Kokila acquires Jason Reynolds’s The Lamplighter’s Son'. Editorial portrait of the named author, not an image of the 2026 acquisition event or the book cover. Commons notes possible personality rights; do not imply endorsement.",
+        "author": "Shawn Miller",
+        "rightsholder": "Library of Congress (CC0 public-domain dedication)",
+        "credit": "Джейсон Рейнольдс, архивный портрет, 2020. Фото: Shawn Miller / Library of Congress. CC0. Wikimedia Commons.",
+        "license": "CC0",
+        "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:20200116SM679.jpg",
+        "licenseEvidenceSha256": "6e5453a822b15b0f990728bc37c4da083b8a6c4e121b5ce2ea66e85466c4248b",
+        "checkMethod": "license-page",
+        "checkedAt": "2026-09-26T19:12:42.243Z",
+        "validUntil": "2026-10-26T19:12:42.243Z",
+        "transformations": {
+          "resize": true,
+          "metadataRemoval": true,
+          "reencode": true,
+          "crop": false
+        },
+        "permissions": [],
+        "derivative": {
+          "sha256": "d00296d95546d7043fee07ce968b540a5b21367781f0b4f6aea7803e6ab704a4",
+          "byteLength": 295307,
+          "mime": "image/jpeg",
+          "width": 1071,
+          "height": 1600,
+          "profile": "literary-news-photo-v1"
+        }
+      },
+      "rightsResearch": {
+        "status": "evidence_supported_candidate",
+        "basis": "Commons states CC0 and records a Flickr license verification of the Library of Congress account on 2020-01-28; the description identifies Jason Reynolds and the photographer/date.",
+        "primarySourceUrl": "https://www.flickr.com/photos/162991176@N03/49395922388/",
+        "primarySourceStatus": "fetched",
+        "newsSourceUrl": "https://global.penguinrandomhouse.com/announcements/bestselling-and-award-winning-author-jason-reynolds-to-publish-the-lamplighters-son-with-kokila/",
+        "entityMatch": "named_author_archival_portrait",
+        "imageDate": "2020-01-16",
+        "allowedPresentation": "Credit must retain portrait date and archival label; never imply a photograph of the current literary event.",
+        "holdReasons": [
+          "numeric_destination_unresolved",
+          "per_destination_permissions_not_recorded"
+        ],
+        "humanApproval": false,
+        "sourceFetch": {
+          "status": 200,
+          "accessedAt": "2026-09-26T19:12:45.059Z",
+          "byteLength": 965819,
+          "mime": "image/jpeg"
+        },
+        "licenseFetch": {
+          "status": 200,
+          "accessedAt": "2026-09-26T19:12:43.370Z",
+          "byteLength": 128858,
+          "mime": "text/html; charset=UTF-8"
+        },
+        "visualInspection": "opened_and_reviewed_normalized_derivative",
+        "derivativePath": "reports/r10/social/media-rights/derivatives/jason-reynolds-loc-2020.jpg",
+        "guardProof": "media_destination_not_licensed",
+        "primaryFetch": {
+          "url": "https://www.flickr.com/photos/162991176@N03/49395922388/",
+          "status": 200,
+          "accessedAt": "2026-09-26T19:13:49.127Z",
+          "sha256": "42afcedea0f3ef8149ce2b8fa5f0a723a1cd7a9d9bc6df6c9e57bf682b014078",
+          "bytes": 528484,
+          "hasNamedSubject": true,
+          "rightsSignals": [
+            "creativecommons.org/publicdomain/zero/1.0/"
+          ]
+        }
+      }
+    },
+    {
+      "asset": {
+        "id": "millay-genthe-1914",
+        "status": "held",
+        "newsIds": [
+          "serapis-millay-anthology-presented-2026"
+        ],
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "sourceSha256": "36d407dd450a34282dcdb5356c8209224292d1494e9c878e84b9f4943270539c",
+        "subject": "portrait",
+        "entityEvidence": "Edna St. Vincent Millay; archival image dated 1914; the exact author named in 'Eterna Cadencia presents a Spanish-language Edna St. Vincent Millay anthology'. Portrait of the anthology's poet, not the new Spanish edition's cover. No crop, colorization or invented book-art reconstruction.",
+        "author": "Arnold Genthe (1869\u20131942)",
+        "rightsholder": "Public domain: Arnold Genthe photograph; Library of Congress Genthe Collection",
+        "credit": "Эдна Сент-Винсент Миллей, архивный портрет, 1914. Фото: Arnold Genthe / Library of Congress, agc.7a10216. Public domain. Wikimedia Commons.",
+        "license": "public-domain",
+        "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_photograph_of_Edna_St._Vincent_Millay_LOC_agc.7a10216.jpg",
+        "licenseEvidenceSha256": "3e56bd066feaf93ce2432713951299186e9f2497975498dd702264e3d3361662",
+        "checkMethod": "license-page",
+        "checkedAt": "2026-09-26T19:12:42.243Z",
+        "validUntil": "2026-10-26T19:12:42.243Z",
+        "transformations": {
+          "resize": true,
+          "metadataRemoval": true,
+          "reencode": true,
+          "crop": false
+        },
+        "permissions": [],
+        "derivative": {
+          "sha256": "59a05207b3f99f31b26fc81c75abb50b0dcbc118d9009f89398655dc22265d0b",
+          "byteLength": 231578,
+          "mime": "image/jpeg",
+          "width": 1348,
+          "height": 1600,
+          "profile": "literary-news-photo-v1"
+        }
+      },
+      "rightsResearch": {
+        "status": "evidence_supported_candidate",
+        "basis": "Commons marks the 1914 image PD-old-70-expired and Public Domain Mark: pre-1930 US publication and photographer deceased in 1942. LOC catalog agc1996000362 identifies the portrait and collection.",
+        "primarySourceUrl": "https://www.loc.gov/pictures/item/agc1996000362/",
+        "primarySourceStatus": "unavailable",
+        "newsSourceUrl": "https://eternacadencia.com.ar/blog/tuve-lo-que-a-mi-no-me-toca-recuperan-poemas-de-edna-st-vincent-millay",
+        "entityMatch": "named_author_archival_portrait",
+        "imageDate": "1914",
+        "allowedPresentation": "Credit must retain portrait date and archival label; never imply a photograph of the current literary event.",
+        "holdReasons": [
+          "numeric_destination_unresolved",
+          "per_destination_permissions_not_recorded"
+        ],
+        "humanApproval": false,
+        "sourceFetch": {
+          "status": 200,
+          "accessedAt": "2026-09-26T19:12:46.952Z",
+          "byteLength": 538309,
+          "mime": "image/jpeg"
+        },
+        "licenseFetch": {
+          "status": 200,
+          "accessedAt": "2026-09-26T19:12:46.085Z",
+          "byteLength": 104697,
+          "mime": "text/html; charset=UTF-8"
+        },
+        "visualInspection": "opened_and_reviewed_normalized_derivative",
+        "derivativePath": "reports/r10/social/media-rights/derivatives/millay-genthe-1914.jpg",
+        "guardProof": "media_destination_not_licensed",
+        "primaryFetch": {
+          "url": "https://www.loc.gov/pictures/item/agc1996000362/",
+          "status": 403,
+          "accessedAt": "2026-09-26T19:13:49.384Z",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "hasNamedSubject": false,
+          "rightsSignals": []
+        }
+      }
+    },
+    {
+      "asset": {
+        "id": "george-w-bush-official-2003",
+        "status": "held",
+        "newsIds": [
+          "george-w-bush-call-of-freedom-us-2027"
+        ],
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/George-W-Bush.jpeg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+        "sourceSha256": "59207a3f480eb56547b4e38c6e82ecb6871a3a37c5dcce6c682207fa8c8a75b4",
+        "subject": "portrait",
+        "entityEvidence": "George W. Bush; archival image dated 2003-01-14; the exact author named in 'Crown announces George W. Bush’s The Call of Freedom'. Portrait of the named book author, not the new cover or a 2027 event photo. Editorial use only; no government endorsement or official-service claim.",
+        "author": "Eric Draper",
+        "rightsholder": "Public domain: official Executive Office of the President photograph",
+        "credit": "Джордж У. Буш, официальный архивный портрет, 2003. Фото: Eric Draper / White House. Public domain. Wikimedia Commons.",
+        "license": "public-domain",
+        "licenseEvidenceUrl": "https://commons.wikimedia.org/wiki/File:George-W-Bush.jpeg",
+        "licenseEvidenceSha256": "13109f119ee6d9638d65926283e50f507a95f282d5a50e2f79bd1f471bb893fd",
+        "checkMethod": "license-page",
+        "checkedAt": "2026-09-26T19:12:42.243Z",
+        "validUntil": "2026-10-26T19:12:42.243Z",
+        "transformations": {
+          "resize": true,
+          "metadataRemoval": true,
+          "reencode": true,
+          "crop": false
+        },
+        "permissions": [],
+        "derivative": {
+          "sha256": "c289e7e096c6a5405bba500f0105c603f308c5668c51a92470c76f14743c93e3",
+          "byteLength": 234800,
+          "mime": "image/jpeg",
+          "width": 1209,
+          "height": 1600,
+          "profile": "literary-news-photo-v1"
+        }
+      },
+      "rightsResearch": {
+        "status": "evidence_supported_candidate",
+        "basis": "Commons identifies the official portrait, photographer and PD-USGov-POTUS basis. LOC independently lists Eric Draper's 2003 portrait with no known publication restrictions.",
+        "primarySourceUrl": "https://www.loc.gov/item/2011645073/",
+        "primarySourceStatus": "unavailable",
+        "newsSourceUrl": "https://global.penguinrandomhouse.com/announcements/crown-to-publish-former-president-george-w-bushs-the-call-of-freedom/",
+        "entityMatch": "named_author_archival_portrait",
+        "imageDate": "2003-01-14",
+        "allowedPresentation": "Credit must retain portrait date and archival label; never imply a photograph of the current literary event.",
+        "holdReasons": [
+          "numeric_destination_unresolved",
+          "per_destination_permissions_not_recorded"
+        ],
+        "humanApproval": false,
+        "sourceFetch": {
+          "status": 200,
+          "accessedAt": "2026-09-26T19:12:49.189Z",
+          "byteLength": 1936324,
+          "mime": "image/jpeg"
+        },
+        "licenseFetch": {
+          "status": 200,
+          "accessedAt": "2026-09-26T19:12:48.204Z",
+          "byteLength": 192717,
+          "mime": "text/html; charset=UTF-8"
+        },
+        "visualInspection": "opened_and_reviewed_normalized_derivative",
+        "derivativePath": "reports/r10/social/media-rights/derivatives/george-w-bush-official-2003.jpg",
+        "guardProof": "media_destination_not_licensed",
+        "primaryFetch": {
+          "url": "https://www.loc.gov/item/2011645073/",
+          "status": 403,
+          "accessedAt": "2026-09-26T19:13:49.568Z",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "hasNamedSubject": false,
+          "rightsSignals": []
+        }
+      }
+    }
+  ],
+  "heldAlternatives": [
+    {
+      "newsId": "serapis-millay-anthology-presented-2026",
+      "source": "https://commons.wikimedia.org/wiki/File:Edna_St._Vincent_Millay.jpg",
+      "status": "held",
+      "reason": "1933 Carl Van Vechten variant has additional estate integrity/no-crop request and a more nuanced collection-specific public-domain basis; choose the simpler 1914 Genthe image instead."
+    }
+  ]
+}

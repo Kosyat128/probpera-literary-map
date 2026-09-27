@@ -1,0 +1,1813 @@
+{
+  "version": 1,
+  "batchId": "r10-05",
+  "status": "prepared-not-published",
+  "createdAt": "2026-09-26T18:05:24.395Z",
+  "editorialTimeZone": "Europe/Moscow",
+  "originalBaseline": {
+    "count": 33,
+    "ids": [
+      "tolstoy-birthday-2026",
+      "booker-shortlist-2026-announcement",
+      "love-hypothesis-2026-release-announcement",
+      "kiki-third-english-edition-announcement",
+      "booker-longlist-2026",
+      "german-book-prize-longlist-2026",
+      "german-book-prize-shortlist-2026-announcement",
+      "frankfurt-book-fair-2026-announcement",
+      "gothenburg-book-fair-2026-announcement",
+      "british-library-agatha-christie-exhibition-2026",
+      "bnf-richelieu-heritage-days-2026",
+      "yasnaya-polyana-tolstoy-library-20260912",
+      "goslitmuz-people-of-december-publication-2026",
+      "mandelstam-days-2026-announcement",
+      "giller-longlist-2026-schedule",
+      "national-book-awards-longlists-2026",
+      "nbf-presents-fall-2026-announced",
+      "brooklyn-book-festival-2026-main-day",
+      "mandel-exit-party-us-2026",
+      "john-green-hollywood-ending-us-2026",
+      "marlon-james-disappearers-us-catalog-2026",
+      "guernsey-medieval-fragments-research-2026",
+      "whisper-man-netflix-release-20260828",
+      "international-booker-funding-20260702",
+      "ubud-writers-readers-festival-2026",
+      "shanghai-childrens-book-fair-2026",
+      "ake-arts-book-festival-2026",
+      "nairobi-international-book-fair-2026",
+      "gioconda-belli-fil-prize-2026",
+      "guadalajara-international-book-fair-2026",
+      "hay-queretaro-emiliano-monge-2026",
+      "brisbane-writers-festival-2026",
+      "new-zealand-childrens-book-awards-2026"
+    ],
+    "sha256": "73022c08ab8b1b18ebfda3ced9046d5e619e6d7a70e609af0903680e57e931af"
+  },
+  "counts": {
+    "prepared": 31,
+    "productionSelectorEligible": 31,
+    "firstPublicationCount": 0,
+    "currentlyPublicNew": 0,
+    "netPublicDelta": 0,
+    "corrections": 0
+  },
+  "records": [
+    {
+      "id": "ditan-beijing-book-market-opening-2026",
+      "eventKey": "ditan-beijing-book-market-opening-2026",
+      "category": "festivals",
+      "kind": "news",
+      "eventDate": "2026-09-17",
+      "publishedAt": "2026-09-18",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "В Пекине открылся книжный рынок в парке Дитань",
+        "en": "Beijing’s Ditan book market opens"
+      },
+      "summary": {
+        "ru": "17 сентября в Пекине открылся одиннадцатидневный книжный рынок «Я и Дитань». По сообщению Китайской ассоциации издателей, в нём участвуют более 400 издательств, организаций и книжных магазинов. Программа включает свыше 150 культурных мероприятий, обмен подержанными книгами и раздел изданий на иностранных языках.",
+        "en": "Beijing’s eleven-day Me and Ditan book market opened on September 17. The Publishers Association of China reports participation by more than 400 publishers, organisations and bookshops. The programme includes over 150 cultural events, used-book exchanges and foreign-language editions."
+      },
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/hangyedongtai/141399.html",
+        "language": "zh"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "pen-america-alim-aliiev-literary-interview-2026",
+      "eventKey": "pen-america-alim-aliiev-literary-interview-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T20:25:25.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "PEN America опубликовал разговор с Алимом Алиевым о крымскотатарской литературе",
+        "en": "PEN America publishes Alim Aliiev’s reflections on Crimean Tatar literature"
+      },
+      "summary": {
+        "ru": "В интервью PEN America писатель и организатор «Крымского инжира» Алим Алиев рассказал о связи родного языка, памяти и литературного творчества. Материал знакомит с фестивалем и его переводческими проектами; англоязычная антология Crimean Fig / Qırım İnciri упоминается как издание прошлого года.",
+        "en": "In a PEN America interview, writer and Crimean Fig organiser Alim Aliiev discusses the links between mother tongue, memory and literary creation. The article introduces the festival and its translation projects, identifying the English-language anthology Crimean Fig / Qırım İnciri as a publication from the previous year."
+      },
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/alim-aliiev-crimean-tatar/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "pen-belarus-three-writers-released-20260916",
+      "eventKey": "pen-belarus-three-writers-released-20260916",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-16",
+      "publishedAt": "2026-09-16",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "PEN Belarus сообщил об освобождении трёх заключённых литераторов",
+        "en": "PEN Belarus reports the release of three imprisoned writers"
+      },
+      "summary": {
+        "ru": "По сообщению PEN Belarus, 16 сентября среди освобождённых и принудительно вывезенных в Литву заключённых оказались поэт и журналист Андрей Александров, автор песен Дмитрий Головач и переводчик-издатель Дмитрий Колас. Организация отдельно отметила вклад Коласа в белорусские переводы мировой литературы.",
+        "en": "PEN Belarus reports that poet and journalist Andrej Alaksandraŭ, songwriter Dzmitryj Hałavač and translator-publisher Zmicier Kołas were among prisoners released and forcibly taken to Lithuania on September 16. The organisation highlighted Kołas’s contribution to Belarusian translations of world literature."
+      },
+      "source": {
+        "name": "Belarusian PEN",
+        "url": "https://penbelarus.org/en/2026/09/16/troe-lyudzej-slova-na-voli.html",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "cordoba-books-education-programme-2026",
+      "eventKey": "cordoba-books-education-programme-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-26T13:30:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Кордова представила программу передачи 50 тысяч книг образовательным учреждениям",
+        "en": "Córdoba presents a programme supplying 50,000 books to education"
+      },
+      "summary": {
+        "ru": "23 сентября власти аргентинской провинции Кордова представили программу передачи 50 тысяч экземпляров школам, педагогическим институтам и образовательным центрам. В закупках участвуют 27 местных издательств. Общий фонд включает также пожертвования и другие поступления, поэтому число передаваемых книг не равно объёму закупки.",
+        "en": "Argentina’s Córdoba province presented a programme on September 23 to supply 50,000 copies to schools, teacher-training institutes and educational centres. Purchases involve 27 local publishers. The total also includes donations and other contributions, so the number distributed is not the purchase count."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134216/international/pour-aider-les-editeurs-locaux-cordoba-commande-50-000-livres",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "tv5monde-un-pays-un-livre-announced-2026",
+      "eventKey": "tv5monde-un-pays-un-livre-announced-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-23T15:39:23.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "TV5MONDE объявил цикл Огюстена Трапенара о франкоязычной литературе",
+        "en": "TV5MONDE announces Augustin Trapenard’s francophone literature series"
+      },
+      "summary": {
+        "ru": "TV5MONDE представил Un pays, un livre - тридцать трёхминутных программ Огюстена Трапенара, запланированных к ежедневному показу в ноябре. Каждый выпуск посвящён одному автору и произведению; в программе заявлены, среди прочих, Нэнси Хьюстон, Ананда Деви, Лейла Слимани и Ален Мабанку.",
+        "en": "TV5MONDE has announced Un pays, un livre, thirty three-minute programmes presented by Augustin Trapenard and scheduled for daily broadcast in November. Each episode focuses on one writer and work; the announced authors include Nancy Huston, Ananda Devi, Leïla Slimani and Alain Mabanckou."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134151/television/un-pays-un-livre-augustin-trapenard-rejoint-tv5monde-pour-une-nouvelle-emission",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "global"
+    },
+    {
+      "id": "china-publishing-development-report-2025-2026",
+      "eventKey": "china-publishing-development-report-2025-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-11",
+      "publishedAt": "2026-09-11",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "В Китае представили новый доклад о развитии издательской отрасли",
+        "en": "China presents a new publishing industry development report"
+      },
+      "summary": {
+        "ru": "Китайская ассоциация издателей сообщила о презентации доклада «2025-2026中国出版业发展报告» в Гуанчжоу. Исследование описывает одновременное сокращение печатного сегмента и рост цифровых направлений; по приведённым данным, рынок чтения сетевой литературы в 2025 году вырос на 16,6%.",
+        "en": "The Publishers Association of China reports the presentation in Guangzhou of the 2025-2026 report on the development of China’s publishing industry. It describes pressure on print alongside digital growth; the cited figures put growth in the online literature reading market at 16.6% in 2025."
+      },
+      "source": {
+        "name": "Publishers Association of ChinaNo.",
+        "url": "https://www.pac.org.cn/hangyedongtai/141395.html",
+        "language": "zh"
+      },
+      "verification": "confirmed",
+      "region": "asia"
+    },
+    {
+      "id": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+      "eventKey": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-10",
+      "publishedAt": "2026-09-10T13:49:14.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Изабель Дж. Ким рассказала PEN America, как рассказ превратился в Sublimation",
+        "en": "Isabel J. Kim tells PEN America how a short story became Sublimation"
+      },
+      "summary": {
+        "ru": "В интервью The PEN Ten Изабель Дж. Ким объяснила, как расширяла рассказ до дебютного романа Sublimation и включала в фантастический мир корейский фольклор. Она также обсудила тему миграции и литературные ориентиры, среди которых произведения Чарльза Ю, Урсулы Ле Гуин и Рут Озеки.",
+        "en": "In The PEN Ten interview, Isabel J. Kim discusses expanding a short story into her debut novel Sublimation and incorporating Korean folklore into its speculative world. She also considers migration and literary influences, including work by Charles Yu, Ursula K. Le Guin and Ruth Ozeki."
+      },
+      "source": {
+        "name": "PEN America",
+        "url": "https://pen.org/isabel-j-kim-the-pen-ten-interview/",
+        "language": "en"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "bugojanska-vaza-short-story-deadline-2026",
+      "eventKey": "bugojanska-vaza-short-story-deadline-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-10-19",
+      "publishedAt": "2026-08-31T12:56:34.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Конкурс рассказов «Bugojanska vaza» принимает работы до 19 октября",
+        "en": "Bugojanska vaza short-story competition closes on October 19"
+      },
+      "summary": {
+        "ru": "Культурно-спортивный центр Бугойно объявил четырнадцатый конкурс «Bugojanska vaza» для граждан Боснии и Герцеговины. До 19 октября принимаются ранее не публиковавшиеся и не отмеченные наградами рассказы объёмом до 20 000 знаков на боснийском, хорватском или сербском языке.",
+        "en": "Bugojno’s Cultural and Sports Centre has announced the fourteenth Bugojanska vaza competition for citizens of Bosnia and Herzegovina. Previously unpublished, unawarded stories of up to 20,000 characters in Bosnian, Croatian or Serbian may be submitted until October 19."
+      },
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/08/natjecaj-za-kratku-pricu-pripovijetkuxiv-bugojnaska-vaza-bugojno-2026/",
+        "language": "bs-BA"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "wmf-martins-fontes-amazon-supply-announcement-2026",
+      "eventKey": "wmf-martins-fontes-amazon-supply-announcement-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-02",
+      "publishedAt": "2026-09-23T09:34:10.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "WMF Martins Fontes объявило о планах прекратить новые поставки Amazon",
+        "en": "WMF Martins Fontes announces plans to stop new Amazon supplies"
+      },
+      "summary": {
+        "ru": "Бразильский издатель WMF Martins Fontes объявил о намерении прекратить поставки новых партий книг Amazon в ближайшие месяцы. По сообщению ActuaLitté, Александр Мартинс Фонтес связал решение с политикой скидок. Заявление касается будущих поставок и не означает немедленного исчезновения каталога с площадки.",
+        "en": "Brazilian publisher WMF Martins Fontes has announced plans to stop supplying new stock to Amazon in the coming months. ActuaLitté reports that Alexandre Martins Fontes linked the decision to discounting practices. The announcement concerns future supplies, rather than an immediate removal of the catalogue."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134132/economie/un-editeur-bresilien-majeur-decide-de-retirer-ses-ouvrages-d-amazon",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "latin-america"
+    },
+    {
+      "id": "devenir-un-monstre-quebec-release-2027",
+      "eventKey": "devenir-un-monstre-quebec-release-2027",
+      "category": "adaptations",
+      "kind": "announcement",
+      "eventDate": "2027-03-19",
+      "publishedAt": "2026-09-25T11:30:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Экранизация романа Жана Барба выйдет в Квебеке в марте 2027 года",
+        "en": "Jean Barbe adaptation scheduled for March 2027 in Quebec"
+      },
+      "summary": {
+        "ru": "Квебекская премьера фильма Devenir un monstre по роману Жана Барба Comment devenir un monstre назначена на 19 марта 2027 года. Режиссёр - Шарль-Оливье Мишо, сценарий написал Симон Лавуа. Производство ведут Films du Boulevard и Maison 4:3.",
+        "en": "Devenir un monstre, adapted from Jean Barbe’s novel Comment devenir un monstre, is scheduled for a Quebec release on March 19, 2027. Charles-Olivier Michaud directs Simon Lavoie’s screenplay. Films du Boulevard and Maison 4:3 are producing the film."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134179/bande-annonce/devenir-un-monstre-le-livre-de-jean-barbe-devient-un-film",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "north-america"
+    },
+    {
+      "id": "sarajevo-amer-tikvesa-literary-corner-2026",
+      "eventKey": "sarajevo-amer-tikvesa-literary-corner-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-10-14",
+      "publishedAt": "2026-09-25T05:48:24.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "В Сараеве пройдёт литературный разговор с Амером Тиквешей",
+        "en": "Sarajevo to host a literary conversation with Amer Tikveša"
+      },
+      "summary": {
+        "ru": "14 октября в 18:00 Национальная и университетская библиотека Боснии и Герцеговины примет 54-ю встречу цикла Književni korner. Горан Врхунц побеседует с писателем, преподавателем и журналистом Амером Тиквешей - автором рассказов, детских книг и биографии Ибрицы Юсича.",
+        "en": "Bosnia and Herzegovina’s National and University Library will host the 54th Književni korner on October 14 at 18:00. Goran Vrhunc will speak with writer, teacher and journalist Amer Tikveša, whose books include short stories, children’s literature and a biography of Ibrica Jusić."
+      },
+      "source": {
+        "name": "Bosnian PEN",
+        "url": "https://penbih.ba/2026/09/knjizevni-korner-54-razgovor-sa-amerom-tikvesom/",
+        "language": "bs-BA"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "pen-catala-eritrean-writers-audio-postcards-2026",
+      "eventKey": "pen-catala-eritrean-writers-audio-postcards-2026",
+      "category": "publishing",
+      "kind": "news",
+      "eventDate": "2026-09-18",
+      "publishedAt": "2026-09-18",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "PEN Català запустил серию звуковых посланий исчезнувшим эритрейским авторам",
+        "en": "PEN Català launches audio postcards for disappeared Eritrean writers"
+      },
+      "summary": {
+        "ru": "PEN Català объявил кампанию «Prova de vida ja!» к 25-летию исчезновения двенадцати эритрейских писателей и журналистов. Двенадцать каталонских авторов подготовили звуковые послания; публикации запланированы до 10 декабря. Кампания требует сведений о судьбе пропавших, не утверждая, что их нынешнее положение известно.",
+        "en": "PEN Català has launched Prova de vida ja! to mark 25 years since twelve Eritrean writers and journalists disappeared. Twelve Catalan-language authors have prepared audio postcards, with publication planned through December 10. The campaign seeks information about the missing writers rather than claiming their present circumstances are known."
+      },
+      "source": {
+        "name": "PEN Catalan",
+        "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-dotze-postals-sonores-contra-25-anys-de-silenci/",
+        "language": "ca"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "dublin-imprisoned-writer-gallagher-2026",
+      "eventKey": "dublin-imprisoned-writer-gallagher-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-11-07",
+      "publishedAt": "2026-09-16",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Irish PEN объявил встречу о книжной цензуре на фестивале в Дублине",
+        "en": "Irish PEN announces a discussion of censorship with Caoilfhionn Gallagher"
+      },
+      "summary": {
+        "ru": "7 ноября в 15:00 на Дублинском книжном фестивале запланировано выступление юриста Caoilfhionn Gallagher о цензуре и преследовании авторов и книготорговцев. Организаторы Irish PEN и фестиваль указывают площадку - Королевскую Ирландскую академию музыки. На момент проверки основная регистрация закрыта, открыт лист ожидания.",
+        "en": "Caoilfhionn Gallagher will discuss censorship and the persecution of writers and booksellers at the Dublin Book Festival on November 7 at 15:00. Irish PEN and the festival list the Royal Irish Academy of Music as the venue. At verification, the main booking was full and a waiting list was open."
+      },
+      "source": {
+        "name": "Irish PEN",
+        "url": "https://irishpen.com/2026/09/16/irish-pen-event-at-dublin-book-festival/",
+        "language": "en-US"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "livres-en-vignes-awards-2026",
+      "eventKey": "livres-en-vignes-awards-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25T15:11:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Livres en Vignes объявил лауреатов литературных премий 2026 года",
+        "en": "Livres en Vignes announces its 2026 literary award winners"
+      },
+      "summary": {
+        "ru": "25 сентября в замке Кло-де-Вужо вручили награды фестиваля Livres en Vignes. Готье Баттистелла получил главную премию за Bocuse, Франсуа-Анри Дезерабль - премию Albert-Bichot за Le Palais, а Брюно Вержюс - награду за первый роман La Recette. Специально отмечена книга Евы Боттеги Le Ciel ici déborde.",
+        "en": "Livres en Vignes presented its awards at the Château du Clos de Vougeot on September 25. Gautier Battistella won the main prize for Bocuse, François-Henri Désérable the Albert-Bichot award for Le Palais, and Bruno Verjus the debut-novel prize for La Recette. Eva Bottega’s Le Ciel ici déborde received a special mention."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134207/prix-litteraires/livres-en-vignes-2026-gautier-battistella-francois-henri-deserable-et-bruno-verjus-recompenses",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "madeline-cash-page-america-award-2026",
+      "eventKey": "madeline-cash-page-america-award-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-25",
+      "publishedAt": "2026-09-25T15:44:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Мадлен Кэш стала лауреатом премии PAGE/AMERICA",
+        "en": "Madeline Cash wins the PAGE/AMERICA novel prize"
+      },
+      "summary": {
+        "ru": "Мадлен Кэш получила Prix du roman PAGE/AMERICA 2026 за дебютный роман Lost Lambs, вышедший во Франции как Les Brebis égarées. Французское издание Denoël перевели Александр Сивико и Барбара Тажан. Премию определяют голосованием 130 книготорговцев и библиотекарей.",
+        "en": "Madeline Cash won the 2026 PAGE/AMERICA novel prize for her debut Lost Lambs, published in France as Les Brebis égarées. Alexandre Civico and Barbara Tajan translated the Denoël edition. The award is decided by 130 booksellers and librarians."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134206/prix-litteraires/madeline-cash-remporte-le-prix-du-roman-page-america-2026",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "marie-dorleans-grand-est-award-presentation-2026",
+      "eventKey": "marie-dorleans-grand-est-award-presentation-2026",
+      "category": "awards",
+      "kind": "announcement",
+      "eventDate": "2026-10-09",
+      "publishedAt": "2026-09-22T15:47:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Мари Дорлеан вручат Prix du Livre Grand Est на фестивале в Труа",
+        "en": "Marie Dorléans to receive the Grand Est book prize in Troyes"
+      },
+      "summary": {
+        "ru": "Вручение Prix du Livre Grand Est 2026 Мари Дорлеан назначено на 9 октября на фестивале Troyes Mille Pages. Награда присуждена за детскую книгу Une histoire de rien du tout издательства Seuil Jeunesse. Жюри также особо отметило Pluie Полин Морель.",
+        "en": "Marie Dorléans is due to receive the 2026 Prix du Livre Grand Est on October 9 at Troyes Mille Pages. She won for the picture book Une histoire de rien du tout, published by Seuil Jeunesse. The jury also selected Pauline Morel’s Pluie as a favourite."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134125/prix-litteraires/marie-dorleans-remporte-le-prix-du-livre-grand-est-2026",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "vanity-fair-literary-selection-2026",
+      "eventKey": "vanity-fair-literary-selection-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-23T13:11:22.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Vanity Fair представил девять претендентов на литературную премию",
+        "en": "Vanity Fair reveals nine literary prize contenders"
+      },
+      "summary": {
+        "ru": "Во вторую подборку Prix littéraire Vanity Fair вошли девять произведений в категориях романа, документальной литературы и комикса. Среди них La Méthode Давида Джаиза, Jean & Romain Мириам Аниссимов и Terre ou lune Жад Ку. Победителей планируют объявить 2 ноября в Париже.",
+        "en": "The second Prix littéraire Vanity Fair has selected nine works across fiction, nonfiction and comics. They include David Djaïz’s La Méthode, Myriam Anissimov’s Jean & Romain and Jade Khoo’s Terre ou lune. Winners are due to be announced in Paris on November 2."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134138/prix-litteraires/9-livres-selectionnes-pour-le-prix-litteraire-vanity-fair-2026",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "ens-editions-first-alef-prize-2026",
+      "eventKey": "ens-editions-first-alef-prize-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-25T12:55:01.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "ENS Éditions получило первую премию ALEF за научное книгоиздание",
+        "en": "ENS Éditions wins the inaugural ALEF scholarly publishing prize"
+      },
+      "summary": {
+        "ru": "24 сентября ENS Éditions получило первую премию ALEF за издание книги Антонена Пларье Des bandits face au pouvoir colonial. Algérie, 1871-1920. Награда оценивает издательскую работу от отбора рукописи до распространения. Книга также доступна для открытого чтения на OpenEdition Books.",
+        "en": "ENS Éditions received the inaugural ALEF scholarly publishing prize on September 24 for Antonin Plarier’s Des bandits face au pouvoir colonial. Algérie, 1871-1920. The award recognises editorial work from manuscript selection to dissemination. The book is also available to read openly on OpenEdition Books."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134185/prix-litteraires/le-prix-alef-de-l-edition-scientifique-2026-distingue-une-publication-d-ens-editions",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "musicians-literary-prize-selection-2026",
+      "eventKey": "musicians-literary-prize-selection-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24T15:27:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Литературная премия музыкантов объявила девять номинантов",
+        "en": "Prix Littéraire des Musiciens announces nine nominees"
+      },
+      "summary": {
+        "ru": "Восьмая премия Prix Littéraire des Musiciens представила по три книги в категориях романа, эссе и детской литературы. Среди номинантов - Эрик-Эмманюэль Шмитт, а также Клер-Мари Ле Ге и Эрик Орсенна с книгой о Бахе. Награждение назначено на 13 ноября в парижском Pavillon de la Sirène.",
+        "en": "The eighth Prix Littéraire des Musiciens has selected three books each in fiction, essay and children’s literature. Nominees include Éric-Emmanuel Schmitt and Claire-Marie Le Guay and Erik Orsenna’s book about Bach. The awards are scheduled for November 13 at Paris’s Pavillon de la Sirène."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134177/prix-litteraires/eric-emmanuel-schmitt-et-erik-orsenna-en-lice-au-prix-litteraire-des-musiciens-2026",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "utopiales-comics-shortlist-2026",
+      "eventKey": "utopiales-comics-shortlist-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24T14:35:42.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Utopiales представил шесть комиксов в финале премии",
+        "en": "Utopiales reveals six comics prize finalists"
+      },
+      "summary": {
+        "ru": "На Prix Utopiales BD 2026 претендуют шесть книг, включая The Junction Норма Конью, La Langue des vipères Жюльет Брокаль и Frankenstein Давида Сала. Победителя выберет читательский клуб научно-фантастических комиксов муниципальной библиотеки Нанта. Вручение запланировано на 31 октября.",
+        "en": "Six books are shortlisted for the 2026 Prix Utopiales BD, including Norm Konyu’s The Junction, Juliette Brocal’s La Langue des vipères and David Sala’s Frankenstein. Nantes municipal library’s science-fiction comics reading club will choose the winner, with presentation scheduled for October 31."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134174/prix-litteraires/prix-utopiales-bd-2026-six-albums-pour-succeder-aux-navigateurs",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "ouest-france-quai-bulles-finalists-2026",
+      "eventKey": "ouest-france-quai-bulles-finalists-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-12",
+      "publishedAt": "2026-09-24T12:58:39.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Премия Ouest-France/Quai des Bulles определила пять финалистов",
+        "en": "Ouest-France/Quai des Bulles prize selects five finalists"
+      },
+      "summary": {
+        "ru": "Читательское жюри премии Ouest-France/Quai des Bulles отобрало пять комиксов из десяти кандидатов. Среди финалистов - Akari Марко Кохинаты, Punk à sein Магали Ле Юш и Tekoha Клары Шотиль. Окончательный выбор намечен на 10 октября во время фестиваля в Сен-Мало.",
+        "en": "The Ouest-France/Quai des Bulles readers’ jury has selected five comics from ten candidates. Finalists include Marco Kohinata’s Akari, Magali Le Huche’s Punk à sein and Clara Chotil’s Tekoha. The final decision is scheduled for October 10 during the Saint-Malo festival."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134166/prix-litteraires/prix-ouest-france-quai-des-bulles-les-cinq-finalistes-de-l-edition-2026",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "scam-recit-dessine-selection-2026",
+      "eventKey": "scam-recit-dessine-selection-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24T12:35:09.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "La Scam назвала семь кандидатов на премию за рисованный рассказ",
+        "en": "La Scam selects seven titles for its drawn-narrative prize"
+      },
+      "summary": {
+        "ru": "В подборку Prix du Récit dessiné 2026 вошли семь книг, среди которых Monsieur Chouette Давида Б., Sarcophage Филиппа Дюпюи и Tachycardie Мейбеллин Скворцофф. Премия La Scam отмечает произведения, обращённые к реальности и созданные одним автором текста и рисунков.",
+        "en": "Seven books are in contention for the 2026 Prix du Récit dessiné, including David B.’s Monsieur Chouette, Philippe Dupuy’s Sarcophage and Maybelline Skvortzoff’s Tachycardie. La Scam’s prize recognises reality-focused narratives written and illustrated by a single creator."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134165/prix-litteraires/7-albums-selectionnes-pour-le-prix-du-recit-dessine-2026",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "esther-teillard-vocation-prize-2026",
+      "eventKey": "esther-teillard-vocation-prize-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-23T18:00:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Эстер Тейяр получила Prix Littéraire de la Vocation за Fuck Circus",
+        "en": "Esther Teillard wins the Prix Littéraire de la Vocation for Fuck Circus"
+      },
+      "summary": {
+        "ru": "23 сентября фонд Marcel Bleustein-Blanchet de la Vocation объявил Эстер Тейяр лауреатом литературной премии за второй роман Fuck Circus, опубликованный Grasset. Награда учреждена в 1976 году для молодых франкоязычных писателей младше тридцати лет.",
+        "en": "The Fondation Marcel Bleustein-Blanchet de la Vocation announced Esther Teillard as its literary prize winner on September 23 for her second novel Fuck Circus, published by Grasset. Established in 1976, the award supports French-language writers under thirty."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134153/prix-litteraires/fuck-circus-esther-teillard-remporte-le-prix-litteraire-de-la-vocation-2026",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "florent-oiseau-francoise-sagan-prize-2026",
+      "eventKey": "florent-oiseau-francoise-sagan-prize-2026",
+      "category": "awards",
+      "kind": "news",
+      "eventDate": "2026-09-22",
+      "publishedAt": "2026-09-22T18:00:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Флоран Уазо стал лауреатом премии Франсуазы Саган",
+        "en": "Florent Oiseau wins the Françoise Sagan Prize"
+      },
+      "summary": {
+        "ru": "22 сентября в Париже объявили, что премия Франсуазы Саган 2026 года присуждена Флорану Уазо за Ma gloire издательства Gallimard. Жюри отметило своеобразие авторского голоса и внимание к обычным людям. Премия учреждена Дени Вестхоффом в 2009 году.",
+        "en": "Florent Oiseau was announced as the 2026 Françoise Sagan Prize winner in Paris on September 22 for Ma gloire, published by Gallimard. The jury highlighted his distinctive voice and attention to ordinary people. Denis Westhoff established the prize in 2009."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134120/prix-litteraires/florent-oiseau-recoit-le-prix-francoise-sagan-2026-pour-ma-gloire",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "european-authors-day-programme-2026",
+      "eventKey": "european-authors-day-programme-2026",
+      "category": "festivals",
+      "kind": "announcement",
+      "eventDate": "2026-11-11",
+      "publishedAt": "2026-09-25T10:41:45.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Программа Дня европейских авторов пройдёт с 11 ноября по 12 декабря",
+        "en": "European Authors Day programme scheduled for November 11-December 12"
+      },
+      "summary": {
+        "ru": "Новая программа Дня европейских авторов Read. For Real запланирована на 11 ноября - 12 декабря. Школы, библиотеки и книжные магазины смогут проводить встречи, чтения и мастерские на тему совместности. Во Франции участие организаций координирует агентство Ciclic.",
+        "en": "The new Read. For Real European Authors Day programme is scheduled for November 11-December 12. Schools, libraries and bookshops can host meetings, readings and workshops around togetherness. Ciclic coordinates participating organisations in France."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134183/rencontres-dedicaces/une-nouvelle-edition-de-la-journee-des-auteurs-europeens",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "sables-de-dune-french-edition-2026",
+      "eventKey": "sables-de-dune-french-edition-2026",
+      "category": "releases",
+      "kind": "announcement",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-09-23T06:00:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Французское издание Les Sables de Dune запланировано на 1 октября",
+        "en": "French edition of Les Sables de Dune scheduled for October 1"
+      },
+      "summary": {
+        "ru": "Robert Laffont планирует выпустить Les Sables de Dune Брайана Герберта и Кевина Дж. Андерсона 1 октября в серии Ailleurs & Demain. Сборник объединяет четыре рассказа из вселенной «Дюны», в том числе истории, связанные с Гурни Халлеком и будущей Шэдоут Мэйпс.",
+        "en": "Robert Laffont plans to publish Brian Herbert and Kevin J. Anderson’s Les Sables de Dune on October 1 in its Ailleurs & Demain imprint. The collection brings together four Dune-universe stories, including narratives connected to Gurney Halleck and the future Shadout Mapes."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134116/avant-parutions/dune-n-a-pas-livre-tous-ses-secrets-quatres-nouvelles-inedites",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "kill-jackie-series-premiere-2026",
+      "eventKey": "kill-jackie-series-premiere-2026",
+      "category": "adaptations",
+      "kind": "announcement",
+      "eventDate": "2026-10-08",
+      "publishedAt": "2026-09-24T11:15:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Kill Jackie по роману Эйдана Труэна заявлен на HBO Max с 8 октября",
+        "en": "Aidan Truhen adaptation Kill Jackie announced for October 8 on HBO Max"
+      },
+      "summary": {
+        "ru": "ActuaLitté сообщает о назначенной на 8 октября премьере восьмисерийного Kill Jackie с Кэтрин Зетой-Джонс на HBO Max. Основой послужил роман Эйдана Труэна - псевдоним британского писателя Ника Харкуэя. Все восемь эпизодов снял Дэймон Томас.",
+        "en": "ActuaLitté reports an October 8 HBO Max premiere for the eight-part Kill Jackie, starring Catherine Zeta-Jones. It adapts a novel by Aidan Truhen, the pen name of British writer Nick Harkaway. Damon Thomas directed all eight episodes."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134158/bande-annonce/kill-jackie-une-mini-serie-tiree-d-un-livre-d-aidan-truhen",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "stevenson-cevennes-illustrated-french-edition-2026",
+      "eventKey": "stevenson-cevennes-illustrated-french-edition-2026",
+      "category": "releases",
+      "kind": "announcement",
+      "eventDate": "2026-10-15",
+      "publishedAt": "2026-09-25T06:00:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Marchialy выпустит иллюстрированное путешествие Стивенсона по Севеннам",
+        "en": "Marchialy to publish an illustrated edition of Stevenson’s Cévennes journey"
+      },
+      "summary": {
+        "ru": "15 октября Marchialy планирует выпустить Voyage avec un âne dans les Cévennes Роберта Льюиса Стивенсона в переводе Леона Боке. Новое издание иллюстрировал Гийом Гильпар, предисловие подготовила Клара Арно. Книга возвращает читателя к путешествию писателя с ослицей Модестиной в 1878 году.",
+        "en": "Marchialy plans to publish Robert Louis Stevenson’s Voyage avec un âne dans les Cévennes on October 15, translated by Léon Bocquet. The new edition features illustrations by Guillaume Guilpart and a foreword by Clara Arnaud, revisiting the writer’s 1878 journey with the donkey Modestine."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134080/avant-parutions/le-voyage-de-robert-louis-stevenson-dans-les-cevennes-s-offre-une-nouvelle-edition-illustree",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "poerio-goethe-iphigenia-attribution-2026",
+      "eventKey": "poerio-goethe-iphigenia-attribution-2026",
+      "category": "discoveries",
+      "kind": "news",
+      "eventDate": "2026-09-23",
+      "publishedAt": "2026-09-26T11:37:41.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "В Веймаре установили автора итальянского перевода «Ифигении» Гёте",
+        "en": "Weimar researchers identify the translator of Goethe’s Italian Iphigenia manuscript"
+      },
+      "summary": {
+        "ru": "Klassik Stiftung Weimar сообщил, что Франческа Фаббри атрибутировала Алессандро Поэрио итальянский перевод «Ифигении в Тавриде» из личной библиотеки Гёте. Рукопись уже хранилась и была каталогизирована, но переводчик оставался неизвестен. Фаббри также нашла автограф другого перевода Поэрио в библиотеке Ньюберри в Чикаго.",
+        "en": "Klassik Stiftung Weimar reports that Francesca Fabbri has attributed an Italian translation of Iphigenia in Tauris from Goethe’s personal library to Alessandro Poerio. The manuscript was already held and catalogued, but its translator was unidentified. Fabbri also located an autograph of another Poerio translation at Chicago’s Newberry Library."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134210/bibliophilie/200-ans-qu-on-cherchait-cette-traduction-elle-etait-dans-la-bibliotheque-de-goethe",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "geluck-chat-museum-ixelles-plan-2026",
+      "eventKey": "geluck-chat-museum-ixelles-plan-2026",
+      "category": "heritage",
+      "kind": "news",
+      "eventDate": "2026-09-24",
+      "publishedAt": "2026-09-24T16:01:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Для музея Кота Филиппа Гелюка объявлена новая площадка в Икселе",
+        "en": "Philippe Geluck’s Le Chat museum announces a new home in Ixelles"
+      },
+      "summary": {
+        "ru": "Проект музея Le Chat et de l’Art rigolo получил новую площадку в бывшей фарфоровой мануфактуре Demeuldre-Coché в Икселе. Как сообщает ActuaLitté, открытие предполагается в начале 2028 года после реставрации и получения разрешений. Экспозиция должна включать оригинальные рисунки, комиксы и архивы Филиппа Гелюка.",
+        "en": "The planned Le Chat et de l’Art rigolo museum has found a new home in Ixelles’s former Demeuldre-Coché porcelain works. ActuaLitté reports a proposed early-2028 opening after restoration and approvals. Displays are expected to include Philippe Geluck’s original drawings, comics and archives."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134178/expos/le-musee-du-chat-de-philippe-geluck-renait-a-bruxelles",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    },
+    {
+      "id": "lucashenko-eddie-blanket-french-edition-2026",
+      "eventKey": "lucashenko-eddie-blanket-french-edition-2026",
+      "category": "releases",
+      "kind": "announcement",
+      "eventDate": "2026-10-01",
+      "publishedAt": "2026-09-24T05:00:00.000Z",
+      "verifiedAt": "2026-09-26T18:05:24.395Z",
+      "title": {
+        "ru": "Роман Мелиссы Лукашенко выйдет по-французски как La Chute d’Eddie Blanket",
+        "en": "Melissa Lucashenko’s novel to appear in French as La Chute d’Eddie Blanket"
+      },
+      "summary": {
+        "ru": "Synchronique éditions планирует выпустить La Chute d’Eddie Blanket Мелиссы Лукашенко 1 октября в переводе Мирей Виньоль. Роман соединяет семейные истории, разделённые пятью поколениями, и обращается к колониальной истории Австралии с точки зрения аборигенных героев.",
+        "en": "Synchronique éditions plans to publish Melissa Lucashenko’s La Chute d’Eddie Blanket on October 1 in Mireille Vignol’s translation. The novel connects family narratives separated by five generations and approaches Australia’s colonial history through Aboriginal characters."
+      },
+      "source": {
+        "name": "ActuaLitté",
+        "url": "https://actualitte.com/article/134109/avant-parutions/la-chute-d-eddie-blanket-une-histoire-de-famille-sur-deux-siecles",
+        "language": "fr"
+      },
+      "verification": "confirmed",
+      "region": "europe"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ditan-beijing-book-market-opening-2026",
+      "sourceId": "pac-org-cn",
+      "sourceCountryCodes": [
+        "CN"
+      ],
+      "coverageCountryCodes": [
+        "CN"
+      ],
+      "url": "https://www.pac.org.cn/hangyedongtai/141399.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:01.304Z",
+      "responseSha256": "652ed09df189c3d7e73968e707c628f936143c2cb4334be2ad4e3e577bd58533",
+      "responseBytes": 40851,
+      "sourcePublishedAt": "2026-09-18",
+      "eventDate": "2026-09-17",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Beijing’s eleven-day Me and Ditan book market opened on September 17. The Publishers Association of China reports participation by more than 400 publishers, organisations and bookshops. The programme includes over 150 cultural events, used-book exchanges and foreign-language editions."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "china-publishing-development-report-2025-2026",
+      "sourceId": "pac-org-cn",
+      "sourceCountryCodes": [
+        "CN"
+      ],
+      "coverageCountryCodes": [
+        "CN"
+      ],
+      "url": "https://www.pac.org.cn/hangyedongtai/141395.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:00.945Z",
+      "responseSha256": "2f281b9058bce96d8e575fd541c05ce7f86abdbc34a6d5f31cee493654754ecd",
+      "responseBytes": 46963,
+      "sourcePublishedAt": "2026-09-11",
+      "eventDate": "2026-09-11",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The Publishers Association of China reports the presentation in Guangzhou of the 2025\u20132026 report on the development of China’s publishing industry. It describes pressure on print alongside digital growth; the cited figures put growth in the online literature reading market at 16.6% in 2025."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": null,
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "pen-america-alim-aliiev-literary-interview-2026",
+      "sourceId": "pen-america",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US",
+        "UA"
+      ],
+      "url": "https://pen.org/alim-aliiev-crimean-tatar/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:00.362Z",
+      "responseSha256": "4cf20aa23b70267b98225eb498b568ed50674c97fb46d3ee3e4bc73248d8dd75",
+      "responseBytes": 503210,
+      "sourcePublishedAt": "2026-09-22T20:25:25.000Z",
+      "eventDate": "2026-09-22",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "In a PEN America interview, writer and Crimean Fig organiser Alim Aliiev discusses the links between mother tongue, memory and literary creation. The article introduces the festival and its translation projects, identifying the English-language anthology Crimean Fig / Qırım İnciri as a publication from the previous year."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://cdn.pen.org/wp-content/uploads/2026/09/22162211/Alim-Aliiev-headshot-Courtesy-Image.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "isabel-j-kim-pen-ten-sublimation-interview-2026",
+      "sourceId": "pen-america",
+      "sourceCountryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [
+        "US",
+        "KR"
+      ],
+      "url": "https://pen.org/isabel-j-kim-the-pen-ten-interview/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:01.230Z",
+      "responseSha256": "9c601a84e9cfb34c98c26d5a550705b33c8ee658c1d6d45b080256652b6f6271",
+      "responseBytes": 510299,
+      "sourcePublishedAt": "2026-09-10T13:49:14.000Z",
+      "eventDate": "2026-09-10",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "In The PEN Ten interview, Isabel J. Kim discusses expanding a short story into her debut novel Sublimation and incorporating Korean folklore into its speculative world. She also considers migration and literary influences, including work by Charles Yu, Ursula K. Le Guin and Ruth Ozeki."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://cdn.pen.org/wp-content/uploads/2026/09/08095743/Isabel-J-Kim-PEN-Ten-Featured-Image.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "pen-belarus-three-writers-released-20260916",
+      "sourceId": "penbelarus-org",
+      "sourceCountryCodes": [],
+      "coverageCountryCodes": [
+        "BY",
+        "LT"
+      ],
+      "url": "https://penbelarus.org/en/2026/09/16/troe-lyudzej-slova-na-voli.html",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:02.211Z",
+      "responseSha256": "ca210fb1b803c3d8b416c730bdaf73b88f5f233ee9ff657cb3e830e343f46bf1",
+      "responseBytes": 137800,
+      "sourcePublishedAt": "2026-09-16",
+      "eventDate": "2026-09-16",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "PEN Belarus reports that poet and journalist Andrej Alaksandraŭ, songwriter Dzmitryj Hałavač and translator-publisher Zmicier Kołas were among prisoners released and forcibly taken to Lithuania on September 16. The organisation highlighted Kołas’s contribution to Belarusian translations of world literature."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://penbelarus.org/wp-content/uploads/2026/09/6.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "bugojanska-vaza-short-story-deadline-2026",
+      "sourceId": "penbih-ba",
+      "sourceCountryCodes": [
+        "BA"
+      ],
+      "coverageCountryCodes": [
+        "BA"
+      ],
+      "url": "https://penbih.ba/2026/08/natjecaj-za-kratku-pricu-pripovijetkuxiv-bugojnaska-vaza-bugojno-2026/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:02.618Z",
+      "responseSha256": "3c80b43373a207eab666b7d19cce53a98247067b6c033d9b1a3c82a885425c7d",
+      "responseBytes": 199831,
+      "sourcePublishedAt": "2026-08-31T12:56:34.000Z",
+      "eventDate": "2026-10-19",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Bugojno’s Cultural and Sports Centre has announced the fourteenth Bugojanska vaza competition for citizens of Bosnia and Herzegovina. Previously unpublished, unawarded stories of up to 20,000 characters in Bosnian, Croatian or Serbian may be submitted until October 19."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "http://penbih.ba/wp-content/uploads/2026/08/Bugojanska-vaza-foto-sama-scaled.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "sarajevo-amer-tikvesa-literary-corner-2026",
+      "sourceId": "penbih-ba",
+      "sourceCountryCodes": [
+        "BA"
+      ],
+      "coverageCountryCodes": [
+        "BA"
+      ],
+      "url": "https://penbih.ba/2026/09/knjizevni-korner-54-razgovor-sa-amerom-tikvesom/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:02.702Z",
+      "responseSha256": "81cc69d2de49a9f57c7a8827cf7c2a4a455c6ed091b1cc4833e26c176a05765f",
+      "responseBytes": 200807,
+      "sourcePublishedAt": "2026-09-25T05:48:24.000Z",
+      "eventDate": "2026-10-14",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Bosnia and Herzegovina’s National and University Library will host the 54th Književni korner on October 14 at 18:00. Goran Vrhunc will speak with writer, teacher and journalist Amer Tikveša, whose books include short stories, children’s literature and a biography of Ibrica Jusić."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "http://penbih.ba/wp-content/uploads/2026/09/post.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "pen-catala-eritrean-writers-audio-postcards-2026",
+      "sourceId": "pencatala-cat",
+      "sourceCountryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [
+        "ES",
+        "ER"
+      ],
+      "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-dotze-postals-sonores-contra-25-anys-de-silenci/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:03.384Z",
+      "responseSha256": "87cfe0a2618a58c29020367de09bb02c55ec81d9810980ea8d209ada4107214d",
+      "responseBytes": 98300,
+      "sourcePublishedAt": "2026-09-18",
+      "eventDate": "2026-09-18",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "PEN Català has launched Prova de vida ja! to mark 25 years since twelve Eritrean writers and journalists disappeared. Twelve Catalan-language authors have prepared audio postcards, with publication planned through December 10. The campaign seeks information about the missing writers rather than claiming their present circumstances are known."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://www.pencatala.cat/wp-content/uploads/2026/09/RADIO-PODCAST-MARC-GIRO_-PROVA-DE-VIDA-ja.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "dublin-imprisoned-writer-gallagher-2026",
+      "sourceId": "irishpen-com",
+      "sourceCountryCodes": [
+        "IE"
+      ],
+      "coverageCountryCodes": [
+        "IE"
+      ],
+      "url": "https://irishpen.com/2026/09/16/irish-pen-event-at-dublin-book-festival/",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:03.887Z",
+      "responseSha256": "f570130c304d31da12ca392654d01e69c9367ca2e12a648e7d0358944fa12369",
+      "responseBytes": 93677,
+      "sourcePublishedAt": "2026-09-16",
+      "eventDate": "2026-11-07",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Caoilfhionn Gallagher will discuss censorship and the persecution of writers and booksellers at the Dublin Book Festival on November 7 at 15:00. Irish PEN and the festival list the Royal Irish Academy of Music as the venue. At verification, the main booking was full and a waiting list was open."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://irishpen.com/wp-content/uploads/2026/08/Unesco-logo.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      },
+      "supplementalPrimaryEvidence": [
+        {
+          "url": "https://dublinbookfestival.com/event/day-of-the-imprisoned-writer-2/",
+          "status": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 73263,
+          "sha256": "850415a705da5144b6438cdcd111db5103c09260161a0b066dea6d35020b2b03",
+          "accessedAt": "2026-09-26T17:59:42.503Z"
+        }
+      ]
+    },
+    {
+      "id": "livres-en-vignes-awards-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134207/prix-litteraires/livres-en-vignes-2026-gautier-battistella-francois-henri-deserable-et-bruno-verjus-recompenses",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.133Z",
+      "responseSha256": "00e273b1e1541e96fb0038ec286ed44ec53ece68c7a94258e551ae0a0a88f551",
+      "responseBytes": 171656,
+      "sourcePublishedAt": "2026-09-25T15:11:00.000Z",
+      "eventDate": "2026-09-25",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Livres en Vignes presented its awards at the Château du Clos de Vougeot on September 25. Gautier Battistella won the main prize for Bocuse, François-Henri Désérable the Albert-Bichot award for Le Palais, and Bruno Verjus the debut-novel prize for La Recette. Eva Bottega’s Le Ciel ici déborde received a special mention."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/livres-en-vignes-2026-gautier-battistella-francois-henri-deserable-et-bruno-verjus-recompenses-6ab6c24c4245e539312275.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "madeline-cash-page-america-award-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR",
+        "US"
+      ],
+      "url": "https://actualitte.com/article/134206/prix-litteraires/madeline-cash-remporte-le-prix-du-roman-page-america-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.036Z",
+      "responseSha256": "bb32e1ebe1627282c7991ff36506963366e5b9c85ca36f3fa1dbd393ecc3dbf3",
+      "responseBytes": 153971,
+      "sourcePublishedAt": "2026-09-25T15:44:00.000Z",
+      "eventDate": "2026-09-25",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Madeline Cash won the 2026 PAGE/AMERICA novel prize for her debut Lost Lambs, published in France as Les Brebis égarées. Alexandre Civico and Barbara Tajan translated the Denoël edition. The award is decided by 130 booksellers and librarians."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/madeline-cash-remporte-le-prix-du-roman-page-america-2026-6ab6b1cdb9e99891271449.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "marie-dorleans-grand-est-award-presentation-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134125/prix-litteraires/marie-dorleans-remporte-le-prix-du-livre-grand-est-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.156Z",
+      "responseSha256": "437ec9049eb1c601ee8b164a707e108097683018f8e7ab937ea6b33d22d4fc50",
+      "responseBytes": 160968,
+      "sourcePublishedAt": "2026-09-22T15:47:00.000Z",
+      "eventDate": "2026-10-09",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Marie Dorléans is due to receive the 2026 Prix du Livre Grand Est on October 9 at Troyes Mille Pages. She won for the picture book Une histoire de rien du tout, published by Seuil Jeunesse. The jury also selected Pauline Morel’s Pluie as a favourite."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/marie-dorleans-remporte-le-prix-du-livre-grand-est-2026-6ab2cbdbae831849785122.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "vanity-fair-literary-selection-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134138/prix-litteraires/9-livres-selectionnes-pour-le-prix-litteraire-vanity-fair-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.347Z",
+      "responseSha256": "26c252cba865fdcd0cb8e09ec674a135636acc43d90b0d3d2f09fc2ff45583b2",
+      "responseBytes": 166338,
+      "sourcePublishedAt": "2026-09-23T13:11:22.000Z",
+      "eventDate": "2026-09-23",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The second Prix littéraire Vanity Fair has selected nine works across fiction, nonfiction and comics. They include David Djaïz’s La Méthode, Myriam Anissimov’s Jean & Romain and Jade Khoo’s Terre ou lune. Winners are due to be announced in Paris on November 2."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/9-livres-selectionnes-pour-le-prix-litteraire-vanity-fair-2026-6ab3c8b1cad76092344383.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "ens-editions-first-alef-prize-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR",
+        "DZ"
+      ],
+      "url": "https://actualitte.com/article/134185/prix-litteraires/le-prix-alef-de-l-edition-scientifique-2026-distingue-une-publication-d-ens-editions",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.639Z",
+      "responseSha256": "0faa4d6212ece664fe8fa68d537865b344eec3a110f09edce49e8bb1aa8e3835",
+      "responseBytes": 154443,
+      "sourcePublishedAt": "2026-09-25T12:55:01.000Z",
+      "eventDate": "2026-09-24",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "ENS Éditions received the inaugural ALEF scholarly publishing prize on September 24 for Antonin Plarier’s Des bandits face au pouvoir colonial. Algérie, 1871-1920. The award recognises editorial work from manuscript selection to dissemination. The book is also available to read openly on OpenEdition Books."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/le-prix-alef-de-l-edition-scientifique-2026-distingue-une-publication-d-ens-editions-6ab63824c0ba0573388323.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "musicians-literary-prize-selection-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134177/prix-litteraires/eric-emmanuel-schmitt-et-erik-orsenna-en-lice-au-prix-litteraire-des-musiciens-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.965Z",
+      "responseSha256": "e24ee5e43c7be473c252585a17935c92870f00bd5b118c39092a4f485710a1d2",
+      "responseBytes": 200145,
+      "sourcePublishedAt": "2026-09-24T15:27:00.000Z",
+      "eventDate": "2026-09-24",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The eighth Prix Littéraire des Musiciens has selected three books each in fiction, essay and children’s literature. Nominees include Éric-Emmanuel Schmitt and Claire-Marie Le Guay and Erik Orsenna’s book about Bach. The awards are scheduled for November 13 at Paris’s Pavillon de la Sirène."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/eric-emmanuel-schmitt-et-erik-orsenna-en-lice-au-prix-litteraire-des-musiciens-2026-6ab56529bf6cd834434925.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "utopiales-comics-shortlist-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134174/prix-litteraires/prix-utopiales-bd-2026-six-albums-pour-succeder-aux-navigateurs",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:05.963Z",
+      "responseSha256": "663b56634b40a76f17080383adac6d70230aa24f84b730d5911b2a3e2240b85f",
+      "responseBytes": 184597,
+      "sourcePublishedAt": "2026-09-24T14:35:42.000Z",
+      "eventDate": "2026-09-24",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Six books are shortlisted for the 2026 Prix Utopiales BD, including Norm Konyu’s The Junction, Juliette Brocal’s La Langue des vipères and David Sala’s Frankenstein. Nantes municipal library’s science-fiction comics reading club will choose the winner, with presentation scheduled for October 31."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/prix-utopiales-bd-2026-six-albums-pour-succeder-aux-navigateurs-6ab5341a55b63452377783.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "ouest-france-quai-bulles-finalists-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134166/prix-litteraires/prix-ouest-france-quai-des-bulles-les-cinq-finalistes-de-l-edition-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.136Z",
+      "responseSha256": "87fd648ae5314f31c90e58657c3d25adf2a952ef18710d8496eda1f8c58c3afc",
+      "responseBytes": 176638,
+      "sourcePublishedAt": "2026-09-24T12:58:39.000Z",
+      "eventDate": "2026-09-12",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The Ouest-France/Quai des Bulles readers’ jury has selected five comics from ten candidates. Finalists include Marco Kohinata’s Akari, Magali Le Huche’s Punk à sein and Clara Chotil’s Tekoha. The final decision is scheduled for October 10 during the Saint-Malo festival."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/prix-ouest-france-quai-des-bulles-les-cinq-finalistes-de-l-edition-2026-6ab51870a1bce468580385.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "scam-recit-dessine-selection-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134165/prix-litteraires/7-albums-selectionnes-pour-le-prix-du-recit-dessine-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.371Z",
+      "responseSha256": "751f55f220122197bbdf868673eb0f68cfdf60b6c7fc7647efdcee35ed3ca652",
+      "responseBytes": 187365,
+      "sourcePublishedAt": "2026-09-24T12:35:09.000Z",
+      "eventDate": "2026-09-24",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Seven books are in contention for the 2026 Prix du Récit dessiné, including David B.’s Monsieur Chouette, Philippe Dupuy’s Sarcophage and Maybelline Skvortzoff’s Tachycardie. La Scam’s prize recognises reality-focused narratives written and illustrated by a single creator."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/7-albums-selectionnes-pour-le-prix-du-recit-dessine-2026-6ab4fd2de98c6180407443.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "esther-teillard-vocation-prize-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134153/prix-litteraires/fuck-circus-esther-teillard-remporte-le-prix-litteraire-de-la-vocation-2026",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.703Z",
+      "responseSha256": "3204aa18e24ca609a046af0b4d200b811fd0228f90e5571749bc9c6184121401",
+      "responseBytes": 148795,
+      "sourcePublishedAt": "2026-09-23T18:00:00.000Z",
+      "eventDate": "2026-09-23",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The Fondation Marcel Bleustein-Blanchet de la Vocation announced Esther Teillard as its literary prize winner on September 23 for her second novel Fuck Circus, published by Grasset. Established in 1976, the award supports French-language writers under thirty."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/fuck-circus-esther-teillard-remporte-le-prix-litteraire-de-la-vocation-2026-6ab41ce93998c558388631.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "florent-oiseau-francoise-sagan-prize-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134120/prix-litteraires/florent-oiseau-recoit-le-prix-francoise-sagan-2026-pour-ma-gloire",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.838Z",
+      "responseSha256": "0e4226554584afa2efd093292e21a1b11025af96a6c289b762997b9c23cea4b5",
+      "responseBytes": 154196,
+      "sourcePublishedAt": "2026-09-22T18:00:00.000Z",
+      "eventDate": "2026-09-22",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Florent Oiseau was announced as the 2026 Françoise Sagan Prize winner in Paris on September 22 for Ma gloire, published by Gallimard. The jury highlighted his distinctive voice and attention to ordinary people. Denis Westhoff established the prize in 2009."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/florent-oiseau-recoit-le-prix-francoise-sagan-2026-pour-ma-gloire-6ab290db578d7036724679.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "cordoba-books-education-programme-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "AR"
+      ],
+      "url": "https://actualitte.com/article/134216/international/pour-aider-les-editeurs-locaux-cordoba-commande-50-000-livres",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.810Z",
+      "responseSha256": "fa856cece2f56d2866d2f970f1acc801c984013563266434dea4c478b01a2090",
+      "responseBytes": 261884,
+      "sourcePublishedAt": "2026-09-26T13:30:00.000Z",
+      "eventDate": "2026-09-23",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Argentina’s Córdoba province presented a programme on September 23 to supply 50,000 copies to schools, teacher-training institutes and educational centres. Purchases involve 27 local publishers. The total also includes donations and other contributions, so the number distributed is not the purchase count."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/pour-aider-les-editeurs-locaux-cordoba-commande-50-000-livres-6ab7b9a3ea80e058407713.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "european-authors-day-programme-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR"
+      ],
+      "url": "https://actualitte.com/article/134183/rencontres-dedicaces/une-nouvelle-edition-de-la-journee-des-auteurs-europeens",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:06.981Z",
+      "responseSha256": "5a9c7837ac74816aeda27f288c0b4ae7dce923059d690580e7f462578aee1c6e",
+      "responseBytes": 255380,
+      "sourcePublishedAt": "2026-09-25T10:41:45.000Z",
+      "eventDate": "2026-11-11",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The new Read. For Real European Authors Day programme is scheduled for November 11\u2013December 12. Schools, libraries and bookshops can host meetings, readings and workshops around togetherness. Ciclic coordinates participating organisations in France."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/une-nouvelle-edition-de-la-journee-des-auteurs-europeens-6ab631c95e9d2950375253.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "tv5monde-un-pays-un-livre-announced-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR",
+        "CA",
+        "KH",
+        "SN",
+        "MU",
+        "CH",
+        "MA",
+        "HT",
+        "CG"
+      ],
+      "url": "https://actualitte.com/article/134151/television/un-pays-un-livre-augustin-trapenard-rejoint-tv5monde-pour-une-nouvelle-emission",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:07.816Z",
+      "responseSha256": "67b2d3c8c726c85408deb5c28d98746ebc5ed5a193c53435f3b9d0234fd0e5df",
+      "responseBytes": 253372,
+      "sourcePublishedAt": "2026-09-23T15:39:23.000Z",
+      "eventDate": "2026-09-23",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "TV5MONDE has announced Un pays, un livre, thirty three-minute programmes presented by Augustin Trapenard and scheduled for daily broadcast in November. Each episode focuses on one writer and work; the announced authors include Nancy Huston, Ananda Devi, Leïla Slimani and Alain Mabanckou."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/un-pays-un-livre-augustin-trapenard-rejoint-tv5monde-pour-une-nouvelle-emission-6ab3f21fc49bf743192931.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "sables-de-dune-french-edition-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR",
+        "US"
+      ],
+      "url": "https://actualitte.com/article/134116/avant-parutions/dune-n-a-pas-livre-tous-ses-secrets-quatres-nouvelles-inedites",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:07.784Z",
+      "responseSha256": "6edb2eab653f4c2fd8fd1e8fc3a3f8465f1bc34326e5fdfe85c30c62c2b76d17",
+      "responseBytes": 255259,
+      "sourcePublishedAt": "2026-09-23T06:00:00.000Z",
+      "eventDate": "2026-10-01",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Robert Laffont plans to publish Brian Herbert and Kevin J. Anderson’s Les Sables de Dune on October 1 in its Ailleurs & Demain imprint. The collection brings together four Dune-universe stories, including narratives connected to Gurney Halleck and the future Shadout Mapes."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/dune-n-a-pas-livre-tous-ses-secrets-quatres-nouvelles-inedites-6ab28d49aa9d6537535836.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "devenir-un-monstre-quebec-release-2027",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "CA"
+      ],
+      "url": "https://actualitte.com/article/134179/bande-annonce/devenir-un-monstre-le-livre-de-jean-barbe-devient-un-film",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:07.691Z",
+      "responseSha256": "84e9c204b305c01e23209c577a7ebf16c8a7854454fa97f12d721aad6dc9df5d",
+      "responseBytes": 247341,
+      "sourcePublishedAt": "2026-09-25T11:30:00.000Z",
+      "eventDate": "2027-03-19",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Devenir un monstre, adapted from Jean Barbe’s novel Comment devenir un monstre, is scheduled for a Quebec release on March 19, 2027. Charles-Olivier Michaud directs Simon Lavoie’s screenplay. Films du Boulevard and Maison 4:3 are producing the film."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/devenir-un-monstre-le-livre-de-jean-barbe-devient-un-film-6ab61d812fe4b997887809.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "kill-jackie-series-premiere-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR",
+        "GB"
+      ],
+      "url": "https://actualitte.com/article/134158/bande-annonce/kill-jackie-une-mini-serie-tiree-d-un-livre-d-aidan-truhen",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:07.853Z",
+      "responseSha256": "77c9a1149a19ebe943e324e3aac5794b3cf907d91b63607db8a9e60c00c71ec1",
+      "responseBytes": 247299,
+      "sourcePublishedAt": "2026-09-24T11:15:00.000Z",
+      "eventDate": "2026-10-08",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "ActuaLitté reports an October 8 HBO Max premiere for the eight-part Kill Jackie, starring Catherine Zeta-Jones. It adapts a novel by Aidan Truhen, the pen name of British writer Nick Harkaway. Damon Thomas directed all eight episodes."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/kill-jackie-une-mini-serie-tiree-d-un-livre-d-aidan-truhen-6ab4d1f8b2e76842861942.jpeg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "wmf-martins-fontes-amazon-supply-announcement-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "BR"
+      ],
+      "url": "https://actualitte.com/article/134132/economie/un-editeur-bresilien-majeur-decide-de-retirer-ses-ouvrages-d-amazon",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:08.284Z",
+      "responseSha256": "214210e5277df4ef26dbcd66444500553575ab6b92ee5cc17bde81474014eb67",
+      "responseBytes": 261898,
+      "sourcePublishedAt": "2026-09-23T09:34:10.000Z",
+      "eventDate": "2026-09-02",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Brazilian publisher WMF Martins Fontes has announced plans to stop supplying new stock to Amazon in the coming months. ActuaLitté reports that Alexandre Martins Fontes linked the decision to discounting practices. The announcement concerns future supplies, rather than an immediate removal of the catalogue."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/un-editeur-bresilien-majeur-decide-de-retirer-ses-ouvrages-d-amazon-6ab387f262f42973993957.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "stevenson-cevennes-illustrated-french-edition-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR",
+        "GB"
+      ],
+      "url": "https://actualitte.com/article/134080/avant-parutions/le-voyage-de-robert-louis-stevenson-dans-les-cevennes-s-offre-une-nouvelle-edition-illustree",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:08.920Z",
+      "responseSha256": "ea4fddc546e35ede1d6c79ac92a7159736505c4be3f1db956935a8ba9ceec641",
+      "responseBytes": 258607,
+      "sourcePublishedAt": "2026-09-25T06:00:00.000Z",
+      "eventDate": "2026-10-15",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Marchialy plans to publish Robert Louis Stevenson’s Voyage avec un âne dans les Cévennes on October 15, translated by Léon Bocquet. The new edition features illustrations by Guillaume Guilpart and a foreword by Clara Arnaud, revisiting the writer’s 1878 journey with the donkey Modestine."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/le-voyage-de-robert-louis-stevenson-dans-les-cevennes-s-offre-une-nouvelle-edition-illustree-6ab1076a84ede444499575.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "poerio-goethe-iphigenia-attribution-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "DE",
+        "IT",
+        "US"
+      ],
+      "url": "https://actualitte.com/article/134210/bibliophilie/200-ans-qu-on-cherchait-cette-traduction-elle-etait-dans-la-bibliotheque-de-goethe",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:08.463Z",
+      "responseSha256": "9f2e6858fff83f290312b62dab0f0b719997bab96dc8e3e6b6005ffbf607d555",
+      "responseBytes": 260442,
+      "sourcePublishedAt": "2026-09-26T11:37:41.000Z",
+      "eventDate": "2026-09-23",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Klassik Stiftung Weimar reports that Francesca Fabbri has attributed an Italian translation of Iphigenia in Tauris from Goethe’s personal library to Alessandro Poerio. The manuscript was already held and catalogued, but its translator was unidentified. Fabbri also located an autograph of another Poerio translation at Chicago’s Newberry Library."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/200-ans-qu-on-cherchait-cette-traduction-elle-etait-dans-la-bibliotheque-de-goethe-6ab7ae6e8a200316685870.png",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      },
+      "supplementalPrimaryEvidence": [
+        {
+          "url": "https://www.klassik-stiftung.de/service/presse/pressemitteilung/verschollen-geglaubte-iphigenie-uebersetzung-nach-200-jahren-in-goethes-eigener-bibliothek-entdeckt/",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 133108,
+          "sha256": "5f8da6a5e5f4c7aa6d93a74f931c56b3cc6da05e361f7c8aa670705374fec956",
+          "accessedAt": "2026-09-26T17:59:42.523Z"
+        }
+      ]
+    },
+    {
+      "id": "geluck-chat-museum-ixelles-plan-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "BE"
+      ],
+      "url": "https://actualitte.com/article/134178/expos/le-musee-du-chat-de-philippe-geluck-renait-a-bruxelles",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:08.504Z",
+      "responseSha256": "f375d24b2720f0d1ea4fd3eeebdba59c0844a53be63d0247863b85e627251b97",
+      "responseBytes": 255919,
+      "sourcePublishedAt": "2026-09-24T16:01:00.000Z",
+      "eventDate": "2026-09-24",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "The planned Le Chat et de l’Art rigolo museum has found a new home in Ixelles’s former Demeuldre-Coché porcelain works. ActuaLitté reports a proposed early-2028 opening after restoration and approvals. Displays are expected to include Philippe Geluck’s original drawings, comics and archives."
+      ],
+      "stage": "documented result, publication or announcement; dates distinguished from retrieval",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/le-musee-du-chat-de-philippe-geluck-renait-a-bruxelles-6ab567bbf22c1449082397.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    },
+    {
+      "id": "lucashenko-eddie-blanket-french-edition-2026",
+      "sourceId": "actualitte",
+      "sourceCountryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [
+        "FR",
+        "AU"
+      ],
+      "url": "https://actualitte.com/article/134109/avant-parutions/la-chute-d-eddie-blanket-une-histoire-de-famille-sur-deux-siecles",
+      "httpStatus": 200,
+      "accessedAt": "2026-09-26T17:58:09.144Z",
+      "responseSha256": "68041d7240a9bd1bc791a81d0ad6744759dc5da2828c0c9cd12b064d426e94d6",
+      "responseBytes": 256767,
+      "sourcePublishedAt": "2026-09-24T05:00:00.000Z",
+      "eventDate": "2026-10-01",
+      "method": "direct-detail-page; factual extraction and Codex RU/EN editorial drafting",
+      "facts": [
+        "Synchronique éditions plans to publish Melissa Lucashenko’s La Chute d’Eddie Blanket on October 1 in Mireille Vignol’s translation. The novel connects family narratives separated by five generations and approaches Australia’s colonial history through Aboriginal characters."
+      ],
+      "stage": "future event explicitly announced in source",
+      "publicRelease": "not-published",
+      "media": {
+        "sourcePageInspected": true,
+        "candidateUrl": "https://actualitte.com/uploads/images/la-chute-d-eddie-blanket-une-histoire-de-famille-sur-deux-siecles-6ab256710b993297536907.jpg",
+        "rightsStatus": "not-established",
+        "deliveryFallback": "text-only",
+        "note": "HTML metadata inspected; no permission to reproduce inferred from source publication."
+      }
+    }
+  ],
+  "recordSha256": "8496790affd7c1771e3954ae392fd9cbf7e3938fcee53ba2580538a9f57c4c0c",
+  "receipt": {
+    "publication": "not-run",
+    "socialDelivery": "not-run"
+  },
+  "checks": {
+    "allSourceDetailRequests": {
+      "status": "all-http-200",
+      "recordCount": 31
+    },
+    "factExtraction": "complete-for-every-record",
+    "ruEnEquivalence": "Codex editorial self-check; not human review",
+    "duplicates": "no id/eventKey/canonical URL match in reviewed.json or other prepared batches; semantic review against existing events; single combined Livres en Vignes awards card",
+    "schema": "production selectReviewed 31/31",
+    "dateScope": "news event/announcement dates within 60 days; precise future event dates explicitly sourced; report dates kept distinct from source-described event dates; late reports of old editions not labelled new book releases"
+  },
+  "held": [
+    {
+      "researchIndex": 2,
+      "reason": "empty article body / document-only page, unverified facts"
+    },
+    {
+      "researchIndex": 9,
+      "reason": "July21 event outside 60days"
+    },
+    {
+      "researchIndex": 10,
+      "reason": "July20 announcement outside60days"
+    },
+    {
+      "researchIndex": 11,
+      "reason": "http500, no verified detail"
+    },
+    {
+      "researchIndex": 12,
+      "reason": "festival preview began yesterday, completion not verified; not recast as new announcement"
+    },
+    {
+      "researchIndex": 35,
+      "reason": "exact award occurrence date not established from last-week wording"
+    }
+  ],
+  "nextStep": "Root additive integration, publication eligibility verification and separately authorised release; do not treat prepared count as published count."
+}

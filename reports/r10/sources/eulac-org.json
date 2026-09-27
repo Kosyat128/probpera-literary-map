@@ -1,0 +1,387 @@
+{
+  "sourceId": "eulac-org",
+  "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+  "entryUrl": "https://eulac.org/",
+  "countryCodes": [
+    "CO"
+  ],
+  "coverageCountryCodes": [
+    "CO"
+  ],
+  "attemptedAt": "2026-09-26T17:27:54.849Z",
+  "requests": [
+    {
+      "url": "https://eulac.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 12750,
+      "sha256": "0dc8a5297a78632127b7b04e2d2c30e4a5f6d823b24a86c45fbdf6a8ac68866b",
+      "accessedAt": "2026-09-26T17:21:31.083Z"
+    },
+    {
+      "url": "https://eulac.org/2026/07/construccion-de-la-agenda-cientifica-institucional-lineas-de-investigacion-2025-2030/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 144473,
+      "sha256": "1712084ba886ead12983fdd69e088d55dc9b71ea3c317d98e4688f52bb702d06",
+      "accessedAt": "2026-09-26T17:27:55.820Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is a scientific institutional research agenda; literary relevance not demonstrated.",
+  "robots": {
+    "url": "https://eulac.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 167,
+    "sha256": "664b567a2d3a3304aa448627bad30ba00bdefe989596ada70f3d419cd14061ea",
+    "accessedAt": "2026-09-26T17:27:55.496Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:29.024Z",
+    "sourceDocumentSha256": "0dc8a5297a78632127b7b04e2d2c30e4a5f6d823b24a86c45fbdf6a8ac68866b"
+  },
+  "endpoint": {
+    "id": "eulac-org",
+    "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+    "url": "https://eulac.org/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "latin-america",
+    "sourceFamilyId": "eulac-org",
+    "countryCodes": [
+      "CO"
+    ],
+    "coverageCountryCodes": [
+      "CO"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://eulac.org"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://eulac.org/2026/07/construccion-de-la-agenda-cientifica-institucional-lineas-de-investigacion-2025-2030/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:55.826Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "eulac-org",
+    "source": {
+      "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+      "url": "https://eulac.org/2026/07/construccion-de-la-agenda-cientifica-institucional-lineas-de-investigacion-2025-2030/",
+      "language": "es"
+    },
+    "region": "latin-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Construcción de la Agenda Científica Institucional.Líneas de Investigación 2025-2030",
+    "publishedAt": "2026-07-09T01:16:09.000Z",
+    "description": "La obra presenta la evolución de la gestión de la investigación en la Universidad Científica del Sur y explica la metodología utilizada para definir sus líneas de investigación institucionales para el periodo 2025-2030. El cargo Construcción de la Agenda Científica Institucional.Líneas de Investigación 2025-2030 apareció primero en Asociación de Editoriales Universitarias de América Latina y el C…",
+    "discoveredAt": "2026-09-26T17:27:55.498Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://eulac.org/2026/07/construccion-de-la-agenda-cientifica-institucional-lineas-de-investigacion-2025-2030/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 144473,
+      "sha256": "1712084ba886ead12983fdd69e088d55dc9b71ea3c317d98e4688f52bb702d06",
+      "accessedAt": "2026-09-26T17:27:55.820Z",
+      "headline": "Construcción de la Agenda Científica Institucional.Líneas de Investigación 2025-2030",
+      "excerpt": "Construcción de la Agenda Científica Institucional.Líneas de Investigación 2025-2030 » Asociación de Editoriales Universitarias de América Latina y el Caribe <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-568B4D5H\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> Ir al contenido ISBN: 978-612-4276-41-5Año: 2025Páginas: 240Medidas: 21 x 29.7 cm.Idioma: EspañolTemá",
+      "publishedDates": [
+        {
+          "value": "2026-07-09T01:16:09+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-07-09T01:16:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-07-09T01:16:09+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://eulac.org/2026/07/construccion-de-la-agenda-cientifica-institucional-lineas-de-investigacion-2025-2030/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:55.826Z",
+  "foundItems": [
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/07/construccion-de-la-agenda-cientifica-institucional-lineas-de-investigacion-2025-2030/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Construcción de la Agenda Científica Institucional.Líneas de Investigación 2025-2030",
+      "publishedAt": "2026-07-09T01:16:09.000Z",
+      "description": "La obra presenta la evolución de la gestión de la investigación en la Universidad Científica del Sur y explica la metodología utilizada para definir sus líneas de investigación institucionales para el periodo 2025-2030. El cargo Construcción de la Agenda Científica Institucional.Líneas de Investigación 2025-2030 apareció primero en Asociación de Editoriales Universitarias de América Latina y el C…",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/06/mulheres-universitarias-argentinas-rumo-a-um-horizonte-inclusivo-avancos-edisparidades-de-genero/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mulheres universitárias argentinas. Rumo a um horizonte inclusivo: avanços edisparidades de género.",
+      "publishedAt": "2026-06-11T00:54:24.000Z",
+      "description": "A obra reúne reflexões sobre os desafios enfrentados pelas mulheres no ensino superior, analisando como desigualdades históricas e estruturais continuam a influenciar a produção do conhecimento, as trajetórias acadêmicas e as oportunidades de participação e reconhecimento. El cargo Mulheres universitárias argentinas. Rumo a um horizonte inclusivo: avanços edisparidades de género. apareció primero…",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/07/textura-musical/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Textura musical",
+      "publishedAt": "2026-07-09T01:26:36.000Z",
+      "description": "La obra explora la evolución del concepto de textura musical y su importancia en la historia de la música de concierto. A través del análisis de destacados compositores y corrientes estéticas, propone una reflexión sobre la escucha, la composición y el pensamiento musical contemporáneo. El cargo Textura musical apareció primero en Asociación de Editoriales Universitarias de América Latina y el Ca…",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/07/co/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Cuco Morales \u2013 Huacas y bosques",
+      "publishedAt": "2026-07-09T01:21:11.000Z",
+      "description": "La obra explora el universo artístico de Huacas y Bosques, destacando cómo sus pinturas reinterpretan el patrimonio cultural y la naturaleza desde una mirada simbólica y contemplativa. A través de estas series, el autor analiza un lenguaje visual que une memoria, emoción y paisaje. El cargo Cuco Morales \u2013 Huacas y bosques apareció primero en Asociación de Editoriales Universitarias de América Lat…",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/07/calles-urnas-y-cargos/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Calles, urnas y cargos",
+      "publishedAt": "2026-07-09T01:08:09.000Z",
+      "description": "La obra recorre la historia de los derechos políticos de las mujeres en Argentina, analizando los debates, avances y obstáculos que marcaron su participación en la vida pública. Desde una perspectiva interdisciplinaria, ofrece una visión amplia sobre la evolución de la ciudadanía femenina y su acceso a los espacios de poder. El cargo Calles, urnas y cargos apareció primero en Asociación de Editor…",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/06/manifiesto-regional-a-favor-del-trabajo-intelectual-y-la-etica-editorial-en-la-era-de-la-inteligencia-artificial/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "MANIFIESTO REGIONAL A FAVOR DEL TRABAJO INTELECTUAL Y LA ÉTICA EDITORIAL EN LA ERA DE LA INTELIGENCIA ARTIFICIAL",
+      "publishedAt": "2026-06-12T17:33:36.000Z",
+      "description": "La Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC) y el ConsejoIberoamericano de Edición Universitaria y Académica (CIEUA), en representación delecosistema editorial académico, generador de ciencia, conocimiento y cultura en Iberoamérica,compartimos nuestra profunda preocupación por las implicaciones que conlleva el uso deherramientas y software de inteligencia arti…",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/06/formas-de-violencia-no-norte-do-mexico/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Formas de violência no norte do México.",
+      "publishedAt": "2026-06-11T00:53:15.000Z",
+      "description": "A publicação reúne estudos que analisam múltiplas formas de violência no norte do México, oferecendo perspectivas teóricas e práticas para compreender seus impactos sobre populações vulneráveis e contribuir para a construção de respostas mais eficazes diante desses desafios sociais. El cargo Formas de violência no norte do México. apareció primero en Asociación de Editoriales Universitarias de Am…",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/06/o-vento-sopra-para-onde-quer-retrato-de-um-desconhecido-o-espirito-santo/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "O vento sopra para onde quer. Retrato de um desconhecido: o Espírito Santo.",
+      "publishedAt": "2026-06-11T00:51:57.000Z",
+      "description": "A obra propõe uma reflexão sobre a presença e a ação do Espírito Santo na vida humana, articulando a Sagrada Escritura com as experiências do mundo contemporâneo e convidando o leitor a aprofundar sua compreensão espiritual. El cargo O vento sopra para onde quer. Retrato de um desconhecido: o Espírito Santo. apareció primero en Asociación de Editoriales Universitarias de América Latina y el Carib…",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/06/o-sorriso-das-estrelas-uma-filosofia-de-vida-o-pequeno-principe/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "O sorriso das estrelas. Uma filosofia de vida: O Pequeno Príncipe.",
+      "publishedAt": "2026-06-11T00:50:35.000Z",
+      "description": "A obra destaca o poder universal da literatura para promover valores humanos fundamentais, aproximando leitores por meio de temas como justiça, liberdade, amizade, honestidade e responsabilidade com o mundo que compartilhamos. El cargo O sorriso das estrelas. Uma filosofia de vida: O Pequeno Príncipe. apareció primero en Asociación de Editoriales Universitarias de América Latina y el Caribe.",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "eulac-org",
+      "source": {
+        "name": "Asociación de Editoriales Universitarias de América Latina y el Caribe (EULAC)",
+        "url": "https://eulac.org/2026/06/relatos-de-po-e-pele-os-reynoso/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Relatos de pó e pele. Os Reynoso.",
+      "publishedAt": "2026-06-11T00:49:19.000Z",
+      "description": "Por meio de uma narrativa que combina pesquisa histórica e ficção, a obra acompanha a trajetória da família Reynoso e reflete sobre memória, migração e identidade, mostrando como o passado pode iluminar a compreensão do presente. El cargo Relatos de pó e pele. Os Reynoso. apareció primero en Asociación de Editoriales Universitarias de América Latina y el Caribe.",
+      "discoveredAt": "2026-09-26T17:27:55.498Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0dc8a5297a78632127b7b04e2d2c30e4a5f6d823b24a86c45fbdf6a8ac68866b",
+  "technicalProbeStatus": "runtime_verified"
+}

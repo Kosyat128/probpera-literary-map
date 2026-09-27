@@ -1,0 +1,383 @@
+{
+  "sourceId": "bibnat-ro",
+  "name": "National Library of Romania",
+  "entryUrl": "https://www.bibnat.ro/",
+  "countryCodes": [
+    "RO"
+  ],
+  "coverageCountryCodes": [
+    "RO"
+  ],
+  "attemptedAt": "2026-09-26T17:29:13.895Z",
+  "requests": [
+    {
+      "url": "https://bibnat.ro/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 61746,
+      "sha256": "422523b2db7778a564c38ae6916df9abd5fa79c51f8904096c43be9581f52dc3",
+      "accessedAt": "2026-09-26T17:23:28.689Z"
+    },
+    {
+      "url": "https://bibnat.ro/anunt-inchidere-american-corner-24-si-25-septembrie-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 215648,
+      "sha256": "14d30a9aff1b9c097d912e5502bf4d6c8a47d838b5c4061d4226f8e83c6edb3a",
+      "accessedAt": "2026-09-26T17:29:28.652Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is an administrative closure notice; excluded from literary agenda.",
+  "robots": {
+    "url": "https://www.bibnat.ro/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:04.955Z",
+    "sourceDocumentSha256": "422523b2db7778a564c38ae6916df9abd5fa79c51f8904096c43be9581f52dc3"
+  },
+  "endpoint": {
+    "id": "bibnat-ro",
+    "name": "National Library of Romania",
+    "url": "https://bibnat.ro/feed/",
+    "format": "rss",
+    "language": "ro-RO",
+    "region": "europe",
+    "sourceFamilyId": "bibnat-ro",
+    "countryCodes": [
+      "RO"
+    ],
+    "coverageCountryCodes": [
+      "RO"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://bibnat.ro"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bibnat.ro/anunt-inchidere-american-corner-24-si-25-septembrie-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:29:28.659Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "bibnat-ro",
+    "source": {
+      "name": "National Library of Romania",
+      "url": "https://bibnat.ro/anunt-inchidere-american-corner-24-si-25-septembrie-2026/",
+      "language": "ro-RO"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Anunț închidere American Corner 24 și 25 septembrie 2026",
+    "publishedAt": "2026-09-23T10:08:20.000Z",
+    "description": "Stimați cititori, American Corner București va fi închis pentru public în zilele… Articolul Anunț închidere American Corner 24 și 25 septembrie 2026 apare prima dată în Biblioteca Națională a României.",
+    "discoveredAt": "2026-09-26T17:29:20.908Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bibnat.ro/anunt-inchidere-american-corner-24-si-25-septembrie-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 215648,
+      "sha256": "14d30a9aff1b9c097d912e5502bf4d6c8a47d838b5c4061d4226f8e83c6edb3a",
+      "accessedAt": "2026-09-26T17:29:28.652Z",
+      "headline": "Anunț închidere American Corner 24 și 25 septembrie 2026 - Biblioteca Națională a României",
+      "excerpt": "Noutăți Postat în urmă cu 3 zile de Biblioteca Națională a României Stimați cititori,American Corner București va fi închis pentru public în zilele de 24 și 25 septembrie 2026. Dacă aveți cărți de restituit, vă rugăm să le predați colegilor bibliotecari de la Sala de Copii și Tineret ⹂Ionel Teodoreanu” sau să le aduceți din 28 septembrie încolo. Vă mulțumim! Distribuie:",
+      "publishedDates": [
+        {
+          "value": "2026-09-23T10:08:20+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-23T10:08:20+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-23T10:08:20+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://bibnat.ro/anunt-inchidere-american-corner-24-si-25-septembrie-2026/",
+      "language": "ro-RO",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:28.659Z",
+  "foundItems": [
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/anunt-inchidere-american-corner-24-si-25-septembrie-2026/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Anunț închidere American Corner 24 și 25 septembrie 2026",
+      "publishedAt": "2026-09-23T10:08:20.000Z",
+      "description": "Stimați cititori, American Corner București va fi închis pentru public în zilele… Articolul Anunț închidere American Corner 24 și 25 septembrie 2026 apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/informare-privind-accesul-in-parcarea-bibliotecii-nationale-a-romaniei-18-si-19-sept-2026/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Informare privind accesul în parcarea Bibliotecii Naționale a României (18 și 19 sept. 2026)",
+      "publishedAt": "2026-09-17T10:05:17.000Z",
+      "description": "Stimați utilizatori, Vă informăm că, vineri, 18 septembrie 2026, și sâmbătă, 19 septembrie… Articolul Informare privind accesul în parcarea Bibliotecii Naționale a României (18 și 19 sept. 2026) apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/anunt-inchidere-biblioteca-pentru-public-4-septembrie-2026/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Anunț închidere Bibliotecă pentru public \u2013 4 septembrie 2026",
+      "publishedAt": "2026-09-03T11:22:34.000Z",
+      "description": "Dragi utilizatori, În data de 4 septembrie 2026 Biblioteca Națională a României… Articolul Anunț închidere Bibliotecă pentru public \u2013 4 septembrie 2026 apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/musicalfest-editia-a-v-a-6-8-octombrie-2026/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "MusicalFest \u2013 ediția a V-a (6-8 octombrie 2026)",
+      "publishedAt": "2026-09-02T05:42:19.000Z",
+      "description": "Musicalfest Ediția a V-a6 \u2013 8 octombrie 2026 Festival de muzică clasică… Articolul MusicalFest \u2013 ediția a V-a (6-8 octombrie 2026) apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/cele-mai-frumoase-pagini-de-carte-atelier-de-ilustratie-de-carte-de-literatura-pentru-copii-si-tineri-6-12-ani/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Cele mai frumoase pagini de carte \u2013 Atelier de ilustrație de carte de literatură pentru copii și tineri (6-12 ani)",
+      "publishedAt": "2026-09-10T12:49:24.000Z",
+      "description": "Joi, 17 septembrie 2026, 18:00 \u2013 19:00 Sala „Apolodor din Labrador”, Mezanin… Articolul Cele mai frumoase pagini de carte \u2013 Atelier de ilustrație de carte de literatură pentru copii și tineri (6-12 ani) apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/anunt-selectie-dosare-pentru-lectori-cursul-english-language-learning-classes-america250edition-organizat-de-american-corner-bucuresti/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Anunț selecție dosare pentru lectori \u2013 cursul „English Language Learning Classes: America250Edition” organizat de American Corner București",
+      "publishedAt": "2026-09-23T12:01:03.000Z",
+      "description": "Candidații înscriși pentru această selecție cu dosarele nr. 4493, 4581 și 4582… Articolul Anunț selecție dosare pentru lectori \u2013 cursul „English Language Learning Classes: America250Edition” organizat de American Corner București apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/anunt-privind-consultarea-pietei-biblioteca-omnia/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Anunț privind consultarea pieței \u2013 Biblioteca OMNIA",
+      "publishedAt": "2026-09-23T06:15:52.000Z",
+      "description": "Vă invităm să accesați următorul anunț de consultare a pieței. Anunțul este… Articolul Anunț privind consultarea pieței \u2013 Biblioteca OMNIA apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/comunicat-de-presa-erasmus-plus-in-biblioteci-cultura-educatie-si-dezvoltare-comunitara/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "COMUNICAT DE PRESĂ \u2013 Erasmus Plus în Biblioteci \u2013 Cultură, educație și dezvoltare comunitară",
+      "publishedAt": "2026-09-16T08:11:19.000Z",
+      "description": "COMUNICAT DE PRESĂ Erasmus Plus în Biblioteci Cultură, educație și dezvoltare comunitară… Articolul COMUNICAT DE PRESĂ \u2013 Erasmus Plus în Biblioteci \u2013 Cultură, educație și dezvoltare comunitară apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/toamna-in-capitala-concurs-de-pictura/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Toamna în Capitală \u2013 Concurs de pictură",
+      "publishedAt": "2026-09-10T12:52:09.000Z",
+      "description": "Dragi amatori de artă plastică, Biblioteca Națională a României vă propune în… Articolul Toamna în Capitală \u2013 Concurs de pictură apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bibnat-ro",
+      "source": {
+        "name": "National Library of Romania",
+        "url": "https://bibnat.ro/anunt-selectie-dosare-pentru-lectori-cursul-%e2%b9%82-english-language-learning-classes-america250edition-organizat-de-american-corner-bucuresti/",
+        "language": "ro-RO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Anunț selecție dosare pentru lectori \u2013 cursul ⹂ English Language Learning Classes: America250Edition” organizat de American Corner București",
+      "publishedAt": "2026-09-08T11:25:22.000Z",
+      "description": "În perioada 8 septembrie \u2013 22 septembrie 2026, American Corner București din… Articolul Anunț selecție dosare pentru lectori \u2013 cursul ⹂ English Language Learning Classes: America250Edition” organizat de American Corner București apare prima dată în Biblioteca Națională a României.",
+      "discoveredAt": "2026-09-26T17:29:20.908Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "422523b2db7778a564c38ae6916df9abd5fa79c51f8904096c43be9581f52dc3",
+  "technicalProbeStatus": "runtime_verified"
+}

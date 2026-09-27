@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-26T23:21:17.169Z",
+  "reviewer": "Codex independent calendar_dates agent",
+  "humanReview": false,
+  "scope": "Read-only review of guards addressing CodeQL292 and296; compiler293-295 are owned and reviewed separately. Only this report written.",
+  "verdict": "PASS_no_P1_P2_findings_in_scoped_changes",
+  "findings": [],
+  "sourceHashes": {
+    "scripts/check-literary-news-connections.mjs": "98e431b264eda7911daef3426a7587f98bb728cf7b572f86a6b9b669f68456b4",
+    "scripts/check-literary-news-connections.test.mjs": "f3770fb074c8d58755c7b37d8669b0bf6f51648327e0d4d3140cd9a14efb76c7",
+    "scripts/lib/literary-news-media-discovery.mjs": "b7a3ee871482c4d51bdcb3d6bb0b3f4e1409f95150286f063095d35289fbb1e4",
+    "scripts/lib/literary-news-media-discovery.test.mjs": "22232ab8c02990d97f1916e70a85badbfd9d78bb833256455b0deff46d0ee45c"
+  },
+  "checks": [
+    {
+      "alert": 292,
+      "status": "source_guard_review_pass",
+      "file": "scripts/check-literary-news-connections.mjs",
+      "evidence": [
+        "The parsed URL is checked directly for exact api.telegram.org/api.vk.com hostname, HTTPS, no userinfo, query or fragment; custom nondefault port rejected. The same validated URL object is passed to fetch.",
+        "VK accepts exactly /method/<one allowlisted read method>. Telegram accepts exactly /bot<bounded credential alphabet>/<getMe|getChat|getChatMember>. Post/upload endpoints, extra path segments and encoded path delimiters fail before fetch.",
+        "Credential strings are bounded and delimiter-restricted before interpolation. Provider exception text is replaced by a code; output remains selected identities, booleans and numeric diagnostics. No token or provider error_msg is serialized.",
+        "Redirect mode is forced to error and the20second deadline replaces caller overrides. Tests confirm invalid targets make zero mocked requests."
+      ]
+    },
+    {
+      "alert": 296,
+      "status": "source_encoding_review_pass",
+      "file": "scripts/lib/literary-news-media-discovery.mjs",
+      "evidence": [
+        "The trusted https://commons.wikimedia.org/wiki/File: namespace is a literal. Only the complete dynamic P18 filename is passed to encodeURIComponent, with no subsequent decode or replacement of encoded delimiters.",
+        "Regression exercises repeated colons, percent, space, slash, Cyrillic, query and fragment delimiters. The resulting URL has empty search/hash and one decode returns the original filename. The identical evidence URL is used by destination permissions.",
+        "Commons exact-title matching, fixed upload host, supported-license check, MIME/hash verification and bounded raster normalization remain in place. This URI is license evidence, not an arbitrary credentialed fetch target."
+      ]
+    }
+  ],
+  "tests": {
+    "command": "node node_modules/vitest/vitest.mjs run scripts/check-literary-news-connections.test.mjs scripts/lib/literary-news-media-discovery.test.mjs --configLoader runner --cache=false",
+    "startedAt": "2026-09-26T23:20:44Z",
+    "files": 2,
+    "passed": 17,
+    "failed": 0,
+    "breakdown": {
+      "connections": 5,
+      "discovery": 12
+    },
+    "providerResponses": "injected fixtures; synthetic raster bytes only"
+  },
+  "limits": [
+    "No CodeQL rescan, alert dismissal or assertion that remote alerts are already closed; exact new-head CI remains the release proof.",
+    "No live credentials read or printed; no real provider requests, uploads, posts or production DB writes.",
+    "This bounded review does not replace the separate compiler293-295 review or full remote required checks."
+  ],
+  "externalNetworkCalls": 0,
+  "realProviderWrites": 0,
+  "productionDatabaseWrites": 0,
+  "coreFilesEdited": []
+}

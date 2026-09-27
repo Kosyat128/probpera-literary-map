@@ -1,0 +1,373 @@
+{
+  "sourceId": "pubcouncil-ca",
+  "name": "Association Nationale des Editeurs de Livres",
+  "entryUrl": "https://www.pubcouncil.ca/",
+  "countryCodes": [
+    "CA"
+  ],
+  "coverageCountryCodes": [
+    "CA"
+  ],
+  "attemptedAt": "2026-09-26T17:28:00.940Z",
+  "requests": [
+    {
+      "url": "https://pubcouncil.ca/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 11668,
+      "sha256": "604afc113c15a61fcd33aa893de241563bb01dc4ca461df942456b477bf743d4",
+      "accessedAt": "2026-09-26T17:21:38.956Z"
+    },
+    {
+      "url": "https://pubcouncil.ca/canadian-publishing-industry-condemns-implementation-of-alberta-book-ban/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 84039,
+      "sha256": "890b816a19c70c09bdce5cfa340b3caa5c067b0b2d8d346178ecf4fb4015c3ac",
+      "accessedAt": "2026-09-26T17:28:05.079Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://pubcouncil.ca/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 114,
+    "sha256": "137b064d4721daf823929dd4bfdc2845db050136af7927f5bdb763fdd72f9eaf",
+    "accessedAt": "2026-09-26T17:28:04.132Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:35.371Z",
+    "sourceDocumentSha256": "604afc113c15a61fcd33aa893de241563bb01dc4ca461df942456b477bf743d4"
+  },
+  "endpoint": {
+    "id": "pubcouncil-ca",
+    "name": "Association Nationale des Editeurs de Livres",
+    "url": "https://pubcouncil.ca/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "north-america",
+    "sourceFamilyId": "pubcouncil-ca",
+    "countryCodes": [
+      "CA"
+    ],
+    "coverageCountryCodes": [
+      "CA"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pubcouncil.ca"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pubcouncil.ca/canadian-publishing-industry-condemns-implementation-of-alberta-book-ban/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:05.086Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "pubcouncil-ca",
+    "source": {
+      "name": "Association Nationale des Editeurs de Livres",
+      "url": "https://pubcouncil.ca/canadian-publishing-industry-condemns-implementation-of-alberta-book-ban/",
+      "language": "en-US"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Canadian Publishing Industry Condemns Implementation of Alberta Book Ban",
+    "publishedAt": "2026-02-11T23:37:32.000Z",
+    "description": "The Association of Canadian Publishers (ACP), the Canadian Publishers’ Council (CPC), and the Literary Press Group of Canada (LPG) strongly condemn the Government of Alberta’s ... Read more",
+    "discoveredAt": "2026-09-26T17:28:04.133Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pubcouncil.ca/canadian-publishing-industry-condemns-implementation-of-alberta-book-ban/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 84039,
+      "sha256": "890b816a19c70c09bdce5cfa340b3caa5c067b0b2d8d346178ecf4fb4015c3ac",
+      "accessedAt": "2026-09-26T17:28:05.079Z",
+      "headline": "Canadian Publishing Industry Condemns Implementation of Alberta Book Ban \u2013 Canadian Publishers Council",
+      "excerpt": "The Association of Canadian Publishers (ACP), the Canadian Publishers’ Council (CPC), and the Literary Press Group of Canada (LPG) strongly condemn the Government of Alberta’s decision to proceed with its discriminatory book ban, now formally in effect in schools across the province. The implementation of this policy confirms the concerns previously raised by our organizations and echoed by educat",
+      "publishedDates": [],
+      "canonical": "https://pubcouncil.ca/canadian-publishing-industry-condemns-implementation-of-alberta-book-ban/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:05.086Z",
+  "foundItems": [
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/canadian-publishing-industry-condemns-implementation-of-alberta-book-ban/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Canadian Publishing Industry Condemns Implementation of Alberta Book Ban",
+      "publishedAt": "2026-02-11T23:37:32.000Z",
+      "description": "The Association of Canadian Publishers (ACP), the Canadian Publishers’ Council (CPC), and the Literary Press Group of Canada (LPG) strongly condemn the Government of Alberta’s ... Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/statement-from-the-canadian-publishing-industry-on-the-alberta-governments-ensuring-age-appropriate-books-in-school-libraries-initiative/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Statement from the Canadian Publishing Industry on the Alberta Government’s “Ensuring Age-Appropriate Books in School Libraries” Initiative",
+      "publishedAt": "2025-05-30T11:06:13.000Z",
+      "description": "The Association of Canadian Publishers (ACP), the Canadian Publishers’ Council (CPC), and the Literary Press Group of Canada (LPG) join colleagues across the publishing, education, and library sectors in expressing concern over the Alberta government’s recent announcement regarding “age-inappropriate” materials in school libraries. Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/cpc-rethinks-the-oer-vs-textbook-debate/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CPC Rethinks the OER vs. Textbook Debate",
+      "publishedAt": "2024-10-15T18:00:34.000Z",
+      "description": "In the latest opinion piece on Academica Forum, Leigh-Anne Graham, Senior Advisor to the Canadian Publishers’ Council, recently reframed the contentious OER vs. Textbook debate. Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/cpc-trade-members-top-canadian-book-market-in-2024-so-far/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CPC Trade Members Top Canadian Book Market in 2024 (So Far)",
+      "publishedAt": "2024-09-16T15:36:00.000Z",
+      "description": "BookNet Canada recently conducted a review of the Canadian book market in 2024, accounting for the mid-way point of the year. They identified five major ... Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/become-a-mentee-in-the-doors-open-publishing-mentorship-program/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Become a mentee in the Doors Open Publishing Mentorship Program",
+      "publishedAt": "2026-07-10T12:40:57.000Z",
+      "description": "Our doors are open once again for a new, exciting look into the publishing industry! The Canadian Publishers’ Council (CPC) is excited to present the Doors Open Publishing Mentorship Program. This mentorship program is a unique opportunity for members of the ... Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/canadian-publishers-condemn-albertas-proposed-restrictions-on-public-library-materials/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Canadian Publishers Condemn Alberta’s Proposed Restrictions on Public Library Materials",
+      "publishedAt": "2026-04-21T23:02:16.000Z",
+      "description": "The Association of Canadian Publishers (ACP), the Canadian Publishers’ Council (CPC), and the Literary Press Group of Canada (LPG) strongly condemn the Government of Alberta’s ... Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/cpc-appoints-new-board-and-executive-director/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CPC Appoints New Board and Executive Director",
+      "publishedAt": "2025-05-06T14:00:00.000Z",
+      "description": "The Canadian Publishers’ Council (CPC) is pleased to announce the appointment several new Directors for its Board, along with a new Executive Director. Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/ai-study-tools-drive-student-success/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AI Study Tools Drive Student Success",
+      "publishedAt": "2024-12-03T14:44:00.000Z",
+      "description": "It has been two years since popular use of artificial intelligence tools burst into our daily lives. In the classroom, the proliferation of AI has caused no shortage of consternation. Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/the-cpc-joins-global-coalition-against-copyright-violations-in-ai-training/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The CPC Joins Global Coalition against Copyright Violations in AI Training",
+      "publishedAt": "2024-10-24T15:33:53.000Z",
+      "description": "The Canadian Publishers’ Council (CPC) today announced it has joined the growing list of signatories for an important AI Policy Signature campaign. Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pubcouncil-ca",
+      "source": {
+        "name": "Association Nationale des Editeurs de Livres",
+        "url": "https://pubcouncil.ca/cpc-discusses-inclusive-access-with-cktb-niagara/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CPC Discusses Inclusive Access with CKTB Niagara",
+      "publishedAt": "2024-09-25T19:45:19.000Z",
+      "description": "Leigh-Anne Graham, Senior Advisor to the Canadian Publishers’ Council, spoke with Walter Sendzik of CKTB Niagara to discuss how postsecondary learning materials have adapted over ... Read more",
+      "discoveredAt": "2026-09-26T17:28:04.133Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "604afc113c15a61fcd33aa893de241563bb01dc4ca461df942456b477bf743d4"
+}

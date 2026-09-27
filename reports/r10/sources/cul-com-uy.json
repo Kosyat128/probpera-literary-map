@@ -1,0 +1,373 @@
+{
+  "sourceId": "cul-com-uy",
+  "name": "cul.com.uy/",
+  "entryUrl": "https://cul.com.uy/",
+  "countryCodes": [
+    "UY"
+  ],
+  "coverageCountryCodes": [
+    "UY"
+  ],
+  "attemptedAt": "2026-09-26T17:28:51.052Z",
+  "requests": [
+    {
+      "url": "https://cul.com.uy/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 231131,
+      "sha256": "f08febe233fcea39db0e3ecb6f81e92d61cf5a0cc06f69cfeb820689671a22d2",
+      "accessedAt": "2026-09-26T17:22:49.063Z"
+    },
+    {
+      "url": "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 220396,
+      "sha256": "27b02e8270af54b24ccf86da59d697f8608ad8bd7a57a4c79cf0f9e93fcb4fc8",
+      "accessedAt": "2026-09-26T17:28:57.561Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://cul.com.uy/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 111,
+    "sha256": "bd81c1e953d1e763cc8dcce176dfcbd1b89cf077c5dd9878cef33b47a68c1b98",
+    "accessedAt": "2026-09-26T17:28:54.031Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:40.196Z",
+    "sourceDocumentSha256": "f08febe233fcea39db0e3ecb6f81e92d61cf5a0cc06f69cfeb820689671a22d2"
+  },
+  "endpoint": {
+    "id": "cul-com-uy",
+    "name": "cul.com.uy/",
+    "url": "https://cul.com.uy/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "latin-america",
+    "sourceFamilyId": "cul-com-uy",
+    "countryCodes": [
+      "UY"
+    ],
+    "coverageCountryCodes": [
+      "UY"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://cul.com.uy"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:57.591Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "cul-com-uy",
+    "source": {
+      "name": "cul.com.uy/",
+      "url": "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026/",
+      "language": "es"
+    },
+    "region": "latin-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Jurado de los Premios Bartolomé Hidalgo 2026",
+    "publishedAt": "2026-07-24T19:43:04.000Z",
+    "description": "Jurados de los Bartolomé Hidalgo 2026 POESÍA Silvia Guerra Es poeta, narradora, investigadora y editora. Ha publicado una extensa obra […]",
+    "discoveredAt": "2026-09-26T17:28:54.066Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 220396,
+      "sha256": "27b02e8270af54b24ccf86da59d697f8608ad8bd7a57a4c79cf0f9e93fcb4fc8",
+      "accessedAt": "2026-09-26T17:28:57.561Z",
+      "headline": "Jurado de los Premios Bartolomé Hidalgo 2026 \u2013 Cámara Uruguaya del Libro",
+      "excerpt": "Jurados de los Bartolomé Hidalgo 2026 POESÍA Silvia Guerra Es poeta, narradora, investigadora y editora. Ha publicado una extensa obra poética, entre la que se destacan La sombra de la azucena, Nada de nadie, Pulso y Un mar en madrugada, libro distinguido con el Premio Bartolomé Hidalgo 2024 y traducido al inglés. También ha desarrollado una importante labor como compiladora y editora de la litera",
+      "publishedDates": [],
+      "canonical": "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:57.591Z",
+  "foundItems": [
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jurado de los Premios Bartolomé Hidalgo 2026",
+      "publishedAt": "2026-07-24T19:43:04.000Z",
+      "description": "Jurados de los Bartolomé Hidalgo 2026 POESÍA Silvia Guerra Es poeta, narradora, investigadora y editora. Ha publicado una extensa obra […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/convocatoria-y-bases-de-los-premios-bartolome-hidalgo-2026/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Convocatoria y bases de los Premios Bartolomé Hidalgo 2026",
+      "publishedAt": "2026-07-14T15:20:02.000Z",
+      "description": "Premios Bartolomé Hidalgo Bases 2026 Los Premios Bartolomé Hidalgo fueron creados por la Cámara Uruguaya del Libro (CUL) con la […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/boletin-informativo-julio-2026/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Boletín informativo \u2013 Julio 2026",
+      "publishedAt": "2026-07-07T18:48:53.000Z",
+      "description": "Boletín informativo JULIO 2026 Nos entusiasma acercarles este segundo número de nuestro boletín, un espacio para repasar las principales acciones […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/boletin-informativo-marzo-2026/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Boletín informativo \u2013 Marzo 2026",
+      "publishedAt": "2026-07-07T18:13:02.000Z",
+      "description": "Boletín informativo MARZO 2026 Nómade: estudio sobre hábitos de lectura y mercado del libro Atendiendo a las inquietudes de nuestro […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/jurado-de-los-premios-bartolome-hidalgo-2026-2/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Autores invitados del exterior",
+      "publishedAt": "2026-09-21T22:33:55.000Z",
+      "description": "Autores invitados del exterior 48.ª Feria Internacional del Libro de Montevideo. Tamara Tenenbaum (Argentina) Es licenciada en Filosofía por la […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/ultimas-localidades-disponibles-para-la-presentacion-de-emmanuel-carrere/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Últimas localidades disponibles. Emmanuel Carrère en Montevideo.",
+      "publishedAt": "2026-09-21T14:56:28.000Z",
+      "description": "El próximo lunes 28 de setiembre, a partir de las 15:00 horas, se habilitará el canje presencial de las últimas […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/programa-de-actividades-48-a-feria-internacional-del-libro-de-montevideo/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Grilla de actividades 48.ª FIL MVD",
+      "publishedAt": "2026-09-21T10:56:37.000Z",
+      "description": "Del 2 al 18 de octubre, la Explanada, el atrio y el entrepiso de la Intendencia de Montevideo reciben la […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/finalistas-del-concurso-de-afiche/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Finalistas del concurso de afiche",
+      "publishedAt": "2026-07-31T19:41:07.000Z",
+      "description": "Nos complace anunciar que Diego Rodríguez Cubelli, Marisa Riera y Nino Fernández han sido seleccionados como finalistas del concurso de […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/emmanuel-carrere-visitara-uruguay/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Emmanuel Carrère visitará Uruguay",
+      "publishedAt": "2026-07-31T17:57:45.000Z",
+      "description": "La Feria Internacional del Libro de Montevideo se prepara para recibir a Emmanuel Carrère Fotografía © Vincent Muller/P.O.L El destacado […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cul-com-uy",
+      "source": {
+        "name": "cul.com.uy/",
+        "url": "https://cul.com.uy/club-cultural-charco/",
+        "language": "es"
+      },
+      "region": "latin-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Club Cultural Charco",
+      "publishedAt": "2026-07-20T17:41:42.000Z",
+      "description": "Club Cultural Charco es un proyecto cooperativo que busca revalorizar el encuentro y la conversación. Su espacio cuenta con librería […]",
+      "discoveredAt": "2026-09-26T17:28:54.066Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f08febe233fcea39db0e3ecb6f81e92d61cf5a0cc06f69cfeb820689671a22d2"
+}

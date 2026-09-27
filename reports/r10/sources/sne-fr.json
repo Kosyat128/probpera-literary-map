@@ -1,0 +1,710 @@
+{
+  "sourceId": "sne-fr",
+  "name": "Syndicat National de l’Edition",
+  "entryUrl": "https://www.sne.fr/",
+  "countryCodes": [
+    "FR"
+  ],
+  "coverageCountryCodes": [
+    "FR"
+  ],
+  "attemptedAt": "2026-09-26T17:27:49.587Z",
+  "requests": [
+    {
+      "url": "https://www.sne.fr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 258313,
+      "sha256": "f10bda2bc38fdabf08ee830a334ef6b6fc45b4371848fad0258a6fc96ee5f2e7",
+      "accessedAt": "2026-09-26T17:21:24.109Z"
+    },
+    {
+      "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 139505,
+      "sha256": "8e095e37b211f56dbf75af7dbd248bb4db14355ac8dd116f26a29180e93eb292",
+      "accessedAt": "2026-09-26T17:27:51.422Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.sne.fr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 634,
+    "sha256": "479a05cdcef0ff609e3f79a677995de6be00aa2bc6efe647e2639c4cd5066bf1",
+    "accessedAt": "2026-09-26T17:27:50.266Z",
+    "disallowed": [
+      "/wp/wp-admin/",
+      "*.pdf",
+      "*.doc",
+      "*.docx",
+      "*.xls",
+      "*.xlsx",
+      "*.epub"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:23.063Z",
+    "sourceDocumentSha256": "f10bda2bc38fdabf08ee830a334ef6b6fc45b4371848fad0258a6fc96ee5f2e7"
+  },
+  "endpoint": {
+    "id": "sne-fr",
+    "name": "Syndicat National de l’Edition",
+    "url": "https://www.sne.fr/",
+    "format": "html",
+    "language": "fr-FR",
+    "region": "europe",
+    "sourceFamilyId": "sne-fr",
+    "countryCodes": [
+      "FR"
+    ],
+    "coverageCountryCodes": [
+      "FR"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.sne.fr"
+    ],
+    "linkPattern": "^/[^/]{12,}/?$|^/actu/[^/]+/?$|^/evenement_sne/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:51.430Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 23,
+  "literaryCandidateCount": 23,
+  "sample": {
+    "sourceId": "sne-fr",
+    "source": {
+      "name": "Syndicat National de l’Edition",
+      "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/",
+      "language": "fr-FR"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "L’édition en perspective : le rapport d’activité du Syndicat national de l’édition 2025-2026 est disponible",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:27:50.304Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 139505,
+      "sha256": "8e095e37b211f56dbf75af7dbd248bb4db14355ac8dd116f26a29180e93eb292",
+      "accessedAt": "2026-09-26T17:27:51.422Z",
+      "headline": "L’édition en perspective : le rapport d’activité du Syndicat national de l’édition 2025-2026 est disponible",
+      "excerpt": "Actualité L’édition en perspective : le rapport d’activité du Syndicat national de l’édition 2025-2026 est disponible Ce rapport d’activité rapporte l’action collective des éditeurs menée par le Syndicat national de l’édition entre avril 2025 et mai 2026.Vous y trouverez notamment :Les principaux chiffres de l’édition en 2025 ;Les actualités juridiques et relatives au droit d’auteur, en France et ",
+      "publishedDates": [
+        {
+          "value": "2026-06-25T14:11:10+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/",
+      "language": "fr-FR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:51.430Z",
+  "foundItems": [
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’édition en perspective : le rapport d’activité du Syndicat national de l’édition 2025-2026 est disponible",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/le-festival-du-livre-de-paris/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Festival du Livre de Paris",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/editeur-et-auteur/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Éditeur et auteur",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/realiser-un-livre/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Réaliser un livre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/vendre-un-livre/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Commercialiser un livre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/faq-de-ledition/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "FAQ de l'édition",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/prix-unique-du-livre/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prix unique du livre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/actu/de-nouvelles-fiches-metiers-disponibles/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "De nouvelles fiches métiers disponibles",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/evenement_sne/creer-et-lire-demain-comprendre-le-nouveau-paysage-de-la-bd/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Créer et lire demain : comprendre le nouveau paysage de la BD",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/metiers-et-formations/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Métiers et formations",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/annuaire-des-editeurs-adherents/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Annuaire des adhérents",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/liberte-de-publier/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liberté de publier",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/promotion-de-la-lecture/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Promotion de la lecture",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/diversite-culturelle/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diversité culturelle",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/ressources-documentaires/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ressources documentaires",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/publications-du-sne/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publications du SNE",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/nouveaux-adherents/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nouveaux adhérents",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/actu/45217/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interview de Valérie Barthez, directrice générale de la SCELF",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/environnement/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Consulter le dossier",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/droit-dauteur/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Consulter le dossier",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/espace-presse/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Communiqués de presse",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/mentions-legales/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mentions légales & Conditions d’utilisation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "sne-fr",
+      "source": {
+        "name": "Syndicat National de l’Edition",
+        "url": "https://www.sne.fr/donnees-personnelles/",
+        "language": "fr-FR"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Données personnelles",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:27:50.304Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f10bda2bc38fdabf08ee830a334ef6b6fc45b4371848fad0258a6fc96ee5f2e7"
+}

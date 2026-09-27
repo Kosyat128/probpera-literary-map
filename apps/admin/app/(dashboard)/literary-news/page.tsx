@@ -2,6 +2,9 @@ import Link from "next/link";
 import { unstable_noStore as noStore } from "next/cache";
 
 import AdminStatusState from "@/components/AdminStatusState";
+import LiteraryNewsDeliveryOverview from "@/components/LiteraryNewsDeliveryOverview";
+import { loadLiteraryNewsRuntimeOverview } from "@/lib/literary-news-runtime-overview";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { requireStaff } from "@/lib/auth";
 import { filterHeldNewsQueue, formatNewsQueueDate as stamp, literaryNewsQueueHref, loadLiteraryNewsQueue, newsHoldReason } from "@/lib/literary-news-queue";
 
@@ -10,13 +13,15 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export default async function LiteraryNewsQueuePage({ searchParams }: {
-  searchParams: Promise<{ q?: string; source?: string; page?: string }>;
+  searchParams: Promise<{ q?: string; source?: string; page?: string; delivery_page?: string; delivery_error?: string; delivery_saved?: string }>;
 }) {
   noStore();
   const session = await requireStaff();
   if (!session || session.mfa.checkError) return <AdminStatusState eyebrow="Редакционная очередь" title="Нужно подтвердить редакционный доступ" description="Войдите в кабинет и завершите проверку учётной записи, чтобы открыть найденные материалы." />;
   const snapshot = await loadLiteraryNewsQueue();
-  const query = filterHeldNewsQueue(snapshot.queue?.items ?? [], await searchParams);
+  const runtime = await loadLiteraryNewsRuntimeOverview(await createServerSupabaseClient());
+  const params = await searchParams;
+  const query = filterHeldNewsQueue(snapshot.queue?.items ?? [], params);
   const allSources = new Map((snapshot.sources?.sources ?? []).map((source) => [source.id, source.name]));
   for (const item of snapshot.queue?.items ?? []) allSources.set(item.sourceId, item.source.name);
   const filtersActive = Boolean(query.q || query.source);
@@ -28,6 +33,10 @@ export default async function LiteraryNewsQueuePage({ searchParams }: {
       <h1>Литературная сводка</h1>
       <p>Найденные материалы ожидают редакционной проверки. Они не подтверждены и не попадают в публичную ленту автоматически.</p>
     </div></header>
+
+    {params.delivery_saved === "1" && <p className="form-message" role="status">Решение записано. Это подтверждение изменения журнала, а не доставки в канал.</p>}
+    {params.delivery_error && <p className="form-message form-error" role="alert">{params.delivery_error === "conflict" ? "Запись уже изменилась. Обновите страницу и проверьте актуальное состояние перед повтором." : params.delivery_error === "unavailable" ? "Управление недоступно: проверьте подключение базы и установку схемы. Решение не подтверждено." : params.delivery_error === "state_changed" ? "Текущее состояние не допускает эту операцию или запрос ещё выполняется. Обновите страницу." : "Решение не сохранено. Проверьте права, причину, подтверждение и точную ссылку на сообщение."}</p>}
+    <LiteraryNewsDeliveryOverview snapshot={runtime} page={params.delivery_page} query={params} canManage={session.role === "owner" || session.role === "admin"} />
 
     <section className="panel" aria-labelledby="news-review-workflow">
       <h2 id="news-review-workflow">Подготовка к публикации</h2>

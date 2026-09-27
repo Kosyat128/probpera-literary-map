@@ -19,6 +19,7 @@ export type NewsItem = {
   title: NewsText;
   summary: NewsText;
   source: { name: string; url: string; language: string };
+  thumbnail?: { url: string; sourceUrl: string; alt: NewsText; displayOnly: true };
   verification: "confirmed";
 };
 
@@ -33,9 +34,24 @@ export type NewsSource = {
   language?: string;
   region?: NewsRegion;
   topics?: NewsCategory[];
+  sourceFamilyId?: string;
+  countryCodes?: string[];
+  coverageCountryCodes?: string[];
 };
 
 export type NewsFeed = {
+  contractVersion?: 2;
+  snapshot?: {
+    id: string;
+    release: string;
+    complete: true;
+    count: number;
+    evaluatedAt: string;
+    timeZone: string;
+    policy: string;
+  };
+  withdrawals?: { id: string; withdrawnAt: string; reason: string }[];
+  fallbackCapturedAt?: string;
   mode: "local-prototype" | "reviewed";
   generatedAt: string;
   lastCheckedAt: string | null;

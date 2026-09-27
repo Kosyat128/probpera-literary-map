@@ -1,0 +1,80 @@
+{
+  "sourceId": "fibut-is",
+  "name": "Icelandic Publishers Association",
+  "entryUrl": "https://fibut.is/",
+  "countryCodes": [
+    "IS"
+  ],
+  "coverageCountryCodes": [
+    "IS"
+  ],
+  "attemptedAt": "2026-09-26T17:27:56.764Z",
+  "requests": [
+    {
+      "url": "https://fibut.is/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 116163,
+      "sha256": "719bc0a3da38198ef04aff9538565de40b346fac8f47662c6e980ef27370360d",
+      "accessedAt": "2026-09-26T17:27:58.527Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/feed/rss/frettir?format=feed",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=utf-8",
+      "bytes": 48786,
+      "sha256": "9ded29aabe9179e305ec7d906e89862a6cd1440dda8b5a6381f1aae3a1276071",
+      "accessedAt": "2026-09-26T17:27:58.699Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/item/islensku-bokmenntaverdhlaunin-og-blodhdropinn-2025",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 58043,
+      "sha256": "d6f89f13ca8115ffd70c6e4e30362818f694d3a9050ef921f96b8e5f8499e612",
+      "accessedAt": "2026-09-26T17:27:58.941Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/item/islensku-bokahoennunarverdhlaunin-2025-afhent-i-hoennunarsafni-islands",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 41563,
+      "sha256": "e344b368db48fa0b8c24c5c39bc9a555824dbc1e8c95c431846857b65fe5c3b7",
+      "accessedAt": "2026-09-26T17:27:59.171Z"
+    },
+    {
+      "url": "https://fibut.is/index.php/home-single/item/tilnefningar-til-islensku-bokmenntaverdhlaunanna-og-blodhdropans-2025",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 53655,
+      "sha256": "917108d05a5a52b436da355749a28c22fc237d0b2a0a0a86042357b798a1360e",
+      "accessedAt": "2026-09-26T17:27:59.400Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://fibut.is/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 829,
+    "sha256": "97c87f1e050ea0ead076373282f50734e90f71734b825931f9a4739ca0d5ace8",
+    "accessedAt": "2026-09-26T17:27:58.016Z",
+    "disallowed": [
+      "/administrator/",
+      "/bin/",
+      "/cache/",
+      "/cli/",
+      "/components/",
+      "/includes/",
+      "/installation/",
+      "/language/",
+      "/layouts/",
+      "/libraries/",
+      "/logs/",
+      "/modules/",
+      "/plugins/",
+      "/tmp/"
+    ]
+  }
+}

@@ -1,3 +1,4 @@
+import { projectReviewedR10Delta } from "./reviewed-r10-delta.mjs";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
@@ -6,7 +7,7 @@ import { premiumTitleEvidenceAttestation, projectReviewedPremiumTitleEvidence } 
 import { projectPublishedCmsSourcePunctuation } from "./reviewed-cms-source-punctuation.mjs";
 import { projectPublishedNativeArchiveRead, projectReviewedNativeArchiveRead } from "./reviewed-native-archive-read.mjs";
 
-const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+const read = path => projectReviewedR10Delta(path, readFileSync(path, "utf8")).replace(/\r\n?/gu, "\n");
 const sha = text => createHash("sha256").update(text).digest("hex");
 const paths = ["scripts/export-premium-translations.mjs", "scripts/export-published-content.fixture.test.mjs",
   "scripts/lib/reviewed-cms-source-punctuation.mjs", "scripts/lib/reviewed-cms-source-punctuation.test.mjs",

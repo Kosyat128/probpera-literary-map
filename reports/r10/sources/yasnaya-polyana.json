@@ -1,0 +1,244 @@
+{
+  "sourceId": "yasnaya-polyana",
+  "name": "Ясная Поляна / Yasnaya Polyana",
+  "entryUrl": "https://ypmuseum.ru/events",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:33:23.747Z",
+  "requests": [
+    {
+      "url": "https://ypmuseum.ru/events",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 46709,
+      "sha256": "d60e46ffef09e9810a014721636e4b152ebb78553c2058b3ee0276aca5b28cb3",
+      "accessedAt": "2026-09-26T17:33:24.361Z"
+    },
+    {
+      "url": "https://ypmuseum.ru/event/2004",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 36887,
+      "sha256": "e00c15fa9cab3ec3680b7e2f8edef03472e1319e8e0054923debc2e21247968f",
+      "accessedAt": "2026-09-26T17:33:24.697Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://ypmuseum.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 43,
+    "sha256": "9056dd1912650039210df8bc19283a3550941472be0d3c749f7994554a41890e",
+    "accessedAt": "2026-09-26T17:33:24.097Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "yasnaya-polyana",
+    "name": "Ясная Поляна / Yasnaya Polyana",
+    "url": "https://ypmuseum.ru/events",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "yasnaya-polyana",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://ypmuseum.ru"
+    ],
+    "linkPattern": "^\\/event\\/\\d+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "articleContainer": ".slide",
+    "titleSelector": ".event-title",
+    "exampleArticleUrls": [
+      "https://ypmuseum.ru/event/2004"
+    ],
+    "verifiedAt": "2026-09-26T17:33:24.701Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 5,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "yasnaya-polyana",
+    "source": {
+      "name": "Ясная Поляна / Yasnaya Polyana",
+      "url": "https://ypmuseum.ru/event/2004",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Выставка «\"Взял Таню, перетолок ее с Соней, и вышла Наташа\". К 180-летию Татьяны Кузминской»",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:33:24.381Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://ypmuseum.ru/event/2004",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 36887,
+      "sha256": "e00c15fa9cab3ec3680b7e2f8edef03472e1319e8e0054923debc2e21247968f",
+      "accessedAt": "2026-09-26T17:33:24.697Z",
+      "headline": "Выставка «\"Взял Таню, перетолок ее с Соней, и вышла Наташа\". К 180-летию Татьяны Кузминской»",
+      "excerpt": "12+ Выставка «\"Взял Таню, перетолок ее с Соней, и вышла Наташа\". К 180-летию Татьяны Кузминской» Софья и Татьяна Берс, 1861 год 29 сентября 2026 года в Доме Волконского в музее-усадьбе Л. Н. Толстого «Ясная Поляна» начнет работу выставка «\"Взял Таню, перетолок ее с Соней, и вышла Наташа\". К 180-летию Татьяны Кузминской». Проект подготовлен совместно с Государственным музеем-заповедником Толстого в",
+      "publishedDates": [],
+      "canonical": "https://ypmuseum.ru/event/2004",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:33:24.701Z",
+  "foundItems": [
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/2004",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Выставка «\"Взял Таню, перетолок ее с Соней, и вышла Наташа\". К 180-летию Татьяны Кузминской»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.381Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/2002",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Творческая лаборатория проекта «Цилиндр, ичиги, толстовка»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.381Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/1995",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Лев Толстой в Лондоне весной 1861 года»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.381Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/1987",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Яблочная история»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.381Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana",
+      "source": {
+        "name": "Ясная Поляна / Yasnaya Polyana",
+        "url": "https://ypmuseum.ru/event/2001",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Оценка качества услуг",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:33:24.381Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d60e46ffef09e9810a014721636e4b152ebb78553c2058b3ee0276aca5b28cb3"
+}

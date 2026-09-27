@@ -1,0 +1,386 @@
+{
+  "sourceId": "apel-pt",
+  "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+  "entryUrl": "https://www.apel.pt/",
+  "countryCodes": [
+    "PT"
+  ],
+  "coverageCountryCodes": [
+    "PT"
+  ],
+  "attemptedAt": "2026-09-26T17:28:33.055Z",
+  "requests": [
+    {
+      "url": "https://apel.pt/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 55592,
+      "sha256": "ecb985f9cbdb5eb6749fef2a19f18154cd2916f2cdbeea57cfe4ea9bd0965d3f",
+      "accessedAt": "2026-09-26T17:22:17.593Z"
+    },
+    {
+      "url": "https://apel.pt/2026/09/11/festa-do-livro-em-belem-2026/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 113534,
+      "sha256": "0e6bd768027ddd869294b638af205e0502ca4c6072b41501ce14fbf536c1d197",
+      "accessedAt": "2026-09-26T17:28:37.448Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://apel.pt/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 165,
+    "sha256": "a51301953f01d459ef127ae5e0ec2e68dfbee55a4ae6e256e2c85e1f84c2694a",
+    "accessedAt": "2026-09-26T17:28:36.896Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:22:15.403Z",
+    "sourceDocumentSha256": "ecb985f9cbdb5eb6749fef2a19f18154cd2916f2cdbeea57cfe4ea9bd0965d3f"
+  },
+  "endpoint": {
+    "id": "apel-pt",
+    "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+    "url": "https://apel.pt/feed/",
+    "format": "rss",
+    "language": "pt-PT",
+    "region": "europe",
+    "sourceFamilyId": "apel-pt",
+    "countryCodes": [
+      "PT"
+    ],
+    "coverageCountryCodes": [
+      "PT"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://apel.pt"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://apel.pt/2026/09/11/festa-do-livro-em-belem-2026/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:37.484Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "apel-pt",
+    "source": {
+      "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+      "url": "https://apel.pt/2026/09/11/festa-do-livro-em-belem-2026/",
+      "language": "pt-PT"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Festa do Livro em Belém 2026 \u2013 Tudo o que precisa de saber",
+    "publishedAt": "2026-09-11T09:55:35.000Z",
+    "description": "The post Festa do Livro em Belém 2026 \u2013 Tudo o que precisa de saber appeared first on APEL.",
+    "discoveredAt": "2026-09-26T17:28:36.926Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://apel.pt/2026/09/11/festa-do-livro-em-belem-2026/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 113534,
+      "sha256": "0e6bd768027ddd869294b638af205e0502ca4c6072b41501ce14fbf536c1d197",
+      "accessedAt": "2026-09-26T17:28:37.448Z",
+      "headline": "Festa do Livro em Belém 2026 - Tudo o que precisa de saber - APEL",
+      "excerpt": "By Marta Lemos 11/09/2026 A Festa do Livro regressa aos jardins do Palácio de Belém de 17 a 20 de setembro! O evento, organizado pela Presidência da República em parceria com a APEL, volta a celebrar a literatura, os autores e a edição em língua portuguesa num dos mais emblemáticos espaços da cidade. O evento conta com a parceria das Bibliotecas de Lisboa como parceiro de programação infantil, a S",
+      "publishedDates": [
+        {
+          "value": "2026-09-11T09:55:35+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-11T09:55:35+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-11T09:55:35+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://apel.pt/2026/09/11/festa-do-livro-em-belem-2026/",
+      "language": "pt-PT",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:37.484Z",
+  "foundItems": [
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/09/11/festa-do-livro-em-belem-2026/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festa do Livro em Belém 2026 \u2013 Tudo o que precisa de saber",
+      "publishedAt": "2026-09-11T09:55:35.000Z",
+      "description": "The post Festa do Livro em Belém 2026 \u2013 Tudo o que precisa de saber appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/07/01/festa-do-livro-em-belem-2026-inscricoes-abertas-2/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reserve o seu lugar no Book 2.0: O evento sobre o futuro dos livros",
+      "publishedAt": "2026-07-01T14:39:42.000Z",
+      "description": "The post Reserve o seu lugar no Book 2.0: O evento sobre o futuro dos livros appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/06/23/festa-do-livro-em-belem-2026-inscricoes-abertas/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Festa do Livro em Belém 2026 \u2013 Inscrições Abertas",
+      "publishedAt": "2026-06-23T13:43:11.000Z",
+      "description": "The post Festa do Livro em Belém 2026 \u2013 Inscrições Abertas appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/06/22/feira-do-livro-de-frankfurt-2026-inscricoes-abertas/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Feira do Livro de Frankfurt 2026 \u2013 Inscrições Abertas",
+      "publishedAt": "2026-06-22T09:49:05.000Z",
+      "description": "Uma vez mais a APEL irá participar na Feira do Livro de Frankfurt que, este ano, terá lugar entre os... The post Feira do Livro de Frankfurt 2026 \u2013 Inscrições Abertas appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/06/18/quer-doar-livros-que-ja-nao-precisa/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quer doar livros de que já não precisa?",
+      "publishedAt": "2026-06-18T11:15:02.000Z",
+      "description": "The post Quer doar livros de que já não precisa? appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/03/12/mario-zambujal-1936-2026/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Mário Zambujal | 1936 \u2013 2026",
+      "publishedAt": "2026-03-12T17:13:28.000Z",
+      "description": "The post Mário Zambujal | 1936 \u2013 2026 appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/03/10/comunicado-de-imprensa-inscricoes-fll-2026/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Comunicado de Imprensa \u2013 Inscrições FLL 2026",
+      "publishedAt": "2026-03-10T18:35:11.000Z",
+      "description": "The post Comunicado de Imprensa \u2013 Inscrições FLL 2026 appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/03/10/semana-da-leitura-2026/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Semana da Leitura 2026",
+      "publishedAt": "2026-03-10T10:24:51.000Z",
+      "description": "The post Semana da Leitura 2026 appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/03/09/96-a-feira-do-livro-de-lisboa-candidaturas-abertas-para-equipa/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "96.ª Feira do Livro de Lisboa \u2013 Candidaturas abertas para Equipa",
+      "publishedAt": "2026-03-09T14:01:47.000Z",
+      "description": "The post 96.ª Feira do Livro de Lisboa \u2013 Candidaturas abertas para Equipa appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "apel-pt",
+      "source": {
+        "name": "Associaçáo Portuguesa de Editores e LivreirosAv. dos Estados Unidos da América",
+        "url": "https://apel.pt/2026/05/14/apel-e-lusiadas-saude-abrem-novo-capitulo-entre-saude-leitura-e-literacia/",
+        "language": "pt-PT"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "APEL e Lusíadas Saúde abrem novo capítulo entre saúde, leitura e literacia",
+      "publishedAt": "2026-05-14T21:32:09.000Z",
+      "description": "The post APEL e Lusíadas Saúde abrem novo capítulo entre saúde, leitura e literacia appeared first on APEL.",
+      "discoveredAt": "2026-09-26T17:28:36.926Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ecb985f9cbdb5eb6749fef2a19f18154cd2916f2cdbeea57cfe4ea9bd0965d3f"
+}

@@ -1,0 +1,668 @@
+[
+  {
+    "label": "Biblioteka Kombëtare e Shqipërisë / National Library of Albania",
+    "url": "https://www.cenl.org/library/national-library-of-albania-biblioteka-kombetare/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:34.297Z",
+    "sha256": "b79318250aac88bc287589ba7c46bc279d27bc1919b68783cb8caaceb4c7d8cb",
+    "links": [
+      {
+        "url": "http://www.bksh.al/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Հայաստանի Ազգային Գրադարան / National Library of Armenia",
+    "url": "https://www.cenl.org/library/national-library-of-armenia/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:34.352Z",
+    "sha256": "76adaa627662dbb41afcda47e12b6f19f08aa66561970d938d80c8159c4ac945",
+    "links": [
+      {
+        "url": "https://nla.am/en_US",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Österreichische Nationalbibliothek / Austrian National Library",
+    "url": "https://www.cenl.org/library/national-library-of-austria-osterreichische-nationalbibliothek/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:34.591Z",
+    "sha256": "8a1d6d3c1d27bce849335ad028f60a906a3a22b63a3132b7b194b59e15b8d29e",
+    "links": [
+      {
+        "url": "https://www.onb.ac.at/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Azerbaycan Milli Kitabxana / National Library of Azerbaijan",
+    "url": "https://www.cenl.org/library/national-library-of-azerbaijan-m-f-axundov-adina-azerbaycan-milli-kitabxana/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:34.583Z",
+    "sha256": "cdf40fde8aa939244d91b2fc9785eb633942676c8ece2b71f09145b4c1a2d277",
+    "links": [
+      {
+        "url": "https://www.millikitabxana.az/en/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Koninklijke Bibliotheek van België / Royal Library of Belgium",
+    "url": "https://www.cenl.org/library/koninklijke-bibliotheek-van-belgie-bibliotheque-royale-de-belgique/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:34.991Z",
+    "sha256": "528a98db5c13cdcda99aca408d77f08c1a67ad69f9c26a4647e3316aadec9c0b",
+    "links": [
+      {
+        "url": "http://www.kbr.be/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Nacionalna i univerzitetska biblioteka / National and University Library of Bosnia and Herzegovina",
+    "url": "https://www.cenl.org/library/nacionalna-i-univerzitetska-biblioteka/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:35.042Z",
+    "sha256": "5b8d1f6cf240a89f06df64cbf28218002bd014710a372895b08936f82d2a7075",
+    "links": [
+      {
+        "url": "http://www.nub.ba/",
+        "label": "website"
+      },
+      {
+        "url": "http://www.karloparzik.com/Illustrations-21to40.html",
+        "label": "http://www.karloparzik.com/Illustrations-21to40.html"
+      }
+    ]
+  },
+  {
+    "label": "Национална библиотека „Св. cв. Кирил и Методий / St.St. Cyril and Methodius National Library",
+    "url": "https://www.cenl.org/library/national-library-of-bulgaria-st-st-cyrill-and-methodius-national-library/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:35.232Z",
+    "sha256": "2fdb23c84ef62283c95b9f1b1be4e4a620e6a9307dec28d155586bf3f8d83c0e",
+    "links": [
+      {
+        "url": "http://nationallibrary.bg/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Nacionalna i sveučilišna knjižnica u Zagrebu / National and University Library in Zagreb",
+    "url": "https://www.cenl.org/library/national-and-university-library-in-zagreb/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:35.464Z",
+    "sha256": "0aa94fe694f00ef22fac14c0aa52dde0d23d49fe25341216d9c9ce13baab29bb",
+    "links": [
+      {
+        "url": "http://www.nsk.hr/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Κυπριακή Βιβλιοθήκη / Cyprus Library",
+    "url": "https://www.cenl.org/library/cyprus-library/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:35.411Z",
+    "sha256": "848c85121c4dc5c6ec5dba09b206886fbb3c9be617f2524833155a6baac25e49",
+    "links": [
+      {
+        "url": "https://www.cypruslibrary.gov.cy/index.php/el/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Národní knihovna České republiky / National Library of the Czech Republic",
+    "url": "https://www.cenl.org/library/national-library-of-the-czech-republic-narodni-knihovna-ceske-republiky/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:35.777Z",
+    "sha256": "9178dc1b79ec883ba22add30c44d2241f75591094c703acd85835099fb755109",
+    "links": [
+      {
+        "url": "http://www.nkp.cz/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Det Kongelige Bibliotek / Royal Danish Library",
+    "url": "https://www.cenl.org/library/national-library-of-denmark-det-kongelige-bibliotek/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:35.838Z",
+    "sha256": "2eab7df8d602c50c8ef05da3b1ff76d67a3feeece099f131d3e3bf1ae8989884",
+    "links": [
+      {
+        "url": "http://www.kb.dk/en/nb/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Eesti Rahvusraamatukogu / National Library of Estonia",
+    "url": "https://www.cenl.org/library/national-library-of-estonia-eesti-rahvusraamatukogu/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:36.220Z",
+    "sha256": "0060ebfb39b6b8a5644b784c56b01369c445b29fe4dd623a63a3138167143e01",
+    "links": [
+      {
+        "url": "https://www.rara.ee/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Kansalliskirjasto / The National Library of Finland",
+    "url": "https://www.cenl.org/library/the-national-library-of-finland-kansalliskirjasto/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:36.303Z",
+    "sha256": "053f3627b2f00eafc0e577a2dc620171cb696e7c2b66be93722c9de5936841c4",
+    "links": [
+      {
+        "url": "https://www.kansalliskirjasto.fi/en",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Bibliothèque nationale de France / National Library of France",
+    "url": "https://www.cenl.org/library/bibliotheque-nationale-de-france/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:36.503Z",
+    "sha256": "2246c157afb47c7ba79cdfa60b9f58dd35a7f20878ebbeb7e3bc3f209c45eb39",
+    "links": [
+      {
+        "url": "https://www.bnf.fr/fr",
+        "label": "website"
+      },
+      {
+        "url": "https://www.bnf.fr/fr/francois-mitterrand",
+        "label": "https://www.bnf.fr/fr/francois-mitterrand"
+      },
+      {
+        "url": "https://www.bnf.fr/fr/richelieu",
+        "label": "https://www.bnf.fr/fr/richelieu"
+      },
+      {
+        "url": "https://www.bnf.fr/fr/arsenal",
+        "label": "https://www.bnf.fr/fr/arsenal"
+      },
+      {
+        "url": "https://www.bnf.fr/fr/opera",
+        "label": "https://www.bnf.fr/fr/opera"
+      },
+      {
+        "url": "https://www.bnf.fr/fr/jean-vilar",
+        "label": "https://www.bnf.fr/fr/jean-vilar"
+      }
+    ]
+  },
+  {
+    "label": "სსიპ ილია ჭავჭავაძის სახელობის საქართველოს ეროვნული ბიბლიოთეკა / National Library of Georgia",
+    "url": "https://www.cenl.org/library/national-library-of-georgia/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:36.687Z",
+    "sha256": "4a673458c69358164618c7560f3fbc363d366d5a89e4ac450ab16135d33d6823",
+    "links": [
+      {
+        "url": "http://www.nplg.gov.ge/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Deutsche Nationalbibliothek / German National Library",
+    "url": "https://www.cenl.org/library/deutsche-nationalbibliothek-german-national-library/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:37.256Z",
+    "sha256": "e32d39c3f48cd6f145907ec43740f96de3043dab60e93ea0f40cbe536588642a",
+    "links": [
+      {
+        "url": "https://www.dnb.de/",
+        "label": "website"
+      },
+      {
+        "url": "https://bsky.app/profile/dnb-aktuelles.bsky.social",
+        "label": ""
+      },
+      {
+        "url": "https://jahresbericht.dnb.de/Webs/jahresbericht/EN/2023/Home/home_node.html",
+        "label": "Germany Annual Report 2023\n          Germany / Deutsche Nationalbibliothek / German National Library\n          \n            \n              AR"
+      },
+      {
+        "url": "https://jahresbericht.dnb.de/Webs/jahresbericht/EN/2022/Home/home_node.html",
+        "label": "Germany Annual Report 2022\n          Germany / Deutsche Nationalbibliothek / German National Library\n          \n            \n              AR"
+      }
+    ]
+  },
+  {
+    "label": "Εθνική Βιβλιοθήκη της Ελλάδος / National Library of Greece",
+    "url": "https://www.cenl.org/library/national-library-of-greece/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:37.140Z",
+    "sha256": "fb19f1680a78162ce0690c874bf7477b02ef4c3cb352534b1a178c6ba8a66fbb",
+    "links": [
+      {
+        "url": "https://www.nlg.gr/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Országos Széchényi Könyvtár (OSZK) / National Library of Hungary",
+    "url": "https://www.cenl.org/library/national-library-of-hungary-orszagos-szechenyi-konyvtar-oszk/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:37.345Z",
+    "sha256": "1dff3db00d757a7b0acc57b4120817658d886a22cea0e75ef3ea22382a50574d",
+    "links": [
+      {
+        "url": "http://www.oszk.hu/en",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Landsbókasafn Íslands \u2013 Háskólabókasafn / National and University Library of Iceland",
+    "url": "https://www.cenl.org/library/national-university-library-of-iceland/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:37.650Z",
+    "sha256": "61c29ec04f770c246df917622671d9789a0b8efc22b02f120368beb49c7928c7",
+    "links": [
+      {
+        "url": "https://landsbokasafn.is/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Leabharlann Náisiúnta na hÉireann / National Library of Ireland",
+    "url": "https://www.cenl.org/library/national-library-of-ireland/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:37.737Z",
+    "sha256": "1cd12f83a5c48cfd679cc608b9a79c13a49d4668fbef8329868303d35b9c8efb",
+    "links": [
+      {
+        "url": "https://www.nli.ie/",
+        "label": "website"
+      },
+      {
+        "url": "https://web-cdn.bsky.app/profile/nlireland.bsky.social",
+        "label": ""
+      }
+    ]
+  },
+  {
+    "label": "Biblioteca Nazionale Centrale di Firenze / The Central National Library of Florence",
+    "url": "https://www.cenl.org/library/the-central-national-library-of-florence/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:38.026Z",
+    "sha256": "cf64d9d2339f36439ba97f41081ac5fc46124fb1e28cd0182eaff5ad3879ce38",
+    "links": [
+      {
+        "url": "http://www.bncf.firenze.sbn.it/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Biblioteca nazionale centrale di Roma / National Central Library of Rome",
+    "url": "https://www.cenl.org/library/the-central-national-library-of-rome/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:37.902Z",
+    "sha256": "f2547c321849f626a0a5c80d98e425d4730df007cbbac16262bddb5e5267539f",
+    "links": [
+      {
+        "url": "http://www.bncrm.beniculturali.it/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Latvijas Nacionālā bibliotēka / National Library of Latvia",
+    "url": "https://www.cenl.org/library/national-library-of-latvia/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:38.085Z",
+    "sha256": "4b2e957f63e89975a5fc6e8eec71bc21f4dc1d2708f0fb8347a3796a6c5344a0",
+    "links": [
+      {
+        "url": "https://lnb.lv/en",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Liechtensteinische Landesbibliothek / National Library of Liechtenstein",
+    "url": "https://www.cenl.org/library/national-library-of-liechtenstein/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:38.435Z",
+    "sha256": "c9a3b3563d578e61327f03e12ce36c908114dcb12e36f9fc5a4a6ce8de23271a",
+    "links": [
+      {
+        "url": "https://www.landesbibliothek.li/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Lietuvos nacionalinė Martyno Mažvydo biblioteka / Martynas Mazvydas National Library of Lithuania",
+    "url": "https://www.cenl.org/library/martynas-mazvydas-national-library-of-lithuania/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:38.494Z",
+    "sha256": "fd011e8a1130bc620e5c30ae08224868d4cc1881fa3d7e03ad2936ab2cf02a60",
+    "links": [
+      {
+        "url": "https://www.lnb.lt/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Bibliothèque nationale du Luxembourg / National Library of Luxembourg",
+    "url": "https://www.cenl.org/library/national-library-of-luxembourg/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:38.838Z",
+    "sha256": "d2a491f3656dcef9b1279bc810a86897f0127ed6e2cd23ae1384f03e237f8b58",
+    "links": [
+      {
+        "url": "https://bnl.public.lu/",
+        "label": "website"
+      },
+      {
+        "url": "https://bsky.app/profile/bnluxembourg.bsky.social",
+        "label": ""
+      }
+    ]
+  },
+  {
+    "label": "Bibljoteka Nazzjonali ta’ Malta / Malta Libraries \u2013 The National Library of Malta",
+    "url": "https://www.cenl.org/library/malta-libraries-the-national-library-of-malta/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:38.656Z",
+    "sha256": "b36c0f36d4127a98384adc1d7e52731c1c1e1c7272849e576f40118251f5c7db",
+    "links": [
+      {
+        "url": "https://maltalibraries.gov.mt/iguana/www.main.cls?surl=MaltaLibraries",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Biblioteca Natională a Republicii Moldova / National Library of the Republic of Moldova",
+    "url": "https://www.cenl.org/library/national-library-of-the-republic-of-moldova-biblioteca-nationala-a-republicii-moldova/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:38.819Z",
+    "sha256": "c2bfca8a42a0e1a1561ccf69759b611b28f14c0095691b8da964c111e242093a",
+    "links": [
+      {
+        "url": "http://www.bnrm.md/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Nacionalna biblioteka Crne Gore „Đurđe Crnojević“/ National Library of Montenegro “Djurdje Crnojevic”",
+    "url": "https://www.cenl.org/library/national-library-of-montenegro-djurdje-crnojevic-cetinje-naciocalna-biblioteka-crne-gore-djurdje-crnojevic-cetinje/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:39.206Z",
+    "sha256": "5360a1a8f52d5d2cd3a6d9372c77ab2f9282174db94f7be5a8cf293480a5d2bb",
+    "links": [
+      {
+        "url": "https://www.nb-cg.me/en",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "KB nationale bibliotheek / KB national library",
+    "url": "https://www.cenl.org/library/koninklijke-bibliotheek/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:39.233Z",
+    "sha256": "94ae050cb22b3e7df2981d01658f1d964f4219669637e5995436b2cf92557093",
+    "links": [
+      {
+        "url": "https://www.kb.nl/en",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Национална и универзитетска библиотека „Св. Климент Охридски“ / National and University Library “St Clement of Ohrid”",
+    "url": "https://www.cenl.org/library/national-and-university-library-st-kliment-ohridski/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:39.381Z",
+    "sha256": "b88ebacc897b72795990af11a6b88fd2004d35bab1db83c92469cccf647cb9e6",
+    "links": []
+  },
+  {
+    "label": "Nasjonalbiblioteket / National Library of Norway",
+    "url": "https://www.cenl.org/library/national-library-of-norway-nasjonalbiblioteket/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:39.603Z",
+    "sha256": "a849809283352681f758f59fe24732c90880780b8fdf5edbde53d36e41555541",
+    "links": [
+      {
+        "url": "https://www.nb.no/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Biblioteka Narodowa / National Library of Poland",
+    "url": "https://www.cenl.org/library/national-library-of-poland-biblioteka-narodowa/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:39.753Z",
+    "sha256": "9f713919d13c6f0e83da2e9dc3c815fe8c34046a22c6b82fbf82b7f3272b288c",
+    "links": [
+      {
+        "url": "https://www.bn.org.pl/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Biblioteca Nacional de Portugal (BNP) / National Library of Portugal",
+    "url": "https://www.cenl.org/library/national-library-of-portugal/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:39.785Z",
+    "sha256": "32bedc170990f1112ece73d3270d0ad96677c60e2d980388b5d25d1880f88140",
+    "links": [
+      {
+        "url": "http://www.bnportugal.gov.pt/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Biblioteca Naţională a României / National Library of Romania",
+    "url": "https://www.cenl.org/library/national-library-of-romania/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:39.942Z",
+    "sha256": "025431369104eb0830e48d99a97c0020abf737197d519a0f45ded8006d944790",
+    "links": [
+      {
+        "url": "http://www.bibnat.ro/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Народна библиотека Србије / National Library of Serbia",
+    "url": "https://www.cenl.org/library/national-library-of-serbia/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:40.161Z",
+    "sha256": "3ea2014e1c16c27b57e10b10c585f8d650ee9eb5c291fc673748c0d7dca54bbd",
+    "links": [
+      {
+        "url": "https://www.nb.rs/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Slovenská národná knižnica / Slovak National Library",
+    "url": "https://www.cenl.org/library/slovak-national-library-slovenska-narodna-kni/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:40.312Z",
+    "sha256": "892b0f0f5bb334209ac1cee4c797cb2f34b1e78f2ff37a03986322810bc23200",
+    "links": [
+      {
+        "url": "http://www.snk.sk/en/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Narodna in univerzitetna knjižnica (NUK) / National and University Library of Slovenia",
+    "url": "https://www.cenl.org/library/national-and-university-library-of-slovenia/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:40.337Z",
+    "sha256": "17df45087c223d1dd63ac603c05003daa7e0cde666e8f31aa4cc95eed96fd66e",
+    "links": [
+      {
+        "url": "https://www.nuk.uni-lj.si/eng/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Biblioteca Nacional de España / National Library of Spain",
+    "url": "https://www.cenl.org/library/national-library-of-spain/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:40.493Z",
+    "sha256": "637b5ecde21bca178eac2a67cc92373fc06bd2b7e43a08fcb9d6f75a2dacfeab",
+    "links": [
+      {
+        "url": "http://www.bne.es/",
+        "label": "website"
+      },
+      {
+        "url": "https://bsky.app/profile/bne.es",
+        "label": ""
+      }
+    ]
+  },
+  {
+    "label": "Kungliga Biblioteket / National Library of Sweden",
+    "url": "https://www.cenl.org/library/national-library-of-sweden-kungliga-biblioteket/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:40.514Z",
+    "sha256": "69e4a0822ea32d1b8b87f883dc09d048b34e56f27ccb6f78f0f8093a485b3588",
+    "links": [
+      {
+        "url": "https://www.kb.se/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Schweizerische Nationalbibliothek / Swiss National Library",
+    "url": "https://www.cenl.org/library/swiss-national-library-schweizerische-nationalbibliothek/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:40.877Z",
+    "sha256": "06e455c364ac98af0731a0ea352bf6ea61ac98c4d08ed7903b90b9c4f1a89449",
+    "links": [
+      {
+        "url": "https://www.nb.admin.ch/",
+        "label": "website"
+      },
+      {
+        "url": "https://x.com/NB_schweiz",
+        "label": ""
+      }
+    ]
+  },
+  {
+    "label": "Türkiye Millî Kütüphane / National Library of Türkiye",
+    "url": "https://www.cenl.org/library/national-library-of-turkiye/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:40.913Z",
+    "sha256": "85592c88c57d99a9e1a4e3ddf56264d6c8f4096f42f2a8782594aa70ea7ca125",
+    "links": [
+      {
+        "url": "http://www.mkutup.gov.tr/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Національна бібліотека України імені В. І. Вернадського / Vernadsky National Library of Ukraine",
+    "url": "https://www.cenl.org/library/v-vernadsky-national-library-of-ukraine/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:41.052Z",
+    "sha256": "ee9cac46e5f40e4cd76dd17c3ccde6738b1b9e1b2af4aeab3691dfc7657123e6",
+    "links": [
+      {
+        "url": "http://nbuv.gov.ua/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "British Library",
+    "url": "https://www.cenl.org/library/british-library/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:41.101Z",
+    "sha256": "589a71885414e5ed20e53a084ba1309dad3fdcd5af7df311ef7accfaf394b611",
+    "links": [
+      {
+        "url": "http://www.bl.uk/",
+        "label": "website"
+      },
+      {
+        "url": "https://web-cdn.bsky.app/profile/britishlibrary.bsky.social",
+        "label": ""
+      }
+    ]
+  },
+  {
+    "label": "Leabharlann Nàiseanta na h-Alba / National Library of Scotland",
+    "url": "https://www.cenl.org/library/leabharlann-naiseanta-na-h-alba-national-library-of-scotland/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:41.424Z",
+    "sha256": "c532aaa6aaf97217ba3913bb91289f04ba047a2ccc453934be7dd508ea124054",
+    "links": [
+      {
+        "url": "https://www.nls.uk/",
+        "label": "website"
+      },
+      {
+        "url": "https://bsky.app/profile/natlibscot.bsky.social",
+        "label": ""
+      }
+    ]
+  },
+  {
+    "label": "Llyfrgell Genedlaethol Cymru / National Library of Wales",
+    "url": "https://www.cenl.org/library/llyfrgell-genedlaethol-cymru-national-library-of-wales/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:41.509Z",
+    "sha256": "6abe9a336f2d52185690c0f27c6bb3df5d558fbb80d1a3df770a8719f66b60ba",
+    "links": [
+      {
+        "url": "https://www.library.wales/",
+        "label": "website"
+      }
+    ]
+  },
+  {
+    "label": "Biblioteca Apostolica Vaticana / The Vatican Library",
+    "url": "https://www.cenl.org/library/the-vatican-library-biblioteca-apostolica-vaticana/",
+    "context": "",
+    "accessedAt": "2026-09-26T17:14:41.791Z",
+    "sha256": "20cfb8f3411c0aca7df559e00d59f3efa1737225599b220ab1b7ddbecd3f0ff5",
+    "links": [
+      {
+        "url": "https://www.vaticanlibrary.va/",
+        "label": "website"
+      }
+    ]
+  }
+]

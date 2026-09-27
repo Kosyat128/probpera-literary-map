@@ -1,0 +1,396 @@
+{
+  "sourceId": "publishers-org",
+  "name": "Association of American Publishers",
+  "entryUrl": "https://publishers.org/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:27:52.844Z",
+  "requests": [
+    {
+      "url": "https://publishers.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 78437,
+      "sha256": "a877e16d47e9d6bbe50a81647194334231dc303477546dd28b3c851ac75d2f16",
+      "accessedAt": "2026-09-26T17:21:29.428Z"
+    },
+    {
+      "url": "https://publishers.org/a-conversation-with-kimberly-kay-hoang-author-of-the-2023-prose-awards-r-r-hawkins-award-winner-spiderweb-capitalism-how-global-elites-exploit-frontier-markets/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 93385,
+      "sha256": "0baeeedc2daa8211dbe285a195111cf95a914b8754c94874ca3addb2fcd992e2",
+      "accessedAt": "2026-09-26T17:27:53.454Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://publishers.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 262,
+    "sha256": "99564fc7561a864948b2480cdea42346fbd4a3d84491611a29fff87638056443",
+    "accessedAt": "2026-09-26T17:27:53.208Z",
+    "disallowed": []
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:26.248Z",
+    "sourceDocumentSha256": "a877e16d47e9d6bbe50a81647194334231dc303477546dd28b3c851ac75d2f16"
+  },
+  "endpoint": {
+    "id": "publishers-org",
+    "name": "Association of American Publishers",
+    "url": "https://publishers.org/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "north-america",
+    "sourceFamilyId": "publishers-org",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://publishers.org"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://publishers.org/a-conversation-with-kimberly-kay-hoang-author-of-the-2023-prose-awards-r-r-hawkins-award-winner-spiderweb-capitalism-how-global-elites-exploit-frontier-markets/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:53.459Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "publishers-org",
+    "source": {
+      "name": "Association of American Publishers",
+      "url": "https://publishers.org/a-conversation-with-kimberly-kay-hoang-author-of-the-2023-prose-awards-r-r-hawkins-award-winner-spiderweb-capitalism-how-global-elites-exploit-frontier-markets/",
+      "language": "en-US"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "A Conversation With Kimberly Kay Hoang, Author of the 2023 PROSE Awards R.R. Hawkins Award Winner, “Spiderweb Capitalism: How Global Elites Exploit Frontier Markets”",
+    "publishedAt": "2023-10-12T18:12:47.000Z",
+    "description": "Kimberly Kay Hoang is an award-winning scholar, author, teacher, current Professor of Sociology and the College and the Director of Global Studies at the University of Chicago, and the author of two books. Spiderweb Capitalism: How Global Elites Exploit Frontier Markets (Princeton University Press, 2022) and Dealing in Desire: Asian Ascendancy, Western Decline, and the […] The post A Conversation…",
+    "discoveredAt": "2026-09-26T17:27:53.213Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://publishers.org/a-conversation-with-kimberly-kay-hoang-author-of-the-2023-prose-awards-r-r-hawkins-award-winner-spiderweb-capitalism-how-global-elites-exploit-frontier-markets/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 93385,
+      "sha256": "0baeeedc2daa8211dbe285a195111cf95a914b8754c94874ca3addb2fcd992e2",
+      "accessedAt": "2026-09-26T17:27:53.454Z",
+      "headline": "Blogs",
+      "excerpt": "Blogs News News Blogs COVID-19 Response October 12, 2023 A Conversation With Kimberly Kay Hoang, Author of the 2023 PROSE Awards R.R. Hawkins Award Winner, “Spiderweb Capitalism: How Global Elites Exploit Frontier Markets” by John McKay Kimberly Kay Hoang is an award-winning scholar, author, teacher, current Professor of Sociology and the College and the Director of Global Studies at the Universit",
+      "publishedDates": [
+        {
+          "value": "2023-10-12T18:12:47+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2023-10-12T14:12:47-04:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        },
+        {
+          "value": "2023-10-12T14:12:47-04:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2023-10-12T18:12:47+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2023-10-12T18:12:47+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://publishers.org/a-conversation-with-kimberly-kay-hoang-author-of-the-2023-prose-awards-r-r-hawkins-award-winner-spiderweb-capitalism-how-global-elites-exploit-frontier-markets/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:53.459Z",
+  "foundItems": [
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/a-conversation-with-kimberly-kay-hoang-author-of-the-2023-prose-awards-r-r-hawkins-award-winner-spiderweb-capitalism-how-global-elites-exploit-frontier-markets/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Conversation With Kimberly Kay Hoang, Author of the 2023 PROSE Awards R.R. Hawkins Award Winner, “Spiderweb Capitalism: How Global Elites Exploit Frontier Markets”",
+      "publishedAt": "2023-10-12T18:12:47.000Z",
+      "description": "Kimberly Kay Hoang is an award-winning scholar, author, teacher, current Professor of Sociology and the College and the Director of Global Studies at the University of Chicago, and the author of two books. Spiderweb Capitalism: How Global Elites Exploit Frontier Markets (Princeton University Press, 2022) and Dealing in Desire: Asian Ascendancy, Western Decline, and the […] The post A Conversation…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/prose-award-editors-series-anne-savarese/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROSE Award Editors Series: Anne Savarese",
+      "publishedAt": "2024-11-20T17:30:39.000Z",
+      "description": "In our third installment of the PROSE Award Editors Series, we talked with Princeton University Press’ Anne Savarese, editor of The Chapter: A Segmented History from Antiquity to the Twenty-First Century, winner of the 2024 PROSE Award in the category of Literature. In this installment, Savarese takes us on a journey through the editorial process, […] The post PROSE Award Editors Series: Anne Sav…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/prose-award-editors-series-joseph-pomp/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROSE Award Editors Series: Joseph Pomp",
+      "publishedAt": "2024-11-08T18:17:14.000Z",
+      "description": "For the second installment of our PROSE Award Editors Series, we speak with Harvard University Press’ Joseph Pomp, editor of A Myriad of Tongues: How Languages Reveal Differences in How We Think by Caleb Everett, winner of the 2024 PROSE Award in the category Language and Linguistics, and Sovereign Funds: How the Communist Party of […] The post PROSE Award Editors Series: Joseph Pomp first appear…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/prose-award-editors-series-ruth-lane/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROSE Award Editors Series: Ruth Lane",
+      "publishedAt": "2024-10-25T17:16:20.000Z",
+      "description": "As entries for the 2025 PROSE Awards continue to pour in, we begin our first piece in a series of conversations with editors of PROSE Award-winning works, who give us insight into the process behind editing professional and scholarly books and the value that the PROSE Awards bring to the scholarly publishing community. This week, […] The post PROSE Award Editors Series: Ruth Lane first appeared o…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/reflections-from-the-association-of-american-publishers-on-hachette-book-group-v-internet-archive-an-affirmation-of-publishing/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Reflections from the Association of American Publishers on Hachette Book Group v. Internet Archive: An Affirmation of Publishing",
+      "publishedAt": "2023-03-31T20:56:46.000Z",
+      "description": "Following three years of litigation in the critical copyright case Hachette Book Group, et al, v. Internet Archive, we now have a strong and favorable result. In granting summary judgement for the publisher plaintiffs, Judge Koeltl resolved all four fair use factors in the Copyright Act against the Internet Archive (IA). The opinion, issued a […] The post Reflections from the Association of Ameri…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/judge-daniel-mack-on-what-judges-look-for-in-prose-awards-entries/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Judge Daniel Mack on What Judges Look for in PROSE Awards Entries",
+      "publishedAt": "2022-11-09T19:24:34.000Z",
+      "description": "Interviews With 2023 PROSE Judges As we approach the end of the 2023 PROSE Awards entry period, we have our final piece in our PROSE Judges Spotlight series, in which we ask veteran judge Daniel Mack for his thoughts on what makes for a winning PROSE entry. Judge Daniel Mack is an Associate Dean of […] The post Judge Daniel Mack on What Judges Look for in PROSE Awards Entries first appeared on AA…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/prose-judge-deborah-logan-on-what-judges-look-for-in-a-prose-awards-entry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PROSE Judge Deborah Logan on What Judges Look for in a PROSE Awards Entry",
+      "publishedAt": "2022-10-26T15:16:07.000Z",
+      "description": "Interviews with 2023 PROSE Judges In the second installment of the 2023 PROSE Spotlight series, judge Deborah Logan provides insight into not only the judging process, but also the importance of gender-balance in awards committees and scholarly editorial teams. Judge Deborah Logan is Publishing Director for Elsevier’s Energy & Earth journals’ program which is the […] The post PROSE Judge Deborah …",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/what-do-judges-look-for-in-a-prose-awards-entry/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What Do Judges Look for in a PROSE Awards Entry?",
+      "publishedAt": "2022-10-11T18:17:43.000Z",
+      "description": "Interviews with 2023 PROSE Judges As submissions start to roll in for the 2023 PROSE Awards, our own Syreeta Swann, Chief Operating Officer here at the Association of American Publishers, asked veteran judge Peter Berkery for some insights into what makes a PROSE entry stand out. Peter is the Executive Director of the Association of […] The post What Do Judges Look for in a PROSE Awards Entry? fi…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/aap-submits-comments-in-response-to-nih-request-for-information-on-maximizing-research-funds-by-limiting-allowable-publishing-costs/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AAP Submits Comments in Response to NIH Request for Information on Maximizing Research Funds by Limiting Allowable Publishing Costs",
+      "publishedAt": "2025-09-23T22:54:54.000Z",
+      "description": "On September 15, 2025, AAP submitted comments in response to a Request for Information on Maximizing Research Funds by Limiting Allowable Publishing Costs by the National Institutes of Health. AAP continues to advocate that the best method for addressing issues of cost in publication is through a vibrant, competitive, and dynamic publishing marketplace with maximum author choice. Publishers […] T…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "publishers-org",
+      "source": {
+        "name": "Association of American Publishers",
+        "url": "https://publishers.org/american-publishers-working-to-improve-access-affordability-and-outcomes-for-college-students/",
+        "language": "en-US"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "American Publishers Working to Improve Access, Affordability and Outcomes for College Students",
+      "publishedAt": "2023-02-16T14:02:00.000Z",
+      "description": "Working with colleges and universities across the country, American publishers are helping to ensure that students have access to affordable course materials on the first day of class through an innovation in course material delivery called Inclusive Access. Inclusive Access really began to gain momentum in 2015 when the U.S. Department of Education issued federal […] The post American Publishers…",
+      "discoveredAt": "2026-09-26T17:27:53.213Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a877e16d47e9d6bbe50a81647194334231dc303477546dd28b3c851ac75d2f16"
+}

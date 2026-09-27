@@ -1,0 +1,372 @@
+{
+  "sourceId": "aaww",
+  "name": "Asian American Writers’ Workshop",
+  "entryUrl": "https://aaww.org/feed/",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [
+    "US"
+  ],
+  "attemptedAt": "2026-09-26T17:27:29.216Z",
+  "requests": [
+    {
+      "url": "https://aaww.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 47024,
+      "sha256": "16b3fa0dcd9a81f2394f1abbf96c46755051621ec76b7052b6af7bd9e3801162",
+      "accessedAt": "2026-09-26T17:27:31.112Z"
+    },
+    {
+      "url": "https://aaww.org/into-the-ocean/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 101878,
+      "sha256": "293c5080e87d8e46fd88dc6143824900d17a4209dc141db02e32c91028027b47",
+      "accessedAt": "2026-09-26T17:27:32.548Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://aaww.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 41,
+    "sha256": "54873a5fe4ff366e484dda39c00c40107c401d26b33416fe841ab2507e878e21",
+    "accessedAt": "2026-09-26T17:27:29.773Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "aaww",
+    "name": "Asian American Writers’ Workshop",
+    "url": "https://aaww.org/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "north-america",
+    "sourceFamilyId": "aaww",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [
+      "US"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://aaww.org"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://aaww.org/into-the-ocean/"
+    ],
+    "verifiedAt": "2026-09-26T17:27:32.554Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "aaww",
+    "source": {
+      "name": "Asian American Writers’ Workshop",
+      "url": "https://aaww.org/into-the-ocean/",
+      "language": "en"
+    },
+    "region": "north-america",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Into the Ocean",
+    "publishedAt": "2026-08-11T16:27:10.000Z",
+    "description": "Overcoming barriers to learning how to swim in Indonesia",
+    "discoveredAt": "2026-09-26T17:27:31.116Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://aaww.org/into-the-ocean/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 101878,
+      "sha256": "293c5080e87d8e46fd88dc6143824900d17a4209dc141db02e32c91028027b47",
+      "accessedAt": "2026-09-26T17:27:32.548Z",
+      "headline": "Into the Ocean",
+      "excerpt": "Essays Reportage Marginalia Interviews Poetry Fiction Videos Everything Into the Ocean Overcoming barriers to learning how to swim in Indonesia By Jihan, Maddy Bolt Photo: Coral LittleJohn; Art: Devyn Mañibo Reportage | Indonesia, swimming, women August 11, 2026 The following text, written by Jihan\u2014a thirteen-year-old who lives in Lombok, Indonesia, and is learning to swim and surf\u2014has been transl",
+      "publishedDates": [
+        {
+          "value": "2026-08-11T16:27:10+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://aaww.org/into-the-ocean/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:27:32.554Z",
+  "foundItems": [
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/into-the-ocean/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Into the Ocean",
+      "publishedAt": "2026-08-11T16:27:10.000Z",
+      "description": "Overcoming barriers to learning how to swim in Indonesia",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/rain-studies/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "研究雨 | Rain Studies",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "你只能等待雨 | You can only wait for the rain",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/two-poems-by-blake-traylor/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Two Poems by Blake Traylor",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "“Manscaping” and “White Hair Silver Needle”",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/the-end-of-youth/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The End of Youth",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "I said sorry always thrice like a prayer.",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/bitter-gourd/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bitter Gourd",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "To eat you, sliced or diced, and boiled over",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/i-need-my-ordinary-surprises/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "أحتاج إلى مفاجأتي العادية | I Need My Ordinary Surprises",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "المفاجآت العادية، تلك التي ليست خارجة عن المألوف، | Moments that are ordinary\u2014ordinary surprises, not extraordinary.",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/bodycount-as/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "bodycount as",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "If a man thinks of my body as just a body I am free from betrayal.",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/move/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Move",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "I think she goes to the woods and dances.",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/lessons-in-softness/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lessons in Softness",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "In this language, so many words/ for hurt.",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aaww",
+      "source": {
+        "name": "Asian American Writers’ Workshop",
+        "url": "https://aaww.org/art-for-bankers/",
+        "language": "en"
+      },
+      "region": "north-america",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Art for bankers",
+      "publishedAt": "2026-07-28T14:00:00.000Z",
+      "description": "Dear Bored Witness: free me!",
+      "discoveredAt": "2026-09-26T17:27:31.116Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "16b3fa0dcd9a81f2394f1abbf96c46755051621ec76b7052b6af7bd9e3801162"
+}

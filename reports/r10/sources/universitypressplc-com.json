@@ -1,0 +1,344 @@
+{
+  "sourceId": "universitypressplc-com",
+  "name": "University Press Plc, Ibadan",
+  "entryUrl": "https://universitypressplc.com/",
+  "countryCodes": [
+    "NG"
+  ],
+  "coverageCountryCodes": [
+    "NG"
+  ],
+  "attemptedAt": "2026-09-26T17:27:56.958Z",
+  "requests": [
+    {
+      "url": "https://universitypressplc.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml",
+      "bytes": 17716,
+      "sha256": "340717499a2c4c80c4ea59a3b2fd162518064f737a77ba5e869ba6c528deec70",
+      "accessedAt": "2026-09-26T17:21:35.101Z"
+    },
+    {
+      "url": "https://universitypressplc.com/2025/12/12/university-press-plc-wins-prestigious-sectoral-leadership-award-at-the-pearl-2025-awards/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 140276,
+      "sha256": "9af46cb2686989f63ed3798b3c9ec557c6a617da13fab194c92b907da4fa8f95",
+      "accessedAt": "2026-09-26T17:28:00.242Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://universitypressplc.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 448,
+    "sha256": "8bbbdf300b8be63cf01654eaa571f01074c7bd20368753828c85fff13f07b0c6",
+    "accessedAt": "2026-09-26T17:27:59.676Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/wp-content/uploads/wpo/wpo-plugins-tables-list.json"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:21:32.244Z",
+    "sourceDocumentSha256": "340717499a2c4c80c4ea59a3b2fd162518064f737a77ba5e869ba6c528deec70"
+  },
+  "endpoint": {
+    "id": "universitypressplc-com",
+    "name": "University Press Plc, Ibadan",
+    "url": "https://universitypressplc.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "africa",
+    "sourceFamilyId": "universitypressplc-com",
+    "countryCodes": [
+      "NG"
+    ],
+    "coverageCountryCodes": [
+      "NG"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://universitypressplc.com"
+    ],
+    "linkPattern": "^/",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://universitypressplc.com/2025/12/12/university-press-plc-wins-prestigious-sectoral-leadership-award-at-the-pearl-2025-awards/"
+    ],
+    "verifiedAt": "2026-09-26T17:28:00.248Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 8,
+  "sample": {
+    "sourceId": "universitypressplc-com",
+    "source": {
+      "name": "University Press Plc, Ibadan",
+      "url": "https://universitypressplc.com/2025/12/12/university-press-plc-wins-prestigious-sectoral-leadership-award-at-the-pearl-2025-awards/",
+      "language": "en-US"
+    },
+    "region": "africa",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "University Press PLC Wins Prestigious Sectoral Leadership Award at the PEARL 2025 Awards",
+    "publishedAt": "2025-12-12T09:14:08.000Z",
+    "description": "University Press PLC is proud to announce its remarkable achievement at the PEARL 2025 Awards, where the company emerged winner of the 2025 Sectoral Leadership Award \u2013 Services (Printing and Publishing) category. The PEARL Awards Nigeria stands as the nation’s premier recognition platform […] The post University Press PLC Wins Prestigious Sectoral Leadership Award at the PEARL 2025 Awards first a…",
+    "discoveredAt": "2026-09-26T17:27:59.677Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://universitypressplc.com/2025/12/12/university-press-plc-wins-prestigious-sectoral-leadership-award-at-the-pearl-2025-awards/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 140276,
+      "sha256": "9af46cb2686989f63ed3798b3c9ec557c6a617da13fab194c92b907da4fa8f95",
+      "accessedAt": "2026-09-26T17:28:00.242Z",
+      "headline": "University Press PLC Wins Prestigious Sectoral Leadership Award at the PEARL 2025 Awards - University Press PLC | The foremost publishers",
+      "excerpt": "upplc December 12, 2025 University Press PLC Wins Prestigious Sectoral Leadership Award at the PEARL 2025 Awards Post Views: 61 University Press PLC is proud to announce its remarkable achievement at the PEARL 2025 Awards, where the company emerged winner of the 2025 Sectoral Leadership Award \u2013 Services (Printing and Publishing) category. The PEARL Awards Nigeria stands as the nation’s premier rec",
+      "publishedDates": [
+        {
+          "value": "2025-12-12T09:14:08+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2025-12-12T09:14:08+00:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        },
+        {
+          "value": "2025-12-12T09:14:08+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://universitypressplc.com/2025/12/12/university-press-plc-wins-prestigious-sectoral-leadership-award-at-the-pearl-2025-awards/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:28:00.248Z",
+  "foundItems": [
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2025/12/12/university-press-plc-wins-prestigious-sectoral-leadership-award-at-the-pearl-2025-awards/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press PLC Wins Prestigious Sectoral Leadership Award at the PEARL 2025 Awards",
+      "publishedAt": "2025-12-12T09:14:08.000Z",
+      "description": "University Press PLC is proud to announce its remarkable achievement at the PEARL 2025 Awards, where the company emerged winner of the 2025 Sectoral Leadership Award \u2013 Services (Printing and Publishing) category. The PEARL Awards Nigeria stands as the nation’s premier recognition platform […] The post University Press PLC Wins Prestigious Sectoral Leadership Award at the PEARL 2025 Awards first a…",
+      "discoveredAt": "2026-09-26T17:27:59.677Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2026/05/19/5731/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press PLC Receives NBFT Golden Legacy Award at the 25th Nigeria International Book Fair",
+      "publishedAt": "2026-05-19T12:59:56.000Z",
+      "description": "University Press PLC has been honoured with the prestigious NBFT Golden Legacy Award at the recently concluded 25th Nigeria International Book Fair held in Lagos, Nigeria. The award recognizes the company’s outstanding contributions to the growth and development of […] The post University Press PLC Receives NBFT Golden Legacy Award at the 25th Nigeria International Book Fair first appeared on Uni…",
+      "discoveredAt": "2026-09-26T17:27:59.677Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2025/11/12/honouring-dedication-and-excellence-university-press-plc-celebrates-long-service-awardees-2025-2026/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Honouring Dedication and Excellence: University Press Plc Celebrates Long Service Awardees 2025/2026",
+      "publishedAt": "2025-11-12T08:14:48.000Z",
+      "description": "University Press Plc, a leading force in educational publishing and knowledge dissemination in Nigeria, proudly celebrated its 2025/2026 Long Service Awardees, recognizing and appreciating members of staff whose commitment, loyalty, and excellence have significantly contributed to the company’s enduring success. […] The post Honouring Dedication and Excellence: University Press Plc Celebrates Lon…",
+      "discoveredAt": "2026-09-26T17:27:59.677Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2026/08/28/the-passing-of-alhaji-waheed-akin-olajide-immediate-past-md-university-press-plc/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Passing of Alhaji Waheed Akin Olajide \u2013 Immediate Past MD University Press Plc",
+      "publishedAt": "2026-08-28T05:34:54.000Z",
+      "description": "UNIVERSITY PRESS PLC ANNOUNCEMENT OF PASSING With total submission to the will of God, we announce the passing of Alhaji Waheed Akin Olajide, which occurred on Tuesday, 25th August, at the age of 76. Alhaji Olajide was the immediate past […] The post The Passing of Alhaji Waheed Akin Olajide \u2013 Immediate Past MD University Press Plc first appeared on University Press PLC | The foremost publishers.",
+      "discoveredAt": "2026-09-26T17:27:59.677Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2026/01/23/advancing-education-through-strategic-partnership-university-press-plc-donates-educational-books-to-ondo-state-government/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Advancing Education Through Strategic Partnership: University Press PLC Donates Educational Books to Ondo State Government",
+      "publishedAt": "2026-01-23T08:05:04.000Z",
+      "description": "University Press PLC has once again demonstrated its unwavering commitment to educational development and national progress with a significant book donation to the Ondo State Government. The initiative, carried out as part of the company’s Corporate Social Responsibility (CSR), underscores […] The post Advancing Education Through Strategic Partnership: University Press PLC Donates Educational Boo…",
+      "discoveredAt": "2026-09-26T17:27:59.677Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2025/02/10/university-press-plc-2/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press Plc Achieves Remarkable 45.45% Stock Surge in January 2025",
+      "publishedAt": "2025-02-10T11:26:41.000Z",
+      "description": "According to a report by Naira Metrics, a leading Nigerian business news platform, University Press PLC (UPPLC), Nigeria’s foremost publishers, has been listed among the top-performing stocks in Nigeria for January 2025. The report highlights that UPPLC recorded an impressive […] The post University Press Plc Achieves Remarkable 45.45% Stock Surge in January 2025 first appeared on University Pres…",
+      "discoveredAt": "2026-09-26T17:27:59.677Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2026/05/20/university-press-plc-welcomes-ms-olusayo-adeleye-as-company-secretary-legal-adviser/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press PLC Welcomes Ms. Olusayo ADELEYE as Company Secretary/Legal Adviser",
+      "publishedAt": "2026-05-20T08:30:04.000Z",
+      "description": "University Press PLC is pleased to announce the appointment of Ms. Olusayo ADELEYE as the Company Secretary/Legal Adviser of the Company. Her appointment marks another significant step in the organisation’s continued commitment to corporate excellence, sound governance, regulatory compliance, and […] The post University Press PLC Welcomes Ms. Olusayo ADELEYE as Company Secretary/Legal Adviser fir…",
+      "discoveredAt": "2026-09-26T17:27:59.677Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "universitypressplc-com",
+      "source": {
+        "name": "University Press Plc, Ibadan",
+        "url": "https://universitypressplc.com/2022/10/04/university-press/",
+        "language": "en-US"
+      },
+      "region": "africa",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "University Press Plc Successfully Holds 44th AGM. All Resolutions Passed",
+      "publishedAt": "2022-10-04T14:29:14.000Z",
+      "description": "On Thursday, September 29, 2022, University Press Plc successfully held its 44th Annual General Meeting at the Conference Room of its head office in Ibadan, Oyo State, Nigeria. In accordance with COVID-19 safety protocols, the meeting was hybrid. According to the […] The post University Press Plc Successfully Holds 44th AGM. All Resolutions Passed first appeared on University Press PLC | The fore…",
+      "discoveredAt": "2026-09-26T17:27:59.677Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "340717499a2c4c80c4ea59a3b2fd162518064f737a77ba5e869ba6c528deec70"
+}

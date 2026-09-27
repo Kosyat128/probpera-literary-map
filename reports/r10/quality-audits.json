@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-09-26T19:10:42.369Z",
+  "exitCodes": {
+    "countries:audit": 0,
+    "media:audit": 0,
+    "books:audit": 0,
+    "covers:audit": 0,
+    "assets:globe:qa": 0
+  },
+  "generatedReportSummary": "reports/r10/regression-audits/summary.json",
+  "gitOwnership": "Process-scoped safe.directory for this checked repository; no global configuration changed",
+  "originalTrackedReportsRestored": true
+}

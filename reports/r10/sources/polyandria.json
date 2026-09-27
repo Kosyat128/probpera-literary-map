@@ -1,0 +1,635 @@
+{
+  "sourceId": "polyandria",
+  "name": "Поляндрия",
+  "entryUrl": "https://polyandria.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:31:57.361Z",
+  "requests": [
+    {
+      "url": "https://polyandria.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 48793,
+      "sha256": "7a5a848cbe18441dd2f1f289f92ab4914e29080284f2efbc31a55f87af520e49",
+      "accessedAt": "2026-09-26T17:31:58.074Z"
+    },
+    {
+      "url": "https://polyandria.ru/novosti/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 51705,
+      "sha256": "75608ba8959a95a98f931f94707a9118a7d7e46cfdacb5bacddb3272db128356",
+      "accessedAt": "2026-09-26T17:31:58.162Z"
+    },
+    {
+      "url": "https://polyandria.ru/novosti/chyernaya_pyatnitsa_2025_28_noyabrya/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 31488,
+      "sha256": "1c0cfe864e7d88e564b1701fc07ef40dd6e68787dcca43ffc466a773afcf624e",
+      "accessedAt": "2026-09-26T17:31:58.255Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is a retail discount promotion; excluded from literary agenda.",
+  "robots": {
+    "url": "https://polyandria.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1022,
+    "sha256": "3f04a3984698a15ec2ae96a9e11f749c17d44586b78d6c68783522afc11fa29a",
+    "accessedAt": "2026-09-26T17:31:57.995Z",
+    "disallowed": [
+      "*/index.php",
+      "/bitrix/",
+      "/*show_include_exec_time=",
+      "/*show_page_exec_time=",
+      "/*show_sql_stat=",
+      "/*bitrix_include_areas=",
+      "/*clear_cache=",
+      "/*clear_cache_session=",
+      "/*ADD_TO_COMPARE_LIST",
+      "/*ORDER_BY",
+      "/*PAGEN",
+      "/*?print=",
+      "/*&print=",
+      "/*print_course=",
+      "/*?action=",
+      "/*&action=",
+      "/*register=",
+      "/*forgot_password=",
+      "/*change_password=",
+      "/*login=",
+      "/*logout=",
+      "/*auth=",
+      "/*backurl=",
+      "/*back_url=",
+      "/*BACKURL=",
+      "/*BACK_URL=",
+      "/*back_url_admin=",
+      "/*?utm_source=",
+      "/*?bxajaxid=",
+      "/*&bxajaxid=",
+      "/*?view_result=",
+      "/*&view_result="
+    ]
+  },
+  "endpoint": {
+    "id": "polyandria",
+    "name": "Поляндрия",
+    "url": "https://polyandria.ru/novosti/",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "polyandria",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://polyandria.ru"
+    ],
+    "linkPattern": "^//[^/]+/?$|^/novosti/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://polyandria.ru/novosti/chyernaya_pyatnitsa_2025_28_noyabrya/"
+    ],
+    "verifiedAt": "2026-09-26T17:31:58.258Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 19,
+  "literaryCandidateCount": 19,
+  "sample": {
+    "sourceId": "polyandria",
+    "source": {
+      "name": "Поляндрия",
+      "url": "https://polyandria.ru/novosti/chyernaya_pyatnitsa_2025_28_noyabrya/",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Киберпонедельник 2026 \u2014 26 января",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:31:58.171Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://polyandria.ru/novosti/chyernaya_pyatnitsa_2025_28_noyabrya/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 31488,
+      "sha256": "1c0cfe864e7d88e564b1701fc07ef40dd6e68787dcca43ffc466a773afcf624e",
+      "accessedAt": "2026-09-26T17:31:58.255Z",
+      "headline": "Киберпонедельник 2026 \u2014 26 января",
+      "excerpt": "Поляндрия. Издательский дом Новости Киберпонедельник 2026 \u2014 26 января Киберпонедельник 2026 \u2014 26 января Январский Киберпонедельник \u2014 идеальный повод, чтобы обновить свою книжную полку! 26 января вас ждёт скидка 40% на все книги \u2014 без исключений и сложных условий, но только один день! Акция «Киберпонедельник-2026» действует в интернет-магазине издательства на polyandria.ru и в книжных лавках «Полян",
+      "publishedDates": [],
+      "canonical": "https://polyandria.ru/novosti/chyernaya_pyatnitsa_2025_28_noyabrya/",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:31:58.258Z",
+  "foundItems": [
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/chyernaya_pyatnitsa_2025_28_noyabrya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Киберпонедельник 2026 \u2014 26 января",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/kiberponedelnik_2025_goda/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Киберпонедельник 2025 года!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/polyandriya_i_noage_na_yarmarke_non_fictio_vesna2026/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Поляндрия» и NoAge на ярмарке non/fictio№ весна",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/polyandriya_i_noage_na_yarmarke_NF_2025/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Поляндрия» и NoAge на ярмарке non/fictio№",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/skidka_30_na_vse_knigi_8_iyulya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Скидка 30% на все книги 8 июля",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/skidka_30_na_vse_knigi_s_21_po_24_maya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Скидка 30% на все книги с 21 по 24 мая",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/skidka_35_na_knigi_ottenkov_neba/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Скидка 35% на книги оттенков неба",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/skidka_30_na_podborku_knig_pro_silnykh_i_nezavisimykh_devochek/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Скидка 30% на подборку книг про сильных и независимых девочек",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/podborka_knig_po_500_rubley/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Подборка книг NoAge по спеццене \u2014 500 рублей",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/skidka_20_na_vse_knigi_s_1_po_11_yanvarya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Скидка 20% на все книги с 1 по 11 января",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/rezhim_raboty_v_kanikuly/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Режим работы в каникулы",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/polyandriya_i_noage_na_yarmarke_non_fictio_27/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Поляндрия» и NoAge на ярмарке non/fictio№27",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/spetstseny_avgusta/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Спеццены августа",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/privet_leto_skidki_4_7_iyunya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Привет, лето! Скидки 4-7 июня",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/okno_v_leto_skidki_22_25_maya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Окно в лето: скидки 22-25 мая",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/kosmicheskoe_kombo/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Космическое комбо",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/mezhdunarodnyy_den_schastya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Международный день счастья",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/skidka_pod_yelochku/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Скидка под ёлочку",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "polyandria",
+      "source": {
+        "name": "Поляндрия",
+        "url": "https://polyandria.ru/novosti/chyernaya_pyatnitsa_2024_29_noyabrya/",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Чёрная пятница 2024 \u2014 29 ноября",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:31:58.171Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "75608ba8959a95a98f931f94707a9118a7d7e46cfdacb5bacddb3272db128356",
+  "technicalProbeStatus": "runtime_verified"
+}

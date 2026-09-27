@@ -1,0 +1,230 @@
+{
+  "sourceId": "livres-hebdo",
+  "name": "Livres Hebdo",
+  "entryUrl": "https://www.livreshebdo.fr/",
+  "countryCodes": [
+    "FR"
+  ],
+  "coverageCountryCodes": [
+    "FR"
+  ],
+  "attemptedAt": "2026-09-26T17:31:59.051Z",
+  "requests": [
+    {
+      "url": "https://www.livreshebdo.fr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 205838,
+      "sha256": "161ae324b860a38239dc0fa0a99ad7615682895190a2232a8667441a36fcda4f",
+      "accessedAt": "2026-09-26T17:32:00.850Z"
+    },
+    {
+      "url": "https://www.livreshebdo.fr/prix-litteraires#Actualite",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 231198,
+      "sha256": "f0f6b3dbd89d2e98bf98bc92dfc4897706f928882249d03092a213fe21ab8e5e",
+      "accessedAt": "2026-09-26T17:32:01.602Z"
+    },
+    {
+      "url": "https://www.livreshebdo.fr/article/les-finalistes-du-prix-litteraire-des-musiciens-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 231576,
+      "sha256": "3acf98d06a58e582f9a8f233077908250b0413d7dc7fd1ff9bf01a5d56db480b",
+      "accessedAt": "2026-09-26T17:32:04.041Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.livreshebdo.fr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1594,
+    "sha256": "3200f655bd0e859a4fb1a7237cc64d4cec38824f6f5ee914c37d0b9de0f9c554",
+    "accessedAt": "2026-09-26T17:31:59.780Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/user/logout/",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password/",
+      "/index.php/user/register/",
+      "/index.php/user/login/",
+      "/index.php/user/logout/"
+    ]
+  },
+  "endpoint": {
+    "id": "livres-hebdo",
+    "name": "Livres Hebdo",
+    "url": "https://www.livreshebdo.fr/prix-litteraires#Actualite",
+    "format": "html",
+    "language": "fr",
+    "region": "europe",
+    "sourceFamilyId": "livres-hebdo",
+    "countryCodes": [
+      "FR"
+    ],
+    "coverageCountryCodes": [
+      "FR"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.livreshebdo.fr"
+    ],
+    "linkPattern": "^/tag_menu/[^/]+/?$|^/article/[^/]+/?$|^/livres/[^/]+/?$|^/auteur/[^/]+/?$|^/page/[^/]+/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.livreshebdo.fr/article/les-finalistes-du-prix-litteraire-des-musiciens-2026"
+    ],
+    "verifiedAt": "2026-09-26T17:32:04.052Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 3,
+  "literaryCandidateCount": 3,
+  "sample": {
+    "sourceId": "livres-hebdo",
+    "source": {
+      "name": "Livres Hebdo",
+      "url": "https://www.livreshebdo.fr/article/les-finalistes-du-prix-litteraire-des-musiciens-2026",
+      "language": "fr"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Les lauréats et le prix du public seront annoncés le 13 novembre 2026 au Pavillon de la Sirène, à Paris.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:32:01.634Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.livreshebdo.fr/article/les-finalistes-du-prix-litteraire-des-musiciens-2026",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 231576,
+      "sha256": "3acf98d06a58e582f9a8f233077908250b0413d7dc7fd1ff9bf01a5d56db480b",
+      "accessedAt": "2026-09-26T17:32:04.041Z",
+      "headline": "Les finalistes du prix littéraire des musiciens 2026",
+      "excerpt": "fb twitter social email print Logo prix littéraire des musiciens 2026 Les finalistes du prix littéraire des musiciens 2026 Les lauréats et le prix du public seront annoncés le 13 novembre 2026 au Pavillon de la Sirène, à Paris. Par Louise Ageorges Créé le 24.09.2026 à 14h56",
+      "publishedDates": [
+        {
+          "value": "2026-09-24T12:56:26",
+          "method": "jsonld.datePublished",
+          "type": "newsarticle"
+        }
+      ],
+      "canonical": "https://www.livreshebdo.fr/article/les-finalistes-du-prix-litteraire-des-musiciens-2026",
+      "language": "fr",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:32:04.052Z",
+  "foundItems": [
+    {
+      "sourceId": "livres-hebdo",
+      "source": {
+        "name": "Livres Hebdo",
+        "url": "https://www.livreshebdo.fr/article/les-finalistes-du-prix-litteraire-des-musiciens-2026",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les lauréats et le prix du public seront annoncés le 13 novembre 2026 au Pavillon de la Sirène, à Paris.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:01.634Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "livres-hebdo",
+      "source": {
+        "name": "Livres Hebdo",
+        "url": "https://www.livreshebdo.fr/article/le-grand-prix-de-litterature-americaine-2026-devoile-sa-premiere-selection",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Grand prix de littérature américaine Le Grand prix de Littérature américaine 2026 dévoile sa première sélection Le Grand prix de Littérature américaine a rendu publique la liste des huit romans de sa sélection inaugurale. Le jury retiendra quatre finalistes dans une seconde liste attendue le lundi 5 octobre.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:01.634Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "livres-hebdo",
+      "source": {
+        "name": "Livres Hebdo",
+        "url": "https://www.livreshebdo.fr/page/conditions-generales-dutilisation-du-site-livres-hebdo",
+        "language": "fr"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Conditions générales d’utilisation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:32:01.634Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f0f6b3dbd89d2e98bf98bc92dfc4897706f928882249d03092a213fe21ab8e5e"
+}

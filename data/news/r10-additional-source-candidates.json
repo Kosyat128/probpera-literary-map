@@ -1,0 +1,492 @@
+[
+  {
+    "id": "ndl-japan",
+    "name": "National Diet Library",
+    "url": "https://www.ndl.go.jp/en/news/news_index",
+    "country": "JP",
+    "language": "en",
+    "sourceClass": "library"
+  },
+  {
+    "id": "bn-argentina",
+    "name": "Biblioteca Nacional Mariano Moreno",
+    "url": "https://www.bn.gob.ar/noticias",
+    "country": "AR",
+    "language": "es",
+    "sourceClass": "library"
+  },
+  {
+    "id": "bn-brasil",
+    "name": "Fundação Biblioteca Nacional",
+    "url": "https://www.gov.br/bn/pt-br/central-de-conteudos/noticias",
+    "country": "BR",
+    "language": "pt",
+    "sourceClass": "library"
+  },
+  {
+    "id": "bn-chile",
+    "name": "Biblioteca Nacional de Chile",
+    "url": "https://www.bibliotecanacional.gob.cl/noticias",
+    "country": "CL",
+    "language": "es",
+    "sourceClass": "library"
+  },
+  {
+    "id": "bn-peru",
+    "name": "Biblioteca Nacional del Perú",
+    "url": "https://www.gob.pe/institucion/bnp/noticias",
+    "country": "PE",
+    "language": "es",
+    "sourceClass": "library"
+  },
+  {
+    "id": "bn-colombia",
+    "name": "Biblioteca Nacional de Colombia",
+    "url": "https://www.bibliotecanacional.gov.co/es-co/actividades/noticias/Paginas/Todas-las-noticias-RNBP.aspx",
+    "country": "CO",
+    "language": "es",
+    "sourceClass": "library"
+  },
+  {
+    "id": "brittle-paper",
+    "name": "Brittle Paper",
+    "url": "https://brittlepaper.com/",
+    "country": "US",
+    "coverageCountries": [
+      "NG",
+      "ZA",
+      "KE",
+      "GH"
+    ],
+    "language": "en",
+    "sourceClass": "literary-media"
+  },
+  {
+    "id": "asymptote",
+    "name": "Asymptote",
+    "url": "https://www.asymptotejournal.com/blog/news/",
+    "country": "SG",
+    "coverageCountries": [],
+    "language": "en",
+    "sourceClass": "literary-media"
+  },
+  {
+    "id": "huza-press",
+    "name": "Huza Press",
+    "url": "https://huza.press/",
+    "country": "RW",
+    "language": "en",
+    "sourceClass": "publisher"
+  },
+  {
+    "id": "bakwa-magazine",
+    "name": "Bakwa Magazine",
+    "url": "https://bakwamagazine.com/news/",
+    "country": "CM",
+    "language": "en",
+    "sourceClass": "literary-media"
+  },
+  {
+    "id": "sahitya-akademi",
+    "name": "Sahitya Akademi",
+    "url": "https://www.sahitya-akademi.gov.in/",
+    "country": "IN",
+    "language": "en",
+    "sourceClass": "literary-institution"
+  },
+  {
+    "id": "lti-korea",
+    "name": "Literature Translation Institute of Korea",
+    "url": "https://www.ltikorea.or.kr/kr/board/press/boardList.do",
+    "country": "KR",
+    "language": "ko",
+    "sourceClass": "literary-institution"
+  },
+  {
+    "id": "cassava-republic",
+    "name": "Cassava Republic Press",
+    "url": "https://cassavarepublic.biz/blog-2/",
+    "country": "NG",
+    "coverageCountries": [
+      "NG",
+      "GB"
+    ],
+    "language": "en",
+    "sourceClass": "publisher"
+  },
+  {
+    "id": "jacana",
+    "name": "Jacana Media",
+    "url": "https://jacana.co.za/",
+    "country": "ZA",
+    "language": "en",
+    "sourceClass": "publisher"
+  },
+  {
+    "id": "modjaji",
+    "name": "Modjaji Books",
+    "url": "https://modjajibooks.co.za/topics/imprint-africa/",
+    "country": "ZA",
+    "language": "en",
+    "sourceClass": "publisher"
+  },
+  {
+    "id": "doek",
+    "name": "Doek!",
+    "url": "https://doeklitmag.com/",
+    "country": "NA",
+    "language": "en",
+    "sourceClass": "literary-media"
+  },
+  {
+    "id": "karachi-literature-festival",
+    "name": "Karachi Literature Festival",
+    "url": "https://www.karachiliteraturefestival.com/",
+    "country": "PK",
+    "language": "en",
+    "sourceClass": "festival",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "galle-literary-festival",
+    "name": "Galle Literary Festival",
+    "url": "https://galleliteraryfestival.com/",
+    "country": "LK",
+    "language": "en",
+    "sourceClass": "festival",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "taipei-book-fair",
+    "name": "Taipei International Book Exhibition",
+    "url": "https://www.tibe.org.tw/",
+    "country": "TW",
+    "language": "zh-Hant",
+    "sourceClass": "festival",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "nhanam",
+    "name": "Nhã Nam",
+    "url": "https://nhanam.vn/",
+    "country": "VN",
+    "language": "vi",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "qatar-national-library",
+    "name": "Qatar National Library",
+    "url": "https://www.qnl.qa/en",
+    "country": "QA",
+    "language": "en",
+    "sourceClass": "library",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "abu-dhabi-arabic-centre",
+    "name": "Abu Dhabi Arabic Language Centre",
+    "url": "https://alc.ae/en/",
+    "country": "AE",
+    "language": "en",
+    "sourceClass": "literary-institution",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "antares",
+    "name": "Antares",
+    "url": "https://antares.am/",
+    "country": "AM",
+    "language": "hy",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "seoul-book-fair",
+    "name": "Seoul International Book Fair",
+    "url": "https://sibf.or.kr/en/",
+    "country": "KR",
+    "language": "en",
+    "sourceClass": "festival",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "jaipur-literature-festival",
+    "name": "Jaipur Literature Festival",
+    "url": "https://jaipurliteraturefestival.org/",
+    "country": "IN",
+    "language": "en",
+    "sourceClass": "festival",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "dhaka-lit-fest",
+    "name": "Dhaka Lit Fest",
+    "url": "https://www.dhakalitfest.com/",
+    "country": "BD",
+    "language": "en",
+    "sourceClass": "festival",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "nepal-literature-festival",
+    "name": "Nepal Literature Festival",
+    "url": "https://nepalliteraturefestival.com/",
+    "country": "NP",
+    "language": "en",
+    "sourceClass": "festival",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "femrite",
+    "name": "FEMRITE",
+    "url": "https://femrite.org/",
+    "country": "UG",
+    "language": "en",
+    "sourceClass": "writers-association",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "amabooks",
+    "name": "amaBooks",
+    "url": "https://amabooksbyo.blogspot.com/",
+    "country": "ZW",
+    "language": "en",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "loatad",
+    "name": "Library of Africa and the African Diaspora",
+    "url": "https://loatad.org/",
+    "country": "GH",
+    "language": "en",
+    "sourceClass": "library",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "jalada",
+    "name": "Jalada Africa",
+    "url": "https://jaladaafrica.org/",
+    "country": "KE",
+    "language": "en",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "rnb",
+    "name": "Российская национальная библиотека",
+    "url": "https://nlr.ru/",
+    "country": "RU",
+    "language": "ru",
+    "sourceClass": "library",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "rosman",
+    "name": "Росмэн",
+    "url": "https://rosman.ru/",
+    "country": "RU",
+    "language": "ru",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "azbooka",
+    "name": "Азбука-Аттикус",
+    "url": "https://azbooka.ru/",
+    "country": "RU",
+    "language": "ru",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "alpina",
+    "name": "Альпина Паблишер",
+    "url": "https://alpinabook.ru/",
+    "country": "RU",
+    "language": "ru",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "mif",
+    "name": "МИФ",
+    "url": "https://www.mann-ivanov-ferber.ru/",
+    "country": "RU",
+    "language": "ru",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "polyandria",
+    "name": "Поляндрия",
+    "url": "https://polyandria.ru/",
+    "country": "RU",
+    "language": "ru",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "individuum",
+    "name": "Individuum",
+    "url": "https://individuum.ru/",
+    "country": "RU",
+    "language": "ru",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "corpus",
+    "name": "Corpus",
+    "url": "https://www.corpus.ru/",
+    "country": "RU",
+    "language": "ru",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "actualitte",
+    "name": "ActuaLitté",
+    "url": "https://actualitte.com/",
+    "country": "FR",
+    "language": "fr",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "livres-hebdo",
+    "name": "Livres Hebdo",
+    "url": "https://www.livreshebdo.fr/",
+    "country": "FR",
+    "language": "fr",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "dosdoce",
+    "name": "Dosdoce",
+    "url": "https://www.dosdoce.com/",
+    "country": "ES",
+    "language": "es",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "el-boomeran",
+    "name": "El Boomeran(g)",
+    "url": "https://www.elboomeran.com/",
+    "country": "ES",
+    "language": "es",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "il-libraio",
+    "name": "Il Libraio",
+    "url": "https://www.illibraio.it/",
+    "country": "IT",
+    "language": "it",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "premio-strega",
+    "name": "Premio Strega",
+    "url": "https://premiostrega.it/",
+    "country": "IT",
+    "language": "it",
+    "sourceClass": "awards",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "salone-libro-torino",
+    "name": "Salone Internazionale del Libro di Torino",
+    "url": "https://www.salonelibro.it/",
+    "country": "IT",
+    "language": "it",
+    "sourceClass": "festival",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "leya",
+    "name": "LeYa",
+    "url": "https://www.leya.com/",
+    "country": "PT",
+    "language": "pt",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "companhia-das-letras",
+    "name": "Companhia das Letras",
+    "url": "https://www.companhiadasletras.com.br/",
+    "country": "BR",
+    "language": "pt",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "eterna-cadencia",
+    "name": "Eterna Cadencia",
+    "url": "https://eternacadencia.com.ar/",
+    "country": "AR",
+    "language": "es",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "lom",
+    "name": "LOM Ediciones",
+    "url": "https://lom.cl/",
+    "country": "CL",
+    "language": "es",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "fondo-cultura-economica",
+    "name": "Fondo de Cultura Económica",
+    "url": "https://www.fondodeculturaeconomica.com/",
+    "country": "MX",
+    "language": "es",
+    "sourceClass": "publisher",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "literary-hub",
+    "name": "Literary Hub",
+    "url": "https://lithub.com/",
+    "country": "US",
+    "language": "en",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "electric-literature",
+    "name": "Electric Literature",
+    "url": "https://electricliterature.com/",
+    "country": "US",
+    "language": "en",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "words-without-borders",
+    "name": "Words Without Borders",
+    "url": "https://wordswithoutborders.org/",
+    "country": "US",
+    "language": "en",
+    "sourceClass": "literary-media",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  },
+  {
+    "id": "commonwealth-foundation",
+    "name": "Commonwealth Foundation",
+    "url": "https://commonwealthfoundation.com/",
+    "country": "GB",
+    "language": "en",
+    "sourceClass": "literary-institution",
+    "discoveryMethod": "named_official_organisation_entry_requires_live_identity_check"
+  }
+]

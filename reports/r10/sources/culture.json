@@ -1,0 +1,546 @@
+{
+  "sourceId": "culture",
+  "name": "Культура.РФ",
+  "entryUrl": "https://www.culture.ru/news",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-09-26T17:29:38.400Z",
+  "requests": [
+    {
+      "url": "https://www.culture.ru/news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 489360,
+      "sha256": "fe1d84212301c9146924b5347f5aafa05877da507fc3a8e2bad5593acbe89f3c",
+      "accessedAt": "2026-09-26T17:23:42.767Z"
+    },
+    {
+      "url": "https://www.culture.ru/news/259339/18-sentyabrya-vo-vladivostoke-otkryvaetsya-tikhookeanskii-teatralnyi-festival",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 416448,
+      "sha256": "62c24e6e69c27d0d732e0dc28d262ef112d8e3e70f97290c8f508324bae747d8",
+      "accessedAt": "2026-09-26T17:29:40.776Z"
+    }
+  ],
+  "status": "editorial_profile_held",
+  "reason": "Sample is general theatre news; an explicit book/adaptation relation is required.",
+  "robots": {
+    "url": "https://www.culture.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 2591,
+    "sha256": "62677cbff437aca9300c7f48a8ba871e875c45dbb3dc9db0000b06f42df473c2",
+    "accessedAt": "2026-09-26T17:29:39.332Z",
+    "disallowed": [
+      "/?",
+      "/c/",
+      "/search",
+      "/cms",
+      "/auth/login",
+      "/*title=*",
+      "/*startDateTo=*",
+      "/*rubricPaths=*",
+      "/*rubric=*",
+      "/*year=*",
+      "/*actor=*",
+      "/*director=*",
+      "/*country=*",
+      "/*federalSubject=*",
+      "/*city=*",
+      "/*theater=*",
+      "/*architect=*",
+      "/*subordinationType=*",
+      "/*author=*",
+      "/*ethnic=*",
+      "/*touristRouteId=*",
+      "/reviews/",
+      "/s/pushka/"
+    ]
+  },
+  "cacheReplayOf": {
+    "attemptedAt": "2026-09-26T17:23:41.447Z",
+    "sourceDocumentSha256": "fe1d84212301c9146924b5347f5aafa05877da507fc3a8e2bad5593acbe89f3c"
+  },
+  "endpoint": {
+    "id": "culture",
+    "name": "Культура.РФ",
+    "url": "https://www.culture.ru/news",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "culture",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.culture.ru"
+    ],
+    "linkPattern": "^/news/.+",
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.culture.ru/news/259339/18-sentyabrya-vo-vladivostoke-otkryvaetsya-tikhookeanskii-teatralnyi-festival"
+    ],
+    "verifiedAt": "2026-09-26T17:29:40.796Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-09-26. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 16,
+  "literaryCandidateCount": 16,
+  "sample": {
+    "sourceId": "culture",
+    "source": {
+      "name": "Культура.РФ",
+      "url": "https://www.culture.ru/news/259339/18-sentyabrya-vo-vladivostoke-otkryvaetsya-tikhookeanskii-teatralnyi-festival",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Месяц 16 сент18 сентября во Владивостоке открывается Тихоокеанский театральный фестиваль",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-09-26T17:29:39.392Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.culture.ru/news/259339/18-sentyabrya-vo-vladivostoke-otkryvaetsya-tikhookeanskii-teatralnyi-festival",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 416448,
+      "sha256": "62c24e6e69c27d0d732e0dc28d262ef112d8e3e70f97290c8f508324bae747d8",
+      "accessedAt": "2026-09-26T17:29:40.776Z",
+      "headline": "18 сентября во Владивостоке открывается Тихоокеанский театральный фестиваль",
+      "excerpt": "Новости18 сентября во Владивостоке открывается Тихоокеанский театральный фестивальС 18 сентября по 11 октября во Владивостоке пройдет IV Международный Тихоокеанский театральный фестиваль . В его программу войдут показы 13 спектаклей, а также творческие встречи, лекции, мастер-классы и профильный блок для студентов Дальневосточного государственного института искусств .Изображение предоставлено прес",
+      "publishedDates": [],
+      "canonical": "https://www.culture.ru/news/259339/18-sentyabrya-vo-vladivostoke-otkryvaetsya-tikhookeanskii-teatralnyi-festival",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-09-26T17:29:40.796Z",
+  "foundItems": [
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259339/18-sentyabrya-vo-vladivostoke-otkryvaetsya-tikhookeanskii-teatralnyi-festival",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 16 сент18 сентября во Владивостоке открывается Тихоокеанский театральный фестиваль",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259336/12-sentyabrya-v-kolomenskom-proidet-festival-kazachya-stanica-moskva",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 11 сент12 сентября в Коломенском пройдет фестиваль «Казачья станица Москва»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259335/11-sentyabrya-v-ekaterinburge-startuet-mezhdunarodnyi-festival-molodezhi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 11 сент11 сентября в Екатеринбурге стартует Международный фестиваль молодежи",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259331/10-sentyabrya-v-moskve-startuet-festival-kukolnikov-istoki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 08 сент10 сентября в Москве стартует фестиваль кукольников «Истоки»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259329/7-sentyabrya-startuet-vserossiiskii-konkurs-luchshii-uchitel-rodnogo-yazyka-i-rodnoi-literatury",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 07 сент7 сентября стартует Всероссийский конкурс «Лучший учитель родного языка и родной литературы»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259347/s-26-sentyabrya-po-4-oktyabrya-proidet-moskovskaya-knizhnaya-nedelya",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 25 сентС 26 сентября по 4 октября пройдет Московская книжная неделя",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259343/24-sentyabrya-v-moskve-startuet-v-vystavka-prorestavraciyu",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 23 сент24 сентября в Москве стартует V выставка «ПРОреставрацию»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259342/v-muzee-sovremennoi-istorii-rossii-prokhodit-vystavka-otchayannyi-farfor",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 21 сентВ Музее современной истории России проходит выставка «Отчаянный фарфор»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259341/v-muzee-dekorativnogo-iskusstva-startuet-proekt-vrubel-rozhdenie-novogo-iskusstva",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 18 сентВ Музее декоративного искусства стартует проект «Врубель. Рождение нового искусства»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259340/irina-viner-predstavit-premeru-plasticheskogo-spektaklya-navazhdenie-2",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 17 сентИрина Винер представит премьеру пластического спектакля «Наваждение 2»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259338/serpukhovskii-istoriko-khudozhestvennyi-muzei-predstavlyaet-vystavku-bogi-i-lyudi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 15 сентСерпуховский историко-художественный музей представляет выставку «Боги и люди»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259337/moskovskii-dom-dostoevskogo-predstavlyaet-vystavku-legenda-o-pesnyarakh",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 14 сент«Московский дом Достоевского» представляет выставку «Легенда о Песнярах»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259333/14-i-vypusk-yarmarki-cosmoscow-posetilo-bolee-60-tysyach-chelovek",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 09 сент14-й выпуск ярмарки Cosmoscow посетило более 60 тысяч человек",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259330/v-primorskoi-kartinnoi-galeree-otkrylas-obrazovatelnaya-ekspoziciya-aleksandra-deineki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 07 сентВ Приморской картинной галерее открылась образовательная экспозиция Александра Дейнеки",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259328/lenfilm-predstavlyaet-vystavku-o-zarozhdenii-rossiiskogo-kino",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 04 сент«Ленфильм» представляет выставку о зарождении российского кино",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259327/v-saratove-otkryvaetsya-vystavka-kulturnyi-kod",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 04 сентВ Саратове открывается выставка «Культурный код»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-09-26T17:29:39.392Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "fe1d84212301c9146924b5347f5aafa05877da507fc3a8e2bad5593acbe89f3c",
+  "technicalProbeStatus": "runtime_verified"
+}
