@@ -5,17 +5,17 @@
       "platform": "telegram",
       "destinationId": "-1002791579809",
       "status": "approved",
-      "reviewedAt": "2026-09-26T22:50:52.754Z",
+      "reviewedAt": "2026-09-27T00:04:00.893Z",
       "expiresAt": "2026-10-03T22:50:52.754Z",
       "providerAccountId": "7972811583",
       "history": {
         "scope": "public_observed_only",
         "reachedPublicStart": true,
         "minId": 1,
-        "maxId": 410,
-        "observedCount": 363,
-        "auditSha256": "6c0bae458e4019898d785e441f8b2c08f67dd581729401fa3462933b4af70b4b",
-        "semanticReviewSha256": "725f21b8501acceafa2c23e54c09a7cabed89423749922deb75af475190abdb8",
+        "maxId": 411,
+        "observedCount": 364,
+        "auditSha256": "4a67af5294f7136484825c00d3a961e3737ed153f1b22a8af409ad113f194832",
+        "semanticReviewSha256": "0ba651a186353601aefbebb509a0fe5ced9781ddb89b340efed2b2bbaa9418b1",
         "candidates": [
           {
             "newsId": "adeb-namur-publishing-future-colloquium-2026",
@@ -1050,6 +1050,10 @@
           {
             "url": "https://t.me/s/probbaperra?before=4",
             "sha256": "2c8083a667b85c635d82d07b0811f8369585e3a927b80f81fa7f60c7766013ad"
+          },
+          {
+            "url": "https://t.me/s/probbaperra",
+            "sha256": "a9c1dc9f5f2294c3216e5d44db5183a6a465b6c64c00b27ad959f37f54ae6be7"
           }
         ],
         "limitations": [
@@ -1057,7 +1061,7 @@
           "Approval covers the reviewed candidate revisions and public snapshot only",
           "Recheck public head before each canary action"
         ],
-        "reviewManifest": "reports/r10/social/history/telegram-combined-review.json"
+        "reviewManifest": "reports/r10/social/history/telegram-head-411-extension.json"
       },
       "canaryNewsId": "kokila-jason-reynolds-lamplighters-son-acquisition-2026"
     }
