@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-character-step-dev-apk",
+  "sourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "buildId": "850da396a2c855547a78a8c19a39eb4755948eb22d251c34db14a3240e7d3b5c",
+  "sourceInputsSha256": "c6f335a8a74742e3e300ff1f93b21540be4ed1dd1d532d9602d566120d50f1b4",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-evidence/android-850da396/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "8dcf5474dc54c6ebdf574a9584b561e0ede038d28e893f4768062cb0c250f2ed"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-evidence/android-850da396/runtime",
+    "sha256": "074428992b3aeae901362cb42230e95a981607fb166d345a3a5f33c69a57f597",
+    "files": 1408,
+    "bytes": 74911858
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/booky-character-step-20260927/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/booky-character-step-20260927/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/booky-character-step-20260927/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/android-4e3ec049/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

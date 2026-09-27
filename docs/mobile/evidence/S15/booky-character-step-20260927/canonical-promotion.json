@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "source": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-step-review\\browser-a8\\character-step.spec.mjs",
+  "sourceSha256": "c46b989aec2252d65bf99d079be4ac0bc6d30bbaf7ea39a1f0b966e4f2afd1c9",
+  "target": "tests/pwa/booky-character-step.spec.mjs",
+  "targetSha256": "b876bd5ac1c6e3d723db59dad18d24ed06cd2dd5d1877db09299c901c5f288bd",
+  "edits": [
+    {
+      "label": "canonical Playwright import",
+      "from": "import { test, expect, chromium } from \"file:///C:/Users/User/Documents/ChatGPT/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%20%D1%81%D0%B0%D0%B9%D1%82%D1%83/literary-planet-v12-work/node_modules/@playwright/test/index.mjs\";",
+      "to": "import { test, expect, chromium } from '@playwright/test';"
+    },
+    {
+      "label": "canonical esbuild import",
+      "from": "import { build } from \"file:///C:/Users/User/Documents/ChatGPT/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%20%D1%81%D0%B0%D0%B9%D1%82%D1%83/literary-planet-v12-work/node_modules/esbuild/lib/main.js\";",
+      "to": "import { build } from 'esbuild';"
+    },
+    {
+      "label": "canonical root",
+      "from": "const ROOT = \"C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work\";",
+      "to": "const ROOT = fileURLToPath(new URL('../../', import.meta.url));"
+    },
+    {
+      "label": "canonical self-authentication path",
+      "from": "'tests/pwa/booky-journey.spec.mjs'])].sort()",
+      "to": "'tests/pwa/booky-character-step.spec.mjs'])].sort()"
+    }
+  ],
+  "caseBodiesExact": true,
+  "caseBodyCount": 3,
+  "caseBodySha256": "a4a32add6f21a734e4b1307fcdb1dab051a1c904dd243e3f21635e4bab1934fa",
+  "caseBodyExtractionMarker": "for(const [language,width] of [['ru',390],['en',320]])test(",
+  "runtimeTransforms": false,
+  "providersInlined": true,
+  "diagnostic": "browser-a8",
+  "diagnosticReportSha256": "c2021dfd4b2982948e1657c95191cab7f32798167ff9001a5f80b6edd4847d0e",
+  "priorComponentPreservation": [
+    "modal-ui/strictmode-prior-case-preservation.json",
+    "modal-ui/busy-return-provenance.json"
+  ],
+  "newDiagnosticRequired": false
+}

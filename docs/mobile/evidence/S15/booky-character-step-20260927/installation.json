@@ -1,0 +1,92 @@
+{
+  "installedAt": "2026-09-27T04:46:15.993Z",
+  "installer": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/install-freeze.mjs",
+    "sha256": "56e36de75a965df7522e02e5b8cf4ede063f9a674c2066a6cfd2f0fe4e818b36"
+  },
+  "plan": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/install-plan.json",
+    "sha256": "29e90e0e5f0fb0a0f6ce2962e847a47c1d9cad42fc9de29824c1f55045116c7a"
+  },
+  "readyManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/ready.json",
+    "sha256": "234462e0536d42e7f5b64233d73b2dde26c73f711987a2fc6cb1d35895df4249"
+  },
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/build-android-a1.ps1",
+      "sha256": "dec6c0eeaa604ff6f3c2520cecb7a49cf6b452a461aa549549cfcdff286b6bb9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/build-pwa-a1.mjs",
+      "sha256": "71f1375c409606dcd676f3c32df3061d82f34a5f956c3102d99a2b68fc5cbae8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/check.mjs",
+      "sha256": "72c596dcc1b31964aac27ce2255e8f3d1a49e6c7b14d398a872c6c7652a1daaf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/checkpoint.mjs",
+      "sha256": "499c3dfa986b9b70e0c6bcbecf030687c5328b8541ec1648e4246c2837e14a53"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/configure.mjs",
+      "sha256": "a5fb1d1158d77d678ec06fb5ea891324aaa785de9169d897e8e9c1fc79cb0259"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/finalize-notes.mjs",
+      "sha256": "b5d9095c833562a226f07e2637512391e459841904ce0a3a2f8b493f6ab92130"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/preserve-android-a1.mjs",
+      "sha256": "c89b793749261fa193a8e3d31d099dea36d8767affbb395ca84e6fe7739a7895"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/read-case-evidence.mjs",
+      "sha256": "32e982b9d9532b8c12b254d49294e8beada9ae4f165ff565d78f2de367125201"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/README.txt",
+      "sha256": "845f745d389581585a5211bc8c935e202179880cb4cc9c51d67e9178a391423f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/record-visual.mjs",
+      "sha256": "a412f01c23ca047c0ed7e357c9e915cb4978c1688963b6105c06367b43c2fd56"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/unit.config.mjs",
+      "sha256": "ce03cbe2ddce70efc6348674a78af587e2a64255868e39586c95be5f8e315ab2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/verify-android-a1.mjs",
+      "sha256": "0e2f6c8dace47d210f04a241dfc9565ba673c8538a677723137c21b8a26960c0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/scope.json",
+      "sha256": "1ca73c308e8c14c1e3bd48a5380d4f52aa52793fb749856c01aa59e7ecc0e55a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/browser-contract.json",
+      "sha256": "65c20682789944403308c3ac1a4743f238b3998cab7e83810f9dc0c878fba267"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/canonical-promotion.json",
+      "sha256": "3afbc6c8ba8348e80509b8b8de239ddefb8b5b671a97fd13ae22a347222c8175"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/diagnostic-history.json",
+      "sha256": "c0b231669d26fb60a77bec0fa664e2850850afbb9fcd70094df5ff458cfc7140"
+    }
+  ],
+  "globalWrites": false,
+  "testsRun": false,
+  "configureRun": false
+}

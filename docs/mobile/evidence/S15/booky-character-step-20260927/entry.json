@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T04:46:17.886Z",
+  "stage": "S15",
+  "checkpoint": "fd04443d340cf9ff84f911115f3627d24d7d9ba4",
+  "previous": "docs/mobile/evidence/S15/booky-short-viewport-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/result.json",
+    "sha256": "adaa6761b07f8a4e3d2d6aae509423d6fa5f2396ab8e8e12ef6df7e3c43c7551"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/result.json",
+    "sha256": "adaa6761b07f8a4e3d2d6aae509423d6fa5f2396ab8e8e12ef6df7e3c43c7551"
+  },
+  "previousRuntimeSourceCommit": "e23e58109dbe81f181f6440725ad71157b387e69",
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/source-manifests/fbe8b821d5922385.json",
+    "sha256": "fbe8b821d5922385a3a4816c7aa587e556e90c4a3f10e57f8c84e712814d4024",
+    "fileCount": 1662
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/scope.json",
+    "sha256": "1ca73c308e8c14c1e3bd48a5380d4f52aa52793fb749856c01aa59e7ecc0e55a"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "abbf94feb8bc458ae1f22540dc05239c7ff35144420195414a2b9cc4e7ca425e"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "b446f55b8cd4354b99b1e641fb7ed16e3cbd0d6449546a6707d3ad1ed46e64a6"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "3674b9e935bb04ee49beb14873835e91318ae5b763f98911d9717c030cf6c488"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "e850f69c25b98543202e4120565797430583d06a258bfeea86f7e505097b80c7"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "8cb81952e5c598f0508aef76dc0193c2b5a6d42adff848b14a74e6f3ea3068ef"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "58d51eba3425b1b8e0d7727343123a06403130bd113b323ee1fae4785e4b2fce"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "728a792725dcb06fead492822aefd2d98d1cce242f782cba19b5c298a2d71cbb"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "04f28e9d1cbd8a25d7d04b25147f8aef586ad12fb0c9706ee7d91afd4aa16010"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/books/bookDossierCharacterView.ts",
+    "src/books/bookDossierPublicClient.test.ts",
+    "src/books/bookDossierPublicClient.ts",
+    "src/books/usePublishedBookDossier.ts",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/BookDossierMap.tsx",
+    "src/components/BookDossierReader.tsx",
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourney.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyJourneyCatalog.ts",
+    "src/host/bookyJourneyMigration.test.ts",
+    "src/host/bookyJourneyMigration.ts",
+    "src/host/bookyJourneyProgress.test.ts",
+    "src/host/bookyJourneyProgress.ts",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/useBookyJourney.ts",
+    "src/loading/DeferredHomepageArchives.tsx",
+    "tests/pwa/book-dossier-character-archive.spec.mjs",
+    "tests/pwa/book-dossier-character-view.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyJourneyCharacterSession.test.ts",
+    "src/host/bookyJourneyCharacterSession.ts",
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "3a0afd4216be490bee48c0658ddd91d589d8988c9a696f82ea064d7483fc11f0"
+    },
+    {
+      "path": "src/books/bookDossierCharacterView.ts",
+      "sha256": "3caf905f5424bbaf7a0cf4ee2f84bb8fc5b73d88f2d1ec794230bdb68d883ec3"
+    },
+    {
+      "path": "src/books/bookDossierPublicClient.test.ts",
+      "sha256": "f7f30289f596bf1852700bad4fa6fc6f664619bdd1d65a40f890b25e07b19c32"
+    },
+    {
+      "path": "src/books/bookDossierPublicClient.ts",
+      "sha256": "e83e68d4d3434d2ef790b864038257b2403f61efcebe38eb5dbe82a5a8e0b657"
+    },
+    {
+      "path": "src/books/usePublishedBookDossier.ts",
+      "sha256": "c5d54c7254b4e463787debe99a3c3d44dd9466e2dc3ab199d5f13a9f072e8c92"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "f1f9b27cdcaf07a0a9f90586a6bdbffbe74c4b2254bffd44eac5b1ad11dbe802"
+    },
+    {
+      "path": "src/components/BookDossierMap.tsx",
+      "sha256": "e0bf12562c0822eb49058c05a6048cea63cea82863d789bd7f6c20ccdbf10cdb"
+    },
+    {
+      "path": "src/components/BookDossierReader.tsx",
+      "sha256": "78332be674236abf3c22019852cf1dbec608ccd8596e2c39b3bd397b411496d9"
+    },
+    {
+      "path": "src/host/bookyJourney.test.ts",
+      "sha256": "8233cf506075afaff5a0a46f6c1554bf3c5f1b5d436d0a1af06be5ec12fb1d15"
+    },
+    {
+      "path": "src/host/bookyJourney.ts",
+      "sha256": "4f4d7dc3a487f5c6a78aa826fea93e5323f5ecf230b6d190632c07706ee3811b"
+    },
+    {
+      "path": "src/host/bookyJourneyCatalog.test.ts",
+      "sha256": "7513a8f46c5f7daa08485d57508344b215de2ea554443a4cab1e3b75d753f872"
+    },
+    {
+      "path": "src/host/bookyJourneyCatalog.ts",
+      "sha256": "c9365a751c1910ca6368bebf1dadbf18930b12e28acbff3ed6e9413265bf6095"
+    },
+    {
+      "path": "src/host/bookyJourneyCharacterSession.test.ts",
+      "sha256": "a41d50f6a4c2a85bd32062e116ded26b20b2ee92bd05d47af8710b995a110a46"
+    },
+    {
+      "path": "src/host/bookyJourneyCharacterSession.ts",
+      "sha256": "074e330198ef3c9a2d7ad8fa02b39290c245859626a6f817ed44e74e2e7b3e27"
+    },
+    {
+      "path": "src/host/BookyJourneyControls.tsx",
+      "sha256": "9b188c22327dcc3a48113fa280c7df19f9a570a5808363cc561a7eafa15b1193"
+    },
+    {
+      "path": "src/host/bookyJourneyMigration.test.ts",
+      "sha256": "10192547985818960506c4181bd0daf2eadebda16e39425c3e199554bd8e77fb"
+    },
+    {
+      "path": "src/host/bookyJourneyMigration.ts",
+      "sha256": "c1ca36c3eeb03573a4cda3803e58ea4ceba055a3099ce7a09dec143a0f64775a"
+    },
+    {
+      "path": "src/host/bookyJourneyProgress.test.ts",
+      "sha256": "ee9196df9af2f0a20bcaf2caa20e1abe56cbce620a41f3eb493564959149a2a2"
+    },
+    {
+      "path": "src/host/bookyJourneyProgress.ts",
+      "sha256": "b786a3ad3233480ba0a78a40ba19230a5afefb2c1476821b229c20d3024a735a"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.test.ts",
+      "sha256": "499b95b4d1ecf3a9c81b9c3e5d8864ca332f03de44a221475dc698c347749eaa"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.ts",
+      "sha256": "c79f98bbe934d8389ee11a82be36280d7faff923464ccf561938d9a958e3cd0c"
+    },
+    {
+      "path": "src/host/useBookyJourney.ts",
+      "sha256": "94eac416210897bfeb6261437d4c30e35804d94a0dcaa6e730dc9a85827c3238"
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sha256": "f205dfe08e132b26d965a0b6fc4ac9ab37941fe61239b88627f6d8ffbb75d704"
+    },
+    {
+      "path": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "sha256": "8e3a9b000f13fb027040bc085a9de8125b0ece236a6fbd30bc6df3695b95f705"
+    },
+    {
+      "path": "tests/pwa/book-dossier-character-view.spec.mjs",
+      "sha256": "a38df00e334be62a2308f9198a9a897e427b3c792c99c19819813b1fb9ab2694"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "b876bd5ac1c6e3d723db59dad18d24ed06cd2dd5d1877db09299c901c5f288bd"
+    }
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1639,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/books/bookDossierCharacterView.ts",
+    "src/books/bookDossierPublicClient.ts",
+    "src/books/usePublishedBookDossier.ts",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/BookDossierMap.tsx",
+    "src/components/BookDossierReader.tsx",
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/bookyJourney.ts",
+    "src/host/bookyJourneyCatalog.ts",
+    "src/host/bookyJourneyMigration.ts",
+    "src/host/bookyJourneyProgress.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/useBookyJourney.ts",
+    "src/loading/DeferredHomepageArchives.tsx",
+    "src/host/bookyJourneyCharacterSession.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "fd04443d340cf9ff84f911115f3627d24d7d9ba4",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyJourneyProgress.test.ts",
+    "src/host/bookyJourneyMigration.test.ts",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyCharacterSession.test.ts",
+    "src/books/bookDossierPublicClient.test.ts",
+    "src/host/bookyJourneyPrerequisites.test.ts",
+    "src/host/bookyJourneyPassport.test.ts",
+    "src/host/bookyJourneyPersistence.test.ts",
+    "src/host/bookyJourneyHost.test.ts",
+    "src/host/bookyJourneyCharacter.test.ts",
+    "src/host/bookyDossierCharacter.test.ts",
+    "src/books/bookDossierCharacterView.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/book-dossier-character-archive.spec.mjs",
+    "tests/pwa/book-dossier-character-view.spec.mjs",
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress",
+    "caller character action is explicit inside the exact committed modal and revocation never acknowledges",
+    "StrictMode mount with issued character request commits once and never replays consumed token",
+    "archive presents a requested second-block character without reading writes and dismisses it before native book Back",
+    "archive publication observation withdraws while reading-mode delivery is busy or unavailable",
+    "archive explicit return intent dismisses character and completes existing book close"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": null,
+  "expectedBrowserTests": 8,
+  "expectedImages": 6,
+  "scope": "D206 current-only adult character step: independently admitted static bilingual contract, true publication capability, current leased projection, explicit modal opening, exact committed receipt and separate deliberate acknowledgement. Production journeys remain empty.",
+  "runtimeWiringImplemented": true,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

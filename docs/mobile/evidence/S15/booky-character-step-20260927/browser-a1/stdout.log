@@ -1,0 +1,14 @@
+
+Running 8 tests using 1 worker
+
+
+
+[1/8] tests\pwa\book-dossier-character-archive.spec.mjs:214:1 › archive presents a requested second-block character without reading writes and dismisses it before native book Back
+[2/8] tests\pwa\book-dossier-character-archive.spec.mjs:298:1 › archive publication observation withdraws while reading-mode delivery is busy or unavailable
+[3/8] tests\pwa\book-dossier-character-archive.spec.mjs:327:1 › archive explicit return intent dismisses character and completes existing book close
+[4/8] tests\pwa\book-dossier-character-view.spec.mjs:178:1 › StrictMode mount with issued character request commits once and never replays consumed token
+[5/8] tests\pwa\book-dossier-character-view.spec.mjs:272:1 › caller character action is explicit inside the exact committed modal and revocation never acknowledges
+[6/8] tests\pwa\booky-character-step.spec.mjs:444:55 › actual App ru character journey requires current modal acknowledgement and preserves canonical context
+[7/8] tests\pwa\booky-character-step.spec.mjs:444:55 › actual App en character journey requires current modal acknowledgement and preserves canonical context
+[8/8] tests\pwa\booky-character-step.spec.mjs:465:1 › actual App absent publication capability denies character routes without opening or progress
+  8 passed (3.2m)

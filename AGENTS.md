@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-character-step-20260927:begin -->
+Latest source 09a262ba: current-only adult character steps separate static admission from the current published dossier lease. Explicit modal opening earns no character credit; generic Next rejects character and only the exact committed in-modal acknowledgement advances. Controlled synthetic publication remains test-only; production journeys and migration inventories remain empty. All 34 historical drafts remain unapproved and Controls whole-file provenance still needs a later explicit rebind. Only bounded S15.PLANETKA-004 evidence is added; statuses and acceptance gates remain unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-character-step-20260927/result.json. D206. 367 observed units in 14 full files, TypeScript and 8 component/App cases; 6 authenticated captures. Fresh PWA/Android builds keep the current source binding; earlier results retain their original attribution.
+<!-- s15-booky-character-step-20260927:end -->
+
 <!-- s15-booky-short-viewport-20260927:begin -->
 Latest source e23e5810: globe-only compact Booky presentation addresses clipped disabled Walk status in controlled observed-space stress. Existing 44px controls and walking authority remain; selected cases cover short-space help and genuine persistence Retry. No native keyboard, real visualViewport contraction, enlarged-text or tablet-194 branch equivalence is claimed. All 34 historical drafts and copy remain unapproved; changed Controls whole-file provenance needs explicit later rebinding. Only bounded S15.PLANETKA-002 evidence is added with all statuses unchanged.
 

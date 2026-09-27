@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "e23e58109dbe81f181f6440725ad71157b387e69",
+  "headSha": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-27T03:42:51.465Z",
+  "updatedAt": "2026-09-27T04:54:34.489Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2668,11 +2668,12 @@
             "docs/mobile/evidence/S15/journey-fact-20260923/result.json",
             "docs/mobile/evidence/S15/dossier-character-20260923/result.json",
             "docs/mobile/evidence/S15/dossier-character-view-20260923/result.json",
-            "docs/mobile/evidence/S15/journey-character-contract-20260923/result.json"
+            "docs/mobile/evidence/S15/journey-character-contract-20260923/result.json",
+            "docs/mobile/evidence/S15/booky-character-step-20260927/result.json"
           ],
-          "commit": "ba23d538b895212d281888bdb7a91c7db7c9f4cb",
-          "lastValidatedAt": "2026-09-23T06:22:42.591Z",
-          "notes": "Age-adaptive journeys. Implement the original guide and shared policy before complete English dialogue/audio validation. Guarded versioned journey-model infrastructure now validates canonical public entity relations, dialogue references and explicit host policy before admission. 40 journey/registry tests and TypeScript passed. The model stays unimported and production journeys remain unavailable. Existing runtime is unchanged; this starts infrastructure for the requirement and does not complete age-adaptive or child journeys. Fresh host admission binds exact journey/node identity and revision, explicit adult policy, current catalog readiness, full reviewed-route validation and the unchanged host snapshot after compilation. 51 host/journey/registry tests and TypeScript passed. Existing 1,588 implementation/test files remain exact; retained PWA/Android builds do not contain this unimported adapter. No stage or release acceptance. The actual App now supports optional explicit local adult age/reading-level settings, authoritative native/Web preference confirmation and nullable policy in the existing companion. App-owned drafts and failed save/delete intent survive collapse, collection transitions and background suspension; deletion confirmation stays local to the form. Its journey admission rechecks current host/source identity; no production route or content approval is supplied. 353 focused unit tests, TypeScript, 2 actual-App Chrome cases and 3 inspected images bind fresh preserved PWA/Android-dev builds. All 1,583 protected prior implementation/test inputs remain exact. No stage, child, reviewed-content or release acceptance is claimed. Scoped journey-model/chooser evidence only: optional independently reviewed localized descriptions, explicit duration and whole-route current offline availability; no age-adaptive or child-journey acceptance. Added optional independently reviewed RU/EN route descriptions and explicit estimated durations to the existing chooser. Current offline availability derives from all exact admitted node entries; unavailable or changed-review routes are hidden. Legacy plans keep their field set and saved semantic bytes, while enriched plans retain strict progress/migration and independent checksum bindings. Fresh 671 unit tests from 24 files, TypeScript, 21 actual-App Chrome cases and 20 inspected captures bind PWA 98760aec / Android-dev d5b97ac7. All 1,620 protected inputs stay exact. Production inventories remain empty; 34 dialogues stay draft. PLANETKA-004 and PLANETKA-008 remain IN_PROGRESS without age-adaptive, stage, device or release acceptance. Scoped sourced-fact journey-node model and actual App anchor/navigation integration only; no age-adaptive or child-journey acceptance. Added sourced-fact nodes with current canonical country/writer/work anchors, prior navigation context, factual editorial dialogue, source references and independent review. A shared RU/EN fingerprint protects acknowledged history, prerequisites and migration after either payload changes. Every fact is rechecked at runtime commit boundaries; explicit Next earns only semantic step progress, while source disclosure is read-only and facts add no passport navigation credit. Legacy records and overview behavior remain intact. Fresh 717 unit tests from 25 files, TypeScript, 23 actual-App Chrome cases and 22 inspected captures bind PWA ad274bb7 / Android-dev e1628424. All 1,615 protected inputs stay exact. Production inventories remain empty; 34 dialogues stay draft. PLANETKA-003/004/008 remain IN_PROGRESS without editorial, age-adaptive, device, stage or release acceptance. Added unimported adult admission for an exact sourced character item in a current published dossier, binding canonical work, dossier version/locale/section/block/item, source references, live publication lease and current host revision. 42 focused adapter/document/compiler/delivery/diagram/public-client tests and TypeScript passed. All 1,636 previous implementation/test inputs plus two unchanged supplemental fixture inputs remain exact. Prior 23 browser cases, 22 inspected images and PWA/Android payloads are retained at source 3349b125; the new adapter is absent. Exact-item panel integration remains pending; no stage or release acceptance. Added an optional one-use exact character request and committed native-modal observation to the actual dossier Reader/Map, with a guarded archive bridge. Exact current published identity and settled book view are required; replacement, ordinary navigation, locale/lifecycle changes, closing and lease invalidation revoke old intent without inferred reading or journey credit. Fresh 64 focused unit tests, TypeScript and 32 browser cases passed; 27 captures were inspected. Fresh PWA 79064f5d / Android-dev dd83547e bind the source; 1633 protected inputs remain exact. No character journey node, remote service, production content, stage or release approval was enabled. Added an unimported bounded RU/EN character contract with exact canonical work, localized dossier/item projection hashes and dialogue payload references, composed with the existing fresh leased adult resolver. The old adapter only exports its immutable structural parser. 76 focused tests from 8 files and TypeScript passed; 1,641 protected inputs remain exact. Prior 32 browser cases, 27 inspected captures and PWA/Android payloads are authenticated at source d970b0dc, without including the new contract. Independent review, current-only admission, capability gating and modal acknowledgement wiring remain separate pending work. No stage or release acceptance."
+          "commit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+          "lastValidatedAt": "2026-09-27T04:54:34.489Z",
+          "notes": "Age-adaptive journeys. Implement the original guide and shared policy before complete English dialogue/audio validation. Guarded versioned journey-model infrastructure now validates canonical public entity relations, dialogue references and explicit host policy before admission. 40 journey/registry tests and TypeScript passed. The model stays unimported and production journeys remain unavailable. Existing runtime is unchanged; this starts infrastructure for the requirement and does not complete age-adaptive or child journeys. Fresh host admission binds exact journey/node identity and revision, explicit adult policy, current catalog readiness, full reviewed-route validation and the unchanged host snapshot after compilation. 51 host/journey/registry tests and TypeScript passed. Existing 1,588 implementation/test files remain exact; retained PWA/Android builds do not contain this unimported adapter. No stage or release acceptance. The actual App now supports optional explicit local adult age/reading-level settings, authoritative native/Web preference confirmation and nullable policy in the existing companion. App-owned drafts and failed save/delete intent survive collapse, collection transitions and background suspension; deletion confirmation stays local to the form. Its journey admission rechecks current host/source identity; no production route or content approval is supplied. 353 focused unit tests, TypeScript, 2 actual-App Chrome cases and 3 inspected images bind fresh preserved PWA/Android-dev builds. All 1,583 protected prior implementation/test inputs remain exact. No stage, child, reviewed-content or release acceptance is claimed. Scoped journey-model/chooser evidence only: optional independently reviewed localized descriptions, explicit duration and whole-route current offline availability; no age-adaptive or child-journey acceptance. Added optional independently reviewed RU/EN route descriptions and explicit estimated durations to the existing chooser. Current offline availability derives from all exact admitted node entries; unavailable or changed-review routes are hidden. Legacy plans keep their field set and saved semantic bytes, while enriched plans retain strict progress/migration and independent checksum bindings. Fresh 671 unit tests from 24 files, TypeScript, 21 actual-App Chrome cases and 20 inspected captures bind PWA 98760aec / Android-dev d5b97ac7. All 1,620 protected inputs stay exact. Production inventories remain empty; 34 dialogues stay draft. PLANETKA-004 and PLANETKA-008 remain IN_PROGRESS without age-adaptive, stage, device or release acceptance. Scoped sourced-fact journey-node model and actual App anchor/navigation integration only; no age-adaptive or child-journey acceptance. Added sourced-fact nodes with current canonical country/writer/work anchors, prior navigation context, factual editorial dialogue, source references and independent review. A shared RU/EN fingerprint protects acknowledged history, prerequisites and migration after either payload changes. Every fact is rechecked at runtime commit boundaries; explicit Next earns only semantic step progress, while source disclosure is read-only and facts add no passport navigation credit. Legacy records and overview behavior remain intact. Fresh 717 unit tests from 25 files, TypeScript, 23 actual-App Chrome cases and 22 inspected captures bind PWA ad274bb7 / Android-dev e1628424. All 1,615 protected inputs stay exact. Production inventories remain empty; 34 dialogues stay draft. PLANETKA-003/004/008 remain IN_PROGRESS without editorial, age-adaptive, device, stage or release acceptance. Added unimported adult admission for an exact sourced character item in a current published dossier, binding canonical work, dossier version/locale/section/block/item, source references, live publication lease and current host revision. 42 focused adapter/document/compiler/delivery/diagram/public-client tests and TypeScript passed. All 1,636 previous implementation/test inputs plus two unchanged supplemental fixture inputs remain exact. Prior 23 browser cases, 22 inspected images and PWA/Android payloads are retained at source 3349b125; the new adapter is absent. Exact-item panel integration remains pending; no stage or release acceptance. Added an optional one-use exact character request and committed native-modal observation to the actual dossier Reader/Map, with a guarded archive bridge. Exact current published identity and settled book view are required; replacement, ordinary navigation, locale/lifecycle changes, closing and lease invalidation revoke old intent without inferred reading or journey credit. Fresh 64 focused unit tests, TypeScript and 32 browser cases passed; 27 captures were inspected. Fresh PWA 79064f5d / Android-dev dd83547e bind the source; 1633 protected inputs remain exact. No character journey node, remote service, production content, stage or release approval was enabled. Added an unimported bounded RU/EN character contract with exact canonical work, localized dossier/item projection hashes and dialogue payload references, composed with the existing fresh leased adult resolver. The old adapter only exports its immutable structural parser. 76 focused tests from 8 files and TypeScript passed; 1,641 protected inputs remain exact. Prior 32 browser cases, 27 inspected captures and PWA/Android payloads are authenticated at source d970b0dc, without including the new contract. Independent review, current-only admission, capability gating and modal acknowledgement wiring remain separate pending work. No stage or release acceptance. D206 current-only adult character step: independently admitted static bilingual contract, true publication capability, current leased projection, explicit modal opening, exact committed receipt and separate deliberate acknowledgement. Production journeys remain empty. Fresh 367 focused units across 14 full files, TypeScript and 8 selected component/App browser cases pass with 6 authenticated captures; 6 screenshots are directly reviewed. PWA 98c0a615 and Android-dev 850da396 are rebuilt and byte-audited from this source. 1639 prior source inputs remain exact. D205 source/build records retain their original attribution. Production publication delivery and journey inventories remain disabled/empty; no editorial, device, full accessibility or stage acceptance is granted."
         },
         {
           "id": "S15.PLANETKA-005",
@@ -2979,7 +2980,10 @@
         "node docs/mobile/evidence/S15/booky-initial-globe-load-20260927/check.mjs static a1",
         "node docs/mobile/evidence/S15/booky-initial-globe-load-20260927/check.mjs browser a1",
         "node docs/mobile/evidence/S15/booky-short-viewport-20260927/check.mjs static a1",
-        "node docs/mobile/evidence/S15/booky-short-viewport-20260927/check.mjs browser a1"
+        "node docs/mobile/evidence/S15/booky-short-viewport-20260927/check.mjs browser a1",
+        "node docs/mobile/evidence/S15/booky-character-step-20260927/check.mjs unit a1",
+        "node docs/mobile/evidence/S15/booky-character-step-20260927/check.mjs static a1",
+        "node docs/mobile/evidence/S15/booky-character-step-20260927/check.mjs browser a1"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -3504,7 +3508,17 @@
         "docs/mobile/evidence/S15/booky-short-viewport-20260927/static-a1/result.json",
         "docs/mobile/evidence/S15/booky-short-viewport-20260927/browser-a1/result.json",
         "docs/mobile/evidence/S15/booky-short-viewport-20260927/pwa-a1/result.json",
-        "docs/mobile/evidence/S15/booky-short-viewport-20260927/android-a1/result.json"
+        "docs/mobile/evidence/S15/booky-short-viewport-20260927/android-a1/result.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/README.md",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/entry.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/source-manifests/37b680486fc8a48f.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/visual-review.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/unit-a1/result.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/static-a1/result.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/browser-a1/result.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/booky-character-step-20260927/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11867,7 +11881,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Resume S15 current-only character-step admission and deliberate dossier modal action composition: fail-closed adult integration using real published-dossier capability, a fresh identity/locale lease and rendered acknowledgement before Next, without opening-only progress or populating the empty production inventory. Batch-rebind stale historical Controls whole-file provenance when runtime editing settles; preserve all 34 unchanged draft records without approving dialogue. S03.acceptance remains first unresolved.",
+    "nextAction": "D207: rebind only eight historical contextual guidance drafts to unchanged D205 Controls source e23e58109dbe81f181f6440725ad71157b387e69, versions 3→4, keeping fourteen navigation and twelve support drafts exact and all thirty-four unapproved. Authenticate retained D206 runtime builds without rebuilding the source-only inventory update. Then assess remaining current-only journey lifecycle/recovery requirements from the routed S15 plan. Preserve all S15/S03, child, editorial and release statuses; introduce no approved production character journeys.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -12013,7 +12027,8 @@
       "docs/mobile/evidence/S15/booky-globe-guidance-20260927/result.json",
       "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/result.json",
       "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/result.json",
-      "docs/mobile/evidence/S15/booky-short-viewport-20260927/result.json"
+      "docs/mobile/evidence/S15/booky-short-viewport-20260927/result.json",
+      "docs/mobile/evidence/S15/booky-character-step-20260927/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -12106,7 +12121,8 @@
       "Preserve explicit Booky mobile globe guidance, truthful known display-loss help, guarded control focus, ordinary collection recovery, saved preferences and progress, and canonical globe ownership.",
       "D203 repaired current routes/Controls provenance for 22 existing drafts without changing copy or approving any of 34 records. Runtime/builds remain D202; do not rerun browser/builds solely for this unimported inventory repair.",
       "Preserve truthful Booky initial/loading/error support, committed current globe status, genuine retry ownership, Search/Collection, saved preferences/progress and one canonical globe.",
-      "Preserve compact observed-space status visibility, existing 44px controls, genuine persistence Retry, saved position and collection dock ownership; keep controlled stress distinct from native keyboard behavior."
+      "Preserve compact observed-space status visibility, existing 44px controls, genuine persistence Retry, saved position and collection dock ownership; keep controlled stress distinct from native keyboard behavior.",
+      "Preserve current-only character authority: static admission does not require a future dossier; generic Next never acknowledges character; only the current committed in-modal receipt and explicit action grant credit."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -14727,6 +14743,22 @@
       "android": {
         "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/android-a1/result.json",
         "sha256": "d28ef34a274b67e160cba13108a132c6e512b0b9c7472698eee55712a62bd841"
+      },
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyCharacterStep": {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+      "sha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9",
+      "sourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+      "status": "BOOKY_CHARACTER_STEP_SCOPED_VALIDATION",
+      "pwa": {
+        "path": "docs/mobile/evidence/S15/booky-character-step-20260927/pwa-a1/result.json",
+        "sha256": "19ef24308b77019c6ca0f4ac2a38aa16f41cde2e1702dd9b40aff47fcff7433f"
+      },
+      "android": {
+        "path": "docs/mobile/evidence/S15/booky-character-step-20260927/android-a1/result.json",
+        "sha256": "192cd9bd6d425b76e78fbf77d5d932e922159dc246eaecb4b47882c256ae50f2"
       },
       "stageAccepted": false,
       "releaseReady": false

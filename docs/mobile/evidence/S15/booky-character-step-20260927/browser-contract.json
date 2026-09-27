@@ -1,0 +1,531 @@
+{
+  "schemaVersion": 1,
+  "complete": true,
+  "fixture": "tests/pwa/booky-character-step.spec.mjs",
+  "fixtureSha256": "b876bd5ac1c6e3d723db59dad18d24ed06cd2dd5d1877db09299c901c5f288bd",
+  "expectedBrowserTests": 8,
+  "expectedActualAppTests": 3,
+  "expectedComponentTests": 5,
+  "expectedImages": 6,
+  "observationKey": "characterStep",
+  "actualAppCases": [
+    {
+      "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-journey-en",
+      "evidenceKind": "actual-app-source-evidence",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-journey-en",
+      "imagesField": "screenshots",
+      "expectedImages": 2,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterJourneyPassed": true,
+        "observations.characterStep.routeAdmittedBeforeDossier": true,
+        "observations.characterStep.closeAndReopenNoCredit": true,
+        "observations.characterStep.explicitCurrentModalCredit": true,
+        "observations.characterStep.staticCharacterFingerprintOnly": true,
+        "observations.characterStep.canonicalSceneAndReadingRetained": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions"
+      ],
+      "captureFilenames": [
+        "character-current-en.png",
+        "character-complete-en.png"
+      ],
+      "phaseBoundary": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate."
+    },
+    {
+      "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-journey-ru",
+      "evidenceKind": "actual-app-source-evidence",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-journey-ru",
+      "imagesField": "screenshots",
+      "expectedImages": 3,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterJourneyPassed": true,
+        "observations.characterStep.routeAdmittedBeforeDossier": true,
+        "observations.characterStep.closeAndReopenNoCredit": true,
+        "observations.characterStep.explicitCurrentModalCredit": true,
+        "observations.characterStep.staticCharacterFingerprintOnly": true,
+        "observations.characterStep.canonicalSceneAndReadingRetained": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions"
+      ],
+      "captureFilenames": [
+        "character-current-ru.png",
+        "character-consecutive-ru.png",
+        "character-complete-ru.png"
+      ],
+      "phaseBoundary": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate."
+    },
+    {
+      "title": "actual App absent publication capability denies character routes without opening or progress",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-publication-absent",
+      "evidenceKind": "actual-app-source-evidence",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-publication-absent",
+      "imagesField": "screenshots",
+      "expectedImages": 1,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": false,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": false,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterCapabilityDenied": true,
+        "observations.characterStep.controlledShortLeaseMs": 15000,
+        "observations.characterStep.realRenewalTimer": true,
+        "observations.characterStep.failedRenewalRevokesWithoutCredit": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "absent publication capability exposes no character route or action",
+        "unavailable route produces no publication request or progress write",
+        "canonical globe remains retained",
+        "real short-lease renewal failure revokes current modal without credit or replay"
+      ],
+      "captureFilenames": [
+        "character-capability-absent-en.png"
+      ],
+      "phaseBoundary": "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed."
+    }
+  ],
+  "caseEvidenceContracts": [
+    {
+      "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-journey-en",
+      "evidenceKind": "actual-app-source-evidence",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-journey-en",
+      "imagesField": "screenshots",
+      "expectedImages": 2,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterJourneyPassed": true,
+        "observations.characterStep.routeAdmittedBeforeDossier": true,
+        "observations.characterStep.closeAndReopenNoCredit": true,
+        "observations.characterStep.explicitCurrentModalCredit": true,
+        "observations.characterStep.staticCharacterFingerprintOnly": true,
+        "observations.characterStep.canonicalSceneAndReadingRetained": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions"
+      ],
+      "captureFilenames": [
+        "character-current-en.png",
+        "character-complete-en.png"
+      ],
+      "phaseBoundary": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate."
+    },
+    {
+      "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-journey-ru",
+      "evidenceKind": "actual-app-source-evidence",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-journey-ru",
+      "imagesField": "screenshots",
+      "expectedImages": 3,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterJourneyPassed": true,
+        "observations.characterStep.routeAdmittedBeforeDossier": true,
+        "observations.characterStep.closeAndReopenNoCredit": true,
+        "observations.characterStep.explicitCurrentModalCredit": true,
+        "observations.characterStep.staticCharacterFingerprintOnly": true,
+        "observations.characterStep.canonicalSceneAndReadingRetained": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions"
+      ],
+      "captureFilenames": [
+        "character-current-ru.png",
+        "character-consecutive-ru.png",
+        "character-complete-ru.png"
+      ],
+      "phaseBoundary": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate."
+    },
+    {
+      "title": "actual App absent publication capability denies character routes without opening or progress",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-publication-absent",
+      "evidenceKind": "actual-app-source-evidence",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-publication-absent",
+      "imagesField": "screenshots",
+      "expectedImages": 1,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": false,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": false,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterCapabilityDenied": true,
+        "observations.characterStep.controlledShortLeaseMs": 15000,
+        "observations.characterStep.realRenewalTimer": true,
+        "observations.characterStep.failedRenewalRevokesWithoutCredit": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "absent publication capability exposes no character route or action",
+        "unavailable route produces no publication request or progress write",
+        "canonical globe remains retained",
+        "real short-lease renewal failure revokes current modal without credit or replay"
+      ],
+      "captureFilenames": [
+        "character-capability-absent-en.png"
+      ],
+      "phaseBoundary": "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed."
+    },
+    {
+      "title": "caller character action is explicit inside the exact committed modal and revocation never acknowledges",
+      "file": "tests/pwa/book-dossier-character-view.spec.mjs",
+      "evidenceKind": "raw-component-json",
+      "rawFilename": "dossier-character-view.json",
+      "imagesField": "captures",
+      "expectedImages": 0,
+      "sourceBinding": "manifest-bound-paths",
+      "requiredSourcePaths": [
+        "src/books/bookDossierCharacterView.ts",
+        "src/components/BookDossierMap.tsx",
+        "src/components/BookDossierReader.tsx"
+      ],
+      "requiredValues": {
+        "syntheticPublishedWorkflowOnly": true,
+        "actualReaderAndNativeMap": true,
+        "journeyWiring": false,
+        "progressAcceptance": false,
+        "productionApprovalClaimed": false,
+        "nativeDeviceAcceptance": false,
+        "fullAccessibilityAcceptance": false,
+        "callerActionExactCommittedReceipt": true,
+        "rejectedActionKeepsModal": true,
+        "acceptedOwnerRetiresRequest": true,
+        "closeSelectionExpiryGrantNoAction": true,
+        "componentTargetScrollSetup": true,
+        "actualAppJourneyWiring": false,
+        "readOnlyObservation": true,
+        "committedExactItemOnly": true,
+        "observations.pageNavigation": 0,
+        "observations.readingChanges": 0
+      },
+      "emptyArrayFields": [
+        "pageErrors",
+        "remoteRequests",
+        "observations.storageWrites"
+      ],
+      "rawScenario": "caller character action is explicit inside the exact committed modal and revocation never acknowledges"
+    },
+    {
+      "title": "StrictMode mount with issued character request commits once and never replays consumed token",
+      "file": "tests/pwa/book-dossier-character-view.spec.mjs",
+      "evidenceKind": "raw-component-json",
+      "rawFilename": "dossier-character-view.json",
+      "imagesField": "captures",
+      "expectedImages": 0,
+      "sourceBinding": "manifest-bound-paths",
+      "requiredSourcePaths": [
+        "src/books/bookDossierCharacterView.ts",
+        "src/components/BookDossierMap.tsx",
+        "src/components/BookDossierReader.tsx"
+      ],
+      "requiredValues": {
+        "syntheticPublishedWorkflowOnly": true,
+        "actualReaderAndNativeMap": true,
+        "journeyWiring": false,
+        "progressAcceptance": false,
+        "productionApprovalClaimed": false,
+        "nativeDeviceAcceptance": false,
+        "fullAccessibilityAcceptance": false,
+        "pass": true,
+        "strictModeIssuedMountCommits": true,
+        "explicitModalAcknowledgement": true,
+        "consumedTokenUnmountCannotReplay": true,
+        "componentTargetScrollSetup": true,
+        "actualAppJourneyWiring": false,
+        "readOnlyObservation": true,
+        "committedExactItemOnly": true,
+        "observations.pageNavigation": 0,
+        "observations.readingChanges": 0
+      },
+      "emptyArrayFields": [
+        "pageErrors",
+        "remoteRequests",
+        "observations.storageWrites"
+      ],
+      "rawScenario": "StrictMode mount with issued character request commits once and never replays consumed token"
+    },
+    {
+      "title": "archive presents a requested second-block character without reading writes and dismisses it before native book Back",
+      "file": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "evidenceKind": "raw-component-json",
+      "rawFilename": "dossier-character-archive.json",
+      "imagesField": null,
+      "expectedImages": 0,
+      "sourceBinding": "emitted-hashes",
+      "requiredSourcePaths": [
+        "src/components/BookArchiveSection.tsx",
+        "src/components/BookDossierMap.tsx",
+        "src/components/BookDossierReader.tsx"
+      ],
+      "requiredValues": {
+        "sourceFixture": true,
+        "actualArchiveReaderMapAndLibrary": true,
+        "syntheticPublicationWorkflow": true,
+        "controlledAuthTransportAndPhysicalMeasurement": true,
+        "actualAppJourneyWiring": false,
+        "realCmsApproval": false,
+        "deviceAcceptance": false,
+        "releaseReady": false,
+        "exactSecondBlockCharacter": true,
+        "requestWritesNoReadingProgress": true,
+        "nativeBackDismissesRequestedDialogFirst": true,
+        "manualCharacterSelectionRetainsDialogAndRevokesReceipt": true,
+        "manualCloseRetainsPreviewFocus": true,
+        "equivalentLeaseRenewalPreservesManualSelectionWithoutReceipt": true,
+        "ordinaryNavigationWritesOnlyItsOwnPage": true,
+        "consumedTokenRemountDoesNotSelectPageOrReopen": true,
+        "fixtureError": null
+      },
+      "emptyArrayFields": [
+        "pageErrors",
+        "remoteRequests"
+      ],
+      "rawScenario": "archive presents a requested second-block character without reading writes and dismisses it before native book Back"
+    },
+    {
+      "title": "archive publication observation withdraws while reading-mode delivery is busy or unavailable",
+      "file": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "evidenceKind": "raw-component-json",
+      "rawFilename": "dossier-character-archive.json",
+      "imagesField": null,
+      "expectedImages": 0,
+      "sourceBinding": "emitted-hashes",
+      "requiredSourcePaths": [
+        "src/components/BookArchiveSection.tsx",
+        "src/components/BookDossierMap.tsx",
+        "src/components/BookDossierReader.tsx"
+      ],
+      "requiredValues": {
+        "sourceFixture": true,
+        "actualArchiveReaderMapAndLibrary": true,
+        "syntheticPublicationWorkflow": true,
+        "controlledAuthTransportAndPhysicalMeasurement": true,
+        "actualAppJourneyWiring": false,
+        "realCmsApproval": false,
+        "deviceAcceptance": false,
+        "releaseReady": false,
+        "pass": true,
+        "busyPublicationWithdrawn": true,
+        "unavailablePublicationWithdrawn": true,
+        "pendingRequestCannotOpenCharacter": true,
+        "controlledPublicationPromiseGate": true,
+        "deniedCharacterRequestsWriteNoReadingProgress": true,
+        "explicitModeChoiceFallbackRemapObserved": true,
+        "fixtureError": null
+      },
+      "emptyArrayFields": [
+        "pageErrors",
+        "remoteRequests"
+      ],
+      "rawScenario": "archive publication observation withdraws while reading-mode delivery is busy or unavailable"
+    },
+    {
+      "title": "archive explicit return intent dismisses character and completes existing book close",
+      "file": "tests/pwa/book-dossier-character-archive.spec.mjs",
+      "evidenceKind": "raw-component-json",
+      "rawFilename": "dossier-character-archive.json",
+      "imagesField": null,
+      "expectedImages": 0,
+      "sourceBinding": "emitted-hashes",
+      "requiredSourcePaths": [
+        "src/components/BookArchiveSection.tsx",
+        "src/components/BookDossierMap.tsx",
+        "src/components/BookDossierReader.tsx"
+      ],
+      "requiredValues": {
+        "sourceFixture": true,
+        "actualArchiveReaderMapAndLibrary": true,
+        "syntheticPublicationWorkflow": true,
+        "controlledAuthTransportAndPhysicalMeasurement": true,
+        "actualAppJourneyWiring": false,
+        "realCmsApproval": false,
+        "deviceAcceptance": false,
+        "releaseReady": false,
+        "pass": true,
+        "explicitReturnDismissesCharacter": true,
+        "explicitReturnClosesBook": true,
+        "controlledNativeBackIntent": true,
+        "readingProgressUnchanged": true,
+        "fixtureError": null
+      },
+      "emptyArrayFields": [
+        "pageErrors",
+        "remoteRequests"
+      ],
+      "rawScenario": "archive explicit return intent dismisses character and completes existing book close"
+    }
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-character-step.spec.mjs",
+    "tests/pwa/book-dossier-character-view.spec.mjs",
+    "tests/pwa/book-dossier-character-archive.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress",
+    "caller character action is explicit inside the exact committed modal and revocation never acknowledges",
+    "StrictMode mount with issued character request commits once and never replays consumed token",
+    "archive presents a requested second-block character without reading writes and dismisses it before native book Back",
+    "archive publication observation withdraws while reading-mode delivery is busy or unavailable",
+    "archive explicit return intent dismisses character and completes existing book close"
+  ],
+  "requiredVisualFilenames": [
+    "character-current-en.png",
+    "character-complete-en.png",
+    "character-current-ru.png",
+    "character-consecutive-ru.png",
+    "character-complete-ru.png",
+    "character-capability-absent-en.png"
+  ],
+  "allNewImagesRequireDirectReview": true,
+  "productionContentChanged": false,
+  "syntheticProvidersInlined": true,
+  "realPublicationServiceClaimed": false,
+  "nativeDeviceClaimed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "publicationBoundary": "The native edition and App stay real. Only content/public-client delivery is explicitly synthetic; actual workflow/compiler/parser constructs bilingual test dossiers. Production approval/capability/inventory are unchanged.",
+  "componentBoundary": "Five selected native component cases; zero images; no actual-App journey, publication service or installed-device acceptance.",
+  "readingWriteBoundary": "Busy/unavailable denial asserts zero writes only around denied character requests. Existing explicit reading-mode choice may remap the catalogue identity anchor and is separately observed.",
+  "returnIntentBoundary": "Explicit character-to-book-to-globe journey completion only. No claim of arbitrary layer unwinding; admitted current character excludes advancedFiltersOpen.",
+  "runtimeAmendmentProvenance": [
+    "modal-ui/strictmode-fix.json",
+    "modal-ui/busy-return-provenance.json",
+    "return-intent-root-provenance.json"
+  ],
+  "promotion": "canonical-promotion.json"
+}

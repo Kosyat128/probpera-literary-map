@@ -1,0 +1,1243 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-27T04:44:38.448Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/result.json",
+    "sha256": "adaa6761b07f8a4e3d2d6aae509423d6fa5f2396ab8e8e12ef6df7e3c43c7551"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/record-diagnostics.mjs",
+    "sha256": "4eb04d62cc10f4400df522ab8a1a25b44af4d29605838fdecc5b1d979a2baaf5"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/diagnostic-specification.json",
+    "sha256": "d0297734219ccac5efebe911eb560d0e2e517aa768a8909b83287f991554ba3c"
+  },
+  "amendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/admission-handoff.json",
+      "sha256": "247b747ac30783cc39121eeca6fdcf6ab1d2c81881b0c1ba50fddd4893b838dc"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/consecutive-handoff/provenance.json",
+      "sha256": "b3d2ec44f4a49b3a5f90e5d5e7714c0548f47ab4aac3af065e3ff1eff3f5cd24"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/modal-ui/strictmode-fix.json",
+      "sha256": "3b7b98c8721f5efade5c7f24e8797a44ae641f6e591f0121aaca47aa38978f4b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/modal-ui/strictmode-prior-case-preservation.json",
+      "sha256": "967ec522e9ec4baa74acfc2bafb63c4062c3ccd6902525906975f23703d9d940"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/return-intent-root-provenance.json",
+      "sha256": "406a108175e215b4fed9856e889ee3b5dd7b39f8780be528113a74668da97110"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/modal-ui/busy-return-provenance.json",
+      "sha256": "0be46f113b92c1367cf0f2b118075ff2dc8c7d20ab381cd72d04ce952cd1704b"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "core-a1",
+      "diagnosticOnly": true,
+      "reportFormat": "vitest",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/unit-diagnostic/core-a1/execution.json",
+        "sha256": "99a481749c851d6a6edc71907eaef18af54d3b5081c80e777b7ebbfde3cb7f8c"
+      },
+      "report": null,
+      "tests": null,
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T03:52:29.690Z",
+        "finishedAt": null,
+        "stdout": null,
+        "stderr": null,
+        "log": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/unit-diagnostic/core-a1/raw.log",
+          "sha256": "c20981665c2c497cbd9c8fef39e9e5563d64c00d38c6bc4f45a789608bf89af2"
+        },
+        "streamSeparation": "not-recorded"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "Runner startup infrastructure failure; no unit cases executed and no report exists."
+    },
+    {
+      "id": "core-a2",
+      "diagnosticOnly": true,
+      "reportFormat": "vitest",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/unit-diagnostic/core-a2/execution.json",
+        "sha256": "523871eda3b822482c7c232a1655733687e7494efe5999e8e86feea30ed6b9cd"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/unit-diagnostic/core-a2/report.json",
+        "sha256": "a54d9d8a99d0337164d930c11af6a3a941f355ed9d1839ad4f596286e3e493fb"
+      },
+      "tests": {
+        "passed": 148,
+        "failed": 0,
+        "skipped": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": "2026-09-27T03:52:49.553Z",
+        "finishedAt": null,
+        "stdout": null,
+        "stderr": null,
+        "log": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/unit-diagnostic/core-a2/raw.log",
+          "sha256": "c78393c9e94b5cf3f36ae74e1db49a1e42a75e906b2d234101c56599784fff7b"
+        },
+        "streamSeparation": "not-recorded"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "Original four-file 148-case focused diagnostic passed before later test-only TypeScript corrections and the public client addition; not final source acceptance."
+    },
+    {
+      "id": "core-a3",
+      "diagnosticOnly": true,
+      "reportFormat": "vitest",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/unit-diagnostic/core-a3/execution.json",
+        "sha256": "f1955626133b3366fb2e29ce33103bd728ec0e99bffc4feff78554ab0394083d"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/unit-diagnostic/core-a3/report.json",
+        "sha256": "bd37a9e7367a9810cf8ca5b031af0414cb27bee190359acc865cdcdc4a5242da"
+      },
+      "tests": {
+        "passed": 159,
+        "failed": 0,
+        "skipped": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": "2026-09-27T03:54:28.398Z",
+        "finishedAt": null,
+        "stdout": null,
+        "stderr": null,
+        "log": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/unit-diagnostic/core-a3/raw.log",
+          "sha256": "d7d72200edfc04e46c3a3e0868901cd628d1527bc4a97ba05aafcff91e9fa7a5"
+        },
+        "streamSeparation": "not-recorded"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "Original five-file 159-case focused diagnostic passed. A later ordinary-node template expression restoration was equivalent syntax and remains separately disclosed in admission-handoff.json."
+    },
+    {
+      "id": "runtime-unit-a1",
+      "diagnosticOnly": true,
+      "reportFormat": "vitest",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/runtime-unit-a1/execution.json",
+        "sha256": "94d1ad32e1a6504d9242eb8777d4b16ff8c82183e50b533a1869b4ce07c0684d"
+      },
+      "report": null,
+      "tests": null,
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": null,
+        "finishedAt": null,
+        "stdout": null,
+        "stderr": null,
+        "log": null,
+        "streamSeparation": "tool-return-only"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "Sandbox esbuild config startup failed with parent-directory Access denied. No tests executed; the authentic tool receipt is preserved, with no invented process log or timestamps."
+    },
+    {
+      "id": "runtime-unit-a2",
+      "diagnosticOnly": true,
+      "reportFormat": "vitest",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/runtime-unit-a2/execution.json",
+        "sha256": "39b427c59db1753ae46e5b0035580fbc4ab08d98cbc06044ce46e34d1780da4c"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/runtime-unit-a2/vitest.json",
+        "sha256": "74f459bba1cca816b62b0e4d4617d320a6acd94b6bbe9b77709db4f85db835ab"
+      },
+      "tests": {
+        "passed": 115,
+        "failed": 3,
+        "skipped": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": null,
+        "finishedAt": null,
+        "stdout": null,
+        "stderr": null,
+        "log": null,
+        "streamSeparation": "tool-return-only"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "115 passed and 3 new runtime fixtures failed because they incorrectly ended at character instead of the required checkpoint. Tests were corrected to valid character-to-checkpoint plans; admission was not weakened."
+    },
+    {
+      "id": "runtime-unit-a3",
+      "diagnosticOnly": true,
+      "reportFormat": "vitest",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/runtime-unit-a3/execution.json",
+        "sha256": "8d4a02a199cfa84f8229fdc98e6a787c432fb24c08a2ce718397895bc6d300a7"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/runtime-unit-a3/vitest.json",
+        "sha256": "9eac9fe013dd839a2252325a946c06de222babb2b053c5483d132b50f4401564"
+      },
+      "tests": {
+        "passed": 118,
+        "failed": 0,
+        "skipped": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": null,
+        "finishedAt": null,
+        "stdout": null,
+        "stderr": null,
+        "log": null,
+        "streamSeparation": "tool-return-only"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "118 runtime/session assertions passed before the consecutive-character handoff amendment."
+    },
+    {
+      "id": "runtime-unit-a4",
+      "diagnosticOnly": true,
+      "reportFormat": "vitest",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/runtime-unit-a4/execution.json",
+        "sha256": "b20a1465fac47513abdf4ecc31419fa931f5766683c4e62db3d9cf821f50c90c"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/runtime-unit-a4/vitest.json",
+        "sha256": "6bd59984f5d54a21ddda9c0812f0d6ddfad32d5e29d181fd114653423d9c1fbc"
+      },
+      "tests": {
+        "passed": 121,
+        "failed": 0,
+        "skipped": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": null,
+        "finishedAt": null,
+        "stdout": null,
+        "stderr": null,
+        "log": null,
+        "streamSeparation": "tool-return-only"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "121 runtime/session assertions passed after exact immediate consecutive-character handoff and reentrancy/replay guards. Later actual-App behavior is separately tested."
+    },
+    {
+      "id": "root-static-a1",
+      "diagnosticOnly": true,
+      "reportFormat": "typescript",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/root-static-a1/execution.json",
+        "sha256": "91754a4b688b9f716f1c851794de4207ee3d882f8869b1d35e145700e1f24598"
+      },
+      "report": null,
+      "tests": null,
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 2,
+        "startedAt": null,
+        "finishedAt": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/root-static-a1/stdout.log",
+          "sha256": "153ee7bac5b12660e2e5e1e9b2130a7b37a426ec843805d28feac1fb27428a65"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/root-static-a1/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "log": null,
+        "streamSeparation": "recorded"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "TypeScript diagnostic during concurrent implementation failed; unsupported Array.at in a new runtime test and other owner errors were corrected. This is not a final frozen-source check."
+    },
+    {
+      "id": "root-static-a2",
+      "diagnosticOnly": true,
+      "reportFormat": "typescript",
+      "browserStarted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/root-static-a2/execution.json",
+        "sha256": "8427eda4d6c5c87bec3ade09cc3ec9975b7db73e18c797779ce3422d31ed49d5"
+      },
+      "report": null,
+      "tests": null,
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": null,
+        "finishedAt": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/root-static-a2/stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/root-static-a2/stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "log": null,
+        "streamSeparation": "recorded"
+      },
+      "sourceSnapshotVerification": null,
+      "additionalEvidence": [],
+      "interpretation": "TypeScript diagnostic passed at its original source, before the later Map StrictMode amendment."
+    },
+    {
+      "id": "component-a1",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a1/execution.json",
+        "sha256": "e16af8ab1cb5aa018f44591d82dcfd55b26e1f05114fc4f0a5b0db100284600d"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a1/playwright.json",
+        "sha256": "9f782f14cc3dcc8737458d74635617a6a716d65422a21b5324111c6e7df0d7cc"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": "2026-09-27T04:01:55.984Z",
+        "finishedAt": "2026-09-27T04:02:01.933Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a1/stdout.log",
+          "sha256": "22c821d9cdf4bf63b6758f944115c79b85e6d612cc3bc8768603beff8744e1b0"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a1/stderr.log",
+          "sha256": "dd0fbbd1df0f325f0afbcafc8f81d6f3e21158b560c007df332be0237aa04e12"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 5335.748
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a1/runtime-inputs",
+        "count": 26,
+        "sourceManifestSha256": "27197bb590a538edf937b4cb1eb0eca4f8cecc3bd9b1f3de705ae238958b89dd",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a1/authorized-source.json",
+          "sha256": "6c9149a7d16707d0adb89b8712fc4f81c8f4febf7eef4828a4367c398dae51ca"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a1/run.mjs",
+          "sha256": "b3042220e075f1ca59b12eb5c20bc90f340304fdfbeec9fe1c15200b84889534"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a1/playwright.config.mjs",
+          "sha256": "21042b1bc33d642681be50125ab9d40d58e6805685d90805328968fcd558cba1"
+        }
+      ],
+      "interpretation": "Two selected native component cases passed before consecutive-character handoff; no actual-App journey, image or production publication acceptance."
+    },
+    {
+      "id": "browser-a2",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/execution.json",
+        "sha256": "0b45c4f2ce0c7af1ff773ef1a9ca597bc0562c63df515141c0d9c1d2c891762b"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/playwright.json",
+        "sha256": "476cb185196dd9a93cf6fb35eecec82cff2ea189425eee4bcda7cb6a0c23087c"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 3,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T04:07:42.166Z",
+        "finishedAt": "2026-09-27T04:10:49.667Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/stdout.log",
+          "sha256": "b3b94c17630f14470b16ab2b10a1a5014607281de255acb17d01c5326e825462"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/stderr.log",
+          "sha256": "7459cf88a423ea3593183828ed4ab050b7999bf8bf12817079bb1bdfaf429bec"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 186803.644
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/runtime-inputs",
+        "count": 1475,
+        "sourceManifestSha256": "ada2ddad3d94ea3e26ceef2a96197db513cd5507fecf98445943a8ef66345dc9",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/authorized-source.json",
+          "sha256": "f0415621ff4e064b61fcf186af6f07d55ab0c721b73e870695d1cdf808a9c59e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/run.mjs",
+          "sha256": "7e1ff826d9b2e5d368c50c8f8a1a2dce1a819146ec23ac6ec7295c2c693c4c2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/playwright.config.mjs",
+          "sha256": "eec7c30efb1d23c794a907e54b0945e69a01e186e9c650acc6b7ae8046b55e44"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/character-step.spec.mjs",
+          "sha256": "42f482155da9c142458ec9659803996b9b4860908786cbb13b22b9baa2a08d6d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/synthetic-content.mjs",
+          "sha256": "a4a4ef2d38bba6b287a2f91213de7252abaac9ba09fb206491418fb1c6e7e29b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/synthetic-public-client.mjs",
+          "sha256": "67b730d3ee33e1326a7faebc3c700aceed7d7d1a7294671ad9be947dc6b6a98b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/character-cases.mjs",
+          "sha256": "088202230d1810496dae628d2bd822cd47ded780fb8879ee34ce8bf59e1989e5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a2/prefix-provenance.json",
+          "sha256": "78ecd3ecf03ede0f555e583b32ef4c03b342584c1528127bd72d75f01bf46afc"
+        }
+      ],
+      "interpretation": "Actual App completed 0/3 with exit 1. Startup errors were not captured, so first failure cause is unproven. The missing preparation lease discovered afterward was a latent fixture defect, not the established first cause."
+    },
+    {
+      "id": "browser-a3",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/execution.json",
+        "sha256": "4b8d4c76703fbdd0c6badcb35fde166ae64228898ccc80b0a15005afdc69a127"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/playwright.json",
+        "sha256": "b43908cc5d9ebbd9b1d23c30686d747012ccf6c5d6c8d7d476a411b9008ae86a"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 3,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T04:11:31.220Z",
+        "finishedAt": "2026-09-27T04:11:38.468Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/stdout.log",
+          "sha256": "6b239eb0e8d8ef905a052807e19451b14b42320a4d2fb723b368a71815bbc24d"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/stderr.log",
+          "sha256": "5f0f34e39f81b19da0ab9c356f37e1b819235e8d7697a5b7f1777c7efac36805"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 6572.6179999999995
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/runtime-inputs",
+        "count": 1475,
+        "sourceManifestSha256": "ada2ddad3d94ea3e26ceef2a96197db513cd5507fecf98445943a8ef66345dc9",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/correction.json",
+          "sha256": "2c83e95db29274bcce9a08411d77899d9a19ed6bc6b2c2d0f561f2f723125d90"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/authorized-source.json",
+          "sha256": "f5700a60a692974c856ed7c3b39ee23081e7ad45de3f15f295f7ef7a5cdc5402"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/run.mjs",
+          "sha256": "7e1ff826d9b2e5d368c50c8f8a1a2dce1a819146ec23ac6ec7295c2c693c4c2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/playwright.config.mjs",
+          "sha256": "6957478865b923c9d2684f563da865e74a776bd0625ded3d1e074e92f6dd2758"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/character-step.spec.mjs",
+          "sha256": "785c963534d6badb8972e80dab8cd16c95997264a94e08e7c2e31cf2a210c6aa"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/synthetic-content.mjs",
+          "sha256": "01972e7646374e6fc691e831c8e0bd5ccc6e7f690d5bf50d7e704616aacf702d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/synthetic-public-client.mjs",
+          "sha256": "67b730d3ee33e1326a7faebc3c700aceed7d7d1a7294671ad9be947dc6b6a98b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/character-cases.mjs",
+          "sha256": "088202230d1810496dae628d2bd822cd47ded780fb8879ee34ce8bf59e1989e5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a3/prefix-provenance.json",
+          "sha256": "78ecd3ecf03ede0f555e583b32ef4c03b342584c1528127bd72d75f01bf46afc"
+        }
+      ],
+      "interpretation": "Actual App completed 0/3 with captured rights-work-mismatch startup errors in twelve synthetic blocks. Fixture bookKey and rights.originalWork did not match; this was a synthetic construction defect."
+    },
+    {
+      "id": "browser-a4",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/execution.json",
+        "sha256": "eb601d810c4d182552a55cac16552af452b8d47ccb3f9c4c8f2e0ea177eefd02"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/playwright.json",
+        "sha256": "a42e93f1ab2941841b5a89da74fc0dd1ad6b2f52385a9c5070fe91cf6caa573f"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 3,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T04:13:09.005Z",
+        "finishedAt": "2026-09-27T04:14:27.748Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/stdout.log",
+          "sha256": "e9d54c6dfa5800365a1c042f7903bbb466c331c49e3e73d24d0518340f250399"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/stderr.log",
+          "sha256": "957dda800b1d895d0a639d9155d1aee527fd5531db4d7776bceda1e231d47660"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 78048.12700000001
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/runtime-inputs",
+        "count": 1475,
+        "sourceManifestSha256": "ada2ddad3d94ea3e26ceef2a96197db513cd5507fecf98445943a8ef66345dc9",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/correction.json",
+          "sha256": "de63e8fcbe333abf01cf49cd8730da4140b1ee0b2ba569d9f95b9b7fe22469f2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/authorized-source.json",
+          "sha256": "ec1ce99ad68932dd5407a6417623c83cfb958b23e5a89d05df1ca57a1de13381"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/run.mjs",
+          "sha256": "7e1ff826d9b2e5d368c50c8f8a1a2dce1a819146ec23ac6ec7295c2c693c4c2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/playwright.config.mjs",
+          "sha256": "b067b2a637cdfab65c7b6901b1118a685e51c069443d1dc20dc99054e151e046"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/character-step.spec.mjs",
+          "sha256": "73d17d11d227051881b1548634e33efd2d6f3ad5f283b302d90cd919dd17faea"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/synthetic-content.mjs",
+          "sha256": "7e3cf9fdef620d42b7a9190fa187e45fc6ebc63cd2a5dbedfcbcf027e5a52f55"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/synthetic-public-client.mjs",
+          "sha256": "67b730d3ee33e1326a7faebc3c700aceed7d7d1a7294671ad9be947dc6b6a98b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/character-cases.mjs",
+          "sha256": "088202230d1810496dae628d2bd822cd47ded780fb8879ee34ce8bf59e1989e5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/prefix-provenance.json",
+          "sha256": "78ecd3ecf03ede0f555e583b32ef4c03b342584c1528127bd72d75f01bf46afc"
+        }
+      ],
+      "interpretation": "Actual App completed 0/3 after synthetic provider correction. Every case stopped at existing paused work navigation; later observer uses one explicit trusted Resume. No uninterrupted-navigation claim."
+    },
+    {
+      "id": "browser-a5",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/execution.json",
+        "sha256": "f029a489436dd09988469f7d9d8b5371d73104e549fce6e722beb93a38bf0969"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/playwright.json",
+        "sha256": "07f0b00934b1160be2a5374317b4992d1da6179a04f24f58df9ffd9d476ef870"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 3,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T04:15:43.873Z",
+        "finishedAt": "2026-09-27T04:17:52.599Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/stdout.log",
+          "sha256": "72d1d302085e47f83f5ea8403f54e282b6d7dfa62abc8baece25cc90e5573b6f"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/stderr.log",
+          "sha256": "c940d764adfdb59d5df0d7cd84c054298451c8af678b877b4541aff47b9cb132"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 128041.338
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/runtime-inputs",
+        "count": 1475,
+        "sourceManifestSha256": "ada2ddad3d94ea3e26ceef2a96197db513cd5507fecf98445943a8ef66345dc9",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/correction.json",
+          "sha256": "daaac50698bee0d172b32c9ca402ca8426382fcd8257ba23d17bfc72f52af7e2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/authorized-source.json",
+          "sha256": "8977fa477718e0f4a3712ca5331852392643d7b9b4905ba60fed3f80c8fa2aca"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/run.mjs",
+          "sha256": "7e1ff826d9b2e5d368c50c8f8a1a2dce1a819146ec23ac6ec7295c2c693c4c2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/playwright.config.mjs",
+          "sha256": "d3a0a88322e471b7a119a305ad9bce424de409b0380ba8527c26504da246de84"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/character-step.spec.mjs",
+          "sha256": "c46b989aec2252d65bf99d079be4ac0bc6d30bbaf7ea39a1f0b966e4f2afd1c9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/synthetic-content.mjs",
+          "sha256": "7e3cf9fdef620d42b7a9190fa187e45fc6ebc63cd2a5dbedfcbcf027e5a52f55"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/synthetic-public-client.mjs",
+          "sha256": "67b730d3ee33e1326a7faebc3c700aceed7d7d1a7294671ad9be947dc6b6a98b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/character-cases.mjs",
+          "sha256": "d5919a4b2f5ba396088181033acd8495e8c998b03e65c61d9a2e2cac2c0cbbda"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a5/prefix-provenance.json",
+          "sha256": "78ecd3ecf03ede0f555e583b32ef4c03b342584c1528127bd72d75f01bf46afc"
+        }
+      ],
+      "interpretation": "Actual App completed 0/3. The first native character C modal rendered, but committed request marker was empty before any modal action. Cause was investigated in the separate instrumented a6 probe."
+    },
+    {
+      "id": "browser-a6",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/execution.json",
+        "sha256": "4e555f45b4da4d6fb8e3f37f9b6676c22fa94e815029825d4130ac38bf74a079"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/playwright.json",
+        "sha256": "e56b8800c58a3f7989903832278fe0d85e35f820dabb86b1c1d4ab0ba0b768b2"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T04:21:05.706Z",
+        "finishedAt": "2026-09-27T04:21:48.024Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/stdout.log",
+          "sha256": "cec3df5a082c050e7e7b90441d243face7416261c969d778792a3fbe58893d89"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/stderr.log",
+          "sha256": "4e28809d06058169e9dfa3a88e7df9b0a8b66f8b08b3ed631dee6bdc693259c0"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 41631.17
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/runtime-inputs",
+        "count": 1475,
+        "sourceManifestSha256": "ada2ddad3d94ea3e26ceef2a96197db513cd5507fecf98445943a8ef66345dc9",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/compact-cause.json",
+          "sha256": "16de1bf36f28c2e957c8097e9096619eead67f2bcee5fab76d0b68f23deb63b4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/instrumentation-result.json",
+          "sha256": "43a6c9c3855f88e8485533ab0c726de4f56d0347a262675cee6868bbb689f20f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/authorized-source.json",
+          "sha256": "7c42cd115b9ecde792c1e698cd346d52a4b99a7d27252b7af4cc73dc516442cf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/run.mjs",
+          "sha256": "a59f83564306146c81f8a9e350237fcc0913f3956a3d553d41607253415b2659"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/playwright.config.mjs",
+          "sha256": "65ca874991331ac68f11895b7c93b6203835203f4eb34fb51c37f29521c2a1f1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/character-step.spec.mjs",
+          "sha256": "372b2f28d2293a5b70dc79928865491321cb12d52c1b97f432dc8d29b4d006cf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/synthetic-content.mjs",
+          "sha256": "7e3cf9fdef620d42b7a9190fa187e45fc6ebc63cd2a5dbedfcbcf027e5a52f55"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/synthetic-public-client.mjs",
+          "sha256": "67b730d3ee33e1326a7faebc3c700aceed7d7d1a7294671ad9be947dc6b6a98b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/character-cases.mjs",
+          "sha256": "d5919a4b2f5ba396088181033acd8495e8c998b03e65c61d9a2e2cac2c0cbbda"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/prefix-provenance.json",
+          "sha256": "78ecd3ecf03ede0f555e583b32ef4c03b342584c1528127bd72d75f01bf46afc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a6/instrumentation.mjs",
+          "sha256": "4debb793c04b043fc590034fcaad79fb0bfe6f75c40de0d797f272eda695bd7c"
+        }
+      ],
+      "interpretation": "Focused RU probe completed 0/1 with exit 1. Three bounded read-only transforms showed StrictMode Map cleanup retiring an uncommitted activation while the consumed token prevented reactivation; no hook/session retirement followed the request. Diagnostic telemetry is not a passing application case."
+    },
+    {
+      "id": "component-a2",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a2/execution.json",
+        "sha256": "6e3203b910da146e77f24de63fcc15fc320093807eb550ee7d77fda871212a48"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a2/playwright.json",
+        "sha256": "e8a19ac38422810b0995e8e439ecdd447224c748277ee564f54c498864823a8d"
+      },
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": "2026-09-27T04:25:52.864Z",
+        "finishedAt": "2026-09-27T04:25:59.412Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a2/stdout.log",
+          "sha256": "dcfcd2d814b114de41bc75f99e27401f335e798aee1aab98a00ac20d4d5d3ea8"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a2/stderr.log",
+          "sha256": "005c2faebc1bfe847f2fa291ed907935e1eb8ecca3604edfe082c5798f253037"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 5939.571
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a2/runtime-inputs",
+        "count": 26,
+        "sourceManifestSha256": "b6049201353ad152d3f1ea0f470b615b58cb7f05d4a902b569238b4eb765d3da",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a2/authorized-source.json",
+          "sha256": "85d076f29ccb6a4d9aa903b06fc27d338bfeef5f77d01f2783b32180c0448a21"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a2/run.mjs",
+          "sha256": "7182220152bb749d0dc3923f443289e940a1bc619b5caa8e5cec3de9a4721b68"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a2/playwright.config.mjs",
+          "sha256": "396e4f504a88d84f342dec26281931d177f4ac08c4730a2c5b8675f83df0b55e"
+        }
+      ],
+      "interpretation": "Three selected component cases passed after the narrow Map StrictMode fix, including issued-at-mount request and consumed-token replay denial. This source predates the subsequent Archive busy/unavailable observation amendment."
+    },
+    {
+      "id": "browser-a7",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/execution.json",
+        "sha256": "750e71cd0c2c71534af581d7b33b406d6ae7c49ecd374bfd4aae39b18f7ed052"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/playwright.json",
+        "sha256": "1b2c27d8f86d31db5e08472f55b31aa115b4450f3642c793a1a1c437e55776c9"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T04:27:05.281Z",
+        "finishedAt": "2026-09-27T04:29:45.300Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/stdout.log",
+          "sha256": "34195f75d88394a7b1b13b6915d201fa4f6ab9761c30c55ba256a1a215bc1337"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/stderr.log",
+          "sha256": "1d916b2355ccce64a7d6cc0421bbb00f14931aace65c2c29bca410a90c7dab8d"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 159337.62999999998
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/runtime-inputs",
+        "count": 1475,
+        "sourceManifestSha256": "b911cb490468f7fdff7d58e4a93ff043bdeb1d5778222b28890c2ca4e8208d14",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/authorized-source.json",
+          "sha256": "449bec89ca8f9ed02bf681043582bbaf0ec9c078aa0a79d3fb3d028a988675d3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/run.mjs",
+          "sha256": "7e1ff826d9b2e5d368c50c8f8a1a2dce1a819146ec23ac6ec7295c2c693c4c2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/playwright.config.mjs",
+          "sha256": "29d2637d3058a9b4384afcccd1384da3c31151a840b81f45fc4b94efe2dc9dbf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/character-step.spec.mjs",
+          "sha256": "c46b989aec2252d65bf99d079be4ac0bc6d30bbaf7ea39a1f0b966e4f2afd1c9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/synthetic-content.mjs",
+          "sha256": "7e3cf9fdef620d42b7a9190fa187e45fc6ebc63cd2a5dbedfcbcf027e5a52f55"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/synthetic-public-client.mjs",
+          "sha256": "67b730d3ee33e1326a7faebc3c700aceed7d7d1a7294671ad9be947dc6b6a98b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/character-cases.mjs",
+          "sha256": "d5919a4b2f5ba396088181033acd8495e8c998b03e65c61d9a2e2cac2c0cbbda"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a7/prefix-provenance.json",
+          "sha256": "78ecd3ecf03ede0f555e583b32ef4c03b342584c1528127bd72d75f01bf46afc"
+        }
+      ],
+      "interpretation": "Actual App completed 1/3: both RU/EN acknowledged both consecutive characters but failed the final globe checkpoint because ordinary one-layer Back consumed the return. The combined absent-capability then fresh 15000ms failed-renewal case passed in full. Ordinary Back behavior remains unchanged; a later explicit journey-only return intent fixes completion."
+    },
+    {
+      "id": "component-a3",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a3/execution.json",
+        "sha256": "34c7d17f98e5cd63a1881e626f961b58536832663cb5e535d25178406d6db6af"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a3/playwright.json",
+        "sha256": "c02c238ed2d5b5004c6c92b04a94d4ce5edea792956bf238b07322e6ce29f57d"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T04:32:44.994Z",
+        "finishedAt": "2026-09-27T04:32:54.174Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a3/stdout.log",
+          "sha256": "52ef784610ee3fd7f3172f469f5dcf3953b4b21316d69902a7e6df955cc4f532"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a3/stderr.log",
+          "sha256": "15a6240d544bc9ae38800306192b29a7bbdd2dacef1bd1b3802982ae5fb2e2bb"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 8584.595
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a3/runtime-inputs",
+        "count": 26,
+        "sourceManifestSha256": "34ad09794c69cdd41a66e4bddbb2f29276f4d33677278a7b479036c87d3d39f9",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a3/authorized-source.json",
+          "sha256": "a4ec6c1d444b4073d23a0361623d406063ab329217b5d56d5b8b9b3e67a651ce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a3/run.mjs",
+          "sha256": "59f4f051d3d2a7f5389cd131cf03f00717d37bd0a4ee2a6291526229bf3dc170"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a3/playwright.config.mjs",
+          "sha256": "17c450e2136692af67f3de2e717263ece4a43cda1e77091432ab3e16a1503386"
+        }
+      ],
+      "interpretation": "Three Archive cases completed 2/3. Ordinary Back and explicit return passed. Busy/unavailable withdrawal and denial assertions passed, but an additional whole mode-phase zero-reading-write assertion was invalid because explicit reading-mode choice already remaps the fallback catalogue anchor. The next fixture scopes zero writes precisely around denied character requests."
+    },
+    {
+      "id": "component-a4",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a4/execution.json",
+        "sha256": "9c665573a8804e2b04f5ce7177eee00bfb920b80deddc6d0660349b5d25f929c"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a4/playwright.json",
+        "sha256": "8e5346c19023f3e5ca57aed796c3a792b04b31e06dcd5e34056cc8fbfb4ebfab"
+      },
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": "2026-09-27T04:34:54.652Z",
+        "finishedAt": "2026-09-27T04:35:03.133Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a4/stdout.log",
+          "sha256": "facceb0bb17a2e8e0675fa816ae9a82d1fd6373ebaf33841a72dbcaf45a1990c"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a4/stderr.log",
+          "sha256": "b9db5c1cd42ddf655323b0e4a97b21a765cbc78b72d500f5614a051ba97a4594"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 7888.753000000001
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a4/runtime-inputs",
+        "count": 26,
+        "sourceManifestSha256": "c84968c63e660453d1b922db1f788482bd589694a104f2593be7a1eed2829bb4",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a4/authorized-source.json",
+          "sha256": "c4d357baa2ae71920a7b75549603b233f2ee0e4b657bfb571206aaf040ddab81"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a4/run.mjs",
+          "sha256": "59f4f051d3d2a7f5389cd131cf03f00717d37bd0a4ee2a6291526229bf3dc170"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/component-a4/playwright.config.mjs",
+          "sha256": "fc135e69d393d58f485901b8c4b4d8d96ac327a4cc1ea0831564e63b3f37e9f1"
+        }
+      ],
+      "interpretation": "All three Archive cases passed. Emitted raw scenario titles now disambiguate each record. Busy/unavailable denial causes no reading writes; existing explicit reading-mode remap is separately observed. Explicit return closes the character and book, while retained ordinary Back stays one layer."
+    },
+    {
+      "id": "browser-a8",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/execution.json",
+        "sha256": "e0184e73ed7c113ed05cc20560a0d90cc698037fc806ce3a41f633316b569da9"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/playwright.json",
+        "sha256": "c2021dfd4b2982948e1657c95191cab7f32798167ff9001a5f80b6edd4847d0e"
+      },
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": "2026-09-27T04:36:15.629Z",
+        "finishedAt": "2026-09-27T04:39:07.024Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/stdout.log",
+          "sha256": "84d6b0cfd55e991874dac8e78da2d5f3abc2502b29999281274f2ffbff23f9ef"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/stderr.log",
+          "sha256": "fded43da287b8d0fea813895a04a0af47224b0e10f281beb75743285231843bf"
+        },
+        "log": null,
+        "streamSeparation": "recorded",
+        "reportDurationMs": 170641.42200000002
+      },
+      "sourceSnapshotVerification": {
+        "root": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/runtime-inputs",
+        "count": 1475,
+        "sourceManifestSha256": "8f4ac451042e05f798fc0a10e5c0ad68be7f484d93e4d4e89202de113c5801d7",
+        "sourceBeforeAfterEqual": true,
+        "originalBytesVerified": true
+      },
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/authorized-source.json",
+          "sha256": "4dd03808785d20cc1140252c4c7fe83bf4410492c6c6e76cc46204fde0c1337b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/run.mjs",
+          "sha256": "7e1ff826d9b2e5d368c50c8f8a1a2dce1a819146ec23ac6ec7295c2c693c4c2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/playwright.config.mjs",
+          "sha256": "6530fa782e18079a93181fef49a7b1d4fd5b8142c968a7c27bc80c8207905090"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/character-step.spec.mjs",
+          "sha256": "c46b989aec2252d65bf99d079be4ac0bc6d30bbaf7ea39a1f0b966e4f2afd1c9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/synthetic-content.mjs",
+          "sha256": "7e3cf9fdef620d42b7a9190fa187e45fc6ebc63cd2a5dbedfcbcf027e5a52f55"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/synthetic-public-client.mjs",
+          "sha256": "67b730d3ee33e1326a7faebc3c700aceed7d7d1a7294671ad9be947dc6b6a98b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/character-cases.mjs",
+          "sha256": "d5919a4b2f5ba396088181033acd8495e8c998b03e65c61d9a2e2cac2c0cbbda"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a8/prefix-provenance.json",
+          "sha256": "78ecd3ecf03ede0f555e583b32ef4c03b342584c1528127bd72d75f01bf46afc"
+        }
+      ],
+      "interpretation": "All three actual-App cases passed against unchanged final runtime with no telemetry transforms. RU and EN use one trusted Resume where existing work navigation pauses, acknowledge two consecutive current modal characters, and deliberately complete the checkpoint. The third case separately denies initial absent capability, then cold reloads approved synthetic capability with a 15000ms lease and observes real failed renewal revoke without credit/replay. No native or production publication equivalence."
+    }
+  ],
+  "supersededPreparations": [
+    {
+      "id": "browser-a1",
+      "status": "superseded-before-execution",
+      "executed": false,
+      "browserStarted": false,
+      "nodeExit": null,
+      "tests": null,
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/SUPERSEDED.json",
+          "sha256": "bdbab71770922ef21e28c74029eaae72f090c0549ccb63d48653a82dc18f3c8c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/authorized-source.json",
+          "sha256": "74acc9c1268811bd975fc076dc320762e10197e5530968db5f6f38013d0bd5de"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/run.mjs",
+          "sha256": "7e1ff826d9b2e5d368c50c8f8a1a2dce1a819146ec23ac6ec7295c2c693c4c2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/playwright.config.mjs",
+          "sha256": "9abb9c034418c8b9a494863bc877504ffa97d237067740490b8b6ac4fe7a4404"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/character-step.spec.mjs",
+          "sha256": "a437e481036b8615b696f3b532764a0910db56f732439d5603480c3f4d0530ca"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/synthetic-content.mjs",
+          "sha256": "84d2dcc1949136cd446753370269b1df081486229dff66881ca8febd896e3ac8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/synthetic-public-client.mjs",
+          "sha256": "67b730d3ee33e1326a7faebc3c700aceed7d7d1a7294671ad9be947dc6b6a98b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/character-cases.mjs",
+          "sha256": "d95d89965f71854cea706e781e6381e1e063f4f1f2969ab335bf9faeebaa439f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a1/prefix-provenance.json",
+          "sha256": "78ecd3ecf03ede0f555e583b32ef4c03b342584c1528127bd72d75f01bf46afc"
+        }
+      ],
+      "absentExecutionPaths": [
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-step-review\\browser-a1\\execution.json",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-step-review\\browser-a1\\playwright.json",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-step-review\\browser-a1\\execution-start.json"
+      ],
+      "interpretation": "Bound but never executed. Superseded during pre-execution review to add real failed-renewal coverage and correct the lowercase second node ID."
+    }
+  ],
+  "supplementalEvidence": [
+    {
+      "classification": "synthetic-provider-construction-only",
+      "applicationTest": false,
+      "paths": [
+        "browser-a4/provider-preflight.json",
+        "browser-a4/provider-preflight.mjs",
+        "browser-a4/provider-built.mjs"
+      ],
+      "interpretation": "Real workflow/compiler/projection-parser construction passed for both synthetic six-node definitions with zero publication fetches; stub window, not a browser or product run.",
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/provider-preflight.json",
+          "sha256": "3f4b5c9130a6ba69874c78a511693b3f4a29f88764710cc8087e49a66ff7752e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/provider-preflight.mjs",
+          "sha256": "59b3a405d76540b73a7692f7c0646c98aa5f04a7b4fbe9f4616392a860f06861"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/browser-a4/provider-built.mjs",
+          "sha256": "0a6b194dc6cbea2180aa7d2038974b729327dab9c84ccf4039f5f2ca611b08ec"
+        }
+      ]
+    },
+    {
+      "classification": "earlier-incomplete-history-snapshot",
+      "applicationTest": false,
+      "paths": [
+        "diagnostic-history-before-archive-fix.json",
+        "diagnostic-specification-before-archive-fix.json"
+      ],
+      "interpretation": "Immutable preparation checkpoint, explicitly incomplete; not inherited acceptance or a replacement for final attempt records.",
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/diagnostic-history-before-archive-fix.json",
+          "sha256": "2807927472bdae6cac8e71e2dc8e7864ef6a31719166583de145e2cf9178d349"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-review/diagnostic-specification-before-archive-fix.json",
+          "sha256": "610b3e71de8d5ed920eab83b527f1f67232b7cbcbbb234d7072089f24140fc8c"
+        }
+      ]
+    }
+  ],
+  "summary": "Twenty actual pre-formal attempts and one bound-never-executed preparation are preserved at their original source. Failed cases remain failed; component scopes, provider-only construction and instrumented cause findings stay separate. Final a8 passes the three full actual-App cases; final component coverage is five selected cases from original passed diagnostics, to be rerun together by formal validation.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

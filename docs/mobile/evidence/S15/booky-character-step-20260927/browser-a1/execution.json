@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-character-step-20260927/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-27T04:46:36.874Z",
+  "exitCode": 0,
+  "durationMs": 195022,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/browser-a1/stdout.log",
+    "bytes": 1336,
+    "sha256": "46e8617b0eae44fcaccb3ccc927ac376e6b9fd46f0b1fd4bf1f9a2ca41033a17"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "905b250bdc6002bd6e720dbb0a867c5a8d409db31b86e6c94513a80bf9f27675"
+  }
+}

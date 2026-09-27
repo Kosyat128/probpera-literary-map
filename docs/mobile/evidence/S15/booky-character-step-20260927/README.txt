@@ -1,0 +1,1 @@
+EXTERNAL UNFROZEN DRAFT ONLY. Not installed or executable as formal evidence until final source/browser contract is bound. No entry, configure execution, source freeze, tests, builds or global checkpoint writes were performed. Unit count is observed from all assertions in the exact 14 selected full files; no fabricated expected count.
