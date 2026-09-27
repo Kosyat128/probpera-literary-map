@@ -45,6 +45,14 @@ const biographySource: WriterBiographySourceProfile = {
 const bookSourceUrl = "https://example.org/book";
 
 describe("CMS editorial overrides", () => {
+  it("keeps absent legacy IDs from erasing canonical fallback identifiers", () => {
+    const legacy: CmsLiteraryWork = { legacyId: "test-country:writer:work", countryId: "test-country",
+      writerId: "writer", localId: "work", title: "Work", editorialStatus: "verified" };
+    const [mapped] = cmsLiteraryWorkProfilesForWriter("test-country", "writer", { [legacy.legacyId]: legacy });
+    const canonicalIds = [{ scheme: "openlibrary", value: "OL52151W", sourceUrl: "https://openlibrary.org/works/OL52151W" }];
+    expect(Object.hasOwn(mapped, "externalIds")).toBe(false);
+    expect({ externalIds: canonicalIds, ...mapped }.externalIds).toEqual(canonicalIds);
+  });
   it("applies country fields and EN translation without allowing an override to replace writers", () => {
     const unsafeDatabaseValue = {
       "test-country": {
@@ -377,6 +385,7 @@ describe("CMS editorial overrides", () => {
           retrievedAt: "2026-09-02",
         },
       ],
+      externalIds: [{ scheme: "openlibrary", value: "OL52151W", sourceUrl: "https://openlibrary.org/works/OL52151W" }],
       editorialStatus: "verified",
       reviewedAt: "2026-09-02",
     };
@@ -413,6 +422,11 @@ describe("CMS editorial overrides", () => {
       cmsWork.translations?.ru?.descriptionProvenance
     );
     expect(mapped.sources?.[0]).not.toBe(cmsWork.sources?.[0]);
+    expect(mapped.externalIds).toEqual(cmsWork.externalIds);
+    expect(mapped.externalIds).not.toBe(cmsWork.externalIds);
+    expect(mapped.externalIds?.[0]).not.toBe(cmsWork.externalIds?.[0]);
+    mapped.externalIds![0].value = "changed-by-consumer";
+    expect(cmsWork.externalIds?.[0].value).toBe("OL52151W");
     expect(mapped.authorship).not.toBe(cmsWork.authorship);
     expect(mapped.authorship?.authors).not.toBe(cmsWork.authorship?.authors);
   });

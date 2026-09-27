@@ -15,6 +15,7 @@ import {
 import { staleManagedCmsArticleSnapshotNames } from "./lib/cms-article-snapshot-files.mjs";
 import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
 import { fetchPublicWorkSources } from "./lib/public-work-source-fetch.mjs";
+import { fetchPublicWorkExternalIds } from "./lib/public-work-external-id-fetch.mjs";
 import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
 import { extractSiteCopyFromHomepageBlocks } from "./site-copy-overrides.mjs";
 import { commitAtomicFileSet } from "./lib/atomic-file-set.mjs";
@@ -180,6 +181,7 @@ const rowIdentity = {
   literary_work_translations: (row) => `${row.work_id}:${row.locale}`,
   literary_work_sources: (row) =>
     `${row.work_id}:${row.provider}:${row.source_url}`,
+  literary_work_external_ids: (row) => JSON.stringify([row.work_id, row.scheme, row.external_id]),
   book_editions: (row) => row.id,
   font_assets: (row) => row.id,
   site_typography_overrides: (row) =>
@@ -764,6 +766,14 @@ const rawLiteraryWorkSources = await fetchPublicWorkSources(rawLiteraryWorks, wo
   }, publicSnapshotKey)
 );
 
+const rawLiteraryWorkExternalIds = await fetchPublicWorkExternalIds(rawLiteraryWorks, workIds =>
+  fetchTableRows("literary_work_external_ids", {
+    select: "work_id,scheme,external_id,source_url",
+    work_id: workIds,
+    order: "work_id.asc,scheme.asc,external_id.asc",
+  }, publicSnapshotKey, false)
+);
+
 const rawTypographyOverrides = rawTypographyInputs.overrides;
 const rawFontAssets = rawTypographyInputs.fonts;
 
@@ -1067,6 +1077,8 @@ const literaryWorkSourcesByWorkId = groupPublishedWorkRows(
   rawLiteraryWorkSources
 );
 
+const literaryWorkExternalIdsByWorkId = groupPublishedWorkRows(rawLiteraryWorkExternalIds);
+
 const literaryWorksByLegacyId = Object.fromEntries(
   rawLiteraryWorks.flatMap((work) => {
     const prefix = `${work.country_id}:${work.writer_id}:`;
@@ -1086,6 +1098,8 @@ const literaryWorksByLegacyId = Object.fromEntries(
       work.id,
       literaryWorkSourcesByWorkId
     );
+    const externalIds = (literaryWorkExternalIdsByWorkId.get(work.id) || [])
+      .map(({ scheme, value, sourceUrl }) => ({ scheme, value, sourceUrl }));
     return [
       [
         work.legacy_id,
@@ -1106,6 +1120,7 @@ const literaryWorksByLegacyId = Object.fromEntries(
           ...(translations ? { translations } : {}),
           ...publishedWorkMetadata(work.metadata),
           ...(sources ? { sources } : {}),
+          ...(externalIds.length ? { externalIds } : {}),
           editorialStatus: work.editorial_status,
           reviewedAt: work.reviewed_at || undefined,
         },
