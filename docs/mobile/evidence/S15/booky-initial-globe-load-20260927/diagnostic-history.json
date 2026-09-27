@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-27T02:50:28.091Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/result.json",
+    "sha256": "b18a9e703da0c2e26beb8c417d1d80aa7b89deab1d22610822be040ac8aab874"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/record-diagnostics.mjs",
+    "sha256": "3903ce627f28c8a8e7b72154fad34e1c9bd77c726662bab767bb30ad496833a2"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/diagnostic-specification.json",
+    "sha256": "0aab456dc61adea1b07687ed5ddcc056cdc1dbb7e04d10bc2c3e0c5bfa8207c3"
+  },
+  "amendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/draft/initial-globe-load.patch",
+      "sha256": "430efa306bbdb2501e6e651b31813ebeaffeb6051ee72c66e6a04f827d63e676"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/draft/source-bindings.json",
+      "sha256": "db0487e777b729e56ddf657e615717ae407a9e7b43472216a914a2aef9c9f8d3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/draft/apply-receipt.json",
+      "sha256": "543ca2f126e6f74af54ea374f1580f81c456b0cc1ca73f3ab36bb468bad45314"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "a1",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/execution.json",
+        "sha256": "2f7a5a2388c78745273e43bbaa0098b6fe4d3cf882c6a5c4a5f545fbab2df507"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/playwright.json",
+        "sha256": "7d681dbedca8d0243e85bc60a26281078819745ceccad7548317c9d01502ead6"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T02:45:49.080Z",
+        "finishedAt": "2026-09-27T02:46:04.336Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/stdout.log",
+          "sha256": "58ab68e6517a5ad1fa4f0549857b3a160542c1f87cf1a29f1987501e9284d44f"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/stderr.log",
+          "sha256": "7899d5b1b4bb77ffbc67ab2d29871648223fb2425c75851b55609e8c0253bab6"
+        },
+        "streamSeparation": "recorded",
+        "reportDurationMs": 14656.389
+      },
+      "sourceManifestSha256": "18f048913668d9fcd4b3ee7b71fd657ec115d99446bd8c09dc5693238f3a231c",
+      "sourceCommit": "0b7d5ee6c2c9b1b681526698cd71b3d72699302b",
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "driversUnchanged": true,
+      "externalFixtureSha256": "00aa7ff9c8854bbfca981477c1cf18ab8d9f70ce2568e07884a46f83cac61371",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/authorized-source.json",
+          "sha256": "6245881aa648def42fdce029c7a30c676dccb280af81c3468d24f9c4424a5385"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/playwright.config.mjs",
+          "sha256": "ed62072bc30728019317092cde0cd2d310b011255f30abd2d19f2114fad39a38"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/run.mjs",
+          "sha256": "bc6df43780a29d61aa20deee7a1fb07b70291d6a0fdba9aa859f11819ba09638"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/bind.mjs",
+          "sha256": "bbc748fee3449f77dad23583ed884d31eda09f649ba053072fc0edc9338bdaed"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/canonical-fixture.mjs",
+          "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/initial-globe-load.spec.mjs",
+          "sha256": "00aa7ff9c8854bbfca981477c1cf18ab8d9f70ce2568e07884a46f83cac61371"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a1/prefix-provenance.json",
+          "sha256": "28ae333ea5fcb97521ff9e655aefb5410bec7af75273f50e9f02a2ae1f3aa2c8"
+        }
+      ],
+      "interpretation": "Both cases stopped at the initial five-second observer wait, before the existing eight-second launch fallback completed. This is an observer timing failure; no completed product-recovery acceptance is inferred from this attempt. Original reports and attachments remain unchanged.",
+      "caseOutcomes": [
+        {
+          "title": "Booky initial globe load recovery ru",
+          "ok": false,
+          "status": "failed",
+          "errors": [
+            {
+              "location": {
+                "file": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-initial-globe-load-review\\a1\\initial-globe-load.spec.mjs",
+                "column": 59,
+                "line": 248
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-launch')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-launch')\u001b[22m\n\u001b[2m    13 × locator resolved to <div data-phase=\"loading\" data-reduced-motion=\"true\" class=\"native-planet-launch\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n  246 |     if (rejectCountries || atlasDelivery.startsWith('hold-')) {\n  247 |       await expect(page.locator('.native-planet-app')).toBeVisible({ timeout: 60_000 });\n> 248 |       await expect(page.locator('.native-planet-launch')).toBeHidden();\n      |                                                           ^\n  249 |       await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility', 'shown');\n  250 |     } else await ready(page);\n  251 |     return { page, memory, operations, result, initialRecord, bookRequests, countryRequests, componentRequests, controlledFailures, atlasRequests, releaseAtlas,\n    at open (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-initial-globe-load-review\\a1\\initial-globe-load.spec.mjs:248:59)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-initial-globe-load-review\\a1\\initial-globe-load.spec.mjs:423:42"
+            }
+          ]
+        },
+        {
+          "title": "Booky initial globe load recovery en",
+          "ok": false,
+          "status": "failed",
+          "errors": [
+            {
+              "location": {
+                "file": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-initial-globe-load-review\\a1\\initial-globe-load.spec.mjs",
+                "column": 59,
+                "line": 248
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-launch')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-launch')\u001b[22m\n\u001b[2m    13 × locator resolved to <div data-phase=\"loading\" data-reduced-motion=\"true\" class=\"native-planet-launch\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n  246 |     if (rejectCountries || atlasDelivery.startsWith('hold-')) {\n  247 |       await expect(page.locator('.native-planet-app')).toBeVisible({ timeout: 60_000 });\n> 248 |       await expect(page.locator('.native-planet-launch')).toBeHidden();\n      |                                                           ^\n  249 |       await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility', 'shown');\n  250 |     } else await ready(page);\n  251 |     return { page, memory, operations, result, initialRecord, bookRequests, countryRequests, componentRequests, controlledFailures, atlasRequests, releaseAtlas,\n    at open (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-initial-globe-load-review\\a1\\initial-globe-load.spec.mjs:248:59)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-initial-globe-load-review\\a1\\initial-globe-load.spec.mjs:423:42"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a2",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/execution.json",
+        "sha256": "f04f9ab6cc2dbc72023b390a75fa626be2fd5212190879202602925e50f169a5"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/playwright.json",
+        "sha256": "af239dbeaa58ff2e3a28b2597f0cd03916dbf7cc92855553ff267d8bb06261d8"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": "2026-09-27T02:47:29.918Z",
+        "finishedAt": "2026-09-27T02:48:26.571Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/stdout.log",
+          "sha256": "086862cdc0d28593c4f1731f9b0bf427550615d4f75b90e63fd3a9eaea73390a"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/stderr.log",
+          "sha256": "cc25143cd780fa93d0b531ebe58476e2ecf9d72c68cd7cf1e9123b230fa5b0f7"
+        },
+        "streamSeparation": "recorded",
+        "reportDurationMs": 56036.463
+      },
+      "sourceManifestSha256": "18f048913668d9fcd4b3ee7b71fd657ec115d99446bd8c09dc5693238f3a231c",
+      "sourceCommit": "0b7d5ee6c2c9b1b681526698cd71b3d72699302b",
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "driversUnchanged": true,
+      "externalFixtureSha256": "fda059dca43fb4b28a9ad90181060551e5d7c901e91867d0aaee8bc4478dd976",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/authorized-source.json",
+          "sha256": "a9f64f8b77b83fb4b32dd4c1c3d698676b0ad2b32533c2999dd9d14fa8ceff72"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/playwright.config.mjs",
+          "sha256": "ed62072bc30728019317092cde0cd2d310b011255f30abd2d19f2114fad39a38"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/run.mjs",
+          "sha256": "bc6df43780a29d61aa20deee7a1fb07b70291d6a0fdba9aa859f11819ba09638"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/bind.mjs",
+          "sha256": "bbc748fee3449f77dad23583ed884d31eda09f649ba053072fc0edc9338bdaed"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/canonical-fixture.mjs",
+          "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/initial-globe-load.spec.mjs",
+          "sha256": "fda059dca43fb4b28a9ad90181060551e5d7c901e91867d0aaee8bc4478dd976"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/a2/prefix-provenance.json",
+          "sha256": "4d7a9d80cbe7190e82c4574b97062959a379866360bbcfd49cc42114b20829a1"
+        }
+      ],
+      "interpretation": "Both complete localized cases passed after only the initial observer wait increased to twelve seconds. Product runtime bytes are unchanged from a1. Controlled geoJSON delivery, existing trusted retry, first actual scene sample and the declared preservation checks are diagnostic evidence; the later formal canonical run remains independent.",
+      "caseOutcomes": [
+        {
+          "title": "Booky initial globe load recovery ru",
+          "ok": true,
+          "status": "passed",
+          "errors": []
+        },
+        {
+          "title": "Booky initial globe load recovery en",
+          "ok": true,
+          "status": "passed",
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "summary": "a1 preserved as two failed cases from the initial observer timeout; a2 changes only the initial observer wait and passes both complete cases. Runtime inputs are identical across both attempts. Diagnostic captures are not final formal visual acceptance.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

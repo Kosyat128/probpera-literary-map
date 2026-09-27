@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T02:58:22.030Z",
+  "pass": true,
+  "sourceCommit": "4b360332186ec67e62e53d664ef0a5b537f341a7",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/source-manifests/777e10487410c62f.json",
+    "sha256": "777e10487410c62f099864fdb1ca5a6bbc0590b024e42a6dc1596aa5e2a45fdb",
+    "fileCount": 1661
+  },
+  "inspectedCount": 4,
+  "totalCapturedCount": 4,
+  "scope": "Direct review of all four final RU/EN initial globe loading/error recovery captures: localized error support and recovered state. Every configured capture is authenticated and directly reviewed.",
+  "limitations": [
+    "This review directly inspects 4 of 4 final captures.",
+    "Static images cannot establish delivery failure, trusted retry, loader recovery or scene ownership; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-evidence/final-visual-receipt.json",
+    "sha256": "53eaea045a4df1ed709eb5bbfe6b201cecbb587e2df4e833a1307a1c399d69b6"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-evidence/browser-a1/booky-initial-globe-load-B-50a53-tial-globe-load-recovery-ru/booky-initial-globe-load-ru-error.png",
+      "sha256": "aacd9c180dc7890ee84606a863f59ba5ab6994c8ccaf9be772a7d162b408b77d",
+      "width": 390,
+      "height": 844,
+      "bytes": 99427,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "Directly viewed the final 390×844 formal capture: the Russian loading-failure heading and complete explanation fit inside the light help card without clipped body lines.",
+        "The title, Stop and Close controls are visible; the companion and selected Russia card are framed below. The existing globe Retry is not fully framed by this screenshot, so its usability relies on the separate trusted-touch assertion."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-evidence/browser-a1/booky-initial-globe-load-B-50a53-tial-globe-load-recovery-ru/booky-initial-globe-load-ru-recovered.png",
+      "sha256": "a58241f6da710f6d102ec34159a4320df65c510a702e3655709a538b9e521ae8",
+      "width": 390,
+      "height": 844,
+      "bytes": 299286,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "Directly viewed the final 390×844 formal capture: the canonical globe is visible behind the help card, with Russia highlighted and the existing globe control row framed below.",
+        "The concluding Russian help text and Show controls action fit in the card. The help is scrolled: an upper line starts behind the sticky title row, so this image does not prove that all globe instructions are simultaneously visible. The companion remains visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-evidence/browser-a1/booky-initial-globe-load-B-edbf6-tial-globe-load-recovery-en/booky-initial-globe-load-en-error.png",
+      "sha256": "5170c5dca8dd1adc3975f6993fb7798c9b6f14058ccc075b99ee447e5d0e5251",
+      "width": 320,
+      "height": 844,
+      "bytes": 90332,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "Directly viewed the final 320×844 formal capture: the English loading-failure heading and complete explanation are readable inside the light help card.",
+        "Mr. Booky, Stop, Close, the companion and selected Russia card are visible. The How to use the globe disclosure is collapsed; this image does not establish the underlying Retry hit target."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-evidence/browser-a1/booky-initial-globe-load-B-edbf6-tial-globe-load-recovery-en/booky-initial-globe-load-en-recovered.png",
+      "sha256": "b0ca4ed8798994e8f63a93a3d458ca13f3246faed0998c52c9b01189b0b31723",
+      "width": 320,
+      "height": 844,
+      "bytes": 244958,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "Directly viewed the final 320×844 formal capture: the globe, highlighted Russia, companion, existing control row and Show globe controls action are visible.",
+        "The lower English explanation and action fit within the help card. The earlier gesture instructions are outside the current scrolled region; complete instruction visibility is not claimed from this image."
+      ]
+    }
+  ],
+  "releaseReady": false
+}

@@ -1,0 +1,95 @@
+{
+  "checkpoint": "0b7d5ee6c2c9b1b681526698cd71b3d72699302b",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/result.json",
+    "sha256": "b18a9e703da0c2e26beb8c417d1d80aa7b89deab1d22610822be040ac8aab874"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/result.json",
+    "sha256": "5c7dca56ae6d9a293eb7e52cb0792a8ce8f6cf35b4f4ed3cd272dc57bc2798e0"
+  },
+  "runtimeSourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+  "sourceOnlyInterveningCheckpoint": {
+    "sourceCommit": "75f0b1c84665137b87513a42286008a5a0cd1c63",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/source-manifests/2b17191e30621cfc.json",
+      "sha256": "2b17191e30621cfcb9373dbd0afc420db1d583818625ce12812f9cc50f35f530",
+      "fileCount": 1660
+    },
+    "changedSourcePaths": [
+      "src/host/bookyNavigationDrafts.ts",
+      "src/host/bookyNavigationDrafts.test.ts",
+      "scripts/mobile/verify-booky-navigation-drafts.mjs"
+    ],
+    "retainedBuilds": [
+      {
+        "kind": "pwa",
+        "priorResult": {
+          "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/pwa-a1/result.json",
+          "sha256": "f993bd19313f27f337b7928da588fdb06b863013df1bc9bac686690361e8601f"
+        },
+        "artifactManifest": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/pwa-3d3e0760/artifact.json",
+          "sha256": "cd5df8e1a4da09f9a244ca460ac74cb26511c055f035f4f078435c3d513139cc"
+        },
+        "apk": null,
+        "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+        "buildId": "3d3e0760e3a52039d5194f8ede12c3eb48be83732e44cb3354c6d41c02c453d7",
+        "runtimePayloadRehashed": true,
+        "sourceInventoryDifferences": [
+          {
+            "path": "src/host/bookyNavigationDrafts.ts",
+            "artifactSourceSha256": "162748b51116e92d6058b0d29462e4ab651feecc658ab312cb2632544cc67bae",
+            "currentSourceSha256": "e2d296a33bf5d1ce3a1099a262a737278dbaa79903610f665bd8998b991e1743",
+            "unimportedDraftInventory": true
+          }
+        ],
+        "unchangedOtherCapturedSourceInputs": true,
+        "dialogueProvenanceRepairIncluded": false,
+        "rebuilt": false
+      },
+      {
+        "kind": "android",
+        "priorResult": {
+          "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/android-a1/result.json",
+          "sha256": "93958459d898ce1e2c72e3c1952e69a328197db22c18fc2051807f86ffccb170"
+        },
+        "artifactManifest": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/android-a69e7541/runtime/artifact.json",
+          "sha256": "7fe8a297e69fdf76e3f7128e873a1a150bfd4938662b59c0770d96ce264cbc5f"
+        },
+        "apk": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/android-a69e7541/app-dev-debug.apk",
+          "bytes": 70289893,
+          "sha256": "318fdf5913df6e4997970cb67e5bb71875203ad0315e8e2b9683f625f77fbba0"
+        },
+        "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+        "buildId": "a69e754130314dc26723a0feb7116806c8883e562000ec13a364bfd846a0d0c6",
+        "runtimePayloadRehashed": true,
+        "sourceInventoryDifferences": [
+          {
+            "path": "src/host/bookyNavigationDrafts.ts",
+            "artifactSourceSha256": "162748b51116e92d6058b0d29462e4ab651feecc658ab312cb2632544cc67bae",
+            "currentSourceSha256": "e2d296a33bf5d1ce3a1099a262a737278dbaa79903610f665bd8998b991e1743",
+            "unimportedDraftInventory": true
+          }
+        ],
+        "unchangedOtherCapturedSourceInputs": true,
+        "dialogueProvenanceRepairIncluded": false,
+        "rebuilt": false
+      }
+    ]
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/pwa-a1/result.json",
+    "sha256": "f993bd19313f27f337b7928da588fdb06b863013df1bc9bac686690361e8601f",
+    "buildId": "3d3e0760e3a52039d5194f8ede12c3eb48be83732e44cb3354c6d41c02c453d7",
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/android-a1/result.json",
+    "sha256": "93958459d898ce1e2c72e3c1952e69a328197db22c18fc2051807f86ffccb170",
+    "buildId": "a69e754130314dc26723a0feb7116806c8883e562000ec13a364bfd846a0d0c6",
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2"
+  }
+}

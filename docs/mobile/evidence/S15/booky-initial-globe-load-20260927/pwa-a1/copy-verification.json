@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76805752,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-evidence/pwa-a1-copy-verification.json",
+    "sha256": "3b1117a4a7052263a53253d95758df7daf4c4f6518a814179f5fa28d439ac4b4"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-evidence/pwa-d7a70d46/artifact.json",
+    "sha256": "24070a4fa207e8e665158de622e0177acf9161176cf337632d6ef9bbb3c0354d"
+  }
+}

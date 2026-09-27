@@ -1,0 +1,8 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-initial-globe-load.spec.mjs:422:35 › Booky initial globe load recovery ru
+[2/2] tests\pwa\booky-initial-globe-load.spec.mjs:422:35 › Booky initial globe load recovery en
+  2 passed (56.0s)

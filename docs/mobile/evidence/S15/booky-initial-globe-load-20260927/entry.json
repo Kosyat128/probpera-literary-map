@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T02:53:58.206Z",
+  "stage": "S15",
+  "checkpoint": "0b7d5ee6c2c9b1b681526698cd71b3d72699302b",
+  "previous": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/result.json",
+    "sha256": "b18a9e703da0c2e26beb8c417d1d80aa7b89deab1d22610822be040ac8aab874"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/result.json",
+    "sha256": "5c7dca56ae6d9a293eb7e52cb0792a8ce8f6cf35b4f4ed3cd272dc57bc2798e0"
+  },
+  "previousRuntimeSourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/source-manifests/2b17191e30621cfc.json",
+    "sha256": "2b17191e30621cfcb9373dbd0afc420db1d583818625ce12812f9cc50f35f530",
+    "fileCount": 1660
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/scope.json",
+    "sha256": "59030e48fbfe279a006f56beb17a8e3e78cbc1b1e92c4dafab9853ce7bddd4eb"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "45d02221e06f00e0995d1f076429cefa1d8ea2cf853d5bf687c28458f89c933c"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "66de40ed33b83f497746b9444f752eb69e785c521bebd63734138504d610289a"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "341afd2b5b16078ab20ab5676b41b3b64ea81239c25c3e1d309559fe1336a2df"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "9d8ba3a97d5058d2f2c3d1e726b56eb7c550d1728cea36844b6cd659cf2e1017"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "be04b425e43e6ace7fc65d32d0a6f956988c5b5f19f124bb3b68d358c243d085"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "90ff9e456a6a6e4810a9c106e96cbc0df248b373657dd4766a6e61c53cb36717"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "571f9fbc5aba3aa37c4fbe7aa66f94e5e45149fcf0e2cce2384f67129868b89d"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "212034cfb8362d302a6af57d171014daf7a3a993c9ac92fad9175fbbcc406db3"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/host/bookyGlobeSupport.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts"
+  ],
+  "newSourcePaths": [
+    "tests/pwa/booky-initial-globe-load.spec.mjs"
+  ],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "4e7f5c3c7cada859dcf6b9bfb371d0e45937273bac1c7d2133a6b4ad05546d10"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "d6381c10be73be6b8dcecc1b81819f5d4fd448ad45045be5b93c86bde0e1a8c1"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "3edd5de9c09b54edb13f20da11035d638fe77cd1984bc8d42a72c2c0abda2814"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.test.ts",
+      "sha256": "a761eb9d52f4255fd7e04f7a0e0c37487892a3bc87e644ffd7a69b9afac6047c"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.ts",
+      "sha256": "39b650ae7299479ad7adb4d8ea23d18d751a92f13fbe1b8070354c11cae0edd5"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "1dd5094e2e96f304f037dc23c0be4b344623bfa6ad9d3930de2e3aec035a7ca7"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "bb1c07e44c57dea310b7eadee1e92a3702ae166142f68631691959c45716cf2b"
+    },
+    {
+      "path": "tests/pwa/booky-initial-globe-load.spec.mjs",
+      "sha256": "73f278db09b058081d7d2b904a0463db2a95dbafc28394c490836bfcc7eb64dc"
+    }
+  ],
+  "sourceInputCount": 1661,
+  "protectedInputCount": 1653,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/host/bookyGlobeSupport.ts",
+    "src/host/planetMascot.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "0b7d5ee6c2c9b1b681526698cd71b3d72699302b",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/host/planetMascot.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-initial-globe-load.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky initial globe load recovery ru",
+    "Booky initial globe load recovery en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 55,
+  "expectedBrowserTests": 2,
+  "expectedImages": 4,
+  "scope": "Localized adult Booky support follows committed initial globe loading/error and later observed load status, before any first scene sample. Existing atlas loader and map fallback report status without a new renderer, polling loop or retry owner. The two actual-App RU/EN browser cases control initial geoJSON delivery, assert current loading/error help, use Search in RU or Collection/Return in EN, and restore authenticated delivery only through trusted existing globe Retry. The first real scene then clears current support; saved preferences, progress and canonical selection are preserved. Later reload policy is scoped to the focused unit assertions. Native lifecycle, offline equivalence and full loading/error acceptance remain open.",
+  "runtimeWiringImplemented": true,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

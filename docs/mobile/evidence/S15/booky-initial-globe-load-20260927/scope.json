@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "description": "Localized adult Booky support follows committed initial globe loading/error and later observed load status, before any first scene sample. Existing atlas loader and map fallback report status without a new renderer, polling loop or retry owner. The two actual-App RU/EN browser cases control initial geoJSON delivery, assert current loading/error help, use Search in RU or Collection/Return in EN, and restore authenticated delivery only through trusted existing globe Retry. The first real scene then clears current support; saved preferences, progress and canonical selection are preserved. Later reload policy is scoped to the focused unit assertions. Native lifecycle, offline equivalence and full loading/error acceptance remain open.",
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "changedPaths": [
+    "src/App.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/host/bookyGlobeSupport.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts"
+  ],
+  "newSourcePaths": [
+    "tests/pwa/booky-initial-globe-load.spec.mjs"
+  ],
+  "expectedSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "4e7f5c3c7cada859dcf6b9bfb371d0e45937273bac1c7d2133a6b4ad05546d10"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "d6381c10be73be6b8dcecc1b81819f5d4fd448ad45045be5b93c86bde0e1a8c1"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "3edd5de9c09b54edb13f20da11035d638fe77cd1984bc8d42a72c2c0abda2814"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.test.ts",
+      "sha256": "a761eb9d52f4255fd7e04f7a0e0c37487892a3bc87e644ffd7a69b9afac6047c"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.ts",
+      "sha256": "39b650ae7299479ad7adb4d8ea23d18d751a92f13fbe1b8070354c11cae0edd5"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "1dd5094e2e96f304f037dc23c0be4b344623bfa6ad9d3930de2e3aec035a7ca7"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "bb1c07e44c57dea310b7eadee1e92a3702ae166142f68631691959c45716cf2b"
+    },
+    {
+      "path": "tests/pwa/booky-initial-globe-load.spec.mjs",
+      "sha256": "73f278db09b058081d7d2b904a0463db2a95dbafc28394c490836bfcc7eb64dc"
+    }
+  ],
+  "expectedSourceInputCount": 1661,
+  "expectedProtectedInputCount": 1653,
+  "unitFiles": [
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/host/planetMascot.test.ts"
+  ],
+  "expectedUnitTests": 55,
+  "unitValidation": "focused-globe-support-wrapper-and-mascot-controller",
+  "browserFiles": [
+    "tests/pwa/booky-initial-globe-load.spec.mjs"
+  ],
+  "expectedBrowserTests": 2,
+  "expectedImages": 4,
+  "browserTestTitles": [
+    "Booky initial globe load recovery ru",
+    "Booky initial globe load recovery en"
+  ],
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-initial-globe-load-ru",
+      "flags": [
+        "actualInitialAtlasFailureVerified",
+        "loadingAndErrorGuidanceVerified",
+        "retainedRecoveryActionsVerified",
+        "trustedExistingGlobeRetryVerified",
+        "firstSceneRecoveryVerified",
+        "preferencesAndSelectionPreserved"
+      ]
+    },
+    {
+      "scenario": "booky-initial-globe-load-en",
+      "flags": [
+        "actualInitialAtlasFailureVerified",
+        "loadingAndErrorGuidanceVerified",
+        "retainedRecoveryActionsVerified",
+        "trustedExistingGlobeRetryVerified",
+        "firstSceneRecoveryVerified",
+        "preferencesAndSelectionPreserved"
+      ]
+    }
+  ],
+  "requiredCaptureValues": [
+    {
+      "scenario": "booky-initial-globe-load-ru",
+      "values": {
+        "controlledInitialAtlasTransport": true,
+        "initialCatalogFailure": false,
+        "nativeLifecycleEquivalent": false,
+        "touchOnlyProductActions": true,
+        "initialSampleAbsent": true,
+        "actualRetryTouch": true,
+        "actualFirstSampleAfterRetry": true
+      }
+    },
+    {
+      "scenario": "booky-initial-globe-load-en",
+      "values": {
+        "controlledInitialAtlasTransport": true,
+        "initialCatalogFailure": false,
+        "nativeLifecycleEquivalent": false,
+        "touchOnlyProductActions": true,
+        "initialSampleAbsent": true,
+        "actualRetryTouch": true,
+        "actualFirstSampleAfterRetry": true
+      }
+    }
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "booky-initial-globe-load-ru",
+      "observation": "initialGlobeLoad",
+      "checks": [
+        "real initial atlas loading and failure precede any canonical scene sample",
+        "localized loading and error guidance replaces the contradictory ordinary globe tip",
+        "existing Search or Collection remains explicitly usable while the atlas has failed",
+        "only a trusted tap on the existing globe Retry requests recovery",
+        "authenticated atlas delivery creates the first real scene and clears current help",
+        "preferences progress selection and recovered canonical scene owners remain exact"
+      ]
+    },
+    {
+      "scenario": "booky-initial-globe-load-en",
+      "observation": "initialGlobeLoad",
+      "checks": [
+        "real initial atlas loading and failure precede any canonical scene sample",
+        "localized loading and error guidance replaces the contradictory ordinary globe tip",
+        "existing Search or Collection remains explicitly usable while the atlas has failed",
+        "only a trusted tap on the existing globe Retry requests recovery",
+        "authenticated atlas delivery creates the first real scene and clears current help",
+        "preferences progress selection and recovered canonical scene owners remain exact"
+      ]
+    }
+  ],
+  "requiredVisualFilenames": [
+    "booky-initial-globe-load-ru-error.png",
+    "booky-initial-globe-load-ru-recovered.png",
+    "booky-initial-globe-load-en-error.png",
+    "booky-initial-globe-load-en-recovered.png"
+  ],
+  "visualReviewScope": "Direct review of all four final RU/EN initial globe loading/error recovery captures: localized error support and recovered state. Every configured capture is authenticated and directly reviewed.",
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0,
+  "expectedNewModelPhotos": 0,
+  "requireNewPhotoReview": false,
+  "requireDiagnosticHistory": true,
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "previousCheckpoint": {
+    "checkpoint": "0b7d5ee6c2c9b1b681526698cd71b3d72699302b",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/result.json",
+      "sha256": "b18a9e703da0c2e26beb8c417d1d80aa7b89deab1d22610822be040ac8aab874"
+    },
+    "sourceCommit": "75f0b1c84665137b87513a42286008a5a0cd1c63",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/source-manifests/2b17191e30621cfc.json",
+      "sha256": "2b17191e30621cfcb9373dbd0afc420db1d583818625ce12812f9cc50f35f530",
+      "fileCount": 1660
+    },
+    "status": "D203_VERIFIED_CHECKPOINT"
+  },
+  "previousRuntime": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/result.json",
+      "sha256": "5c7dca56ae6d9a293eb7e52cb0792a8ce8f6cf35b4f4ed3cd272dc57bc2798e0"
+    },
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+    "pwa": {
+      "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/pwa-a1/result.json",
+      "sha256": "f993bd19313f27f337b7928da588fdb06b863013df1bc9bac686690361e8601f"
+    },
+    "android": {
+      "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/android-a1/result.json",
+      "sha256": "93958459d898ce1e2c72e3c1952e69a328197db22c18fc2051807f86ffccb170"
+    },
+    "status": "D202_RETAINED_RUNTIME"
+  },
+  "runtimeAmendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/draft/initial-globe-load.patch",
+      "sha256": "430efa306bbdb2501e6e651b31813ebeaffeb6051ee72c66e6a04f827d63e676"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/draft/source-bindings.json",
+      "sha256": "db0487e777b729e56ddf657e615717ae407a9e7b43472216a914a2aef9c9f8d3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/draft/apply-receipt.json",
+      "sha256": "543ca2f126e6f74af54ea374f1580f81c456b0cc1ca73f3ab36bb468bad45314"
+    }
+  ],
+  "historicalDialogueInputs": [
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00"
+    },
+    {
+      "path": "src/host/bookySupport.test.ts",
+      "sha256": "670124b3ab396ed9902238f646c545c389cd50a6444ccc762e4c90e044d68eca"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.test.ts",
+      "sha256": "3e0a2dc4af290d8c60899811728b2dc902207c826c10da4993c8e1c98bf962f9"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "e2d296a33bf5d1ce3a1099a262a737278dbaa79903610f665bd8998b991e1743"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "97c0b233a19bea2771c059941c9202cafcf8c8a4ae6942a1299f2682fd592048"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-dialogue-drafts.mjs",
+      "sha256": "1445f1869adb7c96c1119ad423606b6f65a132315edad00b9c4858a420ad0f55"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "826804ac81b00c4c395b83ec0115051cb52ed2b12ee722c7ef150d41be051ccb"
+    }
+  ],
+  "directSpecificationEvidence": [],
+  "newUiCopyStatus": {
+    "localeCount": 2,
+    "status": "draft",
+    "historicalDialogueInventoryMember": false,
+    "humanReviewed": false,
+    "childApproved": false,
+    "narrationApproved": false,
+    "releaseReady": false
+  },
+  "nativeLifecycleEquivalent": false,
+  "offlineEquivalent": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "browserScopeNotes": [
+    "Search exercised in RU; Collection and Return exercised in EN; both capabilities asserted in both locales",
+    "actual asset HTTP delivery is controlled; no app status or renderer override",
+    "only recovered scene is asserted retained; no scene existed before first sample",
+    "failure screenshots are separate diagnostic artifacts, never successful capture evidence"
+  ],
+  "browserContract": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/canonical-contract.json",
+    "sha256": "8f4ddce5b4bce1aba142ebeef63ce20a1d8ead7d25a329df2afd4bac1e62b003"
+  },
+  "canonicalPromotion": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-initial-globe-load-review/canonical-promotion.json",
+    "sha256": "518c0eef2c715704de314a6e9708b04db7cb78298e530732f95d5ab493040177"
+  }
+}

@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-initial-globe-load-20260927:begin -->
+Latest source 4b360332: Booky follows committed initial globe loading/error and later current load status without another renderer, polling loop or retry owner. Existing Search, Collection and genuine globe retry remain available. Evidence is limited to the final focused assertions; no native lifecycle, offline equivalence or full loading/error acceptance is claimed. D203 inventory provenance remains intact, with all 34 historical records unreviewed and unavailable. Only S15.PLANETKA-005 and S15.UX-006 receive bounded evidence; all statuses and acceptance gates remain unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-initial-globe-load-20260927/result.json. D204. 55 focused units, TypeScript and 2 browser cases; 4 authenticated captures. Earlier evidence keeps its original source attribution. Stage/device/release acceptance remains open.
+<!-- s15-booky-initial-globe-load-20260927:end -->
+
 <!-- s15-booky-dialogue-provenance-20260927:begin -->
 Latest source 75f0b1c8 repairs provenance for 22 existing RU/EN navigation/contextual dialogue drafts with identical copy and unchanged non-provenance fields. Navigation revisions advance 1→2 and contextual revisions 2→3; twelve support drafts remain exact. All 34 remain unapproved and unavailable. Current globe UI remains unreviewed and outside this historical inventory. Only S15.PLANETKA-003 receives bounded provenance evidence; all statuses and acceptance gates remain unchanged.
 
