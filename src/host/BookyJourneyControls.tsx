@@ -17,6 +17,8 @@ export type BookyJourneyControlsProps = {
   persistenceSnapshot: BookyJourneyPersistenceSnapshot;
   passport: BookyJourneyPassportControlsProps["passport"];
   passportState: BookyJourneyPassportControlsProps["state"];
+  /** Current committed modal action observed by the existing journey owner. */
+  characterViewOpen?: boolean;
 };
 
 /** Interface copy only; journey text comes from the current admitted snapshot. */
@@ -50,6 +52,7 @@ export const bookyJourneyControlsCopy = {
       openWork: "Открыть книгу",
       openCharacter: "Открыть персонажа",
       characterConfirm: "Подтвердите шаг в открытой карточке персонажа.",
+      characterUnavailable: "Карточка персонажа сейчас недоступна. Можно вернуться к этому шагу позже.",
       openStep: "Открыть шаг",
       retryOpen: "Повторить открытие",
       next: "Подтвердить шаг",
@@ -89,6 +92,7 @@ export const bookyJourneyControlsCopy = {
       openWork: "Open book",
       openCharacter: "Open character",
       characterConfirm: "Acknowledge this step inside the open character card.",
+      characterUnavailable: "The character card is currently unavailable. You can return to this step later.",
       openStep: "Open step",
       retryOpen: "Try opening again",
       next: "Acknowledge step",
@@ -105,7 +109,7 @@ export const bookyJourneyControlsCopy = {
   },
 } as const;
 
-export default function BookyJourneyControls({ snapshot, controller, persistence, persistenceSnapshot, passport, passportState }: BookyJourneyControlsProps) {
+export default function BookyJourneyControls({ snapshot, controller, persistence, persistenceSnapshot, passport, passportState, characterViewOpen = false }: BookyJourneyControlsProps) {
   const { language } = useInterfaceLanguage();
   const copy = bookyJourneyControlsCopy.locales[language];
   const id = useId(), historyHeadingId = `${id}-history-heading`, capacityId = `${id}-history-capacity`;
@@ -156,7 +160,8 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
   else if (rejectedAtRevision === snapshot.revision) statusText = copy.rejected;
   else if (active?.phase === "paused") statusText = copy.paused;
   else if (active?.phase === "complete") statusText = copy.complete;
-  else if (active?.phase === "ready" && node?.kind === "character") statusText = copy.characterConfirm;
+  else if (active?.phase === "ready" && node?.kind === "character")
+    statusText = active.canOpen ? characterViewOpen ? copy.characterConfirm : copy.readyToOpen : copy.characterUnavailable;
   else if (active) statusText = active.canNext ? copy.readyToConfirm : active.answer?.canAnswer ? copy.readyToAnswer : copy.readyToOpen;
   else statusText = snapshot.routes.length > 0 ? copy.choose : copy.unavailable;
 
