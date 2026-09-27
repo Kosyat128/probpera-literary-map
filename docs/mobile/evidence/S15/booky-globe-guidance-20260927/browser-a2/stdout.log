@@ -1,0 +1,8 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-globe-guidance.spec.mjs:427:35 › Booky mobile globe guidance ru
+[2/2] tests\pwa\booky-globe-guidance.spec.mjs:427:35 › Booky mobile globe guidance en
+  2 passed (1.0m)

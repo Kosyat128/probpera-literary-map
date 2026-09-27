@@ -1,0 +1,2299 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-27T02:10:43.844Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/result.json",
+    "sha256": "1f0080b9725b044cde2198cb9e530291df50e3cb862a45083df855e65c2767b3"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/record-diagnostics-r2.mjs",
+    "sha256": "7c1796600cdc03dfe3492777cdbac03423ee0ff531a2cdcde42d1c05eb64c093"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/diagnostic-inputs-r2.json",
+    "sha256": "e4e81e0161e276dfafbc8612f0b3bad9d20b5cfb87d15cb95658a3968d189854"
+  },
+  "supersededPreparations": [
+    {
+      "id": "browser-diagnostic-a1",
+      "status": "superseded-before-execution",
+      "executed": false,
+      "browserStarted": false,
+      "nodeExit": null,
+      "tests": null,
+      "reason": "Root screenshot-order correction arrived immediately after binding; preserved bound a1 and prepared a2 before browser launch.",
+      "replacement": "a2",
+      "authorization": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/authorized-source.json",
+        "sha256": "2b11c80860447de8eb253788845ff342051c25906335c22b3c35ca3fa6f58448"
+      },
+      "evidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1-superseded-before-execution.json",
+          "sha256": "e27b03780bd95f54c595d6c1b57197275d12f4fc0ffc2efcc944aa932b2a4398"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/authorized-source.json",
+          "sha256": "2b11c80860447de8eb253788845ff342051c25906335c22b3c35ca3fa6f58448"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/App.tsx",
+          "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "b15908803b1dd47ff9ac2848a4d62afc5d526c90b2b86adff296a5b28fc87360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "34861b9d4a69143fdcded508a71c98501acfef42c7a1bb03c431b1a0aa0aeaf3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookyGlobeSupport.test.ts",
+          "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/planetMascot.test.ts",
+          "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/planetMascotRoutes.ts",
+          "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "2ae26f83712648aa5a096aeefe235cae6d71bcbd31e7ff61659822724ec3eec2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/runtime-inputs/tests/pwa/booky-writer-filter-recovery.spec.mjs",
+          "sha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/globe-guidance.spec.mjs",
+          "sha256": "f089ee4f70809c100a023f2af2888573bb70298eff50df3138b40a44c6cbc408"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/dirty.diff",
+          "sha256": "089031dcb6d3193a83ab3bd6bf5718677808e35d557fbc584da5342b2aef5139"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/bind.mjs",
+          "sha256": "23b9ab09a7d9b4079fdb458af9eaf31ab04ae764f4aa1414d1fb9cd0cf417e79"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/run.mjs",
+          "sha256": "7a3f88f51bb80764e1971ca0f9f6be2f6d4772dc8506743ad433957bb9599f1b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/playwright.config.mjs",
+          "sha256": "225c5e5eb66533a5fa1e6079023df9fe3bae3dcca71115c4a34849aa4a002b95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/canonical-fixture.mjs",
+          "sha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/prefix-provenance.json",
+          "sha256": "b593554d3c6aea3c8a1673e0c3109aba1ac67ec17dd7737de5a0c3ea8e112758"
+        }
+      ],
+      "absentExecutionPaths": [
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/execution.json",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/execution-start.json",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/playwright.json",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/stdout.log",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/stderr.log",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/preflight-start.json",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/preflight-result.json",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/preflight-stdout.log",
+        "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a1/preflight-stderr.log"
+      ]
+    }
+  ],
+  "attempts": [
+    {
+      "id": "browser-diagnostic-a2",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/execution.json",
+        "sha256": "23cfc09cdaceb144cf69d15dc82fd3cfd145a473793d1651f95bb3e02f4399c7"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/stdout.log",
+          "sha256": "a5411556134343b6e48dea468909ce8c1f5ded75532a70688f036b37e86b0b07"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/stderr.log",
+          "sha256": "d8ab42a14b00e8c81557aee9098c930b1ee9e9d9fff68d53881ab27b02bd2c9e"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/playwright.json",
+        "sha256": "90e4427a0bf3fdc55f0da5429c49f09503e7d21e69e2e3e01a077c1a7b8c72d2"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Actual executed a2 failed both whole cases. EN exposed a real static-cue position regression: no dock caused a cue with floating=false to use preferred floating placement; the separately bound runtime amendment corrects that expression. RU reached the later Search-close observation, but Search state before help collapse was not recorded, so this evidence cannot establish a Search product bug. Successful earlier assertions do not turn either whole case into a pass.",
+      "failures": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-action=\"toggle-search\"]')\nExpected: \u001b[32m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-action=\"toggle-search\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" aria-expanded=\"true\" data-atlas-action=\"toggle-search\" aria-controls=\"atlas-search-panel\" aria-label=\"Поиск по Литературной планете\" class=\"ui-action ui-action--secondary ui-action--md ui-action--dark atlas-immersive-search-toggle\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"true\"\u001b[22m\n\n\n  441 |     await input.expose(notice(),'current globe-unavailable explanation');await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-unavailable.png','Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.');\n  442 |     await input.tap(page.locator('[data-planet-mascot-action=\"search\"]'),'Search remains usable during globe loss');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','true');await expect(panel(page)).toBeVisible();await expect(show()).toBeDisabled();await expect(notice()).toBeVisible();o.refusal={reason:'actual lost globe plus real competing atlas Search surface',state:await guidanceState(page),showDisabled:await show().isDisabled(),contextTipCount:await page.locator('[data-planet-mascot-context-tip]').count()};\n> 443 |     await collapse();await input.tap(page.locator('[data-atlas-action=\"toggle-search\"]'),'close actual atlas Search');await expect(page.locator('[data-atlas-action=\"toggle-search\"]')).toHaveAttribute('aria-expanded','false');await page.evaluate(()=>window.__canonicalGlobeLoss.restoreContext());await ready(page);await stablePose(page);const restored=await actual(page);retained(restored,beforeLoss);await help();await expect(notice()).toHaveCount(0);await expect(page.locator('[data-planet-mascot-context-tip]')).toHaveCount(1);await expandGuidance();await expect(show()).toBeEnabled();o.restored={globe:restored,state:await guidanceState(page)};\n      |                                                                                                                                                                                         ^\n  444 |     expect(saved()).toEqual(preferences);expect(fixture.operations.slice(operationStart).filter(entry=>entry.operation!=='get')).toEqual([]);expect(fixture.bookyWrites()).toEqual([]);expect(fixture.writes()).toEqual([]);const finalState=await guidanceState(page);for(const key of ['mode','route','step','screen','visibility','url'])expect(finalState[key]).toEqual(o.baseline.state[key]);\n  445 |     o.checks=['localized mobile instructions are readable without implicit globe movement','trusted Show controls closes help and focuses a real enabled canonical control','finite Booky cue respects normal Stop or reduced motion','only the later real user zoom changes the canonical camera pose','actual WebGL loss shows current unavailable help without contradictory context tips','Search remains usable and Show controls is disabled while the globe is unavailable','real context restoration clears unavailable guidance and retains canonical owners','Booky route progress preferences and canonical selection remain exact'].map(name=>({name,pass:true}));Object.assign(result,{mobileGuidanceVerified:true,trustedControlsFocusVerified:true,finiteCuePolicyVerified:true,realZoomOnlyVerified:true,realGlobeLossVerified:true,unavailableSearchGateVerified:true,contextRestorationVerified:true,preferencesAndSelectionPreserved:true});fixture.verify();\n  446 |   }catch(error){const filename='diagnostic-failure-'+language+'.png',bytes=await page.screenshot({path:testInfo.outputPath(filename)});o.failureCapture={filename,sha256:digest(bytes),error:error.message,scope:'failure diagnosis only'};await testInfo.attach('diagnostic-failure-'+language,{path:testInfo.outputPath(filename),contentType:'image/png'});throw error;\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-guidance-review\\a2\\globe-guidance.spec.mjs:443:185"
+        },
+        {
+          "test": "Booky mobile globe guidance en",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  433 |       await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','pointing');await expect(page.locator('[data-booky-target]')).toHaveAttribute('data-booky-target','tapping');await expect(page.locator('[data-booky-target]')).toHaveCount(0,{timeout:2000});await page.waitForTimeout(850);o.finiteCuePolicy='OS reduced motion uses a finite still pointing pose, then settles without replay';\n  434 |     }\n> 435 |     const cueTrace=await page.evaluate(()=>window.__globeGuidanceTrace.samples.filter(row=>row.phase==='show-controls'));expect(cueTrace.some(row=>row.action==='globe-controls')).toBe(true);if(language==='en'){expect(cueTrace.some(row=>row.cue==='approaching')).toBe(false);const still=cueTrace.filter(row=>row.cue==='tapping');expect(still.length).toBeGreaterThan(1);expect(still.every(row=>JSON.stringify(row.pet)===JSON.stringify(still[0].pet))).toBe(true);}o.cueTrace=cueTrace;\n      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^\n  436 |     await capture(fixture,testInfo,'booky-globe-guidance-'+language+'-controls.png','Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.');\n  437 |     retained(await actual(page),baseGlobe);expect(await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks)).toEqual([]);expect(saved()).toEqual(preferences);\n  438 |     await phase('actual-user-zoom');const beforeZoom=await actual(page);const zoom=page.locator('#atlas [data-globe-control=\"zoom-in\"]');await expect(zoom).toBeEnabled();await input.tap(zoom,'real user zoom in');await expect.poll(async()=>JSON.stringify((await sample(page)).pose),{intervals:[80,150],timeout:5000}).not.toBe(JSON.stringify(beforeZoom.pose));await ready(page);await stablePose(page);const afterZoom=await actual(page);retained(afterZoom,beforeZoom,false,true);const controlClicks=await page.evaluate(()=>window.__globeGuidanceTrace.controlClicks);expect(controlClicks).toEqual([{phase:'actual-user-zoom',control:'zoom-in',trusted:true,pointerType:'touch'}]);o.realZoom={before:beforeZoom,after:afterZoom,controlClicks};\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-guidance-review\\a2\\globe-guidance.spec.mjs:435:450"
+        }
+      ],
+      "captureSummaries": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "reportStatus": "failed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+            "sha256": "35e745c107e80a5096122a228dcc8dea4f1a72f6207a9857be5093dee0adbf37"
+          },
+          "wholeCapturePass": false,
+          "observedBooleanFields": {
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": false,
+            "apiInitiatedWebGlLoss": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true
+          },
+          "recordedChecks": [],
+          "contractNamedImageCount": 3
+        },
+        {
+          "test": "Booky mobile globe guidance en",
+          "reportStatus": "failed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+            "sha256": "2041a24ec013a155e5f9a56e20d78e09effb4a6470ba24e06898dbbd9c135a51"
+          },
+          "wholeCapturePass": false,
+          "observedBooleanFields": {
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": false,
+            "apiInitiatedWebGlLoss": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true
+          },
+          "recordedChecks": [],
+          "contractNamedImageCount": 1
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/playwright.config.mjs",
+          "sha256": "225c5e5eb66533a5fa1e6079023df9fe3bae3dcca71115c4a34849aa4a002b95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/run.mjs",
+          "sha256": "7a3f88f51bb80764e1971ca0f9f6be2f6d4772dc8506743ad433957bb9599f1b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/bind.mjs",
+          "sha256": "23b9ab09a7d9b4079fdb458af9eaf31ab04ae764f4aa1414d1fb9cd0cf417e79"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/canonical-fixture.mjs",
+          "sha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/globe-guidance.spec.mjs",
+          "sha256": "46b8a345728ca57f80792cf94e62e25e92fd18336f06f4c3e57d5fb4a7c49167"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/prefix-provenance.json",
+          "sha256": "b593554d3c6aea3c8a1673e0c3109aba1ac67ec17dd7737de5a0c3ea8e112758"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/observer-amendment.json",
+          "sha256": "ff086e5b2f401521f212611151095f58f299427fa7f27430e78674759bd22ab0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/authorized-source.json",
+          "sha256": "da65893591e9694c95c23b9427c12fcd63fd81f9da54f44f011ab65db4e604a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/App.tsx",
+          "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "b15908803b1dd47ff9ac2848a4d62afc5d526c90b2b86adff296a5b28fc87360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "34861b9d4a69143fdcded508a71c98501acfef42c7a1bb03c431b1a0aa0aeaf3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookyGlobeSupport.test.ts",
+          "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/planetMascot.test.ts",
+          "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/planetMascotRoutes.ts",
+          "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "2ae26f83712648aa5a096aeefe235cae6d71bcbd31e7ff61659822724ec3eec2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/runtime-inputs/tests/pwa/booky-writer-filter-recovery.spec.mjs",
+          "sha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/dirty.diff",
+          "sha256": "089031dcb6d3193a83ab3bd6bf5718677808e35d557fbc584da5342b2aef5139"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/execution-start.json",
+          "sha256": "e62fcb62d54e24897ae7305f33f3db96a9c20d93eac9d70ce3c9e5af99a26237"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/preflight-start.json",
+          "sha256": "a0f542782c75ff4ac882f75c4e81298169aeff97deaaf79cabc8ee3e7d58d3f0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/preflight-result.json",
+          "sha256": "25368ae03420698dab903826fec8287f2db2b5d7961ee6e846c081778c630d60"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/preflight-stdout.log",
+          "sha256": "092384de393adb2a9933edd0aa45a5248c413a10c3b38d1d4510a1022cb2e93b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/diagnostic-failure-ru-983d06df9de3d2290a2e8cf24afa716f8fe44b3b.png",
+          "sha256": "eb55fce1e1b05bc0e5b51255814077cbc41e1696427acff9f22b3280fa00bd46"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/booky-globe-guidance-source-evidence-e40f830fa0ef6fb6e7d65d6701207cfe3e3530da.json",
+          "sha256": "35e745c107e80a5096122a228dcc8dea4f1a72f6207a9857be5093dee0adbf37"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+          "sha256": "35e745c107e80a5096122a228dcc8dea4f1a72f6207a9857be5093dee0adbf37"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+          "sha256": "f3b6c4abacdd413dc0be32ca30c48dcdd729040dd7d1ed42d181f4fea37f0b69"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+          "sha256": "b5fc6a636ef7c86ecbd2947cb1204c9079662cd3e57a0948df63ba18b891129a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-unavailable.png",
+          "sha256": "de349faa7d7f896e2fe39cc3100ce5805f41171a6d28d09ee540e7c35c683d26"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/error-context.md",
+          "sha256": "10873f90a12b01ad65e16633f19e021f85e06d4925b0b42101e8abf47e6aa784"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/attachments/diagnostic-failure-en-a5463435628d3d5824e3a108215b752ce4920440.png",
+          "sha256": "8eaa096a9d9ca5a6e4a0a0f8ee2352f3f57fb15f4ab7a4e2341abe3c32c9efb5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/attachments/booky-globe-guidance-source-evidence-0e4a1e428f1a38fccbc65806eaa84b520d1146d0.json",
+          "sha256": "2041a24ec013a155e5f9a56e20d78e09effb4a6470ba24e06898dbbd9c135a51"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+          "sha256": "2041a24ec013a155e5f9a56e20d78e09effb4a6470ba24e06898dbbd9c135a51"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+          "sha256": "74f1b6539c3dcea7db46bfbbe7a2b470c0847e95a777561a5eff8816dc6b1ce6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a2/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/error-context.md",
+          "sha256": "ba327fff28e57581577e689a0603abc9620afdef8311ca8c05802085a7529e50"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a3",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/execution.json",
+        "sha256": "f3ebc5257131c1e69167d9f21774c62657029eb8b7000f27089b38247b9b98f2"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/stdout.log",
+          "sha256": "3cac316aad8956404d3afe3aa90fdc76e122c8700ead36575565cf5f6081f3fe"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/stderr.log",
+          "sha256": "06a4a29a3100b1d3cfaa0683f0165ff992675d4c34f75213eeb093a6203ff724"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/playwright.json",
+        "sha256": "f68303227ed45ad0c970c46144f7b743375467be802f20c3ae5d29109fc752a4"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Actual executed a3 passed both whole cases. It retains the strict EN static-position/no-approach invariant against the separately bound position fix. Both locales recorded Search open with its input focused before explicit help collapse and Search closed with avatar focus afterward; no extra later toggle occurred. This supports the observer correction and does not claim a Search runtime fix. Outcome and individual case status come exclusively from the original report; this diagnostic does not replace final validation.",
+      "failures": [],
+      "captureSummaries": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "reportStatus": "passed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+            "sha256": "9e2797cd661e8ae4e26141697d8c18f32764f0e29a2dd47dd60e5f3be696d5e4"
+          },
+          "wholeCapturePass": true,
+          "observedBooleanFields": {
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": true,
+            "apiInitiatedWebGlLoss": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true,
+            "mobileGuidanceVerified": true,
+            "trustedControlsFocusVerified": true,
+            "finiteCuePolicyVerified": true,
+            "realZoomOnlyVerified": true,
+            "realGlobeLossVerified": true,
+            "unavailableSearchGateVerified": true,
+            "contextRestorationVerified": true,
+            "preferencesAndSelectionPreserved": true
+          },
+          "recordedChecks": [
+            {
+              "name": "localized mobile instructions are readable without implicit globe movement",
+              "pass": true
+            },
+            {
+              "name": "trusted Show controls closes help and focuses a real enabled canonical control",
+              "pass": true
+            },
+            {
+              "name": "finite Booky cue respects normal Stop or reduced motion",
+              "pass": true
+            },
+            {
+              "name": "only the later real user zoom changes the canonical camera pose",
+              "pass": true
+            },
+            {
+              "name": "actual WebGL loss shows current unavailable help without contradictory context tips",
+              "pass": true
+            },
+            {
+              "name": "Search remains usable and Show controls is disabled while the globe is unavailable",
+              "pass": true
+            },
+            {
+              "name": "real context restoration clears unavailable guidance and retains canonical owners",
+              "pass": true
+            },
+            {
+              "name": "Booky route progress preferences and canonical selection remain exact",
+              "pass": true
+            }
+          ],
+          "contractNamedImageCount": 3
+        },
+        {
+          "test": "Booky mobile globe guidance en",
+          "reportStatus": "passed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+            "sha256": "d70b88b9a9c80d0777186c05645ed15fcb1a7427c586671c089f26a3c5ac5b21"
+          },
+          "wholeCapturePass": true,
+          "observedBooleanFields": {
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": true,
+            "apiInitiatedWebGlLoss": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true,
+            "mobileGuidanceVerified": true,
+            "trustedControlsFocusVerified": true,
+            "finiteCuePolicyVerified": true,
+            "realZoomOnlyVerified": true,
+            "realGlobeLossVerified": true,
+            "unavailableSearchGateVerified": true,
+            "contextRestorationVerified": true,
+            "preferencesAndSelectionPreserved": true
+          },
+          "recordedChecks": [
+            {
+              "name": "localized mobile instructions are readable without implicit globe movement",
+              "pass": true
+            },
+            {
+              "name": "trusted Show controls closes help and focuses a real enabled canonical control",
+              "pass": true
+            },
+            {
+              "name": "finite Booky cue respects normal Stop or reduced motion",
+              "pass": true
+            },
+            {
+              "name": "only the later real user zoom changes the canonical camera pose",
+              "pass": true
+            },
+            {
+              "name": "actual WebGL loss shows current unavailable help without contradictory context tips",
+              "pass": true
+            },
+            {
+              "name": "Search remains usable and Show controls is disabled while the globe is unavailable",
+              "pass": true
+            },
+            {
+              "name": "real context restoration clears unavailable guidance and retains canonical owners",
+              "pass": true
+            },
+            {
+              "name": "Booky route progress preferences and canonical selection remain exact",
+              "pass": true
+            }
+          ],
+          "contractNamedImageCount": 3
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/playwright.config.mjs",
+          "sha256": "225c5e5eb66533a5fa1e6079023df9fe3bae3dcca71115c4a34849aa4a002b95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/run.mjs",
+          "sha256": "7a3f88f51bb80764e1971ca0f9f6be2f6d4772dc8506743ad433957bb9599f1b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/bind.mjs",
+          "sha256": "23b9ab09a7d9b4079fdb458af9eaf31ab04ae764f4aa1414d1fb9cd0cf417e79"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/canonical-fixture.mjs",
+          "sha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/globe-guidance.spec.mjs",
+          "sha256": "79b0ce860aa0f005378d595b35600127eb12af4831390cad82cc2aa55b9c2e72"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/prefix-provenance.json",
+          "sha256": "b593554d3c6aea3c8a1673e0c3109aba1ac67ec17dd7737de5a0c3ea8e112758"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/observer-amendment.json",
+          "sha256": "8ed17653928411b8191c3c4a22f5b6b374effba8cc3b1c0fe61d264b2eacc457"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/authorized-source.json",
+          "sha256": "df071220e0283fc066314218e4a16a1eb3328367607b9ca2f2f439210dc2084d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/App.tsx",
+          "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "b15908803b1dd47ff9ac2848a4d62afc5d526c90b2b86adff296a5b28fc87360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookyGlobeSupport.test.ts",
+          "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/planetMascot.test.ts",
+          "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/planetMascotRoutes.ts",
+          "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "2ae26f83712648aa5a096aeefe235cae6d71bcbd31e7ff61659822724ec3eec2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/runtime-inputs/tests/pwa/booky-writer-filter-recovery.spec.mjs",
+          "sha256": "d4e1cc8b68fc10c2df0e71bd6c8accb469c728f52cd3ae8e817ee15a9faa2494"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/dirty.diff",
+          "sha256": "a6b946f6ae89de03923889d642bafe5bccddb0fa38a69e93c6431f9106ade2d8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/execution-start.json",
+          "sha256": "213b827be2c6fe7c4d1f201b367d2f9ce25f78ecd815d3c5099ec044b6128a95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/preflight-start.json",
+          "sha256": "c258b5f4aebacfd5676bf45ec6f5bc07bd0a554d7abd4d9a2060f64a364af222"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/preflight-result.json",
+          "sha256": "3f3bfee3a8944732a289e0290c8e6266e9b03ec2ced1e5ce9ec9cdaa30db9aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/preflight-stdout.log",
+          "sha256": "092384de393adb2a9933edd0aa45a5248c413a10c3b38d1d4510a1022cb2e93b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/booky-globe-guidance-source-evidence-db5ea0bb738e6e0f1c563b50fba542d0401fe42a.json",
+          "sha256": "9e2797cd661e8ae4e26141697d8c18f32764f0e29a2dd47dd60e5f3be696d5e4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+          "sha256": "9e2797cd661e8ae4e26141697d8c18f32764f0e29a2dd47dd60e5f3be696d5e4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+          "sha256": "12e9d5765f8b5135575ef1477730e21a93f073f7fbad1319038353d32bbbeb05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+          "sha256": "3468258980a0e16ff4d739f41d4320a819e3a4fc4115a49bb5f892885b59530c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-unavailable.png",
+          "sha256": "0ede76e4c48f32dd9946aaeb0be26f92c6980651170cbdcfa8bcf66f2be30805"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/attachments/booky-globe-guidance-source-evidence-701b97f9abc0bcea9e2550db6e2da53e3e7a2194.json",
+          "sha256": "d70b88b9a9c80d0777186c05645ed15fcb1a7427c586671c089f26a3c5ac5b21"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+          "sha256": "d70b88b9a9c80d0777186c05645ed15fcb1a7427c586671c089f26a3c5ac5b21"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+          "sha256": "743b239292c16b247eb61016a5361eb18e8c1749e3c064f190ce903c2f171fc2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-controls.png",
+          "sha256": "8eaa096a9d9ca5a6e4a0a0f8ee2352f3f57fb15f4ab7a4e2341abe3c32c9efb5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a3/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-unavailable.png",
+          "sha256": "423a9fb6c4199dffbea4e7c2657866ea06646e7cd6a737c171073eabae792207"
+        }
+      ]
+    },
+    {
+      "id": "browser-diagnostic-a4",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/execution.json",
+        "sha256": "060844ea798d26b8d5022defa16a82ae5d7fbdff0d014a2d0e0d8d9c03dc3fd1"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/stdout.log",
+          "sha256": "510b8b3a4c397b4cc393a0abd31306d9f93f2ca1ab221926be152082ae94fa6f"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/stderr.log",
+          "sha256": "e8fce92412ad34c6ef9ccc1e4ace05d67b0d4dc67ada15253541bf01972923d7"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/playwright.json",
+        "sha256": "a188556804725568c8c27d5d5e8bb4b74192d56587ea7eeb7926d3202157f428"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "One passing RU retirement probe with bounded read-only bundle instrumentation. It ends after first Show/Stop and cannot establish zoom/loss or full-case acceptance; it does not erase formal browser-a1 RU failure.",
+      "failures": [],
+      "captureSummaries": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "reportStatus": "passed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+            "sha256": "7f141e59296c5a371783ce27db66d1aa51172352f482e898e826648364fc09d3"
+          },
+          "wholeCapturePass": true,
+          "observedBooleanFields": {
+            "retirementObservationOnly": true,
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true
+          },
+          "recordedChecks": [],
+          "contractNamedImageCount": 1
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/playwright.config.mjs",
+          "sha256": "225c5e5eb66533a5fa1e6079023df9fe3bae3dcca71115c4a34849aa4a002b95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/run.mjs",
+          "sha256": "101c1fa54ca3a4d57b274fb2d7234129d354d1d948841048a114afc0beaf4b96"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/bind.mjs",
+          "sha256": "543890879bc874f4e6f08b4df89956282b8dbe1880affe8e41e6abddbd47c216"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/canonical-fixture.mjs",
+          "sha256": "48b1f4bb39dbe454ae3697b0aef52127f388f776356f4285b67ec42116c7f8d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/globe-guidance.spec.mjs",
+          "sha256": "d5db2dc1f1476282d9162c8b5386bf76da06c9562e0828b78a6cd8e2790a7bcb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/prefix-provenance.json",
+          "sha256": "a3c7fbea561d0fbd8a312e711b1033130276ba86df2a85bdf0e612041b192888"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/observer-amendment.json",
+          "sha256": "8f05f4d73cc54f680ed7be077d8894514a30bbd187dfcbbada2d10d6c17be8bf"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/authorized-source.json",
+          "sha256": "566eebc76d415e6c0da5269ba7acd45d095fc640c24fd2603d0fe05cee2d2587"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/execution-start.json",
+          "sha256": "64d5d08c9df681dc8cde027e98c407786f638c7b10c58e85c655a59a97fac952"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/dirty.diff",
+          "sha256": "a6b946f6ae89de03923889d642bafe5bccddb0fa38a69e93c6431f9106ade2d8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/preflight-start.json",
+          "sha256": "7c9b800972673a7d1a7b7641087295d1331f4bcb29f5340674f1946479dcda05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/preflight-result.json",
+          "sha256": "4026bcb085dca11896770d85b7097ab99797ca652dc484e6ef1fea1061e7828b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/preflight-stdout.log",
+          "sha256": "061d6459e8533cd7cebe0f9d61845d95ff13ececc6b5317700ef8b655335e563"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/App.tsx",
+          "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "b15908803b1dd47ff9ac2848a4d62afc5d526c90b2b86adff296a5b28fc87360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookyGlobeSupport.test.ts",
+          "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/planetMascot.test.ts",
+          "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/planetMascotRoutes.ts",
+          "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "2ae26f83712648aa5a096aeefe235cae6d71bcbd31e7ff61659822724ec3eec2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/runtime-inputs/tests/pwa/booky-globe-guidance.spec.mjs",
+          "sha256": "48b1f4bb39dbe454ae3697b0aef52127f388f776356f4285b67ec42116c7f8d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/booky-globe-guidance-source-evidence-6b5f8155b3bc5b0a5f7db62b3c8117962d68fc88.json",
+          "sha256": "7f141e59296c5a371783ce27db66d1aa51172352f482e898e826648364fc09d3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+          "sha256": "7f141e59296c5a371783ce27db66d1aa51172352f482e898e826648364fc09d3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a4/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+          "sha256": "12e9d5765f8b5135575ef1477730e21a93f073f7fbad1319038353d32bbbeb05"
+        }
+      ],
+      "scope": "Instrumented RU retirement probe only; excludes downstream zoom/loss and full canonical case acceptance."
+    },
+    {
+      "id": "browser-diagnostic-a5",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/execution.json",
+        "sha256": "304148cdeae3978bb6ab22079c1fb7be89d4c2bc9fbf4cb6c47a044a0e9469e6"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/stdout.log",
+          "sha256": "ff55a90e199ae73215f011fca9e490434d87c7c6364b47263f9eb8d483798da0"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/stderr.log",
+          "sha256": "3ec31e48ae4ef2801814b3584d3c25475018a10e953c34c06d7af8c89c96ddd4"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/playwright.json",
+        "sha256": "b98a6bb90d84a49a6baea80c1dec1a5686a7a4a5acede67f0f96e4a2a0678b63"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 3,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "All three bounded repeatEach RU retirement probes failed. Their instrumented draw guards observed a changed reserved top of approximately one pixel, unchanged bottom/width/left/character size/revision/target validity, and no post-start input events. Precise CSS-transition linkage remains inference. The full formal-a1 cancellation reason was not directly logged.",
+      "failures": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-target-action=\"globe-controls\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-target-action=\"globe-controls\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  460 |     await expect.poll(async()=>{const current=await guidanceState(page);return current.focusedConnected&&current.focusedCanonical&&!current.focusedDisabled&&['zoom-in','zoom-out','reset'].includes(current.focusedControl);},{intervals:[16,32,64],timeout:2000,message:'existing enabled canonical globe control receives guarded focus'}).toBe(true);\n  461 |     o.focus=await guidanceState(page);const focused=page.locator('#atlas .globe-controls [data-globe-control=\"'+o.focus.focusedControl+'\"]');o.focusGeometry=await input.geometry(focused);expect(o.focusGeometry.box.width).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.box.height).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.hits.every(hit=>hit.inside)).toBe(true);retained(await actual(page),baseGlobe);\n> 462 |     await expect(page.locator('[data-booky-target-action=\"globe-controls\"]')).toHaveCount(1);\n      |                                                                               ^\n  463 |     if(language==='ru'){\n  464 |       await expect(page.locator('[data-booky-walk-stop]')).toBeVisible();await input.tap(page.locator('[data-booky-walk-stop]'),'Stop finite globe-controls approach',{moving:true});\n  465 |       await expect(page.locator('[data-booky-target]')).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await page.waitForTimeout(1900);await expect(page.locator('[data-booky-target]')).toHaveCount(0);o.finiteCuePolicy='normal-motion approach stopped by a genuine trusted Stop';\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-guidance-review\\a5\\globe-guidance.spec.mjs:462:79"
+        },
+        {
+          "test": "Booky mobile globe guidance ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-target-action=\"globe-controls\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-target-action=\"globe-controls\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  460 |     await expect.poll(async()=>{const current=await guidanceState(page);return current.focusedConnected&&current.focusedCanonical&&!current.focusedDisabled&&['zoom-in','zoom-out','reset'].includes(current.focusedControl);},{intervals:[16,32,64],timeout:2000,message:'existing enabled canonical globe control receives guarded focus'}).toBe(true);\n  461 |     o.focus=await guidanceState(page);const focused=page.locator('#atlas .globe-controls [data-globe-control=\"'+o.focus.focusedControl+'\"]');o.focusGeometry=await input.geometry(focused);expect(o.focusGeometry.box.width).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.box.height).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.hits.every(hit=>hit.inside)).toBe(true);retained(await actual(page),baseGlobe);\n> 462 |     await expect(page.locator('[data-booky-target-action=\"globe-controls\"]')).toHaveCount(1);\n      |                                                                               ^\n  463 |     if(language==='ru'){\n  464 |       await expect(page.locator('[data-booky-walk-stop]')).toBeVisible();await input.tap(page.locator('[data-booky-walk-stop]'),'Stop finite globe-controls approach',{moving:true});\n  465 |       await expect(page.locator('[data-booky-target]')).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await page.waitForTimeout(1900);await expect(page.locator('[data-booky-target]')).toHaveCount(0);o.finiteCuePolicy='normal-motion approach stopped by a genuine trusted Stop';\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-guidance-review\\a5\\globe-guidance.spec.mjs:462:79"
+        },
+        {
+          "test": "Booky mobile globe guidance ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-target-action=\"globe-controls\"]')\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-target-action=\"globe-controls\"]')\u001b[22m\n\u001b[2m    14 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  460 |     await expect.poll(async()=>{const current=await guidanceState(page);return current.focusedConnected&&current.focusedCanonical&&!current.focusedDisabled&&['zoom-in','zoom-out','reset'].includes(current.focusedControl);},{intervals:[16,32,64],timeout:2000,message:'existing enabled canonical globe control receives guarded focus'}).toBe(true);\n  461 |     o.focus=await guidanceState(page);const focused=page.locator('#atlas .globe-controls [data-globe-control=\"'+o.focus.focusedControl+'\"]');o.focusGeometry=await input.geometry(focused);expect(o.focusGeometry.box.width).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.box.height).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.hits.every(hit=>hit.inside)).toBe(true);retained(await actual(page),baseGlobe);\n> 462 |     await expect(page.locator('[data-booky-target-action=\"globe-controls\"]')).toHaveCount(1);\n      |                                                                               ^\n  463 |     if(language==='ru'){\n  464 |       await expect(page.locator('[data-booky-walk-stop]')).toBeVisible();await input.tap(page.locator('[data-booky-walk-stop]'),'Stop finite globe-controls approach',{moving:true});\n  465 |       await expect(page.locator('[data-booky-target]')).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await page.waitForTimeout(1900);await expect(page.locator('[data-booky-target]')).toHaveCount(0);o.finiteCuePolicy='normal-motion approach stopped by a genuine trusted Stop';\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-guidance-review\\a5\\globe-guidance.spec.mjs:462:79"
+        }
+      ],
+      "captureSummaries": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "reportStatus": "failed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+            "sha256": "2c9da015bf694aaabffd50bcc347957466b8c11fe2c74f1b0df4a3edb54c07a3"
+          },
+          "wholeCapturePass": false,
+          "observedBooleanFields": {
+            "retirementObservationOnly": true,
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": false,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true
+          },
+          "recordedChecks": [],
+          "contractNamedImageCount": 1
+        },
+        {
+          "test": "Booky mobile globe guidance ru",
+          "reportStatus": "failed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat1/booky-globe-guidance.json",
+            "sha256": "489f094de68dff1631ea075ab12bdb9d20e21c033cf1b12e59dc16ea8795da8a"
+          },
+          "wholeCapturePass": false,
+          "observedBooleanFields": {
+            "retirementObservationOnly": true,
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": false,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true
+          },
+          "recordedChecks": [],
+          "contractNamedImageCount": 1
+        },
+        {
+          "test": "Booky mobile globe guidance ru",
+          "reportStatus": "failed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat2/booky-globe-guidance.json",
+            "sha256": "4f0991c1f45a837cd2cb12b844a364a89f673a27305fbb3c627ab7c41391e52d"
+          },
+          "wholeCapturePass": false,
+          "observedBooleanFields": {
+            "retirementObservationOnly": true,
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": false,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true
+          },
+          "recordedChecks": [],
+          "contractNamedImageCount": 1
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/playwright.config.mjs",
+          "sha256": "0bbbebe09d92ad2b2c8d279ccd42b0249c6961c87360728adee9af3d60c06f50"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/run.mjs",
+          "sha256": "dd90d8309b85acfef6cb165cab45da5b07c96d2732b10469c98127c711e73184"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/bind.mjs",
+          "sha256": "ad42a436bceb712d636ba421b01f3ab5ba479e972f44a792ba84e7f67c6224cb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/canonical-fixture.mjs",
+          "sha256": "48b1f4bb39dbe454ae3697b0aef52127f388f776356f4285b67ec42116c7f8d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/globe-guidance.spec.mjs",
+          "sha256": "d5db2dc1f1476282d9162c8b5386bf76da06c9562e0828b78a6cd8e2790a7bcb"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/prefix-provenance.json",
+          "sha256": "1b227152588fe27a332be8735c3965ee5e7468972403e5c024d82184fb994c25"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/observer-amendment.json",
+          "sha256": "6cf929cdd5a0dfeefb72bc0e43dcfb6ea91e43a8e73d9091f6b1ed033eb759e7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/authorized-source.json",
+          "sha256": "4dcd4c54d655dc4a3c58ca1c4c92600843bcd7574df3de094c11b35e625ac981"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/execution-start.json",
+          "sha256": "4db0eb73946bc80017313b492b3ea3563a1eea3e942f7e12582813285ee9131f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/dirty.diff",
+          "sha256": "a6b946f6ae89de03923889d642bafe5bccddb0fa38a69e93c6431f9106ade2d8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/preflight-start.json",
+          "sha256": "9b708206154e15d970b1936b9e294a2c762653c97045aa38e4fc5f0753800db9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/preflight-result.json",
+          "sha256": "09b28c4eb8510c16a6da54647325d2ecf92c5203468b6bf0496013b78bd08921"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/preflight-stdout.log",
+          "sha256": "9fe6b0ed562f3e558ab76601544f23becc49f6698e5aa57f009f454eecb9dcc0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/App.tsx",
+          "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "b15908803b1dd47ff9ac2848a4d62afc5d526c90b2b86adff296a5b28fc87360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookyGlobeSupport.test.ts",
+          "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/planetMascot.test.ts",
+          "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/planetMascotRoutes.ts",
+          "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "2ae26f83712648aa5a096aeefe235cae6d71bcbd31e7ff61659822724ec3eec2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/runtime-inputs/tests/pwa/booky-globe-guidance.spec.mjs",
+          "sha256": "48b1f4bb39dbe454ae3697b0aef52127f388f776356f4285b67ec42116c7f8d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/retirement-summary.json",
+          "sha256": "6b5cf29be25986476c9513f7c5c89006d50c599fd02e092763a7e535e412e7e0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/diagnostic-failure-ru-8c61d3974f7fc1476b4ca16fbe7f9b4b25ce7e5e.png",
+          "sha256": "f5a4d62b6b3d769d95b3841dc862c24c3a132b3a19436907cf5facb95262c29a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/booky-globe-guidance-source-evidence-229edf02957ede4c8bbf4d86121d6a1ee60efa9a.json",
+          "sha256": "2c9da015bf694aaabffd50bcc347957466b8c11fe2c74f1b0df4a3edb54c07a3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+          "sha256": "2c9da015bf694aaabffd50bcc347957466b8c11fe2c74f1b0df4a3edb54c07a3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+          "sha256": "fe032be9934a7f03027241a5e0b07be0a2185db8a606d8d7b51e55fe52d8172a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/error-context.md",
+          "sha256": "e2d4ef509ae5573b0d64c3c26ba2671e3ba5ca292b3040e2511bba40087846b0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat1/attachments/diagnostic-failure-ru-c65d15529c35908221bbf48d103588cf3f2c4c91.png",
+          "sha256": "f5a4d62b6b3d769d95b3841dc862c24c3a132b3a19436907cf5facb95262c29a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat1/attachments/booky-globe-guidance-source-evidence-e528cce99e00bac95170cfc749cd7b718fad7d6f.json",
+          "sha256": "489f094de68dff1631ea075ab12bdb9d20e21c033cf1b12e59dc16ea8795da8a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat1/booky-globe-guidance.json",
+          "sha256": "489f094de68dff1631ea075ab12bdb9d20e21c033cf1b12e59dc16ea8795da8a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat1/booky-globe-guidance-ru-help.png",
+          "sha256": "f3b6c4abacdd413dc0be32ca30c48dcdd729040dd7d1ed42d181f4fea37f0b69"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat1/error-context.md",
+          "sha256": "e2d4ef509ae5573b0d64c3c26ba2671e3ba5ca292b3040e2511bba40087846b0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat2/attachments/diagnostic-failure-ru-99b56d9546d6e51325f0dd093a68d935df1b0ca2.png",
+          "sha256": "f5a4d62b6b3d769d95b3841dc862c24c3a132b3a19436907cf5facb95262c29a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat2/attachments/booky-globe-guidance-source-evidence-81118efbc1047d213d41eb87bf88fd85b74a8158.json",
+          "sha256": "4f0991c1f45a837cd2cb12b844a364a89f673a27305fbb3c627ab7c41391e52d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat2/booky-globe-guidance.json",
+          "sha256": "4f0991c1f45a837cd2cb12b844a364a89f673a27305fbb3c627ab7c41391e52d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat2/booky-globe-guidance-ru-help.png",
+          "sha256": "f3b6c4abacdd413dc0be32ca30c48dcdd729040dd7d1ed42d181f4fea37f0b69"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a5/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru-repeat2/error-context.md",
+          "sha256": "e2d4ef509ae5573b0d64c3c26ba2671e3ba5ca292b3040e2511bba40087846b0"
+        }
+      ],
+      "scope": "Instrumented RU retirement probe only; excludes downstream zoom/loss and full canonical case acceptance."
+    },
+    {
+      "id": "browser-diagnostic-a6",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/execution.json",
+        "sha256": "bfd79edc8aa1644dee343a8c799f16e4f24c9159f80aafcb3c8e71ae7b77fee5"
+      },
+      "executionEvidence": {
+        "nodeExit": 1,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/stdout.log",
+          "sha256": "9d022e632312d2363162e4c2fdb05ad1ccb55bf9718679919f084652f2265044"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/stderr.log",
+          "sha256": "2b8007f316f532c84b551de4127b5988b974cacb7d17397064e4fe0ea6f3b336"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/playwright.json",
+        "sha256": "db8b2182d04d2298bd7a697a5750c9b41b50baa3a553fbdf1c8d221545ea65f1"
+      },
+      "tests": {
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "EN passed the full case. RU original approach and trusted Stop assertions passed, but its later controlled negative reservation setup did not prove an effective reservation: the enlarged locale descendant was clipped by the fixed-height overflow-hidden header. The whole RU case remains failed; no runtime guard weakening followed.",
+      "failures": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-target]')\nExpected: \u001b[32m0\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  1000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 1000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-target]')\u001b[22m\n\u001b[2m    11 × locator resolved to 1 element\u001b[22m\n\u001b[2m       - unexpected value \"1\"\u001b[22m\n\n\n  458 |         expect(cutoff.injected.locale.left).toBe(cutoff.before.locale.left);expect(cutoff.injected.locale.width).toBe(cutoff.before.locale.width);\n  459 |         expect(cutoff.injected.locale.top+cutoff.injected.locale.height+12).toBeGreaterThan(cutoff.before.firstApproach.pet.top);\n> 460 |         await expect(page.locator('[data-booky-target]')).toHaveCount(0,{timeout:1000});await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');\n      |                                                           ^\n  461 |         cutoff.stopped=await guidanceState(page);\n  462 |       }finally{\n  463 |         cutoff.restoration=await page.evaluate(()=>{const saved=window.__bookyProtectedHeaderRestore;if(!saved?.element.isConnected)throw Error('Original protected locale control missing');if(saved.style===null)saved.element.removeAttribute('style');else saved.element.setAttribute('style',saved.style);return {style:saved.element.getAttribute('style'),sameElement:document.querySelector('.native-planet-app .atlas-immersive-chrome .interface-language-control')===saved.element};});\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-globe-guidance-review\\a6\\globe-guidance.spec.mjs:460:59"
+        }
+      ],
+      "captureSummaries": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "reportStatus": "failed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+            "sha256": "daaef5b765d651c339992aad6cc4acc6ca6518eab978fe190d5e05ee5222ebe6"
+          },
+          "wholeCapturePass": false,
+          "observedBooleanFields": {
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": false,
+            "apiInitiatedWebGlLoss": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true,
+            "controlledLayoutFaultInjected": true
+          },
+          "recordedChecks": [],
+          "contractNamedImageCount": 2
+        },
+        {
+          "test": "Booky mobile globe guidance en",
+          "reportStatus": "passed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+            "sha256": "fa5889d3206b375d4baa625f9be0995856402d3017b6942b189d9ce20e1b7156"
+          },
+          "wholeCapturePass": true,
+          "observedBooleanFields": {
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": true,
+            "apiInitiatedWebGlLoss": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true,
+            "controlledLayoutFaultInjected": false,
+            "mobileGuidanceVerified": true,
+            "trustedControlsFocusVerified": true,
+            "finiteCuePolicyVerified": true,
+            "realZoomOnlyVerified": true,
+            "realGlobeLossVerified": true,
+            "unavailableSearchGateVerified": true,
+            "contextRestorationVerified": true,
+            "preferencesAndSelectionPreserved": true
+          },
+          "recordedChecks": [
+            {
+              "name": "localized mobile instructions are readable without implicit globe movement",
+              "pass": true
+            },
+            {
+              "name": "trusted Show controls closes help and focuses a real enabled canonical control",
+              "pass": true
+            },
+            {
+              "name": "finite Booky cue respects normal Stop or reduced motion",
+              "pass": true
+            },
+            {
+              "name": "only the later real user zoom changes the canonical camera pose",
+              "pass": true
+            },
+            {
+              "name": "actual WebGL loss shows current unavailable help without contradictory context tips",
+              "pass": true
+            },
+            {
+              "name": "Search remains usable and Show controls is disabled while the globe is unavailable",
+              "pass": true
+            },
+            {
+              "name": "real context restoration clears unavailable guidance and retains canonical owners",
+              "pass": true
+            },
+            {
+              "name": "Booky route progress preferences and canonical selection remain exact",
+              "pass": true
+            }
+          ],
+          "contractNamedImageCount": 3
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/playwright.config.mjs",
+          "sha256": "225c5e5eb66533a5fa1e6079023df9fe3bae3dcca71115c4a34849aa4a002b95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/run.mjs",
+          "sha256": "4cea4986046841ed49cdcd2898e4590a590d8324754fadeb38279326be05cce8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/bind.mjs",
+          "sha256": "c23aed3d96939a2da9c9ed4ab6f84bea1d1be83fb68262c00639545917d3ec0a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/canonical-fixture.mjs",
+          "sha256": "48b1f4bb39dbe454ae3697b0aef52127f388f776356f4285b67ec42116c7f8d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/globe-guidance.spec.mjs",
+          "sha256": "6094167bf19effbc2f689653d763a9d6460fa6e6932afca01e4b4a47190f885d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/prefix-provenance.json",
+          "sha256": "67b3224a7c71dfe35042462cd837ab23f066387a35a4125c9894274c7efa7dd8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/observer-amendment.json",
+          "sha256": "67b3224a7c71dfe35042462cd837ab23f066387a35a4125c9894274c7efa7dd8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/authorized-source.json",
+          "sha256": "2eeee327a69198d9d25dcdd9ef880f1d7f94a96fe988573ca475bd360f79c9f7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/execution-start.json",
+          "sha256": "9da1fef012a61ffa96a379da59a0b4d8d10feb80eb4e71687320b70e119d960c"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/dirty.diff",
+          "sha256": "b31a8a9bdda0206118997b7a1b380e39e594747ec397c3434bcb0dae14b555cd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/preflight-start.json",
+          "sha256": "a62f426f865d690ce948c46068bc6619d334aecba3f0c6abffa9a1cb3c782b2d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/preflight-result.json",
+          "sha256": "9905b756ecd78f01c3a3b381028204509c85ce64484388442fec86443833ee16"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/preflight-stdout.log",
+          "sha256": "092384de393adb2a9933edd0aa45a5248c413a10c3b38d1d4510a1022cb2e93b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/App.tsx",
+          "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "b15908803b1dd47ff9ac2848a4d62afc5d526c90b2b86adff296a5b28fc87360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyGlobeSupport.test.ts",
+          "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyWalk.test.ts",
+          "sha256": "86db777abdcd7d73e306f7fd658abe76110e68b142cd72fe74b574a8c9fc4259"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "f5205b36bf9625f30ba01324b223cff7ee1cbcc277f042a6db92e420afc59e02"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/planetMascot.test.ts",
+          "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/planetMascotRoutes.ts",
+          "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "9b224ed74095a6ea70b8e9ec880dbaee1548b36676d9c060bfd0da6285af9506"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/runtime-inputs/tests/pwa/booky-globe-guidance.spec.mjs",
+          "sha256": "48b1f4bb39dbe454ae3697b0aef52127f388f776356f4285b67ec42116c7f8d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/diagnostic-failure-ru-e7035a6030096ffe9c3a727ae65792f08e22c0c8.png",
+          "sha256": "9126e7209582f40c297fdbcb2980e9fa35de995de476b4996f9bdf8437167cd1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/booky-globe-guidance-source-evidence-b3e38269a2dfe16391408fdf7a84885a6861fa1c.json",
+          "sha256": "daaef5b765d651c339992aad6cc4acc6ca6518eab978fe190d5e05ee5222ebe6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+          "sha256": "daaef5b765d651c339992aad6cc4acc6ca6518eab978fe190d5e05ee5222ebe6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+          "sha256": "f3b6c4abacdd413dc0be32ca30c48dcdd729040dd7d1ed42d181f4fea37f0b69"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+          "sha256": "d10540cac727b5763ef8b556781bb8cee114e5717481d484b2bc593e01cb3458"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/error-context.md",
+          "sha256": "fb67c8659e8dba36df57394f6eec5497fe32a2eff99e41953c94a86a0203fc0e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/attachments/booky-globe-guidance-source-evidence-12cd8077ca3d27c02756b970815a01becc43a5f4.json",
+          "sha256": "fa5889d3206b375d4baa625f9be0995856402d3017b6942b189d9ce20e1b7156"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+          "sha256": "fa5889d3206b375d4baa625f9be0995856402d3017b6942b189d9ce20e1b7156"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+          "sha256": "74f1b6539c3dcea7db46bfbbe7a2b470c0847e95a777561a5eff8816dc6b1ce6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-controls.png",
+          "sha256": "8eaa096a9d9ca5a6e4a0a0f8ee2352f3f57fb15f4ab7a4e2341abe3c32c9efb5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a6/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-unavailable.png",
+          "sha256": "423a9fb6c4199dffbea4e7c2657866ea06646e7cd6a737c171073eabae792207"
+        }
+      ],
+      "scope": "Full RU/EN globe guidance diagnostic with controlled RU unsafe reservation regression."
+    },
+    {
+      "id": "browser-diagnostic-a7",
+      "reportFormat": "playwright",
+      "diagnosticOnly": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/execution.json",
+        "sha256": "f5090a56e147280625d2dc61c2f1e4ce2bf16669cb31394b632bca8e7ff74b06"
+      },
+      "executionEvidence": {
+        "nodeExit": 0,
+        "streamSeparation": "recorded",
+        "log": null,
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/stdout.log",
+          "sha256": "2cae4e4e1f2f3518b4c728aa733a6bf9fdaf3d5325f1bf337d12d433ccd72f97"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/stderr.log",
+          "sha256": "4b35a7ad1a09eff0868dd36786d0a9d1afca9d76c6a5e2af8f68a479af2c086e"
+        }
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/playwright.json",
+        "sha256": "09998de4d97cfe53fd34b92ecd36a36e004604ff3e9172c2307d06f1aad531a3"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "browserStarted": true,
+      "interpretation": "Both full cases passed against the revised runtime. RU controlled setup grows the existing header and locale row, proves the effective clipped reservation, checks unsafe planned-path retirement, and restores both original styles. This controlled browser regression is not native lifecycle or OS geometry equivalence.",
+      "failures": [],
+      "captureSummaries": [
+        {
+          "test": "Booky mobile globe guidance ru",
+          "reportStatus": "passed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+            "sha256": "67368e1e220c7aff3a57d99d208cd98fa99013d3ec2242e032f3440c6eadfe0a"
+          },
+          "wholeCapturePass": true,
+          "observedBooleanFields": {
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": true,
+            "apiInitiatedWebGlLoss": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true,
+            "controlledLayoutFaultInjected": true,
+            "reservedTopCutoffVerified": true,
+            "mobileGuidanceVerified": true,
+            "trustedControlsFocusVerified": true,
+            "finiteCuePolicyVerified": true,
+            "realZoomOnlyVerified": true,
+            "realGlobeLossVerified": true,
+            "unavailableSearchGateVerified": true,
+            "contextRestorationVerified": true,
+            "preferencesAndSelectionPreserved": true
+          },
+          "recordedChecks": [
+            {
+              "name": "localized mobile instructions are readable without implicit globe movement",
+              "pass": true
+            },
+            {
+              "name": "trusted Show controls closes help and focuses a real enabled canonical control",
+              "pass": true
+            },
+            {
+              "name": "finite Booky cue respects normal Stop or reduced motion",
+              "pass": true
+            },
+            {
+              "name": "only the later real user zoom changes the canonical camera pose",
+              "pass": true
+            },
+            {
+              "name": "actual WebGL loss shows current unavailable help without contradictory context tips",
+              "pass": true
+            },
+            {
+              "name": "Search remains usable and Show controls is disabled while the globe is unavailable",
+              "pass": true
+            },
+            {
+              "name": "real context restoration clears unavailable guidance and retains canonical owners",
+              "pass": true
+            },
+            {
+              "name": "Booky route progress preferences and canonical selection remain exact",
+              "pass": true
+            },
+            {
+              "name": "a controlled reserved top cutoff stops a fresh target approach without replay",
+              "pass": true
+            }
+          ],
+          "contractNamedImageCount": 3
+        },
+        {
+          "test": "Booky mobile globe guidance en",
+          "reportStatus": "passed",
+          "capture": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+            "sha256": "6e0d6012c77debf17afc40d9821c5bf3d42a180bd614f2dc9e3d99b8b92bb95a"
+          },
+          "wholeCapturePass": true,
+          "observedBooleanFields": {
+            "actualApp": true,
+            "actualCss": true,
+            "actualGlobe": true,
+            "installedNative": false,
+            "deviceTested": false,
+            "childReviewed": false,
+            "childProfileCreated": false,
+            "childAccessGranted": false,
+            "reviewedDialogueAccepted": false,
+            "narrationEnabled": false,
+            "artAccepted": false,
+            "devicePerformanceAccepted": false,
+            "releaseReady": false,
+            "pass": true,
+            "apiInitiatedWebGlLoss": true,
+            "nativeLifecycleEquivalent": false,
+            "touchOnlyProductActions": true,
+            "controlledLayoutFaultInjected": false,
+            "mobileGuidanceVerified": true,
+            "trustedControlsFocusVerified": true,
+            "finiteCuePolicyVerified": true,
+            "realZoomOnlyVerified": true,
+            "realGlobeLossVerified": true,
+            "unavailableSearchGateVerified": true,
+            "contextRestorationVerified": true,
+            "preferencesAndSelectionPreserved": true
+          },
+          "recordedChecks": [
+            {
+              "name": "localized mobile instructions are readable without implicit globe movement",
+              "pass": true
+            },
+            {
+              "name": "trusted Show controls closes help and focuses a real enabled canonical control",
+              "pass": true
+            },
+            {
+              "name": "finite Booky cue respects normal Stop or reduced motion",
+              "pass": true
+            },
+            {
+              "name": "only the later real user zoom changes the canonical camera pose",
+              "pass": true
+            },
+            {
+              "name": "actual WebGL loss shows current unavailable help without contradictory context tips",
+              "pass": true
+            },
+            {
+              "name": "Search remains usable and Show controls is disabled while the globe is unavailable",
+              "pass": true
+            },
+            {
+              "name": "real context restoration clears unavailable guidance and retains canonical owners",
+              "pass": true
+            },
+            {
+              "name": "Booky route progress preferences and canonical selection remain exact",
+              "pass": true
+            }
+          ],
+          "contractNamedImageCount": 3
+        }
+      ],
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/playwright.config.mjs",
+          "sha256": "225c5e5eb66533a5fa1e6079023df9fe3bae3dcca71115c4a34849aa4a002b95"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/run.mjs",
+          "sha256": "4cea4986046841ed49cdcd2898e4590a590d8324754fadeb38279326be05cce8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/bind.mjs",
+          "sha256": "c23aed3d96939a2da9c9ed4ab6f84bea1d1be83fb68262c00639545917d3ec0a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/canonical-fixture.mjs",
+          "sha256": "48b1f4bb39dbe454ae3697b0aef52127f388f776356f4285b67ec42116c7f8d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/globe-guidance.spec.mjs",
+          "sha256": "123161a5d4e3fce0a45ee373f88b58c7ac334d74c33705ef661275b08894160d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/prefix-provenance.json",
+          "sha256": "5bb1809e12ee4a476217f49b390a61c923c92a9c4532dc151b38f025cc8332f0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/observer-amendment.json",
+          "sha256": "5bb1809e12ee4a476217f49b390a61c923c92a9c4532dc151b38f025cc8332f0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/authorized-source.json",
+          "sha256": "e5d45d965cdef0a39bb3fec3cf4e9105eaa1ec5c7bb2065288a2ad60e39472b3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/execution-start.json",
+          "sha256": "0727af1fef4f59c08b4259e011a1ae6ee9caf68f76670e0fa292636084e9722f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/dirty.diff",
+          "sha256": "b31a8a9bdda0206118997b7a1b380e39e594747ec397c3434bcb0dae14b555cd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/preflight-start.json",
+          "sha256": "ebe1e4794436e17d82b708a1253cd715075e2b4d06ec8f858ba885a9b3f864b3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/preflight-result.json",
+          "sha256": "a03575dcbb4d04e1b543a97efa43febf0095159de46bee1c5ee2c36b8daaab7d"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/preflight-stdout.log",
+          "sha256": "5af2ed5fe1506709489fd04fd2b26d37e6d529f8989dfd00ec4b1d3a045b5943"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/preflight-stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/App.tsx",
+          "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "5d5a02d13aab722c9de0708fee91da23bf3ebf202c2522684eda99ad42c4fbce"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "b15908803b1dd47ff9ac2848a4d62afc5d526c90b2b86adff296a5b28fc87360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyGlobeSupport.test.ts",
+          "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyWalk.test.ts",
+          "sha256": "86db777abdcd7d73e306f7fd658abe76110e68b142cd72fe74b574a8c9fc4259"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "f5205b36bf9625f30ba01324b223cff7ee1cbcc277f042a6db92e420afc59e02"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/planetMascot.test.ts",
+          "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/planetMascotRoutes.ts",
+          "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "9b224ed74095a6ea70b8e9ec880dbaee1548b36676d9c060bfd0da6285af9506"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/runtime-inputs/tests/pwa/booky-globe-guidance.spec.mjs",
+          "sha256": "48b1f4bb39dbe454ae3697b0aef52127f388f776356f4285b67ec42116c7f8d5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/attachments/booky-globe-guidance-source-evidence-69879b87390d3a02c3d9d399735b209fe5da6117.json",
+          "sha256": "67368e1e220c7aff3a57d99d208cd98fa99013d3ec2242e032f3440c6eadfe0a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance.json",
+          "sha256": "67368e1e220c7aff3a57d99d208cd98fa99013d3ec2242e032f3440c6eadfe0a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+          "sha256": "9b94b80242cfd0e4c9dad1076758b8d1d07f982c4ad6a5fd32e7f47f109df930"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+          "sha256": "7f1f0c8b31c12af04ab181f862390016e7f3b7a4d88fddca15734e2832e1f8b4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-unavailable.png",
+          "sha256": "4a309b875b99e42c9f604def482e7f8032fdd3e3969f2a63ec63944c66d9868f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/attachments/booky-globe-guidance-source-evidence-48471d1f60e761e179b79dba62733f4aced4004b.json",
+          "sha256": "6e0d6012c77debf17afc40d9821c5bf3d42a180bd614f2dc9e3d99b8b92bb95a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance.json",
+          "sha256": "6e0d6012c77debf17afc40d9821c5bf3d42a180bd614f2dc9e3d99b8b92bb95a"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+          "sha256": "74f1b6539c3dcea7db46bfbbe7a2b470c0847e95a777561a5eff8816dc6b1ce6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-controls.png",
+          "sha256": "8eaa096a9d9ca5a6e4a0a0f8ee2352f3f57fb15f4ab7a4e2341abe3c32c9efb5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/a7/artifacts/globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-unavailable.png",
+          "sha256": "423a9fb6c4199dffbea4e7c2657866ea06646e7cd6a737c171073eabae792207"
+        }
+      ],
+      "scope": "Full RU/EN globe guidance diagnostic with controlled RU unsafe reservation regression."
+    }
+  ],
+  "amendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/draft/globe-guidance.patch",
+      "sha256": "bfbcfcfc2ad1c0c8ca1ccdd95ee204edf6e1b2f6cf1be9249fcb7c26e56dd35f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/draft/source-bindings.json",
+      "sha256": "06038b48335d6a8b13c4fdde456990359230cb866045049119896b383055aeae"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/globe-unavailable-amendment/globe-unavailable.patch",
+      "sha256": "3eb5803b60d8bb7b775558a93a8d90afb697fb147b9b52e96639763d1f9cc6ef"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/globe-unavailable-amendment/source-bindings.json",
+      "sha256": "15dd5134701de8310c451c1fd01eca8ee33a72c08400c45a067f9869e9a38973"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/runtime-fixes/still-pointing-position.json",
+      "sha256": "0ab050f4f8872e53ad48fd28da39cd23ecac3135bf19908780872943562257b1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/runtime-fixes/top-inset-path.json",
+      "sha256": "dfef03f4ce7082e82f44bacdb1f166799cf1dea1a7442a1409ad6cabdf58edca"
+    }
+  ],
+  "limitations": [
+    "Bound a1 was superseded before any preflight or browser execution and is not counted as a failed test. Actual executed attempts retain their original whole-case outcomes.",
+    "The a2 EN position jump is a reproduced runtime bug; RU Search state before help collapse was unrecorded, so no RU Search product bug is inferred.",
+    "Only recorded flags and check data are preserved as subobservations. Passing earlier assertions or diagnostic captures do not replace a passing whole case or final committed-source validation.",
+    "Historical D201 diagnostic and checkpoint-guard chains are not copied. No D202 unit-startup or checkpoint-guard failure is invented.",
+    "Browser loss is API-initiated WEBGL_lose_context on the actual canonical renderer. Drag/pinch execution, stale callback races, native lifecycle, installed-device, full accessibility and stage acceptance remain unclaimed.",
+    "Formal browser-a1 remains RU failed/EN passed. Original source manifest and six check inputs are preserved byte-exact in the initial freeze archive.",
+    "a4/a5 use explicit read-only bundle instrumentation and do not claim full-case acceptance. a6 RU remains failed despite passing earlier approach/Stop assertions; a7 passes the effective controlled cutoff check.",
+    "The supplemental 17-case walking unit run used the pre-cleanup source hashes recorded in its provenance. It is not counted as the final 66-case formal run."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "retainedEarlierSameTaskHistory": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/post-formal-a1/initial-evidence/diagnostic-history.json",
+    "sha256": "8e361abb75c37aa21578736020e8184607efa0277601cfd6d89337db8f16226c"
+  },
+  "initialFreezeArchive": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/post-formal-a1/freeze-archive.json",
+    "sha256": "f4b778b4cea14c3e2031b113f72af95e67b384a8d526d90d91b562bdeeda7607"
+  },
+  "formalA1Provenance": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/post-formal-a1/provenance-draft.json",
+    "sha256": "520f7ba23052024602d3de8b7ee428eb6d9ada2eaccf383f824eb62e9e9202c4"
+  },
+  "supplementalUnitProvenance": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/runtime-fixes/top-inset-path.json",
+    "sha256": "dfef03f4ce7082e82f44bacdb1f166799cf1dea1a7442a1409ad6cabdf58edca"
+  }
+}

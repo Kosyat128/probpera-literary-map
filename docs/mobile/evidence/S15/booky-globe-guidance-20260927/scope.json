@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "description": "Localized adult mobile globe guidance explains drag, pinch, country selection and existing zoom/reset controls, with an explicit guarded focus handoff and finite companion cue. Known canonical globe display loss receives truthful draft RU/EN help without contradictory context tips; existing Search and Collection remain available. The declared browser scope uses trusted product touches and API-initiated real WebGL loss/restoration, not native lifecycle equivalence or drag/pinch execution. Specification 12 binds the gesture-help role; only S15.PLANETKA-005 and S15.UX-006 receive bounded known display-loss evidence, with all statuses unchanged. The revised planned target path may continue through reserved-top-only movement only when its entire unchanged path remains inside current margins; unsafe reservation changes must still retire it. Physical viewport and stale-target cancellation remain in scope.",
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyWalk.test.ts",
+    "src/host/bookyWalk.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/host/useBookyWalk.ts"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/host/bookyGlobeSupport.ts",
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "unitFiles": [
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts"
+  ],
+  "expectedUnitTests": 66,
+  "unitValidation": "focused-mascot-controller-globe-support-and-walking-path-guard",
+  "browserFiles": [
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "expectedBrowserTests": 2,
+  "expectedImages": 6,
+  "browserTestTitles": [
+    "Booky mobile globe guidance ru",
+    "Booky mobile globe guidance en"
+  ],
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "flags": [
+        "mobileGuidanceVerified",
+        "trustedControlsFocusVerified",
+        "finiteCuePolicyVerified",
+        "realZoomOnlyVerified",
+        "realGlobeLossVerified",
+        "unavailableSearchGateVerified",
+        "contextRestorationVerified",
+        "preferencesAndSelectionPreserved",
+        "reservedTopCutoffVerified"
+      ]
+    },
+    {
+      "scenario": "booky-mobile-globe-guidance-en",
+      "flags": [
+        "mobileGuidanceVerified",
+        "trustedControlsFocusVerified",
+        "finiteCuePolicyVerified",
+        "realZoomOnlyVerified",
+        "realGlobeLossVerified",
+        "unavailableSearchGateVerified",
+        "contextRestorationVerified",
+        "preferencesAndSelectionPreserved"
+      ]
+    }
+  ],
+  "requiredCaptureValues": [
+    {
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "values": {
+        "apiInitiatedWebGlLoss": true,
+        "nativeLifecycleEquivalent": false,
+        "touchOnlyProductActions": true,
+        "controlledLayoutFaultInjected": true
+      }
+    },
+    {
+      "scenario": "booky-mobile-globe-guidance-en",
+      "values": {
+        "apiInitiatedWebGlLoss": true,
+        "nativeLifecycleEquivalent": false,
+        "touchOnlyProductActions": true,
+        "controlledLayoutFaultInjected": false
+      }
+    }
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "observation": "globeGuidance",
+      "checks": [
+        "localized mobile instructions are readable without implicit globe movement",
+        "trusted Show controls closes help and focuses a real enabled canonical control",
+        "finite Booky cue respects normal Stop or reduced motion",
+        "only the later real user zoom changes the canonical camera pose",
+        "actual WebGL loss shows current unavailable help without contradictory context tips",
+        "Search remains usable and Show controls is disabled while the globe is unavailable",
+        "real context restoration clears unavailable guidance and retains canonical owners",
+        "Booky route progress preferences and canonical selection remain exact",
+        "a controlled reserved top cutoff stops a fresh target approach without replay"
+      ]
+    },
+    {
+      "scenario": "booky-mobile-globe-guidance-en",
+      "observation": "globeGuidance",
+      "checks": [
+        "localized mobile instructions are readable without implicit globe movement",
+        "trusted Show controls closes help and focuses a real enabled canonical control",
+        "finite Booky cue respects normal Stop or reduced motion",
+        "only the later real user zoom changes the canonical camera pose",
+        "actual WebGL loss shows current unavailable help without contradictory context tips",
+        "Search remains usable and Show controls is disabled while the globe is unavailable",
+        "real context restoration clears unavailable guidance and retains canonical owners",
+        "Booky route progress preferences and canonical selection remain exact"
+      ]
+    }
+  ],
+  "requiredVisualFilenames": [
+    "booky-globe-guidance-ru-help.png",
+    "booky-globe-guidance-ru-controls.png",
+    "booky-globe-guidance-ru-unavailable.png",
+    "booky-globe-guidance-en-help.png",
+    "booky-globe-guidance-en-controls.png",
+    "booky-globe-guidance-en-unavailable.png"
+  ],
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "expectedSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.test.ts",
+      "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.ts",
+      "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+    },
+    {
+      "path": "src/host/bookyWalk.test.ts",
+      "sha256": "86db777abdcd7d73e306f7fd658abe76110e68b142cd72fe74b574a8c9fc4259"
+    },
+    {
+      "path": "src/host/bookyWalk.ts",
+      "sha256": "f5205b36bf9625f30ba01324b223cff7ee1cbcc277f042a6db92e420afc59e02"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+    },
+    {
+      "path": "src/host/useBookyWalk.ts",
+      "sha256": "9b224ed74095a6ea70b8e9ec880dbaee1548b36676d9c060bfd0da6285af9506"
+    },
+    {
+      "path": "tests/pwa/booky-globe-guidance.spec.mjs",
+      "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+    }
+  ],
+  "requireDiagnosticHistory": true,
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "requirementEvidenceTargets": [
+    "PLANETKA-005",
+    "UX-006"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-005",
+    "S15.UX-006"
+  ],
+  "priorBindings": {
+    "checkpoint": "400a4bc99054faa56f62df50c980e7f62d3f81fe",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/result.json",
+      "sha256": "1f0080b9725b044cde2198cb9e530291df50e3cb862a45083df855e65c2767b3"
+    },
+    "sourceCommit": "29531f79627d872c6948150dd02dd8132fcafcbc",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/source-manifests/d359aa1ac857551f.json",
+      "sha256": "d359aa1ac857551f0e5e8f44a215992a661b586a3c0ba04bfc72a92c3ec25709",
+      "fileCount": 1657
+    },
+    "pwa": {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/pwa-a1/result.json",
+      "sha256": "263ea01e7cf47efa06a2a841baddd3d037abfe72836ab80e45a94218832548d5"
+    },
+    "android": {
+      "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/android-a1/result.json",
+      "sha256": "6494afb712c287069c90dd7d71e84b8f257d107b0c14a59bf7151949a2e3f466"
+    },
+    "status": "D201_VERIFIED_CHECKPOINT"
+  },
+  "runtimeAmendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/draft/globe-guidance.patch",
+      "sha256": "bfbcfcfc2ad1c0c8ca1ccdd95ee204edf6e1b2f6cf1be9249fcb7c26e56dd35f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/draft/source-bindings.json",
+      "sha256": "06038b48335d6a8b13c4fdde456990359230cb866045049119896b383055aeae"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/globe-unavailable-amendment/globe-unavailable.patch",
+      "sha256": "3eb5803b60d8bb7b775558a93a8d90afb697fb147b9b52e96639763d1f9cc6ef"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/globe-unavailable-amendment/source-bindings.json",
+      "sha256": "15dd5134701de8310c451c1fd01eca8ee33a72c08400c45a067f9869e9a38973"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/runtime-fixes/still-pointing-position.json",
+      "sha256": "0ab050f4f8872e53ad48fd28da39cd23ecac3135bf19908780872943562257b1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/runtime-fixes/top-inset-path.json",
+      "sha256": "dfef03f4ce7082e82f44bacdb1f166799cf1dea1a7442a1409ad6cabdf58edca"
+    }
+  ],
+  "historicalDialogueInputs": [
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00"
+    },
+    {
+      "path": "src/host/bookySupport.test.ts",
+      "sha256": "670124b3ab396ed9902238f646c545c389cd50a6444ccc762e4c90e044d68eca"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.test.ts",
+      "sha256": "3e0a2dc4af290d8c60899811728b2dc902207c826c10da4993c8e1c98bf962f9"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-dialogue-drafts.mjs",
+      "sha256": "1445f1869adb7c96c1119ad423606b6f65a132315edad00b9c4858a420ad0f55"
+    }
+  ],
+  "directSpecificationEvidence": [
+    {
+      "path": "docs/mobile/requirements/v12/12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+      "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+      "section": "1",
+      "scope": "Adult helper explains globe rotation, zoom and country selection only; not full journey, child or approved-dialogue acceptance."
+    }
+  ],
+  "newUiCopyStatus": {
+    "localeCount": 2,
+    "status": "draft",
+    "historicalDialogueInventoryMember": false,
+    "humanReviewed": false,
+    "childApproved": false,
+    "narrationApproved": false,
+    "releaseReady": false
+  },
+  "browserContract": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/canonical-contract.json",
+    "sha256": "bbd64ad93846545eae2d61997e14f6ab79ccddb56de9c03dfaffe873607b4fc4"
+  },
+  "canonicalPromotion": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-review/canonical-promotion-2.json",
+    "sha256": "975ea04ac115f22d97b6e2add677b5ffdadf68680008f46bf6b0ab442bc90a0a"
+  },
+  "nativeLifecycleEquivalent": false,
+  "dragPinchExecutionCovered": false,
+  "staleFocusCallbackIntegrationCovered": false,
+  "searchCloseScope": "Record Search state/focus across explicit help collapse; issue one real toggle only if still open. Direct input-to-toolbar toggle behavior not separately claimed.",
+  "previousFreeze": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/post-formal-a1/freeze-archive.json",
+    "sha256": "f4b778b4cea14c3e2031b113f72af95e67b384a8d526d90d91b562bdeeda7607"
+  },
+  "historicalProvenanceScope": "The inventory records and historical support source stay unchanged. Edited Controls/routes whole-file source bindings require separate D203 provenance repair; current globe UI copy remains unreviewed and outside that inventory.",
+  "previousFinalizeHelper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/post-formal-a1/finalize-helper-snapshot.json",
+    "sha256": "10254da2d2d47c4c25ba7f723765340ab944cce5e80aa51cd7ff4429f4224ffe"
+  }
+}

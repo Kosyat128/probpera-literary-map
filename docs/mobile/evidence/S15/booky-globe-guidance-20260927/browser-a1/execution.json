@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-globe-guidance-20260927/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-27T01:36:59.650Z",
+  "exitCode": 1,
+  "durationMs": 46215,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/browser-a1/stdout.log",
+    "bytes": 4297,
+    "sha256": "69e9ee11fd3797e1eb24b70cfa40136b4fc4e6842adb37aa2fab3178af08af8d"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/browser-a1/stderr.log",
+    "bytes": 327,
+    "sha256": "535f474ab0e9b5de11073faa1227a0792c018bed448b8411153b663749932a1f"
+  }
+}

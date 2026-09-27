@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T02:16:09.543Z",
+  "pass": true,
+  "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/source-manifests/a4ebc81c2f915225.json",
+    "sha256": "a4ebc81c2f9152258b838c9bbd46e5d51537a7ab170cf2354fbc769091131a68",
+    "fileCount": 1660
+  },
+  "inspectedCount": 6,
+  "totalCapturedCount": 6,
+  "scope": "Direct review of all six final RU/EN mobile globe-guidance captures: localized help, settled control handoff and known globe-display loss. Every configured capture is authenticated and directly reviewed.",
+  "limitations": [
+    "This review directly inspects 6 of 6 final captures.",
+    "Static images cannot establish trusted input, focus handoff, finite cues, camera movement or real WebGL loss/restoration; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/final-visual-receipt.json",
+    "sha256": "c4f84cb90f3dcd0e4beed864c89f15bfa8344fcc3c9d25ab340b80c6da0a82ef"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/browser-a2/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-help.png",
+      "sha256": "f3b6c4abacdd413dc0be32ca30c48dcdd729040dd7d1ed42d181f4fea37f0b69",
+      "width": 390,
+      "height": 844,
+      "bytes": 350446,
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "framing": "Actual App mobile globe instructions and explicit localized Show controls action; reading help does not move or select the canonical globe.",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The Russian Show controls label fits entirely inside its button, and the final explanation wraps within the card. The Booky title, Stop and close controls remain readable.",
+        "The card is scrolled: an earlier instruction line is partly hidden beneath the sticky heading and the drag/pinch introduction is outside this frame. This capture does not show the complete guidance text."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/browser-a2/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-controls.png",
+      "sha256": "9a147016b858aadb3666167bf769c82e44eaa9ca91dc3c9e8604f7dd620dba34",
+      "width": 390,
+      "height": 844,
+      "bytes": 398044,
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "framing": "Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The settled view has no open help card. Zoom, automatic rotation, reset and source controls fit across the visible toolbar, with Booky and its tool buttons above it.",
+        "This settled frame does not depict the transient approach or the trusted Stop activation. Their occurrence and the guarded focus handoff are established by the matching runtime trace and assertions."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/browser-a2/booky-globe-guidance-Booky-mobile-globe-guidance-ru/booky-globe-guidance-ru-unavailable.png",
+      "sha256": "de349faa7d7f896e2fe39cc3100ce5805f41171a6d28d09ee540e7c35c683d26",
+      "width": 390,
+      "height": 844,
+      "bytes": 127072,
+      "scenario": "booky-mobile-globe-guidance-ru",
+      "framing": "Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The unavailable explanation wraps inside the card, and the existing orange globe recovery button is visible below it against the blank globe area.",
+        "The sticky Booky heading partially covers the first line of the unavailable title at this scroll position. Search/Collection activation and real context restoration are not shown in this static frame and rely on the formal assertions."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/browser-a2/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-help.png",
+      "sha256": "743b239292c16b247eb61016a5361eb18e8c1749e3c064f190ce903c2f171fc2",
+      "width": 320,
+      "height": 844,
+      "bytes": 283968,
+      "scenario": "booky-mobile-globe-guidance-en",
+      "framing": "Actual App mobile globe instructions and explicit localized Show controls action; reading help does not move or select the canonical globe.",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "At320px the English Show globe controls button, final explanation and zoom/reset paragraph fit inside the card; Mr. Booky, Stop and close remain legible.",
+        "The earlier drag/pinch instructions are above this scrolled frame, so this image establishes only the visible lower section and action framing."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/browser-a2/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-controls.png",
+      "sha256": "8eaa096a9d9ca5a6e4a0a0f8ee2352f3f57fb15f4ab7a4e2341abe3c32c9efb5",
+      "width": 320,
+      "height": 844,
+      "bytes": 332624,
+      "scenario": "booky-mobile-globe-guidance-en",
+      "framing": "Settled actual-App globe controls after the finite Booky cue completed or was explicitly stopped. Real enabled control focus and the transient cue are proved by the preceding DOM and trace observations, not by this settled image.",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "At320px the settled zoom, pause, reset and source toolbar fits within the viewport. The companion, icon tools and muted walk control are separately visible above it.",
+        "No transient pointing cue is depicted here. Reduced-motion stillness, finite completion and guarded control focus depend on the matching runtime assertions."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/browser-a2/booky-globe-guidance-Booky-mobile-globe-guidance-en/booky-globe-guidance-en-unavailable.png",
+      "sha256": "423a9fb6c4199dffbea4e7c2657866ea06646e7cd6a737c171073eabae792207",
+      "width": 320,
+      "height": 844,
+      "bytes": 91379,
+      "scenario": "booky-mobile-globe-guidance-en",
+      "framing": "Actual canonical WebGL context is lost through the disclosed test extension; current localized unavailable explanation replaces the ordinary context tip, with independent Search and Collection actions retained.",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex /root/calm_motion_browser",
+      "findings": [
+        "The English explanation about Search, Collection and offline availability remains readable and wraps within the card against the blank globe area.",
+        "The beginning of the unavailable heading is hidden beneath the sticky Booky header; only its final word is fully visible. This is a captured scroll/framing limitation and does not establish that the complete title is visible."
+      ]
+    }
+  ],
+  "releaseReady": false
+}

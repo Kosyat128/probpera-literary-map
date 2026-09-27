@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76803812,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/pwa-a1-copy-verification.json",
+    "sha256": "2e158c61b8b1a049e0c189e0cf911d8c4e25000126194940ae5375a163e4704d"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/pwa-3d3e0760/artifact.json",
+    "sha256": "cd5df8e1a4da09f9a244ca460ac74cb26511c055f035f4f078435c3d513139cc"
+  }
+}

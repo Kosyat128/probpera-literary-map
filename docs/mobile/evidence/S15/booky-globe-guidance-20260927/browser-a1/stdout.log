@@ -1,0 +1,48 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-globe-guidance.spec.mjs:408:35 › Booky mobile globe guidance ru
+  1) tests\pwa\booky-globe-guidance.spec.mjs:408:35 › Booky mobile globe guidance ru ───────────────
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-booky-target-action="globe-controls"]')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" with timeout 5000ms
+      - waiting for locator('[data-booky-target-action="globe-controls"]')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      426 |     await expect.poll(async()=>{const current=await guidanceState(page);return current.focusedConnected&&current.focusedCanonical&&!current.focusedDisabled&&['zoom-in','zoom-out','reset'].includes(current.focusedControl);},{intervals:[16,32,64],timeout:2000,message:'existing enabled canonical globe control receives guarded focus'}).toBe(true);
+      427 |     o.focus=await guidanceState(page);const focused=page.locator('#atlas .globe-controls [data-globe-control="'+o.focus.focusedControl+'"]');o.focusGeometry=await input.geometry(focused);expect(o.focusGeometry.box.width).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.box.height).toBeGreaterThanOrEqual(44);expect(o.focusGeometry.hits.every(hit=>hit.inside)).toBe(true);retained(await actual(page),baseGlobe);
+    > 428 |     await expect(page.locator('[data-booky-target-action="globe-controls"]')).toHaveCount(1);
+          |                                                                               ^
+      429 |     if(language==='ru'){
+      430 |       await expect(page.locator('[data-booky-walk-stop]')).toBeVisible();await input.tap(page.locator('[data-booky-walk-stop]'),'Stop finite globe-controls approach',{moving:true});
+      431 |       await expect(page.locator('[data-booky-target]')).toHaveCount(0);await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','rest');await page.waitForTimeout(1900);await expect(page.locator('[data-booky-target]')).toHaveCount(0);o.finiteCuePolicy='normal-motion approach stopped by a genuine trusted Stop';
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-globe-guidance.spec.mjs:428:79
+
+    attachment #1: diagnostic-failure-ru (image/png) ───────────────────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-globe-guidance-evidence\browser-a1\booky-globe-guidance-Booky-mobile-globe-guidance-ru\attachments\diagnostic-failure-ru-6ff10fc44d838a1496d1884d1f89ea5c2fed08f3.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: booky-globe-guidance-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-globe-guidance-evidence\browser-a1\booky-globe-guidance-Booky-mobile-globe-guidance-ru\attachments\booky-globe-guidance-source-evidence-fa6e3ca9712dfec97b40b59952283e5ea7650efd.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-globe-guidance-evidence\browser-a1\booky-globe-guidance-Booky-mobile-globe-guidance-ru\error-context.md
+
+
+
+
+[2/2] tests\pwa\booky-globe-guidance.spec.mjs:408:35 › Booky mobile globe guidance en
+  1 failed
+    tests\pwa\booky-globe-guidance.spec.mjs:408:35 › Booky mobile globe guidance ru ────────────────
+  1 passed (45.5s)

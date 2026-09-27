@@ -1,0 +1,68 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+const root='C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work';
+assert.equal((await fs.realpath('.')).replaceAll('\\','/'),root);
+const folder='docs/mobile/evidence/S15/booky-globe-guidance-20260927';
+const checkpoint='400a4bc99054faa56f62df50c980e7f62d3f81fe';
+const refreeze=process.argv[3]==='--refreeze';
+assert.deepEqual(process.argv.slice(2),refreeze?[checkpoint,'--refreeze']:[checkpoint]);
+const sha=b=>createHash('sha256').update(b).digest('hex'),json=v=>JSON.stringify(v,null,2)+'\n';
+const read=async p=>JSON.parse(await fs.readFile(p,'utf8'));
+const ref=async p=>({path:p,sha256:sha(await fs.readFile(p))});
+const verify=async r=>assert.equal((await ref(r.path)).sha256,r.sha256,r.path);
+const git=args=>execFileSync('git',['-c','safe.directory='+root,'-c','core.quotePath=false',...args],{encoding:'utf8',windowsHide:true}).trim();
+assert.equal(git(['rev-parse','HEAD']),checkpoint);
+let previousFreeze=null;
+if(refreeze){
+ previousFreeze={"path":"D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/post-formal-a1/freeze-archive.json","sha256":"f4b778b4cea14c3e2031b113f72af95e67b384a8d526d90d91b562bdeeda7607"};await verify(previousFreeze);const archive=await read(previousFreeze.path);
+ assert.equal(archive.status,'INITIAL_D202_FREEZE_ARCHIVED_UNCHANGED');assert.equal(archive.checkpoint,checkpoint);
+ assert.equal((await ref(folder+'/entry.json')).sha256,archive.entry.sha256,'Only the explicitly archived initial entry may be replaced');
+ for(const item of [...archive.inputSnapshots,...archive.evidenceSnapshots]){await verify(item);assert.equal(item.sha256,item.original.sha256);}
+ for(const run of archive.formalRuns)for(const item of [run.result,run.execution,run.rawReport,run.stdout,run.stderr].filter(Boolean))await verify(item);
+ const baseline=archive.evidenceSnapshots.find(item=>item.original.path===folder+'/build-baseline.json');assert.ok(baseline);await verify(baseline.original);
+}else for(const name of ['entry.json','build-baseline.json'])await assert.rejects(fs.stat(folder+'/'+name),{code:'ENOENT'});
+const scope=await read(folder+'/scope.json');
+assert.equal(scope.sourceFrozen,true,'Finalize the source and scope before configure');
+if(refreeze)assert.deepEqual(scope.previousFreeze,previousFreeze);
+assert.equal(scope.browserContractComplete,true,'Finalize browser cases, images and flags before configure');
+assert.deepEqual(scope.expectedSourceInputs.map(item=>item.path).sort(),[...scope.changedPaths,...scope.newSourcePaths].sort());
+for(const item of scope.expectedSourceInputs)await verify(item);
+for(const item of [...scope.historicalDialogueInputs,...scope.directSpecificationEvidence,...scope.runtimeAmendmentProvenance])await verify(item);
+assert.equal(scope.browserTestTitles.length,scope.expectedBrowserTests);assert.equal(new Set(scope.browserTestTitles).size,scope.expectedBrowserTests);
+assert.ok(Number.isInteger(scope.expectedUnitTests)&&scope.expectedUnitTests>0);assert.ok(scope.unitFiles.length>0);
+assert.ok(scope.changedPaths.length>0&&scope.browserFiles.length>0);
+assert.ok(Number.isInteger(scope.expectedBrowserTests)&&scope.expectedBrowserTests>0);
+assert.ok(Number.isInteger(scope.expectedImages)&&scope.expectedImages>0);
+const previousCheckpointResult=await ref('docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/result.json');
+assert.equal(previousCheckpointResult.sha256,'1f0080b9725b044cde2198cb9e530291df50e3cb862a45083df855e65c2767b3');
+const prior=await read(previousCheckpointResult.path);assert.equal(prior.pass,true);assert.equal(prior.releaseReady,false);
+assert.equal(prior.sourceCommit,'29531f79627d872c6948150dd02dd8132fcafcbc');
+const state=await read('docs/mobile/AUTOPILOT_STATE.json');assert.equal(state.headSha,prior.sourceCommit);
+const cache=state.verificationCache.s15BookyWriterFilterRecovery;assert.deepEqual({path:cache.path,sha256:cache.sha256},previousCheckpointResult);
+git(['merge-base','--is-ancestor',prior.sourceCommit,checkpoint]);
+assert.equal(prior.sourceManifest.sha256,'d359aa1ac857551f0e5e8f44a215992a661b586a3c0ba04bfc72a92c3ec25709');
+await verify(prior.sourceManifest);const baseline=await read(prior.sourceManifest.path);assert.equal(baseline.files.length,prior.sourceManifest.fileCount);
+const roots=['src','scripts','tests','apps','public','data','index.html','native.html','package.json','package-lock.json','tsconfig.json','vite.config.ts','vite.native.config.ts','vite.pwa.config.ts','capacitor.config.json'];
+const rows=git(['diff','--name-status',checkpoint,'--',...roots]).split(/\r?\n/u).filter(Boolean).map(row=>row.split('\t'));
+assert.ok(rows.every(row=>row.length===2&&['M','A'].includes(row[0])),'Unexpected source removal or rename');
+const changedPaths=rows.filter(([status])=>status==='M').map(([,p])=>p).sort();
+const newSourcePaths=[...rows.filter(([status])=>status==='A').map(([,p])=>p),...git(['ls-files','--others','--exclude-standard','--',...roots]).split(/\r?\n/u).filter(Boolean)].sort();
+assert.deepEqual(changedPaths,[...scope.changedPaths].sort());assert.deepEqual(newSourcePaths,[...scope.newSourcePaths].sort());
+const protectedFiles=baseline.files.filter(r=>!changedPaths.includes(r.path));
+const supplementalTestInputs=prior.supplementalTestInputs,supplementalBrowserInputs=prior.supplementalBrowserInputs,supplementalArchiveInputs=prior.supplementalArchiveInputs;
+for(const r of [...protectedFiles,...supplementalTestInputs,...supplementalBrowserInputs,...supplementalArchiveInputs])await verify(r);
+const supplementalArchiveGitIdentity=[];
+for(const r of supplementalArchiveInputs){const blob=execFileSync('git',['-c','safe.directory='+root,'show',checkpoint+':'+r.path],{windowsHide:true});const current=await fs.readFile(r.path);assert.equal(blob.toString('utf8').replaceAll('\r\n','\n'),current.toString('utf8').replaceAll('\r\n','\n'));supplementalArchiveGitIdentity.push({path:r.path,checkpoint,gitBlobSha256:sha(blob),checkedOutSha256:r.sha256,lineEndingOnly:!blob.equals(current)});}
+const sourcePaths=[...new Set([...baseline.files.map(r=>r.path),...newSourcePaths,...scope.unitFiles,...scope.browserFiles])].sort();
+assert.equal(sourcePaths.length,baseline.files.length+newSourcePaths.length);
+const runtimeRequired=[...changedPaths,...newSourcePaths].filter(p=>p.startsWith('src/')&&!/\.(test|spec)\./u.test(p));
+const checkpointFiles=await Promise.all(['AGENTS.md',...['AUTOPILOT_STATE.json','DECISIONS.md','STATUS.md','BLOCKERS.md','NEXT_CODEX_PROMPT.txt','REQUIREMENTS_TRACEABILITY.json','REQUIREMENTS_TRACEABILITY.csv'].map(n=>'docs/mobile/'+n)].map(ref));
+const buildBaseline={checkpoint};
+for(const [kind,key]of [['pwa','priorPwa'],['android','priorAndroid']]){await verify(prior[kind]);const build=await read(prior[kind].path);assert.equal(build.pass,true);assert.equal(build.sourceCommit,prior.sourceCommit);assert.equal(build.releaseReady,false);buildBaseline[key]={...prior[kind],buildId:build.buildId,sourceCommit:build.sourceCommit};}
+const entry={schemaVersion:1,recordedAt:new Date().toISOString(),stage:'S15',checkpoint,previousFreeze,previous:previousCheckpointResult.path,previousCheckpointResult,previousRuntimeResult:previousCheckpointResult,priorSourceManifest:prior.sourceManifest,scopeConfiguration:await ref(folder+'/scope.json'),checkpointFiles,changedPaths,newSourcePaths,newImplementationFiles:newSourcePaths.filter(p=>p.startsWith('src/')&&!/\.(test|spec)\./u.test(p)),currentSourceInputs:await Promise.all([...changedPaths,...newSourcePaths].map(ref)),sourceInputCount:sourcePaths.length,protectedInputCount:protectedFiles.length,runtimeRequired,supplementalTestInputs,supplementalBrowserInputs,supplementalArchiveInputs,supplementalArchiveGitIdentity,unitFiles:scope.unitFiles,browserFiles:scope.browserFiles,browserTestTitles:scope.browserTestTitles,browserSelection:"exact-title-suffix",expectedUnitTests:scope.expectedUnitTests,expectedBrowserTests:scope.expectedBrowserTests,expectedImages:scope.expectedImages,scope:scope.description,runtimeWiringImplemented:true,characterJourneyNodeImplemented:false,childApproved:false,stageAccepted:false,releaseReady:false};
+if(refreeze){assert.deepEqual(await read(folder+'/build-baseline.json'),buildBaseline);const archive=await read(previousFreeze.path);assert.equal((await ref(folder+'/entry.json')).sha256,archive.entry.sha256);}
+else await fs.writeFile(folder+'/build-baseline.json',json(buildBaseline),{flag:'wx'});
+await fs.writeFile(folder+'/entry.json',json(entry),{flag:refreeze?'w':'wx'});
+console.log(json({entry:await ref(folder+'/entry.json'),sourceInputs:sourcePaths.length,protectedInputs:protectedFiles.length,changed:changedPaths.length,added:newSourcePaths.length,unitFiles:scope.unitFiles.length,browserCases:scope.expectedBrowserTests,images:scope.expectedImages}));

@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T02:11:04.694Z",
+  "stage": "S15",
+  "checkpoint": "400a4bc99054faa56f62df50c980e7f62d3f81fe",
+  "previousFreeze": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-globe-guidance-evidence/post-formal-a1/freeze-archive.json",
+    "sha256": "f4b778b4cea14c3e2031b113f72af95e67b384a8d526d90d91b562bdeeda7607"
+  },
+  "previous": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/result.json",
+    "sha256": "1f0080b9725b044cde2198cb9e530291df50e3cb862a45083df855e65c2767b3"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/result.json",
+    "sha256": "1f0080b9725b044cde2198cb9e530291df50e3cb862a45083df855e65c2767b3"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-writer-filter-recovery-20260927/source-manifests/d359aa1ac857551f.json",
+    "sha256": "d359aa1ac857551f0e5e8f44a215992a661b586a3c0ba04bfc72a92c3ec25709",
+    "fileCount": 1657
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/scope.json",
+    "sha256": "8eb23edacfa73a0bd9c297ecf275d420069039de8cedbeb8480661d372f3f525"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "609ec3646df4f3d63b706310997c234eb71559951e73fbdaf9373c31f4fd38f0"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "879bbef9da746480f21ee9c79900b9d252b78a00495e0d06e58fbbd9ef418ef9"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "656bcf3bf59e152910c6943ecd78a7d44fa987fbc7c35403f65321a8b51af61b"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "11bc99a9d7cb5aeceb41d61c1323f52cfbff2ffd5c78b9fc6c688796e7efb49e"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "a846749d995d65cdfebdd04a2fcaf4bd2d11f78d39c6d78f981d7c41f7a222e7"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "5c4efeca7ca74285c1c7d0498daa57200611c27a970817c0895b19ca71cd795a"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "8d016148b9a9784a3fdfb4d9339057f719ff635cabf852dedaf3f608b766ff2f"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "9a6e15d1f3ebde9019a0aab8cc413969de3e75bef8ae1ac0aa30750f8e01d065"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyWalk.test.ts",
+    "src/host/bookyWalk.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/host/useBookyWalk.ts"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/host/bookyGlobeSupport.ts",
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyGlobeSupport.ts"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "69655cb10afa97241058fcdaffe55bc3c802cf8b49a57938148641f11e460585"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b"
+    },
+    {
+      "path": "src/host/bookyWalk.test.ts",
+      "sha256": "86db777abdcd7d73e306f7fd658abe76110e68b142cd72fe74b574a8c9fc4259"
+    },
+    {
+      "path": "src/host/bookyWalk.ts",
+      "sha256": "f5205b36bf9625f30ba01324b223cff7ee1cbcc277f042a6db92e420afc59e02"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "2f7038e6549c12ce2f127001df26813ca32fa7605b8c008a4e9ea68943d55e2f"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "7de29c5e323c184f10281750863f26e91aee35750f86fb30b7a817bd8b350446"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "accf4dceb9e9a2e5104d9ca303f82148815bd49e49d40232a375ca00b0e47360"
+    },
+    {
+      "path": "src/host/useBookyWalk.ts",
+      "sha256": "9b224ed74095a6ea70b8e9ec880dbaee1548b36676d9c060bfd0da6285af9506"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.test.ts",
+      "sha256": "3696f12ddcc9ec03672d33543eaa730f5c8776f37e4bbcd6e220306c2b1277f3"
+    },
+    {
+      "path": "src/host/bookyGlobeSupport.ts",
+      "sha256": "3b54af4c87597ebd100316404153c34dbeb99431fb31a7cf0b2291094f28dc2e"
+    },
+    {
+      "path": "tests/pwa/booky-globe-guidance.spec.mjs",
+      "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+    }
+  ],
+  "sourceInputCount": 1660,
+  "protectedInputCount": 1649,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyWalk.ts",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/host/useBookyWalk.ts",
+    "src/host/bookyGlobeSupport.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "400a4bc99054faa56f62df50c980e7f62d3f81fe",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyGlobeSupport.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-globe-guidance.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky mobile globe guidance ru",
+    "Booky mobile globe guidance en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 66,
+  "expectedBrowserTests": 2,
+  "expectedImages": 6,
+  "scope": "Localized adult mobile globe guidance explains drag, pinch, country selection and existing zoom/reset controls, with an explicit guarded focus handoff and finite companion cue. Known canonical globe display loss receives truthful draft RU/EN help without contradictory context tips; existing Search and Collection remain available. The declared browser scope uses trusted product touches and API-initiated real WebGL loss/restoration, not native lifecycle equivalence or drag/pinch execution. Specification 12 binds the gesture-help role; only S15.PLANETKA-005 and S15.UX-006 receive bounded known display-loss evidence, with all statuses unchanged. The revised planned target path may continue through reserved-top-only movement only when its entire unchanged path remains inside current margins; unsafe reservation changes must still retire it. Physical viewport and stale-target cancellation remain in scope.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
