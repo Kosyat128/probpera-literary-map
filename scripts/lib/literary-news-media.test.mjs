@@ -5,7 +5,7 @@ import { PassThrough } from "node:stream";
 import { checkedNewsMediaAsset, downloadNewsMediaAsset, mediaByteHash, normalizeNewsMedia, selectNewsMedia,
   validatePreparedNewsMedia } from "./literary-news-media.mjs";
 import { checkedVkNewsUploadUrl, createPinnedVkNewsUpload } from "./literary-news-media-upload.mjs";
-import { prepareNewsPost, reconcileNewsSnapshot, dispatchNewsJob, newsPostKey } from "./literary-news-social.mjs";
+import { prepareNewsPost, reconcileNewsSnapshot, dispatchNewsJob, newsNewPostRequiresPhoto, newsPostKey } from "./literary-news-social.mjs";
 import { createNewsSocialTransport } from "./literary-news-social-transport.mjs";
 import { buildPublishedNewsFeed } from "./literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./literary-news-state.mjs";
@@ -113,17 +113,24 @@ describe("bounded media and destination rights",()=>{
 });
 
 describe("native photo delivery without duplicate creates",()=>{
-  it("enforces code-owned production policy even for historical jobs without a policy field",async()=>{
+  it("allows full-text fallback under the production policy even for stale stricter jobs",async()=>{
     expect(socialConfiguration.destinations).toHaveLength(2);
     for(const configured of socialConfiguration.destinations){
-      expect(configured.requirePhotoForNewPosts).toBe(true);expect(configured.mode).toBe("off");
-      const legacy={platform:configured.platform,id:configured.id},store=memoryStore(),key=newsPostKey(item.id,{...legacy,mode:"on"});
+      expect(configured.requirePhotoForNewPosts).toBe(false);expect(configured.mode).toBe("off");
+      const legacy={platform:configured.platform,id:configured.id,requirePhotoForNewPosts:true};
+      expect(newsNewPostRequiresPhoto(legacy)).toBe(false);
+      const store=memoryStore(),key=newsPostKey(item.id,{...legacy,mode:"on"});
       const text=await prepareNewsPost(item,snapshot,legacy.platform);
       await store.seed(key,{key,newsId:item.id,destination:legacy,prepared:text,desiredRevision:text.revision,status:"pending"});
-      const preflight=vi.fn(),fetchImpl=vi.fn(),native=createNewsSocialTransport({mode:"live",telegramToken:"fixture",vkToken:"fixture",fetchImpl});
-      expect((await dispatchNewsJob({store,key,transport:{...native,preflight},now:()=>now})).reason).toBe("new_post_requires_photo");
-      expect((await native.send({destination:{...legacy,requirePhotoForNewPosts:false},prepared:text,remoteId:null})).code).toBe("new_post_requires_photo");
-      expect(preflight).not.toHaveBeenCalled();expect(fetchImpl).not.toHaveBeenCalled();expect(await store.list("history:pacing:")).toHaveLength(0);
+      const fetchImpl=vi.fn(async url=>legacy.platform==="telegram"
+        ? Response.json({ok:true,result:{message_id:17,chat:{id:Number(legacy.id)}}})
+        : Response.json({response:{post_id:17}}));
+      const native=createNewsSocialTransport({mode:"live",telegramToken:"fixture",vkToken:"fixture",fetchImpl});
+      expect((await dispatchNewsJob({store,key,transport:{...native,preflight:vi.fn()},now:()=>now})).reason)
+        .toBe("destination_not_enabled_or_history_gap");
+      expect(await native.send({destination:{...legacy,mode:"on"},prepared:text,remoteId:null}))
+        .toMatchObject({kind:"accepted",remoteId:"17",remoteMediaKind:"text"});
+      expect(fetchImpl.mock.calls[0][0]).toContain(legacy.platform==="telegram"?"/sendMessage":"/wall.post");
     }
   });
   it.each(["held", "oversized", "revoked", "missing"])("requires a photo for a new opted-in post after %s without consuming a slot",async scenario=>{
