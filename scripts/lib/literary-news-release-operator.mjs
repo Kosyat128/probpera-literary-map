@@ -56,6 +56,24 @@ export async function verifyNewsHistoryApproval(approval, destination, items, ex
   return candidates;
 }
 
+export function summarizeNewsDeliveryHistory(rows, candidates, destination) {
+  const reviewedCandidates=new Map((Array.isArray(candidates)?candidates:[])
+    .filter(row=>typeof row?.newsId==="string"&&sha(row.revision)).map(row=>[row.newsId,row.revision]));
+  const jobs=rows.map(row=>row?.state).filter(job=>job?.destination?.platform===destination.platform
+    &&job.destination.id===destination.id);
+  const blockers=jobs.flatMap(job=>{
+    const reasons=[];
+    if(!reviewedCandidates.has(job.newsId))reasons.push("not_in_reviewed_history");
+    if(!sha(job.prepared?.textRevision))reasons.push("missing_text_revision");
+    else if(reviewedCandidates.get(job.newsId)!==job.prepared.textRevision)reasons.push("text_revision_mismatch");
+    if(job.remoteId)reasons.push("has_remote_id");
+    if(job.dispatchStartedAt)reasons.push("dispatch_started");
+    if(["ambiguous","inflight"].includes(job.status))reasons.push("ambiguous_or_inflight");
+    return reasons.length?[{newsId:typeof job.newsId==="string"?job.newsId:null,status:job.status||null,reasons}]:[];
+  });
+  return {jobCount:jobs.length,blockerCount:blockers.length,blockers:blockers.slice(0,25),truncated:blockers.length>25};
+}
+
 async function boundedText(response) {
   requireCondition(response.ok && response.body,"history_recheck_unavailable");
   const reader=response.body.getReader(),chunks=[];let bytes=0;
@@ -136,9 +154,11 @@ export async function operateNewsRelease({action,platform,expectedControlId=null
   const proposedControl={mode:"canary",canaryNewsId,vkProfile:{apiVersion:"5.199",canaryAuthorized:true}};
   if(action==="inspect") {
     const rights=await transport.preflight(destination,{control:proposedControl,requiresMedia:Boolean(prepared.media)});
+    const deliveryHistory=summarizeNewsDeliveryHistory(await store.list("post:"),approval?.history?.candidates,destination);
     return {action,sendable:false,platform,destinationId:destination.id,controlId:control.id,control:control.state,
       historyDigest:approval?.history?await newsSocialPayloadDigest(approval.history):null,
-      candidateFingerprint:await newsSocialPayloadDigest(await newsHistoryCandidates(feed.items)),prepared:{...prepared,sendable:false},rights,delivered:0};
+      candidateFingerprint:await newsSocialPayloadDigest(await newsHistoryCandidates(feed.items)),deliveryHistory,
+      prepared:{...prepared,sendable:false},rights,delivered:0};
   }
   requireCondition(approval?.canaryNewsId===canaryNewsId,"canary_not_approved");
   const candidates=await verifyNewsHistoryApproval(approval,destination,feed.items,historyDigest,now());
