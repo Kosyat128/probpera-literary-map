@@ -6,7 +6,7 @@ import reviewed from "../../data/news/reviewed.json" with {type:"json"};
 import { buildPublishedNewsFeed } from "./literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./literary-news-state.mjs";
 import { newsPostKey,newsSocialPayloadDigest,prepareNewsPost } from "./literary-news-social.mjs";
-import { NEWS_RELEASE_DESTINATIONS,newsHistoryCandidates,operateNewsRelease,recheckNewsPublicHistory,verifyTelegramCanaryPublicPost } from "./literary-news-release-operator.mjs";
+import { NEWS_RELEASE_DESTINATIONS,newsHistoryCandidates,operateNewsRelease,recheckNewsPublicHistory,summarizeNewsDeliveryHistory,verifyTelegramCanaryPublicPost } from "./literary-news-release-operator.mjs";
 import { parseNewsReleaseArguments } from "../operate-literary-news-release.mjs";
 import { normalizeNewsMedia, mediaByteHash } from "./literary-news-media.mjs";
 
@@ -69,6 +69,18 @@ describe("bounded Telegram release operator",()=>{
   it("inspect produces an exact nonsendable preview with no durable/platform writes",async()=>{
     const {options,store,transport}=await setup();const result=await operateNewsRelease({...options,action:"inspect",approval:null});
     expect(result.sendable).toBe(false);expect(result.prepared.payloadSha256).toBe(options.payloadSha256);
+    expect(store.compareAppend).not.toHaveBeenCalled();expect(transport.send).not.toHaveBeenCalled();
+  });
+  it("inspect identifies only the durable delivery-history records that block initialization",async()=>{
+    const {options,store,transport}=await setup();
+    const reviewedCandidate=options.approval.history.candidates[0];
+    await store.seed(`post:news:${reviewedCandidate.newsId}:telegram:${destination.id}`,{
+      newsId:reviewedCandidate.newsId,destination,prepared:{textRevision:reviewedCandidate.revision},status:"pending"});
+    await store.seed(`post:news:orphan:telegram:${destination.id}`,{
+      newsId:"orphan",destination,prepared:null,status:"blocked"});
+    const result=await operateNewsRelease({...options,action:"inspect"});
+    expect(result.deliveryHistory).toMatchObject({jobCount:2,blockerCount:1,truncated:false,
+      blockers:[{newsId:"orphan",status:"blocked",reasons:["not_in_reviewed_history","missing_text_revision"]}]});
     expect(store.compareAppend).not.toHaveBeenCalled();expect(transport.send).not.toHaveBeenCalled();
   });
   it.each(["approval","digest","candidate","expiry","head","rights"])("blocks %s failure before initialization",async kind=>{
