@@ -39,7 +39,11 @@
     "scripts/import-user-supplied-book-covers.mjs",
     "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
     "scripts/import-user-supplied-book-covers-2026-08-20.mjs",
-    "tests/e2e/public-smoke.spec.mjs"
+    "tests/e2e/public-smoke.spec.mjs",
+    "scripts/export-published-content.mjs",
+    "scripts/export-published-content.fixture.test.mjs",
+    "src/data/cms/editorialOverrides.ts",
+    "src/data/cms/editorialOverrides.test.ts"
   ],
   "sourceBaselines": {
     "src/components/HeaderArticlesMenu.tsx": "6fc7093e3dbc0a3a1f3b199e599f3223c9050ab521bded83b1edbfc6788bcb19",
@@ -63,7 +67,11 @@
     "scripts/import-user-supplied-book-covers.mjs": "606cb64fe9734fce086a343bb54612f5bcf7817afa54701e7137dae3238e55c2",
     "scripts/import-user-supplied-book-covers-2026-08-13.mjs": "851951b349ccec82276f1a6a4ed8dfd8dbae09fc3df1375b9e68cb2aa9ed9774",
     "scripts/import-user-supplied-book-covers-2026-08-20.mjs": "70b0443c017f75e9faeeae00ade2d5c72216481c0cd69933337a83a54ffb123d",
-    "tests/e2e/public-smoke.spec.mjs": "7a0e76ed3ab268fcf373fadb970e4838310b9855a225f67256e7bd4686ebac49"
+    "tests/e2e/public-smoke.spec.mjs": "7a0e76ed3ab268fcf373fadb970e4838310b9855a225f67256e7bd4686ebac49",
+    "scripts/export-published-content.mjs": "2bfa22b063f387f08364e27fb6ca05a5840cc57b2fd48c5ce98f7316b5721cf7",
+    "scripts/export-published-content.fixture.test.mjs": "b1cf00cafaf402066042ffe65ecb00237d060823c3a9db280fc835d92f3b799a",
+    "src/data/cms/editorialOverrides.ts": "9d569451e09cdd1706c3a63414a39cf1449c767afc24040ebad99bbe99c579da",
+    "src/data/cms/editorialOverrides.test.ts": "fd3b29910ab0408fa736b2988953df44ea86577c13bd1d4d7414e0308edd67b5"
   },
   "reviewedSources": {
     "src/components/HeaderArticlesMenu.tsx": "bcdc72a78cc76c09d82a499e84f8f94b0d993a2e24e1edf03256e6ea76648857",
@@ -87,7 +95,11 @@
     "scripts/import-user-supplied-book-covers.mjs": "29fbe981fadf2d4462c5eb5b82ea132c9cf7e7de74d9f6584fcdcbd1a1608c3d",
     "scripts/import-user-supplied-book-covers-2026-08-13.mjs": "12648bec2aaafb061ea5e5aa4b67b1e014a107de4c565349d4bab75b2c69c576",
     "scripts/import-user-supplied-book-covers-2026-08-20.mjs": "417306d39bc8bb7abfdcb032bc647ad4eb03d8a2b0bf5b8e0b9585cf53378c52",
-    "tests/e2e/public-smoke.spec.mjs": "c85deef43e707a99e72207e9c19a273224eb5c9136d557c015ffb00cbc9168b1"
+    "tests/e2e/public-smoke.spec.mjs": "c85deef43e707a99e72207e9c19a273224eb5c9136d557c015ffb00cbc9168b1",
+    "scripts/export-published-content.mjs": "6bda8a3f0af5bfa75b01f958ffb7dbdd585ae564f136d19def5463517753f219",
+    "scripts/export-published-content.fixture.test.mjs": "55590921075aa9c8b31ddebdf654b1fc3548a195150ba1d3792837daaf12718a",
+    "src/data/cms/editorialOverrides.ts": "dbe4d9c2cfb5a8aa80574c95bed2f7d1e78bcf1a2fec8262f315a439dbec577a",
+    "src/data/cms/editorialOverrides.test.ts": "a0edd210fc70ee873e2ce24471579178aabfb387032133d570dee5432741befd"
   },
   "additions": [
     {
@@ -121,6 +133,14 @@
     {
       "path": "scripts/database/check-literary-news-schema-plan.mjs",
       "sha256Lf": "bc811f0128ee63b5d29ebd03dfee172f730a237a1a7a65f32b11ce47fcc5f96d"
+    },
+    {
+      "path": "scripts/lib/public-work-external-id-fetch.mjs",
+      "sha256Lf": "719d52433404c244fcf74aae6cb618086e9416f5d08d7d6695c3c814c7d3c671"
+    },
+    {
+      "path": "scripts/lib/public-work-external-id-fetch.test.mjs",
+      "sha256Lf": "559b1ca69d7b96ae905805c73d9e6a8e90d0eb841526eb3dc528476afa1fcc44"
     }
   ],
   "projections": [
@@ -393,6 +413,114 @@
       "path": "tests/e2e/public-smoke.spec.mjs",
       "before": "      new URL(response.url()).pathname.endsWith(`/textures/${russianFilename}`) &&\n      response.status() === 200\n  );\n  await naturalEarthButton.click();\n  const loadedRussianTexture = await russianTextureResponse;\n  expect(loadedRussianTexture.ok()).toBe(true);\n",
       "after": "      new URL(response.url()).pathname.endsWith(`/textures/${russianFilename}`) &&\n      response.status() === 200\n  );\n  // Resizing can leave the edition rail behind the sticky header. Focus keeps\n  // the accessible rail open; center the option before its real pointer click.\n  await naturalEarthButton.focus();\n  await naturalEarthButton.evaluate((element) => {\n    element.scrollIntoView({ block: \"center\", inline: \"center\", behavior: \"instant\" });\n  });\n  await expect.poll(() => naturalEarthButton.evaluate((element) => {\n    const bounds = element.getBoundingClientRect();\n    const x = bounds.left + bounds.width / 2;\n    const y = bounds.top + bounds.height / 2;\n    return bounds.width > 0 && bounds.height > 0\n      && element.contains(document.elementFromPoint(x, y));\n  }), { message: \"The centered edition button must receive the pointer before clicking\" }).toBe(true);\n  await naturalEarthButton.click();\n  const loadedRussianTexture = await russianTextureResponse;\n  expect(loadedRussianTexture.ok()).toBe(true);\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.mjs:1",
+      "path": "scripts/export-published-content.mjs",
+      "before": "import { staleManagedCmsArticleSnapshotNames } from \"./lib/cms-article-snapshot-files.mjs\";\nimport { collectPostgrestPages } from \"./lib/postgrest-pagination.mjs\";\nimport { fetchPublicWorkSources } from \"./lib/public-work-source-fetch.mjs\";\nimport { dzenCoverForArticle } from \"./lib/article-publication-images.mjs\";\nimport { extractSiteCopyFromHomepageBlocks } from \"./site-copy-overrides.mjs\";\nimport { commitAtomicFileSet } from \"./lib/atomic-file-set.mjs\";\n",
+      "after": "import { staleManagedCmsArticleSnapshotNames } from \"./lib/cms-article-snapshot-files.mjs\";\nimport { collectPostgrestPages } from \"./lib/postgrest-pagination.mjs\";\nimport { fetchPublicWorkSources } from \"./lib/public-work-source-fetch.mjs\";\nimport { fetchPublicWorkExternalIds } from \"./lib/public-work-external-id-fetch.mjs\";\nimport { dzenCoverForArticle } from \"./lib/article-publication-images.mjs\";\nimport { extractSiteCopyFromHomepageBlocks } from \"./site-copy-overrides.mjs\";\nimport { commitAtomicFileSet } from \"./lib/atomic-file-set.mjs\";\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.mjs:2",
+      "path": "scripts/export-published-content.mjs",
+      "before": "  literary_work_translations: (row) => `${row.work_id}:${row.locale}`,\n  literary_work_sources: (row) =>\n    `${row.work_id}:${row.provider}:${row.source_url}`,\n  book_editions: (row) => row.id,\n  font_assets: (row) => row.id,\n  site_typography_overrides: (row) =>\n",
+      "after": "  literary_work_translations: (row) => `${row.work_id}:${row.locale}`,\n  literary_work_sources: (row) =>\n    `${row.work_id}:${row.provider}:${row.source_url}`,\n  literary_work_external_ids: (row) => JSON.stringify([row.work_id, row.scheme, row.external_id]),\n  book_editions: (row) => row.id,\n  font_assets: (row) => row.id,\n  site_typography_overrides: (row) =>\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.mjs:3",
+      "path": "scripts/export-published-content.mjs",
+      "before": "  }, publicSnapshotKey)\n);\n\nconst rawTypographyOverrides = rawTypographyInputs.overrides;\nconst rawFontAssets = rawTypographyInputs.fonts;\n\n",
+      "after": "  }, publicSnapshotKey)\n);\n\nconst rawLiteraryWorkExternalIds = await fetchPublicWorkExternalIds(rawLiteraryWorks, workIds =>\n  fetchTableRows(\"literary_work_external_ids\", {\n    select: \"work_id,scheme,external_id,source_url\",\n    work_id: workIds,\n    order: \"work_id.asc,scheme.asc,external_id.asc\",\n  }, publicSnapshotKey, false)\n);\n\nconst rawTypographyOverrides = rawTypographyInputs.overrides;\nconst rawFontAssets = rawTypographyInputs.fonts;\n\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.mjs:4",
+      "path": "scripts/export-published-content.mjs",
+      "before": "  rawLiteraryWorkSources\n);\n\nconst literaryWorksByLegacyId = Object.fromEntries(\n  rawLiteraryWorks.flatMap((work) => {\n    const prefix = `${work.country_id}:${work.writer_id}:`;\n",
+      "after": "  rawLiteraryWorkSources\n);\n\nconst literaryWorkExternalIdsByWorkId = groupPublishedWorkRows(rawLiteraryWorkExternalIds);\n\nconst literaryWorksByLegacyId = Object.fromEntries(\n  rawLiteraryWorks.flatMap((work) => {\n    const prefix = `${work.country_id}:${work.writer_id}:`;\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.mjs:5",
+      "path": "scripts/export-published-content.mjs",
+      "before": "      work.id,\n      literaryWorkSourcesByWorkId\n    );\n    return [\n      [\n        work.legacy_id,\n",
+      "after": "      work.id,\n      literaryWorkSourcesByWorkId\n    );\n    const externalIds = (literaryWorkExternalIdsByWorkId.get(work.id) || [])\n      .map(({ scheme, value, sourceUrl }) => ({ scheme, value, sourceUrl }));\n    return [\n      [\n        work.legacy_id,\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.mjs:6",
+      "path": "scripts/export-published-content.mjs",
+      "before": "          ...(translations ? { translations } : {}),\n          ...publishedWorkMetadata(work.metadata),\n          ...(sources ? { sources } : {}),\n          editorialStatus: work.editorial_status,\n          reviewedAt: work.reviewed_at || undefined,\n        },\n",
+      "after": "          ...(translations ? { translations } : {}),\n          ...publishedWorkMetadata(work.metadata),\n          ...(sources ? { sources } : {}),\n          ...(externalIds.length ? { externalIds } : {}),\n          editorialStatus: work.editorial_status,\n          reviewedAt: work.reviewed_at || undefined,\n        },\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.fixture.test.mjs:1",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "    const tables = Object.fromEntries([\n      \"media_assets\", \"homepage_blocks\", \"banners\", \"navigation_menus\", \"navigation_items\", \"pages\", \"redirects\",\n      \"country_profile_overrides\", \"writer_profile_overrides\", \"literary_works\", \"literary_work_authors\",\n      \"literary_work_translations\", \"literary_work_sources\", \"book_editions\",\n    ].map(name => [name, []]));\n    const works = Array.from({ length: 41 }, (_, index) => ({\n      id: `10000000-0000-4000-8000-${String(index + 1).padStart(12, \"0\")}`,\n",
+      "after": "    const tables = Object.fromEntries([\n      \"media_assets\", \"homepage_blocks\", \"banners\", \"navigation_menus\", \"navigation_items\", \"pages\", \"redirects\",\n      \"country_profile_overrides\", \"writer_profile_overrides\", \"literary_works\", \"literary_work_authors\",\n      \"literary_work_translations\", \"literary_work_sources\", \"literary_work_external_ids\", \"book_editions\",\n    ].map(name => [name, []]));\n    const works = Array.from({ length: 41 }, (_, index) => ({\n      id: `10000000-0000-4000-8000-${String(index + 1).padStart(12, \"0\")}`,\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.fixture.test.mjs:2",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "      work_id: work.id, provider, source_url: `https://example.test/${work.id}`,\n      field_names: [\"title\"], license_name: \"CC0\", usage: \"reference-only\", retrieved_at: \"2026-09-14\", metadata: {},\n    })));\n    const evidenceCases = [\n      { relation: \"contained-work\", field: \"contents-note\", valid: true },\n      { relation: \"contained-work\", field: \"table-of-contents\", valid: true },\n",
+      "after": "      work_id: work.id, provider, source_url: `https://example.test/${work.id}`,\n      field_names: [\"title\"], license_name: \"CC0\", usage: \"reference-only\", retrieved_at: \"2026-09-14\", metadata: {},\n    })));\n    // One parent has more IDs than a PostgREST page; no static fallback is used.\n    const externalIds = works.flatMap((work, index) => Array.from({ length: index === 0 ? 503 : 2 }, (_, ordinal) => ({\n      work_id: work.id, scheme: \"other\", external_id: \"fixture-\" + index + \"-\" + ordinal,\n      source_url: \"https://example.test/catalog/\" + index + \"/\" + ordinal,\n    })));\n    const evidenceCases = [\n      { relation: \"contained-work\", field: \"contents-note\", valid: true },\n      { relation: \"contained-work\", field: \"table-of-contents\", valid: true },\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.fixture.test.mjs:3",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "    }\n    Object.assign(tables, { articles, article_translations: translations, literary_works: works, literary_work_sources: sources });\n    tables.literary_work_translations = workTranslations;\n    let publicParentsRead = false;\n    const sourceBatches = [];\n    const fetchFixture = vi.fn(async (input, init) => {\n      const url = new URL(input);\n      expect(url.origin).toBe(\"https://fixture-probpera.supabase.co\");\n",
+      "after": "    }\n    Object.assign(tables, { articles, article_translations: translations, literary_works: works, literary_work_sources: sources });\n    tables.literary_work_translations = workTranslations;\n    tables.literary_work_external_ids = externalIds;\n    let publicParentsRead = false;\n    const sourceBatches = [];\n    const externalIdBatches = [];\n    const externalIdRanges = [];\n    const fetchFixture = vi.fn(async (input, init) => {\n      const url = new URL(input);\n      expect(url.origin).toBe(\"https://fixture-probpera.supabase.co\");\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.fixture.test.mjs:4",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "        sourceBatches.push(ids);\n        rows = rows.filter(row => ids.includes(row.work_id));\n      }\n      return Response.json(rows, { headers: { \"content-range\": rows.length ? `0-${rows.length - 1}/${rows.length}` : \"*/0\" } });\n    });\n    vi.stubGlobal(\"fetch\", fetchFixture);\n    vi.spyOn(console, \"log\").mockImplementation(() => {});\n",
+      "after": "        sourceBatches.push(ids);\n        rows = rows.filter(row => ids.includes(row.work_id));\n      }\n      if (table === \"literary_work_external_ids\") {\n        expect(publicParentsRead).toBe(true);\n        expect(init.headers.apikey).toBe(\"fixture-public-key\");\n        expect(init.headers.Authorization).toBe(\"Bearer fixture-public-key\");\n        expect(init.headers.Prefer).toBe(\"count=exact\");\n        expect(url.searchParams.get(\"order\")).toBe(\"work_id.asc,scheme.asc,external_id.asc\");\n        const filter = url.searchParams.get(\"work_id\");\n        expect(filter).toMatch(/^in\\.\\([0-9a-f,-]+\\)$/u);\n        const ids = filter.slice(4, -1).split(\",\");\n        expect(ids.length).toBeLessThanOrEqual(10);\n        expect(ids.every(id => works.some(work => work.id === id))).toBe(true);\n        const [from, to] = init.headers.Range.split(\"-\").map(Number);\n        externalIdRanges.push(init.headers.Range);\n        if (from === 0) externalIdBatches.push(ids);\n        rows = rows.filter(row => ids.includes(row.work_id));\n        const total = rows.length, page = rows.slice(from, to + 1);\n        return Response.json(page, { headers: { \"content-range\": page.length ? from + \"-\" + (from + page.length - 1) + \"/\" + total : \"*/\" + total } });\n      }\n      return Response.json(rows, { headers: { \"content-range\": rows.length ? \"0-\" + (rows.length - 1) + \"/\" + rows.length : \"*/0\" } });\n    });\n    vi.stubGlobal(\"fetch\", fetchFixture);\n    vi.spyOn(console, \"log\").mockImplementation(() => {});\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.fixture.test.mjs:5",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "    expect(fetchFixture).toHaveBeenCalled();\n    expect(boundary.commit).toHaveBeenCalledTimes(1);\n    expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);\n    const { writes, deletes } = boundary.commit.mock.calls[0][0];\n    expect(deletes).toEqual([]);\n    const snapshot = JSON.parse(writes.find(write => write.path.endsWith(\"published-content.json\")).content);\n",
+      "after": "    expect(fetchFixture).toHaveBeenCalled();\n    expect(boundary.commit).toHaveBeenCalledTimes(1);\n    expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);\n    expect(externalIdBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);\n    expect(externalIdRanges).toContain(\"500-999\");\n    const { writes, deletes } = boundary.commit.mock.calls[0][0];\n    expect(deletes).toEqual([]);\n    const snapshot = JSON.parse(writes.find(write => write.path.endsWith(\"published-content.json\")).content);\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.fixture.test.mjs:6",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "      expect(document.translations.en.sourceContentHash).toBe(\"fixture-source-fingerprint\");\n    }\n    for (const work of works) {\n      expect(snapshot.literaryWorksByLegacyId[work.legacy_id].sources).toEqual([\"A source\", \"B source\"].map(provider => ({\n        provider, url: `https://example.test/${work.id}`,\n        fields: work.id === works[0].id ? [\"title\", \"container-title\", \"contained-title\"] : [\"title\"],\n",
+      "after": "      expect(document.translations.en.sourceContentHash).toBe(\"fixture-source-fingerprint\");\n    }\n    for (const work of works) {\n      expect(snapshot.literaryWorksByLegacyId[work.legacy_id].externalIds).toEqual(\n        externalIds.filter(row => row.work_id === work.id).map(row => ({ scheme: row.scheme, value: row.external_id, sourceUrl: row.source_url }))\n      );\n      expect(snapshot.literaryWorksByLegacyId[work.legacy_id].sources).toEqual([\"A source\", \"B source\"].map(provider => ({\n        provider, url: `https://example.test/${work.id}`,\n        fields: work.id === works[0].id ? [\"title\", \"container-title\", \"contained-title\"] : [\"title\"],\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:scripts/export-published-content.fixture.test.mjs:7",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "    }\n    sourceBatches.length = 0;\n    publicParentsRead = false;\n    await import(\"./export-premium-translations.mjs\");\n    expect(boundary.commit).toHaveBeenCalledTimes(2);\n    expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);\n    const premiumWrites = boundary.commit.mock.calls[1][0].writes;\n",
+      "after": "    }\n    sourceBatches.length = 0;\n    publicParentsRead = false;\n    externalIdRanges.length = 0;\n    await import(\"./export-premium-translations.mjs\");\n    expect(externalIdRanges).toEqual([]);\n    expect(boundary.commit).toHaveBeenCalledTimes(2);\n    expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);\n    const premiumWrites = boundary.commit.mock.calls[1][0].writes;\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:src/data/cms/editorialOverrides.ts:1",
+      "path": "src/data/cms/editorialOverrides.ts",
+      "before": "  localizedTitles?: WorkProfile[\"localizedTitles\"];\n  canon?: WorkProfile[\"canon\"];\n  sources?: WorkProfile[\"sources\"];\n  editorialStatus: \"reviewed\" | \"verified\";\n  reviewedAt?: string;\n};\n",
+      "after": "  localizedTitles?: WorkProfile[\"localizedTitles\"];\n  canon?: WorkProfile[\"canon\"];\n  sources?: WorkProfile[\"sources\"];\n  externalIds?: WorkProfile[\"externalIds\"];\n  editorialStatus: \"reviewed\" | \"verified\";\n  reviewedAt?: string;\n};\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:src/data/cms/editorialOverrides.ts:2",
+      "path": "src/data/cms/editorialOverrides.ts",
+      "before": "      translations: copiedTranslations(work.translations),\n      localizedTitles: copiedJsonMetadata(work.localizedTitles),\n      canon: copiedJsonMetadata(work.canon),\n      sources: work.sources?.map((source) => ({\n        ...copiedJsonMetadata(source),\n        fields: [...source.fields],\n",
+      "after": "      translations: copiedTranslations(work.translations),\n      localizedTitles: copiedJsonMetadata(work.localizedTitles),\n      canon: copiedJsonMetadata(work.canon),\n      ...(work.externalIds ? { externalIds: copiedJsonMetadata(work.externalIds) } : {}),\n      sources: work.sources?.map((source) => ({\n        ...copiedJsonMetadata(source),\n        fields: [...source.fields],\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:src/data/cms/editorialOverrides.test.ts:1",
+      "path": "src/data/cms/editorialOverrides.test.ts",
+      "before": "const bookSourceUrl = \"https://example.org/book\";\n\ndescribe(\"CMS editorial overrides\", () => {\n  it(\"applies country fields and EN translation without allowing an override to replace writers\", () => {\n    const unsafeDatabaseValue = {\n      \"test-country\": {\n",
+      "after": "const bookSourceUrl = \"https://example.org/book\";\n\ndescribe(\"CMS editorial overrides\", () => {\n  it(\"keeps absent legacy IDs from erasing canonical fallback identifiers\", () => {\n    const legacy: CmsLiteraryWork = { legacyId: \"test-country:writer:work\", countryId: \"test-country\",\n      writerId: \"writer\", localId: \"work\", title: \"Work\", editorialStatus: \"verified\" };\n    const [mapped] = cmsLiteraryWorkProfilesForWriter(\"test-country\", \"writer\", { [legacy.legacyId]: legacy });\n    const canonicalIds = [{ scheme: \"openlibrary\", value: \"OL52151W\", sourceUrl: \"https://openlibrary.org/works/OL52151W\" }];\n    expect(Object.prototype.hasOwnProperty.call(mapped, \"externalIds\")).toBe(false);\n    expect({ externalIds: canonicalIds, ...mapped }.externalIds).toEqual(canonicalIds);\n  });\n  it(\"applies country fields and EN translation without allowing an override to replace writers\", () => {\n    const unsafeDatabaseValue = {\n      \"test-country\": {\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:src/data/cms/editorialOverrides.test.ts:2",
+      "path": "src/data/cms/editorialOverrides.test.ts",
+      "before": "          retrievedAt: \"2026-09-02\",\n        },\n      ],\n      editorialStatus: \"verified\",\n      reviewedAt: \"2026-09-02\",\n    };\n",
+      "after": "          retrievedAt: \"2026-09-02\",\n        },\n      ],\n      externalIds: [{ scheme: \"openlibrary\", value: \"OL52151W\", sourceUrl: \"https://openlibrary.org/works/OL52151W\" }],\n      editorialStatus: \"verified\",\n      reviewedAt: \"2026-09-02\",\n    };\n"
+    },
+    {
+      "id": "cms-external-id-preservation-20260927:src/data/cms/editorialOverrides.test.ts:3",
+      "path": "src/data/cms/editorialOverrides.test.ts",
+      "before": "      cmsWork.translations?.ru?.descriptionProvenance\n    );\n    expect(mapped.sources?.[0]).not.toBe(cmsWork.sources?.[0]);\n    expect(mapped.authorship).not.toBe(cmsWork.authorship);\n    expect(mapped.authorship?.authors).not.toBe(cmsWork.authorship?.authors);\n  });\n",
+      "after": "      cmsWork.translations?.ru?.descriptionProvenance\n    );\n    expect(mapped.sources?.[0]).not.toBe(cmsWork.sources?.[0]);\n    expect(mapped.externalIds).toEqual(cmsWork.externalIds);\n    expect(mapped.externalIds).not.toBe(cmsWork.externalIds);\n    expect(mapped.externalIds?.[0]).not.toBe(cmsWork.externalIds?.[0]);\n    mapped.externalIds![0].value = \"changed-by-consumer\";\n    expect(cmsWork.externalIds?.[0].value).toBe(\"OL52151W\");\n    expect(mapped.authorship).not.toBe(cmsWork.authorship);\n    expect(mapped.authorship?.authors).not.toBe(cmsWork.authorship?.authors);\n  });\n"
     }
   ],
   "releaseFollowUp": {
@@ -415,6 +543,14 @@
     "id": "R10-UNOBSTRUCTED-BROWSER-CONTROL-20260927",
     "baselineCommitSha": "1d957d5aa3537b4cf531eb1acbb31b6eaea1392d",
     "scope": "After viewport checks, focus and center the edition control through existing browser/UI behavior, require an unobstructed center, and retain the original normal pointer click and every prior assertion. No production UI, timeout, retry or skip change.",
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "cmsExternalIdFollowUp": {
+    "id": "R10-CMS-EXTERNAL-ID-PRESERVATION-20260927",
+    "baselineMainCommitSha": "a9bed03ff55c3b0373507de19a8eb272c74a3d1a",
+    "scope": "Preserve actual public CMS external identifiers through parent-scoped exact-count export, premium serialization and typed defensive copies. No provenance, publication, rights, historical source or cover guard is relaxed.",
     "humanReview": false,
     "releaseAccepted": false,
     "productionApplied": false

@@ -1,12 +1,14 @@
 import { describe,expect,it,vi } from "vitest";
 import { parse } from "yaml";
 import { readFileSync } from "node:fs";
+import sharp from "sharp";
 import reviewed from "../../data/news/reviewed.json" with {type:"json"};
 import { buildPublishedNewsFeed } from "./literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./literary-news-state.mjs";
 import { newsPostKey,newsSocialPayloadDigest,prepareNewsPost } from "./literary-news-social.mjs";
 import { NEWS_RELEASE_DESTINATIONS,newsHistoryCandidates,operateNewsRelease,recheckNewsPublicHistory,verifyTelegramCanaryPublicPost } from "./literary-news-release-operator.mjs";
 import { parseNewsReleaseArguments } from "../operate-literary-news-release.mjs";
+import { normalizeNewsMedia, mediaByteHash } from "./literary-news-media.mjs";
 
 const now=new Date("2026-09-27T00:00:00Z"),destination=NEWS_RELEASE_DESTINATIONS.telegram;
 function memoryStore(){
@@ -27,22 +29,35 @@ async function setup(){
   const item={...reviewed.find(row=>row.kind==="news"),id:"release-canary-fixture",eventKey:"release-canary-fixture",
     eventDate:"2026-09-26",publishedAt:null,verifiedAt:"2026-09-26T12:00:00Z"};
   const feed=await buildPublishedNewsFeed({records:[item],state:pendingNewsSourceState(),current:now,release:"a".repeat(40)});
-  const prepared=await prepareNewsPost(feed.items[0],feed.snapshot,"telegram",{destination});
+  const source=await sharp({create:{width:480,height:640,channels:3,background:"#8f7788"}}).png().toBuffer();
+  const normalized=await normalizeNewsMedia(source,"image/png");
+  const asset={id:"release-fixture",status:"approved",newsIds:[item.id],sourceUrl:"https://fixture.example/photo.png",sourceSha256:mediaByteHash(source),
+    subject:"portrait",entityEvidence:"Synthetic offline operator fixture; not a production image.",author:"Fixture",rightsholder:"Fixture",credit:"Synthetic fixture",
+    license:"owned",licenseEvidenceUrl:"https://fixture.example/license",licenseEvidenceSha256:"a".repeat(64),checkMethod:"ownership-record",
+    checkedAt:now.toISOString(),validUntil:"2026-10-20T00:00:00Z",transformations:{resize:true,metadataRemoval:true,reencode:true,crop:false},
+    permissions:[{platform:destination.platform,destinationId:destination.id,publish:true,providerProcessing:true,evidenceUrl:"https://fixture.example/license"}],
+    derivative:normalized.descriptor};
+  const mediaOptions={registry:{assets:[asset],downloadHosts:["fixture.example"]},now,readBytes:async()=>normalized.bytes};
+  const prepared=await prepareNewsPost(feed.items[0],feed.snapshot,"telegram",{destination,mediaOptions});
   const history={scope:"public_observed_only",reachedPublicStart:true,minId:1,maxId:410,observedCount:363,
     auditSha256:"b".repeat(64),semanticReviewSha256:"c".repeat(64),
     candidates:await newsHistoryCandidates(feed.items),pages:[{url:"https://t.me/s/probbaperra",sha256:"d".repeat(64)}]};
   const approval={platform:"telegram",destinationId:destination.id,status:"approved",reviewedAt:"2026-09-26T22:00:00Z",
     expiresAt:"2026-09-28T00:00:00Z",providerAccountId:"77",history,canaryNewsId:item.id};
   const store=memoryStore(),transport={preflight:vi.fn(async()=>({ok:true,destinationId:destination.id,providerAccountId:"77"})),
+    prepareDelivery:vi.fn(async()=>({kind:"ready",delivery:{providerAccountId:"77"}})),
     send:vi.fn(async()=>({kind:"accepted",remoteId:"411",remoteUrl:"https://t.me/c/2791579809/411"}))};
   const options={action:"enable-canary",platform:"telegram",expectedControlId:null,historyDigest:await newsSocialPayloadDigest(history),
     canaryNewsId:item.id,payloadSha256:prepared.payloadSha256,repositorySha:"a".repeat(40),approval,store,feed,transport,
-    now:()=>now,verifyHead:vi.fn(async()=>({maxId:410}))};
+    mediaOptions,now:()=>now,verifyHead:vi.fn(async()=>({maxId:410}))};
   const controlKey=`destination:telegram:${destination.id}`,key=newsPostKey(item.id,destination);
   const enable=async()=>{const result=await operateNewsRelease(options);options.expectedControlId=result.controlId;return result;};
   return{options,store,transport,key,controlKey,enable};
 }
 describe("bounded Telegram release operator",()=>{
+  it("keeps required photos enabled for both fixed release destinations",()=>{
+    expect(Object.values(NEWS_RELEASE_DESTINATIONS).every(d=>d.requirePhotoForNewPosts===true)).toBe(true);
+  });
   it("inspect produces an exact nonsendable preview with no durable/platform writes",async()=>{
     const {options,store,transport}=await setup();const result=await operateNewsRelease({...options,action:"inspect",approval:null});
     expect(result.sendable).toBe(false);expect(result.prepared.payloadSha256).toBe(options.payloadSha256);
@@ -90,7 +105,7 @@ describe("bounded Telegram release operator",()=>{
     await expect(operateNewsRelease({...options,action:"promote"})).rejects.toThrow("native_canary_review_missing");
     const job=(await store.read(key)).state;
     options.nativeObservation={viewed:true,remoteId:job.remoteId,url:`https://t.me/probbaperra/${job.remoteId}`};
-    options.verifyNative=vi.fn(async()=>({remoteId:job.remoteId,photoObserved:false,checkedAt:now.toISOString()}));
+    options.verifyNative=vi.fn(async()=>({remoteId:job.remoteId,photoObserved:true,checkedAt:now.toISOString()}));
     const result=await operateNewsRelease({...options,action:"promote"});expect(result.mode).toBe("on");
     expect(options.verifyHead).toHaveBeenLastCalledWith(expect.objectContaining({allowedRemoteId:"411"}));
     expect((await store.read(controlKey)).state.canaryAccepted.remoteId).toBe("411");

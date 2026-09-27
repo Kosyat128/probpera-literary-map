@@ -69,6 +69,7 @@ export type CmsLiteraryWork = {
   localizedTitles?: WorkProfile["localizedTitles"];
   canon?: WorkProfile["canon"];
   sources?: WorkProfile["sources"];
+  externalIds?: WorkProfile["externalIds"];
   editorialStatus: "reviewed" | "verified";
   reviewedAt?: string;
 };
@@ -211,6 +212,7 @@ export function cmsLiteraryWorkProfilesForWriter(
       translations: copiedTranslations(work.translations),
       localizedTitles: copiedJsonMetadata(work.localizedTitles),
       canon: copiedJsonMetadata(work.canon),
+      ...(work.externalIds ? { externalIds: copiedJsonMetadata(work.externalIds) } : {}),
       sources: work.sources?.map((source) => ({
         ...copiedJsonMetadata(source),
         fields: [...source.fields],

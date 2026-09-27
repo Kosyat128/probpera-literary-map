@@ -60,7 +60,7 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
     const tables = Object.fromEntries([
       "media_assets", "homepage_blocks", "banners", "navigation_menus", "navigation_items", "pages", "redirects",
       "country_profile_overrides", "writer_profile_overrides", "literary_works", "literary_work_authors",
-      "literary_work_translations", "literary_work_sources", "book_editions",
+      "literary_work_translations", "literary_work_sources", "literary_work_external_ids", "book_editions",
     ].map(name => [name, []]));
     const works = Array.from({ length: 41 }, (_, index) => ({
       id: `10000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`,
@@ -70,6 +70,11 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
     const sources = works.flatMap(work => ["A source", "B source"].map(provider => ({
       work_id: work.id, provider, source_url: `https://example.test/${work.id}`,
       field_names: ["title"], license_name: "CC0", usage: "reference-only", retrieved_at: "2026-09-14", metadata: {},
+    })));
+    // One parent has more IDs than a PostgREST page; no static fallback is used.
+    const externalIds = works.flatMap((work, index) => Array.from({ length: index === 0 ? 503 : 2 }, (_, ordinal) => ({
+      work_id: work.id, scheme: "other", external_id: "fixture-" + index + "-" + ordinal,
+      source_url: "https://example.test/catalog/" + index + "/" + ordinal,
     })));
     const evidenceCases = [
       { relation: "contained-work", field: "contents-note", valid: true },
@@ -110,8 +115,11 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
     }
     Object.assign(tables, { articles, article_translations: translations, literary_works: works, literary_work_sources: sources });
     tables.literary_work_translations = workTranslations;
+    tables.literary_work_external_ids = externalIds;
     let publicParentsRead = false;
     const sourceBatches = [];
+    const externalIdBatches = [];
+    const externalIdRanges = [];
     const fetchFixture = vi.fn(async (input, init) => {
       const url = new URL(input);
       expect(url.origin).toBe("https://fixture-probpera.supabase.co");
@@ -144,7 +152,25 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
         sourceBatches.push(ids);
         rows = rows.filter(row => ids.includes(row.work_id));
       }
-      return Response.json(rows, { headers: { "content-range": rows.length ? `0-${rows.length - 1}/${rows.length}` : "*/0" } });
+      if (table === "literary_work_external_ids") {
+        expect(publicParentsRead).toBe(true);
+        expect(init.headers.apikey).toBe("fixture-public-key");
+        expect(init.headers.Authorization).toBe("Bearer fixture-public-key");
+        expect(init.headers.Prefer).toBe("count=exact");
+        expect(url.searchParams.get("order")).toBe("work_id.asc,scheme.asc,external_id.asc");
+        const filter = url.searchParams.get("work_id");
+        expect(filter).toMatch(/^in\.\([0-9a-f,-]+\)$/u);
+        const ids = filter.slice(4, -1).split(",");
+        expect(ids.length).toBeLessThanOrEqual(10);
+        expect(ids.every(id => works.some(work => work.id === id))).toBe(true);
+        const [from, to] = init.headers.Range.split("-").map(Number);
+        externalIdRanges.push(init.headers.Range);
+        if (from === 0) externalIdBatches.push(ids);
+        rows = rows.filter(row => ids.includes(row.work_id));
+        const total = rows.length, page = rows.slice(from, to + 1);
+        return Response.json(page, { headers: { "content-range": page.length ? from + "-" + (from + page.length - 1) + "/" + total : "*/" + total } });
+      }
+      return Response.json(rows, { headers: { "content-range": rows.length ? "0-" + (rows.length - 1) + "/" + rows.length : "*/0" } });
     });
     vi.stubGlobal("fetch", fetchFixture);
     vi.spyOn(console, "log").mockImplementation(() => {});
@@ -153,6 +179,8 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
     expect(fetchFixture).toHaveBeenCalled();
     expect(boundary.commit).toHaveBeenCalledTimes(1);
     expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);
+    expect(externalIdBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);
+    expect(externalIdRanges).toContain("500-999");
     const { writes, deletes } = boundary.commit.mock.calls[0][0];
     expect(deletes).toEqual([]);
     const snapshot = JSON.parse(writes.find(write => write.path.endsWith("published-content.json")).content);
@@ -170,6 +198,9 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
       expect(document.translations.en.sourceContentHash).toBe("fixture-source-fingerprint");
     }
     for (const work of works) {
+      expect(snapshot.literaryWorksByLegacyId[work.legacy_id].externalIds).toEqual(
+        externalIds.filter(row => row.work_id === work.id).map(row => ({ scheme: row.scheme, value: row.external_id, sourceUrl: row.source_url }))
+      );
       expect(snapshot.literaryWorksByLegacyId[work.legacy_id].sources).toEqual(["A source", "B source"].map(provider => ({
         provider, url: `https://example.test/${work.id}`,
         fields: work.id === works[0].id ? ["title", "container-title", "contained-title"] : ["title"],
@@ -178,7 +209,9 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
     }
     sourceBatches.length = 0;
     publicParentsRead = false;
+    externalIdRanges.length = 0;
     await import("./export-premium-translations.mjs");
+    expect(externalIdRanges).toEqual([]);
     expect(boundary.commit).toHaveBeenCalledTimes(2);
     expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);
     const premiumWrites = boundary.commit.mock.calls[1][0].writes;

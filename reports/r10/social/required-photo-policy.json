@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-09-27T06:43:19.7985377Z",
+  "base": "a9bed03ff55c3b0373507de19a8eb272c74a3d1a",
+  "status": "LOCAL_FOCUSED_PASS_NOT_DEPLOYED",
+  "beforeProof": "no-image-create-review.json",
+  "tests": {
+    "failed": 0,
+    "files": 5,
+    "report": "required-photo-focused-tests.json",
+    "skipped": 0,
+    "passed": 97
+  },
+  "externalRequests": 0,
+  "externalWrites": 0,
+  "uiChanges": 0,
+  "behavior": [
+    "Both production destinations require an image for new posts; mode remains off and VK remains deferred",
+    "Code-owned lookup protects historical jobs without a policy field",
+    "Missing/held/revoked/oversized-photo-caption creates remain pending before provider preflight and before a pacing reservation",
+    "A second check in the job CAS catches competing photo-to-text revisions",
+    "The transport independently rejects new photo-required text creates without an external call",
+    "Existing remote-ID text edits and withdrawals retain their prior path",
+    "A qualified image reopens the same pending durable identity automatically"
+  ],
+  "limitations": [
+    "No production activation or publication performed",
+    "Held image discovery retries under its existing 14-day negative TTL; transient discovery uses existing one-hour retry",
+    "Unavoidably oversized photo captions remain pending until supported exact factual content and credit fit or a separately reviewed delivery change is implemented",
+    "Generic text-only destinations retain existing behavior without this explicit policy"
+  ],
+  "paths": [
+    {
+      "path": "data/news/social-destinations.json",
+      "sha256": "1a12365b1f57fe126c80476f8a70c00726cb2b4e03b91bae0d4de8da51876919"
+    },
+    {
+      "path": "scripts/lib/literary-news-social.mjs",
+      "sha256": "869b6d62b48b9bb6a844c07af5ce7f114b1c6eed5732765e07f68ced5bed8a7a"
+    },
+    {
+      "path": "scripts/lib/literary-news-social-transport.mjs",
+      "sha256": "fc259062d28a7ad7cc0315d73f36fae34d65c1a41891e8537bc767e2bcbd6d2e"
+    },
+    {
+      "path": "scripts/lib/literary-news-release-operator.mjs",
+      "sha256": "64a853458ebff59a56cfb8c54c0842c20f80258e96e0df155911d4936f1f98e0"
+    },
+    {
+      "path": "scripts/lib/literary-news-media.test.mjs",
+      "sha256": "9d79c7e9af70ea3da1aba39590fa55b9dc83e421f063f261978edd1be8328665"
+    },
+    {
+      "path": "scripts/lib/literary-news-release-operator.test.mjs",
+      "sha256": "ca4ff68876ab87cf250724eba98b2edfb820ea9b3511f5132ce4ca58aea17572"
+    }
+  ]
+}

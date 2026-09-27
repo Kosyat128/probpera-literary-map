@@ -1,4 +1,4 @@
-import { checkedDestination, canonicalNewsSocialValue, newsSocialPayloadDigest } from "./literary-news-social.mjs";
+import { checkedDestination, canonicalNewsSocialValue, newsSocialPayloadDigest, newsNewPostRequiresPhoto } from "./literary-news-social.mjs";
 import { newsDigest } from "./literary-news-publication.mjs";
 import { mediaByteHash, validatePreparedNewsMedia } from "./literary-news-media.mjs";
 import { checkedVkNewsUploadUrl, uploadPinnedVkNewsPhoto } from "./literary-news-media-upload.mjs";
@@ -134,6 +134,8 @@ export function createNewsSocialTransport({ mode = "shadow", telegramToken, vkTo
       if(prepared.sendable===false) return {kind:"blocked",code:"preview_not_sendable"};
       checkedDestination({ ...destination, mode: "on" });
       if (prepared.platform !== destination.platform) return { kind: "blocked", code: "payload_platform_mismatch" };
+      if (!remoteId && newsNewPostRequiresPhoto(destination) && !prepared.media)
+        return { kind: "retry", code: "new_post_requires_photo", retryAfterSeconds: 3600 };
       if (await newsSocialPayloadDigest(prepared.payload) !== prepared.payloadSha256)
         return { kind: "blocked", code: "prepared_bytes_changed" };
       const payload = canonicalNewsSocialValue(prepared.payload);

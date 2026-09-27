@@ -5,8 +5,18 @@ import { r10DeltaAttestation as packet, r10DeltaSha256 as sha, projectReviewedR1
 
 const read=path=>readFileSync(path,"utf8").replace(/\r\n?/gu,"\n");
 const historical=path=>execFileSync("git",["-c",`safe.directory=${process.cwd()}`,"show",`${packet.baselineSourceCommitSha}:${path}`],{encoding:"utf8",maxBuffer:5*1024*1024}).replace(/\r\n?/gu,"\n");
+function beforeCmsExternalIds(value) {
+  const {cmsExternalIdFollowUp,...prior}=value;
+  const paths=["scripts/export-published-content.mjs","scripts/export-published-content.fixture.test.mjs","src/data/cms/editorialOverrides.ts","src/data/cms/editorialOverrides.test.ts"];
+  const additions=["scripts/lib/public-work-external-id-fetch.mjs","scripts/lib/public-work-external-id-fetch.test.mjs"];
+  prior.allowedProjectionPaths=prior.allowedProjectionPaths.filter(path=>!paths.includes(path));
+  prior.projections=prior.projections.filter(entry=>!paths.includes(entry.path));
+  prior.additions=prior.additions.filter(entry=>!additions.includes(entry.path));
+  for(const key of ["sourceBaselines","reviewedSources"])prior[key]=Object.fromEntries(Object.entries(prior[key]).filter(([path])=>!paths.includes(path)));
+  return prior;
+}
 function beforeBrowserScroll(value) {
-  const {browserScrollFollowUp,...prior}=value;
+  const {browserScrollFollowUp,...prior}=beforeCmsExternalIds(value);
   const reviewedPath="tests/e2e/public-smoke.spec.mjs";
   prior.allowedProjectionPaths=prior.allowedProjectionPaths.filter(path=>path!==reviewedPath);
   prior.projections=prior.projections.filter(entry=>entry.path!==reviewedPath);
@@ -15,12 +25,12 @@ function beforeBrowserScroll(value) {
 }
 describe("R10 exact additive projection without rewriting historical acceptance",()=>{
   it("pins the bounded agent-reviewed packet and explicitly excludes human/release claims",()=>{
-    expect(sha(JSON.stringify(packet))).toBe("6ae489dee6f819e24225d6ab15813709701067dee52c3657386bef4dd7ef0c4a");
+    expect(sha(JSON.stringify(packet))).toBe("7f277e58d5e0a46f7bc12a87e606304e63d05cf8a9c48781331d151cbbafef69");
     expect(packet).toMatchObject({id:"R10-FORWARD-DELTA-20260926",baselineSourceCommitSha:"63ce3112846e3e49f4b15d1cb64b3c29cb98af70",historicalPinsChanged:false,authorization:{humanReview:false,releaseAccepted:false,productionApplied:false}});
-    expect(packet.allowedProjectionPaths).toEqual(["src/components/HeaderArticlesMenu.tsx","apps/admin/app/(dashboard)/homepage/page.tsx","src/data/countries/index.ts","src/data/countries/types.ts","package.json","scripts/lib/reviewed-header-library.test.mjs","scripts/lib/reviewed-r49n-package.test.mjs","scripts/lib/reviewed-dependency-security.test.mjs","scripts/lib/reviewed-header-showcase.test.mjs","src/components/stage5Governance.test.ts","scripts/lib/stage5-content-data-lock.test.mjs","scripts/lib/reviewed-cms-source-punctuation.test.mjs","scripts/lib/reviewed-draft-storage.test.mjs","scripts/lib/reviewed-native-archive-read.test.mjs","scripts/lib/reviewed-native-archive-transport.test.mjs","scripts/lib/reviewed-premium-title-evidence.test.mjs","scripts/lib/reviewed-reference-release.test.mjs","tests/e2e/header-hero-polish.spec.mjs","scripts/import-user-supplied-book-covers.mjs","scripts/import-user-supplied-book-covers-2026-08-13.mjs","scripts/import-user-supplied-book-covers-2026-08-20.mjs","tests/e2e/public-smoke.spec.mjs"]);
+    expect(packet.allowedProjectionPaths).toEqual(["src/components/HeaderArticlesMenu.tsx","apps/admin/app/(dashboard)/homepage/page.tsx","src/data/countries/index.ts","src/data/countries/types.ts","package.json","scripts/lib/reviewed-header-library.test.mjs","scripts/lib/reviewed-r49n-package.test.mjs","scripts/lib/reviewed-dependency-security.test.mjs","scripts/lib/reviewed-header-showcase.test.mjs","src/components/stage5Governance.test.ts","scripts/lib/stage5-content-data-lock.test.mjs","scripts/lib/reviewed-cms-source-punctuation.test.mjs","scripts/lib/reviewed-draft-storage.test.mjs","scripts/lib/reviewed-native-archive-read.test.mjs","scripts/lib/reviewed-native-archive-transport.test.mjs","scripts/lib/reviewed-premium-title-evidence.test.mjs","scripts/lib/reviewed-reference-release.test.mjs","tests/e2e/header-hero-polish.spec.mjs","scripts/import-user-supplied-book-covers.mjs","scripts/import-user-supplied-book-covers-2026-08-13.mjs","scripts/import-user-supplied-book-covers-2026-08-20.mjs","tests/e2e/public-smoke.spec.mjs","scripts/export-published-content.mjs","scripts/export-published-content.fixture.test.mjs","src/data/cms/editorialOverrides.ts","src/data/cms/editorialOverrides.test.ts"]);
     expect([...new Set(packet.projections.map(entry=>entry.path))]).toEqual(packet.allowedProjectionPaths);
     expect(new Set(packet.projections.map(entry=>entry.id)).size).toBe(packet.projections.length);
-    expect([...reviewedR10AdditionPaths]).toEqual(["src/data/countries/writerDatePatches.ts","src/data/countries/generated/writerDatePatches.r10.json","src/data/countries/generated/writerDatePatches.r10-supplemental.json","scripts/lib/cover-overlay-publication-guard.mjs","scripts/lib/cover-overlay-publication-guard.test.mjs","scripts/database/build-literary-news-schema-plan.mjs","scripts/database/literary-news-schema-plan.test.mjs","scripts/database/check-literary-news-schema-plan.mjs"]);
+    expect([...reviewedR10AdditionPaths]).toEqual(["src/data/countries/writerDatePatches.ts","src/data/countries/generated/writerDatePatches.r10.json","src/data/countries/generated/writerDatePatches.r10-supplemental.json","scripts/lib/cover-overlay-publication-guard.mjs","scripts/lib/cover-overlay-publication-guard.test.mjs","scripts/database/build-literary-news-schema-plan.mjs","scripts/database/literary-news-schema-plan.test.mjs","scripts/database/check-literary-news-schema-plan.mjs","scripts/lib/public-work-external-id-fetch.mjs","scripts/lib/public-work-external-id-fetch.test.mjs"]);
   });
   it("preserves the entire previously merged packet when removing only the exact release follow-ups",()=>{
     const coverPaths=["scripts/import-user-supplied-book-covers.mjs","scripts/import-user-supplied-book-covers-2026-08-13.mjs","scripts/import-user-supplied-book-covers-2026-08-20.mjs"];
@@ -43,6 +53,10 @@ describe("R10 exact additive projection without rewriting historical acceptance"
   it("preserves the exact cover and schema packet before the single browser scroll follow-up",()=>{
     expect(packet.browserScrollFollowUp).toEqual({"id":"R10-UNOBSTRUCTED-BROWSER-CONTROL-20260927","baselineCommitSha":"1d957d5aa3537b4cf531eb1acbb31b6eaea1392d","scope":"After viewport checks, focus and center the edition control through existing browser/UI behavior, require an unobstructed center, and retain the original normal pointer click and every prior assertion. No production UI, timeout, retry or skip change.","humanReview":false,"releaseAccepted":false,"productionApplied":false});
     expect(sha(JSON.stringify(beforeBrowserScroll(packet)))).toBe("0538ab0ed28af63e9256953b260da6e1f681bcc6d0979d42d0516cbbd51d5b3f");
+  });
+  it("preserves the complete 6ae packet before the exact CMS external-ID follow-up",()=>{
+    expect(packet.cmsExternalIdFollowUp).toEqual({"id":"R10-CMS-EXTERNAL-ID-PRESERVATION-20260927","baselineMainCommitSha":"a9bed03ff55c3b0373507de19a8eb272c74a3d1a","scope":"Preserve actual public CMS external identifiers through parent-scoped exact-count export, premium serialization and typed defensive copies. No provenance, publication, rights, historical source or cover guard is relaxed.","humanReview":false,"releaseAccepted":false,"productionApplied":false});
+    expect(sha(JSON.stringify(beforeCmsExternalIds(packet)))).toBe("6ae489dee6f819e24225d6ab15813709701067dee52c3657386bef4dd7ef0c4a");
   });
   it.each(packet.allowedProjectionPaths)("restores exact pre-R10 Git bytes with no drift allowance: %s",path=>{
     const current=read(path),before=projectReviewedR10Delta(path,current);

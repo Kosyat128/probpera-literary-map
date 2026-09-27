@@ -5,12 +5,14 @@
     {
       "platform": "telegram",
       "id": "-1002791579809",
-      "mode": "off"
+      "mode": "off",
+      "requirePhotoForNewPosts": true
     },
     {
       "platform": "vk",
       "id": "-231377018",
-      "mode": "off"
+      "mode": "off",
+      "requirePhotoForNewPosts": true
     }
   ],
   "connectionStatus": "telegram_rights_verified_vk_deferred_by_owner",

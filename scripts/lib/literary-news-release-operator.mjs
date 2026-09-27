@@ -4,8 +4,8 @@ import { dispatchNewsJob, newsPostKey, newsSemanticRevision, newsSocialPayloadDi
 import { verifyPublishedNewsSnapshot } from "./literary-news-publication.mjs";
 
 export const NEWS_RELEASE_DESTINATIONS = Object.freeze({
-  telegram: Object.freeze({ platform: "telegram", id: "-1002791579809", mode: "off" }),
-  vk: Object.freeze({ platform: "vk", id: "-231377018", mode: "off" }),
+  telegram: Object.freeze({ platform: "telegram", id: "-1002791579809", mode: "off", requirePhotoForNewPosts: true }),
+  vk: Object.freeze({ platform: "vk", id: "-231377018", mode: "off", requirePhotoForNewPosts: true }),
 });
 export const NEWS_RELEASE_ACTIONS = Object.freeze(["inspect", "enable-canary", "send-canary", "pause", "promote"]);
 const sha = value => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
