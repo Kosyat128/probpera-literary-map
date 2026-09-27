@@ -54,8 +54,8 @@ export async function newsSemanticRevision(item) {
   const { id, title, summary, source, category, kind, eventDate, publishedAt, eventKey } = item;
   return newsSocialPayloadDigest({ id, title, summary, source, category, kind, eventDate, publishedAt, eventKey });
 }
-function telegramPhotoCaption({ title, summary, dateLabel, date, source, credit }) {
-  let caption = `${title}\n\n${summary}\n\n${dateLabel}: ${date}\n\nИсточник: `;
+function telegramPhotoCaption({ title, summary, dateLine, source, credit }) {
+  let caption = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: `;
   const entities = [{ type: "bold", offset: 0, length: title.length },
     { type: "text_link", offset: caption.length, length: source.name.length, url: source.url }];
   caption += `${source.name}\n\n`;
@@ -69,10 +69,10 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
   if (!["telegram", "vk"].includes(platform) || item?.verification !== "confirmed"
     || !snapshot?.id || !snapshot?.release) throw new Error("published_news_required");
   const title = item.title.ru.trim(), summary = item.summary.ru.trim();
-  const date = new Intl.DateTimeFormat("ru-RU", { timeZone: "UTC", dateStyle: "long" })
-    .format(new Date(`${item.eventDate}T12:00:00Z`));
-  const dateLabel = item.kind === "announcement" ? "Запланировано" : item.kind === "calendar" ? "Памятная дата" : "Дата события";
-  const text = `${title}\n\n${summary}\n\n${dateLabel}: ${date}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\n${NEWS_SECTION_URL}`;
+  const dateLabel = item.kind === "announcement" ? "Запланировано" : item.kind === "calendar" ? "Памятная дата" : null;
+  const dateLine = dateLabel ? `${dateLabel}: ${new Intl.DateTimeFormat("ru-RU", { timeZone: "UTC", dateStyle: "long" })
+    .format(new Date(`${item.eventDate}T12:00:00Z`))}` : null;
+  const text = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\n${NEWS_SECTION_URL}`;
   // Never cut a title, negation, attribution or URL. An oversized record is isolated.
   if (text.length > (platform === "telegram" ? 4096 : 16000)) throw new Error("post_text_too_long");
   let payload = platform === "telegram"
@@ -83,7 +83,7 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
   const mediaPending = !media && resolution && resolution.status !== "held";
   if (!media && resolution) fallbackReason = `media_discovery_${resolution.status}:${resolution.reason || "asset_unavailable"}`;
   if (media) {
-    const telegram = telegramPhotoCaption({ title, summary, dateLabel, date, source: item.source, credit: media.credit });
+    const telegram = telegramPhotoCaption({ title, summary, dateLine, source: item.source, credit: media.credit });
     const caption = platform === "telegram" ? telegram.caption : `${text}\n\nИзображение: ${media.credit}`;
     if (caption.length > (platform === "telegram" ? 1024 : 16000)) {
       media = null; fallbackReason = "required_credit_or_caption_exceeds_limit";
@@ -92,14 +92,18 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
       : { ...payload, message: caption, attachments: "prepared://news_photo" };
   }
   const textRevision = await newsSemanticRevision(item);
+  // A template edit must update an already sent post at its existing remote ID.
+  const formatRevision = item.kind === "news" ? "news-without-event-date-v1" : undefined;
+  const messageRevision = formatRevision ? await newsSocialPayloadDigest({ textRevision, formatRevision }) : textRevision;
   // The durable identity is unchanged. A new asset or credit creates an edit revision.
-  const revision = media ? await newsSocialPayloadDigest({ textRevision, media: {
+  const revision = media ? await newsSocialPayloadDigest({ textRevision: messageRevision, media: {
     assetId: media.assetId, sha256: media.sha256, profile: media.profile, credit: media.credit,
     licenseEvidenceSha256: media.licenseEvidenceSha256, destination: media.destination,
-  } }) : textRevision;
+  } }) : messageRevision;
   return { contentKind: "news", newsId: item.id, platform, locale: "ru", profile: media ? "literary-news-photo-v1" : "literary-news-text-v1",
     ...(item.sendable === false || snapshot.sendable === false ? {sendable:false} : {}),
-    revision, textRevision, publication: { snapshotId: snapshot.id, release: snapshot.release },
+    revision, textRevision, ...(formatRevision ? { formatRevision } : {}),
+    publication: { snapshotId: snapshot.id, release: snapshot.release },
     temporal: { kind: item.kind, eventDate: item.eventDate, verifiedAt: item.verifiedAt },
     media, fallbackReason, payload: canonicalNewsSocialValue(payload),
     ...(mediaPending ? { mediaPending: true } : {}),
@@ -198,6 +202,7 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
           prepared = await prepareNewsPost(item,feed.snapshot,destination.platform);
         if (prior?.remoteId && prior.prepared?.media && prepared.media
           && prior.prepared.textRevision === prepared.textRevision
+          && prior.prepared.formatRevision === prepared.formatRevision
           && prior.prepared.media.profile !== prepared.media.profile
           && prior.prepared.media.sourceSha256 === prepared.media.sourceSha256
           && prior.prepared.media.credit === prepared.media.credit

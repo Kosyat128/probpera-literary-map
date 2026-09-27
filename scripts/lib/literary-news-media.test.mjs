@@ -80,6 +80,8 @@ describe("bounded media and destination rights",()=>{
   });
   it("preserves exact caption/UTF16 bold; long mandatory credit falls back to one complete text",async()=>{
     const f=await prepared();expect(f.prepared.payload.caption_entities[0].length).toBe(item.title.ru.length);expect(f.prepared.payload.caption).toContain(f.asset.credit);
+    expect(f.prepared.payload.caption).not.toContain("Дата события");
+    expect(f.prepared.payload.caption).not.toContain("25 сентября 2026 г.");
     f.asset.credit="Автор "+"длинная атрибуция ".repeat(65);
     const overflow=await prepareNewsPost(item,snapshot,"telegram",{destination:telegram,mediaOptions:f.mediaOptions});
     expect(overflow.media).toBeNull();expect(overflow.fallbackReason).toBe("required_credit_or_caption_exceeds_limit");
