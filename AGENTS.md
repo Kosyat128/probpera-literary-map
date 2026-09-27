@@ -37,6 +37,14 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-context-provenance-20260927:begin -->
+Latest source 2a3b8f7564e74231147e3db2b5fc872e87d85fb4: only eight contextual draft source revisions advance 3→4, pinned to actual last-changed D205 Controls e23e58109dbe81f181f6440725ad71157b387e69. Fourteen navigation records at revision 2, twelve support records and all 22 texts remain exact. All 34 records remain unapproved and unavailable. Only S15.PLANETKA-003 evidence changes; every stage and criterion status stays unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json. D207. Existing 17 focused units and the read-only inventory audit passed. D206 runtime 09a262bac6ec684aab2d6f45c5b57b16066c31ad and PWA 98c0a615a7d499c6ec826fe0c29b0191f145a00cce68d8e11df449b5b244f535 / ANDROID 850da396a2c855547a78a8c19a39eb4755948eb22d251c34db14a3240e7d3b5c are retained at their own source with actual payload/APK byte authentication. No new static/browser validation or rebuild; D207 source-only changes are not included in those builds. Stage, editorial, device and release acceptance remains open.
+
+Next: D208: correct the ready-character journey hint to distinguish a currently committed open character card, an available step that needs explicit opening, and a currently unavailable character card. Pass only the existing current characterAction presence through App to BookyJourneyControls; preserve status priority, capabilities, routes and progress. Reuse the existing actual-App three-case scope for explicit post-Close and failed-publication-renewal hint assertions, with TypeScript and only necessary captures; no mirror units or repeat of the D206 fourteen-suite set for this presentation-only change. Do not fetch automatically or enable production journey/dialogue/migration inventory. All content remains unapproved; S03.acceptance remains first unresolved.
+<!-- s15-booky-context-provenance-20260927:end -->
+
 <!-- s15-booky-character-step-20260927:begin -->
 Latest source 09a262ba: current-only adult character steps separate static admission from the current published dossier lease. Explicit modal opening earns no character credit; generic Next rejects character and only the exact committed in-modal acknowledgement advances. Controlled synthetic publication remains test-only; production journeys and migration inventories remain empty. All 34 historical drafts remain unapproved and Controls whole-file provenance still needs a later explicit rebind. Only bounded S15.PLANETKA-004 evidence is added; statuses and acceptance gates remain unchanged.
 

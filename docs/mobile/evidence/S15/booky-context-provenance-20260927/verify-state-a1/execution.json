@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/verify-state.mjs"
+  ],
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "startedAt": "2026-09-27T05:07:56.762Z",
+  "durationMs": 28998.149299999997,
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/verify-state-a1/stdout.log",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724",
+    "bytes": 1576
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/verify-state-a1/stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "mode": "inventory",
+  "attempt": "a1",
+  "pass": false,
+  "tests": null,
+  "reportError": "SyntaxError: Unexpected end of JSON input\n    at JSON.parse (<anonymous>)\n    at file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/check-d207.mjs:40:20",
+  "sourceManifest": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/source-manifests/bd9c7d4c5f8c55bb.json",
+    "sha256": "926b1ec167bd7fa38bec4615876e509b8405ec56df3e6f661c0afcb7b15cd366",
+    "fileCount": 1665
+  },
+  "sourceInputsUnchanged": true,
+  "controlInputs": [
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/entry.json",
+      "sha256": "bc6ccf9dc7ed07861136f76cc6a352e622f6819b08c1f1aa9ecc74f368e90d11"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/scope.json",
+      "sha256": "9c26a65e81425c3e959d7952b789b30eb79789caad49635617e5a8738f09d5c0"
+    },
+    {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/unit.config.mjs",
+      "sha256": "5cb0a61abc5e645416a11363248f62eaadda80a8932f5c171e56ea07cd71a7ca"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/pending-scope.json",
+      "sha256": "15fd3ae76f79d1c9fb7aef482828f189f6e6aba7e7dbdfa18595f41a8999ab37"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/common.mjs",
+      "sha256": "c71dd8d636890d220c925b9f1c5212e4eaf8189422f615877f23ac6a89d480f0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/guard-d207.mjs",
+      "sha256": "dc481e90507bb9e263c639ff346987a72e04c4b56a624a9bc3cb0d867bb8349a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/check-d207.mjs",
+      "sha256": "03c4ee481a660aa435d9d6177d914577e807526ceee54c49e3678999cf5512c8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/commit-source-d207.mjs",
+      "sha256": "eb7ef67c51623f5a213de45ccf3256501fe07fdea74876ada036119c00fed983"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/record-d207.mjs",
+      "sha256": "673cc839635c855761f00858d04171db2bc92304b2fa29be19898c072c0b8cdc"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/checkpoint-d207.mjs",
+      "sha256": "a88f23800ebe934de81b4e983017f947aad962a15f4c660a01d2d0b46ac9d931"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/finalize-d207.mjs",
+      "sha256": "1e4fef0dd1184e328dc8ba987519d259f78333e2a0291393fcdb11f4a9badee5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/verify-checkpoint-d207.mjs",
+      "sha256": "728f6fdf286304320698a899e5f25e0fc15faa55b6e2e8d7502e91a541a3ae43"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/commit-docs-d207.mjs",
+      "sha256": "8176f3217b2076998560f04c185e5c721dd9942bb780b295180c137e9103e494"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/COMMANDS.md",
+      "sha256": "d2ddfb405964a5ac5ad1b5cc7b1fb3ebec48d5570cddb5784a40e6266c0ec86b"
+    }
+  ],
+  "execution": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a1/execution.json",
+    "sha256": "9dad7022436431ec95c9b50475fb3f0862db5357782c51b696ccb6fb512b6fb0"
+  },
+  "rawReport": null,
+  "priorRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+    "sha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9"
+  },
+  "runtimeSourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "buildBaseline": {
+    "runtimeSourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+    "rebuilt": false,
+    "pwa": {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/pwa-a1/result.json",
+      "sha256": "19ef24308b77019c6ca0f4ac2a38aa16f41cde2e1702dd9b40aff47fcff7433f",
+      "buildId": "98c0a615a7d499c6ec826fe0c29b0191f145a00cce68d8e11df449b5b244f535",
+      "sourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-evidence/pwa-98c0a615/artifact.json",
+        "sha256": "06ad7c7ad15b04a3c20155a779a6ac49b910ea99d4b0385c4ae44a2796d84920"
+      },
+      "apk": null,
+      "rebuilt": false
+    },
+    "android": {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/android-a1/result.json",
+      "sha256": "192cd9bd6d425b76e78fbf77d5d932e922159dc246eaecb4b47882c256ae50f2",
+      "buildId": "850da396a2c855547a78a8c19a39eb4755948eb22d251c34db14a3240e7d3b5c",
+      "sourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-evidence/android-850da396/runtime/artifact.json",
+        "sha256": "074428992b3aeae901362cb42230e95a981607fb166d345a3a5f33c69a57f597"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-evidence/android-850da396/app-dev-debug.apk",
+        "bytes": 70289893,
+        "sha256": "8dcf5474dc54c6ebdf574a9584b561e0ede038d28e893f4768062cb0c250f2ed"
+      },
+      "rebuilt": false
+    }
+  },
+  "runtimeUnchanged": true,
+  "rebuilt": false,
+  "staticRerun": false,
+  "browserRerun": false,
+  "stageAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

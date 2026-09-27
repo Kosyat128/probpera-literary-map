@@ -1,0 +1,99 @@
+{
+  "pass": true,
+  "kind": "D207_GLOBAL_CHECKPOINT",
+  "sourceCommit": "2a3b8f7564e74231147e3db2b5fc872e87d85fb4",
+  "runtimeSourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "unitCount": 17,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "allStageAndCriterionStatusesUnchanged": true,
+  "unrelatedRequirementsUnchanged": true,
+  "releaseReady": false,
+  "recordedAt": "2026-09-27T05:07:52.290Z",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json",
+    "sha256": "8fb5a1ed8a99b15c3e93d6a2d6e349b49306c648e69caf247c3f6ca534b2214c"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/checkpoint-d207.mjs",
+    "sha256": "a88f23800ebe934de81b4e983017f947aad962a15f4c660a01d2d0b46ac9d931"
+  },
+  "originalGlobals": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "13cdd89993a0a96f78cec2aef981295c2360364d93ed9b352952f003d23750eb"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "c04622371231b8a3357352e73e5310c77d5cba3395f61ef58973b64589ed3641"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "77bfd96eea451cd9a6ead96a2f19e3884373015da8983d1cf32552449be93bda"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "85213e86bea9851068f0504c5e968911ac915d819ba697ee72737bd65f1d8d05"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "94d734f74bfd3aaf2337bcd213f494f3476544e3e675521853b94bd0416ba088"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "e6abdffa0929a25513637055e0ef9f4b45612a6b43c1207a1a6fd37335d437c2"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "5c2f24376b025fa25374bbf8eb83ad80f7f1bf1e8e9fa1f6cb1a1cbdc114441b"
+    }
+  ],
+  "agentsBefore": {
+    "path": "AGENTS.md",
+    "sha256": "ad34bff9480ea62363febd7bda5230f624bdc3aabac6968f7e625482c06d0273"
+  },
+  "outputs": [
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "fb69774f97a84286670b3c37dfab45296a4e4c36f76fce73e0637160483b09f6"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "49cfa5d34a457988757bc6add91027f6e08a216fe0f3e293b9ecb66be0916db8"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "34cd557ea983edbfee80ff9bfe666e310d3157d1cee3e9c1fc6041ddbf1cd58b"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "59bcca4f3259bd6b320c3fe0d6079fbab100be982e110cd278d3633844fd9ae0"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "fea8e362756a9e21b085ff81cbca0b2604ac47afd29e389cba9df2301309798e"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "6863e859b2d11ce2d732ae3d6aa20a32fbc8b14fa59ae25c959718c0b0eb4ff0"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "f8916993e21127e4d3b729120e602cc3f1816ab7aefaf78daf666197f29017bf"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/README.md",
+      "sha256": "7cc1216ff1c75e47af8a608744c92cd8cd25b6d03c6bf480bdb1ef5130fde45a"
+    }
+  ],
+  "nextAction": "D208: correct the ready-character journey hint to distinguish a currently committed open character card, an available step that needs explicit opening, and a currently unavailable character card. Pass only the existing current characterAction presence through App to BookyJourneyControls; preserve status priority, capabilities, routes and progress. Reuse the existing actual-App three-case scope for explicit post-Close and failed-publication-renewal hint assertions, with TypeScript and only necessary captures; no mirror units or repeat of the D206 fourteen-suite set for this presentation-only change. Do not fetch automatically or enable production journey/dialogue/migration inventory. All content remains unapproved; S03.acceptance remains first unresolved.",
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-003"
+  ],
+  "requirementEvidenceTargets": [
+    "PLANETKA-003"
+  ]
+}

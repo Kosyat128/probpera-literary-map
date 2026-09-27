@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T05:02:54.751Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_CONTEXT_PROVENANCE_SCOPED_VALIDATION",
+  "sourceCommit": "2a3b8f7564e74231147e3db2b5fc872e87d85fb4",
+  "runtimeSourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+    "sha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+    "sha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9"
+  },
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/entry.json",
+    "sha256": "bc6ccf9dc7ed07861136f76cc6a352e622f6819b08c1f1aa9ecc74f368e90d11"
+  },
+  "scopeConfiguration": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/scope.json",
+    "sha256": "9c26a65e81425c3e959d7952b789b30eb79789caad49635617e5a8738f09d5c0"
+  },
+  "sourceManifest": {
+    "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/source-manifests/bd9c7d4c5f8c55bb.json",
+    "sha256": "926b1ec167bd7fa38bec4615876e509b8405ec56df3e6f661c0afcb7b15cd366",
+    "fileCount": 1665
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/unit-a1/result.json",
+      "sha256": "6bcd6a5e29146010ccd4b6fb97985d247bb83b5047fdc78089e53cd2ba93f25d",
+      "execution": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/unit-a1/execution.json",
+        "sha256": "c65c90110a554c20b001055df09862eca21049aac8de86ab411d2733df640c15"
+      },
+      "rawReport": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/unit-a1/vitest.json",
+        "sha256": "bcd82d0294736cb19701e656c7c36d067e6413c7559de438394e91ab0264d6f1"
+      },
+      "tests": {
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "inventory": {
+      "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a2/result.json",
+      "sha256": "af31b1a487f1bd5f22c9d940afea529f1e9708a32b3bc554947755b59af2d3ac",
+      "execution": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a2/execution.json",
+        "sha256": "b50005a65c7ee1b0de40b7556ea0bc21033084295382552ea1b5fad178249c2c"
+      },
+      "rawReport": {
+        "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a2/inventory.json",
+        "sha256": "53842969d63dbed618b427c95f4a6b61d29c6f2365a5ec4e44378ec9cbfc1a3f"
+      },
+      "tests": null
+    }
+  },
+  "attempts": {
+    "unit": "a1",
+    "inventory": "a2"
+  },
+  "sourceCommitReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/bound/d207-a2/source-commit.json",
+    "sha256": "e637f4f82cb34a8cc9691c9e54c7b3710aa8f4ce4f019a65e1627eb067197850"
+  },
+  "changedPaths": [
+    "src/host/bookyNavigationDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs"
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "unchangedPriorChangedInputCount": 26,
+  "unchangedPriorRuntimeInputCount": 16,
+  "retainedPriorRuntimeInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "3a0afd4216be490bee48c0658ddd91d589d8988c9a696f82ea064d7483fc11f0"
+    },
+    {
+      "path": "src/books/bookDossierCharacterView.ts",
+      "sha256": "3caf905f5424bbaf7a0cf4ee2f84bb8fc5b73d88f2d1ec794230bdb68d883ec3"
+    },
+    {
+      "path": "src/books/bookDossierPublicClient.ts",
+      "sha256": "e83e68d4d3434d2ef790b864038257b2403f61efcebe38eb5dbe82a5a8e0b657"
+    },
+    {
+      "path": "src/books/usePublishedBookDossier.ts",
+      "sha256": "c5d54c7254b4e463787debe99a3c3d44dd9466e2dc3ab199d5f13a9f072e8c92"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "f1f9b27cdcaf07a0a9f90586a6bdbffbe74c4b2254bffd44eac5b1ad11dbe802"
+    },
+    {
+      "path": "src/components/BookDossierMap.tsx",
+      "sha256": "e0bf12562c0822eb49058c05a6048cea63cea82863d789bd7f6c20ccdbf10cdb"
+    },
+    {
+      "path": "src/components/BookDossierReader.tsx",
+      "sha256": "78332be674236abf3c22019852cf1dbec608ccd8596e2c39b3bd397b411496d9"
+    },
+    {
+      "path": "src/host/BookyJourneyControls.tsx",
+      "sha256": "9b188c22327dcc3a48113fa280c7df19f9a570a5808363cc561a7eafa15b1193"
+    },
+    {
+      "path": "src/host/bookyJourney.ts",
+      "sha256": "4f4d7dc3a487f5c6a78aa826fea93e5323f5ecf230b6d190632c07706ee3811b"
+    },
+    {
+      "path": "src/host/bookyJourneyCatalog.ts",
+      "sha256": "c9365a751c1910ca6368bebf1dadbf18930b12e28acbff3ed6e9413265bf6095"
+    },
+    {
+      "path": "src/host/bookyJourneyMigration.ts",
+      "sha256": "c1ca36c3eeb03573a4cda3803e58ea4ceba055a3099ce7a09dec143a0f64775a"
+    },
+    {
+      "path": "src/host/bookyJourneyProgress.ts",
+      "sha256": "b786a3ad3233480ba0a78a40ba19230a5afefb2c1476821b229c20d3024a735a"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.ts",
+      "sha256": "c79f98bbe934d8389ee11a82be36280d7faff923464ccf561938d9a958e3cd0c"
+    },
+    {
+      "path": "src/host/useBookyJourney.ts",
+      "sha256": "94eac416210897bfeb6261437d4c30e35804d94a0dcaa6e730dc9a85827c3238"
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sha256": "f205dfe08e132b26d965a0b6fc4ac9ab37941fe61239b88627f6d8ffbb75d704"
+    },
+    {
+      "path": "src/host/bookyJourneyCharacterSession.ts",
+      "sha256": "074e330198ef3c9a2d7ad8fa02b39290c245859626a6f817ed44e74e2e7b3e27"
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyNavigationDrafts.test.ts"
+  ],
+  "unitCount": 17,
+  "recordCount": 22,
+  "navigationRecordCount": 14,
+  "contextualRecordCount": 8,
+  "supportRecordCount": 12,
+  "combinedRecordCount": 34,
+  "combinedDraftCount": 34,
+  "contextualRevision": {
+    "from": 3,
+    "to": 4
+  },
+  "navigationRevision": 2,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "proposalEvidence": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/draft/source-bindings.json",
+      "sha256": "f1d07e67b069385db9202070f494425cd41bf463a7cfa5a384763cc992d8271d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/draft/semantic-invariants.json",
+      "sha256": "76cd732b4150323dbed74b1d6c4002bd1e11302ac96865e4b1590e2875bdf5ea"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/draft/context-provenance.patch",
+      "sha256": "bc5dbae9af942e91c6e5c33dc8711ed10a66de8e9ac17206d05354f9e7a57f49"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/draft/proposed/src/host/bookyNavigationDrafts.ts",
+      "sha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/draft/proposed/src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "10e41f50bc7e2a564c18d13c6afba988fe11508e313a537173e2f3bc73b86eb4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/draft/proposed/scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "76feddfb236ff2486d35c5181847419a9c93b96506b73f4f8a740fcc9467330f"
+    }
+  ],
+  "applyReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/bound/d207-a2/apply-receipt.json",
+    "sha256": "943b0b80ff5f068f3cda5513322290890ea48438b19baeb3539d3858476dbc6e"
+  },
+  "runtimeImportProof": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/bound/d207-a2/runtime-import-proof.json",
+    "sha256": "2c55cfbbec76e150878683f33064ac316b42e78280584af59e6d904e631e2d20"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/pwa-a1/result.json",
+    "sha256": "19ef24308b77019c6ca0f4ac2a38aa16f41cde2e1702dd9b40aff47fcff7433f"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-character-step-20260927/android-a1/result.json",
+    "sha256": "192cd9bd6d425b76e78fbf77d5d932e922159dc246eaecb4b47882c256ae50f2"
+  },
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-character-step-20260927/pwa-a1/result.json",
+        "sha256": "19ef24308b77019c6ca0f4ac2a38aa16f41cde2e1702dd9b40aff47fcff7433f"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-evidence/pwa-98c0a615/artifact.json",
+        "sha256": "06ad7c7ad15b04a3c20155a779a6ac49b910ea99d4b0385c4ae44a2796d84920"
+      },
+      "apk": null,
+      "sourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+      "buildId": "98c0a615a7d499c6ec826fe0c29b0191f145a00cce68d8e11df449b5b244f535",
+      "runtimePayloadRehashed": true,
+      "payloadFileCount": 1426,
+      "sourceInventoryDifferences": [
+        {
+          "path": "src/host/bookyNavigationDrafts.ts",
+          "artifactSourceSha256": "e2d296a33bf5d1ce3a1099a262a737278dbaa79903610f665bd8998b991e1743",
+          "currentSourceSha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4",
+          "unimportedProvenanceInput": true
+        }
+      ],
+      "unchangedOtherCapturedSourceInputs": true,
+      "contextProvenanceRepairIncluded": false,
+      "rebuilt": false
+    },
+    {
+      "kind": "android",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-character-step-20260927/android-a1/result.json",
+        "sha256": "192cd9bd6d425b76e78fbf77d5d932e922159dc246eaecb4b47882c256ae50f2"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-evidence/android-850da396/runtime/artifact.json",
+        "sha256": "074428992b3aeae901362cb42230e95a981607fb166d345a3a5f33c69a57f597"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-step-evidence/android-850da396/app-dev-debug.apk",
+        "bytes": 70289893,
+        "sha256": "8dcf5474dc54c6ebdf574a9584b561e0ede038d28e893f4768062cb0c250f2ed"
+      },
+      "sourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+      "buildId": "850da396a2c855547a78a8c19a39eb4755948eb22d251c34db14a3240e7d3b5c",
+      "runtimePayloadRehashed": true,
+      "payloadFileCount": 1407,
+      "sourceInventoryDifferences": [
+        {
+          "path": "src/host/bookyNavigationDrafts.ts",
+          "artifactSourceSha256": "e2d296a33bf5d1ce3a1099a262a737278dbaa79903610f665bd8998b991e1743",
+          "currentSourceSha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4",
+          "unimportedProvenanceInput": true
+        }
+      ],
+      "unchangedOtherCapturedSourceInputs": true,
+      "contextProvenanceRepairIncluded": false,
+      "rebuilt": false
+    }
+  ],
+  "retainedValidation": {
+    "sourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+      "sha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9"
+    },
+    "runs": {
+      "unit": {
+        "path": "docs/mobile/evidence/S15/booky-character-step-20260927/unit-a1/result.json",
+        "sha256": "8691634509d7c1a906f1b330acae3c4e3f4c9a92e13bb3443051af448ad95e4d",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-character-step-20260927/unit-a1/execution.json",
+          "sha256": "45141963d836ad51f5a4d260efebc33f23a07e3e5da9a49e1e0b2c93dd5c56cb"
+        },
+        "tests": {
+          "passed": 367,
+          "failed": 0,
+          "skipped": 0
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/booky-character-step-20260927/unit-a1/vitest.json",
+          "sha256": "b4ab261424e927b02b27fac8b9b312fc8b34ed042d2faa8a4629e92a189ba67d"
+        }
+      },
+      "static": {
+        "path": "docs/mobile/evidence/S15/booky-character-step-20260927/static-a1/result.json",
+        "sha256": "18d9b2fd13e8ebe874c34608067803ac251bc8445394d4517f279dbf214ca8ba",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-character-step-20260927/static-a1/execution.json",
+          "sha256": "e610fadcbf6ae64eb8dba2075c7438f4c5047082b622db74205c753df29b211e"
+        },
+        "tests": null,
+        "rawReport": null
+      },
+      "browser": {
+        "path": "docs/mobile/evidence/S15/booky-character-step-20260927/browser-a1/result.json",
+        "sha256": "230a5a9011e025560da48b6d5b593466fa762c1447f0c2f42833972d6194ff34",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-character-step-20260927/browser-a1/execution.json",
+          "sha256": "b7a3839da005e7cc4e6861a022e5cdbbaa8b5151453e747d8164a37bb8d4e0e3"
+        },
+        "tests": {
+          "passed": 8,
+          "failed": 0,
+          "skipped": 0,
+          "flaky": 0
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/booky-character-step-20260927/browser-a1/playwright.json",
+          "sha256": "8cdffe8776ad6bb3c0e8189cd210a71c037f35e38aa6934fa91e8a2a77af115a"
+        }
+      }
+    },
+    "unitCount": 367,
+    "browserCases": 8,
+    "visualReview": {
+      "path": "docs/mobile/evidence/S15/booky-character-step-20260927/visual-review.json",
+      "sha256": "e093003aa73b75b5ad71c8da5e057d2a1a01f2edeb1f4ca99a2f77827ea926ab"
+    },
+    "rerun": false
+  },
+  "runtimeUnchanged": true,
+  "rebuilt": false,
+  "buildSourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "staticRerun": false,
+  "browserRerun": false,
+  "staticEvidenceScope": "Retained D206 static validation at its own source; no fresh static result claimed.",
+  "requirementEvidenceTargets": [
+    "PLANETKA-003"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-003"
+  ],
+  "nextAction": "D208: correct the ready-character journey hint to distinguish a currently committed open character card, an available step that needs explicit opening, and a currently unavailable character card. Pass only the existing current characterAction presence through App to BookyJourneyControls; preserve status priority, capabilities, routes and progress. Reuse the existing actual-App three-case scope for explicit post-Close and failed-publication-renewal hint assertions, with TypeScript and only necessary captures; no mirror units or repeat of the D206 fourteen-suite set for this presentation-only change. Do not fetch automatically or enable production journey/dialogue/migration inventory. All content remains unapproved; S03.acceptance remains first unresolved.",
+  "limitations": [
+    "Only the eight contextual draft source revisions and checksums change, from 3 to 4. Fourteen navigation records at revision 2 and twelve support records stay exact.",
+    "All 22 existing texts and non-provenance review/scope fields stay exact. All 34 combined records remain unapproved and unavailable.",
+    "Tracked direct-reference and literal-glob proof establishes this inventory is not imported by runtime; no build or new static/browser validation is claimed.",
+    "Retained D206 build payloads and APK are authenticated at their original source/build IDs. Captured source-inventory differences are explicit; D207 is not included in those builds.",
+    "Only PLANETKA-003 evidence is refreshed. Stage, child, editorial, device and release acceptance remain open."
+  ],
+  "changesExistingHelp": false,
+  "stageAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "humanReviewed": false,
+  "childApproved": false,
+  "narrationApproved": false,
+  "productionJourneysEnabled": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

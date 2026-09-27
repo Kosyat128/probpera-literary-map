@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T05:07:54.521Z",
+  "pass": true,
+  "sourceCommit": "2a3b8f7564e74231147e3db2b5fc872e87d85fb4",
+  "result": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/result.json",
+    "sha256": "8fb5a1ed8a99b15c3e93d6a2d6e349b49306c648e69caf247c3f6ca534b2214c"
+  },
+  "checkpoint": {
+    "path": "docs/mobile/evidence/S15/booky-context-provenance-20260927/checkpoint.json",
+    "sha256": "be50c230324318b8efb52e46d33e36b406ea183c26eb09e3caac43a1b760ab3a"
+  },
+  "helper": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/helpers/finalize-d207.mjs",
+    "sha256": "1e4fef0dd1184e328dc8ba987519d259f78333e2a0291393fcdb11f4a9badee5"
+  },
+  "before": {
+    "path": "AGENTS.md",
+    "sha256": "ad34bff9480ea62363febd7bda5230f624bdc3aabac6968f7e625482c06d0273"
+  },
+  "outputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "3e8ae9f78de7b54edaea4237615236a5cf0497ea9d60d92b483d0d3c85641bfc"
+    }
+  ],
+  "scope": "D207 checkpoint note only",
+  "releaseReady": false
+}

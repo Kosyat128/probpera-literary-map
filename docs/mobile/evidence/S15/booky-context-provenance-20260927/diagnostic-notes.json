@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "inventoryStartup": {
+    "classification": "sandbox-esbuild-directory-access-failure",
+    "exitCode": 1,
+    "auditReportProduced": false,
+    "stdoutEmpty": true,
+    "sourceInputsUnchanged": true,
+    "result": {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a1/result.json",
+      "sha256": "c2647e8eec5c62a06ea6dd2ba7d6f7250c7e4461730e980b9e482ba4461bc6f9"
+    },
+    "execution": {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a1/execution.json",
+      "sha256": "9dad7022436431ec95c9b50475fb3f0862db5357782c51b696ccb6fb512b6fb0"
+    },
+    "acceptedRetry": {
+      "path": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S15/booky-context-provenance-20260927/inventory-a2/result.json",
+      "sha256": "af31b1a487f1bd5f22c9d940afea529f1e9708a32b3bc554947755b59af2d3ac"
+    },
+    "description": "Unchanged source and audit rerun with filesystem access after esbuild failed before producing an audit report; original failed attempt is retained."
+  },
+  "bindingAuthoring": {
+    "supersededBinding": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-context-provenance-review/bound/d207-a1/binding.json",
+      "sha256": "afd666d6350df5311a9b418f8f27abcaa2e892bf118937837e6dc5787f1ddd9c"
+    },
+    "description": "First external binding counted modified D206 inputs only. It was superseded before applying source by a binding including added inputs and the exact runtimeRequired list; original helper bytes are preserved externally under superseded-d207-a1."
+  },
+  "productFailureClaimed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

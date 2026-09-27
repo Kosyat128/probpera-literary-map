@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "sourceFrozen": true,
+  "status": "CONTEXT_PROVENANCE_SOURCE_FROZEN",
+  "d206SourceCommit": "09a262bac6ec684aab2d6f45c5b57b16066c31ad",
+  "d206Checkpoint": "d88a7c486f1fa7dc446a19c232b4633d5745819a",
+  "d206ResultPath": "docs/mobile/evidence/S15/booky-character-step-20260927/result.json",
+  "d206ResultSha256": "1706588118ab2768dfcc8840fd7c39c092308d53ac23b9425807114d287b23b9",
+  "changedPaths": [
+    "src/host/bookyNavigationDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs"
+  ],
+  "proposedSha256": [
+    "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4",
+    "10e41f50bc7e2a564c18d13c6afba988fe11508e313a537173e2f3bc73b86eb4",
+    "76feddfb236ff2486d35c5181847419a9c93b96506b73f4f8a740fcc9467330f"
+  ],
+  "patchSha256": "bc5dbae9af942e91c6e5c33dc8711ed10a66de8e9ac17206d05354f9e7a57f49",
+  "controlsSourceCommit": "e23e58109dbe81f181f6440725ad71157b387e69",
+  "controlsNormalizedSha256": "4c2de3c256f178f7ed308d3a30a78be6a2e547af7f6b1b58a4c717f3ffcffe0d",
+  "navigationVersion": 2,
+  "contextFromVersion": 3,
+  "contextToVersion": 4,
+  "navigationRecordCount": 14,
+  "contextRecordCount": 8,
+  "supportRecordCount": 12,
+  "combinedRecordCount": 34,
+  "unitFiles": [
+    "src/host/bookyNavigationDrafts.test.ts"
+  ],
+  "expectedUnitTests": 17,
+  "validationModes": [
+    "unit",
+    "inventory"
+  ],
+  "staticRerun": false,
+  "staticReason": "Only AST-validated authored literals change; no types, imports, runtime module, or configuration changes. D206 static evidence is retained at its own source.",
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1662,
+  "priorChangedInputCount": 26,
+  "priorRuntimeInputCount": 16,
+  "rebuild": false,
+  "browserRerun": false,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "stageAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "releaseReady": false
+}
