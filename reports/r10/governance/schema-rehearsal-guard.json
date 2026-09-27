@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "R10-ISOLATED-SCHEMA-REHEARSAL-GOVERNANCE-20260927",
+  "reviewedAt": "2026-09-27T05:02:44.163Z",
+  "baselineMainCommitSha": "361da051a5ea1d72ad3d44d84a7dd4eee3130a1f",
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false,
+  "currentPacketSha256": "0538ab0ed28af63e9256953b260da6e1f681bcc6d0979d42d0516cbbd51d5b3f",
+  "previousMergedPacketSha256": "e4a632dc6bfe7427d27edb20b5a2ef6bc77f9288be7accf2630e54979ea39ca9",
+  "previousCoverOnlyPacketSha256": "514e345dde1cbbd40bb77831071ffc29363da0f3139d2817d65954efdacba438",
+  "previousCoverOnlyReceipt": "reports/r10/governance/cover-publication-guard.json",
+  "previousCoverOnlyReceiptSha256": "6c6616062d17f0abbdd981a8fb53eb6d09ccf2d2440fab7269ed8f219e4f91f4",
+  "scope": "Pin exactly the compiler, its unit tests and executable checker for the isolated Auth fixture fix. No new projection paths or historical exemptions. The prior cover-only and merged R10 packets remain independently reconstructable and hash-pinned.",
+  "addedSourcePins": [
+    {
+      "path": "scripts/database/build-literary-news-schema-plan.mjs",
+      "sha256Lf": "db510aa93ea143ce8877d51f9730ac4c3dd5e934168841f2b0fbc2997c8c6717"
+    },
+    {
+      "path": "scripts/database/literary-news-schema-plan.test.mjs",
+      "sha256Lf": "79d2cab97aaa429e8a1a09ae8b0049bc8aadb4f79b2eedc64a8678915a7f9d7e"
+    },
+    {
+      "path": "scripts/database/check-literary-news-schema-plan.mjs",
+      "sha256Lf": "bc811f0128ee63b5d29ebd03dfee172f730a237a1a7a65f32b11ce47fcc5f96d"
+    }
+  ],
+  "independentProductionCompatibility": {
+    "baselineMain": "361da051a5ea1d72ad3d44d84a7dd4eee3130a1f",
+    "repositoryShaFixture": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "production": {
+      "plan": {
+        "sha256": "7fb4c9d6a5ff82da57c253875263241be6eaae41f37b6e95952d19d2abdd3874",
+        "byteUnchanged": true
+      },
+      "preflight": {
+        "sha256": "3f1576d467467f5744e0bc435826754400316a95139b8a8425abeee46cd11381",
+        "byteUnchanged": true
+      },
+      "verification": {
+        "sha256": "3e4f9dc952d13e8bb046c31c5c0de995cb1eebdce4997c3ea2afbd67ebae16a9",
+        "byteUnchanged": true
+      }
+    },
+    "migration": {
+      "path": "supabase/migrations/20260926_literary_news_runtime_cas.sql",
+      "sha256Lf": "4a097df7cadca82b59f1685d730aca7f8afe40704cabc409d5cf20ac8c54c402",
+      "byteUnchangedAfterLfNormalization": true
+    },
+    "rehearsal": {
+      "beforeSha256": "6c17be90f29281949ae634c34f7ca37003aeedb86c35d003262e532b1faa5188",
+      "afterSha256": "43a4386e76d9cc607bdadac87bf3a38420b31c6efd2390c95272980e82b822e7"
+    },
+    "changedManifestKeys": [
+      "rehearsalSha256",
+      "rehearsalPlatform"
+    ]
+  },
+  "focusedValidation": {
+    "command": "node node_modules/vitest/vitest.mjs run --configLoader runner scripts/lib/reviewed-r10-delta.test.mjs",
+    "passedFiles": 1,
+    "passedTests": 26,
+    "failedTests": 0,
+    "skippedTests": 0,
+    "testReportSha256": "975983bc03a4128ae367829e762eb6f406d36bf72381b4898cf760dd0bf9b578",
+    "sourcePins": {
+      "scripts/governance/r10-forward-delta-20260926.json": "ab000cd43d6246f75adf12cd39911b5b6b3dd346865c33fecb841864e4206045",
+      "scripts/lib/reviewed-r10-delta.test.mjs": "708283b47bee00bcb78e56ba100f343dd73494505736c72aae95b4a3e510935e"
+    }
+  },
+  "executableEvidenceRead": {
+    "path": "reports/r10/social/schema-rollout/rehearsal-auth-fixture-check.json",
+    "sha256Lf": "7be0696438f52eca2285ff221a0948e4e2e97ba039ce2c6f536593c7c1fca392",
+    "passed": 29,
+    "engine": "PGlite isolated PostgreSQL",
+    "independentlyRerunInThisGovernanceReview": false
+  },
+  "limitations": [
+    "The backup is public-only. Minimal missing auth.mfa_factors/auth.jwt fixtures are limited to the disposable isolated rehearsal and do not restore production Auth data or validate operator authentication/MFA.",
+    "Production SQL compatibility was independently checked with the same all-a repository SHA fixture on both compilers; these fixture hashes are not the deployment invocation hashes.",
+    "Docker restore-drill was unavailable locally. No workflow dispatch, remote database mutation or production apply was performed in this governance review.",
+    "The earlier cover-only 76-test report is retained as a dated prior stage. The final packet was separately checked by the 26 tests listed here."
+  ]
+}

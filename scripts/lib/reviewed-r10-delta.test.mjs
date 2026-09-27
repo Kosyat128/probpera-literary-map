@@ -7,12 +7,30 @@ const read=path=>readFileSync(path,"utf8").replace(/\r\n?/gu,"\n");
 const historical=path=>execFileSync("git",["-c",`safe.directory=${process.cwd()}`,"show",`${packet.baselineSourceCommitSha}:${path}`],{encoding:"utf8",maxBuffer:5*1024*1024}).replace(/\r\n?/gu,"\n");
 describe("R10 exact additive projection without rewriting historical acceptance",()=>{
   it("pins the bounded agent-reviewed packet and explicitly excludes human/release claims",()=>{
-    expect(sha(JSON.stringify(packet))).toBe("e4a632dc6bfe7427d27edb20b5a2ef6bc77f9288be7accf2630e54979ea39ca9");
+    expect(sha(JSON.stringify(packet))).toBe("0538ab0ed28af63e9256953b260da6e1f681bcc6d0979d42d0516cbbd51d5b3f");
     expect(packet).toMatchObject({id:"R10-FORWARD-DELTA-20260926",baselineSourceCommitSha:"63ce3112846e3e49f4b15d1cb64b3c29cb98af70",historicalPinsChanged:false,authorization:{humanReview:false,releaseAccepted:false,productionApplied:false}});
-    expect(packet.allowedProjectionPaths).toEqual(["src/components/HeaderArticlesMenu.tsx","apps/admin/app/(dashboard)/homepage/page.tsx","src/data/countries/index.ts","src/data/countries/types.ts","package.json","scripts/lib/reviewed-header-library.test.mjs","scripts/lib/reviewed-r49n-package.test.mjs","scripts/lib/reviewed-dependency-security.test.mjs","scripts/lib/reviewed-header-showcase.test.mjs","src/components/stage5Governance.test.ts","scripts/lib/stage5-content-data-lock.test.mjs","scripts/lib/reviewed-cms-source-punctuation.test.mjs","scripts/lib/reviewed-draft-storage.test.mjs","scripts/lib/reviewed-native-archive-read.test.mjs","scripts/lib/reviewed-native-archive-transport.test.mjs","scripts/lib/reviewed-premium-title-evidence.test.mjs","scripts/lib/reviewed-reference-release.test.mjs","tests/e2e/header-hero-polish.spec.mjs"]);
+    expect(packet.allowedProjectionPaths).toEqual(["src/components/HeaderArticlesMenu.tsx","apps/admin/app/(dashboard)/homepage/page.tsx","src/data/countries/index.ts","src/data/countries/types.ts","package.json","scripts/lib/reviewed-header-library.test.mjs","scripts/lib/reviewed-r49n-package.test.mjs","scripts/lib/reviewed-dependency-security.test.mjs","scripts/lib/reviewed-header-showcase.test.mjs","src/components/stage5Governance.test.ts","scripts/lib/stage5-content-data-lock.test.mjs","scripts/lib/reviewed-cms-source-punctuation.test.mjs","scripts/lib/reviewed-draft-storage.test.mjs","scripts/lib/reviewed-native-archive-read.test.mjs","scripts/lib/reviewed-native-archive-transport.test.mjs","scripts/lib/reviewed-premium-title-evidence.test.mjs","scripts/lib/reviewed-reference-release.test.mjs","tests/e2e/header-hero-polish.spec.mjs","scripts/import-user-supplied-book-covers.mjs","scripts/import-user-supplied-book-covers-2026-08-13.mjs","scripts/import-user-supplied-book-covers-2026-08-20.mjs"]);
     expect([...new Set(packet.projections.map(entry=>entry.path))]).toEqual(packet.allowedProjectionPaths);
     expect(new Set(packet.projections.map(entry=>entry.id)).size).toBe(packet.projections.length);
-    expect([...reviewedR10AdditionPaths]).toEqual(["src/data/countries/writerDatePatches.ts","src/data/countries/generated/writerDatePatches.r10.json","src/data/countries/generated/writerDatePatches.r10-supplemental.json"]);
+    expect([...reviewedR10AdditionPaths]).toEqual(["src/data/countries/writerDatePatches.ts","src/data/countries/generated/writerDatePatches.r10.json","src/data/countries/generated/writerDatePatches.r10-supplemental.json","scripts/lib/cover-overlay-publication-guard.mjs","scripts/lib/cover-overlay-publication-guard.test.mjs","scripts/database/build-literary-news-schema-plan.mjs","scripts/database/literary-news-schema-plan.test.mjs","scripts/database/check-literary-news-schema-plan.mjs"]);
+  });
+  it("preserves the entire previously merged packet when removing only the exact release follow-ups",()=>{
+    const coverPaths=["scripts/import-user-supplied-book-covers.mjs","scripts/import-user-supplied-book-covers-2026-08-13.mjs","scripts/import-user-supplied-book-covers-2026-08-20.mjs"];
+    const coverAdditions=["scripts/lib/cover-overlay-publication-guard.mjs","scripts/lib/cover-overlay-publication-guard.test.mjs"];
+    expect(packet.releaseFollowUp).toEqual({"id":"R10-COVER-PUBLIC-IDENTITY-20260927","baselineMainCommitSha":"361da051a5ea1d72ad3d44d84a7dd4eee3130a1f","scope":"Cover-only importers preserve the exact live public identity set instead of the obsolete static public count; no content, rights, historical manifests or older projection fragments change.","humanReview":false,"releaseAccepted":false,"productionApplied":false});
+    const {releaseFollowUp,schemaRehearsalFollowUp,...prior}=packet;
+    prior.allowedProjectionPaths=prior.allowedProjectionPaths.filter(path=>!coverPaths.includes(path));
+    prior.projections=prior.projections.filter(entry=>!coverPaths.includes(entry.path));
+    prior.additions=prior.additions.filter(entry=>![...coverAdditions,...["scripts/database/build-literary-news-schema-plan.mjs","scripts/database/literary-news-schema-plan.test.mjs","scripts/database/check-literary-news-schema-plan.mjs"]].includes(entry.path));
+    for(const key of ["sourceBaselines","reviewedSources"])prior[key]=Object.fromEntries(Object.entries(prior[key]).filter(([path])=>!coverPaths.includes(path)));
+    expect(sha(JSON.stringify(prior))).toBe("e4a632dc6bfe7427d27edb20b5a2ef6bc77f9288be7accf2630e54979ea39ca9");
+  });
+  it("preserves the cover-only packet when removing only the isolated rehearsal follow-up",()=>{
+    const rehearsalPaths=["scripts/database/build-literary-news-schema-plan.mjs","scripts/database/literary-news-schema-plan.test.mjs","scripts/database/check-literary-news-schema-plan.mjs"];
+    expect(packet.schemaRehearsalFollowUp).toEqual({"id":"R10-ISOLATED-SCHEMA-REHEARSAL-20260927","baselineMainCommitSha":"361da051a5ea1d72ad3d44d84a7dd4eee3130a1f","scope":"Minimal auth fixtures only in the isolated public-only backup rehearsal. Production migration, apply plan, preflight and verification bytes remain unchanged; no production prerequisite is relaxed.","humanReview":false,"releaseAccepted":false,"productionApplied":false});
+    const {schemaRehearsalFollowUp,...prior}=packet;
+    prior.additions=prior.additions.filter(entry=>!rehearsalPaths.includes(entry.path));
+    expect(sha(JSON.stringify(prior))).toBe("514e345dde1cbbd40bb77831071ffc29363da0f3139d2817d65954efdacba438");
   });
   it.each(packet.allowedProjectionPaths)("restores exact pre-R10 Git bytes with no drift allowance: %s",path=>{
     const current=read(path),before=projectReviewedR10Delta(path,current);
@@ -25,7 +43,7 @@ describe("R10 exact additive projection without rewriting historical acceptance"
       for(const changed of [current.replace(delta.after,""),current+delta.after,current.replace(delta.after,delta.after.replace(/\S/u,"?"))])expect(()=>projectReviewedR10Delta(path,changed)).toThrow("Missing or duplicate R10 delta");
     }
   });
-  it("excludes only exact new date evidence modules and lets every altered byte fail old data locks",()=>{
+  it("recognizes only exact reviewed additions and rejects every altered byte",()=>{
     for(const addition of packet.additions){const source=read(addition.path);expect(isReviewedR10Addition(addition.path,source)).toBe(true);expect(isReviewedR10Addition(addition.path,source.replaceAll("\n","\r\n"))).toBe(true);expect(isReviewedR10Addition(addition.path,source+"\n")).toBe(false);expect(isReviewedR10Addition(addition.path,source.replace(/\S/u,"?"))).toBe(false);expect(isReviewedR10Addition(addition.path+".unreviewed",source)).toBe(false);}
     expect(projectReviewedR10Delta("src/data/bookArchive.ts","unreviewed content\n")).toBe("unreviewed content\n");
   });

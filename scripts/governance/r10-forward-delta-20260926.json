@@ -35,7 +35,10 @@
     "scripts/lib/reviewed-native-archive-transport.test.mjs",
     "scripts/lib/reviewed-premium-title-evidence.test.mjs",
     "scripts/lib/reviewed-reference-release.test.mjs",
-    "tests/e2e/header-hero-polish.spec.mjs"
+    "tests/e2e/header-hero-polish.spec.mjs",
+    "scripts/import-user-supplied-book-covers.mjs",
+    "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
+    "scripts/import-user-supplied-book-covers-2026-08-20.mjs"
   ],
   "sourceBaselines": {
     "src/components/HeaderArticlesMenu.tsx": "6fc7093e3dbc0a3a1f3b199e599f3223c9050ab521bded83b1edbfc6788bcb19",
@@ -55,7 +58,10 @@
     "scripts/lib/reviewed-native-archive-transport.test.mjs": "2197aeaac791006165230f978b12710ed5f5bcdd9a8ae4c3846329dd12b63a45",
     "scripts/lib/reviewed-premium-title-evidence.test.mjs": "17e5e94d9259a288251592c190df2363e01ab87b16871e3e82557c835d392ae2",
     "scripts/lib/reviewed-reference-release.test.mjs": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6",
-    "tests/e2e/header-hero-polish.spec.mjs": "2d5d8511b546aa47ce35453664659cf6ffa0cbe6b5628379c6e941a4455a2b92"
+    "tests/e2e/header-hero-polish.spec.mjs": "2d5d8511b546aa47ce35453664659cf6ffa0cbe6b5628379c6e941a4455a2b92",
+    "scripts/import-user-supplied-book-covers.mjs": "606cb64fe9734fce086a343bb54612f5bcf7817afa54701e7137dae3238e55c2",
+    "scripts/import-user-supplied-book-covers-2026-08-13.mjs": "851951b349ccec82276f1a6a4ed8dfd8dbae09fc3df1375b9e68cb2aa9ed9774",
+    "scripts/import-user-supplied-book-covers-2026-08-20.mjs": "70b0443c017f75e9faeeae00ade2d5c72216481c0cd69933337a83a54ffb123d"
   },
   "reviewedSources": {
     "src/components/HeaderArticlesMenu.tsx": "bcdc72a78cc76c09d82a499e84f8f94b0d993a2e24e1edf03256e6ea76648857",
@@ -75,7 +81,10 @@
     "scripts/lib/reviewed-native-archive-transport.test.mjs": "e8fd217a17c430fff08e4adfbce4295ca35e500976b2a33b802fe907ac82bfe9",
     "scripts/lib/reviewed-premium-title-evidence.test.mjs": "ea902b9d092b38330261019c714affd28ff7408a50a1a278a3ae5f9dd092004f",
     "scripts/lib/reviewed-reference-release.test.mjs": "7647cec118083dc002a5609a141c85ffdc5ba65f88941641a86299b5de8df451",
-    "tests/e2e/header-hero-polish.spec.mjs": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda"
+    "tests/e2e/header-hero-polish.spec.mjs": "b76f33ad9ad8b0ca5d645edbb736a241f79a7a876d726d3b839f52d772b1feda",
+    "scripts/import-user-supplied-book-covers.mjs": "29fbe981fadf2d4462c5eb5b82ea132c9cf7e7de74d9f6584fcdcbd1a1608c3d",
+    "scripts/import-user-supplied-book-covers-2026-08-13.mjs": "12648bec2aaafb061ea5e5aa4b67b1e014a107de4c565349d4bab75b2c69c576",
+    "scripts/import-user-supplied-book-covers-2026-08-20.mjs": "417306d39bc8bb7abfdcb032bc647ad4eb03d8a2b0bf5b8e0b9585cf53378c52"
   },
   "additions": [
     {
@@ -89,6 +98,26 @@
     {
       "path": "src/data/countries/generated/writerDatePatches.r10-supplemental.json",
       "sha256Lf": "8abca2eceb3e234e8de155e7161a3aadcb6ce84bf056b485034d0b6a6189f217"
+    },
+    {
+      "path": "scripts/lib/cover-overlay-publication-guard.mjs",
+      "sha256Lf": "31b473d9ad1c17670b799ed3290f1e56afb8c667d557885a3541e19c47dada93"
+    },
+    {
+      "path": "scripts/lib/cover-overlay-publication-guard.test.mjs",
+      "sha256Lf": "b28fb1abceb0acb2169a73fc0fd7cbfcf46ec3fccda1381ea7a92c749a31b835"
+    },
+    {
+      "path": "scripts/database/build-literary-news-schema-plan.mjs",
+      "sha256Lf": "db510aa93ea143ce8877d51f9730ac4c3dd5e934168841f2b0fbc2997c8c6717"
+    },
+    {
+      "path": "scripts/database/literary-news-schema-plan.test.mjs",
+      "sha256Lf": "79d2cab97aaa429e8a1a09ae8b0049bc8aadb4f79b2eedc64a8678915a7f9d7e"
+    },
+    {
+      "path": "scripts/database/check-literary-news-schema-plan.mjs",
+      "sha256Lf": "bc811f0128ee63b5d29ebd03dfee172f730a237a1a7a65f32b11ce47fcc5f96d"
     }
   ],
   "projections": [
@@ -295,6 +324,82 @@
       "path": "tests/e2e/header-hero-polish.spec.mjs",
       "before": "test(\"publication showcase fits complete previews without nested or panel scrolling\", async ({ page }) => {\n  for (const locale of [\"ru\", \"en\"]) {\n    await openHomepage(page, 1547, 900, locale);\n    for (const [width, height] of [[1280, 600], [1280, 720], [1366, 768], [1547, 900], [1920, 1080]]) {\n      await page.setViewportSize({ width, height });\n      const summary = page.locator(\".articles-menu > summary\");\n      const panel = page.locator(\".articles-mega-menu\");\n      await summary.focus();\n      await page.keyboard.press(\"Enter\");\n      await expect(panel).toBeVisible();\n      await expect(panel.locator(\".articles-mega-lead\")).toBeVisible();\n      const geometry = await panel.evaluate(element => {\n        const box = node => node.getBoundingClientRect().toJSON();\n        const content = element.querySelector(\".articles-mega-content\");\n        const list = content.querySelector(\"section\");\n        const lead = content.querySelector(\".articles-mega-lead\");\n        const cards = [...list.querySelectorAll(\"a\")].filter(card => card.getClientRects().length);\n        return {\n          panel: box(element),\n          image: box(lead.querySelector(\"img\")),\n          imageFit: getComputedStyle(lead.querySelector(\"img\")).objectFit,\n          cards: cards.map(box),\n          cardCount: list.querySelectorAll(\"a\").length,\n          footer: box(element.querySelector(\"footer\")),\n          scroll: [element, content, list].map(node => node.scrollHeight - node.clientHeight),\n          text: [lead, ...cards].flatMap(card => [...card.querySelectorAll(\"strong, p, small, em, section span\")].flatMap(copy => {\n            const range = document.createRange();\n            range.selectNodeContents(copy);\n            return [...range.getClientRects()].filter(rect => rect.width > 0).map(rect => ({\n              bounds: box(card),\n              left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom,\n            }));\n          })),\n        };\n      });\n      expect(geometry.panel.left, `${locale}/${width}/${height}`).toBeGreaterThanOrEqual(0);\n      expect(geometry.panel.right).toBeLessThanOrEqual(width);\n      expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);\n      for (const overflow of geometry.scroll) expect(overflow).toBeLessThanOrEqual(1);\n      expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);\n      expect(geometry.imageFit).toBe(\"contain\");\n      expect(geometry.image.width / geometry.image.height).toBeCloseTo(16 / 9, 2);\n      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, 6));\n      for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);\n      for (const text of geometry.text) {\n        expect(text.left).toBeGreaterThanOrEqual(text.bounds.left - 1);\n        expect(text.right).toBeLessThanOrEqual(text.bounds.right + 1);\n        expect(text.top).toBeGreaterThanOrEqual(text.bounds.top - 1);\n        expect(text.bottom).toBeLessThanOrEqual(text.bounds.bottom + 1);\n      }\n      await expect(panel.locator(\"footer a\")).toBeVisible();\n      await expect(panel.locator(\"footer a\")).toHaveAttribute(\"href\", /\\/stati\\/$/u);\n      await page.keyboard.press(\"Escape\");\n      await expect(panel).not.toBeVisible();\n    }\n    await page.setViewportSize({ width: 1260, height: 600 });\n    await expect(page.locator(\".articles-menu > summary\")).not.toBeVisible();\n    await expect(page.locator('.mobile-nav a[href*=\"journal\"]')).toBeVisible();\n  }\n});\n\n",
       "after": "test(\"publication showcase preserves complete previews with one viewport-bounded scroll area\", async ({ page }) => {\n  for (const locale of [\"ru\", \"en\"]) {\n    await openHomepage(page, 1547, 900, locale);\n    for (const [width, height] of [[1280, 600], [1280, 720], [1366, 768], [1547, 900], [1920, 1080]]) {\n      await page.setViewportSize({ width, height });\n      const summary = page.locator(\".articles-menu > summary\");\n      const panel = page.locator(\".articles-mega-menu\");\n      await summary.focus();\n      await page.keyboard.press(\"Enter\");\n      await expect(panel).toBeVisible();\n      await expect(panel.locator(\".articles-mega-lead\")).toHaveCount(1);\n      const archiveCount = Number((await panel.locator(\"footer > span\").innerText()).replace(/\\D/gu, \"\"));\n      expect(archiveCount).toBeGreaterThan(0);\n      const expectedMore = Math.min(6, archiveCount - 1);\n      if (locale === \"ru\") expect(expectedMore).toBe(6);\n      await expect(panel.locator(\".articles-mega-content > section > a\")).toHaveCount(expectedMore);\n      const image = panel.locator(\".articles-mega-lead img\");\n      await expect(image).toBeVisible();\n      await expect.poll(() => image.evaluate(node => node.complete && node.naturalWidth > 0 && node.naturalHeight > 0)).toBe(true);\n      const geometry = await panel.evaluate(element => {\n        const box = node => node.getBoundingClientRect().toJSON();\n        const content = element.querySelector(\".articles-mega-content\");\n        const list = content.querySelector(\"section\");\n        const lead = content.querySelector(\".articles-mega-lead\");\n        const cards = [...list.querySelectorAll(\"a\")].filter(card => card.getClientRects().length);\n        return {\n          panel: box(element),\n          image: box(lead.querySelector(\"img\")),\n          imageFit: getComputedStyle(lead.querySelector(\"img\")).objectFit,\n          imageRatio: lead.querySelector(\"img\").naturalWidth / lead.querySelector(\"img\").naturalHeight,\n          leadInnerWidth: lead.clientWidth - parseFloat(getComputedStyle(lead).paddingLeft) - parseFloat(getComputedStyle(lead).paddingRight),\n          cards: cards.map(box),\n          cardCount: list.querySelectorAll(\"a\").length,\n          footer: box(element.querySelector(\"footer\")),\n          scroll: [element, content, list, lead, ...cards].map(node => node.scrollHeight - node.clientHeight),\n          overflowY: getComputedStyle(element).overflowY,\n          horizontalOverflow: [element, content, list, lead, ...cards].map(node => node.scrollWidth - node.clientWidth),\n          text: [lead, ...cards].flatMap(card => [...card.querySelectorAll(\"strong, p, small, em, section span\")].flatMap(copy => {\n            const range = document.createRange();\n            range.selectNodeContents(copy);\n            return [...range.getClientRects()].filter(rect => rect.width > 0).map(rect => ({\n              bounds: box(card),\n              left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom,\n            }));\n          })),\n        };\n      });\n      expect(geometry.panel.left, `${locale}/${width}/${height}`).toBeGreaterThanOrEqual(0);\n      expect(geometry.panel.top).toBeGreaterThanOrEqual(0);\n      expect(geometry.panel.right).toBeLessThanOrEqual(width);\n      expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);\n      // R10 keeps full copy and the image's intrinsic ratio. Only the outer\n      // viewport-bounded panel may scroll when the available height is short.\n      for (const overflow of geometry.scroll.slice(1)) expect(overflow).toBeLessThanOrEqual(1);\n      for (const overflow of geometry.horizontalOverflow) expect(overflow).toBeLessThanOrEqual(1);\n      expect(geometry.overflowY).toBe(\"auto\");\n      if (expectedMore > 0) expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);\n      else expect(geometry.image.width).toBeLessThanOrEqual(geometry.leadInnerWidth + 1);\n      expect(geometry.imageFit).toBe(\"contain\");\n      // Responsive renditions round dimensions to whole pixels; density-corrected\n      // natural sizes can differ from the original ratio by about one CSS pixel.\n      expect(Math.abs(geometry.image.height - geometry.image.width / geometry.imageRatio)).toBeLessThanOrEqual(2);\n      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, 6));\n      for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);\n      for (const text of geometry.text) {\n        expect(text.left).toBeGreaterThanOrEqual(text.bounds.left - 1);\n        expect(text.right).toBeLessThanOrEqual(text.bounds.right + 1);\n        expect(text.top).toBeGreaterThanOrEqual(text.bounds.top - 1);\n        expect(text.bottom).toBeLessThanOrEqual(text.bounds.bottom + 1);\n      }\n      const footerLink = panel.locator(\"footer a\");\n      await expect(footerLink).toHaveAttribute(\"href\", /\\/stati\\/$/u);\n      const links = panel.locator(\"a\");\n      const expectedLinks = expectedMore + 2;\n      await expect(links).toHaveCount(expectedLinks);\n      for (let index = 0; index < expectedLinks; index++) {\n        await page.keyboard.press(\"Tab\");\n        await expect(links.nth(index)).toBeFocused();\n      }\n      await expect(footerLink).toBeInViewport({ ratio: 1 });\n      const reached = await panel.evaluate(element => ({\n        scrollTop: element.scrollTop,\n        panel: element.getBoundingClientRect().toJSON(),\n        footer: element.querySelector(\"footer a\").getBoundingClientRect().toJSON(),\n      }));\n      expect(reached.footer.top).toBeGreaterThanOrEqual(reached.panel.top);\n      expect(reached.footer.bottom).toBeLessThanOrEqual(reached.panel.bottom);\n      if (geometry.scroll[0] > 1) expect(reached.scrollTop).toBeGreaterThan(0);\n      await page.keyboard.press(\"Escape\");\n      await expect(panel).not.toBeVisible();\n      await expect(summary).toBeFocused();\n      await summary.click();\n      await page.mouse.move(0, height - 1);\n      await expect(panel).toBeVisible();\n      await summary.click();\n      await expect(panel).not.toBeVisible();\n    }\n    await page.setViewportSize({ width: 1260, height: 600 });\n    await expect(page.locator(\".articles-menu > summary\")).not.toBeVisible();\n    await expect(page.locator('.mobile-nav a[href*=\"journal\"]')).toBeVisible();\n  }\n});\n\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers.mjs:1",
+      "path": "scripts/import-user-supplied-book-covers.mjs",
+      "before": "\nimport { build } from \"esbuild\";\nimport sharp from \"sharp\";\n\nconst projectRoot = path.resolve(\n  path.dirname(fileURLToPath(import.meta.url)),\n",
+      "after": "\nimport { build } from \"esbuild\";\nimport sharp from \"sharp\";\nimport { assertCoverOverlayPublicationInvariant } from \"./lib/cover-overlay-publication-guard.mjs\";\n\nconst projectRoot = path.resolve(\n  path.dirname(fileURLToPath(import.meta.url)),\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers.mjs:2",
+      "path": "scripts/import-user-supplied-book-covers.mjs",
+      "before": "        import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";\n        import { buildBookArchive } from \"./src/data/bookArchive.ts\";\n        import { isPublicBook } from \"./src/data/bookQuality.ts\";\n\n        export const baseline = buildBookArchive(bookArchiveCountries, {\n          includeUserSuppliedCovers: false,\n",
+      "after": "        import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";\n        import { buildBookArchive } from \"./src/data/bookArchive.ts\";\n        import { isPublicBook } from \"./src/data/bookQuality.ts\";\n        export { isPublicBook };\n\n        export const baseline = buildBookArchive(bookArchiveCountries, {\n          includeUserSuppliedCovers: false,\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers.mjs:3",
+      "path": "scripts/import-user-supplied-book-covers.mjs",
+      "before": "\nasync function validateCanonicalArchive() {\n  const archiveModule = await sourceArchive();\n  const { baseline, current, baselinePublicCount, currentPublicCount } = archiveModule;\n  if (baseline.length !== 9_761 || current.length !== 9_761) {\n    throw new Error(\n      `Размер архива изменился: baseline=${baseline.length}, current=${current.length}.`\n    );\n  }\n  if (\n    baselinePublicCount !== 46 ||\n    currentPublicCount !== 46 ||\n    baseline.length - baselinePublicCount !== 9_715 ||\n    current.length - currentPublicCount !== 9_715\n  ) {\n    throw new Error(\n      `Публичные/ожидающие карточки изменились: baseline=${baselinePublicCount}/${baseline.length - baselinePublicCount}, current=${currentPublicCount}/${current.length - currentPublicCount}.`\n    );\n  }\n\n  const byKey = new Map();\n  for (const book of baseline) {\n",
+      "after": "\nasync function validateCanonicalArchive() {\n  const archiveModule = await sourceArchive();\n  const { baseline, current, isPublicBook } = archiveModule;\n  if (baseline.length !== 9_761 || current.length !== 9_761) {\n    throw new Error(\n      `Размер архива изменился: baseline=${baseline.length}, current=${current.length}.`\n    );\n  }\n  assertCoverOverlayPublicationInvariant(baseline, current, isPublicBook);\n\n  const byKey = new Map();\n  for (const book of baseline) {\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers-2026-08-13.mjs:1",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
+      "before": "\nimport { build } from \"esbuild\";\nimport sharp from \"sharp\";\n\nconst projectRoot = path.resolve(\n  path.dirname(fileURLToPath(import.meta.url)),\n",
+      "after": "\nimport { build } from \"esbuild\";\nimport sharp from \"sharp\";\nimport { assertCoverOverlayPublicationInvariant } from \"./lib/cover-overlay-publication-guard.mjs\";\n\nconst projectRoot = path.resolve(\n  path.dirname(fileURLToPath(import.meta.url)),\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers-2026-08-13.mjs:2",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
+      "before": "        'import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";',\n        'import { buildBookArchive } from \"./src/data/bookArchive.ts\";',\n        'import { isPublicBook } from \"./src/data/bookQuality.ts\";',\n        \"export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false, includeR49nCatalog: false });\",\n        \"export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });\",\n        \"export const baselinePublicCount = baseline.filter(isPublicBook).length;\",\n",
+      "after": "        'import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";',\n        'import { buildBookArchive } from \"./src/data/bookArchive.ts\";',\n        'import { isPublicBook } from \"./src/data/bookQuality.ts\";',\n        'export { isPublicBook };',\n        \"export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false, includeR49nCatalog: false });\",\n        \"export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });\",\n        \"export const baselinePublicCount = baseline.filter(isPublicBook).length;\",\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers-2026-08-13.mjs:3",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
+      "before": "  const {\n    baseline,\n    current,\n    baselinePublicCount,\n    currentPublicCount,\n  } = archiveModule;\n  if (baseline.length !== 9_761 || current.length !== 9_761) {\n    throw new Error(\n",
+      "after": "  const {\n    baseline,\n    current,\n    isPublicBook,\n  } = archiveModule;\n  if (baseline.length !== 9_761 || current.length !== 9_761) {\n    throw new Error(\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers-2026-08-13.mjs:4",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
+      "before": "        \".\"\n    );\n  }\n  if (baselinePublicCount !== 46 || currentPublicCount !== 46) {\n    throw new Error(\n      \"Количество публичных карточек изменилось: \" +\n        baselinePublicCount +\n        \"/\" +\n        currentPublicCount +\n        \".\"\n    );\n  }\n\n  const baselineByKey = new Map();\n  const currentByKey = new Map();\n",
+      "after": "        \".\"\n    );\n  }\n  assertCoverOverlayPublicationInvariant(baseline, current, isPublicBook);\n\n  const baselineByKey = new Map();\n  const currentByKey = new Map();\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers-2026-08-20.mjs:1",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-20.mjs",
+      "before": "\nimport { build } from \"esbuild\";\nimport sharp from \"sharp\";\n\nconst projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), \"..\");\nconst cacheDirectory = path.join(projectRoot, \"scripts\", \".cache\");\n",
+      "after": "\nimport { build } from \"esbuild\";\nimport sharp from \"sharp\";\nimport { assertCoverOverlayPublicationInvariant } from \"./lib/cover-overlay-publication-guard.mjs\";\n\nconst projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), \"..\");\nconst cacheDirectory = path.join(projectRoot, \"scripts\", \".cache\");\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers-2026-08-20.mjs:2",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-20.mjs",
+      "before": "          'import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";',\n          'import { buildBookArchive } from \"./src/data/bookArchive.ts\";',\n          'import { isPublicBook } from \"./src/data/bookQuality.ts\";',\n          'import { userSuppliedBookWorkBatch20260820Count } from \"./src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts\";',\n          'export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false, includeR49nCatalog: false });',\n          'export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });',\n",
+      "after": "          'import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";',\n          'import { buildBookArchive } from \"./src/data/bookArchive.ts\";',\n          'import { isPublicBook } from \"./src/data/bookQuality.ts\";',\n          'export { isPublicBook };',\n          'import { userSuppliedBookWorkBatch20260820Count } from \"./src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts\";',\n          'export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false, includeR49nCatalog: false });',\n          'export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });',\n"
+    },
+    {
+      "id": "cover-public-identity-20260927:scripts/import-user-supplied-book-covers-2026-08-20.mjs:3",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-20.mjs",
+      "before": "\nasync function validateCanonicalArchive(committedManifest) {\n  const archiveModule = await sourceArchive();\n  const { baseline, current, baselinePublicCount, currentPublicCount } = archiveModule;\n  if (baseline.length !== 9_761 || current.length !== 9_761) {\n    throw new Error(`Unexpected archive size: ${baseline.length}/${current.length}, expected 9761.`);\n  }\n  if (baselinePublicCount !== 46 || currentPublicCount !== 46) {\n    throw new Error(`Unexpected public book count: ${baselinePublicCount}/${currentPublicCount}, expected 46.`);\n  }\n  if (archiveModule.userSuppliedBookWorkBatch20260820Count !== 17) {\n    throw new Error(\"Batch must create exactly 17 missing canonical works.\");\n  }\n",
+      "after": "\nasync function validateCanonicalArchive(committedManifest) {\n  const archiveModule = await sourceArchive();\n  const { baseline, current, isPublicBook } = archiveModule;\n  if (baseline.length !== 9_761 || current.length !== 9_761) {\n    throw new Error(`Unexpected archive size: ${baseline.length}/${current.length}, expected 9761.`);\n  }\n  assertCoverOverlayPublicationInvariant(baseline, current, isPublicBook);\n  if (archiveModule.userSuppliedBookWorkBatch20260820Count !== 17) {\n    throw new Error(\"Batch must create exactly 17 missing canonical works.\");\n  }\n"
     }
-  ]
+  ],
+  "releaseFollowUp": {
+    "id": "R10-COVER-PUBLIC-IDENTITY-20260927",
+    "baselineMainCommitSha": "361da051a5ea1d72ad3d44d84a7dd4eee3130a1f",
+    "scope": "Cover-only importers preserve the exact live public identity set instead of the obsolete static public count; no content, rights, historical manifests or older projection fragments change.",
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "schemaRehearsalFollowUp": {
+    "id": "R10-ISOLATED-SCHEMA-REHEARSAL-20260927",
+    "baselineMainCommitSha": "361da051a5ea1d72ad3d44d84a7dd4eee3130a1f",
+    "scope": "Minimal auth fixtures only in the isolated public-only backup rehearsal. Production migration, apply plan, preflight and verification bytes remain unchanged; no production prerequisite is relaxed.",
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  }
 }

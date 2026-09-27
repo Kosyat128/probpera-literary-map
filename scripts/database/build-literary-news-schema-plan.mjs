@@ -154,6 +154,22 @@ notify pgrst, 'reload schema';
   const rehearsal=`do $news_restore_only$ begin
   if current_database()<>'probpera_restore' or current_user<>'supabase_admin'
     or not (select rolsuper from pg_roles where rolname=current_user) then raise exception 'News rehearsal requires isolated restore'; end if;
+  -- The pinned PostgreSQL image has the original Auth base, not GoTrue's full
+  -- migrations. These empty compile-time fixtures never restore Auth data and
+  -- do not establish operator authentication or MFA behavior.
+  if to_regclass('auth.users') is null or to_regprocedure('auth.role()') is null
+    or to_regprocedure('auth.uid()') is null then raise exception 'News rehearsal Auth base incomplete'; end if;
+  if to_regclass('auth.mfa_factors') is null then
+    create table auth.mfa_factors(user_id uuid,status text);
+    revoke all on auth.mfa_factors from public,anon,authenticated,service_role;
+    comment on table auth.mfa_factors is 'Disposable empty news schema rehearsal fixture; not production Auth data';
+  end if;
+  if to_regprocedure('auth.jwt()') is null then
+    execute $fixture_sql$create function auth.jwt() returns jsonb language sql stable
+      set search_path='' as $fixture_body$select '{}'::jsonb$fixture_body$$fixture_sql$;
+    revoke all on function auth.jwt() from public,anon,authenticated,service_role;
+    comment on function auth.jwt() is 'Disposable empty claims fixture; not an authentication or MFA verification';
+  end if;
   grant select,insert on public.admin_audit_log to postgres;
   execute 'grant usage,select on sequence ' || pg_get_serial_sequence('public.admin_audit_log','id') || ' to postgres';
   if exists(select 1 from public.admin_audit_log where ${receiptWhere}) then
@@ -166,6 +182,8 @@ ${plan}`;
   return {plan,rehearsal,preflight,verification,manifest:{repositorySha,migration:NEWS_RUNTIME_MIGRATION,
     scope:"schema-only",receipt:{table:"public.admin_audit_log",entityType:"literary_news_runtime",key:NEWS_SCHEMA_RECEIPT_KEY},
     newTables:0,destinationBootstrap:false,externalPublication:false,historicalMigrationLedgerChanged:false,
+    rehearsalPlatform:{scope:"disposable isolated restore only",missingOnly:["auth.mfa_factors(user_id uuid,status text)","auth.jwt()"],
+      productionAuthDataRestored:false,operatorAuthenticationAccepted:false,mfaBehaviorAccepted:false},
     transaction:"existing safety helper psql --single-transaction",hashEncoding:"UTF-8, LF-normalized migration bytes",
     planSha256:digest(plan),rehearsalSha256:digest(rehearsal),preflightSha256:digest(preflight),verificationSha256:digest(verification)}};
 }
