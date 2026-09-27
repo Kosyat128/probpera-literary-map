@@ -105,6 +105,7 @@ import {
 import { COMPLETE_SHELF_CATALOG_BATCH_SIZE } from "../books/completeShelfModel";
 import { resolveBookArchiveAuthorRequest, type BookArchiveAuthorRequest,
   type BookArchiveAuthorRequestResult, type BookArchiveAuthorView } from "../books/bookArchiveAuthorRequest";
+import { bookArchiveAuthorViewKey, createBookArchiveAuthorViewToken, planBookArchiveAuthorRecovery } from "../books/bookArchiveAuthorRecovery";
 import { INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW, resolveBookArchiveDetailView,
   type BookArchiveDetailView } from "../books/bookArchiveDetailView";
 import {
@@ -634,9 +635,10 @@ export default function BookArchiveSection({
   useLayoutEffect(() => {
     if (observesDossier) setDossierDetailView(reportedDetailViewRef.current ?? INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
   }, [observesDossier]);
+  const [committedAuthorRequest, setCommittedAuthorRequest] = useState<BookArchiveAuthorRequest | null>(null);
   const authorRequestRef = useRef<{ highestId: number; handledId: number;
     waitingFilters: string | null;
-    pending: { request: BookArchiveAuthorRequest; authorKey: string; render: object } | null }>({
+    pending: { request: BookArchiveAuthorRequest; authorKey: string; render: object; recoveryViewKey: string | null } | null }>({
     highestId: 0, handledId: 0, waitingFilters: null, pending: null,
   });
   const onNativeDetailClosedRef = useRef(onNativeDetailClosed);
@@ -3820,13 +3822,19 @@ export default function BookArchiveSection({
     ]
   );
 
+  const authorViewState = { filterState, query, searchScope, activeShelfId };
+  const authorViewKey = bookArchiveAuthorViewKey(authorViewState);
+  // A committed A-to-B-to-A edit produces a new token even when the key returns.
+  // Token identity remains local and is never serialized into history or preferences.
+  const authorViewToken = useMemo(() => createBookArchiveAuthorViewToken(authorViewKey), [authorViewKey]);
   const authorHasVisibleBooks = filteredItems.length > 0;
   const authorViewSettled = query === deferredQuery && searchScope === "library";
   const authorView = useMemo<BookArchiveAuthorView>(() => Object.freeze({
     authorKey: filterState.authorKey || null,
     hasVisibleBooks: authorHasVisibleBooks,
     settled: authorViewSettled,
-  }), [filterState.authorKey, authorHasVisibleBooks, authorViewSettled]);
+    recoveryToken: authorViewSettled ? authorViewToken : undefined,
+  }), [filterState.authorKey, authorHasVisibleBooks, authorViewSettled, authorViewToken]);
   useEffect(() => { onAuthorViewChange?.(authorView); }, [onAuthorViewChange, authorView]);
 
   // A replay of the same committed effect (StrictMode) cannot acknowledge its
@@ -3862,10 +3870,13 @@ export default function BookArchiveSection({
       || skipNextBookPopstateRef.current || shelfState.phase === "INSPECTION_CLOSING"
       || shelfState.phase === "SHELF_RESTORING") return;
     if (state.pending) {
-      if (state.pending.render === authorRequestRender) return;
+      // A parent update can render this component before its queued filter
+      // updates commit. Wait for the marker from this exact request batch.
+      if (state.pending.render === authorRequestRender || committedAuthorRequest !== state.pending.request) return;
       if (state.pending.request.countryId !== requestedAuthor.countryId
         || state.pending.request.writerId !== requestedAuthor.writerId
-        || filterState.authorKey !== state.pending.authorKey || query !== "" || searchScope !== "library") {
+        || filterState.authorKey !== state.pending.authorKey || query !== "" || searchScope !== "library"
+        || state.pending.recoveryViewKey !== null && state.pending.recoveryViewKey !== authorViewKey) {
         // A newer local navigation/filter edit wins over a settling request.
         settle("invalid"); return;
       }
@@ -3875,12 +3886,28 @@ export default function BookArchiveSection({
       settle(filteredItems.length > 0 ? "applied" : "filtered-empty");
       return;
     }
-    state.pending = { request: resolved.request, authorKey: resolved.authorKey, render: authorRequestRender };
+    if (resolved.request.recovery) {
+      if (query !== deferredQuery) return;
+      const recovery = planBookArchiveAuthorRecovery(resolved, authorViewState, authorViewToken);
+      if (!recovery) { settle("invalid"); return; }
+      state.pending = { request: resolved.request, authorKey: resolved.authorKey, render: authorRequestRender,
+        recoveryViewKey: bookArchiveAuthorViewKey(recovery) };
+      // Only this deliberate action clears restrictions. It never changes saved
+      // shelves, favorites, reading progress, view mode, sort or the reader owner.
+      setQuery(recovery.query); setFilterState(recovery.filterState); setSearchScope("library");
+      setActiveShelfId(recovery.activeShelfId); setVisibleCount(COMPLETE_SHELF_CATALOG_BATCH_SIZE);
+      setSmartShelfStatus(null); setRandomAnnouncement("");
+      setCommittedAuthorRequest(resolved.request);
+      if (activeShelfId !== recovery.activeShelfId) replaceBookShelfLocation(recovery.activeShelfId, "push");
+      return;
+    }
+    state.pending = { request: resolved.request, authorKey: resolved.authorKey, render: authorRequestRender, recoveryViewKey: null };
     activateGlobalSearchAction({ type: "select-writer", authorKey: resolved.authorKey,
       countryId: resolved.request.countryId, writerId: resolved.request.writerId });
+    setCommittedAuthorRequest(resolved.request);
   }, [requestedAuthor, onRequestedAuthorHandled, countries, archiveFacetIndex, nativePanelActive,
     requestedBook, selectedBook, shelfState.phase, filterState, query, deferredQuery,
-    searchScope, activeShelfId, filteredItems, activateGlobalSearchAction, authorRequestRender]);
+    searchScope, activeShelfId, filteredItems, activateGlobalSearchAction, authorRequestRender, authorViewKey, authorViewToken, committedAuthorRequest]);
 
   const saveCurrentAsSmartShelf = useCallback(async () => {
     if (searchScope !== "library") return;

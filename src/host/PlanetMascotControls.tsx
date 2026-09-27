@@ -622,6 +622,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     search: ru ? "Поиск" : "Search", country: ru ? "Выбрать страну" : "Choose a country",
     writer: ru ? "Писатели страны" : "Country writers", books: ru ? "К книгам" : "Explore books",
     "writer-books": ru ? "Книги писателя" : "Books by this writer",
+    "writer-books-all": ru ? "Все доступные книги писателя" : "All available books by this writer",
     appearance: ru ? "Оформление" : "Appearance", "return-globe": ru ? "К глобусу" : "Return to globe",
     "random-country": ru ? "Случайная страна" : "Random country",
     recent: ru ? "Недавно открытое" : "Recently opened",
@@ -880,6 +881,16 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             {ru ? "Вернуться к глобусу" : "Return to the globe"}
           </button>}
         </div>}
+        {snapshot.authorBooksStatus === "filtered-empty" && controller.canAct("writer-books-all") &&
+          <div className="planet-mascot-controls__support" data-booky-writer-filter-recovery="">
+            <p id={id + "-writer-filter-recovery"}>{ru
+              ? "Сброшу фильтры и открою весь каталог для выбранного писателя. Сохранённые полки не изменятся."
+              : "I’ll clear the filters and open the full catalog for the selected writer. Your saved shelves will stay unchanged."}</p>
+            <button type="button" data-booky-show-all-writer-books="" aria-describedby={id + "-writer-filter-recovery"}
+              onClick={() => {
+                if (!document.hidden && !drag.current && perform("writer-books-all")) heading.current?.focus({ preventScroll: true });
+              }}>{actionLabel("writer-books-all")}</button>
+          </div>}
         {tour && step ? <>
           <p className="planet-mascot-controls__progress">
             {ru ? `Шаг ${snapshot.step + 1} из ${tour.steps.length}` : `Step ${snapshot.step + 1} of ${tour.steps.length}`}

@@ -2316,9 +2316,11 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
       connectivity: platformConnectivity, countryStatus: archiveDataStatus, booksStatus: mascotBookStatus,
       canDiscoverCountry: filteredCountries.length > 0, canOpenDownloads: Boolean(platformServices.downloads),
+      canRecoverAuthorBooks: mascotAuthorView.settled && !mascotAuthorView.hasVisibleBooks
+        && mascotAuthorView.authorKey === `${selectedCountry?.id}:${selectedWriter?.id}` && Boolean(mascotAuthorView.recoveryToken),
       locale: language, readerPolicy: readerPolicySnapshot.policy,
       authorBooksStatus: mascotAuthorResult.selectionKey === `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`
-        ? mascotAuthorResult.status === "applied"
+        ? mascotAuthorResult.status === "applied" || mascotAuthorResult.status === "filtered-empty"
           ? mascotAuthorView.settled && mascotAuthorView.authorKey === `${selectedCountry?.id}:${selectedWriter?.id}`
             ? mascotAuthorView.hasVisibleBooks ? "applied" : "filtered-empty" : "idle"
           : mascotAuthorResult.status === "loading" && mascotBookStatus === "error" ? "load-failed" : mascotAuthorResult.status
@@ -2424,11 +2426,17 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       setNativeCollectionOpen(true);
       return true;
     }
-    if (action === "books" || action === "writer-books") {
-      const byWriter = action === "writer-books" || mascot.getSnapshot().route === "country-to-book";
+    if (action === "books" || action === "writer-books" || action === "writer-books-all") {
+      const recover = action === "writer-books-all";
+      const recoveryToken = mascotAuthorView.recoveryToken;
+      if (recover && (!mascot.canAct(action) || mascotAuthorRequestRef.current || !recoveryToken
+        || !mascotAuthorView.settled || mascotAuthorView.hasVisibleBooks
+        || mascotAuthorView.authorKey !== [selectedCountry?.id, selectedWriter?.id].join(":"))) return false;
+      const byWriter = recover || action === "writer-books" || mascot.getSnapshot().route === "country-to-book";
       cancelNativeNavigation();
       if (byWriter && selectedCountry && selectedWriter) {
-        const request = { id: ++mascotAuthorSequence.current, countryId: selectedCountry.id, writerId: selectedWriter.id };
+        const request: BookArchiveAuthorRequest = { id: ++mascotAuthorSequence.current, countryId: selectedCountry.id, writerId: selectedWriter.id,
+          ...(recover && recoveryToken ? { recovery: { kind: "all-writer-books", view: recoveryToken } } : {}) };
         mascotAuthorRequestRef.current = request;
         mascotAuthorRouteRef.current = mascot.getSnapshot().route;
         mascotAuthorStepRef.current = mascot.getSnapshot().step;
@@ -2477,7 +2485,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   }, [requestReturnToPlanet, cancelNativeNavigation, requestBookRuntime, closeAtlasSearch, sceneInspection,
     composition.controller, closeNativeCollection, selectedCountry, selectedWriter, setAtlasSearchVisibility, atlasExperienceDispatch,
     navigateWriterBreadcrumbCountry, focusCountryPresentation, nativeCollectionOpen, mascot, atlasExperience.closeButtonRef,
-    mascotBookStatus, retryBookArchive, archiveDataStatus, filteredCountries.length, selectRandomLiteraryDestination, platformServices.downloads]);
+    mascotBookStatus, mascotAuthorView, retryBookArchive, archiveDataStatus, filteredCountries.length, selectRandomLiteraryDestination, platformServices.downloads]);
 
   const handleMascotActionWithPoint = useCallback((action: PlanetMascotAction) => {
     if (!handleMascotAction(action)) return;

@@ -20,6 +20,29 @@ describe("book archive author requests", () => {
       [...countries, countries[0]], authors)).toEqual({ status: "invalid" });
   });
 
+  it("retains only the explicit recovery and its collection-owned token while detaching the request", () => {
+    const view = Object.freeze({ key: "current-collection-view" });
+    const recovery = { kind: "all-writer-books" as const, view };
+    const request = { id: 8, countryId: "russia", writerId: "tolstoy", recovery };
+    const resolved = resolveBookArchiveAuthorRequest(request, countries, new Map([["russia:tolstoy", [0]]]));
+    request.writerId = "no-published-books";
+    expect(resolved.status).toBe("ready");
+    if (resolved.status !== "ready") throw Error("Expected canonical recovery");
+    expect(resolved.request.writerId).toBe("tolstoy");
+    expect(resolved.request.recovery).not.toBe(recovery);
+    expect(resolved.request.recovery?.view).toBe(view);
+    expect(Object.isFrozen(resolved.request.recovery)).toBe(true);
+  });
+
+  it("rejects malformed or unknown recovery intents rather than treating them as ordinary navigation", () => {
+    for (const recovery of [null, {}, { kind: "other", view: { key: "current" } },
+      { kind: "all-writer-books" }, { kind: "all-writer-books", view: { key: "" } }]) {
+      const request = { id: 8, countryId: "russia", writerId: "tolstoy", recovery };
+      expect(resolveBookArchiveAuthorRequest(request as never, countries,
+        new Map([["russia:tolstoy", [0]]]))).toEqual({ status: "invalid" });
+    }
+  });
+
   it("distinguishes a known author with no catalog books from a canonical indexed author and detaches the intent", () => {
     const authors = new Map([["russia:tolstoy", [4, 7]]]);
     expect(resolveBookArchiveAuthorRequest({ id: 1, countryId: "russia", writerId: "no-published-books" },

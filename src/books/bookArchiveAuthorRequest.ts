@@ -1,8 +1,12 @@
+export type BookArchiveAuthorViewToken = Readonly<{ key: string }>;
+
 /** One explicit navigation intent; IDs come from the public canonical corpus. */
 export type BookArchiveAuthorRequest = Readonly<{
   id: number;
   countryId: string;
   writerId: string;
+  /** Deliberate local recovery only; never persisted or inferred from an ordinary request. */
+  recovery?: Readonly<{ kind: "all-writer-books"; view: BookArchiveAuthorViewToken }>;
 }>;
 
 export type BookArchiveAuthorRequestResult = "applied" | "no-books" | "filtered-empty" | "invalid";
@@ -12,6 +16,7 @@ export type BookArchiveAuthorView = Readonly<{
   authorKey: string | null;
   hasVisibleBooks: boolean;
   settled: boolean;
+  recoveryToken?: BookArchiveAuthorViewToken;
 }>;
 
 type PublicAuthorCatalog = readonly Readonly<{
@@ -37,6 +42,9 @@ export function resolveBookArchiveAuthorRequest(
     || typeof value.writerId !== "string" || !canonicalSegment.test(value.writerId)) {
     return Object.freeze({ status: "invalid" });
   }
+  const recovery = value.recovery;
+  if (recovery !== undefined && (!recovery || recovery.kind !== "all-writer-books" || !recovery.view
+    || typeof recovery.view.key !== "string" || recovery.view.key.length === 0)) return Object.freeze({ status: "invalid" });
   const matches = countries.filter(country => country.id === value.countryId);
   if (matches.length !== 1 || matches[0].writers.filter(writer => writer.id === value.writerId).length !== 1) {
     return Object.freeze({ status: "invalid" });
@@ -44,5 +52,6 @@ export function resolveBookArchiveAuthorRequest(
   const authorKey = `${value.countryId}:${value.writerId}`;
   if (!authors.get(authorKey)?.length) return Object.freeze({ status: "no-books" });
   return Object.freeze({ status: "ready", authorKey,
-    request: Object.freeze({ id: value.id, countryId: value.countryId, writerId: value.writerId }) });
+    request: Object.freeze({ id: value.id, countryId: value.countryId, writerId: value.writerId,
+      ...(recovery ? { recovery: Object.freeze({ kind: "all-writer-books" as const, view: recovery.view }) } : {}) }) });
 }

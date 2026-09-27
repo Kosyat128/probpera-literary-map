@@ -93,6 +93,64 @@ describe("explicit companion utility actions", () => {
   });
 });
 
+describe("explicit recovery of filtered writer books", () => {
+  const selection = { selectedCountry: true, selectedWriter: true, selectionKey: "russia/tolstoy" };
+  const empty = { ...selection, screen: "collection" as const, authorBooksStatus: "filtered-empty" as const,
+    canRecoverAuthorBooks: true };
+  function opened(tour = false) {
+    const controller = createPlanetMascotController();
+    controller.setContext(ready(selection));
+    if (tour) { controller.start("country-to-book"); controller.next(); controller.next(); }
+    else controller.togglePanel();
+    controller.setContext(ready(empty)); return controller;
+  }
+
+  it.each([false, true])("offers recovery in help or the matching book step (%s) without advancing or saving", tour => {
+    const controller = opened(tour), snapshot = controller.getSnapshot(), intent = controller.getPreferenceIntent(), callback = vi.fn();
+    expect(controller.act("writer-books-all", snapshot.revision, callback)).toBe(true);
+    expect(callback).toHaveBeenCalledOnce();
+    expect(controller.getSnapshot()).toBe(snapshot);
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    expect(snapshot.canAdvance).toBe(false);
+    expect(snapshot.completedRoute).toBeNull();
+  });
+
+  it("rejects absent/stale views, unavailable catalogs and every nonempty result", () => {
+    const cases: Partial<PlanetMascotContext>[] = [
+      { canRecoverAuthorBooks: false }, { countryStatus: "loading" }, { booksStatus: "error" },
+      { selectedWriter: false }, { screen: "globe" }, { active: false }, { access: "child" },
+      ...(["idle", "loading", "applied", "no-books", "invalid", "load-failed"] as const).map(authorBooksStatus => ({ authorBooksStatus })),
+    ];
+    for (const change of cases) {
+      const controller = opened(); controller.setContext(ready({ ...empty, ...change }));
+      const intent = controller.getPreferenceIntent(), callback = vi.fn();
+      expect(controller.act("writer-books-all", controller.getSnapshot().revision, callback)).toBe(false);
+      expect(callback).not.toHaveBeenCalled(); expect(controller.getPreferenceIntent()).toBe(intent);
+    }
+  });
+
+  it("rejects old selection handlers, collapsed help and unrelated tour steps", () => {
+    const controller = opened(), stale = controller.getSnapshot().revision, callback = vi.fn();
+    controller.setContext(ready({ ...empty, selectionKey: "russia/other" }));
+    expect(controller.act("writer-books-all", stale, callback)).toBe(false);
+    controller.togglePanel(); expect(controller.canAct("writer-books-all")).toBe(false);
+    controller.togglePanel(); controller.start("overview"); expect(controller.canAct("writer-books-all")).toBe(false);
+    controller.start("country-to-book"); expect(controller.canAct("writer-books-all")).toBe(false);
+    expect(callback).not.toHaveBeenCalled();
+  });
+
+  it("requires later actual rendered books and a separate Next before acknowledging tour completion", () => {
+    const controller = opened(true), intent = controller.getPreferenceIntent();
+    controller.act("writer-books-all", controller.getSnapshot().revision, () => undefined);
+    expect(controller.next()).toBe(false); expect(controller.getPreferenceIntent()).toBe(intent);
+    controller.setContext(ready({ ...empty, authorBooksStatus: "applied", canRecoverAuthorBooks: false }));
+    expect(controller.getSnapshot()).toMatchObject({ step: 2, canAdvance: true, completedRoute: null });
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    expect(controller.next()).toBe(true);
+    expect(controller.getSnapshot().completedRoute).toBe("country-to-book");
+  });
+});
+
 describe("adult local guided companion", () => {
   it.each([undefined, "idle", "loading", "error"] as const)("suspends selected-entity steps when country readiness is %s without acknowledging retained selections", countryStatus => {
     for (const step of [0, 1, 2]) {
