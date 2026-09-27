@@ -1,7 +1,8 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
 import PlanetMascotAvatar from "./PlanetMascotAvatar";
+import type { BookyRendererState } from "./useBookyRenderer";
 import { BOOKY_GESTURES, type BookyGesture } from "./bookyAnimation";
 import { pickBookySurprise, type BookySurpriseState } from "./bookySurprise";
 import { useBookyWalk } from "./useBookyWalk";
@@ -136,6 +137,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const handledPoint = useRef<number | null>(null);
   const cancelPoint = useRef<(() => void) | null>(null);
   const [reactionKey, setReactionKey] = useState(0);
+  const [character, setCharacter] = useState({ attempt: 0, recoveryAttempt: false, state: "loading" as BookyRendererState });
+  const characterOwner = useRef(character), characterMounted = useRef(false);
+  const characterRestoring = character.recoveryAttempt && character.state === "loading";
   const surpriseSequence = useRef<BookySurpriseState>({ remaining: [], last: null });
   const [pageTurn, setPageTurn] = useState(0);
   const previousPage = useRef(`${snapshot.mode}:${snapshot.route}:${snapshot.step}`);
@@ -150,6 +154,24 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const progressText = (route: "overview" | "country-to-book") => ru
     ? `Подтверждено шагов: ${acknowledgedCount(route)} из ${PLANET_MASCOT_ROUTES[route].steps.length}`
     : `Steps acknowledged: ${acknowledgedCount(route)} of ${PLANET_MASCOT_ROUTES[route].steps.length}`;
+
+  useLayoutEffect(() => {
+    characterMounted.current = true;
+    return () => { characterMounted.current = false; };
+  }, []);
+  useLayoutEffect(() => {
+    if (shown && snapshot.available) return;
+    // Invalidate reports from a canvas removed by hide or platform suspension.
+    const next = { attempt: characterOwner.current.attempt + 1, recoveryAttempt: false, state: "loading" as const };
+    characterOwner.current = next; setCharacter(next);
+  }, [shown, snapshot.available]);
+  const onCharacterState = useCallback((attempt: number, state: BookyRendererState) => {
+    const owner = characterOwner.current, current = controller.getSnapshot();
+    if (!characterMounted.current || owner.attempt !== attempt || !current.available
+      || current.visibility !== "shown" || owner.state === state) return;
+    const next = { ...owner, state };
+    characterOwner.current = next; setCharacter(next);
+  }, [controller]);
 
   useLayoutEffect(() => {
     if (!open || !snapshot.available || resetAtRevision !== snapshot.revision) {
@@ -333,7 +355,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const floating = gesture === "dragging" || dock && dockDetached.current || targetCue && (!dock || targetCue.floating);
   const restingPosition = floating ? preferredPosition
     : placeBooky(preferredPosition, petSize, dock ?? view, navigation);
-  const walk = useBookyWalk({ available: shown && snapshot.available && !open && snapshot.mode === "help",
+  const walk = useBookyWalk({ available: shown && snapshot.available && !open && !characterRestoring && snapshot.mode === "help",
     calmMotion,
     revision: snapshot.revision, position: restingPosition, committedPosition: position ?? preferredPosition,
     size: petSize, viewport: view, controls: navigation, onFinish: onPositionChange });
@@ -346,7 +368,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   useLayoutEffect(() => { cancelPoint.current?.(); }, [calmMotion]);
   useEffect(() => {
     if (!pointRequest || handledPoint.current === pointRequest.id) return;
-    if (!shown || !snapshot.available || open || snapshot.mode !== "help" || document.hidden) {
+    if (!shown || !snapshot.available || open || characterRestoring || snapshot.mode !== "help" || document.hidden) {
       handledPoint.current = pointRequest.id; return;
     }
     const targets: Partial<Record<PlanetMascotAction, string>> = {
@@ -466,7 +488,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     // StrictMode may replay setup before the first frame. Only an actual start,
     // timeout or user interruption consumes the one-shot request.
     return () => stop(false);
-  }, [pointRequest, shown, snapshot.available, open, snapshot.mode, screen, language, calmMotion, walk.start, walk.stop]);
+  }, [pointRequest, shown, snapshot.available, open, characterRestoring, snapshot.mode, screen, language, calmMotion, walk.start, walk.stop]);
   useEffect(() => {
     if ((targetCue?.phase === "approaching" || targetCue?.phase === "returning") && !walk.active) cancelPoint.current?.();
   }, [walk.active, targetCue?.phase]);
@@ -493,12 +515,27 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     if (performed) { setGesture("rest"); setReactionKey(value => value + 1); }
     return performed;
   };
+  const restoreCharacter = () => {
+    const current = controller.getSnapshot(), owner = characterOwner.current;
+    if (owner.state !== "fallback" || !characterMounted.current || current.revision !== snapshot.revision
+      || !current.available || current.visibility !== "shown" || current.panel !== "open" || document.hidden || drag.current) return;
+    // Claim the attempt synchronously: repeated activation cannot queue a remount.
+    const next = { attempt: owner.attempt + 1, recoveryAttempt: true, state: "loading" as const };
+    characterOwner.current = next;
+    cancelPoint.current?.(); walk.stop();
+    if (pointRequest) handledPoint.current = pointRequest.id;
+    walkStopActivation.current = null;
+    setTargetCue(null); setGesture("rest"); setPointerLook(null); setPageTurn(0);
+    heading.current?.focus({ preventScroll: true });
+    setCharacter(next);
+  };
   const playGesture = (next: BookyGesture) => {
     const current = controller.getSnapshot();
     // Play is local presentation only. A stale or backgrounded control cannot
     // replay a gesture or change saved tours, reading history or permissions.
     if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
-      || current.panel !== "open" || document.hidden || drag.current) return false;
+      || current.panel !== "open" || document.hidden || drag.current
+      || characterOwner.current.recoveryAttempt && characterOwner.current.state === "loading") return false;
     setPointerLook(null); setGesture(next); setReactionKey(value => value + 1);
     return true;
   };
@@ -713,9 +750,11 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         onPointerLeave={() => { if (!drag.current) { setPointerLook(null); setGesture("rest"); } }}
         onClick={event => {
           if (event.detail > 0 && suppressAvatarClick.current) { suppressAvatarClick.current = false; return; }
-          setGesture("greeting"); setReactionKey(value => value + 1); controller.togglePanel();
+          if (!characterRestoring) { setGesture("greeting"); setReactionKey(value => value + 1); }
+          controller.togglePanel();
         }}>
-        {shown ? <PlanetMascotAvatar src={mascotImage} mood={snapshot.completedRoute ? "celebrate" : snapshot.mode === "tour" ? "guiding" : "idle"}
+        {shown ? <PlanetMascotAvatar key={character.attempt} attempt={character.attempt}
+          recoveryAttempt={character.recoveryAttempt} onRendererState={onCharacterState} src={mascotImage} mood={snapshot.completedRoute ? "celebrate" : snapshot.mode === "tour" ? "guiding" : "idle"}
           lookAt={walk.active ? { x: walk.direction * .45, y: 0 } : pointerLook ?? guidedLook}
           interaction={walk.active ? "walking" : gesture === "rest" && open && highlight ? "pointing" : gesture}
           reactionKey={reactionKey} active={snapshot.available} calmMotion={calmMotion} /> : name}
@@ -745,10 +784,16 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             if (!direction) return;
             event.preventDefault(); const distance = event.shiftKey ? 30 : 10;
             move({ left: petPosition.left + direction[0] * distance, top: petPosition.top + direction[1] * distance });
-          }}><span aria-hidden="true">↔</span></button>
+          }}><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4" />
+          </svg></button>
         <button type="button" data-planet-mascot-hide="" onClick={() => controller.hide()}
           aria-label={ru ? "Скрыть помощника" : "Hide the companion"} title={ru ? "Скрыть" : "Hide"}>
-          <span aria-hidden="true">×</span></button>
+          <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg></button>
         <span id={`${id}-move`} className="planet-mascot-controls__sr-only">
           {ru ? "Нажмите на Книжулика для подсказок или перетащите его за фигурку. Для перемещения с клавиатуры используйте кнопку со стрелками. Home возвращает исходное положение."
             : "Tap Mr. Booky for tips or drag the character to move him. Use the arrow button for keyboard movement. Home restores the default position."}
@@ -804,6 +849,17 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
               aria-label={ru ? "Свернуть подсказки" : "Collapse tips"}>×</button>
           </div>
         </header>
+        {(character.state === "fallback" || characterRestoring) && <div className="planet-mascot-controls__support"
+          data-booky-character-recovery={characterRestoring ? "loading" : "fallback"}>
+          <p id={`${id}-character-status`} role="status" aria-live="polite" aria-atomic="true">{characterRestoring
+            ? ru ? "Восстанавливаем персонажа… Подсказки доступны." : "Restoring the character… Tips are still available."
+            : ru ? "Книжулик пока отображается картинкой. Подсказки доступны." : "Mr. Booky is shown as a picture for now. Tips are still available."}</p>
+          <button type="button" data-booky-character-retry="" disabled={characterRestoring}
+            aria-describedby={`${id}-character-status`} onClick={restoreCharacter}
+            onKeyDown={event => { if (event.key === "Enter" && event.repeat) event.preventDefault(); }}>
+            {characterRestoring ? ru ? "Восстановление…" : "Restoring…" : ru ? "Восстановить персонажа" : "Restore character"}
+          </button>
+        </div>}
         {contextual && <p className="planet-mascot-controls__context">{ru ? "Выбрано: " : "Selected: "}{contextual}</p>}
         <button type="button" className="planet-mascot-controls__quiet" data-booky-open-gestures=""
           aria-controls={`${id}-gestures`} onClick={openGestures}>
@@ -954,12 +1010,12 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             </button>}
           </div>
           <div className="planet-mascot-controls__actions">
-            <button type="button" data-booky-surprise="" onClick={() => {
+            <button type="button" data-booky-surprise="" disabled={characterRestoring} onClick={() => {
               const next = pickBookySurprise(surpriseSequence.current, gesture);
               if (playGesture(next.gesture)) surpriseSequence.current = next.state;
             }}><span aria-hidden="true">✦</span> {ru ? "Удиви меня" : "Surprise me"}</button>
             {BOOKY_GESTURES.map(value => <button key={value} type="button" data-booky-gesture={value}
-              aria-pressed={gesture === value} onClick={() => playGesture(value)}>
+              aria-pressed={gesture === value} disabled={characterRestoring} onClick={() => playGesture(value)}>
               <span className="planet-mascot-controls__gesture-symbol" aria-hidden="true">{gestureCopy[value].symbol}</span>
               <span>{gestureCopy[value].label}</span>
             </button>)}

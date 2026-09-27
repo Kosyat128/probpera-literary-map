@@ -49,7 +49,8 @@
 .planet-mascot-controls .planet-mascot-controls__avatar-button:hover { background: #fff9e92b; }
 .planet-mascot-controls__show { box-shadow: 0 3px 14px #17112430; }
 .planet-mascot-controls__tools { display: flex; justify-content: center; gap: 6px; }
-.planet-mascot-controls__tools button { width: 44px; padding: 4px; font-size: 24px; box-shadow: 0 2px 8px #17112425; }
+.planet-mascot-controls__tools button { display: grid; place-items: center; width: 44px; padding: 4px; font-size: 24px; box-shadow: 0 2px 8px #17112425; }
+.planet-mascot-controls__tools svg { display: block; width: 24px; height: 24px; pointer-events: none; }
 .planet-mascot-controls .planet-mascot-controls__walk { width: 100%; min-height: 52px; padding: 7px 9px; font-size: 13px; box-shadow: 0 2px 8px #17112425; }
 .planet-mascot-controls__walk > span { font-size: 20px; line-height: 1; vertical-align: middle; }
 .planet-mascot-target { position: fixed; z-index: 1051; width: 40px; height: 40px; box-sizing: border-box;

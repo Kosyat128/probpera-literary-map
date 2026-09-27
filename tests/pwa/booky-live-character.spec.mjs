@@ -191,7 +191,7 @@ test.beforeAll(async () => {
         ?{path:path.resolve(ROOT,'src/host/bookyModel.ts'),namespace:'booky-model-observer'}:undefined);
       builder.onLoad({filter:/.*/,namespace:'booky-model-observer'},args=>({loader:'js',resolveDir:ROOT,contents:`
         export*from${JSON.stringify(args.path)};import{createBookyModel as create}from${JSON.stringify(args.path)};
-        export function createBookyModel(...args){const model=create(...args),list=window.__bookyModelObservations??=[];
+        export function createBookyModel(...args){if(window.__bookyRecoveryFault?.failNextModel){window.__bookyRecoveryFault.failNextModel=false;window.__bookyRecoveryFault.thrown++;throw Error('Controlled Booky model allocation failure');}const model=create(...args),list=window.__bookyModelObservations??=[];
           const record={model,disposed:false,disposeCalls:0};list.push(record);
           return{...model,dispose(){record.disposeCalls++;record.disposed=true;return model.dispose()}};
         }` }));
@@ -242,7 +242,7 @@ test.beforeAll(async () => {
     return ['/' + entry.output, entry];
   }));
   sourceEvidence = { kind: 'canonical-app-independent-live-booky-character-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
-    controlledPorts: ['native OS plugins and preferences backed by a Node map'], sourceInputs,
+    controlledPorts: ['native OS plugins and preferences backed by a Node map', 'Explicit external one-shot createBookyModel exception after genuine permanent fallback; isolated controlled allocation failure'], sourceInputs,
     fixtureObservers: ['Actual useBookyWalk sampleBookyWalk output and its source RAF time, owner, began, path and duration; read-only guarded copies only, no timing/scheduling/geometry substitution', 'Real Booky WebGLRenderer render/dispose calls, frame times, rig poses and actual scene/camera references',
       'Actual createBookyModel owner and disposer; fixture never assigns geometry or material values',
       'Delegating observer of actual native ContentDownloads methods; no replacement outcomes'],
@@ -2985,4 +2985,292 @@ for(const [language,portrait,landscape]of[['ru',{width:390,height:844},{width:56
     o.eventSegments.push({label:'normal preference lifetime',events:await page.evaluate(()=>window.__fontStress.events)});const malformed='synthetic-font-stress-malformed-motion';o.controlledPreferenceInput={key:motionKey,value:malformed,reason:'Expose real read-failure Retry and Recover controls without replacing product outcomes'};fixture.memory.set(motionKey,malformed);await page.setViewportSize(portrait);await page.reload();await ready(page);await stablePose(page);await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await install();await openGallery('recovery baseline');await expect(page.locator(keys.retry)).toBeEnabled();await expect(page.locator(keys.recover)).toBeEnabled();const recoveryScene=await sample(page);await textMode('recovery baseline',false);await inspect('recovery baseline');await scale('read-failure recovery');await expose(keys.recover,'large-text recovery framing');await inspect('read-failure recovery 200 percent',{stress:true,imageName:'booky-font-stress-'+language+'-recovery-200.png'});await tap(keys.retry,'large-text Retry',{stress:true});await expect(page.locator(keys.retry)).toBeEnabled();await expect(page.locator(keys.recover)).toBeEnabled();await restore();await settle();await textMode('recovery after retry restored normal',false);await scale('recovery after retry');await inspect('recovery after retry 200 percent',{stress:true});await tap(keys.recover,'large-text Recover',{stress:true});await twoFrames(page);expect(legacy()).toEqual(prefs);retained(await sample(page),recoveryScene);o.motionWrites=fixture.operations.filter(value=>value.operation!=='get'&&value.key===motionKey).map(({operation,key,value})=>({operation,key,value}));expect(o.motionWrites.every(row=>row.operation==='set'&&row.value==='calm')).toBe(true);expect(o.motionWrites.length).toBeLessThanOrEqual(1);
     o.eventSegments.push({label:'recovery lifetime',events:await page.evaluate(()=>window.__fontStress.events)});o.events=o.eventSegments.flatMap(segment=>segment.events);expect(o.events.filter(event=>event.type==='click').every(event=>event.trusted&&event.pointerType==='touch')).toBe(true);await fixture.verify();result.observationsComplete=true;result.pass=o.findings.length===0;result.fontStressFindings=o.findings.length;expect(o.findings,'Synthetic font stress findings require review; this is not native accessibility acceptance').toEqual([]);o.checks=[{name:'all four font passes reach exactly 200 percent after settling',pass:true},{name:'portrait Stop, Close and disabled walking target receive trusted touch',pass:true},{name:'short-landscape Stop and Close receive trusted touch',pass:true},{name:'Retry and Recover remain reachable under enlarged text',pass:true},{name:'critical control text stays within measured button borders',pass:true},{name:'font stress preserves legacy preferences and canonical scene',pass:true},{name:'portrait scaling preserves the existing Booky model and canvas size',pass:true},{name:'expanded text mode returns to compact after font restoration',pass:true}];Object.assign(result,{fontStressExactTwoHundredPercent:true,fontStressCriticalControlsFitAndRespond:true,fontStressRecoveryReachableByTouch:true,fontStressCanonicalStateAndLegacyPreferencesPreserved:true,fontStressPortraitModelPreserved:true,fontStressNormalModeRestored:true});
   }catch(error){o.setupErrors.push({message:error.message,stack:error.stack??null});throw error;}finally{if(cdp){await touch('touchCancel',[]).catch(()=>undefined);await cdp.detach();}await fixture.close();}
+});
+
+async function recoveryLive(page) {
+  await expect(avatar(page)).toHaveAttribute('data-renderer-state','live3d');
+  await expect(page.locator('[data-booky-canvas]')).toHaveCount(1);
+  await expect(avatar(page).locator('img')).toHaveCount(0);
+  let observed, positions;
+  await expect.poll(async()=>{
+    observed=await character(page);positions=await layout(page);if(!observed)return false;
+    const {screen,rect}=observed,view=page.viewportSize();
+    const separate=!positions.card||rect.right<=positions.card.left||rect.left>=positions.card.right
+      ||rect.bottom<=positions.card.top||rect.top>=positions.card.bottom;
+    const predicates={finite:observed.finite,drawCalls:observed.gpu.calls>0,frames:observed.renderedFrames>0,context:!observed.contextLost,canvasFits:fits(rect,view),petFits:fits(positions.pet,view),cardFits:!positions.card||fits(positions.card,view),noOverflow:!positions.overflow,separate,geometryLeft:screen.left>=rect.left-.5,geometryRight:screen.right<=rect.right+.5,geometryTop:screen.top>=rect.top-.5,geometryBottom:screen.bottom<=rect.bottom+.5,depthNear:screen.minDepth>=-1,depthFar:screen.maxDepth<=1};
+    await page.evaluate(value=>{const box=element=>{if(!element)return null;const r=element.getBoundingClientRect();return{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};};value.heading=box(document.querySelector('.planet-mascot-controls__heading'));value.headingActions=box(document.querySelector('.planet-mascot-controls__heading-actions'));value.tools=[...document.querySelectorAll('.planet-mascot-controls__tools button')].map(element=>({text:element.textContent,move:element.hasAttribute('data-planet-mascot-move'),hide:element.hasAttribute('data-planet-mascot-hide'),rect:box(element),fontSize:getComputedStyle(element).fontSize,lineHeight:getComputedStyle(element).lineHeight}));window.__lastBookyLiveDiagnostic=value;},{predicates,positions,view,character:{model:observed.model,rendererId:observed.rendererId,canvasId:observed.canvasId,rect,screen,renderedFrames:observed.renderedFrames,renderCount:observed.renderCount,contextLost:observed.contextLost}});
+    return Object.values(predicates).every(Boolean);
+  },{message:'Actual rendered geometry, decorative canvas and controls fit without cropping or overlap'}).toBe(true);
+  expect(observed.triangles).toBeGreaterThan(0);expect(observed.meshes).toContain('booky-magnifier-lens');
+  expect(observed.independentFromGlobe).toBe(true);
+  expect(Object.keys(observed.rig)).toEqual(expect.arrayContaining(['body','frontCover','leftArm','rightArm','eyes','pupils','brows','mouth']));
+  expect(observed.rig.eyes).toHaveLength(2);expect(observed.rig.pupils).toHaveLength(2);
+  await expect(page.locator('#atlas canvas')).toHaveCount(1);
+  return{character:observed,layout:positions};
+}
+async function recoveryFontAudit(page,factor) {
+  return page.evaluate(factor => (window.__recoveryFontStress ?? []).map(row => {
+    const element=row.element,style=getComputedStyle(element),rects=[...element.getClientRects()].map(r=>({left:r.left,top:r.top,width:r.width,height:r.height}));
+    const reasons=[];if(!element.isConnected)reasons.push('disconnected');
+    for(let parent=element.parentElement;parent;parent=parent.parentElement)if(parent instanceof HTMLDetailsElement&&!parent.open&&!parent.querySelector(':scope > summary')?.contains(element))reasons.push('closed details:'+parent.className);
+    if(!rects.some(r=>r.width>0&&r.height>0))reasons.push('zero layout');if(style.display==='none'||style.visibility!=='visible')reasons.push('not visibly styled');
+    const rendered=reasons.length===0,actualSize=parseFloat(style.fontSize),exact=Math.abs(actualSize-row.size*factor)<.01;
+    return {baselineTag:row.baselineTag,baselineClass:row.baselineClass,baselineText:row.baselineText,tag:element.tagName,className:element.className,text:element.textContent?.trim().slice(0,160),connected:element.isConnected,rendered,unverifiedReasons:reasons,verification:rendered?'checked':'unverified',pass:rendered?exact:null,critical:element.matches('[data-booky-character-retry],.planet-mascot-controls__heading,.planet-mascot-controls__heading *,.planet-mascot-controls__tools,.planet-mascot-controls__tools *'),original:row.original,baselineSize:row.size,baselineLine:row.line,expectedSize:row.size*factor,actualSize,actualLine:style.lineHeight,inlineCssText:element.style.cssText,rects};
+  }),factor);
+}
+async function installCharacterVisibilityGate(page) {
+  await page.evaluate(() => {
+    const Native = window.IntersectionObserver;
+    if (!Native) throw Error('Actual IntersectionObserver unavailable');
+    const gate = window.__characterVisibilityGate = { enabled: true, records: [], events: [], untouchedEntries: 0 };
+    const entry = (target, visible) => ({ target, time: performance.now(), isIntersecting: visible, intersectionRatio: visible ? 1 : 0, boundingClientRect: target.getBoundingClientRect(), intersectionRect: visible ? target.getBoundingClientRect() : new DOMRect(), rootBounds: null });
+    const emit = (record, visible, reason) => { gate.events.push({ at: performance.now(), reason, index: record.index, visible, connected: record.target.isConnected, disconnected: record.disconnected }); record.callback([entry(record.target, visible)], record.observer); };
+    window.IntersectionObserver = class extends Native {
+      constructor(callback, options) {
+        super((entries, observer) => callback(entries.map(value => { const record = gate.records.find(row => row.observer === observer && row.target === value.target); if (record?.held) { gate.events.push({ at: performance.now(), reason: 'held native entry', index: record.index }); return entry(value.target, false); } gate.untouchedEntries++; return value; }), observer), options);
+        this.productCallback = callback;
+      }
+      observe(target) {
+        if (gate.enabled && target.matches('[data-booky-canvas]')) { const record = { index: gate.records.length, target, observer: this, callback: this.productCallback, held: true, disconnected: false }; gate.records.push(record); emit(record, false, 'synchronous controlled nonintersecting'); }
+        return super.observe(target);
+      }
+      disconnect() { for (const record of gate.records.filter(row => row.observer === this)) record.disconnected = true; return super.disconnect(); }
+      unobserve(target) { for (const record of gate.records.filter(row => row.observer === this && row.target === target)) record.disconnected = true; return super.unobserve(target); }
+    };
+    gate.snapshot = () => ({ enabled: gate.enabled, untouchedEntries: gate.untouchedEntries, records: gate.records.map(({ index, target, held, disconnected }) => ({ index, held, disconnected, connected: target.isConnected, renderedFrames: Number(target.dataset.bookyRenderCount ?? '0'), observedCanvas: target.dataset.observedBookyCanvas ?? null })), events: [...gate.events] });
+    gate.release = index => { const record = gate.records[index]; if (!record) throw Error('Missing held canvas'); record.held = false; emit(record, true, 'explicit release or retired callback delivery'); };
+  });
+}
+for (const [language, viewport] of [['ru', { width: 390, height: 844 }], ['en', { width: 320, height: 844 }]]) test('Booky explicit character recovery touch ' + language, async ({}, testInfo) => {
+  test.setTimeout(120000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  const o = result.observations.characterRecovery = { language, viewport, checks: [], actions: [], losses: [], stillness: [], failures: [], findings: [] };
+  result.scenario = 'booky-explicit-character-recovery-touch-' + language;
+  result.scope = 'Draft actual-App Chrome touch coverage. Real Booky-only WEBGL_lose_context; one separately declared controlled model-factory failure. No native/device/release acceptance.';
+  const selector = { toggle: '[data-planet-mascot-toggle]', retry: '[data-booky-character-retry]', quick: '[data-booky-open-gestures]', surprise: '[data-booky-surprise]', stop: '[data-booky-stop-gesture]' };
+  let cdp;
+  const touch = (type, touchPoints) => cdp.send('Input.dispatchTouchEvent', { type, touchPoints });
+  const saved = () => ({ memory: [...fixture.memory], operations: fixture.operations.filter(row => row.operation !== 'get') });
+  async function read(targetSelector) {
+    return page.evaluate(targetSelector => {
+      const box = element => { if (!element) return null; const r = element.getBoundingClientRect(); return { left: r.left, top: r.top, right: r.right, bottom: r.bottom, width: r.width, height: r.height }; };
+      const target = document.querySelector(targetSelector), card = document.querySelector('[data-planet-mascot-panel]'), heading = card?.querySelector('header');
+      const rect = box(target), panelRect = box(card), headingRect = box(heading), inside = !!card?.contains(target), fixed = !!heading?.contains(target);
+      const clip = inside ? { left: Math.max(0, panelRect.left + 2), right: Math.min(innerWidth, panelRect.right - 2), top: Math.max(0, panelRect.top + 2, fixed ? 0 : headingRect?.bottom ?? 0), bottom: Math.min(innerHeight, panelRect.bottom - 2) } : { left: 0, right: innerWidth, top: 0, bottom: innerHeight };
+      const points = rect ? [.3, .5, .7].map(x => { const point = { x: rect.left + rect.width * x, y: rect.top + rect.height / 2 }, hit = document.elementFromPoint(point.x, point.y); return { ...point, hit: !!hit && target.contains(hit) }; }) : [];
+      return { rect, panelRect, headingRect, clip, points, inside, fixed, scrollTop: card?.scrollTop ?? 0, scrollRange: card ? card.scrollHeight - card.clientHeight : 0, disabled: target?.disabled ?? false, visible: !!rect && rect.width > 0 && rect.height > 0, exposed: !!rect && rect.width > 0 && rect.left >= clip.left - 1 && rect.right <= clip.right + 1 && rect.top >= clip.top - 1 && rect.bottom <= clip.bottom + 1, finiteAnimations: document.getAnimations().filter(a => (a.pending || a.playState === 'running') && Number.isFinite(a.effect?.getComputedTiming().endTime)).length, documentScroll: { x: scrollX, y: scrollY } };
+    }, targetSelector);
+  }
+  async function tap(targetSelector, label) {
+    let state = await read(targetSelector);
+    const budget = Math.min(160, Math.max(24, Math.ceil(state.scrollRange / Math.max(16, state.clip.bottom - state.clip.top - 36)) * 2 + 8));
+    for (let step = 0; !(state.exposed && state.points.every(p => p.hit)); step++) {
+      expect(step, label + ' finite touch-scroll budget').toBeLessThan(budget);
+      expect(state.visible && state.inside && !state.fixed, label + ' target can scroll into view').toBe(true);
+      const available = state.clip.bottom - state.clip.top; expect(state.rect.height).toBeLessThanOrEqual(available + 1);
+      const up = state.rect.bottom > state.clip.bottom, distance = Math.min(available - 20, Math.max(24, up ? state.rect.bottom - state.clip.bottom + 14 : state.clip.top - state.rect.top + 14));
+      const x = (state.clip.left + state.clip.right) / 2, y = up ? state.clip.bottom - 10 : state.clip.top + 10, before = state;
+      await touch('touchStart', [{ x, y, id: 121 }]);
+      for (let n = 1; n <= 8; n++) { await touch('touchMove', [{ x, y: y + (up ? -1 : 1) * distance * n / 8, id: 121 }]); await page.waitForTimeout(20); }
+      await page.waitForTimeout(100); await touch('touchEnd', []); await page.waitForTimeout(200); state = await read(targetSelector);
+      expect(state.documentScroll).toEqual(before.documentScroll); expect(Math.abs(state.scrollTop - before.scrollTop)).toBeGreaterThan(0);
+    }
+    let prior, matches = 0; await expect.poll(async () => { state = await read(targetSelector); const key = JSON.stringify([state.rect, state.panelRect, state.headingRect, state.scrollTop]); matches = key === prior && !state.finiteAnimations && state.exposed && state.points.every(p => p.hit) ? matches + 1 : 0; prior = key; return matches; }, { timeout: 3500, intervals: [80] }).toBeGreaterThanOrEqual(3);
+    expect(state.rect.width).toBeGreaterThanOrEqual(44); expect(state.rect.height).toBeGreaterThanOrEqual(44);
+    if (label === 'explicit fresh character') {
+      const measured = await page.evaluate(targetSelector => { const control = document.querySelector(targetSelector), bounds = control.getBoundingClientRect(), walker = document.createTreeWalker(control, NodeFilter.SHOW_TEXT), texts = []; let node; while ((node = walker.nextNode())) if(node.textContent.trim()) { const range = document.createRange(); range.selectNodeContents(node); texts.push({ text: node.textContent.trim(), fits: [...range.getClientRects()].every(r => r.left >= bounds.left - 1 && r.right <= bounds.right + 1 && r.top >= bounds.top - 1 && r.bottom <= bounds.bottom + 1) }); } return texts; }, targetSelector);
+      o.restoreFontStress.controlText = measured; expect(measured.length).toBeGreaterThan(0); expect(measured.every(row => row.fits)).toBe(true);
+      await capture(page, result, testInfo, 'booky-character-recovery-' + language + '-fallback-200.png');
+    }
+    await page.evaluate(targetSelector => { const target = document.querySelector(targetSelector); window.__characterRecoveryTouch = []; for (const type of ['pointerdown', 'pointerup', 'click']) target.addEventListener(type, event => window.__characterRecoveryTouch.push({ type, trusted: event.isTrusted, pointerType: event.pointerType, intended: event.currentTarget === target && target.contains(event.target) }), { once: true }); }, targetSelector);
+    const x = state.rect.left + state.rect.width / 2, y = state.rect.top + state.rect.height / 2;
+    await touch('touchStart', [{ x, y, id: 122 }]); await touch('touchEnd', []); await twoFrames(page);
+    const events = await page.evaluate(() => window.__characterRecoveryTouch); o.actions.push({ label, selector: targetSelector, state, events });
+    for (const type of state.disabled ? ['pointerdown', 'pointerup'] : ['pointerdown', 'pointerup', 'click']) expect(events.some(event => event.type === type && event.trusted && event.pointerType === 'touch' && event.intended), label + ' trusted ' + type).toBe(true);
+  }
+  async function stressRestoreControl() {
+    expect(await page.locator('.planet-mascot-controls').getAttribute('data-booky-expanded-text')).not.toBe('true');
+    await page.evaluate(async () => { await document.fonts.ready; const root = document.querySelector('.planet-mascot-controls'); const rows = [root, ...root.querySelectorAll('*')].filter(e => e instanceof HTMLElement).map(element => { const style = getComputedStyle(element); return { element, baselineTag: element.tagName, baselineClass: element.className, baselineText: element.textContent?.trim().slice(0,160), size: parseFloat(style.fontSize), line: style.lineHeight, original: ['font-size','line-height'].map(name => [name,element.style.getPropertyValue(name),element.style.getPropertyPriority(name)]) }; }); window.__recoveryFontStress = rows; for (const row of rows) { row.element.style.setProperty('font-size', String(row.size * 2) + 'px','important'); if (row.line !== 'normal') row.element.style.setProperty('line-height', String(parseFloat(row.line) * 2) + 'px','important'); } });
+    o.restoreFontStress = { syntheticTextStress:true,nativeFontScaleEquivalent:false,factor:2,baselineBeforeWrites:true,scope:'All descendants receive baseline-derived inline scaling; only actually rendered rows have computed values verified. Closed-details and zero-layout rows remain explicitly unverified.' };
+    await expect.poll(async () => { const rows=await recoveryFontAudit(page,2);o.restoreFontStress.scalingAudit=rows;return rows.some(row=>row.rendered)&&rows.filter(row=>row.rendered).every(row=>row.pass===true); }).toBe(true);
+    const critical=o.restoreFontStress.scalingAudit.filter(row=>row.critical&&row.rendered);expect(critical.length).toBeGreaterThan(5);expect(critical.every(row=>row.pass===true)).toBe(true);
+    await expect(page.locator('.planet-mascot-controls')).toHaveAttribute('data-booky-expanded-text','true');
+    o.restoreFontStress.elements=o.restoreFontStress.scalingAudit;
+    o.restoreFontStress.tools=await page.evaluate(()=>[...document.querySelectorAll('.planet-mascot-controls__tools button')].map(element=>{const r=element.getBoundingClientRect(),svg=element.querySelector('svg'),i=svg?.getBoundingClientRect(),hit=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return{width:r.width,height:r.height,iconWidth:i?.width,iconHeight:i?.height,hit:!!hit&&element.contains(hit),iconDecorative:svg?.getAttribute('aria-hidden'),iconFocusable:svg?.getAttribute('focusable')};}));expect(o.restoreFontStress.tools).toHaveLength(2);for(const tool of o.restoreFontStress.tools){expect([tool.width,tool.height,tool.iconWidth,tool.iconHeight]).toEqual([44,44,24,24]);expect(tool.hit).toBe(true);expect(tool.iconDecorative).toBe('true');expect(tool.iconFocusable).toBe('false');}
+  }
+  async function restoreControlFonts() {
+    await page.evaluate(() => { for (const row of window.__recoveryFontStress) if (row.element.isConnected) for (const [name,value,priority] of row.original) { if(value) row.element.style.setProperty(name,value,priority); else row.element.style.removeProperty(name); } });
+    await expect.poll(async () => { const rows=await recoveryFontAudit(page,1);o.restoreFontStress.fontRestorationAudit=rows;return rows.some(row=>row.rendered)&&rows.filter(row=>row.rendered).every(row=>row.pass===true); }).toBe(true);
+    await expect.poll(() => page.locator('.planet-mascot-controls').getAttribute('data-booky-expanded-text')).not.toBe('true'); o.restoreFontStress.normalModeRestored = true;
+  }
+  async function realFallback(label) {
+    const before = await character(page);
+    await page.evaluate(() => new Promise((resolve, reject) => {
+      const record = window.__bookyRendererObservations.filter(item => !item.disposed).at(-1), canvas = record.renderer.domElement, extension = record.renderer.getContext().getExtension('WEBGL_lose_context');
+      if (!extension) { reject(Error('Real Booky WEBGL_lose_context unavailable')); return; }
+      const timer = setTimeout(() => reject(Error('Booky first context restore did not finish')), 4000);
+      canvas.addEventListener('webglcontextrestored', () => { clearTimeout(timer); resolve(); }, { once: true }); extension.loseContext();
+    }));
+    await recoveryLive(page); const restored = await character(page); expect(restored.rendererId).toBe(before.rendererId); expect(restored.model).toBe(before.model); expect(restored.canvasId).toBe(before.canvasId);
+    await page.evaluate(() => window.__bookyRendererObservations.filter(item => !item.disposed).at(-1).renderer.getContext().getExtension('WEBGL_lose_context').loseContext());
+    await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'fallback'); await expect(avatar(page).locator('img')).toBeVisible(); await expect(page.locator(selector.retry)).toBeEnabled();
+    const retired = await owners(page); expect(retired.renderers.every(row => row.disposed && row.disposeCalls === 1)).toBe(true); expect(retired.models.every(row => row.disposed && row.disposeCalls === 1)).toBe(true);
+    o.losses.push({ label, mechanism: 'actual WEBGL_lose_context on the independent Booky renderer only', before, restored, retired }); return before;
+  }
+  async function still(label) {
+    await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating', 'false'); const before = await character(page);
+    await page.waitForTimeout(2800); const after = await character(page); o.stillness.push({ label, before, after });
+    expect(after.renderedFrames).toBe(before.renderedFrames); expect(after.rig).toEqual(before.rig); expect(after.rendererId).toBe(before.rendererId); expect(after.model).toBe(before.model);
+  }
+  try {
+    await page.setViewportSize(viewport); await page.emulateMedia({ reducedMotion: language === 'en' ? 'reduce' : 'no-preference' }); await ready(page);
+    if (language === 'en') { await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({ hasText: /^EN$/u }).tap(); await ready(page); }
+    await actual(page); await stablePose(page); await page.evaluate(() => window.__bookyLiveFixture.remember()); cdp = await page.context().newCDPSession(page);
+    await tap(selector.toggle, 'show help'); await expect(panel(page)).toBeVisible(); await recoveryLive(page);
+    await expect.poll(() => JSON.parse(fixture.memory.get(BOOKY) ?? 'null')?.visible).toBe(true);
+    const preferences = saved(), scene = await sample(page);
+    await page.evaluate(() => { window.__characterRecoveryHelp = document.querySelector('[data-planet-mascot-panel]'); });
+    const original = await realFallback('initial fallback'); await stressRestoreControl();
+    const beforeOwners = await owners(page); await tap(selector.retry, 'explicit fresh character'); await recoveryLive(page); await capture(page, result, testInfo, 'booky-character-recovery-' + language + '-post-restore-stress.png'); Object.assign(result.screenshots.at(-1),{framing:'actual-App restored independent Booky after successful geometry checks under synthetic 200 percent font stress',syntheticTextStress:true,nativeFontScaleEquivalent:false}); await restoreControlFonts(); const fresh = await character(page), afterOwners = await owners(page);
+    expect(fresh.rendererId).not.toBe(original.rendererId); expect(fresh.model).not.toBe(original.model); expect(fresh.canvasId).not.toBe(original.canvasId);
+    expect(afterOwners.renderers.length).toBe(beforeOwners.renderers.length + 1); expect(afterOwners.models.length).toBe(beforeOwners.models.length + 1);
+    expect(await page.evaluate(() => window.__characterRecoveryHelp === document.querySelector('[data-planet-mascot-panel]'))).toBe(true);
+    o.restoredMotionPolicy = await page.evaluate(() => ({ systemReduced: matchMedia('(prefers-reduced-motion: reduce)').matches, rendererReduced: document.querySelector('[data-booky-canvas]').getAttribute('data-booky-reduced-motion'), animating: document.querySelector('[data-booky-canvas]').getAttribute('data-booky-animating'), calmChecked: document.querySelector('[data-booky-calm-motion]')?.getAttribute('aria-checked') ?? null })); expect(o.restoredMotionPolicy.systemReduced).toBe(language === 'en'); expect(o.restoredMotionPolicy.rendererReduced).toBe(String(language === 'en'));
+    await still('fresh explicit replacement stays still'); await capture(page, result, testInfo, 'booky-character-recovery-' + language + '-restored.png');
+    await tap(selector.quick, 'open gestures after restoration'); await expect(page.locator('[data-booky-gestures]')).toHaveAttribute('open', '');
+    const gestureBefore = await character(page); await tap(selector.surprise, 'fresh manual Surprise'); await expect.poll(async () => (await character(page)).renderedFrames).toBeGreaterThan(gestureBefore.renderedFrames);
+    if (language === 'ru') await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating', 'true');
+    else await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating', 'false');
+    await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating', 'false', { timeout: 5000 });
+    o.freshGesturePolicy = { expectedAnimated: language === 'ru', expectedStatic: language === 'en', before: gestureBefore, after: await character(page) };
+    await realFallback('repeat genuine fallback');
+    await page.evaluate(() => { window.__bookyRecoveryFault = { failNextModel: true, thrown: 0 }; });
+    await tap(selector.retry, 'controlled model allocation failure'); await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'fallback'); await expect(page.locator(selector.retry)).toBeEnabled();
+    expect(await page.evaluate(() => window.__bookyRecoveryFault.thrown)).toBe(1); o.failures.push({ mechanism: 'Declared external observer throws once before actual createBookyModel; this is controlled failure, not genuine context loss', owners: await owners(page) });
+    await tap(selector.retry, 'fresh retry after controlled failure'); await recoveryLive(page); await still('later successful replacement stays still');
+    expect(saved()).toEqual(preferences); retained(await sample(page), scene); await fixture.verify();
+    o.checks = ['real loss first recovers in place and second enters fallback', 'explicit trusted recovery creates one fresh character owner', 'help node and canonical scene survive recovery', 'replacement is still until a fresh trusted gesture', 'controlled model failure allows a later explicit retry', 'recovery preserves all preferences and progress', 'Restore fits and responds to trusted touch at rendered 200 percent fonts', 'font restoration returns the compact header and exact rendered font sizes', 'icon-only Move and Hide keep 44px targets under enlarged text', 'OS motion policy survives replacement and governs a fresh gesture'].map(name => ({ name, pass: true }));
+    result.observationsComplete = true; result.pass = true;
+    Object.assign(result,{characterRecoveryGenuineContextLoss:true,characterRecoveryFreshOwnersByTrustedTouch:true,characterRecoveryStillUntilFreshGesture:true,characterRecoveryMotionPolicyRetained:true,characterRecoveryControlledFailureRetry:true,characterRecoveryPreservesScenePreferencesAndHelp:true,characterRecoveryRestoreFitsAt200Percent:true,characterRecoveryRestoresNormalFonts:true,characterRecoveryToolTargetsStay44:true,syntheticTextStress:true,nativeFontScaleEquivalent:false});
+  } catch (error) { o.findings.push(error.message); o.failure = { message: error.message, live: await page.evaluate(() => window.__lastBookyLiveDiagnostic ?? null), layout: await layout(page), character: await character(page), owners: await owners(page), fontAudit: await page.evaluate(() => (window.__recoveryFontStress ?? []).map(row => ({ baselineTag: row.baselineTag, baselineClass: row.baselineClass, baselineText: row.baselineText, tag: row.element.tagName, className: row.element.className, text: row.element.textContent?.trim().slice(0,160), connected: row.element.isConnected, original: row.original, baselineSize: row.size, baselineLine: row.line, actualSize: parseFloat(getComputedStyle(row.element).fontSize), actualLine: getComputedStyle(row.element).lineHeight, inlineCssText: row.element.style.cssText }))) }; await capture(page, result, testInfo, 'booky-character-recovery-' + language + '-diagnostic-failure.png'); throw error; } finally { if (cdp) { await touch('touchCancel', []).catch(() => undefined); await cdp.detach(); } await fixture.close(); }
+});
+for (const [language, viewport] of [['ru', { width: 390, height: 844 }], ['en', { width: 320, height: 844 }]]) test('Booky controlled character recovery lifecycle touch ' + language, async ({}, testInfo) => {
+  test.setTimeout(120000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  const o = result.observations.characterRecoveryLifecycle = { language, viewport, checks: [], actions: [], losses: [], stillness: [], failures: [], findings: [] };
+  result.scenario = 'booky-controlled-character-recovery-lifecycle-touch-' + language;
+  result.scope = 'Draft actual-App Chrome touch coverage. Real Booky-only WEBGL_lose_context; one separately declared controlled model-factory failure. No native/device/release acceptance.';
+  const selector = { toggle: '[data-planet-mascot-toggle]', retry: '[data-booky-character-retry]', quick: '[data-booky-open-gestures]', surprise: '[data-booky-surprise]', stop: '[data-booky-stop-gesture]' };
+  let cdp;
+  const touch = (type, touchPoints) => cdp.send('Input.dispatchTouchEvent', { type, touchPoints });
+  const saved = () => ({ memory: [...fixture.memory], operations: fixture.operations.filter(row => row.operation !== 'get') });
+  async function read(targetSelector) {
+    return page.evaluate(targetSelector => {
+      const box = element => { if (!element) return null; const r = element.getBoundingClientRect(); return { left: r.left, top: r.top, right: r.right, bottom: r.bottom, width: r.width, height: r.height }; };
+      const target = document.querySelector(targetSelector), card = document.querySelector('[data-planet-mascot-panel]'), heading = card?.querySelector('header');
+      const rect = box(target), panelRect = box(card), headingRect = box(heading), inside = !!card?.contains(target), fixed = !!heading?.contains(target);
+      const clip = inside ? { left: Math.max(0, panelRect.left + 2), right: Math.min(innerWidth, panelRect.right - 2), top: Math.max(0, panelRect.top + 2, fixed ? 0 : headingRect?.bottom ?? 0), bottom: Math.min(innerHeight, panelRect.bottom - 2) } : { left: 0, right: innerWidth, top: 0, bottom: innerHeight };
+      const points = rect ? [.3, .5, .7].map(x => { const point = { x: rect.left + rect.width * x, y: rect.top + rect.height / 2 }, hit = document.elementFromPoint(point.x, point.y); return { ...point, hit: !!hit && target.contains(hit) }; }) : [];
+      return { rect, panelRect, headingRect, clip, points, inside, fixed, scrollTop: card?.scrollTop ?? 0, scrollRange: card ? card.scrollHeight - card.clientHeight : 0, disabled: target?.disabled ?? false, visible: !!rect && rect.width > 0 && rect.height > 0, exposed: !!rect && rect.width > 0 && rect.left >= clip.left - 1 && rect.right <= clip.right + 1 && rect.top >= clip.top - 1 && rect.bottom <= clip.bottom + 1, finiteAnimations: document.getAnimations().filter(a => (a.pending || a.playState === 'running') && Number.isFinite(a.effect?.getComputedTiming().endTime)).length, documentScroll: { x: scrollX, y: scrollY } };
+    }, targetSelector);
+  }
+  async function tap(targetSelector, label) {
+    let state = await read(targetSelector);
+    const budget = Math.min(160, Math.max(24, Math.ceil(state.scrollRange / Math.max(16, state.clip.bottom - state.clip.top - 36)) * 2 + 8));
+    for (let step = 0; !(state.exposed && state.points.every(p => p.hit)); step++) {
+      expect(step, label + ' finite touch-scroll budget').toBeLessThan(budget);
+      expect(state.visible && state.inside && !state.fixed, label + ' target can scroll into view').toBe(true);
+      const available = state.clip.bottom - state.clip.top; expect(state.rect.height).toBeLessThanOrEqual(available + 1);
+      const up = state.rect.bottom > state.clip.bottom, distance = Math.min(available - 20, Math.max(24, up ? state.rect.bottom - state.clip.bottom + 14 : state.clip.top - state.rect.top + 14));
+      const x = (state.clip.left + state.clip.right) / 2, y = up ? state.clip.bottom - 10 : state.clip.top + 10, before = state;
+      await touch('touchStart', [{ x, y, id: 121 }]);
+      for (let n = 1; n <= 8; n++) { await touch('touchMove', [{ x, y: y + (up ? -1 : 1) * distance * n / 8, id: 121 }]); await page.waitForTimeout(20); }
+      await page.waitForTimeout(100); await touch('touchEnd', []); await page.waitForTimeout(200); state = await read(targetSelector);
+      expect(state.documentScroll).toEqual(before.documentScroll); expect(Math.abs(state.scrollTop - before.scrollTop)).toBeGreaterThan(0);
+    }
+    let prior, matches = 0; await expect.poll(async () => { state = await read(targetSelector); const key = JSON.stringify([state.rect, state.panelRect, state.headingRect, state.scrollTop]); matches = key === prior && !state.finiteAnimations && state.exposed && state.points.every(p => p.hit) ? matches + 1 : 0; prior = key; return matches; }, { timeout: 3500, intervals: [80] }).toBeGreaterThanOrEqual(3);
+    expect(state.rect.width).toBeGreaterThanOrEqual(44); expect(state.rect.height).toBeGreaterThanOrEqual(44);
+    if (label === 'explicit fresh character') {
+      const measured = await page.evaluate(targetSelector => { const control = document.querySelector(targetSelector), bounds = control.getBoundingClientRect(), walker = document.createTreeWalker(control, NodeFilter.SHOW_TEXT), texts = []; let node; while ((node = walker.nextNode())) if(node.textContent.trim()) { const range = document.createRange(); range.selectNodeContents(node); texts.push({ text: node.textContent.trim(), fits: [...range.getClientRects()].every(r => r.left >= bounds.left - 1 && r.right <= bounds.right + 1 && r.top >= bounds.top - 1 && r.bottom <= bounds.bottom + 1) }); } return texts; }, targetSelector);
+      o.restoreFontStress.controlText = measured; expect(measured.length).toBeGreaterThan(0); expect(measured.every(row => row.fits)).toBe(true);
+      await capture(page, result, testInfo, 'booky-character-recovery-' + language + '-fallback-200.png');
+    }
+    await page.evaluate(targetSelector => { const target = document.querySelector(targetSelector); window.__characterRecoveryTouch = []; for (const type of ['pointerdown', 'pointerup', 'click']) target.addEventListener(type, event => window.__characterRecoveryTouch.push({ type, trusted: event.isTrusted, pointerType: event.pointerType, intended: event.currentTarget === target && target.contains(event.target) }), { once: true }); }, targetSelector);
+    const x = state.rect.left + state.rect.width / 2, y = state.rect.top + state.rect.height / 2;
+    await touch('touchStart', [{ x, y, id: 122 }]); await touch('touchEnd', []); await twoFrames(page);
+    const events = await page.evaluate(() => window.__characterRecoveryTouch); o.actions.push({ label, selector: targetSelector, state, events });
+    for (const type of state.disabled ? ['pointerdown', 'pointerup'] : ['pointerdown', 'pointerup', 'click']) expect(events.some(event => event.type === type && event.trusted && event.pointerType === 'touch' && event.intended), label + ' trusted ' + type).toBe(true);
+  }
+  async function stressRestoreControl() {
+    expect(await page.locator('.planet-mascot-controls').getAttribute('data-booky-expanded-text')).not.toBe('true');
+    await page.evaluate(async () => { await document.fonts.ready; const root = document.querySelector('.planet-mascot-controls'); const rows = [root, ...root.querySelectorAll('*')].filter(e => e instanceof HTMLElement).map(element => { const style = getComputedStyle(element); return { element, baselineTag: element.tagName, baselineClass: element.className, baselineText: element.textContent?.trim().slice(0,160), size: parseFloat(style.fontSize), line: style.lineHeight, original: ['font-size','line-height'].map(name => [name,element.style.getPropertyValue(name),element.style.getPropertyPriority(name)]) }; }); window.__recoveryFontStress = rows; for (const row of rows) { row.element.style.setProperty('font-size', String(row.size * 2) + 'px','important'); if (row.line !== 'normal') row.element.style.setProperty('line-height', String(parseFloat(row.line) * 2) + 'px','important'); } });
+    o.restoreFontStress = { syntheticTextStress:true,nativeFontScaleEquivalent:false,factor:2,baselineBeforeWrites:true,scope:'All descendants receive baseline-derived inline scaling; only actually rendered rows have computed values verified. Closed-details and zero-layout rows remain explicitly unverified.' };
+    await expect.poll(async () => { const rows=await recoveryFontAudit(page,2);o.restoreFontStress.scalingAudit=rows;return rows.some(row=>row.rendered)&&rows.filter(row=>row.rendered).every(row=>row.pass===true); }).toBe(true);
+    const critical=o.restoreFontStress.scalingAudit.filter(row=>row.critical&&row.rendered);expect(critical.length).toBeGreaterThan(5);expect(critical.every(row=>row.pass===true)).toBe(true);
+    await expect(page.locator('.planet-mascot-controls')).toHaveAttribute('data-booky-expanded-text','true');
+    o.restoreFontStress.elements=o.restoreFontStress.scalingAudit;
+    o.restoreFontStress.tools=await page.evaluate(()=>[...document.querySelectorAll('.planet-mascot-controls__tools button')].map(element=>{const r=element.getBoundingClientRect(),svg=element.querySelector('svg'),i=svg?.getBoundingClientRect(),hit=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);return{width:r.width,height:r.height,iconWidth:i?.width,iconHeight:i?.height,hit:!!hit&&element.contains(hit),iconDecorative:svg?.getAttribute('aria-hidden'),iconFocusable:svg?.getAttribute('focusable')};}));expect(o.restoreFontStress.tools).toHaveLength(2);for(const tool of o.restoreFontStress.tools){expect([tool.width,tool.height,tool.iconWidth,tool.iconHeight]).toEqual([44,44,24,24]);expect(tool.hit).toBe(true);expect(tool.iconDecorative).toBe('true');expect(tool.iconFocusable).toBe('false');}
+  }
+  async function restoreControlFonts() {
+    await page.evaluate(() => { for (const row of window.__recoveryFontStress) if (row.element.isConnected) for (const [name,value,priority] of row.original) { if(value) row.element.style.setProperty(name,value,priority); else row.element.style.removeProperty(name); } });
+    await expect.poll(async () => { const rows=await recoveryFontAudit(page,1);o.restoreFontStress.fontRestorationAudit=rows;return rows.some(row=>row.rendered)&&rows.filter(row=>row.rendered).every(row=>row.pass===true); }).toBe(true);
+    await expect.poll(() => page.locator('.planet-mascot-controls').getAttribute('data-booky-expanded-text')).not.toBe('true'); o.restoreFontStress.normalModeRestored = true;
+  }
+  async function realFallback(label) {
+    const before = await character(page);
+    await page.evaluate(() => new Promise((resolve, reject) => {
+      const record = window.__bookyRendererObservations.filter(item => !item.disposed).at(-1), canvas = record.renderer.domElement, extension = record.renderer.getContext().getExtension('WEBGL_lose_context');
+      if (!extension) { reject(Error('Real Booky WEBGL_lose_context unavailable')); return; }
+      const timer = setTimeout(() => reject(Error('Booky first context restore did not finish')), 4000);
+      canvas.addEventListener('webglcontextrestored', () => { clearTimeout(timer); resolve(); }, { once: true }); extension.loseContext();
+    }));
+    await recoveryLive(page); const restored = await character(page); expect(restored.rendererId).toBe(before.rendererId); expect(restored.model).toBe(before.model); expect(restored.canvasId).toBe(before.canvasId);
+    await page.evaluate(() => window.__bookyRendererObservations.filter(item => !item.disposed).at(-1).renderer.getContext().getExtension('WEBGL_lose_context').loseContext());
+    await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'fallback'); await expect(avatar(page).locator('img')).toBeVisible(); await expect(page.locator(selector.retry)).toBeEnabled();
+    const retired = await owners(page); expect(retired.renderers.every(row => row.disposed && row.disposeCalls === 1)).toBe(true); expect(retired.models.every(row => row.disposed && row.disposeCalls === 1)).toBe(true);
+    o.losses.push({ label, mechanism: 'actual WEBGL_lose_context on the independent Booky renderer only', before, restored, retired }); return before;
+  }
+  async function still(label) {
+    await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating', 'false'); const before = await character(page);
+    await page.waitForTimeout(2800); const after = await character(page); o.stillness.push({ label, before, after });
+    expect(after.renderedFrames).toBe(before.renderedFrames); expect(after.rig).toEqual(before.rig); expect(after.rendererId).toBe(before.rendererId); expect(after.model).toBe(before.model);
+  }
+  try {
+    await page.setViewportSize(viewport); await ready(page);
+    if (language === 'en') { await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({ hasText: /^EN$/u }).tap(); await ready(page); }
+    await actual(page); await stablePose(page); await page.evaluate(() => window.__bookyLiveFixture.remember()); cdp = await page.context().newCDPSession(page);
+    await tap(selector.toggle, 'show help'); await expect(panel(page)).toBeVisible(); await recoveryLive(page);
+    await expect.poll(() => JSON.parse(fixture.memory.get(BOOKY) ?? 'null')?.visible).toBe(true);
+    const preferences = saved(), scene = await sample(page), originalBooky = JSON.parse(fixture.memory.get(BOOKY));
+    await realFallback('genuine fallback before controlled timeout');
+    await installCharacterVisibilityGate(page); const prior = await owners(page), began = await page.evaluate(() => performance.now());
+    await tap(selector.retry, 'explicit attempt held nonintersecting'); await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'loading');
+    await expect.poll(() => page.evaluate(() => window.__characterVisibilityGate.records.length)).toBe(1);
+    await expect(page.locator(selector.retry)).toBeDisabled();
+    const pending = await owners(page); expect(pending.renderers.length).toBe(prior.renderers.length + 1); expect(pending.models.length).toBe(prior.models.length + 1); expect(pending.renderers.at(-1).frames).toBe(0);
+    await tap(selector.retry, 'disabled repeated activation while pending'); expect(await owners(page)).toEqual(pending);
+    await capture(page, result, testInfo, 'booky-character-recovery-' + language + '-controlled-pending.png');
+    await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'fallback', { timeout: 6500 }); await expect(page.locator(selector.retry)).toBeEnabled();
+    const elapsed = await page.evaluate(start => performance.now() - start, began), timedOut = await owners(page); expect(elapsed).toBeGreaterThanOrEqual(3500); expect(elapsed).toBeLessThan(10000);
+    expect(timedOut.renderers.at(-1).frames).toBe(0); expect(timedOut.renderers.every(row => row.disposed && row.disposeCalls === 1)).toBe(true); expect(timedOut.models.every(row => row.disposed && row.disposeCalls === 1)).toBe(true);
+    await page.evaluate(() => { window.__characterVisibilityGate.enabled = false; window.__characterVisibilityGate.release(0); }); await twoFrames(page); expect(await owners(page)).toEqual(timedOut); await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'fallback');
+    o.timeout = { mechanism: 'Controlled Booky-only IntersectionObserver nonintersecting entries; genuine hook deadline, real browser clock; not native lifecycle or genuine WebGL timeout', elapsed, pending, timedOut, gate: await page.evaluate(() => window.__characterVisibilityGate.snapshot()) };
+    expect(saved()).toEqual(preferences); retained(await sample(page), scene);
+    await tap(selector.retry, 'fresh retry after controlled deadline'); await recoveryLive(page); await still('fresh retry after timeout remains still');
+    await realFallback('genuine fallback before pending hide'); await page.evaluate(() => { window.__characterVisibilityGate.enabled = true; });
+    await tap(selector.retry, 'second attempt held for explicit hide'); await expect(avatar(page)).toHaveAttribute('data-renderer-state', 'loading');
+    await expect.poll(() => page.evaluate(() => window.__characterVisibilityGate.records.length)).toBe(2); const hiddenPending = await owners(page); expect(hiddenPending.renderers.at(-1).frames).toBe(0);
+    await tap('[data-planet-mascot-hide]', 'explicit hide while restoration is pending'); await expect(pet(page)).toHaveAttribute('data-planet-mascot-active','false'); await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility','hidden'); await expect(avatar(page)).toHaveCount(0); await expect(page.locator('[data-booky-canvas]')).toHaveCount(0); await expect(panel(page)).toHaveCount(0); await expect(page.locator(selector.toggle)).toBeVisible();
+    await expect.poll(() => JSON.parse(fixture.memory.get(BOOKY)).visible).toBe(false);
+    expect(JSON.parse(fixture.memory.get(BOOKY))).toEqual({ ...originalBooky, visible: false });
+    const hiddenOwners = await owners(page); expect(hiddenOwners.renderers.every(row => row.disposed && row.disposeCalls === 1)).toBe(true); expect(hiddenOwners.models.every(row => row.disposed && row.disposeCalls === 1)).toBe(true);
+    await page.evaluate(() => { window.__characterVisibilityGate.enabled = false; window.__characterVisibilityGate.release(1); }); await page.waitForTimeout(4300); expect(await owners(page)).toEqual(hiddenOwners); await expect(pet(page)).toHaveAttribute('data-planet-mascot-active','false'); await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility','hidden'); await expect(avatar(page)).toHaveCount(0); await expect(page.locator('[data-booky-canvas]')).toHaveCount(0); await expect(panel(page)).toHaveCount(0); await expect(page.locator(selector.toggle)).toBeVisible();
+    o.pendingHide = { mechanism: 'Explicit trusted Hide while the isolated Booky observer gate holds the new canvas; retired callback delivered once after unmount', pending: hiddenPending, hiddenOwners, gate: await page.evaluate(() => window.__characterVisibilityGate.snapshot()) };
+    await tap(selector.toggle, 'explicit Show after pending hide'); await recoveryLive(page); await expect.poll(() => JSON.parse(fixture.memory.get(BOOKY)).visible).toBe(true);
+    expect([...fixture.memory]).toEqual(preferences.memory); const extraWrites = saved().operations.slice(preferences.operations.length); expect(extraWrites).toHaveLength(2); expect(extraWrites.every(row => row.operation === 'set' && row.key === BOOKY)).toBe(true); expect(extraWrites.map(row => JSON.parse(row.value).visible)).toEqual([false, true]);
+    retained(await sample(page), scene); await fixture.verify();
+    o.checks = ['controlled nonintersecting new canvas reaches the bounded first-frame deadline', 'disabled repeated activation creates no queued owner', 'timeout disposes owners once and ignores the retired observer callback', 'later explicit retry creates a live still character', 'trusted Hide retires the pending attempt and late callback cannot remount it', 'only explicit Hide and Show write visibility while scene and progress remain exact'].map(name => ({ name, pass: true }));
+    result.observationsComplete = true; result.pass = true;
+    Object.assign(result,{characterRecoveryControlledDeadline:true,characterRecoveryPendingActivationBounded:true,characterRecoveryLateCallbacksIgnored:true,characterRecoveryLaterRetryStaysStill:true,characterRecoveryPendingHideRetiresOwners:true,characterRecoveryOnlyExplicitVisibilityWrites:true,characterRecoveryLifecyclePreservesSceneAndProgress:true,controlledVisibilityFailure:true,nativeLifecycleEquivalent:false});
+  } catch (error) { o.findings.push(error.message); o.failure = { message: error.message, live: await page.evaluate(() => window.__lastBookyLiveDiagnostic ?? null), layout: await layout(page), character: await character(page), owners: await owners(page), fontAudit: await page.evaluate(() => (window.__recoveryFontStress ?? []).map(row => ({ baselineTag: row.baselineTag, baselineClass: row.baselineClass, baselineText: row.baselineText, tag: row.element.tagName, className: row.element.className, text: row.element.textContent?.trim().slice(0,160), connected: row.element.isConnected, original: row.original, baselineSize: row.size, baselineLine: row.line, actualSize: parseFloat(getComputedStyle(row.element).fontSize), actualLine: getComputedStyle(row.element).lineHeight, inlineCssText: row.element.style.cssText }))) }; await capture(page, result, testInfo, 'booky-character-recovery-' + language + '-diagnostic-failure.png'); throw error; } finally { if (cdp) { await touch('touchCancel', []).catch(() => undefined); await cdp.detach(); } await fixture.close(); }
 });

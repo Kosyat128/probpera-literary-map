@@ -3,12 +3,14 @@ import type { WebGLRenderer, WebGLRenderTarget } from "three";
 import { BOOKY_LOOK_MS, bookyReactionDuration, boundedBookyLook, createBookyPose, hasBookyReactionChanged,
   type BookyInput } from "./bookyAnimation";
 
-type RendererState = "loading" | "live3d" | "fallback";
-type RendererSnapshot = Readonly<{ state: RendererState; active: boolean }>;
-type RendererInput = BookyInput & Readonly<{ calmMotion?: boolean }>;
+export type BookyRendererState = "loading" | "live3d" | "fallback";
+type RendererSnapshot = Readonly<{ state: BookyRendererState; active: boolean }>;
+// recoveryAttempt is fixed for this canvas lifetime. Only explicit recovery uses it.
+type RendererInput = BookyInput & Readonly<{ calmMotion?: boolean; recoveryAttempt?: boolean }>;
 type Runtime = { update(input: RendererInput): void };
 type OwnedModel = ReturnType<typeof import("./bookyModel")["createBookyModel"]>;
 const RECOVERY_TIMEOUT_MS = 1800;
+const RETRY_FIRST_FRAME_TIMEOUT_MS = 4000;
 
 /** Independent decorative viewport. It never borrows the literary globe's
  * camera, textures or controls, and has no resting animation loop. */
@@ -31,6 +33,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     let disposeShadow: (() => void) | null = null;
     let animationFrame = 0, restoreTimer: ReturnType<typeof setTimeout> | null = null;
     let recoveryDeadline: ReturnType<typeof setTimeout> | null = null;
+    let firstFrameDeadline: ReturnType<typeof setTimeout> | null = null;
     let draw: ((time: number) => void) | null = null, refreshSize: (() => void) | null = null;
     let updatePose: ((value: BookyInput) => void) | null = null, settlePose: (() => void) | null = null;
     let lossExtension: WEBGL_lose_context | null = null;
@@ -40,7 +43,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     const isActive = () => alive && !failed && !contextLost && pageVisible && intersecting && committed.current.active;
     const publish = () => {
       if (!alive) return;
-      const state: RendererState = failed ? "fallback" : hasRendered && !contextLost ? "live3d" : "loading";
+      const state: BookyRendererState = failed ? "fallback" : hasRendered && !contextLost ? "live3d" : "loading";
       const active = state === "live3d" && isActive();
       setSnapshot(previous => previous.state === state && previous.active === active ? previous : { state, active });
     };
@@ -53,6 +56,10 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
       if (restoreTimer !== null) clearTimeout(restoreTimer);
       if (recoveryDeadline !== null) clearTimeout(recoveryDeadline);
       restoreTimer = recoveryDeadline = null;
+    };
+    const clearFirstFrameDeadline = () => {
+      if (firstFrameDeadline !== null) clearTimeout(firstFrameDeadline);
+      firstFrameDeadline = null;
     };
     const disposeGraphics = () => {
       const oldModel = model, oldRenderer = renderer, oldEnvironment = environment;
@@ -67,7 +74,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     };
     const fallback = () => {
       if (!alive || failed) return;
-      failed = true; stopFrame(); clearRecovery(); disposeGraphics();
+      failed = true; stopFrame(); clearRecovery(); clearFirstFrameDeadline(); disposeGraphics();
       canvas.dataset.bookyContext = "unavailable"; publish();
     };
     const requestFrame = () => {
@@ -127,6 +134,10 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     } };
     const ownedRuntime = runtime.current;
     publish();
+
+    // An explicit retry must finish even if imports or the first frame never arrive.
+    // A timed-out lifetime cannot later allocate resources or replace the fallback.
+    if (committed.current.recoveryAttempt) firstFrameDeadline = setTimeout(fallback, RETRY_FIRST_FRAME_TIMEOUT_MS);
 
     // A discarded StrictMode activation cannot allocate a model or context.
     void Promise.all([import("three"), import("./bookyModel"),
@@ -232,7 +243,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
           if (progress !== null && progress >= 1) reactionStarted = null;
           pose(current, look, reactionStarted === null ? null : progress, reducedMotion);
           renderer.render(scene, camera);
-          renderCount += 1; hasRendered = true;
+          renderCount += 1; hasRendered = true; clearFirstFrameDeadline();
           canvas.dataset.bookyRenderCount = String(renderCount);
           canvas.dataset.bookyAnimating = String(blend < 1 || reactionStarted !== null);
           canvas.dataset.bookyReducedMotion = String(reducedMotion);
@@ -253,7 +264,8 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
         }
         window.addEventListener("resize", visibility);
         refreshSize();
-        if (!reducedMotion && isActive()) reactionStarted = performance.now();
+        // Recovery restores a still character. Only a fresh action may animate it.
+        if (!committed.current.recoveryAttempt && !reducedMotion && isActive()) reactionStarted = performance.now();
         requestFrame();
       } catch { fallback(); }
     }, fallback);
@@ -261,7 +273,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     return () => {
       alive = false;
       if (runtime.current === ownedRuntime) runtime.current = null;
-      stopFrame(); clearRecovery(); observer?.disconnect(); intersection?.disconnect();
+      stopFrame(); clearRecovery(); clearFirstFrameDeadline(); observer?.disconnect(); intersection?.disconnect();
       window.removeEventListener("resize", visibility);
       document.removeEventListener("visibilitychange", visibility); motion.removeEventListener("change", onReducedMotion);
       canvas.removeEventListener("webglcontextlost", onContextLost);
