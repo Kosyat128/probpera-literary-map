@@ -12,11 +12,12 @@ import { createBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyRead
 import { DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord,
   type BookyJourneyProgressPreference } from "./bookyJourneyProgress";
 import { getBookyJourneyMigrationChecksum, resolveBookyJourneyMigration, type BookyJourneyMigration } from "./bookyJourneyMigration";
+import { createBookDossierCharacterViewToken, type BookDossierCharacterViewReceipt } from "../books/bookDossierCharacterView";
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 function fixture(locale: "ru" | "en" = "en", options: { id?: string; version?: number; workId?: string; writerNodeId?: string; title?: string;
   checkpointScreen?: "globe" | "collection"; activity?: boolean; activityAuthor?: "test-writer" | "other-writer";
-  overview?: BookyJourneyDefinition["overview"]; offlineAvailable?: boolean } = {}) {
+  overview?: BookyJourneyDefinition["overview"]; offlineAvailable?: boolean; character?: boolean; consecutiveCharacter?: boolean } = {}) {
   // Synthetic reviewers, content, public catalog and receipts ONLY for tests.
   // No production draft receives approval, narration or child eligibility.
   const journeyId = options.id ?? "test-journey";
@@ -42,6 +43,23 @@ function fixture(locale: "ru" | "en" = "en", options: { id?: string; version?: n
       : { id: "work", kind: "work", entity: { kind: "work", countryId: country.id, writerId: "test-writer", workId: book.id }, screen: "collection", dialogue: { id: "test-work", version: 1, contentChecksum: "" } },
     { id: "checkpoint", kind: "checkpoint", entity: null, screen: options.checkpointScreen ?? "globe", dialogue: { id: "test-checkpoint", version: 1, contentChecksum: "" } },
   ];
+  if (options.character) {
+    const work = { kind: "work" as const, countryId: country.id, writerId: "test-writer", workId: book.id };
+    (nodes as BookyJourneyDefinition["nodes"][number][]).splice(3, 0, {
+      id: "character", kind: "character", entity: work, screen: "collection",
+      dialogue: { id: "test-character", version: 1, contentChecksum: "a".repeat(64) },
+      character: { schemaVersion: 1, id: "test-character-spec", version: 1, work,
+        bindings: ["ru", "en"].map(language => ({ locale: language, dossierVersion: "test-v1", sectionId: "test-page",
+          blockId: "test-block", itemId: "test-item", readingMode: "BEFORE_READING", projectionChecksum: "a".repeat(64),
+          dialogue: { id: "test-character", version: 1, contentChecksum: "a".repeat(64) } })) as unknown as NonNullable<BookyJourneyDefinition["nodes"][number]["character"]>["bindings"] },
+    });
+    if (options.consecutiveCharacter) {
+      const first = nodes[3];
+      (nodes as BookyJourneyDefinition["nodes"][number][]).splice(4, 0, { ...first, id: "next-character",
+        dialogue: { ...first.dialogue, id: "test-next-character" }, character: { ...first.character!, id: "test-next-character-spec",
+          bindings: first.character!.bindings.map(binding => ({ ...binding, dialogue: { ...binding.dialogue, id: "test-next-character" } })) as unknown as NonNullable<typeof first.character>["bindings"] } });
+    }
+  }
   const records: BookyDialogueRecord[] = nodes.map(node => {
     const copy = { title: `${locale}: ${node.id}`, body: `${locale}: synthetic test instruction.`, caption: "Synthetic test caption", reduced: "Test" };
     const payload: BookyDialoguePayload = { id: node.dialogue.id, locale, version: 1, audience: "adult", ageRange: { min: 18, max: 120 },
@@ -56,13 +74,15 @@ function fixture(locale: "ru" | "en" = "en", options: { id?: string; version?: n
   const definition: BookyJourneyDefinition = { schemaVersion: 1, id: journeyId, version: options.version ?? 1, locale, audience: "adult",
     ageRange: { min: 18, max: 120 }, readingLevel: "plain", title: options.title ?? `${locale}: Synthetic journey`, prerequisites: [],
     ...(options.overview ? { overview: options.overview } : {}),
-    nodes: nodes.map((node, index) => ({ ...node, dialogue: { ...node.dialogue, contentChecksum: records[index].review.contentChecksum } })) };
+    nodes: nodes.map((node, index) => ({ ...node, dialogue: { ...node.dialogue, contentChecksum: records[index].review.contentChecksum },
+      ...(node.character ? { character: { ...node.character, bindings: node.character.bindings.map(binding => binding.locale === locale
+        ? { ...binding, dialogue: { ...binding.dialogue, contentChecksum: records[index].review.contentChecksum } } : binding) as unknown as typeof node.character.bindings } } : {}) })) };
   const context: BookyJourneyContext = { audience: "adult", age: 30, locale, readingLevel: "plain", now, connectivity: "online", completedPrerequisites: [],
     availability: definition.nodes.map(node => ({ nodeId: node.id, locale, dialogueContentChecksum: node.dialogue.contentChecksum, available: true,
       offlineAvailable: options.offlineAvailable ?? true })) };
   const trust: BookyJourneyTrust = { currentVersions: [{ id: definition.id, version: definition.version }], approvedReviews: [
     { id: definition.id, version: definition.version, locale, definitionChecksum: getBookyJourneyChecksum(definition)!, reviewer: "synthetic-journey-reviewer-not-real", reviewedAt },
-  ], dialogueRegistry: createBookyDialogueRegistry(records, { canonicalEntityIds: [...new Set(records.flatMap(record => [...record.payload.entityIds]))],
+  ], characterPublicationAvailable: options.character === true, dialogueRegistry: createBookyDialogueRegistry(records, { canonicalEntityIds: [...new Set(records.flatMap(record => [...record.payload.entityIds]))],
     approvedReviews: records.map(record => ({ id: record.payload.id, locale, version: 1,
       contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer!, reviewedAt })) }), publicCountries: [country], publicBooks: [book] };
   const plan = compileBookyJourney(definition, context, trust);
@@ -126,6 +146,109 @@ function migrationSetup({ complete = false, active = true } = {}) {
   f.switchSource(target); f.patch({ active, resolveMigration }); f.runtime.restoreProgress(preference, 0);
   return { ...f, target, old, preference, validResolver, resolveMigration };
 }
+
+function characterRuntime(consecutiveCharacter = false) {
+  const f = setup(fixture("en", { character: true, consecutiveCharacter }));
+  let shown: BookDossierCharacterViewReceipt | null = null;
+  const canOpenCharacter = vi.fn(() => true);
+  const canAcknowledgeCharacter = vi.fn((_plan, _nodeId, receipt) => receipt === shown);
+  f.patch({ profileKey: durableProfileKey, canOpenCharacter, canAcknowledgeCharacter });
+  const receipt: BookDossierCharacterViewReceipt = { token: createBookDossierCharacterViewToken(), bookKey: "test-country:test-writer:test-work", cacheKey: "synthetic",
+    anchor: { sectionId: "test-page", blockId: "test-block", itemId: "test-item", dossierVersion: "test-v1", locale: "en", readingMode: "BEFORE_READING" } };
+  const reachWork = () => { f.start(); f.display(0); f.runtime.next(f.runtime.getSnapshot().revision); f.display(1);
+    f.runtime.next(f.runtime.getSnapshot().revision); f.display(2); };
+  return { ...f, receipt, canOpenCharacter, canAcknowledgeCharacter, reachWork, show: (value = receipt) => { shown = value; } };
+}
+describe("current-only character runtime acknowledgement", () => {
+  it("admits preceding navigation without consulting the future live dossier", () => {
+    const f = characterRuntime(); f.canOpenCharacter.mockReturnValue(false); f.reachWork();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 2, completedCount: 2, phase: "ready" });
+    expect(f.canOpenCharacter).not.toHaveBeenCalled(); const progress = f.runtime.getProgressIntent();
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(progress); expect(f.runtime.getSnapshot().active?.node?.kind).toBe("work");
+  });
+  it("uses the settled existing work for character readiness but never generic Next or opening credit", () => {
+    const f = characterRuntime(); f.reachWork(); const view = f.host().view;
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); expect(f.host().view).toBe(view);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 3, completedCount: 3, phase: "ready", canOpen: true, canNext: false });
+    const progress = f.runtime.getProgressIntent();
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.open(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getProgressIntent()).toBe(progress);
+    f.show(); expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active?.completedCount).toBe(4);
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+  });
+  it("exposes the target synchronously before character navigation is invoked", () => {
+    const f = characterRuntime(); f.reachWork();
+    f.navigate.mockImplementationOnce(offer => {
+      expect(offer.node.kind).toBe("character");
+      expect(f.runtime.getSnapshot().active).toMatchObject({ node: { id: "character" }, phase: "navigating", completedCount: 2 }); return true;
+    });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+  });
+  it("rejects a stale UI revision and a replaced host inside acknowledgement validation", () => {
+    const f = characterRuntime(); f.reachWork(); f.runtime.next(f.runtime.getSnapshot().revision); f.show();
+    const old = f.runtime.getSnapshot().revision; f.patch({}); f.runtime.refresh(); const progress = f.runtime.getProgressIntent();
+    expect(f.runtime.acknowledgeCharacter(f.receipt, old)).toBe(false);
+    f.canAcknowledgeCharacter.mockImplementationOnce(() => { f.patch({ active: false }); return true; });
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(progress);
+  });
+  it("rejects revoked or altered current static character offers without changing saved prefix", () => {
+    const f = characterRuntime(); f.reachWork(); f.runtime.next(f.runtime.getSnapshot().revision); f.show();
+    const progress = f.runtime.getProgressIntent();
+    f.patch({ resolve: (plan, id) => {
+      const offer = f.resolve(plan, id); return offer?.node.kind === "character" ? { ...offer, node: { ...offer.node,
+        character: { ...offer.node.character!, semanticChecksum: "f".repeat(64) } } } : offer;
+    } }); f.runtime.refresh();
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(progress);
+  });
+  it("requires an exact receipt for character credit and a separate explicit final checkpoint", () => {
+    const f = characterRuntime(); f.reachWork(); f.runtime.next(f.runtime.getSnapshot().revision); f.show();
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "navigating", completedCount: 4, canNext: false });
+    const progress = f.runtime.getProgressIntent();
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(progress);
+    f.display(4); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "complete", completedCount: 5 });
+  });
+  it("rechecks character acknowledgement after abort listeners revoke the receipt", () => {
+    const f = characterRuntime(); f.reachWork(); f.runtime.next(f.runtime.getSnapshot().revision); f.show();
+    const progress = f.runtime.getProgressIntent(), signal = f.navigate.mock.calls[f.navigate.mock.calls.length - 1]![1];
+    signal.addEventListener("abort", () => { f.canAcknowledgeCharacter.mockReturnValue(false); });
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(progress);
+  });
+  it("finishes when the host defers only its acknowledgement-owned navigation abort cleanup", () => {
+    const f = characterRuntime(); f.reachWork(); f.runtime.next(f.runtime.getSnapshot().revision); f.show();
+    let acknowledging = true, deferred = false;
+    f.navigate.mock.calls[f.navigate.mock.calls.length - 1]![1].addEventListener("abort", () => {
+      if (acknowledging) deferred = true; else f.canAcknowledgeCharacter.mockReturnValue(false);
+    });
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(true);
+    acknowledging = false; if (deferred) f.canAcknowledgeCharacter.mockReturnValue(false);
+    expect(deferred).toBe(true); expect(f.runtime.getSnapshot().active?.completedCount).toBe(4);
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+  });
+  it("advances consecutive admitted character nodes through distinct modal acknowledgements", () => {
+    const f = characterRuntime(true); f.reachWork(); f.runtime.next(f.runtime.getSnapshot().revision); f.show();
+    f.navigate.mockImplementationOnce(offer => {
+      expect(offer.node.id).toBe("next-character");
+      expect(f.runtime.getSnapshot().active?.node?.id).toBe("next-character"); return true;
+    });
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ node: { id: "next-character" }, phase: "ready", completedCount: 4, canNext: false });
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+    const second = { ...f.receipt, token: createBookDossierCharacterViewToken() }; f.show(second);
+    expect(f.runtime.acknowledgeCharacter(second, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ node: { id: "checkpoint" }, completedCount: 5 });
+  });
+});
 
 describe("reviewed Booky journey runtime", () => {
   it("has no constructor IO and exposes only currently admitted routes under an explicit profile", () => {

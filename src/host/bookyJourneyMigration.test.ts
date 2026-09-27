@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import { getBookyJourneyCharacterChecksum, type BookyJourneyCharacterSpec } from "./bookyJourneyCharacter";
 import { getBookyJourneyChecksum, type BookyJourneyDefinition, type BookyJourneyPlan } from "./bookyJourney";
 import { createBookyJourneyProgressRecord, type BookyJourneyProgressNode } from "./bookyJourneyProgress";
 import { getBookyJourneyFactChecksum, type BookyJourneyFactSpec } from "./bookyJourneyFact";
@@ -10,7 +11,7 @@ import { getBookyJourneyMigrationChecksum, resolveBookyJourneyMigration,
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 const policy = createBookyReaderPolicy({ age: 30, readingLevel: "plain" }, reviewedAt, 1)!;
-type PlainNode = Omit<BookyJourneyProgressNode, "activity" | "fact">;
+type PlainNode = Omit<BookyJourneyProgressNode, "activity" | "fact" | "character">;
 const nodes: readonly PlainNode[] = [
   { id: "country", kind: "country", screen: "globe", entity: { kind: "country", countryId: "synthetic-country" } },
   { id: "writer", kind: "writer", screen: "globe", entity: { kind: "writer", countryId: "synthetic-country", writerId: "synthetic-writer" } },
@@ -28,11 +29,15 @@ function hostPlan(source: BookyJourneyDefinition, author?: string): BookyJourney
   return { id: source.id, version: source.version, locale: source.locale, title: source.title,
     definitionChecksum: getBookyJourneyChecksum(source)!,
     ...(source.overview ? { overview: { ...source.overview, offlineAvailable: true } } : {}),
-    nodes: source.nodes.map(({ activity: spec, fact: factSpec, ...node }) => {
+    nodes: source.nodes.map(({ activity: spec, fact: factSpec, character: characterSpec, ...node }) => {
       const compiled = { ...node, coordinates: null, dialogue: {} as BookyJourneyPlan["nodes"][number]["dialogue"] };
       if (node.kind === "sourced-fact") {
         if (!factSpec || !node.entity) throw Error("invalid-synthetic-migration-fact");
         return { ...compiled, fact: { spec: factSpec, semanticChecksum: getBookyJourneyFactChecksum(factSpec, node.entity, node.screen)! } };
+      }
+      if (node.kind === "character") {
+        if (!characterSpec) throw Error("invalid-synthetic-migration-character");
+        return { ...compiled, character: { spec: characterSpec, semanticChecksum: getBookyJourneyCharacterChecksum(characterSpec)! } };
       }
       if (node.kind !== "activity") return compiled;
       const activity = resolveBookyJourneyActivity(spec, {
@@ -364,5 +369,33 @@ describe("sourced-fact migration keeps exact bilingual semantic meaning", () => 
     expect(resolveBookyJourneyMigration({ ...input, currentPlan: { ...input.currentPlan,
       nodes: input.currentPlan.nodes.map(node => node === fact ? { ...node, fact: hostile } : node) } })).toBeNull();
     expect(getter).not.toHaveBeenCalled();
+  });
+});
+
+function characterDefinition(version: number): BookyJourneyDefinition {
+  const route = definition(version), work = route.nodes[2].entity as BookyJourneyCharacterSpec["work"];
+  const character: BookyJourneyCharacterSpec = { schemaVersion: 1, id: "synthetic-character", version: 1, work, bindings: [
+    { locale: "ru", dossierVersion: "test-v1", sectionId: "people", blockId: "characters", itemId: "person-c", readingMode: "BEFORE_READING",
+      projectionChecksum: "a".repeat(64), dialogue: { id: "test-character", version: 1, contentChecksum: "a".repeat(64) } },
+    { locale: "en", dossierVersion: "test-v1", sectionId: "people", blockId: "characters", itemId: "person-c", readingMode: "BEFORE_READING",
+      projectionChecksum: "b".repeat(64), dialogue: { id: "test-character", version: 1, contentChecksum: "a".repeat(64) } },
+  ] };
+  return { ...route, nodes: [...route.nodes.slice(0, 3), { id: "character", kind: "character", screen: "collection", entity: work,
+    dialogue: character.bindings[1].dialogue, character }, route.nodes[3]] };
+}
+
+describe("current-only character migration boundary", () => {
+  it.each(["source", "target"] as const)("refuses character %s history without mutating its saved prefix", side => {
+    const historicalDefinition = side === "source" ? characterDefinition(1) : definition(1);
+    const currentPlan = hostPlan(side === "target" ? characterDefinition(2) : definition(2));
+    const savedRecord = createBookyJourneyProgressRecord(policy, hostPlan(historicalDefinition), ["country", "writer"], "work")!;
+    expect(savedRecord).not.toBeNull();
+    const input = reviewed({ ...fixture(), historicalDefinition, currentPlan, savedRecord, migration: {
+      ...fixture().migration, fromDefinitionChecksum: savedRecord.definitionChecksum, toDefinitionChecksum: currentPlan.definitionChecksum,
+      nodeMap: Object.fromEntries(savedRecord.nodes.map(node => [node.id, currentPlan.nodes.some(target => target.id === node.id) ? node.id : null])),
+    } });
+    const before = JSON.stringify(input);
+    expect(resolveBookyJourneyMigration(input)).toBeNull();
+    expect(JSON.stringify(input)).toBe(before);
   });
 });

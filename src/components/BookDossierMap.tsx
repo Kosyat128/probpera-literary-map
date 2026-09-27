@@ -4,7 +4,7 @@ import { bookDossierDiagramHeight, bookDossierDiagramPoint, bookDossierDiagramPr
 import type { BookDossierDocumentV2, BookDossierItem, BookDossierPublicSource } from "../books/bookDossierDocument";
 import { bookDossierCharacterRequestToken, consumeBookDossierCharacterViewToken, resolveBookDossierCharacterView,
   sameBookDossierCharacterView, type BookDossierCharacterViewRequest, type BookDossierCharacterViewReceipt,
-  type BookDossierCharacterViewTarget, type BookDossierCharacterViewToken } from "../books/bookDossierCharacterView";
+  type BookDossierCharacterViewTarget, type BookDossierCharacterViewToken, type BookDossierCharacterViewAction } from "../books/bookDossierCharacterView";
 
 const copyByLocale = {
   ru: { open: "Открыть схему", close: "Закрыть", people: "Персонажи", relations: "Связи", groups: "Группы и обозначения", relation: "Связь", details: "Сведения", sources: "Источники", source: "Открыть источник", shown: "На схеме", list: "Полный список", find: "Найти персонажа", noMatches: "Нет совпадений" },
@@ -53,12 +53,13 @@ function PublicItemDetails({ item, sources, sourceLabel }: { item: BookDossierIt
 }
 
 /** The full map and details use the public document; selection does not navigate it. */
-export default function BookDossierMap({ diagram, locale, characterDocument, characterRequest, onCharacterViewChange }: {
+export default function BookDossierMap({ diagram, locale, characterDocument, characterRequest, characterAction, onCharacterViewChange }: {
   diagram: BookDossierDiagram; locale: "ru" | "en";
   characterDocument?: BookDossierDocumentV2 | null;
   characterRequest?: BookDossierCharacterViewRequest | null;
-  /** UI observation only. A future journey bridge needs a caller-owned action
-   * inside this modal; a Next button behind a native dialog is inert. */
+  characterAction?: BookDossierCharacterViewAction | null;
+  /** UI observation only. Explicit acknowledgement belongs to the caller's
+   * separate action inside this modal; controls behind a native dialog are inert. */
   onCharacterViewChange?: (view: BookDossierCharacterViewReceipt | null) => void;
 }) {
   const copy = copyByLocale[locale];
@@ -80,6 +81,8 @@ export default function BookDossierMap({ diagram, locale, characterDocument, cha
   const activation = useRef<BookDossierCharacterViewTarget | null>(null);
   const handledToken = useRef<BookDossierCharacterViewToken | null>(null);
   const reported = useRef<BookDossierCharacterViewReceipt | null>(null);
+  const [committedReceipt, setCommittedReceipt] = useState<BookDossierCharacterViewReceipt | null>(null);
+  const actionRef = useRef(characterAction); actionRef.current = characterAction;
   const token = bookDossierCharacterRequestToken(characterRequest);
   const target = useMemo(() => characterDocument?.locale === locale
     ? resolveBookDossierCharacterView(characterDocument, diagram, characterRequest, Date.now()) : null,
@@ -87,6 +90,7 @@ export default function BookDossierMap({ diagram, locale, characterDocument, cha
   const report = useCallback((view: BookDossierCharacterViewReceipt | null) => {
     if (reported.current === null && view === null || reported.current && view && sameBookDossierCharacterView(reported.current, view)) return;
     reported.current = view;
+    setCommittedReceipt(view);
     callback.current?.(view);
   }, []);
   const revoke = useCallback((closeDialog: boolean) => {
@@ -162,7 +166,35 @@ export default function BookDossierMap({ diagram, locale, characterDocument, cha
     document.addEventListener("visibilitychange", hidden);
     return () => document.removeEventListener("visibilitychange", hidden);
   }, [revoke]);
-  useLayoutEffect(() => () => { activation.current = null; report(null); }, [report]);
+  useLayoutEffect(() => () => {
+    // StrictMode may replay setup before the requested dialog has committed.
+    // Keep only that unopened local activation; a fresh component cannot reuse
+    // its consumed token. Open or observed views still revoke on cleanup.
+    if (reported.current || dialogRef.current?.open) activation.current = null;
+    report(null);
+  }, [report]);
+  const action = characterAction && committedReceipt && reported.current && activation.current && target
+    && visible && dialogRef.current?.open && selectedNode === target.node
+    && selectedId === target.receipt.anchor.itemId && target.expiresAt > Date.now()
+    && document.visibilityState !== "hidden"
+    && sameBookDossierCharacterView(committedReceipt, reported.current)
+    && sameBookDossierCharacterView(activation.current.receipt, reported.current)
+    && sameBookDossierCharacterView(target.receipt, reported.current)
+    && sameBookDossierCharacterView(characterAction.receipt, reported.current) ? characterAction : null;
+  const acknowledge = () => {
+    const current = activation.current, receipt = reported.current, dialog = dialogRef.current;
+    const live = characterDocument?.locale === locale
+      ? resolveBookDossierCharacterView(characterDocument, diagram, characterRequest, Date.now()) : null;
+    if (!action || actionRef.current !== action || !current || !receipt || !live || !dialog?.isConnected || !dialog.open
+      || document.visibilityState === "hidden" || selectedNode !== live.node || selectedId !== receipt.anchor.itemId
+      || dialog.querySelector<HTMLElement>("[data-dossier-character-view]")?.dataset.dossierCharacterView !== receipt.anchor.itemId
+      || !sameBookDossierCharacterView(current.receipt, receipt) || !sameBookDossierCharacterView(live.receipt, receipt)
+      || !sameBookDossierCharacterView(action.receipt, receipt)) return;
+    // The opening token is already consumed. Keep the committed observation
+    // alive for the owner's synchronous validation; only that owner retires an
+    // accepted request. Close/manual selection still revoke without credit.
+    action.onAcknowledge(receipt);
+  };
   const close = () => { restoreFocus.current = true; revoke(false); dialogRef.current?.close(); };
   const select = (id: string) => {
     revoke(false);
@@ -232,6 +264,9 @@ export default function BookDossierMap({ diagram, locale, characterDocument, cha
           {selectedNode ? <p className="book-dossier-map__count">{selectedNode.groupLabel}</p> : null}
           {selectedEdge ? <p>{selectedEdge.from.item.label} → {selectedEdge.to.item.label}</p> : null}
           <PublicItemDetails item={selected.item} sources={selected.sources} sourceLabel={copy.source} />
+          {action ? <button type="button" data-dossier-character-acknowledge="" onClick={acknowledge}>
+            {action.label}
+          </button> : null}
         </aside>}
       </div>
     </dialog>, document.body) : null}

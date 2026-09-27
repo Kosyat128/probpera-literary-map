@@ -147,6 +147,9 @@ export function resolveBookyJourneyMigration(input: unknown): BookyJourneyMigrat
       || saved.journeyId !== migration.journeyId || saved.journeyVersion !== migration.fromVersion
       || saved.locale !== migration.locale || saved.definitionChecksum !== migration.fromDefinitionChecksum
       || getBookyJourneyChecksum(value.historicalDefinition) !== migration.fromDefinitionChecksum) return null;
+    // Character admission is current-only. No historical character equivalence
+    // or acknowledgement transfer is defined by this migration version.
+    if (saved.nodes.some(node => node.kind === "character")) return null;
     const historical = value.historicalDefinition as BookyJourneyDefinition;
     if (historical.id !== saved.journeyId || historical.version !== saved.journeyVersion || historical.locale !== saved.locale
       || historical.nodes.length !== saved.nodes.length
@@ -159,7 +162,8 @@ export function resolveBookyJourneyMigration(input: unknown): BookyJourneyMigrat
       || !Array.isArray(plan.nodes) || !row(plan.nodes[0], "id kind screen entity coordinates dialogue") || !key(plan.nodes[0].id)) return null;
     const currentPlan = plan as unknown as BookyJourneyPlan;
     const current = createBookyJourneyProgressRecord(policy, currentPlan, [], plan.nodes[0].id);
-    if (!current || Object.keys(migration.nodeMap).length !== saved.nodes.length
+    if (!current || current.nodes.some(node => node.kind === "character")
+      || Object.keys(migration.nodeMap).length !== saved.nodes.length
       || saved.nodes.some(node => !Object.prototype.hasOwnProperty.call(migration.nodeMap, node.id))) return null;
     const targets = Object.values(migration.nodeMap).filter((id): id is string => id !== null);
     if (new Set(targets).size !== targets.length || targets.some(id => !current.nodes.some(node => node.id === id))) return null;

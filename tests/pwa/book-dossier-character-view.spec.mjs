@@ -38,15 +38,16 @@ test.beforeAll(async () => {
     }
     const documents={ru:await published('ru'),en:await published('en')};
     const events=[],tokenNames=new WeakMap();let serial=0,lastRequest=null,currentView=null;
-    const observations={pageNavigation:0,readingChanges:0,storageWrites:[],events,selectionReceiptAtBubble:undefined};
+    const observations={pageNavigation:0,readingChanges:0,storageWrites:[],events,actions:[],selectionReceiptAtBubble:undefined};
     const setItem=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){observations.storageWrites.push(key);return setItem.call(this,key,value);};
     function Harness(){
       const[locale,setLocale]=useState('ru'),[request,setRequest]=useState(null),[mounted,setMounted]=useState(true);
       const[busy,setBusy]=useState(false),[tick,setTick]=useState(0),[lease,setLease]=useState(null);
+      const[actionMode,setActionMode]=useState('none'),[actionReceipt,setActionReceipt]=useState(null);
       const dossier=React.useMemo(()=>({...documents[locale],validUntil:lease||new Date(Date.now()+60000).toISOString()}),[locale,lease]);
       const page=dossier.pages.find(x=>x.id==='graph-context');
       const receipt=useCallback(view=>{
-        currentView=view;
+        currentView=view;setActionReceipt(view);
         const dialog=document.querySelector('.book-dossier-map-dialog');
         events.push(view?{token:tokenNames.get(view.token),bookKey:view.bookKey,cacheKey:view.cacheKey,anchor:view.anchor,
           committedOpen:!!dialog?.open,committedItem:dialog?.querySelector('[data-dossier-character-view]')?.dataset.dossierCharacterView}:null);
@@ -60,13 +61,21 @@ test.beforeAll(async () => {
           setRequest(lastRequest);return serial;
         },
         replay(){setRequest(lastRequest);setTick(x=>x+1);},clear(){setRequest(null);},
-        locale:setLocale,mount:setMounted,busy:setBusy,lease:setLease,
+        locale:setLocale,mount:setMounted,busy:setBusy,lease:setLease,action:setActionMode,
         snapshot(){return{...observations,events:[...events],locale,mounted,busy,tick,view:currentView?{token:tokenNames.get(currentView.token),
           anchor:currentView.anchor,bookKey:currentView.bookKey,cacheKey:currentView.cacheKey}:null};}
       };
       return <main style={{maxWidth:920,margin:'12px auto',padding:8}}>
         <button id="outside-control" type="button" style={{minHeight:44}}>Outside control</button>
         {mounted?<BookDossierReader dossier={dossier} activeAnchor={page.anchor} characterRequest={request}
+          characterAction={actionMode!=='none'&&actionReceipt?{
+            receipt:actionMode==='mismatch'?{...actionReceipt,anchor:{...actionReceipt.anchor,itemId:'character-a'}}:actionReceipt,
+            label:locale==='ru'?'Подтвердить шаг':'Confirm step',onAcknowledge:view=>{
+              const dialog=document.querySelector('.book-dossier-map-dialog');
+              observations.actions.push({sameReceipt:view===currentView,token:tokenNames.get(view.token),mode:actionMode,
+                committedOpen:!!dialog?.open,item:dialog?.querySelector('[data-dossier-character-view]')?.dataset.dossierCharacterView});
+              if(actionMode!=='accept')return false;setRequest(null);return true;
+            }}:null}
           onCharacterViewChange={receipt} onNavigate={()=>{observations.pageNavigation++;setRequest(null);}}
           onProgressChange={()=>observations.readingChanges++} busy={busy}/>:null}
       </main>;
@@ -93,7 +102,7 @@ async function open(testInfo, viewport = { width: 1440, height: 850 }) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(root, ".tmp/s15-dossier-character-view"));
   await fs.mkdir(profileRoot, { recursive: true });
   const profile = await fs.mkdtemp(path.join(profileRoot, "view-"));
-  const context = await chromium.launchPersistentContext(profile, { channel: "chrome", headless: true, viewport, reducedMotion: "reduce" });
+  const context = await chromium.launchPersistentContext(profile, { channel: "chrome", headless: true, viewport, hasTouch: true, reducedMotion: "reduce" });
   const page = await context.newPage(), errors = [], remoteRequests = [];
   page.on("pageerror", error => errors.push(error.message));
   page.on("request", request => { if (["fetch", "xhr", "websocket"].includes(request.resourceType())) remoteRequests.push(request.url()); });
@@ -166,6 +175,40 @@ test("exact character requests open committed RU and EN native views without nav
   } finally { await f.close(); }
 });
 
+test("StrictMode mount with issued character request commits once and never replays consumed token", async ({}, testInfo) => {
+  const f = await open(testInfo, { width: 320, height: 900 }), { page } = f;
+  const action = page.locator('[data-dossier-character-acknowledge]');
+  try {
+    await command(page, 'mount', false); await command(page, 'action', 'accept');
+    const token = await command(page, 'issue', {});
+    await expect(dialog(page)).toHaveCount(0); await expectNoView(page);
+    await command(page, 'mount', true);
+    await expect(dialog(page)).toBeVisible();
+    await expect.poll(async () => (await state(page)).view?.token).toBe(token);
+    await expect(page.locator('[data-dossier-character-view]')).toHaveAttribute('data-dossier-character-view', 'character-c');
+    await expect(action).toBeVisible(); expect((await state(page)).actions).toEqual([]);
+    // Component-only target setup; the actual-App fixture separately exercises
+    // genuine mobile scrolling. Activation itself is a trusted touch.
+    await action.scrollIntoViewIfNeeded();
+    const box = await action.boundingBox(); expect(box).not.toBeNull();
+    expect(box.width).toBeGreaterThanOrEqual(44); expect(box.height).toBeGreaterThanOrEqual(44);
+    expect(await action.evaluate(element => { const r=element.getBoundingClientRect();return [0,-.2,.2].every(offset=>element.contains(document.elementFromPoint(r.left+r.width*(.5+offset),r.top+r.height/2))); })).toBe(true);
+    await page.touchscreen.tap(box.x+box.width/2,box.y+box.height/2);
+    await expect.poll(async () => (await state(page)).actions.length).toBe(1);
+    expect((await state(page)).actions[0]).toMatchObject({sameReceipt:true,token,committedOpen:true,item:'character-c',mode:'accept'});
+    await expect(dialog(page)).toHaveCount(0); await expectNoView(page);
+    await command(page, 'mount', false); await command(page, 'replay'); await command(page, 'mount', true);
+    await expect(dialog(page)).toHaveCount(0); await expectNoView(page); await expect(action).toHaveCount(0);
+    await issue(page); await expect(action).toBeVisible();
+    await command(page, 'mount', false); await expectNoView(page); await command(page, 'mount', true);
+    await expect(dialog(page)).toHaveCount(0); await expectNoView(page); await expect(action).toHaveCount(0);
+    expect((await state(page)).actions).toHaveLength(1);
+    Object.assign(f.evidence,{strictModeIssuedMountCommits:true,explicitModalAcknowledgement:true,
+      consumedTokenUnmountCannotReplay:true,componentTargetScrollSetup:true,actualAppJourneyWiring:false});
+    await f.verify();
+  } finally { await f.close(); }
+});
+
 test("invalid targets and selection locale remount background invalidation never replay a consumed request", async ({}, testInfo) => {
   test.setTimeout(90_000); const f = await open(testInfo);
   try {
@@ -222,5 +265,45 @@ test("lease expiry and unavailable data revoke the open observation without rest
     f.evidence.liveExpiryRevokesView = true; f.evidence.unavailableRevokesView = true;
     f.evidence.outsideFocusRetained = true; f.evidence.freshExplicitTokenRequired = true; await f.verify();
     f.evidence.blockedAttemptConsumesToken = true;
+  } finally { await f.close(); }
+});
+
+
+test("caller character action is explicit inside the exact committed modal and revocation never acknowledges", async ({}, testInfo) => {
+  test.setTimeout(90_000); const f = await open(testInfo, { width: 320, height: 900 }), { page } = f;
+  const action = page.locator('[data-dossier-character-acknowledge]');
+  const touch = async locator => {
+    // This component fixture positions the target for a trusted touch. Actual
+    // App integration separately owns mobile scrolling and journey authority.
+    await locator.scrollIntoViewIfNeeded();
+    const box = await locator.boundingBox(); expect(box).not.toBeNull();
+    expect(box.width).toBeGreaterThanOrEqual(44); expect(box.height).toBeGreaterThanOrEqual(44);
+    const owns = await locator.evaluate(element => { const r = element.getBoundingClientRect();
+      return [0, -.2, .2].every(offset => { const hit = document.elementFromPoint(r.left+r.width*(.5+offset),r.top+r.height/2); return hit && element.contains(hit); }); });
+    expect(owns).toBe(true);
+    await page.touchscreen.tap(box.x+box.width/2,box.y+box.height/2);
+  };
+  try {
+    await command(page, "action", "reject"); await issue(page); await expect(action).toBeVisible();
+    expect((await state(page)).actions).toEqual([]);
+    await touch(action); await expect.poll(async () => (await state(page)).actions.length).toBe(1);
+    expect((await state(page)).actions[0]).toMatchObject({sameReceipt:true,committedOpen:true,item:'character-c',mode:'reject'});
+    await expect(dialog(page)).toBeVisible(); expect((await state(page)).view).not.toBeNull();
+    await command(page, "action", "accept"); await touch(action); await expect(dialog(page)).toHaveCount(0); await expectNoView(page);
+    expect((await state(page)).actions).toHaveLength(2); expect((await state(page)).actions[1]).toMatchObject({sameReceipt:true,committedOpen:true,item:'character-c',mode:'accept'});
+    await command(page, "action", "mismatch"); await issue(page); await expect(action).toHaveCount(0);
+    await command(page, "action", "reject"); await expect(action).toBeVisible();
+    await touch(dialog(page).getByRole('button',{name:'Закрыть',exact:true})); await expectNoView(page); await command(page, "replay"); await expect(dialog(page)).toHaveCount(0);
+    await issue(page); await expect(action).toBeVisible();
+    await touch(dialog(page).locator('.book-dossier-map__group').getByRole('button',{name:'Учебный персонаж A',exact:true}));
+    await expectNoView(page); await expect(action).toHaveCount(0); await expect(dialog(page)).toBeVisible();
+    await touch(dialog(page).getByRole('button',{name:'Закрыть',exact:true}));
+    await issue(page); await expect(action).toBeVisible(); await command(page, "lease", new Date(Date.now()+300).toISOString());
+    await expectNoView(page); await expect(dialog(page)).toHaveCount(0); await expect(action).toHaveCount(0);
+    await command(page, "lease", new Date(Date.now()+60_000).toISOString()); await command(page, "replay"); await expect(dialog(page)).toHaveCount(0);
+    expect((await state(page)).actions).toHaveLength(2);
+    Object.assign(f.evidence,{callerActionExactCommittedReceipt:true,rejectedActionKeepsModal:true,acceptedOwnerRetiresRequest:true,
+      closeSelectionExpiryGrantNoAction:true,componentTargetScrollSetup:true,actualAppJourneyWiring:false});
+    await f.verify();
   } finally { await f.close(); }
 });

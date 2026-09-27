@@ -141,7 +141,7 @@ import { buildBookDossierDiagram } from "../books/bookDossierDiagram";
 import { bookDossierCharacterRequestToken, consumeBookDossierCharacterViewToken,
   isFreshBookDossierCharacterViewToken, resolveBookDossierCharacterView, sameBookDossierCharacterView,
   type BookDossierCharacterViewRequest, type BookDossierCharacterViewReceipt,
-  type BookDossierCharacterViewToken } from "../books/bookDossierCharacterView";
+  type BookDossierCharacterViewToken, type BookDossierCharacterViewAction } from "../books/bookDossierCharacterView";
 import { bookDossierPhysicalPageIndex, remapBookDossierLocaleLocation, resolveBookDossierLocation, type BookDossierLocation } from "../books/bookDossierLocation";
 import { paginateBookInspectionDocument, type BookInspectionPaginationResult } from "../books/bookInspectionPageLayout";
 import BookDossierReader from "./BookDossierReader";
@@ -263,13 +263,14 @@ type Props = {
   onDetailViewChange?: (view: BookArchiveDetailView) => void;
   onCollectionSettledChange?: (settled: boolean) => void;
   dossierCharacterRequest?: BookDossierCharacterViewRequest | null;
+  dossierCharacterAction?: BookDossierCharacterViewAction | null;
   canPresentDossierCharacter?: (request: BookDossierCharacterViewRequest) => boolean;
   onPublishedDossierViewChange?: (view: BookArchivePublishedDossierView) => void;
   onDossierCharacterViewChange?: (view: BookDossierCharacterViewReceipt | null) => void;
   requestedAuthor?: BookArchiveAuthorRequest | null;
   onRequestedAuthorHandled?: (id: number, result: BookArchiveAuthorRequestResult) => void;
   onAuthorViewChange?: (view: BookArchiveAuthorView) => void;
-  registerNativeBack?: (handler: () => boolean) => () => void;
+  registerNativeBack?: (handler: (intent?: "return-to-planet") => boolean) => () => void;
   nativePanelActive?: boolean;
   onNativeDetailClosed?: () => void;
   embeddedInPlanet?: boolean;
@@ -595,6 +596,7 @@ export default function BookArchiveSection({
   onDetailViewChange,
   onCollectionSettledChange,
   dossierCharacterRequest,
+  dossierCharacterAction,
   canPresentDossierCharacter,
   onPublishedDossierViewChange,
   onDossierCharacterViewChange,
@@ -606,7 +608,7 @@ export default function BookArchiveSection({
   onNativeDetailClosed,
   embeddedInPlanet = false,
 }: Props) {
-  const observesDossier = Boolean(dossierCharacterRequest || onPublishedDossierViewChange || onDossierCharacterViewChange);
+  const observesDossier = Boolean(dossierCharacterRequest || dossierCharacterAction || onPublishedDossierViewChange || onDossierCharacterViewChange);
   const observesDossierRef = useRef(observesDossier); observesDossierRef.current = observesDossier;
   const [dossierDetailView, setDossierDetailView] = useState(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
   const cancelDossierCharacterRef = useRef<(() => boolean) | null>(null);
@@ -1126,10 +1128,11 @@ export default function BookArchiveSection({
     shelfState.phase,
     shelfState.requestId,
   ]);
-  useEffect(() => registerNativeBack?.(() => {
+  useEffect(() => registerNativeBack?.((intent) => {
     if (!nativePanelActive) return false;
     // A caller-owned character view consumes Back before the surrounding book.
-    if (cancelDossierCharacterRef.current?.()) return true;
+    const dismissedCharacter = cancelDossierCharacterRef.current?.();
+    if (dismissedCharacter && intent !== "return-to-planet") return true;
     // A cleared detail still owns Back until its history restoration completes.
     if (skipNextBookPopstateRef.current) return true;
     if (advancedFiltersOpen) {
@@ -3217,11 +3220,12 @@ export default function BookArchiveSection({
   useLayoutEffect(() => {
     if (!onPublishedDossierViewChange) return;
     const book = selectedBook, dossier = publishedDossier.document;
-    const current = nativePanelActive && book && isPublicBook(book) && dossier && dossier.bookKey === bookKey(book)
+    const current = nativePanelActive && !publishedDossier.busy && !publishedDossier.unavailable
+      && book && isPublicBook(book) && dossier && dossier.bookKey === bookKey(book)
       && dossier.validUntil && Date.parse(dossier.validUntil) > Date.now() ? dossier : null;
     onPublishedDossierViewChange(Object.freeze({ bookKey: current?.bookKey ?? null, document: current,
       detail: current ? dossierDetailView : INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW }));
-  }, [onPublishedDossierViewChange, publishedDossier.document, selectedBook, nativePanelActive, dossierDetailView]);
+  }, [onPublishedDossierViewChange, publishedDossier.document, publishedDossier.busy, publishedDossier.unavailable, selectedBook, nativePanelActive, dossierDetailView]);
   useLayoutEffect(() => () => {
     const active = presentedCharacterRef.current; presentedCharacterRef.current = null;
     consumeBookDossierCharacterViewToken(active?.request?.token ?? bookDossierCharacterRequestToken(characterHost.current.dossierCharacterRequest));
@@ -5170,6 +5174,8 @@ export default function BookArchiveSection({
           {selectedDossier ? <BookDossierReader key={selectedDossier.bookKey} dossier={selectedDossier}
             activeAnchor={presentedCharacter?.pageAnchor ?? activeDossierAnchor} onNavigate={navigateDossier}
             characterRequest={presentedCharacter?.request ?? null} onCharacterViewChange={handleCharacterView}
+            characterAction={presentedCharacter?.request && dossierCharacterAction
+              && sameBookDossierCharacterView(presentedCharacter.request, dossierCharacterAction.receipt) ? dossierCharacterAction : null}
             onReadingModeChange={mode => { cancelCharacter(); publishedDossier.changeMode(mode); }}
             onProgressChange={count => { cancelCharacter(); publishedDossier.changeProgress(count); }}
             reachedCount={publishedDossier.reachedCount}

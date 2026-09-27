@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import type { BookDossierDocumentV2, BookDossierReadingMode, BookDossierSpoiler } from "./bookDossierDocument";
-import { fetchPublishedBookDossier } from "./bookDossierPublicClient";
-import { isControlledWebEdition } from "../platform/distribution";
-import { isCommunityConfigured } from "../lib/supabaseConfig";
+import { fetchPublishedBookDossier, isPublishedBookDossierAvailable } from "./bookDossierPublicClient";
 
 const noProgress: readonly string[] = [];
 
@@ -11,7 +9,7 @@ export function usePublishedBookDossier(bookKey: string | null, locale: "ru" | "
   const choiceIdentity = bookKey || "";
   // Transport/cache identity still includes locale; a RU response cannot fill EN.
   const identity = JSON.stringify([bookKey, locale]);
-  const remoteEnabled = Boolean(bookKey && !isControlledWebEdition && isCommunityConfigured);
+  const remoteEnabled = Boolean(bookKey && isPublishedBookDossierAvailable());
   const [choice, setChoice] = useState<{ identity: string; mode: BookDossierReadingMode; reveal: BookDossierSpoiler; reachedItemIds: readonly string[] } | null>(null);
   const mode = choice?.identity === choiceIdentity ? choice.mode : "BEFORE_READING";
   const reveal = choice?.identity === choiceIdentity ? choice.reveal : "NONE";

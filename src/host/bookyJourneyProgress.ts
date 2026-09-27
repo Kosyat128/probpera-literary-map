@@ -2,6 +2,7 @@ import { contentTextHash } from "../planet/contentExportHash";
 import { parseBookyJourneyPlanOverview, type BookyJourneyPlan } from "./bookyJourney";
 import { getBookyJourneyFactChecksum, parseBookyJourneyFact } from "./bookyJourneyFact";
 import { getBookyJourneyActivityChecksum, parseBookyJourneyActivity } from "./bookyJourneyActivity";
+import { getBookyJourneyCharacterChecksum, parseBookyJourneyCharacter } from "./bookyJourneyCharacter";
 import { serializeBookyReaderPolicy, type BookyReaderPolicy } from "./bookyReaderPolicy";
 
 export const BOOKY_JOURNEY_PROGRESS_KEY = "probpera-booky-journey-progress-v1";
@@ -11,11 +12,14 @@ export const BOOKY_JOURNEY_PROGRESS_MAX_RECORDS = 32;
 export const BOOKY_JOURNEY_PROGRESS_MAX_NODES = 32;
 export type BookyJourneyProgressActivity = Readonly<{ id: string; version: number; semanticChecksum: string }>;
 export type BookyJourneyProgressFact = Readonly<{ id: string; version: number; semanticChecksum: string }>;
+export type BookyJourneyProgressCharacter = Readonly<{ id: string; version: number; semanticChecksum: string }>;
 export type BookyJourneyProgressNode = Readonly<Pick<BookyJourneyPlan["nodes"][number], "id" | "kind" | "screen" | "entity"> & {
   /** Identity only. Unacknowledged choices and the answer key are never stored. */
   activity?: BookyJourneyProgressActivity;
   /** Binding only: never reviewed prose, source URLs or factual authority. */
   fact?: BookyJourneyProgressFact;
+  /** Static bilingual binding only; no lease, cache key, token or receipt. */
+  character?: BookyJourneyProgressCharacter;
 }>;
 export type BookyJourneyProgressRecord = Readonly<{
   recordId: string;
@@ -103,6 +107,14 @@ function node(value: unknown): BookyJourneyProgressNode | null {
       && integer(fact.version, 1, 1_000_000) && hash(fact.semanticChecksum)
       ? Object.freeze({ id: item.id, kind: "sourced-fact", screen: anchor.screen, entity: anchor.entity,
         fact: Object.freeze({ id: fact.id, version: fact.version, semanticChecksum: fact.semanticChecksum }) }) : null;
+  }
+  if (item.kind === "character") {
+    const character = data(item.character, ["id", "version", "semanticChecksum"]);
+    const anchor = node({ id: item.id, kind: "work", screen: item.screen, entity: item.entity });
+    return Object.keys(item).length === 5 && character && anchor?.entity?.kind === "work" && id(character.id)
+      && integer(character.version, 1, 1_000_000) && hash(character.semanticChecksum)
+      ? Object.freeze({ id: item.id, kind: "character", screen: "collection", entity: anchor.entity,
+        character: Object.freeze({ id: character.id, version: character.version, semanticChecksum: character.semanticChecksum }) }) : null;
   }
   if (Object.keys(item).length !== 4) return null;
   if (item.kind === "checkpoint") return item.entity === null
@@ -204,6 +216,7 @@ export function createBookyJourneyProgressRecord(policy: BookyReaderPolicy, admi
       if (!item || !data(value, item.kind === "activity"
         ? ["id", "kind", "screen", "entity", "coordinates", "dialogue", "activity", "activityChoices"]
         : item.kind === "sourced-fact" ? ["id", "kind", "screen", "entity", "coordinates", "dialogue", "fact"]
+        : item.kind === "character" ? ["id", "kind", "screen", "entity", "coordinates", "dialogue", "character"]
         : ["id", "kind", "screen", "entity", "coordinates", "dialogue"])) return null;
       const semantic = { id: item.id, kind: item.kind, screen: item.screen, entity: item.entity };
       if (item.kind === "sourced-fact") {
@@ -213,6 +226,15 @@ export function createBookyJourneyProgressRecord(policy: BookyReaderPolicy, admi
         if (!fact || !spec || !anchor?.entity || !hash(fact.semanticChecksum)
           || getBookyJourneyFactChecksum(spec, anchor.entity, anchor.screen) !== fact.semanticChecksum) return null;
         return { ...semantic, fact: { id: spec.id, version: spec.version, semanticChecksum: fact.semanticChecksum } };
+      }
+      if (item.kind === "character") {
+        const character = data(item.character, ["spec", "semanticChecksum"]), spec = character && parseBookyJourneyCharacter(character.spec);
+        const anchor = node({ ...semantic, kind: "work" });
+        if (!character || !spec || anchor?.entity?.kind !== "work" || !hash(character.semanticChecksum)
+          || getBookyJourneyCharacterChecksum(spec) !== character.semanticChecksum
+          || spec.work.countryId !== anchor.entity.countryId || spec.work.writerId !== anchor.entity.writerId
+          || spec.work.workId !== anchor.entity.workId) return null;
+        return { ...semantic, character: { id: spec.id, version: spec.version, semanticChecksum: character.semanticChecksum } };
       }
       if (item.kind !== "activity") return semantic;
       const activity = data(item.activity, ["spec", "definitionChecksum", "semanticChecksum", "correctChoiceId"]);

@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import { getBookyJourneyCharacterChecksum, type BookyJourneyCharacterSpec } from "./bookyJourneyCharacter";
 import { contentRecordHash, contentTextHash } from "../planet/contentExportHash";
 import { createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogueContentChecksum,
   type BookyDialogueApproval, type BookyDialoguePayload, type BookyDialogueRecord, type BookyDialogueRequest } from "./bookyDialogueRegistry";
@@ -9,7 +10,7 @@ import { getBookyJourneyFactChecksum, type BookyJourneyFactSpec } from "./bookyJ
 
 const now = "2026-09-20T12:00:00.000Z", reviewedAt = "2026-09-19T12:00:00.000Z";
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
-function fixture(locale: "ru" | "en" = "en", withActivity = false) {
+function fixture(locale: "ru" | "en" = "en", withActivity = false, withCharacter = false) {
   // Synthetic catalog and review fixtures only. No production journey, real
   // entity, factual attribution, editorial approval or rights grant is seeded.
   const country: Country = { id: "test-country", name: "Synthetic country", coordinates: { lat: 20, lng: 30 }, writers: [{ id: "test-writer" }] };
@@ -20,6 +21,13 @@ function fixture(locale: "ru" | "en" = "en", withActivity = false) {
     country.writers.push({ id: "actual-author", name: "Тестовый автор", fullName: "Synthetic Factual Author" });
     book.authorship = { kind: "single", authors: [{ countryId: country.id, writerId: "actual-author", attribution: "credited" }] };
   }
+  const character: BookyJourneyCharacterSpec = { schemaVersion: 1, id: "test-character", version: 1,
+    work: { kind: "work", countryId: country.id, writerId: "test-writer", workId: book.id }, bindings: [
+      { locale: "ru", dossierVersion: "test-v1", sectionId: "people", blockId: "characters", itemId: "person-c",
+        readingMode: "BEFORE_READING", projectionChecksum: "a".repeat(64), dialogue: { id: "test-character-line", version: 1, contentChecksum: "c".repeat(64) } },
+      { locale: "en", dossierVersion: "test-v1", sectionId: "people", blockId: "characters", itemId: "person-c",
+        readingMode: "BEFORE_READING", projectionChecksum: "b".repeat(64), dialogue: { id: "test-character-line", version: 1, contentChecksum: "d".repeat(64) } },
+    ] };
   const nodes: BookyJourneyDefinition["nodes"] = [
     { id: "country", kind: "country", entity: { kind: "country", countryId: country.id }, screen: "globe", dialogue: { id: "test-country-line", version: 1, contentChecksum: "" } },
     { id: "writer", kind: "writer", entity: { kind: "writer", countryId: country.id, writerId: "test-writer" }, screen: "globe", dialogue: { id: "test-writer-line", version: 1, contentChecksum: "" } },
@@ -31,6 +39,8 @@ function fixture(locale: "ru" | "en" = "en", withActivity = false) {
         choices: ["test-writer", "actual-author"].map((writerId, index) => ({ id: `choice-${index}`,
           writer: { kind: "writer" as const, countryId: country.id, writerId } })),
       } }] : []),
+    ...(withCharacter ? [{ id: "character", kind: "character" as const, entity: character.work, screen: "collection" as const,
+      dialogue: { ...character.bindings.find(binding => binding.locale === locale)!.dialogue }, character }] : []),
     { id: "checkpoint", kind: "checkpoint", entity: null, screen: "collection", dialogue: { id: "test-checkpoint-line", version: 1, contentChecksum: "" } },
   ];
   const records: BookyDialogueRecord[] = nodes.map(node => {
@@ -44,6 +54,8 @@ function fixture(locale: "ru" | "en" = "en", withActivity = false) {
     const review = { status: "approved" as const, reviewer: "synthetic-reviewer-not-real", reviewedAt, contentChecksum: getBookyDialogueContentChecksum(payload)! };
     return { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
   });
+  if (withCharacter) Object.assign(character.bindings.find(binding => binding.locale === locale)!.dialogue,
+    { contentChecksum: records.find(record => record.payload.id === "test-character-line")!.review.contentChecksum });
   const approvals: BookyDialogueApproval[] = records.map(record => ({ id: record.payload.id, locale, version: 1,
     contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer!, reviewedAt }));
   const definition: BookyJourneyDefinition = { schemaVersion: 1, id: "test-journey", version: 1, locale, audience: "adult",
@@ -56,7 +68,7 @@ function fixture(locale: "ru" | "en" = "en", withActivity = false) {
   const trust: BookyJourneyTrust = { currentVersions: [{ id: definition.id, version: 1 }], approvedReviews: [
     { id: definition.id, version: 1, locale, definitionChecksum: getBookyJourneyChecksum(definition)!, reviewer: "synthetic-journey-reviewer-not-real", reviewedAt },
   ], dialogueRegistry: createBookyDialogueRegistry(records, { canonicalEntityIds: [...new Set(records.flatMap(record => [...record.payload.entityIds]))], approvedReviews: approvals }),
-  publicCountries: [country], publicBooks: [book] };
+  publicCountries: [country], publicBooks: [book], ...(withCharacter ? { characterPublicationAvailable: true } : {}) };
   const compile = (input: unknown = definition, request: unknown = context, policy = trust) => compileBookyJourney(input, request, policy);
   const reseal = (input: BookyJourneyDefinition): BookyJourneyTrust => ({ ...trust, approvedReviews: trust.approvedReviews.map(approval => ({ ...approval, definitionChecksum: getBookyJourneyChecksum(input)! })) });
   return { definition, context, trust, country, book, records, compile, reseal };
@@ -503,6 +515,73 @@ describe("reviewed sourced-fact journey nodes", () => {
           else f.book.editorial = { status: "draft" };
         }
         return registry.resolve(request);
+      } } };
+      expect(f.compile(undefined, undefined, trust)).toBeNull();
+    }
+  });
+});
+
+describe("current-only character route admission", () => {
+  it.each(["ru", "en"] as const)("admits reviewed %s identity before its future dossier is loaded", locale => {
+    const f = fixture(locale, false, true), plan = f.compile()!;
+    expect(plan.nodes.map(node => node.kind)).toEqual(["country", "writer", "work", "character", "checkpoint"]);
+    const character = plan.nodes[3].character!;
+    expect(character.spec.work).toEqual(plan.nodes[2].entity);
+    expect(character.semanticChecksum).toBe(getBookyJourneyCharacterChecksum(character.spec));
+    expect(Object.keys(character)).toEqual(["spec", "semanticChecksum"]);
+    expect(Object.isFrozen(character.spec.bindings)).toBe(true);
+    expect(plan.nodes[3].dialogue.payload.intent).toBe("navigation");
+  });
+
+  it("requires real service capability and online state without promising offline delivery", () => {
+    const f = fixture("en", false, true);
+    for (const characterPublicationAvailable of [undefined, false]) {
+      expect(f.compile(undefined, undefined, { ...f.trust, characterPublicationAvailable })).toBeNull();
+    }
+    for (const connectivity of ["offline", "unknown"] as const) {
+      expect(f.compile(undefined, { ...f.context, connectivity })).toBeNull();
+    }
+    const definition = { ...f.definition, overview: { description: "Synthetic description", estimatedDurationMinutes: 5 } };
+    expect(f.compile(definition, undefined, f.reseal(definition))?.overview?.offlineAvailable).toBe(false);
+    expect(fixture().compile(undefined, undefined, { ...fixture().trust, characterPublicationAvailable: false })).not.toBeNull();
+  });
+
+  it("binds exact work, selected locale dialogue and collection-only character shape", () => {
+    const f = fixture("en", false, true), original = JSON.stringify(f.definition);
+    for (const mutate of [
+      (node: any) => { node.entity.workId = "other-work"; },
+      (node: any) => { node.character.work.writerId = "other-writer"; },
+      (node: any) => { node.screen = "globe"; },
+      (node: any) => { node.character.bindings[1].dialogue.contentChecksum = "c".repeat(64); },
+      (node: any) => { node.character.bindings[1].projectionChecksum = "invalid"; },
+      (node: any) => { node.character.cacheKey = "not-static"; },
+    ]) {
+      const definition = clone(f.definition); mutate(definition.nodes[3]);
+      expect(f.compile(definition, undefined, f.reseal(definition))).toBeNull();
+    }
+    expect(JSON.stringify(f.definition)).toBe(original);
+  });
+
+  it("requires the preceding canonical work and independent dialogue/route review", () => {
+    const f = fixture("en", false, true), reordered = { ...f.definition,
+      nodes: [f.definition.nodes[0], f.definition.nodes[1], f.definition.nodes[3], f.definition.nodes[2], f.definition.nodes[4]] };
+    expect(f.compile(reordered, undefined, f.reseal(reordered))).toBeNull();
+    expect(f.compile(undefined, undefined, { ...f.trust, approvedReviews: [] })).toBeNull();
+    const registry = f.trust.dialogueRegistry;
+    expect(f.compile(undefined, undefined, { ...f.trust, dialogueRegistry: { ...registry,
+      resolve: request => (request as BookyDialogueRequest).id === "test-character-line" ? null : registry.resolve(request) } })).toBeNull();
+  });
+
+  it("rechecks service and public work after a later dialogue callback revokes them", () => {
+    for (const revoke of ["service", "work"] as const) {
+      const f = fixture("en", false, true), registry = f.trust.dialogueRegistry;
+      const trust: BookyJourneyTrust = { ...f.trust, dialogueRegistry: { ...registry, resolve: request => {
+        const result = registry.resolve(request);
+        if ((request as BookyDialogueRequest).id === "test-checkpoint-line") {
+          if (revoke === "service") Object.assign(trust, { characterPublicationAvailable: false });
+          else Object.assign(f.book, { editorial: { status: "draft" } });
+        }
+        return result;
       } } };
       expect(f.compile(undefined, undefined, trust)).toBeNull();
     }

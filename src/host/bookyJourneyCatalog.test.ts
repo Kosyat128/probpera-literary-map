@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import type { BookyJourneyCharacterSpec } from "./bookyJourneyCharacter";
 import { contentTextHash } from "../planet/contentExportHash";
 import type { BookArchiveEntry, Country } from "../planet/types";
 import { getBookyDialogueChecksum, getBookyDialogueContentChecksum,
@@ -12,7 +13,7 @@ import type { BookyJourneyFactSpec } from "./bookyJourneyFact";
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
-function fixture(locale: "ru" | "en" = "en", withActivity = false) {
+function fixture(locale: "ru" | "en" = "en", withActivity = false, withCharacter = false) {
   // Synthetic entities and independent receipts exist only in this test.
   // They do not grant real editorial approval or populate production content.
   const country: Country = { id: "fixture-country", name: "Synthetic country", coordinates: { lat: 20, lng: 30 },
@@ -25,6 +26,13 @@ function fixture(locale: "ru" | "en" = "en", withActivity = false) {
     country.writers.push({ id: "actual-author", name: "Тестовый автор", fullName: "Synthetic Factual Author" }, { id: "unrelated-writer" });
     book.authorship = { kind: "single", authors: [{ countryId: country.id, writerId: "actual-author", attribution: "credited" }] };
   }
+  const character: BookyJourneyCharacterSpec = { schemaVersion: 1, id: "fixture-character", version: 1,
+    work: { kind: "work", countryId: country.id, writerId: "fixture-writer", workId: book.id }, bindings: [
+      { locale: "ru", dossierVersion: "test-v1", sectionId: "people", blockId: "characters", itemId: "person-c",
+        readingMode: "BEFORE_READING", projectionChecksum: "a".repeat(64), dialogue: { id: "fixture-character-line", version: 1, contentChecksum: "c".repeat(64) } },
+      { locale: "en", dossierVersion: "test-v1", sectionId: "people", blockId: "characters", itemId: "person-c",
+        readingMode: "BEFORE_READING", projectionChecksum: "b".repeat(64), dialogue: { id: "fixture-character-line", version: 1, contentChecksum: "d".repeat(64) } },
+    ] };
   const nodes: BookyJourneyDefinition["nodes"] = [
     { id: "country", kind: "country", entity: { kind: "country", countryId: country.id }, screen: "globe", dialogue: { id: "fixture-country-line", version: 1, contentChecksum: "" } },
     { id: "writer", kind: "writer", entity: { kind: "writer", countryId: country.id, writerId: "fixture-writer" }, screen: "globe", dialogue: { id: "fixture-writer-line", version: 1, contentChecksum: "" } },
@@ -36,6 +44,8 @@ function fixture(locale: "ru" | "en" = "en", withActivity = false) {
         choices: ["fixture-writer", "actual-author"].map((writerId, index) => ({ id: `choice-${index}`,
           writer: { kind: "writer" as const, countryId: country.id, writerId } })),
       } }] : []),
+    ...(withCharacter ? [{ id: "character", kind: "character" as const, entity: character.work, screen: "collection" as const,
+      dialogue: { ...character.bindings.find(binding => binding.locale === locale)!.dialogue }, character }] : []),
     { id: "checkpoint", kind: "checkpoint", entity: null, screen: "collection", dialogue: { id: "fixture-checkpoint-line", version: 1, contentChecksum: "" } },
   ];
   const dialogues: BookyDialogueRecord[] = nodes.map(node => {
@@ -53,6 +63,8 @@ function fixture(locale: "ru" | "en" = "en", withActivity = false) {
       contentChecksum: getBookyDialogueContentChecksum(payload)! };
     return { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
   });
+  if (withCharacter) Object.assign(character.bindings.find(binding => binding.locale === locale)!.dialogue,
+    { contentChecksum: dialogues.find(record => record.payload.id === "fixture-character-line")!.review.contentChecksum });
   const definition: BookyJourneyDefinition = { schemaVersion: 1, id: "fixture-journey", version: 1, locale,
     audience: "adult", ageRange: { min: 18, max: 120 }, readingLevel: "plain",
     title: locale === "ru" ? "Тестовый маршрут" : "Synthetic journey", prerequisites: [{ id: "fixture-prerequisite", version: 1 }],
@@ -423,5 +435,30 @@ describe("sourced-fact catalog admission", () => {
       nodes: route.nodes.map(node => node.nodeId === "fact" ? { ...node, offlineAvailable: false } : node) })) };
     expect(f.build({ content: offline, publicBooks: [], connectivity: "online" }).plans).toHaveLength(1);
     expect(f.build({ content: offline, publicBooks: [], connectivity: "offline" }).plans).toEqual([]);
+  });
+});
+
+describe("character catalog service admission", () => {
+  it.each(["ru", "en"] as const)("passes explicit %s service capability without a future dossier", locale => {
+    const f = fixture(locale, false, true);
+    expect(f.build().plans).toEqual([]);
+    expect(f.build({ characterPublicationAvailable: false }).plans).toEqual([]);
+    const catalog = f.build({ characterPublicationAvailable: true }), plan = catalog.plans[0];
+    expect(plan.nodes.map(node => node.kind)).toEqual(["country", "writer", "work", "character", "checkpoint"]);
+    expect(catalog.sourceFor(plan)?.trust.characterPublicationAvailable).toBe(true);
+    for (const connectivity of ["offline", "unknown"] as const) {
+      expect(f.build({ characterPublicationAvailable: true, connectivity }).plans).toEqual([]);
+    }
+  });
+
+  it("does not let service configuration create production content or override independent review", () => {
+    const f = fixture("en", false, true), before = JSON.stringify(f.content);
+    expect(f.build({ characterPublicationAvailable: true, content: readBookyJourneyContent() }).plans).toEqual([]);
+    for (const content of [{ ...f.content, journeyApprovals: [] }, { ...f.content, dialogueApprovals: [] }]) {
+      expect(f.build({ characterPublicationAvailable: true, content }).plans).toEqual([]);
+    }
+    expect(f.build({ characterPublicationAvailable: true, publicBooks: [] }).plans).toEqual([]);
+    expect(JSON.stringify(f.content)).toBe(before);
+    expect(fixture().build({ characterPublicationAvailable: false }).plans).toHaveLength(1);
   });
 });

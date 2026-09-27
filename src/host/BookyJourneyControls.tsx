@@ -48,6 +48,8 @@ export const bookyJourneyControlsCopy = {
       openCountry: "Открыть страну",
       openWriter: "Открыть писателя",
       openWork: "Открыть книгу",
+      openCharacter: "Открыть персонажа",
+      characterConfirm: "Подтвердите шаг в открытой карточке персонажа.",
       openStep: "Открыть шаг",
       retryOpen: "Повторить открытие",
       next: "Подтвердить шаг",
@@ -85,6 +87,8 @@ export const bookyJourneyControlsCopy = {
       openCountry: "Open country",
       openWriter: "Open writer",
       openWork: "Open book",
+      openCharacter: "Open character",
+      characterConfirm: "Acknowledge this step inside the open character card.",
       openStep: "Open step",
       retryOpen: "Try opening again",
       next: "Acknowledge step",
@@ -152,12 +156,14 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
   else if (rejectedAtRevision === snapshot.revision) statusText = copy.rejected;
   else if (active?.phase === "paused") statusText = copy.paused;
   else if (active?.phase === "complete") statusText = copy.complete;
+  else if (active?.phase === "ready" && node?.kind === "character") statusText = copy.characterConfirm;
   else if (active) statusText = active.canNext ? copy.readyToConfirm : active.answer?.canAnswer ? copy.readyToAnswer : copy.readyToOpen;
   else statusText = snapshot.routes.length > 0 ? copy.choose : copy.unavailable;
 
   const openKind = node?.kind === "sourced-fact" ? node.entity?.kind : node?.kind;
   const openLabel = active?.phase === "failed" ? copy.retryOpen : openKind === "country" ? copy.openCountry
-    : openKind === "writer" ? copy.openWriter : openKind === "work" ? copy.openWork : copy.openStep;
+    : openKind === "writer" ? copy.openWriter : openKind === "work" ? copy.openWork
+      : openKind === "character" ? copy.openCharacter : copy.openStep;
   const caption = nodeCopy && nodeCopy.caption !== nodeCopy.title && nodeCopy.caption !== nodeCopy.body
     ? nodeCopy.caption : null;
   const reduced = nodeCopy && nodeCopy.reduced !== nodeCopy.title && nodeCopy.reduced !== nodeCopy.body
@@ -230,10 +236,10 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
           {inProgress && node && <>
             <button type="button" data-booky-journey-open="" disabled={!persistenceSnapshot.canAct || !active.canOpen}
               onClick={() => act(() => controller.open(snapshot.revision), true)}>{openLabel}</button>
-            <button type="button" className="booky-journey-controls__primary" data-booky-journey-next=""
+            {node.kind !== "character" && <button type="button" className="booky-journey-controls__primary" data-booky-journey-next=""
               disabled={!persistenceSnapshot.canAct || !active.canNext} onClick={() => act(() => controller.next(snapshot.revision), true)}>
               {active.index + 1 >= active.total ? copy.finish : copy.next}
-            </button>
+            </button>}
           </>}
           {active.phase === "paused" && <button type="button" data-booky-journey-resume=""
             disabled={!persistenceSnapshot.canAct || snapshot.status !== "ready" || !node}

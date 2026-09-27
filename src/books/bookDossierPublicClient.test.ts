@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { fetchPublishedBookDossier } from "./bookDossierPublicClient";
+import { fetchPublishedBookDossier, isPublishedBookDossierAvailable } from "./bookDossierPublicClient";
 import { buildBookEditorialDocument } from "./bookEditorialPages";
 import { buildBookDossierFromEditorial } from "./bookDossierLegacyAdapter";
 
@@ -17,6 +17,7 @@ afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 describe("published dossier distribution boundary", () => {
   it("makes zero requests in the controlled PWA even when public Supabase values are present", async () => {
     environment.controlled = true;
+    expect(isPublishedBookDossierAvailable()).toBe(false);
     const fetcher = vi.fn(); vi.stubGlobal("fetch", fetcher);
     expect(await fetchPublishedBookDossier(request)).toBeNull(); expect(fetcher).not.toHaveBeenCalled();
   });
@@ -28,6 +29,7 @@ describe("published dossier distribution boundary", () => {
   });
   it("preserves configured public-site POST delivery, cancellation signal and exact identity checks", async () => {
     const result = document(), controller = new AbortController();
+    expect(isPublishedBookDossierAvailable()).toBe(true);
     const fetcher = vi.fn().mockResolvedValue(new Response(JSON.stringify(result), { headers: { "Content-Type": "application/json" } })); vi.stubGlobal("fetch", fetcher);
     expect(await fetchPublishedBookDossier({ ...request, signal: controller.signal })).toEqual(result);
     expect(fetcher).toHaveBeenCalledOnce();
@@ -35,11 +37,13 @@ describe("published dossier distribution boundary", () => {
     expect(fetcher.mock.calls[0][1]).toMatchObject({ method: "POST", credentials: "omit", cache: "no-store", signal: controller.signal });
     expect(JSON.parse(fetcher.mock.calls[0][1].body)).toEqual({ p_request: { ...request, mode: "BEFORE_READING", revealSpoilers: "NONE", reachedItemIds: [] } });
   });
-  it.each(["missing URL", "missing key", "HTTP", "credentials"])("does not request an unsafe/unconfigured site (%s)", async reason => {
+  it.each(["missing URL", "missing key", "HTTP", "credentials", "malformed"])("does not request an unsafe/unconfigured site (%s)", async reason => {
     if (reason === "missing URL") environment.url = "";
     if (reason === "missing key") environment.key = "";
     if (reason === "HTTP") environment.url = "http://fixture.supabase.invalid";
     if (reason === "credentials") environment.url = "https://user:password@fixture.supabase.invalid";
+    if (reason === "malformed") environment.url = "not a URL";
+    expect(isPublishedBookDossierAvailable()).toBe(false);
     const fetcher = vi.fn(); vi.stubGlobal("fetch", fetcher);
     expect(await fetchPublishedBookDossier(request)).toBeNull(); expect(fetcher).not.toHaveBeenCalled();
   });

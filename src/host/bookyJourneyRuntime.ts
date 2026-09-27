@@ -1,5 +1,6 @@
 import { parseBookyJourneyPlanOverview, type BookyJourneyPlan, type BookyJourneyPlanOverview } from "./bookyJourney";
 import type { BookyJourneyHostOffer } from "./bookyJourneyHost";
+import { bookDossierCharacterRequestToken, type BookDossierCharacterViewReceipt } from "../books/bookDossierCharacterView";
 import { contentTextHash } from "../planet/contentExportHash";
 import { parseBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReaderPolicy";
 import { BOOKY_JOURNEY_PROGRESS_MAX_RECORDS, DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord, parseBookyJourneyProgress,
@@ -16,6 +17,9 @@ export type BookyJourneyRuntimeHost = Readonly<{
   plans: readonly BookyJourneyPlan[];
   resolve: (plan: BookyJourneyPlan, nodeId: string) => BookyJourneyHostOffer | null;
   resolveMigration?: (savedRecord: BookyJourneyProgressRecord, currentPlan: BookyJourneyPlan) => BookyJourneyMigrationOffer | null;
+  /** Current leased character action only; never whole-plan admission. */
+  canOpenCharacter?: (plan: BookyJourneyPlan, nodeId: string) => boolean;
+  canAcknowledgeCharacter?: (plan: BookyJourneyPlan, nodeId: string, receipt: BookDossierCharacterViewReceipt) => boolean;
   /** New reference after a navigation command commits, including a no-op. */
   view: Readonly<{ screen: "globe" | "collection"; countryId: string | null;
     writerId: string | null; workId: string | null; settled: boolean }>;
@@ -70,10 +74,17 @@ const factKey = (node: IdentityNode) => {
   return "spec" in fact ? [fact.spec.id, fact.spec.version, fact.semanticChecksum]
     : [fact.id, fact.version, fact.semanticChecksum];
 };
+const characterKey = (node: IdentityNode) => {
+  const character = node.character;
+  if (node.kind !== "character" || !character) return null;
+  return "spec" in character ? [character.spec.id, character.spec.version, character.semanticChecksum]
+    : [character.id, character.version, character.semanticChecksum];
+};
 const topology = (plan: { nodes: readonly IdentityNode[] }) => JSON.stringify(plan.nodes.map(node => {
   const fields = [node.id, node.kind, entityKey(node), node.screen];
   return node.kind === "activity" ? [...fields, activityKey(node)]
-    : node.kind === "sourced-fact" ? [...fields, factKey(node)] : fields;
+    : node.kind === "sourced-fact" ? [...fields, factKey(node)]
+      : node.kind === "character" ? [...fields, characterKey(node)] : fields;
 }));
 const fingerprint = (profileKey: string | null) => {
   const serialized = serializeBookyReaderPolicy(profileKey);
@@ -89,7 +100,8 @@ const storedSession = (record: BookyJourneyProgressRecord): Session => ({ id: re
 const viewKey = (view: BookyJourneyRuntimeHost["view"]) => JSON.stringify(view);
 const semanticKey = (node: BookyJourneyProgressNode) => JSON.stringify(node.kind === "activity"
   ? [node.kind, node.screen, entityKey(node), activityKey(node)]
-  : node.kind === "sourced-fact" ? [node.kind, node.screen, entityKey(node), factKey(node)] : [node.kind, node.screen, entityKey(node)]);
+  : node.kind === "sourced-fact" ? [node.kind, node.screen, entityKey(node), factKey(node)]
+    : node.kind === "character" ? [node.kind, node.screen, entityKey(node), characterKey(node)] : [node.kind, node.screen, entityKey(node)]);
 function matches(node: BookyJourneyPlan["nodes"][number], view: BookyJourneyRuntimeHost["view"]) {
   if (!view.settled || node.screen !== view.screen) return false;
   const entity = node.entity;
@@ -122,6 +134,8 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       && answer.status === "correct" && answer.choiceId === node.activity.correctChoiceId;
   }
   let disposed = false, reading = false, epoch = 0;
+  const acknowledgedCharacters = new WeakSet<object>();
+  let acknowledgingCharacter = false;
   let renderedHost: BookyJourneyRuntimeHost | null = null, renderedRevision: number | null = null, renderedKey = "";
   const listeners = new Set<() => void>();
 
@@ -227,10 +241,14 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     const currentAnswer = node?.kind === "activity" && node.activity && plan ? answer?.binding === answerBinding(plan, node) ? answer : null : null;
     const activityAnswer = node?.kind === "activity" && node.activity ? Object.freeze({ choiceId: currentAnswer?.choiceId ?? null,
       status: currentAnswer?.status ?? "unanswered", canAnswer: session?.phase === "ready" && !!host && matches(node, host.view) }) : null;
+    const publishEpoch = epoch;
+    const canOpen = !!node && (session?.phase === "ready" || session?.phase === "failed")
+      && (node.kind !== "character" || !!host && characterAllowed(host, plan!, node.id, epoch));
+    if (epoch !== publishEpoch || disposed && observed.host) return;
     const active = session ? Object.freeze({ title: node ? plan!.title : null, node, index: session.index, total: session.total,
       completedCount: session.completedCount, phase: session.phase,
-      canOpen: !!node && (session.phase === "ready" || session.phase === "failed"),
-      canNext: !!node && session.phase === "ready" && !!host && matches(node, host.view) && correctAnswer(plan!, node), answer: activityAnswer }) : null;
+      canOpen,
+      canNext: !!node && node.kind !== "character" && session.phase === "ready" && !!host && matches(node, host.view) && correctAnswer(plan!, node), answer: activityAnswer }) : null;
     const key = JSON.stringify([progressViewRevision, status, routes, historyCapacity, migrations, history, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
       active.total, active.completedCount, active.phase, active.canOpen, active.canNext, active.answer, !!active.node]]);
     if (key === renderedKey && host === renderedHost && (host?.revision ?? null) === renderedRevision) return;
@@ -258,7 +276,23 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
         && JSON.stringify(offer.node.activityChoices) === JSON.stringify(node.activityChoices)
         : offer.node.activity === undefined && offer.node.activityChoices === undefined)
       && (node.kind === "sourced-fact" ? !!node.fact && JSON.stringify(offer.node.fact) === JSON.stringify(node.fact)
-        : offer.node.fact === undefined);
+        : offer.node.fact === undefined)
+      && (node.kind === "character" ? !!node.character && JSON.stringify(offer.node.character) === JSON.stringify(node.character)
+        : offer.node.character === undefined);
+  }
+  function characterAllowed(host: BookyJourneyRuntimeHost, plan: BookyJourneyPlan, nodeId: string, token: number,
+    receipt?: BookDossierCharacterViewReceipt): boolean {
+    if (reading || disposed) return false;
+    reading = true;
+    try {
+      const revision = host.revision;
+      if (epoch !== token || readHost() !== host) return false;
+      const allowed = receipt === undefined ? host.canOpenCharacter?.(plan, nodeId)
+        : host.canAcknowledgeCharacter?.(plan, nodeId, receipt);
+      const current = readHost();
+      return allowed === true && epoch === token && !disposed && current === host && current.revision === revision;
+    } catch { return false; }
+    finally { reading = false; }
   }
   function validSemanticNodes(host: BookyJourneyRuntimeHost, plan: BookyJourneyPlan, token: number, checkedNodeId?: string): boolean {
     const revision = host.revision;
@@ -374,7 +408,9 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
         // Reopening the current target can leave its old settled view visible
         // until the host commits the new command. Only a new view observation
         // can acknowledge this movement; unrelated host changes do not count.
-        if (host!.view !== navigation.originView) {
+        // Character opens the current work's modal. Matching settled work is
+        // readiness only: generic Next is denied and no receipt grants credit.
+        if (host!.view !== navigation.originView || plan.nodes[session.index].kind === "character") {
           if (matches(plan.nodes[session.index], host!.view)) session.phase = "ready";
           else if (host!.view.settled && viewKey(host!.view) !== navigation.view) { session.phase = "paused"; cancelNavigation(); }
         }
@@ -423,14 +459,18 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     return !disposed && progressIntent === committed;
   }
   function move(observed: Observation, index: number, acknowledged: number, semantic = false,
-    migration?: { candidate: MigrationCandidate; original: Session }): boolean {
+    migration?: { candidate: MigrationCandidate; original: Session },
+    characterAcknowledgement?: { nodeId: string; receipt: BookDossierCharacterViewReceipt }): boolean {
     const target = session, plan = currentPlan(observed);
     if (!target || !plan || !observed.host) return false;
     if (progressFor(observed, plan, acknowledged) === null) return false;
     const token = ++epoch, offer = resolve(observed, plan, index, token);
     if (!offer) { if (epoch === token) failClosed(); return false; }
+    if (plan.nodes[index].kind === "character" && !characterAllowed(observed.host, plan, plan.nodes[index].id, token)) return false;
     cancelNavigation();
     if (epoch !== token || disposed || session !== target) return false;
+    if (characterAcknowledgement && !characterAllowed(observed.host, plan, characterAcknowledgement.nodeId, token,
+      characterAcknowledgement.receipt)) return false;
     const pending: Navigation = { session: target, controller: new AbortController(), accepted: false,
       originIndex: target.index, originCount: target.completedCount, originView: observed.host.view, view: viewKey(observed.host.view),
       rollback: migration?.original };
@@ -439,7 +479,9 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     if (epoch !== token || disposed || session !== target || navigation !== pending) return false;
     // A view observer may revoke the host without calling refresh itself.
     const finalOffer = resolve(observed, plan, index, token);
-    if (!finalOffer || migration && !resolveMigration(observed, migration.candidate, token)) { if (epoch === token) failClosed(); return false; }
+    if (!finalOffer || migration && !resolveMigration(observed, migration.candidate, token)
+      || characterAcknowledgement && !characterAllowed(observed.host, plan, characterAcknowledgement.nodeId, token, characterAcknowledgement.receipt)
+      || plan.nodes[index].kind === "character" && !characterAllowed(observed.host, plan, plan.nodes[index].id, token)) { if (epoch === token) failClosed(); return false; }
     let accepted = false;
     try { accepted = migration !== undefined && acknowledged === target.total || navigate(finalOffer, pending.controller.signal) === true; } catch { /* Explicit retry only. */ }
     if (disposed || session !== target || navigation !== pending || pending.controller.signal.aborted) return false;
@@ -551,7 +593,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     },
     next(revision: number): boolean {
       const observed = prepare(revision), plan = observed && currentPlan(observed);
-      if (!observed?.host || !session || !plan || session.phase !== "ready" || !matches(plan.nodes[session.index], observed.host.view)
+      if (!observed?.host || !session || !plan || plan.nodes[session.index].kind === "character" || session.phase !== "ready" || !matches(plan.nodes[session.index], observed.host.view)
         || !correctAnswer(plan, plan.nodes[session.index])) return false;
       const target = session, token = ++epoch;
       if (!resolve(observed, plan, target.index, token)) { if (epoch === token) failClosed(); return false; }
@@ -564,6 +606,35 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       target.completedCount = target.total; target.phase = "complete";
       commitProgress(progress?.preference ?? progressIntent.preference, true);
       publish(observed); return session === target && target.phase === "complete";
+    },
+    acknowledgeCharacter(receipt: BookDossierCharacterViewReceipt, revision: number): boolean {
+      if (acknowledgingCharacter) return false;
+      const receiptToken = bookDossierCharacterRequestToken(receipt);
+      if (!receiptToken || acknowledgedCharacters.has(receiptToken)) return false;
+      const observed = prepare(revision), plan = observed && currentPlan(observed), target = session;
+      const node = plan && target ? plan.nodes[target.index] : null;
+      if (!observed?.host || !target || !plan || !node || node.kind !== "character" || target.phase !== "ready"
+        || !matches(node, observed.host.view)) return false;
+      const token = ++epoch;
+      if (!resolve(observed, plan, target.index, token)
+        || !characterAllowed(observed.host, plan, node.id, token, receipt)) return false;
+      acknowledgingCharacter = true;
+      try {
+        let accepted = false;
+        if (target.index + 1 < target.total) accepted = move(observed, target.index + 1, target.index + 1, true, undefined, { nodeId: node.id, receipt });
+        else {
+          const progress = progressFor(observed, plan, target.total);
+          if (progress === null) return false;
+          cancelNavigation();
+          if (epoch !== token || disposed || session !== target || !resolve(observed, plan, target.index, token)
+            || !characterAllowed(observed.host, plan, node.id, token, receipt)) return false;
+          target.completedCount = target.total; target.phase = "complete";
+          commitProgress(progress?.preference ?? progressIntent.preference, true);
+          publish(observed); accepted = session === target && target.phase === "complete";
+        }
+        if (accepted) acknowledgedCharacters.add(receiptToken);
+        return accepted;
+      } finally { acknowledgingCharacter = false; }
     },
     pause(revision: number): boolean {
       const observed = prepare(revision);

@@ -7,6 +7,8 @@ import { getBookyJourneyActivityChecksum, resolveBookyJourneyActivity,
   type BookyJourneyActivitySpec, type BookyJourneyActivityResolved } from "./bookyJourneyActivity";
 import { getBookyJourneyFactChecksum, parseBookyJourneyFact,
   type BookyJourneyFactSpec, type BookyJourneyFactResolved } from "./bookyJourneyFact";
+import { getBookyJourneyCharacterChecksum, parseBookyJourneyCharacter,
+  type BookyJourneyCharacterSpec } from "./bookyJourneyCharacter";
 
 export type BookyJourneyPrerequisite = Readonly<{ id: string; version: number }>;
 export type BookyJourneyOverview = Readonly<{
@@ -23,13 +25,15 @@ export type BookyJourneyPlanOverview = Readonly<BookyJourneyOverview & {
 export type BookyJourneyNode = Readonly<{
   id: string;
   entity: Readonly<ContentEntityRef> | null;
-  kind: "country" | "writer" | "work" | "checkpoint" | "activity" | "sourced-fact";
+  kind: "country" | "writer" | "work" | "checkpoint" | "activity" | "sourced-fact" | "character";
   screen: "globe" | "collection";
   dialogue: Readonly<{ id: string; version: number; contentChecksum: string }>;
   /** Present only for activity nodes; old navigation node fields stay exact. */
   activity?: BookyJourneyActivitySpec;
   /** Present only for sourced facts, anchored to a preceding navigation step. */
   fact?: BookyJourneyFactSpec;
+  /** Static bilingual identity only; live publication is checked at the action. */
+  character?: BookyJourneyCharacterSpec;
 }>;
 export type BookyJourneyDefinition = Readonly<{
   schemaVersion: 1;
@@ -69,6 +73,8 @@ export type BookyJourneyTrust = Readonly<{
    * archive or use this membership check as child/editorial authorization. */
   publicCountries: readonly Country[];
   publicBooks: readonly BookArchiveEntry[];
+  /** Real publication-service capability, never a preview or current modal. */
+  characterPublicationAvailable?: boolean;
 }>;
 export type BookyJourneyPlan = Readonly<{
   id: string; version: number; locale: BookyDialogueLocale; title: string; definitionChecksum: string;
@@ -79,6 +85,7 @@ export type BookyJourneyPlan = Readonly<{
     activity?: BookyJourneyActivityResolved;
     activityChoices?: readonly Readonly<{ id: string; label: string }>[];
     fact?: BookyJourneyFactResolved;
+    character?: Readonly<{ spec: BookyJourneyCharacterSpec; semanticChecksum: string }>;
   }>[];
 }>;
 
@@ -169,6 +176,14 @@ export function bookyJourneyDialogueContext(journeyId: string, node: BookyJourne
     return `fact:${contentRecordHash({ journeyId, nodeId: node.id, factId: fact.id, factVersion: fact.version,
       entity: node.entity, screen: node.screen })}`;
   }
+  if (node.kind === "character") {
+    const character = parseBookyJourneyCharacter(node.character);
+    if (!character || node.screen !== "collection" || !entityRef(node.entity) || node.entity.kind !== "work"
+      || bookyJourneyEntityId(character.work) !== bookyJourneyEntityId(node.entity)) return null;
+    // Avoid a dialogue-checksum cycle while binding the exact authored identity.
+    return "character:" + contentRecordHash({ journeyId, nodeId: node.id, characterId: character.id,
+      characterVersion: character.version, work: character.work, screen: node.screen });
+  }
   if (node.kind !== "activity") return `${journeyId}:${node.id}`;
   const activityChecksum = getBookyJourneyActivityChecksum(node.activity);
   return activityChecksum ? `activity:${contentRecordHash({ journeyId, nodeId: node.id, activityChecksum })}` : null;
@@ -195,18 +210,26 @@ function definitionValid(value: unknown): value is BookyJourneyDefinition {
     || !uniqueRows(value.prerequisites, 16, prerequisite)
     || !uniqueRows(value.nodes, 32, node => !!node && typeof node === "object"
       && row(node, (node as Row).kind === "activity" ? "id entity kind screen dialogue activity"
-        : (node as Row).kind === "sourced-fact" ? "id entity kind screen dialogue fact" : "id entity kind screen dialogue") && key(node.id)
-      && choice(node.kind, ["country", "writer", "work", "checkpoint", "activity", "sourced-fact"]) && choice(node.screen, ["globe", "collection"])
-      && (node.kind === "checkpoint" || node.kind === "sourced-fact" || node.screen === (node.kind === "work" ? "collection" : "globe"))
+        : (node as Row).kind === "sourced-fact" ? "id entity kind screen dialogue fact"
+        : (node as Row).kind === "character" ? "id entity kind screen dialogue character" : "id entity kind screen dialogue") && key(node.id)
+      && choice(node.kind, ["country", "writer", "work", "checkpoint", "activity", "sourced-fact", "character"]) && choice(node.screen, ["globe", "collection"])
+      && (node.kind === "checkpoint" || node.kind === "sourced-fact" || node.screen === (node.kind === "work" || node.kind === "character" ? "collection" : "globe"))
       && (node.kind === "checkpoint" || node.kind === "activity" ? node.entity === null
-        : entityRef(node.entity) && (node.kind === "sourced-fact" || node.entity.kind === node.kind))
+        : entityRef(node.entity) && (node.kind === "sourced-fact" || node.entity.kind === (node.kind === "character" ? "work" : node.kind)))
       && (node.kind !== "activity" || getBookyJourneyActivityChecksum(node.activity) !== null)
+      && (node.kind !== "character" || getBookyJourneyCharacterChecksum(node.character) !== null
+        && bookyJourneyDialogueContext(value.id as string, node as unknown as BookyJourneyNode) !== null)
       && (node.kind !== "sourced-fact" || entityRef(node.entity)
         && getBookyJourneyFactChecksum(node.fact, node.entity, node.screen as BookyJourneyNode["screen"]) !== null)
       && row(node.dialogue, "id version contentChecksum") && key(node.dialogue.id) && integer(node.dialogue.version, 1, 1_000_000)
       && hash(node.dialogue.contentChecksum)) || value.nodes.length < 2) return false;
   return value.nodes[0].kind === "country" && value.nodes[value.nodes.length - 1].kind === "checkpoint"
     && value.nodes.every(node => {
+      if (node.kind === "character") {
+        const spec = parseBookyJourneyCharacter(node.character), dialogue = node.dialogue as BookyJourneyNode["dialogue"];
+        return !!spec && spec.bindings.some(binding => binding.locale === value.locale && binding.dialogue.id === dialogue.id
+          && binding.dialogue.version === dialogue.version && binding.dialogue.contentChecksum === dialogue.contentChecksum);
+      }
       if (node.kind !== "sourced-fact") return true;
       const fact = parseBookyJourneyFact(node.fact), dialogue = node.dialogue as BookyJourneyNode["dialogue"];
       return !!fact && fact.dialogues.some(binding => binding.locale === value.locale && binding.id === dialogue.id
@@ -299,7 +322,11 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
         || context.connectivity !== "online" && !available.offlineAvailable) return null;
       offlineAvailable = offlineAvailable && available.offlineAvailable;
       const ref = node.entity;
-      const sourcedFact = node.kind === "sourced-fact";
+      const sourcedFact = node.kind === "sourced-fact", sourcedCharacter = node.kind === "character";
+      if (sourcedCharacter) {
+        if (trust.characterPublicationAvailable !== true || context.connectivity !== "online") return null;
+        offlineAvailable = false;
+      }
       let coordinates: readonly [number, number] | null = null;
       if (ref) {
         const countries = (trust.publicCountries as readonly Country[]).filter(country => country.id === ref.countryId);
@@ -325,7 +352,7 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
           else {
             const books = (trust.publicBooks as readonly BookArchiveEntry[]).filter(book => book.countryId === ref.countryId && book.writerId === ref.writerId && book.id === ref.workId);
             if (activeWriter !== ref.writerId || books.length !== 1 || !choice(books[0].editorial?.status, ["reviewed", "verified"])) return null;
-            if (sourcedFact) { if (activeWork !== ref.workId) return null; }
+            if (sourcedFact || sourcedCharacter) { if (activeWork !== ref.workId) return null; }
             else activeWork = ref.workId;
           }
         }
@@ -338,6 +365,11 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
       const factChecksum = factSpec && ref ? getBookyJourneyFactChecksum(factSpec, ref, node.screen) : null;
       if (sourcedFact && (!factSpec || !factChecksum)) return null;
       const fact = factSpec && factChecksum ? Object.freeze({ spec: factSpec, semanticChecksum: factChecksum }) : null;
+      const characterSpec = sourcedCharacter ? parseBookyJourneyCharacter(node.character) : null;
+      const characterChecksum = characterSpec && getBookyJourneyCharacterChecksum(characterSpec);
+      if (sourcedCharacter && (!characterSpec || !characterChecksum)) return null;
+      const character = characterSpec && characterChecksum
+        ? Object.freeze({ spec: characterSpec, semanticChecksum: characterChecksum }) : null;
       const dialogueContext = bookyJourneyDialogueContext(definition.id, node);
       if (!dialogueContext) return null;
       const entityIds = activity ? [...new Set([activity.spec.targetWork, ...activity.spec.choices.map(choice => choice.writer)]
@@ -347,7 +379,7 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
         entityIds, now: context.now });
       if (!dialogue || dialogue.payload.version !== node.dialogue.version || dialogue.review.contentChecksum !== node.dialogue.contentChecksum) return null;
       nodes.push(Object.freeze({ id: node.id, kind: node.kind, screen: node.screen, entity: ref, coordinates, dialogue,
-        ...(activity ? { activity, activityChoices: choices! } : fact ? { fact } : {}) }));
+        ...(activity ? { activity, activityChoices: choices! } : fact ? { fact } : character ? { character } : {}) }));
     }
     // Any injected dialogue callback, including a later checkpoint, may revoke
     // a relation or label. Never retain an earlier answer from changed input.
@@ -357,6 +389,11 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
         || JSON.stringify(activityChoices(current, trust, context.locale)) !== JSON.stringify(node.activityChoices)) return null;
     }
     for (const node of nodes) if (node.fact && !factAnchorCurrent(node, trust)) return null;
+    // Future characters need no currently open dossier. Live item/source/lease
+    // authority belongs to the current action, not whole-plan admission.
+    for (const node of nodes) if (node.character && (trust.characterPublicationAvailable !== true
+      || !factAnchorCurrent(node, trust)
+      || getBookyJourneyCharacterChecksum(node.character.spec) !== node.character.semanticChecksum)) return null;
     return Object.freeze({ id: definition.id, version: definition.version, locale: definition.locale, title: definition.title,
       definitionChecksum: checksum, nodes: Object.freeze(nodes),
       ...(definition.overview ? { overview: Object.freeze({ ...definition.overview, offlineAvailable }) } : {}) });

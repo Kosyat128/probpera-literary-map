@@ -38,6 +38,7 @@ import { createBookyMotionController } from "./host/bookyMotionPreference";
 import BookyJourneyControls from "./host/BookyJourneyControls";
 import { useBookyJourney, type BookyJourneyNavigation } from "./host/useBookyJourney";
 import type { BookArchiveDetailView } from "./books/bookArchiveDetailView";
+import type { BookArchivePublishedDossierView } from "./components/BookArchiveSection";
 import type { PlanetMascotAction } from "./host/planetMascotRoutes";
 import type { BookArchiveAuthorRequest, BookArchiveAuthorRequestResult, BookArchiveAuthorView } from "./books/bookArchiveAuthorRequest";
 import { createPlanetSceneInspectionController } from "./host/planetSceneInspection";
@@ -837,6 +838,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const [journeyBookView, setJourneyBookView] = useState<BookArchiveDetailView>({ active: false, settled: false,
     countryId: null, writerId: null, workId: null });
   const [journeyCollectionSettled, setJourneyCollectionSettled] = useState(false);
+  const [journeyPublishedDossier, setJourneyPublishedDossier] = useState<BookArchivePublishedDossierView | null>(null);
+  const observeJourneyPublishedDossier = useCallback((view: BookArchivePublishedDossierView) => {
+    setJourneyPublishedDossier(previous => previous?.document === view.document && previous.bookKey === view.bookKey
+      && previous.detail.active === view.detail.active && previous.detail.settled === view.detail.settled
+      && previous.detail.countryId === view.detail.countryId && previous.detail.writerId === view.detail.writerId
+      && previous.detail.workId === view.detail.workId ? previous : view);
+  }, []);
   const [journeyCameraView, setJourneyCameraView] = useState<GlobeCameraViewReceipt | null>(null);
   const [journeyWriterView, setJourneyWriterView] = useState<{ countryId: string; writerId: string | null; ready: boolean } | null>(null);
   const journeyGlobeIntent = useRef<{ perform: () => boolean; valid: () => boolean } | null>(null);
@@ -856,8 +864,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const atlasArchivesToggleRef = useRef<HTMLButtonElement>(null);
   const randomAtlasHistoryRef = useRef<string[]>([]);
   const nativeNavigationControllerRef = useRef<NativeNavigationController<NativeResolvedNavigation> | null>(null);
-  const nativeBookBackRef = useRef<(() => boolean) | null>(null);
-  const registerNativeBookBack = useCallback((handler: () => boolean) => {
+  const nativeBookBackRef = useRef<((intent?: "return-to-planet") => boolean) | null>(null);
+  const registerNativeBookBack = useCallback((handler: (intent?: "return-to-planet") => boolean) => {
     nativeBookBackRef.current = handler;
     return () => { if (nativeBookBackRef.current === handler) nativeBookBackRef.current = null; };
   }, []);
@@ -865,9 +873,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (mascot.getSnapshot().panel === "open") { mascot.togglePanel(); return; }
     if (!nativeBookBackRef.current?.()) closeNativeCollection();
   }, [closeNativeCollection, mascot]);
-  const requestReturnToPlanet = useCallback(() => {
+  const requestReturnToPlanet = useCallback((intent?: "return-to-planet") => {
     nativeReturnRequestedRef.current = true;
-    if (!nativeBookBackRef.current?.()) closeNativeCollection();
+    if (!nativeBookBackRef.current?.(intent)) closeNativeCollection();
   }, [closeNativeCollection]);
   const finishNativeDetailClose = useCallback(() => {
     if (nativeReturnRequestedRef.current) closeNativeCollection();
@@ -2374,7 +2382,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     const intent = { perform, valid: isCurrent };
     journeyGlobeIntent.current = intent;
     signal.addEventListener("abort", () => { if (journeyGlobeIntent.current === intent) journeyGlobeIntent.current = null; }, { once: true });
-    requestReturnToPlanet();
+    // Deliberate route navigation also closes its acknowledged character card.
+    // Ordinary Back still dismisses one layer at a time.
+    requestReturnToPlanet("return-to-planet");
     return true;
   }, [verifiedBookArchive, openBook, countryArchive, selectWriterAndFocus, selectCountry, atlasExperience.compactSheet,
     atlasExperienceDispatch, nativeCollectionOpen, cancelNativeNavigation, requestReturnToPlanet]);
@@ -2405,7 +2415,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     active: planetLaunchComplete && platformVisibility === "active" && !globalSearchOpen && !communityOpen,
     policy: readerPolicySnapshot.policy, readPolicy: readJourneyPolicy, locale: language, connectivity: platformConnectivity,
     countryReady: archiveDataStatus === "ready", booksReady: mascotBookStatus === "ready",
-    countries: countryArchive, books: verifiedBookArchive, view: journeyView, navigate: navigateJourney });
+    countries: countryArchive, books: verifiedBookArchive, view: journeyView, navigate: navigateJourney,
+    publishedDossier: journeyPublishedDossier });
 
   const handleMascotAction = useCallback((action: PlanetMascotAction): boolean => {
     const focusSequence = ++mascotFocusSequence.current;
@@ -3387,6 +3398,11 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           requestedBookToken={requestedBookToken}
           canOpenRequestedBook={canOpenRequestedBook}
           onDetailViewChange={isPlanetApplication ? setJourneyBookView : undefined}
+          onPublishedDossierViewChange={isPlanetApplication ? observeJourneyPublishedDossier : undefined}
+          dossierCharacterRequest={isPlanetApplication ? journey.characterRequest : null}
+          dossierCharacterAction={isPlanetApplication ? journey.characterAction : null}
+          canPresentDossierCharacter={isPlanetApplication ? journey.canPresentCharacter : undefined}
+          onDossierCharacterViewChange={isPlanetApplication ? journey.observeCharacter : undefined}
           onCollectionSettledChange={isPlanetApplication ? setJourneyCollectionSettled : undefined}
           requestedAuthor={isPlanetApplication ? mascotAuthorRequest : null}
           onRequestedAuthorHandled={handleMascotAuthorHandled}

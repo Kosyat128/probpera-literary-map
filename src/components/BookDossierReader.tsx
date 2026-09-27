@@ -3,7 +3,7 @@ import type { BookDossierDocumentV2, BookDossierReadingMode, BookDossierSemantic
 import { buildBookDossierDiagram, bookDossierConceptKind, bookDossierConceptLabels } from "../books/bookDossierDiagram";
 import BookDossierMap from "./BookDossierMap";
 import { bookDossierCharacterRequestToken, consumeBookDossierCharacterViewToken,
-  type BookDossierCharacterViewRequest, type BookDossierCharacterViewReceipt } from "../books/bookDossierCharacterView";
+  type BookDossierCharacterViewRequest, type BookDossierCharacterViewReceipt, type BookDossierCharacterViewAction } from "../books/bookDossierCharacterView";
 
 const modes: readonly BookDossierReadingMode[] = ["BEFORE_READING", "DURING_READING", "AFTER_READING"];
 const modeLabels = {
@@ -18,7 +18,7 @@ const accessibleLabels = {
 /** The accessible reader receives only the compiler's public projection. */
 export default function BookDossierReader({ dossier, activeAnchor, onNavigate, onReadingModeChange,
   onSpoilersChange, onProgressChange, reachedCount = 0, showingSpoilers = false, unavailable = false, busy = false,
-  characterRequest, onCharacterViewChange }: {
+  characterRequest, characterAction, onCharacterViewChange }: {
   dossier: BookDossierDocumentV2;
   activeAnchor?: BookDossierSemanticAnchor | null;
   onNavigate: (anchor: BookDossierSemanticAnchor) => void;
@@ -33,6 +33,7 @@ export default function BookDossierReader({ dossier, activeAnchor, onNavigate, o
    * reading-progress navigation is inferred from an item anchor. activeAnchor
    * must be that owning page's anchor, not a second block's item anchor. */
   characterRequest?: BookDossierCharacterViewRequest | null;
+  characterAction?: BookDossierCharacterViewAction | null;
   onCharacterViewChange?: (view: BookDossierCharacterViewReceipt | null) => void;
 }) {
   const [contentsOpen, setContentsOpen] = useState(false);
@@ -117,6 +118,7 @@ export default function BookDossierReader({ dossier, activeAnchor, onNavigate, o
         {page.paragraphs.map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}
         {diagram ? <BookDossierMap key={`${dossier.cacheKey}:${page.id}`} diagram={diagram} locale={dossier.locale}
           characterDocument={busy || unavailable ? null : dossier} characterRequest={characterRequest}
+          characterAction={busy || unavailable ? null : characterAction}
           onCharacterViewChange={onCharacterViewChange} /> : null}
         {concepts.map(block => <section className="book-dossier-concepts" key={block.id} aria-label={block.title}>
           <h5>{block.title}</h5><ol>{block.items.map(item => {

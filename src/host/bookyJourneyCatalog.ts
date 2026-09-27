@@ -19,6 +19,8 @@ export type BookyJourneyCatalogOptions = Readonly<{
   publicCountries: readonly Country[];
   publicBooks: readonly BookArchiveEntry[];
   completedPrerequisites: BookyJourneyContext["completedPrerequisites"];
+  /** Read-only real delivery capability; missing is unavailable. */
+  characterPublicationAvailable?: boolean;
 }>;
 export type BookyJourneyCatalog = Readonly<{
   plans: readonly BookyJourneyPlan[];
@@ -244,7 +246,8 @@ export function createBookyJourneyCatalog(options: BookyJourneyCatalogOptions): 
     const dialogueRegistry = createBookyDialogueRegistry(content.dialogues, { canonicalEntityIds, approvedReviews: content.dialogueApprovals });
     if (dialogueRegistry.rejections.some(item => item.reason !== "unknown-entity")) return emptyCatalog;
     const trust: BookyJourneyTrust = Object.freeze({ currentVersions: content.currentVersions,
-      approvedReviews: content.journeyApprovals, dialogueRegistry, publicCountries, publicBooks });
+      approvedReviews: content.journeyApprovals, dialogueRegistry, publicCountries, publicBooks,
+      characterPublicationAvailable: options.characterPublicationAvailable === true });
     const plans: BookyJourneyPlan[] = [], sources = new WeakMap<BookyJourneyPlan, BookyCompanionJourneySource>();
     for (const definition of content.definitions) {
       if (definition.locale !== options.locale) continue;

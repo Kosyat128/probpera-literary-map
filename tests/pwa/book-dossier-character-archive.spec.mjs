@@ -43,6 +43,7 @@ test.beforeAll(async () => {
       window.__characterTransport=async options=>{
         window.__characterTransportCalls.push({bookKey:options.bookKey,locale:options.locale,mode:options.mode,
           revealSpoilers:options.revealSpoilers,reachedItemIds:[...options.reachedItemIds]});
+        if(window.__characterHoldNextPublication){window.__characterHoldNextPublication=false;await new Promise(resolve=>{window.__characterReleasePublication=resolve;});}
         if(!window.__characterPublished || options.bookKey!==dossier.bookKey || options.locale!==dossier.locale
           || options.mode!==dossier.readingMode)return null;
         return parsePublishedBookDossier({...dossier,validUntil:new Date(Date.now()+60_000).toISOString()});
@@ -72,7 +73,7 @@ test.beforeAll(async () => {
           published:published.current?{bookKey:published.current.bookKey,hasDocument:!!published.current.document,
             validUntil:published.current.document?.validUntil??null,detail:published.current.detail}:null,
           receipt:receipt.current?{bookKey:receipt.current.bookKey,anchor:receipt.current.anchor,matchesIssuedToken:receipt.current.token===issued.current?.token}:null}),
-          back:()=>back.current?.()??false,remount:()=>{setRequestedBook(book);setGeneration(value=>value+1);},
+          back:intent=>back.current?.(intent)??false,remount:()=>{setRequestedBook(book);setGeneration(value=>value+1);},
           panel:setPanel,revoke:()=>{allowed.current=false;setPanel(value=>value);setRequest(value=>value?{...value}:value);}};
         const observe=!window.__characterConfig.lateObservers||!!request;
         return <><nav className="qa-character-actions" aria-label="Synthetic caller">
@@ -104,7 +105,7 @@ test.beforeAll(async () => {
           ? { path: 'pagination', namespace: 'character-archive' } : undefined);
       builder.onLoad({ filter: /.*/, namespace: 'character-archive' }, args => ({ resolveDir: ROOT, loader: 'js', contents:
         args.path === 'auth' ? "export const useAuth=()=>({configured:false,user:null,loading:false,session:null,role:'reader',displayName:'Synthetic fixture'});"
-          : args.path === 'transport' ? 'export const fetchPublishedBookDossier=options=>window.__characterTransport(options);'
+          : args.path === 'transport' ? 'export const isPublishedBookDossierAvailable=()=>true;export const fetchPublishedBookDossier=options=>window.__characterTransport(options);'
             : 'export const paginateBookInspectionDocument=async source=>({status:"ready",document:source,sourceDocument:source,issues:[]});' }));
       builder.onLoad({ filter: /[\\/]BookShelfScene\.tsx$/ }, async args => {
         const source = await fs.readFile(args.path, 'utf8'), attempts = [];
@@ -156,7 +157,7 @@ async function open(testInfo, { published = true, lateObservers = false } = {}) 
     if (['fetch', 'xhr', 'websocket'].includes(route.request().resourceType())) remoteRequests.push(url);
     return route.abort();
   });
-  const evidence = { sourceFixture: true, sourceInputs, sourceGraph, actualArchiveReaderMapAndLibrary: true,
+  const evidence = { scenario: testInfo.title, sourceFixture: true, sourceInputs, sourceGraph, actualArchiveReaderMapAndLibrary: true,
     syntheticPublicationWorkflow: true, controlledAuthTransportAndPhysicalMeasurement: true,
     actualAppJourneyWiring: false, realCmsApproval: false, deviceAcceptance: false, releaseReady: false, pass: false };
   try {
@@ -290,5 +291,49 @@ test('archive fallback cannot satisfy a character request and later publication 
     await expect(modal(page)).toHaveCount(0); await expect.poll(async () => (await state(page)).receipt).toBeNull();
     Object.assign(f.evidence, { fallbackDenied: true, absentSourceRequestWritesNoProgress: true,
       restoredPublishedSourceDoesNotReplayToken: true, explicitFreshTokenRequired: true, currentCallerValidatorRevokes: true }); f.verify();
+  } finally { await f.close(); }
+});
+
+
+test('archive publication observation withdraws while reading-mode delivery is busy or unavailable', async ({}, testInfo) => {
+  const f = await open(testInfo), { page } = f;
+  try {
+    await expect.poll(async () => (await state(page)).published?.hasDocument).toBe(true);
+    const before = await reading(page);
+    await page.evaluate(() => { window.__characterHoldNextPublication=true; });
+    await baseReader(page).getByRole('button',{name:'Читаю',exact:true}).click();
+    await expect(baseReader(page)).toHaveAttribute('aria-busy','true');
+    await expect.poll(async () => (await state(page)).published?.hasDocument).toBe(false);
+    const busyReading=await reading(page);await issue(page); await expect(modal(page)).toHaveCount(0);
+    expect(await reading(page)).toEqual(busyReading);
+    expect((await state(page)).receipt).toBeNull();
+    await page.evaluate(() => { if(typeof window.__characterReleasePublication!=='function')throw Error('Pending delivery gate missing');window.__characterReleasePublication();window.__characterReleasePublication=null; });
+    await expect(baseReader(page)).toHaveAttribute('aria-busy','false');
+    await expect(baseReader(page).locator('.book-dossier-reader__notice')).toContainText('Этот режим пока недоступен');
+    await expect.poll(async () => (await state(page)).published?.hasDocument).toBe(false);
+    await expect(modal(page)).toHaveCount(0); expect((await state(page)).receipt).toBeNull();
+    await expect.poll(async () => (await readingItems(page)).find(item=>item.id===BOOK)?.dossierProgress?.anchor.blockId).toBe('identity-content');
+    const unavailableReading=await reading(page),beforeItems=JSON.parse(before.raw),afterItems=JSON.parse(unavailableReading.raw);
+    expect(afterItems.map(({dossierProgress,...item})=>item)).toEqual(beforeItems.map(({dossierProgress,...item})=>item));
+    expect(afterItems.find(item=>item.id===BOOK).dossierProgress.anchor.sectionId).toBe('identity');
+    await issue(page);await expect(modal(page)).toHaveCount(0);expect((await state(page)).receipt).toBeNull();
+    expect(await reading(page)).toEqual(unavailableReading);
+    f.evidence.explicitModeChoiceReading={before,after:unavailableReading,observedCatalogueFallbackAnchor:afterItems.find(item=>item.id===BOOK).dossierProgress.anchor};
+    Object.assign(f.evidence,{busyPublicationWithdrawn:true,unavailablePublicationWithdrawn:true,
+      pendingRequestCannotOpenCharacter:true,controlledPublicationPromiseGate:true,deniedCharacterRequestsWriteNoReadingProgress:true,explicitModeChoiceFallbackRemapObserved:true});f.verify();
+  } finally { await f.close(); }
+});
+
+test('archive explicit return intent dismisses character and completes existing book close', async ({}, testInfo) => {
+  const f = await open(testInfo), { page } = f;
+  try {
+    const before=await reading(page);await issue(page);await expectExactReceipt(page);
+    expect(await page.evaluate(() => window.__characterArchive.back('return-to-planet'))).toBe(true);
+    await expect(modal(page)).toHaveCount(0);await expect.poll(async () => (await state(page)).receipt).toBeNull();
+    await expect.poll(async () => (await state(page)).detail?.active).toBe(false);
+    await expect(page.locator('#book-archive-detail')).toHaveCount(0);
+    expect(await reading(page)).toEqual(before);
+    Object.assign(f.evidence,{explicitReturnDismissesCharacter:true,explicitReturnClosesBook:true,
+      controlledNativeBackIntent:true,readingProgressUnchanged:true});f.verify();
   } finally { await f.close(); }
 });

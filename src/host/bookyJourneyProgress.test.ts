@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import { getBookyJourneyCharacterChecksum, type BookyJourneyCharacterSpec } from "./bookyJourneyCharacter";
 import { contentTextHash } from "../planet/contentExportHash";
 import type { BookyJourneyPlan } from "./bookyJourney";
 import type { BookArchiveEntry, Country } from "../planet/types";
@@ -14,7 +15,7 @@ const policy = createBookyReaderPolicy({ age: 35, readingLevel: "fluent" }, "202
 // Semantic codec fixtures only. These deliberately contain no editorial review
 // receipts and must never be used to claim that a route was admitted.
 function plan(id = "test-journey", locale: "en" | "ru" = "en", version = 1): BookyJourneyPlan {
-  const nodes: Omit<BookyJourneyProgressNode, "activity" | "fact">[] = [
+  const nodes: Omit<BookyJourneyProgressNode, "activity" | "fact" | "character">[] = [
     { id: "country", kind: "country", screen: "globe", entity: { kind: "country", countryId: "test-country" } },
     { id: "writer", kind: "writer", screen: "globe", entity: { kind: "writer", countryId: "test-country", writerId: "test-writer" } },
     { id: "work", kind: "work", screen: "collection", entity: { kind: "work", countryId: "test-country", writerId: "test-writer", workId: "test-work" } },
@@ -344,5 +345,60 @@ describe("sourced-fact progress stores only exact semantic identity", () => {
     const invalid = Object.defineProperty({ ...saved.fact }, "semanticChecksum", { enumerable: true, get: getter });
     expect(parseBookyJourneyProgress({ ...value, records: [{ ...record, nodes: record.nodes.map(node => node === saved ? { ...node, fact: invalid } : node) }] })).toBeNull();
     expect(getter).not.toHaveBeenCalled();
+  });
+});
+
+function characterPlan(locale: "ru" | "en" = "en"): BookyJourneyPlan {
+  const route = plan("test-character-journey", locale), work = route.nodes[2].entity as BookyJourneyCharacterSpec["work"];
+  const spec: BookyJourneyCharacterSpec = { schemaVersion: 1, id: "test-character", version: 1, work, bindings: [
+    { locale: "ru", dossierVersion: "test-v1", sectionId: "people", blockId: "characters", itemId: "person-c",
+      readingMode: "BEFORE_READING", projectionChecksum: "a".repeat(64), dialogue: { id: "test-character-copy", version: 1, contentChecksum: "c".repeat(64) } },
+    { locale: "en", dossierVersion: "test-v1", sectionId: "people", blockId: "characters", itemId: "person-c",
+      readingMode: "BEFORE_READING", projectionChecksum: "b".repeat(64), dialogue: { id: "test-character-copy", version: 1, contentChecksum: "d".repeat(64) } },
+  ] };
+  return { ...route, nodes: [...route.nodes.slice(0, 3), { ...route.nodes[2], id: "character", kind: "character",
+    character: { spec, semanticChecksum: getBookyJourneyCharacterChecksum(spec)! } }, route.nodes[3]] };
+}
+
+describe("static character progress identity", () => {
+  it("round-trips only the bilingual semantic binding and unacknowledged cursor", () => {
+    const en = fixture(characterPlan(), ["country", "writer", "work"], "character");
+    const ru = fixture(characterPlan("ru"), ["country", "writer", "work"], "character");
+    expect(en.records[0].nodes[3].character).toEqual(ru.records[0].nodes[3].character);
+    expect(en.records[0].nodes[3].character).toEqual({ id: "test-character", version: 1,
+      semanticChecksum: characterPlan().nodes[3].character!.semanticChecksum });
+    expect(parseBookyJourneyProgress(serializeBookyJourneyProgress(en))).toEqual(en);
+    expect(en.records[0].acknowledgedNodeIds).toEqual(["country", "writer", "work"]);
+    const raw = serializeBookyJourneyProgress(en)!;
+    for (const forbidden of ["projectionChecksum", "cacheKey", "validUntil", "token", "receipt", "person-c", "test-character-copy"]) {
+      expect(raw).not.toContain(forbidden);
+    }
+  });
+
+  it("rejects transient fields, malformed stored identity and mismatched compiled work without mutation", () => {
+    const original = fixture(characterPlan()), before = JSON.stringify(original);
+    for (const change of [{ cacheKey: "lease" }, { id: "bad id" }, { version: 0 }, { semanticChecksum: "broken" }]) {
+      const value = JSON.parse(before); Object.assign(value.records[0].nodes[3].character, change);
+      expect(parseBookyJourneyProgress(value)).toBeNull();
+    }
+    for (const mutate of [
+      (node: any) => { node.character.spec.work.workId = "different-work"; },
+      (node: any) => { node.character.semanticChecksum = "e".repeat(64); },
+      (node: any) => { node.character.token = {}; },
+      (node: any) => { node.screen = "globe"; },
+    ]) {
+      const route = JSON.parse(JSON.stringify(characterPlan())); mutate(route.nodes[3]);
+      expect(createBookyJourneyProgressRecord(policy, route, ["country"], "writer")).toBeNull();
+    }
+    expect(JSON.stringify(original)).toBe(before);
+  });
+
+  it("changes semantic identity when either locale selects another item", () => {
+    const before = fixture(characterPlan()).records[0], route = JSON.parse(JSON.stringify(characterPlan()));
+    route.nodes[3].character.spec.bindings[0].itemId = "person-other";
+    route.nodes[3].character.semanticChecksum = getBookyJourneyCharacterChecksum(route.nodes[3].character.spec);
+    const after = fixture(route).records[0];
+    expect(after.nodes[3].character?.semanticChecksum).not.toBe(before.nodes[3].character?.semanticChecksum);
+    expect(after.acknowledgedNodeIds).toEqual(before.acknowledgedNodeIds);
   });
 });

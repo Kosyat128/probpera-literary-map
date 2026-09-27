@@ -12,6 +12,13 @@ export type BookDossierCharacterViewRequest = Readonly<{
 /** Observation of the committed open dialog only. Never editorial authority,
  * acknowledgement, reading progress or permission to navigate elsewhere. */
 export type BookDossierCharacterViewReceipt = BookDossierCharacterViewRequest;
+/** Caller-owned explicit intent inside the committed native modal. Observation
+ * alone never acknowledges a journey, and Close must revoke before any credit. */
+export type BookDossierCharacterViewAction = Readonly<{
+  receipt: BookDossierCharacterViewReceipt;
+  label: string;
+  onAcknowledge: (receipt: BookDossierCharacterViewReceipt) => boolean;
+}>;
 export type BookDossierCharacterViewTarget = Readonly<{
   receipt: BookDossierCharacterViewReceipt;
   node: BookDossierDiagramNode;
