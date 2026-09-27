@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T02:26:45.910Z",
+  "stage": "S15",
+  "checkpoint": "027a883bc517ac7039262ac73d128cc6cb7125b4",
+  "previous": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/result.json",
+    "sha256": "5c7dca56ae6d9a293eb7e52cb0792a8ce8f6cf35b4f4ed3cd272dc57bc2798e0"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/result.json",
+    "sha256": "5c7dca56ae6d9a293eb7e52cb0792a8ce8f6cf35b4f4ed3cd272dc57bc2798e0"
+  },
+  "runtimeSourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/source-manifests/a4ebc81c2f915225.json",
+    "sha256": "a4ebc81c2f9152258b838c9bbd46e5d51537a7ab170cf2354fbc769091131a68",
+    "fileCount": 1660
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/scope.json",
+    "sha256": "c375a9c97d3ca58f64a273f6b7fb24f089974391e33ea409ba00d3a7e928ef55"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "fa64343f423404f13f499eacff13e543477350d37171e44e8399db5fb53e39f9"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "7bc45b039d1b510270cce9e7b8cd6f1af85b551e99d8fa0d07437a74e002353d"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "404ac8069bb6872559f62dbefeafabb82a51e223466420e367be61fe1d3b93e3"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "f956e8663d28fc6685660040a729bc0ea24c1ad98a768e2a17d5bbcb0d697da8"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "4f09d8b6039bd47f1c722efd8c6446b26ae6e585efed4b235b0a1db9f3bc8d31"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "20abe0effcd201d7708dfd95d2b50436936afc330e1dc757edd073f068ad7c1b"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "8ba326885531598045c08b3c73a9a5daff4b934823754b9a8dc4e0d39c1a6130"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "6f1c82e09453bfa45d71deaad2e74056ffeb8817b77181425b4f597c90188266"
+    }
+  ],
+  "changedPaths": [
+    "src/host/bookyNavigationDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "e2d296a33bf5d1ce3a1099a262a737278dbaa79903610f665bd8998b991e1743"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "97c0b233a19bea2771c059941c9202cafcf8c8a4ae6942a1299f2682fd592048"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "826804ac81b00c4c395b83ec0115051cb52ed2b12ee722c7ef150d41be051ccb"
+    }
+  ],
+  "sourceInputCount": 1660,
+  "protectedInputCount": 1657,
+  "proposalEvidence": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-review/draft/proposals/d203-a1/source-bindings.json",
+      "sha256": "8302770afe77245508eafda0cd5171a2fb5fc5777735d7390497eb4ef373c51f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-review/draft/proposals/d203-a1/semantic-invariants.json",
+      "sha256": "f77fe6c58b280cc859b19822767c743b05803a82c1469cbddd18896eb65c73f1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-review/draft/proposals/d203-a1/runtime-import-proof.json",
+      "sha256": "8d8b4f65a6e8f3e29c76769a4676ddf870768b81651f7b24fb87063f24d85219"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-review/draft/proposals/d203-a1/apply-receipt.json",
+      "sha256": "2632b8ec84ac1ae2862a99d0cd0e1d4f99d25ca346ffb21638c54e5bb198d445"
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts"
+  ],
+  "expectedUnitTests": 60,
+  "scope": "Rebind the existing 22 navigation/contextual draft records to final runtime sources with new draft revisions and checksums, preserving exact copy, all non-provenance fields, 12 support drafts and deny-by-default review gates. Current globe UI remains unreviewed and outside the historical inventory.",
+  "runtimeUnchanged": true,
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

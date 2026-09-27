@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-dialogue-provenance-20260927:begin -->
+Latest source 75f0b1c8 repairs provenance for 22 existing RU/EN navigation/contextual dialogue drafts with identical copy and unchanged non-provenance fields. Navigation revisions advance 1→2 and contextual revisions 2→3; twelve support drafts remain exact. All 34 remain unapproved and unavailable. Current globe UI remains unreviewed and outside this historical inventory. Only S15.PLANETKA-003 receives bounded provenance evidence; all statuses and acceptance gates remain unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/result.json. D203. 60 focused units, TypeScript and read-only inventory audit passed. Runtime code is unchanged; D202 runtime 798c072e, 66-unit/two-browser-case/six-capture evidence and PWA 3d3e0760 / Android a69e7541 are retained at their original source with payload/APK byte authentication. No browser rerun or rebuild; D203 source-only changes are not included in those builds. Stage/device/release acceptance remains open.
+<!-- s15-booky-dialogue-provenance-20260927:end -->
+
 <!-- s15-booky-globe-guidance-20260927:begin -->
 Latest source 798c072e: localized adult help explains mobile globe gestures and offers an explicit focus handoff to existing controls. Known canonical globe display loss shows truthful support while preserving Search and Collection; restoration clears the loss notice. Evidence is limited to actual focused unit and browser assertions, including API-initiated WebGL loss/restoration. Drag/pinch execution, stale callback races and native lifecycle equivalence are not claimed. The 34 historical inventory records and support source remain unchanged; current globe UI is unreviewed and outside that inventory. Whole-file provenance for the edited Controls/routes sources needs the separate D203 repair. Harmless reserved-top movement keeps an unchanged planned path only while the full path fits current margins; the controlled unsafe-cutoff check remains separate from native equivalence. Specification 12 binds the gesture guidance; only S15.PLANETKA-005 and S15.UX-006 receive bounded known display-loss evidence, with all statuses and acceptance gates unchanged.
 

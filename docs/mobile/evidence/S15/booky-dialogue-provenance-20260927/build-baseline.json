@@ -1,0 +1,17 @@
+{
+  "checkpoint": "027a883bc517ac7039262ac73d128cc6cb7125b4",
+  "runtimeSourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+  "rebuilt": false,
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/pwa-a1/result.json",
+    "sha256": "f993bd19313f27f337b7928da588fdb06b863013df1bc9bac686690361e8601f",
+    "buildId": "3d3e0760e3a52039d5194f8ede12c3eb48be83732e44cb3354c6d41c02c453d7",
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-globe-guidance-20260927/android-a1/result.json",
+    "sha256": "93958459d898ce1e2c72e3c1952e69a328197db22c18fc2051807f86ffccb170",
+    "buildId": "a69e754130314dc26723a0feb7116806c8883e562000ec13a364bfd846a0d0c6",
+    "sourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2"
+  }
+}

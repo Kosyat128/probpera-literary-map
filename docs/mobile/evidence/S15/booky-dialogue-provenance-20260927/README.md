@@ -1,0 +1,15 @@
+# S15 historical dialogue provenance repair
+
+Source: 75f0b1c84665137b87513a42286008a5a0cd1c63. Runtime/build source: 798c072e61176cc191ceaacff0e18f1b6622dbd2.
+
+Rebound 22 historical RU/EN navigation/contextual draft records to the final D202 runtime sources: navigation revisions 1→2 and contextual revisions 2→3, with identical copy and unchanged non-provenance fields. Twelve support records remain exact; all 34 remain draft and unavailable. 60 focused units, TypeScript and the read-only source inventory audit passed. Runtime code is unchanged. D202 66-unit/two-case/six-capture evidence and PWA 3d3e0760 / Android a69e7541 remain at source 798c072e; retained payload/APK bytes are rehashed and the older unimported inventory hash is explicit. No rebuild or stage/release acceptance.
+
+- Only the historical navigation/contextual inventory, its focused test and the read-only audit changed. No runtime, interface copy, scene, preference, route order or tour-version change is included.
+- Fourteen navigation drafts advance from revision 1 to 2 and eight contextual drafts from 2 to 3; exact text and non-provenance fields are preserved. Twelve support drafts remain byte-identical. All 34 remain unapproved and unavailable to adult/child reviewed-dialogue resolution.
+- Source identity, copy equality and checksums establish provenance, not independent editorial, factual, rights or human approval. Current globe guidance and unavailable-state UI remains unreviewed and outside the historical inventory.
+- The source-only import proof covers tracked direct references and literal import.meta.glob targets; no new runtime graph/build is executed.
+- D202 66 unit cases, two browser cases and six captures retain source 798c072e61176cc191ceaacff0e18f1b6622dbd2 attribution. They are not rerun or newly reviewed here.
+- D202 PWA/Android runtime payloads and APK are rehashed and retained at their original source. Their broad source inventories contain the former unimported navigation inventory hash; that one captured-source difference is explicitly recorded. D203 changes are not included in those builds.
+- Only bounded S15.PLANETKA-003 provenance evidence is attached, with all statuses unchanged. No browser run, rebuild, narration, reviewed journey, child access, installed-device, full accessibility, stage or release acceptance is claimed.
+
+Next: D204: provide truthful Booky support for initial globe loading/error before the first scene sample and gate later reload help on current observed load status. Report committed status from the existing LiteraryWorldMap fallback and LiteraryGlobe atlas loader through an optional callback, separate from resource creation; preserve one renderer, existing retry ownership and Search/Collection. First bounded RU/EN checks should fail initial countries.geojson while the country catalog is ready, restore the response and use the genuine retry. No native equivalence or full loading acceptance is claimed. Preserve all 34 unapproved historical drafts; S03.acceptance remains first unresolved.

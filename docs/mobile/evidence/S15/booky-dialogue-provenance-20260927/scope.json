@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "sourceFrozen": true,
+  "stage": "S15",
+  "checkpoint": "027a883bc517ac7039262ac73d128cc6cb7125b4",
+  "runtimeSourceCommit": "798c072e61176cc191ceaacff0e18f1b6622dbd2",
+  "description": "Rebind the existing 22 navigation/contextual draft records to final runtime sources with new draft revisions and checksums, preserving exact copy, all non-provenance fields, 12 support drafts and deny-by-default review gates. Current globe UI remains unreviewed and outside the historical inventory.",
+  "changedPaths": [
+    "src/host/bookyNavigationDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs"
+  ],
+  "newSourcePaths": [],
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "e2d296a33bf5d1ce3a1099a262a737278dbaa79903610f665bd8998b991e1743"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "97c0b233a19bea2771c059941c9202cafcf8c8a4ae6942a1299f2682fd592048"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "826804ac81b00c4c395b83ec0115051cb52ed2b12ee722c7ef150d41be051ccb"
+    }
+  ],
+  "expectedSourceInputCount": 1660,
+  "expectedProtectedInputCount": 1657,
+  "unitFiles": [
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts"
+  ],
+  "expectedUnitTests": 60,
+  "validationModes": [
+    "unit",
+    "static",
+    "inventory"
+  ],
+  "requirementEvidenceTargets": [
+    "PLANETKA-003"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-003"
+  ],
+  "runtimeUnchanged": true,
+  "buildsRetained": true,
+  "browserRerun": false,
+  "proposalEvidence": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-review/draft/proposals/d203-a1/source-bindings.json",
+      "sha256": "8302770afe77245508eafda0cd5171a2fb5fc5777735d7390497eb4ef373c51f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-review/draft/proposals/d203-a1/semantic-invariants.json",
+      "sha256": "f77fe6c58b280cc859b19822767c743b05803a82c1469cbddd18896eb65c73f1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-review/draft/proposals/d203-a1/runtime-import-proof.json",
+      "sha256": "8d8b4f65a6e8f3e29c76769a4676ddf870768b81651f7b24fb87063f24d85219"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-dialogue-provenance-review/draft/proposals/d203-a1/apply-receipt.json",
+      "sha256": "2632b8ec84ac1ae2862a99d0cd0e1d4f99d25ca346ffb21638c54e5bb198d445"
+    }
+  ],
+  "stageAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

@@ -1,0 +1,15 @@
+{
+  "command": "node scripts/mobile/verify-state.mjs",
+  "startedAt": "2026-09-27T02:32:01.8893555+00:00",
+  "exitCode": 0,
+  "sourceCommit": "75f0b1c84665137b87513a42286008a5a0cd1c63",
+  "pass": true,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/verify-state.stdout.log",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/verify-state.stderr.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

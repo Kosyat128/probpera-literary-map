@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/source-manifests/2b17191e30621cfc.json",
+    "sha256": "2b17191e30621cfcb9373dbd0afc420db1d583818625ce12812f9cc50f35f530",
+    "fileCount": 1660
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/check.mjs",
+      "sha256": "2acf6b639ff59aefc248a32cb386cf69a3718f94a376340e186e8ee0f2a019ec"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/entry.json",
+      "sha256": "6761d7a224a307e8f86c7b73344f1cebf9fb13ea689ca0ebe310006cd5d26623"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/unit.config.mjs",
+      "sha256": "4e8237a7d98b77a1264800906511b8734777ed88dfecefc4c6384ad3c36d04e5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/configure.mjs",
+      "sha256": "18a570fa43bd2aa06aa0c18ac2f8a34ddf572d9a3dd56fa57030e1bf3a3760a8"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-provenance-20260927/scope.json",
+      "sha256": "c375a9c97d3ca58f64a273f6b7fb24f089974391e33ea409ba00d3a7e928ef55"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 21307
+  },
+  "runtimeUnchanged": true,
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}
