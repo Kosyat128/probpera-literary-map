@@ -99,7 +99,7 @@
     "scripts/export-published-content.mjs": "6bda8a3f0af5bfa75b01f958ffb7dbdd585ae564f136d19def5463517753f219",
     "scripts/export-published-content.fixture.test.mjs": "55590921075aa9c8b31ddebdf654b1fc3548a195150ba1d3792837daaf12718a",
     "src/data/cms/editorialOverrides.ts": "dbe4d9c2cfb5a8aa80574c95bed2f7d1e78bcf1a2fec8262f315a439dbec577a",
-    "src/data/cms/editorialOverrides.test.ts": "726a1a92eb3ab74f6666cd158e7e97a9f51bfa376c8590970a60100d89e2dd53"
+    "src/data/cms/editorialOverrides.test.ts": "a0edd210fc70ee873e2ce24471579178aabfb387032133d570dee5432741befd"
   },
   "additions": [
     {
@@ -508,7 +508,7 @@
       "id": "cms-external-id-preservation-20260927:src/data/cms/editorialOverrides.test.ts:1",
       "path": "src/data/cms/editorialOverrides.test.ts",
       "before": "const bookSourceUrl = \"https://example.org/book\";\n\ndescribe(\"CMS editorial overrides\", () => {\n  it(\"applies country fields and EN translation without allowing an override to replace writers\", () => {\n    const unsafeDatabaseValue = {\n      \"test-country\": {\n",
-      "after": "const bookSourceUrl = \"https://example.org/book\";\n\ndescribe(\"CMS editorial overrides\", () => {\n  it(\"keeps absent legacy IDs from erasing canonical fallback identifiers\", () => {\n    const legacy: CmsLiteraryWork = { legacyId: \"test-country:writer:work\", countryId: \"test-country\",\n      writerId: \"writer\", localId: \"work\", title: \"Work\", editorialStatus: \"verified\" };\n    const [mapped] = cmsLiteraryWorkProfilesForWriter(\"test-country\", \"writer\", { [legacy.legacyId]: legacy });\n    const canonicalIds = [{ scheme: \"openlibrary\", value: \"OL52151W\", sourceUrl: \"https://openlibrary.org/works/OL52151W\" }];\n    expect(Object.hasOwn(mapped, \"externalIds\")).toBe(false);\n    expect({ externalIds: canonicalIds, ...mapped }.externalIds).toEqual(canonicalIds);\n  });\n  it(\"applies country fields and EN translation without allowing an override to replace writers\", () => {\n    const unsafeDatabaseValue = {\n      \"test-country\": {\n"
+      "after": "const bookSourceUrl = \"https://example.org/book\";\n\ndescribe(\"CMS editorial overrides\", () => {\n  it(\"keeps absent legacy IDs from erasing canonical fallback identifiers\", () => {\n    const legacy: CmsLiteraryWork = { legacyId: \"test-country:writer:work\", countryId: \"test-country\",\n      writerId: \"writer\", localId: \"work\", title: \"Work\", editorialStatus: \"verified\" };\n    const [mapped] = cmsLiteraryWorkProfilesForWriter(\"test-country\", \"writer\", { [legacy.legacyId]: legacy });\n    const canonicalIds = [{ scheme: \"openlibrary\", value: \"OL52151W\", sourceUrl: \"https://openlibrary.org/works/OL52151W\" }];\n    expect(Object.prototype.hasOwnProperty.call(mapped, \"externalIds\")).toBe(false);\n    expect({ externalIds: canonicalIds, ...mapped }.externalIds).toEqual(canonicalIds);\n  });\n  it(\"applies country fields and EN translation without allowing an override to replace writers\", () => {\n    const unsafeDatabaseValue = {\n      \"test-country\": {\n"
     },
     {
       "id": "cms-external-id-preservation-20260927:src/data/cms/editorialOverrides.test.ts:2",
