@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T03:43:13.6170406Z",
+  "classification": "cosmetic-inherited-artifact-kind-label",
+  "observedKind": "android-booky-globe-guidance-dev-apk",
+  "correctSemanticKind": "android-booky-short-viewport-dev-apk",
+  "sourceCommit": "e23e58109dbe81f181f6440725ad71157b387e69",
+  "buildId": "4e3ec0494347206556a21bd7dc11a96a37e365c985c33560f388c22ad2016609",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/android-4e3ec049/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "718de8260bf798420447a21b5bb93b81f6bbf0d2740acb0d84c4626f4647e85e"
+  },
+  "evidence": [
+    {
+      "sha256": "54f7b50aeb11a037d5cbc2afd81f6fbd5cb62dada90de90f196a936dd620fadc",
+      "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/preserve-android-a1.mjs"
+    },
+    {
+      "sha256": "d28ef34a274b67e160cba13108a132c6e512b0b9c7472698eee55712a62bd841",
+      "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/android-a1/result.json"
+    },
+    {
+      "sha256": "55297311a69472f51f25070c6626f0cd087008e7a9cc58d83dc9e068f620ee69",
+      "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/android-a1/build-run.json"
+    }
+  ],
+  "assessment": "The inherited kind literal is a cosmetic D202 template label. Source commit, D205 artifact paths, build identity, APK hash and audit references bind the actual D205 output. Existing checkpoint guards use those authoritative bindings, not this label.",
+  "disposition": "Preserve the original successful result and build execution unchanged. This external note corrects interpretation only; no build rerun or metadata rewrite is needed.",
+  "repoFilesChanged": [],
+  "executionRewritten": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "description": "Globe-only compact Booky presentation addresses clipped disabled Walk status under explicitly controlled observed-space stress. Existing reserved viewport height selects compact mode independently of CSS orientation; walking authority and collection dock ownership are preserved. Final browser scope is RU390 compact/restored plus the 144px help branch, EN320 compact/restored, and a genuine failed preference read with one outer-pet scroll region exposing trusted Retry. Ordinary resize cases make zero Booky writes; persistence Retry confirms exactly one unchanged SEED-equal write for the earlier explicit Show intent through get,set,get. The original reproduction lost no enabled action. No real visualViewport contraction, native keyboard, enlarged-text, collection-dock regression or tablet-194 acceptance is claimed.",
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "changedPaths": [
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx"
+  ],
+  "newSourcePaths": [
+    "tests/pwa/booky-short-viewport.spec.mjs"
+  ],
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "03f4629e5cd825c4ca55e70889cd8d33630e5190ac3987d9dc6b3f3ea3deba6a"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "4c2de3c256f178f7ed308d3a30a78be6a2e547af7f6b1b58a4c717f3ffcffe0d"
+    },
+    {
+      "path": "tests/pwa/booky-short-viewport.spec.mjs",
+      "sha256": "99abef256cecf0471f390869456b638f68c187fa797f7603acafc0c7135bb8b2"
+    }
+  ],
+  "expectedSourceInputCount": 1662,
+  "expectedProtectedInputCount": 1659,
+  "unitFiles": [],
+  "expectedUnitTests": 0,
+  "unitValidation": "not-run-no-meaningful-new-pure-unit-contract",
+  "browserFiles": [
+    "tests/pwa/booky-short-viewport.spec.mjs"
+  ],
+  "expectedBrowserTests": 3,
+  "expectedImages": 9,
+  "browserTestTitles": [
+    "Booky short observed space controls ru",
+    "Booky short observed space controls en",
+    "Booky short observed space persistence Retry ru"
+  ],
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-short-viewport-ru",
+      "flags": [
+        "diagnosticCompleted",
+        "productExposurePass",
+        "descriptorRestored",
+        "canonicalStateRetained",
+        "controlsExposed",
+        "noResizePreferenceWrites",
+        "shortHelp144Exercised"
+      ]
+    },
+    {
+      "scenario": "booky-short-viewport-en",
+      "flags": [
+        "diagnosticCompleted",
+        "productExposurePass",
+        "descriptorRestored",
+        "canonicalStateRetained",
+        "controlsExposed",
+        "noResizePreferenceWrites"
+      ]
+    },
+    {
+      "scenario": "booky-short-viewport-persistence-ru",
+      "flags": [
+        "diagnosticCompleted",
+        "productExposurePass",
+        "descriptorRestored",
+        "canonicalStateRetained",
+        "controlledPreferenceReadFailure",
+        "trustedOuterPetScroll",
+        "retry44Exposed",
+        "singleNoticeScrollOwner"
+      ]
+    }
+  ],
+  "requiredCaptureValues": [
+    {
+      "scenario": "booky-short-viewport-ru",
+      "values": {
+        "controlledObservedSpaceStress": true,
+        "nativeKeyboardEquivalent": false,
+        "realVisualViewportContraction": false,
+        "applicationBehaviorOverridden": false,
+        "exposureFindingCount": 0
+      }
+    },
+    {
+      "scenario": "booky-short-viewport-en",
+      "values": {
+        "controlledObservedSpaceStress": true,
+        "nativeKeyboardEquivalent": false,
+        "realVisualViewportContraction": false,
+        "applicationBehaviorOverridden": false,
+        "exposureFindingCount": 0
+      }
+    },
+    {
+      "scenario": "booky-short-viewport-persistence-ru",
+      "values": {
+        "controlledObservedSpaceStress": true,
+        "nativeKeyboardEquivalent": false,
+        "realVisualViewportContraction": false,
+        "applicationBehaviorOverridden": false,
+        "exposureFindingCount": 0,
+        "explicitShowWriteCount": 1
+      }
+    }
+  ],
+  "requiredObservationChecks": [
+    {
+      "scenario": "booky-short-viewport-ru",
+      "observation": "shortViewport",
+      "checks": [
+        "controlled observed-space stress leaves layout media scale and Search focus unchanged",
+        "exact observation descriptor restoration retains local position preferences and canonical scene",
+        "Booky controls and any disabled status remain fully exposed and hit reachable under short observed space",
+        "trusted short-space help open and close expose 44px actions in the 144px mobile variant"
+      ]
+    },
+    {
+      "scenario": "booky-short-viewport-en",
+      "observation": "shortViewport",
+      "checks": [
+        "controlled observed-space stress leaves layout media scale and Search focus unchanged",
+        "exact observation descriptor restoration retains local position preferences and canonical scene",
+        "Booky controls and any disabled status remain fully exposed and hit reachable under short observed space"
+      ]
+    },
+    {
+      "scenario": "booky-short-viewport-persistence-ru",
+      "observation": "shortViewport",
+      "checks": [
+        "real failed preference read remains pending until trusted Retry",
+        "one outer pet scroll owner exposes the full 44px Retry through genuine touch",
+        "Retry confirms exactly the earlier explicit Show intent while preserving stored progress and canonical scene",
+        "exact visualViewport descriptor and native identity restore after persistence recovery"
+      ]
+    }
+  ],
+  "requiredVisualFilenames": [
+    "booky-short-viewport-ru-baseline.png",
+    "booky-short-viewport-ru-contracted.png",
+    "booky-short-viewport-ru-restored.png",
+    "booky-short-viewport-ru-help.png",
+    "booky-short-viewport-en-baseline.png",
+    "booky-short-viewport-en-contracted.png",
+    "booky-short-viewport-en-restored.png",
+    "booky-short-viewport-persistence-ru-retry.png",
+    "booky-short-viewport-persistence-ru-restored.png"
+  ],
+  "visualReviewScope": "Direct review of all nine final configured RU390, EN320 and genuine preference-failure Retry captures under disclosed observed-space injection, including restoration and the RU 144px help branch. No native keyboard, font-scale or tablet-194 acceptance.",
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "requireDiagnosticHistory": true,
+  "requirementEvidenceTargets": [
+    "PLANETKA-002"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-002"
+  ],
+  "previousCheckpoint": {
+    "checkpoint": "3e70689bdda711cfeaefbea44cf64d2207ad93ad",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/result.json",
+      "sha256": "30aa53dec27d7346d256086d35f68cd989c315efd8346d6644364974e0c93807"
+    },
+    "sourceCommit": "4b360332186ec67e62e53d664ef0a5b537f341a7",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/source-manifests/777e10487410c62f.json",
+      "sha256": "777e10487410c62f099864fdb1ca5a6bbc0590b024e42a6dc1596aa5e2a45fdb",
+      "fileCount": 1661
+    },
+    "status": "D204_VERIFIED_CHECKPOINT"
+  },
+  "previousRuntime": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/result.json",
+      "sha256": "30aa53dec27d7346d256086d35f68cd989c315efd8346d6644364974e0c93807"
+    },
+    "sourceCommit": "4b360332186ec67e62e53d664ef0a5b537f341a7",
+    "pwa": {
+      "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/pwa-a1/result.json",
+      "sha256": "016dba1e29d9645c5cec0c3c5c1ce8525a0f2592902a5f24881f75200ed8187d"
+    },
+    "android": {
+      "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/android-a1/result.json",
+      "sha256": "43a52ae661e0893bba6f4cedd2eaf2774651587034d6dd25ceae4a3a9713cf82"
+    },
+    "status": "D204_RUNTIME_AND_BUILD_BASELINE"
+  },
+  "runtimeAmendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/draft/short-space.patch",
+      "sha256": "be5271522924d22197dbe50d4d5120d390d462cda28eda2a0887be021c90d250"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/draft/source-bindings.json",
+      "sha256": "c42361afcc552713801b81982b9f8bc2757bb71eea8aca7fe4d61f00a564ec68"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/draft/apply-receipt.json",
+      "sha256": "673f2ac8739ea929e0477f687cab0c9d801586658222efab23588df0f83245e3"
+    }
+  ],
+  "historicalDialogueInputs": [
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "e2d296a33bf5d1ce3a1099a262a737278dbaa79903610f665bd8998b991e1743"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "97c0b233a19bea2771c059941c9202cafcf8c8a4ae6942a1299f2682fd592048"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "826804ac81b00c4c395b83ec0115051cb52ed2b12ee722c7ef150d41be051ccb"
+    }
+  ],
+  "directSpecificationEvidence": [
+    {
+      "path": "docs/mobile/requirements/v12/12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+      "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+      "section": "2",
+      "scope": "Bounded no-clipping and available functional-control presentation only; not full visual-contract or 320-1024 coverage."
+    }
+  ],
+  "newUiCopyStatus": {
+    "localeCount": 0,
+    "status": "unchanged",
+    "historicalDialogueInventoryMember": false,
+    "humanReviewed": false,
+    "childApproved": false,
+    "narrationApproved": false,
+    "releaseReady": false
+  },
+  "historicalProvenanceScope": "All 34 existing draft records and their copy remain unchanged and unapproved. Controls whole-file bytes changed; the D203 Controls source binding is stale and requires a later explicit batch provenance rebind. No current inventory-audit pass is claimed.",
+  "nativeKeyboardEquivalent": false,
+  "nativeLifecycleEquivalent": false,
+  "realVisualViewportContractionObserved": false,
+  "largeTextCoverage": false,
+  "tablet194BranchCovered": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "requiredPreferencePolicies": [
+    {
+      "scenario": "booky-short-viewport-ru",
+      "observation": "shortViewport",
+      "policy": {
+        "bookyWrites": [],
+        "unexpectedPreferenceWrites": [],
+        "customizationWrites": []
+      }
+    },
+    {
+      "scenario": "booky-short-viewport-en",
+      "observation": "shortViewport",
+      "policy": {
+        "bookyWrites": [],
+        "unexpectedPreferenceWrites": [],
+        "customizationWrites": []
+      }
+    },
+    {
+      "scenario": "booky-short-viewport-persistence-ru",
+      "observation": "shortViewport",
+      "policy": {
+        "bookyWriteCount": 1,
+        "bookyWriteValue": {
+          "schemaVersion": 2,
+          "audience": "adult",
+          "visible": true,
+          "resume": null,
+          "progress": []
+        },
+        "retryOperations": [
+          "get",
+          "set",
+          "get"
+        ],
+        "preRetryBookyWrites": [],
+        "unexpectedPreferenceWrites": [],
+        "customizationWrites": [],
+        "explanation": "Explicit Show after the initial rejected read queues an intent. Retry reads authority, writes this exact unchanged SEED once, and verifies via native port readback; no resize-created write."
+      }
+    }
+  ],
+  "browserScopeNotes": [
+    "controlled height-only observed-space stress plus labelled hit occluder; not actual native keyboard/viewport contraction",
+    "only the 144px mobile open-help path is exercised; 194px/tablet remains source-reviewed",
+    "no enlarged-font, collection-dock, native-device, stage or release acceptance",
+    "ordinary cases preserve all preferences without writes; persistence Retry confirms only explicit Show setup intent",
+    "all nine final images require direct visual review; diagnostic images are separate"
+  ],
+  "browserContract": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/canonical-contract.json",
+    "sha256": "b136f9a90ef4c5d891a55b6270f2402dfcd47b76031a4b171ae0b9390e7a1334"
+  },
+  "canonicalPromotion": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/canonical-promotion.json",
+    "sha256": "2b7263b2ab80655817fdac93eff3374d852f65436a373944ec7f90d99d82dea5"
+  }
+}

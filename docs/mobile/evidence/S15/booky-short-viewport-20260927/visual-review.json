@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-27T03:42:25.581Z",
+  "pass": true,
+  "sourceCommit": "e23e58109dbe81f181f6440725ad71157b387e69",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-short-viewport-20260927/source-manifests/fbe8b821d5922385.json",
+    "sha256": "fbe8b821d5922385a3a4816c7aa587e556e90c4a3f10e57f8c84e712814d4024",
+    "fileCount": 1662
+  },
+  "inspectedCount": 9,
+  "totalCapturedCount": 9,
+  "scope": "Direct review of all nine final configured RU390, EN320 and genuine preference-failure Retry captures under disclosed observed-space injection, including restoration and the RU 144px help branch. No native keyboard, font-scale or tablet-194 acceptance.",
+  "limitations": [
+    "This review directly inspects 9 of 9 final captures.",
+    "Static images cannot establish controlled observation injection, trusted touch/scroll/retry, stable reflow or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/final-visual-receipt.json",
+    "sha256": "f6249bc8be36abc55decaa0a660254a688c3db337e5a0a1fbad1055064d68c35"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-short-observed-space-controls-ru/booky-short-viewport-ru-baseline.png",
+      "sha256": "808ba6325c6784b2d002f224a330bbaff40f1e323e36f1c5c220ea26240e9be9",
+      "bytes": 128198,
+      "width": 390,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "RU390 baseline shows the existing Booky model, Move and Hide buttons, and the complete enabled Прогуляться label beside the open Search results.",
+        "This is the full 390×844 layout before controlled observed-height stress; the image is not native-keyboard evidence."
+      ],
+      "framing": "Actual App at the recorded portrait width by 844 with trusted Search input focus, closed Booky help and measured reachable controls. No native keyboard is emulated."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-short-observed-space-controls-ru/booky-short-viewport-ru-contracted.png",
+      "sha256": "0780cf1b9a3a6bb2826fdc204c6076f622ab0abda0d015ee1391e82916340f0f",
+      "bytes": 74604,
+      "width": 390,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "The compact horizontal Booky arrangement and complete disabled Мало места status are visible above the explicitly labelled 240px test occluder; Move and Hide symbols remain clear.",
+        "The screenshot remains 390×844. The labelled lower area is controlled occlusion, not an actual visualViewport contraction or native keyboard."
+      ],
+      "framing": "Controlled observed-space stress: only visualViewport.height is shadowed to 240 and a labelled external occluder blocks hit testing below 240. Layout viewport and media state remain the recorded portrait width by 844. This is not a native keyboard or real viewport contraction."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-short-observed-space-controls-ru/booky-short-viewport-ru-restored.png",
+      "sha256": "a867e156baf7ec75270fa9c9cbdea6d5deb9cc7d14f8b0f955d448c3aa04de21",
+      "bytes": 128273,
+      "width": 390,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "The full-height RU layout and original vertical companion arrangement return, with Move, Hide and the complete Прогуляться label visible.",
+        "This image visually supports restored presentation; unchanged saved state and lack of replay depend on the separate formal assertions."
+      ],
+      "framing": "Restored native visualViewport observation and removed test occluder; actual App Search focus, Booky position and canonical globe are retained without replay or preference writes."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-short-observed-space-controls-ru/booky-short-viewport-ru-help.png",
+      "sha256": "1494f6be8bbb2870e1c53e8532d85d4eeb807eae5763dd8dfe6e5c03993577a5",
+      "bytes": 94121,
+      "width": 390,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "Under the controlled 240px observed-height stress, the RU help title and Stop/Close controls are visible above the occluder in the tested 144px mobile variant.",
+        "The help body is only partially shown below the header and the model is partly behind the help card. This capture does not establish simultaneous visibility of the full help text or the 194px tablet variant."
+      ],
+      "framing": "Actual trusted-open Booky help uses the 144px mobile pet variant under controlled observed-space stress. The exposed 44px Close target and trusted open/close actions are measured. No 194px tablet or enlarged-font claim."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-short-observed-space-controls-en/booky-short-viewport-en-baseline.png",
+      "sha256": "4ff82ee51be1beff9063ce34ccea6b931955f1f1564c588527606dad6d295b30",
+      "bytes": 124190,
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "EN320 baseline shows Booky with clear Move/Hide symbols and the complete two-line Take a walk label over the Search results.",
+        "The view is the full 320×844 layout; no enlarged-font or native keyboard behavior is claimed."
+      ],
+      "framing": "Actual App at the recorded portrait width by 844 with trusted Search input focus, closed Booky help and measured reachable controls. No native keyboard is emulated."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-short-observed-space-controls-en/booky-short-viewport-en-contracted.png",
+      "sha256": "bd914a3c9648c070fb78d6a7518f897e758aa42dfa4e7b62059a09db0be8ccb6",
+      "bytes": 68232,
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "The compact row keeps the model, Move, Hide and complete disabled No room status visible above the labelled 240px test boundary.",
+        "The viewport screenshot remains 320×844, with the controlled lower occluder explicitly identified as test instrumentation."
+      ],
+      "framing": "Controlled observed-space stress: only visualViewport.height is shadowed to 240 and a labelled external occluder blocks hit testing below 240. Layout viewport and media state remain the recorded portrait width by 844. This is not a native keyboard or real viewport contraction."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-short-observed-space-controls-en/booky-short-viewport-en-restored.png",
+      "sha256": "9f339f9134d1d42cdd0679cdf9e7bb2ea8e1337cb68fc0ed35a85330f1637d4f",
+      "bytes": 124288,
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "The EN companion returns to its baseline vertical arrangement; Move, Hide and the complete Take a walk label are visible.",
+        "Search results remain behind the companion; this is scoped Booky presentation evidence, not general simultaneous Search-results accessibility."
+      ],
+      "framing": "Restored native visualViewport observation and removed test occluder; actual App Search focus, Booky position and canonical globe are retained without replay or preference writes."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-7a373--space-persistence-Retry-ru/booky-short-viewport-persistence-ru-retry.png",
+      "sha256": "041330ba8b16b6be93067281f5e624747614f001affcb5a738095575eb601390",
+      "bytes": 61074,
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "The complete two-line RU preference-recovery explanation and Повторить button are visible above the labelled controlled occluder after outer-pet scrolling.",
+        "The scrolled upper companion tools and part of the model are clipped at the top of the pet scroll region and are not simultaneously framed with Retry. Trusted scrolling, 44px geometry and Retry behavior are supported by the separate formal assertions."
+      ],
+      "framing": "Actual failed native preference-port read, explicitly shown Booky, and one outer pet scroll owner under controlled 240px observed height. Genuine touch scrolling has fully exposed the 44px Retry button; no record replacement or synthetic app status."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-evidence/browser-a1/booky-short-viewport-Booky-7a373--space-persistence-Retry-ru/booky-short-viewport-persistence-ru-restored.png",
+      "sha256": "c2333080f4113654557181c993410af459b572bc3c1b9699970178f4513f4427",
+      "bytes": 310975,
+      "width": 320,
+      "height": 844,
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "/root/calm_motion_evidence",
+      "findings": [
+        "After recovery and restoration, the notice and test occluder are absent; the canonical globe and complete Booky model with Move, Hide and Прогуляться controls are visible.",
+        "The image confirms the final visible presentation; the single earlier-Show write and exact Retry get/set/get sequence are authenticated from capture data, not inferred from pixels."
+      ],
+      "framing": "Successful real preference Retry consumed the pending explicit Show intent with exactly one unchanged-value Booky write. The native height descriptor is restored, error notice removed, and globe/selection/progress retained. Retry deliberately focuses the stable Booky toggle."
+    }
+  ],
+  "releaseReady": false
+}

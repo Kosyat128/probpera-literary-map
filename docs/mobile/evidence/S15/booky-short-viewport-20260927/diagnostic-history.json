@@ -1,0 +1,700 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-27T03:29:35.708Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/result.json",
+    "sha256": "30aa53dec27d7346d256086d35f68cd989c315efd8346d6644364974e0c93807"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/record-diagnostics.mjs",
+    "sha256": "ac0e1006acfeeac02abd203c59746e3ce5af437e628dcc3f239296289852dc20"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/diagnostic-specification.json",
+    "sha256": "87df79b0799bbf38f989372d5986e7ab46b894fac34e5ef3d9104f20527fb8d6"
+  },
+  "amendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/draft/short-space.patch",
+      "sha256": "be5271522924d22197dbe50d4d5120d390d462cda28eda2a0887be021c90d250"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/draft/source-bindings.json",
+      "sha256": "c42361afcc552713801b81982b9f8bc2757bb71eea8aca7fe4d61f00a564ec68"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/draft/apply-receipt.json",
+      "sha256": "673f2ac8739ea929e0477f687cab0c9d801586658222efab23588df0f83245e3"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "a1",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/execution.json",
+        "sha256": "cfecf4b42ee2d931d40754717b68fe435602496c5ca88fae68c1b9668f4ea8f7"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/playwright.json",
+        "sha256": "fa7c2b5a8f34ed5906b413fce2621d6a12d078f34538c37b9b2ddd830a81a3cf"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T03:02:31.821Z",
+        "finishedAt": "2026-09-27T03:02:42.673Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/stdout.log",
+          "sha256": "6f204bc44081545edd9f2ea72809e27349e707dfa36eb1f9aa42538369a2fe7e"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/stderr.log",
+          "sha256": "2d84494f99a1c87345034de7bd0ac75e5c125ee390d8ae2501a90934824ea0b0"
+        },
+        "streamSeparation": "recorded",
+        "reportDurationMs": 10247.246
+      },
+      "sourceCommit": "3e70689bdda711cfeaefbea44cf64d2207ad93ad",
+      "sourceManifestSha256": "b40660d34eb03ff01cadb06552c2465e60e87582032ee5155704f7d9aef8d029",
+      "externalFixtureSha256": "1ae3fa2e3bc037f2e46ccf8dd3fd1004cee4f3936a656114baa76f1a7c3c4565",
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "driversUnchanged": true,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/authorized-source.json",
+          "sha256": "d5f85ed19577c55c5adeb6df25075d2bb03be8e04a1d1776298d2cb4fa1b68f8"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/playwright.config.mjs",
+          "sha256": "a6242dea61086867a2d4977659a4fd1dce7559484a382bc85ccae587348ba209"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/run.mjs",
+          "sha256": "43dc4fe48b59e84809c1687fb47b54ab14309d84fc9651991e67898ba69feecd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/bind.mjs",
+          "sha256": "7af6028c93f13117a608c0ad0ce2d5e0898a33d19655b19a8297edc85d15fd89"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/canonical-fixture.mjs",
+          "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/short-viewport.spec.mjs",
+          "sha256": "1ae3fa2e3bc037f2e46ccf8dd3fd1004cee4f3936a656114baa76f1a7c3c4565"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/prefix-provenance.json",
+          "sha256": "48751abde810fb6226e088683e6a1031ee9942073cc4e5c06076939463beefed"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/App.tsx",
+          "sha256": "4e7f5c3c7cada859dcf6b9bfb371d0e45937273bac1c7d2133a6b4ad05546d10",
+          "originalPath": "src/App.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "d6381c10be73be6b8dcecc1b81819f5d4fd448ad45045be5b93c86bde0e1a8c1",
+          "originalPath": "src/components/LiteraryGlobe.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/components/LiteraryWorldMap.tsx",
+          "sha256": "3edd5de9c09b54edb13f20da11035d638fe77cd1984bc8d42a72c2c0abda2814",
+          "originalPath": "src/components/LiteraryWorldMap.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/components/globeAtlas.ts",
+          "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6",
+          "originalPath": "src/components/globeAtlas.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/data/geo/countries.geojson",
+          "sha256": "402706b730069fb691d1ec6098e13d7d59670a1823d1ffb62546ff045df20279",
+          "originalPath": "src/data/geo/countries.geojson"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9",
+          "originalPath": "src/host/HostPlatformServices.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287",
+          "originalPath": "src/host/NativePlanetPanel.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9",
+          "originalPath": "src/host/PlanetMascotAvatar.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "b15908803b1dd47ff9ac2848a4d62afc5d526c90b2b86adff296a5b28fc87360",
+          "originalPath": "src/host/PlanetMascotControls.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "44628a5d44731d4fb8f826490713dea75a2341ddfc58e419fe6e64471794a79b",
+          "originalPath": "src/host/PlanetMascotControls.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f",
+          "originalPath": "src/host/bookyAnimation.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "39b650ae7299479ad7adb4d8ea23d18d751a92f13fbe1b8070354c11cae0edd5",
+          "originalPath": "src/host/bookyGlobeSupport.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89",
+          "originalPath": "src/host/bookyModel.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f",
+          "originalPath": "src/host/bookyMotionPreference.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038",
+          "originalPath": "src/host/bookyPlacement.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5",
+          "originalPath": "src/host/bookyPlacement.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad",
+          "originalPath": "src/host/bookySurprise.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864",
+          "originalPath": "src/host/bookySurprise.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "f5205b36bf9625f30ba01324b223cff7ee1cbcc277f042a6db92e420afc59e02",
+          "originalPath": "src/host/bookyWalk.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1",
+          "originalPath": "src/host/host.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "bb1c07e44c57dea310b7eadee1e92a3702ae166142f68631691959c45716cf2b",
+          "originalPath": "src/host/planetMascot.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f",
+          "originalPath": "src/host/useBookyRenderer.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "9b224ed74095a6ea70b8e9ec880dbaee1548b36676d9c060bfd0da6285af9506",
+          "originalPath": "src/host/useBookyWalk.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604",
+          "originalPath": "src/index.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86",
+          "originalPath": "src/platform/adapters/web/WebPlatformAdapter.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a1/runtime-inputs/tests/pwa/booky-globe-guidance.spec.mjs",
+          "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc",
+          "originalPath": "tests/pwa/booky-globe-guidance.spec.mjs"
+        }
+      ],
+      "interpretation": "Original runtime reproduced clipping only of the disabled Walk / Malo mesta status under injected 240px observation plus a labelled occluder. Move and Hide stayed enabled and exposed. Three captures and exact restoration were recorded before the final failing exposure assertion. This is not native keyboard or real visualViewport contraction evidence."
+    },
+    {
+      "id": "a2",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/execution.json",
+        "sha256": "342b24d22a07026ead27a4c49e2a90ef6c3b1ab1dbb871d32e7eb498f3942375"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/playwright.json",
+        "sha256": "2bc6b6f9835adb42df23cb1cfed4452d8c6b5ea8e69d4b352565ac10c3586e4f"
+      },
+      "tests": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T03:21:06.652Z",
+        "finishedAt": "2026-09-27T03:21:32.772Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/stdout.log",
+          "sha256": "a40382e0ef85f5cd5df1c9b594f30a01d8efb4f017d3bf587f09f96292fe7256"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/stderr.log",
+          "sha256": "6672ce9d6408db645a2f58648e6e435603e908aa444a51d9a74b91e60858aa73"
+        },
+        "streamSeparation": "recorded",
+        "reportDurationMs": 25512.162
+      },
+      "sourceCommit": "3e70689bdda711cfeaefbea44cf64d2207ad93ad",
+      "sourceManifestSha256": "6d6507b8f82cfca2f02115933f8fac722685782ce278502488540bb56aff338c",
+      "externalFixtureSha256": "c83065a90b81bea5118837a67d238e08672abf0e29ad6d62a9bde982e747d9ac",
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "driversUnchanged": true,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/authorized-source.json",
+          "sha256": "acd79b67b93de13d78620aa5ff22152ec04546ae02ec15326252132e670c4414"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/playwright.config.mjs",
+          "sha256": "a6242dea61086867a2d4977659a4fd1dce7559484a382bc85ccae587348ba209"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/run.mjs",
+          "sha256": "1fe7efc6d48ac43a5b3e5a85bf09db14df4469a7e4a4c8eee193e02cb4032794"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/bind.mjs",
+          "sha256": "c4a372d484537664a4e4f9a1198933a6efffb41d4c9e256c8d7ac015771387d2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/canonical-fixture.mjs",
+          "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/short-viewport.spec.mjs",
+          "sha256": "c83065a90b81bea5118837a67d238e08672abf0e29ad6d62a9bde982e747d9ac"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/prefix-provenance.json",
+          "sha256": "015c772c0c77499a127a119843e427b892f2f545e3cbc756848cfd6ae938afdd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/App.tsx",
+          "sha256": "4e7f5c3c7cada859dcf6b9bfb371d0e45937273bac1c7d2133a6b4ad05546d10",
+          "originalPath": "src/App.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "d6381c10be73be6b8dcecc1b81819f5d4fd448ad45045be5b93c86bde0e1a8c1",
+          "originalPath": "src/components/LiteraryGlobe.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/components/LiteraryWorldMap.tsx",
+          "sha256": "3edd5de9c09b54edb13f20da11035d638fe77cd1984bc8d42a72c2c0abda2814",
+          "originalPath": "src/components/LiteraryWorldMap.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/components/globeAtlas.ts",
+          "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6",
+          "originalPath": "src/components/globeAtlas.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/data/geo/countries.geojson",
+          "sha256": "402706b730069fb691d1ec6098e13d7d59670a1823d1ffb62546ff045df20279",
+          "originalPath": "src/data/geo/countries.geojson"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9",
+          "originalPath": "src/host/HostPlatformServices.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287",
+          "originalPath": "src/host/NativePlanetPanel.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9",
+          "originalPath": "src/host/PlanetMascotAvatar.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "03f4629e5cd825c4ca55e70889cd8d33630e5190ac3987d9dc6b3f3ea3deba6a",
+          "originalPath": "src/host/PlanetMascotControls.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "4c2de3c256f178f7ed308d3a30a78be6a2e547af7f6b1b58a4c717f3ffcffe0d",
+          "originalPath": "src/host/PlanetMascotControls.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f",
+          "originalPath": "src/host/bookyAnimation.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "39b650ae7299479ad7adb4d8ea23d18d751a92f13fbe1b8070354c11cae0edd5",
+          "originalPath": "src/host/bookyGlobeSupport.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89",
+          "originalPath": "src/host/bookyModel.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f",
+          "originalPath": "src/host/bookyMotionPreference.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038",
+          "originalPath": "src/host/bookyPlacement.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5",
+          "originalPath": "src/host/bookyPlacement.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad",
+          "originalPath": "src/host/bookySurprise.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864",
+          "originalPath": "src/host/bookySurprise.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "f5205b36bf9625f30ba01324b223cff7ee1cbcc277f042a6db92e420afc59e02",
+          "originalPath": "src/host/bookyWalk.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1",
+          "originalPath": "src/host/host.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "bb1c07e44c57dea310b7eadee1e92a3702ae166142f68631691959c45716cf2b",
+          "originalPath": "src/host/planetMascot.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/planetMascotPersistence.ts",
+          "sha256": "acecf21b7b73339a027b91e094f39e3ddb4a2d6b8d448ad3f272dc41716d3eb2",
+          "originalPath": "src/host/planetMascotPersistence.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/planetMascotPreference.ts",
+          "sha256": "a9a302d026f4dcb1ebc60a1cb86729a05f25fe23c98628529756c0d782086964",
+          "originalPath": "src/host/planetMascotPreference.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f",
+          "originalPath": "src/host/useBookyRenderer.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "9b224ed74095a6ea70b8e9ec880dbaee1548b36676d9c060bfd0da6285af9506",
+          "originalPath": "src/host/useBookyWalk.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604",
+          "originalPath": "src/index.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86",
+          "originalPath": "src/platform/adapters/web/WebPlatformAdapter.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a2/runtime-inputs/tests/pwa/booky-globe-guidance.spec.mjs",
+          "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc",
+          "originalPath": "tests/pwa/booky-globe-guidance.spec.mjs"
+        }
+      ],
+      "interpretation": "RU390 compact/restoration plus 144px help and EN320 completed successfully. The persistence case stopped before contraction when its immediate two-frame observation found no Show click after the single trusted down/up. This attempt alone does not establish the cause at the observer/runtime boundary; it remains a failed whole case."
+    },
+    {
+      "id": "a3",
+      "diagnosticOnly": true,
+      "reportFormat": "playwright",
+      "browserStarted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/execution.json",
+        "sha256": "0b622711fbd4c226aefbf6374955f1a2f191c630e069be02cafa642e71e21916"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/playwright.json",
+        "sha256": "b860e347dfab4ed85d8b8d6cc523b4769b47de7b840218db249b1eee06d530af"
+      },
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": true,
+      "executionEvidence": {
+        "nodeExit": 0,
+        "startedAt": "2026-09-27T03:24:41.621Z",
+        "finishedAt": "2026-09-27T03:25:12.688Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/stdout.log",
+          "sha256": "4efc27c5cd77fae07bb6c365cbcc5e650b2197131302fb5ab49fcd44d11b596f"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/stderr.log",
+          "sha256": "1e93a6e3ca07e72d83652e988658689016ee43aee1f16f02204b84bf1d8502d0"
+        },
+        "streamSeparation": "recorded",
+        "reportDurationMs": 30469.811999999998
+      },
+      "sourceCommit": "3e70689bdda711cfeaefbea44cf64d2207ad93ad",
+      "sourceManifestSha256": "6d6507b8f82cfca2f02115933f8fac722685782ce278502488540bb56aff338c",
+      "externalFixtureSha256": "854ee6f538f25cbb94cfc7ba54a377537c99a5fccdf40f7a0ff335477f8849e6",
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "driversUnchanged": true,
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/authorized-source.json",
+          "sha256": "4515990dbcb475f05220b444e29141337965a759c0cc42b7231eee8677b2c334"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/playwright.config.mjs",
+          "sha256": "a6242dea61086867a2d4977659a4fd1dce7559484a382bc85ccae587348ba209"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/run.mjs",
+          "sha256": "1fe7efc6d48ac43a5b3e5a85bf09db14df4469a7e4a4c8eee193e02cb4032794"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/bind.mjs",
+          "sha256": "c4a372d484537664a4e4f9a1198933a6efffb41d4c9e256c8d7ac015771387d2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/canonical-fixture.mjs",
+          "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/short-viewport.spec.mjs",
+          "sha256": "854ee6f538f25cbb94cfc7ba54a377537c99a5fccdf40f7a0ff335477f8849e6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/prefix-provenance.json",
+          "sha256": "7d864df729b47c7f7fd65afc0e52559c2c51d5a314a08145b09ec8bebbde5519"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/App.tsx",
+          "sha256": "4e7f5c3c7cada859dcf6b9bfb371d0e45937273bac1c7d2133a6b4ad05546d10",
+          "originalPath": "src/App.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/components/LiteraryGlobe.tsx",
+          "sha256": "d6381c10be73be6b8dcecc1b81819f5d4fd448ad45045be5b93c86bde0e1a8c1",
+          "originalPath": "src/components/LiteraryGlobe.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/components/LiteraryWorldMap.tsx",
+          "sha256": "3edd5de9c09b54edb13f20da11035d638fe77cd1984bc8d42a72c2c0abda2814",
+          "originalPath": "src/components/LiteraryWorldMap.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/components/globeAtlas.ts",
+          "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6",
+          "originalPath": "src/components/globeAtlas.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/data/geo/countries.geojson",
+          "sha256": "402706b730069fb691d1ec6098e13d7d59670a1823d1ffb62546ff045df20279",
+          "originalPath": "src/data/geo/countries.geojson"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/HostPlatformServices.ts",
+          "sha256": "16205f0c4efb67e713745d165412f6ad041f3f6a76b65f205437f47d4a6990d9",
+          "originalPath": "src/host/HostPlatformServices.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/NativePlanetPanel.tsx",
+          "sha256": "d242fa8dd98ac648a48ac621a4245a6f0cd28af2b9341abce5b05a11f8b78287",
+          "originalPath": "src/host/NativePlanetPanel.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/PlanetMascotAvatar.tsx",
+          "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9",
+          "originalPath": "src/host/PlanetMascotAvatar.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/PlanetMascotControls.css",
+          "sha256": "03f4629e5cd825c4ca55e70889cd8d33630e5190ac3987d9dc6b3f3ea3deba6a",
+          "originalPath": "src/host/PlanetMascotControls.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/PlanetMascotControls.tsx",
+          "sha256": "4c2de3c256f178f7ed308d3a30a78be6a2e547af7f6b1b58a4c717f3ffcffe0d",
+          "originalPath": "src/host/PlanetMascotControls.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookyAnimation.ts",
+          "sha256": "ff36d18a811f51194b8f7acd7a37eeddecb60e895090154815c8fcd05581079f",
+          "originalPath": "src/host/bookyAnimation.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookyGlobeSupport.ts",
+          "sha256": "39b650ae7299479ad7adb4d8ea23d18d751a92f13fbe1b8070354c11cae0edd5",
+          "originalPath": "src/host/bookyGlobeSupport.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookyModel.ts",
+          "sha256": "cf90614c02ae75a17872758cb1ab7e7316d277dc5d250972f08b6d7a60429c89",
+          "originalPath": "src/host/bookyModel.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookyMotionPreference.ts",
+          "sha256": "95310cadb15293d03bc6f535d90817f53395acbd0e7817f33e50063246ad3d2f",
+          "originalPath": "src/host/bookyMotionPreference.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookyPlacement.test.ts",
+          "sha256": "97f4c1dc0e7a737a2db9e8764980199f18297fa382671f3fdfef4d4f2dc13038",
+          "originalPath": "src/host/bookyPlacement.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookyPlacement.ts",
+          "sha256": "53255bb517ee9ea45f086b1a2cbd3d08bad62f8e8d963e1ae729073c8c084cd5",
+          "originalPath": "src/host/bookyPlacement.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookySurprise.test.ts",
+          "sha256": "4169777398f4c5e7fc5576e372c7098f3883e88977e4252fe1d94e9b0a4f56ad",
+          "originalPath": "src/host/bookySurprise.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookySurprise.ts",
+          "sha256": "4817048f683bf16a3b3f90896f9c06e91d01134faad988f99e86500d21ccf864",
+          "originalPath": "src/host/bookySurprise.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/bookyWalk.ts",
+          "sha256": "f5205b36bf9625f30ba01324b223cff7ee1cbcc277f042a6db92e420afc59e02",
+          "originalPath": "src/host/bookyWalk.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/host.css",
+          "sha256": "a0d51b494c195483c754ff65e76650d75261557955565b62f6f7743b20805aa1",
+          "originalPath": "src/host/host.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/planetMascot.ts",
+          "sha256": "bb1c07e44c57dea310b7eadee1e92a3702ae166142f68631691959c45716cf2b",
+          "originalPath": "src/host/planetMascot.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/planetMascotPersistence.ts",
+          "sha256": "acecf21b7b73339a027b91e094f39e3ddb4a2d6b8d448ad3f272dc41716d3eb2",
+          "originalPath": "src/host/planetMascotPersistence.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/planetMascotPreference.ts",
+          "sha256": "a9a302d026f4dcb1ebc60a1cb86729a05f25fe23c98628529756c0d782086964",
+          "originalPath": "src/host/planetMascotPreference.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/useBookyRenderer.ts",
+          "sha256": "0847e41c7243d8e12be3d28a85c620cfafc63fc8edd6b8322d17ab7c0458a80f",
+          "originalPath": "src/host/useBookyRenderer.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/host/useBookyWalk.ts",
+          "sha256": "9b224ed74095a6ea70b8e9ec880dbaee1548b36676d9c060bfd0da6285af9506",
+          "originalPath": "src/host/useBookyWalk.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/index.css",
+          "sha256": "e37d0d76e49a5b2e1bfcd60bbee8971867bca50e1079c768e896f6e1a3713604",
+          "originalPath": "src/index.css"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/src/platform/adapters/web/WebPlatformAdapter.ts",
+          "sha256": "00ec32867069ec4104de9be1ad6c4b8253228b67385ea2db5b1ca78271382e86",
+          "originalPath": "src/platform/adapters/web/WebPlatformAdapter.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/a3/runtime-inputs/tests/pwa/booky-globe-guidance.spec.mjs",
+          "sha256": "16de6efe98be07f003e237714a8e64f5bbc7da7720d4d3e06aa5fe55d0dc48dc",
+          "originalPath": "tests/pwa/booky-globe-guidance.spec.mjs"
+        }
+      ],
+      "interpretation": "All three cases passed against unchanged post-fix runtime. Only the shared input observer changed to wait at most 750ms for the same single trusted touch with matching pointer/target; case bodies stayed exact. Show click was observed 6.8ms after up in this run. Persistence uses genuine outer-pet scrolling and Retry get,set,get with one exact SEED-equal write from the earlier explicit Show; ordinary resize cases write nothing. This successful later timing observation does not prove the definitive original a2 cause."
+    }
+  ],
+  "capabilityProbe": {
+    "classification": "successful-negative-capability-measurement",
+    "applicationTest": false,
+    "realVisualViewportContractionObserved": false,
+    "nativeKeyboardEquivalent": false,
+    "execution": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/probe-a1/execution.json",
+      "sha256": "91b0c8f532c948a8adacc69642c6808918808ef3c5c7c1b34956f327601c614c"
+    },
+    "evidence": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/probe-a1/execution.json",
+        "sha256": "91b0c8f532c948a8adacc69642c6808918808ef3c5c7c1b34956f327601c614c"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/probe-a1/results.json",
+        "sha256": "49c62f17a2b5dd61dfb64cd75e10b76594222d3cf40117774b8ce57d56f41056"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/probe-a1/probe.mjs",
+        "sha256": "70235fb0129784e6f13a60f8a039a7bbbafebea0176f4b845fd929034a61c24e"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/probe-a1/OUTCOME.md",
+        "sha256": "548720de5c8b0593fd146061ebb35c3343babd31c60aa5a3c8128fcc279a48a9"
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-short-viewport-review/probe-a1/combined.log",
+        "sha256": "d9caeb8eacf6d3a5da694e44c2ed3442a220adec560111093e8190a061103747"
+      }
+    ],
+    "interpretation": "The accepted visible-size protocol command left layout, actual visualViewport and screenshot dimensions unchanged. This negative result belongs to that measured protocol path; it is not a failed application test or a claim that all browser mechanisms are incapable."
+  },
+  "summary": "Original one-case disabled-status clipping failure, partial post-fix a2 and passing a3 are retained separately. a3 observes a single trusted touch for up to 750ms; its click timing does not establish the definitive cause of a2 absence at the earlier observation boundary. All diagnostics are separate from formal final validation.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

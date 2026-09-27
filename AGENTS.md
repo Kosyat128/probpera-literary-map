@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-short-viewport-20260927:begin -->
+Latest source e23e5810: globe-only compact Booky presentation addresses clipped disabled Walk status in controlled observed-space stress. Existing 44px controls and walking authority remain; selected cases cover short-space help and genuine persistence Retry. No native keyboard, real visualViewport contraction, enlarged-text or tablet-194 branch equivalence is claimed. All 34 historical drafts and copy remain unapproved; changed Controls whole-file provenance needs explicit later rebinding. Only bounded S15.PLANETKA-002 evidence is added with all statuses unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-short-viewport-20260927/result.json. D205. TypeScript and 3 browser cases; 9 authenticated captures. No new unit or inventory audit. Stage/device/release acceptance remains open.
+<!-- s15-booky-short-viewport-20260927:end -->
+
 <!-- s15-booky-initial-globe-load-20260927:begin -->
 Latest source 4b360332: Booky follows committed initial globe loading/error and later current load status without another renderer, polling loop or retry owner. Existing Search, Collection and genuine globe retry remain available. Evidence is limited to the final focused assertions; no native lifecycle, offline equivalence or full loading/error acceptance is claimed. D203 inventory provenance remains intact, with all 34 historical records unreviewed and unavailable. Only S15.PLANETKA-005 and S15.UX-006 receive bounded evidence; all statuses and acceptance gates remain unchanged.
 

@@ -1,0 +1,24 @@
+{
+  "checkpoint": "3e70689bdda711cfeaefbea44cf64d2207ad93ad",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/result.json",
+    "sha256": "30aa53dec27d7346d256086d35f68cd989c315efd8346d6644364974e0c93807"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/result.json",
+    "sha256": "30aa53dec27d7346d256086d35f68cd989c315efd8346d6644364974e0c93807"
+  },
+  "runtimeSourceCommit": "4b360332186ec67e62e53d664ef0a5b537f341a7",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/pwa-a1/result.json",
+    "sha256": "016dba1e29d9645c5cec0c3c5c1ce8525a0f2592902a5f24881f75200ed8187d",
+    "buildId": "d7a70d461e237cc0105b1835261dc91a474f01d2f185b6b7e6ad3b15ea03f81c",
+    "sourceCommit": "4b360332186ec67e62e53d664ef0a5b537f341a7"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-initial-globe-load-20260927/android-a1/result.json",
+    "sha256": "43a52ae661e0893bba6f4cedd2eaf2774651587034d6dd25ceae4a3a9713cf82",
+    "buildId": "1c00be6cf6386610e12141082478f62ec0ff1b7dbb90604abc345c3ecbabac0f",
+    "sourceCommit": "4b360332186ec67e62e53d664ef0a5b537f341a7"
+  }
+}
