@@ -3,7 +3,7 @@ import reviewed from "../../data/news/reviewed.json" with { type: "json" };
 import { buildPublishedNewsFeed } from "./literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./literary-news-state.mjs";
 import { dispatchNewsJob as dispatch, dispatchNewsBatch, newsPostKey, prepareNewsPost,
-  reconcileNewsSnapshot, scheduleNewsJobs, newsSocialPayloadDigest } from "./literary-news-social.mjs";
+  reconcileNewsSnapshot, scheduleNewsJobs, newsSemanticRevision, newsSocialPayloadDigest } from "./literary-news-social.mjs";
 import { createNewsSocialTransport } from "./literary-news-social-transport.mjs";
 
 const now = new Date("2026-09-26T12:00:00Z");
@@ -170,6 +170,31 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     const edit = vi.fn(async ({ remoteId, prepared }) => { expect(remoteId).toBe("17"); expect(prepared.payload.text).toContain("Уточнённый"); return accepted; });
     expect((await dispatchNewsJob({ store, key, transport: { send: edit }, now: () => now })).status).toBe("sent_current");
   });
+  it("edits an existing news message to remove its event-date line without creating a new post", async () => {
+    const { store, key } = await setup();
+    const original = (await store.read(key)).state;
+    const legacyRevision = await newsSemanticRevision(item);
+    const { formatRevision, ...legacyPrepared } = original.prepared;
+    const legacyPayload = { ...legacyPrepared.payload, text: legacyPrepared.payload.text.replace(
+      "Источник:", "Дата события: 25 сентября 2026 г.\n\nИсточник:") };
+    await store.seed(key, { ...original, status: "sent_current", remoteId: "17", remoteMediaKind: "text",
+      desiredRevision: legacyRevision, acknowledgedRevision: legacyRevision,
+      prepared: { ...legacyPrepared, revision: legacyRevision, payload: legacyPayload,
+        payloadSha256: await newsSocialPayloadDigest(legacyPayload) } });
+    await reconcileNewsSnapshot(store, await completeFeed(), destinations, now);
+    const corrected = (await store.read(key)).state;
+    expect(corrected.status).toBe("correction_pending");
+    expect(corrected.remoteId).toBe("17");
+    expect(corrected.desiredRevision).not.toBe(legacyRevision);
+    const send = vi.fn(async ({ remoteId, prepared }) => {
+      expect(remoteId).toBe("17");
+      expect(prepared.payload.text).not.toContain("Дата события");
+      return accepted;
+    });
+    expect((await dispatchNewsJob({ store, key, transport: { send }, now: () => now })).status).toBe("sent_current");
+    expect(send).toHaveBeenCalledTimes(1);
+    expect((await store.read(key)).state.remoteId).toBe("17");
+  });
   it("rejects prepared bytes from an older revision", async () => {
     const { store, key } = await setup(); const job = (await store.read(key)).state;
     await store.seed(key, { ...job, desiredRevision: "newer" }); const send = vi.fn();
@@ -258,6 +283,18 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
 });
 
 describe("native prepared text and validated transport receipts", () => {
+  it("omits the event date from Telegram and VK news while retaining useful announcement and calendar dates", async () => {
+    const snapshot = (await completeFeed()).snapshot;
+    for (const platform of ["telegram", "vk"]) {
+      const news = await prepareNewsPost(item, snapshot, platform);
+      expect(news.payload.text ?? news.payload.message).not.toContain("Дата события");
+      expect(news.payload.text ?? news.payload.message).not.toContain("25 сентября 2026 г.");
+      for (const [kind, label] of [["announcement", "Запланировано"], ["calendar", "Памятная дата"]]) {
+        const dated = await prepareNewsPost({ ...item, kind }, snapshot, platform);
+        expect(dated.payload.text ?? dated.payload.message).toContain(`${label}: 25 сентября 2026 г.`);
+      }
+    }
+  });
   it("rejects token path/authority injection before any request and keeps exact native hosts",async()=>{
     const prepared=await prepareNewsPost(item,(await completeFeed()).snapshot,"telegram");
     for(const token of ["evil/../../sendMessage","evil?redirect=https://evil.example","evil#fragment","evil@evil.example/", "bad\\token"]){
