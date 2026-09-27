@@ -55,8 +55,8 @@ async function setup(){
   return{options,store,transport,key,controlKey,enable};
 }
 describe("bounded Telegram release operator",()=>{
-  it("keeps required photos enabled for both fixed release destinations",()=>{
-    expect(Object.values(NEWS_RELEASE_DESTINATIONS).every(d=>d.requirePhotoForNewPosts===true)).toBe(true);
+  it("allows a full-text fallback for both destinations while VK remains off",()=>{
+    expect(Object.values(NEWS_RELEASE_DESTINATIONS).every(d=>d.requirePhotoForNewPosts===false&&d.mode==="off")).toBe(true);
   });
   it("inspect produces an exact nonsendable preview with no durable/platform writes",async()=>{
     const {options,store,transport}=await setup();const result=await operateNewsRelease({...options,action:"inspect",approval:null});
@@ -159,12 +159,15 @@ describe("bounded Telegram release operator",()=>{
     expect(action.env).not.toHaveProperty("VK_ACCESS_TOKEN");
     expect(Object.keys(workflow.on.workflow_dispatch.inputs)).toHaveLength(10);
   });
-  it("exact public canary verifies full caption and required photo without following external assets",async()=>{
+  it("verifies exact text-only canaries and requires an image only when one was prepared",async()=>{
     const prepared={media:{sha256:"a".repeat(64)},payload:{caption:"Title\n\nFull factual caption. https://probpera.ru/"}};
     const page=photo=>`<div class="tgme_widget_message" data-post="probbaperra/411"><div class="tgme_widget_message_text"><b>Title</b><br><br>Full factual caption. <a>https://probpera.ru/</a></div>${photo?'<a class="tgme_widget_message_photo_wrap"></a>':""}</div>`;
     const fetchImpl=vi.fn(async()=>new Response(page(true)));
     const result=await verifyTelegramCanaryPublicPost({remoteId:"411",prepared,fetchImpl});expect(result.photoObserved).toBe(true);
     expect(fetchImpl).toHaveBeenCalledTimes(1);expect(fetchImpl.mock.calls[0][0]).toBe("https://t.me/s/probbaperra/411");
+    const textOnly={media:null,payload:{text:"Title\n\nFull factual caption. https://probpera.ru/"}};
+    const textResult=await verifyTelegramCanaryPublicPost({remoteId:"411",prepared:textOnly,fetchImpl:async()=>new Response(page(false))});
+    expect(textResult.photoObserved).toBe(false);
     await expect(verifyTelegramCanaryPublicPost({remoteId:"411",prepared,fetchImpl:async()=>new Response(page(false))})).rejects.toThrow("native_canary_photo_missing");
     await expect(verifyTelegramCanaryPublicPost({remoteId:"411",prepared:{...prepared,payload:{caption:"Changed"}},fetchImpl})).rejects.toThrow("native_canary_text_mismatch");
     await expect(verifyTelegramCanaryPublicPost({remoteId:"412",prepared,fetchImpl})).rejects.toThrow("native_canary_post_missing");

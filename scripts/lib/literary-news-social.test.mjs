@@ -64,8 +64,10 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     const pending=(await store.read(key)).state;expect(pending.status).toBe("pending");expect(pending.lastError).toBeNull();
     expect(pending.desiredRevision).toBe(original.desiredRevision);expect(pending.originalAdmission).toBe(original.originalAdmission);
     expect(pending.prepared.mediaPending).toBe(true);expect(pending.prepared.temporal.verifiedAt).toBe(item.verifiedAt);
-    expect(await dispatchNewsJob({store,key,transport:{send},now:()=>later})).toEqual({status:"pending",reason:"media_discovery_pending"});
-    expect(send).not.toHaveBeenCalled();
+    const publishText=vi.fn(async()=>accepted);
+    expect(await dispatchNewsJob({store,key,transport:{send:publishText},now:()=>later}))
+      .toMatchObject({status:"sent_current",remoteId:"17",dispatchAttempted:true});
+    expect(publishText).toHaveBeenCalledTimes(1);
   });
   it("media search cannot hide an expired announcement or keep a withdrawal pending",async()=>{
     const announcement={...item,kind:"announcement",eventDate:"2026-09-27"},f=await setup([announcement]);

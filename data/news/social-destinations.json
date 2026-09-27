@@ -6,13 +6,13 @@
       "platform": "telegram",
       "id": "-1002791579809",
       "mode": "off",
-      "requirePhotoForNewPosts": true
+      "requirePhotoForNewPosts": false
     },
     {
       "platform": "vk",
       "id": "-231377018",
       "mode": "off",
-      "requirePhotoForNewPosts": true
+      "requirePhotoForNewPosts": false
     }
   ],
   "connectionStatus": "telegram_rights_verified_vk_deferred_by_owner",

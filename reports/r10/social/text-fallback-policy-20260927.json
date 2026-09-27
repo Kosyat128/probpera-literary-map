@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "authorization": {
+    "date": "2026-09-27",
+    "source": "The owner instructed: send the news even without an illustration; the owner will edit it manually. The owner then instructed to enable publication now.",
+    "scope": "Literary news social delivery"
+  },
+  "policy": {
+    "imageDiscovery": "continue opportunistically",
+    "whenQualifiedImageExists": "attach the exact approved image and its required attribution",
+    "whenImageIsUnavailableOrStillPending": "send the complete prepared text without delaying for image discovery",
+    "manualFollowUp": "the owner may edit the post and add an illustration manually",
+    "telegram": "text fallback allowed",
+    "vk": "text fallback allowed in policy; destination remains off and deferred by the owner",
+    "pacingSeconds": 1800,
+    "historicalJobs": "the fixed code-owned destination policy overrides stale stored photo-required flags"
+  },
+  "preservedControls": [
+    "approved, news-specific image rights and attribution checks",
+    "exact prepared text and source URL",
+    "durable duplicate prevention and ambiguous-send handling",
+    "per-destination publication history review",
+    "30-minute minimum between new posts; no catch-up bursts",
+    "VK stays off until separately configured"
+  ]
+}

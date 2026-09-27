@@ -68,15 +68,30 @@ describe("bounded actual-portrait discovery, no provider uploads",()=>{
     const ambiguous=await resolveNewsMediaBatch([item],[destination],{...options,store:null,matchSubjects:()=>[subject,{...subject,qid:"Q1"}]});
     expect(ambiguous.report.outcomes[0].reason).toBe("media_subject_ambiguous");
   });
-  it("does not discard approved photo metadata on a fresh runner, and pending search cannot dispatch text",async()=>{
+  it("does not discard approved photo metadata, and pending search never blocks a text post",async()=>{
     const f=await fixture(),r=await resolveNewsMediaBatch([item],[destination],f.options);
     const missing=async()=>{throw Error("no JPEG on this runner");};
     expect((await selectNewsMedia(item.id,destination,{...r.mediaOptions,readBytes:missing})).media).not.toBeNull();
     const pending=await resolveNewsMediaBatch([item],[destination],{...f.options,maxNews:0});
     const p=await prepareNewsPost(item,{id:"s",release:"a".repeat(40)},"telegram",{destination,mediaOptions:pending.mediaOptions});
-    expect(p.mediaPending).toBe(true);const send=vi.fn();
-    expect(await dispatchNewsJob({key:"fixture",store:{read:async()=>({state:{prepared:p}})},transport:{send}}))
-      .toEqual({status:"pending",reason:"media_discovery_pending"});expect(send).not.toHaveBeenCalled();
+    expect(p.mediaPending).toBe(true);
+    const key=`post:news:${item.id}:telegram:${destination.id}`,controlKey=`destination:telegram:${destination.id}`;
+    const rows=new Map([[key,{id:1,state:{key,newsId:item.id,destination:{platform:"telegram",id:destination.id},
+      prepared:p,desiredRevision:p.revision,status:"pending"}}],
+      [controlKey,{id:2,state:{mode:"on",paused:false,historyReconciled:true}}]]);let sequence=2;
+    const store={
+      read:async name=>structuredClone(rows.get(name)||{id:null,state:null}),
+      compareAppend:async(name,expected,state,guard=null)=>{
+        const previous=rows.get(name)||{id:null,state:null};
+        if(previous.id!==expected)return{applied:false,...structuredClone(previous)};
+        if(guard&&rows.get(guard.key)?.id!==guard.id)return{applied:false};
+        const row={id:++sequence,state:structuredClone(state)};rows.set(name,row);return{applied:true,...structuredClone(row)};
+      },
+    };
+    const send=vi.fn(async()=>({kind:"accepted",remoteId:"17",remoteUrl:"https://t.me/c/100123/17"}));
+    expect(await dispatchNewsJob({key,store,transport:{preflight:async()=>({ok:true}),send},now:()=>now}))
+      .toMatchObject({status:"sent_current",remoteId:"17",dispatchAttempted:true});
+    expect(send).toHaveBeenCalledTimes(1);
   });
   it("manual exact-rights registry has priority and a cache CAS race stays pending",async()=>{
     const f=await fixture(),r=await resolveNewsMediaBatch([item],[destination],f.options);

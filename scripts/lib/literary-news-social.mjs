@@ -26,15 +26,21 @@ export function checkedDestination(destination) {
     || destination.requirePhotoForNewPosts !== undefined && typeof destination.requirePhotoForNewPosts !== "boolean") throw new Error("destination_invalid");
   return destination;
 }
-// Consult code-owned policy too: jobs captured before this policy must not
-// bypass it merely because their durable destination has only platform/id.
+// A code-owned destination entry overrides stale durable flags in either
+// direction. This lets an explicit text-fallback policy release jobs created
+// under an older photo-required policy without changing their identity.
+function destinationPhotoPolicy(destination) {
+  const configured = socialConfiguration.destinations.find(row =>
+    row.platform === destination?.platform && row.id === destination?.id);
+  return configured ? configured.requirePhotoForNewPosts : destination?.requirePhotoForNewPosts;
+}
 export function newsNewPostRequiresPhoto(destination) {
-  return destination?.requirePhotoForNewPosts === true || socialConfiguration.destinations.some(row =>
-    row.platform === destination?.platform && row.id === destination?.id && row.requirePhotoForNewPosts === true);
+  return destinationPhotoPolicy(destination) === true;
 }
 function runtimeDestination(destination) {
+  const requirePhotoForNewPosts = destinationPhotoPolicy(destination);
   return { platform: destination.platform, id: destination.id,
-    ...(newsNewPostRequiresPhoto(destination) ? { requirePhotoForNewPosts: true } : {}) };
+    ...(requirePhotoForNewPosts !== undefined ? { requirePhotoForNewPosts } : {}) };
 }
 function missingRequiredNewPhoto(job) {
   return !job.remoteId && !job.withdrawal && job.prepared && !job.prepared.media && newsNewPostRequiresPhoto(job.destination);
@@ -201,7 +207,7 @@ export async function reconcileNewsSnapshot(store, feed, destinations, now = new
           if (prior.status === "blocked" && prior.lastError === "archived_media_requires_source_resolution")
             return {...prior,prepared,status:prior.remoteId?"correction_pending":"pending",nextDueAt:now.toISOString(),lastError:null};
           if (!prior.remoteId && (Boolean(prior.prepared?.mediaPending) !== Boolean(prepared.mediaPending)
-            || newsNewPostRequiresPhoto(destination) && prior.destination?.requirePhotoForNewPosts !== true))
+            || prior.destination?.requirePhotoForNewPosts !== runtimeDestination(destination).requirePhotoForNewPosts))
             return { ...prior, destination: runtimeDestination(destination), prepared };
           if (prior.prepared?.temporal?.verifiedAt === item.verifiedAt) return null;
           const renewed = prior.status === "blocked" && prior.lastError === "expired_announcement_requires_source_resolution";
@@ -274,9 +280,9 @@ export async function dispatchNewsJob({ store, key, transport, now = () => new D
   if (["sent_current","ambiguous","blocked","explicitly_closed"].includes(initial.status))
     return {status:initial.status,...(initial.status === "blocked" && initial.lastError ? {reason:initial.lastError} : {})};
   const editorialToday = new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Moscow",year:"numeric",month:"2-digit",day:"2-digit"}).format(now());
-  if (initial.prepared?.mediaPending && !initial.withdrawal
-    && (!initial.prepared.temporal || newsAnnouncementEligible(initial.prepared.temporal,editorialToday,"Europe/Moscow")))
-    return { status: "pending", reason: "media_discovery_pending" };
+  // Image discovery is opportunistic. A missing or still-loading illustration
+  // never holds an otherwise sendable news item; the prepared full text goes
+  // out and the editor can add an image manually later.
   if (missingRequiredNewPhoto(initial) && !initial.dispatchStartedAt && initial.status !== "inflight"
     && (!initial.prepared.temporal || newsAnnouncementEligible(initial.prepared.temporal,editorialToday,"Europe/Moscow")))
     return { status: "pending", reason: "new_post_requires_photo", mediaReason: initial.prepared.fallbackReason || "media_unavailable" };
