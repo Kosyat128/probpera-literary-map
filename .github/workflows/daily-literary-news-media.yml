@@ -3,7 +3,8 @@ name: Daily literary news media and capture
 on:
   workflow_dispatch:
   schedule:
-    - cron: "13 6,12,18 * * *"
+    # Prepare the morning queue before the first 08:00 Moscow delivery slot.
+    - cron: "33 4,12,16 * * *"
 
 permissions:
   contents: read

@@ -181,6 +181,15 @@ jobs:
           node scripts/verify-literary-news-live.mjs --expected-head "$EXPECTED_MAIN_SHA"
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:true
+      - name: Verify the actual Worker flags and Cron schedules
+        env:
+          ENABLED: ${{ inputs.enabled }}
+        run: |
+          if [[ "$ENABLED" == "true" ]]; then
+            node scripts/verify-native-news-workers.mjs --expect-enabled
+          else
+            node scripts/verify-native-news-workers.mjs --expect-disabled
+          fi
       - name: Record the schedule window
         env:
           ENABLED: ${{ inputs.enabled }}

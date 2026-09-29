@@ -28,6 +28,108 @@ async function fixture(overrides={},fileName="Fixture.png"){
   return{bytes,info,fetchImpl,options:{registry,now,fetchImpl,matchSubjects:()=>[subject],searchCandidates:()=>[]}};
 }
 describe("bounded actual-portrait discovery, no provider uploads",()=>{
+  it('checks a newly available exact source photo before an already cached and manually supplied portrait',async()=>{
+    const f=await fixture(),store=storeFixture();
+    const portrait=await resolveNewsMediaBatch([item],[destination],{...f.options,store});
+    const sourceUrl='https://upload.wikimedia.org/wikipedia/commons/a/ab/Associated_event.png';
+    const photoItem={...item,thumbnail:{url:sourceUrl,sourceUrl:item.source.url,alt:item.title,displayOnly:true}};
+    const matchSubjects=vi.fn(()=>[subject]);
+    const fetchImpl=vi.fn(async(url,options)=>{
+      const parsed=new URL(url);
+      if(parsed.hostname==='commons.wikimedia.org'&&parsed.searchParams.get('titles')==='File:Associated_event.png')
+        return Response.json({query:{pages:[{pageid:124,title:'File:Associated_event.png',imageinfo:[{...f.info,url:sourceUrl}]}]}});
+      if(url===sourceUrl)return new Response(f.bytes,{headers:{'content-type':'image/png'}});
+      return f.fetchImpl(url,options);
+    });
+    const actual=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl,matchSubjects,
+      registry:portrait.mediaOptions.registry});
+    expect(actual.report.approved).toBe(1);expect(actual.report.cached).toBe(0);expect(actual.report.requests).toBe(2);
+    expect(matchSubjects).not.toHaveBeenCalled();
+    expect(actual.mediaOptions.registry.assets[0]).toMatchObject({mediaRole:'source-image',sourceUrl});
+    const selected=await selectNewsMedia(item.id,destination,actual.mediaOptions);
+    expect(selected.media.assetId).toBe(actual.mediaOptions.registry.assets[0].id);
+    expect([...store.rows.values()][0].state.asset.mediaRole).toBe('source-image');
+  });
+  it('keeps a licensed exact writer portrait when the associated source photo has unsupported rights',async()=>{
+    const f=await fixture(),sourceUrl='https://upload.wikimedia.org/wikipedia/commons/a/ab/Associated_event.png';
+    const photoItem={...item,thumbnail:{url:sourceUrl,sourceUrl:item.source.url,alt:item.title,displayOnly:true}};
+    const fetchImpl=vi.fn(async(url,options)=>{
+      const parsed=new URL(url);
+      if(parsed.hostname==='commons.wikimedia.org'&&parsed.searchParams.get('titles')==='File:Associated_event.png')
+        return Response.json({query:{pages:[{pageid:124,title:'File:Associated_event.png',imageinfo:[{...f.info,url:sourceUrl,
+          extmetadata:{...f.info.extmetadata,LicenseShortName:{value:'All rights reserved'}}}]}]}});
+      return f.fetchImpl(url,options);
+    });
+    const result=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,fetchImpl});
+    expect(result.report.approved).toBe(1);expect(result.report.requests).toBe(4);
+    expect(result.mediaOptions.registry.assets[0].subject).toBe('portrait');
+    expect(result.report.outcomes[0].sourceImage).toEqual({status:'held',reason:'media_discovery_license_unsupported'});
+    expect(fetchImpl.mock.calls.some(([url])=>url===sourceUrl)).toBe(false);
+  });
+  it('retries a transiently unavailable source photo after one hour while keeping the approved portrait available',async()=>{
+    const f=await fixture(),store=storeFixture(),sourceUrl='https://upload.wikimedia.org/wikipedia/commons/a/ab/Associated_event.png';
+    const photoItem={...item,thumbnail:{url:sourceUrl,sourceUrl:item.source.url,alt:item.title,displayOnly:true}};
+    let sourceAvailable=false;
+    const fetchImpl=vi.fn(async(url,options)=>{
+      if(new URL(url).hostname==='commons.wikimedia.org'&&new URL(url).searchParams.get('titles')==='File:Associated_event.png'){
+        if(!sourceAvailable)throw Error('temporarily unavailable');
+        return Response.json({query:{pages:[{pageid:124,title:'File:Associated_event.png',imageinfo:[{...f.info,url:sourceUrl}]}]}});
+      }
+      if(url===sourceUrl)return new Response(f.bytes,{headers:{'content-type':'image/png'}});
+      return f.fetchImpl(url,options);
+    });
+    const first=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl});
+    expect(first.report.approved).toBe(1);expect(first.mediaOptions.registry.assets[0].subject).toBe('portrait');
+    expect([...store.rows.values()][0].state.nextCheckAt).toBe(new Date(now.getTime()+3600000).toISOString());
+    sourceAvailable=true;fetchImpl.mockClear();
+    const early=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl,now:new Date(now.getTime()+1800000)});
+    expect(early.report.cached).toBe(1);expect(early.report.requests).toBe(0);expect(fetchImpl).not.toHaveBeenCalled();
+    const recovered=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl,now:new Date(now.getTime()+3600001)});
+    expect(recovered.report.approved).toBe(1);expect(recovered.report.requests).toBe(2);
+    expect(recovered.mediaOptions.registry.assets[0].mediaRole).toBe('source-image');
+  });
+  it('shares the existing 24-request budget between source images and portrait fallback',async()=>{
+    const f=await fixture(),sourceUrl='https://upload.wikimedia.org/wikipedia/commons/a/ab/Associated_event.png';
+    const rows=Array.from({length:8},(_,index)=>({...item,id:`source-budget-${index}`,
+      thumbnail:{url:sourceUrl,sourceUrl:item.source.url,alt:item.title,displayOnly:true}}));
+    const fetchImpl=vi.fn(async(url,options)=>{
+      if(new URL(url).hostname==='commons.wikimedia.org'&&new URL(url).searchParams.get('titles')==='File:Associated_event.png')
+        return Response.json({query:{pages:[{title:'File:Associated_event.png',imageinfo:[{...f.info,url:sourceUrl,
+          extmetadata:{...f.info.extmetadata,LicenseShortName:{value:'All rights reserved'}}}]}]}});
+      return f.fetchImpl(url,options);
+    });
+    const result=await resolveNewsMediaBatch(rows,[destination],{...f.options,fetchImpl});
+    expect(result.report.requests).toBe(24);expect(fetchImpl).toHaveBeenCalledTimes(24);
+    expect(result.report.approved).toBe(6);expect(result.report.pending).toBe(2);
+    expect(result.report.outcomes.at(-1).reason).toBe('media_discovery_request_budget');
+  });
+  it('retains a preverified manual portrait when the final source-photo download would exceed the shared request budget',async()=>{
+    const f=await fixture(),sourceUrl='https://upload.wikimedia.org/wikipedia/commons/a/ab/Associated_event.png';
+    const manual=(await resolveNewsMediaBatch([item],[destination],f.options)).mediaOptions.registry.assets[0];
+    const rows=Array.from({length:7},(_,index)=>({...item,id:`manual-budget-${index}`,
+      ...(index!==5?{thumbnail:{url:sourceUrl,sourceUrl:item.source.url,alt:item.title,displayOnly:true}}:{})}));
+    manual.newsIds=[rows.at(-1).id];let sourceMetadataCount=0;
+    const fetchImpl=vi.fn(async(url,options)=>{
+      if(new URL(url).hostname==='commons.wikimedia.org'&&new URL(url).searchParams.get('titles')==='File:Associated_event.png'){
+        sourceMetadataCount++;
+        return Response.json({query:{pages:[{pageid:124,title:'File:Associated_event.png',imageinfo:[{...f.info,url:sourceUrl,
+          extmetadata:sourceMetadataCount<6?{...f.info.extmetadata,LicenseShortName:{value:'All rights reserved'}}:f.info.extmetadata}]}]}});
+      }
+      if(url===sourceUrl)throw Error('must not spend a 25th request');
+      return f.fetchImpl(url,options);
+    });
+    const store=storeFixture();
+    const result=await resolveNewsMediaBatch(rows,[destination],{...f.options,store,fetchImpl,registry:{assets:[manual],downloadHosts:['upload.wikimedia.org']}});
+    expect(result.report.requests).toBe(24);expect(fetchImpl).toHaveBeenCalledTimes(24);
+    expect(result.report.approved).toBe(7);expect(result.report.pending).toBe(0);
+    expect(result.mediaOptions.resolutions[rows.at(-1).id]).toMatchObject({status:'approved',reason:'manual_registry',
+      sourceImage:{status:'pending',reason:'media_discovery_request_budget'}});
+    const state=[...store.rows.values()].find(row=>row.state.newsId===rows.at(-1).id).state;
+    expect(state.asset.id).toBe(manual.id);expect(state.nextCheckAt).toBe(new Date(now.getTime()+3600000).toISOString());
+    const prepared=await prepareNewsPost(rows.at(-1),{id:'snapshot',release:'a'.repeat(40)},'telegram',{destination,mediaOptions:result.mediaOptions});
+    expect(prepared.media.assetId).toBe(manual.id);expect(prepared.profile).toBe('literary-news-photo-v1');
+    expect(fetchImpl.mock.calls.some(([url])=>url===sourceUrl)).toBe(false);
+  });
   it("preserves the complete one-year feed above the former 5000-item boundary without unbounded photo discovery",async()=>{
     const rows=Array.from({length:5490},(_,index)=>({...item,id:`annual-${index}`}));
     const fetchImpl=vi.fn();
