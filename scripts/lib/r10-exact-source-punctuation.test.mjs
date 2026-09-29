@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { projectReviewedCalendarSecurityFollowup } from "./reviewed-calendar-security-followup.mjs";
 import { describe, expect, it } from "vitest";
 import { loadR10ExactSourcePunctuation, normalizeR10ExactSourcePunctuation as normalize,
   r10PunctuationLiteralRanges as ranges } from "./r10-exact-source-punctuation.mjs";
@@ -8,16 +9,54 @@ import { r10PunctuationAttestation as packet, r10PunctuationSha256 as sourceSha,
   projectReviewedR10SourcePunctuation as project } from "./reviewed-r10-source-punctuation.mjs";
 
 const registry = loadR10ExactSourcePunctuation();
-const read = path => readFileSync(path, "utf8");
+const read = path => projectReviewedCalendarSecurityFollowup(path, readFileSync(path, "utf8"));
 const sha = value => createHash("sha256").update(value).digest("hex");
 const dash = String.fromCodePoint(0x2014);
 const reviewedPath = "data/news/reviewed.json";
 const reviewedEntry = registry.files.find(item => item.path === reviewedPath);
 const protectedPin = reviewedEntry.fields[0];
-const at = (value, path) => path.reduce((parent, part) => parent?.[part], value);
-const set = (value, path, next) => { at(value, path.slice(0, -1))[path.at(-1)] = next; };
+function checkedFixturePath(path) {
+  if (!Array.isArray(path) || path.some(part => typeof part !== "string"
+    || !/^[A-Za-z0-9_.:-]+$/u.test(part) || ["__proto__", "prototype", "constructor"].includes(part))) {
+    throw new Error("Unsafe fixture property path.");
+  }
+  return path;
+}
+function at(value, path) {
+  for (const part of checkedFixturePath(path)) {
+    if (!value || typeof value !== "object" || !Object.hasOwn(value, part)) throw new Error("Missing own fixture property.");
+    value = Reflect.get(value, part);
+  }
+  return value;
+}
+function set(value, path, next) {
+  checkedFixturePath(path);
+  if (!path.length) throw new Error("Missing fixture property path.");
+  Object.defineProperty(at(value, path.slice(0, -1)), path.at(-1),
+    {value:next, enumerable:true, writable:true, configurable:true});
+}
+function remove(value, path) {
+  checkedFixturePath(path);
+  if (!path.length) throw new Error("Missing fixture property path.");
+  return Reflect.deleteProperty(at(value, path.slice(0, -1)), path.at(-1));
+}
 
 describe("R10 literal source punctuation with continued editorial enforcement", () => {
+  it("fixture property mutations reject prototype traversal and inherited properties without changing negative-test meaning", () => {
+    const fixture = {own:{}};
+    for (const path of [["__proto__","r10Injected"],["constructor","prototype","r10Injected"],
+      ["own","prototype"],["own","__proto__"],["own","constructor"],[1],[""]]) {
+      expect(() => set(fixture,path,"changed")).toThrow("Unsafe fixture property path");
+      expect(() => remove(fixture,path)).toThrow("Unsafe fixture property path");
+    }
+    expect(() => at(fixture,["toString"])).toThrow("Missing own fixture property");
+    expect(Object.prototype.r10Injected).toBeUndefined();
+    set(fixture,["own","sourceTitle"],"Fixture value");
+    expect(at(fixture,["own","sourceTitle"])).toBe("Fixture value");
+    expect(remove(fixture,["own","sourceTitle"])).toBe(true);
+    expect(Object.hasOwn(fixture.own,"sourceTitle")).toBe(false);
+  });
+
   it("pins precisely the captured file/field identities without a wildcard or display exception", () => {
     expect(sha(JSON.stringify(registry))).toBe("52124a630bf7c1fb63312d8c763c034ef264fad5bc09b4f9d4aa75fbed873690");
     expect(registry.files).toHaveLength(44);
@@ -67,7 +106,7 @@ describe("R10 literal source punctuation with continued editorial enforcement", 
   it("rejects changed, missing, moved or normalized source quotes", () => {
     for (const change of [" changed", "normalized", "missing", "moved"]) {
       const value = JSON.parse(read(reviewedPath)), original = at(value, protectedPin.path);
-      if (change === "missing") delete at(value, protectedPin.path.slice(0,-1))[protectedPin.path.at(-1)];
+      if (change === "missing") remove(value, protectedPin.path);
       else if (change === "moved") {
         set(value, protectedPin.path, "Different source title");
         value[Number(protectedPin.path[0])].unreviewedMetadata = original;

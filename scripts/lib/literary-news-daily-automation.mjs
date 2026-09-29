@@ -72,7 +72,8 @@ export function dailyNewsModelRequest({ phase, messages }) {
 }
 /** Existing Cloudflare credentials only; no SDK, external tools, redirects or alternate paid provider. */
 export function createDailyWorkersAiClient({ accountId, apiToken, fetchImpl = fetch, maxCalls = 30, timeoutMs = 45000 } = {}) {
-  if (!/^[a-f0-9]{32}$/i.test(accountId || "") || !apiToken?.trim()) fail("daily_ai_credentials_missing");
+  if (typeof accountId !== "string" || !/^[a-f0-9]{32}$/i.test(accountId)
+    || typeof apiToken !== "string" || !apiToken.trim()) fail("daily_ai_credentials_missing");
   if (!Number.isSafeInteger(maxCalls) || maxCalls < 0 || maxCalls > 60
     || !Number.isSafeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 60000) fail("daily_ai_budget_invalid");
   let calls = 0, stopped = null, stoppedHttpStatus = null;
@@ -83,9 +84,15 @@ export function createDailyWorkersAiClient({ accountId, apiToken, fetchImpl = fe
       if (calls >= maxCalls) fail("ai_request_budget_exhausted");
       const { model, input: request } = dailyNewsModelRequest({ phase, messages });
       calls++;
+      const target = new URL("https://api.cloudflare.com");
+      const expectedPath = "/client/v4/accounts/" + accountId + "/ai/run/" + model;
+      target.pathname = expectedPath;
+      if (target.protocol !== "https:" || target.hostname !== "api.cloudflare.com"
+        || target.origin !== "https://api.cloudflare.com" || target.username || target.password
+        || target.pathname !== expectedPath || target.search || target.hash) fail("daily_ai_endpoint_invalid");
       let response, raw, payload;
       try {
-        response = await fetchImpl("https://api.cloudflare.com/client/v4/accounts/" + accountId + "/ai/run/" + model,
+        response = await fetchImpl(target.href,
           { method: "POST", redirect: "error", signal: AbortSignal.timeout(timeoutMs),
             headers: { Authorization: "Bearer " + apiToken, "Content-Type": "application/json" }, body: JSON.stringify(request) });
         if (response.status === 402) { stopped = "ai_quota_exceeded"; stoppedHttpStatus = 402; fail(stopped); }
@@ -103,15 +110,22 @@ export function createDailyWorkersAiClient({ accountId, apiToken, fetchImpl = fe
 }
 /** Only the two new fixed keys; confirmed missing-key response alone permits bootstrap. */
 export function createDailyNewsStorageClient({ accountId, apiToken, fetchImpl = fetch, waitImpl = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
-  if (!/^[a-f0-9]{32}$/i.test(accountId || "") || !apiToken?.trim()) fail("daily_storage_credentials_missing");
+  if (typeof accountId !== "string" || !/^[a-f0-9]{32}$/i.test(accountId)
+    || typeof apiToken !== "string" || !apiToken.trim()) fail("daily_storage_credentials_missing");
   const keys = [DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_OWNER_KEY], lastWrite = new Map(); let stopped = null;
   async function request(key, options = {}) {
     if (stopped) fail(stopped);
     if (!keys.includes(key)) fail("daily_storage_key_invalid");
+    const target = new URL("https://api.cloudflare.com");
+    const expectedPath = "/client/v4/accounts/" + accountId + "/storage/kv/namespaces/" + NAMESPACE
+      + "/values/" + encodeURIComponent(key);
+    target.pathname = expectedPath;
+    if (target.protocol !== "https:" || target.hostname !== "api.cloudflare.com"
+      || target.origin !== "https://api.cloudflare.com" || target.username || target.password
+      || target.pathname !== expectedPath || target.search || target.hash) fail("daily_storage_endpoint_invalid");
     let response, text;
     try {
-      response = await fetchImpl("https://api.cloudflare.com/client/v4/accounts/" + accountId
-        + "/storage/kv/namespaces/" + NAMESPACE + "/values/" + encodeURIComponent(key),
+      response = await fetchImpl(target.href,
         { ...options, redirect: "error", signal: AbortSignal.timeout(30000),
           headers: { Authorization: "Bearer " + apiToken, "Content-Type": "application/json" } });
       if (response.status === 402) { stopped = "daily_storage_quota_exceeded"; fail(stopped); }

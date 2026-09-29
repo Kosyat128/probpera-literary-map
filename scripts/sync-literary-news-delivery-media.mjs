@@ -44,13 +44,19 @@ async function boundedText(response, limit) {
   } finally { await reader.cancel().catch(() => {}); reader.releaseLock(); }
 }
 export function createDeliveryMediaStorage({ accountId, apiToken, fetchImpl = fetch }) {
-  if (!/^[a-f0-9]{32}$/i.test(accountId || '') || typeof apiToken !== 'string' || !apiToken.trim())
+  if (typeof accountId !== 'string' || !/^[a-f0-9]{32}$/i.test(accountId) || typeof apiToken !== 'string' || !apiToken.trim())
     throw Error('delivery_media_storage_unconfigured');
   const request = async (key, { method = 'GET', body, binary = false } = {}) => {
-    if (key !== DELIVERY_MEDIA_INDEX_KEY && !new RegExp(`^${DELIVERY_MEDIA_BYTES_PREFIX}[a-f0-9]{64}$`).test(key))
+    if (typeof key !== 'string' || key !== DELIVERY_MEDIA_INDEX_KEY && !new RegExp(`^${DELIVERY_MEDIA_BYTES_PREFIX}[a-f0-9]{64}$`).test(key))
       throw Error('delivery_media_storage_key_invalid');
-    const target = new URL(`https://api.cloudflare.com/client/v4/accounts/${accountId}/storage/kv/namespaces/f3ae59fd55ee4c0cac8ff1613db81680/values/${encodeURIComponent(key)}`);
+    const target = new URL('https://api.cloudflare.com');
+    const expectedPath = `/client/v4/accounts/${accountId}/storage/kv/namespaces/f3ae59fd55ee4c0cac8ff1613db81680/values/${encodeURIComponent(key)}`;
+    target.pathname = expectedPath;
     if (binary) target.searchParams.set('expiration_ttl', String(45 * 86400000 / 1000));
+    if (target.protocol !== 'https:' || target.hostname !== 'api.cloudflare.com'
+      || target.origin !== 'https://api.cloudflare.com' || target.username || target.password
+      || target.pathname !== expectedPath || target.hash
+      || target.search !== (binary ? '?expiration_ttl=3888000' : '')) throw Error('delivery_media_storage_endpoint_invalid');
     const response = await fetchImpl(target, { method, body, redirect: 'error', signal: AbortSignal.timeout(30000),
       headers: { Authorization: `Bearer ${apiToken}`, ...(method === 'PUT' ? { 'Content-Type': binary ? 'image/jpeg' : 'application/json' } : {}) } });
     const text = await boundedText(response, method === 'GET' ? DELIVERY_MEDIA_INDEX_MAX_BYTES : 262144);

@@ -14,13 +14,20 @@ const json = value => JSON.stringify(value, null, 2) + '\n';
 const existingPaths = ['r10', 'r10-supplemental', 'r10-russian'].map(id => `src/data/countries/generated/writerDatePatches.${id}.json`);
 
 const candidates = [
-  ['russia:mikhail_zoshchenko', 'birthDate', '1894-08-09', 'https://www.culture.ru/persons/9974/mikhail-zoshenko', /0?9\s+августа\s+1894/i, 'Михаил Зощенко'],
-  ['russia:vasily_grossman', 'birthDate', '1905-12-12', 'https://rgbs.ru/tiflology/pubs/vasilij-semenovich-grossman/', /12\s+декабря\s+1905/i, 'Гроссман'],
-  ['russia:karamzin', 'birthDate', '1766-12-12', 'https://www.prlib.ru/node/619713', /1\s*\(12\)\s*декабря\s+1766/i, 'Карамзин'],
-  ['usa:daniel_keyes', 'birthDate', '1927-08-09', 'https://www.orrt.org/keyes/', /Born:\s*August\s+9,?\s+1927/i, 'Daniel Keyes'],
-  ['england:frederick_forsyth', 'birthDate', '1938-08-25', 'https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/', /August\s+25,\s+1938/i, 'Frederick Forsyth'],
-  ['england:frederick_forsyth', 'deathDate', '2025-06-09', 'https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/', /died\s+on\s+Monday,\s+June\s+9,\s+2025/i, 'Frederick Forsyth'],
+  { writerKey: 'russia:mikhail_zoshchenko', field: 'birthDate', proposedValue: '1894-08-09', sourceUrl: 'https://www.culture.ru/persons/9974/mikhail-zoshenko', pattern: /0?9\s+августа\s+1894/i, identity: 'Михаил Зощенко' },
+  { writerKey: 'russia:vasily_grossman', field: 'birthDate', proposedValue: '1905-12-12', sourceUrl: 'https://rgbs.ru/tiflology/pubs/vasilij-semenovich-grossman/', pattern: /12\s+декабря\s+1905/i, identity: 'Гроссман' },
+  { writerKey: 'russia:karamzin', field: 'birthDate', proposedValue: '1766-12-12', sourceUrl: 'https://www.prlib.ru/node/619713', pattern: /1\s*\(12\)\s*декабря\s+1766/i, identity: 'Карамзин' },
+  { writerKey: 'usa:daniel_keyes', field: 'birthDate', proposedValue: '1927-08-09', sourceUrl: 'https://www.orrt.org/keyes/', pattern: /Born:\s*August\s+9,?\s+1927/i, identity: 'Daniel Keyes' },
+  { writerKey: 'england:frederick_forsyth', field: 'birthDate', proposedValue: '1938-08-25', sourceUrl: 'https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/', pattern: /August\s+25,\s+1938/i, identity: 'Frederick Forsyth' },
+  { writerKey: 'england:frederick_forsyth', field: 'deathDate', proposedValue: '2025-06-09', sourceUrl: 'https://global.penguinrandomhouse.com/announcements/legendary-thriller-author-frederick-forsyth-passes-away-at-86/', pattern: /died\s+on\s+Monday,\s+June\s+9,\s+2025/i, identity: 'Frederick Forsyth' },
 ];
+
+export function checkedPopularCalendarReviewRow(row) {
+  const candidate = candidates.find(item => item.writerKey === row?.writerKey && item.field === row?.field);
+  assert.ok(candidate && candidate.proposedValue === row.proposedValue && candidate.sourceUrl === row.sourceUrl,
+    'Unapproved popular calendar identity, field, date or source');
+  return row;
+}
 
 const reviewedHeld = [
   { writerKey: 'russia:andrei_platonov', field: 'birthDate', reason: 'Competing Gregorian birthday statements (28 August and 1 September); no silent resolution.', sourceUrl: 'https://www.wikidata.org/wiki/Q315147' },
@@ -47,7 +54,7 @@ function julianToGregorian(value) {
 }
 
 if (process.argv.includes('--acquire')) {
-  const urls = [...new Set(candidates.map(c => c[3]))];
+  const urls = [...new Set(candidates.map(candidate => candidate.sourceUrl))];
   const pages = await pool(urls, async url => {
     try {
       const r = await boundedFetch(url, { timeout: 25000, maxBytes: 1_500_000 });
@@ -58,7 +65,7 @@ if (process.argv.includes('--acquire')) {
   }, 3);
   const byUrl = new Map(pages.map(p => [p.url, p]));
   const ready = [], held = [...reviewedHeld];
-  for (const [writerKey, field, proposedValue, sourceUrl, pattern, identity] of candidates) {
+  for (const { writerKey, field, proposedValue, sourceUrl, pattern, identity } of candidates) {
     const page = byUrl.get(sourceUrl), match = page.body?.match(pattern);
     if (page.status !== 200 || !page.body?.includes(identity) || !match) {
       held.push({ writerKey, field, proposedValue, sourceUrl, reason: page.error || 'Institutional identity/exact date not acquired' });
@@ -81,7 +88,8 @@ if (process.argv.includes('--write') || process.argv.includes('--check')) {
     const value = await readFile(sourcePath, 'utf8'); return { sourcePath, sha256: sha(value), patches: JSON.parse(value).patches };
   }));
   const seen = new Set(originalFiles.flatMap(s => s.patches.map(p => `${p.writerKey}:${p.field}`)));
-  const patches = review.ready.map(row => {
+  const patches = review.ready.map(untrusted => {
+    const row = checkedPopularCalendarReviewRow(untrusted);
     const key = `${row.writerKey}:${row.field}`;
     assert.ok(!seen.has(key), `Date already owned: ${key}`); seen.add(key);
     const h = held.find(x => x.writerKey === row.writerKey && x.field === row.field);

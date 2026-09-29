@@ -26,6 +26,18 @@ const candidates = [
   ['england:ronald_delderfield', 'Q438569', 'R. F. Delderfield', 'https://www.bdcmuseum.org.uk/explore/item/97450/', /Ben Gunn/i],
 ];
 
+const approvedIdentities = new Map(candidates.map(([writerKey, wikidataId, , sourceUrl]) => [writerKey, { wikidataId, sourceUrl }]));
+export function checkedScopedCalendarReviewRow(row) {
+  const identity = approvedIdentities.get(row?.writerKey);
+  assert.ok(identity && row.wikidataId === identity.wikidataId && row.sourceUrl === identity.sourceUrl,
+    'Unapproved scoped calendar identity or source');
+  assert.ok(Array.isArray(row.fields) && row.fields.length > 0 && row.fields.length <= 2
+    && new Set(row.fields.map(field => field?.field)).size === row.fields.length
+    && row.fields.every(field => field?.field === 'birthDate' || field?.field === 'deathDate'),
+  'Unapproved scoped calendar date field');
+  return row;
+}
+
 async function loadBaseline() {
   await mkdir('.tmp/scoped-calendar-r10', { recursive: true });
   const target = '.tmp/scoped-calendar-r10/baseline.mjs';
@@ -116,15 +128,16 @@ if (process.argv.includes('--write') || process.argv.includes('--check')) {
   const registry = JSON.parse(await readFile('src/data/countries/generated/curatedWriterQids.generated.json', 'utf8')).writers;
   const baseline = await loadBaseline();
   const existing = (await Promise.all(['r10', 'r10-supplemental', 'r10-russian', 'r10-popular'].map(async id => JSON.parse(await readFile(`src/data/countries/generated/writerDatePatches.${id}.json`, 'utf8')).patches))).flat();
-  const seen = new Set(existing.map(p => `${p.writerKey}:${p.field}`)), writers = {}, patches = [];
-  for (const row of review.ready) {
+  const seen = new Set(existing.map(p => `${p.writerKey}:${p.field}`)), writers = new Map(), patches = [];
+  for (const untrusted of review.ready) {
+    const row = checkedScopedCalendarReviewRow(untrusted);
     assert.ok(!registry[row.writerKey] || registry[row.writerKey].wikidataId === row.wikidataId, 'Main reviewed identity conflicts');
     const writer = baseline.get(row.writerKey); assert.ok(writer);
     assert.deepEqual([writer.name, writer.fullName].filter(Boolean), row.expectedNames, 'Existing identity/name changed');
     const entity = snapshot.entities.find(e => e.qid === row.wikidataId);
     assert.ok(entity.human && entity.lastrevid);
-    writers[row.writerKey] = { wikidataId: row.wikidataId, expectedNames: row.expectedNames,
-      identitySourceUrl: row.sourceUrl, identityFinding: row.identityFinding, checkedAt: row.checkedAt, sourceDocumentSha256: row.sourceDocumentSha256 };
+    writers.set(row.writerKey, { wikidataId: row.wikidataId, expectedNames: row.expectedNames,
+      identitySourceUrl: row.sourceUrl, identityFinding: row.identityFinding, checkedAt: row.checkedAt, sourceDocumentSha256: row.sourceDocumentSha256 });
     for (const field of row.fields) {
       const key = `${row.writerKey}:${field.field}`; assert.ok(!seen.has(key)); seen.add(key);
       assert.equal(writer[field.field] ?? null, field.expectedOld);
@@ -144,7 +157,7 @@ if (process.argv.includes('--write') || process.argv.includes('--check')) {
         field: field.field, expectedOld: field.expectedOld, expectedEvidence: field.expectedEvidence, appliedValue: field.proposedValue, evidence });
     }
   }
-  const identity = { version: 1, evaluatedAt: review.evaluatedAt, sourceReviewSha256: sha(reviewText), scope: 'Calendar date identities only', writers };
+  const identity = { version: 1, evaluatedAt: review.evaluatedAt, sourceReviewSha256: sha(reviewText), scope: 'Calendar date identities only', writers: Object.fromEntries(writers) };
   const output = { version: 1, evaluatedAt: review.evaluatedAt, sourceReviewSha256: sha(reviewText),
     scopedIdentitySha256: sha(json(identity)), snapshotSha256: sha(snapshotText), patches };
   if (process.argv.includes('--write')) {
@@ -153,5 +166,5 @@ if (process.argv.includes('--write') || process.argv.includes('--check')) {
     assert.equal(await readFile(identityPath, 'utf8'), json(identity), 'Scoped calendar identities stale');
     assert.equal(await readFile(patchPath, 'utf8'), json(output), 'Scoped date patches stale');
   }
-  console.log(JSON.stringify({ scopedWriterIdentities: Object.keys(writers).length, scopedDatePatches: patches.length }));
+  console.log(JSON.stringify({ scopedWriterIdentities: writers.size, scopedDatePatches: patches.length }));
 }

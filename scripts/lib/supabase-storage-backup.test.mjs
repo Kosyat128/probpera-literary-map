@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { mkdtemp, mkdir, writeFile, readFile } from "node:fs/promises";
+import { mkdtemp, mkdir, writeFile, readFile,symlink } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
@@ -32,6 +32,13 @@ describe("quota-aware complete Storage backup", () => {
     expect(f.download).not.toHaveBeenCalled();
     expect(result).toMatchObject({ objectCount: 1, downloadedBytes: 0, reusedObjects: 1, reusedBytes: 11 });
     expect(await verifySupabaseStorageBackup(f.output)).toEqual({ objectCount: 1, totalBytes: 11 });
+  });
+  it('accepts the existing empty storage output directory created by a backup workflow',async()=>{
+    const f=await fixture({'same.webp':'known-image'},{'same.webp':'known-image'});
+    await mkdir(f.output);
+    const result=await backupSupabaseStorage({supabase:f.supabase,outputRoot:f.output,reuseRoot:f.base});
+    expect(result).toMatchObject({objectCount:1,reusedObjects:1,downloadedObjects:0});
+    expect(await verifySupabaseStorageBackup(f.output)).toEqual({objectCount:1,totalBytes:11});
   });
   it("downloads changed/new objects, excludes deletions and leaves the base unchanged", async () => {
     const f = await fixture({ "changed.webp": "old", "deleted.webp": "gone" }, { "changed.webp": "new", "added.webp": "added" });
@@ -70,5 +77,36 @@ describe("quota-aware complete Storage backup", () => {
     f.list.mockResolvedValue({ data: null, error: null });
     await expect(backupSupabaseStorage({ supabase: f.supabase, outputRoot: f.output })).rejects.toThrow("storage_backup_listing_invalid");
     await expect(readFile(path.join(f.output, "storage-manifest.json"))).rejects.toMatchObject({ code: "ENOENT" });
+  });
+  it('always verifies a fresh non-reused archive and detects corruption before declaring success',async()=>{
+    const f=await fixture({}, {'one.webp':'one','two.webp':'two'});
+    f.download.mockImplementation(async name=>{
+      if(name==='two.webp')await writeFile(path.join(f.output,'editorial-media','one.webp'),'corrupt');
+      return{data:new Blob([name==='one.webp'?'one':'two']),error:null};
+    });
+    await expect(backupSupabaseStorage({supabase:f.supabase,outputRoot:f.output,reuseRoot:null})).rejects.toThrow('verification failed');
+    expect(f.download).toHaveBeenCalledTimes(2);
+    await expect(verifySupabaseStorageBackup(f.output)).rejects.toThrow('verification failed');
+  });
+  it('rejects overlapping physical roots before requests or modifying old bytes',async()=>{
+    const f=await fixture({'same.webp':'known'},{'same.webp':'known'});
+    for(const outputRoot of [f.base,path.join(f.base,'new'),path.dirname(f.base)])
+      await expect(backupSupabaseStorage({supabase:f.supabase,outputRoot,reuseRoot:f.base})).rejects.toThrow('storage_backup_reuse_overlaps_output');
+    expect(f.listBuckets).not.toHaveBeenCalled();expect(await readFile(path.join(f.base,'editorial-media','same.webp'),'utf8')).toBe('known');
+  });
+  it('does not overwrite a preexisting output file or follow its symlink directory',async context=>{
+    const f=await fixture({}, {'same.webp':'new'}),outside=path.join(path.dirname(f.output),'outside');
+    await mkdir(f.output);await mkdir(outside);await writeFile(path.join(outside,'same.webp'),'preserved');
+    try{await symlink(outside,path.join(f.output,'editorial-media'),process.platform==='win32'?'junction':'dir');}
+    catch(error){if(['EPERM','EACCES','ENOTSUP','ENOSYS'].includes(error.code)){context.skip();return;}throw error;}
+    await expect(backupSupabaseStorage({supabase:f.supabase,outputRoot:f.output})).rejects.toThrow('storage_backup_output_not_empty');
+    expect(f.download).not.toHaveBeenCalled();expect(await readFile(path.join(outside,'same.webp'),'utf8')).toBe('preserved');
+  });
+  it('rejects actor-controlled traversal, ADS and nonstring listing metadata without a completed manifest',async()=>{
+    for(const name of ['../outside.webp','safe.webp:stream','name.',123,{}]){
+      const f=await fixture({},{});f.list.mockResolvedValue({data:[{id:'object',name,metadata:{size:3}}],error:null});
+      await expect(backupSupabaseStorage({supabase:f.supabase,outputRoot:f.output})).rejects.toThrow(/storage_backup_(?:unsafe_path|listing_invalid)/);
+      expect(f.download).not.toHaveBeenCalled();await expect(readFile(path.join(f.output,'storage-manifest.json'))).rejects.toMatchObject({code:'ENOENT'});
+    }
   });
 });

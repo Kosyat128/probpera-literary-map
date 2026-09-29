@@ -66,7 +66,13 @@ jobs:
         if: inputs.enabled
         env:
           NEWS_RELEASE_SHA: ${{ inputs.expected_main_sha }}
-        run: node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"
+        run: |
+          node --input-type=module <<'NODE'
+          import {checkDeployedReleaseCodeHead} from './scripts/check-deployed-release-head.mjs';
+          const head=await checkDeployedReleaseCodeHead({EXPECTED_MAIN_SHA:process.env.NEWS_RELEASE_SHA,PUBLIC_SITE_URL:'https://probpera.ru'});
+          if(head.codePending)throw Error('public_site_release_unconfirmed');
+          NODE
+          node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"
       - name: Verify the bounded runtime and existing Telegram history
         if: inputs.enabled
         env:
@@ -91,6 +97,22 @@ jobs:
           const due=await client.rpc('read_due_literary_news_runtime_posts',{p_destination_id:destination.id,p_now:now.toISOString(),p_limit:20});
           if(due.error||!Array.isArray(due.data)||due.data.length>20)throw Error('runtime_due_unavailable');
           console.log(JSON.stringify({historyReconciled:true,dayStatus:checkedDeliveryDayStatus(status.data,now),dueJobs:due.data.length}));
+          NODE
+      - name: Verify current Telegram identity and publication rights without posting
+        if: inputs.enabled
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          node --input-type=module <<'NODE'
+          import {checkLiteraryNewsConnections} from './scripts/check-literary-news-connections.mjs';
+          import configuration from './data/news/social-destinations.json' with {type:'json'};
+          const destination=configuration.destinations.find(row=>row.platform==='telegram');
+          const result=await checkLiteraryNewsConnections({env:{TELEGRAM_BOT_TOKEN:process.env.TELEGRAM_BOT_TOKEN}});
+          const telegram=result.destinations.find(row=>row.platform==='telegram');
+          if(!destination||result.readonly!==true||result.externalWrites!==0||result.delivered!==0
+            ||telegram?.status!=='identity_and_rights_verified'||telegram.rightsVerified!==true
+            ||telegram.destinationId!==destination.id)throw Error('telegram_publication_rights_unconfirmed');
+          console.log(JSON.stringify({telegramRightsVerified:true,destinationId:destination.id,readonly:true,delivered:0}));
           NODE
       - name: Verify both configured AI protocols with unpublished fixtures
         if: inputs.enabled
@@ -151,6 +173,11 @@ jobs:
         run: |
           set -Eeuo pipefail
           [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
+          node --input-type=module <<'NODE'
+          import {checkDeployedReleaseCodeHead} from './scripts/check-deployed-release-head.mjs';
+          const head=await checkDeployedReleaseCodeHead({EXPECTED_MAIN_SHA:process.env.EXPECTED_MAIN_SHA,PUBLIC_SITE_URL:'https://probpera.ru'});
+          if(head.codePending)throw Error('public_site_release_unconfirmed');
+          NODE
           node scripts/verify-literary-news-live.mjs --expected-head "$EXPECTED_MAIN_SHA"
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:true
@@ -163,3 +190,11 @@ jobs:
           import {DAILY_NEWS_WINDOW} from './scripts/lib/literary-news-daily-profile.mjs';
           await appendFile(process.env.GITHUB_STEP_SUMMARY,`Native preparation and delivery enabled: ${process.env.ENABLED}. Window: ${DAILY_NEWS_WINDOW.start} through ${DAILY_NEWS_WINDOW.endExclusive} (exclusive), ${DAILY_NEWS_WINDOW.timeZone}. Preparation: every two hours; Telegram: hourly from 08:00 through 22:00 Moscow, target 10-15 fresh literary news daily, photo priority with text fallback. Actual publication and Telegram acknowledgements require postflight verification.\n`);
           NODE
+      - name: Record recovery requirements after a failed activation
+        if: failure() && inputs.enabled
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'RECOVERY'
+          Activation failed. The native delivery repository flag is an operator-controlled switch; this workflow does not have permission to restore it. Do not assume that Telegram delivery is active or that rollback happened.
+
+          Recovery: invoke this workflow on the current exact main SHA with enabled=false and verify that both Workers were deployed disabled. Then restore LITERARY_NEWS_NATIVE_DELIVERY_ENABLED=false using an authorized repository operator, enabling the existing bounded Node delivery fallback. Keep the native AI owner checkpoint intact; preparation ownership requires a separate explicit handoff before any Node AI writer can commit. Investigate the failed step before retrying activation.
+          RECOVERY
