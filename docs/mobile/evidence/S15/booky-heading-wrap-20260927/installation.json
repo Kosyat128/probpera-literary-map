@@ -1,0 +1,77 @@
+{
+  "sourceInputs": 1665,
+  "protectedInputs": 1663,
+  "changed": 2,
+  "added": 0,
+  "unitSuites": 0,
+  "staticRerun": false,
+  "browserCases": 2,
+  "images": 12,
+  "previousCheckpoint": "99d2280352da1f9ca3aca43ea3f60581f194533b",
+  "previousRuntimeSource": "7c885b582dc371ea1f595a5965002addb56c13c3",
+  "globalWrites": false,
+  "testsRun": false,
+  "installedAt": "2026-09-29T21:10:12.709Z",
+  "readyManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/ready.json",
+    "sha256": "6973db2b40e2f9285e70b42027c248c8b789b404d82a6078f3a80d81f20b8753"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-heading-wrap-review\\install.mjs",
+    "sha256": "d992d51ecb5c3695904601fa67e4f4d5f75a536c30208fce37df25d321636c1e"
+  },
+  "scope": {
+    "path": "docs/mobile/evidence/S15/booky-heading-wrap-20260927/scope.json",
+    "sha256": "acee0142d6740d326844f3e67a779f64b4c62233d19849605dee2b7d405cd87a"
+  },
+  "helpers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/build-android-a1.ps1",
+      "sha256": "6a3f7fa651d6755e5cdabbb508c0038e5cf08f188ad5475b8e08429fe2140cea"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/build-pwa-a1.mjs",
+      "sha256": "c55daa1bea51f628fcfbf7ca9ae117da45eeab78aadcac36a2abb14299f0c525"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/check.mjs",
+      "sha256": "5edc1fd93e3f04fd7cd592e893b3e6b70007ab3b4529d1e0a00e372972cf9ca8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/checkpoint.mjs",
+      "sha256": "4faab6dea59058ecfe09b4c491ed4e60edd42f4ffd33a3bc39c50a889cfb5021"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/configure.mjs",
+      "sha256": "02b50aaa4328da962b1c89f6c0d2ab6bb4051316e878460fcc13481e696e9b0d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/finalize-notes.mjs",
+      "sha256": "59188e2b395ac2cd4239a57cdef6d20f08b1f522b56cff7ca74f3e2908c2ab95"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/preserve-android-a1.mjs",
+      "sha256": "52d62812aebf81c0aa550cdc06fbb1f9e2e56bbe21e67fa95d41f976491ae5d0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/pwa-a1.config.mjs",
+      "sha256": "6debffc85469f4485f5df8c7219f7d03e51970468a14bc73aac2dd28d9039a27"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/read-case-evidence.mjs",
+      "sha256": "32e982b9d9532b8c12b254d49294e8beada9ae4f165ff565d78f2de367125201"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/record-visual.mjs",
+      "sha256": "51d1944cd4d9fa44f975e906ecb4e2cc998dc5591f6137407ea740de1abbefe6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/evidence-draft/verify-android-a1.mjs",
+      "sha256": "2bf5c9e0ef65022399b2890bd676ecba4afbd5ea24ac2f65397e89d7dc9b3716"
+    }
+  ]
+}

@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-heading-wrap-20260927:begin -->
+Latest source f7e0e737: narrow Booky headings wrap their action group while preserving readable localized names, touch target sizes and independent help scrolling. Existing synthetic font stress and actual Collection layout checks remain scoped browser evidence. All 34 historical drafts remain unapproved; no literary or release acceptance. Only bounded S15.PLANETKA-002 evidence; statuses unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-heading-wrap-20260927/result.json. D210. 2 actual-App cases; 12 authenticated captures. No unit or TypeScript rerun. Fresh PWA/Android builds bind this source; prior checks keep their original manifest attribution.
+<!-- s15-booky-heading-wrap-20260927:end -->
+
 <!-- s15-booky-character-resume-20260927:begin -->
 Latest source 7c885b58: explicit current-character Resume restores its existing work prerequisite while preserving the semantic node and completed prefix. Publication arrival never opens a modal or grants credit; fresh Open and exact current-modal acknowledgement remain separate actions. Controlled publication is test-only. All 34 historical drafts remain unapproved. Only bounded S15.PLANETKA-008 evidence; statuses unchanged.
 

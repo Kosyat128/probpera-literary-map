@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T21:15:34.644Z",
+  "sourceCommit": "f7e0e737a1196b0d9e02b43d8f20d8934229df22",
+  "buildId": "2b732239c73fbed3a632e55d01a7425a62fa1222baee59f58679551b194cc174",
+  "sourceInputsSha256": "c8d9f89b3ab1d3ebf445baf52a00d3824b9a709ac40b02acd082151c7e01ac0f",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/pwa-2b732239",
+    "files": 1427,
+    "bytes": 76833241,
+    "artifactSha256": "f843be6d1b129f6625c9c76674bcf2866bbc1d378e12cda6dc903d0d69b34117",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-29T21:15:13.270Z",
+    "duration": 17068.851,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "requestedBrowserChannel": "msedge",
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

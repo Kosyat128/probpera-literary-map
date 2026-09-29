@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T21:10:13.374Z",
+  "stage": "S15",
+  "checkpoint": "99d2280352da1f9ca3aca43ea3f60581f194533b",
+  "previous": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+    "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+    "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+  },
+  "previousRuntimeSourceCommit": "7c885b582dc371ea1f595a5965002addb56c13c3",
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+    "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+    "fileCount": 1665
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-heading-wrap-20260927/scope.json",
+    "sha256": "acee0142d6740d326844f3e67a779f64b4c62233d19849605dee2b7d405cd87a"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "6e953bd254d57717f9120371adcf557218328d355f3d63c3fe5fa72f32fec3d4"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "9b56b903277ff7b1d1d95b7f452ebda604062cb9ba814a0bc0d741cd2f62c3f8"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "96dcb3acb1ad09769f00500322019eb924da30150711f7ec10ea9d7ce2cae481"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "98a9dcc6f6fa1710c72e904a3eead38b7378cc1117e096feb86962bedab9cea2"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "c02da4faf7d663753974367b058b0fbae7da93cc75241fe13fd5fc1a3fc3c069"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "a6641de8597bc86f3a8b158600818902e04510d1f25e7a3fd8005e1b45984b11"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "64c6732ca141abd4fa8c596963eb583d5e87ab7181955b2536c44b7b36e9841b"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "bb59c9798e35bfa9190b03a7de5aa21e80293acd7bb5619a9c170b415166b26e"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "62fc13d00ba121abf09143da872fd7a9488bfe2e151580b74e160b4f7d83bfa1"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "ebf7938aa5ed8944bee064399fbd4c1ec5eb169c01ee8dd1a7f4011a065bbb22"
+    }
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1663,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.css"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "99d2280352da1f9ca3aca43ea3f60581f194533b",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [],
+  "staticValidation": "not-rerun-no-typescript-source-change",
+  "browserChannel": "msedge",
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky actual App font-only 200 percent stress ru",
+    "Booky actual App font-only 200 percent stress en"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 0,
+  "expectedBrowserTests": 2,
+  "expectedImages": 12,
+  "scope": "D210 responsive Booky heading layout preserves each normal localized name on its own line when the title and action group cannot fit together. Preserve 44-pixel targets, sticky controls, independent help scrolling and existing enlarged-text behavior.",
+  "runtimeWiringImplemented": true,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

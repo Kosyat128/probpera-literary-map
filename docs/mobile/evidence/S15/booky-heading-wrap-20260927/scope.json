@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "description": "D210 responsive Booky heading layout preserves each normal localized name on its own line when the title and action group cannot fit together. Preserve 44-pixel targets, sticky controls, independent help scrolling and existing enlarged-text behavior.",
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "caseEvidenceContractsComplete": true,
+  "changedPaths": [
+    "src/host/PlanetMascotControls.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "expectedSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "62fc13d00ba121abf09143da872fd7a9488bfe2e151580b74e160b4f7d83bfa1"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "ebf7938aa5ed8944bee064399fbd4c1ec5eb169c01ee8dd1a7f4011a065bbb22"
+    }
+  ],
+  "expectedSourceInputCount": 1665,
+  "expectedProtectedInputCount": 1663,
+  "unitFiles": [],
+  "expectedUnitTests": 0,
+  "unitValidation": "not-rerun-css-and-browser-fixture-only",
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "Booky actual App font-only 200 percent stress ru",
+    "Booky actual App font-only 200 percent stress en"
+  ],
+  "expectedBrowserTests": 2,
+  "expectedImages": 12,
+  "caseEvidenceContracts": [
+    {
+      "title": "Booky actual App font-only 200 percent stress ru",
+      "file": "tests/pwa/booky-live-character.spec.mjs",
+      "scenario": "booky-font-only-200-stress-ru",
+      "evidenceKind": "source-attachment",
+      "attachmentName": "booky-live-character-source-evidence",
+      "rawFilename": "booky-live-character.json",
+      "rawScenario": "booky-font-only-200-stress-ru",
+      "imagesField": "screenshots",
+      "expectedImages": 6,
+      "sourceBinding": "emitted-hashes",
+      "requiredSourcePaths": [
+        "src/host/PlanetMascotControls.css",
+        "src/host/PlanetMascotControls.tsx",
+        "tests/pwa/booky-live-character.spec.mjs"
+      ],
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "observationsComplete": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "fontStressFindings": 0,
+        "fontStressExactTwoHundredPercent": true,
+        "fontStressCriticalControlsFitAndRespond": true,
+        "fontStressRecoveryReachableByTouch": true,
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved": true,
+        "fontStressPortraitModelPreserved": true,
+        "fontStressNormalModeRestored": true,
+        "headingWrapNormalTitleFits": true,
+        "headingWrapStickyControlsExposed": true,
+        "headingWrapCollectionScrollAndClose": true,
+        "observations.fontStress.headingWrap.collection.geometryInjected": false
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources",
+        "customizationWrites",
+        "unexpectedPreferenceWrites",
+        "observations.fontStress.findings"
+      ],
+      "observationKey": "fontStress",
+      "requiredChecks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ],
+      "captureFilenames": [
+        "booky-font-stress-ru-portrait-baseline.png",
+        "booky-font-stress-ru-portrait-help-200.png",
+        "booky-font-stress-ru-portrait-walk-200.png",
+        "booky-font-stress-ru-landscape-help-200.png",
+        "booky-font-stress-ru-recovery-200.png",
+        "booky-heading-wrap-ru-collection.png"
+      ],
+      "scope": "All prior globe font stress/recovery assertions remain exact. Only afterward: restore normal text, real Collection activation, deliberate trusted Move toward left, fresh scene/preference/position baseline, real gallery activation and panel scrolling, Stop/Close. No injected card geometry, book/journey provider or native font equivalence."
+    },
+    {
+      "title": "Booky actual App font-only 200 percent stress en",
+      "file": "tests/pwa/booky-live-character.spec.mjs",
+      "scenario": "booky-font-only-200-stress-en",
+      "evidenceKind": "source-attachment",
+      "attachmentName": "booky-live-character-source-evidence",
+      "rawFilename": "booky-live-character.json",
+      "rawScenario": "booky-font-only-200-stress-en",
+      "imagesField": "screenshots",
+      "expectedImages": 6,
+      "sourceBinding": "emitted-hashes",
+      "requiredSourcePaths": [
+        "src/host/PlanetMascotControls.css",
+        "src/host/PlanetMascotControls.tsx",
+        "tests/pwa/booky-live-character.spec.mjs"
+      ],
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "observationsComplete": true,
+        "syntheticTextStress": true,
+        "nativeFontScaleEquivalent": false,
+        "fontStressFindings": 0,
+        "fontStressExactTwoHundredPercent": true,
+        "fontStressCriticalControlsFitAndRespond": true,
+        "fontStressRecoveryReachableByTouch": true,
+        "fontStressCanonicalStateAndLegacyPreferencesPreserved": true,
+        "fontStressPortraitModelPreserved": true,
+        "fontStressNormalModeRestored": true,
+        "headingWrapNormalTitleFits": true,
+        "headingWrapStickyControlsExposed": true,
+        "headingWrapCollectionScrollAndClose": true,
+        "observations.fontStress.headingWrap.collection.geometryInjected": false
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources",
+        "customizationWrites",
+        "unexpectedPreferenceWrites",
+        "observations.fontStress.findings"
+      ],
+      "observationKey": "fontStress",
+      "requiredChecks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ],
+      "captureFilenames": [
+        "booky-font-stress-en-portrait-baseline.png",
+        "booky-font-stress-en-portrait-help-200.png",
+        "booky-font-stress-en-portrait-walk-200.png",
+        "booky-font-stress-en-landscape-help-200.png",
+        "booky-font-stress-en-recovery-200.png",
+        "booky-heading-wrap-en-collection.png"
+      ],
+      "scope": "All prior globe font stress/recovery assertions remain exact. Only afterward: restore normal text, real Collection activation, deliberate trusted Move toward left, fresh scene/preference/position baseline, real gallery activation and panel scrolling, Stop/Close. No injected card geometry, book/journey provider or native font equivalence."
+    }
+  ],
+  "requiredCaptureFlags": [],
+  "requiredCaptureValues": [],
+  "requiredObservationChecks": [
+    {
+      "scenario": "booky-font-only-200-stress-ru",
+      "observation": "fontStress",
+      "checks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ]
+    },
+    {
+      "scenario": "booky-font-only-200-stress-en",
+      "observation": "fontStress",
+      "checks": [
+        "all four font passes reach exactly 200 percent after settling",
+        "portrait Stop, Close and disabled walking target receive trusted touch",
+        "short-landscape Stop and Close receive trusted touch",
+        "Retry and Recover remain reachable under enlarged text",
+        "critical control text stays within measured button borders",
+        "font stress preserves legacy preferences and canonical scene",
+        "portrait scaling preserves the existing Booky model and canvas size",
+        "expanded text mode returns to compact after font restoration"
+      ]
+    }
+  ],
+  "requiredVisualFilenames": [
+    "booky-font-stress-ru-portrait-baseline.png",
+    "booky-font-stress-ru-portrait-help-200.png",
+    "booky-font-stress-ru-portrait-walk-200.png",
+    "booky-font-stress-ru-landscape-help-200.png",
+    "booky-font-stress-ru-recovery-200.png",
+    "booky-heading-wrap-ru-collection.png",
+    "booky-font-stress-en-portrait-baseline.png",
+    "booky-font-stress-en-portrait-help-200.png",
+    "booky-font-stress-en-portrait-walk-200.png",
+    "booky-font-stress-en-landscape-help-200.png",
+    "booky-font-stress-en-recovery-200.png",
+    "booky-heading-wrap-en-collection.png"
+  ],
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "requireDiagnosticHistory": false,
+  "requirementEvidenceTargets": [
+    "PLANETKA-002"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-002"
+  ],
+  "previousCheckpoint": {
+    "checkpoint": "99d2280352da1f9ca3aca43ea3f60581f194533b",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+      "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+    },
+    "sourceCommit": "7c885b582dc371ea1f595a5965002addb56c13c3",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+      "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+      "fileCount": 1665
+    }
+  },
+  "previousRuntime": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+      "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+    },
+    "sourceCommit": "7c885b582dc371ea1f595a5965002addb56c13c3",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+      "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+      "fileCount": 1665
+    },
+    "pwa": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/pwa-a1/result.json",
+      "sha256": "472cd2326e59944ee5b6b33810ad295effab84d8846896fce03945d2c4550273"
+    },
+    "android": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/android-a1/result.json",
+      "sha256": "062876156244d3587fcafc0b6beaa9d41cfafb66ba26b40a9b5347c21f3e183f"
+    }
+  },
+  "historicalDialogueInputs": [
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "10e41f50bc7e2a564c18d13c6afba988fe11508e313a537173e2f3bc73b86eb4"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "76feddfb236ff2486d35c5181847419a9c93b96506b73f4f8a740fcc9467330f"
+    }
+  ],
+  "directSpecificationEvidence": [
+    {
+      "path": "docs/mobile/requirements/v12/12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+      "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+      "section": "2",
+      "scope": "Bounded Booky companion presentation and visible controls only; no full mascot art/accessibility/stage acceptance."
+    }
+  ],
+  "runtimeAmendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/draft/source-bindings.json",
+      "sha256": "3e9bfb43538e7dbea9fe767706079358d4bb87cae6dd2180477f947f867fd643"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/browser-draft/fixture-edit-plan.json",
+      "sha256": "3b5e53d26cc31c98c3ca5c9284cbbb3d5ec46e727a242aeaf1c2d0c398180e74"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/browser-channel-adaptation.json",
+      "sha256": "40bc337a409c57ea634c2050068333cae3be1caa69d6fceaca29c05af3d34b77"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/source-apply-receipt.json",
+      "sha256": "d44b0ae0d84d28b8b876a71c60d73628b5ae6e147fd2a8604e91d6886ffc67c4"
+    }
+  ],
+  "newUiCopyStatus": {
+    "status": "no-new-copy-css-only",
+    "humanReviewed": false,
+    "childApproved": false,
+    "narrationApproved": false
+  },
+  "evidenceAdapter": {
+    "path": "docs/mobile/evidence/S15/booky-heading-wrap-20260927/read-case-evidence.mjs",
+    "sha256": "32e982b9d9532b8c12b254d49294e8beada9ae4f165ff565d78f2de367125201"
+  },
+  "checkpointNextAction": "D211: add finite happy celebration only after successful explicit final literary journey acknowledgement through ordinary Next or exact current-character acknowledgement. Reuse the live 3D owner and existing motion and Stop guards; never queue or replay from hydration, history or Resume. Validate both completion paths and reduced-motion hydration in existing actual-App cases; preserve route, lease, progress and canonical scene authority.",
+  "pendingFields": [],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "browserContract": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/browser-draft/draft-contract.json",
+    "sha256": "188b5edec1e8d31efa662a43db99f88aa3e04636c892c417cc30d7d61bdcca96"
+  },
+  "canonicalPromotion": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/source-apply-receipt.json",
+    "sha256": "d44b0ae0d84d28b8b876a71c60d73628b5ae6e147fd2a8604e91d6886ffc67c4"
+  },
+  "diagnosticAttempts": [],
+  "visualReviewScope": "Direct review of all twelve fresh D210 actual-App captures: normal narrow Collection plus the existing portrait, short-landscape and synthetic font-only 200% sequences.",
+  "browserScopeNotes": [
+    "Two existing actual-App layout cases. Portrait RU390/EN320, existing short landscape RU568x320/EN640x360, synthetic font-only 200% and restoration, plus normal narrow collection. No additional journey case or mirrored units.",
+    "All prior globe font stress/recovery assertions remain exact. Only afterward: restore normal text, real Collection activation, deliberate trusted Move toward left, fresh scene/preference/position baseline, real gallery activation and panel scrolling, Stop/Close. No injected card geometry, book/journey provider or native font equivalence.",
+    "Actual text Range layout rectangles (1 CSS px tolerance), sticky header/card/action bounds, center and two inner hit points. RU narrow normal card must not fit title + actions together, must fit title alone, and must put the whole name on one row.",
+    "All twelve final images require direct review. Historical journey captures are not reused as current layout evidence. No unit or TypeScript rerun is attributed to D210.",
+    "The two selected cases request installed Edge explicitly through the existing shared browser launch. Other fixture bytes reverse exactly; no additional cases or unit/static suites are selected."
+  ],
+  "historicalProvenanceScope": "Historical dialogue inventory records and source copy remain unchanged and unapproved. CSS changes alone do not alter the bound TypeScript dialogue source files.",
+  "staticValidation": "not-rerun-no-typescript-source-change",
+  "requestedBrowserChannel": "msedge"
+}

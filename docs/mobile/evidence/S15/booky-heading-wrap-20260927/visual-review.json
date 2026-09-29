@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T21:18:44.391Z",
+  "pass": true,
+  "sourceCommit": "f7e0e737a1196b0d9e02b43d8f20d8934229df22",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-heading-wrap-20260927/source-manifests/9dfccc9611f2db80.json",
+    "sha256": "9dfccc9611f2db80d234690928893e527719899f961c0562e4b03e98586efc02",
+    "fileCount": 1665
+  },
+  "inspectedCount": 12,
+  "totalCapturedCount": 12,
+  "scope": "Direct review of all twelve fresh D210 actual-App captures: normal narrow Collection plus the existing portrait, short-landscape and synthetic font-only 200% sequences.",
+  "limitations": [
+    "This review directly inspects 12 of 12 final captures.",
+    "Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-review/visual-receipt-a1.json",
+    "sha256": "4f8316035eb8af51acce87c30e93b395495a97714d04b4088546a8e646999574"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-baseline.png",
+      "sha256": "8e44b8a5a7014e840e3acba944b597e9df196ac60b6e6cb9dfd02bf077ad5325",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The normal portrait name and help controls are readable; the actual companion and canonical globe remain visible."
+      ],
+      "bytes": 359289,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-help-200.png",
+      "sha256": "bbf30940f1f17659d53ff6b14f9c832fb9bf9605a5ad8743f051ec84f9f9e714",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The enlarged localized name and full Stop/Close controls remain visible. The card body is independently scrollable; no full-body visibility claim is made."
+      ],
+      "bytes": 319763,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-portrait-walk-200.png",
+      "sha256": "0cdc066023c47ac7c9fa6e01122d686261c1ce34dc411924175aefed805fa55e",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The enlarged walk control remains visible after help is closed, with the actual companion and globe present. A still frame does not prove finite playback or touch trust."
+      ],
+      "bytes": 414620,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-landscape-help-200.png",
+      "sha256": "9f21a3a8e6579f9c5ef6013e191d4775c567c964beb3d4b716b8a96ae7176aa4",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The enlarged name and sticky controls are readable in the short-landscape help overlay. Partial body framing requires its existing independent scroll; no underlying-navigation-through-help acceptance is inferred."
+      ],
+      "bytes": 102872,
+      "width": 568,
+      "height": 320
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-font-stress-ru-recovery-200.png",
+      "sha256": "672b55e8463a6aee8e545e628f9317058c8d8b320b2dcc4019348bf5a27245c5",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The enlarged heading and recovery action remain readable. This synthetic text stress does not establish native font scaling or all recovery paths."
+      ],
+      "bytes": 233189,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-ad053--only-200-percent-stress-ru/booky-heading-wrap-ru-collection.png",
+      "sha256": "24779d9ee210266c5d8a3e149c11191d1c1b35c6653a7f75b6313f9b544dca43",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The normal narrow Collection header keeps Книжулик on one line with Stop and Close on a separate right-aligned row. Gesture body remains exposed; some narrow gallery captions still split within words, prepared separately for D213."
+      ],
+      "bytes": 147506,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-baseline.png",
+      "sha256": "e0aafc1925a9a7d26e16d8bcc947c2a565fa9d3dbbf65f14ebd13c7df9f93dda",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The normal portrait name and help controls are readable; the actual companion and canonical globe remain visible."
+      ],
+      "bytes": 287958,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-help-200.png",
+      "sha256": "f8d6bc16cc1df01964b42bede65aac350b0fd0f418cd467d61393b457f71345d",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The enlarged localized name and full Stop/Close controls remain visible. The card body is independently scrollable; no full-body visibility claim is made."
+      ],
+      "bytes": 242402,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-portrait-walk-200.png",
+      "sha256": "ce57a339959d49f64d7f5d621c13be7222da9c33e143bf8b728a8fc439a26cd4",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The enlarged walk control remains visible after help is closed, with the actual companion and globe present. A still frame does not prove finite playback or touch trust."
+      ],
+      "bytes": 337340,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-landscape-help-200.png",
+      "sha256": "8571045028006f64d447cdb06a984281de1a10842737da35765aea688a868b83",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The enlarged name and sticky controls are readable in the short-landscape help overlay. Partial body framing requires its existing independent scroll; no underlying-navigation-through-help acceptance is inferred."
+      ],
+      "bytes": 133593,
+      "width": 640,
+      "height": 360
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-font-stress-en-recovery-200.png",
+      "sha256": "9c4d17448fc440663b84991482800be2f0b97fe6d410c4098eb3170cbd49c5de",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The enlarged heading and recovery action remain readable. This synthetic text stress does not establish native font scaling or all recovery paths."
+      ],
+      "bytes": 188760,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-heading-wrap-evidence/browser-a1/booky-live-character-Booky-35ad3--only-200-percent-stress-en/booky-heading-wrap-en-collection.png",
+      "sha256": "7dcd59a30ce56c30ea209cbca3d31160cc4236bd9e19b704bede9144d56de89d",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The normal Collection header keeps Mr. Booky readable with both full controls. The gesture gallery is visible below the sticky heading."
+      ],
+      "bytes": 133004,
+      "width": 320,
+      "height": 844
+    }
+  ],
+  "releaseReady": false
+}

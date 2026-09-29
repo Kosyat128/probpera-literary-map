@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const folder='docs/mobile/evidence/S15/booky-heading-wrap-20260927',result=JSON.parse(await fs.readFile(folder+'/result.json','utf8'));
+assert.equal(result.pass,true);assert.equal(result.releaseReady,false);assert.equal(result.decisionD210Recorded,true);
+const marker='<!-- s15-booky-heading-wrap-20260927:begin -->',agents=await fs.readFile('AGENTS.md','utf8');assert.ok(!agents.includes(marker));const index=agents.indexOf('<!-- s15-');assert.ok(index>0);
+const note=marker+'\nLatest source '+result.sourceCommit.slice(0,8)+': narrow Booky headings wrap their action group while preserving readable localized names, touch target sizes and independent help scrolling. Existing synthetic font stress and actual Collection layout checks remain scoped browser evidence. All 34 historical drafts remain unapproved; no literary or release acceptance. Only bounded S15.PLANETKA-002 evidence; statuses unchanged.\n\nEvidence: '+folder+'/result.json. D210. '+result.browserCases+' actual-App cases; '+result.totalCapturedImageCount+' authenticated captures. No unit or TypeScript rerun. Fresh PWA/Android builds bind this source; prior checks keep their original manifest attribution.\n<!-- s15-booky-heading-wrap-20260927:end -->\n\n';
+await fs.writeFile('AGENTS.md',agents.slice(0,index)+note+agents.slice(index));console.log(JSON.stringify({pass:true,updated:'AGENTS.md',sourceCommit:result.sourceCommit}));
