@@ -1,0 +1,77 @@
+{
+  "sourceInputs": 1665,
+  "protectedInputs": 1660,
+  "changed": 5,
+  "added": 0,
+  "unitSuites": 0,
+  "staticRerun": true,
+  "browserCases": 3,
+  "images": 9,
+  "previousCheckpoint": "49fb120aa193952bc0ba7af318e2f190df031ab1",
+  "previousRuntimeSource": "f7e0e737a1196b0d9e02b43d8f20d8934229df22",
+  "globalWrites": false,
+  "testsRun": false,
+  "installedAt": "2026-09-29T21:25:18.118Z",
+  "readyManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/ready.json",
+    "sha256": "9d092245a72185ca92e4cf6146a760774452b1162e5cd20224c48ef41eb86921"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-completion-review\\install.mjs",
+    "sha256": "27fde5a90caf9d90603ae7b06c3b4cd6be2c4c853fb10726b660bf36e194067a"
+  },
+  "scope": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/scope.json",
+    "sha256": "817278e1db8403900c8aca72322298fb597538aecc8aee9126b5ac4fc12aa609"
+  },
+  "helpers": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/build-android-a1.ps1",
+      "sha256": "7fd7e09cb008afa1b4f610967096512190b08af862b2290f87741cd068b17c95"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/build-pwa-a1.mjs",
+      "sha256": "3b2b3d9bc60df92592e7272bb62aaedca395a53532181a621b3d9b1bc6106cbe"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/check.mjs",
+      "sha256": "be875d6cce4269bc357c7bba76efc6588f40f4ba81c9d2a1f42f4d5e464e40f5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/checkpoint.mjs",
+      "sha256": "e5a30e49fdc1269bc108ec9ac0ab6d59dd1483e138f17e6b1126b544d445cd56"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/configure.mjs",
+      "sha256": "27be52874272d754c906d965dc2bfbe0d0c04e3361f8b8871ac1f5940e23d288"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/finalize-notes.mjs",
+      "sha256": "c2e87ba4e6f29e53cbebb35a1eee2d690a794e771e1e509a4b3f1788e38b202a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/preserve-android-a1.mjs",
+      "sha256": "a7adffaffb50b7bf5de7fc6d2204ac8b840e14fa8f8ce762dd7fed334d36aab8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/pwa-a1.config.mjs",
+      "sha256": "6debffc85469f4485f5df8c7219f7d03e51970468a14bc73aac2dd28d9039a27"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/read-case-evidence.mjs",
+      "sha256": "32e982b9d9532b8c12b254d49294e8beada9ae4f165ff565d78f2de367125201"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/record-visual.mjs",
+      "sha256": "2e9ed5b637a8ee21c0cd1b36f5b0cfc8b88c3d853d1471837d6ec24c0f9e7c18"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/evidence-draft/verify-android-a1.mjs",
+      "sha256": "d6ae89fe9b244c717ecb0652f8103619e8e8e64d10534a305af7009d68eca22f"
+    }
+  ]
+}

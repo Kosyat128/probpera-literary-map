@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76833713,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-evidence/pwa-a1-copy-verification.json",
+    "sha256": "e1b93f936fe7c2f30f5790654b31e92ae7468842925d8c9b9740450b686baf12"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-evidence/pwa-231aa018/artifact.json",
+    "sha256": "f49bbd95caa15939a0ac2b076cf2d3ae215fb2a2eaadf7ff985146eea4b8d4cc"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T21:44:13.308Z",
+  "stage": "S15",
+  "checkpoint": "49fb120aa193952bc0ba7af318e2f190df031ab1",
+  "previous": "docs/mobile/evidence/S15/booky-heading-wrap-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-heading-wrap-20260927/result.json",
+    "sha256": "c06741adf885e77859269b567c2f5fe5f06e1cf34b62f762f357e26f8226f4ae"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-heading-wrap-20260927/result.json",
+    "sha256": "c06741adf885e77859269b567c2f5fe5f06e1cf34b62f762f357e26f8226f4ae"
+  },
+  "previousRuntimeSourceCommit": "f7e0e737a1196b0d9e02b43d8f20d8934229df22",
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-heading-wrap-20260927/source-manifests/9dfccc9611f2db80.json",
+    "sha256": "9dfccc9611f2db80d234690928893e527719899f961c0562e4b03e98586efc02",
+    "fileCount": 1665
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-journey-completion-20260930/scope-a2.json",
+    "sha256": "74a3d15ba2fd416301091743e08a54ea52ac30a8c392b09b38fe958bfc67b0aa"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "4aa1cb946d364d48ba6ddf1e1b25932524df86c674d2ec15346e23e2a5939c15"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "cd73b2fc1aa679f99a562f0810afad50fc84d09572f0456112722db984a090c2"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "30ab67b955e102f13ca1918a5edec0037944d960c5453f3ac42fb73bfe74eb4d"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "1f2803e1fce297f0d320a384e17440eb52dc6773b217212476d394a0a9b138a6"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "98964e3d6cce9732a1f266582108cdadf2d8844ff8bc81cf70673913e24a78ba"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "5c5413ebb9e27394307dc11b8be5be2c993bca05b55eec2b5411fc3cfa0e0c03"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "087891b024a48ff1088d3f46c1866c4fe1e8c0fd58bdeccbc86c73b72a371252"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "9c3cca888319457d7af084f0f2f3f838dc5bafd06197cbf435d3d9d120e9f32b"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "ec2289fe6ba5cd99b2110a24bd86460f57e09fd99320861336d07a39e591522b"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "6c034971c5fc298ce8b3dd393b4f021fb85e08c59295cb251a91c6e908792c53"
+    },
+    {
+      "path": "src/host/BookyJourneyControls.tsx",
+      "sha256": "474e4fc774d0036b027ff8b463684d8116431c920dc40aa8f71462c55a7fae89"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "ba2f1aa8af6b84f16b764d818b11e43d0f38713b66b7f0dae50c21e4955d919c"
+    }
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1661,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/PlanetMascotControls.tsx"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "49fb120aa193952bc0ba7af318e2f190df031ab1",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [],
+  "retainedRuntimeUnitEvidence": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/result.json",
+      "sha256": "2ac37e81256befc1ea80532d0837ca076b7bc158ce6c33427cf542fbd0a38267"
+    },
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+      "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+    },
+    "execution": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/execution.json",
+      "sha256": "1fbc244dfc0553e5365fccb2494cb9306a89a3db83adfdc498d5e0491ae0639a"
+    },
+    "rawReport": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/vitest.json",
+      "sha256": "281319773b4d2a6fc097582e3fdca78c1beb01acf05d669f3578229a50db556c"
+    },
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+      "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+      "fileCount": 1665
+    },
+    "dependencyProof": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+      "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+    },
+    "count": 120,
+    "currentSuitesRerun": false,
+    "originalManifestOnly": true
+  },
+  "staticValidation": "fresh-typescript-required-for-callback-wiring",
+  "browserChannel": "msedge",
+  "browserFiles": [
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 0,
+  "expectedBrowserTests": 3,
+  "expectedImages": 9,
+  "scope": "D211 immediate optional Booky happy presentation after successful explicit final Next at a valid final checkpoint. RU exercises finite rendering; EN exercises a reduced-motion still pose and completed cold hydration without happy replay. Semantic completion, persistence and publication guards remain independent.",
+  "runtimeWiringImplemented": true,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

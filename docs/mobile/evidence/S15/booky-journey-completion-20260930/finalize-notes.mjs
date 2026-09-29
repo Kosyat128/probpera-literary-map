@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const folder='docs/mobile/evidence/S15/booky-journey-completion-20260930',result=JSON.parse(await fs.readFile(folder+'/result.json','utf8'));
+assert.equal(result.pass,true);assert.equal(result.releaseReady,false);assert.equal(result.decisionD211Recorded,true);
+const marker='<!-- s15-booky-journey-completion-20260930:begin -->',agents=await fs.readFile('AGENTS.md','utf8');assert.ok(!agents.includes(marker));const index=agents.indexOf('<!-- s15-');assert.ok(index>0);
+const note=marker+'\nLatest source '+result.sourceCommit.slice(0,8)+': Booky gives immediate optional happy presentation after successful explicit journey completion. RU verifies finite playback and EN verifies a reduced-motion still pose plus completed cold hydration without replay. Semantic acknowledgement and progress remain separate from decoration. All 34 historical drafts remain unapproved; D207 inventory audit retains its historical source only. Bounded S15.PLANETKA-008 evidence; statuses unchanged.\n\nEvidence: '+folder+'/result.json. D211. Fresh TypeScript and '+result.browserCases+' actual-App cases; '+result.totalCapturedImageCount+' authenticated captures. No unit rerun; original D209120 proof remains at its original manifest. Fresh PWA/Android builds bind this source.\n<!-- s15-booky-journey-completion-20260930:end -->\n\n';
+await fs.writeFile('AGENTS.md',agents.slice(0,index)+note+agents.slice(index));console.log(JSON.stringify({pass:true,updated:'AGENTS.md',sourceCommit:result.sourceCommit}));

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "installedAt": "2026-09-29T21:47:19.382Z",
+  "manifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-completion-review\\amendment-a2\\finish-files-a2.json",
+    "sha256": "beef6d005bd0b221496134aff8b281d72afeadd378941956f7bbb0d71d901d19"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-completion-review\\amendment-a2\\install-finish-a2.mjs",
+    "sha256": "b70667fc788f639bee4849ae6054ab2bd1a7fd55f81ac6b7a4dc466682180d90"
+  },
+  "files": [
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/checkpoint-a2.mjs",
+        "sha256": "cc5ca9d2cedacf82df1698745f6198677c02e659d62f78d47c7245c28a45063f"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/checkpoint-a2.mjs"
+    },
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/record-visual-a2.mjs",
+        "sha256": "af55c18ba4a2d1636d030bf0c07fe8032bef31d29620ee7e3b061e5c7b9c39d6"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/record-visual-a2.mjs"
+    },
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/build-pwa-final-a2.mjs",
+        "sha256": "f23e7f04115996fc2a6e22696b6cb8a5c0cb6c5bff5eb4c4e9f8309823415c0f"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/build-pwa-final-a2.mjs"
+    },
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/build-android-final-a2.ps1",
+        "sha256": "f364211360e4933d2c14a0fb4edd42971e9b401b69a1ab133c2ac59f2bc62e06"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/build-android-final-a2.ps1"
+    },
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/preserve-android-final-a2.mjs",
+        "sha256": "8189c4cbb38348f1eb2f495e5ff9afb4d86c83c2d43b7cc13a8fa5a801788dd0"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/preserve-android-final-a2.mjs"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "installedAt": "2026-09-29T21:44:02.734Z",
+  "manifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-completion-review\\amendment-a2\\core-files-a2.json",
+    "sha256": "59d1d08cf43d697c3f1beab039d363a57a122eaa35a69d71e62cbbbca6ff399b"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-journey-completion-review\\amendment-a2\\install-core-a2.mjs",
+    "sha256": "4002a151e3baeb1708e0b45ecfc46cd8b288cff65908e3c401a9a2aee1089598"
+  },
+  "files": [
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/scope-a2.json",
+        "sha256": "74a3d15ba2fd416301091743e08a54ea52ac30a8c392b09b38fe958bfc67b0aa"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/scope-a2.json"
+    },
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/configure-a2.mjs",
+        "sha256": "2c930042f52c4d495589be5ca9bc3f45535f313c21784e88197543f2f42e6d7c"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/configure-a2.mjs"
+    },
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/check-a2.mjs",
+        "sha256": "609a2c0c1099c5129fe055c7d9857e021bafdc17efeff923569284444c13b579"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/check-a2.mjs"
+    },
+    {
+      "source": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-review/amendment-a2/playwright-a2.config.mjs",
+        "sha256": "deb5eac955c0b9de6b5567e5e4198514bc9aa0b8fb213b31a47a3dc871f23449"
+      },
+      "target": "docs/mobile/evidence/S15/booky-journey-completion-20260930/playwright-a2.config.mjs"
+    }
+  ]
+}

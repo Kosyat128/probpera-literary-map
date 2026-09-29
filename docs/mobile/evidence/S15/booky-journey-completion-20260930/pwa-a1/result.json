@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T21:50:17.833Z",
+  "sourceCommit": "295dda520f4af80cd5c88bffb6e012f2f82ce4f1",
+  "buildId": "231aa01829ff6ec9b232c66252f940afeded6e295487c334d39aeb450e2406b2",
+  "sourceInputsSha256": "1bc276d463fbf71dcfa1b81c167082175a15436856fd06ad1bc157de64f08b22",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-journey-completion-evidence/pwa-231aa018",
+    "files": 1427,
+    "bytes": 76833713,
+    "artifactSha256": "f49bbd95caa15939a0ac2b076cf2d3ae215fb2a2eaadf7ff985146eea4b8d4cc",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-29T21:49:49.753Z",
+    "duration": 21308.004,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "requestedBrowserChannel": "msedge",
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

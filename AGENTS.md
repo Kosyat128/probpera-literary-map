@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-journey-completion-20260930:begin -->
+Latest source 295dda52: Booky gives immediate optional happy presentation after successful explicit journey completion. RU verifies finite playback and EN verifies a reduced-motion still pose plus completed cold hydration without replay. Semantic acknowledgement and progress remain separate from decoration. All 34 historical drafts remain unapproved; D207 inventory audit retains its historical source only. Bounded S15.PLANETKA-008 evidence; statuses unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-journey-completion-20260930/result.json. D211. Fresh TypeScript and 3 actual-App cases; 9 authenticated captures. No unit rerun; original D209120 proof remains at its original manifest. Fresh PWA/Android builds bind this source.
+<!-- s15-booky-journey-completion-20260930:end -->
+
 <!-- s15-booky-heading-wrap-20260927:begin -->
 Latest source f7e0e737: narrow Booky headings wrap their action group while preserving readable localized names, touch target sizes and independent help scrolling. Existing synthetic font stress and actual Collection layout checks remain scoped browser evidence. All 34 historical drafts remain unapproved; no literary or release acceptance. Only bounded S15.PLANETKA-002 evidence; statuses unchanged.
 
