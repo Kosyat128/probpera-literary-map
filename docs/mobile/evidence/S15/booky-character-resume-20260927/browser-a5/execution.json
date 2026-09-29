@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-character-resume-20260927/playwright.config.mjs",
+    "--grep=^actual App en character journey requires current modal acknowledgement and preserves canonical context$"
+  ],
+  "requestedBrowserChannel": "msedge",
+  "startedAt": "2026-09-29T20:44:16.656Z",
+  "exitCode": 1,
+  "durationMs": 914,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a5/stdout.log",
+    "bytes": 23,
+    "sha256": "bef44b71926303f638fcf3917875642de7e01f8828d85d994561945390fde863"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a5/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

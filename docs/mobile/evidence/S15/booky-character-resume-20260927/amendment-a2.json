@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "classification": "formal-browser-fixture-only-amendment",
+  "originalFiles": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry.json",
+      "sha256": "a56be7f7b745ca06141ed8ca8182bcdad21c325bfef58b5429f261f036a365a4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope.json",
+      "sha256": "2b9cd2958da6fbeb203d7bdb88474baa13823fb99787bbd2a19550c2a885b979"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/check.mjs",
+      "sha256": "02371bf7d8495e1ebe5dce561f4d33882a6b9e4a1a981ec744797a73e08a5509"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit.config.mjs",
+      "sha256": "f938ab69a1bac836faac13ebad64837f038e8d689e5776f07fad51f5b1dde65c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/configure.mjs",
+      "sha256": "4922eef018e609da0cbc558a2f84d6321fee8ae9923f7019d46404e9bf65dbfd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+      "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/execution.json",
+      "sha256": "1fbc244dfc0553e5365fccb2494cb9306a89a3db83adfdc498d5e0491ae0639a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/stdout.log",
+      "bytes": 186,
+      "sha256": "9123155c7c30d7f6dfc5ad47a517956aa921ea85633edaead7aa8f3c33a25038"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/vitest.json",
+      "sha256": "281319773b4d2a6fc097582e3fdca78c1beb01acf05d669f3578229a50db556c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/result.json",
+      "sha256": "918e7d4920a2892106e36ed5d4c262b7eb061ede2ba4f4a09cfc388fc2d20219"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/execution.json",
+      "sha256": "f20a4e768f697313b6d5bd3d44858bec828d7fcfeff86a2abfd3f4d8e38ea44d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/result.json",
+      "sha256": "52b8513cf9a274ea6d3f3e53ca59f5ae92ddc9d9cbb0963afb7ef29cd149b2f4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/execution.json",
+      "sha256": "7acccee66e65451ae9dc23a06f328818d12d9299a04099760cb0bd522c53198b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/stdout.log",
+      "bytes": 6361,
+      "sha256": "2b2968baafd0e0ff0045451ca03f745901cd98773023162e2739fc91aec62e34"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/stderr.log",
+      "bytes": 492,
+      "sha256": "a494595a40d7a16167ba4d157e6c8266e48672b46c1fb8db9bdda7c1481add68"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/playwright.json",
+      "sha256": "62aa3603fffd63defa705a2b734d16669049fde48c3676cde2452f788507ac0f"
+    }
+  ],
+  "originalSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+    "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+    "fileCount": 1665
+  },
+  "fixture": {
+    "path": "tests/pwa/booky-character-step.spec.mjs",
+    "beforeSha256": "de3639c6dd2540c8aedcbca8f2fa8dcdcf3f3a68fc0a997f020b54ed176503d8",
+    "afterSha256": "4cc5c4b6398b3255a591286ee6d65fbd688cb920e6191dd960a4f0f28a4df645"
+  },
+  "unit": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+    "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+  },
+  "static": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/result.json",
+    "sha256": "918e7d4920a2892106e36ed5d4c262b7eb061ede2ba4f4a09cfc388fc2d20219"
+  },
+  "failedBrowser": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/result.json",
+    "sha256": "52b8513cf9a274ea6d3f3e53ca59f5ae92ddc9d9cbb0963afb7ef29cd149b2f4"
+  },
+  "failedBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/playwright.json",
+    "sha256": "62aa3603fffd63defa705a2b734d16669049fde48c3676cde2452f788507ac0f"
+  },
+  "provenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/apply-correction-a2.json",
+      "sha256": "2d307fccffb62aee57eac54d59313ea66ab96e715d75d0b7e0a8b6491f2d3150"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-correction-a2/fixture-edit-plan.json",
+      "sha256": "c73d1e07d6e3df3f2d660e30ecf572d71decd3a637d9186301210a9244529a79"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-correction-a2/character-resume-browser-correction.patch",
+      "sha256": "2cd4f6b5954e61dbc1ab137dc2088c78175d243292d708e677e380f0c09ba062"
+    }
+  ],
+  "unitSelection": [
+    "src/host/bookyJourneyRuntime.test.ts"
+  ],
+  "typeScriptInclude": [
+    "src"
+  ],
+  "expectedUnitTests": 120,
+  "retentionReason": "The source inventory includes the PWA fixture, but the unchanged Vitest configuration selects only the runtime test and TypeScript includes src. Every other inventory and supplemental input remains byte-exact. Original passing executions remain attributed to their original manifest; only browser is rerun.",
+  "failureInterpretation": "RU raw finalDom still has visible exact book detail and ready character after one trusted header click. Dialog Close retained a manual character preview; Archive ordinary native Back cancels that presentation first and returns. Two distinct genuine controls: close the book directly, verify detail and book URL gone while collection remains, then Return from the collection. No repeated same-input retry, timer change or runtime change.",
+  "diagnosticRerun": false
+}

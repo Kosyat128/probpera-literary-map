@@ -1,0 +1,49 @@
+{
+  "installed": true,
+  "runtimeUnchanged": true,
+  "retainedUnits": 120,
+  "retainedStatic": true,
+  "originalFormalBrowser": {
+    "passed": 1,
+    "failed": 2
+  },
+  "newBrowserAttempt": "a2",
+  "fixture": {
+    "path": "tests/pwa/booky-character-step.spec.mjs",
+    "beforeSha256": "de3639c6dd2540c8aedcbca8f2fa8dcdcf3f3a68fc0a997f020b54ed176503d8",
+    "afterSha256": "4cc5c4b6398b3255a591286ee6d65fbd688cb920e6191dd960a4f0f28a4df645"
+  },
+  "preparedManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-review\\amendment-a2/prepared-files.json",
+    "sha256": "9f7bf7977b888251a9be07c8f3e6291e1e4e5fee11d2be542e1b48f5976f4d8b"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-review\\amendment-a2\\install-amendment-a2.mjs",
+    "sha256": "85f40e3b562db85c0bb2abeb7697a16e0ac83e0bf65e137b66ae19af4891b15a"
+  },
+  "globalWrites": false,
+  "testsRun": false,
+  "installedAt": "2026-09-27T05:37:41.075Z",
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a2.json",
+      "sha256": "8ddc381b4e2012485e0729fa994ea3a43204f082a6e13aa5786b0a7e4e25d852"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a2.json",
+      "sha256": "9051ae87bf8fb90b7ff23b0ddadd79c7a310b0d7baf88833e1cb72580486cbae"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/amendment-a2.json",
+      "sha256": "51e4a26af62d126ae76d28c23e35a6d1087cd25fe879cc708b07418886770d38"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/check-a2.mjs",
+      "sha256": "aa167bf400bc016648a159b4c8affbb3add9399208a47378d2a146044e1c7502"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/validate-fixture-amendment-a2.mjs",
+      "sha256": "373064ea64cab968287bc5765d08574536fcf532817b3c4c8a05539907bdc281"
+    }
+  ]
+}

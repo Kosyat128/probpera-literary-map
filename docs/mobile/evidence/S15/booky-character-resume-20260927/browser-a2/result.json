@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a2",
+  "pass": false,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/4107b7e6fd5d2f39.json",
+    "sha256": "4107b7e6fd5d2f3914c3eb9657e829b057694005b1bc2ecbfaacc28531cedbd3",
+    "fileCount": 1665
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/check-a2.mjs",
+      "sha256": "aa167bf400bc016648a159b4c8affbb3add9399208a47378d2a146044e1c7502"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry.json",
+      "sha256": "a56be7f7b745ca06141ed8ca8182bcdad21c325bfef58b5429f261f036a365a4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a2.json",
+      "sha256": "9051ae87bf8fb90b7ff23b0ddadd79c7a310b0d7baf88833e1cb72580486cbae"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit.config.mjs",
+      "sha256": "f938ab69a1bac836faac13ebad64837f038e8d689e5776f07fad51f5b1dde65c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/configure.mjs",
+      "sha256": "4922eef018e609da0cbc558a2f84d6321fee8ae9923f7019d46404e9bf65dbfd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a2.json",
+      "sha256": "8ddc381b4e2012485e0729fa994ea3a43204f082a6e13aa5786b0a7e4e25d852"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/validate-fixture-amendment-a2.mjs",
+      "sha256": "373064ea64cab968287bc5765d08574536fcf532817b3c4c8a05539907bdc281"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/amendment-a2.json",
+      "sha256": "51e4a26af62d126ae76d28c23e35a6d1087cd25fe879cc708b07418886770d38"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 1,
+    "failed": 2,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   failed: 2,\n-   failed: 0,\n    flaky: 0,\n+   passed: 1,\n-   passed: 3,\n    skipped: 0\n  }\n",
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 202245
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyCharacterResumeImplemented": true,
+  "journeyCharacterWiringImplemented": true,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

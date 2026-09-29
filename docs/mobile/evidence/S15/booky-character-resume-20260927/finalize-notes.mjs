@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const folder='docs/mobile/evidence/S15/booky-character-resume-20260927',result=JSON.parse(await fs.readFile(folder+'/result.json','utf8'));
+assert.equal(result.pass,true);assert.equal(result.releaseReady,false);assert.equal(result.decisionD209Recorded,true);
+const marker='<!-- s15-booky-character-resume-20260927:begin -->',agents=await fs.readFile('AGENTS.md','utf8');assert.ok(!agents.includes(marker));const index=agents.indexOf('<!-- s15-');assert.ok(index>0);
+const note=marker+'\nLatest source '+result.sourceCommit.slice(0,8)+': explicit current-character Resume restores its existing work prerequisite while preserving the semantic node and completed prefix. Publication arrival never opens a modal or grants credit; fresh Open and exact current-modal acknowledgement remain separate actions. Controlled publication is test-only. All 34 historical drafts remain unapproved. Only bounded S15.PLANETKA-008 evidence; statuses unchanged.\n\nEvidence: '+folder+'/result.json. D209. '+result.unitCount+' focused runtime unit cases, TypeScript and '+result.browserCases+' actual-App cases; '+result.totalCapturedImageCount+' captures. Fresh PWA/Android builds bind this source; prior evidence retains its original source.\n<!-- s15-booky-character-resume-20260927:end -->\n\n';
+await fs.writeFile('AGENTS.md',agents.slice(0,index)+note+agents.slice(index));console.log(JSON.stringify({pass:true,updated:'AGENTS.md',sourceCommit:result.sourceCommit}));

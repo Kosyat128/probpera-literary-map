@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "version": "a7",
+  "classification": "actual-archive-readiness-and-synthetic-fixture-amendment",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a7.json",
+    "sha256": "fa9b9b406585b20bf7da7ad28d11b3e38c2a6110e0dc2f166409aa7c55e3f5fd"
+  },
+  "scope": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a7.json",
+    "sha256": "53d06f939af96f200ea3c3aeadebaecfcf6fc6ce21a5ed121ce5af80bd0af476"
+  },
+  "executedScope": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a4.json",
+    "sha256": "d6728feaf7510a04e7301f50724bc363c5c632140e61f748c47f905e9e1bcb0a"
+  },
+  "finalSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+    "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+    "fileCount": 1665
+  },
+  "expectedSourceInputs": [
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "d6322497d011cec2d304bd5f46797c5af46a6df2758e75762d9d9dc31b34a1c7"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.test.ts",
+      "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.ts",
+      "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "ae39c2e74aa70140d669fee66d71f86f8c070fdc15ff54a7c7e85f05f63e176b"
+    }
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1661,
+  "previousSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/be9a45e41121c26f.json",
+    "sha256": "be9a45e41121c26fff6afc5c2b7f0c31adba089586c3c1b69e3e360d60297baa",
+    "fileCount": 1665
+  },
+  "sourceCorrections": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/stable-publication-a5/apply-receipt.json",
+      "sha256": "444e99dbf18ef12507465c82057f1d7d8e5b17e952a19275ad89d09063ed5bbe"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/stable-publication-a5/native-root-apply.json",
+      "sha256": "579566224ecc43e7f09cf00a1e06035b7ca991014da740d2cdfd3d380c858459"
+    }
+  ],
+  "checker": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/stable-publication-a5/check-final-a7.mjs",
+    "sha256": "5ca47847023f39661ffd581ba8206ad862d2331db39831cb01f9c060db8bc190"
+  },
+  "retainedUnit": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/retained-unit-a1-a7.json",
+    "sha256": "e9032b721c9ebb8510f1b4a1eec1afad63516e846660d6e525d57d8cd41e984c"
+  },
+  "expectedFinalModes": {
+    "static": "a7",
+    "browser": "a7"
+  },
+  "freshExpectedBrowserCases": 3,
+  "freshExpectedImages": 9,
+  "retainedUnitAttempt": "a1",
+  "testsRunByPreparer": false
+}

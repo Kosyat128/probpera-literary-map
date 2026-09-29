@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "requestedBrowserChannel": null,
+  "startedAt": "2026-09-29T20:53:41.340Z",
+  "exitCode": 0,
+  "durationMs": 28436,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a7/stdout.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a7/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

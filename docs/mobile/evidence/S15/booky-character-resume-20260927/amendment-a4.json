@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "classification": "formal-browser-fixture-only-amendment",
+  "version": "a4",
+  "originalFiles": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry.json",
+      "sha256": "a56be7f7b745ca06141ed8ca8182bcdad21c325bfef58b5429f261f036a365a4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope.json",
+      "sha256": "2b9cd2958da6fbeb203d7bdb88474baa13823fb99787bbd2a19550c2a885b979"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/check.mjs",
+      "sha256": "02371bf7d8495e1ebe5dce561f4d33882a6b9e4a1a981ec744797a73e08a5509"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/configure.mjs",
+      "sha256": "4922eef018e609da0cbc558a2f84d6321fee8ae9923f7019d46404e9bf65dbfd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit.config.mjs",
+      "sha256": "f938ab69a1bac836faac13ebad64837f038e8d689e5776f07fad51f5b1dde65c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a2.json",
+      "sha256": "9051ae87bf8fb90b7ff23b0ddadd79c7a310b0d7baf88833e1cb72580486cbae"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a2.json",
+      "sha256": "8ddc381b4e2012485e0729fa994ea3a43204f082a6e13aa5786b0a7e4e25d852"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/check-a2.mjs",
+      "sha256": "aa167bf400bc016648a159b4c8affbb3add9399208a47378d2a146044e1c7502"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/amendment-a2.json",
+      "sha256": "51e4a26af62d126ae76d28c23e35a6d1087cd25fe879cc708b07418886770d38"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/validate-fixture-amendment-a2.mjs",
+      "sha256": "373064ea64cab968287bc5765d08574536fcf532817b3c4c8a05539907bdc281"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+      "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/execution.json",
+      "sha256": "1fbc244dfc0553e5365fccb2494cb9306a89a3db83adfdc498d5e0491ae0639a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/stdout.log",
+      "sha256": "9123155c7c30d7f6dfc5ad47a517956aa921ea85633edaead7aa8f3c33a25038"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/vitest.json",
+      "sha256": "281319773b4d2a6fc097582e3fdca78c1beb01acf05d669f3578229a50db556c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/result.json",
+      "sha256": "918e7d4920a2892106e36ed5d4c262b7eb061ede2ba4f4a09cfc388fc2d20219"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/execution.json",
+      "sha256": "f20a4e768f697313b6d5bd3d44858bec828d7fcfeff86a2abfd3f4d8e38ea44d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/result.json",
+      "sha256": "52b8513cf9a274ea6d3f3e53ca59f5ae92ddc9d9cbb0963afb7ef29cd149b2f4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/execution.json",
+      "sha256": "7acccee66e65451ae9dc23a06f328818d12d9299a04099760cb0bd522c53198b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/stdout.log",
+      "sha256": "2b2968baafd0e0ff0045451ca03f745901cd98773023162e2739fc91aec62e34"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/stderr.log",
+      "sha256": "a494595a40d7a16167ba4d157e6c8266e48672b46c1fb8db9bdda7c1481add68"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/playwright.json",
+      "sha256": "62aa3603fffd63defa705a2b734d16669049fde48c3676cde2452f788507ac0f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a2/result.json",
+      "sha256": "a67dccae1f2bca50e7509a01570c6e487edd98cbb255d4643ea404478b0b0cfb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a2/execution.json",
+      "sha256": "92fc23a37384463f3a394cf39292cc5dad7610e6c87e44341166bc625207ad36"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a2/stdout.log",
+      "sha256": "9244301b25128ae02d034e4ec9948b14999cfa028750fe8a41543ee6e740a5f6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a2/stderr.log",
+      "sha256": "94f4b60c76360b2b5d19ba7bf89d3cec3b47caff1e6b6fb9e71e4b8791cba500"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a2/playwright.json",
+      "sha256": "1aff3032552d850d106b36840d3f3f7fec3ea9770342a5d3bccbb96a3644ae31"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a3.json",
+      "sha256": "f98b52b4305caea331919a30737b5cf24db69d4a8e75fe61eba001f9f33a25b3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a3.json",
+      "sha256": "0d861cd2fd232ac4cbd1e09c79bef6413e2060f0769188a6bf66daa8350873c7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/check-a3.mjs",
+      "sha256": "c89f6008d78762e1dc6f259344d712d274e5427d661c48ef331b041b22addd60"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/retained-unit-a1-a3.json",
+      "sha256": "5a92c45db1a665a59e9ab7b51d455fea7523e9d44e6abe4a00ac332bc11a70ae"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/validate-retained-unit-a3.mjs",
+      "sha256": "8c7a09951a32c8ebd3134e665ecea338f7d14e88e5efaeabaaaba9b5487731c0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+      "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a3/result.json",
+      "sha256": "6fcb4f8fe5b1d0b7b909da51a175aa5496778efbd0bc6e10f12dd6c334283717"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a3/execution.json",
+      "sha256": "8da80234aa1603fd46c1ac78fc4cfece8cc788c0da689558e64785f9ba153b6f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a3/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a3/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/result.json",
+      "sha256": "e9fecfa7f37f9f57942205ea87e6b2a4e92954fc8b0791b25ce742375096c8ec"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/execution.json",
+      "sha256": "b282da8f44dd416d56bb21b469b7a5716074df25839c9e5a1657b35743f45a25"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/playwright.json",
+      "sha256": "2922e5e80a1c6e81e76bce310120aeba879fbeb716433207890092660db63aa3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/stdout.log",
+      "sha256": "76915b8bab82dcacd7b3aa42efdf31759f7f2e49cc9cdfeae5f46fafc0532814"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/stderr.log",
+      "sha256": "5fb9756fb901bfb8f98b79ab5bb4192c47d1b80991da90571f8a65d6ff55fc1f"
+    }
+  ],
+  "provenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-exit-correction-a4/fixture-edit-plan.json",
+      "sha256": "1915f37062ababcf159c2c00141915e8c8573735bacc54ab630084e83f494d15"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-exit-correction-a4/proposed.mjs",
+      "sha256": "982a123b867df16bf386d0a92e488e2f7479de4fdf7cc6516ef4f553bf58c517"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-exit-correction-a4/apply-receipt.json",
+      "sha256": "812778bff42633973d80777d9a5b27ee335bed89fe187bbb1a99c1ccc4400cb0"
+    }
+  ],
+  "originalSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/b12e6ab8b899b725.json",
+    "sha256": "b12e6ab8b899b725354e56499b69106516ee3479de19dc1327bd5860e40396dd",
+    "fileCount": 1665
+  },
+  "originalUnitSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+    "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+    "fileCount": 1665
+  },
+  "unit": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+    "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e"
+  },
+  "static": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a3/result.json",
+    "sha256": "6fcb4f8fe5b1d0b7b909da51a175aa5496778efbd0bc6e10f12dd6c334283717"
+  },
+  "failedBrowser": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/result.json",
+    "sha256": "e9fecfa7f37f9f57942205ea87e6b2a4e92954fc8b0791b25ce742375096c8ec"
+  },
+  "failedBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/playwright.json",
+    "sha256": "2922e5e80a1c6e81e76bce310120aeba879fbeb716433207890092660db63aa3"
+  },
+  "fixture": {
+    "path": "tests/pwa/booky-character-step.spec.mjs",
+    "beforeSha256": "2fe3dfef1882f8479e7a05265e1f7e6fe693592f76f38fb0cb1c113c331dc3f5",
+    "afterSha256": "982a123b867df16bf386d0a92e488e2f7479de4fdf7cc6516ef4f553bf58c517"
+  },
+  "unitSelection": [
+    "src/host/bookyJourneyRuntime.test.ts"
+  ],
+  "typeScriptInclude": [
+    "src"
+  ],
+  "otherSourceInputsUnchanged": 1664,
+  "retainedUnitTests": 120,
+  "retainedStatic": true,
+  "requestedBrowserChannel": "msedge",
+  "testsRun": false
+}

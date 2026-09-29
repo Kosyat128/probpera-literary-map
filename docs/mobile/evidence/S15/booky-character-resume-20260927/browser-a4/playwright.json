@@ -1,0 +1,231 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-character-resume-20260927/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-character-resume-20260927\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a4",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-character-step.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-character-resume-20260927\\browser-a4\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-character-step.spec.mjs",
+      "file": "booky-character-step.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 81639,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-29T20:23:39.856Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a4\\booky-character-step-actua-e9e7f-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-14adb273fe1deb5da6d5a221ba7f6b6acbafc1b2.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-020556cb0b130fda9c8c",
+          "file": "booky-character-step.spec.mjs",
+          "line": 540,
+          "column": 55
+        },
+        {
+          "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 49879,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-journey-status]')\nExpected: \u001b[32m\"paused\"\u001b[39m\nReceived: \u001b[31m\"unavailable\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-status]')\u001b[22m\n\u001b[2m    14 × locator resolved to <p tabindex=\"-1\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"booky-journey-controls__status\" data-booky-journey-status=\"unavailable\">This journey is currently unavailable. You can re…</p>\u001b[22m\n\u001b[2m       - unexpected value \"unavailable\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-journey-status]')\nExpected: \u001b[32m\"paused\"\u001b[39m\nReceived: \u001b[31m\"unavailable\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-status]')\u001b[22m\n\u001b[2m    14 × locator resolved to <p tabindex=\"-1\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"booky-journey-controls__status\" data-booky-journey-status=\"unavailable\">This journey is currently unavailable. You can re…</p>\u001b[22m\n\u001b[2m       - unexpected value \"unavailable\"\u001b[22m\n\n    at restoreCharacterWorkByUser (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:488:32)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:564:12",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                      "column": 32,
+                      "line": 488
+                    },
+                    "snippet": "  486 |     await fixture.coldReload('approved');await openJourney(fixture,input);\n  487 |     await expect(page.locator('.native-planet-panel')).toBeHidden();await expect(page.locator('#book-archive-detail')).toHaveCount(0);\n> 488 |     await expect(status(page)).toHaveAttribute('data-booky-journey-status','paused');\n      |                                ^\n  489 |     await expect(node(page)).toHaveAttribute('data-booky-journey-node','character');\n  490 |     await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);\n  491 |     expect(await page.evaluate(()=>window.__d206PublicationCalls)).toEqual([]);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                        "column": 32,
+                        "line": 488
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-booky-journey-status]')\nExpected: \u001b[32m\"paused\"\u001b[39m\nReceived: \u001b[31m\"unavailable\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-status]')\u001b[22m\n\u001b[2m    14 × locator resolved to <p tabindex=\"-1\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\" class=\"booky-journey-controls__status\" data-booky-journey-status=\"unavailable\">This journey is currently unavailable. You can re…</p>\u001b[22m\n\u001b[2m       - unexpected value \"unavailable\"\u001b[22m\n\n\n  486 |     await fixture.coldReload('approved');await openJourney(fixture,input);\n  487 |     await expect(page.locator('.native-planet-panel')).toBeHidden();await expect(page.locator('#book-archive-detail')).toHaveCount(0);\n> 488 |     await expect(status(page)).toHaveAttribute('data-booky-journey-status','paused');\n      |                                ^\n  489 |     await expect(node(page)).toHaveAttribute('data-booky-journey-node','character');\n  490 |     await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);\n  491 |     expect(await page.evaluate(()=>window.__d206PublicationCalls)).toEqual([]);\n    at restoreCharacterWorkByUser (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:488:32)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:564:12"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-29T20:25:02.405Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a4\\booky-character-step-actua-d42a8-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-a0a4151bde218ee9e6f0729ff92b2009416bec73.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a4\\booky-character-step-actua-d42a8-preserves-canonical-context\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                    "column": 32,
+                    "line": 488
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-90c282ef0bca3f5ad5bc",
+          "file": "booky-character-step.spec.mjs",
+          "line": 540,
+          "column": 55
+        },
+        {
+          "title": "actual App absent publication capability denies character routes without opening or progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 40076,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-29T20:25:52.769Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a4\\booky-character-step-actua-9fee8-without-opening-or-progress\\attachments\\booky-character-step-source-evidence-b5b10155a0e7402bc97317f77ceb4d26e6a78de0.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-c1a814475e13c60b8a9e",
+          "file": "booky-character-step.spec.mjs",
+          "line": 578,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-29T20:23:39.146Z",
+    "duration": 174535.674,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

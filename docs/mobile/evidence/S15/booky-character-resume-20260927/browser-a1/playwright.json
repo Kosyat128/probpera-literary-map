@@ -1,0 +1,260 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-character-resume-20260927/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-character-resume-20260927\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-character-step.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-character-resume-20260927\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-character-step.spec.mjs",
+      "file": "booky-character-step.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 49604,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel')\u001b[22m\n\u001b[2m    14 × locator resolved to <section role=\"dialog\" aria-modal=\"true\" class=\"native-planet-panel\" aria-labelledby=\"native-collection-title\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel')\u001b[22m\n\u001b[2m    14 × locator resolved to <section role=\"dialog\" aria-modal=\"true\" class=\"native-planet-panel\" aria-labelledby=\"native-collection-title\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n    at restoreCharacterWorkByUser (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:468:54)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:553:12",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                      "column": 54,
+                      "line": 468
+                    },
+                    "snippet": "  466 |   await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);await assertSemantic();\n  467 |   await input.tap(page.locator('.native-planet-panel__header').getByRole('button',{name:language==='ru'?'Вернуться к планете':'Return to the planet',exact:true}),'Explicit return from current character work to planet');\n> 468 |   await expect(page.locator('.native-planet-panel')).toBeHidden();await expect(page.locator('#book-archive-detail')).toHaveCount(0);\n      |                                                      ^\n  469 |   await openJourney(fixture,input);\n  470 |   await expect(status(page)).toHaveAttribute('data-booky-journey-status','paused');\n  471 |   await expect(node(page)).toHaveAttribute('data-booky-journey-node','character');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                        "column": 54,
+                        "line": 468
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel')\u001b[22m\n\u001b[2m    14 × locator resolved to <section role=\"dialog\" aria-modal=\"true\" class=\"native-planet-panel\" aria-labelledby=\"native-collection-title\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n  466 |   await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);await assertSemantic();\n  467 |   await input.tap(page.locator('.native-planet-panel__header').getByRole('button',{name:language==='ru'?'Вернуться к планете':'Return to the planet',exact:true}),'Explicit return from current character work to planet');\n> 468 |   await expect(page.locator('.native-planet-panel')).toBeHidden();await expect(page.locator('#book-archive-detail')).toHaveCount(0);\n      |                                                      ^\n  469 |   await openJourney(fixture,input);\n  470 |   await expect(status(page)).toHaveAttribute('data-booky-journey-status','paused');\n  471 |   await expect(node(page)).toHaveAttribute('data-booky-journey-node','character');\n    at restoreCharacterWorkByUser (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:468:54)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:553:12"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-27T05:28:08.772Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a1\\booky-character-step-actua-e9e7f-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-cc3cf6a2f6c7ae340e03cd01629d25e208236b8d.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a1\\booky-character-step-actua-e9e7f-preserves-canonical-context\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                    "column": 54,
+                    "line": 468
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-020556cb0b130fda9c8c",
+          "file": "booky-character-step.spec.mjs",
+          "line": 529,
+          "column": 55
+        },
+        {
+          "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 45383,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel')\u001b[22m\n\u001b[2m    13 × locator resolved to <section role=\"dialog\" aria-modal=\"true\" class=\"native-planet-panel\" aria-labelledby=\"native-collection-title\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel')\u001b[22m\n\u001b[2m    13 × locator resolved to <section role=\"dialog\" aria-modal=\"true\" class=\"native-planet-panel\" aria-labelledby=\"native-collection-title\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n    at restoreCharacterWorkByUser (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:468:54)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:553:12",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                      "column": 54,
+                      "line": 468
+                    },
+                    "snippet": "  466 |   await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);await assertSemantic();\n  467 |   await input.tap(page.locator('.native-planet-panel__header').getByRole('button',{name:language==='ru'?'Вернуться к планете':'Return to the planet',exact:true}),'Explicit return from current character work to planet');\n> 468 |   await expect(page.locator('.native-planet-panel')).toBeHidden();await expect(page.locator('#book-archive-detail')).toHaveCount(0);\n      |                                                      ^\n  469 |   await openJourney(fixture,input);\n  470 |   await expect(status(page)).toHaveAttribute('data-booky-journey-status','paused');\n  471 |   await expect(node(page)).toHaveAttribute('data-booky-journey-node','character');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                        "column": 54,
+                        "line": 468
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeHidden\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel')\nExpected: hidden\nReceived: visible\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeHidden\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel')\u001b[22m\n\u001b[2m    13 × locator resolved to <section role=\"dialog\" aria-modal=\"true\" class=\"native-planet-panel\" aria-labelledby=\"native-collection-title\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"visible\"\u001b[22m\n\n\n  466 |   await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);await assertSemantic();\n  467 |   await input.tap(page.locator('.native-planet-panel__header').getByRole('button',{name:language==='ru'?'Вернуться к планете':'Return to the planet',exact:true}),'Explicit return from current character work to planet');\n> 468 |   await expect(page.locator('.native-planet-panel')).toBeHidden();await expect(page.locator('#book-archive-detail')).toHaveCount(0);\n      |                                                      ^\n  469 |   await openJourney(fixture,input);\n  470 |   await expect(status(page)).toHaveAttribute('data-booky-journey-status','paused');\n  471 |   await expect(node(page)).toHaveAttribute('data-booky-journey-node','character');\n    at restoreCharacterWorkByUser (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:468:54)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs:553:12"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-27T05:28:59.826Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a1\\booky-character-step-actua-d42a8-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-19421a084abcf4351d7db7d4217e67de14f58a76.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a1\\booky-character-step-actua-d42a8-preserves-canonical-context\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-character-step.spec.mjs",
+                    "column": 54,
+                    "line": 468
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-90c282ef0bca3f5ad5bc",
+          "file": "booky-character-step.spec.mjs",
+          "line": 529,
+          "column": 55
+        },
+        {
+          "title": "actual App absent publication capability denies character routes without opening or progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 53384,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-27T05:29:46.397Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-character-step-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a1\\booky-character-step-actua-9fee8-without-opening-or-progress\\attachments\\booky-character-step-source-evidence-c25a0d9f12d4c57ff53cf402de85af04cad2175b.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "30cd2b826fe540a7ba86-c1a814475e13c60b8a9e",
+          "file": "booky-character-step.spec.mjs",
+          "line": 567,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-27T05:28:07.975Z",
+    "duration": 152520.925,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

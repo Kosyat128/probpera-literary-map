@@ -1,0 +1,91 @@
+{
+  "installed": true,
+  "retainedUnits": 120,
+  "retainedUnitSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+    "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+    "fileCount": 1665
+  },
+  "freshModes": [
+    "static",
+    "browser"
+  ],
+  "requestedBrowserChannel": "msedge",
+  "changedSourceInputs": [
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "3aa0b4faaed0be209cc50e62312244002cc876531872d8a3e3c90a3265585615"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.test.ts",
+      "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.ts",
+      "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "2fe3dfef1882f8479e7a05265e1f7e6fe693592f76f38fb0cb1c113c331dc3f5"
+    }
+  ],
+  "preparedManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-review\\amendment-a3/prepared-files.json",
+    "sha256": "ffd34a2b4666304d177cb5c3876c93e0d4839eaa8dd1c6419e6758f141ee1e1d"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-review\\amendment-a3\\install-amendment-a3.mjs",
+    "sha256": "2de049cddb59a7a7c06345a3411b3fd2a87635234b6718e384954203b3188204"
+  },
+  "originalFilesUnchanged": true,
+  "globalWrites": false,
+  "testsRun": false,
+  "buildRun": false,
+  "installedAt": "2026-09-29T20:10:15.580Z",
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a3.json",
+      "sha256": "0d861cd2fd232ac4cbd1e09c79bef6413e2060f0769188a6bf66daa8350873c7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a3.json",
+      "sha256": "f98b52b4305caea331919a30737b5cf24db69d4a8e75fe61eba001f9f33a25b3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-contract-a3.json",
+      "sha256": "30ebd1595445764c329950df3a9502c9fd74355ebbeff371375ed48c6d49edda"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/retained-unit-a1-a3.json",
+      "sha256": "5a92c45db1a665a59e9ab7b51d455fea7523e9d44e6abe4a00ac332bc11a70ae"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+      "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/validate-retained-unit-a3.mjs",
+      "sha256": "8c7a09951a32c8ebd3134e665ecea338f7d14e88e5efaeabaaaba9b5487731c0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/check-a3.mjs",
+      "sha256": "c89f6008d78762e1dc6f259344d712d274e5427d661c48ef331b041b22addd60"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/checkpoint-a3.mjs",
+      "sha256": "5e90fd9621258078d9960fd45c0cacd52a0e6a5af3bd41b31a26dc8113dd41c2"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/record-visual-a3.mjs",
+      "sha256": "26ae222c20223e00f4a8a58df4856270bac7ae2cde2e9dddd8a9e39ced60d1ac"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/pwa-a3.config.mjs",
+      "sha256": "6debffc85469f4485f5df8c7219f7d03e51970468a14bc73aac2dd28d9039a27"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/build-pwa-a3.mjs",
+      "sha256": "f02bfa4ff7e38676cb56aed669c65357ffae5d45c3ca3845ebcaa9716a43d51c"
+    }
+  ]
+}

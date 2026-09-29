@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 1,
+  "description": "D209 explicit current-character resume restores the preceding admitted work prerequisite without changing the current semantic node, completed prefix or progress intent. Publication arrival does not open a card or grant credit; same-context character behavior stays unchanged. Archive revokes previously settled empty-collection readiness before opening an accepted work detail, preventing false wrong-view cancellation during the exact current-character work restore.",
+  "sourceFrozen": true,
+  "browserContractComplete": true,
+  "caseEvidenceContractsComplete": true,
+  "changedPaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "expectedSourceInputs": [
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "3aa0b4faaed0be209cc50e62312244002cc876531872d8a3e3c90a3265585615"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.test.ts",
+      "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.ts",
+      "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "2fe3dfef1882f8479e7a05265e1f7e6fe693592f76f38fb0cb1c113c331dc3f5"
+    }
+  ],
+  "expectedSourceInputCount": 1665,
+  "expectedProtectedInputCount": 1661,
+  "unitFiles": [
+    "src/host/bookyJourneyRuntime.test.ts"
+  ],
+  "expectedUnitTests": 120,
+  "unitValidation": "retain-original-runtime-unit-a1-only-after-exact-dependency-and-delta-guards",
+  "browserFiles": [
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress"
+  ],
+  "expectedBrowserTests": 3,
+  "expectedImages": 9,
+  "caseEvidenceContracts": [
+    {
+      "title": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-journey-en",
+      "evidenceKind": "source-attachment",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-journey-en",
+      "imagesField": "screenshots",
+      "expectedImages": 3,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterJourneyPassed": true,
+        "observations.characterStep.routeAdmittedBeforeDossier": true,
+        "observations.characterStep.closeAndReopenNoCredit": true,
+        "observations.characterStep.explicitCurrentModalCredit": true,
+        "observations.characterStep.staticCharacterFingerprintOnly": true,
+        "observations.characterStep.canonicalSceneAndReadingRetained": true,
+        "observations.characterStep.characterReadyHintTracksModal": true,
+        "observations.characterStep.hintPresentationAddsNoPublicationRequest": true,
+        "observations.characterStep.workResume.resumeRestoresWorkWithoutModalOrCredit": true,
+        "observations.characterStep.workResume.freshOpenAfterWorkResumeRequired": true,
+        "observations.characterStep.workResume.inSessionCharacterWorkRestored": false,
+        "observations.characterStep.workResume.coldPausedCharacterWorkRestored": true,
+        "observations.characterStep.workResume.oldTokenIdentityObserved": false,
+        "observations.characterStep.workResume.modalAudit.opened": false,
+        "observations.characterStep.workResume.modalAudit.overflow": 0,
+        "observations.characterStep.workResume.exitNavigationActions": 2
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions",
+        "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+        "one explicit Resume restores only the exact current character work without modal or semantic credit",
+        "a fresh explicit Open after work restoration is required before character acknowledgement",
+        "cold paused character restore performs no navigation before explicit Resume"
+      ],
+      "captureFilenames": [
+        "character-current-en.png",
+        "character-complete-en.png",
+        "character-closed-en.png"
+      ],
+      "phaseBoundary": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration after one controlled cold document reload. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted.",
+      "attachmentName": "booky-character-step-source-evidence",
+      "requiredSourcePaths": [
+        "src/host/bookyJourneyRuntime.ts",
+        "tests/pwa/booky-character-step.spec.mjs"
+      ],
+      "scope": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration after one controlled cold document reload. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted.",
+      "phaseScopedValues": null
+    },
+    {
+      "title": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-journey-ru",
+      "evidenceKind": "source-attachment",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-journey-ru",
+      "imagesField": "screenshots",
+      "expectedImages": 4,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterJourneyPassed": true,
+        "observations.characterStep.routeAdmittedBeforeDossier": true,
+        "observations.characterStep.closeAndReopenNoCredit": true,
+        "observations.characterStep.explicitCurrentModalCredit": true,
+        "observations.characterStep.staticCharacterFingerprintOnly": true,
+        "observations.characterStep.canonicalSceneAndReadingRetained": true,
+        "observations.characterStep.characterReadyHintTracksModal": true,
+        "observations.characterStep.hintPresentationAddsNoPublicationRequest": true,
+        "observations.characterStep.workResume.resumeRestoresWorkWithoutModalOrCredit": true,
+        "observations.characterStep.workResume.freshOpenAfterWorkResumeRequired": true,
+        "observations.characterStep.workResume.inSessionCharacterWorkRestored": true,
+        "observations.characterStep.workResume.coldPausedCharacterWorkRestored": false,
+        "observations.characterStep.workResume.oldTokenIdentityObserved": false,
+        "observations.characterStep.workResume.modalAudit.opened": false,
+        "observations.characterStep.workResume.modalAudit.overflow": 0,
+        "observations.characterStep.workResume.exitNavigationActions": 2
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions",
+        "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+        "one explicit Resume restores only the exact current character work without modal or semantic credit",
+        "a fresh explicit Open after work restoration is required before character acknowledgement",
+        "in-session character work recovery preserves the saved semantic step"
+      ],
+      "captureFilenames": [
+        "character-current-ru.png",
+        "character-consecutive-ru.png",
+        "character-complete-ru.png",
+        "character-closed-ru.png"
+      ],
+      "phaseBoundary": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration within the same document. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted.",
+      "attachmentName": "booky-character-step-source-evidence",
+      "requiredSourcePaths": [
+        "src/host/bookyJourneyRuntime.ts",
+        "tests/pwa/booky-character-step.spec.mjs"
+      ],
+      "scope": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration within the same document. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted.",
+      "phaseScopedValues": null
+    },
+    {
+      "title": "actual App absent publication capability denies character routes without opening or progress",
+      "file": "tests/pwa/booky-character-step.spec.mjs",
+      "scenario": "character-publication-absent",
+      "evidenceKind": "source-attachment",
+      "rawFilename": "booky-character-step.json",
+      "rawScenario": "character-publication-absent",
+      "imagesField": "screenshots",
+      "expectedImages": 2,
+      "sourceBinding": "emitted-hashes",
+      "requiredValues": {
+        "pass": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "syntheticDossierWorkflowOnly": true,
+        "syntheticPublicationCapability": false,
+        "realPublicationServiceClaimed": false,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": false,
+        "installedNative": false,
+        "deviceTested": false,
+        "releaseReady": false,
+        "characterCapabilityDenied": true,
+        "observations.characterStep.controlledShortLeaseMs": 15000,
+        "observations.characterStep.realRenewalTimer": true,
+        "observations.characterStep.failedRenewalRevokesWithoutCredit": true,
+        "observations.characterStep.characterUnavailableHintCurrent": true,
+        "observations.characterStep.hintPresentationAddsNoPublicationRequest": true
+      },
+      "emptyArrayFields": [
+        "errors",
+        "externalRequests",
+        "missingResources"
+      ],
+      "observationKey": "characterStep",
+      "requiredChecks": [
+        "absent publication capability exposes no character route or action",
+        "unavailable route produces no publication request or progress write",
+        "canonical globe remains retained",
+        "real short-lease renewal failure revokes current modal without credit or replay",
+        "failed renewal shows current unavailable hint and disabled Open without extra publication request or credit"
+      ],
+      "captureFilenames": [
+        "character-capability-absent-en.png",
+        "character-unavailable-en.png"
+      ],
+      "phaseBoundary": "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+      "attachmentName": "booky-character-step-source-evidence",
+      "requiredSourcePaths": [
+        "src/host/bookyJourneyRuntime.ts",
+        "tests/pwa/booky-character-step.spec.mjs"
+      ],
+      "scope": "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+      "phaseScopedValues": {
+        "syntheticPublicationCapability": "false only in first absent-capability phase; true in subsequent approved synthetic short-lease phase"
+      }
+    }
+  ],
+  "requiredCaptureFlags": [],
+  "requiredCaptureValues": [],
+  "requiredObservationChecks": [
+    {
+      "scenario": "character-journey-en",
+      "observation": "characterStep",
+      "checks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions",
+        "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+        "one explicit Resume restores only the exact current character work without modal or semantic credit",
+        "a fresh explicit Open after work restoration is required before character acknowledgement",
+        "cold paused character restore performs no navigation before explicit Resume"
+      ]
+    },
+    {
+      "scenario": "character-journey-ru",
+      "observation": "characterStep",
+      "checks": [
+        "country-first route admission does not require a future open dossier",
+        "Close and fresh Open give no character credit",
+        "only explicit current modal acknowledgement advances character progress",
+        "character progress stores static identity without temporary receipt",
+        "canonical globe and reading storage remain unchanged during character actions",
+        "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+        "one explicit Resume restores only the exact current character work without modal or semantic credit",
+        "a fresh explicit Open after work restoration is required before character acknowledgement",
+        "in-session character work recovery preserves the saved semantic step"
+      ]
+    },
+    {
+      "scenario": "character-publication-absent",
+      "observation": "characterStep",
+      "checks": [
+        "absent publication capability exposes no character route or action",
+        "unavailable route produces no publication request or progress write",
+        "canonical globe remains retained",
+        "real short-lease renewal failure revokes current modal without credit or replay",
+        "failed renewal shows current unavailable hint and disabled Open without extra publication request or credit"
+      ]
+    }
+  ],
+  "requiredVisualFilenames": [
+    "character-current-en.png",
+    "character-complete-en.png",
+    "character-closed-en.png",
+    "character-current-ru.png",
+    "character-consecutive-ru.png",
+    "character-complete-ru.png",
+    "character-closed-ru.png",
+    "character-capability-absent-en.png",
+    "character-unavailable-en.png"
+  ],
+  "retainPriorModelPhotos": false,
+  "expectedRetainedModelPhotos": 0,
+  "requireNewPhotoReview": false,
+  "expectedNewModelPhotos": 0,
+  "requireDiagnosticHistory": false,
+  "requirementEvidenceTargets": [
+    "PLANETKA-008"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-008"
+  ],
+  "previousCheckpoint": {
+    "checkpoint": "1f71dde56c24658ad9598964c1b21d11674340a4",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+      "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+    },
+    "sourceCommit": "2fee97b9004200538f5ff46d8f531d0bec0c9353",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/source-manifests/cbad6303aca1251e.json",
+      "sha256": "cbad6303aca1251eed24b714474c24b749eedcc6f862a5b6238b64e42f1ceecd",
+      "fileCount": 1665
+    }
+  },
+  "previousRuntime": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+      "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+    },
+    "sourceCommit": "2fee97b9004200538f5ff46d8f531d0bec0c9353",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/source-manifests/cbad6303aca1251e.json",
+      "sha256": "cbad6303aca1251eed24b714474c24b749eedcc6f862a5b6238b64e42f1ceecd",
+      "fileCount": 1665
+    },
+    "pwa": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/pwa-a1/result.json",
+      "sha256": "d480a152d6e8f0c7609222c5acf1779ea08079803b0a2b0ca33e3c78c329ba63"
+    },
+    "android": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/android-a1/result.json",
+      "sha256": "4d3a416d79300a02f7fde651defb96165b9418ecc193148e62318579325edd54"
+    }
+  },
+  "historicalDialogueInputs": [
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "10e41f50bc7e2a564c18d13c6afba988fe11508e313a537173e2f3bc73b86eb4"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "76feddfb236ff2486d35c5181847419a9c93b96506b73f4f8a740fcc9467330f"
+    }
+  ],
+  "directSpecificationEvidence": [
+    {
+      "path": "docs/mobile/requirements/v12/12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+      "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+      "section": "9",
+      "scope": "Bounded explicit current-character semantic resume and preservation of completed progress; no full journey continuity, native lifecycle, literary approval or release acceptance."
+    }
+  ],
+  "runtimeAmendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/draft/source-bindings.json",
+      "sha256": "27989e00b0f317470e2378b82de8b87be0fecb6fd0e38c151b986ffdbbee3c67"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/draft/character-resume.patch",
+      "sha256": "6f2316fa097e1948f5d2855816e73c07012fe7e02225499b551e15e29fd6e14e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-draft/fixture-edit-plan.json",
+      "sha256": "52b3c1a40a5c3875774bddf6f6d503bf047106a6f8250be01cbe967904b4e2d9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-draft/character-resume-browser.patch",
+      "sha256": "fdc64d7a235fb2534fa3c832c07cb8d619203f540ac5ad4da72ba4b7679ea88f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/apply-receipt.json",
+      "sha256": "6c3c3c479be6975c1bd1834ac47450d18a21f3fcbe11a0e3abac0db51332a6a5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-correction-a2/fixture-edit-plan.json",
+      "sha256": "c73d1e07d6e3df3f2d660e30ecf572d71decd3a637d9186301210a9244529a79"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-correction-a2/character-resume-browser-correction.patch",
+      "sha256": "2cd4f6b5954e61dbc1ab137dc2088c78175d243292d708e677e380f0c09ba062"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/apply-correction-a2.json",
+      "sha256": "2d307fccffb62aee57eac54d59313ea66ab96e715d75d0b7e0a8b6491f2d3150"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/source-fix-20260929.json",
+      "sha256": "4deaa6e2b91d613349d76f6c1725e721602f205ff9106f8a0b9f2fa79d67cc31"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/diagnostic-summary.json",
+      "sha256": "27949c7fa7055ea5a570f7af92793181b4e999b88c04da22c62a72a91a413b49"
+    }
+  ],
+  "newUiCopyStatus": {
+    "status": "no-new-ui-copy-proposed",
+    "humanReviewed": false,
+    "childApproved": false,
+    "narrationApproved": false
+  },
+  "evidenceAdapter": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/read-case-evidence.mjs",
+    "sha256": "32e982b9d9532b8c12b254d49294e8beada9ae4f165ff565d78f2de367125201"
+  },
+  "checkpointNextAction": "D210: fix the confirmed narrow mobile Booky heading wrap so the localized name remains readable. Use a bounded responsive heading adjustment and trusted-touch readability evidence; preserve existing control target sizes, scrolling, expanded-text behavior and canonical context. This is presentation follow-up, not character-step acceptance or approval of production content.",
+  "pendingFields": [],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "browserContract": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-contract-a3.json",
+    "sha256": "30ebd1595445764c329950df3a9502c9fd74355ebbeff371375ed48c6d49edda"
+  },
+  "canonicalPromotion": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/source-fix-20260929.json",
+    "sha256": "4deaa6e2b91d613349d76f6c1725e721602f205ff9106f8a0b9f2fa79d67cc31"
+  },
+  "diagnosticAttempts": [],
+  "visualReviewScope": "Direct review of all nine formal actual-App images. The RU case exercises in-session explicit work restoration; EN exercises one controlled cold-document paused restore. Images alone do not prove owner cancellation, modal absence during loading, semantic progress preservation or native lifecycle behavior.",
+  "browserScopeNotes": [
+    "Explicit current-character work Resume only, RU in-session and EN controlled cold paused restore. Existing synthetic publication and trusted touch boundaries retained. One Resume restores the work; only a separate explicit Open creates the modal. No native-device, token-identity, editorial or release acceptance.",
+    "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration after one controlled cold document reload. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation.",
+    "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration within the same document. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation.",
+    "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+    "Only the existing runtime unit suite is selected; broader D206 suites retain their original source. Controlled document reload is not a native lifecycle claim. Old token identity is not observed by this browser fixture."
+  ],
+  "historicalProvenanceScope": "D207 contextual rebinding and all thirty-four unapproved historical drafts remain unchanged. D208 status UI keeps its own source attribution; D209 proposes no new UI copy or inventory audit.",
+  "staticValidation": "fresh-required-after-Archive-TypeScript-change",
+  "formalAmendment": {
+    "version": "a3",
+    "previousFailedAttempts": [
+      "browser-a1",
+      "browser-a2"
+    ],
+    "freshModes": [
+      "static",
+      "browser"
+    ],
+    "retainedMode": "unit-a1",
+    "finalSourceApproved": true,
+    "requestedBrowserChannel": "msedge",
+    "finalSourceFix": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/source-fix-20260929.json",
+      "sha256": "4deaa6e2b91d613349d76f6c1725e721602f205ff9106f8a0b9f2fa79d67cc31"
+    },
+    "diagnosticCause": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/diagnostic-summary.json",
+      "sha256": "27949c7fa7055ea5a570f7af92793181b4e999b88c04da22c62a72a91a413b49"
+    }
+  },
+  "requestedBrowserChannel": "msedge"
+}

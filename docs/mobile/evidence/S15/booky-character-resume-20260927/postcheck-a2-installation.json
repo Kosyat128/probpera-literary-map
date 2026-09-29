@@ -1,0 +1,18 @@
+{
+  "at": "2026-09-27T05:40:34.995Z",
+  "manifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/amendment-a2/postcheck-files.json",
+    "sha256": "a0f0dcf3df7896d331199bb4572befed8b5c47c7c4090a4f4b50f6c95969fcaa"
+  },
+  "installed": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/amendment-a2/checkpoint-a2.mjs",
+      "sha256": "2dfe19b35e206ce7a2a58fce4116a64c6ec9ed2ea298b4c48a87f045b03c3123"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/amendment-a2/record-visual-a2.mjs",
+      "sha256": "04c4fdf8fe2f806c5753f22480cefad2e7f4b0fdf82c11bcd26fa642ff6b8e0d"
+    }
+  ],
+  "sourceAndFrozenBrowserInputsChanged": false
+}

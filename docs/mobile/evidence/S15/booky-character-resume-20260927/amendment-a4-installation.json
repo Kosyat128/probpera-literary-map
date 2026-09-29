@@ -1,0 +1,87 @@
+{
+  "installed": true,
+  "retainedUnits": 120,
+  "retainedUnitSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+    "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+    "fileCount": 1665
+  },
+  "freshModes": [
+    "browser"
+  ],
+  "retainedStatic": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a3/result.json",
+    "sha256": "6fcb4f8fe5b1d0b7b909da51a175aa5496778efbd0bc6e10f12dd6c334283717"
+  },
+  "retainedStaticSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/b12e6ab8b899b725.json",
+    "sha256": "b12e6ab8b899b725354e56499b69106516ee3479de19dc1327bd5860e40396dd",
+    "fileCount": 1665
+  },
+  "requestedBrowserChannel": "msedge",
+  "changedSourceInputs": [
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "3aa0b4faaed0be209cc50e62312244002cc876531872d8a3e3c90a3265585615"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.test.ts",
+      "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.ts",
+      "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "982a123b867df16bf386d0a92e488e2f7479de4fdf7cc6516ef4f553bf58c517"
+    }
+  ],
+  "preparedManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-review\\amendment-a4/prepared-files.json",
+    "sha256": "650a1bdf475a6f92f06d9dc8b7deed108161c0d7c5d4bcd70cdbb036a3a108b6"
+  },
+  "installer": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-review\\amendment-a4\\install-amendment-a4.mjs",
+    "sha256": "6ea3a9dd7d28e2ed581400bdd6babad2470af8d0ee1a92e0f9afc5154fdd5c88"
+  },
+  "originalFilesUnchanged": true,
+  "globalWrites": false,
+  "testsRun": false,
+  "buildRun": false,
+  "installedAt": "2026-09-29T20:23:34.455Z",
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a4.json",
+      "sha256": "d6728feaf7510a04e7301f50724bc363c5c632140e61f748c47f905e9e1bcb0a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a4.json",
+      "sha256": "9561b95f717238fa385641052b95803e16ec9a45f6f36065c34ec25b1296bae6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-contract-a4.json",
+      "sha256": "bbb573bc33017f253278e21be22bc709e9e2a0f2c27b1e7e24f0402fd391ee6f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/retained-unit-a1-a4.json",
+      "sha256": "da60a67773fa63926834b0f752bc6f86c267fa56b3fb23b26f7908738cf3ec90"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/amendment-a4.json",
+      "sha256": "09199e155ae4e4ef7c55a8dbea91eb83c22167bf8b73fa5ebc98e5c48176955e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/validate-retained-unit-a4.mjs",
+      "sha256": "bd9835c9ddb12849ce913511c1d26ac5aa98b0b6937d17a355e0db48125d9c9a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/validate-fixture-amendment-a4.mjs",
+      "sha256": "78dd4fbaa9ec19e05426fd11ac3d102c3fa2e337ebb0a162187aaf6a9f842cba"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/check-a4.mjs",
+      "sha256": "b2b193e407d268efabf9453b1cd45e36ffc35c8b4169b8b0c289ff761223a117"
+    }
+  ]
+}

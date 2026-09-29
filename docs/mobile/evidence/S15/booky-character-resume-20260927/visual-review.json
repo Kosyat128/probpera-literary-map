@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T21:02:32.568Z",
+  "pass": true,
+  "sourceCommit": "7c885b582dc371ea1f595a5965002addb56c13c3",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+    "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+    "fileCount": 1665
+  },
+  "inspectedCount": 9,
+  "totalCapturedCount": 9,
+  "scope": "Direct review of all nine formal actual-App images. The RU case exercises in-session explicit work restoration; EN exercises one controlled cold-document paused restore. Images alone do not prove owner cancellation, modal absence during loading, semantic progress preservation or native lifecycle behavior.",
+  "limitations": [
+    "This review directly inspects 9 of 9 final captures.",
+    "Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "inspectionReceipt": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/visual-receipt-a7.json",
+    "sha256": "d1ae25193e41443933bb9c56f314177a58ee74cd06b2305822dafeb3a391a00d"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-d42a8-preserves-canonical-context/character-current-en.png",
+      "sha256": "9e952c3ed0dcfd56bb16de14c7a2aa5e6b28d494f8c503de33c8c3e70b99dbdd",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The actual synthetic character details and separate English acknowledgement button are readable inside the native modal."
+      ],
+      "bytes": 49836,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-d42a8-preserves-canonical-context/character-complete-en.png",
+      "sha256": "f40967d0f0b5aa3c3a6c838efcb563edb499981fb631e631ba662cdce2fe9e17",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The completed journey message is readable and the actual companion remains visible. No installed-device or standalone model acceptance is inferred."
+      ],
+      "bytes": 219488,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-d42a8-preserves-canonical-context/character-closed-en.png",
+      "sha256": "cacb01b8eb1b1b21867882c6c67a3b49c8bda1597a319a04df7431a2379b1831",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "Mr. Booky and the explicit open-then-acknowledge hint are readable in the 320 px Collection help card."
+      ],
+      "bytes": 118757,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-e9e7f-preserves-canonical-context/character-current-ru.png",
+      "sha256": "4c119be7f170a9f98b6e9f8449a159b6f0250248edc2ea07382e7dd00e7229c0",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The current synthetic character details and separate Russian acknowledgement button are readable inside the native modal."
+      ],
+      "bytes": 50141,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-e9e7f-preserves-canonical-context/character-consecutive-ru.png",
+      "sha256": "ba7e1bfea7651ad6c153c6cf4027a835fada9f84a9113700e65657125fb860ed",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The second synthetic character details and its own acknowledgement remain readable. The image alone does not prove semantic credit."
+      ],
+      "bytes": 51669,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-e9e7f-preserves-canonical-context/character-complete-ru.png",
+      "sha256": "64178388c41f3628c6b3f4c7d486ecf1761009833d5c83b74990fe38428c1008",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The completed Russian journey status is readable; the companion is visible and the canonical globe remains present."
+      ],
+      "bytes": 211274,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-e9e7f-preserves-canonical-context/character-closed-ru.png",
+      "sha256": "d2f9361eab360da0604d97f7705f621fca50e468574e21a91a336fddbeba281b",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The ready-to-open status is readable. The existing narrow-card heading splits Книжулик mid-word; the separate prepared D210 layout correction addresses this defect."
+      ],
+      "bytes": 126174,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-9fee8-without-opening-or-progress/character-capability-absent-en.png",
+      "sha256": "ea30f46472e9429eb7f1cb50117d435b59931931aa812a6c7c34b702421d8674",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The unavailable journey status and English controls are readable at 320 px. No character modal is shown."
+      ],
+      "bytes": 221131,
+      "width": 320,
+      "height": 844
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/browser-a7/booky-character-step-actua-9fee8-without-opening-or-progress/character-unavailable-en.png",
+      "sha256": "6f3694677f9f4430f55c44b8201b750fa2ae3afe6156b9b700f450b74156b61d",
+      "inspected": true,
+      "method": "direct-view_image",
+      "reviewer": "Codex root",
+      "findings": [
+        "The current unavailable-card message is readable in the native Collection help card. Static framing does not prove lease revocation."
+      ],
+      "bytes": 119978,
+      "width": 320,
+      "height": 844
+    }
+  ],
+  "releaseReady": false
+}

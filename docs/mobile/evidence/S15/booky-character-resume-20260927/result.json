@@ -1,0 +1,879 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T21:04:42.481Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_CHARACTER_RESUME_SCOPED_VALIDATION",
+  "sourceCommit": "7c885b582dc371ea1f595a5965002addb56c13c3",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a7.json",
+    "sha256": "fa9b9b406585b20bf7da7ad28d11b3e38c2a6110e0dc2f166409aa7c55e3f5fd"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/checkpoint-a7.mjs",
+    "sha256": "0eba0ca9957ee8e9ff93cca015442ed14c8a5b12afbfc9507eadb4031459ee8e"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+    "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+    "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+  },
+  "previousRuntimeSourceCommit": "2fee97b9004200538f5ff46d8f531d0bec0c9353",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+    "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+    "fileCount": 1665
+  },
+  "sourceCommits": [
+    "7c885b582dc371ea1f595a5965002addb56c13c3"
+  ],
+  "attempts": {
+    "unit": "a1",
+    "static": "a7",
+    "browser": "a7"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/result.json",
+      "sha256": "40b090c69903d518148f026f7c8f6a981c02ef561df5e760db7839b0e8c5fb0e",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+        "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+        "fileCount": 1665
+      },
+      "retainedExecution": true,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/execution.json",
+        "sha256": "1fbc244dfc0553e5365fccb2494cb9306a89a3db83adfdc498d5e0491ae0639a"
+      },
+      "tests": {
+        "passed": 120,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-a1/vitest.json",
+        "sha256": "281319773b4d2a6fc097582e3fdca78c1beb01acf05d669f3578229a50db556c"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a7/result.json",
+      "sha256": "89860d343767e0a5169fbbc682405f0a57a5df4de9762fe16c7128cf50cab629",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+        "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+        "fileCount": 1665
+      },
+      "retainedExecution": false,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a7/execution.json",
+        "sha256": "4b05b9578806dbf73a4706a596399c9864abcab569b2aff8b47d5ea9cdb39013"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a7/result.json",
+      "sha256": "65172e3b2c14998163b689133588075e4bbf034f7930bc13bce15d554610741c",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+        "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+        "fileCount": 1665
+      },
+      "retainedExecution": false,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a7/execution.json",
+        "sha256": "8d981085b61f92a3302ca38da57ad36ad6835836118305bc64c31a8d72a0ad76"
+      },
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a7/playwright.json",
+        "sha256": "2c635a48b54a329fdeb8b22838f4fa342e4ec5cca719f3552f67ae10a237e7a1"
+      }
+    }
+  },
+  "earlierAttempts": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/result.json",
+        "sha256": "52b8513cf9a274ea6d3f3e53ca59f5ae92ddc9d9cbb0963afb7ef29cd149b2f4"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/execution.json",
+        "sha256": "7acccee66e65451ae9dc23a06f328818d12d9299a04099760cb0bd522c53198b"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a1/playwright.json",
+        "sha256": "62aa3603fffd63defa705a2b734d16669049fde48c3676cde2452f788507ac0f"
+      },
+      "pass": false,
+      "tests": {
+        "passed": 1,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+        "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+        "fileCount": 1665
+      },
+      "retainedOnly": true,
+      "reportNotProduced": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a2/result.json",
+        "sha256": "a67dccae1f2bca50e7509a01570c6e487edd98cbb255d4643ea404478b0b0cfb"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a2/execution.json",
+        "sha256": "92fc23a37384463f3a394cf39292cc5dad7610e6c87e44341166bc625207ad36"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a2/playwright.json",
+        "sha256": "1aff3032552d850d106b36840d3f3f7fec3ea9770342a5d3bccbb96a3644ae31"
+      },
+      "pass": false,
+      "tests": {
+        "passed": 1,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/4107b7e6fd5d2f39.json",
+        "sha256": "4107b7e6fd5d2f3914c3eb9657e829b057694005b1bc2ecbfaacc28531cedbd3",
+        "fileCount": 1665
+      },
+      "retainedOnly": true,
+      "reportNotProduced": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/result.json",
+        "sha256": "e9fecfa7f37f9f57942205ea87e6b2a4e92954fc8b0791b25ce742375096c8ec"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/execution.json",
+        "sha256": "b282da8f44dd416d56bb21b469b7a5716074df25839c9e5a1657b35743f45a25"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a3/playwright.json",
+        "sha256": "2922e5e80a1c6e81e76bce310120aeba879fbeb716433207890092660db63aa3"
+      },
+      "pass": false,
+      "tests": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/b12e6ab8b899b725.json",
+        "sha256": "b12e6ab8b899b725354e56499b69106516ee3479de19dc1327bd5860e40396dd",
+        "fileCount": 1665
+      },
+      "retainedOnly": true,
+      "reportNotProduced": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a4/result.json",
+        "sha256": "80f3da1bb623b6e78ee8ec39b036362bc064f4244f32af5253f76590e0508a3e"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a4/execution.json",
+        "sha256": "0e34dccb07777e8e614e10f4bf15152856c9fbc01e596dcc17199ad51aa86a41"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a4/playwright.json",
+        "sha256": "326ce6e3d5afee2aa5bccce7ce333990b6b960e7c94d16a46cbe15ef86f08d9d"
+      },
+      "pass": false,
+      "tests": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/be9a45e41121c26f.json",
+        "sha256": "be9a45e41121c26fff6afc5c2b7f0c31adba089586c3c1b69e3e360d60297baa",
+        "fileCount": 1665
+      },
+      "retainedOnly": true,
+      "reportNotProduced": false
+    },
+    {
+      "status": "no-tests-found-preflight",
+      "browserStarted": false,
+      "applicationExecuted": false,
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a5/result.json",
+        "sha256": "88411281a5d1fa306bb4bed68bfb9768745fb89da6546145074b23b91e589008"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a5/execution.json",
+        "sha256": "2bbdc7ca425d65a0c82e5b2db8fb32f70422b8e56406196153c9bf5769d47ad1"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a5/playwright.json",
+        "sha256": "f4d4831fada5e237614091d3090f76a3580829b8fbae3976133ca0aefdac7451"
+      },
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/5fc0a59569137b56.json",
+        "sha256": "5fc0a59569137b56aec95ee7b092761c0af89c85639fbfe4396683df6f320208",
+        "fileCount": 1665
+      },
+      "retainedOnly": true,
+      "reportNotProduced": false
+    },
+    {
+      "status": "actual-app-readiness-failure",
+      "browserStarted": true,
+      "applicationExecuted": true,
+      "failedCapture": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a6\\booky-character-step-actua-d42a8-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-a6741478b663a41387f712ced48c30e07cee9206.json",
+        "sha256": "307413342d346a421134c4d798d098fb4d425c4819df6a85be4976aa85076526"
+      },
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a6/result.json",
+        "sha256": "1650b155dd2daa408e0aabf2b9bcea416c8cacb554076984eeb49d1499bcff71"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a6/execution.json",
+        "sha256": "4acf5f7445c724d0597d8ece7f870ef7a1de16970c1633a17841864b46d421b4"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/browser-a6/playwright.json",
+        "sha256": "be0d4e25a6139d0c5c2dd9f30c16976cd00067993f1a36c26319134c4ce818f2"
+      },
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/5fc0a59569137b56.json",
+        "sha256": "5fc0a59569137b56aec95ee7b092761c0af89c85639fbfe4396683df6f320208",
+        "fileCount": 1665
+      },
+      "retainedOnly": true,
+      "reportNotProduced": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/result.json",
+        "sha256": "918e7d4920a2892106e36ed5d4c262b7eb061ede2ba4f4a09cfc388fc2d20219"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a1/execution.json",
+        "sha256": "f20a4e768f697313b6d5bd3d44858bec828d7fcfeff86a2abfd3f4d8e38ea44d"
+      },
+      "rawReport": null,
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+        "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+        "fileCount": 1665
+      },
+      "retainedOnly": true,
+      "reportNotProduced": false
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a3/result.json",
+        "sha256": "6fcb4f8fe5b1d0b7b909da51a175aa5496778efbd0bc6e10f12dd6c334283717"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a3/execution.json",
+        "sha256": "8da80234aa1603fd46c1ac78fc4cfece8cc788c0da689558e64785f9ba153b6f"
+      },
+      "rawReport": null,
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/b12e6ab8b899b725.json",
+        "sha256": "b12e6ab8b899b725354e56499b69106516ee3479de19dc1327bd5860e40396dd",
+        "fileCount": 1665
+      },
+      "retainedOnly": true,
+      "reportNotProduced": false
+    }
+  ],
+  "retainedUnitEvidence": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/retained-unit-a1-a7.json",
+    "sha256": "e9032b721c9ebb8510f1b4a1eec1afad63516e846660d6e525d57d8cd41e984c"
+  },
+  "unitDependencyProof": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/unit-dependency-proof-a3.json",
+    "sha256": "ee6a56a26d7e1fec891c3b2fc68581cc43530f723e6cadccecc5fe053f74ce25"
+  },
+  "unitRerunAfterArchiveAmendment": false,
+  "staticRerunAfterArchiveAmendment": true,
+  "staticRerunAfterFixtureCorrection": true,
+  "freshStaticSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+    "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+    "fileCount": 1665
+  },
+  "freshStaticEvidence": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/static-a7/result.json",
+    "sha256": "89860d343767e0a5169fbbc682405f0a57a5df4de9762fe16c7128cf50cab629"
+  },
+  "sourceAmendmentBinding": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/final-binding-a7.json",
+    "sha256": "955d1183ee40660369082da904d004e75f668768c9cc1c32d9cf8946809ea54b"
+  },
+  "retainedUnitSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/dbdc242e9da2480f.json",
+    "sha256": "dbdc242e9da2480f07ae3458d391b97eaef5baad6a53144e2f569af99339f324",
+    "fileCount": 1665
+  },
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/diagnostic-history.json",
+    "sha256": "e0161f1c8b6b033fbeb9ef236ada0a6937d72b0a80d05280b0366298919f32fb"
+  },
+  "checkpointGuardHistory": [],
+  "directSpecificationEvidence": [
+    {
+      "path": "docs/mobile/requirements/v12/12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+      "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+      "section": "9",
+      "scope": "Bounded explicit current-character semantic resume and preservation of completed progress; no full journey continuity, native lifecycle, literary approval or release acceptance."
+    }
+  ],
+  "historicalDialogueInputs": [
+    {
+      "path": "src/host/bookySupport.ts",
+      "sha256": "2190a681325ef2e804f0bb320aa1c8b0815116cd2d1334a6e0fdf40318a6ff00"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "d9acdc5dc75daf0736d9788b381b1b86ee506b0f99b465824d92144eaa9822a4"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.test.ts",
+      "sha256": "10e41f50bc7e2a564c18d13c6afba988fe11508e313a537173e2f3bc73b86eb4"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "76feddfb236ff2486d35c5181847419a9c93b96506b73f4f8a740fcc9467330f"
+    }
+  ],
+  "newUiCopyStatus": {
+    "status": "no-new-ui-copy-proposed",
+    "humanReviewed": false,
+    "childApproved": false,
+    "narrationApproved": false
+  },
+  "unitCount": 120,
+  "unitFiles": [
+    "src/host/bookyJourneyRuntime.test.ts"
+  ],
+  "unitValidation": "retained-original-runtime-unit-a1-with-exact-dependency-guard",
+  "unitSuitesRerun": false,
+  "unitSuitesExecutedBeforeArchiveAmendment": true,
+  "browserCases": 3,
+  "actualAppCaseCount": 3,
+  "componentCaseCount": 0,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a7\\booky-character-step-actua-e9e7f-preserves-canonical-context\\booky-character-step.json",
+      "sha256": "6f164e6de09c7b5dcec65326a64031ea788f64a4c1819f2315042cb32d84b462",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a7\\booky-character-step-actua-e9e7f-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-950d7e01f0250809618894f269a9c58b66dee0b9.json",
+        "sha256": "6f164e6de09c7b5dcec65326a64031ea788f64a4c1819f2315042cb32d84b462"
+      },
+      "test": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+      "actualApp": true,
+      "evidenceKind": "source-attachment",
+      "sourceBinding": "emitted-hashes"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a7\\booky-character-step-actua-d42a8-preserves-canonical-context\\booky-character-step.json",
+      "sha256": "b6aabe7aea6bc3da72e55f63a0d61ae2052a1248b0dbcaf1e934411da960f951",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a7\\booky-character-step-actua-d42a8-preserves-canonical-context\\attachments\\booky-character-step-source-evidence-425cf9531e547782cf7d238d800c8a205c702cea.json",
+        "sha256": "b6aabe7aea6bc3da72e55f63a0d61ae2052a1248b0dbcaf1e934411da960f951"
+      },
+      "test": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+      "actualApp": true,
+      "evidenceKind": "source-attachment",
+      "sourceBinding": "emitted-hashes"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a7\\booky-character-step-actua-9fee8-without-opening-or-progress\\booky-character-step.json",
+      "sha256": "afa76cfc164882c386c1c1fed7b04802ea9cd4e7da2275e1f4b33f545c0745a4",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-evidence\\browser-a7\\booky-character-step-actua-9fee8-without-opening-or-progress\\attachments\\booky-character-step-source-evidence-c709ce59e94b371b4e87cb6f65fe3112805dece8.json",
+        "sha256": "afa76cfc164882c386c1c1fed7b04802ea9cd4e7da2275e1f4b33f545c0745a4"
+      },
+      "test": "actual App absent publication capability denies character routes without opening or progress",
+      "actualApp": true,
+      "evidenceKind": "source-attachment",
+      "sourceBinding": "emitted-hashes"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+      "scenario": "character-journey-ru",
+      "scope": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration within the same document. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted. Help is explicitly collapsed before the existing book Close and reopened before the single Resume, using real current controls.",
+      "phaseScopedValues": null,
+      "flags": {
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "syntheticDossierWorkflowOnly": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "characterJourneyPassed": true
+      },
+      "observationChecks": {
+        "observation": "characterStep",
+        "checks": [
+          {
+            "name": "country-first route admission does not require a future open dossier",
+            "pass": true
+          },
+          {
+            "name": "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+            "pass": true
+          },
+          {
+            "name": "one explicit Resume restores only the exact current character work without modal or semantic credit",
+            "pass": true
+          },
+          {
+            "name": "a fresh explicit Open after work restoration is required before character acknowledgement",
+            "pass": true
+          },
+          {
+            "name": "in-session character work recovery preserves the saved semantic step",
+            "pass": true
+          },
+          {
+            "name": "Close and fresh Open give no character credit",
+            "pass": true
+          },
+          {
+            "name": "only explicit current modal acknowledgement advances character progress",
+            "pass": true
+          },
+          {
+            "name": "character progress stores static identity without temporary receipt",
+            "pass": true
+          },
+          {
+            "name": "canonical globe and reading storage remain unchanged during character actions",
+            "pass": true
+          }
+        ]
+      }
+    },
+    {
+      "test": "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+      "scenario": "character-journey-en",
+      "scope": "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration after one controlled cold document reload. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation. Exit uses two distinct trusted controls: book Close with committed detail/URL removal, then collection Return; no retry tap is substituted. Help is explicitly collapsed before the existing book Close and reopened before the single Resume, using real current controls.",
+      "phaseScopedValues": null,
+      "flags": {
+        "syntheticPublicationCapability": true,
+        "realPublicationServiceClaimed": false,
+        "syntheticDossierWorkflowOnly": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": true,
+        "characterJourneyPassed": true
+      },
+      "observationChecks": {
+        "observation": "characterStep",
+        "checks": [
+          {
+            "name": "country-first route admission does not require a future open dossier",
+            "pass": true
+          },
+          {
+            "name": "ready character hint follows committed modal, Close and fresh Open without new publication request or credit",
+            "pass": true
+          },
+          {
+            "name": "one explicit Resume restores only the exact current character work without modal or semantic credit",
+            "pass": true
+          },
+          {
+            "name": "a fresh explicit Open after work restoration is required before character acknowledgement",
+            "pass": true
+          },
+          {
+            "name": "cold paused character restore performs no navigation before explicit Resume",
+            "pass": true
+          },
+          {
+            "name": "Close and fresh Open give no character credit",
+            "pass": true
+          },
+          {
+            "name": "only explicit current modal acknowledgement advances character progress",
+            "pass": true
+          },
+          {
+            "name": "character progress stores static identity without temporary receipt",
+            "pass": true
+          },
+          {
+            "name": "canonical globe and reading storage remain unchanged during character actions",
+            "pass": true
+          }
+        ]
+      }
+    },
+    {
+      "test": "actual App absent publication capability denies character routes without opening or progress",
+      "scenario": "character-publication-absent",
+      "scope": "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+      "phaseScopedValues": {
+        "syntheticPublicationCapability": "false only in first absent-capability phase; true in subsequent approved synthetic short-lease phase"
+      },
+      "flags": {
+        "syntheticPublicationCapability": false,
+        "realPublicationServiceClaimed": false,
+        "syntheticDossierWorkflowOnly": true,
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "nativeDeviceClaimed": false,
+        "consecutiveCharactersExercised": false,
+        "characterCapabilityDenied": true
+      },
+      "observationChecks": {
+        "observation": "characterStep",
+        "checks": [
+          {
+            "name": "absent publication capability exposes no character route or action",
+            "pass": true
+          },
+          {
+            "name": "unavailable route produces no publication request or progress write",
+            "pass": true
+          },
+          {
+            "name": "canonical globe remains retained",
+            "pass": true
+          },
+          {
+            "name": "real short-lease renewal failure revokes current modal without credit or replay",
+            "pass": true
+          },
+          {
+            "name": "failed renewal shows current unavailable hint and disabled Open without extra publication request or credit",
+            "pass": true
+          }
+        ]
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/visual-review.json",
+    "sha256": "00310f6b7a7c89460946707372815b5b2ce8afd24211239fd1174e749f6ba4dd"
+  },
+  "newPhotoReview": null,
+  "newModelPhotoCount": 0,
+  "retainedModelPhotoReview": null,
+  "historicalModelPhotoReview": {
+    "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+    "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+  },
+  "inspectedImageCount": 9,
+  "totalCapturedImageCount": 9,
+  "visualReviewScope": "Direct review of all nine formal actual-App images. The RU case exercises in-session explicit work restoration; EN exercises one controlled cold-document paused restore. Images alone do not prove owner cancellation, modal absence during loading, semantic progress preservation or native lifecycle behavior.",
+  "visualReviewLimitations": [
+    "This review directly inspects 9 of 9 final captures.",
+    "Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "unchangedTrackedInputCount": 1661,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "1f71dde56c24658ad9598964c1b21d11674340a4",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/pwa-a1/result.json",
+    "sha256": "472cd2326e59944ee5b6b33810ad295effab84d8846896fce03945d2c4550273"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/android-a1/result.json",
+    "sha256": "062876156244d3587fcafc0b6beaa9d41cfafb66ba26b40a9b5347c21f3e183f"
+  },
+  "pwaBuildId": "4e7a8ff8119f379f3acdb4456d6e272a4f4cecd8c8abc8f4c179796d01d8b369",
+  "androidBuildId": "80a07992212e57f2c339bd6053a64303fd08903227df3fd4d2ba62a35757fde6",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/android-80a07992/app-dev-debug.apk",
+    "bytes": 70289893,
+    "sha256": "9a0fb933aa7fbd8453976aa1cddbf8dccdbd714ebdc59372c2ca4c76b2da88bb"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/pwa-4e7a8ff8/artifact.json",
+      "sha256": "c630b8c45fd8687a8f70bfd5da136cd96fa53a7e0a0772ee5ffc471fc4d2f6e6"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-evidence/android-80a07992/runtime/artifact.json",
+      "sha256": "3a9e0a3b3b3b796820a1bed8b89146a1b2c736d00fde2f28d0ff267e5b5e4317"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/pwa-a1/strict-audit.json",
+      "sha256": "54f37aa68fd02906dfb295a588ffd380e741cb93fb76c242f0c090ddaa09d6fe"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/android-a1/native-artifact-audit.json",
+      "sha256": "3c99c3c49eb66b32869475b9bc729044d39448601d04201e5056f0d9b2608990"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/android-a1/android-dev-apk-verification.json",
+      "sha256": "635d4dd6ef090a69288c5c7adf1320f3df463fad5ecb3eb217246145763996a4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/android-a1/build-run.json",
+      "sha256": "218774dbb49e4fbe434b128a8a0eb98bab68e10266ae5f1e31ce3a2c4a02a2ac"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/build-baseline.json",
+    "sha256": "5ec7853409f333a5614c082fe7034de1e209204152967cbded46412645600dfe"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/pwa-a1/copy-verification.json",
+    "sha256": "4e9e00977c0a3540874cbc79b9b5ee18abeaaf2ee76c6c97c62ba47d20d8b881"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/pwa-a1/playwright.json",
+    "sha256": "95353929bcab35e73773b66be696609966bbf6087fbc83927e9dfe1937041d53"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedCheckpoint": {
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+      "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+    },
+    "sourceCommit": "2fee97b9004200538f5ff46d8f531d0bec0c9353",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/source-manifests/cbad6303aca1251e.json",
+      "sha256": "cbad6303aca1251eed24b714474c24b749eedcc6f862a5b6238b64e42f1ceecd",
+      "fileCount": 1665
+    },
+    "unitCount": 0,
+    "priorValidation": {
+      "static": {
+        "path": "docs/mobile/evidence/S15/booky-character-status-20260927/static-a1/result.json",
+        "sha256": "7ba9f4f5d68e179432d5844ccfd7ec9f9ce2e636f8c3aed7331440c93b9a8fca",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-character-status-20260927/static-a1/execution.json",
+          "sha256": "49ca71986ecb92a25b25b48b8eaa1c635d6fb14c5c989e74ed0b389aac4fe464"
+        },
+        "tests": null,
+        "rawReport": null
+      },
+      "browser": {
+        "path": "docs/mobile/evidence/S15/booky-character-status-20260927/browser-a1/result.json",
+        "sha256": "dbd4af7f20404d232ed6ab4bfe5baa683e1075445c9d285f967b04dbf14e876b",
+        "execution": {
+          "path": "docs/mobile/evidence/S15/booky-character-status-20260927/browser-a1/execution.json",
+          "sha256": "ae7331ab8fda09f486b1ec7c75b8ea6568eba30c557af29820f3afa8a4f6370f"
+        },
+        "tests": {
+          "passed": 3,
+          "failed": 0,
+          "skipped": 0,
+          "flaky": 0
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/booky-character-status-20260927/browser-a1/playwright.json",
+          "sha256": "1af02f6d3ce65663bc903f8b8f90f7eb6cee1d28cc538c4d2c575c59d4be8bef"
+        }
+      }
+    }
+  },
+  "retainedContext": {
+    "sourceCommit": "2fee97b9004200538f5ff46d8f531d0bec0c9353",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+      "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+    },
+    "unitCount": 0,
+    "browserCases": 3,
+    "allPriorSelectedCasesRerun": true,
+    "priorSelectedBrowserCaseCount": 3,
+    "currentSelectedBrowserCaseCount": 3,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-playful-poses-20260924/new-model-photo-review.json",
+      "sha256": "6eba80df85401de4644acea854f1c015f773d7e51a115b2f8538ee40bddd9826"
+    },
+    "photosHistoricalOnly": true,
+    "photosClaimCurrentRenderer": false
+  },
+  "criteriaUpdated": [
+    "PLANETKA-008"
+  ],
+  "criterionEvidenceTargets": [
+    "S15.PLANETKA-008"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD209Recorded": true,
+  "nextAction": "D210: fix the confirmed narrow mobile Booky heading wrap so the localized name remains readable. Use a bounded responsive heading adjustment and trusted-touch readability evidence; preserve existing control target sizes, scrolling, expanded-text behavior and canonical context. This is presentation follow-up, not character-step acceptance or approval of production content.",
+  "limitations": [
+    "The original 120 runtime tests retain their unit-a1 source manifest. The later Archive and browser-fixture changes are outside the recorded relative import closure; runtime/test dependencies, configuration and package inputs remain exact. TypeScript and all three actual-App cases rerun against a7.",
+    "All prior formal attempts retain their original manifests and outcomes, including a5 with no tests/browser/App and a6 with an actual EN readiness failure. TypeScript and all three actual-App cases are fresh a7 executions against the final source; the original 120 unit cases retain their own manifest.",
+    "Explicit resume restores only the current character work prerequisite; the semantic node and completed prefix remain unchanged, and publication arrival grants neither modal opening nor credit.",
+    "The original 120 runtime unit cases are retained under their own source manifest; no unit rerun follows the Archive amendment. Broader D206 suites and D207 inventory validation retain their original source attribution.",
+    "All 34 historical drafts remain unchanged and unapproved. No inventory audit or production publication is claimed.",
+    "Controlled synthetic publication is not production delivery, editorial approval or installed-device evidence.",
+    "Only bounded S15.PLANETKA-008 evidence is added; all requirement/stage statuses and acceptance gates remain unchanged.",
+    "Explicit current-character work Resume only, RU in-session and EN controlled cold paused restore. Existing synthetic publication and trusted touch boundaries retained. One Resume restores the work; only a separate explicit Open creates the modal. No native-device, token-identity, editorial or release acceptance.",
+    "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration after one controlled cold document reload. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation.",
+    "Canonical scene and reading storage equality begins after explicit country/writer/work navigation. A real paused work transition requires one trusted explicit Resume; both consecutive modal acknowledgements and final checkpoint are deliberate. D209 adds deliberate work exit/restoration within the same document. Saved semantic bytes/prefix/write count stay exact; scene/reading invariants use a new baseline only after explicit work navigation. No token identity, native restart equivalence or no-reading-write claim across that navigation.",
+    "syntheticPublicationCapability=false and no request/write apply to the first absent-capability phase. The case then cold reloads with approved synthetic capability and a 15000 ms lease; existing real renewal timer receives controlled null delivery and revokes the modal without new character credit. No recovery is claimed.",
+    "Only the existing runtime unit suite is selected; broader D206 suites retain their original source. Controlled document reload is not a native lifecycle claim. Old token identity is not observed by this browser fixture.",
+    "This review directly inspects 9 of 9 final captures.",
+    "Static images cannot establish explicit acknowledgement, current receipt ownership, publication lease revocation or unchanged saved state; those depend on separately scoped runtime assertions.",
+    "No standalone model-render, installed-device, full accessibility or stage/release acceptance is claimed."
+  ],
+  "bookyCharacterStepImplemented": true,
+  "bookyCharacterResumeImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": true,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

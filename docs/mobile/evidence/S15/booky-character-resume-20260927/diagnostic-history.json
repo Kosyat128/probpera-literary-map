@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 2,
+  "recordedAt": "2026-09-29T20:24:05.264Z",
+  "recordingComplete": true,
+  "currentTaskAttemptsOnly": true,
+  "retainedPriorHistory": null,
+  "priorResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+    "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+  },
+  "recorder": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/diagnostic-history-draft/record-diagnostics.mjs",
+    "sha256": "9dd8f65665201a2c4de6cef227fd67e715b87f988663f7325ab55a8f5d7b7af8"
+  },
+  "inputSpecification": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/diagnostic-history-draft/diagnostic-specification.json",
+    "sha256": "18aa1e76dc988b7270397d692837e063cf6735748f1ac4ad9f2ef384ff4578a4"
+  },
+  "scopeBinding": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a4.json",
+    "sha256": "d6728feaf7510a04e7301f50724bc363c5c632140e61f748c47f905e9e1bcb0a"
+  },
+  "amendmentProvenance": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/draft/source-bindings.json",
+      "sha256": "27989e00b0f317470e2378b82de8b87be0fecb6fd0e38c151b986ffdbbee3c67"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/draft/character-resume.patch",
+      "sha256": "6f2316fa097e1948f5d2855816e73c07012fe7e02225499b551e15e29fd6e14e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-draft/fixture-edit-plan.json",
+      "sha256": "52b3c1a40a5c3875774bddf6f6d503bf047106a6f8250be01cbe967904b4e2d9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-draft/character-resume-browser.patch",
+      "sha256": "fdc64d7a235fb2534fa3c832c07cb8d619203f540ac5ad4da72ba4b7679ea88f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/apply-receipt.json",
+      "sha256": "6c3c3c479be6975c1bd1834ac47450d18a21f3fcbe11a0e3abac0db51332a6a5"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-correction-a2/fixture-edit-plan.json",
+      "sha256": "c73d1e07d6e3df3f2d660e30ecf572d71decd3a637d9186301210a9244529a79"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-correction-a2/character-resume-browser-correction.patch",
+      "sha256": "2cd4f6b5954e61dbc1ab137dc2088c78175d243292d708e677e380f0c09ba062"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/apply-correction-a2.json",
+      "sha256": "2d307fccffb62aee57eac54d59313ea66ab96e715d75d0b7e0a8b6491f2d3150"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/source-fix-20260929.json",
+      "sha256": "4deaa6e2b91d613349d76f6c1725e721602f205ff9106f8a0b9f2fa79d67cc31"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/diagnostic-summary.json",
+      "sha256": "27949c7fa7055ea5a570f7af92793181b4e999b88c04da22c62a72a91a413b49"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-exit-correction-a4/fixture-edit-plan.json",
+      "sha256": "1915f37062ababcf159c2c00141915e8c8573735bacc54ab630084e83f494d15"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-exit-correction-a4/proposed.mjs",
+      "sha256": "982a123b867df16bf386d0a92e488e2f7479de4fdf7cc6516ef4f553bf58c517"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/browser-exit-correction-a4/apply-receipt.json",
+      "sha256": "812778bff42633973d80777d9a5b27ee335bed89fe187bbb1a99c1ccc4400cb0"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "a3",
+      "diagnosticOnly": true,
+      "classification": "list-preflight-syntax-rejection",
+      "sourceCommit": "1f71dde56c24658ad9598964c1b21d11674340a4",
+      "sourceManifestSha256": "6a2148af16585c9b1cb32d1267d8c5c7238cae27a18186a00ee19d97f87a8290",
+      "externalFixtureSha256": "e6a00b728047e0f691fb6dd95f0e31bec348891505baca0a4322c53cab394685",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/authorized-source.json",
+          "sha256": "c6a296a8d59c754ddafda40d6a0a46b012f00513f7d09ff936eb19a8d4c9a6b6"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/preparation.json",
+          "sha256": "496ff2ce2f659e9aafb79895995c0eeff1451049756261750950f16b92e94b63"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/preflight.log",
+          "sha256": "f9adeecf60c27ae5bb499d52152bfdb636d41c9551443bd8286ddf705196d2f5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/run.mjs",
+          "sha256": "aa0d2f66824a826ac2f8317ec7b3680720eebd3afd876bf46a0562ad25046ace"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/playwright.config.mjs",
+          "sha256": "3dd66ecd27a02b5fec5f4b45a6387c8b8294297b5731a1ab4a53e59089ff2aa5"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/character-step.spec.mjs",
+          "sha256": "e6a00b728047e0f691fb6dd95f0e31bec348891505baca0a4322c53cab394685"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/observe-runtime.mjs",
+          "sha256": "6efcb4744a338cbecdd48dedb4cce8b2e8525c1f86e83aa1dfd92183722dfc75"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/preparation.json",
+          "sha256": "496ff2ce2f659e9aafb79895995c0eeff1451049756261750950f16b92e94b63"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/runtime-inputs/src/App.tsx",
+          "sha256": "320a57abf08bd1cac72f9a85c9c100a4f2a0c3d17e283200b485fe724990125b",
+          "originalPath": "src/App.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/runtime-inputs/src/host/bookyJourneyRuntime.ts",
+          "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362",
+          "originalPath": "src/host/bookyJourneyRuntime.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/runtime-inputs/src/host/bookyJourneyRuntime.test.ts",
+          "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65",
+          "originalPath": "src/host/bookyJourneyRuntime.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/runtime-inputs/src/components/BookArchiveSection.tsx",
+          "sha256": "f1f9b27cdcaf07a0a9f90586a6bdbffbe74c4b2254bffd44eac5b1ad11dbe802",
+          "originalPath": "src/components/BookArchiveSection.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/runtime-inputs/tests/pwa/booky-character-step.spec.mjs",
+          "sha256": "4cc5c4b6398b3255a591286ee6d65fbd688cb920e6191dd960a4f0f28a4df645",
+          "originalPath": "tests/pwa/booky-character-step.spec.mjs"
+        }
+      ],
+      "interpretation": "One missing filter-object closing brace caused --list syntax rejection before browser and case execution. No execution receipt or application test counts exist; exit is not fabricated.",
+      "reportFormat": "list-preflight",
+      "browserProcessStarted": false,
+      "browserStarted": false,
+      "applicationExecuted": false,
+      "execution": null,
+      "report": null,
+      "tests": null,
+      "pass": false,
+      "nodeExit": null,
+      "sourceUnchanged": null,
+      "headUnchanged": null,
+      "driversUnchanged": null,
+      "preflight": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a3/preflight.log",
+        "sha256": "f9adeecf60c27ae5bb499d52152bfdb636d41c9551443bd8286ddf705196d2f5"
+      },
+      "executionEvidenceLimit": "No execution receipt was emitted because listing failed; no exit code or application test result is invented."
+    },
+    {
+      "id": "a4",
+      "diagnosticOnly": true,
+      "classification": "application-diagnostic-failure",
+      "sourceCommit": "1f71dde56c24658ad9598964c1b21d11674340a4",
+      "sourceManifestSha256": "6a2148af16585c9b1cb32d1267d8c5c7238cae27a18186a00ee19d97f87a8290",
+      "externalFixtureSha256": "d137b559156e56c89b63ba7ee79714ad7ef03ec893ba5080f49323ff04b78727",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/authorized-source.json",
+          "sha256": "6073d6a3420042fa61b340f207b692f961ed1651284e1eb0227cf5f95b23998f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/preparation.json",
+          "sha256": "88169e5867e49773baa9c70e5cc7083acac67d1d0694dd15455bcd0e2f338cd7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/preflight.log",
+          "sha256": "58016ff45f251430d4d55a4f83d914f71c2b1474e3c27d049b7c464be96d2655"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/run.mjs",
+          "sha256": "aa0d2f66824a826ac2f8317ec7b3680720eebd3afd876bf46a0562ad25046ace"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/playwright.config.mjs",
+          "sha256": "1377c621a2457a0e2099b595e9d0450f6cd8081d3aebe7abf00fcab5dd5c6e5b"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/character-step.spec.mjs",
+          "sha256": "d137b559156e56c89b63ba7ee79714ad7ef03ec893ba5080f49323ff04b78727"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/observe-runtime.mjs",
+          "sha256": "6efcb4744a338cbecdd48dedb4cce8b2e8525c1f86e83aa1dfd92183722dfc75"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/preparation.json",
+          "sha256": "88169e5867e49773baa9c70e5cc7083acac67d1d0694dd15455bcd0e2f338cd7"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/runtime-inputs/src/App.tsx",
+          "sha256": "320a57abf08bd1cac72f9a85c9c100a4f2a0c3d17e283200b485fe724990125b",
+          "originalPath": "src/App.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/runtime-inputs/src/host/bookyJourneyRuntime.ts",
+          "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362",
+          "originalPath": "src/host/bookyJourneyRuntime.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/runtime-inputs/src/host/bookyJourneyRuntime.test.ts",
+          "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65",
+          "originalPath": "src/host/bookyJourneyRuntime.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/runtime-inputs/src/components/BookArchiveSection.tsx",
+          "sha256": "f1f9b27cdcaf07a0a9f90586a6bdbffbe74c4b2254bffd44eac5b1ad11dbe802",
+          "originalPath": "src/components/BookArchiveSection.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/runtime-inputs/tests/pwa/booky-character-step.spec.mjs",
+          "sha256": "4cc5c4b6398b3255a591286ee6d65fbd688cb920e6191dd960a4f0f28a4df645",
+          "originalPath": "tests/pwa/booky-character-step.spec.mjs"
+        }
+      ],
+      "interpretation": "Actual App ran, but existing work readiness stayed navigating and failed before D209 character-work Resume; early trace was not enabled. This run does not identify the later character-work cancellation branch.",
+      "reportFormat": "playwright",
+      "browserProcessStarted": true,
+      "browserStarted": true,
+      "applicationExecuted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/execution.json",
+        "sha256": "bb4de3399a5664feecc575029e895d8c7ea27dd0c9921ffbee6e9d358b200b8c"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/playwright.json",
+        "sha256": "f487fa6f637b952c05af9ed6329eb6830232f4d8e8296648120c3fc0cb888e23"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "driversUnchanged": true,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-27T05:51:13.853Z",
+        "finishedAt": "2026-09-27T05:51:50.871Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/stdout.log",
+          "sha256": "eda7cd7d4a63541c762bbb317fa3bdee3622b09f243f134fcb7d820e5bd6bc54"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a4/stderr.log",
+          "sha256": "9c966a2f1026e68a9a3ff9d0e17c01dd25eb1ae7de14c8e74431d2263bbe1d36"
+        },
+        "streamSeparation": "recorded",
+        "reportDurationMs": 36308.439
+      }
+    },
+    {
+      "id": "a5",
+      "diagnosticOnly": true,
+      "classification": "browser-startup-failure",
+      "sourceCommit": "1f71dde56c24658ad9598964c1b21d11674340a4",
+      "sourceManifestSha256": "6a2148af16585c9b1cb32d1267d8c5c7238cae27a18186a00ee19d97f87a8290",
+      "externalFixtureSha256": "768678584b05c5aedc8b4b8d300e29fffc41a49b7809cb3ccda1078bd23c71cd",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/authorized-source.json",
+          "sha256": "a7bab565cc05d762f8c966459720baf5fd94c462a7c1be404340fa571cc93b70"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/preparation.json",
+          "sha256": "95e11a66bf9d07466ee94786966bd287a704efe77b263c9eeecd3d07d9bbeee4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/preflight.log",
+          "sha256": "58016ff45f251430d4d55a4f83d914f71c2b1474e3c27d049b7c464be96d2655"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/run.mjs",
+          "sha256": "aa0d2f66824a826ac2f8317ec7b3680720eebd3afd876bf46a0562ad25046ace"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/playwright.config.mjs",
+          "sha256": "3a5739b75a65657c951073f0f64558eee205cca6f945adaa0f05c9e03f137fca"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/character-step.spec.mjs",
+          "sha256": "768678584b05c5aedc8b4b8d300e29fffc41a49b7809cb3ccda1078bd23c71cd"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/observe-runtime.mjs",
+          "sha256": "531b7265a85a431e02c525e2bbcaba36752a35da58f546452598efd741adfbd2"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/preparation.json",
+          "sha256": "95e11a66bf9d07466ee94786966bd287a704efe77b263c9eeecd3d07d9bbeee4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/runtime-inputs/src/App.tsx",
+          "sha256": "320a57abf08bd1cac72f9a85c9c100a4f2a0c3d17e283200b485fe724990125b",
+          "originalPath": "src/App.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/runtime-inputs/src/host/bookyJourneyRuntime.ts",
+          "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362",
+          "originalPath": "src/host/bookyJourneyRuntime.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/runtime-inputs/src/host/bookyJourneyRuntime.test.ts",
+          "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65",
+          "originalPath": "src/host/bookyJourneyRuntime.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/runtime-inputs/src/components/BookArchiveSection.tsx",
+          "sha256": "f1f9b27cdcaf07a0a9f90586a6bdbffbe74c4b2254bffd44eac5b1ad11dbe802",
+          "originalPath": "src/components/BookArchiveSection.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/runtime-inputs/tests/pwa/booky-character-step.spec.mjs",
+          "sha256": "4cc5c4b6398b3255a591286ee6d65fbd688cb920e6191dd960a4f0f28a4df645",
+          "originalPath": "tests/pwa/booky-character-step.spec.mjs"
+        }
+      ],
+      "interpretation": "System Chrome process exited during persistent-context startup before page/App creation; no application assertion or runtime trace was reached.",
+      "reportFormat": "playwright",
+      "browserProcessStarted": true,
+      "browserStarted": false,
+      "applicationExecuted": false,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/execution.json",
+        "sha256": "9d7218e8eaccb0a9c7fe59bf3be624e1b4291860552eaa4b966609220bb506f1"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/playwright.json",
+        "sha256": "d9d146c8aec850c2761e1a1b96c3d8f7023fee876fb62558ff85a8a726c8fac6"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "driversUnchanged": true,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-29T19:52:18.527Z",
+        "finishedAt": "2026-09-29T19:52:24.419Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/stdout.log",
+          "sha256": "b1427cccbb22428e4b6e659030a22ca729fa2f4faab9847d7e13b81e0e0210b8"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a5/stderr.log",
+          "sha256": "cf26fa7fd56f527d8bfc594db4fba695f221624f5bfdd4f85fd67666046c9197"
+        },
+        "streamSeparation": "recorded",
+        "reportDurationMs": 5162.369000000001
+      }
+    },
+    {
+      "id": "a6",
+      "diagnosticOnly": true,
+      "classification": "confirmed-host-projection-race",
+      "sourceCommit": "1f71dde56c24658ad9598964c1b21d11674340a4",
+      "sourceManifestSha256": "6a2148af16585c9b1cb32d1267d8c5c7238cae27a18186a00ee19d97f87a8290",
+      "externalFixtureSha256": "5fa50b9b80e6fd471a6a21784b0978c005de7380c841981c3834521c1872c27f",
+      "additionalEvidence": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/authorized-source.json",
+          "sha256": "602cee7eedd93d97a1a36407a43f9df8668ae8313aa55b48060aa140b958f7d1"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/preparation.json",
+          "sha256": "254c06ccd5eae5430d150608cb409c9289080dff1d2a74d4fc0a7f2e8ddf4c63"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/preflight.log",
+          "sha256": "59e02f926b43d46227cbf57e3e7cb4617e2ff53ed3f8a3d154d2a7e15f70f4a0"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/run.mjs",
+          "sha256": "aa0d2f66824a826ac2f8317ec7b3680720eebd3afd876bf46a0562ad25046ace"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/playwright.config.mjs",
+          "sha256": "449e62b325ce799af7196265364e52e8df4b2473e13385b1ec57249c93d792e3"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/character-step.spec.mjs",
+          "sha256": "5fa50b9b80e6fd471a6a21784b0978c005de7380c841981c3834521c1872c27f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/observe-runtime.mjs",
+          "sha256": "d4440433aae47229e015100d6e9a813c0246aa08fc8fe72365fa81ebf09a297f"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/preparation.json",
+          "sha256": "254c06ccd5eae5430d150608cb409c9289080dff1d2a74d4fc0a7f2e8ddf4c63"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/runtime-inputs/src/App.tsx",
+          "sha256": "320a57abf08bd1cac72f9a85c9c100a4f2a0c3d17e283200b485fe724990125b",
+          "originalPath": "src/App.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/runtime-inputs/src/host/bookyJourneyRuntime.ts",
+          "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362",
+          "originalPath": "src/host/bookyJourneyRuntime.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/runtime-inputs/src/host/bookyJourneyRuntime.test.ts",
+          "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65",
+          "originalPath": "src/host/bookyJourneyRuntime.test.ts"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/runtime-inputs/src/components/BookArchiveSection.tsx",
+          "sha256": "f1f9b27cdcaf07a0a9f90586a6bdbffbe74c4b2254bffd44eac5b1ad11dbe802",
+          "originalPath": "src/components/BookArchiveSection.tsx"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/runtime-inputs/tests/pwa/booky-character-step.spec.mjs",
+          "sha256": "4cc5c4b6398b3255a591286ee6d65fbd688cb920e6191dd960a4f0f28a4df645",
+          "originalPath": "tests/pwa/booky-character-step.spec.mjs"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/diagnostic-summary.json",
+          "sha256": "27949c7fa7055ea5a570f7af92793181b4e999b88c04da22c62a72a91a413b49"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/diagnostic-transform.json",
+          "sha256": "6e8dfbaebe9ac8dc9082cb9f1f9c3c22bb600e8e99f3657a65bc87427d2a09f4"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/artifacts/character-step-actual-App--9d554-preserves-canonical-context/booky-character-step.json",
+          "sha256": "7c88b7601461e63031685521e91421bb1db73e277c264486a8ed5cd9f4a6773a"
+        }
+      ],
+      "interpretation": "One explicit Resume was accepted, then active host projected settled empty collection and exact wrong-settled-view guard cancelled it. Exact settled work arrived later; semantic prefix/index/progress revision unchanged. Installed Edge run captured228rows with0dropped. A permanent IO stall was not reproduced.",
+      "reportFormat": "playwright",
+      "browserProcessStarted": true,
+      "browserStarted": true,
+      "applicationExecuted": true,
+      "execution": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/execution.json",
+        "sha256": "b6331088b876031fcadfde3a81fb81b2db89be7d79b3618f61670b01e49716a9"
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/playwright.json",
+        "sha256": "c4c949f2ad179a17930c2cdb9bb6de26201bc83939f8eed58fca3cb82085436e"
+      },
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "pass": false,
+      "sourceUnchanged": true,
+      "headUnchanged": true,
+      "driversUnchanged": true,
+      "executionEvidence": {
+        "nodeExit": 1,
+        "startedAt": "2026-09-29T19:59:43.880Z",
+        "finishedAt": "2026-09-29T20:01:42.649Z",
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/stdout.log",
+          "sha256": "7e077eda566d34c8e9bdfed85bd9ddc5a09282310f67d10a0131569c692ccc9b"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-character-resume-review/guard-diagnostic-a6/stderr.log",
+          "sha256": "ef0654eaf65c8e1ea0f1cdaa04c37c3978b94a8416ad3566fd35172a09994639"
+        },
+        "streamSeparation": "recorded",
+        "reportDurationMs": 117979.595
+      }
+    }
+  ],
+  "summary": "Focused list-preflight syntax rejection, earlier work-readiness failure, Chrome context-startup failure and source-bound Edge causal reproduction are retained without relabeling them as final acceptance. Formal attempts are recorded separately in the final checkpoint.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-29T20:54:47.083Z",
+  "stage": "S15",
+  "checkpoint": "1f71dde56c24658ad9598964c1b21d11674340a4",
+  "previous": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+    "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/result.json",
+    "sha256": "846578898c68eae436459facb856264c87c9043ae5f5db4734e656afd6509728"
+  },
+  "previousRuntimeSourceCommit": "2fee97b9004200538f5ff46d8f531d0bec0c9353",
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-status-20260927/source-manifests/cbad6303aca1251e.json",
+    "sha256": "cbad6303aca1251eed24b714474c24b749eedcc6f862a5b6238b64e42f1ceecd",
+    "fileCount": 1665
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a7.json",
+    "sha256": "53d06f939af96f200ea3c3aeadebaecfcf6fc6ce21a5ed121ce5af80bd0af476"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "52aaff63be7ba1eb3398932dfbb98f953df98eb8e4c7eeed846a3b1fc1511912"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "c5d00876ead8f65b35fb8b4a43d72679cf1bee1fae01472742247a7d0a8ef884"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "01206cd943e4f242dc1c443eb0f25f2271968de69edeb33266e17a8f64c9f31d"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "0da89b36dd9c79f7faf1c3ed5223d2693a0ba97f9bae3a0f4600ff39027b7055"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "93ae87e62b80e46adae2a5ec4252e5281db7eee545a9f1513a56c8eebdfef42a"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "e775764c33a0a56e4598ee71f4a3afb86c051c647cf155aebf872c3f67b483fe"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "c970bd689c6489fa24f1322c60482da3b1b6506cd8969c4dc1c865f537524e89"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "f2007b982d628e639986f26e5ccec991782b966668118424b085194e9a65dbc9"
+    }
+  ],
+  "changedPaths": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "d6322497d011cec2d304bd5f46797c5af46a6df2758e75762d9d9dc31b34a1c7"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.test.ts",
+      "sha256": "d5b872dbf9953e1aa2270d26c541499b7d7e4c9e85060fce239b1c62bab76a65"
+    },
+    {
+      "path": "src/host/bookyJourneyRuntime.ts",
+      "sha256": "3a2efc519a2984563b5aaf94eb54a89680be15fea21feca5310de32c48e42362"
+    },
+    {
+      "path": "tests/pwa/booky-character-step.spec.mjs",
+      "sha256": "ae39c2e74aa70140d669fee66d71f86f8c070fdc15ff54a7c7e85f05f63e176b"
+    }
+  ],
+  "sourceInputCount": 1665,
+  "protectedInputCount": 1661,
+  "runtimeRequired": [
+    "src/components/BookArchiveSection.tsx",
+    "src/host/bookyJourneyRuntime.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "1f71dde56c24658ad9598964c1b21d11674340a4",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyJourneyRuntime.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-character-step.spec.mjs"
+  ],
+  "browserTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress"
+  ],
+  "browserSelection": "exact-title-suffix",
+  "expectedUnitTests": 120,
+  "expectedBrowserTests": 3,
+  "expectedImages": 9,
+  "scope": "D209 explicit current-character resume restores the preceding admitted work prerequisite without changing the current semantic node, completed prefix or progress intent. Publication arrival does not open a card or grant credit; same-context character behavior stays unchanged. Archive revokes previously settled empty-collection readiness before opening an accepted work detail, preventing false wrong-view cancellation during the exact current-character work restore. Book-detail visibility now observes the actual native scroll viewport when present; regular site behavior retains the default root.",
+  "runtimeWiringImplemented": true,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "unitValidation": "retain-original-runtime-unit-a1-only-after-exact-dependency-and-delta-guards",
+  "staticValidation": "fresh-static-a7",
+  "retainedUnit": "docs/mobile/evidence/S15/booky-character-resume-20260927/retained-unit-a1-a7.json",
+  "sourceFrozen": true,
+  "browserChannel": "msedge",
+  "formalAmendment": "docs/mobile/evidence/S15/booky-character-resume-20260927/final-binding-a7.json",
+  "executedScopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a4.json",
+    "sha256": "d6728feaf7510a04e7301f50724bc363c5c632140e61f748c47f905e9e1bcb0a"
+  },
+  "finalSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+    "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+    "fileCount": 1665
+  }
+}

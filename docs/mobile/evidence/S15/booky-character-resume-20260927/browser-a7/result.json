@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a7",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/0ad2eb46cf04c518.json",
+    "sha256": "0ad2eb46cf04c518045103144be50905adf078fe431cc3cce8c99ca96a80d8de",
+    "fileCount": 1665
+  },
+  "checkInputs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-character-resume-review\\stable-publication-a5\\check-final-a7.mjs",
+      "sha256": "5ca47847023f39661ffd581ba8206ad862d2331db39831cb01f9c060db8bc190"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/playwright.config.mjs",
+      "sha256": "5bc41e5e818b051b89eeefb8ab23e460571ebcf0cf9db1c4b58f0ded83da719d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry.json",
+      "sha256": "a56be7f7b745ca06141ed8ca8182bcdad21c325bfef58b5429f261f036a365a4"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/entry-a4.json",
+      "sha256": "9561b95f717238fa385641052b95803e16ec9a45f6f36065c34ec25b1296bae6"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/scope-a4.json",
+      "sha256": "d6728feaf7510a04e7301f50724bc363c5c632140e61f748c47f905e9e1bcb0a"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 193215
+  },
+  "requestedBrowserChannel": "msedge",
+  "targetedTestTitles": [
+    "actual App en character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App ru character journey requires current modal acknowledgement and preserves canonical context",
+    "actual App absent publication capability denies character routes without opening or progress"
+  ],
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-character-resume-20260927/source-manifests/be9a45e41121c26f.json",
+    "sha256": "be9a45e41121c26fff6afc5c2b7f0c31adba089586c3c1b69e3e360d60297baa",
+    "fileCount": 1665
+  },
+  "sourceAmendment": {
+    "path": "tests/pwa/booky-character-step.spec.mjs",
+    "beforeSha256": "982a123b867df16bf386d0a92e488e2f7479de4fdf7cc6516ef4f553bf58c517",
+    "afterSha256": "ae39c2e74aa70140d669fee66d71f86f8c070fdc15ff54a7c7e85f05f63e176b",
+    "otherInputsUnchanged": 1663,
+    "reverseEditAuthenticated": true,
+    "archiveReadinessSource": {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "d6322497d011cec2d304bd5f46797c5af46a6df2758e75762d9d9dc31b34a1c7"
+    }
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyCharacterResumeImplemented": true,
+  "journeyCharacterWiringImplemented": true,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

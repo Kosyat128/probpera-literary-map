@@ -37,6 +37,12 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-character-resume-20260927:begin -->
+Latest source 7c885b58: explicit current-character Resume restores its existing work prerequisite while preserving the semantic node and completed prefix. Publication arrival never opens a modal or grants credit; fresh Open and exact current-modal acknowledgement remain separate actions. Controlled publication is test-only. All 34 historical drafts remain unapproved. Only bounded S15.PLANETKA-008 evidence; statuses unchanged.
+
+Evidence: docs/mobile/evidence/S15/booky-character-resume-20260927/result.json. D209. 120 focused runtime unit cases, TypeScript and 3 actual-App cases; 9 captures. Fresh PWA/Android builds bind this source; prior evidence retains its original source.
+<!-- s15-booky-character-resume-20260927:end -->
+
 <!-- s15-booky-character-status-20260927:begin -->
 Latest source 2fee97b9: localized ready-character hints distinguish a committed open card, an available card requiring explicit opening, and a currently unavailable card. Existing current action presence controls presentation only; admission, opening and progress authority remain unchanged. Controlled publication remains test-only. D207 provenance and all 34 unapproved historical drafts retain their original attribution. Only bounded S15.PLANETKA-004 evidence is added; statuses remain unchanged.
 
