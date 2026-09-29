@@ -250,6 +250,118 @@ describe("current-only character runtime acknowledgement", () => {
   });
 });
 
+describe("explicit character work-context resume", () => {
+  function pausedAway(consecutive = false) {
+    const f = characterRuntime(consecutive); f.reachWork(); f.runtime.next(f.runtime.getSnapshot().revision);
+    if (consecutive) { f.show(); f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision); }
+    f.canOpenCharacter.mockReturnValue(false); f.canAcknowledgeCharacter.mockReturnValue(false);
+    f.display(0); f.navigate.mockClear(); return f;
+  }
+  it("restores only the work, preserves progress and waits for a fresh explicit character Open", () => {
+    const f = pausedAway(), intent = f.runtime.getProgressIntent();
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.navigate).toHaveBeenCalledTimes(1); expect(f.navigate.mock.calls[0][0].node.id).toBe("work");
+    expect(f.runtime.getSnapshot().active).toMatchObject({ node: { id: "character" }, index: 3, completedCount: 3, phase: "navigating" });
+    expect(f.runtime.getProgressIntent()).toBe(intent);
+    f.display(2);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "ready", index: 3, completedCount: 3, canOpen: false, canNext: false });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.acknowledgeCharacter(f.receipt, f.runtime.getSnapshot().revision)).toBe(false);
+    f.canOpenCharacter.mockReturnValue(true); f.patch({}); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active?.canOpen).toBe(true); expect(f.navigate).toHaveBeenCalledTimes(1);
+    expect(f.runtime.getProgressIntent()).toBe(intent);
+    expect(f.runtime.open(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.navigate).toHaveBeenCalledTimes(2); expect(f.navigate.mock.calls[1][0].node.kind).toBe("character");
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+  it.each([false, true])("cold-restores character progress without navigation or losing its prefix (consecutive=%s)", consecutive => {
+    const old = pausedAway(consecutive), preference = old.runtime.getProgressIntent().preference; old.runtime.dispose();
+    const f = characterRuntime(consecutive); f.canOpenCharacter.mockReturnValue(false);
+    expect(f.runtime.restoreProgress(preference, 0)).toBe(true);
+    const index = consecutive ? 4 : 3, id = consecutive ? "next-character" : "character", intent = f.runtime.getProgressIntent();
+    expect(f.navigate).not.toHaveBeenCalled(); expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", index, completedCount: index, node: { id } });
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.navigate).toHaveBeenCalledTimes(1); expect(f.navigate.mock.calls[0][0].node.id).toBe("work"); f.display(2);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "ready", index, completedCount: index, node: { id }, canOpen: false, canNext: false });
+    expect(f.runtime.getProgressIntent()).toBe(intent); expect(intent.preference).toEqual(preference);
+    f.runtime.refresh(); expect(f.navigate).toHaveBeenCalledTimes(1); f.runtime.dispose();
+  });
+  it("keeps same-context Resume on the original current-character capability path", () => {
+    const f = characterRuntime(); f.reachWork(); f.runtime.next(f.runtime.getSnapshot().revision);
+    f.runtime.pause(f.runtime.getSnapshot().revision); f.navigate.mockClear(); const intent = f.runtime.getProgressIntent();
+    f.canOpenCharacter.mockReturnValue(false);
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(false); expect(f.navigate).not.toHaveBeenCalled();
+    f.canOpenCharacter.mockReturnValue(true); f.patch({}); f.runtime.refresh();
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.navigate).toHaveBeenCalledTimes(1); expect(f.navigate.mock.calls[0][0].node.kind).toBe("character");
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+  it("refuses a mismatched nearest work instead of scanning back to an older matching work", () => {
+    // The compiler rejects this sequence. Exercise the runtime boundary with
+    // a malformed supplied plan whose earlier matching work must not be used.
+    const source = fixture("en", { character: true }), work = source.plan.nodes[2];
+    if (work.entity?.kind !== "work") throw Error("missing-synthetic-work");
+    const nearer = { ...work, id: "nearer-work", entity: { ...work.entity, workId: "another-work" } };
+    const plan = { ...source.plan, nodes: [...source.plan.nodes.slice(0, 3), nearer, ...source.plan.nodes.slice(3)] };
+    const f = setup({ ...source, plan }); f.patch({ profileKey: durableProfileKey, canOpenCharacter: () => false });
+    const record = createBookyJourneyProgressRecord(explicitPolicy, plan, ["country", "writer", "work", "nearer-work"], "character");
+    expect(record).not.toBeNull();
+    expect(f.runtime.restoreProgress({ ...DEFAULT_BOOKY_JOURNEY_PROGRESS, activeRecordId: record!.recordId, records: [record!] }, 0)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", index: 4, node: { id: "character" } });
+    const intent = f.runtime.getProgressIntent();
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.navigate).not.toHaveBeenCalled(); expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+  it.each(["stale", "work", "character"] as const)("rejects %s recovery authority without navigation or credit", cause => {
+    const f = pausedAway(), intent = f.runtime.getProgressIntent(), revision = f.runtime.getSnapshot().revision;
+    if (cause === "stale") f.patch({});
+    else f.patch({ resolve: (plan, id) => id === cause ? null : f.resolve(plan, id) });
+    f.runtime.refresh();
+    expect(f.runtime.resume(cause === "stale" ? revision : f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.navigate).not.toHaveBeenCalled(); expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+  it("honors a reentrant pause after publishing context navigation and before dispatch", () => {
+    const f = pausedAway(), intent = f.runtime.getProgressIntent();
+    const stop = f.runtime.subscribe(() => {
+      const snapshot = f.runtime.getSnapshot(); if (snapshot.active?.phase === "navigating") f.runtime.pause(snapshot.revision);
+    });
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(false); expect(f.navigate).not.toHaveBeenCalled();
+    expect(f.runtime.getSnapshot().active?.phase).toBe("paused"); expect(f.runtime.getProgressIntent()).toBe(intent); stop(); f.runtime.dispose();
+  });
+  it.each(["work", "character"] as const)("revalidates %s after a synchronously accepted work navigation", revoked => {
+    const f = pausedAway(), intent = f.runtime.getProgressIntent();
+    f.navigate.mockImplementationOnce(() => { f.patch({ resolve: (plan, id) => id === revoked ? null : f.resolve(plan, id) }); return true; });
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(false); expect(f.navigate).toHaveBeenCalledTimes(1);
+    expect(f.navigate.mock.calls[0][1].aborted).toBe(true); expect(f.runtime.getSnapshot().active?.phase).toBe("unavailable");
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+  it.each([false, "throw"] as const)("keeps explicit Resume available after context navigation returns %s", failure => {
+    const f = pausedAway(), intent = f.runtime.getProgressIntent();
+    f.navigate.mockImplementationOnce(() => { if (failure === "throw") throw Error("work-open-refused"); return false; });
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", index: 3, completedCount: 3 });
+    expect(f.navigate.mock.calls[0][1].aborted).toBe(true); expect(f.runtime.getProgressIntent()).toBe(intent);
+    f.runtime.refresh(); expect(f.navigate).toHaveBeenCalledTimes(1);
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.navigate).toHaveBeenCalledTimes(2); expect(f.navigate.mock.calls[1][0].node.id).toBe("work");
+    expect(f.navigate.mock.calls[1][1].aborted).toBe(false); expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+  it("aborts on an intermediate settled wrong view and never revives from a later matching view", () => {
+    const f = pausedAway(), intent = f.runtime.getProgressIntent(); f.runtime.resume(f.runtime.getSnapshot().revision);
+    const signal = f.navigate.mock.calls[0][1]; f.display(2, { workId: "another-work" });
+    expect(signal.aborted).toBe(true); expect(f.runtime.getSnapshot().active?.phase).toBe("paused");
+    f.display(2); f.canOpenCharacter.mockReturnValue(true); f.patch({}); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active?.phase).toBe("paused"); expect(f.navigate).toHaveBeenCalledTimes(1);
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+  it("aborts accepted context navigation when the host becomes inactive without replay on return", () => {
+    const f = pausedAway(), intent = f.runtime.getProgressIntent(); f.runtime.resume(f.runtime.getSnapshot().revision);
+    const signal = f.navigate.mock.calls[0][1]; f.patch({ active: false }); f.runtime.refresh();
+    expect(signal.aborted).toBe(true); f.patch({ active: true }); f.runtime.refresh(); f.display(2);
+    expect(f.runtime.getSnapshot().active?.phase).toBe("paused"); expect(f.navigate).toHaveBeenCalledTimes(1);
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+});
 describe("reviewed Booky journey runtime", () => {
   it("has no constructor IO and exposes only currently admitted routes under an explicit profile", () => {
     const f = setup(); expect(f.readHost).not.toHaveBeenCalled(); expect(f.navigate).not.toHaveBeenCalled();

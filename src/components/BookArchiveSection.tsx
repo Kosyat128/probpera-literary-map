@@ -926,6 +926,8 @@ export default function BookArchiveSection({
     book: BookArchiveEntry,
     returnFocus?: HTMLElement | null
   ) => {
+    // Revoke empty-collection readiness before acknowledging an opening book request.
+    onCollectionSettledChangeRef.current?.(false);
     reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
     const currentShelfState = shelfStateRef.current;
     if (
@@ -4398,8 +4400,9 @@ export default function BookArchiveSection({
       }));
     };
     refreshDetailViewRef.current = refresh;
+    const intersectionRoot = detail.closest<HTMLElement>(".native-planet-panel__content");
     const intersection = typeof IntersectionObserver === "undefined" ? null
-      : new IntersectionObserver(([entry]) => { intersects = entry.isIntersecting; refresh(); });
+      : new IntersectionObserver(([entry]) => { intersects = entry.isIntersecting; refresh(); }, { root: intersectionRoot });
     intersection?.observe(detail);
     const resize = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(refresh);
     resize?.observe(detail);

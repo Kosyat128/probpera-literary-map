@@ -458,6 +458,48 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     refresh();
     return !disposed && progressIntent === committed;
   }
+  function restoreCharacterWork(observed: Observation): boolean {
+    const target = session, plan = currentPlan(observed), host = observed.host;
+    const node = target && plan ? plan.nodes[target.index] : null;
+    if (!target || !plan || !host || target.phase !== "paused" || node?.kind !== "character"
+      || node.entity?.kind !== "work" || matches(node, host.view)) return false;
+    let workIndex = target.index - 1;
+    while (workIndex >= 0 && plan.nodes[workIndex].kind !== "work") --workIndex;
+    if (workIndex < 0 || JSON.stringify(entityKey(plan.nodes[workIndex])) !== JSON.stringify(entityKey(node))) return false;
+    const index = target.index, intent = progressIntent, token = ++epoch;
+    // Reopen the already admitted work without moving the semantic cursor or
+    // requiring a dossier which only that work can load. No modal token is created.
+    if (!resolve(observed, plan, index, token) || !resolve(observed, plan, workIndex, token)) {
+      if (epoch === token) failClosed(); return false;
+    }
+    cancelNavigation();
+    if (epoch !== token || disposed || session !== target || progressIntent !== intent) return false;
+    const pending: Navigation = { session: target, controller: new AbortController(), accepted: false,
+      originIndex: index, originCount: target.completedCount, originView: host.view, view: viewKey(host.view) };
+    navigation = pending; target.phase = "navigating"; publish(observed);
+    if (epoch !== token || disposed || session !== target || navigation !== pending || progressIntent !== intent) return false;
+    const currentCharacter = resolve(observed, plan, index, token), work = resolve(observed, plan, workIndex, token);
+    if (!currentCharacter || !work) { if (epoch === token) failClosed(); return false; }
+    let accepted = false;
+    try { accepted = navigate(work, pending.controller.signal) === true; } catch { /* Explicit Resume retries only. */ }
+    if (disposed || session !== target || navigation !== pending || pending.controller.signal.aborted || progressIntent !== intent) return false;
+    if (accepted) {
+      const after = refresh(), current = after && currentPlan(after), confirmation = ++epoch;
+      if (!after || !current || session !== target || navigation !== pending || target.index !== index || progressIntent !== intent
+        || !resolve(after, current, index, confirmation) || !resolve(after, current, workIndex, confirmation)) {
+        if (session === target && navigation === pending) failClosed(); return false;
+      }
+      pending.accepted = true;
+    } else {
+      // Outside the work, character Open is correctly unavailable. Keep the
+      // explicit Resume action available after a refused/throwing work port.
+      target.phase = "paused"; cancelNavigation();
+    }
+    // Readiness only follows the committed work view. Publication arrival may
+    // enable Open, but never issues a character request or changes progress.
+    refresh();
+    return accepted && session === target;
+  }
   function move(observed: Observation, index: number, acknowledged: number, semantic = false,
     migration?: { candidate: MigrationCandidate; original: Session },
     characterAcknowledgement?: { nodeId: string; receipt: BookDossierCharacterViewReceipt }): boolean {
@@ -645,8 +687,11 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     },
     resume(revision: number): boolean {
       const observed = prepare(revision);
-      return !!observed && !!session && session.phase === "paused" && !!currentPlan(observed)
-        && move(observed, session.index, session.completedCount);
+      if (!observed?.host || !session || session.phase !== "paused") return false;
+      const plan = currentPlan(observed), node = plan?.nodes[session.index];
+      if (!plan || !node) return false;
+      return node.kind === "character" && !matches(node, observed.host.view)
+        ? restoreCharacterWork(observed) : move(observed, session.index, session.completedCount);
     },
     reset(revision: number): boolean {
       const observed = prepare(revision);
