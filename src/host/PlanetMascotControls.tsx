@@ -26,6 +26,8 @@ export type PlanetMascotControlsProps = {
   writerLabel: string | null;
   onAction: (action: PlanetMascotAction) => void;
   pointRequest?: Readonly<{ id: number; action: PlanetMascotAction }> | null;
+  /** Immediate decorative command only; unavailable owners never queue it. */
+  completionReactionRef?: { current: (() => boolean) | null };
   position: Position | null;
   onPositionChange: (position: Position | null) => void;
   persistence: PlanetMascotPersistenceSnapshot;
@@ -105,7 +107,7 @@ function companionViewport(): Rect {
   return { ...view, top, height: Math.max(0, view.top + view.height - top) };
 }
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, pointRequest, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
+  onAction, pointRequest, completionReactionRef, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
   onRetryMotion, onRecoverMotion, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
@@ -543,6 +545,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     setPointerLook(null); setGesture(next); setReactionKey(value => value + 1);
     return true;
   };
+  useLayoutEffect(() => {
+    if (!completionReactionRef) return;
+    // A late first frame or recovery must not replay an earlier completion.
+    const playCompletion = () => characterOwner.current.state === "live3d" && playGesture("happy");
+    completionReactionRef.current = playCompletion;
+    return () => {
+      if (completionReactionRef.current === playCompletion) completionReactionRef.current = null;
+    };
+  }, [completionReactionRef, playGesture]);
   const canStopGesture = BOOKY_GESTURES.some(value => value === gesture);
   const openGestures = () => {
     const current = controller.getSnapshot(), panel = card.current;

@@ -618,6 +618,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   }, [readerPolicyStore, isPlanetApplication, platformVisibility]);
   const [mascotPosition, setMascotPosition] = useState<{ left: number; top: number } | null>(null);
   const [mascotPointRequest, setMascotPointRequest] = useState<{ id: number; action: PlanetMascotAction } | null>(null);
+  const mascotCompletionReactionRef = useRef<(() => boolean) | null>(null);
+  const celebrateJourneyCompletion = useCallback(() => { mascotCompletionReactionRef.current?.(); }, []);
   const mascotPointSequence = useRef(0);
   const mascotFocusSequence = useRef(0);
   const [mascotSectionRequest, setMascotSectionRequest] = useState<NativePlanetSectionRequest | null>(null);
@@ -3426,6 +3428,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       countryLabel={selectedCountry ? countryName(selectedCountry.code, selectedCountry.name) : null}
       writerLabel={selectedWriter ? writerName(selectedWriter, t("Автор"), language) : null}
       onAction={handleMascotActionWithPoint} pointRequest={mascotPointRequest}
+      completionReactionRef={mascotCompletionReactionRef}
       position={mascotPosition} onPositionChange={setMascotPosition}
       persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
       motion={bookyMotionSnapshot} onMotionChange={bookyMotion.selectMode} onRetryMotion={bookyMotion.retry}
@@ -3440,7 +3443,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         </button>}
         <BookyJourneyControls snapshot={journey.snapshot} controller={journey.controller}
           persistence={journey.persistence} persistenceSnapshot={journey.persistenceSnapshot}
-          characterViewOpen={journey.characterAction !== null}
+          characterViewOpen={journey.characterAction !== null} onComplete={celebrateJourneyCompletion}
           passport={journey.passport} passportState={journey.passportState} />
         <BookyReaderSettings snapshot={readerPolicySnapshot} editor={readerSettingsEditor}
         onSave={value => readerPolicyStore.save(value, new Date().toISOString())}

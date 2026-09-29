@@ -19,6 +19,8 @@ export type BookyJourneyControlsProps = {
   passportState: BookyJourneyPassportControlsProps["state"];
   /** Current committed modal action observed by the existing journey owner. */
   characterViewOpen?: boolean;
+  /** Optional presentation after a successful explicit final acknowledgement. */
+  onComplete?: () => void;
 };
 
 /** Interface copy only; journey text comes from the current admitted snapshot. */
@@ -109,7 +111,7 @@ export const bookyJourneyControlsCopy = {
   },
 } as const;
 
-export default function BookyJourneyControls({ snapshot, controller, persistence, persistenceSnapshot, passport, passportState, characterViewOpen = false }: BookyJourneyControlsProps) {
+export default function BookyJourneyControls({ snapshot, controller, persistence, persistenceSnapshot, passport, passportState, characterViewOpen = false, onComplete }: BookyJourneyControlsProps) {
   const { language } = useInterfaceLanguage();
   const copy = bookyJourneyControlsCopy.locales[language];
   const id = useId(), historyHeadingId = `${id}-history-heading`, capacityId = `${id}-history-capacity`;
@@ -141,10 +143,13 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
     } else resetConfirm.current?.focus();
   }, [resetAtRevision, snapshot.revision, active, focusJourneyHeading]);
 
-  function act(action: () => boolean, focusHeading = false) {
+  function act(action: () => boolean, focusHeading = false, completeIfAccepted = false) {
     const accepted = persistence.getSnapshot().canAct && action();
     setRejectedAtRevision(accepted ? null : snapshot.revision);
     if (accepted) setResetAtRevision(null);
+    if (accepted && completeIfAccepted && controller.getSnapshot().active?.phase === "complete") {
+      try { onComplete?.(); } catch { /* Presentation cannot change semantic acceptance. */ }
+    }
     // Only an explicit gesture moves focus. This heading remains mounted when
     // asynchronous navigation or a new node replaces the action controls.
     if (accepted && focusHeading) heading.current?.focus();
@@ -242,7 +247,7 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
             <button type="button" data-booky-journey-open="" disabled={!persistenceSnapshot.canAct || !active.canOpen}
               onClick={() => act(() => controller.open(snapshot.revision), true)}>{openLabel}</button>
             {node.kind !== "character" && <button type="button" className="booky-journey-controls__primary" data-booky-journey-next=""
-              disabled={!persistenceSnapshot.canAct || !active.canNext} onClick={() => act(() => controller.next(snapshot.revision), true)}>
+              disabled={!persistenceSnapshot.canAct || !active.canNext} onClick={() => act(() => controller.next(snapshot.revision), true, true)}>
               {active.index + 1 >= active.total ? copy.finish : copy.next}
             </button>}
           </>}

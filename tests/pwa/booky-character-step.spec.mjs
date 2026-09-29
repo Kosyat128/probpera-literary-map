@@ -431,6 +431,53 @@ async function globeGuidanceInputs(page, observation) {
   return {tap,expose,geometry,close:()=>cdp.detach()};
 }
 
+// Read-only DOM observations: no command access, App state, clock or lease mutation.
+function observeCompletionPresentation(){
+  const audit={rows:[],overflow:0,last:null,previousGesture:null,happyTransitions:0,happyObserved:false,observer:null,capture:null};
+  audit.capture=()=>{
+    const root=document.querySelector('[data-planet-mascot-pet]'),avatar=document.querySelector('[data-planet-mascot-avatar]'),canvas=document.querySelector('[data-booky-canvas]');
+    const row={phase:document.querySelector('[data-booky-journey-status]')?.getAttribute('data-booky-journey-status')??null,
+      gesture:root?.getAttribute('data-planet-mascot-gesture')??null,renderer:avatar?.getAttribute('data-renderer-state')??null,
+      active:avatar?.getAttribute('data-renderer-active')??null,avatarInteraction:avatar?.getAttribute('data-booky-interaction')??null,
+      canvasInteraction:canvas?.getAttribute('data-booky-interaction')??null,animating:canvas?.getAttribute('data-booky-animating')??null,
+      reducedMotion:canvas?.getAttribute('data-booky-reduced-motion')??null};
+    if(row.gesture==='happy'&&audit.previousGesture!=='happy')audit.happyTransitions++;
+    audit.previousGesture=row.gesture;
+    if(row.gesture==='happy'||row.avatarInteraction==='happy'||row.canvasInteraction==='happy')audit.happyObserved=true;
+    const key=JSON.stringify(row);if(key===audit.last)return;audit.last=key;
+    if(audit.rows.length<64)audit.rows.push({at:performance.now(),...row});else audit.overflow++;
+  };
+  audit.observer=new MutationObserver(audit.capture);
+  audit.observer.observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:['data-booky-journey-status','data-planet-mascot-gesture','data-renderer-state','data-renderer-active','data-booky-interaction','data-booky-animating','data-booky-reduced-motion']});
+  audit.capture();window.__d211CompletionPresentation=audit;
+}
+async function assertCompletionPresentation(fixture,finalAction,{animated}){
+  const {page,result}=fixture,avatar=page.locator('[data-planet-mascot-avatar]'),canvas=page.locator('[data-booky-canvas]');
+  // Exercise the real system preference only at the final RU action boundary.
+  if(animated)await page.emulateMedia({reducedMotion:'no-preference'});
+  await expect(avatar).toHaveAttribute('data-renderer-state','live3d');await expect(avatar).toHaveAttribute('data-renderer-active','true');
+  await expect(canvas).toHaveAttribute('data-booky-reduced-motion',String(!animated));await expect(canvas).toHaveAttribute('data-booky-animating','false');
+  await expect(pet(page)).not.toHaveAttribute('data-planet-mascot-gesture','happy');
+  await page.evaluate(observeCompletionPresentation);
+  try{
+    await finalAction();await expect(status(page)).toHaveAttribute('data-booky-journey-status','complete');
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','happy');await expect(avatar).toHaveAttribute('data-booky-interaction','happy');
+    await expect(canvas).toHaveAttribute('data-booky-interaction','happy');await expect(canvas).toHaveAttribute('data-booky-reduced-motion',String(!animated));
+    if(animated)await expect.poll(()=>page.evaluate(()=>window.__d211CompletionPresentation.rows.some(row=>row.canvasInteraction==='happy'&&row.animating==='true')),{timeout:3000}).toBe(true);
+    await expect(canvas).toHaveAttribute('data-booky-animating','false',{timeout:3000});
+    const settledRenderCount=await canvas.getAttribute('data-booky-render-count');await page.waitForTimeout(160);
+    await expect(canvas).toHaveAttribute('data-booky-render-count',settledRenderCount);
+    result.observations.characterStep.completionPresentation={trigger:'explicit-final-next',animated,settledRenderCount};
+  }finally{
+    const observed=await page.evaluate(()=>{const audit=window.__d211CompletionPresentation;audit.capture();audit.observer.disconnect();return{rows:audit.rows,overflow:audit.overflow,happyTransitions:audit.happyTransitions,happyObserved:audit.happyObserved};});
+    result.observations.characterStep.completionPresentation={...result.observations.characterStep.completionPresentation,audit:observed};
+  }
+  const observed=result.observations.characterStep.completionPresentation.audit;
+  expect(observed.overflow).toBe(0);expect(observed.happyTransitions).toBe(1);expect(observed.happyObserved).toBe(true);
+  if(!animated)expect(observed.rows.some(row=>row.canvasInteraction==='happy'&&row.animating==='true')).toBe(false);
+}
+
+
 const characterHintCopy={ru:{current:'Подтвердите шаг в открытой карточке персонажа.',closed:'Откройте этот шаг, затем подтвердите его.'},en:{current:'Acknowledge this step inside the open character card.',closed:'Open this step, then acknowledge it.',unavailable:'The character card is currently unavailable. You can return to this step later.'}};
 const characterDialog=page=>page.locator('dialog[open]').filter({has:page.locator('[data-dossier-character-view]')});
 const acknowledge=page=>page.locator('[data-dossier-character-acknowledge]');
@@ -568,9 +615,25 @@ for(const [language,width] of [['ru',390],['en',320]])test('actual App '+languag
       if(language==='ru')await characterCapture(fixture,testInfo,'character-consecutive-ru.png','Actual second synthetic character modal after acknowledging only the first; separate second acknowledgement is still required.');
       await input.tap(acknowledge(page),'Acknowledge exact second character');prefix.push('character_second');await characterPrefix(fixture,prefix);
     }
-    await readyJourneyNode(page,'checkpoint',input);await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);await assertNoReadingOrSceneChange(fixture,before);await input.tap(next(page),'Explicit final checkpoint acknowledgement');prefix.push('checkpoint');await expect(status(page)).toHaveAttribute('data-booky-journey-status','complete');await characterPrefix(fixture,prefix);
+    await readyJourneyNode(page,'checkpoint',input);await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);await assertNoReadingOrSceneChange(fixture,before);
+    await input.expose(next(page),'Final checkpoint acknowledgement before observing completion');
+    await assertCompletionPresentation(fixture,()=>input.tap(next(page),'Explicit final checkpoint acknowledgement'),{animated:language==='ru'});prefix.push('checkpoint');await characterPrefix(fixture,prefix);
     const record=savedRecord(fixture),fingerprints=record.nodes.filter(item=>item.kind==='character');expect(fingerprints).toHaveLength(2);for(const item of fingerprints){expect(Object.keys(item).sort()).toEqual(['character','entity','id','kind','screen']);expect(Object.keys(item.character).sort()).toEqual(['id','semanticChecksum','version']);expect(item.character.semanticChecksum).toMatch(/^[a-f0-9]{64}$/u);}expect(JSON.stringify(record)).not.toMatch(/cacheKey|validUntil|token|receipt|Учебный персонаж|Synthetic character/u);
     await input.expose(status(page),'Completed journey status');await characterCapture(fixture,testInfo,'character-complete-'+language+'.png','Completed synthetic journey after explicit modal and final checkpoint acknowledgements; no literary approval is represented.');
+    if(language==='en'){
+      const completeRaw=fixture.memory.get(PROGRESS),completeWrites=fixture.progressWrites().length,companionRaw=fixture.memory.get(BOOKY);
+      // The observer starts in the new document before React hydration; it never changes presentation.
+      await page.addInitScript(observeCompletionPresentation);await fixture.coldReload('approved');await openJourney(fixture,input);
+      await expect(status(page)).toHaveAttribute('data-booky-journey-status','complete');await characterPrefix(fixture,prefix);
+      await expect(characterDialog(page)).toHaveCount(0);await expect(acknowledge(page)).toHaveCount(0);await expect(next(page)).toHaveCount(0);
+      await expect(pet(page)).not.toHaveAttribute('data-planet-mascot-gesture','happy');
+      expect(fixture.memory.get(PROGRESS)).toBe(completeRaw);expect(fixture.progressWrites()).toHaveLength(completeWrites);expect(savedRecord(fixture)).toEqual(record);
+      expect(fixture.memory.get(BOOKY)).toBe(companionRaw);expect(await page.evaluate(()=>window.__d206PublicationCalls)).toEqual([]);
+      await guidanceSettle(page);await page.waitForTimeout(160);
+      const observed=await page.evaluate(()=>{const audit=window.__d211CompletionPresentation;audit.capture();audit.observer.disconnect();return{rows:audit.rows,overflow:audit.overflow,happyTransitions:audit.happyTransitions,happyObserved:audit.happyObserved};});
+      result.observations.characterStep.completedColdHydration={audit:observed,semanticProgressUnchanged:true,companionPreferenceUnchanged:true,noPublicationRequest:true};
+      expect(observed.overflow).toBe(0);expect(observed.happyTransitions).toBe(0);expect(observed.happyObserved).toBe(false);
+    }
     Object.assign(result,{syntheticPublicationCapability:true,realPublicationServiceClaimed:false,nativeDeviceClaimed:false,consecutiveCharactersExercised:true,characterJourneyPassed:true});Object.assign(result.observations.characterStep,{routeAdmittedBeforeDossier:true,characterReadyHintTracksModal:true,hintPresentationAddsNoPublicationRequest:true,closeAndReopenNoCredit:true,explicitCurrentModalCredit:true,staticCharacterFingerprintOnly:true,canonicalSceneAndReadingRetained:true,checks:[{name:'country-first route admission does not require a future open dossier',pass:true},{name:'ready character hint follows committed modal, Close and fresh Open without new publication request or credit',pass:true},{name:'one explicit Resume restores only the exact current character work without modal or semantic credit',pass:true},{name:'a fresh explicit Open after work restoration is required before character acknowledgement',pass:true},{name:language==='ru'?'in-session character work recovery preserves the saved semantic step':'cold paused character restore performs no navigation before explicit Resume',pass:true},{name:'Close and fresh Open give no character credit',pass:true},{name:'only explicit current modal acknowledgement advances character progress',pass:true},{name:'character progress stores static identity without temporary receipt',pass:true},{name:'canonical globe and reading storage remain unchanged during character actions',pass:true}],savedRecord:record});fixture.verify();
   }finally{await input.close();await fixture.close();}
 });
