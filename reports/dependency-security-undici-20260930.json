@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-30",
+  "baselineCommitSha": "afa8afe5b4918530d1ed003b0de7707482ab5c8b",
+  "scope": "Production Cheerio Undici only; old Miniflare exact dev-only dependency and every unrelated lock record retained.",
+  "changedLockEntries": [
+    "node_modules/cheerio/node_modules/undici",
+    "node_modules/undici"
+  ],
+  "applicationManifestsUnchanged": true,
+  "noApplicationOverride": true,
+  "lifecycleScriptsExecuted": false,
+  "nodeModulesCreated": false,
+  "offlineRevalidation": {
+    "exitCode": 0,
+    "lockfileByteIdentical": true
+  },
+  "productionAudit": {
+    "command": "npm audit --omit=dev --audit-level=high",
+    "before": {
+      "exitCode": 1,
+      "result": {
+        "auditReportVersion": 2,
+        "vulnerabilities": {
+          "undici": {
+            "name": "undici",
+            "severity": "high",
+            "isDirect": false,
+            "via": [
+              {
+                "source": 1239933,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+                "url": "https://github.com/advisories/GHSA-3wwx-pv8p-q78v",
+                "severity": "moderate",
+                "cwe": [
+                  "CWE-248"
+                ],
+                "cvss": {
+                  "score": 5.9,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                },
+                "range": ">=7.28.0 <7.29.1"
+              },
+              {
+                "source": 1240036,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to Denial of Service via orphaned RetryHandler response body",
+                "url": "https://github.com/advisories/GHSA-pmjh-fq2x-6v4x",
+                "severity": "moderate",
+                "cwe": [
+                  "CWE-772"
+                ],
+                "cvss": {
+                  "score": 5.9,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                },
+                "range": ">=7.11.0 <7.29.1"
+              },
+              {
+                "source": 1240038,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to downstream response splitting via retry interceptor",
+                "url": "https://github.com/advisories/GHSA-r53p-7pc4-xj5r",
+                "severity": "low",
+                "cwe": [
+                  "CWE-444"
+                ],
+                "cvss": {
+                  "score": 3.7,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+                },
+                "range": ">=7.0.0 <7.29.1"
+              },
+              {
+                "source": 1240041,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to Denial of Service via unrequested WebSocket subprotocol",
+                "url": "https://github.com/advisories/GHSA-rfgv-xxqx-mfg5",
+                "severity": "high",
+                "cwe": [
+                  "CWE-248",
+                  "CWE-252"
+                ],
+                "cvss": {
+                  "score": 7.5,
+                  "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                },
+                "range": ">=7.0.0 <7.29.1"
+              },
+              {
+                "source": 1240044,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to Denial of Service via unbounded decompression of compressed responses",
+                "url": "https://github.com/advisories/GHSA-3xpg-4rpp-hhhm",
+                "severity": "moderate",
+                "cwe": [
+                  "CWE-770"
+                ],
+                "cvss": {
+                  "score": 5.9,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                },
+                "range": ">=7.15.0 <7.29.1"
+              },
+              {
+                "source": 1240046,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to cross-user cookie disclosure via Set-Cookie caching in shared caches",
+                "url": "https://github.com/advisories/GHSA-2jfj-6hjv-fm6j",
+                "severity": "moderate",
+                "cwe": [
+                  "CWE-200",
+                  "CWE-524"
+                ],
+                "cvss": {
+                  "score": 6.5,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N"
+                },
+                "range": ">=7.0.0 <7.29.1"
+              },
+              {
+                "source": 1240048,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to response truncation via oversized chunked responses in the dump interceptor",
+                "url": "https://github.com/advisories/GHSA-2gqq-gqf2-x968",
+                "severity": "low",
+                "cwe": [
+                  "CWE-20",
+                  "CWE-248"
+                ],
+                "cvss": {
+                  "score": 3.7,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+                },
+                "range": ">=7.1.0 <7.29.1"
+              },
+              {
+                "source": 1240050,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to TLS certificate validation bypass via dropped connect options in BalancedPool",
+                "url": "https://github.com/advisories/GHSA-w293-vg96-wgc3",
+                "severity": "high",
+                "cwe": [
+                  "CWE-295"
+                ],
+                "cvss": {
+                  "score": 7.4,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+                },
+                "range": ">=7.24.1 <7.29.1"
+              },
+              {
+                "source": 1240052,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to caching and replay of unsafe HTTP method responses",
+                "url": "https://github.com/advisories/GHSA-8436-99hf-9mmv",
+                "severity": "low",
+                "cwe": [
+                  "CWE-345"
+                ],
+                "cvss": {
+                  "score": 3.7,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+                },
+                "range": ">=7.0.0 <7.29.1"
+              },
+              {
+                "source": 1240055,
+                "name": "undici",
+                "dependency": "undici",
+                "title": "undici vulnerable to Denial of Service via WebSocketStream unclean close",
+                "url": "https://github.com/advisories/GHSA-rx4f-c7p8-82vq",
+                "severity": "moderate",
+                "cwe": [
+                  "CWE-248",
+                  "CWE-754"
+                ],
+                "cvss": {
+                  "score": 5.9,
+                  "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                },
+                "range": ">=7.0.0 <7.29.1"
+              }
+            ],
+            "effects": [],
+            "range": "7.0.0 - 7.29.0",
+            "nodes": [
+              "node_modules/undici"
+            ],
+            "fixAvailable": true
+          }
+        },
+        "metadata": {
+          "vulnerabilities": {
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "high": 1,
+            "critical": 0,
+            "total": 1
+          },
+          "dependencies": {
+            "prod": 213,
+            "dev": 527,
+            "optional": 179,
+            "peer": 0,
+            "peerOptional": 0,
+            "total": 775
+          }
+        }
+      }
+    },
+    "after": {
+      "exitCode": 0,
+      "result": {
+        "auditReportVersion": 2,
+        "vulnerabilities": {},
+        "metadata": {
+          "vulnerabilities": {
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "high": 0,
+            "critical": 0,
+            "total": 0
+          },
+          "dependencies": {
+            "prod": 213,
+            "dev": 528,
+            "optional": 179,
+            "peer": 0,
+            "peerOptional": 0,
+            "total": 776
+          }
+        }
+      }
+    }
+  },
+  "sourceBaselines": {
+    "package-lock.json": "f8fa586724f215d32d5465280af7ff415eeb4a1de5850d3ac942e2fe043f2cb1",
+    "scripts/lib/reviewed-r10-delta.mjs": "8c023c07377a072a2eb4c348e90a63c99e585cde858db1ce8de7d92c4e49171d",
+    "scripts/lib/reviewed-calendar-followup.test.mjs": "0259d549b4d0fc9faf2285090a019fcf0ced04c66257ed484a051d8554a8a54b",
+    "scripts/lib/reviewed-r10-delta.test.mjs": "270ae6c55e00930483cfe71b4d43cbc8a650948c4a1492935aa61d18bcc1a6cf"
+  },
+  "reviewedSources": {
+    "package-lock.json": "d39f63abece7398e39ac982bc946db227bb1c6c5085014b65208dc66a4ab71d5",
+    "scripts/lib/reviewed-r10-delta.mjs": "a9f64ecaf89ad831cbe4ddb596a2d0d390b55c116a72d2db3fe18dba438a740e",
+    "scripts/lib/reviewed-calendar-followup.test.mjs": "ac724e3685dc2338d84866af4ac43723f08b7cced00fe794cc8142edb95d2fa4",
+    "scripts/lib/reviewed-r10-delta.test.mjs": "4dc7aa729591495094c63c4d936ddb2d968aa1051785344482d4bf54e68641d0"
+  },
+  "sources": [
+    "https://github.com/nodejs/undici/security/advisories/GHSA-w293-vg96-wgc3",
+    "https://github.com/nodejs/undici/security/advisories/GHSA-rfgv-xxqx-mfg5",
+    "https://registry.npmjs.org/undici/7.29.1"
+  ]
+}

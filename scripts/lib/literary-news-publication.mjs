@@ -1,12 +1,11 @@
 import limits from "../../data/news/contract.json" with { type: "json" };
 import { resolveNewsTimeZone, selectReviewed, validTimestamp } from "./literary-news-reviewed.mjs";
 import { newsArticleThumbnail } from "./literary-news-thumbnails.mjs";
+import {newsJsonDigest,newsJsonByteSize} from './literary-news-json.mjs';
 
 export const NEWS_PUBLICATION_POLICY = "reviewed-v2-explicit-withdrawals";
 export async function newsDigest(value) {
-  const bytes = new TextEncoder().encode(JSON.stringify(value));
-  return [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))]
-    .map((byte) => byte.toString(16).padStart(2, "0")).join("");
+  return newsJsonDigest(value);
 }
 export function publicNewsItem(item) {
   const thumbnail = newsArticleThumbnail(item);
@@ -59,7 +58,7 @@ export async function buildPublishedNewsFeed({ records, state, current = new Dat
     complete: true, count: items.length, evaluatedAt: current.toISOString(), timeZone,
     policy: NEWS_PUBLICATION_POLICY };
   feed.snapshot.id = await newsDigest(newsSnapshotPayload(feed));
-  if (new TextEncoder().encode(JSON.stringify(feed)).byteLength > limits.maxFeedBytes) throw new Error("public_snapshot_too_large");
+  if (newsJsonByteSize(feed) > limits.maxFeedBytes) throw new Error("public_snapshot_too_large");
   return feed;
 }
 

@@ -246,7 +246,7 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     expect((await store.read(key)).state.dispatchStartedAt).toBeNull();
     await reconcileNewsSnapshot(store, await completeFeed([{ ...item, summary: { ...item.summary, ru: "Исправленный текст." } }]), destinations, now);
     expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => now })).reason).toBe("destination_pacing");
-    expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => new Date(now.getTime()+1800000) })).status).toBe("sent_current");
+    expect((await dispatchNewsJob({ store, key, transport: { send: async () => accepted }, now: () => new Date(now.getTime()+3600000) })).status).toBe("sent_current");
   });
   it("rate limits the whole destination while the other platform can proceed", async () => {
     const { store, key } = await setup(); const send = vi.fn(async () => ({ kind: "retry", scope: "retry", code: "rate_limit", retryAfterSeconds: 90 }));
@@ -318,6 +318,12 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
   it("alternates old and fresh backlog after corrections", () => {
     const rows = [1, 2, 3, 4].map((n) => ({ key: `${n}`, originalAdmission: `${n}`, status: "pending" }));
     expect(scheduleNewsJobs(rows).map((row) => row.key)).toEqual(["1", "4", "2", "3"]);
+  });
+  it('puts fresh photo candidates ahead of text while keeping corrections first',()=>{
+    const rows=[{key:'text',status:'pending',originalAdmission:'1',prepared:{media:null}},
+      {key:'photo',status:'pending',originalAdmission:'2',prepared:{media:{assetId:'verified'}}},
+      {key:'edit',status:'correction_pending',remoteId:'7',originalAdmission:'3',prepared:{media:null}}];
+    expect(scheduleNewsJobs(rows).map(row=>row.key)).toEqual(['edit','photo','text']);
   });
 });
 

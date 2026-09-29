@@ -1,3 +1,4 @@
+import { newsJsonByteSize as bytes } from "./literary-news-json.mjs";
 import { canonicalUrl, CATEGORIES, validDate, validTimestamp } from "./literary-news-reviewed.mjs";
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_OWNER_KEY, DAILY_NEWS_POLICY, DAILY_NEWS_MODELS,
@@ -7,7 +8,7 @@ import { DAILY_NEWS_PROFILE_KEY, DAILY_NEWS_LEDGER_KEY, DAILY_NEWS_OWNER_KEY, DA
 
 const DAY = 86400000, NAMESPACE = "f3ae59fd55ee4c0cac8ff1613db81680";
 const hash = value => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
-const bytes = value => new TextEncoder().encode(JSON.stringify(value)).byteLength;
+
 const fail = code => { throw new Error(code); };
 const plain = value => typeof value === "string" && value.trim() === value && Boolean(value);
 const object = value => value && typeof value === "object" && !Array.isArray(value);
@@ -197,7 +198,9 @@ export async function mergeDailyLedgers(previous, profile, local, current, optio
   for (const records of entries) for (const record of records) {
     const old = accepted.get(record.id);
     if (old && old.provenance.recordSha256 !== record.provenance.recordSha256) fail("daily_accepted_history_conflict");
-    accepted.set(record.id, record);
+    // Identical approved history shares its immutable object with the prior ledger.
+    // A separately parsed public projection must not replace every accepted record.
+    if (!old) accepted.set(record.id, record);
   }
   state.accepted = [...accepted.values()];
   // Recover completed provider work from a prior failed publish without changing old admissions.

@@ -125,6 +125,7 @@ describe("generated CMS exact-source punctuation", () => {
     temporaryDirectories.push(directory);
     for (const file of ["scripts/normalize-short-hyphens.mjs", "scripts/lib/short-hyphens.mjs",
       "scripts/lib/short-hyphen-exact-source.mjs", "scripts/lib/cms-exact-source-punctuation.mjs",
+      "scripts/lib/r10-exact-source-punctuation.mjs",
       "scripts/governance/book-r49n-dickens-reviewed-20260912.json",
       "scripts/governance/book-r49n-package-reviewed-20260912.json",
       "reports/book-r49n-package-reviewed-20260912.json",

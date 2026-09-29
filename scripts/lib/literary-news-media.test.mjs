@@ -117,13 +117,13 @@ describe("bounded media and destination rights",()=>{
 });
 
 describe("native photo delivery without duplicate creates",()=>{
-  it("requires source-approved photos for Telegram and preserves the deferred VK policy",async()=>{
+  it("allows text when a photo is unavailable and preserves the deferred VK policy",async()=>{
     expect(socialConfiguration.destinations).toHaveLength(2);
     for(const configured of socialConfiguration.destinations){
-      // The owner explicitly requested images inside Telegram posts on September 29.
-      expect(configured.requirePhotoForNewPosts).toBe(configured.platform==="telegram");expect(configured.mode).toBe("off");
+      // The owner now prioritizes photos and explicitly permits text without them.
+      expect(configured.requirePhotoForNewPosts).toBe(false);expect(configured.mode).toBe("off");
       const legacy={platform:configured.platform,id:configured.id,requirePhotoForNewPosts:true};
-      expect(newsNewPostRequiresPhoto(legacy)).toBe(configured.platform==="telegram");
+      expect(newsNewPostRequiresPhoto(legacy)).toBe(false);
       const store=memoryStore(),key=newsPostKey(item.id,{...legacy,mode:"on"});
       const text=await prepareNewsPost(item,snapshot,legacy.platform);
       await store.seed(key,{key,newsId:item.id,destination:legacy,prepared:text,desiredRevision:text.revision,status:"pending"});
@@ -132,15 +132,10 @@ describe("native photo delivery without duplicate creates",()=>{
         : Response.json({response:{post_id:17}}));
       const native=createNewsSocialTransport({mode:"live",telegramToken:"fixture",vkToken:"fixture",fetchImpl});
       expect((await dispatchNewsJob({store,key,transport:{...native,preflight:vi.fn()},now:()=>now})).reason)
-        .toBe(configured.platform==="telegram"?"new_post_requires_photo":"destination_not_enabled_or_history_gap");
+        .toBe("destination_not_enabled_or_history_gap");
       const outcome=await native.send({destination:{...legacy,mode:"on"},prepared:text,remoteId:null});
-      if(configured.platform==="telegram") {
-        expect(outcome).toMatchObject({kind:"retry",code:"new_post_requires_photo"});
-        expect(fetchImpl).not.toHaveBeenCalled();
-      } else {
-        expect(outcome).toMatchObject({kind:"accepted",remoteId:"17",remoteMediaKind:"text"});
-        expect(fetchImpl.mock.calls[0][0]).toContain("/wall.post");
-      }
+      expect(outcome).toMatchObject({kind:"accepted",remoteId:"17",remoteMediaKind:"text"});
+      expect(fetchImpl.mock.calls[0][0]).toContain(configured.platform==="telegram"?"/sendMessage":"/wall.post");
     }
   });
   it.each(["held", "oversized", "revoked", "missing"])("requires a photo for a new opted-in post after %s without consuming a slot",async scenario=>{
@@ -303,7 +298,7 @@ describe("native photo delivery without duplicate creates",()=>{
       expect(stored.dispatchStartedAt).toBeFalsy();
       await f.store.seed("destination:vk:-456",{mode:"on",paused:false,historyReconciled:true});
       if(scenario==="rate") expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+61000)})).reason).toBe("destination_pacing");
-      expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+(scenario==="rate"?1800000:61000))})).status).toBe("sent_current");
+      expect((await dispatchNewsJob({store:f.store,key:f.key,transport:create(),now:()=>new Date(now.getTime()+(scenario==="rate"?3600000:61000))})).status).toBe("sent_current");
       expect(uploadImpl).toHaveBeenCalledTimes(1);expect(fetchImpl.mock.calls.filter(([url])=>url.endsWith("photos.saveWallPhoto"))).toHaveLength(1);
     }
   });

@@ -13,6 +13,7 @@ import { prepareRegisteredNewsMedia } from "./lib/literary-news-media.mjs";
 import { resolveNewsMediaBatch } from "./lib/literary-news-media-discovery.mjs";
 import { newsDeliveryPacingKey } from "./lib/literary-news-pacing.mjs";
 import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
+import { fallbackUnsentNewsPhoto,newsNewCreateIsFresh } from './lib/literary-news-text-fallback.mjs';
 
 const endpoint = "https://news.probpera.ru/api/literary-news/feed?contract=2&timeZone=Europe%2FMoscow";
 export function selectDueNewsMediaJobs(rows,controls,now=new Date(),pacing=new Map()) {
@@ -23,7 +24,8 @@ export function selectDueNewsMediaJobs(rows,controls,now=new Date(),pacing=new M
       && !(control.nextDueAt && Date.parse(control.nextDueAt)>now.getTime())
       && (job.remoteId || !(Date.parse(pacing.get(`${job.destination.platform}:${job.destination.id}`)?.nextDueAt)>now.getTime()))
       && !(job.status==="inflight" && Date.parse(job.leaseUntil)>now.getTime())
-      && !(job.nextDueAt && Date.parse(job.nextDueAt)>now.getTime());
+      && !(job.nextDueAt && Date.parse(job.nextDueAt)>now.getTime())
+      && (job.remoteId || newsNewCreateIsFresh(job,now));
   });
 }
 export function selectNewsPhotoPreparationIds(due) {
@@ -43,6 +45,8 @@ export async function deferUnreadyNewsPhotos({store,rows,due,photoNewsIds,readyA
     const original=rows.find(row=>row.state.key===job.key);
     const outcome=mediaPreparation.find(row=>row.assetId===job.prepared.media.assetId);
     const reason=outcome?.reason||"media_registered_asset_unavailable";
+    const fallback=await fallbackUnsentNewsPhoto({store,row:original,reason,current:now});
+    if(fallback){outcomes.push({...fallback,textFallback:true});continue;}
     // A failed first group must not monopolize every future runner. A stale
     // preparation result cannot overwrite a concurrent claim/remote receipt.
     const saved=await store.compareAppend(job.key,original.id,{...job,nextDueAt:new Date(now.getTime()+3600000).toISOString(),
@@ -122,7 +126,8 @@ export async function runLiteraryNews({ args = process.argv.slice(2), env = proc
   const mediaPreparation=mode==="--send"?await prepareRegisteredNewsMedia(destinations,{...mediaOptions,newsIds:photoNewsIds}):[];
   const readyAssets=new Set(mediaPreparation.filter(row=>["cached","prepared"].includes(row.status)).map(row=>row.assetId));
   const mediaRetryDeferrals=mode==="--send"?await deferUnreadyNewsPhotos({store,rows,due,photoNewsIds,readyAssets,mediaPreparation}):[];
-  const readyJobs=due.filter(job=>!job.prepared?.media || readyAssets.has(job.prepared.media.assetId));
+  const fallbackJobs=mediaRetryDeferrals.filter(row=>row.applied&&row.state).map(row=>row.state);
+  const readyJobs=[...due.filter(job=>!job.prepared?.media || readyAssets.has(job.prepared.media.assetId)),...fallbackJobs];
   const outcomes = mode === "--send"
     ? await dispatchNewsBatch({ store, jobs: readyJobs, transport:makeTransport(mediaOptions) }) : [];
   const latest = await store.read("heartbeat:scheduler");

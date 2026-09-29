@@ -78,7 +78,32 @@ export async function readLatestNewsRuntime(fetchPage: FetchPage, options: { pag
   return { rows: [...latest.values()], complete: false, readError: false, rowsRead, invalidRows };
 }
 
-export function summarizeNewsRuntime(read: Awaited<ReturnType<typeof readLatestNewsRuntime>>, configured = true) {
+const nativeDayFormatter = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Moscow", year: "numeric", month: "2-digit", day: "2-digit" });
+function nativeDeliveryHeartbeat(value: unknown, current: Date) {
+  const state = object(value), day = object(state.dayStatus), finishedAt = timestamp(state.finishedAt);
+  const status = ["dispatch_reconciliation_required", "daily_target_deficit", "daily_minimum_reached"].includes(String(state.status)) ? String(state.status) : null;
+  const fields = ["acknowledgedCreates", "acknowledgedPhotoCreates", "freshCreates", "freshPhotoCreates", "legacyReceiptsWithUnknownFirstDate", "deficitToMinimum"] as const;
+  if (state.runner !== "native-cron" || !finishedAt || Date.parse(finishedAt) > current.getTime() || !status
+    || typeof day.editorialDay !== "string" || !/^\d{4}-\d{2}-\d{2}$/u.test(day.editorialDay)
+    || day.editorialDay !== nativeDayFormatter.format(new Date(finishedAt)) || day.timeZone !== "Europe/Moscow"
+    || day.minimum !== 10 || day.maximum !== 15
+    || fields.some(key => !Number.isSafeInteger(day[key]) || Number(day[key]) < 0 || Number(day[key]) > 10_000_000)
+    || Number(day.freshPhotoCreates) > Number(day.acknowledgedPhotoCreates) || Number(day.acknowledgedPhotoCreates) > Number(day.acknowledgedCreates)
+    || Number(day.freshPhotoCreates) > Number(day.freshCreates) || Number(day.freshCreates) > Number(day.acknowledgedCreates)
+    || day.deficitToMinimum !== Math.max(0, 10 - Number(day.freshCreates))
+    || status === "daily_minimum_reached" && day.deficitToMinimum !== 0
+    || status === "daily_target_deficit" && day.deficitToMinimum === 0) return null;
+  return { finishedAt, status, editorialDay: day.editorialDay, timeZone: "Europe/Moscow",
+    isCurrentDay: day.editorialDay === nativeDayFormatter.format(current), minimum: 10, maximum: 15,
+    acknowledgedCreates: Number(day.acknowledgedCreates), acknowledgedPhotoCreates: Number(day.acknowledgedPhotoCreates),
+    freshCreates: Number(day.freshCreates), freshPhotoCreates: Number(day.freshPhotoCreates), deficitToMinimum: Number(day.deficitToMinimum),
+    freshTextCreates: Number(day.freshCreates) - Number(day.freshPhotoCreates),
+    legacyReceiptsWithUnknownFirstDate: Number(day.legacyReceiptsWithUnknownFirstDate),
+    nonFreshPhotoCreates: Number(day.acknowledgedPhotoCreates) - Number(day.freshPhotoCreates),
+    otherAcknowledgedCreates: Number(day.acknowledgedCreates) - Number(day.acknowledgedPhotoCreates) };
+}
+
+export function summarizeNewsRuntime(read: Awaited<ReturnType<typeof readLatestNewsRuntime>>, configured = true, current = new Date()) {
   let invalidRows = read.invalidRows;
   const posts = read.rows.filter(row => row.key.startsWith("post:news:")).flatMap(row => {
     const state = row.state, destination = object(state.destination);
@@ -118,13 +143,55 @@ export function summarizeNewsRuntime(read: Awaited<ReturnType<typeof readLatestN
   });
   const heartbeat = read.rows.find(row => row.key === "heartbeat:scheduler")?.state;
   const history = read.rows.find(row => row.key === "history:coverage")?.state;
+  const nativeState = read.rows.find(row => row.key === "heartbeat:native-delivery")?.state;
+  const nativeDelivery = nativeState ? nativeDeliveryHeartbeat(nativeState, current) : null;
+  const nativeDeliveryInvalid = Boolean(nativeState && !nativeDelivery);
+  if (nativeDeliveryInvalid) invalidRows++;
+  const legacySchedulerAt = timestamp(heartbeat?.finishedAt);
+  const nativeIsLatest = Boolean(nativeDelivery && (!legacySchedulerAt || Date.parse(nativeDelivery.finishedAt) > Date.parse(legacySchedulerAt)));
   const successes = posts.flatMap(post => post.acknowledgedAt ? [post.acknowledgedAt] : []).sort((a, b) => Date.parse(b) - Date.parse(a));
   posts.sort((a, b) => (Date.parse(a.admittedAt || "") || 0) - (Date.parse(b.admittedAt || "") || 0) || a.key.localeCompare(b.key));
   return { configured, complete: read.complete && invalidRows === 0, readError: read.readError, rowsRead: read.rowsRead, invalidRows,
-    hasRuntime: read.rows.length > 0, lastSchedulerAt: timestamp(heartbeat?.finishedAt),
-    schedulerMode: ["--preview-local", "--shadow", "--capture", "--send", "--preflight"].includes(String(heartbeat?.mode)) ? String(heartbeat?.mode) : null, lastDeliveryAt: successes[0] ?? null,
+    hasRuntime: read.rows.length > 0, lastSchedulerAt: nativeIsLatest ? nativeDelivery!.finishedAt : legacySchedulerAt,
+    nativeDelivery, nativeDeliveryInvalid,
+    schedulerMode: nativeIsLatest ? "native-cron" : ["--preview-local", "--shadow", "--capture", "--send", "--preflight"].includes(String(heartbeat?.mode)) ? String(heartbeat?.mode) : null, lastDeliveryAt: successes[0] ?? null,
     historyStatus: errorCode(history?.status), historyObservedSince: timestamp(history?.observedSince),
     destinations: destinationRows, posts };
+}
+
+/** Read a stable latest-key snapshot through the separately staff-gated invoker RPC.
+ * Only an explicitly missing first RPC can fall back to the bounded legacy scan. */
+async function readStaffLatestNewsRuntime(fetchPage: (after: string | null, upper: string | null, limit: number) =>
+  Promise<{ data: unknown[] | null; error: unknown }>) {
+  const rows: Row[] = [];
+  let cursor: string | null = null, upper: string | null = null, rowsRead = 0, bytesRead = 0, invalidRows = 0;
+  const integer = (value: unknown) => typeof value === "number" && Number.isSafeInteger(value) && value > 0 ? String(value)
+    : typeof value === "string" && /^[1-9]\d*$/u.test(value) ? value : null;
+  while (rowsRead < MAX_ROWS && bytesRead < MAX_BYTES) {
+    const limit = Math.min(PAGE_SIZE, MAX_ROWS - rowsRead);
+    let result;
+    try { result = await fetchPage(cursor, upper, limit); }
+    catch { return { rows, rowsRead, invalidRows, complete: false, readError: true, missingRpc: false }; }
+    if (result.error) {
+      const missingRpc = cursor === null && rowsRead === 0 && ["PGRST202", "42883"].includes(String(object(result.error).code));
+      return { rows, rowsRead, invalidRows, complete: false, readError: !missingRpc, missingRpc };
+    }
+    if (!Array.isArray(result.data) || result.data.length > limit)
+      return { rows, rowsRead, invalidRows: invalidRows + 1, complete: false, readError: true, missingRpc: false };
+    for (const raw of result.data) {
+      const value = object(raw), id = integer(value.id), watermark = integer(value.snapshot_upper_id), key = value.entity_id;
+      if (!id || !watermark || BigInt(id) > BigInt(watermark) || upper !== null && watermark !== upper
+        || typeof key !== "string" || !/^[\x20-\x7e]{1,400}$/u.test(key) || cursor !== null && key <= cursor)
+        return { rows, rowsRead, invalidRows: invalidRows + 1, complete: false, readError: true, missingRpc: false };
+      upper ??= watermark; cursor = key; rowsRead++;
+      if (!value.metadata || typeof value.metadata !== "object" || Array.isArray(value.metadata)) { invalidRows++; continue; }
+      bytesRead += new TextEncoder().encode(JSON.stringify(value.metadata)).byteLength;
+      if (bytesRead > MAX_BYTES) return { rows, rowsRead, invalidRows, complete: false, readError: false, missingRpc: false };
+      rows.push({ id, key, state: object(value.metadata) });
+    }
+    if (result.data.length < limit) return { rows, rowsRead, invalidRows, complete: invalidRows === 0, readError: false, missingRpc: false };
+  }
+  return { rows, rowsRead, invalidRows, complete: false, readError: false, missingRpc: false };
 }
 
 /** Hydrate only the exact latest IDs selected by the bounded head scan.
@@ -162,8 +229,17 @@ async function readNewsRuntimePayloads(heads: Awaited<ReturnType<typeof readLate
 }
 
 /** The caller must have passed requireStaff; this uses session RLS and performs SELECT only. */
-export async function loadLiteraryNewsRuntimeOverview(client: Pick<SupabaseClient, "from"> | null) {
+export async function loadLiteraryNewsRuntimeOverview(client: (Pick<SupabaseClient, "from"> & Partial<Pick<SupabaseClient, "rpc">>) | null) {
   if (!client) return summarizeNewsRuntime({ rows: [], complete: false, readError: false, rowsRead: 0, invalidRows: 0 }, false);
+  if (typeof client.rpc === "function") {
+    const latest = await readStaffLatestNewsRuntime(async (after, upper, limit) => {
+      const { data, error } = await client.rpc!("read_staff_latest_literary_news_runtime", {
+        p_after_key: after, p_limit: limit, p_upper_id: upper,
+      });
+      return { data, error };
+    });
+    if (!latest.missingRpc) return summarizeNewsRuntime(latest);
+  }
   // Historical replay rows carry large prepared text/media evidence. Scan only
   // their IDs and keys, then fetch metadata once per latest durable state.
   const heads = await readLatestNewsRuntime(async (cursor, limit) => {

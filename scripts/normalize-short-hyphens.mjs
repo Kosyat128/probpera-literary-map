@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { normalizeShortHyphens } from "./lib/short-hyphens.mjs";
+import { normalizeR10ExactSourcePunctuation } from "./lib/r10-exact-source-punctuation.mjs";
 import { isShortHyphenExactSource, loadShortHyphenExactSources } from "./lib/short-hyphen-exact-source.mjs";
 import { loadCmsExactSourcePunctuation, normalizeCmsExactSourcePunctuation } from "./lib/cms-exact-source-punctuation.mjs";
 
@@ -69,7 +70,8 @@ for (const absolutePath of await filesIn(projectRoot)) {
   if (exactSourceTranscriptionFiles.has(absolutePath)) continue;
   const source = await fs.readFile(absolutePath, "utf8");
   if (isShortHyphenExactSource(path.relative(projectRoot, absolutePath), source, protectedExactSources)) continue;
-  const normalized = normalizeCmsExactSourcePunctuation(path.relative(projectRoot, absolutePath), source, getCmsExactSourceNotes)
+  const normalized = normalizeR10ExactSourcePunctuation(path.relative(projectRoot, absolutePath), source)
+    ?? normalizeCmsExactSourcePunctuation(path.relative(projectRoot, absolutePath), source, getCmsExactSourceNotes)
     ?? normalizeShortHyphens(source);
   if (normalized === source) continue;
   changed.push(path.relative(projectRoot, absolutePath));

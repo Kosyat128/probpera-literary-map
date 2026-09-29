@@ -2,9 +2,11 @@ import {Buffer} from 'node:buffer';
 import {collectDailyNewsReview} from '../lib/literary-news-daily-intake.mjs';
 import {LITERARY_NEWS_SOURCES} from '../lib/literary-news-sources.mjs';
 import {canonicalUrl} from '../lib/literary-news-reviewed.mjs';
+import {newsJsonStream} from '../lib/literary-news-json.mjs';
+import {readNewsJsonArray} from '../lib/literary-news-json-reader.mjs';
 import {runDailyNewsAutomation,mergeDailyLedgers,dailyNewsModelRequest,parseDailyNewsModelResult,validateDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
 import {DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_OWNER_KEY,DAILY_NEWS_WINDOW,DAILY_NEWS_LIMITS,
-  dailyNewsDay,dailyNewsDigest,approvedDailySource,validateDailyApprovedPayload} from '../lib/literary-news-daily-profile.mjs';
+  dailyNewsDay,dailyNewsDigest,approvedDailySource,validateDailyApprovedPayload,validateDailyNewsRecord} from '../lib/literary-news-daily-profile.mjs';
 import {acquireNewsPreparationLease,stageNewsPreparationCheckpoint,confirmNewsPreparationCheckpoint,stageNewsPreparationPublication,
   confirmNewsPreparationPublication,releaseNewsPreparationLease} from '../lib/literary-news-preparation-fence.mjs';
 import reviewed from '../../data/news/reviewed.json' with{type:'json'};
@@ -84,14 +86,26 @@ export function createPreparationBindingAi(binding,{deadline=Infinity,now=()=>Da
     }finally{clearTimeout(timer);}
   }};
 }
-async function readJsonBinding(kv,key,maxBytes){
-  const raw=await kv.get(key);if(raw===null)return null;
-  if(typeof raw!=='string'||new TextEncoder().encode(raw).byteLength>maxBytes)fail('daily_storage_capacity');
-  try{return JSON.parse(raw);}catch{fail('daily_storage_json_invalid');}
+async function readJsonBinding(kv,key,maxBytes,{onEntry}={}){
+  const raw=await kv.get(key,maxBytes>4096?'stream':'text');if(raw===null)return null;
+  if(typeof raw==='string'){
+    if(Buffer.byteLength(raw,'utf8')>maxBytes)fail('daily_storage_capacity');
+    try{return JSON.parse(raw);}catch{fail('daily_storage_json_invalid');}
+  }
+  if(typeof raw?.getReader!=='function')fail('daily_storage_capacity');
+  if(key===DAILY_NEWS_PROFILE_KEY||key===DAILY_NEWS_LEDGER_KEY)return readNewsJsonArray(raw,{
+    arrayKey:key===DAILY_NEWS_PROFILE_KEY?'records':'accepted',maxBytes,maxEntries:DAILY_NEWS_LIMITS.records,
+    maxMetadataBytes:key===DAILY_NEWS_PROFILE_KEY?65536:2*1024*1024,...(onEntry?{onEntry}:{})});
+  const reader=raw.getReader(),decoder=new TextDecoder();let bytes=0,text='';
+  try{while(true){const{value,done}=await reader.read();if(done)break;bytes+=value.byteLength;
+      if(bytes>maxBytes)fail('daily_storage_capacity');text+=decoder.decode(value,{stream:true});}
+    try{return JSON.parse(text+decoder.decode());}catch{fail('daily_storage_json_invalid');}
+  }finally{await reader.cancel().catch(()=>{});reader.releaseLock();}
 }
 /** Article dates and rights stay deterministic. Invalid evidence never consumes inference;
  * cached rejections cannot occupy all five slots forever. */
 export async function boundedNativeNewsCandidates(intake,state,current,sources=LITERARY_NEWS_SOURCES){
+  const maximum=(state.accepted?.length||0)>=3000?2:5;
   const details=[],held=[],cache=new Map((state.reviewCache||[]).map(row=>[row.key,row]));
   for(const detail of intake.details||[]){
     let candidate;
@@ -99,9 +113,13 @@ export async function boundedNativeNewsCandidates(intake,state,current,sources=L
     catch(error){held.push({sourceId:detail?.sourceId||null,reason:safeError(error)});continue;}
     const cached=cache.get(candidate.key);
     if(cached?.status==='rejected'){held.push({sourceId:candidate.source.id,reason:cached.reason});continue;}
-    if(details.length<5)details.push(detail);
+    if(details.length<maximum)details.push(detail);
   }
-  return{intake:{...intake,details},held};
+  return{intake:{...intake,details},held,maximum};
+}
+export async function reusableNativeNewsRecord(record,priorRecords,current,sources=LITERARY_NEWS_SOURCES){
+  await validateDailyNewsRecord(record,current,{sources});const prior=priorRecords.get(record.id);
+  return prior?.provenance.recordSha256===record.provenance.recordSha256?prior:record;
 }
 export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),collect=collectDailyNewsReview,
   execute=runDailyNewsAutomation,fetchImpl=fetch,waitImpl=sleep}={}){
@@ -113,9 +131,16 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
   const owner=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_OWNER_KEY,4096);
   if(owner!==null&&!(owner.schemaVersion===1&&owner.owner==='native'&&owner.nativeEnabled===true&&owner.drained===false))fail('daily_native_owner_not_authorized');
   if(owner===null&&!bootstrap)fail('daily_native_owner_not_authorized');
-  const previous=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_LIMITS.ledgerBytes);
+  const previous=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_LIMITS.ledgerBytes,{onEntry:async record=>{
+    await validateDailyNewsRecord(record,started);return record;
+  }});
   if(previous!==null)await validateDailyLedger(previous,started);
-  const profile=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_LIMITS.profileBytes);
+  const priorRecords=new Map((previous?.accepted||[]).map(record=>[record.id,record]));
+  let profile=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_LIMITS.profileBytes,{onEntry:async record=>{
+    // Validate incoming content before reusing an immutable prior object. Merely
+    // copying an old proof field must not hide changed source/title/summary data.
+    return reusableNativeNewsRecord(record,priorRecords,started);
+  }});
   if(profile!==null)await validateDailyApprovedPayload(profile,started);
   const lease=await acquireNewsPreparationLease(storage,{ledgerSha:previous===null?null:await dailyNewsDigest(previous),
     profileSha:profile===null?null:await dailyNewsDigest(profile),current:started.getTime(),bootstrap});
@@ -127,28 +152,31 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
     if(sha===lastLedgerSha)return;
     await stageNewsPreparationCheckpoint(storage,{leaseId:lease.leaseId,ledgerSha:sha,current:current.getTime()});
     const delay=lastLedgerWrite+1200-current.getTime();if(delay>0)await waitImpl(delay);
-    await env.NEWS_STATE.put(DAILY_NEWS_LEDGER_KEY,JSON.stringify(state));lastLedgerWrite=now().getTime();
+    await env.NEWS_STATE.put(DAILY_NEWS_LEDGER_KEY,newsJsonStream(state));lastLedgerWrite=now().getTime();
     await confirmNewsPreparationCheckpoint(storage,{leaseId:lease.leaseId,ledgerSha:sha,current:now().getTime()});lastLedgerSha=sha;
   };
   try{
     if(owner===null)await env.NEWS_STATE.put(DAILY_NEWS_OWNER_KEY,JSON.stringify({schemaVersion:1,owner:'native',nativeEnabled:true,drained:false}));
     const state=await mergeDailyLedgers(previous,profile,null,started);
+    // Merge retained immutable prior records after matching their exact proofs;
+    // release the independently parsed public-profile copy before inference.
+    profile=null;
     const cooling=state.providerStop&&Date.parse(state.providerStop.retryAfterAt)>started.getTime();
     const admittedToday=state.accepted.filter(r=>dailyNewsDay(new Date(r.provenance.firstAcceptedAt))===day).length;
     const intake=cooling||admittedToday>=DAILY_NEWS_LIMITS.maximum?{details:[],counts:{checkedSources:0}}:await collect({
       current:started,sourceLimit:32,detailLimit:10,reviewed:[...reviewed,...state.accepted],
       fetchImpl:createPreparationSourceFetch({fetchImpl,current:now,deadline})});
     const bounded=await boundedNativeNewsCandidates(intake,state,now());
-    const result=await execute({intake:bounded.intake,previous:state,reviewed,withdrawals,current:now(),maxAiCalls:10,
+    const result=await execute({intake:bounded.intake,previous:state,reviewed,withdrawals,current:now(),maxAiCalls:bounded.maximum*2,
       ai:createPreparationBindingAi(env.AI,{deadline,now:()=>now().getTime()}),saveCheckpoint:checkpoint});
     await checkpoint(result.state);await validateDailyApprovedPayload(result.profile,now());
     const profileSha=await dailyNewsDigest(result.profile);
     await stageNewsPreparationPublication(storage,{leaseId:lease.leaseId,ledgerSha:lastLedgerSha,profileSha,current:now().getTime()});
-    await env.NEWS_STATE.put(DAILY_NEWS_PROFILE_KEY,JSON.stringify(result.profile));
+    await env.NEWS_STATE.put(DAILY_NEWS_PROFILE_KEY,newsJsonStream(result.profile));
     await confirmNewsPreparationPublication(storage,{leaseId:lease.leaseId,profileSha,current:now().getTime()});
     result.report.publicationConfirmed=true;result.report.deliveryConfirmed=false;
     result.report.native={window:DAILY_NEWS_WINDOW,writer:'native',sourceCounts:intake.counts||null,
-      maximumCandidateAttempts:5,maximumAiCalls:10,deadlineMinutes:6,deterministicHeld:bounded.held,
+      maximumCandidateAttempts:bounded.maximum,maximumAiCalls:bounded.maximum*2,deadlineMinutes:6,deterministicHeld:bounded.held,
       ownerFence:'durable-object-lease-and-staged-ledger-hash'};
     await env.NEWS_STATE.put(PREPARATION_REPORT_KEY,JSON.stringify(result.report));
     return result.report;

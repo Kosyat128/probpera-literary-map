@@ -1,10 +1,10 @@
 import {describe,expect,it,vi} from 'vitest';
 import worker,{checkedPreparationSourceUrl,createPreparationSourceFetch,createPreparationBindingAi,
-  boundedNativeNewsCandidates,runNativeNewsPreparation,PREPARATION_REPORT_KEY} from './literary-news-preparation-worker.mjs';
+  boundedNativeNewsCandidates,reusableNativeNewsRecord,runNativeNewsPreparation,PREPARATION_REPORT_KEY} from './literary-news-preparation-worker.mjs';
 import {NEWS_PREPARATION_FENCE_KEY} from '../lib/literary-news-preparation-fence.mjs';
 import {emptyDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
 import {DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_OWNER_KEY,
-  DAILY_NEWS_WINDOW,makeDailyApprovedPayload,dailyNewsDigest} from '../lib/literary-news-daily-profile.mjs';
+  DAILY_NEWS_WINDOW,DAILY_NEWS_POLICY,DAILY_NEWS_MODELS,makeDailyApprovedPayload,dailyNewsDigest,dailyRecordHashPayload} from '../lib/literary-news-daily-profile.mjs';
 
 const current=new Date('2026-09-30T12:00:00Z');
 const sources=[{id:'fixture',name:'Literary Fixture',url:'https://source.example/news/',language:'en',topics:['releases'],
@@ -20,7 +20,8 @@ function storageFixture(){let values=new Map(),tail=Promise.resolve();return{get
     try{const result=await work({get:async key=>structuredClone(next.get(key)),put:async(key,value)=>next.set(key,structuredClone(value))});values=next;return result;}finally{release();}}};}
 function fixture(){const values=new Map(),storage=storageFixture();
   const env={NEWS_AUTOMATION_ENABLED:'true',NEWS_AUTOMATION_WRITER:'native',NEWS_AUTOMATION_BOOTSTRAP:'true',AI:{run:vi.fn()},
-    NEWS_STATE:{get:vi.fn(async key=>values.get(key)??null),put:vi.fn(async(key,value)=>values.set(key,value))}};
+    NEWS_STATE:{get:vi.fn(async key=>values.get(key)??null),put:vi.fn(async(key,value)=>values.set(key,
+      value instanceof ReadableStream?await new Response(value).text():value))}};
   const collect=vi.fn(async()=>({details:[],counts:{checkedSources:32}}));
   return{env,values,storage,collect,run:extra=>runNativeNewsPreparation(env,storage,{now:()=>current,collect,waitImpl:async()=>{},...extra})};}
 
@@ -55,7 +56,8 @@ describe('Private native daily preparation and bounded public source adapter',()
   });
   it('preserves a saved inference budget and fences a profile PUT with a lost acknowledgement',async()=>{
     const f=fixture();let lost=true;
-    f.env.NEWS_STATE.put.mockImplementation(async(key,value)=>{f.values.set(key,value);if(key===DAILY_NEWS_PROFILE_KEY&&lost){lost=false;throw Error('simulated_lost_response');}});
+    f.env.NEWS_STATE.put.mockImplementation(async(key,value)=>{f.values.set(key,value instanceof ReadableStream?await new Response(value).text():value);
+      if(key===DAILY_NEWS_PROFILE_KEY&&lost){lost=false;throw Error('simulated_lost_response');}});
     const execute=async({previous,saveCheckpoint})=>{const state={...previous,inferenceBudgets:[{day:'2026-09-30',reservedCalls:1,draftRequests:1}]};
       await saveCheckpoint(state);return{state,profile:await makeDailyApprovedPayload(state.accepted,current),report:{status:'supply_degraded',minimumDeficit:10}};};
     await expect(f.run({execute})).rejects.toThrow('simulated_lost_response');
@@ -70,6 +72,23 @@ describe('Private native daily preparation and bounded public source adapter',()
     const bounded=await boundedNativeNewsCandidates({details:[unknown,...all]},
       {...emptyDailyLedger(current),reviewCache:[{key:rejected.key,status:'rejected',reason:'daily_draft_ungrounded'}]},current,sources);
     expect(bounded.intake.details).toEqual(all.slice(1,6));expect(bounded.held.map(row=>row.reason)).toEqual(['daily_publication_date_unknown','daily_draft_ungrounded']);
+    const annual=await boundedNativeNewsCandidates({details:all},{...emptyDailyLedger(current),accepted:new Array(3000)},current,sources);
+    expect(annual.maximum).toBe(2);expect(annual.intake.details).toHaveLength(2);
+  });
+  it('reuses prior immutable records only after validating the incoming content, not just its copied old hash field',async()=>{
+    const url='https://source.example/news/verified-proof',hash='a'.repeat(64),record={
+      id:'daily-'+(await dailyNewsDigest(url)).slice(0,32),eventKey:'daily-topic:'+(await dailyNewsDigest('fixture-topic')).slice(0,40),
+      sourceId:'fixture',kind:'news',category:'releases',eventDate:'2026-09-30',publishedAt:'2026-09-30T08:00:00Z',verifiedAt:current.toISOString(),verification:'confirmed',
+      title:{ru:'Новый роман',en:'New novel'},summary:{ru:'Издатель представил новый роман.',en:'The publisher announced a new novel.'},
+      source:{name:sources[0].name,url,language:'en'},provenance:{reviewKind:'machineReviewed',policy:DAILY_NEWS_POLICY,firstAcceptedAt:current.toISOString(),
+        draftModel:DAILY_NEWS_MODELS.draft,reviewModel:DAILY_NEWS_MODELS.review,eventDateBasis:'source-publication',draftSha256:hash,reviewSha256:hash,reviewPassed:true,
+        sourceEvidence:{documentSha256:hash,textSha256:hash,accessedAt:'2026-09-30T08:00:00Z',publication:{value:'2026-09-30T08:00:00Z',method:'jsonld.datePublished'},
+          quotes:['The publisher announced a new novel.'],literaryQuote:'new novel'}}};
+    record.provenance.recordSha256=await dailyNewsDigest(dailyRecordHashPayload(record));const prior=new Map([[record.id,record]]);
+    expect(await reusableNativeNewsRecord(structuredClone(record),prior,current,sources)).toBe(record);
+    const tampered=structuredClone(record);tampered.title.en='An unsupported replacement';
+    await expect(reusableNativeNewsRecord(tampered,prior,current,sources)).rejects.toThrow('daily_record_proof_invalid');
+    expect(prior.get(record.id).title.en).toBe('New novel');
   });
   it('accepts only code-owned HTTPS hosts and valid immutable pagination',()=>{
     for(const url of ['http://source.example/news/item1','https://source.example:8443/news/item1','https://u:p@source.example/news/item1',

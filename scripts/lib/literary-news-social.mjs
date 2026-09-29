@@ -548,12 +548,16 @@ export async function dispatchNewsBatch({ store, jobs, transport, now = () => ne
   return outcomes;
 }
 
-/** Interleave oldest backlog and fresh arrivals; corrections always go first. */
+/** Corrections keep their identities and go first. New photos precede text;
+ * each group interleaves oldest and newest arrivals without starving its tail. */
 export function scheduleNewsJobs(jobs) {
   const byAge = (a, b) => a.originalAdmission.localeCompare(b.originalAdmission) || a.key.localeCompare(b.key);
   const corrections = jobs.filter((j) => j.status === "correction_pending").sort(byAge);
-  const pending = jobs.filter((j) => ["pending", "inflight"].includes(j.status)).sort(byAge);
   const ordered = [];
-  while (pending.length) { ordered.push(pending.shift()); if (pending.length) ordered.push(pending.pop()); }
+  const pending=jobs.filter(j=>["pending","inflight"].includes(j.status));
+  for(const hasPhoto of [true,false]){
+    const group=pending.filter(job=>Boolean(job.prepared?.media)===hasPhoto).sort(byAge);
+    while(group.length){ordered.push(group.shift());if(group.length)ordered.push(group.pop());}
+  }
   return [...corrections, ...ordered];
 }

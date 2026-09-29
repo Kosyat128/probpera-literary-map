@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "UNDICI-SECURITY-FOLLOWUP-20260930",
+  "baselineCommitSha": "afa8afe5b4918530d1ed003b0de7707482ab5c8b",
+  "authorization": {
+    "basis": "Owner requested correction of all errors; fixes the mandatory production security audit failure.",
+    "packetSpecificHumanApprovalClaim": false,
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "scope": "Exactly two Undici lock entries and six new read-boundary fragments. Existing calendar integration seven fragments, all historical manifests, hashes, negative tests and mandatory security audit remain unchanged.",
+  "auditCommand": "npm audit --omit=dev --audit-level=high",
+  "allowedProjectionPaths": [
+    "package-lock.json",
+    "scripts/lib/reviewed-r10-delta.mjs",
+    "scripts/lib/reviewed-calendar-followup.test.mjs",
+    "scripts/lib/reviewed-r10-delta.test.mjs"
+  ],
+  "sourceBaselines": {
+    "package-lock.json": "f8fa586724f215d32d5465280af7ff415eeb4a1de5850d3ac942e2fe043f2cb1",
+    "scripts/lib/reviewed-r10-delta.mjs": "8c023c07377a072a2eb4c348e90a63c99e585cde858db1ce8de7d92c4e49171d",
+    "scripts/lib/reviewed-calendar-followup.test.mjs": "0259d549b4d0fc9faf2285090a019fcf0ced04c66257ed484a051d8554a8a54b",
+    "scripts/lib/reviewed-r10-delta.test.mjs": "270ae6c55e00930483cfe71b4d43cbc8a650948c4a1492935aa61d18bcc1a6cf"
+  },
+  "reviewedSources": {
+    "package-lock.json": "d39f63abece7398e39ac982bc946db227bb1c6c5085014b65208dc66a4ab71d5",
+    "scripts/lib/reviewed-r10-delta.mjs": "a9f64ecaf89ad831cbe4ddb596a2d0d390b55c116a72d2db3fe18dba438a740e",
+    "scripts/lib/reviewed-calendar-followup.test.mjs": "ac724e3685dc2338d84866af4ac43723f08b7cced00fe794cc8142edb95d2fa4",
+    "scripts/lib/reviewed-r10-delta.test.mjs": "4dc7aa729591495094c63c4d936ddb2d968aa1051785344482d4bf54e68641d0"
+  },
+  "projections": [
+    {
+      "id": "undici-production-patch-entry",
+      "path": "package-lock.json",
+      "before": "",
+      "after": "    \"node_modules/cheerio/node_modules/undici\": {\n      \"version\": \"7.29.1\",\n      \"resolved\": \"https://registry.npmjs.org/undici/-/undici-7.29.1.tgz\",\n      \"integrity\": \"sha512-RYONW2MeafgYlkVOKYKkA/Ag7BmXqgIWCa8t1m0JcxrQg9pI9lEqRhAOruOBCbAohOa/gkCF+iPi9hrgvTzu6Q==\",\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=20.18.1\"\n      }\n    },\n"
+    },
+    {
+      "id": "undici-old-miniflare-dev-only",
+      "path": "package-lock.json",
+      "before": "    \"node_modules/undici\": {\n      \"version\": \"7.29.0\",\n      \"resolved\": \"https://registry.npmjs.org/undici/-/undici-7.29.0.tgz\",\n      \"integrity\": \"sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==\",\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=20.18.1\"\n      }\n    },\n",
+      "after": "    \"node_modules/undici\": {\n      \"version\": \"7.29.0\",\n      \"resolved\": \"https://registry.npmjs.org/undici/-/undici-7.29.0.tgz\",\n      \"integrity\": \"sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==\",\n      \"dev\": true,\n      \"license\": \"MIT\",\n      \"engines\": {\n        \"node\": \">=20.18.1\"\n      }\n    },\n"
+    },
+    {
+      "id": "r10-undici-forward-import",
+      "path": "scripts/lib/reviewed-r10-delta.mjs",
+      "before": "import { projectReviewedCalendarFollowup } from \"./reviewed-calendar-followup.mjs\";\n",
+      "after": "import { projectReviewedCalendarFollowup } from \"./reviewed-calendar-followup.mjs\";\nimport { projectReviewedUndiciSecurityFollowup } from \"./reviewed-undici-security-followup.mjs\";\n"
+    },
+    {
+      "id": "r10-undici-forward-read",
+      "path": "scripts/lib/reviewed-r10-delta.mjs",
+      "before": "  let projected=projectReviewedCalendarFollowup(relativePath,source);",
+      "after": "  let projected=projectReviewedCalendarFollowup(relativePath,projectReviewedUndiciSecurityFollowup(relativePath,source));"
+    },
+    {
+      "id": "calendar-check-undici-forward-import",
+      "path": "scripts/lib/reviewed-calendar-followup.test.mjs",
+      "before": "import { readFileSync } from 'node:fs';\n",
+      "after": "import { readFileSync } from 'node:fs';\nimport { projectReviewedUndiciSecurityFollowup } from './reviewed-undici-security-followup.mjs';\n"
+    },
+    {
+      "id": "calendar-check-undici-forward-read",
+      "path": "scripts/lib/reviewed-calendar-followup.test.mjs",
+      "before": "const read=path=>readFileSync(path,'utf8').replace(/\\r\\n?/gu,'\\n');",
+      "after": "const read=path=>projectReviewedUndiciSecurityFollowup(path,readFileSync(path,'utf8').replace(/\\r\\n?/gu,'\\n'));"
+    },
+    {
+      "id": "r10-check-undici-forward-import",
+      "path": "scripts/lib/reviewed-r10-delta.test.mjs",
+      "before": "import { projectReviewedCalendarFollowup } from \"./reviewed-calendar-followup.mjs\";\n",
+      "after": "import { projectReviewedCalendarFollowup } from \"./reviewed-calendar-followup.mjs\";\nimport { projectReviewedUndiciSecurityFollowup } from \"./reviewed-undici-security-followup.mjs\";\n"
+    },
+    {
+      "id": "r10-check-undici-forward-read",
+      "path": "scripts/lib/reviewed-r10-delta.test.mjs",
+      "before": "const read=path=>projectReviewedCalendarFollowup(path,readFileSync(path,\"utf8\"));",
+      "after": "const read=path=>projectReviewedCalendarFollowup(path,projectReviewedUndiciSecurityFollowup(path,readFileSync(path,\"utf8\")));"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/dependency-security-reviewed-20260912.json",
+      "sha256Lf": "f1a8361822601a0d1b9761d1a6ebce7bb0a00a13c9d05a45a8055fa21718811c",
+      "jsonSha256": "a019f91983b719d33840260482ccc979f351b51f039ff53fe4ef1e20c13489d8"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "jsonSha256": "7f277e58d5e0a46f7bc12a87e606304e63d05cf8a9c48781331d151cbbafef69"
+    },
+    {
+      "path": "scripts/governance/calendar-followup-reviewed-20260929.json",
+      "sha256Lf": "927f35cebdcce83a87532639a5ae675c3eee91acd1dd06aa99fa1e95ea3441ce",
+      "jsonSha256": "686317fc56832427bf3226d6013bd37c08186164a03ea3f8772a7809f915c2d7"
+    },
+    {
+      "path": "scripts/governance/calendar-governance-integration-reviewed-20260929.json",
+      "sha256Lf": "212473e1965b1e18712dcbe26a0b107751284ecb80183205b6508b96cadd5450",
+      "jsonSha256": "b9272ef022902d570715518424c4c29f69bd90e72a51a62164bb251df53b7fe7"
+    }
+  ],
+  "evidence": {
+    "path": "reports/dependency-security-undici-20260930.json",
+    "sha256Lf": "71b2eb240094be73d233e6b5136ec764d38eff4e0901d85b582e18c673cee010"
+  },
+  "additions": [
+    {
+      "path": "scripts/lib/reviewed-undici-security-followup.mjs",
+      "sha256Lf": "4d91d871baae16e1c48769eeab386cef6209ca2a18ee6278e18221216ba2c7cb"
+    }
+  ],
+  "supportingSources": [
+    {
+      "path": "scripts/build-calendar-followup-attestation-r10.mjs",
+      "sha256Lf": "844cbf8d90b52e393a0aeebe2e2b12692e7a50bcd5f40f602d33ed35f973d658"
+    }
+  ]
+}

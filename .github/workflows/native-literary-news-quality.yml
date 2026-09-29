@@ -19,7 +19,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  verify:
+  native-news:
+    name: Native news bundle verification
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

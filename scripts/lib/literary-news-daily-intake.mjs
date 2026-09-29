@@ -140,4 +140,3 @@ export async function collectDailyNewsReview({ current = new Date(), detailLimit
       reviewedEligible: selectReviewed(reviewed, current, 'Europe/Moscow').length, newlyReady: 0, newlyPublished: 0 },
     sourceHealth, requests, details, documents, finds };
 }
-

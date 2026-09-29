@@ -1,7 +1,8 @@
 import { canonicalUrl, selectReviewed, validDate, validTimestamp, CATEGORIES } from "./literary-news-reviewed.mjs";
 import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
+import {newsJsonByteSize,newsJsonDigest} from './literary-news-json.mjs';
 
-// Worker-safe publication contract: no filesystem, Node built-ins, image decoder or provider client.
+// Worker-safe publication contract: no filesystem, image decoder or provider client.
 export const DAILY_NEWS_PROFILE_KEY = "literary-news:v1:approved-profile:daily-grounded";
 export const DAILY_NEWS_LEDGER_KEY = "literary-news:v1:daily-automation:ledger";
 export const DAILY_NEWS_OWNER_KEY = "literary-news:v1:daily-automation:owner";
@@ -16,16 +17,22 @@ export const PUBLICATION_DATE_METHODS = new Set(['meta[property="article:publish
   'meta[name="DC.date.issued"]', "jsonld.datePublished"]);
 const DAY = 86400000;
 const hash = value => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
-const size = value => new TextEncoder().encode(JSON.stringify(value)).byteLength;
+const size = newsJsonByteSize;
 const fail = code => { throw new Error(code); };
+const validatedImmutableRecords = new WeakMap();
+function freezeRecord(value,seen=new Set()) {
+  if(value&&typeof value==='object'&&!seen.has(value)) {
+    seen.add(value);for(const child of Object.values(value))freezeRecord(child,seen);Object.freeze(value);
+  }
+  return value;
+}
 const moscowDayFormatter = new Intl.DateTimeFormat("en-CA", { timeZone: DAILY_NEWS_WINDOW.timeZone,
   year: "numeric", month: "2-digit", day: "2-digit" });
 export function dailyNewsDay(date) {
   return moscowDayFormatter.format(date);
 }
 export async function dailyNewsDigest(value) {
-  return [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(value))))]
-    .map(byte => byte.toString(16).padStart(2, "0")).join("");
+  return newsJsonDigest(value);
 }
 export function dailyPublicationEpoch(value) {
   if (validDate(value)) return Date.parse(value + "T00:00:00+03:00");
@@ -54,6 +61,14 @@ export function dailyRecordHashPayload(record) {
   return { ...record, provenance };
 }
 export async function validateDailyNewsRecord(record, current = new Date(), { sources = LITERARY_NEWS_SOURCES } = {}) {
+  const now=current.getTime(),priorCheck=validatedImmutableRecords.get(record);
+  // Only the default immutable registry and an already fully validated, deeply
+  // frozen news object qualify. News has no expiry; later clocks cannot invalidate
+  // its past publication/admission proofs. Custom registries always validate afresh.
+  if(sources===LITERARY_NEWS_SOURCES&&Object.isFrozen(sources)&&Number.isFinite(now)
+    &&priorCheck!==undefined&&now>=priorCheck) {
+    validatedImmutableRecords.set(record,now);return record;
+  }
   const p = record?.provenance, e = p?.sourceEvidence, publication = dailyPublicationEpoch(record?.publishedAt);
   const admitted = Date.parse(p?.firstAcceptedAt), day = Number.isFinite(admitted) ? dailyNewsDay(new Date(admitted)) : null;
   const source = approvedDailySource(record?.sourceId, record?.source?.url, sources);
@@ -89,6 +104,9 @@ export async function validateDailyNewsRecord(record, current = new Date(), { so
   if (record.id !== "daily-" + (await dailyNewsDigest(record.source.url)).slice(0, 32)
     || p.recordSha256 !== await dailyNewsDigest(dailyRecordHashPayload(record))
     || selectReviewed([record], current, DAILY_NEWS_WINDOW.timeZone).length !== 1) fail("daily_record_proof_invalid");
+  if(sources===LITERARY_NEWS_SOURCES&&Object.isFrozen(sources)) {
+    freezeRecord(record);validatedImmutableRecords.set(record,now);
+  }
   return record;
 }
 function profilePayload(value) {

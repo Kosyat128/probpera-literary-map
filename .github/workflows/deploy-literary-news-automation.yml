@@ -92,6 +92,19 @@ jobs:
           if(due.error||!Array.isArray(due.data)||due.data.length>20)throw Error('runtime_due_unavailable');
           console.log(JSON.stringify({historyReconciled:true,dayStatus:checkedDeliveryDayStatus(status.data,now),dueJobs:due.data.length}));
           NODE
+      - name: Verify both configured AI protocols with unpublished fixtures
+        if: inputs.enabled
+        run: |
+          node --input-type=module <<'NODE'
+          import {createDailyWorkersAiClient} from './scripts/lib/literary-news-daily-automation.mjs';
+          const client=createDailyWorkersAiClient({accountId:process.env.CLOUDFLARE_ACCOUNT_ID,apiToken:process.env.CLOUDFLARE_API_TOKEN,maxCalls:2});
+          const messages=[{role:'system',content:'This is a connectivity check using an isolated fixture, not a real source or publication. Return valid JSON for the supplied schema. For a draft return status held, reason connectivity_fixture, empty strings in both title and summary languages, category publishing, eventIdentity connectivity fixture, literaryEvidence empty and facts empty. For a review return accepted false, all other booleans false, duplicateOf null, unsupportedClaims and factChecks empty. Do not invent news.'}];
+          for(const phase of ['draft','review']){
+            const result=await client.request({phase,messages});
+            if(phase==='draft'?result.status!=='held':result.accepted!==false)throw Error('native_ai_protocol_unconfirmed');
+            console.log(JSON.stringify({phase,protocolConfirmed:true,published:false}));
+          }
+          NODE
       - name: Establish disabled Workers and their coordinators
         run: |
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:false --var NEWS_AUTOMATION_BOOTSTRAP:false
@@ -148,5 +161,5 @@ jobs:
           node --input-type=module <<'NODE'
           import {appendFile} from 'node:fs/promises';
           import {DAILY_NEWS_WINDOW} from './scripts/lib/literary-news-daily-profile.mjs';
-          await appendFile(process.env.GITHUB_STEP_SUMMARY,`Native preparation and delivery enabled: ${process.env.ENABLED}. Window: ${DAILY_NEWS_WINDOW.start} through ${DAILY_NEWS_WINDOW.endExclusive} (exclusive), ${DAILY_NEWS_WINDOW.timeZone}. Preparation: every two hours; Telegram: every 30 minutes. Actual publication and Telegram acknowledgements require postflight verification.\n`);
+          await appendFile(process.env.GITHUB_STEP_SUMMARY,`Native preparation and delivery enabled: ${process.env.ENABLED}. Window: ${DAILY_NEWS_WINDOW.start} through ${DAILY_NEWS_WINDOW.endExclusive} (exclusive), ${DAILY_NEWS_WINDOW.timeZone}. Preparation: every two hours; Telegram: hourly from 08:00 through 22:00 Moscow, target 10-15 fresh literary news daily, photo priority with text fallback. Actual publication and Telegram acknowledgements require postflight verification.\n`);
           NODE

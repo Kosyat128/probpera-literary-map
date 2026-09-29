@@ -2,7 +2,8 @@ import { Buffer } from 'node:buffer';
 import { randomUUID } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 import configuration from '../../data/news/social-destinations.json' with { type: 'json' };
-import { createNewsRuntimeStore, dispatchNewsBatch, newsPostKey } from '../lib/literary-news-social.mjs';
+import { createNewsRuntimeStore, dispatchNewsBatch, newsPostKey,scheduleNewsJobs } from '../lib/literary-news-social.mjs';
+import { fallbackUnsentNewsPhoto } from '../lib/literary-news-text-fallback.mjs';
 import { createNewsSocialTransport } from '../lib/literary-news-social-transport-core.mjs';
 import { newsDeliveryPacingKey } from '../lib/literary-news-pacing.mjs';
 import { newsAnnouncementEligible } from '../lib/literary-news-reviewed.mjs';
@@ -57,10 +58,11 @@ async function requiredRpc(client,name,args) {
 
 export function checkedDeliveryDayStatus(value,current) {
   if(!value||value.editorialDay!==dayOf(current)||value.timeZone!=='Europe/Moscow'||value.minimum!==10||value.maximum!==15
-    || ['acknowledgedCreates','acknowledgedPhotoCreates','freshPhotoCreates','legacyReceiptsWithUnknownFirstDate','deficitToMinimum']
+    || ['acknowledgedCreates','acknowledgedPhotoCreates','freshCreates','freshPhotoCreates','legacyReceiptsWithUnknownFirstDate','deficitToMinimum']
       .some(key=>!Number.isSafeInteger(value[key])||value[key]<0)
+    ||value.freshPhotoCreates>value.freshCreates||value.freshCreates>value.acknowledgedCreates
     ||value.freshPhotoCreates>value.acknowledgedPhotoCreates||value.acknowledgedPhotoCreates>value.acknowledgedCreates
-    ||value.deficitToMinimum!==Math.max(0,10-value.freshPhotoCreates))fail('runtime_day_status_invalid');
+    ||value.deficitToMinimum!==Math.max(0,10-value.freshCreates))fail('runtime_day_status_invalid');
   return value;
 }
 
@@ -82,7 +84,7 @@ export function checkedDeliveryDueRows(rows,destination,current) {
     if(job.remoteId)return true; // Existing remote identities, edits and withdrawals remain durable.
     const published=dailyPublicationEpoch(job.prepared?.temporal?.publishedAt);
     return !job.withdrawal && ['news','announcement'].includes(job.prepared?.temporal?.kind) && Number.isFinite(published) && published<=current.getTime()
-      && current.getTime()-published<=7*86400000 && Boolean(job.prepared?.media)
+      && current.getTime()-published<=7*86400000
       && newsAnnouncementEligible(job.prepared.temporal,today,'Europe/Moscow');
   });
 }
@@ -99,6 +101,7 @@ async function readMediaOptions(binding,current) {
     checkDeliveryMediaDescriptor(descriptor);
     if(cache.has(descriptor.sha256))return checkDeliveryMediaBytes(cache.get(descriptor.sha256),descriptor);
     const raw=await binding.get(`${DELIVERY_MEDIA_BYTES_PREFIX}${descriptor.sha256}`,'arrayBuffer');
+    if(raw===null)throw Error('delivery_media_bytes_unavailable');
     if(!(raw instanceof ArrayBuffer)||raw.byteLength!==descriptor.byteLength)throw Error('delivery_media_bytes_invalid');
     const bytes=checkDeliveryMediaBytes(Buffer.from(raw),descriptor);
     cache.set(descriptor.sha256,bytes);return bytes;
@@ -129,15 +132,28 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
     const rawDue=await requiredRpc(client,'read_due_literary_news_runtime_posts',
       {p_destination_id:destination.id,p_now:current.toISOString(),p_limit:20});
     const candidates=checkedDeliveryDueRows(rawDue,destination,current);
-    const mediaOptions=await readMediaOptions(env.NEWS_STATE,current);
+    let mediaOptions={registry:{assets:[]},now:current,deferBytes:true},mediaIndexUnavailable=false;
+    if(candidates.some(row=>row.state.prepared?.media)){
+      try{mediaOptions=await readMediaOptions(env.NEWS_STATE,current);}
+      catch(error){if(error.message!=='delivery_media_index_unavailable')throw error;mediaIndexUnavailable=true;}
+    }
     const pacing=(await store.read(newsDeliveryPacingKey(destination))).state;
-    const selected=[];let mediaUnavailable=0;
-    for(const row of candidates){
+    const selected=[];let mediaUnavailable=0,textFallbacks=0;
+    const rowsByKey=new Map(candidates.map(row=>[row.key,row]));
+    for(const original of scheduleNewsJobs(candidates.map(row=>row.state))){
       if(selected.length>=8)break;
-      const job=row.state;
+      const row=rowsByKey.get(original.key);let job=original;
       if(!job.remoteId&&(control.nextDueAt&&Date.parse(control.nextDueAt)>current.getTime()
         ||Date.parse(pacing?.nextDueAt)>current.getTime()))continue;
-      if(job.prepared?.media){try{await validatePreparedNewsMedia(job.prepared,job.destination,mediaOptions);}catch{mediaUnavailable++;continue;}}
+      if(job.prepared?.media){try{
+        if(mediaIndexUnavailable)throw Error('delivery_media_index_unavailable');
+        await validatePreparedNewsMedia(job.prepared,job.destination,mediaOptions);
+      }catch(error){
+        mediaUnavailable++;
+        let fallback;try{fallback=await fallbackUnsentNewsPhoto({store,row,reason:error.message,current});}
+        catch(invalid){if(/^text_fallback_(?:admission|revision)_invalid$/.test(invalid.message))continue;throw invalid;}
+        if(!fallback?.applied)continue;job=fallback.state;textFallbacks++;
+      }}
       selected.push(job);
     }
     // This same CAS/lease/control/pacing path is shared with the Node fallback.
@@ -148,14 +164,14 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
       prepareDelivery:async(args)=>args.destination?.platform==='telegram'?live.prepareDelivery(args):{kind:'blocked',code:'vk_disabled'},
       send:async(args)=>args.destination?.platform==='telegram'?live.send(args):{kind:'blocked',code:'vk_disabled'},
     };
-    const outcomes=await dispatchImpl({store,jobs:selected,transport,now,limit:8});
+    const outcomes=await dispatchImpl({store,jobs:scheduleNewsJobs(selected),transport,now,limit:8});
     if(outcomes.some(row=>row.dispatchAttempted)){
       const countedAt=now();dayStatus=checkedDeliveryDayStatus(await requiredRpc(client,'literary_news_delivery_day_status',
         {p_destination_id:destination.id,p_now:countedAt.toISOString()}),countedAt);
     }
     const summary={...base,finishedAt:now().toISOString(),status:outcomes.some(row=>row.status==='ambiguous')?'dispatch_reconciliation_required'
         :dayStatus.deficitToMinimum?'daily_target_deficit':'daily_minimum_reached',
-      inspectedJobs:rawDue.length,eligibleJobs:candidates.length,selectedJobs:selected.length,mediaUnavailable,
+      inspectedJobs:rawDue.length,eligibleJobs:candidates.length,selectedJobs:selected.length,mediaUnavailable,textFallbacks,
       deliveredThisRun:outcomes.filter(row=>row.status==='sent_current'&&row.dispatchAttempted).length,
       ambiguousThisRun:outcomes.filter(row=>row.status==='ambiguous').length,dayStatus};
     const heartbeat=await store.read('heartbeat:native-delivery');

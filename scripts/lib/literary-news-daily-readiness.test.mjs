@@ -24,12 +24,21 @@ async function fixture() {
 describe('honest daily photo supply and accepted receipt counts',()=>{
   it('counts source freshness separately from image readiness and never treats edit acknowledgement as a create',async()=>{
     const feed={snapshot:{id:'fixture',release:'a'.repeat(40)},items:[item('fresh','2026-09-29'),item('old','2026-09-01'),item('undated',null)]};
-    const jobs=[{newsId:'already-new',destination,remoteId:'1',firstAcknowledgedAt:'2026-09-29T05:00:00Z',acknowledgedAt:'2026-09-29T07:00:00Z'},
+    const jobs=[{newsId:'already-new',destination,remoteId:'1',firstAcknowledgedAt:'2026-09-29T05:00:00Z',acknowledgedAt:'2026-09-29T07:00:00Z',
+      prepared:{temporal:{kind:'news',publishedAt:'2026-09-29'}},remoteMediaKind:'text'},
       {newsId:'legacy-edit',destination,remoteId:'2',acknowledgedAt:'2026-09-29T07:00:00Z'}];
     const result=await literaryNewsDailyReadiness({feed,destination,jobs,current,mediaOptions:await fixture()});
     expect(result.counts).toMatchObject({currentFeedItems:3,sourcePublishedToday:1,unknownSourcePublicationDates:1,
       photoReady:3,recentPhotoReady:1,acceptedFirstPostsToday:1,firstPostDatesUnknown:1,minimumSupplyDeficit:8,targetSupplyDeficit:13});
     expect(result.outcomes.every(row=>row.nativeMethod==='sendPhoto')).toBe(true);
+  });
+  it('counts all fresh unsent text or photo supply toward the news goal, with photos separately',async()=>{
+    const optional={...destination,requirePhotoForNewPosts:false},feed={snapshot:{id:'fixture',release:'a'.repeat(40)},
+      items:[item('fresh','2026-09-29'),item('text','2026-09-28'),item('undated',null),item('old','2026-09-01')]};
+    const result=await literaryNewsDailyReadiness({feed,destination:optional,current,mediaOptions:await fixture()});
+    expect(result.counts).toMatchObject({recentPhotoReady:1,recentTextReady:1,recentReady:2,minimumSupplyDeficit:8,
+      targetSupplyDeficit:13,minimumPhotoSupplyDeficit:9,targetPhotoSupplyDeficit:14});
+    expect(result.outcomes.find(row=>row.newsId==='text')).toMatchObject({status:'text_ready',nativeMethod:'sendMessage'});
   });
   it('does not call a missing or changed JPEG ready or create a send claim for local previews',async()=>{
     const mediaOptions=await fixture();mediaOptions.readBytes=async()=>Buffer.from('changed');

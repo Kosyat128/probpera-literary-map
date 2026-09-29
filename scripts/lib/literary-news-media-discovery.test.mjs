@@ -4,7 +4,8 @@ import sharp from "sharp";
 import { resolveNewsMediaBatch } from "./literary-news-media-discovery.mjs";
 import { prepareNewsPost, dispatchNewsJob } from "./literary-news-social.mjs";
 import { readNewsMediaBytes, selectNewsMedia, validatePreparedNewsMedia } from "./literary-news-media.mjs";
-const now=new Date("2026-09-27T00:00:00Z"),destination={platform:"telegram",id:"-100123",mode:"off"};
+import newsLimits from "../../data/news/contract.json" with {type:"json"};
+const now=new Date("2026-09-27T05:00:00Z"),destination={platform:"telegram",id:"-100123",mode:"off"};
 const item={id:"virginia-news",category:"anniversaries",kind:"news",eventDate:"2026-09-26",verification:"confirmed",
   title:{ru:"Вирджиния Вулф: документальная публикация",en:"Virginia Woolf: a documented publication"},
   summary:{ru:"Опубликовано сообщение об архиве писательницы.",en:"A statement about the writer’s archive was published."},
@@ -27,6 +28,15 @@ async function fixture(overrides={},fileName="Fixture.png"){
   return{bytes,info,fetchImpl,options:{registry,now,fetchImpl,matchSubjects:()=>[subject],searchCandidates:()=>[]}};
 }
 describe("bounded actual-portrait discovery, no provider uploads",()=>{
+  it("preserves the complete one-year feed above the former 5000-item boundary without unbounded photo discovery",async()=>{
+    const rows=Array.from({length:5490},(_,index)=>({...item,id:`annual-${index}`}));
+    const fetchImpl=vi.fn();
+    const result=await resolveNewsMediaBatch(rows,[destination],{registry,now,fetchImpl,maxNews:0});
+    expect(Object.keys(result.mediaOptions.resolutions)).toHaveLength(rows.length);
+    expect(result.report.inspected).toBe(0);expect(fetchImpl).not.toHaveBeenCalled();
+    await expect(resolveNewsMediaBatch(Array.from({length:newsLimits.maxItems+1},()=>item),[destination],{registry,now,maxNews:0}))
+      .rejects.toThrow('media_discovery_input_invalid');
+  });
   it("keeps all dynamic Commons filename delimiters encoded after the literal File namespace",async()=>{
     const fileName="Portrait:series:100% /Русский?#.png",f=await fixture({},fileName);
     const result=await resolveNewsMediaBatch([item],[destination],f.options);

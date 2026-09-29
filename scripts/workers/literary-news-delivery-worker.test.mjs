@@ -10,7 +10,7 @@ import configuration from '../../data/news/social-destinations.json' with {type:
 const now=new Date('2026-09-29T12:00:00Z');
 const destination=configuration.destinations.find(row=>row.platform==='telegram');
 const day=(fresh=0)=>({editorialDay:'2026-09-29',timeZone:'Europe/Moscow',acknowledgedCreates:20,
-  acknowledgedPhotoCreates:15,freshPhotoCreates:fresh,legacyReceiptsWithUnknownFirstDate:2,minimum:10,maximum:15,deficitToMinimum:Math.max(0,10-fresh)});
+  acknowledgedPhotoCreates:15,freshCreates:fresh,freshPhotoCreates:fresh,legacyReceiptsWithUnknownFirstDate:2,minimum:10,maximum:15,deficitToMinimum:Math.max(0,10-fresh)});
 const item=id=>({id,verification:'confirmed',kind:'news',category:'releases',eventDate:'2026-09-29',publishedAt:now.toISOString(),verifiedAt:now.toISOString(),
  title:{ru:'Новая книга',en:'New book'},summary:{ru:'Издатель сообщил о книге.',en:'Publisher announced a book.'},source:{name:'Fixture',url:'https://publisher.example/book',language:'en'}});
 const row=(id,extra={})=>({id:1,entity_id:newsPostKey(id,{...destination,mode:'on'}),metadata:{key:newsPostKey(id,{...destination,mode:'on'}),newsId:id,
@@ -19,6 +19,7 @@ const row=(id,extra={})=>({id:1,entity_id:newsPostKey(id,{...destination,mode:'o
 async function fixture({rows=[],status=day(),control={mode:'on',paused:false,historyReconciled:true},rpcError=null,index}={}){
  const state=new Map();let seq=1;
  state.set(`destination:telegram:${destination.id}`,{id:seq,state:control});
+ for(const value of rows)state.set(value.entity_id,{id:value.id,state:value.metadata});
  const store={read:vi.fn(async key=>structuredClone(state.get(key)||{id:null,state:null})),
    compareAppend:vi.fn(async(key,id,value)=>{const old=state.get(key);if((old?.id??null)!==id)return {applied:false,...old};
      const next={id:++seq,state:structuredClone(value)};state.set(key,next);return {applied:true,...next};})};
@@ -28,7 +29,7 @@ async function fixture({rows=[],status=day(),control={mode:'on',paused:false,his
    NEWS_STATE:{get:vi.fn(async(key,type)=>key===DELIVERY_MEDIA_INDEX_KEY?JSON.stringify(registry):null)}};
  const dispatch=vi.fn(async()=>[]);
  const run=()=>runDeliveryTick({env,now:()=>now,createClientImpl:()=>client,storeFactory:()=>store,dispatchImpl:dispatch});
- return{env,store,client,dispatch,run};
+ return{env,store,client,dispatch,run,state};
 }
 
 describe('Private native delivery cron boundary',()=>{
@@ -78,7 +79,7 @@ describe('Private native delivery cron boundary',()=>{
    const f=await fixture({rpcError:true});const result=await f.run();expect(result.code).toBe('runtime_day_status_rpc_required');
    expect(f.client.rpc).toHaveBeenCalledTimes(1);expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();expect(f.dispatch).not.toHaveBeenCalled();
  });
- it('reports the real photo deficit separately from text or legacy acknowledgments',async()=>{
+ it('reports fresh news counts separately from photos or legacy acknowledgments',async()=>{
    const f=await fixture();const result=await f.run();expect(result.status).toBe('daily_target_deficit');expect(result.dayStatus.deficitToMinimum).toBe(10);
    expect(result.dayStatus.legacyReceiptsWithUnknownFirstDate).toBe(2);
    expect(f.client.rpc).toHaveBeenCalledWith('read_due_literary_news_runtime_posts',{p_destination_id:destination.id,p_now:now.toISOString(),p_limit:20});
@@ -87,15 +88,37 @@ describe('Private native delivery cron boundary',()=>{
  it('rejects contradictory day counts and wrong editorial dates',()=>{
    expect(()=>checkedDeliveryDayStatus({...day(),deficitToMinimum:0},now)).toThrow('runtime_day_status_invalid');
    expect(()=>checkedDeliveryDayStatus({...day(),editorialDay:'2026-09-28'},now)).toThrow('runtime_day_status_invalid');
+   expect(()=>checkedDeliveryDayStatus({...day(1),freshCreates:0},now)).toThrow('runtime_day_status_invalid');
+   expect(checkedDeliveryDayStatus({...day(),freshCreates:10,deficitToMinimum:0},now).freshPhotoCreates).toBe(0);
  });
- it('excludes stale/missing/future/text-only new creates while retaining old remote corrections',()=>{
+ it('permits verified fresh text without requiring a photo registry and reports minimum by all fresh receipts',async()=>{
+   const prepared=await prepareNewsPost(item('fresh-text'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
+   const f=await fixture({rows:[row('fresh-text',{prepared})],status:{...day(),freshCreates:10,deficitToMinimum:0}});
+   const result=await f.run();expect(result.status).toBe('daily_minimum_reached');expect(result.selectedJobs).toBe(1);
+   expect(f.dispatch.mock.calls[0][0].jobs[0].prepared.payload.text).toContain('https://probpera.ru/#literary-news');
+   expect(f.env.NEWS_STATE.get).not.toHaveBeenCalled();
+ });
+ it('a missing photo index cannot block fresh text, while an unknown photo admission remains held',async()=>{
+   const prepared=await prepareNewsPost(item('fresh-text'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
+   const f=await fixture({rows:[row('photo-without-admission'),row('fresh-text',{prepared})]});
+   f.env.NEWS_STATE.get.mockResolvedValue(null);
+   const result=await f.run();expect(result.status).toBe('daily_target_deficit');expect(result.selectedJobs).toBe(1);
+   expect(f.dispatch.mock.calls[0][0].jobs[0].prepared.payload).toEqual(prepared.payload);
+   expect(result.mediaUnavailable).toBe(1);expect(result.textFallbacks).toBe(0);
+ });
+ it('corrupt media index data fails closed instead of fabricating approved rights',async()=>{
+   const prepared=await prepareNewsPost(item('fresh-text'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
+   const f=await fixture({rows:[row('photo'),row('fresh-text',{prepared})]});f.env.NEWS_STATE.get.mockResolvedValue('corrupt-json');
+   expect((await f.run()).status).toBe('blocked');expect(f.dispatch).not.toHaveBeenCalled();
+ });
+ it('includes fresh text and photo creates while excluding stale/missing/future dates and retaining remote corrections',()=>{
    const fresh=row('fresh');const stale=row('stale');stale.metadata.prepared.temporal.publishedAt='2026-09-20T12:00:00Z';
    const missing=row('missing');delete missing.metadata.prepared.temporal.publishedAt;
    const future=row('future');future.metadata.prepared.temporal.publishedAt='2026-09-30T12:00:00Z';
    const text=row('text');text.metadata.prepared.media=null;
    const expired=row('expired');expired.metadata.prepared.temporal.kind='announcement';expired.metadata.prepared.temporal.eventDate='2026-09-28';
    const correction=row('correction',{remoteId:'123',status:'correction_pending',prepared:{media:null,temporal:{publishedAt:'2025-01-01T00:00:00Z'}}});
-   expect(checkedDeliveryDueRows([fresh,stale,missing,future,text,expired,correction],destination,now).map(row=>row.state.newsId)).toEqual(['fresh','correction']);
+   expect(checkedDeliveryDueRows([fresh,stale,missing,future,text,expired,correction],destination,now).map(row=>row.state.newsId)).toEqual(['fresh','text','correction']);
    expect(()=>checkedDeliveryDueRows([fresh,fresh],destination,now)).toThrow('runtime_due_response_invalid');
  });
  it('treats source date-only publications at Moscow midnight and preserves fresh upcoming announcements',()=>{
@@ -110,10 +133,11 @@ describe('Private native delivery cron boundary',()=>{
    const asset={id:'fixture-photo',status:'approved',newsIds:['good'],sourceUrl:'https://publisher.example/image.jpg',sourceSha256:'b'.repeat(64),subject:'book',entityEvidence:'Synthetic test',author:'Fixture',rightsholder:'Fixture',credit:'Fixture',license:'owned',licenseEvidenceUrl:'https://publisher.example/license',licenseEvidenceSha256:'c'.repeat(64),checkMethod:'ownership-record',checkedAt:'2026-09-29T00:00:00Z',validUntil:'2026-10-10T00:00:00Z',transformations:{resize:true,metadataRemoval:true,reencode:true,crop:false},permissions:[{platform:'telegram',destinationId:destination.id,publish:true,providerProcessing:true,evidenceUrl:'https://publisher.example/license'}],derivative:descriptor};
    const prepared=await prepareNewsPost(item('good'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram',{destination,mediaOptions:{registry:{assets:[asset]},now,readBytes:async()=>bytes}});
    const index=await makeDeliveryMediaIndex({assets:[asset],downloadHosts:[],uploads:[{sha256:descriptor.sha256,uploadedAt:now.toISOString()}],generatedAt:now.toISOString()});
-   const good=row('good',{prepared});const f=await fixture({rows:[row('unready'),good],index});
+   const good=row('good',{prepared}),text=await prepareNewsPost(item('fresh-text'),{id:'verified-fixture',release:'a'.repeat(40)},'telegram');
+   const f=await fixture({rows:[row('fresh-text',{prepared:text}),row('unready'),good],index});
    f.env.NEWS_STATE.get.mockImplementation(async(key,type)=>key===DELIVERY_MEDIA_INDEX_KEY?JSON.stringify(index):key===DELIVERY_MEDIA_BYTES_PREFIX+descriptor.sha256?bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength):null);
    f.dispatch.mockImplementation(async({jobs,transport})=>{
-     expect(jobs.map(job=>job.newsId)).toEqual(['good']);
+     expect(jobs.map(job=>job.newsId)).toEqual(['good','fresh-text']);
      expect(await transport.preflight({platform:'vk',id:'-123'})).toEqual({ok:false,reason:'vk_disabled'});
      expect(await transport.send({destination:{platform:'vk',id:'-123'}})).toEqual({kind:'blocked',code:'vk_disabled'});
      vi.useFakeTimers();vi.setSystemTime(new Date('2026-10-11T00:00:00Z'));
@@ -121,7 +145,7 @@ describe('Private native delivery cron boundary',()=>{
      finally{vi.useRealTimers();}
      return[];
    });
-   const result=await f.run();expect(result.selectedJobs).toBe(1);expect(result.mediaUnavailable).toBe(1);
+   const result=await f.run();expect(result.selectedJobs).toBe(2);expect(result.mediaUnavailable).toBe(1);
    expect(f.env.NEWS_STATE.get.mock.calls.filter(([key])=>key.startsWith(DELIVERY_MEDIA_BYTES_PREFIX))).toHaveLength(1);
  });
  it('latches actual SDK HTTP402 without another request or credential diagnostics',async()=>{

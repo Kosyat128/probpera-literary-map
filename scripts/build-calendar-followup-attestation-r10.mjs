@@ -2,11 +2,14 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { projectReviewedUndiciSecurityFollowup } from './lib/reviewed-undici-security-followup.mjs';
 const lf=text=>text.replace(/\r\n?/gu,'\n');
 const read=path=>lf(readFileSync(path,'utf8'));
 const sha=text=>createHash('sha256').update(lf(text)).digest('hex');
 const git=(...args)=>lf(execFileSync('git',['-c',`safe.directory=${process.cwd()}`,...args],{encoding:'utf8',maxBuffer:20*1024*1024}));
-const baselineCommitSha=git('rev-parse','HEAD').trim();
+const attestationPath='scripts/governance/calendar-followup-reviewed-20260929.json';
+const baselineCommitSha=JSON.parse(read(attestationPath)).baselineCommitSha;
+assert.equal(baselineCommitSha,'439bb70954d3773279f2d342ba1d2df2b5d17ccf','Calendar baseline must remain the original reviewed commit');
 const historical=path=>git('show',`${baselineCommitSha}:${path}`);
 const integration=JSON.parse(read('scripts/governance/calendar-governance-integration-reviewed-20260929.json'));
 function beforeIntegration(path,source){for(const delta of integration.projections.filter(item=>item.path===path)){assert.equal(source.split(delta.after).length,2);source=source.replace(delta.after,delta.before);}return source;}
@@ -79,7 +82,7 @@ const foundations=[
 'src/data/countries/generated/writerFacts.wikidata.json',
 'src/data/countries/generated/writerDatePatches.r10.json',
 'src/data/countries/generated/writerDatePatches.r10-supplemental.json'
-].map(path=>{const prior=beforeIntegration(path,read(path));assert.equal(prior,historical(path),`Historical foundation changed: ${path}`);return{path,sha256Lf:sha(prior)};});
+].map(path=>{const prior=beforeIntegration(path,projectReviewedUndiciSecurityFollowup(path,read(path)));assert.equal(prior,historical(path),`Historical foundation changed: ${path}`);return{path,sha256Lf:sha(prior)};});
 const packet={schemaVersion:1,id:'R10-CALENDAR-FOLLOWUP-20260929',baselineCommitSha,
  scope:'Exact-date additions for existing writers, including preserved Russian fields and name-guarded calendar-only identities. Only the separately user-authorized seven integration fragments alter historical read boundaries. Historical pins, identity registry, old overlays and release controls remain unchanged.',
  historicalPinsChanged:false,authorization:{humanReview:false,releaseAccepted:false,productionApplied:false},
@@ -88,5 +91,7 @@ const packet={schemaVersion:1,id:'R10-CALENDAR-FOLLOWUP-20260929',baselineCommit
  allowedProjectionPaths,sourceBaselines,reviewedSources,
  additions:additionPaths.map(path=>({path,sha256Lf:sha(read(path))})),
  supportingSources:supportingPaths.map(path=>({path,sha256Lf:sha(read(path))})),foundations,projections};
-writeFileSync('scripts/governance/calendar-followup-reviewed-20260929.json',JSON.stringify(packet,null,2)+'\n');
+const serialized=JSON.stringify(packet,null,2)+'\n';
+if(process.argv.includes('--check'))assert.equal(read(attestationPath),serialized,'Calendar follow-up attestation is stale');
+else writeFileSync(attestationPath,serialized);
 console.log(JSON.stringify({packetSha256:sha(JSON.stringify(packet)),projections:projections.length,paths:allowedProjectionPaths.length,additions:additionPaths.length,baselineCommitSha,integrationApplied:true}));

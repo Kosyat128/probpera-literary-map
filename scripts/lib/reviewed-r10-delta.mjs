@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { projectReviewedCalendarFollowup } from "./reviewed-calendar-followup.mjs";
+import { projectReviewedUndiciSecurityFollowup } from "./reviewed-undici-security-followup.mjs";
 
 // R10 implementation review is agent evidence, not owner/human or release acceptance.
 export const r10DeltaAttestation = JSON.parse(readFileSync(new URL("../governance/r10-forward-delta-20260926.json",import.meta.url),"utf8"));
@@ -15,7 +16,7 @@ export function isReviewedR10Addition(relativePath,source) {
 
 /** Reverse exact bounded R10 fragments before historical projections. Preserve all other bytes. */
 export function projectReviewedR10Delta(relativePath,source) {
-  let projected=projectReviewedCalendarFollowup(relativePath,source);
+  let projected=projectReviewedCalendarFollowup(relativePath,projectReviewedUndiciSecurityFollowup(relativePath,source));
   for(const delta of r10DeltaAttestation.projections) {
     if(delta.path!==relativePath)continue;
     if(!delta.after || projected.split(delta.after).length!==2) throw new Error(`Missing or duplicate R10 delta: ${delta.id}`);

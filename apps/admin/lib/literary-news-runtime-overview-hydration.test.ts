@@ -93,3 +93,45 @@ describe("actual staff RLS loader fetches metadata once per latest CAS state", (
     expect(result.complete).toBe(false); expect(result.posts).toEqual([]);
   });
 });
+
+describe("optional staff-gated latest RPC removes dependence on historical row count", () => {
+  it("uses keyset pages with a fixed upper-ID and exact versions without any audit history request", async () => {
+    const rows = Array.from({ length: 502 }, (_, index) => row(index + 1, "story-" + String(index).padStart(4, "0")));
+    const from = vi.fn(), rpc = vi.fn(async (_name: string, args: { p_after_key: string | null; p_upper_id: string | null; p_limit: number }) => {
+      const upper = args.p_upper_id ?? "502";
+      const data = rows.filter(item => BigInt(item.id) <= BigInt(upper) && (args.p_after_key === null || item.entity_id > args.p_after_key))
+        .sort((a, b) => a.entity_id < b.entity_id ? -1 : 1).slice(0, args.p_limit)
+        .map(item => ({ ...item, snapshot_upper_id: upper }));
+      if (args.p_after_key === null) rows.push(row(9000, "story-0001", job("story-0001", { status: "inflight" })));
+      return { data, error: null };
+    });
+    const result = await loadLiteraryNewsRuntimeOverview({ from, rpc } as unknown as SupabaseClient);
+    expect(result.complete).toBe(true); expect(result.rowsRead).toBe(502); expect(result.posts).toHaveLength(502);
+    expect(result.posts.find(item => item.newsId === "story-0001")).toMatchObject({ expectedVersion: "2", status: "pending" });
+    expect(from).not.toHaveBeenCalled(); expect(rpc).toHaveBeenCalledTimes(2);
+    expect(rpc.mock.calls[1][1]).toMatchObject({ p_upper_id: "502", p_limit: 500 });
+  });
+  it.each(["PGRST202", "42883"])("only confirmed missing RPC %s uses the bounded two-phase fallback", async code => {
+    const f = fixture([row(1, "a")]), rpc = vi.fn(async () => ({ data: null, error: { code } }));
+    const result = await loadLiteraryNewsRuntimeOverview({ ...f.client, rpc } as unknown as SupabaseClient);
+    expect(result.complete).toBe(true); expect(result.posts[0].expectedVersion).toBe("1");
+    expect(rpc).toHaveBeenCalledTimes(1); expect(f.calls.map(call => call.columns)).toEqual(["id,entity_id", "id,entity_id,metadata"]);
+  });
+  it.each([{ code: "42501", status: 403 }, { code: "quota", status: 402 }, { code: "unexpected", status: 500 }])
+    ("RPC error %j fails closed without an additional history request", async error => {
+      const from = vi.fn(), rpc = vi.fn(async () => ({ data: null, error }));
+      const result = await loadLiteraryNewsRuntimeOverview({ from, rpc } as unknown as SupabaseClient);
+      expect(result).toMatchObject({ complete: false, readError: true, posts: [] });
+      expect(from).not.toHaveBeenCalled(); expect(rpc).toHaveBeenCalledTimes(1);
+    });
+  it.each(["watermark", "missing_metadata", "key_order", "unsafe_id"])("rejects corrupt RPC %s without a legacy replay fallback", async mode => {
+    const a = { ...row(1, "a"), snapshot_upper_id: "2" }, b = { ...row(2, "b"), snapshot_upper_id: "2" };
+    const data: unknown[] = mode === "watermark" ? [a, { ...b, snapshot_upper_id: "3" }]
+      : mode === "missing_metadata" ? [{ ...a, metadata: null }]
+      : mode === "key_order" ? [b, a] : [{ ...a, id: Number.MAX_SAFE_INTEGER + 1 }];
+    const from = vi.fn(), rpc = vi.fn(async () => ({ data, error: null }));
+    const result = await loadLiteraryNewsRuntimeOverview({ from, rpc } as unknown as SupabaseClient);
+    expect(result.complete).toBe(false); expect(result.invalidRows).toBeGreaterThan(0);
+    expect(from).not.toHaveBeenCalled();
+  });
+});

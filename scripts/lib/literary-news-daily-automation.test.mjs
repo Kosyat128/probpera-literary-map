@@ -130,6 +130,21 @@ describe("bounded annual grounded daily news automation (no live provider or pub
     const conflicting = await makeDailyApprovedPayload([altered], current);
     await expect(mergeDailyLedgers(replay.state, conflicting, null, current, { sources })).rejects.toThrow("daily_accepted_history_conflict");
   });
+  it("retains identical immutable history objects across separately parsed projections while preserving proof conflicts", async () => {
+    const first = await runDailyNewsAutomation(options([detail(0)], aiFixture()));
+    const record = first.state.accepted[0], priorSha = await dailyNewsDigest(first.state.accepted);
+    const parsedProfile = JSON.parse(JSON.stringify(first.profile)), local = structuredClone(first.state);
+    expect(parsedProfile.records[0]).not.toBe(record);
+    const merged = await mergeDailyLedgers(first.state, parsedProfile, local, current, { sources });
+    expect(merged.accepted[0]).toBe(record);
+    expect(merged.accepted).not.toBe(first.state.accepted);
+    expect(await dailyNewsDigest(merged.accepted)).toBe(priorSha);
+    const changed = structuredClone(record); changed.summary.en += " Unsupported correction.";
+    changed.provenance.recordSha256 = await dailyNewsDigest(dailyRecordHashPayload(changed));
+    await expect(mergeDailyLedgers(first.state, await makeDailyApprovedPayload([changed], current), null, current, { sources }))
+      .rejects.toThrow("daily_accepted_history_conflict");
+    expect(await dailyNewsDigest(first.state.accepted)).toBe(priorSha);
+  });
   it("fails closed on a corrupted cached draft and conservatively reserves failed inferences across runs", async () => {
     const ai = aiFixture({ intercept: ({ phase }) => { if (phase === "review") throw Error("ai_quota_exceeded"); } });
     const result = await runDailyNewsAutomation(options([detail(0)], ai));

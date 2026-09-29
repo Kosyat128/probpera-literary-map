@@ -58,16 +58,21 @@ try {
     firstAcknowledgedAt: '2026-09-28T00:00:00Z', acknowledgedAt: now });
   await insert('same-moscow-day', { status: 'sent_current', remoteId: '6', remoteMediaKind: 'photo',
     firstAcknowledgedAt: '2026-09-28T22:00:00Z' });
+  await insert('fresh-text-receipt', { status: 'sent_current', remoteId: '7', remoteMediaKind: 'text',
+    firstAcknowledgedAt: now, prepared: { ...base.prepared, media: null } });
   await db.exec('set role service_role');
   const due = () => db.query('select * from public.read_due_literary_news_runtime_posts($1,$2,$3)', [destination.id, now, 20]);
   const eligible = (await due()).rows;
-  assert.deepEqual(eligible.map(row => row.entity_id.split(':')[2]).sort(), ['correction', 'expired-inflight', 'fresh']);
-  assert.equal(eligible[0].metadata.remoteId, '3'); checks.push('due-only bounded photos, existing corrections, leases and corrupt timestamps');
+  assert.deepEqual(eligible.map(row => row.entity_id.split(':')[2]).sort(), ['correction', 'expired-inflight', 'fresh', 'text-only']);
+  assert.equal(eligible[0].metadata.remoteId, '3');
+  assert.equal(eligible.at(-1).entity_id.split(':')[2], 'text-only');
+  checks.push('due-only bounded photo priority and timely text fallback, corrections, leases and corrupt timestamps');
   const status = () => db.query('select public.literary_news_delivery_day_status($1,$2) as value', [destination.id, now]);
   const day = (await status()).rows[0].value;
   assert.equal(day.editorialDay, '2026-09-29'); assert.equal(day.freshPhotoCreates, 2);
-  assert.equal(day.deficitToMinimum, 8); assert.equal(day.legacyReceiptsWithUnknownFirstDate, 3);
-  checks.push('Moscow-day first receipts, old edits excluded, legacy dates unknown');
+  assert.equal(day.freshCreates, 3); assert.equal(day.deficitToMinimum, 7);
+  assert.equal(day.legacyReceiptsWithUnknownFirstDate, 3);
+  checks.push('Moscow-day fresh first receipts in both formats, old edits excluded, legacy dates unknown');
   await assert.rejects(db.query('select * from public.read_due_literary_news_runtime_posts($1,$2,21)', [destination.id, now]));
   for (const role of ['anon', 'authenticated']) {
     await db.exec('reset role; set role ' + role); await assert.rejects(due()); await assert.rejects(status());

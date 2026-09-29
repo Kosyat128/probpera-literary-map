@@ -68,14 +68,14 @@ begin
         or case when pg_catalog.pg_input_is_valid(a.metadata->>'nextDueAt','timestamp with time zone')
           then (a.metadata->>'nextDueAt')::timestamptz <= p_now else false end)
       and (nullif(a.metadata->>'remoteId','') is not null
-        or (a.metadata->'prepared'->'media'->>'assetId' is not null
-          and a.metadata->'prepared'->'temporal'->>'kind' in ('news','announcement')
+        or (a.metadata->'prepared'->'temporal'->>'kind' in ('news','announcement')
           and case when pg_catalog.pg_input_is_valid(a.metadata->'prepared'->'temporal'->>'publishedAt','timestamp with time zone')
             then (case when a.metadata->'prepared'->'temporal'->>'publishedAt' ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
               then ((a.metadata->'prepared'->'temporal'->>'publishedAt') || 'T00:00:00+03:00')::timestamptz
               else (a.metadata->'prepared'->'temporal'->>'publishedAt')::timestamptz end) between p_now - interval '7 days' and p_now
             else false end))
     order by (nullif(a.metadata->>'remoteId','') is not null) desc,
+      (a.metadata->'prepared'->'media'->>'assetId' is not null) desc,
       a.metadata->'prepared'->'temporal'->>'publishedAt' desc nulls last, a.entity_id collate "C"
     limit p_limit;
 end;
@@ -87,7 +87,7 @@ create or replace function public.literary_news_delivery_day_status(
   p_destination_id text, p_now timestamptz default now()
 ) returns jsonb language plpgsql stable security invoker set search_path = ''
 as $$
-declare p_day date; creates bigint; photos bigint; fresh bigint; unknown_first bigint;
+declare p_day date; creates bigint; photos bigint; fresh bigint; fresh_photos bigint; unknown_first bigint;
 begin
   if p_destination_id is null or p_destination_id !~ '^-[1-9][0-9]{0,15}$' or p_now is null then
     raise exception 'invalid literary news daily status query' using errcode = '22023';
@@ -111,12 +111,14 @@ begin
   ) select
     count(*) filter (where nullif(metadata->>'remoteId','') is not null and (first_at at time zone 'Europe/Moscow')::date = p_day),
     count(*) filter (where nullif(metadata->>'remoteId','') is not null and (first_at at time zone 'Europe/Moscow')::date = p_day and metadata->>'remoteMediaKind' = 'photo'),
+    count(*) filter (where nullif(metadata->>'remoteId','') is not null and (first_at at time zone 'Europe/Moscow')::date = p_day
+      and metadata->'prepared'->'temporal'->>'kind' in ('news','announcement') and published_at between first_at - interval '7 days' and first_at),
     count(*) filter (where nullif(metadata->>'remoteId','') is not null and (first_at at time zone 'Europe/Moscow')::date = p_day and metadata->>'remoteMediaKind' = 'photo'
       and metadata->'prepared'->'temporal'->>'kind' in ('news','announcement') and published_at between first_at - interval '7 days' and first_at),
     count(*) filter (where nullif(metadata->>'remoteId','') is not null and first_at is null)
-  into creates, photos, fresh, unknown_first from receipt;
+  into creates, photos, fresh, fresh_photos, unknown_first from receipt;
   return pg_catalog.jsonb_build_object('editorialDay',p_day::text,'timeZone','Europe/Moscow',
-    'acknowledgedCreates',creates,'acknowledgedPhotoCreates',photos,'freshPhotoCreates',fresh,
+    'acknowledgedCreates',creates,'acknowledgedPhotoCreates',photos,'freshCreates',fresh,'freshPhotoCreates',fresh_photos,
     'legacyReceiptsWithUnknownFirstDate',unknown_first,'minimum',10,'maximum',15,'deficitToMinimum',greatest(0,10-fresh));
 end;
 $$;

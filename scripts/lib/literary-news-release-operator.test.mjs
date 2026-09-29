@@ -10,7 +10,7 @@ import { NEWS_RELEASE_DESTINATIONS,newsHistoryCandidates,operateNewsRelease,rech
 import { parseNewsReleaseArguments } from "../operate-literary-news-release.mjs";
 import { normalizeNewsMedia, mediaByteHash } from "./literary-news-media.mjs";
 
-const now=new Date("2026-09-27T00:00:00Z"),destination=NEWS_RELEASE_DESTINATIONS.telegram;
+const now=new Date("2026-09-27T05:00:00Z"),destination=NEWS_RELEASE_DESTINATIONS.telegram;
 function memoryStore(){
   const rows=new Map();let sequence=0;
   const store={
